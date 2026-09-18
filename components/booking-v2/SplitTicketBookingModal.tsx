@@ -302,26 +302,26 @@ export function SplitTicketBookingModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-3 sm:p-4 backdrop-blur-xs overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-2 sm:p-4 backdrop-blur-xs overflow-y-auto"
       role="dialog"
       aria-modal="true"
       onClick={onClose}
     >
       <div
-        className="relative my-auto flex w-full max-w-2xl flex-col rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden"
+        className="relative my-auto flex w-full max-w-2xl max-h-[92vh] sm:max-h-[85vh] flex-col rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50/80 px-5 py-4">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
-              <Train className="h-5 w-5" />
+        <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50/80 px-3.5 py-3 sm:px-5 sm:py-4">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-blue-600 text-white shadow-sm">
+              <Train className="h-4 w-4 sm:h-5 sm:w-5" />
             </div>
-            <div>
-              <h3 className="text-base font-bold text-slate-900">
+            <div className="min-w-0">
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 truncate">
                 Ticket Reservation & Booking
               </h3>
-              <p className="text-xs text-slate-500 font-medium">
+              <p className="text-[11px] sm:text-xs text-slate-500 font-medium truncate">
                 {trainName ? `${trainName} (${trainNumber})` : `Train ${trainNumber}`}{" "}
                 • {journeyDate} • Class {travelClass}
               </p>
@@ -329,55 +329,58 @@ export function SplitTicketBookingModal({
           </div>
           <button
             onClick={onClose}
-            className="flex h-8 w-8 items-center justify-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
         {/* Steps Progress Bar */}
-        <div className="flex border-b border-slate-100 bg-white text-xs font-semibold text-slate-500">
+        <div className="flex border-b border-slate-100 bg-white text-[11px] sm:text-xs font-semibold text-slate-500">
           <div
-            className={`flex-1 py-2 text-center border-b-2 transition ${
+            className={`flex-1 py-2 px-1 text-center border-b-2 transition ${
               step === "passenger_details"
                 ? "border-blue-600 text-blue-600 bg-blue-50/30"
                 : "border-transparent"
             }`}
           >
-            1. Passenger Details
+            <span className="sm:hidden">1. Details</span>
+            <span className="hidden sm:inline">1. Passenger Details</span>
           </div>
           <div
-            className={`flex-1 py-2 text-center border-b-2 transition ${
+            className={`flex-1 py-2 px-1 text-center border-b-2 transition ${
               step === "payment"
                 ? "border-blue-600 text-blue-600 bg-blue-50/30"
                 : "border-transparent"
             }`}
           >
-            2. Payment (UPI)
+            <span className="sm:hidden">2. Payment</span>
+            <span className="hidden sm:inline">2. Payment (UPI)</span>
           </div>
           <div
-            className={`flex-1 py-2 text-center border-b-2 transition ${
+            className={`flex-1 py-2 px-1 text-center border-b-2 transition ${
               step === "booking_in_progress"
                 ? "border-emerald-600 text-emerald-600 bg-emerald-50/30"
                 : "border-transparent"
             }`}
           >
-            3. Automated Booking
+            <span className="sm:hidden">3. Booking</span>
+            <span className="hidden sm:inline">3. Automated Booking</span>
           </div>
         </div>
 
         {/* Modal Content */}
-        <div className="max-h-[75vh] overflow-y-auto p-5 sm:p-6 space-y-6">
+        <div className="overflow-y-auto p-3.5 sm:p-6 space-y-4 sm:space-y-6">
           {/* STEP 1: PASSENGER DETAILS FORM (Image 2 Parity) */}
           {step === "passenger_details" && (
-            <form onSubmit={handleProceedToPayment} className="space-y-6">
+            <form onSubmit={handleProceedToPayment} className="space-y-4 sm:space-y-6">
               {/* Journey Route & Split Legs Banner */}
-              <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-2">
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-4 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-600">
+                  <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-600">
                     Split Journey Route
                   </span>
-                  <span className="text-sm font-extrabold text-blue-900 tabular-nums">
+                  <span className="text-xs sm:text-sm font-extrabold text-blue-900 tabular-nums">
                     Total Fare: ₹{totalFare}
                   </span>
                 </div>
@@ -385,9 +388,9 @@ export function SplitTicketBookingModal({
                   {legs.map((leg, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center justify-between rounded-lg bg-white p-2.5 border border-slate-200 shadow-2xs"
+                      className="flex items-center justify-between rounded-lg bg-white p-2 sm:p-2.5 border border-slate-200 shadow-2xs"
                     >
-                      <div>
+                      <div className="min-w-0 pr-2">
                         <span className="font-bold text-slate-700">
                           Leg {idx + 1}:{" "}
                         </span>
@@ -395,7 +398,7 @@ export function SplitTicketBookingModal({
                           {leg.from} → {leg.to}
                         </span>
                       </div>
-                      <span className="font-bold text-emerald-700">
+                      <span className="font-bold text-emerald-700 shrink-0">
                         ₹{leg.fare}
                       </span>
                     </div>
@@ -404,22 +407,23 @@ export function SplitTicketBookingModal({
               </div>
 
               {/* Contact Information */}
-              <div className="space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700">
+              <div className="space-y-2.5 sm:space-y-3">
+                <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-700">
                   Contact Information (For Tickets & PNR)
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                   <div>
                     <label className="block text-xs font-medium text-slate-600 mb-1">
                       Mobile Number (10 Digits) *
                     </label>
                     <input
                       type="tel"
+                      inputMode="numeric"
                       required
                       value={mobile}
                       onChange={(e) => setMobile(e.target.value)}
                       placeholder="e.g. 9876543210"
-                      className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500"
+                      className="w-full rounded-lg border border-slate-300 px-3 py-2 text-base sm:text-sm min-h-[42px] sm:min-h-[38px] focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500"
                     />
                   </div>
                   <div>
@@ -428,27 +432,28 @@ export function SplitTicketBookingModal({
                     </label>
                     <input
                       type="email"
+                      inputMode="email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="e.g. yourname@example.com"
-                      className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500"
+                      className="w-full rounded-lg border border-slate-300 px-3 py-2 text-base sm:text-sm min-h-[42px] sm:min-h-[38px] focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Adult Passenger Details Table (Matches Image 2) */}
-              <div className="space-y-3">
+              <div className="space-y-2.5 sm:space-y-3">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                  <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-700">
                     Passenger Details (Adults)
                   </h4>
                   {passengers.length < 6 && (
                     <button
                       type="button"
                       onClick={addPassenger}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 transition"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 transition py-1"
                     >
                       <Plus className="h-3.5 w-3.5" /> Add Passenger
                     </button>
@@ -459,7 +464,7 @@ export function SplitTicketBookingModal({
                   {passengers.map((p, idx) => (
                     <div
                       key={idx}
-                      className="rounded-xl border border-slate-200 bg-white p-3 shadow-2xs space-y-2.5"
+                      className="rounded-xl border border-slate-200 bg-white p-3 shadow-2xs space-y-2"
                     >
                       <div className="flex items-center justify-between border-b border-slate-100 pb-1.5">
                         <span className="text-xs font-bold text-slate-700">
@@ -469,7 +474,7 @@ export function SplitTicketBookingModal({
                           <button
                             type="button"
                             onClick={() => removePassenger(idx)}
-                            className="text-slate-400 hover:text-red-600 transition"
+                            className="p-1 text-slate-400 hover:text-red-600 transition"
                             title="Remove passenger"
                           >
                             <Trash2 className="h-4 w-4" />
@@ -477,9 +482,9 @@ export function SplitTicketBookingModal({
                         )}
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 text-xs">
+                      <div className="grid grid-cols-12 gap-2 text-xs">
                         {/* Name */}
-                        <div className="sm:col-span-4">
+                        <div className="col-span-12 sm:col-span-4">
                           <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
                             Name
                           </label>
@@ -491,17 +496,18 @@ export function SplitTicketBookingModal({
                             onChange={(e) =>
                               updatePassenger(idx, "name", e.target.value)
                             }
-                            className="w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-xs focus:border-blue-500 focus:outline-hidden"
+                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2.5 py-2 sm:py-1.5 text-base sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden"
                           />
                         </div>
 
                         {/* Age */}
-                        <div className="sm:col-span-2">
+                        <div className="col-span-4 sm:col-span-2">
                           <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
                             Age
                           </label>
                           <input
                             type="number"
+                            inputMode="numeric"
                             required
                             min={1}
                             max={125}
@@ -513,12 +519,12 @@ export function SplitTicketBookingModal({
                                 parseInt(e.target.value, 10) || 0,
                               )
                             }
-                            className="w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-xs focus:border-blue-500 focus:outline-hidden"
+                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2.5 py-2 sm:py-1.5 text-base sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden"
                           />
                         </div>
 
                         {/* Sex */}
-                        <div className="sm:col-span-3">
+                        <div className="col-span-8 sm:col-span-3">
                           <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
                             Gender
                           </label>
@@ -532,7 +538,7 @@ export function SplitTicketBookingModal({
                                   .value as SplitBookingPassenger["gender"],
                               )
                             }
-                            className="w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-xs focus:border-blue-500 focus:outline-hidden bg-white"
+                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2.5 py-2 sm:py-1.5 text-sm sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden bg-white"
                           >
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -541,7 +547,7 @@ export function SplitTicketBookingModal({
                         </div>
 
                         {/* Berth Preference */}
-                        <div className="sm:col-span-3">
+                        <div className="col-span-12 sm:col-span-3">
                           <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
                             Berth Preference
                           </label>
@@ -554,7 +560,7 @@ export function SplitTicketBookingModal({
                                 e.target.value,
                               )
                             }
-                            className="w-full rounded-md border border-slate-300 px-2.5 py-1.5 text-xs focus:border-blue-500 focus:outline-hidden bg-white"
+                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2.5 py-2 sm:py-1.5 text-sm sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden bg-white"
                           >
                             {BERTH_OPTIONS.map((opt) => (
                               <option key={opt} value={opt}>
@@ -578,11 +584,11 @@ export function SplitTicketBookingModal({
                               e.target.checked,
                             )
                           }
-                          className="h-3.5 w-3.5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                          className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                         />
                         <label
                           htmlFor={`sr_${idx}`}
-                          className="text-[11px] text-slate-600 font-medium cursor-pointer"
+                          className="text-xs sm:text-[11px] text-slate-600 font-medium cursor-pointer"
                         >
                           Senior Citizen concession (if applicable)
                         </label>
@@ -597,7 +603,7 @@ export function SplitTicketBookingModal({
                 <button
                   type="button"
                   onClick={() => setShowChildSection(!showChildSection)}
-                  className="text-xs font-bold text-slate-600 hover:text-slate-900 transition flex items-center gap-1"
+                  className="text-xs font-bold text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 py-1"
                 >
                   <span>{showChildSection ? "▼" : "▶"}</span>
                   <span>
@@ -611,65 +617,71 @@ export function SplitTicketBookingModal({
                     {childPassengers.map((cp, cIdx) => (
                       <div
                         key={cIdx}
-                        className="flex flex-wrap items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 p-2.5 text-xs"
+                        className="grid grid-cols-12 gap-2 items-center rounded-lg border border-slate-200 bg-slate-50 p-2.5 text-xs"
                       >
-                        <span className="font-semibold text-slate-600">
-                          Child {cIdx + 1}:
-                        </span>
-                        <input
-                          type="text"
-                          placeholder="Child Name"
-                          value={cp.name}
-                          onChange={(e) =>
-                            updateChild(cIdx, "name", e.target.value)
-                          }
-                          className="rounded border border-slate-300 px-2 py-1 text-xs"
-                        />
-                        <select
-                          value={cp.age}
-                          onChange={(e) =>
-                            updateChild(
-                              cIdx,
-                              "age",
-                              parseInt(e.target.value, 10),
-                            )
-                          }
-                          className="rounded border border-slate-300 px-2 py-1 text-xs bg-white"
-                        >
-                          <option value={1}>1 year</option>
-                          <option value={2}>2 years</option>
-                          <option value={3}>3 years</option>
-                          <option value={4}>4 years</option>
-                        </select>
-                        <select
-                          value={cp.gender}
-                          onChange={(e) =>
-                            updateChild(
-                              cIdx,
-                              "gender",
-                              e.target
-                                .value as SplitBookingChildPassenger["gender"],
-                            )
-                          }
-                          className="rounded border border-slate-300 px-2 py-1 text-xs bg-white"
-                        >
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
-                        </select>
-                        <button
-                          type="button"
-                          onClick={() => removeChildPassenger(cIdx)}
-                          className="text-slate-400 hover:text-red-600 ml-auto"
-                        >
-                          <Trash2 className="h-3.5 w-3.5" />
-                        </button>
+                        <div className="col-span-12 sm:col-span-5">
+                          <input
+                            type="text"
+                            placeholder="Child Full Name"
+                            value={cp.name}
+                            onChange={(e) =>
+                              updateChild(cIdx, "name", e.target.value)
+                            }
+                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2.5 py-2 sm:py-1.5 text-base sm:text-xs min-h-[40px] sm:min-h-[32px] bg-white"
+                          />
+                        </div>
+                        <div className="col-span-5 sm:col-span-3">
+                          <select
+                            value={cp.age}
+                            onChange={(e) =>
+                              updateChild(
+                                cIdx,
+                                "age",
+                                parseInt(e.target.value, 10),
+                              )
+                            }
+                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2 py-2 sm:py-1.5 text-sm sm:text-xs min-h-[40px] sm:min-h-[32px] bg-white"
+                          >
+                            <option value={1}>1 year</option>
+                            <option value={2}>2 years</option>
+                            <option value={3}>3 years</option>
+                            <option value={4}>4 years</option>
+                          </select>
+                        </div>
+                        <div className="col-span-5 sm:col-span-3">
+                          <select
+                            value={cp.gender}
+                            onChange={(e) =>
+                              updateChild(
+                                cIdx,
+                                "gender",
+                                e.target
+                                  .value as SplitBookingChildPassenger["gender"],
+                              )
+                            }
+                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2 py-2 sm:py-1.5 text-sm sm:text-xs min-h-[40px] sm:min-h-[32px] bg-white"
+                          >
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                        </div>
+                        <div className="col-span-2 sm:col-span-1 flex justify-end">
+                          <button
+                            type="button"
+                            onClick={() => removeChildPassenger(cIdx)}
+                            className="p-1.5 text-slate-400 hover:text-red-600"
+                            title="Remove child"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        </div>
                       </div>
                     ))}
                     {childPassengers.length < 2 && (
                       <button
                         type="button"
                         onClick={addChildPassenger}
-                        className="text-xs font-semibold text-blue-600 hover:text-blue-800"
+                        className="text-xs font-semibold text-blue-600 hover:text-blue-800 py-1"
                       >
                         + Add Child Passenger
                       </button>
@@ -705,18 +717,18 @@ export function SplitTicketBookingModal({
               )}
 
               {/* Actions */}
-              <div className="flex items-center justify-between pt-2">
+              <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pt-2">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="rounded-lg border border-slate-300 px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition"
+                  className="rounded-xl border border-slate-300 px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition text-center min-h-[42px]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-md hover:bg-blue-700 disabled:opacity-50 transition"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 sm:py-2.5 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.98] disabled:opacity-50 transition min-h-[44px]"
                 >
                   {isSubmitting ? (
                     <>
