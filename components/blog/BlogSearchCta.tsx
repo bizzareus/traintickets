@@ -12,7 +12,7 @@ type Props = {
   variant?: "mid" | "bottom";
 };
 
-export function BlogSearchCta({ slug, context, variant = "bottom" }: Props) {
+export function BlogSearchCta({ slug, lang = "en", context, variant = "bottom" }: Props) {
   const { intentType, primaryRoute, popularRoutes } = context;
 
   const handleCtaClick = useCallback(
