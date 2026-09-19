@@ -101,6 +101,9 @@ type MuzoboxCreateLinkResponse = {
   razorpayKeyId?: string;
   referenceId?: string;
   redirectUri?: string;
+  qrImageUrl?: string;
+  qr_image_url?: string;
+  upiString?: string;
 };
 
 type MuzoboxStatusResponse = {
@@ -249,6 +252,8 @@ export class ChartAlertPaymentsService {
           referenceId: record.id,
           redirectUri: `chart-alert/payment-complete?ref=${record.id}`,
           description: `Chart alert ${input.trainNumber} ${input.fromStationCode}->${input.toStationCode || 'ANY'} ${input.journeyDate}`,
+          customerEmail: input.email?.trim() || undefined,
+          customerMobile: input.mobile?.trim() || undefined,
         },
         { headers: this.authHeaders() },
       );
@@ -274,13 +279,18 @@ export class ChartAlertPaymentsService {
         },
       });
 
-      const upiIntent = `upi://pay?pa=pay@lastberth&pn=LastBerth&am=${amount}&tn=${record.id}&cu=INR`;
-      const qrImageUrl = payUrl
-        ? `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(payUrl)}`
-        : `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(upiIntent)}`;
+      const upiIntent =
+        data.upiString ||
+        `upi://pay?pa=pay@lastberth&pn=LastBerth&am=${amount}&tn=${record.id}&cu=INR`;
+      const qrImageUrl =
+        data.qrImageUrl ||
+        data.qr_image_url ||
+        (payUrl
+          ? `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(payUrl)}`
+          : `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(upiIntent)}`);
 
       this.logger.log(
-        `Created Muzobox chart-alert payment ref=${record.id} muzoboxId=${muzoboxId} payUrl=${payUrl}`,
+        `Created Muzobox chart-alert payment ref=${record.id} muzoboxId=${muzoboxId} payUrl=${payUrl} qrImageUrl=${qrImageUrl ? 'present' : 'none'}`,
       );
 
       return {
@@ -424,7 +434,11 @@ export class ChartAlertPaymentsService {
   private static normalizeRemoteStatus(
     status: unknown,
   ): 'paid' | 'failed' | 'pending' {
-    const s = String(status ?? '')
+    const s = (
+      typeof status === 'string' || typeof status === 'number'
+        ? String(status)
+        : ''
+    )
       .trim()
       .toLowerCase();
     if (

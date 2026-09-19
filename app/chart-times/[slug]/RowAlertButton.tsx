@@ -9,7 +9,7 @@ import {
 } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
-import { isAdminUser } from "@/lib/admin";
+import { useChartAlertPayments } from "@/lib/hooks/useChartAlertPayments";
 import { addYmdDays, boardingYmdForStation } from "@/lib/chartTimeDisplay";
 import {
   chartAlertPriceForClass,
@@ -184,10 +184,7 @@ export default function RowAlertButton({
   const [error, setError] = useState<string | null>(null);
   const [subscribedJourney, setSubscribedJourney] =
     useState<ChartAlertPaymentModalJourney | null>(null);
-  const [adminFree, setAdminFree] = useState(false);
-  useEffect(() => {
-    setAdminFree(isAdminUser());
-  }, []);
+  const { isFreeAlerts, isAdmin, getButtonLabel } = useChartAlertPayments();
   const [payment, setPayment] = useState<{
     link: ChartAlertPaymentLink;
     ref: string;
@@ -256,7 +253,7 @@ export default function RowAlertButton({
         journeyDate: boardingYmd,
         classCode: classCode.trim().toUpperCase(),
       };
-      if (adminFree) {
+      if (isFreeAlerts) {
         await createFreeChartAlert({
           ...journey,
           trainStartDate: resolvedTrainStart,
@@ -515,15 +512,13 @@ export default function RowAlertButton({
                 disabled={loading}
                 className="mt-1 inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {loading
-                  ? adminFree
-                    ? "Setting up…"
-                    : "Opening payment…"
-                  : adminFree
-                    ? "Set alert free (admin)"
-                    : `Pay ₹${alertPrice} & set alert`}
+                {getButtonLabel({
+                  loading,
+                  price: alertPrice,
+                  verb: "set",
+                })}
               </button>
-              {adminFree && (
+              {isAdmin && (
                 <p className="text-[11px] leading-relaxed text-slate-500">
                   Admin mode — no charge, the alert is created directly.
                 </p>

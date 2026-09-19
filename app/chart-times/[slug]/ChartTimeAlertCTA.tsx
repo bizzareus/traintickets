@@ -9,7 +9,7 @@ import {
 } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
-import { isAdminUser } from "@/lib/admin";
+import { useChartAlertPayments } from "@/lib/hooks/useChartAlertPayments";
 import { addYmdDays, boardingYmdForStation } from "@/lib/chartTimeDisplay";
 import {
   chartAlertPriceForClass,
@@ -235,10 +235,7 @@ export default function ChartTimeAlertCTA({
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [adminFree, setAdminFree] = useState(false);
-  useEffect(() => {
-    setAdminFree(isAdminUser());
-  }, []);
+  const { isFreeAlerts, getButtonLabel } = useChartAlertPayments();
   const [subscribedJourney, setSubscribedJourney] =
     useState<ChartAlertPaymentModalJourney | null>(null);
   const [payment, setPayment] = useState<{
@@ -325,7 +322,7 @@ export default function ChartTimeAlertCTA({
         journeyDate: boardingYmd,
         classCode: classCode.trim().toUpperCase(),
       };
-      if (adminFree) {
+      if (isFreeAlerts) {
         await createFreeChartAlert({
           ...journey,
           trainStartDate: resolvedTrainStart,
@@ -562,13 +559,11 @@ export default function ChartTimeAlertCTA({
             onClick={subscribe}
             className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-5 py-2.5 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {loading
-              ? adminFree
-                ? "Setting up…"
-                : "Opening payment…"
-              : adminFree
-                ? "Set alert free (admin)"
-                : `Pay ₹${alertPrice} & set alert`}
+            {getButtonLabel({
+              loading,
+              price: alertPrice,
+              verb: "set",
+            })}
           </button>
           <button
             type="button"

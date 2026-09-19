@@ -115,6 +115,20 @@ export function ChartAlertPaymentModal({
 
   useEffect(() => {
     if (!open) return;
+    const onMessage = (event: MessageEvent) => {
+      if (
+        event.data?.type === "payment_complete" &&
+        event.data?.status === "paid"
+      ) {
+        void check();
+      }
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [open, check]);
+
+  useEffect(() => {
+    if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
@@ -216,6 +230,15 @@ export function ChartAlertPaymentModal({
             >
               Close
             </button>
+          </div>
+        ) : payment.payUrl ? (
+          <div className="w-full">
+            <iframe
+              src={`${payment.payUrl}${payment.payUrl.includes("?") ? "&" : "?"}iframe=1`}
+              title="Complete payment via Muzobox"
+              className="h-[520px] w-full border-0 sm:h-[540px]"
+              allow="payment"
+            />
           </div>
         ) : (
           <>

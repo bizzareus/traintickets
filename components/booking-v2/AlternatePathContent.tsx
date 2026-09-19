@@ -12,7 +12,7 @@ import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 import { EntireJourneyAlertCTA } from "@/components/booking-v2/EntireJourneyAlertCTA";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
-import { isAdminUser as checkIsAdminUser } from "@/lib/admin";
+import { useChartAlertPayments } from "@/lib/hooks/useChartAlertPayments";
 import {
   chartAlertPriceForClass,
   createFreeChartAlert,
@@ -249,7 +249,7 @@ function CompactLegChartCta({
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
   const [alreadySet, setAlreadySet] = useState(false);
-  const [adminFree, setAdminFree] = useState(false);
+  const { isFreeAlerts, getButtonLabel } = useChartAlertPayments();
   const [payment, setPayment] = useState<{
     link: ChartAlertPaymentLink;
     ref: string;
@@ -271,10 +271,6 @@ function CompactLegChartCta({
       setDone(true);
     }
   }, [trainNumber, legFrom, legTo, journeyDate]);
-
-  useEffect(() => {
-    setAdminFree(checkIsAdminUser());
-  }, []);
 
   // Fetch chart preparation time
   useEffect(() => {
@@ -424,7 +420,7 @@ function CompactLegChartCta({
               : {}),
           }
         : {};
-      if (adminFree) {
+      if (isFreeAlerts) {
         await createFreeChartAlert({
           ...journey,
           trainStartDate: trainStartDate ?? undefined,
@@ -490,7 +486,7 @@ function CompactLegChartCta({
     classCode,
     trainStartDate,
     meta,
-    adminFree,
+    isFreeAlerts,
     persistContact,
     handlePaid,
   ]);
@@ -618,13 +614,11 @@ function CompactLegChartCta({
             onClick={() => void subscribe()}
             className="w-full sm:w-auto rounded-lg bg-blue-600 px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 active:scale-[0.99] disabled:opacity-60 transition-all text-center flex items-center justify-center"
           >
-            {submitting
-              ? adminFree
-                ? "Setting up…"
-                : "Opening payment…"
-              : adminFree
-                ? "Set alert free (admin)"
-                : `Pay ₹${alertPrice} & set alert`}
+            {getButtonLabel({
+              loading: submitting,
+              price: alertPrice,
+              verb: "set",
+            })}
           </button>
         </div>
         {error && (

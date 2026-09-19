@@ -8,7 +8,7 @@ import {
 } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
-import { isAdminUser } from "@/lib/admin";
+import { useChartAlertPayments } from "@/lib/hooks/useChartAlertPayments";
 import {
   chartAlertPriceForClass,
   createFreeChartAlert,
@@ -46,14 +46,11 @@ export function TrainChartAlertSection({
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedClass, setSelectedClass] = useState<string>("3A");
   const alertPrice = chartAlertPriceForClass(selectedClass);
-  const { email, setEmail, mobile, setMobile, persistContact } =
+  const { email, setEmail, mobile, persistContact } =
     useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [adminFree, setAdminFree] = useState(false);
-  useEffect(() => {
-    setAdminFree(isAdminUser());
-  }, []);
+  const { isFreeAlerts, isAdmin, getButtonLabel } = useChartAlertPayments();
   const [subscribedJourney, setSubscribedJourney] =
     useState<ChartAlertPaymentModalJourney | null>(null);
   const [payment, setPayment] = useState<{
@@ -111,9 +108,9 @@ export function TrainChartAlertSection({
         journeyDate: journeyDate?.trim().slice(0, 10) || "",
         classCode: selectedClass.trim().toUpperCase(),
       };
-      // Admins (localStorage admin flag) skip the payment popup and create
-      // the alert directly; everyone else pays via the in-page iframe modal.
-      if (adminFree) {
+      // Admins or users when payment kill switch is active skip payment and create
+      // the alert directly; otherwise pays via the in-page iframe modal.
+      if (isFreeAlerts) {
         await createFreeChartAlert({
           ...journey,
           stationCodesToMonitor: [fromCode.trim().toUpperCase()],
@@ -379,18 +376,20 @@ export function TrainChartAlertSection({
                     {loading ? (
                       <>
                         <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                        {adminFree ? "Setting up…" : "Opening payment…"}
+                        {isFreeAlerts ? "Setting up…" : "Opening payment…"}
                       </>
                     ) : (
                       <>
                         <BellRing className="h-4 w-4" />
-                        {adminFree
-                          ? "Set alert free (admin)"
-                          : `Pay ₹${alertPrice} & subscribe`}
+                        {getButtonLabel({
+                          loading: false,
+                          price: alertPrice,
+                          verb: "subscribe",
+                        })}
                       </>
                     )}
                   </button>
-                  {adminFree && (
+                  {isAdmin && (
                     <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
                       Admin mode — no charge, the alert is created directly.
                     </p>
