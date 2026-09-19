@@ -61,7 +61,8 @@ Your daily output is **not random**. It is driven by real search demand. Writing
 post well is still a wasted day.
 
 ## 3. Inputs you triage every run
-- **Google Search Console (GSC) Performance Export** — the primary signal. Use `/browser` to navigate to Google Search Console (`https://search.google.com/search-console`), open the Performance report for `lastberth.com`, and export the performance dataset (Queries and Pages with metrics: clicks, impressions, CTR, average position). Review exported queries and pages to evaluate impression volume, spot low-CTR bottlenecks, and calculate Headroom Opportunity Scores across positions 1–20.
+- **Google Search Console (GSC) Performance Export** — the primary SEO signal. Use `/browser` to navigate to Google Search Console (`https://search.google.com/search-console`), open the Performance report for `lastberth.com`, and export the performance dataset (Queries and Pages with metrics: clicks, impressions, CTR, average position). Review exported queries and pages to evaluate impression volume, spot low-CTR bottlenecks, and calculate Headroom Opportunity Scores across positions 1–20.
+- **PostHog Product Analytics & Funnel Performance (via `posthog-cli api`)** — the primary behavioral conversion signal. Run `posthog-cli api --agent-help` and use `posthog-cli api call execute-sql` / HogQL queries on `$pageview` and `blog_route_cta_clicked` events to monitor the 30-day blog-to-search funnel. Track post-by-post performance: visitors, conversion to search route page (`/` with pre-filled params or `/routes/*`), and bounce rates. Identify high-traffic articles suffering from severe conversion drop-off (e.g. 1,000+ visitors with <0.5% conversion) to trigger targeted conversion optimization.
 - **GSC report summaries** (Antigravity brain artifacts, when provided):
   - `gsc_report_summary.md` (keyword instructions / canonical phrasings)
   - the second `gsc_report_summary.md` (query learnings)
@@ -71,19 +72,22 @@ post well is still a wasted day.
 - **Existing inventory** on disk (`content/blog/*.md`) + `memory/blog-topics-written.md`.
 
 ## 4. The Triage Decision Tree & Opportunity Scoring Engine
-For each query cluster, classify the action using **Headroom Opportunity Scoring** (inspired by the *blogEO* engine). Rather than guessing or relying on post age, calculate the headroom across three 28-day rolling levers:
+For each query cluster, classify the action using **Headroom Opportunity Scoring** (inspired by the *blogEO* engine). Rather than guessing or relying on post age, calculate the headroom across four rolling levers:
 
 1. **`recover` (Traffic Regression):** Clicks lost vs previous 28-day period $\rightarrow$ **REFRESH** (factual update, fee verification, rule check).
 2. **`ctr` (Page-1 CTR Bleeder):** Posts ranking on Page 1 (positions 1–10) where actual CTR is below the organic CTR benchmark curve $\rightarrow$ **CTR REWRITE** (title & meta description overhaul + top-of-page CTA hook).
    - *Expected CTR Benchmarks:* Pos 1 = 28%, Pos 2 = 15%, Pos 3 = 10%, Pos 4–5 = 6%, Pos 6–7 = 4%, Pos 8–10 = 2.5%, Page 2 = 1.0%.
    - $\text{Opportunity Headroom} = \text{Impressions} \times (\text{Expected CTR} - \text{Actual CTR})$.
 3. **`rank` (Page-2 Near-Miss Push):** High-impression queries ranking on Page 2 (positions 11–20) that would capture substantial traffic if pushed to Page 1 $\rightarrow$ **EXPAND** (H2 query fan-out, comparison tables, FAQ expansion).
+4. **`cvr` (Conversion Rate Bleeder):** Posts attracting substantial real readership in PostHog (e.g. 500+ to 3,000+ visitors over 30 days) where conversion into search route navigation or CTA clicks is below the 2.0% baseline (or near 0%) $\rightarrow$ **CONVERT / CTA OVERHAUL** (inject pre-filled route search links `/?from=...&to=...`, add 1-click corridor chips, auto-link route phrases to `/routes/[slug]`, and calibrate localized Hindi/regional CTA cards).
+   - $\text{Conversion Headroom} = \text{Visitors} \times (\text{Target CVR (2.0\%–5.0\%)} - \text{Actual CVR})$.
 
-*The largest of these three headroom estimates wins and determines the exact playbook action.*
+*The largest of these headroom estimates wins and determines the exact playbook action.*
 
 ### Guardrails for Triage:
 - **Low Impression Filter:** If impressions are low (<150), a low CTR is dropped from high opportunity ("nobody is searching for this; no edit will fix zero demand").
 - **Real Click Drop Priority:** Real absolute and proportional click drops take emergency priority over theoretical estimates.
+- **Conversion Bleeder Priority:** A post with 1,000+ monthly visitors converting at <0.5% (like Chhath or Vande Bharat food) is an active leak of existing high-intent users; adding route CTAs takes immediate priority over writing speculative low-traffic posts.
 - **Cannibalization Guard:** Never create a 2nd post for an already-ranked query. If a query is owned by an existing post, route it to **EXPAND / REFRESH** on the canonical slug.
 
 | Signal | Action | What you do |
@@ -91,6 +95,7 @@ For each query cluster, classify the action using **Headroom Opportunity Scoring
 | We rank **pos 5–20** for a query (high `rank` headroom) but page is thin | **EXPAND** | Add question-based H2 section(s) + comparison tables + FAQ entries to the *existing* page. Bump `updated`. |
 | We rank **pos 1–10** with below-benchmark CTR (high `ctr` headroom) | **CTR REWRITE** | Retitle frontmatter to lead with exact search query, rewrite meta description (≤160ch), add top CTA blockquote. Bump `updated`. |
 | We ranked well, position is **slipping** / clicks lost (high `recover` headroom) | **REFRESH** | Verify timings/fees/rules, tighten 40–60 word direct answers, add fresh sub-questions. Bump `updated`. |
+| Post has **high visitors (500+) but poor CVR (<1.0%)** in PostHog | **CONVERT / CTA OVERHAUL** | Inject pre-filled route search links (`/?from=...&to=...`), 1-click corridor chips, and internal `/routes/*` links into the article. Bump `updated`. |
 | High-intent query, **decent impressions (150+)**, **zero coverage** in inventory | **WRITE NEW** | Create a new post (+ 6 translations) after passing the 4 Automated Quality Gates. |
 | **Two of our pages** compete for the same query | **CONSOLIDATE** | Pick the canonical page, expand it, and add internal links from the weaker one (don't delete without reason). |
 
@@ -196,11 +201,17 @@ Keep abbreviations you introduce defined on first use (RAC, PNR, TTE, PQWL, RLWL
 ## 9. LastBerth features to interlink (use these EXACT routes)
 Introduce the relevant tool naturally where it solves the pain point being discussed — one or two per article, not a link dump.
 
-1. **[Finding Smart Seats](/)** — the core tool. When a direct origin→destination seat is waitlisted, it finds a **confirmed path by splitting the journey into contiguous segments** on the same train (e.g. board in coach B2 for A→B, shift to B5 for B→C). Frame it as "get a confirmed seat when the direct search says WL."
-2. **[PNR Status Search & Direct Booking](/)** — check PNR status, see **confirmation probability**, and get alternate seat/train options instantly when confirmation looks unlikely.
-3. **[Seat Status Coach Journey Lookup](/seat-status)** — shows, for a specific berth, **exactly which station-to-station stretch it is booked for**, so a passenger can spot berths that fall vacant on a running train and request them from the TTE.
+1. **[Finding Smart Seats with Route Pre-filling](/)** — the core tool. When a direct origin→destination seat is waitlisted, it finds a **confirmed path by splitting the journey into contiguous segments** on the same train (e.g. board in coach B2 for A→B, shift to B5 for B→C).
+   - **Route Pre-fill Format:** To link directly to a specific search, pre-fill origin and destination station codes so the user's search runs automatically on arrival:
+     `/?from=<ORIGIN_CODE>&to=<DEST_CODE>&fromName=<ORIGIN_NAME>&toName=<DEST_NAME>`
+     *(Example: `[Search Delhi ➔ Patna Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)`)*.
+2. **[Route Guide Pages](/routes/[origin-slug]-to-[dest-slug])** — route-level deep dives with distance, daily train frequencies, waiting list confirmation chances, and top train schedules (e.g. `[Delhi to Patna Trains](/routes/delhi-to-patna)`, `[Mumbai to Danapur Trains](/routes/mumbai-to-danapur)`).
+3. **[Chart Vacancy Map](/chart-vacancy)** — displays live physical vacant berths released after chart finalization (~4 hours before departure) with coach-by-coach layout and zero Tatkal markup.
+4. **[Chart Preparation Times & Alerts](/chart-times)** — look up exact historical chart finalization schedules for any train and set up a free preparation alert.
+5. **[Seat Status Coach Journey Lookup](/seat-status)** — shows, for a specific berth, **exactly which station-to-station stretch it is booked for**, so a passenger can spot berths that fall vacant on a running train and request them from the TTE.
+6. **[PNR Status Search & Waitlist Probability](/)** — check PNR status, see **confirmation probability**, and get alternate seat/train options instantly when confirmation looks unlikely.
 
-> Only `/seat-status` is a distinct route; the first two currently point to `/` (home). Do not invent routes. If unsure, link to `/`.
+> Do not invent fake routes or non-existent URLs. Ensure all route parameters and station codes follow canonical IRCTC standards (e.g. `NDLS`, `MMCT`, `PNBE`, `DNR`, `SBC`, `MAS`, `HWH`).
 
 ---
 
