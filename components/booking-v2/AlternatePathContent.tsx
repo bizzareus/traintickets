@@ -580,8 +580,8 @@ function CompactLegChartCta({
 
   return (
     <>
-      <div className="mt-2 w-full rounded-md border border-blue-200 bg-blue-50 p-2.5">
-        <p className="mb-1.5 text-xs font-semibold text-blue-900">
+      <div className="mt-2 w-full rounded-lg border border-blue-200 bg-blue-50/70 p-2.5 sm:p-3">
+        <p className="mb-2 text-xs font-semibold text-blue-950 leading-snug">
           {chartTimeLoading ? (
             <span className="inline-flex items-center gap-1.5 italic text-blue-600/80">
               <span className="h-2 w-2 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
@@ -593,10 +593,10 @@ function CompactLegChartCta({
             `Get notified when new seats open on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
           )}
         </p>
-        <div className="flex flex-col gap-1.5 sm:flex-row">
+        <div className="flex flex-col gap-2 sm:flex-row sm:gap-1.5">
           <input
             type="email"
-            className="w-full rounded border border-blue-200 bg-emerald-50 px-2 py-1 text-xs placeholder:text-gray-400"
+            className="w-full rounded-lg border border-blue-200 bg-white px-2.5 py-2 text-xs placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -604,19 +604,19 @@ function CompactLegChartCta({
           />
           <input
             type="tel"
-            className="w-full rounded border border-blue-200 bg-emerald-50 px-2 py-1 text-xs placeholder:text-gray-400"
+            className="w-full rounded-lg border border-blue-200 bg-white px-2.5 py-2 text-xs placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
             placeholder="Mobile (optional)"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
             autoComplete="tel"
           />
         </div>
-        <div className="mt-2 flex items-center">
+        <div className="mt-2.5 flex items-center">
           <button
             type="button"
             disabled={submitting}
             onClick={() => void subscribe()}
-            className="rounded bg-blue-600 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 disabled:opacity-60"
+            className="w-full sm:w-auto rounded-lg bg-blue-600 px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 active:scale-[0.99] disabled:opacity-60 transition-all text-center flex items-center justify-center"
           >
             {submitting
               ? adminFree
@@ -630,7 +630,7 @@ function CompactLegChartCta({
         {error && (
           <p className="mt-2 text-xs font-medium text-red-700">{error}</p>
         )}
-        <div className="mt-2">
+        <div className="mt-2.5">
           <ChartAlertTrustFooter />
         </div>
       </div>
@@ -766,9 +766,9 @@ export function AlternatePathContent({
     (Boolean(altError) || (Boolean(altResult) && !altResult?.isComplete));
 
   return (
-    <div ref={captureRef} className="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6">
+    <div ref={captureRef} className="min-h-0 flex-1 overflow-y-auto p-3.5 sm:p-6">
       <div className="mb-3 flex items-start justify-between gap-2">
-        <h3 className="text-lg font-bold leading-snug text-gray-900">
+        <h3 className="text-base sm:text-lg font-bold leading-snug text-gray-900">
           {altLoading
             ? `Finding best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`
             : `Best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`}
@@ -1028,8 +1028,8 @@ export function AlternatePathContent({
 
                 return (
                   <li key={i} className="relative flex gap-0">
-                    {/* Timeline connector */}
-                    <div className="flex w-8 shrink-0 flex-col items-center sm:w-10">
+                    {/* Timeline connector (desktop only, hidden on mobile to maximize card width) */}
+                    <div className="hidden sm:flex w-8 shrink-0 flex-col items-center sm:w-10">
                       <span
                         className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold tabular-nums sm:h-8 sm:w-8 sm:text-xs ${
                           isConfirmed
@@ -1051,14 +1051,14 @@ export function AlternatePathContent({
                     >
                       {/* Leg header */}
                       <div
-                        className={`flex flex-wrap items-center gap-x-2 gap-y-1 px-3 py-2 sm:px-4 ${
+                        className={`flex flex-wrap items-center gap-x-2 gap-y-1.5 px-3 py-2 sm:px-4 ${
                           isConfirmed
                             ? "border-b border-emerald-100 bg-emerald-50/80"
                             : "border-b border-slate-200 bg-slate-100/50"
                         }`}
                       >
                         <span
-                          className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide ${
+                          className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wide ${
                             isConfirmed
                               ? "bg-emerald-600 text-white"
                               : "bg-slate-500 text-white"
@@ -1081,7 +1081,7 @@ export function AlternatePathContent({
                             {stationsBetween === 1 ? "Station" : "Stations"}
                           </button>
                         )}
-                        <span className="font-bold text-gray-900 tabular-nums">
+                        <span className="font-bold text-gray-900 tabular-nums text-xs sm:text-sm">
                           {getStationDisplayName(
                             leg.from,
                             altResult.stationNameMap,
@@ -1095,19 +1095,19 @@ export function AlternatePathContent({
                         {stepIndex === 1 &&
                           fromCode &&
                           leg.from.toUpperCase() !== fromCode.toUpperCase() && (
-                            <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-2 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm animate-pulse">
+                            <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm">
                               💡 Book from earlier station: {leg.from}
                             </span>
                           )}
                         {isLast &&
                           toCode &&
                           leg.to.toUpperCase() !== toCode.toUpperCase() && (
-                            <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-2 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm animate-pulse">
+                            <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm">
                               💡 Book to further station: {leg.to}
                             </span>
                           )}
                         {timeLine && (
-                          <span className="text-xs tabular-nums text-gray-500">
+                          <span className="text-[11px] sm:text-xs tabular-nums text-gray-500">
                             {timeLine}
                             {leg.durationMinutes != null && (
                               <span className="text-gray-400">
@@ -1131,19 +1131,19 @@ export function AlternatePathContent({
                             return (
                               <div
                                 key={opt.travelClass}
-                                className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4"
+                                className="flex items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4"
                               >
-                                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 min-w-0">
+                                <div className="flex items-center gap-x-2.5 gap-y-0.5 min-w-0">
                                   <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-bold text-gray-700">
                                     {opt.travelClass}
                                   </span>
-                                  <span className="text-sm font-semibold text-emerald-800">
+                                  <span className="text-xs sm:text-sm font-semibold text-emerald-800">
                                     {opt.availabilityDisplayName ??
                                       opt.railDataStatus ??
                                       "Available"}
                                   </span>
                                   {opt.fare != null && (
-                                    <span className="text-sm font-bold text-gray-900 tabular-nums">
+                                    <span className="text-xs sm:text-sm font-bold text-gray-900 tabular-nums">
                                       ₹{opt.fare.toFixed(0)}
                                     </span>
                                   )}
@@ -1171,7 +1171,7 @@ export function AlternatePathContent({
                                         },
                                       })
                                     }
-                                    className="shrink-0 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
+                                    className="shrink-0 rounded-lg bg-blue-600 px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-700 active:scale-[0.98] transition-all"
                                   >
                                     Book Now
                                   </a>
@@ -1183,8 +1183,8 @@ export function AlternatePathContent({
                       )}
                       {/* No tickets row */}
                       {!isConfirmed && (
-                        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4">
-                          <span className="text-sm font-semibold text-slate-700">
+                        <div className="flex flex-col gap-1.5 px-3 py-2.5 sm:px-4">
+                          <span className="text-xs sm:text-sm font-semibold text-slate-700">
                             Not Available - Buy Ticket from TTE in Train
                           </span>
 
@@ -1214,8 +1214,8 @@ export function AlternatePathContent({
               const stationsBetween = countStationsBetween(item.from, item.to);
               return (
                 <li key={i} className="relative flex gap-0">
-                  {/* Timeline connector */}
-                  <div className="flex w-8 shrink-0 flex-col items-center sm:w-10">
+                  {/* Timeline connector (desktop only) */}
+                  <div className="hidden sm:flex w-8 shrink-0 flex-col items-center sm:w-10">
                     <span className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-slate-500 text-[11px] font-bold tabular-nums text-white ring-2 ring-slate-200 sm:h-8 sm:w-8 sm:text-xs">
                       {stepIndex}
                     </span>
@@ -1223,8 +1223,8 @@ export function AlternatePathContent({
                   </div>
                   {/* Card */}
                   <div className="mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border border-slate-300 bg-white shadow-sm">
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-slate-200 bg-slate-50/60 px-3 py-2 sm:px-4">
-                      <span className="shrink-0 rounded-full bg-slate-500 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 border-b border-slate-200 bg-slate-50/60 px-3 py-2 sm:px-4">
+                      <span className="shrink-0 rounded-full bg-slate-500 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wide text-white">
                         Leg {stepIndex} of {stepTotal}
                       </span>
                       {stationsBetween != null && (
@@ -1242,7 +1242,7 @@ export function AlternatePathContent({
                           {stationsBetween === 1 ? "Station" : "Stations"}
                         </button>
                       )}
-                      <span className="font-bold text-gray-900 tabular-nums">
+                      <span className="font-bold text-gray-900 tabular-nums text-xs sm:text-sm">
                         {getStationDisplayName(
                           item.from,
                           altResult.stationNameMap,
@@ -1254,7 +1254,7 @@ export function AlternatePathContent({
                         )}
                       </span>
                       {timingSummary && (
-                        <span className="text-xs tabular-nums text-gray-500">
+                        <span className="text-[11px] sm:text-xs tabular-nums text-gray-500">
                           {timingSummary.timePart}
                           {timingSummary.durationLabel && (
                             <span className="text-gray-400">
@@ -1265,8 +1265,8 @@ export function AlternatePathContent({
                         </span>
                       )}
                     </div>
-                    <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4">
-                      <span className="text-sm font-semibold text-amber-800">
+                    <div className="flex flex-col gap-1.5 px-3 py-2.5 sm:px-4">
+                      <span className="text-xs sm:text-sm font-semibold text-amber-800">
                         Not Available - Buy Ticket from TTE in Train
                       </span>
 
