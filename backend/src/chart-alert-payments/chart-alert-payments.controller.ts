@@ -19,12 +19,11 @@ import type { ChartAlertJourneyInput } from './chart-alert-payments.service';
 export class ChartAlertPaymentsController {
   constructor(private readonly payments: ChartAlertPaymentsService) {}
 
-  /**
-   * Create a Razorpay order + single-use UPI QR for a chart-alert
-   * subscription. Returns `{ ref, amount, orderId, qrImageUrl, upiIntent,
-   * gpayIntent, phonepeIntent }` — the frontend renders its own checkout.
-   * Throws 400 for invalid input, 503 when Razorpay is unavailable.
-   */
+   /**
+    * Create a Razorpay order for Checkout.js.
+    * Returns `{ ref, amount, orderId, keyId, qrImageUrl }`.
+    * Throws 400 for invalid input, 503 when Razorpay is unavailable.
+    */
   @Post('create')
   async create(@Body() body: ChartAlertJourneyInput) {
     if (!body?.trainNumber?.trim() || !body?.fromStationCode?.trim()) {
@@ -98,9 +97,22 @@ export class ChartAlertPaymentsController {
       .handleCallback(
         req.rawBody ?? Buffer.alloc(0),
         signature,
-        req.body as Record<string, unknown>,
       )
       .catch(() => undefined);
     return { received: true };
+  }
+
+  /**
+   * Browser-side Razorpay Checkout.js payment callback. The server verifies
+   * the HMAC signature over `order_id|payment_id` and fulfils the alert only
+   * after Razorpay confirms the payment was captured.
+   */
+  @Post('verify-browser-callback')
+  async verifyBrowserCallback(@Body() body: {
+    orderId?: string;
+    paymentId?: string;
+    signature?: string;
+  }) {
+    return this.payments.verifyBrowserPaymentCallback(body);
   }
 }

@@ -134,16 +134,6 @@ export class SplitBookingService {
         });
 
         qrImageUrl = qr.imageUrl;
-        const resolved = await this.razorpay.resolveQrIntents(qr.imageUrl);
-        if (resolved.intent) {
-          upiIntent = resolved.intent;
-        }
-        if (resolved.apps?.gpayIntent) {
-          gpayIntent = resolved.apps.gpayIntent;
-        }
-        if (resolved.apps?.phonepeIntent) {
-          phonepeIntent = resolved.apps.phonepeIntent;
-        }
 
         await this.prisma.splitTicketBooking.update({
           where: { id: booking.id },

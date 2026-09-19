@@ -1,6 +1,6 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { createHmac } from 'node:crypto';
-import { ServiceUnavailableException } from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
+import { NotFoundException, ServiceUnavailableException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   ChartAlertPaymentsService,
@@ -25,12 +25,6 @@ describe('ChartAlertPaymentsService', () => {
     email: 'a@example.com',
   };
 
-  const appsFor = (ref: string) => ({
-    upiIntent: `upi://pay?pa=merchant@upi&am=25&cu=INR&tn=${ref}&tr=${ref}`,
-    gpayIntent: `tez://upi/pay?pa=merchant@upi&am=25&cu=INR&tn=${ref}&tr=${ref}`,
-    phonepeIntent: `phonepe://pay?pa=merchant@upi&am=25&cu=INR&tn=${ref}&tr=${ref}`,
-  });
-
   beforeEach(async () => {
     prisma = {
       chartAlertPayment: {
@@ -47,12 +41,14 @@ describe('ChartAlertPaymentsService', () => {
     razorpay = {
       isConfigured: true,
       webhookSecret: 'whsec-test',
+      keyId: 'rzp_test_key',
+      keySecret: 'rzp_test_secret',
       createOrder: jest.fn(),
       createUpiQr: jest.fn(),
-      resolveQrIntents: jest.fn(),
       orderPayments: jest.fn(),
       fetchPayment: jest.fn(),
       createRefund: jest.fn(),
+      verifyBrowserPaymentSignature: jest.fn().mockReturnValue(true),
     };
 
     const module: TestingModule = await Test.createTestingModule({
@@ -61,11 +57,7 @@ describe('ChartAlertPaymentsService', () => {
         {
           provide: ConfigService,
           useValue: {
-            get: jest.fn((k: string) => {
-              if (k === 'MUZOBOX_API_URL')
-                return 'https://ai-jukebox-backend-production.up.railway.app/api';
-              return null;
-            }),
+            get: jest.fn(() => null),
           },
         },
         { provide: PrismaService, useValue: prisma },
@@ -78,16 +70,12 @@ describe('ChartAlertPaymentsService', () => {
   });
 
   describe('createPaymentLink', () => {
-    it('creates a Razorpay order + QR and returns own-checkout data', async () => {
+    it('creates a Razorpay order + QR and returns Checkout.js data', async () => {
       prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-1' });
       razorpay.createOrder.mockResolvedValue({ id: 'order-1', amount: 2500 });
       razorpay.createUpiQr.mockResolvedValue({
         id: 'qr-1',
         imageUrl: 'https://rzp.test/qr-1.png',
-      });
-      razorpay.resolveQrIntents.mockResolvedValue({
-        intent: appsFor('ref-1').upiIntent,
-        apps: appsFor('ref-1'),
       });
       prisma.chartAlertPayment.update.mockResolvedValue({});
 
@@ -108,8 +96,8 @@ describe('ChartAlertPaymentsService', () => {
         ref: 'ref-1',
         amount: 25,
         orderId: 'order-1',
+        keyId: 'rzp_test_key',
         qrImageUrl: 'https://rzp.test/qr-1.png',
-        ...appsFor('ref-1'),
       });
       expect(prisma.chartAlertPayment.update).toHaveBeenCalledWith({
         where: { id: 'ref-1' },
@@ -117,67 +105,26 @@ describe('ChartAlertPaymentsService', () => {
       });
     });
 
-    it('degrades to QR-image-only when intent decode fails', async () => {
+    it('throws ServiceUnavailableException when Razorpay is not configured', async () => {
+      razorpay.isConfigured = false;
       prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-2' });
-      razorpay.createOrder.mockResolvedValue({ id: 'order-2', amount: 2500 });
-      razorpay.createUpiQr.mockResolvedValue({
-        id: 'qr-2',
-        imageUrl: 'https://rzp.test/qr-2.png',
-      });
-      razorpay.resolveQrIntents.mockResolvedValue({
-        intent: null,
-        apps: null,
-      });
-      prisma.chartAlertPayment.update.mockResolvedValue({});
-
-      const out = await service.createPaymentLink({ ...baseInput });
-
-      expect(out.qrImageUrl).toBe('https://rzp.test/qr-2.png');
-      expect(out.upiIntent).toBeUndefined();
-    });
-
-    it('throws 503 without leaving a usable link when payment systems fail', async () => {
-      prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-3' });
-      razorpay.createOrder.mockRejectedValue(new Error('razorpay down'));
-      (service as any).muzoboxClient.post = jest
-        .fn()
-        .mockRejectedValue(new Error('muzobox down'));
 
       await expect(service.createPaymentLink({ ...baseInput })).rejects.toThrow(
         ServiceUnavailableException,
       );
-      expect(prisma.chartAlertPayment.update).toHaveBeenCalledWith({
+    });
+
+    it('throws when payment creation fails', async () => {
+      prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-3' });
+      razorpay.createOrder.mockRejectedValue(new Error('razorpay down'));
+
+      await expect(service.createPaymentLink({ ...baseInput })).rejects.toThrow(
+        ServiceUnavailableException,
+      );
+      expect(prisma.chartAlertPayment.update).not.toHaveBeenCalledWith({
         where: { id: 'ref-3' },
         data: { status: 'FAILED' },
       });
-    });
-
-    it('uses Muzobox proxy when direct Razorpay is not configured', async () => {
-      razorpay.isConfigured = false;
-      prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-mb-1' });
-      prisma.chartAlertPayment.update.mockResolvedValue({});
-      (service as any).muzoboxClient.post = jest.fn().mockResolvedValue({
-        data: {
-          id: 'mb_123',
-          amount: 25,
-          payUrl: 'https://muzobox.com/pay/mb_123',
-          razorpayOrderId: 'order_mb_123',
-        },
-      });
-
-      const out = await service.createPaymentLink({ ...baseInput });
-
-      expect((service as any).muzoboxClient.post).toHaveBeenCalledWith(
-        'proxy-payments/create-link',
-        expect.objectContaining({
-          amount: 25,
-          referenceId: 'ref-mb-1',
-        }),
-        expect.any(Object),
-      );
-      expect(out.ref).toBe('ref-mb-1');
-      expect(out.payUrl).toBe('https://muzobox.com/pay/mb_123');
-      expect(out.qrImageUrl).toContain('https://api.qrserver.com');
     });
   });
 
@@ -191,6 +138,12 @@ describe('ChartAlertPaymentsService', () => {
       journeyRequestId: null,
       journeyPayload: { ...baseInput },
       paidAt: null,
+      refundStatus: 'NONE',
+      refundAmount: null,
+      razorpayRefundId: null,
+      refundInitiatedAt: null,
+      refundedAt: null,
+      refundError: null,
       ...overrides,
     });
 
@@ -307,6 +260,12 @@ describe('ChartAlertPaymentsService', () => {
         journeyRequestId: null,
         journeyPayload: { ...baseInput },
         paidAt: null,
+        refundStatus: 'NONE',
+        refundAmount: null,
+        razorpayRefundId: null,
+        refundInitiatedAt: null,
+        refundedAt: null,
+        refundError: null,
       });
       razorpay.orderPayments.mockResolvedValue([
         { id: 'pay-1', status: 'captured', amount: 2500 },
@@ -341,6 +300,104 @@ describe('ChartAlertPaymentsService', () => {
     });
   });
 
+  describe('verifyBrowserPaymentCallback', () => {
+    const record = {
+      id: 'ref-1',
+      status: 'PENDING',
+      amount: 25,
+      razorpayOrderId: 'order_1',
+      razorpayPaymentId: null,
+      journeyRequestId: null,
+      journeyPayload: { ...baseInput },
+      paidAt: null,
+      refundStatus: 'NONE',
+      refundAmount: null,
+      razorpayRefundId: null,
+      refundInitiatedAt: null,
+      refundedAt: null,
+      refundError: null,
+    };
+
+    it('returns paid result when signature and payment are valid', async () => {
+      prisma.chartAlertPayment.findUnique.mockResolvedValue(record);
+      razorpay.fetchPayment.mockResolvedValue({
+        id: 'pay_1',
+        order_id: 'order_1',
+        status: 'captured',
+        amount: 2500,
+      });
+      prisma.chartAlertPayment.update.mockResolvedValue({});
+      journeyTask.queueJourneyMonitoring.mockResolvedValue(true);
+
+      const out = await service.verifyBrowserPaymentCallback({
+        orderId: 'order_1',
+        paymentId: 'pay_1',
+        signature: 'valid-sig',
+      });
+
+      expect(out.status).toBe('paid');
+      expect(out.journeyCreated).toBe(true);
+      expect(journeyTask.queueJourneyMonitoring).toHaveBeenCalledTimes(1);
+    });
+
+    it('rejects missing inputs', async () => {
+      await expect(
+        service.verifyBrowserPaymentCallback({ orderId: '', paymentId: '', signature: '' }),
+      ).rejects.toThrow(NotFoundException);
+    });
+
+    it('rejects unknown order id', async () => {
+      prisma.chartAlertPayment.findUnique.mockResolvedValue(null);
+
+      await expect(
+        service.verifyBrowserPaymentCallback({
+          orderId: 'unknown',
+          paymentId: 'pay_1',
+          signature: 'sig',
+        }),
+      ).rejects.toThrow(NotFoundException);
+    });
+
+    it('rejects payment id that does not match the order', async () => {
+      const withPayment = { ...record, razorpayPaymentId: 'pay_existing' };
+      prisma.chartAlertPayment.findUnique.mockResolvedValue(withPayment);
+
+      await expect(
+        service.verifyBrowserPaymentCallback({
+          orderId: 'order_1',
+          paymentId: 'pay_1',
+          signature: 'sig',
+        }),
+      ).rejects.toThrow(NotFoundException);
+    });
+
+    it('rejects invalid signature', async () => {
+      prisma.chartAlertPayment.findUnique.mockResolvedValue(record);
+      razorpay.verifyBrowserPaymentSignature.mockReturnValue(false);
+
+      await expect(
+        service.verifyBrowserPaymentCallback({
+          orderId: 'order_1',
+          paymentId: 'pay_1',
+          signature: 'bad-sig',
+        }),
+      ).rejects.toThrow(NotFoundException);
+    });
+
+    it('rejects when Razorpay is not configured', async () => {
+      razorpay.isConfigured = false;
+      prisma.chartAlertPayment.findUnique.mockResolvedValue(record);
+
+      await expect(
+        service.verifyBrowserPaymentCallback({
+          orderId: 'order_1',
+          paymentId: 'pay_1',
+          signature: 'sig',
+        }),
+      ).rejects.toThrow(ServiceUnavailableException);
+    });
+  });
+
   describe('chartAlertPriceForClass', () => {
     it.each(['1A', '2A', '3A', ' 3a ', '2a'])(
       'charges the premium tier (₹25) for %s',
@@ -364,10 +421,6 @@ describe('ChartAlertPaymentsService', () => {
       razorpay.createUpiQr.mockResolvedValue({
         id: 'qr-p',
         imageUrl: 'https://rzp.test/qr-p.png',
-      });
-      razorpay.resolveQrIntents.mockResolvedValue({
-        intent: null,
-        apps: null,
       });
       prisma.chartAlertPayment.update.mockResolvedValue({});
 

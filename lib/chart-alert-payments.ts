@@ -39,14 +39,10 @@ export interface ChartAlertPaymentLink {
   ref: string;
   amount: number;
   orderId: string;
+  /** Publishable key for Checkout.js custom integration. */
+  keyId: string;
   /** Razorpay-hosted QR PNG for the single-use UPI QR. */
   qrImageUrl: string;
-  /** `upi://pay?...` — works in any UPI app (mobile only). */
-  upiIntent?: string;
-  /** Google Pay deep link (`tez://`). */
-  gpayIntent?: string;
-  /** PhonePe deep link (`phonepe://`). */
-  phonepeIntent?: string;
 }
 
 export interface ChartAlertPaymentStatus {
@@ -172,4 +168,18 @@ export async function fetchChartAlertPaymentStatus(
     throw new Error("Could not check payment status. Please try again.");
   }
   return data;
+}
+
+export async function verifyChartAlertBrowserPayment(
+  payment: {
+    orderId: string;
+    paymentId: string;
+    signature: string;
+  },
+): Promise<ChartAlertPaymentStatus> {
+  const res = await apiClient.post<ChartAlertPaymentStatus>(
+    "/api/chart-alert-payments/verify-browser-callback",
+    payment,
+  );
+  return res.data;
 }

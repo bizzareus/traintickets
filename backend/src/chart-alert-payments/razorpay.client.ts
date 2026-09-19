@@ -1,9 +1,6 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { createHmac, timingSafeEqual } from 'node:crypto';
-import axios from 'axios';
-import jsQR from 'jsqr';
-import { PNG } from 'pngjs';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import type { AxiosInstance } from 'axios';
 
@@ -34,60 +31,11 @@ export type RazorpayPaymentItem = {
   notes?: Record<string, unknown>;
 };
 
-export type UpiAppIntents = {
-  /** Generic `upi://pay?...` — every UPI app handles it. */
-  upiIntent: string;
-  /** Google Pay deep link. */
-  gpayIntent: string;
-  /** PhonePe deep link. */
-  phonepeIntent: string;
-};
-
 /**
- * Derive per-app UPI intent links from a decoded `upi://pay?...` string by
- * re-scheming only — every query param (including the provider's own
- * transaction refs) is preserved byte-for-byte so attribution survives.
- * Returns null when the input is not a valid UPI intent URL.
- */
-export function buildUpiAppIntents(intentUrl: string): UpiAppIntents | null {
-  let parsed: URL;
-  try {
-    parsed = new URL(intentUrl.trim());
-  } catch {
-    return null;
-  }
-  if (parsed.protocol !== 'upi:' || !parsed.searchParams.get('pa')) {
-    return null;
-  }
-  const canonical = `upi://${parsed.host}${parsed.pathname}${parsed.search}`;
-  return {
-    upiIntent: canonical,
-    gpayIntent: canonical.replace(/^upi:/, 'tez:'),
-    phonepeIntent: canonical.replace(/^upi:\/\/pay/, 'phonepe://pay'),
-  };
-}
-
-/**
- * Decode the UPI intent string embedded in a QR PNG. Pure function over
- * bytes — unit-testable without network.
- */
-export function decodeQrIntent(pngBuffer: Buffer): string | null {
-  try {
-    const png = PNG.sync.read(pngBuffer);
-    const pixels = new Uint8ClampedArray(
-      png.data.buffer,
-      png.data.byteOffset,
-      png.data.length,
-    );
-    return jsQR(pixels, png.width, png.height)?.data ?? null;
-  } catch {
-    return null;
-  }
-}
-
-/**
- * Constant-time HMAC-SHA256 check for Razorpay webhook signatures
- * (`x-razorpay-signature` header over the raw request body).
+ * Constant-time HMAC-SHA256 check for Razorpay signatures, used for both
+ * webhooks (`x-razorpay-signature` over the raw body) and the browser
+ * `payment.success` callback (`order_id|payment_id` signed with the key
+ * secret — see the Custom Checkout guide).
  */
 export function verifyRazorpayWebhookSignature(
   rawBody: Buffer | string,
@@ -113,7 +61,6 @@ export function verifyRazorpayWebhookSignature(
  */
 @Injectable()
 export class RazorpayClient {
-  private readonly logger = new Logger(RazorpayClient.name);
   private readonly client: AxiosInstance;
 
   constructor(private readonly config: ConfigService) {
@@ -126,7 +73,8 @@ export class RazorpayClient {
     this.client.defaults.timeout = 15_000;
   }
 
-  private get keyId(): string {
+  get keyId(): string {
+    // Publishable by design — safe to hand to the browser for Checkout.js.
     return this.config.get<string>('RAZORPAY_KEY_ID')?.trim() ?? '';
   }
 
@@ -136,6 +84,30 @@ export class RazorpayClient {
 
   get webhookSecret(): string {
     return this.config.get<string>('RAZORPAY_WEBHOOK_SECRET')?.trim() ?? '';
+  }
+
+  /**
+   * Verify a browser `payment.success` callback: HMAC-SHA256 of
+   * `order_id|payment_id` with the key secret (Custom Checkout guide).
+   * The order id must come from OUR database, never the browser.
+   */
+  verifyBrowserPaymentSignature(
+    orderId: string,
+    paymentId: string,
+    signature: string | undefined,
+  ): boolean {
+    if (!orderId || !paymentId || !signature) return false;
+    const secret = this.keySecret;
+    if (!secret) return false;
+    const expected = createHmac('sha256', secret)
+      .update(`${orderId}|${paymentId}`)
+      .digest('hex');
+    if (expected.length !== signature.length) return false;
+    try {
+      return timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
+    } catch {
+      return false;
+    }
   }
 
   get isConfigured(): boolean {
@@ -251,28 +223,4 @@ export class RazorpayClient {
     return { id: res.data.id };
   }
 
-  /**
-   * Fetch QR PNG bytes and extract its UPI intent, then derive per-app
-   * links. Never throws — returns nulls on any failure so the caller can
-   * degrade to QR-image-only display.
-   */
-  async resolveQrIntents(qrImageUrl: string): Promise<{
-    intent: string | null;
-    apps: UpiAppIntents | null;
-  }> {
-    try {
-      const res = await axios.get<ArrayBuffer>(qrImageUrl, {
-        responseType: 'arraybuffer',
-        timeout: 15_000,
-      });
-      const intent = decodeQrIntent(Buffer.from(res.data));
-      if (!intent) return { intent: null, apps: null };
-      return { intent, apps: buildUpiAppIntents(intent) };
-    } catch (err) {
-      this.logger.warn(
-        `QR intent resolve failed: ${err instanceof Error ? err.message : String(err)}`,
-      );
-      return { intent: null, apps: null };
-    }
-  }
 }
