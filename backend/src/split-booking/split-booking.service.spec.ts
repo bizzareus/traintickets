@@ -18,6 +18,7 @@ describe('SplitBookingService', () => {
     isConfigured: boolean;
     createOrder: jest.Mock;
     createUpiQr: jest.Mock;
+    resolveQrIntents: jest.Mock;
   };
   let tripmgt: {
     executeBooking: jest.Mock;
@@ -36,6 +37,7 @@ describe('SplitBookingService', () => {
       isConfigured: false,
       createOrder: jest.fn(),
       createUpiQr: jest.fn(),
+      resolveQrIntents: jest.fn(),
     };
 
     tripmgt = {

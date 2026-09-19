@@ -1,9 +1,9 @@
 "use client";
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BellRing, CheckCircle2, Loader2, X, XCircle } from "lucide-react";
 import {
   fetchChartAlertPaymentStatus,
-  verifyChartAlertBrowserPayment,
   type ChartAlertPaymentLink,
 } from "@/lib/chart-alert-payments";
 import {
@@ -35,11 +35,11 @@ type ModalStatus = "paying" | "paid" | "failed";
 const POLL_INTERVAL_MS = 3000;
 
 /**
- * Checkout.js-based payment modal for chart alerts:
- * - Shows the single-use UPI QR
- * - Provides a "Pay Now" button that opens Razorpay Checkout.js overlay
- * - Verifies payment via server-side signature verification
- * - Polls backend for payment status until completion
+ * Own-checkout for chart alerts: renders the single-use UPI QR plus
+ * per-app intent CTAs (Google Pay / PhonePe / any UPI app) instead of an
+ * externally hosted payment page. While open, polls our backend status
+ * endpoint (which re-verifies server-to-server with Razorpay and queues
+ * the alert on first paid sighting).
  */
 export function ChartAlertPaymentModal({
   open,
@@ -50,108 +50,17 @@ export function ChartAlertPaymentModal({
   source,
   onPaid,
 }: ChartAlertPaymentModalProps) {
+  const [prevRef, setPrevRef] = useState(paymentRef);
   const [status, setStatus] = useState<ModalStatus>("paying");
   const trackedRef = useRef(false);
   const failedTrackedRef = useRef(false);
-  const checkoutScriptLoaded = useRef(false);
-  const razorpayInstanceRef = useRef<any>(null);
 
-  // Load Razorpay Checkout.js script once
-  useEffect(() => {
-    if (typeof window === "undefined" || checkoutScriptLoaded.current) return;
-    checkoutScriptLoaded.current = true;
-    
-    const script = document.createElement("script");
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.async = true;
-    script.onload = () => {
-      // Script loaded successfully
-    };
-    script.onerror = () => {
-      console.error("Failed to load Razorpay Checkout.js");
-      setStatus("failed");
-    };
-    document.body.appendChild(script);
-    
-    return () => {
-      document.body.removeChild(script);
-      checkoutScriptLoaded.current = false;
-    };
-  }, []);
+  if (paymentRef !== prevRef) {
+    setPrevRef(paymentRef);
+    setStatus("paying");
+  }
 
-  const startCheckout = useCallback(() => {
-    if (typeof window === "undefined" || !(window as any).Razorpay) {
-      console.error("Razorpay Checkout.js not loaded");
-      setStatus("failed");
-      return;
-    }
-
-    // Initialize Razorpay Checkout
-    const options = {
-      key: payment.keyId,
-      amount: payment.amount * 100, // amount in paise
-      currency: "INR",
-      name: "LastBerth",
-      description: `Chart alert ${journey.trainNumber}`,
-      order_id: payment.orderId,
-      handler: function (response: any) {
-        // Payment successful - verify with backend
-        verifyChartAlertBrowserPayment({
-          orderId: response.razorpay_order_id,
-          paymentId: response.razorpay_payment_id,
-          signature: response.razorpay_signature,
-        })
-          .then((result) => {
-            if (result.status === "paid") {
-              setStatus("paid");
-              if (!trackedRef.current) {
-                trackedRef.current = true;
-                onPaid?.(journey);
-                trackAlertRequested({
-                  success: true,
-                  source: "chart_alert_payment",
-                  trainNumber: journey.trainNumber,
-                  trainName: journey.trainName,
-                  fromCode: journey.fromStationCode,
-                  toCode: journey.toStationCode,
-                  journeyDate: journey.journeyDate,
-                  classCode: journey.classCode,
-                });
-                trackAnalyticsEvent({
-                  name: "chart_alert_payment_complete",
-                  properties: {},
-                });
-              }
-            } else {
-              setStatus("failed");
-            }
-          })
-          .catch((error) => {
-            console.error("Payment verification failed:", error);
-            setStatus("failed");
-          });
-      },
-      modal: {
-        ondismiss: () => {
-          // User closed the modal - keep polling for payment status
-          // (payment might still be processing)
-        },
-      },
-      prefill: {
-        name: "Passenger",
-        email: journey.trainName || undefined,
-        contact: journey.trainNumber || undefined, // This is not ideal but we don't have contact in journey
-      },
-      theme: {
-        color: "#3b82f6", // blue-500
-      },
-    };
-    
-    razorpayInstanceRef.current = new (window as any).Razorpay(options);
-    razorpayInstanceRef.current.open();
-  }, [payment, journey, onPaid]);
-
-  const checkPaymentStatus = useCallback(async () => {
+  const check = useCallback(async () => {
     if (!paymentRef) return;
     try {
       const res = await fetchChartAlertPaymentStatus(paymentRef);
@@ -188,39 +97,22 @@ export function ChartAlertPaymentModal({
       // paid-but-not-queued and pending both keep polling; the next check
       // retries fulfilment server-side.
     } catch {
-      // Transient error - keep polling; the user can close and retry.
+      // Transient — keep polling; the user can close and retry.
     }
   }, [paymentRef, journey, onPaid]);
 
-  // Start payment flow when modal opens
   useEffect(() => {
     if (!open) return;
-    setStatus("paying");
     trackedRef.current = false;
     failedTrackedRef.current = false;
-    
-    // Start polling for payment status
-    const statusCheckInterval = setInterval(() => {
-      void checkPaymentStatus();
-    }, POLL_INTERVAL_MS);
-    
-    // Initialize Checkout.js (will open the modal)
-    void startCheckout();
-    
-    return () => {
-      clearInterval(statusCheckInterval);
-      // Close Razorpay modal if open
-      if (razorpayInstanceRef.current && typeof razorpayInstanceRef.current.close === "function") {
-        try {
-          razorpayInstanceRef.current.close();
-        } catch (e) {
-          // Ignore errors on close
-        }
-      }
-    };
-  }, [open, checkPaymentStatus, startCheckout]);
+    trackAnalyticsEvent({
+      name: "chart_alert_payment_modal_opened",
+      properties: { source, train_number: journey.trainNumber },
+    });
+    const t = setInterval(() => void check(), POLL_INTERVAL_MS);
+    return () => clearInterval(t);
+  }, [open, paymentRef, check, source, journey.trainNumber]);
 
-  // Close modal on Escape key
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -231,6 +123,17 @@ export function ChartAlertPaymentModal({
   }, [open, onClose]);
 
   if (!open) return null;
+
+  const appButtons = [
+    payment.gpayIntent
+      ? { label: "Google Pay", href: payment.gpayIntent }
+      : null,
+    payment.phonepeIntent
+      ? { label: "PhonePe", href: payment.phonepeIntent }
+      : null,
+    payment.upiIntent ? { label: "UPI App", href: payment.upiIntent } : null,
+    payment.payUrl ? { label: "Pay on Web", href: payment.payUrl } : null,
+  ].filter((b): b is { label: string; href: string } => b !== null);
 
   return (
     <div
@@ -320,7 +223,7 @@ export function ChartAlertPaymentModal({
               <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
                 Pay ₹{payment.amount} with any UPI app
               </p>
-              {/* UPI QR code */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={payment.qrImageUrl}
                 alt={`UPI QR code to pay ₹${payment.amount}`}
@@ -330,18 +233,21 @@ export function ChartAlertPaymentModal({
                 Scan the QR, or pay directly from your phone:
               </p>
               <div className="mt-3 grid w-full grid-cols-1 gap-2 sm:grid-cols-3">
-                {/* Primary CTA: Checkout.js button */}
-                <button
-                  type="button"
-                  onClick={startCheckout}
-                  className="inline-flex items-center justify-center rounded-lg border border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-bold text-blue-700 transition hover:bg-blue-100"
-                >
-                  Pay Now with UPI
-                </button>
-                <p className="mt-1 text-center text-xs text-slate-500">
-                  (Opens secure UPI payment screen)
-                </p>
+                {appButtons.map((b) => (
+                  <a
+                    key={b.label}
+                    href={b.href}
+                    className="inline-flex items-center justify-center rounded-lg border border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-bold text-blue-700 transition hover:bg-blue-100"
+                  >
+                    {b.label}
+                  </a>
+                ))}
               </div>
+              {appButtons.length === 0 && (
+                <p className="mt-3 text-center text-xs text-slate-500">
+                  Open your UPI app and scan the QR above to pay.
+                </p>
+              )}
               <p className="mt-3 hidden text-center text-xs text-slate-400 sm:block">
                 On desktop? Scan the QR with your phone&apos;s camera or any
                 UPI app.

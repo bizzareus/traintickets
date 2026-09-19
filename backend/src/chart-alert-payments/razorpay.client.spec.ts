@@ -1,8 +1,50 @@
 import { createHmac } from 'node:crypto';
+import QRCode from 'qrcode';
 import {
+  buildUpiAppIntents,
+  decodeQrIntent,
   verifyRazorpayWebhookSignature,
-  verifyBrowserPaymentSignature,
 } from './razorpay.client';
+
+describe('buildUpiAppIntents', () => {
+  const intent =
+    'upi://pay?pa=merchant@upi&pn=LastBerth&am=25&cu=INR&tn=ref-1&tr=ref-1';
+
+  it('derives generic, GPay, and PhonePe links preserving all params', () => {
+    const apps = buildUpiAppIntents(intent);
+    expect(apps).toEqual({
+      upiIntent: intent,
+      gpayIntent: intent.replace(/^upi:/, 'tez:'),
+      phonepeIntent: intent.replace(/^upi:\/\/pay/, 'phonepe://pay'),
+    });
+    expect(apps?.gpayIntent).toContain('pa=merchant@upi');
+    expect(apps?.gpayIntent).toContain('tr=ref-1');
+    expect(apps?.phonepeIntent).toContain('am=25');
+  });
+
+  it('returns null for non-UPI URLs and garbage', () => {
+    expect(buildUpiAppIntents('https://pay.test/x')).toBeNull();
+    expect(buildUpiAppIntents('not a url')).toBeNull();
+    expect(buildUpiAppIntents('')).toBeNull();
+  });
+
+  it('returns null when the payee address is missing', () => {
+    expect(buildUpiAppIntents('upi://pay?am=25&cu=INR')).toBeNull();
+  });
+});
+
+describe('decodeQrIntent', () => {
+  it('round-trips a generated UPI QR back to its intent string', async () => {
+    const intent =
+      'upi://pay?pa=merchant@upi&pn=LastBerth&am=10&cu=INR&tn=ref-9&tr=ref-9';
+    const png = await QRCode.toBuffer(intent, { width: 360, margin: 2 });
+    expect(decodeQrIntent(png)).toBe(intent);
+  });
+
+  it('returns null for non-QR bytes', () => {
+    expect(decodeQrIntent(Buffer.from('definitely not a png'))).toBeNull();
+  });
+});
 
 describe('verifyRazorpayWebhookSignature', () => {
   const secret = 'whsec-test';
@@ -28,45 +70,5 @@ describe('verifyRazorpayWebhookSignature', () => {
     expect(
       verifyRazorpayWebhookSignature(undefined as never, valid, secret),
     ).toBe(false);
-  });
-});
-
-describe('verifyBrowserPaymentSignature', () => {
-  const keySecret = 'rzp_secret_test';
-
-  const makeSignature = (orderId: string, paymentId: string) =>
-    createHmac('sha256', keySecret)
-      .update(`${orderId}|${paymentId}`)
-      .digest('hex');
-
-  it('accepts a valid signature', () => {
-    expect(
-      verifyBrowserPaymentSignature(
-        'order_1',
-        'pay_1',
-        makeSignature('order_1', 'pay_1'),
-      ),
-    ).toBe(true);
-  });
-
-  it('rejects wrong signatures', () => {
-    expect(
-      verifyBrowserPaymentSignature('order_1', 'pay_1', 'bad'),
-    ).toBe(false);
-    expect(
-      verifyBrowserPaymentSignature('order_1', 'pay_1', makeSignature('order_2', 'pay_1')),
-    ).toBe(false);
-    expect(
-      verifyBrowserPaymentSignature('order_1', 'pay_2', makeSignature('order_1', 'pay_1')),
-    ).toBe(false);
-  });
-
-  it('rejects missing inputs', () => {
-    expect(verifyBrowserPaymentSignature('', 'pay_1', 'sig')).toBe(false);
-    expect(verifyBrowserPaymentSignature('order_1', '', 'sig')).toBe(false);
-    expect(verifyBrowserPaymentSignature('order_1', 'pay_1', '')).toBe(false);
-    expect(verifyBrowserPaymentSignature('order_1', 'pay_1', undefined as never)).toBe(
-      false,
-    );
   });
 });
