@@ -146,6 +146,7 @@ export class AlternativeSearchTaskService {
           toStationCode: task.toStationCode,
           journeyDate: task.journeyDate,
           alternativeTrains: matchingAlternatives,
+          journeyTaskId: task.journeyTaskId,
         });
 
       await this.prisma.alternativeSearchTask.update({

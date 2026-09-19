@@ -111,15 +111,16 @@ describe('Notification Templates & Helpers', () => {
       );
     });
 
-    it('appends the unsubscribe line when provided', () => {
+    it('appends the claim refund line when refundUrl is provided', () => {
       const text = buildChartPreparedNoDestinationWhatsAppText({
         trainNumber: '12310',
         trainName: null,
         formattedDateTime: '5th Sep, 04:30 PM',
         checkTicketsUrl: 'https://lastberth.com/s/abc',
-        unsubscribeUrl: 'https://lastberth.com/s/unsub',
+        refundUrl: 'https://lastberth.com/refund',
       });
-      expect(text).toContain('Unsubscribe: https://lastberth.com/s/unsub');
+      expect(text).toContain('Claim Refund - https://lastberth.com/refund');
+      expect(text).not.toContain('Unsubscribe');
     });
   });
 
@@ -173,7 +174,6 @@ describe('Notification Templates & Helpers', () => {
         date: '2026-09-18',
         chartTime: '7:30 PM',
         searchUrl: 'https://lastberth.com/s/3d6fc70',
-        unsubscribeUrl: 'https://lastberth.com/unsubscribe',
       });
 
       expect(text).toBe(
@@ -183,6 +183,21 @@ describe('Notification Templates & Helpers', () => {
           'Look for other trains which have confirmed tickets - \n' +
           'https://lastberth.com/s/3d6fc70',
       );
+      expect(text).not.toContain('unsubscribe');
+    });
+
+    it('appends claim refund line when refundUrl is provided', () => {
+      const text = buildNoSeatsWhatsAppText({
+        trainLabel: '12435 Garib Rath Exp',
+        fromCode: 'DDU',
+        toCode: 'ANVT',
+        date: '2026-09-18',
+        chartTime: '7:30 PM',
+        searchUrl: 'https://lastberth.com/s/3d6fc70',
+        refundUrl: 'https://lastberth.com/refund',
+      });
+
+      expect(text).toContain('Claim Refund - https://lastberth.com/refund');
       expect(text).not.toContain('unsubscribe');
     });
 

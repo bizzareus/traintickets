@@ -187,7 +187,7 @@ export function buildFollowUpLegWhatsAppText(params: {
   stationScheduleList?: ScheduleStation[];
   trainNumber: string;
   chartPreparationText?: string;
-  unsubscribeUrl?: string;
+  refundUrl?: string;
 }): string {
   const {
     trainLabel,
@@ -234,8 +234,9 @@ export function buildFollowUpLegWhatsAppText(params: {
   }
 
   lines.push('Track live seat updates anytime on LastBerth! 🚄');
-  if (params.unsubscribeUrl) {
-    lines.push(`Unsubscribe: ${params.unsubscribeUrl}`);
+  if (params.refundUrl) {
+    lines.push('');
+    lines.push(`Claim Refund - ${params.refundUrl}`);
   }
   return lines.join('\n').trim();
 }
@@ -257,7 +258,7 @@ export async function buildWhatsAppSeatsFoundText(params: {
   result?: Service2CheckResult;
   email?: string;
   mobile?: string;
-  unsubscribeUrl?: string;
+  refundUrl?: string;
   refundInfo?: RefundInfo | null;
   chartNumber?: '1st' | '2nd';
   chartTime?: string;
@@ -392,6 +393,10 @@ export async function buildWhatsAppSeatsFoundText(params: {
   }
 
   lines.push('🚄 Track live seat updates anytime on LastBerth.com!');
+  if (params.refundUrl) {
+    lines.push('');
+    lines.push(`Claim Refund - ${params.refundUrl}`);
+  }
 
   return lines.join('\n').trim();
 }

@@ -60,15 +60,15 @@ export function buildChartPreparedNoDestinationWhatsAppText(params: {
   trainName?: string | null;
   formattedDateTime: string;
   checkTicketsUrl: string;
-  unsubscribeUrl?: string;
+  refundUrl?: string;
 }): string {
   const tName = params.trainName?.trim() ? ` ${params.trainName.trim()}` : '';
   const line1 = `The chart has been prepared for train ${params.trainNumber}${tName} at ${params.formattedDateTime}`;
   const line2 = `Check for available tickets on ${params.checkTicketsUrl}`;
 
   const lines = [line1, '', line2];
-  if (params.unsubscribeUrl) {
-    lines.push('', `Unsubscribe: ${params.unsubscribeUrl}`);
+  if (params.refundUrl) {
+    lines.push('', `Claim Refund - ${params.refundUrl}`);
   }
   return lines.join('\n');
 }

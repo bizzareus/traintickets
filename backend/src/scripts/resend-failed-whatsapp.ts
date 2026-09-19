@@ -58,6 +58,8 @@ async function main() {
         email: task.contact.email ?? undefined,
         mobile: task.contact.mobile ?? undefined,
         task: {
+          id: task.id,
+          journeyRequestId: task.journeyRequestId,
           trainNumber: task.trainNumber,
           trainName: task.trainName,
           fromStationCode: task.fromStationCode,

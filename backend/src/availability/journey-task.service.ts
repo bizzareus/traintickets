@@ -1463,6 +1463,7 @@ export class JourneyTaskService {
         trainName: task.trainName,
         journeyDate: task.journeyDate,
         chartPreparationText,
+        journeyRequestId: task.journeyRequestId,
       });
       const data: {
         emailNotifiedAt?: Date;
@@ -1795,6 +1796,8 @@ export class JourneyTaskService {
               email: contact.email,
               mobile: contact.mobile,
               task: {
+                id: task.id,
+                journeyRequestId: task.journeyRequestId,
                 trainNumber: task.trainNumber,
                 trainName: task.trainName,
                 fromStationCode: task.fromStationCode || task.stationCode,
@@ -2393,6 +2396,8 @@ export class JourneyTaskService {
       email: contact.email || undefined,
       mobile: contact.mobile || undefined,
       task: {
+        id: task.id,
+        journeyRequestId: task.journeyRequestId,
         trainNumber: task.trainNumber,
         trainName: task.trainName,
         fromStationCode: task.fromStationCode,
@@ -2488,6 +2493,8 @@ export class JourneyTaskService {
               ? contact.mobile?.trim() || undefined
               : undefined,
             task: {
+              id: task.id,
+              journeyRequestId: task.journeyRequestId,
               trainNumber: task.trainNumber,
               trainName: task.trainName,
               fromStationCode: task.fromStationCode,

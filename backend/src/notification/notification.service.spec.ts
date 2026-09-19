@@ -98,6 +98,74 @@ describe('NotificationService', () => {
       'Look for other trains which have confirmed tickets -',
     );
     expect(whatsAppText).not.toContain('Unsubscribe:');
+    expect(whatsAppText).not.toContain('Claim Refund');
+  });
+
+  it('appends Claim Refund link to WhatsApp notification when isPaid is true', async () => {
+    const svc = new NotificationService(mockConfig(), mockStationCache());
+    const sendWhatsApp = jest
+      .spyOn(svc, 'sendWhatsApp')
+      .mockResolvedValue(true);
+
+    await svc.notifyUser({
+      email: undefined,
+      mobile: '919876543210',
+      task,
+      result: successEmptyPlan,
+      isPaid: true,
+    });
+
+    expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+    const [, whatsAppText] = sendWhatsApp.mock.calls[0];
+    expect(whatsAppText).toContain('Claim Refund - ');
+    expect(whatsAppText).toMatch(/Claim Refund - https?:\/\/[^\s]+\/refund/);
+    expect(whatsAppText).not.toContain('Unsubscribe:');
+  });
+
+  it('detects paid status from prisma chartAlertPayment when journeyRequestId matches', async () => {
+    const mockPrisma = {
+      chartAlertPayment: {
+        findFirst: jest
+          .fn()
+          .mockResolvedValue({ id: 'pay_123', status: 'PAID' }),
+      },
+    };
+    const svc = new NotificationService(
+      mockConfig(),
+      mockStationCache(),
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      mockPrisma as never,
+    );
+    const sendWhatsApp = jest
+      .spyOn(svc, 'sendWhatsApp')
+      .mockResolvedValue(true);
+
+    await svc.notifyUser({
+      email: undefined,
+      mobile: '919876543210',
+      task: {
+        ...task,
+        journeyRequestId: 'jid-paid-123',
+      },
+      result: successEmptyPlan,
+    });
+
+    expect(mockPrisma.chartAlertPayment.findFirst).toHaveBeenCalledWith({
+      where: {
+        journeyRequestId: 'jid-paid-123',
+        status: 'PAID',
+      },
+      select: { id: true },
+    });
+    expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+    const [, whatsAppText] = sendWhatsApp.mock.calls[0];
+    expect(whatsAppText).toContain('Claim Refund - ');
+    expect(whatsAppText).toMatch(/Claim Refund - https?:\/\/[^\s]+\/refund/);
+    expect(whatsAppText).not.toContain('Unsubscribe:');
   });
 
   it('sends email with readable journey date, schedule times, and availability count in HTML', async () => {
@@ -1051,6 +1119,34 @@ describe('NotificationService', () => {
       expect(out).toEqual({ emailSent: false, whatsappSent: true });
       expect(sendEmail).not.toHaveBeenCalled();
       expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+    });
+
+    it('appends Claim Refund link when the chart-prepared alert is paid', async () => {
+      const svc = new NotificationService(
+        mockConfig(),
+        mockStationCache(),
+        undefined,
+        {
+          createShortLink: jest
+            .fn()
+            .mockResolvedValue('https://lastberth.com/s/abc123'),
+        } as never,
+      );
+      const sendWhatsApp = jest
+        .spyOn(svc, 'sendWhatsApp')
+        .mockResolvedValue(true);
+
+      await svc.notifyChartPrepared({
+        ...chartPreparedParams,
+        email: undefined,
+        isPaid: true,
+      });
+
+      expect(sendWhatsApp).toHaveBeenCalledTimes(1);
+      const [, whatsAppText] = sendWhatsApp.mock.calls[0];
+      expect(whatsAppText).toContain('Claim Refund - ');
+      expect(whatsAppText).toMatch(/Claim Refund - https?:\/\/[^\s]+\/refund/);
+      expect(whatsAppText).not.toContain('Unsubscribe:');
     });
   });
 });

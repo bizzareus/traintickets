@@ -7,6 +7,7 @@ import {
   type Service2CheckResult,
 } from '../service2/service2.service';
 import type { ChartTimeAvailabilityTask } from '@prisma/client';
+import { PrismaService } from '../prisma/prisma.service';
 import { StationCacheService } from '../cache/station-cache.service';
 import { ShortLinkService } from '../short-link/short-link.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
@@ -87,6 +88,8 @@ export class NotificationService {
     private readonly deduplicationService?: NotificationDeduplicationService,
     @Optional()
     private readonly unsubscribeService?: NotificationUnsubscribeService,
+    @Optional()
+    private readonly prisma?: PrismaService,
   ) {
     this.wasenderKey = this.config.get<string>('WASENDER_API_KEY');
     this.resendKey = this.config.get<string>('RESEND_API_KEY');
@@ -556,6 +559,78 @@ export class NotificationService {
     }
   }
 
+  private getStaticRefundUrl(): string {
+    const baseUrl = (
+      this.config?.get<string>('FRONTEND_URL') ||
+      process.env.FRONTEND_URL ||
+      'https://lastberth.com'
+    ).replace(/\/+$/, '');
+    return `${baseUrl}/refund`;
+  }
+
+  async isPaymentPaid(options: {
+    isPaid?: boolean;
+    journeyRequestId?: string | null;
+    taskId?: string | null;
+    journeyTaskId?: string | null;
+    refundInfo?: RefundInfo | null;
+  }): Promise<boolean> {
+    if (options.isPaid !== undefined) {
+      return Boolean(options.isPaid);
+    }
+    if (options.refundInfo?.attempted) {
+      return true;
+    }
+    if (!this.prisma) {
+      return false;
+    }
+
+    let jid = options.journeyRequestId?.trim();
+
+    if (!jid && options.journeyTaskId) {
+      try {
+        const altTask = await this.prisma.chartTimeAvailabilityTask.findUnique({
+          where: { id: options.journeyTaskId },
+          select: { journeyRequestId: true },
+        });
+        jid = altTask?.journeyRequestId;
+      } catch {
+        // ignore
+      }
+    }
+
+    if (!jid && options.taskId) {
+      try {
+        const taskRow = await this.prisma.chartTimeAvailabilityTask.findUnique({
+          where: { id: options.taskId },
+          select: { journeyRequestId: true },
+        });
+        jid = taskRow?.journeyRequestId;
+      } catch {
+        // ignore
+      }
+    }
+
+    if (jid) {
+      try {
+        const payment = await this.prisma.chartAlertPayment.findFirst({
+          where: {
+            journeyRequestId: jid,
+            status: 'PAID',
+          },
+          select: { id: true },
+        });
+        if (payment) return true;
+      } catch (err) {
+        this.logger.warn(
+          `Failed to check paid status for journeyRequestId=${jid}: ${err instanceof Error ? err.message : String(err)}`,
+        );
+      }
+    }
+
+    return false;
+  }
+
   async notifyChartPrepared(params: {
     email?: string | null;
     mobile?: string | null;
@@ -563,6 +638,8 @@ export class NotificationService {
     trainName?: string | null;
     journeyDate: Date | string;
     chartPreparationText: string;
+    journeyRequestId?: string | null;
+    isPaid?: boolean;
   }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
     const { email, mobile, trainNumber, trainName, journeyDate } = params;
     const out = { emailSent: false, whatsappSent: false };
@@ -585,7 +662,7 @@ export class NotificationService {
       const journeyDateReadable = formatJourneyDateReadable(journeyDateStr);
       const trainLabel = [trainNumber, trainName].filter(Boolean).join(' ');
 
-      const [emailCheckUrl, whatsappCheckUrl, emailUnsubUrl, whatsappUnsubUrl] =
+      const [emailCheckUrl, whatsappCheckUrl, emailUnsubUrl] =
         await Promise.all([
           email?.trim()
             ? this.createCheckTicketsShortLink({
@@ -604,18 +681,18 @@ export class NotificationService {
           email?.trim()
             ? this.createUnsubscribeShortLink(email.trim(), 'email')
             : Promise.resolve(undefined),
-          mobile?.trim()
-            ? this.createUnsubscribeShortLink(
-                normalizeE164Mobile(mobile.trim()),
-                'whatsapp',
-              )
-            : Promise.resolve(undefined),
         ]);
       const checkTicketsUrl = emailCheckUrl || whatsappCheckUrl;
       if (!checkTicketsUrl) {
         console.warn('notifyChartPrepared: no ShortLinkService; skipping send');
         return out;
       }
+
+      const isPaid = await this.isPaymentPaid({
+        isPaid: params.isPaid,
+        journeyRequestId: params.journeyRequestId,
+      });
+      const refundUrl = isPaid ? this.getStaticRefundUrl() : undefined;
 
       const subject = `Chart prepared for ${trainLabel} on ${journeyDateReadable} — check tickets now`;
 
@@ -661,7 +738,7 @@ export class NotificationService {
           trainName,
           formattedDateTime: params.chartPreparationText,
           checkTicketsUrl: whatsappCheckUrl || checkTicketsUrl,
-          unsubscribeUrl: whatsappUnsubUrl,
+          refundUrl,
         });
         out.whatsappSent = await this.sendWhatsApp(mobile.trim(), text, {
           templateName: 'subscription_alert',
@@ -763,11 +840,17 @@ export class NotificationService {
       | 'fromStationCode'
       | 'toStationCode'
       | 'journeyDate'
-    > & { id?: string; chartAt?: Date; trainStartDate?: Date | null };
+    > & {
+      id?: string;
+      chartAt?: Date;
+      trainStartDate?: Date | null;
+      journeyRequestId?: string | null;
+    };
     result: Service2CheckResult;
     alternativeTrains?: BestTrainCandidateResult[];
     isFollowUpLeg?: boolean;
     refundInfo?: RefundInfo | null;
+    isPaid?: boolean;
   }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
     const { email, mobile, task, result, isFollowUpLeg } = params;
     const refundInfo = params.refundInfo ?? null;
@@ -797,20 +880,18 @@ export class NotificationService {
       }
       const hasTickets = hasBookablePlanForNotification(result);
 
-      const [emailUnsubscribeUrl, whatsappUnsubscribeUrl] = await Promise.all([
-        email?.trim()
-          ? this.createUnsubscribeShortLink(email.trim(), 'email')
-          : Promise.resolve(undefined),
-        mobile?.trim()
-          ? this.createUnsubscribeShortLink(
-              normalizeE164Mobile(mobile.trim()),
-              'whatsapp',
-            )
-          : Promise.resolve(undefined),
-      ]);
+      const emailUnsubscribeUrl = email?.trim()
+        ? await this.createUnsubscribeShortLink(email.trim(), 'email')
+        : undefined;
       const emailFooterUrl = emailUnsubscribeUrl;
-      const whatsappFooterUrl =
-        whatsappUnsubscribeUrl || (email ? emailUnsubscribeUrl : undefined);
+
+      const isPaid = await this.isPaymentPaid({
+        isPaid: params.isPaid,
+        journeyRequestId: task.journeyRequestId,
+        taskId: task.id,
+        refundInfo,
+      });
+      const refundUrl = isPaid ? this.getStaticRefundUrl() : undefined;
 
       const trainLabel = [task.trainNumber, task.trainName]
         .filter(Boolean)
@@ -970,7 +1051,7 @@ export class NotificationService {
                   stationScheduleList,
                   trainNumber: task.trainNumber,
                   chartPreparationText,
-                  unsubscribeUrl: whatsappFooterUrl,
+                  refundUrl,
                 })
               : hasTickets
                 ? await buildWhatsAppSeatsFoundText({
@@ -989,10 +1070,10 @@ export class NotificationService {
                     result,
                     email: email || undefined,
                     mobile: mobile || undefined,
-                    unsubscribeUrl: whatsappFooterUrl,
                     refundInfo,
                     chartNumber,
                     chartTime: chartTimeRaw,
+                    refundUrl,
                     getChartOpenInfoFn: (item) =>
                       this.getStationChartOpenTimeLabel({
                         trainNumber: task.trainNumber,
@@ -1018,9 +1099,9 @@ export class NotificationService {
                     toCode: task.toStationCode,
                     date: journeyDateStr,
                     searchUrl: whatsappSearchUrl,
-                    unsubscribeUrl: whatsappFooterUrl,
                     refundInfo,
                     chartTime: chartTimeRaw,
+                    refundUrl,
                   });
 
           const templateName = hasTickets
@@ -1421,6 +1502,9 @@ export class NotificationService {
     toStationCode: string;
     journeyDate: Date | string;
     alternativeTrains: BestTrainCandidateResult[];
+    journeyRequestId?: string | null;
+    journeyTaskId?: string | null;
+    isPaid?: boolean;
   }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
     const {
       email,
@@ -1446,20 +1530,17 @@ export class NotificationService {
         }
       }
 
-      const [emailUnsubscribeUrl, whatsappUnsubscribeUrl] = await Promise.all([
-        email?.trim()
-          ? this.createUnsubscribeShortLink(email.trim(), 'email')
-          : Promise.resolve(undefined),
-        mobile?.trim()
-          ? this.createUnsubscribeShortLink(
-              normalizeE164Mobile(mobile.trim()),
-              'whatsapp',
-            )
-          : Promise.resolve(undefined),
-      ]);
+      const emailUnsubscribeUrl = email?.trim()
+        ? await this.createUnsubscribeShortLink(email.trim(), 'email')
+        : undefined;
       const emailFooterUrl = emailUnsubscribeUrl;
-      const whatsappFooterUrl =
-        whatsappUnsubscribeUrl || (email ? emailUnsubscribeUrl : undefined);
+
+      const isPaid = await this.isPaymentPaid({
+        isPaid: params.isPaid,
+        journeyRequestId: params.journeyRequestId,
+        journeyTaskId: params.journeyTaskId,
+      });
+      const refundUrl = isPaid ? this.getStaticRefundUrl() : undefined;
 
       const journeyDateStr =
         journeyDate instanceof Date
@@ -1509,7 +1590,7 @@ export class NotificationService {
             toStationCode,
             alternativeTrains,
             stationNameMap,
-            unsubscribeUrl: whatsappFooterUrl,
+            refundUrl,
           });
           const altTemplateName = 'alternative_train_alert';
           const altParameters = [
