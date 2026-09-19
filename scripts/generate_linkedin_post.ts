@@ -23,20 +23,29 @@ export function generateLinkedInPost(
   const { data, content } = matter(raw);
 
   // Extract TL;DR section if present
-  const tldrMatch = content.match(/## TL;DR\s+([\s\S]*?)(?=\n## |$)/i);
-  const tldrLines = tldrMatch
-    ? tldrMatch[1]
+  const tldrMatch = content.match(/## TL;DR\s+([\s\S]*?)(?=\n---|\n## |$)/i);
+  let tldrLines: string[] = [];
+  if (tldrMatch) {
+    const cleanedText = tldrMatch[1]
+      .replace(/\*\*([^*]+)\*\*/g, "$1") // strip bold
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // strip links
+      .replace(/`([^`]+)`/g, "$1") // strip inline code
+      .trim();
+
+    // If bullet points exist
+    if (/^[-*]\s+/m.test(cleanedText)) {
+      tldrLines = cleanedText
         .split("\n")
-        .map((l) =>
-          l
-            .replace(/^[-*]\s*/, "")
-            .replace(/\*\*([^*]+)\*\*/g, "$1") // strip bold
-            .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // strip links
-            .replace(/`([^`]+)`/g, "$1") // strip inline code
-            .trim()
-        )
-        .filter((l) => l.length > 0)
-    : [];
+        .map((l) => l.replace(/^[-*]\s*/, "").trim())
+        .filter((l) => l.length > 0 && !l.startsWith("---"));
+    } else {
+      // Split narrative paragraph by sentences
+      tldrLines = cleanedText
+        .split(/(?<=[.!?])\s+/)
+        .map((s) => s.trim())
+        .filter((s) => s.length > 10 && !s.startsWith("---"));
+    }
+  }
 
   const title = String(data.title ?? slug).replace(/:\s*Rules.*$/i, "");
   const canonicalUrl = `https://lastberth.com/blog/${slug}`;

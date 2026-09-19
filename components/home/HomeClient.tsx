@@ -385,6 +385,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     Map<string, TrainScanMeta>
   >(new Map());
   const v2TrackedViewKeyRef = useRef<string>("");
+  const v2TrackedAutoScanKeyRef = useRef<string>("");
 
   // Smooth layout FLIP animation for train search cards when dynamically re-sorted
   const [v2TrainListAnimateRef] = useAutoAnimate<HTMLUListElement>({
@@ -398,6 +399,8 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setV2DiscoveredPartialTrains(new Set());
     setV2CompletedScans(new Set());
     setV2ScanMetaMap(new Map());
+    v2TrackedViewKeyRef.current = "";
+    v2TrackedAutoScanKeyRef.current = "";
   }, [fromSt?.stationCode, toSt?.stationCode, journeyDate, acOnly]);
 
   // Prioritized multi-tier sorting:
@@ -543,22 +546,47 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       journeyDate
     ) {
       const searchKey = `${fromSt.stationCode}-${toSt.stationCode}-${journeyDate}-${acOnly}`;
-      if (v2TrackedViewKeyRef.current === searchKey) return;
-      v2TrackedViewKeyRef.current = searchKey;
+      if (v2TrackedViewKeyRef.current !== searchKey) {
+        v2TrackedViewKeyRef.current = searchKey;
+        trackAnalyticsEvent({
+          name: "train_search_v2_viewed",
+          properties: {
+            from_code: fromSt.stationCode,
+            to_code: toSt.stationCode,
+            journey_date: journeyDate,
+            total_trains: trains.length,
+            direct_available_count: v2Stats.directAvailableCount,
+            waitlisted_count: v2Stats.waitlistedCount,
+          },
+        });
+      }
 
-      trackAnalyticsEvent({
-        name: "train_search_v2_viewed",
-        properties: {
-          from_code: fromSt.stationCode,
-          to_code: toSt.stationCode,
-          journey_date: journeyDate,
-          total_trains: trains.length,
-          direct_available_count: v2Stats.directAvailableCount,
-          waitlisted_count: v2Stats.waitlistedCount,
-        },
-      });
+      if (
+        v2AutoScanTrainNumbers.size > 0 &&
+        v2TrackedAutoScanKeyRef.current !== searchKey
+      ) {
+        v2TrackedAutoScanKeyRef.current = searchKey;
+        trackAnalyticsEvent({
+          name: "train_search_v2_auto_scan_started",
+          properties: {
+            train_numbers: Array.from(v2AutoScanTrainNumbers),
+            from_code: fromSt.stationCode,
+            to_code: toSt.stationCode,
+            journey_date: journeyDate,
+            total_trains: v2AutoScanTrainNumbers.size,
+          },
+        });
+      }
     }
-  }, [trains.length, fromSt?.stationCode, toSt?.stationCode, journeyDate, acOnly, v2Stats]);
+  }, [
+    trains.length,
+    fromSt?.stationCode,
+    toSt?.stationCode,
+    journeyDate,
+    acOnly,
+    v2Stats,
+    v2AutoScanTrainNumbers,
+  ]);
 
   const [isAdminUser, setIsAdminUser] = useState(false);
 
@@ -748,6 +776,8 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setHasSearched(true);
     setSearchError(null);
     setSearchLoading(true);
+    v2TrackedViewKeyRef.current = "";
+    v2TrackedAutoScanKeyRef.current = "";
     if (!hasSearched) setTrains([]);
     setBestTrainResult(null);
     setBestTrainError(null);
@@ -1411,7 +1441,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             role="list"
             aria-label="Train results"
           >
-            {displayTrains.map((t, idx) => (
+            {displayTrains.map((t) => (
               <TrainSearchV2Card
                 key={`v2-${t.trainNumber}`}
                 train={t}
@@ -1422,7 +1452,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 toName={toSt?.stationName}
                 acOnly={acOnly}
                 autoScanEnabled={v2AutoScanTrainNumbers.has(t.trainNumber)}
-                scanIndex={idx}
                 onOpenSchedule={(trainNumber, from, to) => {
                   setScheduleTrainNumber(trainNumber);
                   setScheduleHighlightFrom(from ?? "");

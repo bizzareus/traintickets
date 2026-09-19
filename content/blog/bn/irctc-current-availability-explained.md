@@ -1,200 +1,182 @@
 ---
-title: "CURR_AVBL / Curr Avl Meaning in IRCTC: Rules & Booking 2026"
-description: "What does CURR_AVBL, Curr Avl, or Curr Available mean in IRCTC? Learn 100% confirmed rules, chart timings, 8-hour booking window & seat vacancy tips."
+title: "CURR_AVBL Meaning in IRCTC: Rules, Timings & Booking (2026)"
+description: "What does CURR_AVBL mean in IRCTC? Learn 100% confirmed seat rules, 4-hour chart timings, 10% discount, counter booking & step-by-step app reservation."
 date: "2026-06-11"
-updated: "2026-08-13"
+updated: "2026-09-19"
 tags:
   - current availability
   - curr avbl meaning
   - curr_avbl in irctc
   - vacancy chart
-  - irctc
+  - irctc current booking time
   - last minute tickets
   - confirmed tickets
   - chart preparation
 ---
 
-> **🔔 জরুরি টিপস:** আপনি কি ওয়েটলিস্ট টিকিট কনফার্ম হওয়ার অপেক্ষা করছেন? [Chart Times](/chart-times) এ ট্রেনের সঠিক চার্টিং সময় দেখুন এবং ফ্রি অ্যালার্ট সেট করুন, [Chart Vacancy](/chart-vacancy) তে খালি সিট চেক করুন বা [Smart Seats](/) দিয়ে কনফার্ম সিট খুঁজুন।
+> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
 
 ## TL;DR
 
-- **CURR_AVBL / CURR AVL / CURR AVAILABLE** মানে **বর্তমান উপলব্ধতা** IRCTC টিকেট স্লিপ এবং বুকিং স্ক্রীনে।
-- এটি 100% নিশ্চিত বার্থ প্রকাশ করে যা জনসাধারণের ক্রয়ের জন্য প্রস্তুত থাকে রিজার্ভেশন চার্ট প্রস্তুতির পর (~8 ঘণ্টা আগে যাত্রার)।
-- এটি সাধারণ উপলব্ধতা প্রদর্শনকে প্রতিস্থাপন করে যখন প্রথম চার্ট প্রস্তুত হয়; ট্রেনের যাত্রার 15 মিনিট আগে পর্যন্ত খোলা থাকে।
-- আসনগুলি শেষ মুহূর্তের বাতিলকরণ, অপ্রয়োগিত কোটা ছাড় (মহিলা, প্রতিরক্ষা, বিদেশী পর্যটক), এবং টাটকাল ফেরতের কারণে খোলে।
-- অতিরিক্ত চার্জ প্রযোজ্য নয়; মানক ভিত্তি ভাড়া চার্জ করা হয় (এবং অ বুকিত খালি বার্থে 10% পর্যন্ত ছাড় দেওয়া হয়)।
+CURR_AVBL (Current Availability) on IRCTC indicates real-time vacant berths released for public reservation immediately after the first chart is prepared, exactly 4 hours before train departure. Every ticket booked under current availability is 100% confirmed with an assigned coach and berth number, carrying zero waitlist risk and no Tatkal premium charges. Indian Railways often offers up to a 10% base fare discount on these unbooked berths, and bookings remain open online and at station PRS counters until 30 minutes before scheduled departure.
 
 ---
 
-## Curr Avbl, Curr Avl, বা Curr Available এর অর্থ কী IRCTC তে?
+## What Does CURR_AVBL, Curr Avl, or Curr Available Mean in IRCTC?
 
-**CURR_AVBL (যা Curr Avl, Curr Available, বা CURR_AVBL হিসেবেও লেখা হয়) IRCTC টিকেট বুকিং পোর্টাল এবং স্টেশন রিজার্ভেশন চার্টে বর্তমান উপলব্ধতা বোঝায়। এটি প্রথম রিজার্ভেশন চার্ট প্রস্তুতির পর (যাত্রার ~8 ঘণ্টা আগে) অবিলম্বে ক্রয়ের জন্য উপলব্ধ খালি বার্থের বাস্তব সময় নির্দেশ করে। Curr Avbl এর অধীনে বুক করা টিকেট 100% নিশ্চিত এবং নির্ধারিত কোচ এবং বার্থ নম্বর সহ।**
+**CURR_AVBL (যা Curr Avl বা Curr Available হিসেবেও লেখা হয়) IRCTC বুকিং পোর্টাল এবং স্টেশন রিজার্ভেশন চার্টে Current Availability বোঝায়। এটি প্রথম রিজার্ভেশন চার্ট প্রস্তুত হওয়ার পর (ট্রেনের departure এর 4 ঘণ্টা আগে) অবিলম্বে বুকিংয়ের জন্য খোলা শারীরিক খালি বার্থকে প্রতিনিধিত্ব করে। CURR_AVBL এর অধীনে বুক করা টিকিটগুলি 100% নিশ্চিত করা হয় এবং নির্ধারিত কোচ এবং বার্থ নম্বর থাকে।**
 
-যখন আপনি IRCTC তে যাত্রার কাছাকাছি ট্রেনের টিকেট খুঁজছেন, আপনি প্রায়শই `CURR_AVBL-0012`, `CURR_AVBL-0004`, `CURR AVL`, বা `Curr Avbl` এর মতো স্ট্যাটাস কোড দেখতে পাবেন।
+যখন আপনি IRCTC ওয়েবসাইট বা রেল কানেক্ট মোবাইল অ্যাপে ট্রেনের টিকিট খুঁজছেন, তখন আপনি প্রায়শই `CURR_AVBL-0014`, `CURR_AVBL-0002`, `CURR AVL`, বা `Curr Avbl` এর মতো স্ট্যাটাস দেখতে পাবেন।
 
-এটি আপনার যাত্রার জন্য সেই সঠিক স্ট্যাটাসের অর্থ:
+এটি আপনার যাত্রার জন্য সঠিক স্ট্যাটাস কোডের অর্থ:
 
-1. **100% গ্যারান্টিযুক্ত বার্থ:** অপেক্ষমাণ তালিকা (`WL`) বা RAC (`Reservation Against Cancellation`) এর তুলনায়, একটি `CURR_AVBL` টিকেট গ্যারান্টিযুক্ত। আপনার টিকেট তাত্ক্ষণিকভাবে আপনার নিশ্চিত কোচ (যেমন B2, S5) এবং বার্থ নম্বর (যেমন 17, 42) সহ মুদ্রিত হয়।
-2. **চার্ট খোলার পর:** `CURR_AVBL` কেবলমাত্র **প্রথম** রিজার্ভেশন চার্ট তৈরি হওয়ার পরই প্রদর্শিত হয়। চার্টিংয়ের আগে, সিস্টেম সাধারণ উপলব্ধতা প্রদর্শন করে।
-3. **কোনও গোপন ফি নেই:** `CURR_AVBL` টিকেটে কোনও সার্জ ফি বা টাটকাল প্রিমিয়াম নেই। আপনি মানক ভিত্তি ভাড়া পরিশোধ করেন, এবং ভারতীয় রেলওয়ে কখনও কখনও যাত্রার কাছাকাছি খালি বার্থে 10% ছাড় দেয়।
-4. **বুকিং উইন্ডো:** আপনি IRCTC এর মাধ্যমে অনলাইনে বা PRS স্টেশন কাউন্টারে `CURR_AVBL` টিকেট ক্রয় করতে পারেন **যাত্রার নির্ধারিত সময়ের 30 মিনিট আগে পর্যন্ত**।
+1. **100% গ্যারান্টিযুক্ত শারীরিক বার্থ:** অপেক্ষমাণ তালিকা (`WL`) বা বাতিলের বিরুদ্ধে রিজার্ভেশন (`RAC`) এর তুলনায়, একটি `CURR_AVBL` টিকিট ক্রয়ের মুহূর্ত থেকেই সম্পূর্ণ নিশ্চিত। আপনার মুদ্রিত ই-টিকিটে আপনার বরাদ্দকৃত কোচ (যেমন B3, M2, বা S4) এবং নির্দিষ্ট বার্থ নম্বর (যেমন 21, 35, বা 62) অবিলম্বে প্রদর্শিত হয়।
+2. **চার্টিংয়ের পরে ইনভেন্টরি:** `CURR_AVBL` শুধুমাত্র **পরে** সক্রিয় হয় যখন প্রথম রিজার্ভেশন চার্ট ভারতীয় রেলওয়ে দ্বারা চূড়ান্ত করা হয়। চার্টিংয়ের আগে, সিস্টেম সাধারণ উপলব্ধতা বা টাটকাল কিউগুলি প্রদর্শন করে।
+3. **কোন টাটকাল সারচার্জ নেই:** `CURR_AVBL` টিকিটে কোন প্রিমিয়াম টাটকাল সারচার্জ নেই। আপনি সাধারণ ভিত্তি ভাড়া প্রদান করেন, এবং ভারতীয় রেলওয়ে নীতি প্রায়শই প্রিমিয়াম এবং এক্সপ্রেস ট্রেনগুলিতে খালি বার্থের ভিত্তি ভাড়ায় 10% পর্যন্ত ছাড় দেয়।
+4. **কঠোর বুকিং উইন্ডো:** আপনি IRCTC এর মাধ্যমে অনলাইনে বা শারীরিক যাত্রী রিজার্ভেশন সিস্টেম (PRS) স্টেশন কাউন্টারে **ট্রেনের নির্ধারিত departure এর 30 মিনিট আগে** পর্যন্ত `CURR_AVBL` টিকিট বুক করতে পারেন।
 
 ---
 
-## বর্তমান উপলব্ধতা বুকিংয়ের জন্য কখন খোলে?
+## When Does Current Availability Open and Close for Booking?
 
-**বর্তমান উপলব্ধতা বুকিংয়ের জন্য প্রথম রিজার্ভেশন চার্ট প্রস্তুতির পর অবিলম্বে খোলে, সাধারণত ট্রেনের যাত্রার 8 ঘণ্টা আগে। বুকিং উইন্ডো অনলাইন এবং কাউন্টারে যাত্রার 30 মিনিট আগে পর্যন্ত খোলা থাকে। ভোরের ট্রেনের জন্য, বর্তমান বুকিং পূর্ববর্তী রাতের চার্ট প্রস্তুতির পর রাতের সময় খোলে।**
+**Current availability opens for booking immediately after the first reservation chart is finalized, exactly 4 hours before the train's scheduled departure from its originating station (or 8:00 PM the previous evening for morning trains departing before 14:00 hours). Booking closes online and at station PRS counters 30 minutes before departure.**
 
-নিচে ট্রেনের যাত্রার সময়ের ভিত্তিতে সঠিক বুকিং সময় এবং বর্তমান উপলব্ধতা উইন্ডোগুলির একটি কাঠামোবদ্ধ গাইড দেওয়া হলো:
+ভারতীয় রেলওয়ে কঠোর চার্টিং নির্দেশিকা প্রয়োগ করে যা যাত্রীদের জন্য বর্তমান বুকিং কখন উপলব্ধ হয় তা নিয়ন্ত্রণ করে:
 
-| ট্রেনের যাত্রার সময় | প্রথম চার্ট প্রস্তুত (বুকিং খোলে) | বুকিং বন্ধ হয় | উদাহরণ পরিস্থিতি |
+| ট্রেনের departure উইন্ডো | প্রথম চার্ট প্রস্তুতি (বুকিং খোলে) | বুকিং কাটঅফ সময় | ব্যবহারিক উদাহরণ |
 | :--- | :--- | :--- | :--- |
-| **ভোর (12:00 AM – 8:00 AM)** | পূর্ববর্তী রাত **8:00 PM এবং 11:00 PM** এর মধ্যে | যাত্রার 30 মিনিট আগে | 6:00 AM এ departing ট্রেনটি পূর্ববর্তী রাত 9:00 PM এ বর্তমান বুকিংয়ের জন্য খোলে। |
-| **মধ্যাহ্ন ও বিকেল (8:00 AM – 6:00 PM)** | **নির্ধারিত যাত্রার 8 ঘণ্টা আগে** | যাত্রার 30 মিনিট আগে | 4:00 PM এ departing ট্রেনটি 8:00 AM এ বর্তমান বুকিংয়ের জন্য খোলে। |
-| **বিকেল ও রাত (6:00 PM – 12:00 AM)** | **নির্ধারিত যাত্রার 8 ঘণ্টা আগে** | যাত্রার 30 মিনিট আগে | 9:30 PM এ departing ট্রেনটি 1:30 PM এ বর্তমান বুকিংয়ের জন্য খোলে। |
+| **দুপুর ও সন্ধ্যার ট্রেন (14:01 থেকে 23:59)** | **departure এর 4 ঘণ্টা আগে** | ট্রেনের departure এর 30 মিনিট আগে | একটি ট্রেন যা 17:30 এ নিউ দিল্লি থেকে departure করে, 13:30 এ বর্তমান বুকিংয়ের জন্য খোলে। |
+| **রাতের ও মধ্যরাতের ট্রেন (00:00 থেকে 05:59)** | **departure এর 4 ঘণ্টা আগে** (সাধারণত 20:00 থেকে 22:00 এর মধ্যে) | ট্রেনের departure এর 30 মিনিট আগে | একটি ট্রেন যা 01:15 এ departure করে, 21:15 এর কাছাকাছি বর্তমান বুকিংয়ের জন্য খোলে। |
+| **সকাল ৬ টার ট্রেন (06:00 থেকে 14:00)** | **পূর্ববর্তী সন্ধ্যায় 20:00 ঘণ্টায়** | ট্রেনের departure এর 30 মিনিট আগে | একটি ট্রেন যা 06:45 এ departure করে, 20:00 এ রাতের আগে বর্তমান বুকিংয়ের জন্য খোলে, একটি রাতের বুকিং উইন্ডো প্রদান করে। |
+
+মনে রাখার জন্য মূল কার্যকরী নিয়ম:
+- **উৎপত্তিস্থল সময় নির্ধারণ করে:** চার্ট প্রস্তুতি ট্রেনের উৎপত্তিস্থল থেকে গণনা করা হয়, আপনার মধ্যবর্তী বোর্ডিং স্টেশন থেকে নয়। যদি আপনি কানপুরে বোর্ড করেন একটি ট্রেনের জন্য যা নিউ দিল্লি থেকে উৎপন্ন হয়, তবে বর্তমান উপলব্ধতা নিউ দিল্লি চার্ট তৈরি করার সময় খোলে।
+- **দ্বিতীয় চার্ট উইন্ডো:** প্রথম চার্ট (4 ঘণ্টা আগে) এবং দ্বিতীয় চার্ট (30 মিনিট আগে) এর মধ্যে, যাত্রীরা টিকিট বাতিল করে এবং অপ্রয়োগিত জরুরি কোটা মুক্ত হয়। এটি `CURR_AVBL` বার্থের চলমান ব্যাচ তৈরি করে।
+- **30 মিনিটের কঠোর স্টপ:** নির্ধারিত departure এর 30 মিনিট আগে, দ্বিতীয় এবং চূড়ান্ত চার্ট তৈরি হয়, হাতে-ধরা টার্মিনাল (HHTs) ট্রেন টিকিট পরীক্ষকদের (TTEs) সাথে সিঙ্ক করে, এবং সমস্ত অনলাইন এবং কাউন্টার বর্তমান বুকিং জমা হয়।
 
 ---
 
-## IRCTC তে বর্তমান উপলব্ধতা কী?
+## Is a Current Available Ticket 100% Confirmed?
 
-**IRCTC বর্তমান উপলব্ধতা হল প্রথম রিজার্ভেশন চার্ট প্রস্তুতির পর অবিলম্বে জনসাধারণের বুকিংয়ের জন্য খোলা খালি আসনের বাস্তব সময় সংখ্যা। এই টিকেটগুলি 100% নিশ্চিত এবং নির্ধারিত কোচ এবং বার্থ নম্বর সহ। এগুলি কোনও অতিরিক্ত চার্জ বহন করে না, যা শেষ মুহূর্তের বাতিলকরণ বা অ-বুকিত কোটা দ্বারা খালি থাকা আসনগুলি নির্দেশ করে।**
+**Yes, a current available ticket is 100% confirmed. The moment payment is processed, IRCTC instantly assigns you a specific coach and berth number printed directly on your electronic ticket. Current availability tickets carry zero waitlist or RAC risk, represent guaranteed physical seats, and will never undergo automatic cancellation.**
 
-আপনি কি কখনও আপনার সফরের সপ্তাহ আগে IRCTC তে ট্রেন খুঁজেছেন? আপনি যা দেখতে পাবেন তা হল **সাধারণ উপলব্ধতা**। এটি বুকিং প্যাটার্নের ভিত্তিতে খোলা আসনের একটি পূর্বাভাস। আপনি দেখতে পারেন Available 47, WL 3, বা RAC 7। কিন্তু মনে রাখবেন, এগুলি কেবল আনুমানিক। এগুলি স্থির নয়।
+অনেক যাত্রী `CURR_AVBL` দেখে দ্বিধা করেন, ভয় পান যে এটি অপেক্ষমাণ তালিকার মতো কাজ করে বা RAC এর মতো আসন ভাগাভাগির প্রয়োজন। সেই ভয় ভিত্তিহীন।
 
-**বর্তমান উপলব্ধতা** ভিন্ন। এটি ট্রেনের জন্য রিজার্ভেশন চার্ট প্রস্তুতির পর প্রদর্শিত হয় এবং সেই মুহূর্তে খালি বা বুকযোগ্য বার্থের *বাস্তব* সংখ্যা দেখায়। কোনও পূর্বাভাস নেই, কোনও অনুমান নেই; এটি কেবলমাত্র যা সত্যিই খোলা তা দেখায়।
-
-এটি এভাবে ভাবুন: সাধারণ উপলব্ধতা হল বুকিং সাইটে তিন সপ্তাহ আগে কতগুলি হোটেল রুম তালিকাভুক্ত রয়েছে তা পরীক্ষা করার মতো। বর্তমান উপলব্ধতা হল ফ্রন্ট ডেস্কে গিয়ে জিজ্ঞাসা করা "আপনার কাছে এখন আসলে কী আছে?"
-
-এটি গুরুত্বপূর্ণ কারণ সাধারণ উপলব্ধতা যাত্রার কাছাকাছি বিভ্রান্তিকর হতে পারে। একটি ট্রেন সাধারণ দৃশ্যে WL 12 দেখাতে পারে, কিন্তু যখন চার্টিং হয়, বাতিলকরণ, কোটা মুক্তি, এবং না-আসা যাত্রীরা 8 বা 15 বার্থ খুলে দিতে পারে যা আগে দৃশ্যমান ছিল না। বিপরীতটিও সত্য: একটি ট্রেন সাধারণ দৃশ্যে Available 3 দেখাতে পারে কিন্তু চার্টিংয়ের পরে শূন্যে সংকুচিত হতে পারে কারণ সেই পূর্বাভাসিত আসনগুলি RAC এবং অপেক্ষমাণ তালিকার ক্লিয়ারেন্স দ্বারা শোষিত হয়েছিল।
-
----
-
-## IRCTC বর্তমান উপলব্ধতা বুকিং সময় কী?
-
-**IRCTC বর্তমান উপলব্ধতা বুকিং সময় প্রথম রিজার্ভেশন চার্ট প্রস্তুতির মুহূর্ত থেকে শুরু হয়, সাধারণত ট্রেনের যাত্রার 8 ঘণ্টা আগে, এবং ট্রেন ছাড়ার 30 মিনিট আগে ঠিক বন্ধ হয়। এটি আপনাকে একটি খালি আসন নিশ্চিত করার জন্য প্রায় 7.5 ঘণ্টার উইন্ডো দেয়। ভোরের ট্রেনের জন্য, এই উইন্ডো পূর্ববর্তী রাতে খোলে।**
-
-এখানে বেশিরভাগ ট্রেনের জন্য সাধারণ সময়সূচী:
-
-| ঘটনা | সাধারণ সময় |
-| :--- | :--- |
-| সাধারণ উপলব্ধতা দৃশ্যমান | বুকিং খোলার (60 দিন আগে) থেকে চার্ট প্রস্তুতি পর্যন্ত |
-| **প্রথম চার্ট প্রস্তুত** | **~8 ঘণ্টা আগে যাত্রার স্থান থেকে** |
-| বর্তমান উপলব্ধতা প্রদর্শিত হয় | প্রথম চার্টের অবিলম্বে পরে |
-| দ্বিতীয়/চূড়ান্ত চার্ট প্রস্তুত | ~30 মিনিট আগে যাত্রার |
-| বর্তমান উপলব্ধতা আপডেট হয় | দ্বিতীয় চার্টের পরে, শেষ মুহূর্তের বাতিলকরণ প্রতিফলিত করে |
-| বুকিং উইন্ডো বন্ধ হয় | নির্ধারিত যাত্রার 30 মিনিট আগে |
-
-কিছু ব্যবহারিক সূক্ষ্মতা রয়েছে যা মানুষ মিস করে:
-
-- **ভোরের ট্রেনগুলি** (যা সকাল 8 টার আগে চলে) প্রায়শই পূর্ববর্তী রাতে চার্ট প্রস্তুত করে, কখনও কখনও রাত 8-10 টার মধ্যে। তাই Howrah থেকে 6 AM ট্রেনের জন্য বর্তমান উপলব্ধতা রাত 10 টায় দেখা যেতে পারে।
-- **সময়টি যাত্রার স্থান থেকে**, আপনার বোর্ডিং পয়েন্ট নয়। যদি আপনি Kanpur এ ট্রেন 12301 রাজধানী বোর্ড করেন, তবে চার্ট এখনও নিউ দিল্লির যাত্রার উপর ভিত্তি করে প্রস্তুত হয়। আপনার বোর্ডিং স্টেশন কোটা জন্য গুরুত্বপূর্ণ, কিন্তু চার্টের সময় উত্স অনুসরণ করে।
-- প্রথম এবং দ্বিতীয় চার্টের মধ্যে, আরও বাতিলকরণ আসতে পারে। দ্বিতীয় চার্ট আপনার শেষ বাস্তবসম্মত উইন্ডো।
-
-বিভিন্ন ট্রেনের ধরন অনুযায়ী চার্টের সময়ের বিস্তারিত বিশ্লেষণের জন্য [IRCTC চার্ট প্রস্তুতি গাইড](/blog/irctc-chart-preparation-guide) দেখুন। এবং প্রতিটি IRCTC বুকিং উইন্ডোর সম্পূর্ণ চিত্রের জন্য — টাটকাল খোলার সময় এবং রাতের রক্ষণাবেক্ষণ বন্ধ সহ — [IRCTC বুকিং সময়ের গাইড](/blog/irctc-booking-timings-rules) দেখুন।
+যখন একটি ই-টিকিট Current Availability এর অধীনে বুক করা হয়:
+- আপনার ইলেকট্রনিক রিজার্ভেশন স্লিপ (ERS) অবিলম্বে আপনার নিশ্চিত কোচ কোড (যেমন A1, B2, S6) এবং নির্ধারিত বার্থ নম্বর (যেমন 18 Lower Berth, 43 Side Upper) সহ মুদ্রিত হয়।
+- আপনি স্বয়ংক্রিয় বাতিলের নিয়মের অধীনে পড়েন না যা সম্পূর্ণ অপেক্ষমাণ তালিকার ই-টিকিট চার্ট প্রস্তুতির সময় বাতিল করে।
+- আপনি ট্রেনে সম্পূর্ণ আত্মবিশ্বাসের সাথে উঠতে পারেন, আপনার ডিজিটাল টিকিট এবং বৈধ সরকারী ছবি আইডি onboard TTE কে প্রদর্শন করতে পারেন, এবং আপনার নির্ধারিত বার্থ দখল করতে পারেন।
 
 ---
 
-## বর্তমান উপলব্ধ টিকেট কি নিশ্চিত নাকি?
+## How to Book CURR_AVBL Tickets on IRCTC App and Website (Step-by-Step)
 
-**হ্যাঁ, একটি বর্তমান উপলব্ধ টিকেট 100% নিশ্চিত। আপনি যখন বুক করেন, IRCTC সিস্টেম তাত্ক্ষণিকভাবে আপনাকে একটি নির্দিষ্ট কোচ এবং বার্থ নম্বর বরাদ্দ করে। অপেক্ষমাণ তালিকা বা RAC টিকেটের তুলনায়, এই বুকিংগুলি চার্টিংয়ের পরে ট্রেনে শারীরিক খালি আসনগুলি নির্দেশ করে, তাই আপনাকে একটি আসন ভাগ করতে হবে না বা স্বয়ংক্রিয় বাতিলের বিষয়ে চিন্তা করতে হবে না।**
+**To book CURR_AVBL tickets on the IRCTC Rail Connect app or website, search for your train after chart preparation, select your travel class showing the green CURR_AVBL status, enter passenger details, and complete payment before the 30-minute pre-departure cutoff. Confirmed coach and berth numbers generate immediately upon checkout.**
 
-অনেক যাত্রী শেষ মুহূর্তের টিকেট বুক করতে hesitate করেন কারণ তারা চিন্তা করেন "বর্তমান উপলব্ধ" মানে তারা হয়তো অপেক্ষমাণ তালিকায় পড়তে পারেন বা একটি আসন ভাগ করতে হতে পারে। বাস্তবে, একটি বর্তমান উপলব্ধ স্ট্যাটাস নির্দেশ করে যে রেলওয়ে চার্টিংয়ের পরে খালি শারীরিক বার্থ বিক্রি করছে। আপনি যখন বুক করেন, আপনার কোচ (যেমন B1, S4) এবং বার্থ নম্বর (যেমন 22, 45) আপনার ইলেকট্রনিক টিকেটে সরাসরি মুদ্রিত হবে। সাধারণ বাতিলকরণের নিয়ম প্রযোজ্য, সাধারণ ফি ₹60 থেকে ₹240 এর মধ্যে পরিবর্তিত হয় আপনার শ্রেণীর উপর নির্ভর করে।
+শেষ মুহূর্তের নিশ্চিত আসন সুরক্ষিত করতে এই 5-ধাপের প্রক্রিয়া অনুসরণ করুন:
 
----
-
-## বর্তমান উপলব্ধতা বনাম সাধারণ উপলব্ধতা
-
-**সাধারণ উপলব্ধতা মূলত একটি পূর্বাভাস যা চার্ট প্রস্তুতির আগে প্রদর্শিত হয়, যা আপনাকে অপেক্ষমাণ তালিকায় নিয়ে যেতে পারে। বিপরীতে, বর্তমান উপলব্ধতা হল চার্টিংয়ের পরে উপলব্ধ আসনের বাস্তব সংখ্যা। বর্তমান উপলব্ধতা টিকেটগুলি সর্বদা সম্পূর্ণ নিশ্চিত হয়, যা আপনাকে অবিলম্বে ক্রয়ের জন্য প্রস্তুত একটি গ্যারান্টিযুক্ত আসন দেয়।**
-
-| দিক | সাধারণ উপলব্ধতা | বর্তমান উপলব্ধতা |
-| :--- | :--- | :--- |
-| **কখন দৃশ্যমান** | বুকিং খোলার (60 দিন আগে) থেকে চার্ট প্রস্তুতি পর্যন্ত | প্রথম চার্টের পরে থেকে যাত্রার 15 মিনিট আগে পর্যন্ত |
-| **এটি কী দেখায়** | বর্তমান বুকিং, বাতিলকরণ এবং কোটা প্যাটার্নের ভিত্তিতে পূর্বাভাসিত আসন | সেই মুহূর্তে বাস্তব খালি বার্থ |
-| **স্ট্যাটাস লেবেল** | উপলব্ধ, WL, RAC, দুঃখিত/উপলব্ধ নয় | উপলব্ধ (নির্দিষ্ট সংখ্যা সহ), WL, RAC, দুঃখিত |
-| **কোটা দৃশ্যমানতা** | কোটা জুড়ে সম্মিলিত চিত্র দেখায় | আসলে কী মুক্ত হয়েছে তা দেখায় — টাটকাল, মহিলা, প্রতিরক্ষা কোটা সহ |
-| **বুকিং চার্জ** | মানক ভাড়া | মানক ভাড়া (কখনও কখনও খালি বার্থের জন্য 10% পর্যন্ত ছাড়) |
-| **বিশ্বাসযোগ্যতা** | দিকনির্দেশক (যাত্রার আগে উল্লেখযোগ্যভাবে পরিবর্তিত হতে পারে) | বাস্তব অবস্থার একটি স্ন্যাপশট (নতুন বাতিলকরণ/বুকিংয়ের সাথে পরিবর্তিত হয়) |
-| **উপকারী জন্য** | পরিকল্পনা করা, চাহিদা পরিমাপ করা | শেষ মুহূর্তের নিশ্চিত বুকিং, চার্টের পরে সুযোগ |
+1. **IRCTC তে লগ ইন করুন:** IRCTC Rail Connect অ্যাপ খুলুন বা `irctc.co.in` এ যান। আপনার IRCTC ব্যবহারকারীর পরিচিতি দিয়ে লগ ইন করুন। (যদি বিদেশ থেকে বুকিং করেন, তবে 403 ফায়ারওয়াল ব্লক এড়াতে আমাদের [IRCTC login from USA guide](/blog/irctc-login-from-usa-nri-booking-guide) পরামর্শ করুন)।
+2. **আপনার ট্রেনের রুট খুঁজুন:** আপনার উৎপত্তিস্থল, গন্তব্য স্টেশন এবং যাত্রার তারিখ প্রবেশ করুন। "Search Trains" ক্লিক করুন।
+3. **চার্টের পরে স্ট্যাটাস চেক করুন:** আপনার ট্রেনটি খুঁজুন। যদি প্রথম রিজার্ভেশন চার্ট প্রস্তুত করা হয়ে থাকে এবং আসন খালি থাকে, তবে সেই ক্লাসের জন্য উপলব্ধতা ট্যাব (যেমন 3A, 2A, বা SL) সবুজ টেক্সট **CURR_AVBL-0008** (অথবা খালি বার্থের সঠিক সংখ্যা) প্রদর্শন করবে।
+4. **যাত্রী তথ্য প্রবেশ করুন:** সবুজ স্ট্যাটাসে ক্লিক করুন এবং **"Book Now"** নির্বাচন করুন। যাত্রীদের বিস্তারিত (নাম, বয়স, লিঙ্গ, এবং বার্থ পছন্দ) যোগ করুন। নিশ্চিত করুন যে আপনার যাত্রীদের নাম আপনার সরকারী আইডি প্রুফের সাথে মেলে।
+5. **দ্রুত পেমেন্ট সম্পন্ন করুন:** আপনার পেমেন্ট পদ্ধতি নির্বাচন করুন (UPI, নেট ব্যাঙ্কিং, বা ডেবিট/ক্রেডিট কার্ড)। কাউন্টডাউন টাইমার শেষ হওয়ার আগে পেমেন্ট সম্পন্ন করুন। একবার নিশ্চিত হলে, আপনার কোচ এবং বার্থ বরাদ্দ সহ আপনার ইলেকট্রনিক টিকিট ডাউনলোড করুন।
 
 ---
 
-## দিনের ট্রেন বনাম রাতের ট্রেনের জন্য বর্তমান উপলব্ধতা বুকিং সময়ের উইন্ডো কী?
+## Current Availability vs General Availability vs Tatkal: Key Differences
 
-**দিনের ট্রেনের জন্য বর্তমান উপলব্ধতা বুকিং উইন্ডো যাত্রার 8 ঘণ্টা আগে খোলে (যেমন, 4:00 PM এর জন্য 8:00 AM)। ভোরের ট্রেনের জন্য, যেগুলি 12:00 AM থেকে 8:00 AM এর মধ্যে চলে, বর্তমান উপলব্ধতা পূর্ববর্তী রাতের 8:00 PM এ চার্ট প্রস্তুতির পর খোলে, সবসময় যাত্রার 30 মিনিট আগে বন্ধ হয়।**
+**The key difference is that General Availability offers advance bookings up to 60 days prior, Tatkal opens 24 hours ahead with heavy premium surcharges, and Current Availability opens 4 hours before departure for remaining vacant berths with no Tatkal fees and up to a 10% base fare discount.**
 
-- **দিনের ট্রেন (8 AM – 11 PM যাত্রা):** চার্ট প্রস্তুত ~8 ঘণ্টা আগে; বুকিং ট্রেনের যাত্রার 15 মিনিট আগে পর্যন্ত খোলা থাকে।
-- **রাতের ও ভোরের ট্রেন (12 AM – 8 AM যাত্রা):** প্রথম চার্ট পূর্ববর্তী রাতে (8 PM থেকে 10 PM) প্রস্তুত হয়, দীর্ঘ রাতের বুকিং উইন্ডো প্রদান করে।
-- **মধ্যবর্তী স্টেশন:** প্রথম চার্ট ট্রেনের উত্স স্টেশনের চূড়ান্ত হওয়ার সাথে সাথে বর্তমান উপলব্ধতা খোলে।
+এই তিনটি বুকিং মোডের তুলনা বোঝা আপনাকে সঠিক টিকিটিং কৌশল নির্বাচন করতে সাহায্য করে:
 
----
+| প্যারামিটার | সাধারণ উপলব্ধতা (GN) | টাটকাল কোটা (TQ) | বর্তমান উপলব্ধতা (CURR_AVBL) |
+| :--- | :--- | :--- | :--- |
+| **বুকিং খোলার সময়** | যাত্রার তারিখের 60 দিন আগে সকাল 08:00 IST | যাত্রার তারিখের 1 দিন আগে (AC এর জন্য 10:00 AM / Non-AC এর জন্য 11:00 AM) | departure এর ~4 ঘণ্টা আগে (অথবা সকালে ট্রেনের জন্য পূর্ববর্তী সন্ধ্যায় 20:00) |
+| **বুকিং বন্ধের সময়** | যখন প্রথম রিজার্ভেশন চার্ট চূড়ান্ত হয় | যখন প্রথম রিজার্ভেশন চার্ট চূড়ান্ত হয় | নির্ধারিত ট্রেনের departure এর 30 মিনিট আগে |
+| **অতিরিক্ত সারচার্জ** | নেই (মানক ভিত্তি ভাড়া) | কোচ ক্লাসের উপর নির্ভর করে ₹125 থেকে ₹500 অতিরিক্ত | নেই (মানক ভিত্তি ভাড়া, প্রায়শই খালি বার্থের উপর 10% ছাড় সহ) |
+| **নিশ্চিতকরণ স্ট্যাটাস** | নিশ্চিত, RAC, বা অপেক্ষমাণ তালিকা (GNWL) | নিশ্চিত বা টাটকাল অপেক্ষমাণ তালিকা (TQWL) | সর্বদা 100% নিশ্চিত (নির্ধারিত কোচ এবং বার্থ) |
+| **আসন কোথা থেকে আসে** | ট্রেনের জন্য বরাদ্দকৃত মাস্টার কোটা পুল | নিবেদিত টাটকাল কোটা কোচ | বিক্রির বাইরে থাকা টাটকাল, অপ্রয়োগিত VIP/ডিফেন্স কোটা, এবং শেষ মুহূর্তের বাতিল |
+| **সর্বোত্তম ব্যবহারের জন্য** | অগ্রিম ছুটি এবং পরিকল্পিত ভ্রমণ | জরুরি পরের দিনের ভ্রমণ যখন সাধারণ আসন শেষ হয়ে যায় | চার্ট প্রস্তুতির দিনে শেষ মুহূর্তের ভ্রমণ টাটকাল মার্কআপ ছাড়াই |
 
-## ট্রেন ছাড়ার পর মধ্যবর্তী স্টেশনগুলিতে বর্তমান উপলব্ধতা আসনগুলি কীভাবে খুঁজবেন?
-
-**আপনি ট্রেন ছাড়ার পর মধ্যবর্তী স্টেশনগুলিতে খালি বার্থগুলি LastBerth বা IRCTC চার্ট ভ্যাক্যান্সি টুলে বিভাগ অনুযায়ী খুঁজে পেতে পারেন। যখন একজন যাত্রী আগে নেমে যায়, তখন অ-বরাদ্দিত বিভাগটি মধ্যবর্তী স্টেশনগুলি থেকে বর্তমান বুকিংয়ের জন্য খোলা হয় 15 মিনিট আগে পৌঁছানোর।**
-
-- **বিভাগ-ভিত্তিক ভ্যাক্যান্সি স্ক্যানিং:** ট্রেনটি প্রথম স্টেশন ছাড়ার পর আপনার উত্স এবং গন্তব্য স্টেশন জোড়ের মধ্যে খালি বার্থগুলি পরীক্ষা করুন।
-- **বোর্ডিং পয়েন্ট সমন্বয়:** যদি রুটের বরাবর একটি নিকটবর্তী প্রধান স্টেশন থেকে আসন খালি থাকে, আপনি সেই স্টেশন থেকে বর্তমান উপলব্ধতা বুক করতে পারেন।
-
----
-
-## LastBerth কীভাবে সাহায্য করে
-
-**LastBerth শেষ মুহূর্তের ভ্রমণকে সহজ করে দেয় ট্রেনের রুটে সমস্ত স্টেশনের মধ্যে বিভাগ-স্তরের বর্তমান উপলব্ধতা তাত্ক্ষণিকভাবে স্ক্যান করে। IRCTC তে স্টেশন জোড়গুলি ম্যানুয়ালি পরীক্ষা করার পরিবর্তে, এটি নিশ্চিত ভ্রমণ বিকল্পগুলি প্রদর্শন করে, আসল উপলব্ধতার ভিত্তিতে ট্রেনগুলিকে র‌্যাঙ্ক করে এবং যখন সরাসরি শেষ থেকে শেষ আসনগুলি সম্পূর্ণ বিক্রি হয়ে যায় তখন আপনাকে বিভক্ত বিভাগগুলি একত্রিত করতে সাহায্য করে।**
-
-যখন বর্তমান উপলব্ধতা একটি মিশ্র চিত্র দেখায় (কিছু বিভাগ নিশ্চিত, অন্যান্য WL, এবং বিভিন্ন শ্রেণীতে বিভিন্ন স্ট্যাটাস), বিকল্পগুলি ম্যানুয়ালি স্ক্রোল করা ধীর এবং ত্রুটিপূর্ণ।
-
-[LastBerth](/) আপনার রুট স্ক্যান করে এবং দেখায়:
-
-- কোন ট্রেনগুলি আপনার আসল উত্স থেকে নিশ্চিত বর্তমান উপলব্ধতা রয়েছে
-- প্রতিটি বিকল্প আপনাকে কতগুলি নিশ্চিত ভ্রমণের ঘণ্টা দেয়
-- নিশ্চিত অংশটি কোথায় শেষ হয় এবং অনিশ্চয়তা শুরু হয়
-- যখন পুরো রুটটি উপলব্ধ নয় তখন বিভাগ-স্তরের বিকল্প
-- আপনার তারিখে চলমান ট্রেনগুলির মধ্যে শ্রেণী-ভিত্তিক তুলনা
+শেষ মুহূর্তের বিকল্পগুলির গভীর তুলনার জন্য, আমাদের গাইড পড়ুন [Tatkal vs Current Availability](/blog/tatkal-vs-current-availability-last-minute-train-ticket)।
 
 ---
 
-## সাধারণ বুকিং প্রশ্ন (FAQ)
+## What Are the Cancellation and Refund Rules for Current Booking?
 
-### IRCTC তে বর্তমান উপলব্ধতা কী?
+**Cancellation of a confirmed Current Availability ticket before chart preparation or more than 4 hours prior to departure incurs standard railway cancellation clerkage fees. However, once the train's chart is prepared or within 4 hours of departure, zero refund is granted on confirmed tickets if cancelled by the passenger.**
 
-বর্তমান উপলব্ধতা IRCTC তে একটি ট্রেনের জন্য রিজার্ভেশন চার্ট প্রস্তুতির পর প্রদর্শিত বাস্তব সময় আসনের স্থিতি। সাধারণ উপলব্ধতার (যা একটি পূর্বাভাস) বিপরীতে, বর্তমান উপলব্ধতা সেই মুহূর্তে খালি বার্থের প্রকৃত সংখ্যা প্রতিফলিত করে, বাতিলকরণ, কোটা মুক্তি, এবং স্বয়ংক্রিয় বাতিল হওয়া অপেক্ষমাণ ই-টিকেট দ্বারা মুক্ত আসনগুলি অন্তর্ভুক্ত করে।
+কারণ Current Availability টিকিটগুলি **পরে** প্রথম চার্ট ইতিমধ্যে চূড়ান্ত করা হয়, কঠোর পোস্ট-চার্ট বাতিলের নিয়ম প্রযোজ্য:
 
-### IRCTC বর্তমান উপলব্ধতা বুকিংয়ের জন্য কখন প্রদর্শিত হয়?
+1. **চার্টিংয়ের পরে যাত্রী-প্রবর্তিত বাতিল:** ভারতীয় রেলওয়ে যাত্রী বাতিলের নিয়মের অধীনে, **নিশ্চিত টিকিট বাতিলের জন্য কোন ফেরত পাওয়া যায় না** চার্ট প্রস্তুতির পরে বা নির্ধারিত ট্রেনের departure এর 4 ঘণ্টার মধ্যে। যদি আপনি একটি `CURR_AVBL` টিকিট বুক করেন এবং ভ্রমণ না করার সিদ্ধান্ত নেন, তবে আপনি ভাড়া হারাবেন।
+2. **রেলওয়ে দ্বারা ট্রেন বাতিল:** যদি ভারতীয় রেলওয়ে দুর্ঘটনা, আবহাওয়া, বা অপারেশনাল সীমাবদ্ধতার কারণে ট্রেন বাতিল করে, তবে আপনি **100% স্বয়ংক্রিয় ফেরত** পাবেন যা আপনার মূল পেমেন্ট অ্যাকাউন্টে ক্রেডিট করা হবে কোন ক্লার্কেজ কাটা ছাড়াই।
+3. **ট্রেন 3 ঘণ্টার বেশি দেরি হলে:** যদি আপনার ট্রেন আপনার বোর্ডিং স্টেশনে 3 ঘণ্টার বেশি দেরি হয় এবং আপনি ভ্রমণ না করার সিদ্ধান্ত নেন, তবে আপনাকে একটি অনলাইন টিকিট ডিপোজিট রিসিপ্ট (TDR) ফাইল করতে হবে ট্রেনের প্রকৃত departure এর আগে পূর্ণ ফেরত দাবি করতে।
+4. **এসি ক্লাসে এসি ব্যর্থতা:** যদি আপনার যাত্রার সময় এয়ার কন্ডিশনিং ব্যর্থ হয়, তবে onboard TTE থেকে একটি AC ব্যর্থতার সার্টিফিকেট সংগ্রহ করুন এবং আগমনের 72 ঘণ্টার মধ্যে একটি TDR ফাইল করুন AC এবং non-AC ভাড়ার মধ্যে পার্থক্যের ফেরত দাবি করতে।
 
-বর্তমান উপলব্ধতা প্রথম চার্ট প্রস্তুতির পর অবিলম্বে প্রদর্শিত হয়, যা সাধারণত ট্রেনের নির্ধারিত যাত্রার 8 ঘণ্টা আগে ঘটে। ভোরের ট্রেনের জন্য (যেগুলি 7-8 AM এর আগে চলে), চার্ট পূর্ববর্তী রাত 8 PM থেকে 11 PM এর মধ্যে প্রস্তুত হতে পারে।
-
-### IRCTC তে একটি ভ্যাক্যান্সি চার্ট কী?
-
-এটি চার্টিংয়ের পরে ট্রেনের কোচ-ভিত্তিক লেআউট হিসাবে ভাবুন। এটি ঠিক কোন বার্থগুলি খালি, তাদের কোচ নম্বর এবং তারা উপরের বা নিচের বার্থ কিনা তা দেখায়। এটি পরীক্ষা করতে [IRCTC Charts/Vacancy portal](https://www.irctc.co.in/online-charts) এ যান। সাধারণ উপলব্ধতা কেবল একটি সহজ সংখ্যা তালিকাভুক্ত করে, যেখানে এই মানচিত্রটি প্রকৃত খালি স্থানগুলি বিশদভাবে দেখায়।
-
-### বর্তমান উপলব্ধতা সাধারণ উপলব্ধতার থেকে কীভাবে আলাদা?
-
-সাধারণ উপলব্ধতা আবহাওয়ার পূর্বাভাসের মতো। এটি বুকিং খোলার সময় থেকে প্রথম চার্ট প্রস্তুতি পর্যন্ত চলে। বর্তমান উপলব্ধতা হল বাস্তবতা। এটি চার্টিংয়ের পরে খালি বার্থের একটি লাইভ গণনা। সাধারণ উপলব্ধতা ধীরে ধীরে চলে কারণ বাতিলকরণ সপ্তাহের পর সপ্তাহে আসতে থাকে। বর্তমান উপলব্ধতা দ্রুত পরিবর্তিত হয় যখন লোকেরা বুকিং করে বা যাত্রার ঠিক আগে বাতিল করে।
-
-### আমি কি অনলাইনে বর্তমান উপলব্ধতা ব্যবহার করে একটি টিকেট বুক করতে পারি?
-
-হ্যাঁ, অবশ্যই। একবার চার্ট প্রস্তুত হলে, যে কোনও খালি বার্থ IRCTC ওয়েবসাইট বা রেল সংযোগ অ্যাপে সরাসরি বুক করা যায়। আপনি সেগুলি ঠিক একটি সাধারণ টিকেটের মতো বুক করেন। উইন্ডো ট্রেনের যাত্রার 15 মিনিট আগে পর্যন্ত খোলা থাকে। অতিরিক্ত কিছু করতে হবে না; কেবল অনুসন্ধান করুন, নির্বাচন করুন এবং বুক করুন।
-
-### বর্তমান উপলব্ধতা টিকেটের জন্য কি কোনও অতিরিক্ত চার্জ আছে?
-
-না, একদমই নয়। আপনি মানক ভিত্তি ভাড়া পরিশোধ করেন। আসলে, শেষ মুহূর্তের বুকিংকে উৎসাহিত করার জন্য, রেলওয়ে প্রায়শই খালি আসনের জন্য মৌলিক ভাড়ায় 10% ছাড় দেয়। সেরা অংশ? অতিরিক্ত টাটকাল চার্জের সাথে মোকাবিলা করতে হবে না।
-
-### যদি বর্তমান উপলব্ধতা WL দেখায় তাহলে কি হয়?
-
-যদি বর্তমান উপলব্ধতা WL দেখায়, তবে এর মানে হল আপনার রুটের জন্য প্রতিটি বার্থ সম্পূর্ণ বুক করা হয়েছে। কোনও ব্যাকআপ পুল নেই। নিয়মিত অপেক্ষমাণ তালিকার কাছে পরিষ্কার হতে দিন লাগে, কিন্তু একটি বর্তমান WL কেবল তখনই চলে যদি কেউ যাত্রার ঠিক আগে বাতিল করে। এর উপর বাজি ধরবেন না। আপনাকে অন্যান্য শ্রেণী পরীক্ষা করতে হবে, ছোট লেগগুলি খুঁজতে হবে, বা অন্য ট্রেন খুঁজতে হবে। যখন সবকিছু অপেক্ষমাণ তালিকায় দেখায় তখন কৌশলগুলির জন্য [best train when all trains show waiting list](/blog/best-train-when-all-trains-show-waiting-list) দেখুন।
-
-### একটি বর্তমান উপলব্ধ টিকেট কি নিশ্চিত নাকি?
-
-হ্যাঁ, একটি বর্তমান উপলব্ধ টিকেট **সম্পূর্ণ নিশ্চিত**। যখন আপনি বর্তমান উপলব্ধতা উইন্ডোতে বুক করেন, আপনাকে একটি নির্দিষ্ট কোচে একটি আসন নম্বর বরাদ্দ করা হয়। এটি RAC বা WL নয়; এটি একটি মানক নিশ্চিত রিজার্ভেশন। বুকিংয়ের সময় আপনি আপনার কোচ এবং বার্থের বিস্তারিত দেখতে পাবেন।
+যদি আপনি পেমেন্ট ডেবিটে সম্মুখীন হন যেখানে টাকা কাটা হয়েছে কিন্তু আপনার বর্তমান রিজার্ভেশন একটি PNR তৈরি করতে ব্যর্থ হয়েছে, তবে আমাদের সমস্যা সমাধানের পদক্ষেপগুলি পড়ুন [IRCTC booking failed money deducted refund rules](/blog/irctc-booking-failed-money-deducted-refund-rules)।
 
 ---
 
-## সম্পর্কিত গাইড
+## How to Find Vacant Berths on Intermediate Stations Using LastBerth
 
-- [Tatkal vs Current Availability for last-minute tickets](/blog/tatkal-vs-current-availability-last-minute-train-ticket)
-- [IRCTC chart preparation guide](/blog/irctc-chart-preparation-guide)
-- [How to check vacant berths after chart preparation](/blog/how-to-check-vacant-berths-after-chart-preparation)
-- [RAC vs WL vs Confirmed tickets explained](/blog/rac-vs-wl-explained)
-- [Best train when all trains show waiting list](/blog/best-train-when-all-trains-show-waiting-list)
-- [GNWL vs RLWL vs PQWL: Waitlist confirmation chances](/blog/gnwl-vs-rlwl-vs-pqwl-waitlist-confirmation-chances)
-- [IRCTC auto upgradation: will you get a free upgrade?](/blog/irctc-auto-upgradation-rules-secrets)
+**You can find vacant berths on intermediate stations using LastBerth's automated segment scanner, which reveals coach vacancies opening when passengers disembark early. Instead of searching individual station pairs on IRCTC, LastBerth identifies split confirmed segments and links directly to live charting schedules on Chart Times and Chart Vacancy.**
+
+দূরপাল্লার ট্রেনগুলিতে, যাত্রীরা বিভিন্ন স্থানে বোর্ড এবং নামেন। একটি বার্থ নিউ দিল্লি এবং কানপুরের মধ্যে দখল করা হতে পারে, কিন্তু কানপুর থেকে প্রয়াগরাজ বা বারাণসী পর্যন্ত সম্পূর্ণ খালি থাকতে পারে।
+
+মানক IRCTC অনুসন্ধানগুলি প্রায়শই এই আংশিক খালি আসনগুলিকে শেষ থেকে শেষ "দুঃখিত" বার্তার পিছনে লুকিয়ে রাখে। LastBerth আপনাকে সেগুলি আনলক করতে সাহায্য করে:
+
+- **সেগমেন্ট-ওয়াইজ কারেন্ট অ্যাভেলেবিলিটি:** [Smart Seats](/) ব্যবহার করুন ট্রেনগুলি আবিষ্কার করতে যেখানে একই ট্রেনে দুটি পরপর সেগমেন্ট বুকিং আপনাকে পুরো যাত্রার জন্য একটি নিশ্চিত আসন নিশ্চিত করে।
+- **কোচ লেআউট এবং বার্থ পরিদর্শন:** [Coach Journey Lookup](/seat-status) ব্যবহার করে যাচাই করুন আপনার খালি বার্থটি একটি লোয়ার, মিডল, আপার, বা সাইড বার্থ কিনা।
+- **নির্দিষ্ট চার্ট প্রস্তুতির সময়:** 4 ঘণ্টার চার্টিং উইন্ডো কখনও মিস করবেন না। [Chart Times](/chart-times) এ আপনার ট্রেনের ঐতিহাসিক চার্টিং অভ্যাসগুলি চেক করুন।
+- **লাইভ ভ্যাকেন্সি পরিদর্শন:** [Chart Vacancy](/chart-vacancy) ব্যবহার করে সমস্ত ক্লাসে কোচ-বাই-কোচ খালি আসনের লেআউটগুলি দেখুন।
+
+---
+
+## Common Booking Questions (FAQ)
+
+### What does CURR_AVBL mean in IRCTC?
+
+CURR_AVBL stands for Current Availability in IRCTC train ticketing. It indicates physical vacant berths open for immediate booking after the first reservation chart has been finalized (4 hours before train departure). All tickets booked under this status are 100% confirmed with assigned coach and berth numbers.
+
+### What time does Current Availability open on IRCTC?
+
+Current Availability opens immediately after the first reservation chart is prepared. For afternoon and evening trains, this is at least 4 hours before departure from the originating station. For morning trains departing between 06:00 and 14:00, charting occurs the previous evening by 20:00 hours, opening overnight booking.
+
+### What time does Current Availability booking close?
+
+Current Availability booking closes exactly 30 minutes before the scheduled departure of the train from your boarding station. At that point, the second and final reservation chart is printed, onboard TTE hand-held terminals synchronize, and all ticketing transactions freeze.
+
+### Is Current Availability ticket confirmed or RAC?
+
+A ticket booked under Current Availability is always 100% confirmed. You are immediately assigned a designated coach and berth number on your electronic reservation slip. It is never issued as RAC or Waiting List status.
+
+### Is there any discount on Current Availability tickets?
+
+Yes. Indian Railways grants a 10% discount on the basic fare of vacant berths booked under Current Reservation on select premium and mail/express trains (such as Rajdhani, Shatabdi, and Duronto express trains), making last-minute bookings cheaper than regular advance tickets.
+
+### Can I book Current Availability tickets at railway station counters?
+
+Yes. In addition to the IRCTC website and Rail Connect app, Current Availability tickets can be purchased at any computerised Passenger Reservation System (PRS) counter or dedicated Current Reservation counter at railway stations until 30 minutes before train departure.
+
+### Can I cancel a Current Availability ticket and get a refund?
+
+No refund is granted if a passenger cancels a confirmed Current Availability ticket, because these tickets are booked after reservation chart preparation. You only receive a full refund if the train is cancelled by Railways or delayed by more than 3 hours and a TDR is filed before departure.
+
+### What is the difference between CURR_AVBL and General Availability?
+
+General Availability is open up to 60 days in advance and can result in confirmed, RAC, or waitlisted tickets. Current Availability only opens 4 hours before departure for physically empty seats, carries no waitlist risk, and always produces confirmed tickets.
+
+### What should I do if Current Availability also shows Regret or WL?
+
+If Current Availability shows Regret or WL, every seat on that train is completely sold out. Use LastBerth Smart Seats to search for split confirmed seats along intermediate stations, or check alternative trains running on the same corridor.
+
+---
+
+## Related Guides
+
+- [Tatkal vs Current Availability: Which Confirms Faster?](/blog/tatkal-vs-current-availability-last-minute-train-ticket)
+- [IRCTC Chart Preparation Time & Rules Guide](/blog/irctc-chart-preparation-guide)
+- [How to Check Vacant Berths After Chart Preparation](/blog/how-to-check-vacant-berths-after-chart-preparation)
+- [IRCTC Booking Timings & Night Maintenance Rules](/blog/irctc-booking-timings-rules)
+- [IRCTC Auto Upgradation Rules & Secrets](/blog/irctc-auto-upgradation-rules-secrets)
+- [IRCTC Booking Failed Money Deducted Refund Guide](/blog/irctc-booking-failed-money-deducted-refund-rules)

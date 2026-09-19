@@ -40,6 +40,16 @@ export type HomeButtonId =
 
 export type AnalyticsEvent =
   | {
+      name: "blog_route_cta_clicked";
+      properties: {
+        slug: string;
+        cta_type: "inline_card" | "sticky_bar" | "route_chip" | "related_route" | "tool_button";
+        from?: string;
+        to?: string;
+        destination_url: string;
+      };
+    }
+  | {
       name: "search_submitted";
       properties: {
         train_number: string;
@@ -387,12 +397,11 @@ export type AnalyticsEvent =
   | {
       name: "train_search_v2_auto_scan_started";
       properties: {
-        train_number: string;
-        train_name?: string | null;
+        train_numbers: string[];
         from_code: string;
         to_code: string;
         journey_date: string;
-        scan_index: number;
+        total_trains?: number;
       };
     }
   | {

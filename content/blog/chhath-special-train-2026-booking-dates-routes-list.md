@@ -12,7 +12,7 @@ tags:
   - 0-series train rules
 ---
 
-> **🔔 Going home for Chhath?** Try searching for confirmed train tickets on [our platform](/).
+> **🔔 Going home for Chhath?** Check confirmed festival specials & split seats: [Delhi ➔ Patna (NDLS to PNBE)](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn), [Mumbai ➔ Danapur](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur), [Pune ➔ Danapur](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur), or [Search All Trains](/) & [Chart Vacancy](/chart-vacancy).
 
 ## TL;DR — the 5 facts that matter
 
@@ -68,6 +68,8 @@ Numbers jiggle yearly (04078 → 04080, whatever) — corridors don't. Regulars 
 | Surat / Udhna | Chhapra — textile workers fill it in hours | 09031 / 09032 | weekly or twice, Diwali–Chhath both | Nandurbar, Bhusaval, Itarsi, Katni, Ballia side |
 | Ahmedabad | Patna / Danapur — Sunday run toughest | 09417 / 09418 | weekly | Vadodara, Ratlam, Kota, Agra side, Kanpur, DDU |
 | Bengaluru SMVB | Danapur — 2 nights, carry theplas! | 06261 / 06262 | weekly, extra if lucky | Katpadi, Vijayawada, Warangal, Nagpur, Itarsi, Jabalpur |
+
+> ⚡ **Quick Seat Search by Route:** [Check Delhi ➔ Patna](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn) • [Check Mumbai ➔ Danapur](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur) • [Check Pune ➔ Danapur](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur) • [Check Surat ➔ Patna](/?from=ST&to=PNBE&fromName=Surat&toName=Patna%20Jn) • [Check Bengaluru ➔ Danapur](/?from=SBC&to=DNR&fromName=KSR%20Bengaluru&toName=Danapur)
 
 Don't marry a number. Last Chhath a duplicate Anand Vihar–Patna popped Saturday 11 PM with zero announcement — brother got it refreshing randomly. Check often, bags half-packed Nov 8–12.
 

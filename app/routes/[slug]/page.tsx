@@ -118,18 +118,30 @@ export default async function RoutePage({ params }: Props) {
           ))}
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-slate-50/50 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50/90 via-white to-indigo-50/50 p-6 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
           <div>
-            <h3 className="text-lg font-bold text-slate-900">Need a Confirmed Ticket?</h3>
-            <p className="text-sm text-slate-650 mt-1">LastBerth monitors cancellations and alternative routing to get you a seat.</p>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-800 mb-2">
+              ⚡ LIVE SEAT SCANNER
+            </span>
+            <h3 className="text-xl font-extrabold text-slate-950">Need a Confirmed Ticket from {data.origin.name} to {data.destination.name}?</h3>
+            <p className="text-sm text-slate-600 mt-1">
+              Search real-time availability, split-journey contiguous bookings on the same train, and vacant berths after charting.
+            </p>
           </div>
-          <Link
-            href={`/?from=${data.origin.code}&to=${data.destination.code}&fromName=${encodeURIComponent(data.origin.name)}&toName=${encodeURIComponent(data.destination.name)}`}
-            rel="nofollow"
-            className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm px-6 py-2.5 rounded-lg shadow-sm hover:shadow transition duration-200"
-          >
-            Find Alternate Routes
-          </Link>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 w-full md:w-auto">
+            <Link
+              href={`/?from=${data.origin.code}&to=${data.destination.code}&fromName=${encodeURIComponent(data.origin.name)}&toName=${encodeURIComponent(data.destination.name)}&utm_source=route_page&utm_medium=primary_cta&utm_campaign=${slug}`}
+              className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-bold text-sm px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition duration-200 text-center"
+            >
+              Search Confirmed Seats Now →
+            </Link>
+            <Link
+              href={`/chart-vacancy`}
+              className="inline-flex items-center justify-center border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm px-4 py-3 rounded-xl transition duration-200 text-center shadow-2xs"
+            >
+              📊 Check Vacancies
+            </Link>
+          </div>
         </div>
       </div>
 

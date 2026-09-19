@@ -27,7 +27,6 @@ interface TrainSearchV2CardProps {
   toName?: string;
   acOnly?: boolean;
   autoScanEnabled?: boolean;
-  scanIndex?: number;
   onOpenSchedule?: (trainNumber: string, from?: string, to?: string) => void;
   onOpenFullResultModal?: (args: {
     trainNumber: string;
@@ -65,7 +64,6 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
   toName,
   acOnly = false,
   autoScanEnabled = false,
-  scanIndex = 0,
   onOpenSchedule,
   onOpenFullResultModal,
   onSeatsDiscovered,
@@ -212,18 +210,6 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     setFoundSeats([]);
     setCurrentProgressText("Scanning routes and classes...");
 
-    trackAnalyticsEvent({
-      name: "train_search_v2_auto_scan_started",
-      properties: {
-        train_number: train.trainNumber,
-        train_name: train.trainName,
-        from_code: fromCode,
-        to_code: toCode,
-        journey_date: journeyDate,
-        scan_index: scanIndex,
-      },
-    });
-
     abortControllerRef.current?.abort();
     const controller = new AbortController();
     abortControllerRef.current = controller;
@@ -361,10 +347,8 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     toCode,
     isDirectAvailable,
     train.trainNumber,
-    train.trainName,
     train.avlClasses,
     acOnly,
-    scanIndex,
     onSeatsDiscovered,
     onScanComplete,
   ]);

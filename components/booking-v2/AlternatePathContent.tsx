@@ -25,6 +25,7 @@ import {
   type ChartAlertPaymentModalJourney,
 } from "@/components/payments/ChartAlertPaymentModal";
 import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFooter";
+import { BellRing } from "lucide-react";
 import { NextReleaseBottomSheet } from "./NextReleaseBottomSheet";
 import { useSplitBookingFeatureFlag } from "@/lib/hooks/useSplitBookingFeatureFlag";
 import { SplitTicketBookingModal } from "./SplitTicketBookingModal";
@@ -491,141 +492,201 @@ function CompactLegChartCta({
     handlePaid,
   ]);
 
+  const statusHeader = (
+    <div className="flex flex-wrap items-center gap-2">
+      <span className="shrink-0 inline-flex items-center rounded-md bg-amber-50 border border-amber-200/80 px-2 py-0.5 text-xs font-bold text-amber-800 shadow-2xs">
+        Not Available
+      </span>
+      <span className="text-xs font-medium text-slate-600">
+        Buy ticket from TTE in train
+      </span>
+    </div>
+  );
+
   if (done || alreadySet) {
     return (
-      <div className="flex flex-col items-end gap-1">
-        {chartTimeLabel && (
-          <p className="text-[14px] font-bold text-emerald-700/90">
-            Will notify at {chartTimeLabel}
-          </p>
-        )}
-        <span className="shrink-0 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-800">
-          ✓ Alert set
-        </span>
+      <div className="flex flex-col gap-2.5 px-3 py-2.5 sm:px-4 sm:py-3">
+        {statusHeader}
+        <div className="flex items-center justify-between gap-3 rounded-lg border border-emerald-200 bg-emerald-50/70 p-2.5 sm:px-3 sm:py-2 shadow-2xs">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs">
+              ✓
+            </span>
+            <div className="min-w-0">
+              <p className="text-xs sm:text-sm font-bold text-emerald-900 leading-snug">
+                Alert active for this leg
+              </p>
+              {chartTimeLabel && (
+                <p className="text-[11px] font-medium text-emerald-700 mt-0.5">
+                  Will notify at {chartTimeLabel}
+                </p>
+              )}
+            </div>
+          </div>
+          <span className="shrink-0 rounded-full bg-emerald-100/90 px-2.5 py-1 text-[11px] font-bold text-emerald-800">
+            ✓ Alert set
+          </span>
+        </div>
       </div>
     );
   }
 
   if (!open) {
     return (
-      <div className="flex flex-col items-end gap-1">
-        {chartTimeLoading ? (
-          <div className="flex items-center gap-1.5 text-[11px] font-bold italic text-blue-500 animate-pulse">
-            <span className="h-2.5 w-2.5 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />
-            Loading chart time...
-          </div>
-        ) : chartTimeLabel ? (
-          <div className="flex flex-col items-end">
-            <p
-              className={cn(
-                "text-[14px] font-bold",
-                chartIsPrepared ? "text-red-600" : "text-indigo-600",
-              )}
-            >
-              {chartIsPrepared ? (
-                <>Chart for {legFrom} was released at</>
+      <div className="flex flex-col gap-2.5 px-3 py-2.5 sm:px-4 sm:py-3">
+        {statusHeader}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 rounded-lg border border-blue-100 bg-blue-50/50 p-2.5 sm:px-3 sm:py-2 shadow-2xs">
+          <div className="flex items-start sm:items-center gap-2.5 min-w-0">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-100/80 text-blue-600 mt-0.5 sm:mt-0">
+              <BellRing className="h-4 w-4" aria-hidden="true" />
+            </span>
+            <div className="min-w-0">
+              {chartTimeLoading ? (
+                <div className="flex items-center gap-2 text-xs font-medium text-slate-500 italic animate-pulse">
+                  <span className="h-2.5 w-2.5 rounded-full border-2 border-blue-600 border-t-transparent animate-spin" />
+                  <span>Loading chart time...</span>
+                </div>
+              ) : chartTimeLabel ? (
+                <div>
+                  <p className="text-xs sm:text-sm font-semibold text-slate-900 leading-snug">
+                    {chartIsPrepared ? (
+                      <span className="text-rose-700 font-bold">
+                        Chart for {legFrom} was released at {chartTimeLabel}
+                      </span>
+                    ) : (
+                      <>
+                        New tickets open at{" "}
+                        <span className="font-bold text-blue-700">
+                          {chartTimeLabel}
+                        </span>
+                      </>
+                    )}
+                  </p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">
+                    {chartIsPrepared
+                      ? "Vacant berths were released during chart prep"
+                      : "Get notified as soon as charts are prepared"}
+                  </p>
+                  {chartIsPrepared &&
+                    activeChartSource === "one" &&
+                    meta?.chartNextRemoteStation && (
+                      <button
+                        type="button"
+                        onClick={() => setShowNextReleaseSheet(true)}
+                        className="mt-1 text-[11px] font-bold text-blue-600 hover:underline inline-flex items-center gap-1"
+                      >
+                        Check next release →
+                      </button>
+                    )}
+                </div>
               ) : (
-                "New tickets open at"
-              )}{" "}
-              {chartTimeLabel}
-            </p>
-            {chartIsPrepared &&
-              activeChartSource === "one" &&
-              meta?.chartNextRemoteStation && (
-                <button
-                  type="button"
-                  onClick={() => setShowNextReleaseSheet(true)}
-                  className="mt-0.5 text-[11px] font-bold text-blue-600 hover:underline"
-                >
-                  Check next release →
-                </button>
+                <div>
+                  <p className="text-xs sm:text-sm font-semibold text-slate-900">
+                    Get notified when new seats open
+                  </p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">
+                    We&apos;ll alert you when chart preparation releases seats
+                  </p>
+                </div>
               )}
+            </div>
           </div>
-        ) : null}
-        {showNextReleaseSheet && meta?.chartNextRemoteStation && (
-          <NextReleaseBottomSheet
-            trainNumber={trainNumber}
-            journeyDate={journeyDate}
-            stationCode={meta.chartNextRemoteStation}
-            onClose={() => setShowNextReleaseSheet(false)}
-          />
-        )}
-        {!chartIsPrepared && (
-          <button
-            type="button"
-            onClick={() => {
-              setOpen(true);
-              setError(null);
-              trackAnalyticsEvent({
-                name: "chart_alert_opened",
-                properties: {
-                  source: "search_panel",
-                  train_number: trainNumber.trim(),
-                  station_code: legFrom.trim().toUpperCase(),
-                },
-              });
-            }}
-            className="shrink-0 rounded-md border border-amber-400 bg-amber-50 px-2.5 py-1.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 transition-colors"
-          >
-            Get Ticket Alert
-          </button>
-        )}
+
+          {showNextReleaseSheet && meta?.chartNextRemoteStation && (
+            <NextReleaseBottomSheet
+              trainNumber={trainNumber}
+              journeyDate={journeyDate}
+              stationCode={meta.chartNextRemoteStation}
+              onClose={() => setShowNextReleaseSheet(false)}
+            />
+          )}
+
+          {!chartIsPrepared && (
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(true);
+                setError(null);
+                trackAnalyticsEvent({
+                  name: "chart_alert_opened",
+                  properties: {
+                    source: "search_panel",
+                    train_number: trainNumber.trim(),
+                    station_code: legFrom.trim().toUpperCase(),
+                  },
+                });
+              }}
+              className="shrink-0 w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-700 active:scale-[0.98] transition-all touch-manipulation"
+            >
+              <BellRing className="h-3.5 w-3.5" aria-hidden="true" />
+              Get Ticket Alert
+            </button>
+          )}
+        </div>
       </div>
     );
   }
 
   return (
     <>
-      <div className="mt-2 w-full rounded-lg border border-blue-200 bg-blue-50/70 p-2.5 sm:p-3">
-        <p className="mb-2 text-xs font-semibold text-blue-950 leading-snug">
-          {chartTimeLoading ? (
-            <span className="inline-flex items-center gap-1.5 italic text-blue-600/80">
-              <span className="h-2 w-2 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
-              Loading chart time...
+      <div className="flex flex-col gap-2.5 px-3 py-2.5 sm:px-4 sm:py-3">
+        {statusHeader}
+        <div className="w-full rounded-lg border border-blue-200 bg-blue-50/70 p-3 sm:p-3.5 shadow-2xs">
+          <div className="mb-2.5 flex items-start gap-2">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700 mt-0.5">
+              <BellRing className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
-          ) : chartTimeLabel ? (
-            `Get notified when new seats open at ${chartTimeLabel} on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
-          ) : (
-            `Get notified when new seats open on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
+            <p className="text-xs font-semibold text-blue-950 leading-snug">
+              {chartTimeLoading ? (
+                <span className="inline-flex items-center gap-1.5 italic text-blue-600/80">
+                  <span className="h-2 w-2 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+                  Loading chart time...
+                </span>
+              ) : chartTimeLabel ? (
+                `Get notified when new seats open at ${chartTimeLabel} on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
+              ) : (
+                `Get notified when new seats open on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
+              )}
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 sm:flex-row sm:gap-1.5">
+            <input
+              type="email"
+              className="w-full rounded-lg border border-blue-200 bg-white px-2.5 py-2 text-xs placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+            />
+            <input
+              type="tel"
+              className="w-full rounded-lg border border-blue-200 bg-white px-2.5 py-2 text-xs placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="Mobile (optional)"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
+              autoComplete="tel"
+            />
+          </div>
+          <div className="mt-2.5 flex items-center">
+            <button
+              type="button"
+              disabled={submitting}
+              onClick={() => void subscribe()}
+              className="w-full sm:w-auto rounded-lg bg-blue-600 px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 active:scale-[0.99] disabled:opacity-60 transition-all text-center flex items-center justify-center"
+            >
+              {getButtonLabel({
+                loading: submitting,
+                price: alertPrice,
+                verb: "set",
+              })}
+            </button>
+          </div>
+          {error && (
+            <p className="mt-2 text-xs font-medium text-red-700">{error}</p>
           )}
-        </p>
-        <div className="flex flex-col gap-2 sm:flex-row sm:gap-1.5">
-          <input
-            type="email"
-            className="w-full rounded-lg border border-blue-200 bg-white px-2.5 py-2 text-xs placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            autoComplete="email"
-          />
-          <input
-            type="tel"
-            className="w-full rounded-lg border border-blue-200 bg-white px-2.5 py-2 text-xs placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
-            placeholder="Mobile (optional)"
-            value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
-            autoComplete="tel"
-          />
-        </div>
-        <div className="mt-2.5 flex items-center">
-          <button
-            type="button"
-            disabled={submitting}
-            onClick={() => void subscribe()}
-            className="w-full sm:w-auto rounded-lg bg-blue-600 px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 active:scale-[0.99] disabled:opacity-60 transition-all text-center flex items-center justify-center"
-          >
-            {getButtonLabel({
-              loading: submitting,
-              price: alertPrice,
-              verb: "set",
-            })}
-          </button>
-        </div>
-        {error && (
-          <p className="mt-2 text-xs font-medium text-red-700">{error}</p>
-        )}
-        <div className="mt-2.5">
-          <ChartAlertTrustFooter />
+          <div className="mt-2.5">
+            <ChartAlertTrustFooter />
+          </div>
         </div>
       </div>
       {payment && (
@@ -1177,24 +1238,18 @@ export function AlternatePathContent({
                       )}
                       {/* No tickets row */}
                       {!isConfirmed && (
-                        <div className="flex flex-col gap-1.5 px-3 py-2.5 sm:px-4">
-                          <span className="text-xs sm:text-sm font-semibold text-slate-700">
-                            Not Available - Buy Ticket from TTE in Train
-                          </span>
-
-                          <CompactLegChartCta
-                            trainNumber={altResult.trainNumber}
-                            trainName={altTrainName}
-                            journeyDate={leg.boardingDate || journeyDate || ""}
-                            legFrom={leg.from}
-                            legTo={leg.to}
-                            classCode={
-                              leg.travelClass ?? altAvlClasses?.[0] ?? "SL"
-                            }
-                            stationNameMap={altResult.stationNameMap}
-                            trainStartDate={altResult.trainStartDate}
-                          />
-                        </div>
+                        <CompactLegChartCta
+                          trainNumber={altResult.trainNumber}
+                          trainName={altTrainName}
+                          journeyDate={leg.boardingDate || journeyDate || ""}
+                          legFrom={leg.from}
+                          legTo={leg.to}
+                          classCode={
+                            leg.travelClass ?? altAvlClasses?.[0] ?? "SL"
+                          }
+                          stationNameMap={altResult.stationNameMap}
+                          trainStartDate={altResult.trainStartDate}
+                        />
                       )}
                     </div>
                   </li>
@@ -1259,22 +1314,16 @@ export function AlternatePathContent({
                         </span>
                       )}
                     </div>
-                    <div className="flex flex-col gap-1.5 px-3 py-2.5 sm:px-4">
-                      <span className="text-xs sm:text-sm font-semibold text-amber-800">
-                        Not Available - Buy Ticket from TTE in Train
-                      </span>
-
-                      <CompactLegChartCta
-                        trainNumber={altResult.trainNumber}
-                        trainName={altTrainName}
-                        journeyDate={item.legs[0]?.boardingDate || journeyDate || ""}
-                        legFrom={item.from}
-                        legTo={item.to}
-                        classCode={altAvlClasses?.[0] ?? "SL"}
-                        stationNameMap={altResult.stationNameMap}
-                        trainStartDate={altResult.trainStartDate}
-                      />
-                    </div>
+                    <CompactLegChartCta
+                      trainNumber={altResult.trainNumber}
+                      trainName={altTrainName}
+                      journeyDate={item.legs[0]?.boardingDate || journeyDate || ""}
+                      legFrom={item.from}
+                      legTo={item.to}
+                      classCode={altAvlClasses?.[0] ?? "SL"}
+                      stationNameMap={altResult.stationNameMap}
+                      trainStartDate={altResult.trainStartDate}
+                    />
                   </div>
                 </li>
               );

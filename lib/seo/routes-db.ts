@@ -21,8 +21,18 @@ export const STATIONS: Station[] = [
   { code: "MAS", name: "Chennai Central", slug: "chennai" },
   { code: "SBC", name: "KSR Bengaluru", slug: "bengaluru" },
   { code: "PNBE", name: "Patna Jn", slug: "patna" },
-  { code: "JAT", name: "Jammu Tawi", slug: "jammu" },
+  { code: "DNR", name: "Danapur", slug: "danapur" },
+  { code: "PUNE", name: "Pune Jn", slug: "pune" },
+  { code: "BSB", name: "Varanasi Jn", slug: "varanasi" },
+  { code: "LKO", name: "Lucknow Charbagh", slug: "lucknow" },
+  { code: "SC", name: "Secunderabad", slug: "hyderabad" },
   { code: "ADI", name: "Ahmedabad", slug: "ahmedabad" },
+  { code: "JAT", name: "Jammu Tawi", slug: "jammu" },
+  { code: "MAO", name: "Madgaon Goa", slug: "goa" },
+  { code: "PURI", name: "Puri", slug: "puri" },
+  { code: "ST", name: "Surat", slug: "surat" },
+  { code: "DBG", name: "Darbhanga", slug: "darbhanga" },
+  { code: "CDG", name: "Chandigarh", slug: "chandigarh" },
 ];
 
 const ROUTE_TRAINS: Record<string, { number: string; name: string }[]> = {
@@ -30,9 +40,28 @@ const ROUTE_TRAINS: Record<string, { number: string; name: string }[]> = {
     { number: "12952", name: "Mumbai Rajdhani Express" },
     { number: "12954", name: "August Kranti Tejas Rajdhani" },
   ],
+  "mumbai-to-delhi": [
+    { number: "12951", name: "Mumbai Rajdhani Express" },
+    { number: "12953", name: "August Kranti Tejas Rajdhani" },
+  ],
   "delhi-to-patna": [
     { number: "12310", name: "Patna Rajdhani Express" },
     { number: "12394", name: "Sampoorna Kranti Express" },
+  ],
+  "patna-to-delhi": [
+    { number: "12309", name: "Patna Rajdhani Express" },
+    { number: "12393", name: "Sampoorna Kranti Express" },
+  ],
+  "mumbai-to-danapur": [
+    { number: "12141", name: "Mumbai LTT Patliputra Express" },
+    { number: "12336", name: "Bhagalpur Express" },
+  ],
+  "pune-to-danapur": [
+    { number: "12149", name: "Pune Danapur SF Express" },
+  ],
+  "delhi-to-varanasi": [
+    { number: "22436", name: "Vande Bharat Express" },
+    { number: "12560", name: "Shiv Ganga Express" },
   ],
   "mumbai-to-bengaluru": [
     { number: "11301", name: "Udyan Express" },
@@ -47,6 +76,10 @@ const ROUTE_TRAINS: Record<string, { number: string; name: string }[]> = {
     { number: "12301", name: "Howrah Rajdhani Express" },
     { number: "12381", name: "Poorva Express" },
   ],
+  "delhi-to-kolkata": [
+    { number: "12302", name: "Howrah Rajdhani Express" },
+    { number: "12314", name: "Sealdah Rajdhani Express" },
+  ],
   "bengaluru-to-chennai": [
     { number: "12008", name: "KSR Bengaluru Chennai Shatabdi Express" },
     { number: "12028", name: "KSR Bengaluru Chennai Shatabdi Express" },
@@ -60,9 +93,17 @@ const ROUTE_TRAINS: Record<string, { number: string; name: string }[]> = {
     { number: "12009", name: "Mumbai Central Ahmedabad Shatabdi Express" },
     { number: "12931", name: "Mumbai Central Ahmedabad Double Decker Express" },
   ],
-  "delhi-to-kolkata": [
-    { number: "12302", name: "Howrah Rajdhani Express" },
-    { number: "12314", name: "Sealdah Rajdhani Express" },
+  "delhi-to-lucknow": [
+    { number: "12004", name: "Lucknow Swarna Shatabdi Express" },
+    { number: "12230", name: "Lucknow Mail" },
+  ],
+  "mumbai-to-goa": [
+    { number: "22229", name: "Mumbai CSMT Madgaon Vande Bharat Express" },
+    { number: "10103", name: "Mandovi Express" },
+  ],
+  "kolkata-to-puri": [
+    { number: "22895", name: "Howrah Puri Vande Bharat Express" },
+    { number: "12837", name: "Howrah Puri Express" },
   ],
 };
 
@@ -97,13 +138,19 @@ export async function getTopRoutes(): Promise<{ origin: string; dest: string }[]
   return [
     { origin: "delhi", dest: "mumbai" },
     { origin: "delhi", dest: "patna" },
+    { origin: "mumbai", dest: "danapur" },
+    { origin: "pune", dest: "danapur" },
+    { origin: "delhi", dest: "varanasi" },
     { origin: "mumbai", dest: "bengaluru" },
     { origin: "chennai", dest: "bengaluru" },
     { origin: "kolkata", dest: "delhi" },
+    { origin: "delhi", dest: "kolkata" },
     { origin: "bengaluru", dest: "chennai" },
     { origin: "delhi", dest: "jammu" },
     { origin: "mumbai", dest: "ahmedabad" },
-    { origin: "delhi", dest: "kolkata" },
+    { origin: "delhi", dest: "lucknow" },
+    { origin: "mumbai", dest: "goa" },
+    { origin: "kolkata", dest: "puri" },
   ];
 }
 

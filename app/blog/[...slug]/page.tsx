@@ -8,6 +8,10 @@ import { isLowQualityTranslation, indexableTranslations } from "@/lib/blog-quali
 import { getBlogTranslation } from "@/lib/blog-translations";
 import { parseHowToFromMarkdown } from "@/lib/seo/schema-howto";
 import { autoLinkGlossaryTerms } from "@/lib/seo/auto-linker";
+import { autoLinkRoutes } from "@/lib/seo/route-linker";
+import { detectRouteContext } from "@/lib/seo/route-detector";
+import { BlogSearchCta } from "@/components/blog/BlogSearchCta";
+import { BlogStickyMobileCta } from "@/components/blog/BlogStickyMobileCta";
 import { LanguagePromptSheet } from "@/components/blog/LanguagePromptSheet";
 import { BlogLanguageSelector } from "@/components/blog/BlogLanguageSelector";
 import { AuthorBio } from "@/components/blog/AuthorBio";
@@ -245,6 +249,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const availableLangs = getAvailableTranslations(post.slug);
 
+  const routeContext = detectRouteContext(post.slug, post.title, post.tags);
+  const linkedMarkdown = autoLinkRoutes(autoLinkGlossaryTerms(post.content));
+
+  // Split markdown around FAQ or halfway to insert a high-converting mid-article CTA
+  const faqRegex = /(^##\s+(?:.*faq.*|common.*question.*))/im;
+  const faqMatch = linkedMarkdown.match(faqRegex);
+  const midIndex = faqMatch ? faqMatch.index : -1;
+
+  const prosePart1 = midIndex !== -1 ? linkedMarkdown.slice(0, midIndex) : linkedMarkdown;
+  const prosePart2 = midIndex !== -1 ? linkedMarkdown.slice(midIndex) : "";
+
   return (
     <article itemScope itemType="https://schema.org/BlogPosting" className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <header className="mb-6">
@@ -288,9 +303,33 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       <div className="prose prose-slate max-w-none prose-headings:scroll-mt-24">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {autoLinkGlossaryTerms(post.content)}
+          {prosePart1}
         </ReactMarkdown>
       </div>
+
+      {/* Mid-Article Conversion CTA */}
+      <BlogSearchCta
+        slug={post.slug}
+        lang={lang}
+        context={routeContext}
+        variant="mid"
+      />
+
+      {prosePart2 ? (
+        <div className="prose prose-slate max-w-none prose-headings:scroll-mt-24">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {prosePart2}
+          </ReactMarkdown>
+        </div>
+      ) : null}
+
+      {/* Bottom Conversion CTA */}
+      <BlogSearchCta
+        slug={post.slug}
+        lang={lang}
+        context={routeContext}
+        variant="bottom"
+      />
 
       <OfficialSources sources={post.sources} />
       <AuthorBio />
@@ -350,6 +389,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         currentSlug={post.slug} 
         currentLang={lang}
         availableLangs={availableLangs}
+      />
+
+      <BlogStickyMobileCta
+        slug={post.slug}
+        context={routeContext}
       />
     </article>
   );
