@@ -193,9 +193,6 @@ export function EntireJourneyAlertCTA({
             Cancel
           </button>
         </div>
-        <span className="text-[10px] italic text-blue-700/80">
-          Triggers at {originChartTime}
-        </span>
       </div>
       {error && (
         <p className="mt-2 text-xs font-medium text-red-700">{error}</p>

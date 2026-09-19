@@ -14,10 +14,7 @@ export function ChartAlertTrustFooter() {
       <p className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 text-center text-xs text-slate-600">
         <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-600" />
         <span>
-          Get 100% refund if you didn&apos;t find full journey tickets.
-        </span>
-        <span>
-          Facing any other issue?{" "}
+          Facing any issue?{" "}
           <Link
             href="/refund"
             className="font-semibold text-blue-600 hover:underline"

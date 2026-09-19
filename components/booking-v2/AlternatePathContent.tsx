@@ -611,35 +611,21 @@ function CompactLegChartCta({
             autoComplete="tel"
           />
         </div>
-        <div className="mt-2 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              disabled={submitting}
-              onClick={() => void subscribe()}
-              className="rounded bg-blue-600 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 disabled:opacity-60"
-            >
-              {submitting
-                ? adminFree
-                  ? "Setting up…"
-                  : "Opening payment…"
-                : adminFree
-                  ? "Set alert free (admin)"
-                  : `Pay ₹${alertPrice} & set alert`}
-            </button>
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className="text-xs font-medium text-gray-500 hover:text-gray-700"
-            >
-              Cancel
-            </button>
-          </div>
-          {chartTimeLabel && (
-            <span className="text-[10px] italic text-blue-700/80">
-              Triggers at {chartTimeLabel}
-            </span>
-          )}
+        <div className="mt-2 flex items-center">
+          <button
+            type="button"
+            disabled={submitting}
+            onClick={() => void subscribe()}
+            className="rounded bg-blue-600 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 disabled:opacity-60"
+          >
+            {submitting
+              ? adminFree
+                ? "Setting up…"
+                : "Opening payment…"
+              : adminFree
+                ? "Set alert free (admin)"
+                : `Pay ₹${alertPrice} & set alert`}
+          </button>
         </div>
         {error && (
           <p className="mt-2 text-xs font-medium text-red-700">{error}</p>
