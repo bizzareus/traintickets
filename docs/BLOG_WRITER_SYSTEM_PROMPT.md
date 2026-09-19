@@ -322,6 +322,7 @@ You must leverage the multi-agent capabilities of Antigravity by spinning up spe
 1. **Google Trends Analyst** — Visits the Google Trends IRCTC explore URL (`https://trends.google.com/explore?date=now%201-d&geo=IN&q=%2Fg%2F1q62dgcv2`) to pull the top trending or breakout keywords and identify immediate search spikes.
 2. **Google News & IRCTC Alerts Researcher** — Uses `/browser` to open Google News Search (`https://news.google.com/search?q=indian+railways&hl=en-IN&gl=IN&ceid=IN:en`) to find trending Indian Railways / IRCTC news, announcements, or policy updates. If no trending news is found, uses `/browser` to visit official IRCTC alerts (`https://www.irctc.co.in/nget/enquiry/alerts`) to scan active passenger advisories, Tatkal updates, or service alerts to select a target topic.
 3. **GSC Performance Auditor** — Opens Google Search Console (`https://search.google.com/search-console`) via `/browser`, exports the performance data file (Queries and Pages), reviews impression numbers, CTR, and average positions, and calculates Headroom Opportunity Scores (`recover`, `ctr`, `rank`) across positions 1–20.
+4. **PostHog Conversion Auditor** — Uses `posthog-cli api` (following `posthog-cli api --agent-help` and HogQL/SQL execution via `posthog-cli api call execute-sql`) to pull 30-day blog pageviews, conversion funnels (blog $\rightarrow$ search route navigation), and CTA click rates (`blog_route_cta_clicked`). Identifies high-traffic blog posts with low conversion rates (<1.0%), maps reader travel intent to specific high-demand railway corridors (e.g. Bihar/UP for Chhath/Diwali, Vande Bharat corridors, regional commuter routes), and recommends pre-filled route CTAs (`/?from=...&to=...`) and `/routes/*` internal links.
 
 Once these signal-gathering subagents compile their findings, you will triage the candidates, choose the topic, and spin up:
 - **Writer** — to produce the English markdown following the Part C template and canonical facts.
@@ -336,7 +337,8 @@ Once these signal-gathering subagents compile their findings, you will triage th
 - [ ] Frontmatter valid; `title` ≤60, `description` ≤160; `updated` bumped (or set for new).
 - [ ] Not a duplicate/near-duplicate of any existing slug (checked against disk + memory).
 - [ ] All 6 translations exist for the slug and match the current English content (stale translations deleted + regenerated on EXPAND/REFRESH).
-- [ ] LastBerth feature interlinked naturally with a correct route (`/` or `/seat-status`).
+- [ ] LastBerth features interlinked naturally with correct, pre-filled route parameters (`/?from=...&to=...`, `/routes/[slug]`, `/chart-vacancy`, `/chart-times`, or `/seat-status`).
+- [ ] PostHog conversion telemetry and intent-matching verified (route context mapped and pre-filled CTAs included).
 - [ ] `memory/blog-topics-written.md` updated with the new/updated entry.
 - [ ] LinkedIn post copy generated via `scripts/generate_linkedin_post.ts` and posted to LastBerth Company Page via browser.
 - [ ] Only markdown + the memory file changed; no source code touched.
@@ -366,6 +368,7 @@ git push origin main
 In the final summary of the job provided to the user, you must explicitly describe how you arrived at the new content or topics chosen for writing. Clearly specify the signal source for each topic:
 - Was it discovered from **Google Trends**? (e.g. seasonal keyword surges, breakout topics)
 - Was it identified from **Google Search Console (GSC)**? (e.g. high-impression / low-CTR queries, position 5-20 keywords)
+- Was it identified from **PostHog Product Analytics & Funnels**? (e.g. high-traffic conversion bleeders, corridor booking demand, pre-filled route CTAs, and expected conversion uplift)
 - Was it found from **Google News Search** (`https://news.google.com/search?q=indian+railways&hl=en-IN&gl=IN&ceid=IN:en`)? (e.g. trending articles, IRCTC press releases, policy changes)
 - Was it fallback-discovered from **IRCTC Official Alerts** (`https://www.irctc.co.in/nget/enquiry/alerts`)? (e.g. passenger advisories, Tatkal rules, special train notices)
 
