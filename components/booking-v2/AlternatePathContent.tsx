@@ -3,7 +3,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import moment from "moment";
 import { apiClient } from "@/lib/api";
-import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics/track";
+import {
+  trackAnalyticsEvent,
+  trackAlertRequested,
+} from "@/lib/analytics/track";
 import { cn } from "@/lib/utils";
 import { buildAlternatePathDisplayItems } from "@/lib/bookingV2AlternatePathsDisplay";
 import { countConfirmedAlternateLegs } from "@/lib/trainSearchV2Sort";
@@ -222,8 +225,6 @@ function AlternatePathProgressFeed({
   );
 }
 
-
-
 function CompactLegChartCta({
   trainNumber,
   trainName,
@@ -390,7 +391,9 @@ function CompactLegChartCta({
       return;
     }
     if (mob && !isValidIndianMobile(mob)) {
-      setError("Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).");
+      setError(
+        "Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).",
+      );
       return;
     }
     setSubmitting(true);
@@ -582,7 +585,7 @@ function CompactLegChartCta({
               ) : (
                 <div>
                   <p className="text-xs sm:text-sm font-semibold text-slate-900">
-                    Get notified when new seats open
+                    Get notified when chart prepares
                   </p>
                   <p className="text-[11px] text-slate-500 mt-0.5">
                     We&apos;ll alert you when chart preparation releases seats
@@ -643,9 +646,9 @@ function CompactLegChartCta({
                   Loading chart time...
                 </span>
               ) : chartTimeLabel ? (
-                `Get notified when new seats open at ${chartTimeLabel} on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
+                `Get notified when chart prepares at ${chartTimeLabel} on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
               ) : (
-                `Get notified when new seats open on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
+                `Get notified when chart prepares on ${getStationDisplayName(legFrom, stationNameMap)} → ${getStationDisplayName(legTo, stationNameMap)} route`
               )}
             </p>
           </div>
@@ -821,7 +824,10 @@ export function AlternatePathContent({
     (Boolean(altError) || (Boolean(altResult) && !altResult?.isComplete));
 
   return (
-    <div ref={captureRef} className="min-h-0 flex-1 overflow-y-auto p-3.5 sm:p-6">
+    <div
+      ref={captureRef}
+      className="min-h-0 flex-1 overflow-y-auto p-3.5 sm:p-6"
+    >
       <div className="mb-3 flex items-start justify-between gap-2">
         <h3 className="text-base sm:text-lg font-bold leading-snug text-gray-900">
           {altLoading
@@ -915,48 +921,6 @@ export function AlternatePathContent({
             return null;
           })()}
 
-          {/* Fare summary banner */}
-          {altResult.isComplete &&
-            altResult.totalFare != null &&
-            !IS_TICKET_ALERT_ENABLED && (
-              <div className="rounded-xl bg-gradient-to-r from-slate-50 to-slate-100/70 border border-slate-200 px-4 py-3">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">
-                  Total fare
-                </p>
-                <div className="mt-0.5 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                  <span className="text-2xl font-extrabold tracking-tight text-slate-900 tabular-nums sm:text-3xl">
-                    ₹{altResult.totalFare.toFixed(0)}
-                  </span>
-
-                  {directFares.length > 0 && (
-                    <span className="text-xs text-slate-500 font-medium ml-1">
-                      vs direct waitlist:{" "}
-                      {directFares.map((df, idx) => (
-                        <span key={df.cls}>
-                          {df.cls} (₹{df.fare})
-                          {idx < directFares.length - 1 ? ", " : ""}
-                        </span>
-                      ))}
-                    </span>
-                  )}
-                </div>
-                <p className="mt-1 text-xs text-slate-600">
-                  Full journey covered in {confirmedLegCount} confirmed ticket
-                  {confirmedLegCount === 1 ? "" : "s"}
-                </p>
-                {isSplitBookingEnabled && (
-                  <button
-                    type="button"
-                    onClick={() => setSplitBookingModalOpen(true)}
-                    className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.99] transition cursor-pointer"
-                  >
-                    <span>Book Now</span>
-                    <span>•</span>
-                    <span>₹{altResult.totalFare.toFixed(0)}</span>
-                  </button>
-                )}
-              </div>
-            )}
 
           {!altResult.isComplete &&
             altResult.totalFare != null &&
@@ -1203,7 +1167,7 @@ export function AlternatePathContent({
                                     </span>
                                   )}
                                 </div>
-                                {isSplitBookingEnabled ? (
+                                {isSplitBookingEnabled && confirmedLegCount > 1 ? (
                                   <span className="shrink-0 rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">
                                     Leg {stepIndex} Confirmed
                                   </span>
@@ -1221,7 +1185,8 @@ export function AlternatePathContent({
                                           to_code: leg.to,
                                           class_code: opt.travelClass,
                                           trainStartDate:
-                                            altResult.trainStartDate ?? undefined,
+                                            altResult.trainStartDate ??
+                                            undefined,
                                           ...(source ? { source } : {}),
                                         },
                                       })
@@ -1317,7 +1282,9 @@ export function AlternatePathContent({
                     <CompactLegChartCta
                       trainNumber={altResult.trainNumber}
                       trainName={altTrainName}
-                      journeyDate={item.legs[0]?.boardingDate || journeyDate || ""}
+                      journeyDate={
+                        item.legs[0]?.boardingDate || journeyDate || ""
+                      }
                       legFrom={item.from}
                       legTo={item.to}
                       classCode={altAvlClasses?.[0] ?? "SL"}
@@ -1329,6 +1296,53 @@ export function AlternatePathContent({
               );
             })}
           </ol>
+
+          {/* Total fare strip at the bottom (shown when > 1 leg in the journey) */}
+          {altResult.isComplete &&
+            altResult.totalFare != null &&
+            !IS_TICKET_ALERT_ENABLED &&
+            confirmedLegCount > 1 && (
+              <div className="sticky bottom-0 -mx-3.5 -mb-3.5 sm:-mx-6 sm:-mb-6 mt-4 border-t border-slate-200 bg-white/95 backdrop-blur-sm px-4 py-3 sm:px-6 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] z-20">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-baseline gap-x-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                        Total fare
+                      </span>
+                      <span className="text-xl sm:text-2xl font-black text-slate-900 tabular-nums">
+                        ₹{altResult.totalFare.toFixed(0)}
+                      </span>
+                      {directFares.length > 0 && (
+                        <span className="text-xs text-slate-500 font-medium">
+                          vs direct waitlist:{" "}
+                          {directFares.map((df, idx) => (
+                            <span key={df.cls}>
+                              {df.cls} (₹{df.fare})
+                              {idx < directFares.length - 1 ? ", " : ""}
+                            </span>
+                          ))}
+                        </span>
+                      )}
+                    </div>
+                    <p className="mt-0.5 text-xs text-slate-600 font-medium">
+                      Full journey covered in {confirmedLegCount} confirmed tickets
+                    </p>
+                  </div>
+
+                  {isSplitBookingEnabled && (
+                    <button
+                      type="button"
+                      onClick={() => setSplitBookingModalOpen(true)}
+                      className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.99] transition cursor-pointer sm:w-auto w-full"
+                    >
+                      <span>Book Now</span>
+                      <span>•</span>
+                      <span>₹{altResult.totalFare.toFixed(0)}</span>
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
         </div>
       )}
 

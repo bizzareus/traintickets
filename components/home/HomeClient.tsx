@@ -1490,7 +1490,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               }}
             >
               <div
-                className="flex h-full w-full flex-col bg-white sm:h-auto sm:max-h-[90vh] sm:max-w-2xl sm:rounded-xl sm:border sm:border-gray-200 sm:shadow-2xl"
+                className="flex h-full w-full flex-col bg-white sm:h-auto sm:max-h-[90vh] sm:max-w-2xl sm:rounded-xl sm:border sm:border-gray-200 sm:shadow-2xl overflow-hidden"
                 role="dialog"
                 aria-modal="true"
                 onClick={(e) => e.stopPropagation()}
