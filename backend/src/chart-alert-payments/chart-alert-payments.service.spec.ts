@@ -9,12 +9,14 @@ import {
 import { RazorpayClient } from './razorpay.client';
 import { PrismaService } from '../prisma/prisma.service';
 import { JourneyTaskService } from '../availability/journey-task.service';
+import { NotificationService } from '../notification/notification.service';
 
 describe('ChartAlertPaymentsService', () => {
   let service: ChartAlertPaymentsService;
   let prisma: Record<string, any>;
   let journeyTask: Record<string, any>;
   let razorpay: Record<string, jest.Mock>;
+  let notificationService: Record<string, jest.Mock>;
 
   const baseInput = {
     trainNumber: '12639',
@@ -54,6 +56,11 @@ describe('ChartAlertPaymentsService', () => {
       fetchPayment: jest.fn(),
       createRefund: jest.fn(),
     };
+    notificationService = {
+      sendChartAlertConfirmation: jest
+        .fn()
+        .mockResolvedValue({ emailSent: true, whatsappSent: true }),
+    };
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -71,6 +78,7 @@ describe('ChartAlertPaymentsService', () => {
         { provide: PrismaService, useValue: prisma },
         { provide: JourneyTaskService, useValue: journeyTask },
         { provide: RazorpayClient, useValue: razorpay },
+        { provide: NotificationService, useValue: notificationService },
       ],
     }).compile();
 
@@ -213,8 +221,93 @@ describe('ChartAlertPaymentsService', () => {
 
       expect(razorpay.orderPayments).toHaveBeenCalledWith('order-1');
       expect(journeyTask.queueJourneyMonitoring).toHaveBeenCalledTimes(1);
+      expect(
+        notificationService.sendChartAlertConfirmation,
+      ).toHaveBeenCalledWith(
+        expect.objectContaining({
+          email: 'a@example.com',
+          trainNumber: '12639',
+          amount: 25,
+          paymentRef: 'ref-1',
+        }),
+      );
       expect(out.status).toBe('paid');
       expect(out.journeyCreated).toBe(true);
+    });
+
+    it('sends both email and whatsapp when both contact details are provided', async () => {
+      prisma.chartAlertPayment.findUnique
+        .mockResolvedValueOnce(
+          pendingRecord({
+            contactEmail: 'user@example.com',
+            contactMobile: '9876543210',
+            journeyPayload: {
+              ...baseInput,
+              email: 'user@example.com',
+              mobile: '9876543210',
+            },
+          }),
+        )
+        .mockResolvedValueOnce({
+          ...pendingRecord({
+            contactEmail: 'user@example.com',
+            contactMobile: '9876543210',
+            journeyPayload: {
+              ...baseInput,
+              email: 'user@example.com',
+              mobile: '9876543210',
+            },
+          }),
+          status: 'PAID',
+          journeyRequestId: 'jid-both',
+        });
+      razorpay.orderPayments.mockResolvedValue([
+        { id: 'pay-both', status: 'captured', amount: 2500 },
+      ]);
+      prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 1 });
+      prisma.chartAlertPayment.update.mockResolvedValue({});
+      journeyTask.queueJourneyMonitoring.mockResolvedValue(true);
+
+      const out = await service.getStatus('ref-1');
+
+      expect(out.status).toBe('paid');
+      expect(
+        notificationService.sendChartAlertConfirmation,
+      ).toHaveBeenCalledWith(
+        expect.objectContaining({
+          email: 'user@example.com',
+          mobile: '9876543210',
+          trainNumber: '12639',
+        }),
+      );
+    });
+
+    it('does not send confirmation if confirmationSentAt is already recorded', async () => {
+      prisma.chartAlertPayment.findUnique
+        .mockResolvedValueOnce(
+          pendingRecord({
+            confirmationSentAt: new Date(),
+          }),
+        )
+        .mockResolvedValueOnce({
+          ...pendingRecord({
+            confirmationSentAt: new Date(),
+          }),
+          status: 'PAID',
+          journeyRequestId: 'jid-already-sent',
+        });
+      razorpay.orderPayments.mockResolvedValue([
+        { id: 'pay-2', status: 'captured', amount: 2500 },
+      ]);
+      prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 1 });
+      prisma.chartAlertPayment.update.mockResolvedValue({});
+      journeyTask.queueJourneyMonitoring.mockResolvedValue(true);
+
+      await service.getStatus('ref-1');
+
+      expect(
+        notificationService.sendChartAlertConfirmation,
+      ).not.toHaveBeenCalled();
     });
 
     it('does not queue twice when the claim is lost (concurrent status+callback)', async () => {

@@ -208,6 +208,9 @@ export function ChartAlertPaymentModal({
               </strong>
               .
             </p>
+            <p className="mt-2 text-xs text-slate-500">
+              A confirmation has been sent to your email / WhatsApp.
+            </p>
             <button
               type="button"
               onClick={onClose}

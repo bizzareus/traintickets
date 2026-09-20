@@ -141,6 +141,9 @@ export function PaymentCompleteClient() {
                 "Your chart alert is now active."
               )}
             </p>
+            <p className="mt-2 text-xs text-slate-500">
+              A confirmation has been sent to your email / WhatsApp.
+            </p>
             <Link
               href="/"
               className="mt-5 inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-700"

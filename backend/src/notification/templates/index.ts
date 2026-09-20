@@ -4,3 +4,4 @@ export * from './chart-prepared.template';
 export * from './tatkal-alert.template';
 export * from './system-reports.template';
 export * from './refund-request.template';
+export * from './chart-alert-confirmation.template';

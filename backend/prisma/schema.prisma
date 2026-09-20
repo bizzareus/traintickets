@@ -527,6 +527,7 @@ model ChartAlertPayment {
   createdAt        DateTime                @default(now()) @map("created_at")
   updatedAt        DateTime                @updatedAt @map("updated_at")
   paidAt           DateTime?               @map("paid_at")
+  confirmationSentAt DateTime?             @map("confirmation_sent_at")
   refundStatus     ChartAlertRefundStatus  @default(NONE) @map("refund_status")
   razorpayRefundId String?                 @map("razorpay_refund_id")
   refundAmount     Int?                    @map("refund_amount")

@@ -9,6 +9,7 @@ import { randomUUID } from 'node:crypto';
 import type { ChartAlertPayment } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { JourneyTaskService } from '../availability/journey-task.service';
+import { NotificationService } from '../notification/notification.service';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import type { AxiosInstance } from 'axios';
 import {
@@ -144,6 +145,7 @@ export class ChartAlertPaymentsService {
     private configService: ConfigService,
     private journeyTask: JourneyTaskService,
     private razorpay: RazorpayClient,
+    private notificationService: NotificationService,
   ) {
     this.muzoboxClient = createRetryingAxiosClient({
       serviceName: 'muzobox',
@@ -611,6 +613,38 @@ export class ChartAlertPaymentsService {
       this.logger.log(
         `Journey monitoring queued for paid ref=${record.id} jid=${journeyRequestId}`,
       );
+
+      const contactEmail = payload.email?.trim() || record.contactEmail?.trim();
+      const contactMobile =
+        payload.mobile?.trim() || record.contactMobile?.trim();
+
+      if ((contactEmail || contactMobile) && !record.confirmationSentAt) {
+        const updateResult = await this.prisma.chartAlertPayment.updateMany({
+          where: { id: record.id, confirmationSentAt: null },
+          data: { confirmationSentAt: new Date() },
+        });
+
+        if (updateResult.count > 0) {
+          void this.notificationService
+            .sendChartAlertConfirmation({
+              email: contactEmail,
+              mobile: contactMobile,
+              trainNumber: payload.trainNumber,
+              trainName: payload.trainName,
+              fromStationCode: payload.fromStationCode,
+              toStationCode: payload.toStationCode,
+              journeyDate: payload.journeyDate,
+              classCode: payload.classCode,
+              amount: record.amount,
+              paymentRef: record.id,
+            })
+            .catch((err) =>
+              this.logger.error(
+                `Failed to send chart alert confirmation for payment ref=${record.id}: ${err instanceof Error ? err.stack || err.message : String(err)}`,
+              ),
+            );
+        }
+      }
     }
 
     const final = await this.prisma.chartAlertPayment.findUnique({

@@ -1011,6 +1011,85 @@ describe('NotificationService', () => {
     });
   });
 
+  describe('sendChartAlertConfirmation', () => {
+    it('sends confirmation email and whatsapp when both are provided', async () => {
+      const svc = new NotificationService(mockConfig(), mockStationCache());
+      const sendEmailSpy = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+      const sendWhatsAppSpy = jest
+        .spyOn(svc, 'sendWhatsApp')
+        .mockResolvedValue(true);
+
+      const result = await svc.sendChartAlertConfirmation({
+        email: 'passenger@example.com',
+        mobile: '9876543210',
+        trainNumber: '12951',
+        trainName: 'Mumbai Tejas Rajdhani',
+        fromStationCode: 'MMCT',
+        toStationCode: 'NDLS',
+        journeyDate: '2026-10-01',
+        classCode: '3A',
+        amount: 25,
+        paymentRef: 'ref_123',
+      });
+
+      expect(result.emailSent).toBe(true);
+      expect(result.whatsappSent).toBe(true);
+      expect(sendEmailSpy).toHaveBeenCalledTimes(1);
+      expect(sendEmailSpy).toHaveBeenCalledWith(
+        'passenger@example.com',
+        expect.stringContaining('12951'),
+        expect.stringContaining('Your Chart Alert Is Active!'),
+      );
+      expect(sendWhatsAppSpy).toHaveBeenCalledTimes(1);
+      expect(sendWhatsAppSpy).toHaveBeenCalledWith(
+        '9876543210',
+        expect.stringContaining('LastBerth Chart Alert Confirmed'),
+      );
+    });
+
+    it('sends only email when mobile is omitted', async () => {
+      const svc = new NotificationService(mockConfig(), mockStationCache());
+      const sendEmailSpy = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+      const sendWhatsAppSpy = jest
+        .spyOn(svc, 'sendWhatsApp')
+        .mockResolvedValue(true);
+
+      const result = await svc.sendChartAlertConfirmation({
+        email: 'passenger@example.com',
+        trainNumber: '12951',
+        fromStationCode: 'MMCT',
+        journeyDate: '2026-10-01',
+        classCode: 'SL',
+      });
+
+      expect(result.emailSent).toBe(true);
+      expect(result.whatsappSent).toBe(false);
+      expect(sendEmailSpy).toHaveBeenCalledTimes(1);
+      expect(sendWhatsAppSpy).not.toHaveBeenCalled();
+    });
+
+    it('sends only whatsapp when email is omitted', async () => {
+      const svc = new NotificationService(mockConfig(), mockStationCache());
+      const sendEmailSpy = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+      const sendWhatsAppSpy = jest
+        .spyOn(svc, 'sendWhatsApp')
+        .mockResolvedValue(true);
+
+      const result = await svc.sendChartAlertConfirmation({
+        mobile: '9876543210',
+        trainNumber: '12951',
+        fromStationCode: 'MMCT',
+        journeyDate: '2026-10-01',
+        classCode: 'SL',
+      });
+
+      expect(result.emailSent).toBe(false);
+      expect(result.whatsappSent).toBe(true);
+      expect(sendEmailSpy).not.toHaveBeenCalled();
+      expect(sendWhatsAppSpy).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('notifyChartPrepared', () => {
     const chartPreparedParams = {
       email: 'a@example.com',

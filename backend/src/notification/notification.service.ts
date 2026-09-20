@@ -46,6 +46,9 @@ import {
   renderRefundRequestAdminEmailHtml,
   renderTatkalAlertEmailHtml,
   buildTatkalAlertWhatsAppText,
+  renderChartAlertConfirmationEmailHtml,
+  buildChartAlertConfirmationWhatsAppText,
+  type ChartAlertConfirmationParams,
   buildChartPreparedNoDestinationWhatsAppText,
   buildWhatsAppSeatsFoundText,
   buildFollowUpLegWhatsAppText,
@@ -263,6 +266,31 @@ export class NotificationService {
         freezeWindow,
       });
 
+      whatsappSent = await this.sendWhatsApp(params.mobile.trim(), message);
+    }
+
+    return { emailSent, whatsappSent };
+  }
+
+  async sendChartAlertConfirmation(
+    params: ChartAlertConfirmationParams,
+  ): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
+    let emailSent = false;
+    let whatsappSent = false;
+
+    if (params.email?.trim()) {
+      const email = params.email.trim();
+      const trainLabel = params.trainName
+        ? `${params.trainName} (${params.trainNumber})`
+        : `Train ${params.trainNumber}`;
+      const subject = `🔔 Chart Alert Confirmed: ${trainLabel}`;
+      const html = renderChartAlertConfirmationEmailHtml(params);
+
+      emailSent = await this.sendEmail(email, subject, html);
+    }
+
+    if (params.mobile?.trim()) {
+      const message = buildChartAlertConfirmationWhatsAppText(params);
       whatsappSent = await this.sendWhatsApp(params.mobile.trim(), message);
     }
 
