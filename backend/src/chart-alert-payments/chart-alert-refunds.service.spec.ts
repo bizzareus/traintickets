@@ -346,4 +346,153 @@ describe('ChartAlertRefundsService', () => {
       );
     });
   });
+
+  describe('muzobox-routed payments refund via the proxy API', () => {
+    const proxyRecord = { ...paidRecord, muzoboxPaymentId: 'mb_123' };
+    let post: jest.Mock;
+
+    beforeEach(() => {
+      prisma.chartAlertPayment.findFirst.mockResolvedValue(proxyRecord);
+      prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 1 });
+      prisma.chartAlertPayment.update.mockResolvedValue({});
+      post = jest.fn();
+      (service as any).muzoboxClient.post = post;
+    });
+
+    it('calls the proxy refund API and records SUCCEEDED from its response', async () => {
+      post.mockResolvedValue({
+        data: {
+          status: 'refunded',
+          amount: 25,
+          referenceId: 'pay_123',
+          razorpayPaymentId: 'pay_rzp_mb',
+          razorpayRefundId: 'rfnd_mb_1',
+          refundedAt: '2026-09-20T10:00:00.000Z',
+        },
+      });
+
+      const result = await service.initiateRefundForJourney(
+        'jid_123',
+        'admin_manual_refund',
+      );
+
+      expect(result).toEqual({
+        attempted: true,
+        outcome: 'succeeded',
+        amount: 25,
+        refundId: 'rfnd_mb_1',
+      });
+      expect(post).toHaveBeenCalledWith(
+        'proxy-payments/mb_123/refund',
+        {
+          amount: 25,
+          reason: 'admin_manual_refund',
+          referenceId: 'pay_123',
+        },
+        { headers: undefined },
+      );
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
+      expect(prisma.chartAlertPayment.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 'pay_123' },
+          data: expect.objectContaining({
+            refundStatus: 'SUCCEEDED',
+            razorpayRefundId: 'rfnd_mb_1',
+            razorpayPaymentId: 'pay_rzp_mb',
+            refundAmount: 25,
+          }),
+        }),
+      );
+    });
+
+    it('treats already_refunded as success and backfills the refund id', async () => {
+      post.mockResolvedValue({
+        data: {
+          status: 'already_refunded',
+          amount: 25,
+          razorpayRefundId: 'rfnd_old',
+          refundedAt: '2026-09-19T10:00:00.000Z',
+        },
+      });
+
+      const result = await service.initiateRefundForJourney(
+        'jid_123',
+        'admin_manual_refund',
+      );
+
+      expect(result).toEqual({
+        attempted: true,
+        outcome: 'succeeded',
+        amount: 25,
+        refundId: 'rfnd_old',
+      });
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
+      expect(prisma.chartAlertPayment.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            refundStatus: 'SUCCEEDED',
+            razorpayRefundId: 'rfnd_old',
+          }),
+        }),
+      );
+    });
+
+    it('uses the proxy path even without a local Razorpay payment or config', async () => {
+      razorpay.isConfigured = false;
+      prisma.chartAlertPayment.findFirst.mockResolvedValue({
+        ...proxyRecord,
+        razorpayPaymentId: null,
+      });
+      post.mockResolvedValue({
+        data: { status: 'refunded', amount: 25, razorpayRefundId: 'rfnd_mb_2' },
+      });
+
+      const result = await service.initiateRefundForJourney(
+        'jid_123',
+        'admin_manual_refund',
+      );
+
+      expect(result).toEqual({
+        attempted: true,
+        outcome: 'succeeded',
+        amount: 25,
+        refundId: 'rfnd_mb_2',
+      });
+      expect(post).toHaveBeenCalledTimes(1);
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
+    });
+
+    it('records FAILED with the proxy message when the proxy API errors', async () => {
+      post.mockRejectedValue({
+        isAxiosError: true,
+        message: 'Request failed with status code 400',
+        response: {
+          status: 400,
+          data: { message: 'Only PAID payments can be refunded' },
+        },
+      });
+
+      const result = await service.initiateRefundForJourney(
+        'jid_123',
+        'admin_manual_refund',
+      );
+
+      expect(result).toEqual({
+        attempted: true,
+        outcome: 'failed',
+        amount: 25,
+      });
+      expect(razorpay.createRefund).not.toHaveBeenCalled();
+      expect(prisma.chartAlertPayment.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            refundStatus: 'FAILED',
+            refundError: expect.stringContaining(
+              'Only PAID payments can be refunded',
+            ),
+          }),
+        }),
+      );
+    });
+  });
 });

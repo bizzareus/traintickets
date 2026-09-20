@@ -1,24 +1,69 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Prisma } from '@prisma/client';
+import type { ChartAlertPayment } from '@prisma/client';
+import { isAxiosError } from 'axios';
+import type { AxiosInstance } from 'axios';
 import { PrismaService } from '../prisma/prisma.service';
+import { createRetryingAxiosClient } from '../common/retrying-axios';
 import { RazorpayClient } from './razorpay.client';
 import type { RefundInfo } from '../notification/notification.helpers';
 
+const DEFAULT_MUZOBOX_API_URL =
+  'https://ai-jukebox-backend-production.up.railway.app/api';
+
+/** Shape of POST proxy-payments/:id/refund on the Muzobox proxy API. */
+interface MuzoboxRefundResponse {
+  status?: string;
+  amount?: number;
+  referenceId?: string | null;
+  razorpayPaymentId?: string | null;
+  razorpayRefundId?: string;
+  refundedAt?: string;
+}
+
 /**
  * Standalone refund client (no JourneyTask dep so JourneyTaskService can
- * inject it without a circular dependency). Refunds directly via the
- * Razorpay Refunds API against the captured payment stored on the row.
+ * inject it without a circular dependency). Muzobox-routed payments are
+ * refunded via the Muzobox proxy refund API (keyed by muzoboxPaymentId);
+ * direct-Razorpay payments are refunded via the Razorpay Refunds API
+ * against the captured payment stored on the row.
  */
 @Injectable()
 export class ChartAlertRefundsService {
   private readonly logger = new Logger(ChartAlertRefundsService.name);
+  private readonly muzoboxClient: AxiosInstance;
 
   constructor(
     private prisma: PrismaService,
     private configService: ConfigService,
     private razorpay: RazorpayClient,
-  ) {}
+  ) {
+    // No retries on POST: this client only moves money (refund), never polls.
+    this.muzoboxClient = createRetryingAxiosClient({
+      serviceName: 'muzobox',
+      retries: 2,
+      retryPost: false,
+    });
+    this.muzoboxClient.defaults.baseURL = this.muzoboxApiUrl;
+    this.muzoboxClient.defaults.timeout = 15_000;
+  }
+
+  private get muzoboxApiUrl(): string {
+    return (
+      this.configService
+        .get<string>('MUZOBOX_API_URL')
+        ?.trim()
+        .replace(/\/$/, '') || DEFAULT_MUZOBOX_API_URL
+    );
+  }
+
+  private muzoboxAuthHeaders(): Record<string, string> | undefined {
+    const key = this.configService
+      .get<string>('MUZOBOX_PROXY_API_KEY')
+      ?.trim();
+    return key ? { 'x-api-key': key } : undefined;
+  }
 
   private get autoRefundEnabled(): boolean {
     const raw = this.configService
@@ -96,13 +141,16 @@ export class ChartAlertRefundsService {
         amount: record.amount,
       };
     }
-    if (!record.razorpayPaymentId) {
+    if (!record.razorpayPaymentId && !record.muzoboxPaymentId) {
       this.logger.warn(
         `Refund skipped for jid=${jid}: no captured Razorpay payment on record`,
       );
       return { attempted: false, outcome: 'skipped' };
     }
-    if (!this.razorpay.isConfigured) {
+    // Proxy-routed payments were captured under Muzobox's Razorpay account,
+    // so our own Razorpay credentials cannot refund them — the Muzobox
+    // proxy refund API must be used instead (no local Razorpay config needed).
+    if (!record.muzoboxPaymentId && !this.razorpay.isConfigured) {
       this.logger.warn(
         `Refund skipped for jid=${jid}: Razorpay not configured`,
       );
@@ -137,11 +185,15 @@ export class ChartAlertRefundsService {
     }
 
     try {
-      const refund = await this.razorpay.createRefund({
-        paymentId: record.razorpayPaymentId,
-        amountPaise: record.amount * 100,
-        notes: { chart_alert_ref: record.id, reason: reason.slice(0, 200) },
-      });
+      const muzoboxPaymentId = record.muzoboxPaymentId?.trim() || null;
+      if (muzoboxPaymentId) {
+        return await this.refundViaMuzoboxProxy(
+          record,
+          muzoboxPaymentId,
+          reason,
+        );
+      }
+      const refund = await this.refundDirectViaRazorpay(record, reason);
       const refundId = refund.id;
       await this.prisma.chartAlertPayment.update({
         where: { id: record.id },
@@ -171,5 +223,107 @@ export class ChartAlertRefundsService {
       this.logger.warn(`Refund failed jid=${jid} ref=${record.id}: ${msg}`);
       return { attempted: true, outcome: 'failed', amount: record.amount };
     }
+  }
+
+  /**
+   * Refund a Muzobox-routed payment via the proxy refund API, keyed by the
+   * Muzobox payment id stored on the row. Persists the proxy response
+   * (status, Razorpay refund id, amount, timestamp) so the admin dashboard
+   * reflects exactly what Muzobox reported. `already_refunded` counts as
+   * success and backfills any refund details we were missing.
+   */
+  private async refundViaMuzoboxProxy(
+    record: ChartAlertPayment,
+    muzoboxPaymentId: string,
+    reason: string,
+  ): Promise<RefundInfo> {
+    let data: MuzoboxRefundResponse;
+    try {
+      const res =
+        await this.muzoboxClient.post<MuzoboxRefundResponse>(
+          `proxy-payments/${encodeURIComponent(muzoboxPaymentId)}/refund`,
+          {
+            amount: record.amount,
+            reason: reason.slice(0, 500),
+            referenceId: record.id,
+          },
+          { headers: this.muzoboxAuthHeaders() },
+        );
+      data = res.data ?? {};
+    } catch (err) {
+      throw new Error(this.describeMuzoboxError(err));
+    }
+    const status = String(data.status ?? '').toLowerCase();
+    if (status !== 'refunded' && status !== 'already_refunded') {
+      throw new Error(
+        `Muzobox refund returned unexpected status=${String(data.status ?? 'missing')}`,
+      );
+    }
+    const refundId =
+      data.razorpayRefundId ?? record.razorpayRefundId ?? undefined;
+    const refundAmount =
+      typeof data.amount === 'number' ? data.amount : record.amount;
+    const refundedAt = data.refundedAt ? new Date(data.refundedAt) : new Date();
+    await this.prisma.chartAlertPayment.update({
+      where: { id: record.id },
+      data: {
+        refundStatus: 'SUCCEEDED',
+        razorpayRefundId: refundId ?? null,
+        ...(data.razorpayPaymentId
+          ? { razorpayPaymentId: data.razorpayPaymentId }
+          : {}),
+        refundAmount,
+        refundedAt,
+        refundResponse: data as unknown as Prisma.InputJsonValue,
+        refundError: null,
+      },
+    });
+    this.logger.log(
+      `Refund via Muzobox proxy jid=${record.journeyRequestId} ref=${record.id} status=${status} refund=${refundId ?? 'n/a'}`,
+    );
+    return {
+      attempted: true,
+      outcome: 'succeeded',
+      amount: refundAmount,
+      refundId,
+    };
+  }
+
+  /**
+   * Direct Razorpay refund for non-proxy payments. The caller guarantees a
+   * captured payment id exists (guarded before the single-flight claim).
+   */
+  private async refundDirectViaRazorpay(
+    record: ChartAlertPayment,
+    reason: string,
+  ): Promise<{ id?: string }> {
+    const paymentId = record.razorpayPaymentId;
+    if (!paymentId) {
+      throw new Error('No captured Razorpay payment on record');
+    }
+    return this.razorpay.createRefund({
+      paymentId,
+      amountPaise: record.amount * 100,
+      notes: { chart_alert_ref: record.id, reason: reason.slice(0, 200) },
+    });
+  }
+
+  /** Human-readable message from a Muzobox API failure (axios or otherwise). */
+  private describeMuzoboxError(err: unknown): string {
+    if (isAxiosError(err)) {
+      const payload = err.response?.data as
+        | { message?: unknown; error?: unknown }
+        | undefined;
+      const fromBody =
+        (Array.isArray(payload?.message)
+          ? payload?.message.join('; ')
+          : payload?.message) ?? payload?.error;
+      if (typeof fromBody === 'string' && fromBody.trim())
+        return `Muzobox refund failed: ${fromBody.trim().slice(0, 500)}`;
+      if (err.response?.status)
+        return `Muzobox refund failed with HTTP ${err.response.status}`;
+      return `Muzobox refund request failed: ${err.message}`;
+    }
+    return err instanceof Error ? err.message : String(err);
   }
 }
