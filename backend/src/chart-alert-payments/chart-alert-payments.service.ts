@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Injectable,
   Logger,
   NotFoundException,
@@ -177,6 +178,23 @@ export class ChartAlertPaymentsService {
   async createPaymentLink(
     input: ChartAlertJourneyInput,
   ): Promise<PaymentLinkResult> {
+    if (input.toStationCode?.trim()) {
+      const validation = await this.journeyTask.validateJourneyForMonitoring({
+        trainNumber: input.trainNumber,
+        fromStationCode: input.fromStationCode,
+        toStationCode: input.toStationCode,
+        journeyDate: input.journeyDate,
+        trainStartDate: input.trainStartDate,
+        stationCodesToMonitor: input.stationCodesToMonitor,
+      });
+      if (!validation.valid) {
+        throw new BadRequestException({
+          valid: false,
+          errors: validation.errors,
+        });
+      }
+    }
+
     const amount = chartAlertPriceForClass(input.classCode);
     const record = await this.prisma.chartAlertPayment.create({
       data: {

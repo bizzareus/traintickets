@@ -509,6 +509,17 @@ export class AvailabilityController {
     // Empty toStationCode = the "no specific destination" flow: skip the
     // route/IRCTC check and queue a lightweight chart-prepared alert task.
     const isChartPreparedOnly = !normalized.toStationCode;
+    if (!isChartPreparedOnly) {
+      const validation =
+        await this.journeyTask.validateJourneyForMonitoring(normalized);
+      if (!validation.valid) {
+        throw new BadRequestException({
+          valid: false,
+          errors: validation.errors,
+        });
+      }
+    }
+
     setImmediate(() => {
       if (isChartPreparedOnly) {
         void this.journeyTask.queueChartPreparedMonitoring(

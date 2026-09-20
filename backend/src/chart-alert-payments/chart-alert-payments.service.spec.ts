@@ -1,6 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { createHmac } from 'node:crypto';
-import { ServiceUnavailableException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ServiceUnavailableException,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   ChartAlertPaymentsService,
@@ -45,6 +48,9 @@ describe('ChartAlertPaymentsService', () => {
     journeyTask = {
       queueJourneyMonitoring: jest.fn(),
       queueChartPreparedMonitoring: jest.fn(),
+      validateJourneyForMonitoring: jest
+        .fn()
+        .mockResolvedValue({ valid: true }),
     };
     razorpay = {
       isConfigured: true,
@@ -186,6 +192,22 @@ describe('ChartAlertPaymentsService', () => {
       expect(out.ref).toBe('ref-mb-1');
       expect(out.payUrl).toBe('https://muzobox.com/pay/mb_123');
       expect(out.qrImageUrl).toContain('https://api.qrserver.com');
+    });
+
+    it('throws BadRequestException when journey validation fails', async () => {
+      journeyTask.validateJourneyForMonitoring.mockResolvedValueOnce({
+        valid: false,
+        errors: [
+          {
+            code: 'TRAIN_DOES_NOT_RUN_ON_DATE',
+            message: 'This train does not start its journey on 2026-09-20',
+          },
+        ],
+      });
+
+      await expect(service.createPaymentLink({ ...baseInput })).rejects.toThrow(
+        BadRequestException,
+      );
     });
   });
 
