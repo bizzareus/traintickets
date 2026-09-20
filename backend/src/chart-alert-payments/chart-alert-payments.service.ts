@@ -643,6 +643,12 @@ export class ChartAlertPaymentsService {
         });
 
         if (updateResult.count > 0) {
+          const tasks = await this.prisma.chartTimeAvailabilityTask.findMany({
+            where: { journeyRequestId },
+            orderBy: { chartAt: 'asc' },
+            select: { chartAt: true },
+          });
+
           void this.notificationService
             .sendChartAlertConfirmation({
               email: contactEmail,
@@ -655,6 +661,10 @@ export class ChartAlertPaymentsService {
               classCode: payload.classCode,
               amount: record.amount,
               paymentRef: record.id,
+              chartTimes: tasks.map((t, idx) => ({
+                label: tasks.length > 1 ? `Chart ${idx + 1}` : 'Chart 1',
+                chartAt: t.chartAt,
+              })),
             })
             .catch((err) =>
               this.logger.error(

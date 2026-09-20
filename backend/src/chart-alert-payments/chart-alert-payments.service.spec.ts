@@ -44,6 +44,9 @@ describe('ChartAlertPaymentsService', () => {
         updateMany: jest.fn(),
         findUnique: jest.fn(),
       },
+      chartTimeAvailabilityTask: {
+        findMany: jest.fn().mockResolvedValue([]),
+      },
     };
     journeyTask = {
       queueJourneyMonitoring: jest.fn(),

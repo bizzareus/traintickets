@@ -1030,6 +1030,10 @@ describe('NotificationService', () => {
         classCode: '3A',
         amount: 25,
         paymentRef: 'ref_123',
+        chartTimes: [
+          { label: 'Chart 1', chartAt: '2026-09-30T20:00:00.000Z' },
+          { label: 'Chart 2', chartAt: '2026-10-01T05:30:00.000Z' },
+        ],
       });
 
       expect(result.emailSent).toBe(true);
@@ -1040,10 +1044,24 @@ describe('NotificationService', () => {
         expect.stringContaining('12951'),
         expect.stringContaining('Your Chart Alert Is Active!'),
       );
+      const emailHtml = sendEmailSpy.mock.calls[0][2];
+      expect(emailHtml).toContain('Chart Preparation Schedule (2 Times)');
+      expect(emailHtml).toContain('Chart 1');
+      expect(emailHtml).toContain('Chart 2');
+      expect(emailHtml).toContain('We will find you tickets at chart prepare');
+
       expect(sendWhatsAppSpy).toHaveBeenCalledTimes(1);
       expect(sendWhatsAppSpy).toHaveBeenCalledWith(
         '9876543210',
-        expect.stringContaining('LastBerth Chart Alert Confirmed'),
+        expect.stringContaining('LastBerth Chart Alert Active'),
+      );
+      const whatsappText = sendWhatsAppSpy.mock.calls[0][1];
+      expect(whatsappText).toContain('Chart Preparation Schedule (2 Times)');
+      expect(whatsappText).toContain('• *Chart 1:*');
+      expect(whatsappText).toContain('• *Chart 2:*');
+      expect(whatsappText).toContain('Payment ID:* ref_123');
+      expect(whatsappText).toContain(
+        'find you tickets at the time of chart prepare',
       );
     });
 
