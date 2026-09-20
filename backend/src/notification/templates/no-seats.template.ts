@@ -232,7 +232,6 @@ export function buildNoSeatsWhatsAppText(params: {
   searchUrl?: string;
   refundInfo?: RefundInfo | null;
   chartTime?: string;
-  refundUrl?: string;
 }): string {
   const {
     trainLabel,
@@ -276,11 +275,6 @@ export function buildNoSeatsWhatsAppText(params: {
   lines.push('Look for other trains which have confirmed tickets - ');
   lines.push(targetSearchUrl);
 
-  if (params.refundUrl) {
-    lines.push('');
-    lines.push(`Claim Refund - ${params.refundUrl}`);
-  }
-
   return lines.join('\n').trim();
 }
 
@@ -293,7 +287,6 @@ export function buildAlternativeTrainsWhatsAppText(params: {
   toStationCode: string;
   alternativeTrains: BestTrainCandidateResult[];
   stationNameMap: Map<string, string>;
-  refundUrl?: string;
 }): string {
   const {
     originalTrainLabel,
@@ -349,10 +342,6 @@ export function buildAlternativeTrainsWhatsAppText(params: {
   });
 
   lines.push('Track live seat updates anytime on LastBerth! 🚄');
-  if (params.refundUrl) {
-    lines.push('');
-    lines.push(`Claim Refund - ${params.refundUrl}`);
-  }
 
   return lines.join('\n').trim();
 }

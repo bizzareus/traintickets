@@ -587,78 +587,6 @@ export class NotificationService {
     }
   }
 
-  private getStaticRefundUrl(): string {
-    const baseUrl = (
-      this.config?.get<string>('FRONTEND_URL') ||
-      process.env.FRONTEND_URL ||
-      'https://lastberth.com'
-    ).replace(/\/+$/, '');
-    return `${baseUrl}/refund`;
-  }
-
-  async isPaymentPaid(options: {
-    isPaid?: boolean;
-    journeyRequestId?: string | null;
-    taskId?: string | null;
-    journeyTaskId?: string | null;
-    refundInfo?: RefundInfo | null;
-  }): Promise<boolean> {
-    if (options.isPaid !== undefined) {
-      return Boolean(options.isPaid);
-    }
-    if (options.refundInfo?.attempted) {
-      return true;
-    }
-    if (!this.prisma) {
-      return false;
-    }
-
-    let jid = options.journeyRequestId?.trim();
-
-    if (!jid && options.journeyTaskId) {
-      try {
-        const altTask = await this.prisma.chartTimeAvailabilityTask.findUnique({
-          where: { id: options.journeyTaskId },
-          select: { journeyRequestId: true },
-        });
-        jid = altTask?.journeyRequestId;
-      } catch {
-        // ignore
-      }
-    }
-
-    if (!jid && options.taskId) {
-      try {
-        const taskRow = await this.prisma.chartTimeAvailabilityTask.findUnique({
-          where: { id: options.taskId },
-          select: { journeyRequestId: true },
-        });
-        jid = taskRow?.journeyRequestId;
-      } catch {
-        // ignore
-      }
-    }
-
-    if (jid) {
-      try {
-        const payment = await this.prisma.chartAlertPayment.findFirst({
-          where: {
-            journeyRequestId: jid,
-            status: 'PAID',
-          },
-          select: { id: true },
-        });
-        if (payment) return true;
-      } catch (err) {
-        this.logger.warn(
-          `Failed to check paid status for journeyRequestId=${jid}: ${err instanceof Error ? err.message : String(err)}`,
-        );
-      }
-    }
-
-    return false;
-  }
-
   async notifyChartPrepared(params: {
     email?: string | null;
     mobile?: string | null;
@@ -716,12 +644,6 @@ export class NotificationService {
         return out;
       }
 
-      const isPaid = await this.isPaymentPaid({
-        isPaid: params.isPaid,
-        journeyRequestId: params.journeyRequestId,
-      });
-      const refundUrl = isPaid ? this.getStaticRefundUrl() : undefined;
-
       const subject = `Chart prepared for ${trainLabel} on ${journeyDateReadable} — check tickets now`;
 
       if (email?.trim()) {
@@ -766,7 +688,6 @@ export class NotificationService {
           trainName,
           formattedDateTime: params.chartPreparationText,
           checkTicketsUrl: whatsappCheckUrl || checkTicketsUrl,
-          refundUrl,
         });
         out.whatsappSent = await this.sendWhatsApp(mobile.trim(), text, {
           templateName: 'subscription_alert',
@@ -912,14 +833,6 @@ export class NotificationService {
         ? await this.createUnsubscribeShortLink(email.trim(), 'email')
         : undefined;
       const emailFooterUrl = emailUnsubscribeUrl;
-
-      const isPaid = await this.isPaymentPaid({
-        isPaid: params.isPaid,
-        journeyRequestId: task.journeyRequestId,
-        taskId: task.id,
-        refundInfo,
-      });
-      const refundUrl = isPaid ? this.getStaticRefundUrl() : undefined;
 
       const trainLabel = [task.trainNumber, task.trainName]
         .filter(Boolean)
@@ -1079,7 +992,6 @@ export class NotificationService {
                   stationScheduleList,
                   trainNumber: task.trainNumber,
                   chartPreparationText,
-                  refundUrl,
                 })
               : hasTickets
                 ? await buildWhatsAppSeatsFoundText({
@@ -1101,7 +1013,6 @@ export class NotificationService {
                     refundInfo,
                     chartNumber,
                     chartTime: chartTimeRaw,
-                    refundUrl,
                     getChartOpenInfoFn: (item) =>
                       this.getStationChartOpenTimeLabel({
                         trainNumber: task.trainNumber,
@@ -1129,7 +1040,6 @@ export class NotificationService {
                     searchUrl: whatsappSearchUrl,
                     refundInfo,
                     chartTime: chartTimeRaw,
-                    refundUrl,
                   });
 
           const templateName = hasTickets
@@ -1563,13 +1473,6 @@ export class NotificationService {
         : undefined;
       const emailFooterUrl = emailUnsubscribeUrl;
 
-      const isPaid = await this.isPaymentPaid({
-        isPaid: params.isPaid,
-        journeyRequestId: params.journeyRequestId,
-        journeyTaskId: params.journeyTaskId,
-      });
-      const refundUrl = isPaid ? this.getStaticRefundUrl() : undefined;
-
       const journeyDateStr =
         journeyDate instanceof Date
           ? journeyDate.toISOString().slice(0, 10)
@@ -1618,7 +1521,6 @@ export class NotificationService {
             toStationCode,
             alternativeTrains,
             stationNameMap,
-            refundUrl,
           });
           const altTemplateName = 'alternative_train_alert';
           const altParameters = [

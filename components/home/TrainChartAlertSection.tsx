@@ -233,9 +233,9 @@ export function TrainChartAlertSection({
               </span>
             </div>
             <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-              We&apos;ll provide you with {fromCode} &lt;&gt; {toCode} new
-              tickets that come up when the chart is prepared — get 100%
-              refund if you didn&apos;t find full journey tickets.
+              We&apos;ll scan {fromCode} &lt;&gt; {toCode} for new
+              tickets that come up when the chart is prepared and notify
+              you instantly.
             </p>
           </div>
 

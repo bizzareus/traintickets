@@ -413,8 +413,7 @@ export default function RowAlertButton({
               </span>
               , we scan your full {stationCode} &lt;&gt;{" "}
               {toStationCode || "…"} route for any ticket that opens up and
-              notify you instantly. Get 100% refund if you didn&apos;t
-              find full journey tickets.
+              notify you instantly.
             </p>
             {subscribedJourney ? (
               <ChartAlertSuccessBox journey={subscribedJourney} compact />

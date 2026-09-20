@@ -111,15 +111,15 @@ describe('Notification Templates & Helpers', () => {
       );
     });
 
-    it('appends the claim refund line when refundUrl is provided', () => {
+    it('does not include any refund link', () => {
       const text = buildChartPreparedNoDestinationWhatsAppText({
         trainNumber: '12310',
         trainName: null,
         formattedDateTime: '5th Sep, 04:30 PM',
         checkTicketsUrl: 'https://lastberth.com/s/abc',
-        refundUrl: 'https://lastberth.com/refund',
       });
-      expect(text).toContain('Claim Refund - https://lastberth.com/refund');
+      expect(text).not.toContain('Claim Refund');
+      expect(text).not.toContain('/refund');
       expect(text).not.toContain('Unsubscribe');
     });
   });
@@ -186,7 +186,7 @@ describe('Notification Templates & Helpers', () => {
       expect(text).not.toContain('unsubscribe');
     });
 
-    it('appends claim refund line when refundUrl is provided', () => {
+    it('does not include any refund link', () => {
       const text = buildNoSeatsWhatsAppText({
         trainLabel: '12435 Garib Rath Exp',
         fromCode: 'DDU',
@@ -194,10 +194,10 @@ describe('Notification Templates & Helpers', () => {
         date: '2026-09-18',
         chartTime: '7:30 PM',
         searchUrl: 'https://lastberth.com/s/3d6fc70',
-        refundUrl: 'https://lastberth.com/refund',
       });
 
-      expect(text).toContain('Claim Refund - https://lastberth.com/refund');
+      expect(text).not.toContain('Claim Refund');
+      expect(text).not.toContain('/refund');
       expect(text).not.toContain('unsubscribe');
     });
 

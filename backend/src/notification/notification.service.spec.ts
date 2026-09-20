@@ -101,7 +101,7 @@ describe('NotificationService', () => {
     expect(whatsAppText).not.toContain('Claim Refund');
   });
 
-  it('appends Claim Refund link to WhatsApp notification when isPaid is true', async () => {
+  it('does not append a Claim Refund link to WhatsApp notification even when isPaid is true', async () => {
     const svc = new NotificationService(mockConfig(), mockStationCache());
     const sendWhatsApp = jest
       .spyOn(svc, 'sendWhatsApp')
@@ -117,54 +117,8 @@ describe('NotificationService', () => {
 
     expect(sendWhatsApp).toHaveBeenCalledTimes(1);
     const [, whatsAppText] = sendWhatsApp.mock.calls[0];
-    expect(whatsAppText).toContain('Claim Refund - ');
-    expect(whatsAppText).toMatch(/Claim Refund - https?:\/\/[^\s]+\/refund/);
-    expect(whatsAppText).not.toContain('Unsubscribe:');
-  });
-
-  it('detects paid status from prisma chartAlertPayment when journeyRequestId matches', async () => {
-    const mockPrisma = {
-      chartAlertPayment: {
-        findFirst: jest
-          .fn()
-          .mockResolvedValue({ id: 'pay_123', status: 'PAID' }),
-      },
-    };
-    const svc = new NotificationService(
-      mockConfig(),
-      mockStationCache(),
-      undefined,
-      undefined,
-      undefined,
-      undefined,
-      undefined,
-      mockPrisma as never,
-    );
-    const sendWhatsApp = jest
-      .spyOn(svc, 'sendWhatsApp')
-      .mockResolvedValue(true);
-
-    await svc.notifyUser({
-      email: undefined,
-      mobile: '919876543210',
-      task: {
-        ...task,
-        journeyRequestId: 'jid-paid-123',
-      },
-      result: successEmptyPlan,
-    });
-
-    expect(mockPrisma.chartAlertPayment.findFirst).toHaveBeenCalledWith({
-      where: {
-        journeyRequestId: 'jid-paid-123',
-        status: 'PAID',
-      },
-      select: { id: true },
-    });
-    expect(sendWhatsApp).toHaveBeenCalledTimes(1);
-    const [, whatsAppText] = sendWhatsApp.mock.calls[0];
-    expect(whatsAppText).toContain('Claim Refund - ');
-    expect(whatsAppText).toMatch(/Claim Refund - https?:\/\/[^\s]+\/refund/);
+    expect(whatsAppText).not.toContain('Claim Refund');
+    expect(whatsAppText).not.toContain('/refund');
     expect(whatsAppText).not.toContain('Unsubscribe:');
   });
 
@@ -1218,7 +1172,7 @@ describe('NotificationService', () => {
       expect(sendWhatsApp).toHaveBeenCalledTimes(1);
     });
 
-    it('appends Claim Refund link when the chart-prepared alert is paid', async () => {
+    it('does not append a Claim Refund link when the chart-prepared alert is paid', async () => {
       const svc = new NotificationService(
         mockConfig(),
         mockStationCache(),
@@ -1241,8 +1195,8 @@ describe('NotificationService', () => {
 
       expect(sendWhatsApp).toHaveBeenCalledTimes(1);
       const [, whatsAppText] = sendWhatsApp.mock.calls[0];
-      expect(whatsAppText).toContain('Claim Refund - ');
-      expect(whatsAppText).toMatch(/Claim Refund - https?:\/\/[^\s]+\/refund/);
+      expect(whatsAppText).not.toContain('Claim Refund');
+      expect(whatsAppText).not.toContain('/refund');
       expect(whatsAppText).not.toContain('Unsubscribe:');
     });
   });
