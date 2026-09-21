@@ -2,7 +2,7 @@
 title: "How to Get Confirmed Train Tickets During Diwali 2026: Ultimate Platform Guide"
 description: "Diwali 2026 train dates, IRCTC booking opening days, Tatkal timings & REGRET fixes. Split-ticket breaks for Delhi-Patna, Delhi-Mumbai, Mumbai-Ahmedabad with train numbers."
 date: "2026-09-12"
-updated: "2026-09-12"
+updated: "2026-09-21"
 tags:
   - train booking
   - irctc
@@ -57,8 +57,8 @@ Quotas change daily, so re-search your date. But these breaks repeat most Diwali
 
 ### Delhi → Patna (Dhanteras rush)
 
-- Train **12394 Sampoorna Kranti**, ANVT → PNBE. Sleeper/3AC REGRET or WL 180? Standard.
-- Break: **ANVT → Kanpur Central** confirmed + **Kanpur → PNBE** confirmed. Same train. Board Anand Vihar, swap at Kanpur, sleep till Patna. My brother reached a day early for Dhanteras shopping doing this in 2024.
+- Train **12394 Sampoorna Kranti**, NDLS → PNBE. Sleeper/3AC REGRET or WL 180? Standard.
+- Break: **NDLS → Kanpur Central** confirmed + **Kanpur → PNBE** confirmed. Same train. Board New Delhi, swap at Kanpur, sleep till Patna. My brother reached a day early for Dhanteras shopping doing this in 2024.
 
 ### Delhi → Mumbai (pre-Diwali weekend)
 

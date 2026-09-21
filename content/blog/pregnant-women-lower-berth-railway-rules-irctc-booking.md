@@ -2,7 +2,7 @@
 title: "Pregnant Women Lower Berth in Train: IRCTC Rules (2026)"
 description: "Can pregnant women get lower berths in train? Learn IRCTC rules, Delhi High Court PIL updates, TTE berth exchange rights, and Emergency Quota hacks for 2026."
 date: "2026-09-20"
-updated: "2026-09-20"
+updated: "2026-09-21"
 tags:
   - train booking
   - irctc
@@ -184,7 +184,7 @@ The medical certificate must be printed on the official letterhead of a register
 Do not engage in an argument with the passenger. Immediately show your ticket and government photo ID to the coach TTE or coach attendant. If the TTE is not in the coach, submit an alert through the RailMadad mobile app, visit `railmadad.indianrailways.gov.in`, or call the Railway Helpline at 139 for prompt security and commercial assistance.
 
 ### Can a pregnant woman get a lower berth through Current Availability (CURR_AVBL)?
-Yes, pregnant women can book confirmed lower berths through Current Availability (`CURR_AVBL`) after the first reservation chart is prepared, roughly four hours before train departure. Berths released from unutilized quotas or cancellations are made available to the public on IRCTC and at PRS counters at base fare without Tatkal charges. You can monitor open lower berths across coaches live using [Chart Vacancy](/chart-vacancy).
+Yes, pregnant women can book confirmed lower berths through Current Availability (`CURR_AVBL`) after the first reservation chart is prepared, roughly eight hours before train departure (or four to eight hours before departure). Berths released from unutilized quotas or cancellations are made available to the public on IRCTC and at PRS counters at base fare without Tatkal charges. You can monitor open lower berths across coaches live using [Chart Vacancy](/chart-vacancy).
 
 ---
 

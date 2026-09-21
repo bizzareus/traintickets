@@ -2,7 +2,7 @@
 title: "How to Get Confirmed Train Tickets During Chhath Puja 2026: Platform Guide"
 description: "Chhath Puja 2026 train dates, IRCTC booking opening days & REGRET fixes for Bihar/UP routes. Split-ticket breaks for Delhi-Patna, Delhi-Darbhanga, Mumbai-Danapur with train numbers."
 date: "2026-09-12"
-updated: "2026-09-12"
+updated: "2026-09-21"
 tags:
   - train booking
   - irctc
@@ -59,12 +59,12 @@ Re-search your date (quotas move daily), but these breaks repeat every Chhath:
 
 ### Delhi → Patna / Danapur (main corridor)
 
-- Trains **12296 / Sampoorna Kranti types**, Sleeper + 3AC REGRET? Standard story.
-- Break: **Anand Vihar/NDLS → Kanpur Central (CNB)** confirmed + **Kanpur → PNBE** confirmed. Same train. Book both on IRCTC, shift at Kanpur.
+- Train **12394 Sampoorna Kranti Express**, Sleeper + 3AC REGRET? Standard story.
+- Break: **NDLS → Kanpur Central (CNB)** confirmed + **Kanpur → PNBE** confirmed. Same train. Book both on IRCTC, shift at Kanpur.
 
 ### Delhi → Muzaffarpur / Darbhanga
 
-- Train **12562 Swatantrata Senani**, NDLS → DBG, REGRET/WL 250+? Seen worse.
+- Train **12566 Bihar Sampark Kranti**, NDLS → DBG, REGRET/WL 250+? Seen worse.
 - Break: **NDLS → Gorakhpur (GKP)** confirmed + **Gorakhpur → DBG** confirmed. Gorakhpur halt is long enough for chai + leg-stretch. My cousin reached Darbhanga Kharna morning this way in 2024 — his mother cried. Real story.
 
 ![Smart Seats Split Booking Example: Delhi to Muzaffarpur](/images/blog/chhath-smart-seats-delhi-muzaffarpur.png)
