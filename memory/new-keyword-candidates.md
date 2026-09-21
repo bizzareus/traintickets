@@ -19,6 +19,7 @@ These candidates are queued for:
 ## 📋 Queued Candidates for Generator Review
 
 | Date Added | Target Keyword / Query | Impressions | Growth / Pos | Suggested Article Title | Status |
+| 2026-09-21 | `irctc advance reservation period` / `60 days rules calculator` | High (~18.8M/wk entity surge) | Breakout (+5000% 24h spike / 60-day rule) | *IRCTC Advance Reservation Period: 60-Day Rules & Dates (2026)* | ✅ Published |
 | 2026-09-10 | `diwali special train 2026 list` / `booking date` | Very High (~18.8M/wk entity surge) | Breakout (+900% 7D / +999k% 1M) | *Diwali Special Train 2026: List, Booking Dates & Routes* | ✅ Published |
 | 2026-09-08 | `chhath special train 2026 list` / `booking date` | Very High (~18.8M/wk entity surge) | Breakout (+800% 7D / +999k% 1M) | *Chhath Special Train 2026: List, Dates & IRCTC Booking* | ✅ Published |
 | 2026-09-05 | `irctc divyangjan concession udid card booking` | High (~100K/mo across disability queries) | News / Policy Update | *IRCTC Divyangjan Concession: UDID Card & Booking Rules 2026* | ✅ Published |
