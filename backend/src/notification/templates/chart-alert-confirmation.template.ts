@@ -135,14 +135,6 @@ export function renderChartAlertConfirmationEmailHtml(
                   <td style="padding:4px 0; vertical-align:top; width:20px; font-weight:700; color:#2563eb;">2.</td>
                   <td style="padding:4px 0;"><strong>Instant Notification:</strong> The moment vacant seats are discovered, you will receive an immediate alert via email / WhatsApp with direct booking links.</td>
                 </tr>
-                ${
-                  amount
-                    ? `<tr>
-                  <td style="padding:4px 0; vertical-align:top; width:20px; font-weight:700; color:#2563eb;">3.</td>
-                  <td style="padding:4px 0;"><strong>Automated Refund:</strong> If no confirmed tickets are found after chart preparation, your subscription fee of ₹${amount} is automatically refunded.</td>
-                </tr>`
-                    : ''
-                }
               </table>
             </td>
           </tr>
