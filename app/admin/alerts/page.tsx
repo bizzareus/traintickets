@@ -139,11 +139,18 @@ export default function AdminAlertsPage() {
     return s !== "SUCCEEDED" && s !== "INITIATED";
   }
 
-  const sortedAlerts = [...alerts].sort((a, b) => {
-    const valA = new Date(a[sortField]).getTime();
-    const valB = new Date(b[sortField]).getTime();
-    return sortOrder === "asc" ? valA - valB : valB - valA;
-  });
+  // Performance Optimization: Pre-compute numeric Unix timestamps before sorting
+  // to avoid calling `new Date(str).getTime()` inside the sort comparator callback (O(N log N) overhead).
+  const alertsWithTs = alerts.map((a) => ({
+    alert: a,
+    ts: Date.parse(a[sortField]) || 0,
+  }));
+
+  alertsWithTs.sort((a, b) =>
+    sortOrder === "asc" ? a.ts - b.ts : b.ts - a.ts
+  );
+
+  const sortedAlerts = alertsWithTs.map((item) => item.alert);
 
   const [statusFilter, setStatusFilter] = useState<
     "all" | "pending" | "running" | "completed" | "failed"

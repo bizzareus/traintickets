@@ -1182,22 +1182,27 @@ export class ShortLinkService {
       );
     }
 
-    // Sort: most recent clicks first, then total clicks
-    userList.sort((a, b) => {
-      if (a.lastClickedAt && b.lastClickedAt) {
-        return (
-          new Date(b.lastClickedAt).getTime() -
-          new Date(a.lastClickedAt).getTime()
-        );
+    // Performance Optimization: Pre-compute numeric Unix timestamps (Date.parse) using lightweight tuples
+    // to avoid instantiating `new Date()` objects inside the sort comparator without property-spreading overhead.
+    const userTuples = userList.map((u) => ({
+      u,
+      ts: u.lastClickedAt ? Date.parse(u.lastClickedAt) : null,
+    }));
+
+    userTuples.sort((a, b) => {
+      if (a.ts !== null && b.ts !== null) {
+        return b.ts - a.ts;
       }
-      if (a.lastClickedAt) return -1;
-      if (b.lastClickedAt) return 1;
-      return b.totalClicks - a.totalClicks;
+      if (a.ts !== null) return -1;
+      if (b.ts !== null) return 1;
+      return b.u.totalClicks - a.u.totalClicks;
     });
 
+    const sortedUserList = userTuples.map((t) => t.u);
+
     return {
-      users: userList,
-      totalUsers: userList.length,
+      users: sortedUserList,
+      totalUsers: sortedUserList.length,
     };
   }
 }

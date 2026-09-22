@@ -9,3 +9,7 @@
 ## 2026-09-14 - Fast Numeric Train Number Sorting vs localeCompare Numeric Option
 **Learning:** Calling `String.prototype.localeCompare(..., undefined, { numeric: true })` inside array sorting callbacks creates heavy Intl Collation context overhead in V8 (~150x slower). Integer subtraction with fallback string comparison `(parseInt(a, 10) || 0) - (parseInt(b, 10) || 0) || (a < b ? -1 : a > b ? 1 : 0)` provides identical numeric ordering at near-instant CPU speeds.
 **Action:** Avoid `{ numeric: true }` in `localeCompare`; use integer parsing subtraction with string tie-breaker for numeric string sorting.
+
+## 2026-09-22 - Lightweight Tuples vs Property Spreading in Pre-Sort Maps
+**Learning:** Using object rest/spread (`{ ...u, ts: Date.parse(u.date) }`) and rest destructuring (`({ ts, ...u })`) inside `.map()` prior to `.sort()` introduces significant GC allocation pressure and object copying overhead ($O(N)$ copies of every property). In addition, using falsy checks (`if (item.ts)`) fails on `0` (1970 Epoch). Creating lightweight tuple objects (`{ u, ts: u.date ? Date.parse(u.date) : null }`) and explicitly checking `ts !== null` eliminates property copying overhead and avoids falsy numeric edge cases.
+**Action:** When pre-computing sort keys for objects, store references in lightweight tuples (`{ obj, key }`) and check for `null` explicitly rather than spreading properties or using falsy checks on numeric timestamps.
