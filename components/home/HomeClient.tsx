@@ -1526,11 +1526,16 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             </div>
           )}
       </div>
-      <HomeSideAd />
-      <HomeSeoContent t={t.seo} />
-      <div className="mx-auto my-8 flex min-h-[250px] max-w-3xl items-center justify-center px-4 sm:px-6 lg:max-w-4xl">
-        <HomeBannerAd zoneId="12090034" />
-      </div>
+      {/* Homepage content (ads + SEO) is first-landing only — hidden once a search has begun */}
+      {!hasSearched && (
+        <>
+          <HomeSideAd />
+          <HomeSeoContent t={t.seo} />
+          <div className="mx-auto my-8 flex min-h-[250px] max-w-3xl items-center justify-center px-4 sm:px-6 lg:max-w-4xl">
+            <HomeBannerAd zoneId="12090034" />
+          </div>
+        </>
+      )}
       <TrainScheduleBottomSheet
         open={scheduleModalOpen}
         onClose={() => setScheduleModalOpen(false)}
