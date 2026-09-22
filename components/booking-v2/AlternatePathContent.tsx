@@ -1297,11 +1297,14 @@ export function AlternatePathContent({
             })}
           </ol>
 
-          {/* Total fare strip at the bottom (shown when > 1 leg in the journey) */}
-          {altResult.isComplete &&
-            altResult.totalFare != null &&
+          {/* Total fare strip at the bottom (shown when > 1 confirmed leg).
+              The Book Now CTA is admin-only for now; admins also see it for
+              partial journeys (e.g. last leg unavailable) to book the
+              confirmed legs. */}
+          {altResult.totalFare != null &&
             !IS_TICKET_ALERT_ENABLED &&
-            confirmedLegCount > 1 && (
+            confirmedLegCount > 1 &&
+            (altResult.isComplete || isAdminUser) && (
               <div className="sticky bottom-0 -mx-3.5 -mb-3.5 sm:-mx-6 sm:-mb-6 mt-4 border-t border-slate-200 bg-white/95 backdrop-blur-sm px-4 py-3 sm:px-6 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] z-20">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <div className="min-w-0">
@@ -1325,11 +1328,13 @@ export function AlternatePathContent({
                       )}
                     </div>
                     <p className="mt-0.5 text-xs text-slate-600 font-medium">
-                      Full journey covered in {confirmedLegCount} confirmed tickets
+                      {altResult.isComplete
+                        ? `Full journey covered in ${confirmedLegCount} confirmed tickets`
+                        : `${confirmedLegCount} of ${altResult.legCount ?? confirmedLegCount} legs confirmed — booking covers the confirmed legs`}
                     </p>
                   </div>
 
-                  {isSplitBookingEnabled && (
+                  {isSplitBookingEnabled && isAdminUser && (
                     <button
                       type="button"
                       onClick={() => setSplitBookingModalOpen(true)}
