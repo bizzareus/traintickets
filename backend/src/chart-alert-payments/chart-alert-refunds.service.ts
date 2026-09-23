@@ -59,9 +59,7 @@ export class ChartAlertRefundsService {
   }
 
   private muzoboxAuthHeaders(): Record<string, string> | undefined {
-    const key = this.configService
-      .get<string>('MUZOBOX_PROXY_API_KEY')
-      ?.trim();
+    const key = this.configService.get<string>('MUZOBOX_PROXY_API_KEY')?.trim();
     return key ? { 'x-api-key': key } : undefined;
   }
 
@@ -239,16 +237,15 @@ export class ChartAlertRefundsService {
   ): Promise<RefundInfo> {
     let data: MuzoboxRefundResponse;
     try {
-      const res =
-        await this.muzoboxClient.post<MuzoboxRefundResponse>(
-          `proxy-payments/${encodeURIComponent(muzoboxPaymentId)}/refund`,
-          {
-            amount: record.amount,
-            reason: reason.slice(0, 500),
-            referenceId: record.id,
-          },
-          { headers: this.muzoboxAuthHeaders() },
-        );
+      const res = await this.muzoboxClient.post<MuzoboxRefundResponse>(
+        `proxy-payments/${encodeURIComponent(muzoboxPaymentId)}/refund`,
+        {
+          amount: record.amount,
+          reason: reason.slice(0, 500),
+          referenceId: record.id,
+        },
+        { headers: this.muzoboxAuthHeaders() },
+      );
       data = res.data ?? {};
     } catch (err) {
       throw new Error(this.describeMuzoboxError(err));
