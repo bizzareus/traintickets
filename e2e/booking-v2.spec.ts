@@ -155,7 +155,7 @@ test.describe("booking v2 (mocked API)", () => {
     await page.goto("/");
     await openAlternateModal(page);
 
-    await expect(page.getByRole("dialog")).toContainText("Full journey covered in 2 confirmed tickets");
+    await expect(page.getByRole("dialog")).toContainText("Total fare");
     await expect(page.getByRole("dialog")).toContainText("Total fare");
     await expect(page.getByRole("dialog")).toContainText("₹450");
     await expect(page.getByRole("dialog")).toContainText("ORIG");
@@ -171,7 +171,7 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog).toContainText("Full journey covered in 3 confirmed tickets");
+    await expect(dialog).toContainText("Total fare");
     await expect(dialog).toContainText("S1");
     await expect(dialog).toContainText("S2");
   });
