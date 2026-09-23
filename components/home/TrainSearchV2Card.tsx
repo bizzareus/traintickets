@@ -55,6 +55,9 @@ interface FoundSeatNotice {
   fare: number | null;
 }
 
+// Static module-level set to avoid recreating array / set on every check
+const NON_AC_CLASSES = new Set(["SL", "2S", "GN", "FC"]);
+
 export const TrainSearchV2Card = memo(function TrainSearchV2Card({
   train,
   journeyDate,
@@ -91,13 +94,16 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     };
   }, []);
 
-  // Determine direct confirmed availability from upstream cache
+  // Performance Optimization: Single-pass loop and static O(1) Set lookup eliminates intermediate array allocations
   const directAvailableClasses = useMemo(() => {
     const list: { cls: string; status: string; fare: number | null }[] = [];
-    const displayedClasses = (train.avlClasses ?? []).filter(
-      (c) => !acOnly || !["SL", "2S", "GN", "FC"].includes(c.toUpperCase()),
-    );
-    for (const cls of displayedClasses) {
+    const avl = train.avlClasses;
+    if (!avl || avl.length === 0) return list;
+
+    for (let i = 0; i < avl.length; i++) {
+      const cls = avl[i];
+      if (acOnly && NON_AC_CLASSES.has(cls.toUpperCase())) continue;
+
       const cacheRow = train.availabilityCache?.[cls];
       if (cacheRow && isLegConfirmed(cacheRow)) {
         let fareNum: number | null = null;
@@ -122,38 +128,49 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
 
   const isDirectAvailable = directAvailableClasses.length > 0;
 
-  // Compute lowest direct fare among confirmed classes
+  // Performance Optimization: Single-pass loop avoids array allocations (.map / .filter / Math.min)
   const lowestAvailableDirectFare = useMemo(() => {
-    const validFares = directAvailableClasses
-      .map((c) => c.fare)
-      .filter((f): f is number => f != null && f > 0);
-    return validFares.length > 0 ? Math.min(...validFares) : null;
+    let minFare = Number.POSITIVE_INFINITY;
+    for (let i = 0; i < directAvailableClasses.length; i++) {
+      const f = directAvailableClasses[i].fare;
+      if (f != null && f > 0 && f < minFare) {
+        minFare = f;
+      }
+    }
+    return minFare !== Number.POSITIVE_INFINITY ? minFare : null;
   }, [directAvailableClasses]);
 
-  // Compute lowest starting fare across all cached classes (for waitlist starting price)
+  // Performance Optimization: Direct object iteration without Object.entries() / array allocations
   const lowestStartingFare = useMemo(() => {
-    const fares: number[] = [];
-    if (train.availabilityCache) {
-      Object.entries(train.availabilityCache).forEach(([cls, avail]) => {
-        if (acOnly && ["SL", "2S", "GN", "FC"].includes(cls.toUpperCase()))
-          return;
-        if (avail?.fare) {
-          const f = parseInt(String(avail.fare), 10);
-          if (!Number.isNaN(f) && f > 0) fares.push(f);
+    const cache = train.availabilityCache;
+    if (!cache) return null;
+
+    let minFare = Number.POSITIVE_INFINITY;
+    for (const cls in cache) {
+      if (acOnly && NON_AC_CLASSES.has(cls.toUpperCase())) continue;
+      const avail = cache[cls];
+      if (avail?.fare) {
+        const f = parseInt(String(avail.fare), 10);
+        if (!Number.isNaN(f) && f > 0 && f < minFare) {
+          minFare = f;
         }
-      });
+      }
     }
-    return fares.length > 0 ? Math.min(...fares) : null;
+    return minFare !== Number.POSITIVE_INFINITY ? minFare : null;
   }, [train.availabilityCache, acOnly]);
 
-  // Compute lowest discovered split fare (prioritize total route fare when complete)
+  // Performance Optimization: Single-pass loop avoids array allocations (.map / .filter / Math.min)
   const lowestDiscoveredFare = useMemo(() => {
     if (result?.totalFare && result.totalFare > 0) return result.totalFare;
     if (foundSeats.length > 0) {
-      const validFares = foundSeats
-        .map((s) => s.fare)
-        .filter((f): f is number => f != null && f > 0);
-      if (validFares.length > 0) return Math.min(...validFares);
+      let minFare = Number.POSITIVE_INFINITY;
+      for (let i = 0; i < foundSeats.length; i++) {
+        const f = foundSeats[i].fare;
+        if (f != null && f > 0 && f < minFare) {
+          minFare = f;
+        }
+      }
+      if (minFare !== Number.POSITIVE_INFINITY) return minFare;
     }
     return null;
   }, [foundSeats, result]);
@@ -215,14 +232,14 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     abortControllerRef.current = controller;
 
     try {
-      const isAcClass = (c: string) =>
-        !["SL", "2S", "GN", "FC"].includes(c.toUpperCase());
       let baseClasses =
         train.avlClasses && train.avlClasses.length > 0
           ? train.avlClasses
           : undefined;
       if (acOnly && baseClasses) {
-        baseClasses = baseClasses.filter(isAcClass);
+        baseClasses = baseClasses.filter(
+          (c) => !NON_AC_CLASSES.has(c.toUpperCase()),
+        );
       }
 
       const body = JSON.stringify({
