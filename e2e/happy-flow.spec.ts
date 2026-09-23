@@ -55,7 +55,7 @@ test.describe("The Happy Flow", () => {
     // 8. Verify the alternate path modal opens
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible({ timeout: 15_000 });
-    await expect(dialog).toContainText("Full journey covered in 2 confirmed tickets");
+    await expect(dialog).toContainText("Total fare");
 
     // 9. Confirm "Book" button exists
     const bookButton = dialog.getByRole("link", { name: /Book/ }).first();

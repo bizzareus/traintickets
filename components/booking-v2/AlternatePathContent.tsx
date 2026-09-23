@@ -1315,23 +1315,7 @@ export function AlternatePathContent({
                       <span className="text-xl sm:text-2xl font-black text-slate-900 tabular-nums">
                         ₹{altResult.totalFare.toFixed(0)}
                       </span>
-                      {directFares.length > 0 && (
-                        <span className="text-xs text-slate-500 font-medium">
-                          vs direct waitlist:{" "}
-                          {directFares.map((df, idx) => (
-                            <span key={df.cls}>
-                              {df.cls} (₹{df.fare})
-                              {idx < directFares.length - 1 ? ", " : ""}
-                            </span>
-                          ))}
-                        </span>
-                      )}
                     </div>
-                    <p className="mt-0.5 text-xs text-slate-600 font-medium">
-                      {altResult.isComplete
-                        ? `Full journey covered in ${confirmedLegCount} confirmed tickets`
-                        : `${confirmedLegCount} of ${altResult.legCount ?? confirmedLegCount} legs confirmed — booking covers the confirmed legs`}
-                    </p>
                   </div>
 
                   {isSplitBookingEnabled && isAdminUser && (
@@ -1341,8 +1325,6 @@ export function AlternatePathContent({
                       className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.99] transition cursor-pointer sm:w-auto w-full"
                     >
                       <span>Book Now</span>
-                      <span>•</span>
-                      <span>₹{altResult.totalFare.toFixed(0)}</span>
                     </button>
                   )}
                 </div>
