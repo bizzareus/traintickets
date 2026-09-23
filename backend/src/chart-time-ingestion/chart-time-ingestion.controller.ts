@@ -3,16 +3,20 @@ import {
   Body,
   Controller,
   Get,
+  Headers,
   Post,
   Query,
+  Req,
   Res,
 } from '@nestjs/common';
-import type { Response } from 'express';
+import type { Request, Response } from 'express';
 import {
   CHART_TIME_INGESTION_MAX_TRAINS_PER_BATCH,
   ChartTimeIngestionService,
 } from './chart-time-ingestion.service';
 import {
+  ADMIN_PASSWORD_HEADER,
+  assertAdminAuth,
   buildAdminSessionCookieValue,
   buildAdminSessionSetCookie,
 } from '../common/admin-auth';
@@ -40,6 +44,8 @@ export class ChartTimeIngestionController {
 
   @Post('run')
   async run(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Body()
     body: Record<string, unknown> & {
       journeyDate?: string;
@@ -48,6 +54,7 @@ export class ChartTimeIngestionController {
       trainNumbersText?: string;
     },
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     const journeyDate = String(body.journeyDate ?? '').trim();
     const unique = this.ingestion.collectTrainNumbersForIngestionRun(body);
     if (!journeyDate) {
@@ -71,15 +78,22 @@ export class ChartTimeIngestionController {
 
   /** Next batch of pending `TrainList` rows (500): IST today, then tomorrow if no chart data. */
   @Post('run-train-list')
-  runTrainList() {
+  runTrainList(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.ingestion.runTrainListBatchIngestion();
   }
 
   @Get('chart-time-tasks')
   listChartTimeTasks(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Query('limit') limit?: string,
     @Query('status') status?: string,
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.ingestion.listChartTimeAvailabilityTasks({
       limit: limit ? Number(limit) : undefined,
       status: status ?? undefined,
