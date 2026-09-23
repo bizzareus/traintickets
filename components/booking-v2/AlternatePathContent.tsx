@@ -570,17 +570,6 @@ function CompactLegChartCta({
                       ? "Vacant berths were released during chart prep"
                       : "Get notified as soon as charts are prepared"}
                   </p>
-                  {chartIsPrepared &&
-                    activeChartSource === "one" &&
-                    meta?.chartNextRemoteStation && (
-                      <button
-                        type="button"
-                        onClick={() => setShowNextReleaseSheet(true)}
-                        className="mt-1 text-[11px] font-bold text-blue-600 hover:underline inline-flex items-center gap-1"
-                      >
-                        Check next release →
-                      </button>
-                    )}
                 </div>
               ) : (
                 <div>
