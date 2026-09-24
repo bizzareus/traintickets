@@ -5,7 +5,25 @@ import type { CacheService } from '../cache/cache.service';
 import type { StationCacheService } from '../cache/station-cache.service';
 import type { BestTrainsRouteCache } from './best-trains-cache';
 import type { AlternatePathsRouteCache } from './alternate-paths-cache';
+import type { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import axios from 'axios';
+
+const mockDynamoDbSeatCache: jest.Mocked<
+  Pick<
+    DynamoDbSeatCacheService,
+    | 'getRouteCachedSearch'
+    | 'saveRouteCachedSearch'
+    | 'getTrainCachedSeats'
+    | 'saveAvailabilitySummary'
+    | 'getAvailabilitySummary'
+  >
+> = {
+  getRouteCachedSearch: jest.fn().mockResolvedValue(null),
+  saveRouteCachedSearch: jest.fn().mockResolvedValue(undefined),
+  getTrainCachedSeats: jest.fn().mockResolvedValue([]),
+  saveAvailabilitySummary: jest.fn().mockResolvedValue(undefined),
+  getAvailabilitySummary: jest.fn().mockResolvedValue(null),
+};
 
 const mockCache: jest.Mocked<
   Pick<CacheService, 'get' | 'set' | 'del' | 'getOrSet'>
@@ -137,6 +155,7 @@ describe('BookingV2Service', () => {
       mockStationCache as unknown as StationCacheService,
       mockBestTrainsCache as unknown as BestTrainsRouteCache,
       mockAltPathsCache as unknown as AlternatePathsRouteCache,
+      mockDynamoDbSeatCache as unknown as DynamoDbSeatCacheService,
     );
   });
 
@@ -210,25 +229,46 @@ describe('BookingV2Service', () => {
   });
 
   describe('searchTrains (cache integration)', () => {
-    it('delegates to cache.getOrSet with a 24h TTL key', async () => {
+    it('returns cached results from DynamoDB when present without calling upstream', async () => {
       const fakeResult = { data: { trainList: [] } };
-      mockCache.getOrSet.mockResolvedValueOnce(fakeResult);
+      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce(
+        fakeResult,
+      );
 
       const result = await service.searchTrains('NDLS', 'CSTM', '2029-04-05');
 
-      expect(mockCache.getOrSet).toHaveBeenCalledWith(
-        'trains:NDLS:CSTM:05-04-2029',
-        expect.any(Function),
-        24 * 60 * 60 * 1000,
+      expect(mockDynamoDbSeatCache.getRouteCachedSearch).toHaveBeenCalledWith(
+        'NDLS',
+        'CSTM',
+        '2029-04-05',
       );
-      expect(result).toBe(fakeResult);
+      expect(result).toEqual(fakeResult);
+    });
+
+    it('falls back to upstream ConfirmTkt API on DynamoDB miss and saves to DynamoDB', async () => {
+      const fakeResult = { data: { trainList: [] } };
+      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce(null);
+      const upstreamSpy = jest
+        .spyOn(service, 'fetchTrainsFromUpstream')
+        .mockResolvedValueOnce(fakeResult);
+
+      const result = await service.searchTrains('NDLS', 'CSTM', '2029-04-05');
+
+      expect(upstreamSpy).toHaveBeenCalledWith('NDLS', 'CSTM', '05-04-2029');
+      expect(mockDynamoDbSeatCache.saveRouteCachedSearch).toHaveBeenCalledWith(
+        'NDLS',
+        'CSTM',
+        '2029-04-05',
+        fakeResult,
+      );
+      expect(result).toEqual(fakeResult);
     });
 
     it('throws for an invalid date', async () => {
       await expect(
         service.searchTrains('NDLS', 'CSTM', 'bad-date'),
       ).rejects.toThrow('Invalid journey date');
-      expect(mockCache.getOrSet).not.toHaveBeenCalled();
+      expect(mockDynamoDbSeatCache.getRouteCachedSearch).not.toHaveBeenCalled();
     });
 
     it('filters trainList by classes and restricts avlClasses and availabilityCache', async () => {
@@ -254,7 +294,9 @@ describe('BookingV2Service', () => {
           ],
         },
       };
-      mockCache.getOrSet.mockResolvedValue(fullResponse);
+      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce(
+        fullResponse,
+      );
 
       const result = (await service.searchTrains('NDLS', 'CSTM', '2029-04-05', [
         '3A',

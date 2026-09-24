@@ -1,0 +1,475 @@
+{
+  "version": 1,
+  "description": "Global train seat availability cache warming targets",
+  "targets": [
+    {
+      "trainNumber": "05047",
+      "trainName": "Kolkata - Banaras Special Fare AC Festival Special",
+      "from": "KOAA",
+      "to": "BNRS",
+      "dates": [
+        "2026-11-04"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "05978",
+      "trainName": "Dibrugarh - Gorakhpur Special Fare Festival Special",
+      "from": "DBRG",
+      "to": "GKP",
+      "dates": [
+        "2026-11-04"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "05977",
+      "trainName": "Gorakhpur - Dibrugarh Special Fare Festival Special",
+      "from": "GKP",
+      "to": "DBRG",
+      "dates": [
+        "2026-11-05"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04008",
+      "trainName": "Anand Vihar Terminal - Jogbani Special Fare Festival Special",
+      "from": "ANVT",
+      "to": "JBN",
+      "dates": [
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "09098",
+      "trainName": "Ayodhya Cantt. - Udhna Special Fare Festival Special (via Kota)",
+      "from": "AYC",
+      "to": "UDN",
+      "dates": [
+        "2026-11-04"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "09094",
+      "trainName": "Ayodhya Cantt. - Udhna Special Fare Festival Special (via VGL Jhansi)",
+      "from": "AYC",
+      "to": "UDN",
+      "dates": [
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "09093",
+      "trainName": "Udhna - Ayodhya Cantt. Special Fare Festival Special (via VGL Jhansi) (PT)",
+      "from": "UDN",
+      "to": "AYC",
+      "dates": [
+        "2026-11-06"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "06014",
+      "trainName": "Madar (Ajmer) - Thiruvananthapuram Central Special Fare AC Festival Special",
+      "from": "MDJN",
+      "to": "TVC",
+      "dates": [
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "06013",
+      "trainName": "Thiruvananthapuram Central - Madar (Ajmer) Special Fare AC Festival Special",
+      "from": "TVC",
+      "to": "MDJN",
+      "dates": [
+        "2026-11-04"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04184",
+      "trainName": "Hazrat Nizamuddin - Prayagraj Special Fare Festival Special",
+      "from": "NZM",
+      "to": "PRYJ",
+      "dates": [
+        "2026-11-04"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04610",
+      "trainName": "Jammu Tawi - Varanasi Special Fare AC Festival Special",
+      "from": "JAT",
+      "to": "BSB",
+      "dates": [
+        "2026-11-05"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04609",
+      "trainName": "Varanasi - Jammu Tawi Special Fare AC Festival Special",
+      "from": "BSB",
+      "to": "JAT",
+      "dates": [
+        "2026-11-06"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "01667",
+      "trainName": "Rani Kamlapati - Danapur Special Fare Festival Special",
+      "from": "RKMP",
+      "to": "DNR",
+      "dates": [
+        "2026-11-06"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "01668",
+      "trainName": "Danapur - Rani Kamlapati Special Fare Festival Special",
+      "from": "DNR",
+      "to": "RKMP",
+      "dates": [
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "09823",
+      "trainName": "Sogaria (Kota) - Danapur Special Fare Festival Special",
+      "from": "SGAC",
+      "to": "DNR",
+      "dates": [
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "01710",
+      "trainName": "Rewa - Dr. Ambedkar Nagar Special Fare Festival Special",
+      "from": "REWA",
+      "to": "DADN",
+      "dates": [
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "02191",
+      "trainName": "Rani Kamalapati - Rewa Special Fare SF Festival Special",
+      "from": "RKMP",
+      "to": "REWA",
+      "dates": [
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "02192",
+      "trainName": "Rewa - Rani Kamalapati Special Fare SF Festival Special",
+      "from": "REWA",
+      "to": "RKMP",
+      "dates": [
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "01703",
+      "trainName": "Jabalpur - Haridwar Special Fare Festival Special",
+      "from": "JBP",
+      "to": "HW",
+      "dates": [
+        "2026-11-05"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "01704",
+      "trainName": "Haridwar - Jabalpur Special Fare Festival Special",
+      "from": "HW",
+      "to": "JBP",
+      "dates": [
+        "2026-11-06"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "01707",
+      "trainName": "Jabalpur - Hazrat Nizamuddin Special Fare Festival Special",
+      "from": "JBP",
+      "to": "NZM",
+      "dates": [
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "07544",
+      "trainName": "Katihar - Manihari DEMU Festival Special",
+      "from": "KIR",
+      "to": "MHI",
+      "dates": [
+        "2026-11-05"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "07543",
+      "trainName": "Manihari - Katihar DEMU Festival Special",
+      "from": "MHI",
+      "to": "KIR",
+      "dates": [
+        "2026-11-06"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "07539",
+      "trainName": "Manihari - Katihar Festival Special (UnReserved)",
+      "from": "MHI",
+      "to": "KIR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "07540",
+      "trainName": "Katihar - Manihari Festival Special (UnReserved)",
+      "from": "KIR",
+      "to": "MHI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "07554",
+      "trainName": "Purnea - Katihar DEMU Festival Special",
+      "from": "PRNA",
+      "to": "KIR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "07555",
+      "trainName": "Katihar - Purnea DEMU Festival Special",
+      "from": "KIR",
+      "to": "PRNA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "05590",
+      "trainName": "Hadapsar (Pune) - Muzaffarpur Special Fare Festival Special",
+      "from": "HDP",
+      "to": "MFP",
+      "dates": [
+        "2026-11-05"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "05585",
+      "trainName": "Saharsa - Mumbai LTT Special Fare Festival Special",
+      "from": "SHC",
+      "to": "LTT",
+      "dates": [
+        "2026-11-06"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "05086",
+      "trainName": "Anand Vihar Terminal - Chhapra Special Fare Festival Special",
+      "from": "ANVT",
+      "to": "CPR",
+      "dates": [
+        "2026-11-04"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04623",
+      "trainName": "Kolkata - Amritsar Special Fare Festival Special",
+      "from": "KOAA",
+      "to": "ASR",
+      "dates": [
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04624",
+      "trainName": "Amritsar - Kolkata Special Fare Festival Special",
+      "from": "ASR",
+      "to": "KOAA",
+      "dates": [
+        "2026-11-04"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04211",
+      "trainName": "Mumbai LTT - Sultanpur Special Fare Festival Special",
+      "from": "LTT",
+      "to": "SLN",
+      "dates": [
+        "2026-11-05"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04212",
+      "trainName": "Sultanpur - Mumbai LTT Special Fare Festival Special",
+      "from": "SLN",
+      "to": "LTT",
+      "dates": [
+        "2026-11-04"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "09619",
+      "trainName": "Ajmer - Ranchi Special Fare Festival Special",
+      "from": "AII",
+      "to": "RNC",
+      "dates": [
+        "2026-11-06"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "03132",
+      "trainName": "Gorakhpur - Sealdah Special Fare Special",
+      "from": "GKP",
+      "to": "SDAH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-06"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "03528",
+      "trainName": "Gorakhpur - Asansol Special Fare Special",
+      "from": "GKP",
+      "to": "ASN",
+      "dates": [
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "05037",
+      "trainName": "Barhni - Bandra Terminus Special (UnReserved)",
+      "from": "BNY",
+      "to": "BDTS",
+      "dates": [
+        "2026-11-05"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04312",
+      "trainName": "Yog Nagari Rishikesh - Kolkata Special Fare Festival Special",
+      "from": "YNRK",
+      "to": "KOAA",
+      "dates": [
+        "2026-11-06"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04064",
+      "trainName": "New Delhi - Gaya Special Fare Festival Special",
+      "from": "NDLS",
+      "to": "GAYA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04063",
+      "trainName": "Gaya - New Delhi Special Fare Festival Special",
+      "from": "GAYA",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "01702P",
+      "trainName": "Danapur - Jabalpur Special Fare Festival Special",
+      "from": "DNR",
+      "to": "JBP",
+      "dates": [
+        "2026-11-05",
+        "2026-11-07"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "01701Z",
+      "trainName": "Jabalpur - Danapur Special Fare Festival Special",
+      "from": "JBP",
+      "to": "DNR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-06"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04512",
+      "trainName": "Chandigarh - Patna Special Fare Festival Special",
+      "from": "CDG",
+      "to": "PNBE",
+      "dates": [
+        "2026-11-05"
+      ],
+      "category": "diwali"
+    },
+    {
+      "trainNumber": "04511",
+      "trainName": "Patna - Chandigarh Special Fare Festival Special",
+      "from": "PNBE",
+      "to": "CDG",
+      "dates": [
+        "2026-11-06"
+      ],
+      "category": "diwali"
+    }
+  ]
+}

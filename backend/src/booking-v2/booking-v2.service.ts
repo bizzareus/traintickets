@@ -18,6 +18,7 @@ import {
   alternatePathsCacheKey,
 } from './alternate-paths-cache';
 import type { RouteCacheRecord } from '../route-cache/route-cache.store';
+import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import { fetchWithTimeout } from '../common/fetch-with-timeout';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 
@@ -478,6 +479,7 @@ export class BookingV2Service {
     private readonly stationCache: StationCacheService,
     private readonly bestTrainsCache: BestTrainsRouteCache,
     private readonly altPathsCache: AlternatePathsRouteCache,
+    private readonly dynamoDbSeatCache: DynamoDbSeatCacheService,
   ) {}
 
   async getTrainSchedule(trainNumber: string) {
@@ -601,12 +603,49 @@ export class BookingV2Service {
       throw new Error('Journey date cannot be in the past');
     }
 
-    const cacheKey = `trains:${from.trim().toUpperCase()}:${to.trim().toUpperCase()}:${dateDdMmYyyy}`;
-    const rawSearch = await this.cache.getOrSet(
-      cacheKey,
-      () => this.fetchTrainsFromUpstream(from, to, dateDdMmYyyy),
-      TRAIN_SEARCH_TTL_MS,
+    const [dd, mm, yyyy] = dateDdMmYyyy.split('-');
+    const dateYmd = `${yyyy}-${mm}-${dd}`;
+    const f = from.trim().toUpperCase();
+    const t = to.trim().toUpperCase();
+
+    // 1. Check DynamoDB seat cache first
+    try {
+      const ddbCached = await this.dynamoDbSeatCache.getRouteCachedSearch(
+        f,
+        t,
+        dateYmd,
+      );
+      if (ddbCached) {
+        this.logger.log(
+          `[booking-v2/trains/search] DynamoDB cache HIT for ${f}-${t} on ${dateYmd}`,
+        );
+        return this.filterTrainSearchByClasses(ddbCached, classes);
+      }
+    } catch (err) {
+      this.logger.warn(
+        `[booking-v2/trains/search] DynamoDB lookup error: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
+
+    // 2. Fall back to ConfirmTkt live API on cache miss
+    this.logger.log(
+      `[booking-v2/trains/search] DynamoDB cache MISS for ${f}-${t} on ${dateYmd}, fetching live upstream`,
     );
+    const rawSearch = (await this.fetchTrainsFromUpstream(
+      f,
+      t,
+      dateDdMmYyyy,
+    )) as Record<string, unknown>;
+
+    // 3. Save to DynamoDB in background
+    void this.dynamoDbSeatCache
+      .saveRouteCachedSearch(f, t, dateYmd, rawSearch)
+      .catch((err) => {
+        this.logger.warn(
+          `[booking-v2/trains/search] Failed to cache live search to DynamoDB: ${err instanceof Error ? err.message : String(err)}`,
+        );
+      });
+
     return this.filterTrainSearchByClasses(rawSearch, classes);
   }
 
@@ -1109,7 +1148,7 @@ export class BookingV2Service {
     await Promise.all(Array.from({ length: count }, run));
   }
 
-  private async fetchTrainsFromUpstream(
+  async fetchTrainsFromUpstream(
     from: string,
     to: string,
     dateDdMmYyyy: string,
