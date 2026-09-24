@@ -264,12 +264,18 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [fromLoad, setFromLoad] = useState(false);
   const [toLoad, setToLoad] = useState(false);
 
+  // Only one station dropdown open at a time. Several field instances can
+  // share this state (e.g. hidden compact bar + mobile sheet), so opening or
+  // closing one always settles the other — previously the other closed
+  // implicitly via outside-click, which unmounts the tapped list mid-tap.
   const openFrom = useCallback((open: boolean) => {
     setFromOpen(open);
+    setToOpen(false);
   }, []);
 
   const openTo = useCallback((open: boolean) => {
     setToOpen(open);
+    setFromOpen(false);
   }, []);
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
   const [selectedClasses, setSelectedClasses] = useState<string[]>([]);

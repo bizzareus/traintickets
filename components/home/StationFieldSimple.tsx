@@ -50,11 +50,21 @@ export function StationFieldSimple(props: {
   const inputId = useId();
 
   useEffect(() => {
-    const onDoc = (e: MouseEvent) => {
+    const onDoc = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Element | null;
+      // Ignore taps inside ANY station field: multiple instances can share
+      // one open-state (e.g. hidden compact bar + mobile sheet), and closing
+      // synchronously on touchstart would unmount the tapped dropdown
+      // mid-tap before its touchend/click selects the station.
+      if (target?.closest?.("[data-station-field]")) return;
       if (!wrapRef.current?.contains(e.target as Node)) onOpenChange(false);
     };
     document.addEventListener("mousedown", onDoc);
-    return () => document.removeEventListener("mousedown", onDoc);
+    document.addEventListener("touchstart", onDoc);
+    return () => {
+      document.removeEventListener("mousedown", onDoc);
+      document.removeEventListener("touchstart", onDoc);
+    };
   }, [onOpenChange]);
 
   const showList = open && query.length >= 2;
@@ -65,6 +75,7 @@ export function StationFieldSimple(props: {
   return (
     <div
       ref={wrapRef}
+      data-station-field
       className={cn(
         compact
           ? "relative flex h-full min-w-0 flex-1 flex-col justify-center px-1 py-0"
@@ -177,6 +188,11 @@ export function StationFieldSimple(props: {
                 type="button"
                 className="block w-full px-4 py-2.5 text-left text-sm text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none touch-manipulation"
                 onMouseDown={(e) => e.preventDefault()}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  onSelect(s);
+                  onOpenChange(false);
+                }}
                 onClick={() => {
                   onSelect(s);
                   onOpenChange(false);
