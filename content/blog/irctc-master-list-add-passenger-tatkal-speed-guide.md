@@ -11,7 +11,7 @@ tags:
   - add passenger
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 Every second counts in the Tatkal window. At 10:00 AM sharp for AC classes and 11:00 AM for sleeper, thousands of people are all fighting for the same handful of seats. The people who lose are almost never the ones with a slow internet connection. They are the ones still typing "R-A-J-E-S-H, age 34, male, lower berth" into the passenger form while the confirmed seats vanish.
 
@@ -92,7 +92,7 @@ The Tatkal booking sequence, compared:
 
 That saved time compounds with the other Tatkal fundamentals — logging in early, having your payment method ready (UPI or a saved card), and knowing the exact opening time for your class. Pair the Master List with the tactics in our [Ultimate Tatkal Booking Guide](/blog/ultimate-tatkal-booking-guide-speed-hacks) for the full speed setup.
 
-Once you have booked, track the result instantly with [Smart Seats](/) and our fast PNR Status search, and use the [Coach Journey Lookup](/seat-status) to see the live berth position along your route.
+Once you have booked, track the result instantly with [Smart Seats](/) and our fast PNR Status search, and use the [Get Confirmed Tickets](/) to see the live berth position along your route.
 
 ---
 

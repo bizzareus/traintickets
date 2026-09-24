@@ -11,7 +11,7 @@ tags:
   - railway fines
 ---
 
-> **Avoid boarding confusion with real-time seat alerts:** Check your live confirmation probability and alternative travel options on [PNR Status Search & Direct Booking](/), or look up vacant berths along your route using [Seat Status Coach Journey Lookup](/seat-status).
+> **Avoid boarding confusion with real-time seat alerts:** Check your live confirmation probability and alternative travel options on [PNR Status Search & Direct Booking](/), or look up vacant berths along your route using [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -109,7 +109,7 @@ Follow this step-by-step recovery process if your device runs out of power:
 4. **Chart Verification via HHT:** The TTE will look up your PNR on their Hand-Held Terminal to confirm that your seat is booked under your exact name and age.
 5. **Obtain an EFT Receipt:** Under standard commercial rules, the TTE will record your physical verification and may issue a ₹50 verification certificate EFT, keeping your journey fully legal until you can recharge your device.
 
-> **Need a seat on a running train?** If you booked a last-minute ticket, remember what **curr available means in train** searches: `CURR_AVBL` (Current Availability) indicates a **100% confirmed seat** booked after chart preparation (~8 hours before departure) up to 30 minutes before departure. You can check unallocated seats across coaches with [Seat Status Coach Journey Lookup](/seat-status) to secure a legal upgrade onboard.
+> **Need a seat on a running train?** If you booked a last-minute ticket, remember what **curr available means in train** searches: `CURR_AVBL` (Current Availability) indicates a **100% confirmed seat** booked after chart preparation (~8 hours before departure) up to 30 minutes before departure. You can check unallocated seats across coaches with [Get Confirmed Tickets](/) to secure a legal upgrade onboard.
 
 ---
 

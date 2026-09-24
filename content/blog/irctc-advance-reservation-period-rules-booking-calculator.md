@@ -12,7 +12,7 @@ tags:
   - train ticket booking advance days
 ---
 
-> **🔔 Booking on Day 60?** Tickets for peak holiday journeys sell out within minutes at 8:00 AM IST. If your preferred train shows a waiting list, use [Smart Seats](/) to discover confirmed split-ticket segments on the same rake, track charting milestones with [Chart Times](/chart-times), or verify coach layouts with [Seat Status](/seat-status).
+> **🔔 Booking on Day 60?** Tickets for peak holiday journeys sell out within minutes at 8:00 AM IST. If your preferred train shows a waiting list, use [Smart Seats](/) to discover confirmed split-ticket segments on the same rake, track charting milestones with [Chart Times](/chart-times), or verify coach layouts with [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -151,7 +151,7 @@ Not every rail service follows the standard 60-day calendar. Here are the offici
 
 ## What Should You Do If 60-Day Opening Tickets Sell Out Immediately?
 
-**If 60-day advance tickets sell out into waiting lists within minutes, use LastBerth's [Smart Seats](/) to find confirmed split-journey seats on the same train rake. Alternatively, set alerts for Tatkal opening at 10:00 AM or 11:00 AM, monitor [Chart Times](/chart-times), and book remaining vacant berths via [Chart Vacancy](/chart-vacancy).**
+**If 60-day advance tickets sell out into waiting lists within minutes, use LastBerth's [Smart Seats](/) to find confirmed split-journey seats on the same train rake. Alternatively, set alerts for Tatkal opening at 10:00 AM or 11:00 AM, monitor [Chart Times](/chart-times), and book remaining vacant berths via [Get Confirmed Tickets](/).**
 
 Missing out on Day-1 opening does not mean your journey is cancelled. Smart travellers employ several proven fallback strategies:
 
@@ -173,7 +173,7 @@ If general quota is full, mark your calendar for the Tatkal window **1 day befor
 Indian Railways prepares the First Reservation Chart approximately **8 hours before departure** for morning trains and around **4 hours before departure** for afternoon and evening trains.
 - Use **[Chart Times](/chart-times)** to look up the exact charting schedule for your specific train and station.
 - As soon as the first chart is prepared, any unallocated emergency quotas, VIP berths, or cancelled seats are released to the general public as **Current Booking**.
-- Use the **[Chart Vacancy](/chart-vacancy)** map to see empty berths by coach and book them directly on IRCTC at normal base fares without any Tatkal surcharge.
+- Use the **[Get Confirmed Tickets](/)** map to see empty berths by coach and book them directly on IRCTC at normal base fares without any Tatkal surcharge.
 
 ---
 

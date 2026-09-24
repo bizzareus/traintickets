@@ -11,7 +11,7 @@ tags:
   - chart timing
 ---
 
-> **Quick Tip:** Wondering if your waitlisted ticket will confirm before chart preparation? Use [Smart Seats](/) to find confirmed split journeys on the same train, check live coach vacancies with [Chart Vacancy](/chart-vacancy), lookup running vacant berths via [Coach Journey Lookup](/seat-status), or track station-wise charting schedules with [Chart Times](/chart-times).
+> **Quick Tip:** Wondering if your waitlisted ticket will confirm? Use [Get Confirmed Tickets](/) to find guaranteed confirmed split journeys on the same train.
 
 ## TL;DR
 
@@ -66,11 +66,11 @@ Here is a side-by-side comparison of the two charting stages:
 
 ## How Do You Check Vacant Berths After Chart Preparation?
 
-**You can check vacant berths after chart preparation on the official IRCTC Charts and Vacancy portal (`irctc.co.in/online-charts`) or LastBerth [Chart Vacancy](/chart-vacancy).** Simply enter your train number, journey date, and boarding station to view an interactive coach-by-coach layout displaying available vacant berths by class (1AC, 2AC, 3AC, Sleeper, Chair Car).
+**You can check vacant berths after chart preparation on the official IRCTC Charts and Vacancy portal (`irctc.co.in/online-charts`) or LastBerth [Get Confirmed Tickets](/).** Simply enter your train number, journey date, and boarding station to view an interactive coach-by-coach layout displaying available vacant berths by class (1AC, 2AC, 3AC, Sleeper, Chair Car).
 
 To inspect post-chart vacancies step-by-step:
 
-1. Navigate to the IRCTC Charts portal or use [Chart Vacancy](/chart-vacancy) for a rapid visual breakdown.
+1. Navigate to the IRCTC Charts portal or use [Get Confirmed Tickets](/) for a rapid visual breakdown.
 2. Enter the 5-digit train number and select your exact boarding station from the dropdown.
 3. Select your travel class to view the color-coded coach diagram.
 4. Green indicators highlight open, unbooked berths along with the exact station-to-station stretch for which they are vacant.
@@ -114,7 +114,7 @@ The HHT automated allotment sequence operates under strict priority rules:
 - **Step 2 — Onboard Waitlist Reallocation:** If all RAC passengers have full berths, the system prompts the TTE to allot the berth to partially confirmed waitlist passengers travelling on the same train.
 - **Step 3 — Station-to-Station Transfer:** If no onboard passenger claims the seat, the vacant leg is transmitted back to the central PRS to appear as Current Availability for passengers searching from upcoming stations.
 
-To check which berths may become vacant at upcoming stops, you can use LastBerth's [Coach Journey Lookup](/seat-status) to see station-by-station occupancy for any specific coach and seat.
+To check which berths may become vacant at upcoming stops, you can use LastBerth's [Get Confirmed Tickets](/) to see station-by-station occupancy for any specific coach and seat.
 
 ---
 
@@ -162,4 +162,4 @@ Current reservation bookings on the IRCTC website and PRS ticket counters remain
 
 Chart preparation in Indian Railways is not a single event—it is a two-step window. The **first chart at ~8 hours (or 21:00 the prior night)** unlocks quota releases and Current Availability, while the **second chart at 30 minutes** locks in final seat allocations. 
 
-If your train shows WL or Regret, do not rely on uncertain waitlists. Use [Smart Seats](/) to find confirmed split-segment seats, explore live openings on [Chart Vacancy](/chart-vacancy), check coach layouts on [Coach Journey Lookup](/seat-status), and track charting times on [Chart Times](/chart-times).
+If your train shows WL or Regret, do not rely on uncertain waitlists. Use [Smart Seats](/) to find confirmed split-segment seats, explore live openings on [Get Confirmed Tickets](/), check coach layouts on [Get Confirmed Tickets](/), and track charting times on [Chart Times](/chart-times).

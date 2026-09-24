@@ -11,7 +11,7 @@ tags:
   - 60 day arp rules
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -134,7 +134,7 @@ If you miss both general and Tatkal bookings, check for Current Availability tic
 - Any unallocated berths from VIP, emergency, or remote location quotas convert into `CURR_AVBL` (Current Availability).
 - A Current Available ticket is **100% fully confirmed** with assigned coach and berth numbers.
 - You can book current availability online or at station PRS counters until **30 minutes before train departure**.
-- You can see which berths fall vacant across specific station legs using the [Seat Status Coach Journey Lookup](/seat-status).
+- You can see which berths fall vacant across specific station legs using the [Get Confirmed Tickets](/).
 
 ---
 
@@ -180,4 +180,4 @@ Indian Railways typically notifies festival special trains starting in late Sept
 
 ## Bottom line
 
-Securing confirmed train tickets for Diwali and Chhath Puja 2026 requires preparation and precision. Set a reminder for 7:50 AM on your specific September booking date, pre-verify your Aadhaar on IRCTC, and save your passenger list in advance. If direct bookings show waitlists or Regret status, use [Finding Smart Seats](/) on LastBerth to discover split-journey seats on the same train, check your confirmation probability with [PNR Status Search & Direct Booking](/), or look up vacant coach berths on [Seat Status Coach Journey Lookup](/seat-status) after chart preparation. Always verify live schedules and book through authorized IRCTC channels.
+Securing confirmed train tickets for Diwali and Chhath Puja 2026 requires preparation and precision. Set a reminder for 7:50 AM on your specific September booking date, pre-verify your Aadhaar on IRCTC, and save your passenger list in advance. If direct bookings show waitlists or Regret status, use [Finding Smart Seats](/) on LastBerth to discover split-journey seats on the same train, check your confirmation probability with [PNR Status Search & Direct Booking](/) or find guaranteed split-journey seats on [Get Confirmed Tickets](/). Always verify live schedules and book through authorized IRCTC channels.

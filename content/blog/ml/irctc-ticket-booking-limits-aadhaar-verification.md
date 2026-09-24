@@ -16,7 +16,7 @@ tags:
   - irctc monthly booking limit
 ---
 
-> **🔔 അവസാന ചാർട്ടിംഗ് മിസ് ചെയ്യരുത്:** കാത്തിരിക്കുന്ന വെയ്റ്റ്‌ലിസ്റ്റ് സീറ്റുകൾ സ്ഥിരീകരിക്കാൻ കാത്തിരിക്കുകയാണോ? നിങ്ങളുടെ ട്രെയിൻ കൃത്യമായ സ്റ്റേഷൻ ചാർട്ടിംഗ് ഷെഡ്യൂൾ ട്രാക്ക് ചെയ്യുക, [Chart Times](/chart-times) ൽ ഒരു സൗജന്യ തയ്യാറെടുപ്പ് അലർട്ട് സജ്ജമാക്കുക, അല്ലെങ്കിൽ [Chart Vacancy](/chart-vacancy) ൽ നേരിട്ടുള്ള ശൂന്യ ബർത്ത് പരിശോധിക്കുക. സ്ഥിരീകരിച്ച സ്പ്ലിറ്റ് സീറ്റുകൾക്കായി തിരയുകയാണോ? [Smart Seats](/) ഉപയോഗിക്കുക.
+> **🔔 അവസാന ചാർട്ടിംഗ് മിസ് ചെയ്യരുത്:** കാത്തിരിക്കുന്ന വെയ്റ്റ്‌ലിസ്റ്റ് സീറ്റുകൾ സ്ഥിരീകരിക്കാൻ കാത്തിരിക്കുകയാണോ? നിങ്ങളുടെ ട്രെയിൻ കൃത്യമായ സ്റ്റേഷൻ ചാർട്ടിംഗ് ഷെഡ്യൂൾ ട്രാക്ക് ചെയ്യുക, [Chart Times](/chart-times) ൽ ഒരു സൗജന്യ തയ്യാറെടുപ്പ് അലർട്ട് സജ്ജമാക്കുക, അല്ലെങ്കിൽ [Get Confirmed Tickets](/) ൽ നേരിട്ടുള്ള ശൂന്യ ബർത്ത് പരിശോധിക്കുക. സ്ഥിരീകരിച്ച സ്പ്ലിറ്റ് സീറ്റുകൾക്കായി തിരയുകയാണോ? [Smart Seats](/) ഉപയോഗിക്കുക.
 
 ## TL;DR
 
@@ -194,7 +194,7 @@ Once your monthly allocation is exhausted:
 2. **Alternative Action Plans:**
    - **Use a Family Member's Account:** Have an adult family member sign into their own independent Aadhaar-verified IRCTC profile.
    - **Visit a Physical PRS Counter:** Bookings made across physical railway reservation counters at stations do not link to your online IRCTC ID and are unaffected by personal account quotas.
-   - **Check Vacant Berths After Charting:** If your desired train has waitlists, check final vacancy directly via [Chart Vacancy](/chart-vacancy) 4 hours before train departure.
+   - **Check Vacant Berths After Charting:** If your desired train has waitlists, check final vacancy directly via [Get Confirmed Tickets](/) 4 hours before train departure.
    - **Verify Chart Preparation Times:** Know when your train's chart is finalized using [Chart Times](/chart-times).
 
 ---

@@ -10,7 +10,7 @@ tags:
   - travel guide
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 Want to zip across India without the usual railway delays? Look no further than the Rajdhani Express. This premium sleeper train connects major state capitals directly to New Delhi at speeds up to 130 km/h. It features three AC-only classes (1AC, 2AC, and 3AC), serves hot pantry meals (optional), and uses dynamic pricing. Be ready at 10:00 AM daily for Tatkal tickets, and watch waitlists carefully as chart time approaches.
@@ -75,7 +75,7 @@ If your ticket shows `WL/10`, there are 9 passengers ahead of you. Moving up to 
 To overcome waitlist challenges, use these LastBerth features:
 *   **[Finding Smart Seats](/)**: When direct tickets are sold out, LastBerth searches for a split booking. It breaks down the route into available segments on the same train, so you might sit in coach A1 for the first leg and B2 for the next, but you still travel.
 *   **[PNR Status Search & Direct Booking](/)**: Paste your PNR number to see your exact confirmation probability. If the chances look slim, we'll recommend better travel routes right away.
-*   **[Seat Status Coach Journey Lookup](/seat-status)**: Scan the train layout to find vacant berths between specific stations. If you find one, walk up to the TTE and get it assigned on the spot.
+*   **[Get Confirmed Tickets](/)**: Scan the train layout to find vacant berths between specific stations. If you find one, walk up to the TTE and get it assigned on the spot.
 *   **Look for Current Tickets**: Search for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** sold after the first chart is prepared. It goes online 8 hours before departure and closes just 30 minutes before the train leaves the station.
 
 ---

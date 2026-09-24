@@ -74,7 +74,7 @@ If you happen to find your misplaced ticket later on, Indian Railways won't leav
 
 This must be done before the train departs. The clerk will refund your duplicate fees, minus a small processing deduction of ₹20 or 5% of the fare. No refunds are allowed after the train has left the station.
 
-For passengers managing uncertain waiting lists or looking for alternative routes, smart digital tools can ease the stress. Platforms like [LastBerth](/) let you run a [PNR status](/) search to calculate confirmation odds or find alternative seating arrangements. If a train is completely booked, features like [Finding Smart Seats](/) help you stitch together a journey using multi-segment bookings, while the [Seat Status Coach Journey Lookup](/seat-status) tracks real-time vacant berths once the train is already on the move.
+For passengers managing uncertain waiting lists or looking for alternative routes, smart digital tools can ease the stress. Platforms like [LastBerth](/) let you run a [PNR status](/) search to calculate confirmation odds or find alternative seating arrangements. If a train is completely booked, features like [Finding Smart Seats](/) help you stitch together a journey using multi-segment bookings, while the [Get Confirmed Tickets](/) tracks real-time vacant berths once the train is already on the move.
 
 ---
 

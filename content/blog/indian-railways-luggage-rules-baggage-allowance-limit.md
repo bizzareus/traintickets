@@ -9,7 +9,7 @@ tags:
   - luggage rules
 ---
 
-> Traveling with heavy bags or waitlisted tickets? Find confirmed split-seat routes on [Smart Seats](/) or check coach berth assignments with [Coach Journey Lookup](/seat-status).
+> Traveling with heavy bags or waitlisted tickets? Find confirmed split-seat routes on [Smart Seats](/) or check coach berth assignments with [Get Confirmed Tickets](/).
 
 ## How Much Free Baggage Weight Do You Get on Indian Trains?
 

@@ -12,11 +12,11 @@ tags:
   - 0-series train rules
 ---
 
-> **🔔 Travelling home for Diwali 2026?** Check confirmed festival seats and smart split routes on high-demand corridors: [Delhi ➔ Patna (NDLS to PNBE)](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn), [Mumbai ➔ Danapur (MMCT to DNR)](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur), [Pune ➔ Danapur (PUNE to DNR)](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur), [Surat ➔ Patna (ST to PNBE)](/?from=ST&to=PNBE&fromName=Surat&toName=Patna%20Jn), [Bengaluru ➔ Danapur (SBC to DNR)](/?from=SBC&to=DNR&fromName=KSR%20Bengaluru&toName=Danapur), or inspect post-charting berths on the [Live Chart Vacancy Map](/chart-vacancy).
+> **🔔 Travelling home for Diwali 2026?** Check confirmed festival seats and smart split routes on high-demand corridors: [Delhi ➔ Patna (NDLS to PNBE)](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn), [Mumbai ➔ Danapur (MMCT to DNR)](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur), [Pune ➔ Danapur (PUNE to DNR)](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur), [Surat ➔ Patna (ST to PNBE)](/?from=ST&to=PNBE&fromName=Surat&toName=Patna%20Jn), [Bengaluru ➔ Danapur (SBC to DNR)](/?from=SBC&to=DNR&fromName=KSR%20Bengaluru&toName=Danapur), or find guaranteed split journeys on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
-Diwali 2026 festivities run from Dhanteras on November 6 to Bhai Dooj on November 10, with the main Lakshmi Puja falling on Sunday, November 8. General 60-day train bookings opened at 8:00 AM IST in early September, and premier trains reached REGRET within minutes. To secure confirmed travel, book 0-series festival special trains announced 10 to 30 days prior to departure, find contiguous split-berths on [Smart Seats](/), or book remaining unallocated berths via [Chart Vacancy](/chart-vacancy) four hours before departure.
+Diwali 2026 festivities run from Dhanteras on November 6 to Bhai Dooj on November 10, with the main Lakshmi Puja falling on Sunday, November 8. General 60-day train bookings opened at 8:00 AM IST in early September, and premier trains reached REGRET within minutes. To secure confirmed travel, book 0-series festival special trains announced 10 to 30 days prior to departure, find contiguous split-berths on [Smart Seats](/), or book remaining unallocated berths via [Get Confirmed Tickets](/) four hours before departure.
 
 ---
 
@@ -160,7 +160,7 @@ Under current Indian Railways rules, you can modify your boarding station online
 ### 3. Current Availability (CURR_AVBL) Post-Chart Discovery
 After the first reservation chart is prepared (at least 4 hours before departure, or 20:00 hrs the previous evening for morning trains), all unallocated quotas and cancellations are released as `CURR_AVBL` at a 10% discount.
 
-Inspect [Chart Vacancy](/chart-vacancy) and track charting timelines on [Chart Times](/chart-times) to claim released berths up to 30 minutes before departure.
+Inspect [Get Confirmed Tickets](/) and track charting timelines on [Chart Times](/chart-times) to claim released berths up to 30 minutes before departure.
 
 ### 4. Standby Festival Clone Trains
 During peak days (November 6 to November 8), zonal railways run unannounced clone trains 15 to 60 minutes behind major express services using spare rakes. These appear on IRCTC with 12 to 24 hours of advance notice, opening with zero waitlists.
@@ -199,12 +199,12 @@ During peak days (November 6 to November 8), zonal railways run unannounced clon
 
 ### How do you check vacant seats on festival trains after chart preparation?
 
-**You can view remaining vacant berths on IRCTC or through the [Chart Vacancy](/chart-vacancy) tool, which maps unsold berths across coaches in real time.** These berths are bookable online or at station counters under Current Availability until 30 minutes before departure.
+**You can view remaining vacant berths on IRCTC or through the [Get Confirmed Tickets](/) tool, which maps unsold berths across coaches in real time.** These berths are bookable online or at station counters under Current Availability until 30 minutes before departure.
 
 ---
 
 ## Bottom Line
 
-Securing confirmed train tickets during Diwali requires proactive planning across both 60-day reservation openings and 10-to-30-day supplementary special announcements. If direct routes show REGRET, use [Smart Seats](/) to find split berths, track chart prep on [Chart Times](/chart-times), and claim released seats on [Chart Vacancy](/chart-vacancy).
+Securing confirmed train tickets during Diwali requires proactive planning across both 60-day reservation openings and 10-to-30-day supplementary special announcements. If direct routes show REGRET, use [Smart Seats](/) to find split berths, track chart prep on [Chart Times](/chart-times), and claim released seats on [Get Confirmed Tickets](/).
 
 *LastBerth is an independent train seat discovery and ticket search tool. It is not affiliated with IRCTC, CRIS, or the Ministry of Railways, and does not issue or sell tickets.*

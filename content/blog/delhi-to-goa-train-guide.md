@@ -68,7 +68,7 @@ Because Goa is a prime tourist destination, securing a confirmed ticket can be e
 *   **Tatkal Quota:** Opens **1 day** before departure at 10:00 AM for AC classes and 11:00 AM for Sleeper class.
 *   **Current Availability:** A `"current available ticket"` is a **fully confirmed seat** with coach/berth numbers. It opens after the first chart is prepared (8 hours before train departure) and closes 30 minutes before the train leaves.
 
-If you miss out on booking early, check LastBerth's [Seat Status Coach Journey Lookup](/seat-status) to see if seats are free on parts of the route, or look up [Finding Smart Seats](/) to split the journey across stations and secure confirmed berths.
+If you miss out on booking early, check LastBerth's [Get Confirmed Tickets](/) to see if seats are free on parts of the route, or look up [Finding Smart Seats](/) to split the journey across stations and secure confirmed berths.
 
 ---
 

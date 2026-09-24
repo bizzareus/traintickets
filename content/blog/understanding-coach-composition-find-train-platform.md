@@ -11,7 +11,7 @@ tags:
   - irctc travel hacks
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -90,15 +90,15 @@ When a rake is reversed:
 
 ---
 
-## How Can You Locate Vacant Berths Using LastBerth Coach Journey Lookup?
+## How Can You Locate Vacant Berths Using LastBerth Get Confirmed Tickets?
 
-**You can visualize exact coach layouts and track vacant seats in real time using LastBerth's Coach Journey Lookup. It shows station-by-station berth occupancy, helping passengers identify vacant berths on running trains and request on-duty TTRs for allotment.**
+**You can visualize exact coach layouts and track vacant seats in real time using LastBerth's Get Confirmed Tickets. It shows station-by-station berth occupancy, helping passengers identify vacant berths on running trains and request on-duty TTRs for allotment.**
 
 To locate seats and plan your boarding:
 
-1. Open **[Seat Status Coach Journey Lookup](/seat-status)** to see full coach berth layouts and station-to-station occupancy.
+1. Open **[Get Confirmed Tickets](/)** to see full coach berth layouts and station-to-station occupancy.
 2. If your ticket is waitlisted, find confirmed split-seat routing across coaches using **[Smart Seats](/)**.
-3. Track station chart preparation schedules and set up alerts via **[Chart Times](/chart-times)**, or check post-charting vacancies on **[Chart Vacancy](/chart-vacancy)**.
+3. Track station chart preparation schedules and set up alerts via **[Chart Times](/chart-times)**, or check post-charting vacancies on **[Get Confirmed Tickets](/)**.
 
 ---
 
@@ -134,4 +134,4 @@ HA1 indicates a hybrid composite coach that combines both AC First Class (1A) ca
 
 Locating your coach on a crowded platform is simple once you know Indian Railways' symmetrical layout. AC coaches consistently cluster in the middle near the pantry car, while Sleeper and General coaches sit near the ends.
 
-To eliminate platform stress and check live coach occupancy, use **[Seat Status Coach Journey Lookup](/seat-status)** and find confirmed tickets with **[Smart Seats](/)**.
+To eliminate platform stress and check live coach occupancy, use **[Get Confirmed Tickets](/)** and find confirmed tickets with **[Smart Seats](/)**.

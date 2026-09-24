@@ -11,7 +11,7 @@ tags:
   - travel hacks
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -153,7 +153,7 @@ Expected turnaround times across popular payment methods:
 
 ## How LastBerth Simplifies Your Railway Journey Planning
 
-[LastBerth](/) helps passengers avoid cancellation headaches by offering real-time prediction tools. You can use **[Finding Smart Seats](/)** to check **waitlist confirmation probability** before booking risky tickets. Additionally, the **[Seat Status Coach Journey Lookup](/seat-status)** feature lets you locate **vacant berths post-charting**, eliminating last-minute Tatkal cancellation stress.
+[LastBerth](/) helps passengers avoid cancellation headaches by offering real-time prediction tools. You can use **[Finding Smart Seats](/)** to check **waitlist confirmation probability** before booking risky tickets. Additionally, the **[Get Confirmed Tickets](/)** feature lets you locate **vacant berths post-charting**, eliminating last-minute Tatkal cancellation stress.
 
 Smart ways to minimize train ticket cancellation losses include:
 
@@ -195,4 +195,4 @@ TDR refunds take between 15 and 45 working days to be credited, as your claim mu
 
 ## Bottom Line
 
-Understanding IRCTC cancellation and refund rules protects your money when plans change unexpectedly. Always keep the **4-hour cancellation threshold**, the **60-day ARP window**, and **TDR filing deadlines** in mind when managing your Indian Railways bookings. Use real-time prediction tools like **[Finding Smart Seats](/)** and **[Seat Status Coach Journey Lookup](/seat-status)** on LastBerth to book with confidence.
+Understanding IRCTC cancellation and refund rules protects your money when plans change unexpectedly. Always keep the **4-hour cancellation threshold**, the **60-day ARP window**, and **TDR filing deadlines** in mind when managing your Indian Railways bookings. Use real-time prediction tools like **[Finding Smart Seats](/)** and **[Get Confirmed Tickets](/)** on LastBerth to book with confidence.

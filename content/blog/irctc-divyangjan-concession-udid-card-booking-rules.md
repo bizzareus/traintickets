@@ -11,7 +11,7 @@ tags:
   - train booking
 ---
 
-> **🔔 Track Train Charts & Berths:** Need guaranteed lower berths or traveling on a waitlist? Check your train's charting schedule on [Chart Times](/chart-times), look up vacant berths via [Chart Vacancy](/chart-vacancy), find coach layouts on [Coach Journey Lookup](/seat-status), or get confirmed split seats with [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Looking for guaranteed seats or travelling on a waitlist? Find guaranteed split-journey tickets and confirmed seats with [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -145,4 +145,4 @@ No, the accompanying escort must be an adult aged 18 years or older who is physi
 
 The IRCTC Divyangjan concession provides significant financial relief and accessible travel comfort for differently-abled passengers across India. By obtaining your one-time DRM Photo ID card and linking it to your IRCTC profile, you can book discounted lower berths from the comfort of your home.
 
-If your preferred train shows a waitlist under the Divyangjan quota, use [Smart Seats](/) to discover confirmed split journeys on the same train, check charting timelines on [Chart Times](/chart-times), or look up live post-charting berth availability on [Chart Vacancy](/chart-vacancy).
+If your preferred train shows a waitlist under the Divyangjan quota, use [Smart Seats](/) to discover confirmed split journeys on the same train, check charting timelines on [Chart Times](/chart-times), or look up live post-charting berth availability on [Get Confirmed Tickets](/).

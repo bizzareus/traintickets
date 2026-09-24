@@ -11,7 +11,7 @@ tags:
   - aadhaar verification
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -20,7 +20,7 @@ IRCTC OTP delivery fails primarily due to peak-hour SMS gateway congestion (10:0
 ---
 
 > [!TIP]
-> **Track Available Berths Instantly:** If an OTP timeout cost you a Tatkal seat, find confirmed multi-leg route alternatives on **[Smart Seats](/)** or check coach vacancy status on **[Seat Status](/seat-status)**.
+> **Track Available Berths Instantly:** If an OTP timeout cost you a Tatkal seat, find confirmed multi-leg route alternatives on **[Smart Seats](/)** or check coach vacancy status on **[Get Confirmed Tickets](/)**.
 
 Few experiences in online train booking are as frustrating as staring at a ticking countdown timer while waiting for a 6-digit one-time password that never arrives. During peak booking hours, a 30-second SMS delay can mean the difference between securing a confirmed lower berth and landing at the bottom of a 60-passenger waitlist.
 
@@ -160,4 +160,4 @@ IRCTC servers enter a mandatory daily maintenance blackout from **11:45 PM to 12
 
 OTP delays do not have to ruin your travel plans. For everyday journeys and last-minute Tatkal bookings, transition your primary booking workflow to the IRCTC Rail Connect app with biometric PIN access, pre-verify your passenger Master List with Aadhaar, and use instant payment methods like UPI or IRCTC e-Wallet. 
 
-If a missed OTP leaves you stranded with a waitlisted ticket, track live confirmation chances on [Smart Seats](/) or locate available vacant coach segments on [Seat Status](/seat-status).
+If a missed OTP leaves you stranded with a waitlisted ticket, track live confirmation chances on [Smart Seats](/) or locate available vacant coach segments on [Get Confirmed Tickets](/).

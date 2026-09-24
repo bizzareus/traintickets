@@ -14,7 +14,7 @@ tags:
   - chart preparation
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -126,9 +126,9 @@ CURR_AVBL (Current Availability) on IRCTC indicates real-time vacant berths rele
 মানক IRCTC অনুসন্ধানগুলি প্রায়শই এই আংশিক খালি আসনগুলিকে শেষ থেকে শেষ "দুঃখিত" বার্তার পিছনে লুকিয়ে রাখে। LastBerth আপনাকে সেগুলি আনলক করতে সাহায্য করে:
 
 - **সেগমেন্ট-ওয়াইজ কারেন্ট অ্যাভেলেবিলিটি:** [Smart Seats](/) ব্যবহার করুন ট্রেনগুলি আবিষ্কার করতে যেখানে একই ট্রেনে দুটি পরপর সেগমেন্ট বুকিং আপনাকে পুরো যাত্রার জন্য একটি নিশ্চিত আসন নিশ্চিত করে।
-- **কোচ লেআউট এবং বার্থ পরিদর্শন:** [Coach Journey Lookup](/seat-status) ব্যবহার করে যাচাই করুন আপনার খালি বার্থটি একটি লোয়ার, মিডল, আপার, বা সাইড বার্থ কিনা।
+- **কোচ লেআউট এবং বার্থ পরিদর্শন:** [Get Confirmed Tickets](/) ব্যবহার করে যাচাই করুন আপনার খালি বার্থটি একটি লোয়ার, মিডল, আপার, বা সাইড বার্থ কিনা।
 - **নির্দিষ্ট চার্ট প্রস্তুতির সময়:** 4 ঘণ্টার চার্টিং উইন্ডো কখনও মিস করবেন না। [Chart Times](/chart-times) এ আপনার ট্রেনের ঐতিহাসিক চার্টিং অভ্যাসগুলি চেক করুন।
-- **লাইভ ভ্যাকেন্সি পরিদর্শন:** [Chart Vacancy](/chart-vacancy) ব্যবহার করে সমস্ত ক্লাসে কোচ-বাই-কোচ খালি আসনের লেআউটগুলি দেখুন।
+- **লাইভ ভ্যাকেন্সি পরিদর্শন:** [Get Confirmed Tickets](/) ব্যবহার করে সমস্ত ক্লাসে কোচ-বাই-কোচ খালি আসনের লেআউটগুলি দেখুন।
 
 ---
 

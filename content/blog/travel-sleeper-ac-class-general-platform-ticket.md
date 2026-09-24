@@ -12,7 +12,7 @@ tags:
   - sleeper class
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -75,8 +75,8 @@ Almost all Express and Mail trains have unreserved compartments, usually placed 
 ### 2. Book a Current Availability Ticket
 Once the chart is ready (about 8 hours before departure), any leftover berths go up for sale under 'Current Availability' at a 10% discount. You can book these on the IRCTC app or at the station reservation counter up to 30 minutes before the train pulls out. See our guide on [how IRCTC current availability works](/blog/irctc-current-availability-explained) for tips on grabbing these.
 
-### 3. Search Vacant Berths on Coach Journey Lookup
-Instead of wandering between coaches searching for empty seats, open [Coach Journey Lookup](/seat-status) to see exactly which coach and berth is unallocated between your stations, then approach the TTE directly with the exact seat number.
+### 3. Search Vacant Berths on Get Confirmed Tickets
+Instead of wandering between coaches searching for empty seats, open [Get Confirmed Tickets](/) to see exactly which coach and berth is unallocated between your stations, then approach the TTE directly with the exact seat number.
 
 ### 4. Upgrade Your Ticket Onboard
 If you've already boarded a Sleeper or AC coach with a general or platform ticket due to an emergency, find the TTE immediately. Under Section 138, they can upgrade your ticket if there are empty berths. You'll just pay the fare difference and a ₹500 penalty.

@@ -11,7 +11,7 @@ tags:
   - ticket fares
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -101,7 +101,7 @@ If you select the food option during booking, the catering charges are included 
 
 ### How do I check my Tejas Express confirmation chances?
 
-**You can check your Tejas Express confirmation chances by using the waitlist predictor tool on LastBerth.** LastBerth calculates the historical confirmation probability of your waitlist position. If your ticket has low chances of clearing, you can use the homepage tools like [Finding Smart Seats](/) or [Seat Status Coach Journey Lookup](/seat-status) to find split bookings.
+**You can check your Tejas Express confirmation chances by using the waitlist predictor tool on LastBerth.** LastBerth calculates the historical confirmation probability of your waitlist position. If your ticket has low chances of clearing, you can use the homepage tools like [Finding Smart Seats](/) or [Get Confirmed Tickets](/) to find split bookings.
 
 ### Does Tejas Express have a ladies quota?
 

@@ -103,7 +103,7 @@ If your direct route shows a waiting list, do not lose hope. You can use LastBer
 
 *   **[Finding Smart Seats](/)**: This tool finds seat availability across a journey by breaking the seat bookings across multiple coaches or segments where a single direct seat is unavailable on the same train.
 *   **[PNR Status Search & Direct Booking](/)**: Check your PNR status, view waitlist confirmation probabilities, and search for alternative train combinations immediately if confirmation looks unlikely.
-*   **[Seat Status Coach Journey Lookup](/seat-status)**: Look up specific seats to see exactly from which station to which station they are booked. This lets you identify empty seats on running trains and request the Travelling Ticket Examiner (TTE) to allocate them to you.
+*   **[Get Confirmed Tickets](/)**: Look up specific seats to see exactly from which station to which station they are booked. This lets you identify empty seats on running trains and request the Travelling Ticket Examiner (TTE) to allocate them to you.
 *   **Current Availability Booking:** If you are booking at the last minute, check for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** with coach and seat numbers. It opens 8 hours before departure (right after chart preparation) and closes 30 minutes before train departure.
 
 ---

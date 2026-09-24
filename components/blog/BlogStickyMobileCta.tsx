@@ -17,29 +17,20 @@ export function BlogStickyMobileCta({ slug, context }: Props) {
     setDismissed(true);
   }, []);
 
-  const { intentType, primaryRoute } = context;
+  const { primaryRoute } = context;
 
   const getTargetUrl = () => {
     if (primaryRoute) {
       return `/?from=${primaryRoute.fromCode}&to=${primaryRoute.toCode}&fromName=${encodeURIComponent(primaryRoute.fromName)}&toName=${encodeURIComponent(primaryRoute.toName)}&utm_source=blog&utm_medium=sticky_mobile&utm_campaign=${slug}`;
-    }
-    if (intentType === "charting") {
-      return `/chart-vacancy?utm_source=blog&utm_medium=sticky_mobile&utm_campaign=${slug}`;
     }
     return `/?utm_source=blog&utm_medium=sticky_mobile&utm_campaign=${slug}`;
   };
 
   const getLabel = () => {
     if (primaryRoute) {
-      return `${primaryRoute.label} Seats`;
+      return `Confirmed ${primaryRoute.label} Seats`;
     }
-    if (intentType === "festival") {
-      return "Festival Special Trains";
-    }
-    if (intentType === "charting") {
-      return "Vacant Berths (Post-Chart)";
-    }
-    return "Waitlisted? Find Seats";
+    return "Get Confirmed Tickets";
   };
 
   const targetUrl = getTargetUrl();
@@ -72,7 +63,7 @@ export function BlogStickyMobileCta({ slug, context }: Props) {
               {getLabel()}
             </p>
             <p className="text-[10px] text-slate-500 truncate">
-              Confirmed split tickets & vacancies
+              Guaranteed smart seats & split tickets
             </p>
           </div>
         </div>
@@ -83,7 +74,7 @@ export function BlogStickyMobileCta({ slug, context }: Props) {
             onClick={handleClick}
             className="rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs hover:bg-blue-700 active:scale-95 transition-all"
           >
-            Find Seats →
+            Get Confirmed →
           </Link>
           <button
             type="button"

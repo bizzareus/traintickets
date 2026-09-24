@@ -13,7 +13,7 @@ tags:
   - railone
 ---
 
-> **Booking on the new IRCTC cloud system?** Check live seat availability and PNR confirmation chances with [Finding Smart Seats](/) and [PNR Status Search](/). After chart preparation, find vacant berths along your train route using [Seat Status Coach Journey Lookup](/seat-status) and [Chart Vacancy](/chart-vacancy) to grab a confirmed seat.
+> **Booking on the new IRCTC cloud system?** Check live seat availability and PNR confirmation chances with [Finding Smart Seats](/) and [PNR Status Search](/). After chart preparation, find vacant berths along your train route using [Get Confirmed Tickets](/) and [Get Confirmed Tickets](/) to grab a confirmed seat.
 
 ## TL;DR
 
@@ -85,7 +85,7 @@ Understanding ticket status codes is critical when booking:
 - **WL full form is Waiting List.** Tickets progress through a strict queue:
   $$\text{WL (Waiting List)} \rightarrow \text{RAC (Reservation Against Cancellation)} \rightarrow \text{Confirmed}$$
 - **RAC (Reservation Against Cancellation)** permits travel with a shared side-lower berth and does not auto-cancel.
-- **CURR_AVBL (Current Availability)** seats are confirmed berths available online or at counters after chart preparation. You can check empty seats along your route with [Seat Status Coach Journey Lookup](/seat-status).
+- **CURR_AVBL (Current Availability)** seats are confirmed berths available online or at counters after chart preparation. You can check empty seats along your route with [Get Confirmed Tickets](/).
 
 ---
 
@@ -121,7 +121,7 @@ The IRCTC website and mobile apps undergo daily scheduled server maintenance fro
 Under the Jan Vishwas Act 2026, traveling in a reserved Sleeper or AC coach with a General unreserved ticket carries a minimum penalty of ₹500 plus the exact fare difference for the distance traveled. If no berth is available, the TTE will alight you at the next scheduled stop.
 
 ### How do I check vacant berths on a running train after chart preparation?
-You can view vacant berths by visiting IRCTC's "Charts / Vacancy" tab or by using [Seat Status Coach Journey Lookup](/seat-status) on LastBerth. Enter your train number and station to see berth-by-berth occupancy across all coaches.
+You can view vacant berths by visiting IRCTC's "Charts / Vacancy" tab or by using [Get Confirmed Tickets](/) on LastBerth. Enter your train number and station to see berth-by-berth occupancy across all coaches.
 
 ---
 

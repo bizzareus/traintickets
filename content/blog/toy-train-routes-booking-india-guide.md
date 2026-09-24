@@ -9,7 +9,7 @@ tags:
   - irctc
   - travel guide
 ---
-> **Planning a mountain railway trip?** Check live seat status on [Coach Journey Lookup](/seat-status) and track PNR confirmation on [Smart Seats](/) for Darjeeling, Kalka-Shimla, and Nilgiri toy trains.
+> **Planning a mountain railway trip?** Check live seat status on [Get Confirmed Tickets](/) and track PNR confirmation on [Smart Seats](/) for Darjeeling, Kalka-Shimla, and Nilgiri toy trains.
 
 
 ## TL;DR
@@ -78,7 +78,7 @@ If your ticket remains unconfirmed when the final chart is prepared 8 hours befo
 
 To improve your odds, look for vacant seats on intermediate segments rather than booking the entire route. For example, on the Kalka-Shimla line, check seats between intermediate stations like Dharampur (`DMP`), Barog (`BOF`), or Solan (`SOL`).
 
-You can track your confirmation chances using [PNR Status Search & Direct Booking](/) on LastBerth. If direct booking is full, check [Finding Smart Seats](/) for split options, or look for a `"current available ticket"` which releases vacant berths 8 hours before departure. Seat maps can also be viewed via the [Seat Status Coach Journey Lookup](/seat-status).
+You can track your confirmation chances using [PNR Status Search & Direct Booking](/) on LastBerth. If direct booking is full, check [Finding Smart Seats](/) for split options, or look for a `"current available ticket"` which releases vacant berths 8 hours before departure. Seat maps can also be viewed via the [Get Confirmed Tickets](/).
 
 ---
 

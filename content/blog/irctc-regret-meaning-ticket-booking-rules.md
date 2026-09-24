@@ -11,7 +11,7 @@ tags:
   - current availability
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -87,7 +87,7 @@ Four proven methods to get a confirmed seat during a REGRET freeze:
 
 1. **Use LastBerth Smart Seats:** Direct origin-to-destination search may show REGRET, but individual station stretches on the same train often have vacant berths. **[Smart Seats](/)** finds confirmed multi-segment combinations on the exact same train.
 2. **Book Current Availability:** Approximately 4 hours before departure (after 1st Chart Preparation), unallocated quotas are released online as **Current Availability** (`CURR_AVBL`). A current available ticket is a **100% fully confirmed seat** bookable until 30 minutes before departure.
-3. **Track Live Coach Vacancy:** Open LastBerth's **[Seat Status Coach Journey Lookup](/seat-status)** to see station-by-station berth occupancy on running trains and request vacant seats from the TTE.
+3. **Track Live Coach Vacancy:** Open LastBerth's **[Get Confirmed Tickets](/)** to see station-by-station berth occupancy on running trains and request vacant seats from the TTE.
 4. **Select IRCTC VIKALP:** Opt into the VIKALP scheme when booking alternative trains on the same route to get allocated to alternate trains with open quotas.
 
 ---
@@ -124,4 +124,4 @@ No. Because the IRCTC system blocks checkout when REGRET is active, no transacti
 
 REGRET is Indian Railways' way of stopping bookings when waitlists grow too long to ever confirm. It protects you from buying dead-end tickets. 
 
-When your train shows REGRET, do not panic. Use **[Smart Seats](/)** to find confirmed split-leg journeys on the same train, or check **[Seat Status Coach Journey Lookup](/seat-status)** and **[Chart Vacancy](/chart-vacancy)** for post-charting seats.
+When your train shows REGRET, do not panic. Use **[Smart Seats](/)** to find confirmed split-leg journeys on the same train, or check **[Get Confirmed Tickets](/)** and **[Get Confirmed Tickets](/)** for post-charting seats.

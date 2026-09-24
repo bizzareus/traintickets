@@ -11,7 +11,7 @@ tags:
   - ticket status
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 Picture this: it's chart preparation day and you check your PNR status. Total mess. You expected a smooth family trip when booking. Instead, only two of you got confirmed berths. The other two are stranded on the waitlist with numbers like WL 12 and WL 13. 
 
@@ -23,7 +23,7 @@ Let's quickly dissect the real rules and refund hacks for these mixed PNRs.
 
 ---
 
-> **Will your waitlist confirm?** Track your ticket with [Smart Seats PNR status](/), and once the chart is out, see the actual free berths on your train with the [Chart Vacancy coach map](/chart-vacancy) — then grab any open seat.
+> **Will your waitlist confirm?** Track your ticket with [Smart Seats PNR status](/), and once the chart is out, see the actual free berths on your train with the [Get Confirmed Tickets](/) — then grab any open seat.
 
 ## What Is a Partially Confirmed Ticket in Indian Railways?
 
@@ -113,7 +113,7 @@ The one deadline that matters: the "party partially confirmed" TDR must be submi
 
 Yes — sometimes. Once the train departs, passengers who booked but never showed up leave berths lying empty, and the onboard TTE can reallocate these vacant berths to your waitlisted companions for the rest of the journey, in order of waitlist priority (lower WL numbers first). There is no online way to claim them; you have to ask the TTE in person after departure.
 
-You do not have to guess where the empty berths are. Once the chart is prepared (about 8 hours before departure), check the [Chart Vacancy coach map](/chart-vacancy) to see exactly which berths on your train are unsold or vacant, and use the [Coach Journey Lookup](/seat-status) to see how availability changes station by station. Walk up to the TTE knowing the specific coach and berth numbers that are free — it turns a vague "please adjust us" into a concrete request that is far more likely to succeed.
+You do not have to guess where the empty berths are. Once the chart is prepared (about 8 hours before departure), check the [Get Confirmed Tickets](/) to see exactly which berths on your train are unsold or vacant, and use the [Get Confirmed Tickets](/) to see how availability changes station by station. Walk up to the TTE knowing the specific coach and berth numbers that are free — it turns a vague "please adjust us" into a concrete request that is far more likely to succeed.
 
 ---
 

@@ -10,7 +10,7 @@ tags:
   - tatkal rules
 ---
 
-> **Chasing a confirmed Jan Shatabdi seat?** Check live availability and your PNR status with [Smart Seats](/), and after chart preparation, spot the actual vacant Chair Car berths on your train with [Chart Vacancy](/chart-vacancy).
+> **Chasing a confirmed Jan Shatabdi seat?** Check live availability and your PNR status with [Smart Seats](/), and after chart preparation, spot the actual vacant Chair Car berths on your train with [Get Confirmed Tickets](/).
 
 ## TL;DR
 Need a fast, cheap intercity ride? Jan Shatabdi Express is Indian Railways' answer for budget day trips. Before you book, you need to know how the seating classes differ, when Tatkal opens, and how catering works. Here is a quick, practical guide to getting a confirmed seat without the usual booking headache.
@@ -63,7 +63,7 @@ However, train food quality can be hit-or-miss. If you want a decent meal, we re
 
 We always suggest booking early, especially for weekend trips. If you are booking last-minute and the train is completely sold out, check for a current available ticket. A current available ticket is a fully confirmed seat with an assigned coach and seat number. It only opens up after the first chart preparation, which happens about 8 hours before the train departs, and stays bookable online until 30 minutes before departure.
 
-To find these late vacancies, check out LastBerth's [Seat Status Coach Journey Lookup](/seat-status) tool. It shows exactly which berths are free for specific station pairs, helping you locate empty seats on a running train.
+To find these late vacancies, check out LastBerth's [Get Confirmed Tickets](/) tool. It shows exactly which berths are free for specific station pairs, helping you locate empty seats on a running train.
 
 ## How to Book Jan Shatabdi Tickets on IRCTC?
 

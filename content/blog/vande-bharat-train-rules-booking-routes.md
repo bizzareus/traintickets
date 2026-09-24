@@ -11,7 +11,7 @@ tags:
   - travel guide
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 The Vande Bharat Express is India's premier semi-high-speed train, capable of running up to 160 km/h. It comes equipped with automatic sliding doors, bio-vacuum toilets, and onboard Wi-Fi. Ticket booking follows the standard IRCTC system, and meals can be added optionally or mandatorily depending on the route.
@@ -73,7 +73,7 @@ Because Vande Bharat trains only have seating cars (CC and EC) and no sleeper co
 
 If your ticket is not confirmed (e.g., still showing `WL/3`) when the final chart is prepared 8 hours before the train departs, **IRCTC will automatically cancel your e-ticket** and refund the amount. You are not allowed to board the train with a waitlisted e-ticket.
 
-To beat the waitlist, use LastBerth's [Finding Smart Seats](/) tool. It searches for split seats on the same train (like booking one seat for segment A-B and another for B-C). You can also monitor confirmation odds with [PNR Status Search & Direct Booking](/) or check physical seating layout maps via the [Seat Status Coach Journey Lookup](/seat-status).
+To beat the waitlist, use LastBerth's [Finding Smart Seats](/) tool. It searches for split seats on the same train (like booking one seat for segment A-B and another for B-C). You can also monitor confirmation odds with [PNR Status Search & Direct Booking](/) or find confirmed split seats on [Get Confirmed Tickets](/).
 
 If you are booking within 4 hours of departure, check if there is a `"current available ticket"`. These are fully confirmed vacant seats released after chart preparation, and they remain bookable online until 30 minutes before the train leaves.
 

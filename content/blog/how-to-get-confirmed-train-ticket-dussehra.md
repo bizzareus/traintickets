@@ -13,7 +13,7 @@ tags:
   - segment booking
 ---
 
-> **🚀 Puja ticket showing REGRET?** Direct answer: check [LastBerth Smart Seats](/) for two confirmed halves of the same train (e.g. NDLS–DDU + DDU–HWH). Chart already out? Check [Chart Vacancy](/chart-vacancy) for CURR_AVBL berths. Chart timing on [Chart Times](/chart-times).
+> **🚀 Puja ticket showing REGRET?** Direct answer: check [Get Confirmed Tickets](/) on LastBerth Smart Seats for two confirmed halves of the same train (e.g. NDLS–DDU + DDU–HWH).
 
 ## Facts first — Puja 2026 dates & booking days
 
@@ -44,7 +44,7 @@ My honest tip? Set a 7:50 AM alarm, IRCTC logged in, passenger master list saved
 
 **2. Try Tatkal correctly, then stop chasing it.** 10 AM AC / 11 AM sleeper, day before origin departure. Puja Tatkal is a bloodbath though — gone in seconds. If you miss it once, jump to step 1 and 3 instead of retrying agents. My brother-in-law got Howrah-bound last year this way after Tatkal failed.
 
-**3. Grab post-chart leftovers.** After first chart, unused VIP/defence/middle-station seats release as CURR_AVBL — fully confirmed, bookable on IRCTC till ~30 mins before departure. Check [Chart Vacancy](/chart-vacancy) right after charting; confirm timing on [Chart Times](/chart-times). I once picked 3AC at 11 PM for a next-morning train. Keep IRCTC logged in, UPI ready.
+**3. Grab post-chart leftovers.** After first chart, unused VIP/defence/middle-station seats release as CURR_AVBL — fully confirmed, bookable on IRCTC till ~30 mins before departure. Check [Get Confirmed Tickets](/) right after charting; confirm timing on [Chart Times](/chart-times). I once picked 3AC at 11 PM for a next-morning train. Keep IRCTC logged in, UPI ready.
 
 ![Smart Seats Split Booking Example: Dussehra Travel](/images/blog/dussehra-smart-seats-example.png)
 *Split result: two green confirmed legs instead of one red REGRET — same train.*
@@ -87,7 +87,7 @@ Vague advice doesn't help at 8 AM, so here are the three I get asked about most.
 3. If direct is dead, open the Smart Seats options. Conditions I check: **same train number on both legs, same date, same class**. Note them down.
 4. Book on IRCTC Rail Connect app — longer leg first (it fills faster), then the shorter one. Two PNRs by SMS. Forward to family WhatsApp for tracking.
 
-Plus two pages I keep open Puja week: [Chart Vacancy](/chart-vacancy) for post-chart CURR_AVBL coach maps, [Chart Times](/chart-times) for exact chart minute, and [Coach Journey Lookup](/seat-status) so I know where B3 stands at Howrah/NDLS chaos. Saves a sprint with mithai dabbas.
+Plus two pages I keep open Puja week: [Get Confirmed Tickets](/) for post-chart CURR_AVBL coach maps, [Chart Times](/chart-times) for exact chart minute, and [Get Confirmed Tickets](/) so I know where B3 stands at Howrah/NDLS chaos. Saves a sprint with mithai dabbas.
 
 ---
 
@@ -95,7 +95,7 @@ Plus two pages I keep open Puja week: [Chart Vacancy](/chart-vacancy) for post-c
 
 ### Tatkal failed at 10 AM, now what?
 
-Fact: try general-quota splits on [Smart Seats](/) first — no Tatkal needed. Then watch [Chart Vacancy](/chart-vacancy) after first chart for CURR_AVBL. Tatkal re-attempts rarely work Puja week; splits + chart leftovers do. That's how my brother-in-law reached Howrah last year.
+Fact: try general-quota splits on [Smart Seats](/) first — no Tatkal needed. Then watch [Get Confirmed Tickets](/) after first chart for CURR_AVBL. Tatkal re-attempts rarely work Puja week; splits + chart leftovers do. That's how my brother-in-law reached Howrah last year.
 
 ### Are those 0-number Puja specials cheaper?
 
@@ -105,7 +105,7 @@ No — costlier. Fact: 0-series = special fare, **+10% in 2S, +30% in sleeper/AC
 
 ## Bottom line
 
-REGRET isn't personal, it's quota maths. For Delhi–Howrah, Delhi–Patna, Mumbai–Ahmedabad: search splits on [LastBerth](/), note chart time on [Chart Times](/chart-times), pounce on [Chart Vacancy](/chart-vacancy) after charting. One of the three usually clicks.
+REGRET isn't personal, it's quota maths. For Delhi–Howrah, Delhi–Patna, Mumbai–Ahmedabad: search splits on [LastBerth](/), note chart time on [Chart Times](/chart-times), pounce on [Get Confirmed Tickets](/) after charting. One of the three usually clicks.
 
 Shubho Pujo in advance — and grab a window seat past Bardhaman, October morning fields are lovely.
 

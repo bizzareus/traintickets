@@ -74,4 +74,4 @@ Here are the absolute best ways to lock in a seat today:
 *   **Book the Vande Bharat:** It's your fastest option right now, connecting Mumbai and Gandhinagar in 6 hours and 30 minutes (or Mumbai and Ahmedabad in 5 hours and 25 minutes).
 *   **Try LastBerth's Smart Seats:** If direct tickets are sold out, use the [Finding Smart Seats](/) tool to find seat-sharing slots on different legs of the same train.
 *   **Grab Current Tickets:** Keep an eye out for a `"current available ticket"`. These confirmed seats open up online or at the station as soon as the first chart is prepared (about 8 hours before departure) and stay open until 30 minutes before the train leaves.
-*   **Run a PNR Check:** Before you travel, double-check your confirmation chances using [PNR Status Search & Direct Booking](/) or check the physical seating charts via [Seat Status Coach Journey Lookup](/seat-status).
+*   **Run a PNR Check:** Before you travel, double-check your confirmation chances using [PNR Status Search & Direct Booking](/) or check the physical seating charts via [Get Confirmed Tickets](/).

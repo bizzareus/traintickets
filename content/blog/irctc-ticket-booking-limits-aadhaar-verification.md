@@ -16,7 +16,7 @@ tags:
   - irctc monthly booking limit
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -194,7 +194,7 @@ Once your monthly allocation is exhausted:
 2. **Alternative Action Plans:**
    - **Use a Family Member's Account:** Have an adult family member sign into their own independent Aadhaar-verified IRCTC profile.
    - **Visit a Physical PRS Counter:** Bookings made across physical railway reservation counters at stations do not link to your online IRCTC ID and are unaffected by personal account quotas.
-   - **Check Vacant Berths After Charting:** If your desired train has waitlists, check final vacancy directly via [Chart Vacancy](/chart-vacancy) 4 hours before train departure.
+   - **Check Vacant Berths After Charting:** If your desired train has waitlists, check final vacancy directly via [Get Confirmed Tickets](/) 4 hours before train departure.
    - **Verify Chart Preparation Times:** Know when your train's chart is finalized using [Chart Times](/chart-times).
 
 ---

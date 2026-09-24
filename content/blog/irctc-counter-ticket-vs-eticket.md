@@ -48,7 +48,7 @@ If your ticket status shows WL, it follows a set progression: **WL (Waiting List
 If your ticket remains in the waiting list after chart preparation, an e-ticket is deleted from the system, and traveling on it is a punishable offense. However, a waitlisted counter ticket is not deleted. You can board the train's general compartment legally. If you want to check your confirmation chances or find better alternatives, you can use LastBerth's key features:
 - **Finding Smart Seats**: Search for seats by breaking your booking into multiple segments across different coaches.
 - **PNR Status Search & Direct Booking**: Check waitlist status and find alternative routes if your ticket is unlikely to confirm.
-- **Seat Status Coach Journey Lookup**: Scan the train coach layout to find vacant berths that you can request the TTE to allocate to you.
+- **Get Confirmed Tickets**: Scan the train coach layout to find vacant berths that you can request the TTE to allocate to you.
 
 ---
 

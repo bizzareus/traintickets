@@ -12,7 +12,7 @@ tags:
   - waiting list
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -131,7 +131,7 @@ No refund is granted on the cancellation of confirmed Tatkal tickets. If a waitl
 
 ### How can I find seats if Tatkal tickets sell out completely?
 
-If Tatkal seats sell out or land on a high waitlist, use [Smart Seats](/) to search split-segment availability on the same train or check vacant seats after chart preparation on [Coach Journey Lookup](/seat-status).
+If Tatkal seats sell out or land on a high waitlist, use [Smart Seats](/) to search split-segment availability on the same train or check vacant seats after chart preparation on [Get Confirmed Tickets](/).
 
 ---
 

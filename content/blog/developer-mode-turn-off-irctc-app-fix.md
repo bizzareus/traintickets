@@ -10,7 +10,7 @@ tags:
   - train booking
 ---
 
-> **🔔 Beat the Tatkal Rush:** Locked out by an app error right before 10:00 AM or 11:00 AM? You can find split-ticket alternatives on [Smart Seats](/), monitor final chart timelines on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy).
+> **🔔 Beat the Tatkal Rush:** Locked out by an app error or sold-out quotas? Find confirmed split-ticket alternatives on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -19,7 +19,7 @@ The IRCTC Rail Connect app blocks launch when Developer Options is active on And
 ---
 
 > [!TIP]
-> **Need a Confirmed Berth Fast?** If debugging phone settings made you miss your direct seat, search multi-leg split journeys on **[Smart Seats](/)** or check coach-level availability on **[Seat Status](/seat-status)**.
+> **Need a Confirmed Berth Fast?** If you missed your direct seat, search guaranteed multi-leg split journeys on **[Get Confirmed Tickets](/)**.
 
 Few things trigger panic faster than opening the IRCTC Rail Connect app at 9:59 AM for Tatkal booking, only to be stopped by a red warning box: *"Developer mode is enabled on your device. Please disable it to continue."*
 
@@ -215,4 +215,4 @@ Getting locked out of the IRCTC Rail Connect app before a major booking window i
 
 If you are locked out during a critical Tatkal rush, do not waste precious minutes troubleshooting firmware. Open your mobile browser, go straight to `irctc.co.in`, and complete your booking directly. 
 
-For journeys where direct seats are already sold out, track charting schedules on [Chart Times](/chart-times), check remaining berths on [Chart Vacancy](/chart-vacancy), or find confirmed split alternatives on [Smart Seats](/) before tickets disappear.
+For journeys where direct seats are already sold out, track charting schedules on [Chart Times](/chart-times), check remaining berths on [Get Confirmed Tickets](/), or find confirmed split alternatives on [Smart Seats](/) before tickets disappear.

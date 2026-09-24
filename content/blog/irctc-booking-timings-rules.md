@@ -12,7 +12,7 @@ tags:
   - railway booking timings
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). If you need an alternative confirmed route across sold-out stretches, search [Smart Seats](/), or verify rake layouts with [Coach Journey Lookup](/seat-status).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -157,7 +157,7 @@ Features of Current Availability booking:
 - **Opening Time:** Opens right after 1st Chart Preparation (~8 hours before train departure from origin, or 9:00 PM previous day for pre-14:00 departures).
 - **Closing Time:** Closes 30 minutes before departure or when 2nd Chart Preparation occurs.
 - **Fare Discounts:** Indian Railways often applies up to a **10% discount** on basic fares for vacant berths sold under current availability to maximize coach occupancy.
-- **Live Vacancy Check:** You can inspect available empty berths in real time using [Chart Vacancy](/chart-vacancy) or check your boarding station chart generation status on [Chart Times](/chart-times).
+- **Live Vacancy Check:** You can inspect available empty berths in real time using [Get Confirmed Tickets](/) or check your boarding station chart generation status on [Chart Times](/chart-times).
 
 ---
 

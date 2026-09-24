@@ -10,7 +10,7 @@ tags:
   - vande bharat train
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 You can now book vacant seats on the Vande Bharat Express and other reserved trains up to 15 minutes before they depart, even after charts are prepared. These last-minute tickets are bookable online via the IRCTC website, mobile app, or at railway counters. If direct tickets are waitlisted, you can also use LastBerth to check for segment booking options.
@@ -60,7 +60,7 @@ Because Vande Bharat trains only consist of sitting coaches (CC and EC) and have
 
 If your ticket remains waitlisted after the final chart preparation, IRCTC will automatically cancel your e-ticket and process a refund to your account. You cannot travel on a Vande Bharat train with a waitlisted e-ticket.
 
-To beat the waitlist, try using LastBerth's [Finding Smart Seats](/) tool. It splits the journey into shorter segments on the same train (e.g., booking seat 12 for leg A-B and seat 15 for leg B-C) to get you a confirmed path. You can also run a [PNR Status Search & Direct Booking](/) to check confirmation odds or check seat layouts via the [Seat Status Coach Journey Lookup](/seat-status) to find vacant spots.
+To beat the waitlist, try using LastBerth's [Finding Smart Seats](/) tool. It splits the journey into shorter segments on the same train (e.g., booking seat 12 for leg A-B and seat 15 for leg B-C) to get you a confirmed path. You can also run a [PNR Status Search & Direct Booking](/) to check confirmation odds or check seat layouts via the [Get Confirmed Tickets](/) to find vacant spots.
 
 ---
 

@@ -70,7 +70,7 @@ When booking tickets, passengers often face waitlists. In the Indian Railways bo
 
 If your ticket is at a waitlist position like `WL/10` (meaning 10th in queue) versus a highly confirmable `WL/1` (1st in queue), and it remains waitlisted after the final chart is prepared, the railways will automatically cancel the e-ticket. With standard payment methods, a refund takes 3 to 7 days to reach your bank account. However, with the e-wallet, the refund is credited back to your prepaid balance almost instantly (usually within 24 hours), allowing you to reuse those funds to check for alternative seats.
 
-To monitor your waitlist status and check the likelihood of your ticket clearing, you can use LastBerth's **PNR Status Search & Direct Booking** tool. If the ticket is unlikely to confirm, you can also use the **Seat Status Coach Journey Lookup** to check for vacant berths on running trains and find open seats after the chart is prepared.
+To monitor your waitlist status and check the likelihood of your ticket clearing, you can use LastBerth's **PNR Status Search & Direct Booking** tool. If the ticket is unlikely to confirm, you can also use the **Get Confirmed Tickets** to check for vacant berths on running trains and find open seats after the chart is prepared.
 
 ## Common Booking Questions (FAQ)
 

@@ -108,7 +108,7 @@ Set up your traveler profiles in advance:
 Unverified IRCTC user accounts are strictly capped at booking **12 tickets per month**. Linking your 12-digit Aadhaar number with your IRCTC profile increases this cap to **24 tickets per calendar month**, ensuring your family group bookings are not abruptly blocked during peak festive transactions.
 
 ### 4. Monitor Current Availability After Chart Preparation
-If your ticket remains waitlisted or you need last-minute travel, monitor seats when the first reservation chart is prepared (**~8 hours before departure**). Any unallocated Emergency Quota (EQ), VIP berths, or cancellations are released to the public as Current Availability (`CURR_AVBL`). You can check real-time coach vacancies on [Coach Journey Lookup](/seat-status) and [Chart Vacancy](/chart-vacancy).
+If your ticket remains waitlisted or you need last-minute travel, monitor seats when the first reservation chart is prepared (**~8 hours before departure**). Any unallocated Emergency Quota (EQ), VIP berths, or cancellations are released to the public as Current Availability (`CURR_AVBL`). You can check real-time coach vacancies on [Get Confirmed Tickets](/) and [Get Confirmed Tickets](/).
 
 ---
 
@@ -154,7 +154,7 @@ If your e-ticket remains fully waitlisted after final chart preparation, the sys
 No, passengers holding fully waitlisted e-tickets cannot board reserved Sleeper or AC coaches. Boarding without a confirmed berth incurs a minimum ₹500 fine under Section 138 of the Railways Act and deboarding at the next station.
 
 ### How do I check if berths become vacant on Puja specials after charting?
-You can check vacant berths online via IRCTC Current Reservation or explore open seats directly on [Chart Vacancy](/chart-vacancy) and [Coach Journey Lookup](/seat-status) starting ~8 hours before train departure.
+You can check vacant berths online via IRCTC Current Reservation or explore open seats directly on [Get Confirmed Tickets](/) and [Get Confirmed Tickets](/) starting ~8 hours before train departure.
 
 ### How many tickets can I book on IRCTC for festival travel in one month?
 A standard unverified IRCTC account can book up to 12 tickets per month, while an Aadhaar-authenticated user profile can book up to 24 tickets per month.
@@ -166,4 +166,4 @@ Use [Finding Smart Seats](/) on LastBerth to find contiguous confirmed split tic
 
 ## Bottom line
 
-Durga Puja train bookings between October 16 and October 25, 2026 experience the highest reservation density of the year across Eastern and Northern India. If your preferred train hits a waiting list or `REGRET` status, do not panic. Monitor newly announced 0-series Puja Special Trains, set up automated charting alerts on [Chart Times](/chart-times), check remaining post-chart berths on [Chart Vacancy](/chart-vacancy), and use [Finding Smart Seats](/) to find confirmed split journeys.
+Durga Puja train bookings between October 16 and October 25, 2026 experience the highest reservation density of the year across Eastern and Northern India. If your preferred train hits a waiting list or `REGRET` status, do not panic. Monitor newly announced 0-series Puja Special Trains, set up automated charting alerts on [Chart Times](/chart-times), check remaining post-chart berths on [Get Confirmed Tickets](/), and use [Finding Smart Seats](/) to find confirmed split journeys.

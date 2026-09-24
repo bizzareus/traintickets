@@ -10,7 +10,7 @@ tags:
   - railway stay
 ---
 
-> **Planning a visit to Ayodhya?** Verify your live PNR status on [Smart Seats](/) to confirm your CNF/RAC eligibility for retiring rooms, check [Chart Vacancy](/chart-vacancy) for empty seats, and view your platform layout via [Coach Journey Lookup](/seat-status).
+> **Planning a visit to Ayodhya?** Verify your live PNR status on [Smart Seats](/) to confirm your CNF/RAC eligibility for retiring rooms, check [Get Confirmed Tickets](/) for empty seats, and view your platform layout via [Get Confirmed Tickets](/).
 
 ## TL;DR
 

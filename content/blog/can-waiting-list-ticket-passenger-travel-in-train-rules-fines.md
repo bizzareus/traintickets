@@ -12,7 +12,7 @@ tags:
   - tatkal
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -130,7 +130,7 @@ Passenger No-Show Marked on HHT ──► Real-Time Server Sync ──► Auto-A
 Key aspects of the HHT system include:
 
 - **Automated vacancy cascade:** When a confirmed passenger fails to turn up within two stops after their scheduled boarding point, the TTE marks them as absent (No-Show). The HHT immediately re-allots the vacant berth to the highest-priority RAC passenger on the train.
-- **Server sync:** If no RAC passengers remain onboard, the vacant seat information synchronizes with the Passenger Reservation System for [Seat Status Coach Journey Lookup](/seat-status), enabling current reservation bookings at upcoming intermediate stations.
+- **Server sync:** If no RAC passengers remain onboard, the vacant seat information synchronizes with the Passenger Reservation System for [Get Confirmed Tickets](/), enabling current reservation bookings at upcoming intermediate stations.
 - **Zero manual side-allotments:** TTEs cannot arbitrarily give empty berths to passengers holding waitlisted counter tickets while bypassing the digital queue.
 
 ---
@@ -151,7 +151,7 @@ Tatkal quota opens one day before the journey date from the originating station 
 After charts are finalized ~8 hours before departure, unsold berths, cancelled seats, and unused VIP or emergency quotas are released to the general public under Current Booking. Current tickets offer 100% confirmed berths at regular fares and remain bookable on IRCTC or at PRS counters until 30 minutes before train departure.
 
 ### 4. Running Train Vacancy Check
-If you are already travelling on a valid ticket, use [Seat Status Coach Journey Lookup](/seat-status) to inspect which berths become vacant between specific upcoming stations, making it straightforward to request an official berth upgrade from the TTE.
+If you are already travelling on a valid ticket, use [Get Confirmed Tickets](/) to inspect which berths become vacant between specific upcoming stations, making it straightforward to request an official berth upgrade from the TTE.
 
 ---
 

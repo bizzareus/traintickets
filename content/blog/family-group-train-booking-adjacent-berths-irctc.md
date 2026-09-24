@@ -11,7 +11,7 @@ tags:
   - seat allocation
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -32,7 +32,7 @@ Let's look at how the seat booking algorithm actually works. More importantly, l
 
 ---
 
-> Planning a family journey? Check your coach map and seat layout using [Coach Journey Lookup](/seat-status) or verify ticket confirmation probability with [Smart Seats](/).
+> Planning a family journey? Check your coach map and seat layout using [Get Confirmed Tickets](/) or verify ticket confirmation probability with [Smart Seats](/).
 
 ## How Does the IRCTC Seat Allocation Algorithm Work?
 

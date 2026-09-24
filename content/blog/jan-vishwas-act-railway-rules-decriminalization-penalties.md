@@ -9,7 +9,7 @@ tags:
   - train fines
   - travel guide
 ---
-> **Avoid railway fines for unconfirmed travel:** Check your ticket status on [Smart Seats](/) to ensure your waitlisted ticket confirmed before boarding, and use [Chart Vacancy](/chart-vacancy) to find vacant berths lawfully.
+> **Avoid railway fines for unconfirmed travel:** Check your ticket status on [Smart Seats](/) to ensure your waitlisted ticket confirmed before boarding, and use [Get Confirmed Tickets](/) to find vacant berths lawfully.
 
 
 ## TL;DR
@@ -68,7 +68,7 @@ For example, the ₹500 minimum fine for ticketless travel will automatically ri
 
 **LastBerth helps you avoid hefty ticketless travel fines by finding confirmed seats and checking train status to keep your journeys legal.** By utilizing the [Finding Smart Seats](/) tool, you can split waitlisted journeys into confirmed segments, ensuring you always travel with a valid, confirmed berth and remain fully compliant.
 
-If your ticket is waitlisted and you are worried about boarding on an unconfirmed e-ticket (which is illegal and carries a ₹500 fine under the new rules), you can check your status on the [PNR Status Search](/) or use [Seat Status Coach Journey Lookup](/seat-status) to see exactly which berths are free on specific legs of the journey. This helps you coordinate with the TTE legally rather than boarding unauthorized coaches.
+If your ticket is waitlisted and you are worried about boarding on an unconfirmed e-ticket (which is illegal and carries a ₹500 fine under the new rules), you can check your status on the [PNR Status Search](/) or use [Get Confirmed Tickets](/) to see exactly which berths are free on specific legs of the journey. This helps you coordinate with the TTE legally rather than boarding unauthorized coaches.
 
 ---
 
@@ -107,7 +107,7 @@ Authorized Travelling Ticket Examiners (TTEs) and Ticket Collectors issue offici
 
 The Jan Vishwas Act 2026 represents a progressive shift in how Indian Railways manages passenger violations. By replacing criminal trials and imprisonment with higher civil penalties, the law makes travel regulation more efficient while penalizing offenders through strict financial penalties. 
 
-To ensure you never face these fines, make sure you always book a valid ticket. If direct trains show a waiting list, use the [Finding Smart Seats](/) tool on LastBerth to split your journey into confirmed seats, or check [Seat Status Coach Journey Lookup](/seat-status) to trace vacant berths. Always verify your status on the official IRCTC website or app before boarding.
+To ensure you never face these fines, make sure you always book a valid ticket. If direct trains show a waiting list, use the [Finding Smart Seats](/) tool on LastBerth to split your journey into confirmed seats or use [Get Confirmed Tickets](/) to find confirmed split seats. Always verify your status on the official IRCTC website or app before boarding.
 
 ### Does a decriminalized civil fine show on your police record or passport check?
 No. Decriminalized civil defaults under the Jan Vishwas Act are administrative penalties collected directly by Indian Railways and do not generate criminal FIRs, court records, or adverse police verification entries for passport applications.

@@ -9,7 +9,7 @@ tags:
   - platform navigation
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 
 We've all been there. You're running late for your train in India. You reach the station with just five minutes left. You have heavy bags, and the place is packed. You look up, but you can't see your platform number anywhere. Trying to navigate a massive railway station when you're in a hurry is incredibly stressful. In this guide, we'll look at simple, practical tips to find your platform, locate your coach, and board your train safely before it pulls out.
@@ -36,7 +36,7 @@ You can read the coach position indicators by looking at the small, glowing digi
 
 Passenger trains in India can have up to 24 coaches. If you stand at the wrong end of the platform, you'll have to run a long way when the train arrives. This is dangerous when the platform is crowded.
 
-If you don't have a confirmed seat yet, look for last-minute options. A `"current available ticket"` is a **fully confirmed seat** with coach/berth numbers. It opens 8 hours before the train leaves and closes 30 minutes before. Once you get this, or if you use LastBerth's **Finding Smart Seats** feature to split your journey across coaches, check the overhead indicators to see where your coach will stop. You can also use the **Seat Status Coach Journey Lookup** to find vacant berths on running trains.
+If you don't have a confirmed seat yet, look for last-minute options. A `"current available ticket"` is a **fully confirmed seat** with coach/berth numbers. It opens 8 hours before the train leaves and closes 30 minutes before. Once you get this, or if you use LastBerth's **Finding Smart Seats** feature to split your journey across coaches, check the overhead indicators to see where your coach will stop. You can also use the **Get Confirmed Tickets** to find vacant berths on running trains.
 
 ## What Should You Do if Your Train is Already Arriving?
 
@@ -78,4 +78,4 @@ Yes. If the train is about to leave, get into the nearest Sleeper or AC coach. O
 Do not attempt to chase or board a moving train. Board the nearest open door of any Sleeper or AC coach immediately if the train is just starting, and walk through internal vestibules once seated safely.
 
 ### Can I check coach position on IRCTC before reaching the station?
-Yes. The IRCTC Rail Connect app and NTES portal display expected coach position sequences prior to arrival. You can also use LastBerth [Coach Journey Lookup](/seat-status) to trace coach arrangements.
+Yes. The IRCTC Rail Connect app and NTES portal display expected coach position sequences prior to arrival. You can also use LastBerth [Get Confirmed Tickets](/) to trace coach arrangements.

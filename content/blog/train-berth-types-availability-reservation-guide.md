@@ -13,7 +13,7 @@ tags:
   - sleeper class
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -25,7 +25,7 @@ tags:
 
 ---
 
-> Looking for your seat position or coach layout? Use [Coach Journey Lookup](/seat-status) to find your exact coach map or check confirmation chances with [Smart Seats](/).
+> Looking for your seat position or coach layout? Use [Get Confirmed Tickets](/) to find your exact coach map or check confirmation chances with [Smart Seats](/).
 
 ## What Is a Train Berth?
 

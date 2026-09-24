@@ -91,7 +91,7 @@ For multi-leg bookings, remember that if an online e-ticket is still stuck on th
 
 ## Need a Backup Plan? Finding Alternative Seats
 
-If you are out on the rails and need to figure out a backup travel plan on the fly, digital platforms like [LastBerth](/) can streamline the logistics. You can run a quick [PNR status](/) check to see your exact odds of getting a confirmed seat or map out alternative train combinations. If your primary train is entirely sold out, tools like the [Smart Seats](/) finder can help you piece together a journey by breaking a single trip into available sub-segments across different trains. Additionally, if you are already on board and looking to move into a better class, the [Seat Status Coach Journey Lookup](/seat-status) lets you view exactly which berths remain completely vacant between specific stations on active, running trains.
+If you are out on the rails and need to figure out a backup travel plan on the fly, digital platforms like [LastBerth](/) can streamline the logistics. You can run a quick [PNR status](/) check to see your exact odds of getting a confirmed seat or map out alternative train combinations. If your primary train is entirely sold out, tools like the [Smart Seats](/) finder can help you piece together a journey by breaking a single trip into available sub-segments across different trains. Additionally, if you are already on board and looking to move into a better class, the [Get Confirmed Tickets](/) lets you view exactly which berths remain completely vacant between specific stations on active, running trains.
 
 ---
 

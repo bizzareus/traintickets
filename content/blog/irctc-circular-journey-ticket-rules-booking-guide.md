@@ -13,7 +13,7 @@ Planning a multi-city vacation or a long pilgrimage across India? If you're book
 
 If you've got a multi-stop itinerary, learning how these tickets work will keep your travel budget in check. Let's dive into the rules, the booking process, and how much you can actually save.
 
-> **Planning a multi-city rail journey?** Check seat availability across all train legs using [Smart Seats](/) or look up coach maps on [Coach Journey Lookup](/seat-status).
+> **Planning a multi-city rail journey?** Check seat availability across all train legs using [Smart Seats](/) or look up coach maps on [Get Confirmed Tickets](/).
 
 ## What exactly is a Circular Ticket?
 
@@ -71,7 +71,7 @@ Here is the breakdown of how waitlists behave on circular tickets:
 * **Watch out for refunds:** This is crucial. If you book an online e-ticket and it stays waitlisted, the system cancels it automatically and refunds your money. But circular tickets are paper counter tickets. They *never* cancel automatically. If your ticket is still waitlisted after chart preparation, you must physically walk up to a station counter to cancel it and claim your refund.
 * **Keep tabs on your status:** Use the **PNR Status Search & Direct Booking** tool on LastBerth to keep an eye on your queue position and see realistic confirmation probabilities. If a specific leg looks hopeless, LastBerth can suggest alternative train routes to save your trip.
 
-If your waitlisted seat doesn't clear, don't panic. You can check for a **current available ticket**. These are confirmed berths that open up right after chart preparation (8 hours before the train starts) and remain bookable until 30 minutes before departure. Another trick is to use the **Seat Status Coach Journey Lookup** on LastBerth to locate empty berths on the running train for specific sections of your travel.
+If your waitlisted seat doesn't clear, don't panic. You can check for a **current available ticket**. These are confirmed berths that open up right after chart preparation (8 hours before the train starts) and remain bookable until 30 minutes before departure. Another trick is to use the **Get Confirmed Tickets** on LastBerth to locate empty berths on the running train for specific sections of your travel.
 
 ## What Kind of Savings Are We Talking About?
 

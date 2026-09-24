@@ -18,7 +18,7 @@ The official Maximum Retail Price (MRP) of a 1-litre bottle of Rail Neer is stri
 ---
 
 > [!TIP]
-> **Travelling on a waitlisted or split-journey ticket?** If your train charting is underway, monitor real-time berth allocation and coach movements on **[Chart Times](/chart-times)** and browse vacant berths on **[Chart Vacancy](/chart-vacancy)**. If your direct ticket is stuck in WL, find guaranteed confirmed seats across adjoining segments with **[Finding Smart Seats](/)**.
+> **Travelling on a waitlisted or split-journey ticket?** If your train charting is underway, monitor real-time berth allocation and coach movements on **[Chart Times](/chart-times)** and browse vacant berths on **[Get Confirmed Tickets](/)**. If your direct ticket is stuck in WL, find guaranteed confirmed seats across adjoining segments with **[Finding Smart Seats](/)**.
 
 ---
 
@@ -94,7 +94,7 @@ Follow these practical safety steps:
 - **Stay Calm:** Do not enter into physical altercations with pantry workers.
 - **Record Evidence:** Note the vendor's name tag, take a clear picture of the bottle or food packet, and note the coach and time.
 - **Alert the TTE:** Ask the Travelling Ticket Examiner (TTE) to call the catering manager to your seat.
-- **Check Coach Berths:** If you need to switch berths away from disruptive pantry staff or seat disputes, consult the TTE or use **[Seat Status Coach Journey Lookup](/seat-status)** to check legitimate vacant seats along your train route.
+- **Check Coach Berths:** If you need to switch berths away from disruptive pantry staff or seat disputes, consult the TTE or use **[Get Confirmed Tickets](/)** to check legitimate vacant seats along your train route.
 
 ---
 
@@ -122,11 +122,11 @@ Most RailMadad catering complaints filed during journey hours receive an initial
 Indian Railways imposes heavy financial penalties on catering license holders, ranging from ₹25,000 to ₹1,00,000 per violation. Repeated complaints of overcharging or non-billing can lead to contract cancellation and blacklisting.
 
 ### How can you check vacant seats or switch berths if you need to move coaches?
-If your ticket is partially confirmed or waitlisted (where WL full form is Waiting List), or you need an alternate seat during the journey, check vacant berths after chart prep via **[Chart Vacancy](/chart-vacancy)** or use **[Finding Smart Seats](/)** to find segment-based confirmed paths.
+If your ticket is partially confirmed or waitlisted (where WL full form is Waiting List), or you need an alternate seat during the journey, check vacant berths after chart prep via **[Get Confirmed Tickets](/)** or use **[Finding Smart Seats](/)** to find segment-based confirmed paths.
 
 ---
 
 ## Bottom line
 You have the legal right to fair pricing and clean machine-printed receipts throughout your railway journey. Never pay more than the printed ₹15 MRP for Rail Neer, always invoke the "No Bill, Food Is Free" rule when denied a POS receipt, and use RailMadad or helpline 139 for swift on-board resolution.
 
-For smooth, stress-free train travel, plan your seat confirmations ahead with **[Finding Smart Seats](/)**, track charting schedules on **[Chart Times](/chart-times)**, and check coach vacancy with **[Seat Status Coach Journey Lookup](/seat-status)**.
+For smooth, stress-free train travel, plan your seat confirmations ahead with **[Finding Smart Seats](/)**, track charting schedules on **[Chart Times](/chart-times)**, and check coach vacancy with **[Get Confirmed Tickets](/)**.

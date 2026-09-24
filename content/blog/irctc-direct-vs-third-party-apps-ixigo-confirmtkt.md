@@ -13,7 +13,7 @@ tags:
   - irctc convenience fee
 ---
 
-> **Tired of paying agent markups and extra platform fees?** Uncover confirmed split-ticket journeys for free with [Finding Smart Seats](/), verify your confirmation odds without paying agent fees on [PNR Status Search & Direct Booking](/), or find open berths on running trains with [Seat Status Coach Journey Lookup](/seat-status).
+> **Tired of paying agent markups and extra platform fees?** Uncover confirmed split-ticket journeys for free with [Finding Smart Seats](/), verify your confirmation odds without paying agent fees on [PNR Status Search & Direct Booking](/), or find open berths on running trains with [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -119,7 +119,7 @@ When you search for a popular route and find that direct tickets are marked as `
 
 However, booking alternate split tickets on third-party apps comes with a major financial drawback: aggregators treat each journey leg as an independent booking, charging separate IRCTC agent fees, platform charges, and insurance fees on every segment.
 
-You do not need to pay hefty agent markups to find these split routes. You can discover confirmed contiguous segments on the same train for free using **[Finding Smart Seats](/)** and book them directly on IRCTC. Furthermore, you can use **[Seat Status Coach Journey Lookup](/seat-status)** to check vacant berths on running trains and occupy open segments legitimately through the onboard TTE.
+You do not need to pay hefty agent markups to find these split routes. You can discover confirmed contiguous segments on the same train for free using **[Finding Smart Seats](/)** and book them directly on IRCTC. Furthermore, you can use **[Get Confirmed Tickets](/)** to check vacant berths on running trains and occupy open segments legitimately through the onboard TTE.
 
 > [!WARNING]
 > Never board a reserved Sleeper or AC coach with only an unreserved General or Platform ticket. Under the Jan Vishwas Act 2026, traveling in reserved coaches without a valid confirmed or RAC ticket carries a flat **₹500 penalty** in addition to the full fare difference under Section 138 of the Railways Act.

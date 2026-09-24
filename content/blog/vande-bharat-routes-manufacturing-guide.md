@@ -81,7 +81,7 @@ Since Vande Bharat trains only have sitting coaches and no sleeper berths, there
 
 To get around waitlists, check for a `"current available ticket"`. These confirmed seats open up for booking right after the first chart is prepared (8 hours before train departure) and stay open until 30 minutes before launch.
 
-Additionally, you can use LastBerth's [Finding Smart Seats](/) tool to check if you can split the booking across different segments. You can track your ticket's confirmation odds with [PNR Status Search & Direct Booking](/) or check the physical seat maps using [Seat Status Coach Journey Lookup](/seat-status).
+Additionally, you can use LastBerth's [Finding Smart Seats](/) tool to check if you can split the booking across different segments. You can track your ticket's confirmation odds with [PNR Status Search & Direct Booking](/) or check the physical seat maps using [Get Confirmed Tickets](/).
 
 ## Vande Bharat menu, routes and schedules by train
 

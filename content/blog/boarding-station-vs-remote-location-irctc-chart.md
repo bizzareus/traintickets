@@ -10,7 +10,7 @@ tags:
   - irctc
 ---
 
-> **Quick Tip:** Wondering how intermediate station quotas affect your seat availability? Check station-wise charting schedules on [Chart Times](/chart-times), track live vacancies with [Chart Vacancy](/chart-vacancy), or calculate your confirmation probability using [Smart Seats](/).
+> **Quick Tip:** Wondering how intermediate station quotas affect your seat availability? Check station-wise charting schedules on [Chart Times](/chart-times), track live vacancies with [Get Confirmed Tickets](/), or calculate your confirmation probability using [Smart Seats](/).
 
 ## TL;DR
 

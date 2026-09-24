@@ -12,7 +12,7 @@ tags:
   - irctc refund rules
 ---
 
-> **🔔 Stuck with a Delayed Train?** Track live train charting schedules and set up free departure alerts on [Chart Times](/chart-times), explore open post-charting berths on [Chart Vacancy](/chart-vacancy), or find alternate confirmed split journeys on [Smart Seats](/).
+> **🔔 Stuck with a Delayed Train?** Track live train charting schedules and set up free departure alerts on [Chart Times](/chart-times), explore open post-charting berths on [Get Confirmed Tickets](/), or find alternate confirmed split journeys on [Smart Seats](/).
 
 ## TL;DR
 
@@ -144,7 +144,7 @@ Many passengers attempt to file a TDR online to claim a refund while simultaneou
 
 - **HHT Live Attendance Sync:** TTEs use digital Handheld Terminals connected to central PRS servers. When the TTE scans your QR code or checks your berth, your status is updated to **"Turned Up / Travelled"**.
 - **TDR Rejection:** During post-journey reconciliation, the Chief Commercial Manager checks the HHT attendance log. If your name appears as travelled, your TDR claim is rejected for fraud.
-- **Berth Vacancy Tracking:** If you want to check which berths opened up because other passengers cancelled due to the delay, use [Coach Journey Lookup](/seat-status) or inspect available seats on [Chart Vacancy](/chart-vacancy).
+- **Berth Vacancy Tracking:** If you want to check which berths opened up because other passengers cancelled due to the delay, use [Get Confirmed Tickets](/) or inspect available seats on [Get Confirmed Tickets](/).
 
 ---
 
@@ -156,8 +156,8 @@ Sitting on a crowded platform waiting for a 5-hour late train is exhausting. If 
 
 - **[Smart Seats](/) (Split Journey Finder):** When direct trains are completely booked, Smart Seats finds split-seat combinations on the same train or across connecting routes so you can travel with confirmed berths.
 - **[Chart Times](/chart-times):** Track station-wise chart preparation schedules and set up instant alerts so you know when final charts are generated for upcoming trains.
-- **[Chart Vacancy](/chart-vacancy):** View live post-charting vacant berths across all coaches (1A, 2A, 3A, 3E, SL) to spot seats freed up by last-minute cancellations.
-- **[Coach Journey Lookup](/seat-status):** Enter any train and berth number to see exactly which station segments it is booked for.
+- **[Get Confirmed Tickets](/):** View live post-charting vacant berths across all coaches (1A, 2A, 3A, 3E, SL) to spot seats freed up by last-minute cancellations.
+- **[Get Confirmed Tickets](/):** Enter any train and berth number to see exactly which station segments it is booked for.
 
 ---
 

@@ -11,7 +11,7 @@ tags:
   - tdr refund
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 Tracking your IRCTC ticket refund is easy. You can check the status online via the IRCTC website or mobile app under the "Refund Status" tab in your transaction history. Refunds for cancelled tickets are typically processed within 3–7 business days depending on your payment method, while TDR refunds can take 15–45 days. If your refund is delayed, verifying the transaction ID with your bank or checking the refund status on official channels is the quickest way to resolve it.
@@ -71,7 +71,7 @@ Follow these steps if your refund is missing:
 
 A Ticket Deposit Receipt (TDR) is filed when you cannot travel due to railway issues, such as a train delay of over 3 hours. Unlike standard cancellations, TDR refunds are not automated. They require manual verification by the Chief Commercial Manager (Refunds) of the concerned railway zone to prevent fraud.
 
-While waiting for your TDR to clear, you can use [LastBerth](/) to check your next trip's [PNR Status](/) and seat confirmation probability. If your direct ticket is waitlisted, you can leverage LastBerth's **Finding Smart Seats** tool to break the seat bookings across multiple segments where a single seat is unavailable. Additionally, you can use the **Seat Status Coach Journey Lookup** to inspect open berths on running trains.
+While waiting for your TDR to clear, you can use [LastBerth](/) to check your next trip's [PNR Status](/) and seat confirmation probability. If your direct ticket is waitlisted, you can leverage LastBerth's **Finding Smart Seats** tool to break the seat bookings across multiple segments where a single seat is unavailable. Additionally, you can use the **Get Confirmed Tickets** to inspect open berths on running trains.
 
 ---
 

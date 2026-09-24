@@ -14,7 +14,7 @@ tags:
   - chart preparation
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -126,9 +126,9 @@ On long-distance trains, passengers board and deboard at various halts. A berth 
 Standard IRCTC searches often hide these partial vacancies behind end-to-end "Regret" messages. Here is how LastBerth helps you unlock them:
 
 - **Segment-Wise Current Availability:** Use [Smart Seats](/) to discover trains where booking two back-to-back segments on the same train guarantees you a confirmed seat for the entire journey.
-- **Coach Layout & Berth Inspection:** Verify whether your vacant berth is a Lower, Middle, Upper, or Side berth using [Coach Journey Lookup](/seat-status).
+- **Coach Layout & Berth Inspection:** Verify whether your vacant berth is a Lower, Middle, Upper, or Side berth using [Get Confirmed Tickets](/).
 - **Exact Chart Preparation Timings:** Never miss the 4-hour charting window. Check your train's historical charting habits on [Chart Times](/chart-times).
-- **Live Vacancy Inspection:** See coach-by-coach empty seat layouts across all classes using [Chart Vacancy](/chart-vacancy).
+- **Live Vacancy Inspection:** See coach-by-coach empty seat layouts across all classes using [Get Confirmed Tickets](/).
 
 ---
 

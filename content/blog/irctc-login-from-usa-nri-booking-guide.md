@@ -94,7 +94,7 @@ Key rules for booking under the Foreign Tourist Quota include:
 - **Passport Verification:** You must enter valid foreign passport details or NRI documentation during passenger detail entry.
 - **Higher Fare Structure:** FTQ tickets carry a dedicated service charge per ticket, making them slightly more expensive than General quota fares, but they guarantee confirmed accommodation on popular routes like Delhi to Agra, Jaipur, or Varanasi.
 
-When direct booking options are fully booked, travelers can use [Smart Seats](/) to find confirmed split-segment tickets on the same train, or inspect berth availability per leg using [Coach Journey Lookup](/seat-status).
+When direct booking options are fully booked, travelers can use [Smart Seats](/) to find confirmed split-segment tickets on the same train, or inspect berth availability per leg using [Get Confirmed Tickets](/).
 
 ---
 
@@ -125,4 +125,4 @@ Yes, Overseas Citizen of India (OCI) cardholders and non-resident foreign passpo
 IRCTC undergoes mandatory daily server maintenance from 11:45 PM to 12:20 AM IST (which equals 1:15 PM to 1:50 PM EDT during daylight saving time). All booking, cancellation, and PNR status inquiry services are disabled during this 35-minute maintenance window.
 
 ### What does WL status mean if direct seats are unavailable for my dates?
-WL full form is Waiting List. Tickets progress through a queue from **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. If your e-ticket remains waitlisted after final chart preparation (~30 minutes before departure), it is auto-cancelled and fully refunded. To avoid getting stranded, use [Smart Seats](/) to find confirmed split-journey berths or check [Coach Journey Lookup](/seat-status) to see vacant segment availability.
+WL full form is Waiting List. Tickets progress through a queue from **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. If your e-ticket remains waitlisted after final chart preparation (~30 minutes before departure), it is auto-cancelled and fully refunded. To avoid getting stranded, use [Smart Seats](/) to find confirmed split-journey berths or check [Get Confirmed Tickets](/) to see vacant segment availability.

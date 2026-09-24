@@ -18,7 +18,7 @@ This guide breaks the trip into its real parts: the **train to Kochi**, then the
 
 ---
 
-> **Booking the train leg to Kochi?** Kerala trains fill up fast in season. Search trains and track your confirmation with [Smart Seats PNR & booking](/), and if you land on a waitlist, see the actual free berths on your train with the [Chart Vacancy coach map](/chart-vacancy).
+> **Booking the train leg to Kochi?** Kerala trains fill up fast in season. Search trains and track your confirmation with [Smart Seats PNR & booking](/), and if you land on a waitlist, see the actual free berths on your train with the [Get Confirmed Tickets](/).
 
 ## Can You Reach Lakshadweep by Train?
 
@@ -36,7 +36,7 @@ Because Kerala is a year-round tourist route, these trains — especially to Ern
 
 - **Book as early as the 60-day ARP window opens** for the outbound train to Kochi.
 - If you are waitlisted, check your **realistic confirmation chance by WL number** rather than guessing — use [Smart Seats PNR status](/).
-- After the chart prepares (about 8 hours before departure), the [Chart Vacancy coach map](/chart-vacancy) shows berths left empty by no-shows, and [Coach Journey Lookup](/seat-status) shows how availability changes station by station — useful for grabbing a last-minute seat down to the coast.
+- After the chart prepares (about 8 hours before departure), the [Get Confirmed Tickets](/) shows berths left empty by no-shows, and [Get Confirmed Tickets](/) shows how availability changes station by station — useful for grabbing a last-minute seat down to the coast.
 
 ---
 
@@ -82,7 +82,7 @@ Do not leave this to the last day. No permit means no boarding — even with a c
 
 **Lock the two hardest-to-get pieces first: the train to Kochi and the ship/permit. Everything else is flexible.** The sequence that works: (1) decide your island dates, (2) open a train booking to Ernakulam the moment the 60-day window allows, (3) book the ship or flight, (4) start the permit early.
 
-The train is the leg most likely to leave you stranded on a waitlist, so treat it as the critical path. Use [Smart Seats](/) to book and track it, and if it stays waitlisted, the [Chart Vacancy](/chart-vacancy) map tells you whether a seat is realistically going to open — so you know in time whether to hold or rebook before your sailing date.
+The train is the leg most likely to leave you stranded on a waitlist, so treat it as the critical path. Use [Smart Seats](/) to book and track it, and if it stays waitlisted, the [Get Confirmed Tickets](/) map tells you whether a seat is realistically going to open — so you know in time whether to hold or rebook before your sailing date.
 
 ---
 
@@ -101,7 +101,7 @@ Flights to Lakshadweep operate to Agatti Aerodrome (AGX), and the main service i
 The IRCTC-operated passenger ships take roughly 14 to 20 hours from Kochi, usually sailing overnight, with the exact duration depending on the vessel and the destination island. Book the sailing as soon as its date opens on the IRCTC Lakshadweep portal, as berths are limited.
 
 ### Does IRCTC also handle my train ticket to Kochi?
-Yes — your train to Ernakulam is a normal IRCTC reservation, separate from the Lakshadweep ship/package booking. Because Kerala trains run heavily waitlisted, check your confirmation odds and post-chart vacant berths on [LastBerth's Smart Seats](/) and [Chart Vacancy](/chart-vacancy) before you rely on that seat.
+Yes — your train to Ernakulam is a normal IRCTC reservation, separate from the Lakshadweep ship/package booking. Because Kerala trains run heavily waitlisted, check your confirmation odds and post-chart vacant berths on [LastBerth's Smart Seats](/) and [Get Confirmed Tickets](/) before you rely on that seat.
 
 ---
 

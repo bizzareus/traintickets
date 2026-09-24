@@ -90,7 +90,7 @@ For example, starting at a queue position like `WL/10` and moving to `WL/1` by c
 
 Conversely, if you buy a **current available ticket**—which is a **fully confirmed seat** with coach and berth numbers that opens 8 hours before departure and closes 30 minutes before—the insurance goes into effect immediately when you board.
 
-If you are dealing with tricky waitlists, digital platforms make finding alternatives simple. You can use [LastBerth](/) to run a [PNR status](/) check to see confirmation probability and find better routes. If everything is full, the [Finding Smart Seats](/) tool helps you book across multiple segments, while the [Seat Status Coach Journey Lookup](/seat-status) shows vacant berths on running trains.
+If you are dealing with tricky waitlists, digital platforms make finding alternatives simple. You can use [LastBerth](/) to run a [PNR status](/) check to see confirmation probability and find better routes. If everything is full, the [Finding Smart Seats](/) tool helps you book across multiple segments, while the [Get Confirmed Tickets](/) shows vacant berths on running trains.
 
 ---
 

@@ -11,7 +11,7 @@ tags:
   - booking hacks
 ---
 
-> **Need a Tatkal ticket today?** Skip counter queues by checking live seat availability on [Smart Seats](/), monitor station chart prep with [Chart Times](/chart-times), and catch last-minute berths on [Chart Vacancy](/chart-vacancy).
+> **Need a Tatkal ticket today?** Skip counter queues by checking live seat availability on [Smart Seats](/), monitor station chart prep with [Chart Times](/chart-times), and catch last-minute berths on [Get Confirmed Tickets](/).
 
 To eliminate overcrowding, queue pushing, and unauthorized booking agents at station reservation windows, Indian Railways has introduced a mandatory **Tatkal Token System** across major PRS booking counters in 2026. This systematic queue management policy ensures fair access for genuine passengers.
 
@@ -114,4 +114,4 @@ At dedicated computerized PRS windows with the token system, ticket requests are
 
 The PRS Tatkal token system offers a fair, transparent method for securing last-minute train tickets at railway stations. Arrive early to secure your queue token, bring photocopies of your government ID, and fill out your requisition form completely before the 10:00 AM or 11:00 AM window opens.
 
-To explore split-ticketing alternatives or check coach layouts, use **[Smart Seats](/)** or look up berth maps on **[Coach Journey Lookup](/seat-status)**.
+To explore split-ticketing alternatives or check coach layouts, use **[Smart Seats](/)** or look up berth maps on **[Get Confirmed Tickets](/)**.

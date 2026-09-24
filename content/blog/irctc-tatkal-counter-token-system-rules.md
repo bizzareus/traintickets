@@ -12,7 +12,7 @@ tags:
   - category a category b tatkal
 ---
 
-> **Missed out on Tatkal tickets at the counter?** When direct Tatkal seats fill up in seconds, search route splits and intermediate station availability on [Smart Seats](/) to find confirmed seats on the exact same train, or inspect open berths on [Coach Journey Lookup](/seat-status).
+> **Missed out on Tatkal tickets at the counter?** When direct Tatkal seats fill up in seconds, search route splits and intermediate station availability on [Smart Seats](/) to find confirmed seats on the exact same train, or inspect open berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -148,4 +148,4 @@ Travel agents are placed in Category B at PRS counters. They receive tokens only
 
 ## Bottom line
 
-The Tatkal counter token system brings needed order to physical railway bookings, but seats still sell out in minutes. If you miss a counter ticket or face online session timeouts, use [Smart Seats](/) to find split-route confirmed berths or check [Coach Journey Lookup](/seat-status) for vacant berths after chart preparation.
+The Tatkal counter token system brings needed order to physical railway bookings, but seats still sell out in minutes. If you miss a counter ticket or face online session timeouts, use [Smart Seats](/) to find split-route confirmed berths or check [Get Confirmed Tickets](/) for vacant berths after chart preparation.

@@ -13,7 +13,7 @@ tags:
   - festival train tickets
 ---
 
-> **🚀 Diwali train on REGRET?** Direct answer: search [LastBerth Smart Seats](/) for two confirmed halves of the same train (Delhi–Kanpur + Kanpur–Patna type). Chart out? Check [Chart Vacancy](/chart-vacancy) for CURR_AVBL berths.
+> **🚀 Diwali train on REGRET?** Direct answer: search [Get Confirmed Tickets](/) on LastBerth Smart Seats for two confirmed halves of the same train (Delhi–Kanpur + Kanpur–Patna type).
 
 ## Facts first — Diwali 2026 dates & booking days
 
@@ -44,7 +44,7 @@ Missed the window? That's what the rest of this guide is for — specials + spli
 
 **2. Try origin-station booking.** Small stations get tiny RLWL/PQWL quotas that die first; origin stations get the big GNWL pool. Example: Aligarh REGRET but Anand Vihar (origin) WL 20 or confirmed → book from Anand Vihar, change boarding point to Aligarh on IRCTC (allowed till second chart, ~30 mins before). My uncle from Tundla does this yearly.
 
-**3. Pounce post-chart.** After first chart, leftover VIP/defence/middle-station seats release as CURR_AVBL — confirmed, normal price, bookable till ~30 mins before. Check [Chart Vacancy](/chart-vacancy) right after chart (timing on [Chart Times](/chart-times)). My sister grabbed Mumbai–Surat CC at 9 PM for next morning this way. Keep IRCTC logged in + UPI ready — these fly.
+**3. Pounce post-chart.** After first chart, leftover VIP/defence/middle-station seats release as CURR_AVBL — confirmed, normal price, bookable till ~30 mins before. Check [Get Confirmed Tickets](/) right after chart (timing on [Chart Times](/chart-times)). My sister grabbed Mumbai–Surat CC at 9 PM for next morning this way. Keep IRCTC logged in + UPI ready — these fly.
 
 ![Smart Seats Split Booking Example: Delhi to Patna](/images/blog/diwali-smart-seats-delhi-patna.png)
 *Direct REGRET, both halves green and confirmed — same train.*
@@ -83,7 +83,7 @@ Quotas change daily, so re-search your date. But these breaks repeat most Diwali
 1. Open [LastBerth home](/), IRCTC Rail Connect logged in side-by-side. Master passenger list saved, UPI PIN ready.
 2. Enter origin, destination, date, class. I'm flexible between 3E and 3A during Diwali — doubles chances. You should be too if budget allows.
 3. If direct is dead, open Smart Seats legs. My checks: **same train number both legs, same date, same class**. Longer leg first on IRCTC (fills faster), then shorter. Two PNR SMS → forward to family WhatsApp.
-4. Chart day: check [Chart Times](/chart-times) once, set alarm 15 mins after chart, open [Chart Vacancy](/chart-vacancy). Screenshot [Coach Journey Lookup](/seat-status) too — Anand Vihar on Choti Diwali is chaos, knowing B3's position saves a run with mithai dabbas.
+4. Chart day: check [Chart Times](/chart-times) once, set alarm 15 mins after chart, open [Get Confirmed Tickets](/). Screenshot [Get Confirmed Tickets](/) too — Anand Vihar on Choti Diwali is chaos, knowing B3's position saves a run with mithai dabbas.
 
 0-series Diwali specials (040xx/010xx numbers)? They cost **+10% 2S / +30% sleeper-AC**, no concessions, booking opens late (10–30 days before, after press notes). Price stays flat unlike Suvidha surge. I track them Sunday mornings with chai — got one in 2023, home by Nov 7 evening. Phew.
 
@@ -105,13 +105,13 @@ Yes, 100%. Two genuine IRCTC tickets, two PNRs, names + ID. TTE checks first PNR
 
 ### Where do I see empty seats after chart?
 
-[Chart Vacancy](/chart-vacancy): enter train number + date, green berths = CURR_AVBL, bookable on IRCTC till ~30 mins before. I refresh twice — right after chart, and 2 hrs before departure. Second wave pops when RACs shift. Good luck!
+[Get Confirmed Tickets](/): enter train number + date, green berths = CURR_AVBL, bookable on IRCTC till ~30 mins before. I refresh twice — right after chart, and 2 hrs before departure. Second wave pops when RACs shift. Good luck!
 
 ---
 
 ## Bottom line
 
-Don't sit on a Diwali WL 150 and pray. Try splits on [Smart Seats](/), origin-station + boarding change, then chart leftovers on [Chart Vacancy](/chart-vacancy) timed via [Chart Times](/chart-times). Delhi–Patna, Delhi–Mumbai, Mumbai–Ahmedabad — one route usually clicks.
+Don't sit on a Diwali WL 150 and pray. Try splits on [Smart Seats](/), origin-station + boarding change, then chart leftovers on [Get Confirmed Tickets](/) timed via [Chart Times](/chart-times). Delhi–Patna, Delhi–Mumbai, Mumbai–Ahmedabad — one route usually clicks.
 
 Light one extra diya for me if you reach. Happy Diwali!
 

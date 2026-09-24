@@ -11,7 +11,7 @@ tags:
   - train classes
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -62,7 +62,7 @@ When General Quota seats fill up, subsequent bookings enter the **General Waitin
 2. **First Rights on Cancellations:** When any confirmed general passenger cancels, the seat immediately goes to GNWL #1.
 3. **Chart Prep Release:** Unused VIP, Foreign Tourist, or Duty Pass quotas are merged into the General Quota pool during final chart preparation (4 to 8 hours before departure).
 
-If your waitlist is GNWL 15 in Sleeper or GNWL 5 in 3AC, your confirmation odds are significantly higher than an identical waitlist number in Remote Location (RLWL) or Pooled Quota (PQWL). You can verify your coach position using [Coach Journey Lookup](/seat-status).
+If your waitlist is GNWL 15 in Sleeper or GNWL 5 in 3AC, your confirmation odds are significantly higher than an identical waitlist number in Remote Location (RLWL) or Pooled Quota (PQWL). You can verify your coach position using [Get Confirmed Tickets](/).
 
 ---
 
@@ -108,4 +108,4 @@ Yes, as confirmed general passengers cancel their tickets, GNWL passengers syste
 
 ## Bottom line
 
-General Quota remains the most accessible and reliable reservation category on Indian Railways. Secure your berths during the 60-day window, and track confirmation odds on **[Smart Seats](/)** or check coach layouts on **[Coach Journey Lookup](/seat-status)**.
+General Quota remains the most accessible and reliable reservation category on Indian Railways. Secure your berths during the 60-day window, and track confirmation odds on **[Smart Seats](/)**.

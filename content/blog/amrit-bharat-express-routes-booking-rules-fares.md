@@ -10,7 +10,7 @@ tags:
   - amrit bharat routes
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -139,7 +139,7 @@ The current availability window closes 15 minutes before the train leaves the st
 
 ## Bottom line
 
-Amrit Bharat Express offers an excellent balance between speed, comfort, and affordability for non-AC travelers across India. Navigating its unique ticketing rules—such as the complete absence of RAC tickets—is crucial for a hassle-free journey. If your direct search results show waitlists, you can use [Finding Smart Seats](/) on LastBerth to search for split-segment seat options. If you already hold a ticket, check its status using the [PNR Status Search & Direct Booking](/) tool to estimate your confirmation probability, or lookup specific coach allocations using the [Seat Status Coach Journey Lookup](/seat-status) post-chart. Always verify the latest schedules and book your final tickets through authorized IRCTC channels.
+Amrit Bharat Express offers an excellent balance between speed, comfort, and affordability for non-AC travelers across India. Navigating its unique ticketing rules—such as the complete absence of RAC tickets—is crucial for a hassle-free journey. If your direct search results show waitlists, you can use [Finding Smart Seats](/) on LastBerth to search for split-segment seat options. If you already hold a ticket, check its status using the [PNR Status Search & Direct Booking](/) tool to estimate your confirmation probability or search guaranteed contiguous bookings via [Get Confirmed Tickets](/). Always verify the latest schedules and book your final tickets through authorized IRCTC channels.
 
 ### Does Amrit Bharat Express have any AC coaches?
 No. Amrit Bharat Express has no AC coaches. It consists entirely of non-AC Sleeper Class and General Unreserved coaches.

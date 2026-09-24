@@ -10,7 +10,7 @@ tags:
   - railway stay
 ---
 
-> **Resting between journeys?** Check your live PNR status on [Smart Seats](/) to see if your ticket is CNF or RAC (mandatory for retiring room booking), and use [Coach Journey Lookup](/seat-status) to track seat availability across your train journey.
+> **Resting between journeys?** Check your live PNR status on [Smart Seats](/) to see if your ticket is CNF or RAC (mandatory for retiring room booking), and use [Get Confirmed Tickets](/) to track seat availability across your train journey.
 
 
 ## TL;DR

@@ -12,7 +12,7 @@ tags:
   - sleeper class
 ---
 
-> **🔔 പ്രധാന ടിപ്പ്:** നിങ്ങളുടെ വെയ്‌റ്റ്‌ലിസ്റ്റ് ടിക്കറ്റ് കൺഫേം ആകാൻ കാത്തിരിക്കുകയാണോ? [Chart Times](/chart-times) വഴി ട്രെയിനിന്റെ കൃത്യമായ ചാർട്ടിംഗ് സമയം പരിശോധിച്ച് സൗജന്യ അലർട്ട് സെറ്റ് ചെയ്യുക, [Chart Vacancy](/chart-vacancy) വഴി ഒഴിവുള്ള സീറ്റുകൾ കാണുക, അല്ലെങ്കിൽ [Smart Seats](/) വഴി കൺഫേം ടിക്കറ്റുകൾ കണ്ടെത്തുക.
+> **🔔 പ്രധാന ടിപ്പ്:** നിങ്ങളുടെ വെയ്‌റ്റ്‌ലിസ്റ്റ് ടിക്കറ്റ് കൺഫേം ആകാൻ കാത്തിരിക്കുകയാണോ? [Chart Times](/chart-times) വഴി ട്രെയിനിന്റെ കൃത്യമായ ചാർട്ടിംഗ് സമയം പരിശോധിച്ച് സൗജന്യ അലർട്ട് സെറ്റ് ചെയ്യുക, [Get Confirmed Tickets](/) വഴി ഒഴിവുള്ള സീറ്റുകൾ കാണുക, അല്ലെങ്കിൽ [Smart Seats](/) വഴി കൺഫേം ടിക്കറ്റുകൾ കണ്ടെത്തുക.
 
 ## TL;DR
 
@@ -75,8 +75,8 @@ Almost all Express and Mail trains have unreserved compartments, usually placed 
 ### 2. Book a Current Availability Ticket
 Once the chart is ready (about 8 hours before departure), any leftover berths go up for sale under 'Current Availability' at a 10% discount. You can book these on the IRCTC app or at the station reservation counter up to 30 minutes before the train pulls out. See our guide on [how IRCTC current availability works](/blog/irctc-current-availability-explained) for tips on grabbing these.
 
-### 3. Search Vacant Berths on Coach Journey Lookup
-Instead of wandering between coaches searching for empty seats, open [Coach Journey Lookup](/seat-status) to see exactly which coach and berth is unallocated between your stations, then approach the TTE directly with the exact seat number.
+### 3. Search Vacant Berths on Get Confirmed Tickets
+Instead of wandering between coaches searching for empty seats, open [Get Confirmed Tickets](/) to see exactly which coach and berth is unallocated between your stations, then approach the TTE directly with the exact seat number.
 
 ### 4. Upgrade Your Ticket Onboard
 If you've already boarded a Sleeper or AC coach with a general or platform ticket due to an emergency, find the TTE immediately. Under Section 138, they can upgrade your ticket if there are empty berths. You'll just pay the fare difference and a ₹500 penalty.

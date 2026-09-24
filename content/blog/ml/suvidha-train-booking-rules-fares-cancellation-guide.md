@@ -11,7 +11,7 @@ tags:
   - dynamic fare
 ---
 
-> **🔔 പ്രധാന ടിപ്പ്:** നിങ്ങളുടെ വെയ്‌റ്റ്‌ലിസ്റ്റ് ടിക്കറ്റ് കൺഫേം ആകാൻ കാത്തിരിക്കുകയാണോ? [Chart Times](/chart-times) വഴി ട്രെയിനിന്റെ കൃത്യമായ ചാർട്ടിംഗ് സമയം പരിശോധിച്ച് സൗജന്യ അലർട്ട് സെറ്റ് ചെയ്യുക, [Chart Vacancy](/chart-vacancy) വഴി ഒഴിവുള്ള സീറ്റുകൾ കാണുക, അല്ലെങ്കിൽ [Smart Seats](/) വഴി കൺഫേം ടിക്കറ്റുകൾ കണ്ടെത്തുക.
+> **🔔 പ്രധാന ടിപ്പ്:** നിങ്ങളുടെ വെയ്‌റ്റ്‌ലിസ്റ്റ് ടിക്കറ്റ് കൺഫേം ആകാൻ കാത്തിരിക്കുകയാണോ? [Chart Times](/chart-times) വഴി ട്രെയിനിന്റെ കൃത്യമായ ചാർട്ടിംഗ് സമയം പരിശോധിച്ച് സൗജന്യ അലർട്ട് സെറ്റ് ചെയ്യുക, [Get Confirmed Tickets](/) വഴി ഒഴിവുള്ള സീറ്റുകൾ കാണുക, അല്ലെങ്കിൽ [Smart Seats](/) വഴി കൺഫേം ടിക്കറ്റുകൾ കണ്ടെത്തുക.
 
 ## TL;DR
 Suvidha trains are special premium services run by Indian Railways during peak travel seasons that operate on an aggressive dynamic pricing model. Fares start at Tatkal rates and surge up to three times the base fare as seats sell out. Crucially, confirmed ticket cancellations only yield a maximum 50% refund up to 6 hours before departure, with zero refund after that window.
@@ -92,7 +92,7 @@ Booking opens under the standard 60-day Advance Reservation Period (ARP) guideli
 
 ## How Can You Book Cheaper Confirmed Berths Instead of High Suvidha Fares?
 
-**To avoid paying 2x to 3x surge fares on Suvidha trains, search for split-segment contiguous berths on regular express trains using [Finding Smart Seats](/). You can also look for vacant berths after charting using [Seat Status Coach Journey Lookup](/seat-status).**
+**To avoid paying 2x to 3x surge fares on Suvidha trains, search for split-segment contiguous berths on regular express trains using [Finding Smart Seats](/). You can also look for vacant berths after charting using [Get Confirmed Tickets](/).**
 
 When regular trains show long waiting lists and Suvidha prices hit peak slabs, try these practical alternatives:
 

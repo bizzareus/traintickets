@@ -17,7 +17,7 @@ You can travel with your dog or cat on Indian Railways in two ways: inside a Fir
 ---
 
 > [!TIP]
-> **Check Coach Layouts & Berth Maps:** Use **[Coach Journey Lookup](/seat-status)** to find your exact 1AC coupe or cabin layout, or check PNR confirmation probability on **[Smart Seats](/)**.
+> **Check Coach Layouts & Berth Maps:** Use **[Get Confirmed Tickets](/)** to find your exact 1AC coupe or cabin layout, or check PNR confirmation probability on **[Smart Seats](/)**.
 
 ## What is the Indian Railways Pet Booking Policy?
 
@@ -142,4 +142,4 @@ No. Pet booking requires a fully confirmed First AC ticket (for cabin travel) or
 
 Taking your dog or cat on Indian Railways is straightforward when planned in advance. Secure a confirmed 2-berth coupe in First AC for the most comfortable journey, or utilize the station parcel office to reserve a luggage van dog box on long-distance routes. Always ensure your veterinary fitness and rabies documentation is current before reaching the platform.
 
-To verify your coach layout and seat arrangements, check **[Coach Journey Lookup](/seat-status)** or monitor PNR status on **[Smart Seats](/)**.
+To verify your coach layout and seat arrangements, check **[Get Confirmed Tickets](/)** or monitor PNR status on **[Smart Seats](/)**.

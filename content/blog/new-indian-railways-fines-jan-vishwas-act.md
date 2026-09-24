@@ -119,7 +119,7 @@ Male passengers are strictly prohibited from entering ladies compartments at all
 The Jan Vishwas (Amendment of Provisions) Act, 2023 (effective July 2026) shifts the focus of minor train offenses from criminal prosecution and imprisonment to administrative civil penalties and recovery. While jail terms have been removed for minor offenses, the financial penalty amounts have been significantly increased to maintain discipline.
 
 ### How do I check vacant berths on a train?
-You can check vacant berths after chart preparation using the IRCTC Charts portal or by using the [Coach Journey Lookup](/seat-status) tool on LastBerth. This tool shows which station-to-station stretches any berth is booked for, helping you find vacant seats on running trains.
+You can check vacant berths after chart preparation using the IRCTC Charts portal or by using the [Get Confirmed Tickets](/) tool on LastBerth. This tool shows which station-to-station stretches any berth is booked for, helping you find vacant seats on running trains.
 
 ---
 

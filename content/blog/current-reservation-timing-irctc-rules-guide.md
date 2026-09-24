@@ -11,7 +11,7 @@ tags:
   - vacant berths
 ---
 
-> **Looking for last-minute seats?** Search live confirmed seats on [Smart Seats](/), check station chart preparation timings on [Chart Times](/chart-times), and view vacant berths after chart prep on [Chart Vacancy](/chart-vacancy).
+> **Looking for confirmed seats?** Search live confirmed split journeys and guaranteed tickets on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -63,7 +63,7 @@ To book online:
 3. Select your train. If chart preparation is complete and vacant seats exist, availability will show as **CURR_AVBL** (Current Available).
 4. Enter passenger details and complete payment to instantly receive your confirmed coach and berth assignment.
 
-If you are already at the station, you can also view vacant berths on visual coach maps using [Chart Vacancy](/chart-vacancy) or check live berth allocations via [Coach Journey Lookup](/seat-status) before approaching the PRS counter or onboard TTE.
+If you are already at the station, you can also view vacant berths on visual coach maps using [Get Confirmed Tickets](/) or check live berth allocations via [Get Confirmed Tickets](/) before approaching the PRS counter or onboard TTE.
 
 ---
 

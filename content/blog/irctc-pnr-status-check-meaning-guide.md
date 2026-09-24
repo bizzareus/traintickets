@@ -12,7 +12,7 @@ tags:
   - confirmation chances
 ---
 
-> **Checking your PNR status?** Track your live confirmation chances on [Smart Seats](/) or find vacant seats on your train after chart preparation using [Chart Vacancy](/chart-vacancy).
+> **Checking your PNR status?** Track your live confirmation chances on [Smart Seats](/) or find vacant seats on your train after chart preparation using [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -132,7 +132,7 @@ If your PNR isn't looking good, these features get you to a confirmed seat:
 
 - **PNR Status Search & Direct Booking:** Enter your PNR on **[LastBerth](/)** to see the status with a confirmation probability, plus alternative trains and seats if it's unlikely to confirm.
 - **Finding Smart Seats:** When no single direct berth is free, our **[Smart Seats](/)** feature finds split availability across coaches/segments on the same train to stitch together a confirmed journey.
-- **Seat Status Coach Journey Lookup:** Use **[Coach Journey Lookup](/seat-status)** to see exactly from which station to which station a berth is booked, so you can find open berths on a running train.
+- **Get Confirmed Tickets:** Use **[Get Confirmed Tickets](/)** to see exactly from which station to which station a berth is booked, so you can find open berths on a running train.
 
 If you're booking last-minute, look for a `"current available ticket"` — a **fully confirmed seat** with coach and berth numbers, released roughly **8 hours before departure** and bookable until **30 minutes before** the train leaves. It's the fastest, cheapest way to lock in a confirmed berth when your waitlist won't budge.
 

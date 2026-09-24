@@ -12,7 +12,7 @@ tags:
   - railway news
 ---
 
-> **🔔 Looking for Confirmed Train Berths?** When direct high-speed trains show `REGRET` or heavy waitlists, use [Smart Seats](/) to find confirmed split-ticket combinations on the same train. You can also check station charting countdowns on [Chart Times](/chart-times) and discover vacant berths 4 hours before departure on [Chart Vacancy](/chart-vacancy).
+> **🔔 Looking for Confirmed Train Berths?** When direct high-speed trains show `REGRET` or heavy waitlists, use [Smart Seats](/) to find confirmed split-ticket combinations on the same train. You can also check station charting countdowns on [Chart Times](/chart-times) and discover vacant berths 4 hours before departure on [Get Confirmed Tickets](/).
 
 The Vande Bharat Sleeper represents Indian Railways' most significant passenger transit upgrade since the introduction of the Rajdhani Express in 1969. Engineered as a self-propelled, semi-high-speed Electric Multiple Unit (EMU) trainset, the Vande Bharat Sleeper eliminates the traditional locomotive engine, enabling rapid acceleration, regenerative braking, and commercial speeds up to 160 km/h. Designed specifically for long-distance overnight journeys between 800 km and 2,000 km, these trains cut transit times by 2 to 3 hours across India's busiest trunk corridors.
 
@@ -178,7 +178,7 @@ This policy was instituted by the Railway Board to ensure:
 |      (823 Berths)            (Zero WL / Zero RAC)             (No Tickets Issued)     |
 |                                                                                       |
 |   Alternative 1: Search contiguous legs on LastBerth Smart Seats (/)                  |
-|   Alternative 2: Check Chart Vacancy (/chart-vacancy) 4 hours before departure        |
+|   Alternative 2: Search Get Confirmed Tickets (/) 4 hours before departure        |
 |   Alternative 3: Book parallel Rajdhani / Superfast Express with GNWL / RAC           |
 +---------------------------------------------------------------------------------------+
 ```
@@ -208,7 +208,7 @@ When your direct Vande Bharat Sleeper search displays `REGRET`, conventional boo
 If the direct route from Delhi to Mumbai is sold out, vacant berths often exist across consecutive segments on the same train (e.g., Delhi to Kota, and Kota to Mumbai). Use [Smart Seats](/) to search your entire route. Smart Seats automatically analyzes intermediate station quotas and identifies contiguous berths, allowing you to travel on the same train with two confirmed segment tickets.
 
 ### 2. Check Vacant Berths on Chart Vacancy (4 Hours Before Departure)
-When Indian Railways prepares the first reservation chart 4 hours before departure, unutilized VIP/Emergency Quotas (EQ), foreign tourist berths, and railway operational quotas are released to the public as **Current Availability (CURR_AVBL)**. Visit [Chart Vacancy](/chart-vacancy) 4 hours before departure to see coach-by-coach vacant berths bookable at a 10% discount on base fare.
+When Indian Railways prepares the first reservation chart 4 hours before departure, unutilized VIP/Emergency Quotas (EQ), foreign tourist berths, and railway operational quotas are released to the public as **Current Availability (CURR_AVBL)**. Visit [Get Confirmed Tickets](/) 4 hours before departure to see coach-by-coach vacant berths bookable at a 10% discount on base fare.
 
 ### 3. Track Charting Countdown on Chart Times
 Different originating stations prepare charts at different milestones. Use [Chart Times](/chart-times) to look up the exact chart preparation schedule for your train number and set automated alerts so you are logged in the moment remaining berths go live.
@@ -272,7 +272,7 @@ If you miss your train, your ticket cannot be transferred to another service or 
 
 The Vande Bharat Sleeper sets a new benchmark for Indian rail travel by combining 160 km/h distributed-traction speed with 1AC/2AC/3AC luxury sleeping comfort. Because trains operate under a strict Zero-WL policy, confirmed berths sell out rapidly within the 60-day opening window. 
 
-If direct searches show `REGRET`, use [Smart Seats](/) to find confirmed split-leg bookings on the same train, track final charting schedules on [Chart Times](/chart-times), and check available berths 4 hours before departure on [Chart Vacancy](/chart-vacancy).
+If direct searches show `REGRET`, use [Smart Seats](/) to find confirmed split-leg bookings on the same train, track final charting schedules on [Chart Times](/chart-times), and check available berths 4 hours before departure on [Get Confirmed Tickets](/).
 
 ---
 

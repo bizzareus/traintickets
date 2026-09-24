@@ -10,7 +10,7 @@ tags:
   - middle berth rules
   - passenger rights
 ---
-> **Planning overnight train travel?** Find confirmed seats with [Smart Seats](/) or check coach berth layout and seat status using [Coach Journey Lookup](/seat-status).
+> **Planning overnight train travel?** Find confirmed seats with [Smart Seats](/) or check coach berth layout and seat status using [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -76,7 +76,7 @@ If you want to secure a comfortable and confirmed trip without dealing with wait
 
 - **[Finding Smart Seats](/)**: If there are no direct confirmed berths on a train, our smart seat finder splits your ticket across different coaches or segments, ensuring you get a confirmed seat.
 - **[PNR Status Search & Direct Booking](/)**: Check your waitlist confirmation chances instantly. If your ticket is unlikely to clear, you can find and book alternative trains.
-- **[Seat Status Coach Journey Lookup](/seat-status)**: Check exactly which berths are booked from which station to which station, helping you locate vacant berths on running trains.
+- **[Get Confirmed Tickets](/)**: Check exactly which berths are booked from which station to which station, helping you locate vacant berths on running trains.
 
 If you are looking for last-minute bookings, always check for a `"current available ticket"`. A current available ticket is a fully confirmed seat with coach and berth numbers. It opens for booking online and at counters as soon as the first chart is prepared (about 8 hours before departure) and closes 30 minutes before departure.
 

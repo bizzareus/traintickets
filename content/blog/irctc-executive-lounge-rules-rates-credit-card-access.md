@@ -15,7 +15,7 @@ tags:
 
 IRCTC Executive Lounges offer airport-style waiting facilities at major railway stations with entry rates starting from ₹150 to ₹200 for an initial 2-hour stay. Eligible premium credit and debit cards provide complimentary entry with a ₹2 authentication swipe, which includes complimentary Wi-Fi, refreshments, and AC seating. Additional services like hot buffet meals, recliner beds, and shower kits are available on demand.
 
-> **Waiting for your chart while relaxing in the lounge?** Track your train's exact charting time and set a free reminder on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy) and find confirmed split seats on [Smart Seats](/).
+> **Waiting for your chart while relaxing in the lounge?** Track your train's exact charting time and set a free reminder on [Chart Times](/chart-times) and find confirmed split seats on [Smart Seats](/).
 
 ---
 

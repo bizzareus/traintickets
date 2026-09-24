@@ -13,7 +13,7 @@ tags:
   - bihar train tickets
 ---
 
-> **🚀 Chhath train on REGRET?** Direct answer: check [LastBerth Smart Seats](/) for two confirmed halves of the same train (Delhi–Kanpur + Kanpur–Patna type). Chart out? Look at [Chart Vacancy](/chart-vacancy) for CURR_AVBL berths.
+> **🚀 Chhath train on REGRET?** Direct answer: check [Get Confirmed Tickets](/) on LastBerth Smart Seats for two confirmed halves of the same train (Delhi–Kanpur + Kanpur–Patna type).
 
 ## Facts first — Chhath 2026 dates & booking days
 
@@ -46,7 +46,7 @@ Don't aim for Nov 12 travel — too tight. Nov 9–10 is my sweet spot, less cro
 
 **2. Book from origin, change boarding later.** Small stations get tiny RLWL/PQWL pools that REGRET first; origin stations get big GNWL. Example: Aligarh REGRET but Anand Vihar (origin) confirmed → book from Anand Vihar, shift boarding to Aligarh on IRCTC (allowed till second chart, ~30 mins before). Keep both SMS handy — Patna-side network during Chhath is patchy, I screenshot + print one copy.
 
-**3. Pounce post-chart.** After first chart, VIP/defence/unused quotas release as CURR_AVBL — confirmed, normal price, bookable till ~30 mins before. Check [Chart Vacancy](/chart-vacancy) right after chart (time on [Chart Times](/chart-times)). I grabbed sleeper at 10 PM for a 5 AM Anand Vihar train once. Keep IRCTC logged in.
+**3. Check alternative route splits.** When direct bookings show REGRET, check smart split-route combinations on [Get Confirmed Tickets](/) — intermediate stations often have empty confirmed berths waiting on the same train. Keep IRCTC logged in.
 
 ![Smart Seats Split Booking Example: Chhath Puja Travel](/images/blog/chhath-smart-seats-example.png)
 *Two greens instead of one red REGRET — same train, shift berths midway.*
@@ -85,7 +85,7 @@ Re-search your date (quotas move daily), but these breaks repeat every Chhath:
 1. Open [LastBerth home](/). Works on cheap data.
 2. Enter origin, destination, Chhath date, class — e.g. NDLS → PNBE, Nov 10, SL. Check a day before/after too; Nov 9 vs 10 can be REGRET vs confirmed.
 3. If direct is red, open Smart Seats legs. My checks: **same train number, same date, same class**. Longer/tougher leg first on IRCTC (usually Kanpur–Patna), then the shorter one.
-4. Chart day: check [Chart Times](/chart-times), alarm 15 mins after chart, open [Chart Vacancy](/chart-vacancy). Screenshot [Coach Journey Lookup](/seat-status) — Anand Vihar/NDLS/LTT platforms during Chhath are madness (families, thekua baskets, shouting coolies). Knowing B4's position saves a 500-metre run.
+4. Need guaranteed seats fast? Use [Get Confirmed Tickets](/) on LastBerth to search Smart Seats splits across intermediate stations and book before quotas sell out.
 
 0-series Chhath specials (04078, 04068 types)? **+10% 2S / +30% sleeper-AC**, no senior-citizen discount, booking opens late (10–30 days before, after press notes). They saved my 2023 trip. Watch zone updates + search on LastBerth the day they drop.
 
@@ -105,7 +105,7 @@ Extra festival trains (040xx etc.), **special fare +10%/+30%**, no concessions, 
 
 ## Bottom line
 
-Nov 14 sunset at the pond — mohalla gathered, folk songs, your mother holding the soop — worth this ticket headache. Search splits on [LastBerth Smart Seats](/), note chart time on [Chart Times](/chart-times), grab leftovers on [Chart Vacancy](/chart-vacancy). Something usually opens.
+Nov 14 sunset at the pond — mohalla gathered, folk songs, your mother holding the soop — worth this ticket headache. Search splits and find your guaranteed seats on [Get Confirmed Tickets](/). Something usually opens.
 
 Reach safe — and save me a thekua. Happy Chhath!
 

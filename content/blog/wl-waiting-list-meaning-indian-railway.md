@@ -18,7 +18,7 @@ tags:
   - berth wl no
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -184,10 +184,10 @@ Trains frequently have intermediate station quotas that remain half-empty while 
 Instead of getting stuck on an unconfirmable `WL/60` direct ticket, **[Smart Seats](/)** analyzes all intermediate station pairs and shows you how to book two contiguous confirmed tickets on the identical train without stepping onto a platform.
 
 ### 2. Track Live Post-Chart Openings on Chart Vacancy
-Once the first reservation chart is finalized (~8 hours before departure), unsold emergency quotas and late cancellations appear coach-by-coach. Using **[Chart Vacancy](/chart-vacancy)**, you can view real-time graphical vacant berth maps across every coach in your train and book them instantly via Current Booking on IRCTC.
+Once the first reservation chart is finalized (~8 hours before departure), unsold emergency quotas and late cancellations appear coach-by-coach. Using **[Get Confirmed Tickets](/)**, you can view real-time graphical vacant berth maps across every coach in your train and book them instantly via Current Booking on IRCTC.
 
-### 3. Inspect Station Occupancy with Coach Journey Lookup
-Before booking a waitlist ticket, inspect which segments of the train route have high passenger turnover using **[Seat Status Coach Journey Lookup](/seat-status)**. Knowing where berths empty out helps you select boarding stations with maximum confirmation probability.
+### 3. Inspect Station Occupancy with Get Confirmed Tickets
+Before booking a waitlist ticket, inspect which segments of the train route have high passenger turnover using **[Get Confirmed Tickets](/)**. Knowing where berths empty out helps you select boarding stations with maximum confirmation probability.
 
 ---
 
@@ -229,4 +229,4 @@ If an online waitlisted e-ticket remains unconfirmed after chart preparation, IR
 
 A Waiting List (WL) ticket is a standby reservation that moves toward confirmation as earlier passengers cancel. While low GNWL numbers frequently confirm during quota rebalancing at chart preparation, high PQWL and Tatkal waitlists rarely clear. Online waitlisted e-tickets are automatically cancelled after charting with a full refund, and boarding on them is strictly prohibited by railway law.
 
-To avoid waitlist uncertainty, use **[Smart Seats](/)** to find confirmed split-seat journeys on your train, set up charting alerts with **[Chart Times](/chart-times)**, and monitor post-chart openings with **[Chart Vacancy](/chart-vacancy)**.
+To avoid waitlist uncertainty, use **[Smart Seats](/)** to find confirmed split-seat journeys on your train, set up charting alerts with **[Chart Times](/chart-times)**, and monitor post-chart openings with **[Get Confirmed Tickets](/)**.

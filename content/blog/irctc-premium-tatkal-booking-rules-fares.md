@@ -10,7 +10,7 @@ tags:
   - dynamic pricing
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -95,7 +95,7 @@ Under the Premium Tatkal quota, however, the system does not issue waitlisted ti
 
 If you are unsure whether to pay the high Premium Tatkal rate or try your luck with a standard waitlisted ticket, you can use [Smart Seats](/) tool. It checks PNR status directly, displays waitlist confirmation probability, and offers alternative seat suggestions. 
 
-Additionally, if you need to check seat assignments or find open berths on running trains, [Coach Journey Lookup](/seat-status) lets you lookup specific seats to see exactly from which station to which station they are booked. If you miss the Premium Tatkal booking window, you can search for a **current available ticket**, which is a **fully confirmed seat** with coach/berth numbers that opens for booking 8 hours before departure and closes 30 minutes before.
+Additionally, if you need to check seat assignments or find open berths on running trains, [Get Confirmed Tickets](/) lets you lookup specific seats to see exactly from which station to which station they are booked. If you miss the Premium Tatkal booking window, you can search for a **current available ticket**, which is a **fully confirmed seat** with coach/berth numbers that opens for booking 8 hours before departure and closes 30 minutes before.
 
 ---
 
@@ -130,4 +130,4 @@ Yes, you can change your boarding station online up to 24 hours before the sched
 
 ## Bottom line
 
-Premium Tatkal is a valuable emergency tool for securing confirmed train berths when all standard quotas are exhausted. Because pricing is dynamic and cancellations yield zero refund, reserve only when your journey is certain. If fares surge too high, use **[Smart Seats](/)** to uncover split-journey confirmations or check vacant seats with **[Coach Journey Lookup](/seat-status)**.
+Premium Tatkal is a valuable emergency tool for securing confirmed train berths when all standard quotas are exhausted. Because pricing is dynamic and cancellations yield zero refund, reserve only when your journey is certain. If fares surge too high, use **[Smart Seats](/)** to uncover split-journey confirmations.

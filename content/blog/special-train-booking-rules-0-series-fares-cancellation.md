@@ -16,7 +16,7 @@ tags:
 ## TL;DR
 Special trains in Indian Railways carry 5-digit numbers starting with **0** and run during festive rushes to handle peak passenger demand. They charge **special fares** roughly 10% to 30% higher than regular base fares and offer no standard concessions. Confirmed tickets follow regular IRCTC cancellation slabs, while unconfirmed waitlisted e-tickets are auto-refunded in full.
 
-> Need a confirmed seat when special trains show WL? Use **[Finding Smart Seats](/)** to combine split-berth segments on the same train, or track vacant berths via **[Seat Status Coach Journey Lookup](/seat-status)**.
+> Need a confirmed seat when special trains show WL? Use **[Finding Smart Seats](/)** to combine split-berth segments on the same train, or track vacant berths via **[Get Confirmed Tickets](/)**.
 
 ---
 
@@ -150,7 +150,7 @@ Result: 100% Confirmed Journey on the same train rake!
 ```
 
 1. **Use Smart Seat Splitting:** Check **[Finding Smart Seats](/)** to automatically discover available sub-journey quotas on crowded festival specials.
-2. **Track Live Vacancy Post-Charting:** First reservation charts prepare approximately 8 hours before departure. Check **[Seat Status Coach Journey Lookup](/seat-status)** to find berths vacated by passengers getting off at intermediate stations and request upgrades directly from the onboard TTE.
+2. **Track Live Vacancy Post-Charting:** First reservation charts prepare approximately 8 hours before departure. Check **[Get Confirmed Tickets](/)** to find berths vacated by passengers getting off at intermediate stations and request upgrades directly from the onboard TTE.
 3. **Monitor Current Availability:** Berths remaining unsold after chart preparation enter `CURR_AVBL` status, bookable on IRCTC up to 15 minutes before train departure.
 
 ---

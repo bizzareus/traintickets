@@ -58,7 +58,7 @@ To correct your passenger details, submit a written request at a railway reserva
 
 ## How LastBerth Makes Your Railway Trips Easier
 
-Messing up on a train ticket is a nightmare, especially when trains are packed. If you're unsure about your next steps, LastBerth is here to make your journey easier. If your ticket's stuck on a waiting list, use our [PNR Status Search & Direct Booking](/) tool to check confirmation chances and find instant alternative seat options. If no direct seats are available, try our [Finding Smart Seats](/) feature to find tickets by splitting your booking over different coaches or journey segments. Already on the train and searching for vacant berths? Our [Seat Status Coach Journey Lookup](/seat-status) helps you find open berths in real-time.
+Messing up on a train ticket is a nightmare, especially when trains are packed. If you're unsure about your next steps, LastBerth is here to make your journey easier. If your ticket's stuck on a waiting list, use our [PNR Status Search & Direct Booking](/) tool to check confirmation chances and find instant alternative seat options. If no direct seats are available, try our [Finding Smart Seats](/) feature to find tickets by splitting your booking over different coaches or journey segments. Already on the train and searching for vacant berths? Our [Get Confirmed Tickets](/) helps you find open berths in real-time.
 
 ---
 

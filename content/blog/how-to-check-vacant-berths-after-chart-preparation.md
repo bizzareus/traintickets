@@ -10,7 +10,7 @@ tags:
   - indian railways
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -177,9 +177,9 @@ A 20-minute confirmed segment from your origin may technically be "confirmed," b
 
 Sometimes travellers hope they can adjust onboard if the next segment is not confirmed. That is not a plan. Travel only with a valid ticket for the segment you intend to occupy, and leave room for a fallback if the remaining stretch does not open.
 
-## How to View Vacant Berths Online via IRCTC & LastBerth Chart Vacancy
+## How to View Vacant Berths Online via IRCTC & LastBerth Get Confirmed Tickets
 
-You can check vacant berths online using either the official IRCTC Online Charts portal or [LastBerth Chart Vacancy](/chart-vacancy). Simply enter your train number or train name, journey date, and boarding station. The system renders an interactive coach layout showing exact coach numbers (e.g., B2, S4, A1) and berth numbers (e.g., 14 Lower, 23 Upper) that remain vacant after first chart preparation.
+You can check vacant berths online using either the official IRCTC Online Charts portal or [Get Confirmed Tickets](/). Simply enter your train number or train name, journey date, and boarding station. The system renders an interactive coach layout showing exact coach numbers (e.g., B2, S4, A1) and berth numbers (e.g., 14 Lower, 23 Upper) that remain vacant after first chart preparation.
 
 ## Can You Book a Vacant Berth Directly from the TTE Onboard?
 

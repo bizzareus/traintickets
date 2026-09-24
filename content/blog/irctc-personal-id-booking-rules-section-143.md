@@ -11,7 +11,7 @@ tags:
   - section 143
 ---
 
-> **Check your group ticket status without logging in:** Verify any 10-digit PNR instantly and find available seats on [Smart Seats](/) or search post-chart vacancies on the [Chart Vacancy coach map](/chart-vacancy).
+> **Check your group ticket status without logging in:** Verify any 10-digit PNR instantly and find available seats on [Smart Seats](/) or search post-chart vacancies on the [Get Confirmed Tickets](/).
 
 ## TL;DR
 

@@ -12,7 +12,7 @@ tags:
   - sleeper class
 ---
 
-> **🔔 ముఖ్యమైన చిట్కా:** మీ వెయిట్‌లిస్ట్ టిక్కెట్ కన్ఫర్మ్ అవుతుందా అని ఎదురుచూస్తున్నారా? [Chart Times](/chart-times) ద్వారా మీ రైలు ఖచ్చితమైన చార్టింగ్ షెడ్యూల్‌ను తనిఖీ చేసి ఉచిత అలర్ట్ సెట్ చేయండి, [Chart Vacancy](/chart-vacancy) లో ఖాళీ సీట్లను చూడండి లేదా [Smart Seats](/) తో కన్ఫర్మ్ సీట్లను కనుగొనండి.
+> **🔔 ముఖ్యమైన చిట్కా:** మీ వెయిట్‌లిస్ట్ టిక్కెట్ కన్ఫర్మ్ అవుతుందా అని ఎదురుచూస్తున్నారా? [Chart Times](/chart-times) ద్వారా మీ రైలు ఖచ్చితమైన చార్టింగ్ షెడ్యూల్‌ను తనిఖీ చేసి ఉచిత అలర్ట్ సెట్ చేయండి, [Get Confirmed Tickets](/) లో ఖాళీ సీట్లను చూడండి లేదా [Smart Seats](/) తో కన్ఫర్మ్ సీట్లను కనుగొనండి.
 
 ## TL;DR
 
@@ -76,7 +76,7 @@ Almost all Express and Mail trains have unreserved compartments, usually placed 
 Once the chart is ready (about 8 hours before departure), any leftover berths go up for sale under 'Current Availability' at a 10% discount. You can book these on the IRCTC app or at the station reservation counter up to 30 minutes before the train pulls out. See our guide on [how IRCTC current availability works](/blog/irctc-current-availability-explained) for tips on grabbing these.
 
 ### 3. కోచ్ జర్నీ లుక్ అప్‌లో ఖాళీ బెర్త్‌లను శోధించండి
-Instead of wandering between coaches searching for empty seats, open [Coach Journey Lookup](/seat-status) to see exactly which coach and berth is unallocated between your stations, then approach the TTE directly with the exact seat number.
+Instead of wandering between coaches searching for empty seats, open [Get Confirmed Tickets](/) to see exactly which coach and berth is unallocated between your stations, then approach the TTE directly with the exact seat number.
 
 ### 4. మీ టికెట్‌ను బోర్డులో అప్‌గ్రేడ్ చేయండి
 If you've already boarded a Sleeper or AC coach with a general or platform ticket due to an emergency, find the TTE immediately. Under Section 138, they can upgrade your ticket if there are empty berths. You'll just pay the fare difference and a ₹500 penalty.

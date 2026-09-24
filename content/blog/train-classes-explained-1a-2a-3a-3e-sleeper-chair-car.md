@@ -15,7 +15,7 @@ tags:
   - sleeper vs 3ac
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats along your route? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -59,7 +59,7 @@ Understanding these two-letter codes helps you immediately locate your assigned 
 | **SU** | Side Upper | Aisle top tier | Overhead angle | Budget solo passengers wanting a secluded private space without co-passengers sitting on their berth during daytime. |
 | **SM** | Side Middle | Aisle middle tier (3E only) | Narrow aisle slit | Budget travellers booking 3E AC Economy. Tighter vertical clearance (~18 inches) and shorter length. |
 
-You can inspect the precise seat map and coach layout for your assigned train using LastBerth's **[Coach Journey Lookup](/seat-status)**.
+You can inspect the precise seat map and coach layout for your assigned train using LastBerth's **[Get Confirmed Tickets](/)**.
 
 ---
 
@@ -179,7 +179,7 @@ Here is the step-by-step tactical playbook used by experienced train travellers:
 2. **Use Smart Seats for Split Contiguous Bookings:** Long-distance trains frequently have vacant berths on intermediate legs. If Delhi to Mumbai 3A is fully booked, a passenger might vacate berth B2-34 at Kota, while another passenger boards at Vadodara. **[Smart Seats](/)** instantly detects contiguous split seats on the exact same train, allowing you to travel confirmed without deboarding.
 3. **Book Current Availability (`CURR_AVBL`) Post-Charting:** After the first reservation chart is prepared (~8 hours before departure), unallocated berths from VIP, foreign tourist, and defense quotas are released to the general public online as **Current Available tickets**. A `CURR_AVBL` ticket is a **100% fully confirmed seat** bookable on IRCTC or PRS counters up to ~30 minutes before departure.
 4. **Set Chart Preparation Alerts:** Chart preparation times vary by origin station and departure hour. Use LastBerth's free **[Chart Times](/chart-times)** tool to look up the exact charting window for your train and receive instant alerts the moment charting finishes.
-5. **Inspect Live Empty Berths with Chart Vacancy:** Once the final chart is uploaded, open **[Chart Vacancy](/chart-vacancy)** to view coach-by-coach vacant berths across your train and approach the onboard TTE for official allotment.
+5. **Inspect Live Empty Berths with Chart Vacancy:** Once the final chart is uploaded, open **[Get Confirmed Tickets](/)** to view coach-by-coach vacant berths across your train and approach the onboard TTE for official allotment.
 
 ---
 

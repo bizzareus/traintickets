@@ -10,7 +10,7 @@ tags:
   - deactivated irctc account
 ---
 
-> **Locked out of IRCTC but need to check your PNR?** You can verify your ticket status without signing into IRCTC using [Smart Seats](/) or find berths after chart prep on [Chart Vacancy](/chart-vacancy).
+> **Locked out of IRCTC but need to check your PNR?** You can verify your ticket status without signing into IRCTC using [Smart Seats](/).
 
 ## TL;DR
 IRCTC is currently running security cleanups to deactivate inactive, suspicious, or unverified personal accounts. If you are locked out, you can check your account status by trying to log in or looking for email alerts. For accounts deactivated due to incomplete verification, you can easily recover access by completing OTP verification or emailing IRCTC customer support with valid identity proofs.
@@ -55,7 +55,7 @@ Remember that LastBerth is a search and helper tool to find seats, not an offici
 Here is how to keep your personal account in good standing:
 - **Respect booking limits:** An unverified ID lets you book up to 12 tickets a month. You can double this limit to 24 by completing your [Aadhaar verification](/blog/irctc-ticket-booking-limits-aadhaar-verification) on your profile page.
 - **Keep Aadhaar linked:** Linking your Aadhaar card keeps your account verified and prevents it from getting flagged during security sweeps.
-- **Use helper tools safely:** If you are dealing with waitlists, use the LastBerth homepage to find [Smart Seats](/) for split-journey confirmed paths, or look up vacant berths using [Coach Journey Lookup](/seat-status) rather than making dozens of search queries that might trigger bot-detection systems.
+- **Use helper tools safely:** If you are dealing with waitlists, use the LastBerth homepage to find [Smart Seats](/) for split-journey confirmed paths, or look up vacant berths using [Get Confirmed Tickets](/) rather than making dozens of search queries that might trigger bot-detection systems.
 
 ---
 

@@ -13,7 +13,7 @@ tags:
   - counter ticket rules
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -118,12 +118,12 @@ If your rescheduled counter ticket remains in RAC or waitlist status at the time
 
 ## What to Do If Your New Journey Date Shows a Waiting List?
 
-When your desired new date shows heavy waitlists, avoid taking high-risk waiting tickets that face auto-cancellation. Instead, search for split-ticket options using **[Smart Seats](/)** to secure confirmed journey legs, check seat vacancies via **[Coach Journey Lookup](/seat-status)**, or book confirmed **Current Availability (`CURR_AVBL`)** berths ~8 hours before departure after initial chart preparation.
+When your desired new date shows heavy waitlists, avoid taking high-risk waiting tickets that face auto-cancellation. Instead, search for split-ticket options using **[Smart Seats](/)** to secure confirmed journey legs, check seat vacancies via **[Get Confirmed Tickets](/)**, or book confirmed **Current Availability (`CURR_AVBL`)** berths ~8 hours before departure after initial chart preparation.
 
 When direct booking says `REGRET` or high `WL/45`, standard booking engines leave you stranded. Use these reliable recovery strategies:
 
 - **Split-journey confirmation**: Use **[Smart Seats](/)** to identify contiguous seat vacancies on the exact same train. For example, sit in coach B2 from New Delhi to Kanpur, and shift to coach B5 from Kanpur to Prayagraj without missing a beat.
-- **Vacant berth lookup**: Use **[Coach Journey Lookup](/seat-status)** to see station-to-station berth occupancy maps and pinpoint which berths empty out mid-route.
+- **Vacant berth lookup**: Use **[Get Confirmed Tickets](/)** to see station-to-station berth occupancy maps and pinpoint which berths empty out mid-route.
 - **Current Availability (`CURR_AVBL`)**: A "current available ticket" (status `CURR_AVBL` or `CURR AVL`) is a **100% fully confirmed seat** with an assigned coach and berth. It opens on IRCTC and PRS counters after the first reservation chart prepares (~8 hours prior to departure) and remains bookable until ~30 minutes before the train leaves.
 - **Vikalp scheme**: When booking fresh tickets online, select the IRCTC Vikalp (Alternate Train Accommodation Scheme) option to be considered for vacant berths on alternate trains running along the same route.
 
@@ -167,6 +167,6 @@ No, you can only postpone your ticket to a date where reservations are actively 
 
 Changing your train journey date on Indian Railways is straightforward as long as you plan ahead and act at least 48 hours before scheduled departure. For counter tickets, a quick trip to the Chief Reservation Supervisor desk lets you prepone or postpone your travel without heavy cancellation fees. For online e-tickets, compare the cost of online cancellation against booking fresh confirmed seats.
 
-If your desired new date shows long waiting lists, do not leave your journey to chance. Use **[Smart Seats](/)** to explore contiguous split routes or check **[Coach Journey Lookup](/seat-status)** for vacancy insights. 
+If your desired new date shows long waiting lists, do not leave your journey to chance. Use **[Smart Seats](/)** to explore contiguous split routes or check **[Get Confirmed Tickets](/)** for vacancy insights. 
 
 *Disclaimer: LastBerth is an independent search and travel discovery tool and is not affiliated with IRCTC or Indian Railways. Please verify real-time seat availability and complete your bookings through official railway channels.*

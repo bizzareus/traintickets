@@ -79,7 +79,7 @@ After your trip, to get that deposit back, show the original FTR receipt to the 
 
 If your booking is rejected or travel plans change, alternative ticket booking strategies can save the day. For fully booked trains, check out [Finding Smart Seats](/) to stitch a journey together across multiple coaches or segments where a single direct berth is unavailable.
 
-Should you go with regular tickets, our [PNR Status Search & Direct Booking](/) tool can keep tabs on your ticket status and offer alternatives if confirmation looks unlikely. You can also use the [Seat Status Coach Journey Lookup](/seat-status) to see open seats on your train.
+Should you go with regular tickets, our [PNR Status Search & Direct Booking](/) tool can keep tabs on your ticket status and offer alternatives if confirmation looks unlikely. You can also use the [Get Confirmed Tickets](/) to see open seats on your train.
 
 Booking at the last minute? A `"current available ticket"` means a confirmed seat with a number. Current availability opens 8 hours before departure and shuts 30 minutes before. Check with LastBerth to snap up a confirmed spot when all else fails.
 

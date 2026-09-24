@@ -12,7 +12,7 @@ tags:
   - train coach types
 ---
 
-> **🔔 Never Miss Final Charting:** Trying to secure confirmed AC berths? Track your train's charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). If direct seats are waitlisted, find split-ticket seats via [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Trying to secure confirmed AC berths? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -55,7 +55,7 @@ To fit 11 extra passengers inside the same coach shell, railway engineers made t
 2. **Narrower Main Bays:** Cushion thickness and bay dividers were redesigned to reduce pitch between opposing seats.
 3. **Optimized Electrical Ducts:** AC vents and wiring were relocated beneath the floor and into individual side panels to maximize vertical room.
 
-Because 3E has 83 berths, booking queues and chart allocations are handled under a distinct booking pool on IRCTC. You can inspect live coach layouts before boarding using [Coach Journey Lookup](/seat-status).
+Because 3E has 83 berths, booking queues and chart allocations are handled under a distinct booking pool on IRCTC. You can inspect live coach layouts before boarding using [Get Confirmed Tickets](/).
 
 ---
 
@@ -82,7 +82,7 @@ While the Side Middle berth allows railways to carry more passengers, it comes w
 - **Headroom:** Sitting upright is impossible when all three side bunks are unfolded; passengers must lie flat or coordinate daytime sitting.
 - **Daytime Seating:** The passenger with the Side Middle ticket sits on the Side Lower seat alongside the Side Lower passenger during daytime hours.
 
-If your PNR assigns you an **SM** berth and you prefer more space, check live vacant berths after chart preparation on [Chart Vacancy](/chart-vacancy) to request an unoccupied berth from the TTE.
+If your PNR assigns you an **SM** berth and you prefer more space, check live vacant berths after chart preparation on [Get Confirmed Tickets](/) to request an unoccupied berth from the TTE.
 
 ---
 
@@ -187,4 +187,4 @@ Yes, 3E coaches feature individual 3-pin charging sockets and dedicated USB port
 
 3E (AC 3 Economy) is Indian Railways' most economical air-conditioned sleeper class, delivering modern perks like individual AC louvers and dedicated charging points for a 6% to 8% discount. While taller passengers and families may find standard 3A worth the slight premium for extra headroom, 3E is an outstanding budget choice. 
 
-Whenever direct AC berths are waitlisted across your route, use [Smart Seats](/) to find split-ticket confirmed berths, and monitor post-charting vacancies in real time on [Chart Vacancy](/chart-vacancy).
+Whenever direct AC berths are waitlisted across your route, use [Smart Seats](/) to find split-ticket confirmed berths, and monitor post-charting vacancies in real time on [Get Confirmed Tickets](/).

@@ -9,7 +9,7 @@ tags:
   - boarding point change
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -94,7 +94,7 @@ When a passenger fails to board at their booked station, the TTE marks them abse
 
 Intermediate stations frequently run out of seats because Indian Railways allocates the vast majority of coach inventory to the originating terminus. By booking from the terminus station, you tap into the larger General Quota (GN). Changing your boarding point ensures the TTE knows you are joining downstream and prevents them from marking you absent.
 
-If you find that even the originating route is waitlisted, use LastBerth's **[Smart Seats](/)** tool. It analyzes route seat occupancy to build contiguous split-ticket bookings on the same train across different coaches. You can also monitor real-time coach availability on **[Seat Status](/seat-status)**.
+If you find that even the originating route is waitlisted, use LastBerth's **[Smart Seats](/)** tool. It analyzes route seat occupancy to build contiguous split-ticket bookings on the same train across different coaches. You can also monitor real-time coach availability on **[Get Confirmed Tickets](/)**.
 
 ---
 
@@ -162,4 +162,4 @@ No, changing the boarding point does not cancel your ticket. It updates your boa
 
 Changing your boarding point on IRCTC is now more convenient than ever, giving you the flexibility to update your boarding stop online right up until the second reservation chart is prepared (~30 minutes before departure). 
 
-If you are traveling during peak seasons and finding no direct berths, remember to check [Smart Seats](/) for split-ticket options, verify live charting status on [Chart Times](/chart-times), or track last-minute post-charting vacancies on [Chart Vacancy](/chart-vacancy).
+If you are traveling during peak seasons and finding no direct berths, remember to check [Smart Seats](/) for split-ticket options, verify live charting status on [Chart Times](/chart-times), or track last-minute post-charting vacancies on [Get Confirmed Tickets](/).

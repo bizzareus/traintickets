@@ -13,7 +13,7 @@ tags:
   - train travel tips
 ---
 
-> **Expecting mother traveling?** Check coach layouts and see which berths fall vacant along your route on [Coach Journey Lookup](/seat-status), split journeys for confirmed lower berths with [Smart Seats](/), or track post-charting vacancies on [Chart Vacancy](/chart-vacancy). Track charting times on [Chart Times](/chart-times).
+> **Expecting mother traveling?** Check coach layouts and see which berths fall vacant along your route on [Get Confirmed Tickets](/), split journeys for confirmed lower berths with [Smart Seats](/), or track post-charting vacancies on [Get Confirmed Tickets](/). Track charting times on [Chart Times](/chart-times).
 
 ## TL;DR
 
@@ -106,9 +106,9 @@ Do not wait for the ticket examiner to walk down your aisle two hours into the t
 - Request an official lower berth reallocation under compassionate grounds.
 - The TTE will record your PNR and coach number to track vacant berths on their Handheld Terminal (HHT).
 
-### Step 3: Spot Empty Berths Using Coach Journey Lookup
+### Step 3: Spot Empty Berths Using Get Confirmed Tickets
 
-Open [Coach Journey Lookup](/seat-status) on your phone. It displays your train's exact coach composition and flags lower berths that become empty at upcoming intermediate stations. If someone in coach B2 is getting down at the next junction, you will know in advance. You can approach the TTE immediately to reassign that specific berth before another traveler claims it.
+Open [Get Confirmed Tickets](/) on your phone. It displays your train's exact coach composition and flags lower berths that become empty at upcoming intermediate stations. If someone in coach B2 is getting down at the next junction, you will know in advance. You can approach the TTE immediately to reassign that specific berth before another traveler claims it.
 
 > [!WARNING]
 > **Never Board on a Waitlisted e-Ticket:** Never board a Sleeper or AC coach on a waitlisted e-ticket hoping to negotiate with the TTE. Any online e-ticket remaining on the waiting list after charting is automatically cancelled and refunded. Under Section 138 of the Railways Act, amended by the Jan Vishwas Act 2026, boarding on an auto-cancelled ticket is legally treated as traveling without a ticket. You face a mandatory flat fine of ₹500 plus the full single fare from the train's originating station.
@@ -184,10 +184,10 @@ The medical certificate must be printed on the official letterhead of a register
 Do not engage in an argument with the passenger. Immediately show your ticket and government photo ID to the coach TTE or coach attendant. If the TTE is not in the coach, submit an alert through the RailMadad mobile app, visit `railmadad.indianrailways.gov.in`, or call the Railway Helpline at 139 for prompt security and commercial assistance.
 
 ### Can a pregnant woman get a lower berth through Current Availability (CURR_AVBL)?
-Yes, pregnant women can book confirmed lower berths through Current Availability (`CURR_AVBL`) after the first reservation chart is prepared, roughly eight hours before train departure (or four to eight hours before departure). Berths released from unutilized quotas or cancellations are made available to the public on IRCTC and at PRS counters at base fare without Tatkal charges. You can monitor open lower berths across coaches live using [Chart Vacancy](/chart-vacancy).
+Yes, pregnant women can book confirmed lower berths through Current Availability (`CURR_AVBL`) after the first reservation chart is prepared, roughly eight hours before train departure (or four to eight hours before departure). Berths released from unutilized quotas or cancellations are made available to the public on IRCTC and at PRS counters at base fare without Tatkal charges. You can monitor open lower berths across coaches live using [Get Confirmed Tickets](/).
 
 ---
 
 ## Bottom line
 
-While IRCTC does not yet feature an automated online checkbox for pregnant women, you do not have to leave your family member's comfort to chance. Obtain a doctor's fitness certificate early, apply for divisional Emergency Quota at the DRM office, or visit a station PRS counter to get a lower berth assigned before charting. If you already hold an upper berth, speak with the TTE before departure and use [Coach Journey Lookup](/seat-status) to spot open lower berths down the line. When direct berths are sold out, split the route with [Smart Seats](/) or watch for post-charting openings on [Chart Vacancy](/chart-vacancy) to ensure a safe, comfortable journey.
+While IRCTC does not yet feature an automated online checkbox for pregnant women, you do not have to leave your family member's comfort to chance. Obtain a doctor's fitness certificate early, apply for divisional Emergency Quota at the DRM office, or visit a station PRS counter to get a lower berth assigned before charting. If you already hold an upper berth, speak with the TTE before departure and use [Get Confirmed Tickets](/) to spot open lower berths down the line. When direct berths are sold out, split the route with [Smart Seats](/) or watch for post-charting openings on [Get Confirmed Tickets](/) to ensure a safe, comfortable journey.

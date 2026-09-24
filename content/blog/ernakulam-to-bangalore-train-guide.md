@@ -12,7 +12,7 @@ tags:
   - indian railways
 ---
 
-> **Travelling from Ernakulam to Bangalore?** Check live train seat availability and PNR status with [Smart Seats](/), view coach layouts on [Coach Journey Lookup](/seat-status), and find empty berths after chart preparation with [Chart Vacancy](/chart-vacancy).
+> **Travelling from Ernakulam to Bangalore?** Check live train seat availability and PNR status with [Smart Seats](/), view coach layouts on [Get Confirmed Tickets](/), and find empty berths after chart preparation with [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -74,7 +74,7 @@ Because demand between Kerala and Bengaluru is extremely heavy, Tatkal tickets s
 - **Use the IRCTC Mobile App:** Fingerprint login and lightweight API data transfer make the mobile app significantly faster than the desktop website during Tatkal rush.
 - **Master List Pre-fill:** Save your passenger name, age, and berth preference under My Profile → Master List before 10 AM.
 - **Fast UPI Payments:** Select UPI/BHIM payment and switch directly to your UPI app for instant PIN authorization without waiting for bank OTP delays.
-- **Understand Tatkal Waitlist:** Tatkal Waitlist (TQWL/1 vs TQWL/10) rarely clears because Tatkal cancellations carry zero refund. If your Tatkal ticket remains waitlisted, consider booking via [Chart Vacancy](/chart-vacancy) after chart prep.
+- **Understand Tatkal Waitlist:** Tatkal Waitlist (TQWL/1 vs TQWL/10) rarely clears because Tatkal cancellations carry zero refund. If your Tatkal ticket remains waitlisted, consider booking via [Get Confirmed Tickets](/) after chart prep.
 
 ---
 
@@ -118,4 +118,4 @@ No. Boarding a reserved Sleeper or AC coach with an unreserved General platform/
 
 ### How to check vacant berths after chart preparation on Ernakulam to Bangalore trains?
 
-You can check vacant berths remaining after final chart preparation using the [LastBerth Chart Vacancy map](/chart-vacancy) to locate open seats coach-by-coach and book them as Current Availability.
+You can check vacant berths remaining after final chart preparation using the [Get Confirmed Tickets](/) to locate open seats coach-by-coach and book them as Current Availability.

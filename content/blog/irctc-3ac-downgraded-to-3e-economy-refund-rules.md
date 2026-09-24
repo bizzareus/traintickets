@@ -12,7 +12,7 @@ tags:
   - tdr filing
 ---
 
-> **🔔 Coach Re-allotment & Chart Alerts:** If your train coach was swapped from 3AC (B coach) to 3E Economy (M coach), check your new berth layout and coach position using [Coach Journey Lookup](/seat-status). Track second chart preparation timings on [Chart Times](/chart-times), or look for vacant regular 3AC berths on [Chart Vacancy](/chart-vacancy). If you need an alternative confirmed route, search [Smart Seats](/).
+> **🔔 Coach Re-allotment & Chart Alerts:** If your train coach was swapped from 3AC (B coach) to 3E Economy (M coach), check your new berth layout and coach position using [Get Confirmed Tickets](/). Track second chart preparation timings on [Chart Times](/chart-times), or look for vacant regular 3AC berths on [Get Confirmed Tickets](/). If you need an alternative confirmed route, search [Smart Seats](/).
 
 ## TL;DR
 
@@ -35,7 +35,7 @@ When a rake composition is modified due to rake availability or maintenance at t
 2. An automated SMS alert is dispatched to the primary passenger mobile number stating that coach and berth allocations have been adjusted.
 3. Because 3E carries a lower tariff than 3A, the system flags the PNR for fare adjustment.
 
-To inspect whether your coach code begins with B or M before reaching the platform, enter your train number in [Coach Journey Lookup](/seat-status).
+To inspect whether your coach code begins with B or M before reaching the platform, enter your train number in [Get Confirmed Tickets](/).
 
 ---
 
@@ -140,7 +140,7 @@ In 3E Economy (M coaches), railway coaches have 83 berths, featuring:
 
 The Side Middle bunk folds against the partition wall during the day and provides sleeping room between 10:00 PM and 6:00 AM. If you find this bunk unsuitable due to medical conditions, height restrictions, or mobility issues:
 1. Speak to the onboard TTE immediately upon boarding. Ask if any regular 3AC berths are vacant due to passenger no-shows.
-2. Check available vacant berths in real time using [Chart Vacancy](/chart-vacancy).
+2. Check available vacant berths in real time using [Get Confirmed Tickets](/).
 3. If no alternative berths are available and you decline to occupy the Side Middle bunk, deboard before the train departs and file an online TDR within 3 hours.
 
 ---
@@ -197,7 +197,7 @@ No, an involuntary downgrade or rake swap can never attract excess fare charges 
 On IRCTC e-tickets with multiple passengers, you can perform a partial cancellation before second chart preparation. Select only the passengers who decline to travel in 3E and proceed with cancellation to claim their 100% refund, while allowing the remaining travellers to continue on the journey.
 
 ### Can I upgrade back to 2AC on board if 3AC was downgraded to 3E?
-Yes, if vacant berths exist in 2AC or 1AC, you can approach the onboard TTE. You can check live vacant berths after chart preparation on [Chart Vacancy](/chart-vacancy). The TTE will calculate the fare difference between your original 3AC payment and the higher class, issue an Excess Fare Ticket (EFT), and reallocate your seat.
+Yes, if vacant berths exist in 2AC or 1AC, you can approach the onboard TTE. You can check live vacant berths after chart preparation on [Get Confirmed Tickets](/). The TTE will calculate the fare difference between your original 3AC payment and the higher class, issue an Excess Fare Ticket (EFT), and reallocate your seat.
 
 ### What is the difference between B coaches and M coaches?
 B coaches (such as B1, B2, B3) designate standard AC 3-Tier coaches with 72 berths and 2 tiers on the side aisle. M coaches (such as M1, M2, M3) designate AC 3-Tier Economy coaches with 83 berths and 3 tiers on the side aisle, including a Side Middle bunk.
@@ -208,4 +208,4 @@ B coaches (such as B1, B2, B3) designate standard AC 3-Tier coaches with 72 bert
 
 If Indian Railways re-allots your 3AC ticket to a 3E Economy coach, you are never locked into a bad deal. If you choose to travel, IRCTC will credit the base fare difference back to your account automatically within 3 to 5 business days. If you prefer not to travel in the tighter 83-berth layout, cancel your e-ticket before the second reservation chart prepares for a **100% full refund with zero cancellation charges**. 
 
-If the second chart has already been prepared, immediately file an online TDR within **3 hours of train departure** selecting *"Passenger not travelled due to ticket class downgraded"*. Keep track of your charting schedules and coach layouts using [Chart Times](/chart-times), [Chart Vacancy](/chart-vacancy), and [Coach Journey Lookup](/seat-status) to stay in control of your journey.
+If the second chart has already been prepared, immediately file an online TDR within **3 hours of train departure** selecting *"Passenger not travelled due to ticket class downgraded"*. Keep track of your charting schedules and coach layouts using [Chart Times](/chart-times), [Get Confirmed Tickets](/), and [Get Confirmed Tickets](/) to stay in control of your journey.

@@ -10,7 +10,7 @@ tags:
   - catering rules
   - food refund
 ---
-> **Travelling on a Vande Bharat?** Check live seat availability and PNR status with [Smart Seats](/), look up coach layouts and vacant berths with [Coach Journey Lookup](/seat-status), or explore complete dish prices and meal options on the [IRCTC Train Food Menu](/irctc-train-food-menu).
+> **Travelling on a Vande Bharat?** Check live seat availability and PNR status with [Smart Seats](/), look up coach layouts and vacant berths with [Get Confirmed Tickets](/), or explore complete dish prices and meal options on the [IRCTC Train Food Menu](/irctc-train-food-menu).
 
 ## TL;DR
 
@@ -72,7 +72,7 @@ The ₹50 convenience charge is a penalty for last-minute ordering, designed to 
 
 To get a refund for food charges when cancelling a partially confirmed or waitlisted ticket, you must file a Ticket Deposit Receipt (TDR) online before chart preparation. If a waitlisted online e-ticket does not confirm, the system processes a full refund automatically, including the catering portion, within 3 to 5 working days.
 
-For travelers who miss their connection or experience booking issues, LastBerth's **[Finding Smart Seats](/)** tool can help find confirmed segments on alternative trains. You can also use the **[Seat Status Coach Journey Lookup](/seat-status)** tool to check coach layouts and locate pantry staff quickly if there is a catering dispute onboard.
+For travelers who miss their connection or experience booking issues, LastBerth's **[Finding Smart Seats](/)** tool can help find confirmed segments on alternative trains. You can also use the **[Get Confirmed Tickets](/)** tool to check coach layouts and locate pantry staff quickly if there is a catering dispute onboard.
 
 ---
 
@@ -149,5 +149,5 @@ You can enter your 10-digit PNR number on LastBerth's [PNR Status Search & Direc
 
 ## Bottom line
 
-Catering on Vande Bharat Express is completely optional, allowing you to save between ₹150 and ₹350 per passenger by deselecting meals during IRCTC booking. If you plan to bring your own food or want to review itemized dish tariffs before deciding, check out the [IRCTC Train Food Menu](/irctc-train-food-menu) for complete price breakdowns. If you need confirmed seats on busy Vande Bharat routes or want to track coach layouts, use [Finding Smart Seats](/) and [Seat Status Coach Journey Lookup](/seat-status) to travel stress-free.
+Catering on Vande Bharat Express is completely optional, allowing you to save between ₹150 and ₹350 per passenger by deselecting meals during IRCTC booking. If you plan to bring your own food or want to review itemized dish tariffs before deciding, check out the [IRCTC Train Food Menu](/irctc-train-food-menu) for complete price breakdowns. If you need confirmed seats on busy Vande Bharat routes or want to track coach layouts, use [Finding Smart Seats](/) and [Get Confirmed Tickets](/) to travel stress-free.
 

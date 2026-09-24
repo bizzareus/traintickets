@@ -9,7 +9,7 @@ tags:
   - food delivery in train
 ---
 
-> **Need seat info or PNR status before ordering food?** Check your PNR status on [Smart Seats](/), and use [Coach Journey Lookup](/seat-status) to verify your coach position before selecting a station stop for e-Catering food delivery.
+> **Need seat info or PNR status before ordering food?** Check your PNR status on [Smart Seats](/), and use [Get Confirmed Tickets](/) to verify your coach position before selecting a station stop for e-Catering food delivery.
 Long train journeys in India have a charm of their own. You watch the countryside roll by, listen to the steady clatter of the tracks, and buy tea from vendors at every station. But let's be honest about the food. Pantry car meals often taste bland, look greasy, and leave you feeling worried about hygiene. Fortunately, you don't have to rely on pantry cars anymore. IRCTC e-Catering lets you order hot, fresh meals from actual restaurants and get them delivered straight to your train seat. Here is how it works, what rules you need to know, and which apps actually deliver.
 
 ## How to Order Food in Train Online Using IRCTC e-Catering?
@@ -71,7 +71,7 @@ Understanding the waitlist system is crucial before ordering meals. In Indian Ra
 
 Waitlist positions matter. A low position like `WL/1` has a strong chance of clearing, while `WL/10` or higher might not. If you have an online e-ticket that remains waitlisted after the final chart is prepared, the system automatically cancels it and refunds your money. Because you won't be on the train, any food order associated with that PNR is cancelled, and you get a full refund.
 
-To order food, you need a confirmed seat. You can check for a 'current available ticket'—which is a **fully confirmed seat** with coach/berth numbers that opens 8 hours before departure and closes 30 minutes before. If you're struggling to secure a seat, use LastBerth's **Finding Smart Seats** feature to split your booking across segments. You can track your ticket's progress using **PNR Status Search & Direct Booking** to see confirmation odds, and look up vacant berths on board using the **Seat Status Coach Journey Lookup** to keep your journey comfortable.
+To order food, you need a confirmed seat. You can check for a 'current available ticket'—which is a **fully confirmed seat** with coach/berth numbers that opens 8 hours before departure and closes 30 minutes before. If you're struggling to secure a seat, use LastBerth's **Finding Smart Seats** feature to split your booking across segments. You can track your ticket's progress using **PNR Status Search & Direct Booking** to see confirmation odds, and look up vacant berths on board using the **Get Confirmed Tickets** to keep your journey comfortable.
 
 ## How Much Does IRCTC e-Catering Cost? (Delivery & Extra Charges)
 
@@ -90,7 +90,7 @@ You can order the moment you have a valid PNR — there's effectively no upper l
 - **Earliest:** any time after you have a PNR — even days ahead for a future journey.
 - **Lead time:** an order takes roughly an hour to prepare and reach you, so book at least 1–2 hours before the delivery station.
 - **Cutoff:** once the train is close to (or pulling into) the station, the system stops accepting orders for that stop.
-- **Tip:** confirm your live coach/seat with [Smart Seats](/) before ordering so the meal reaches the right berth, and check [Chart Vacancy](/chart-vacancy) if you're still hoping for an upgrade.
+- **Tip:** confirm your live coach/seat with [Smart Seats](/) before ordering so the meal reaches the right berth, and check [Get Confirmed Tickets](/) if you're still hoping for an upgrade.
 
 ## Can You Order Train Food by Phone Without the App?
 

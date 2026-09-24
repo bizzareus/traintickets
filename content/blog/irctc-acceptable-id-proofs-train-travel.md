@@ -82,7 +82,7 @@ First, you must understand the waitlist rules. The **WL full form is Waiting Lis
 
 If you hold a physical counter ticket that is still waitlisted, you are allowed to travel in general coaches, but you must carry a valid ID. For online e-tickets, if your status does not reach RAC or Confirmed, it gets automatically cancelled and refunded to your payment method.
 
-If you are stuck on a waitlist, check your confirmation chances on [LastBerth](/). If your PNR status shows a low probability, do not risk traveling without a valid booking. You can use [LastBerth](/) to search for alternatives or use the [Finding Smart Seats](/) feature to break the seat bookings across multiple coaches/segments where a single direct seat is unavailable. You can also use the [Seat Status Coach Journey Lookup](/seat-status) to identify open berths and secure a safe trip.
+If you are stuck on a waitlist, check your confirmation chances on [LastBerth](/). If your PNR status shows a low probability, do not risk traveling without a valid booking. You can use [LastBerth](/) to search for alternatives or use the [Finding Smart Seats](/) feature to break the seat bookings across multiple coaches/segments where a single direct seat is unavailable. You can also use the [Get Confirmed Tickets](/) to identify open berths and secure a safe trip.
 
 ---
 
@@ -118,4 +118,4 @@ Under Indian Railways commercial rules, at least one passenger listed on a multi
 
 Always carry at least one physical government-issued photo ID or ensure your digital documents are accessible within official apps like DigiLocker or m-Aadhaar before boarding your train.
 
-To verify your coach layout and seat arrangements, check **[Coach Journey Lookup](/seat-status)** or monitor PNR status on **[Smart Seats](/)**.
+To verify your coach layout and seat arrangements, check **[Get Confirmed Tickets](/)** or monitor PNR status on **[Smart Seats](/)**.

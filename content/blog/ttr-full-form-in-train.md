@@ -14,7 +14,7 @@ tags:
   - tte salary
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats along your route? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -116,7 +116,7 @@ Here is how berth vacancy reallocation works in practice:
 3. **Waitlisted Counter Tickets (PRS Paper Tickets):** Physical paper tickets bought at railway reservation counters do not auto-cancel. If you hold a waitlisted counter ticket, you may approach the TTE onboard to request accommodation, provided there are vacant berths after all RAC passengers are seated.
 4. **Current Availability (`CURR_AVBL`):** If vacant berths remain after clearing all RAC passengers, the HHT system pushes those seats back to the central PRS cloud. Any traveler can book these seats online via IRCTC as **Current Available tickets** up to 30 minutes before the train reaches upcoming stations.
 
-To check vacant berths in real time along your route, use LastBerth's free **[Chart Vacancy](/chart-vacancy)** tool.
+To check vacant berths in real time along your route, use LastBerth's free **[Get Confirmed Tickets](/)** tool.
 
 ---
 

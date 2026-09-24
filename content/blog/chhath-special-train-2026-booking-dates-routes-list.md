@@ -12,11 +12,11 @@ tags:
   - 0-series train rules
 ---
 
-> **🔔 Travelling home for Chhath Puja 2026?** Check confirmed festival seats and smart split routes on high-demand corridors: [Delhi ➔ Patna (NDLS to PNBE)](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn), [Mumbai ➔ Danapur (MMCT to DNR)](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur), [Pune ➔ Danapur (PUNE to DNR)](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur), [Surat ➔ Patna (ST to PNBE)](/?from=ST&to=PNBE&fromName=Surat&toName=Patna%20Jn), or inspect post-charting berths on the [Live Chart Vacancy Map](/chart-vacancy).
+> **🔔 Travelling home for Chhath Puja 2026?** Check confirmed festival seats and smart split routes on high-demand corridors: [Delhi ➔ Patna (NDLS to PNBE)](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn), [Mumbai ➔ Danapur (MMCT to DNR)](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur), [Pune ➔ Danapur (PUNE to DNR)](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur), [Surat ➔ Patna (ST to PNBE)](/?from=ST&to=PNBE&fromName=Surat&toName=Patna%20Jn), or find guaranteed split journeys on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
-Chhath Puja 2026 begins with Nahay Khay on November 12 and concludes with Usha Arghya on November 15. The main evening ghat offering (Sandhya Arghya) falls on Saturday, November 14. Regular 60-day train bookings opened at 8:00 AM IST in mid-September and regular trains reached REGRET within seconds. To secure travel, book 0-series festival special trains announced 10 to 30 days before departure, find split-berth routes on [Smart Seats](/), or claim unbooked berths via [Chart Vacancy](/chart-vacancy) four hours before departure.
+Chhath Puja 2026 begins with Nahay Khay on November 12 and concludes with Usha Arghya on November 15. The main evening ghat offering (Sandhya Arghya) falls on Saturday, November 14. Regular 60-day train bookings opened at 8:00 AM IST in mid-September and regular trains reached REGRET within seconds. To secure travel, book 0-series festival special trains announced 10 to 30 days before departure, find split-berth routes on [Smart Seats](/), or claim unbooked berths via [Get Confirmed Tickets](/) four hours before departure.
 
 ---
 
@@ -157,7 +157,7 @@ Direct tickets from New Delhi to Patna Junction frequently show REGRET while int
 If tickets from intermediate stops (such as Aligarh, Tundla, or Ghaziabad) are waitlisted under restrictive Roadside (RLWL) or Pooled Quota (PQWL), search from the train's originating terminal (such as Anand Vihar or New Delhi). Originating stations carry the largest General Waiting List (GNWL) quota. After booking, change your boarding station on IRCTC up to 24 hours before journey date or before second chart preparation.
 
 ### 3. Check live berths under Current Availability (CURR_AVBL)
-Between 4 and 8 hours before departure, zonal chart preparation systems release unutilized VIP quotas, defence quotas, and foreign tourist quotas into the general pool. These berths appear on IRCTC as `CURR_AVBL` at standard ticket prices. You can view all physical vacant berths across coaches using the [Live Chart Vacancy Map](/chart-vacancy) or check exact chart preparation times on [Chart Times](/chart-times).
+Between 4 and 8 hours before departure, zonal chart preparation systems release unutilized VIP quotas, defence quotas, and foreign tourist quotas into the general pool. These berths appear on IRCTC as `CURR_AVBL` at standard ticket prices. You can view all physical vacant berths across coaches using the [Get Confirmed Tickets](/) or check exact chart preparation times on [Chart Times](/chart-times).
 
 ### 4. Monitor unannounced standby specials
 During the peak travel window between November 10 and November 14, zonal railways frequently deploy spare rakes with 12 to 24 hours of advance notice. Keep watch on East Central Railway and Northern Railway bulletins or check seat availability daily on LastBerth to catch newly opened trains before their quotas fill.
@@ -188,7 +188,7 @@ Special trains operate on provisional timetables without fixed route priority. W
 
 ## The Takeaway for Chhath Travellers
 
-Getting home to Bihar and eastern Uttar Pradesh for Chhath Puja requires early preparation, flexible route choices, and fast action. When standard express trains show REGRET, focus your efforts on supplementary 0-series specials, check contiguous split journeys on [Smart Seats](/), track preparation schedules on [Chart Times](/chart-times), and claim vacant berths on the [Live Chart Vacancy Map](/chart-vacancy).
+Getting home to Bihar and eastern Uttar Pradesh for Chhath Puja requires early preparation, flexible route choices, and fast action. When standard express trains show REGRET, focus your efforts on supplementary 0-series specials, check contiguous split journeys on [Smart Seats](/), track preparation schedules on [Chart Times](/chart-times), and claim vacant berths on the [Get Confirmed Tickets](/).
 
 ---
 

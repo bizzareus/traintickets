@@ -12,7 +12,7 @@ tags:
   - irctc ipay
 ---
 
-> **🔔 Need a Confirmed Ticket After a Failed Booking?** Don't risk locking up more funds on waitlisted berths. Find confirmed split-ticket combinations on the same train using [Smart Seats](/), explore available seats after chart preparation on [Chart Vacancy](/chart-vacancy), or check preparation schedules on [Chart Times](/chart-times).
+> **🔔 Need a Confirmed Ticket After a Failed Booking?** Don't risk locking up more funds on waitlisted berths. Find confirmed split-ticket combinations on the same train using [Smart Seats](/), explore available seats after chart preparation on [Get Confirmed Tickets](/), or check preparation schedules on [Chart Times](/chart-times).
 
 ## TL;DR
 
@@ -138,7 +138,7 @@ Tatkal booking windows (10:00 AM for AC classes, 11:00 AM for Sleeper) represent
 When a booking fails and your journey date is approaching, you do not have time to wait for a 5-day bank refund before arranging your travel. Here are three reliable strategies to secure a journey immediately:
 
 1. **Search Split Combinations on [Smart Seats](/):** Long-distance express trains often show `REGRET` or high waiting lists for end-to-end trips, while intermediate sectors on the same train have vacant berths. Smart Seats scans all station permutations on your train and pairs two consecutive confirmed tickets together, letting you stay on the same train without getting stranded.
-2. **Check Post-Charting Openings on [Chart Vacancy](/chart-vacancy):** When the first reservation chart prepares (typically 4 to 8 hours before train departure), unallocated emergency quotas, VIP berths, and cancelled seats are converted into `CURR_AVBL` (Current Availability) tickets. You can book these confirmed seats directly on IRCTC at a 10% discount.
+2. **Check Post-Charting Openings on [Get Confirmed Tickets](/):** When the first reservation chart prepares (typically 4 to 8 hours before train departure), unallocated emergency quotas, VIP berths, and cancelled seats are converted into `CURR_AVBL` (Current Availability) tickets. You can book these confirmed seats directly on IRCTC at a 10% discount.
 3. **Track Station Chart Preparation Times on [Chart Times](/chart-times):** Never guess when final charts are generated. Check the exact charting schedules for your originating station to be online the minute second charting opens 30 minutes before departure.
 
 ---

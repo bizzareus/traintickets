@@ -10,7 +10,7 @@ tags:
   - duronto booking rules
 ---
 
-> **Quick Tip:** Planning a journey on a Duronto Express train? Check real-time seat availability with [Smart Seats](/), monitor chart preparation status on [Chart Times](/chart-times), or check vacant berths after charting on [Chart Vacancy](/chart-vacancy).
+> **Quick Tip:** Planning a journey on a Duronto Express train? Check real-time seat availability with [Smart Seats](/), monitor chart preparation status on [Chart Times](/chart-times).
 
 ## TL;DR
 
@@ -134,4 +134,4 @@ No, once your ticket is booked, you cannot change your catering choice from opt-
 
 ## Bottom line
 
-Duronto Express offers a fast and comfortable travel option across major cities in India, but booking a ticket requires understanding its distinct rules on dynamic pricing and catering. If the direct booking search shows waitlists, you can use [Finding Smart Seats](/) on LastBerth to check for split-segment seat options. If your ticket is waitlisted, check your status using the [PNR Status Search & Direct Booking](/) tool to estimate confirmation probability, or lookup specific coach allocations using the [Seat Status Coach Journey Lookup](/seat-status) post-chart. Always verify the latest schedules and book your final tickets through authorized IRCTC channels.
+Duronto Express offers a fast and comfortable travel option across major cities in India, but booking a ticket requires understanding its distinct rules on dynamic pricing and catering. If the direct booking search shows waitlists, you can use [Finding Smart Seats](/) on LastBerth to check for split-segment seat options. If your ticket is waitlisted, check your status using the [PNR Status Search & Direct Booking](/) tool to estimate confirmation probability or search guaranteed contiguous bookings via [Get Confirmed Tickets](/). Always verify the latest schedules and book your final tickets through authorized IRCTC channels.

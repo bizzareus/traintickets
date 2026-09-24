@@ -11,7 +11,7 @@ tags:
   - train booking
 ---
 
-> **🔔 Track Train Charts & Berths:** Need guaranteed lower berths or traveling on a waitlist? Check your train's charting schedule on [Chart Times](/chart-times), look up vacant berths via [Chart Vacancy](/chart-vacancy), find coach layouts on [Coach Journey Lookup](/seat-status), or get confirmed split seats with [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Looking for guaranteed seats or travelling on a waitlist? Find guaranteed split-journey tickets and confirmed seats with [Get Confirmed Tickets](/).
 
 ## TL;DR
 
@@ -145,4 +145,4 @@ tags:
 
 IRCTC Divyangjan ছাড় বিভিন্নভাবে সক্ষম যাত্রীদের জন্য উল্লেখযোগ্য আর্থিক স্বস্তি এবং প্রবেশযোগ্য ভ্রমণের স্বাচ্ছন্দ্য প্রদান করে। আপনার এককালীন DRM ফটো আইডি কার্ড অর্জন করে এবং এটি আপনার IRCTC প্রোফাইলে সংযুক্ত করে, আপনি আপনার বাড়ির স্বাচ্ছন্দ্যে ছাড়যুক্ত নিম্ন বার্থ বুক করতে পারেন।
 
-যদি আপনার পছন্দের ট্রেন Divyangjan কোটা অধীনে একটি ওয়েটিং লিস্ট দেখায়, তবে [Smart Seats](/) ব্যবহার করুন একই ট্রেনে নিশ্চিত বিভক্ত যাত্রা আবিষ্কার করতে, [Chart Times](/chart-times) এ চার্টিং সময়সূচী পরীক্ষা করতে, অথবা [Chart Vacancy](/chart-vacancy) এ লাইভ পোস্ট-চার্টিং বার্থের প্রাপ্যতা দেখতে।
+যদি আপনার পছন্দের ট্রেন Divyangjan কোটা অধীনে একটি ওয়েটিং লিস্ট দেখায়, তবে [Smart Seats](/) ব্যবহার করুন একই ট্রেনে নিশ্চিত বিভক্ত যাত্রা আবিষ্কার করতে, [Chart Times](/chart-times) এ চার্টিং সময়সূচী পরীক্ষা করতে, অথবা [Get Confirmed Tickets](/) এ লাইভ পোস্ট-চার্টিং বার্থের প্রাপ্যতা দেখতে।

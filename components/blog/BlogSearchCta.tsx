@@ -37,11 +37,11 @@ export function BlogSearchCta({ slug, lang = "en", context, variant = "bottom" }
     switch (intentType) {
       case "festival":
         return {
-          badge: isHindi ? "🎉 छठ एवं दिवाली स्पेशल ट्रेन खोजें" : "🎉 FESTIVAL SPECIAL SEAT FINDER",
+          badge: isHindi ? "🎉 छठ एवं दिवाली कन्फर्म टिकट खोजें" : "🎉 FESTIVAL CONFIRMED TICKET FINDER",
           title: isHindi ? "छठ या दिवाली पर घर जा रहे हैं?" : "Going Home for Chhath or Diwali?",
           subtitle: isHindi
-            ? "सीधी ट्रेनों में REGRET / वेटिंग लिस्ट है? कन्फर्म स्पेशल ट्रेनें, स्प्लिट-सीट विकल्प और खाली सीटें खोजें।"
-            : "Direct trains showing REGRET? Find confirmed festival specials, split-journey contiguous seats, and vacant berths.",
+            ? "सीधी ट्रेनों में REGRET / वेटिंग लिस्ट है? कन्फर्म स्पेशल ट्रेनें और स्प्लिट-सीट विकल्प खोजें।"
+            : "Direct trains showing REGRET? Find confirmed festival specials and split-journey contiguous seats.",
           buttonText: isHindi
             ? (primaryRoute ? `${primaryRoute.label.replace(" ➔ ", " से ")} कन्फर्म टिकट →` : "दिल्ली से पटना कन्फर्म टिकट →")
             : (primaryRoute ? `Confirmed Tickets from ${primaryRoute.label.replace(" ➔ ", " to ")} →` : "Confirmed Tickets from Delhi to Patna →"),
@@ -65,33 +65,39 @@ export function BlogSearchCta({ slug, lang = "en", context, variant = "bottom" }
         };
       case "charting":
         return {
-          badge: isHindi ? "📊 लाइव वेकेंसी एवं चार्ट खोजें" : "📊 LIVE VACANT BERTH SCANNER",
-          title: isHindi ? "चार्ट बनने के बाद कन्फर्म सीट चाहिए?" : "Need Confirmed Seats After Chart Preparation?",
+          badge: isHindi ? "⚡ कन्फर्म टिकट खोजें" : "⚡ GET CONFIRMED TICKETS",
+          title: isHindi ? "कन्फर्म ट्रेन टिकट की तलाश है?" : "Need Confirmed Seats for Your Journey?",
           subtitle: isHindi
-            ? "ट्रेन छूटने से 4 घंटे पहले बिना किसी तत्काल शुल्क के 10% छूट के साथ खाली सीटें बुक करें।"
-            : "Physical vacant berths open 4 hours before departure with zero Tatkal markup and up to a 10% base fare discount.",
-          buttonText: isHindi ? "खाली सीटें अभी देखें →" : "Check Live Vacant Berths Now →",
-          buttonUrl: `/chart-vacancy?utm_source=blog&utm_medium=charting_cta&utm_campaign=${slug}`,
+            ? "सीटें सोल्ड आउट हैं? लास्टबर्थ उसी ट्रेन में स्मार्ट स्प्लिट-टिकट और गारंटीड कन्फर्म सीटें खोजने में मदद करता है।"
+            : "Direct tickets sold out? LastBerth discovers guaranteed confirmed split seats and smart route combinations.",
+          buttonText: isHindi ? "कन्फर्म टिकट खोजें →" : "Get Confirmed Tickets →",
+          buttonUrl: primaryRoute
+            ? `/?from=${primaryRoute.fromCode}&to=${primaryRoute.toCode}&fromName=${encodeURIComponent(primaryRoute.fromName)}&toName=${encodeURIComponent(primaryRoute.toName)}&utm_source=blog&utm_medium=charting_cta&utm_campaign=${slug}`
+            : `/?utm_source=blog&utm_medium=charting_cta&utm_campaign=${slug}`,
         };
       case "waitlist":
         return {
           badge: isHindi ? "⚡ स्मार्ट सीट गारंटी" : "⚡ SMART SEATS GUARANTEE",
           title: isHindi ? "वेटिंग लिस्ट (WL या RAC) से परेशान हैं?" : "Stuck on Waiting List (WL or RAC)?",
           subtitle: isHindi
-            ? "उसी ट्रेन में स्प्लिट-जर्नी कन्फर्म सीटें खोजें या चार्ट बनने के बाद खाली सीटें देखें।"
-            : "Don't gamble on confirmation chances. Search confirmed split tickets on the same train or check post-chart vacancies.",
+            ? "उसी ट्रेन में स्प्लिट-जर्नी कन्फर्म सीटें खोजें और बिना वेटलिस्ट के यात्रा करें।"
+            : "Don't gamble on confirmation chances. Search confirmed split tickets on the same train and secure your seat.",
           buttonText: isHindi ? "कन्फर्म स्प्लिट सीटें खोजें →" : "Find Confirmed Split Seats →",
-          buttonUrl: `/?utm_source=blog&utm_medium=smart_seats_cta&utm_campaign=${slug}`,
+          buttonUrl: primaryRoute
+            ? `/?from=${primaryRoute.fromCode}&to=${primaryRoute.toCode}&fromName=${encodeURIComponent(primaryRoute.fromName)}&toName=${encodeURIComponent(primaryRoute.toName)}&utm_source=blog&utm_medium=smart_seats_cta&utm_campaign=${slug}`
+            : `/?utm_source=blog&utm_medium=smart_seats_cta&utm_campaign=${slug}`,
         };
       default:
         return {
-          badge: isHindi ? "⚡ स्मार्ट सीट एवं वेकेंसी खोजें" : "⚡ SMART SEATS & VACANCY FINDER",
+          badge: isHindi ? "⚡ कन्फर्म टिकट खोजें" : "⚡ GET CONFIRMED TICKETS",
           title: isHindi ? "कन्फर्म ट्रेन टिकट की तलाश है?" : "Looking for Confirmed Train Tickets?",
           subtitle: isHindi
             ? "लास्टबर्थ उसी ट्रेन में खाली लेग्स को जोड़कर आपको कन्फर्म सीट खोजने में मदद करता है।"
             : "LastBerth finds guaranteed seats when direct tickets are sold out by scanning contiguous empty segments on the same train.",
-          buttonText: isHindi ? "सभी ट्रेनें और रूट खोजें →" : "Search All Trains & Routes →",
-          buttonUrl: `/?utm_source=blog&utm_medium=general_cta&utm_campaign=${slug}`,
+          buttonText: isHindi ? "कन्फर्म टिकट खोजें →" : "Get Confirmed Tickets →",
+          buttonUrl: primaryRoute
+            ? `/?from=${primaryRoute.fromCode}&to=${primaryRoute.toCode}&fromName=${encodeURIComponent(primaryRoute.fromName)}&toName=${encodeURIComponent(primaryRoute.toName)}&utm_source=blog&utm_medium=general_cta&utm_campaign=${slug}`
+            : `/?utm_source=blog&utm_medium=general_cta&utm_campaign=${slug}`,
         };
     }
   };

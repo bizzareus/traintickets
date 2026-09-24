@@ -11,7 +11,7 @@ tags:
   - unreserved ticket
 ---
 
-> **Planning your train journey?** Search confirmed train options on [Smart Seats](/) or check coach layouts with [Coach Journey Lookup](/seat-status).
+> **Planning your train journey?** Search confirmed train options on [Smart Seats](/).
 
 ## TL;DR
 
@@ -98,8 +98,8 @@ Yes. RailOne isn't only for unreserved travel — it also runs the **reserved bo
 That prediction is a helpful first read, but for a serious confirmation decision you want a second opinion and a concrete backup plan:
 
 - [Smart Seats & PNR Status](/) checks your confirmation probability and surfaces alternate confirmed booking paths across segments of the same train.
-- [Chart Vacancy](/chart-vacancy) shows a visual coach map of berths still empty after chart preparation — ideal when your waitlist is borderline.
-- [Coach Journey Lookup](/seat-status) reveals vacant berths on a running train that you can ask the TTE to assign.
+- [Get Confirmed Tickets](/) shows a visual coach map of berths still empty after chart preparation — ideal when your waitlist is borderline.
+- [Get Confirmed Tickets](/) reveals vacant berths on a running train that you can ask the TTE to assign.
 
 ---
 
@@ -112,7 +112,7 @@ When booking reserved tickets on IRCTC, your ticket status may show WL, where **
 Before resorting to crowded general coaches, you should use LastBerth's key features to secure a better journey:
 - [Finding Smart Seats](/) helps you find a confirmed path by splitting the journey into contiguous segments on the same train.
 - [PNR Status Search & Direct Booking](/) checks your confirmation probability and provides alternate booking options immediately.
-- [Seat Status Coach Journey Lookup](/seat-status) helps you find vacant berths on running trains that you can request the TTE to assign to you.
+- [Get Confirmed Tickets](/) helps you find vacant berths on running trains that you can request the TTE to assign to you.
 
 Remember that a **current available ticket** is a **fully confirmed seat** with an assigned coach and berth. This becomes available for booking online or at counters after chart preparation (~8 hours before departure) until 30 minutes before train departure. If all confirmed seats are gone, a RailOne unreserved ticket is your safest legal fallback.
 

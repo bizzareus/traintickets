@@ -10,7 +10,7 @@ tags:
   - travel guide
 ---
 
-> **🔔 Never Miss Final Charting:** Waiting for waitlisted seats to confirm? Track your train's exact station charting schedule and set up a free preparation alert on [Chart Times](/chart-times), or check live vacant berths on [Chart Vacancy](/chart-vacancy). Looking for confirmed split seats? Use [Smart Seats](/).
+> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 Want AC comfort but on a tight budget? Indian Railways' Garib Rath Express cuts ticket fares by 40-50% compared to standard trains. But there’s a catch: you won't get bedrolls automatically (it’s an extra ₹25), the 3AC coaches cram in an extra side-middle berth, and Tatkal bookings start sharp at 10:00 AM.
@@ -83,7 +83,7 @@ If your online ticket stays fully waitlisted (e.g., `WL/5`) after the final char
 To bypass the endless waitlists, use these LastBerth hacks:
 *   **[Finding Smart Seats](/)**: When direct tickets are sold out, our algorithm splits your journey into contiguous segments on the same train. You might sit in Coach B3 for the first half, and B4 for the second, but you get a confirmed ride.
 *   **[PNR Status Search & Direct Booking](/)**: Paste your PNR number to get real-time confirmation probabilities. If they look low, our engine suggests alternate routes instantly.
-*   **[Seat Status Coach Journey Lookup](/seat-status)**: View vacant berths on running trains after the chart is ready. If you spot a free seat, walk up to the TTE and get it allotted on the spot.
+*   **[Get Confirmed Tickets](/)**: View vacant berths on running trains after the chart is ready. If you spot a free seat, walk up to the TTE and get it allotted on the spot.
 *   **Snag a Current Ticket:** Look for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** that goes on sale right after chart preparation. It opens online and at counters about 8 hours before the train starts and stays open until 30 minutes before departure.
 
 ---

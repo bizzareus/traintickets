@@ -38,7 +38,7 @@ For an overnight journey, we always recommend getting a full berth. Trying to sq
 
 Getting seats together for the whole family can be tough. If you can't find direct confirmed berths, try LastBerth's **Finding Smart Seats** tool. It helps you find seat combinations by splitting your journey across different coaches or station segments.
 
-If your family's tickets are waitlisted, keep checking them. You can use LastBerth's **PNR Status Search & Direct Booking** tool to see if your ticket is likely to confirm. Once on the train, if you need extra room, use the **Seat Status Coach Journey Lookup** to spot vacant berths.
+If your family's tickets are waitlisted, keep checking them. You can use LastBerth's **PNR Status Search & Direct Booking** tool to see if your ticket is likely to confirm. Once on the train, if you need extra room, use the **Get Confirmed Tickets** to spot vacant berths.
 
 ## What Happens if a Child Ticket is on the Waiting List?
 

@@ -12,7 +12,7 @@ tags:
   - sleeper class
 ---
 
-> **🔔 முக்கிய உதவிக்குறிப்பு:** உங்கள் காத்திருப்பு பட்டியல் (Waitlist) டிக்கெட் உறுதியாகுமா என்று காத்திருக்கிறீர்களா? [Chart Times](/chart-times) மூலம் உங்கள் ரயிலின் துல்லியமான சார்ட் தயாரிப்பு நேரத்தைப் பார்த்து இலவச அலர்ட் அமைக்கவும், [Chart Vacancy](/chart-vacancy) மூலம் காலியிடங்களைச் சரிபார்க்கவும், அல்லது [Smart Seats](/) மூலம் உறுதியான இருக்கைகளைக் கண்டறியவும்.
+> **🔔 முக்கிய உதவிக்குறிப்பு:** உங்கள் காத்திருப்பு பட்டியல் (Waitlist) டிக்கெட் உறுதியாகுமா என்று காத்திருக்கிறீர்களா? [Chart Times](/chart-times) மூலம் உங்கள் ரயிலின் துல்லியமான சார்ட் தயாரிப்பு நேரத்தைப் பார்த்து இலவச அலர்ட் அமைக்கவும், [Get Confirmed Tickets](/) மூலம் காலியிடங்களைச் சரிபார்க்கவும், அல்லது [Smart Seats](/) மூலம் உறுதியான இருக்கைகளைக் கண்டறியவும்.
 
 ## TL;DR
 
@@ -75,8 +75,8 @@ Almost all Express and Mail trains have unreserved compartments, usually placed 
 ### 2. Current Availability Ticket பதிவு செய்யுங்கள்
 Once the chart is ready (about 8 hours before departure), any leftover berths go up for sale under 'Current Availability' at a 10% discount. You can book these on the IRCTC app or at the station reservation counter up to 30 minutes before the train pulls out. See our guide on [how IRCTC current availability works](/blog/irctc-current-availability-explained) for tips on grabbing these.
 
-### 3. Coach Journey Lookup இல் காலியாக உள்ள இடங்களை தேடுங்கள்
-Instead of wandering between coaches searching for empty seats, open [Coach Journey Lookup](/seat-status) to see exactly which coach and berth is unallocated between your stations, then approach the TTE directly with the exact seat number.
+### 3. Get Confirmed Tickets இல் காலியாக உள்ள இடங்களை தேடுங்கள்
+Instead of wandering between coaches searching for empty seats, open [Get Confirmed Tickets](/) to see exactly which coach and berth is unallocated between your stations, then approach the TTE directly with the exact seat number.
 
 ### 4. உங்கள் டிக்கெட்டை onboard மேம்படுத்துங்கள்
 If you've already boarded a Sleeper or AC coach with a general or platform ticket due to an emergency, find the TTE immediately. Under Section 138, they can upgrade your ticket if there are empty berths. You'll just pay the fare difference and a ₹500 penalty.
