@@ -58,17 +58,28 @@ export type TrainAvailabilityLike = {
 const NON_AC_CLASSES = new Set(["SL", "2S", "GN", "FC"]);
 
 /** Checks if any class on the train has directly bookable/available seats.
- * Performance Optimization: Avoids intermediate array allocation (.filter) on every train item.
+ * Supports filtering by AC-only or specific selected classes.
+ * Performance Optimization: Avoids intermediate array allocation on every train item.
  */
 export function hasAnyAvailableSeat(
   train: TrainAvailabilityLike,
-  acOnly = false,
+  filter?: boolean | { acOnly?: boolean; selectedClasses?: string[] },
 ): boolean {
   const avlClasses = train?.avlClasses;
   if (!avlClasses || avlClasses.length === 0) return false;
 
+  const acOnly = typeof filter === "boolean" ? filter : (filter?.acOnly ?? false);
+  const selectedClasses =
+    typeof filter === "object" && filter?.selectedClasses && filter.selectedClasses.length > 0
+      ? new Set(filter.selectedClasses.map((c) => c.toUpperCase()))
+      : null;
+
   return avlClasses.some((cls) => {
-    if (acOnly && NON_AC_CLASSES.has(cls.toUpperCase())) {
+    const upper = cls.toUpperCase();
+    if (selectedClasses && !selectedClasses.has(upper)) {
+      return false;
+    }
+    if (acOnly && NON_AC_CLASSES.has(upper)) {
       return false;
     }
     const gn = train.availabilityCache?.[cls];

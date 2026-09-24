@@ -63,6 +63,7 @@ export class BookingV2Controller {
     @Query('from') from: string | undefined,
     @Query('to') to: string | undefined,
     @Query('date') date: string | undefined,
+    @Query('classes') classesParam: string | string[] | undefined,
   ) {
     const f = trimStr(from).toUpperCase();
     const t = trimStr(to).toUpperCase();
@@ -78,7 +79,10 @@ export class BookingV2Controller {
     if (this.bookingV2.isPastDate(d)) {
       throw new BadRequestException('Journey date cannot be in the past');
     }
-    return this.bookingV2.searchTrains(f, t, d);
+    const classes = bodyStringArray(
+      typeof classesParam === 'string' ? classesParam.split(',') : classesParam,
+    );
+    return this.bookingV2.searchTrains(f, t, d, classes);
   }
 
   /**
@@ -126,8 +130,9 @@ export class BookingV2Controller {
       from?: unknown;
       to?: unknown;
       date?: unknown;
-      /** Train search `avlClasses` — each is probed via fetchAvailability. */
+      /** Train search `avlClasses` or selected `classes` — each is probed via fetchAvailability. */
       avlClasses?: unknown;
+      classes?: unknown;
       quota?: unknown;
     },
   ) {
@@ -135,7 +140,7 @@ export class BookingV2Controller {
     const from = trimStr(body?.from);
     const to = trimStr(body?.to);
     const date = trimStr(body?.date);
-    const avlClasses = bodyStringArray(body?.avlClasses);
+    const avlClasses = bodyStringArray(body?.avlClasses ?? body?.classes);
     const quota = trimStr(body?.quota) || 'GN';
     if (!trainNumber || !from || !to || !date) {
       throw new BadRequestException(
@@ -177,6 +182,7 @@ export class BookingV2Controller {
       to?: unknown;
       date?: unknown;
       avlClasses?: unknown;
+      classes?: unknown;
       quota?: unknown;
       forceRefresh?: unknown;
     },
@@ -186,7 +192,7 @@ export class BookingV2Controller {
     const from = trimStr(body?.from);
     const to = trimStr(body?.to);
     const date = trimStr(body?.date);
-    const avlClasses = bodyStringArray(body?.avlClasses);
+    const avlClasses = bodyStringArray(body?.avlClasses ?? body?.classes);
     const quota = trimStr(body?.quota) || 'GN';
 
     if (!trainNumber || !from || !to || !date) {
@@ -241,6 +247,7 @@ export class BookingV2Controller {
       date?: unknown;
       quota?: unknown;
       acOnly?: unknown;
+      classes?: unknown;
       maxTrains?: unknown;
       trains?: unknown;
     },
@@ -251,6 +258,7 @@ export class BookingV2Controller {
     const date = trimStr(body?.date);
     const quota = trimStr(body?.quota) || 'GN';
     const acOnly = body?.acOnly === true || trimStr(body?.acOnly) === 'true';
+    const classes = bodyStringArray(body?.classes);
     const maxTrainsRaw =
       typeof body?.maxTrains === 'number'
         ? body.maxTrains
@@ -289,6 +297,7 @@ export class BookingV2Controller {
           date,
           quota,
           acOnly,
+          classes,
           maxTrains,
           trains: Array.isArray(body?.trains)
             ? (body.trains as BookingV2TrainSearchRow[])

@@ -21,6 +21,7 @@ interface AutoSearchTrainCardProps {
   fromCode?: string;
   toCode?: string;
   acOnly?: boolean;
+  selectedClasses?: string[];
 
   onOpenSchedule?: (trainNumber: string, from?: string, to?: string) => void;
   onOpenFullResultModal?: (args: {
@@ -48,6 +49,7 @@ export function AutoSearchTrainCard({
   fromCode: searchFrom,
   toCode: searchTo,
   acOnly = false,
+  selectedClasses,
   onOpenSchedule,
   onOpenFullResultModal,
   onFallbackToControl,
@@ -118,7 +120,12 @@ export function AutoSearchTrainCard({
           train.avlClasses && train.avlClasses.length > 0
             ? train.avlClasses
             : undefined;
-        if (acOnly && baseClasses) {
+        if (selectedClasses && selectedClasses.length > 0) {
+          const selSet = new Set(selectedClasses.map((c) => c.toUpperCase()));
+          baseClasses = baseClasses
+            ? baseClasses.filter((c) => selSet.has(c.toUpperCase()))
+            : selectedClasses;
+        } else if (acOnly && baseClasses) {
           baseClasses = baseClasses.filter(isAcClass);
         }
 
@@ -235,7 +242,7 @@ export function AutoSearchTrainCard({
       controller.abort();
     };
 
-  }, [journeyDate, fromCode, toCode, train.trainNumber, train.avlClasses, acOnly]);
+  }, [journeyDate, fromCode, toCode, train.trainNumber, train.avlClasses, acOnly, selectedClasses]);
 
   // Direct IRCTC redirect link for intermediate legs
   const getBookingUrl = (fromSt: string, toSt: string, cls?: string | null) => {

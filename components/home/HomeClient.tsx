@@ -70,6 +70,7 @@ import {
   MobileModifySearchSheet,
   formatShortDate,
 } from "@/components/home/MobileModifySearchSheet";
+import { TrainClassMultiSelect } from "@/components/home/TrainClassMultiSelect";
 import ChartTimesFinder from "@/app/chart-times/ChartTimesFinder";
 import type { HomeStrings } from "@/lib/home/home-langs";
 
@@ -226,6 +227,7 @@ function UrlSearchParamsSync({
     fromName: string | null,
     toName: string | null,
     dateParam: string | null,
+    classesParam: string | null,
   ) => void;
 }) {
   const searchParams = useSearchParams();
@@ -236,6 +238,7 @@ function UrlSearchParamsSync({
       searchParams.get("fromName"),
       searchParams.get("toName"),
       searchParams.get("date"),
+      searchParams.get("classes"),
     );
   }, [searchParams, onParams]);
   return null;
@@ -269,6 +272,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setToOpen(open);
   }, []);
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
+  const [selectedClasses, setSelectedClasses] = useState<string[]>([]);
   const [mobileSheetOpen, setMobileSheetOpen] = useState(false);
 
   const handleJourneyDateChange = useCallback((ymd: string) => {
@@ -293,6 +297,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       fromName: string | null,
       toName: string | null,
       dateParam: string | null,
+      classesParam: string | null,
     ) => {
       if (fromCode && toCode) {
         const fSt = {
@@ -318,10 +323,17 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       if (dateParam) {
         setJourneyDate(dateParam);
       }
+      if (classesParam) {
+        const list = classesParam
+          .split(",")
+          .map((c) => c.trim().toUpperCase())
+          .filter(Boolean);
+        setSelectedClasses(list);
+      }
     },
     [],
   );
-  const [acOnly, setAcOnly] = useState(false);
+  const acOnly = false;
   useEffect(() => {
     setJourneyDate(todayYmd());
   }, []);
@@ -358,7 +370,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   // alternate paths run on ConfirmTkt + RapidAPI, which stay up during the
   // IRCTC online-charts maintenance window. The gate lives in SeatStatus
   // (Chart Vacancy + Live Seat Tracker), which do hit the online-charts API.
-  const alt = useAlternatePaths({ acOnly });
+  const alt = useAlternatePaths({ acOnly, selectedClasses });
   const {
     altForTrain,
     altTrainName,
@@ -401,7 +413,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setV2ScanMetaMap(new Map());
     v2TrackedViewKeyRef.current = "";
     v2TrackedAutoScanKeyRef.current = "";
-  }, [fromSt?.stationCode, toSt?.stationCode, journeyDate, acOnly]);
+  }, [fromSt?.stationCode, toSt?.stationCode, journeyDate, acOnly, selectedClasses]);
 
   // Prioritized multi-tier sorting:
   // 1. Direct IRCTC availability (chronological)
@@ -411,6 +423,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const displayTrains = useMemo(() => {
     return sortTrainSearchV2(trains, {
       acOnly,
+      selectedClasses,
       scanMetaMap: v2ScanMetaMap,
       endToEndTrains: v2DiscoveredEndToEndTrains,
       partialTrains: v2DiscoveredPartialTrains,
@@ -418,6 +431,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   }, [
     trains,
     acOnly,
+    selectedClasses,
     v2ScanMetaMap,
     v2DiscoveredEndToEndTrains,
     v2DiscoveredPartialTrains,
@@ -426,18 +440,18 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const v2AutoScanTrainNumbers = useMemo(() => {
     const set = new Set<string>();
     for (const t of trains) {
-      if (!hasAnyAvailableSeat(t, acOnly)) {
+      if (!hasAnyAvailableSeat(t, { acOnly, selectedClasses })) {
         set.add(t.trainNumber);
       }
     }
     return set;
-  }, [trains, acOnly]);
+  }, [trains, acOnly, selectedClasses]);
 
   const v2Stats = useMemo(() => {
     let directAvailableCount = 0;
     let waitlistedCount = 0;
     for (const t of trains) {
-      if (hasAnyAvailableSeat(t, acOnly)) {
+      if (hasAnyAvailableSeat(t, { acOnly, selectedClasses })) {
         directAvailableCount++;
       } else {
         waitlistedCount++;
@@ -448,7 +462,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       waitlistedCount,
       totalToScan: waitlistedCount,
     };
-  }, [trains, acOnly]);
+  }, [trains, acOnly, selectedClasses]);
 
   const v2TotalDiscoveredCount = useMemo(() => {
     return new Set([
@@ -545,7 +559,8 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       toSt?.stationCode &&
       journeyDate
     ) {
-      const searchKey = `${fromSt.stationCode}-${toSt.stationCode}-${journeyDate}-${acOnly}`;
+      const classesKey = selectedClasses.slice().sort().join(",");
+      const searchKey = `${fromSt.stationCode}-${toSt.stationCode}-${journeyDate}-${acOnly}-${classesKey}`;
       if (v2TrackedViewKeyRef.current !== searchKey) {
         v2TrackedViewKeyRef.current = searchKey;
         trackAnalyticsEvent({
@@ -584,6 +599,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     toSt?.stationCode,
     journeyDate,
     acOnly,
+    selectedClasses,
     v2Stats,
     v2AutoScanTrainNumbers,
   ]);
@@ -770,6 +786,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       fromName: fromSt.stationName,
       toName: toSt.stationName,
       date: journeyDate,
+      ...(selectedClasses.length > 0
+        ? { classes: selectedClasses.join(",") }
+        : {}),
     });
     router.replace(`${pathname}?${qs.toString()}`, { scroll: false });
     setExpandSearch(false);
@@ -791,14 +810,17 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             from: fromSt.stationCode,
             to: toSt.stationCode,
             date: journeyDate,
+            ...(selectedClasses.length > 0
+              ? { classes: selectedClasses.join(",") }
+              : {}),
           },
         },
       );
       setTrains(r.data?.data?.trainList ?? []);
 
       // Best-effort: if this popular route+date is precomputed, show the best
-      // seat instantly. The AC-only cache isn't precomputed (phase 1), so skip.
-      if (!acOnly) {
+      // seat instantly. The AC-only / class-filtered cache isn't precomputed (phase 1), so skip.
+      if (!acOnly && selectedClasses.length === 0) {
         try {
           const cr = await apiClient.get<CachedBestTrainResponse>(
             "/api/booking-v2/best-trains/cached",
@@ -847,7 +869,16 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       setSearchLoading(false);
       setExpandSearch(false);
     }
-  }, [fromSt, toSt, journeyDate, acOnly, hasSearched, router, pathname]);
+  }, [
+    fromSt,
+    toSt,
+    journeyDate,
+    acOnly,
+    selectedClasses,
+    hasSearched,
+    router,
+    pathname,
+  ]);
 
   // Performance & UX Optimization: Reset scroll position to top on auto-search trigger when arriving from scrolled pages (e.g. chart-times promo popup) to eliminate footer landing and layout flicker.
   useEffect(() => {
@@ -897,6 +928,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         to_code: toSt.stationCode,
         journey_date: journeyDate,
         ac_only: acOnly,
+        selected_classes: selectedClasses,
         train_count: trains.length,
         scanned_count: scanTrains.length,
       },
@@ -914,6 +946,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             date: journeyDate,
             quota: "GN",
             acOnly,
+            ...(selectedClasses.length > 0 ? { classes: selectedClasses } : {}),
             maxTrains: scanTrains.length,
             trains: scanTrains,
           }),
@@ -975,7 +1008,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     } finally {
       setBestTrainLoading(false);
     }
-  }, [fromSt, toSt, journeyDate, trains, acOnly]);
+  }, [fromSt, toSt, journeyDate, trains, acOnly, selectedClasses]);
 
   const bestTrainProgressSummary = useMemo(() => {
     const ready = [...bestTrainProgress]
@@ -1133,16 +1166,16 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 inputClassName="h-6 w-[92px] cursor-pointer border-0 bg-transparent p-0 text-xs font-semibold text-slate-700 focus:ring-0 sm:w-[120px] sm:text-sm"
               />
             </div>
-            <label className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-gray-600" title={t.form.acOnly}>
-              <input
-                type="checkbox"
-                checked={acOnly}
-                onChange={(event) => setAcOnly(event.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600 touch-manipulation"
-                aria-label={t.form.acOnly}
+            <div className="flex h-14 min-w-0 shrink-0 flex-col justify-center rounded-lg border border-gray-200 bg-gray-50 px-2 sm:px-3">
+              <span className="block text-[9px] font-bold uppercase tracking-wide text-gray-500">
+                Class
+              </span>
+              <TrainClassMultiSelect
+                compact
+                selectedClasses={selectedClasses}
+                onChange={setSelectedClasses}
               />
-              <span className="hidden sm:inline">AC only</span>
-            </label>
+            </div>
             <button
               type="button"
               onClick={() => {
@@ -1343,20 +1376,14 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   value={journeyDate}
                   onChange={handleJourneyDateChange}
                 />
-                <div className="mt-2 flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    id="acTicketsOnly"
-                    checked={acOnly}
-                    onChange={(e) => setAcOnly(e.target.checked)}
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600 touch-manipulation"
+                <div className="mt-2.5">
+                  <span className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                    Class
+                  </span>
+                  <TrainClassMultiSelect
+                    selectedClasses={selectedClasses}
+                    onChange={setSelectedClasses}
                   />
-                  <label
-                    htmlFor="acTicketsOnly"
-                    className="cursor-pointer select-none text-xs font-medium text-gray-600"
-                  >
-                    {t.form.acOnly}
-                  </label>
                 </div>
               </div>
               <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
@@ -1451,6 +1478,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 toCode={toSt?.stationCode}
                 toName={toSt?.stationName}
                 acOnly={acOnly}
+                selectedClasses={selectedClasses}
                 autoScanEnabled={v2AutoScanTrainNumbers.has(t.trainNumber)}
                 onOpenSchedule={(trainNumber, from, to) => {
                   setScheduleTrainNumber(trainNumber);
@@ -1585,8 +1613,8 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
           onSwap={swapStations}
           journeyDate={journeyDate}
           onDateChange={handleJourneyDateChange}
-          acOnly={acOnly}
-          onAcOnlyChange={setAcOnly}
+          selectedClasses={selectedClasses}
+          onSelectedClassesChange={setSelectedClasses}
           searchLoading={searchLoading}
           onSearch={() => {
             setMobileSheetOpen(false);

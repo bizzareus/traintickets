@@ -26,6 +26,7 @@ interface TrainSearchV2CardProps {
   toCode?: string;
   toName?: string;
   acOnly?: boolean;
+  selectedClasses?: string[];
   autoScanEnabled?: boolean;
   onOpenSchedule?: (trainNumber: string, from?: string, to?: string) => void;
   onOpenFullResultModal?: (args: {
@@ -66,6 +67,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
   toCode: searchTo,
   toName,
   acOnly = false,
+  selectedClasses,
   autoScanEnabled = false,
   onOpenSchedule,
   onOpenFullResultModal,
@@ -94,6 +96,11 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     };
   }, []);
 
+  const selectedClassesSet = useMemo(() => {
+    if (!selectedClasses || selectedClasses.length === 0) return null;
+    return new Set(selectedClasses.map((c) => c.toUpperCase()));
+  }, [selectedClasses]);
+
   // Performance Optimization: Single-pass loop and static O(1) Set lookup eliminates intermediate array allocations
   const directAvailableClasses = useMemo(() => {
     const list: { cls: string; status: string; fare: number | null }[] = [];
@@ -102,6 +109,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
 
     for (let i = 0; i < avl.length; i++) {
       const cls = avl[i];
+      if (selectedClassesSet && !selectedClassesSet.has(cls.toUpperCase())) continue;
       if (acOnly && NON_AC_CLASSES.has(cls.toUpperCase())) continue;
 
       const cacheRow = train.availabilityCache?.[cls];
@@ -124,7 +132,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
       }
     }
     return list;
-  }, [train.avlClasses, train.availabilityCache, acOnly]);
+  }, [train.avlClasses, train.availabilityCache, acOnly, selectedClassesSet]);
 
   const isDirectAvailable = directAvailableClasses.length > 0;
 
@@ -147,6 +155,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
 
     let minFare = Number.POSITIVE_INFINITY;
     for (const cls in cache) {
+      if (selectedClassesSet && !selectedClassesSet.has(cls.toUpperCase())) continue;
       if (acOnly && NON_AC_CLASSES.has(cls.toUpperCase())) continue;
       const avail = cache[cls];
       if (avail?.fare) {
@@ -157,7 +166,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
       }
     }
     return minFare !== Number.POSITIVE_INFINITY ? minFare : null;
-  }, [train.availabilityCache, acOnly]);
+  }, [train.availabilityCache, acOnly, selectedClassesSet]);
 
   // Performance Optimization: Single-pass loop avoids array allocations (.map / .filter / Math.min)
   const lowestDiscoveredFare = useMemo(() => {
@@ -183,7 +192,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     setResult(null);
     setError(null);
     setCurrentProgressText("");
-  }, [journeyDate, fromCode, toCode, acOnly]);
+  }, [journeyDate, fromCode, toCode, acOnly, selectedClasses]);
 
   // Set up intersection observer for lazy scanning when scrolled into view
   useEffect(() => {
@@ -236,10 +245,21 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
         train.avlClasses && train.avlClasses.length > 0
           ? train.avlClasses
           : undefined;
-      if (acOnly && baseClasses) {
+      if (selectedClasses && selectedClasses.length > 0) {
+        const selSet = new Set(selectedClasses.map((c) => c.toUpperCase()));
+        baseClasses = baseClasses
+          ? baseClasses.filter((c) => selSet.has(c.toUpperCase()))
+          : selectedClasses;
+      } else if (acOnly && baseClasses) {
         baseClasses = baseClasses.filter(
           (c) => !NON_AC_CLASSES.has(c.toUpperCase()),
         );
+      }
+
+      if (selectedClasses && selectedClasses.length > 0 && (!baseClasses || baseClasses.length === 0)) {
+        setLoading(false);
+        onScanComplete?.(train.trainNumber, false);
+        return;
       }
 
       const body = JSON.stringify({
@@ -366,6 +386,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     train.trainNumber,
     train.avlClasses,
     acOnly,
+    selectedClasses,
     onSeatsDiscovered,
     onScanComplete,
   ]);

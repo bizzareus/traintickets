@@ -3,6 +3,7 @@
 import { useEffect, useId, useMemo } from "react";
 import { ArrowUpDown, Calendar, X } from "lucide-react";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
+import { TrainClassMultiSelect } from "@/components/home/TrainClassMultiSelect";
 import {
   StationFieldSimple,
   todayYmd,
@@ -50,8 +51,8 @@ type Props = {
   onSwap: () => void;
   journeyDate: string | null;
   onDateChange: (ymd: string) => void;
-  acOnly: boolean;
-  onAcOnlyChange: (v: boolean) => void;
+  selectedClasses?: string[];
+  onSelectedClassesChange?: (classes: string[]) => void;
   searchLoading: boolean;
   onSearch: () => void;
   form: HomeStrings["form"];
@@ -59,7 +60,7 @@ type Props = {
 
 /**
  * Mobile "Modify your search" bottom sheet: stacked From/To rows with swap,
- * date row with Today/Tomorrow/Day After chips, AC toggle, and search CTA.
+ * date row with Today/Tomorrow/Day After chips, train class selector, and search CTA.
  * Rendered only on mobile entry points; Trap: Escape closes, backdrop closes.
  */
 export function MobileModifySearchSheet({
@@ -69,8 +70,8 @@ export function MobileModifySearchSheet({
   onSwap,
   journeyDate,
   onDateChange,
-  acOnly,
-  onAcOnlyChange,
+  selectedClasses = [],
+  onSelectedClassesChange,
   searchLoading,
   onSearch,
   form,
@@ -204,15 +205,15 @@ export function MobileModifySearchSheet({
           </div>
         </div>
 
-        <label className="mt-3 flex cursor-pointer select-none items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm font-medium text-gray-700">
-          <input
-            type="checkbox"
-            checked={acOnly}
-            onChange={(e) => onAcOnlyChange(e.target.checked)}
-            className="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-600 touch-manipulation"
+        <div className="mt-3 rounded-xl border border-gray-200 bg-white px-3 py-2.5">
+          <span className="mb-2 block text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+            Train Class
+          </span>
+          <TrainClassMultiSelect
+            selectedClasses={selectedClasses}
+            onChange={onSelectedClassesChange ?? (() => {})}
           />
-          {form.acOnly}
-        </label>
+        </div>
 
         <button
           type="button"

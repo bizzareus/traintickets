@@ -13,6 +13,7 @@ export interface TrainScanMeta {
 
 export interface SortTrainSearchV2Options {
   acOnly?: boolean;
+  selectedClasses?: string[];
   /** Map or record of trainNumber -> discovered scan metadata */
   scanMetaMap?: Map<string, TrainScanMeta> | Record<string, TrainScanMeta>;
   /** Set of trainNumbers with confirmed end-to-end full split journeys */
@@ -103,6 +104,7 @@ export function sortTrainSearchV2(
 ): TrainListItem[] {
   const {
     acOnly = false,
+    selectedClasses,
     scanMetaMap,
     endToEndTrains,
     partialTrains,
@@ -122,7 +124,7 @@ export function sortTrainSearchV2(
   const waitlisted: TrainListItem[] = [];
 
   for (const t of trains) {
-    if (hasAnyAvailableSeat(t, acOnly)) {
+    if (hasAnyAvailableSeat(t, { selectedClasses, acOnly })) {
       directAvailable.push(t);
       continue;
     }

@@ -11,6 +11,8 @@ import type {
 interface UseAlternatePathsOptions {
   /** When true, AC-only classes are requested. Defaults to false. */
   acOnly?: boolean;
+  /** Filter alternate search to only these travel classes. */
+  selectedClasses?: string[];
 }
 
 export interface UseAlternatePathsResult {
@@ -53,6 +55,7 @@ export function useAlternatePaths(
   options: UseAlternatePathsOptions = {},
 ): UseAlternatePathsResult {
   const acOnly = options.acOnly ?? false;
+  const selectedClasses = options.selectedClasses;
 
   const [altForTrain, setAltForTrain] = useState<string | null>(null);
   const [altTrainName, setAltTrainName] = useState<string | null>(null);
@@ -84,7 +87,12 @@ export function useAlternatePaths(
         !["SL", "2S", "GN", "FC"].includes(c.toUpperCase());
       let baseClasses =
         t.avlClasses && t.avlClasses.length > 0 ? t.avlClasses : undefined;
-      if (acOnly && baseClasses) {
+      if (selectedClasses && selectedClasses.length > 0) {
+        const selSet = new Set(selectedClasses.map((c) => c.toUpperCase()));
+        baseClasses = baseClasses
+          ? baseClasses.filter((c) => selSet.has(c.toUpperCase()))
+          : selectedClasses;
+      } else if (acOnly && baseClasses) {
         baseClasses = baseClasses.filter(isAcClass);
       }
 
@@ -170,8 +178,10 @@ export function useAlternatePaths(
                   if (
                     last &&
                     last.type === ev.type &&
-                    (last as any).from === (ev as any).from &&
-                    (last as any).to === (ev as any).to
+                    "from" in last &&
+                    "from" in ev &&
+                    last.from === ev.from &&
+                    last.to === ev.to
                   ) {
                     return prev;
                   }
@@ -233,7 +243,7 @@ export function useAlternatePaths(
         setAltLoading(false);
       }
     },
-    [acOnly],
+    [acOnly, selectedClasses],
   );
 
   const reset = useCallback(() => {

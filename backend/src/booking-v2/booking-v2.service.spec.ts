@@ -231,6 +231,45 @@ describe('BookingV2Service', () => {
       expect(mockCache.getOrSet).not.toHaveBeenCalled();
     });
 
+    it('filters trainList by classes and restricts avlClasses and availabilityCache', async () => {
+      const fullResponse = {
+        data: {
+          trainList: [
+            {
+              trainNumber: '12301',
+              avlClasses: ['SL', '3A', '2A'],
+              availabilityCache: {
+                SL: { availabilityDisplayName: 'WL 10' },
+                '3A': { availabilityDisplayName: 'AVL 5' },
+                '2A': { availabilityDisplayName: 'AVL 2' },
+              },
+            },
+            {
+              trainNumber: '12302',
+              avlClasses: ['CC', 'EC'],
+              availabilityCache: {
+                CC: { availabilityDisplayName: 'AVL 20' },
+              },
+            },
+          ],
+        },
+      };
+      mockCache.getOrSet.mockResolvedValue(fullResponse);
+
+      const result = (await service.searchTrains('NDLS', 'CSTM', '2029-04-05', [
+        '3A',
+        '2A',
+      ])) as typeof fullResponse;
+
+      expect(result.data.trainList).toHaveLength(1);
+      expect(result.data.trainList[0].trainNumber).toBe('12301');
+      expect(result.data.trainList[0].avlClasses).toEqual(['3A', '2A']);
+      expect(Object.keys(result.data.trainList[0].availabilityCache)).toEqual([
+        '3A',
+        '2A',
+      ]);
+    });
+
     it('throws for a past date', async () => {
       await expect(
         service.searchTrains('NDLS', 'CSTM', '2000-01-01'),
@@ -471,6 +510,39 @@ describe('BookingV2Service', () => {
       const calledArgs = findSpy.mock.calls[0][0];
       expect(calledArgs.avlClasses).not.toContain('SL');
       expect(calledArgs.avlClasses).not.toContain('2S');
+    });
+
+    it('enforces specific classes when input.classes is provided', async () => {
+      const findSpy = jest
+        .spyOn(service, 'findAlternatePaths')
+        .mockResolvedValue(altResult('302', [confirmedLeg('A', 'D', 240)]));
+
+      await service.findBestTrains({
+        from: 'A',
+        to: 'D',
+        date: '2029-05-09',
+        classes: ['SL', '3A'],
+        trains: [
+          {
+            trainNumber: '302',
+            trainName: 'Multi Class Train',
+            departureTime: '07:30',
+            arrivalTime: '10:00',
+            fromStnCode: 'A',
+            toStnCode: 'D',
+            avlClasses: ['SL', '3A', '2A', '1A'],
+          },
+        ],
+      });
+
+      expect(findSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          trainNumber: '302',
+          avlClasses: ['SL', '3A'],
+        }),
+        undefined,
+        undefined,
+      );
     });
   });
 

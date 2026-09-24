@@ -191,6 +191,7 @@ export type BestTrainSearchInput = {
   date: string;
   quota?: string;
   acOnly?: boolean;
+  classes?: string[];
   maxTrains?: number;
   trains?: BookingV2TrainSearchRow[];
 };
@@ -219,6 +220,7 @@ export type BestTrainSearchResult = {
   to: string;
   date: string;
   acOnly: boolean;
+  classes?: string[];
   totalTrainsFound: number;
   candidatesEvaluated: number;
   candidatesSkipped: number;
@@ -591,6 +593,7 @@ export class BookingV2Service {
     from: string,
     to: string,
     dateInput: string,
+    classes?: string[],
   ): Promise<unknown> {
     const dateDdMmYyyy = this.normalizeToRailApiDate(dateInput);
     if (!dateDdMmYyyy) throw new Error('Invalid journey date');
@@ -599,11 +602,82 @@ export class BookingV2Service {
     }
 
     const cacheKey = `trains:${from.trim().toUpperCase()}:${to.trim().toUpperCase()}:${dateDdMmYyyy}`;
-    return this.cache.getOrSet(
+    const rawSearch = await this.cache.getOrSet(
       cacheKey,
       () => this.fetchTrainsFromUpstream(from, to, dateDdMmYyyy),
       TRAIN_SEARCH_TTL_MS,
     );
+    return this.filterTrainSearchByClasses(rawSearch, classes);
+  }
+
+  filterTrainSearchByClasses(raw: unknown, classes?: string[]): unknown {
+    if (!classes || classes.length === 0) return raw;
+    if (!raw || typeof raw !== 'object') return raw;
+    const classesSet = new Set(
+      classes
+        .map((c) =>
+          String(c ?? '')
+            .trim()
+            .toUpperCase(),
+        )
+        .filter(Boolean),
+    );
+    if (classesSet.size === 0) return raw;
+
+    const rawObj = raw as Record<string, unknown>;
+    const data = rawObj.data as Record<string, unknown> | undefined;
+    if (!data || !Array.isArray(data.trainList)) return raw;
+
+    const filteredTrainList: unknown[] = [];
+    for (const trainItem of data.trainList) {
+      if (!trainItem || typeof trainItem !== 'object') continue;
+      const train = { ...(trainItem as Record<string, unknown>) };
+
+      let hasMatchingClass = false;
+      if (Array.isArray(train.avlClasses)) {
+        const matchingAvl = (train.avlClasses as unknown[])
+          .map((c) =>
+            String(c ?? '')
+              .trim()
+              .toUpperCase(),
+          )
+          .filter((c) => classesSet.has(c));
+        if (matchingAvl.length > 0) {
+          hasMatchingClass = true;
+          train.avlClasses = matchingAvl;
+        } else {
+          train.avlClasses = [];
+        }
+      }
+
+      if (
+        train.availabilityCache &&
+        typeof train.availabilityCache === 'object'
+      ) {
+        const filteredCache: Record<string, unknown> = {};
+        for (const [cls, entry] of Object.entries(
+          train.availabilityCache as Record<string, unknown>,
+        )) {
+          if (classesSet.has(cls.toUpperCase())) {
+            filteredCache[cls] = entry;
+            hasMatchingClass = true;
+          }
+        }
+        train.availabilityCache = filteredCache;
+      }
+
+      if (hasMatchingClass) {
+        filteredTrainList.push(train);
+      }
+    }
+
+    return {
+      ...rawObj,
+      data: {
+        ...data,
+        trainList: filteredTrainList,
+      },
+    };
   }
 
   async findBestTrains(
@@ -633,6 +707,7 @@ export class BookingV2Service {
     }
 
     const acOnly = input.acOnly === true;
+    const selectedClasses = normalizeAndDedupeClassCodes(input.classes ?? []);
 
     onProgress?.({ type: 'search_start', from, to, date });
     let allTrains = normalizeTrainRows(input.trains);
@@ -676,11 +751,20 @@ export class BookingV2Service {
             ? train.avlClasses
             : [...BOOKING_V2_ALTERNATE_PATH_CLASSES];
         const avlClasses = normalizeAndDedupeClassCodes(rawClasses);
-        const classesForRequest = acOnly
-          ? avlClasses.filter(isAcClassCode)
-          : avlClasses;
+        let classesForRequest = avlClasses;
+        if (selectedClasses.length > 0) {
+          classesForRequest = avlClasses.filter((c) =>
+            selectedClasses.includes(c),
+          );
+        } else if (acOnly) {
+          classesForRequest = avlClasses.filter(isAcClassCode);
+        }
 
-        if (acOnly && avlClasses.length > 0 && classesForRequest.length === 0) {
+        if (
+          (selectedClasses.length > 0 || acOnly) &&
+          avlClasses.length > 0 &&
+          classesForRequest.length === 0
+        ) {
           skippedCount += 1;
           onProgress?.({
             type: 'train_done',
@@ -689,7 +773,10 @@ export class BookingV2Service {
             index: index + 1,
             total: candidates.length,
             result: null,
-            skippedReason: 'No AC classes listed for this train',
+            skippedReason:
+              selectedClasses.length > 0
+                ? `No matching class (${selectedClasses.join(', ')}) listed for this train`
+                : 'No AC classes listed for this train',
           });
           return;
         }
@@ -762,6 +849,7 @@ export class BookingV2Service {
       to,
       date,
       acOnly,
+      classes: selectedClasses.length > 0 ? selectedClasses : undefined,
       totalTrainsFound: allTrains.length,
       candidatesEvaluated: evaluatedCount,
       candidatesSkipped: skippedCount,

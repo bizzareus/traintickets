@@ -255,4 +255,57 @@ describe("Train Search V2 - Prioritized Multi-Tier Sorting Logic", () => {
     const meta = extractScanMetaFromResult(response);
     assert.equal(meta.legCount, 1);
   });
+
+  test("Test Case 7: Only treats a train as direct available if seats exist in the selectedClasses", () => {
+    const trainWithSlAvail: TrainListItem = {
+      trainNumber: "12565",
+      trainName: "Bihar Sampark Kranti",
+      departureTime: "06:00",
+      arrivalTime: "20:00",
+      avlClasses: ["SL", "3A"],
+      availabilityCache: {
+        SL: {
+          availablityType: 1,
+          availablityStatus: "AVAILABLE 25",
+        },
+        "3A": {
+          availablityType: 3,
+          availablityStatus: "WL 45",
+        },
+      },
+    };
+
+    const trainWith3aAvail: TrainListItem = {
+      trainNumber: "12566",
+      trainName: "Sampark Kranti Express",
+      departureTime: "12:00",
+      arrivalTime: "02:00",
+      avlClasses: ["SL", "3A"],
+      availabilityCache: {
+        SL: {
+          availablityType: 3,
+          availablityStatus: "WL 10",
+        },
+        "3A": {
+          availablityType: 1,
+          availablityStatus: "AVAILABLE 5",
+        },
+      },
+    };
+
+    // When 3A only is selected, 12566 (has 3A avail) is top, 12565 is waitlisted
+    const sortedFor3A = sortTrainSearchV2([trainWithSlAvail, trainWith3aAvail], {
+      selectedClasses: ["3A"],
+    });
+    assert.equal(sortedFor3A[0].trainNumber, "12566");
+    assert.equal(sortedFor3A[1].trainNumber, "12565");
+
+    // When SL only is selected, 12565 (has SL avail) is top, 12566 is waitlisted
+    const sortedForSL = sortTrainSearchV2([trainWithSlAvail, trainWith3aAvail], {
+      selectedClasses: ["SL"],
+    });
+    assert.equal(sortedForSL[0].trainNumber, "12565");
+    assert.equal(sortedForSL[1].trainNumber, "12566");
+  });
 });
+
