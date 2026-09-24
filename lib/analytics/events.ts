@@ -192,6 +192,7 @@ export type AnalyticsEvent =
         from_code?: string;
         to_code?: string;
         journey_date?: string;
+        selected_classes?: string[];
       };
     }
   | {
@@ -201,6 +202,7 @@ export type AnalyticsEvent =
         to_code: string;
         journey_date: string;
         ac_only: boolean;
+        selected_classes?: string[];
         /** Total trains in the search result the user is scanning from. */
         train_count: number;
         /** How many of those we actually sent to the backend to scan (capped). */
