@@ -43,8 +43,8 @@ export function BlogSearchCta({ slug, lang = "en", context, variant = "bottom" }
             ? "सीधी ट्रेनों में REGRET / वेटिंग लिस्ट है? कन्फर्म स्पेशल ट्रेनें, स्प्लिट-सीट विकल्प और खाली सीटें खोजें।"
             : "Direct trains showing REGRET? Find confirmed festival specials, split-journey contiguous seats, and vacant berths.",
           buttonText: isHindi
-            ? (primaryRoute ? `${primaryRoute.label} कन्फर्म सीटें खोजें →` : "फेस्टिवल स्पेशल सीटें खोजें →")
-            : (primaryRoute ? `Search ${primaryRoute.label} Confirmed Seats →` : "Find Festival Special Seats →"),
+            ? (primaryRoute ? `${primaryRoute.label.replace(" ➔ ", " से ")} कन्फर्म टिकट →` : "दिल्ली से पटना कन्फर्म टिकट →")
+            : (primaryRoute ? `Confirmed Tickets from ${primaryRoute.label.replace(" ➔ ", " to ")} →` : "Confirmed Tickets from Delhi to Patna →"),
           buttonUrl: primaryRoute
             ? `/?from=${primaryRoute.fromCode}&to=${primaryRoute.toCode}&fromName=${encodeURIComponent(primaryRoute.fromName)}&toName=${encodeURIComponent(primaryRoute.toName)}&utm_source=blog&utm_medium=festival_cta&utm_campaign=${slug}`
             : `/?utm_source=blog&utm_medium=festival_cta&utm_campaign=${slug}`,
@@ -133,7 +133,7 @@ export function BlogSearchCta({ slug, lang = "en", context, variant = "bottom" }
         <div className="mt-6 border-t border-blue-100/80 pt-4">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500 mr-1">
-              ⚡ Instant Route Check:
+              ⚡ Get Confirmed Tickets:
             </span>
             {popularRoutes.map((r) => {
               const routeUrl = `/?from=${r.fromCode}&to=${r.toCode}&fromName=${encodeURIComponent(r.fromName)}&toName=${encodeURIComponent(r.toName)}&utm_source=blog&utm_medium=route_pill&utm_campaign=${slug}`;
@@ -154,38 +154,6 @@ export function BlogSearchCta({ slug, lang = "en", context, variant = "bottom" }
           </div>
         </div>
       )}
-
-      {/* Secondary Tool Shortcuts */}
-      <div className="mt-4 flex flex-wrap items-center gap-3 text-xs font-medium text-slate-500">
-        <span>Also check:</span>
-        <Link
-          href="/chart-vacancy"
-          onClick={() => handleCtaClick("tool_button", "/chart-vacancy")}
-          className="text-blue-600 font-semibold hover:underline"
-        >
-          📊 Chart Vacancy Map
-        </Link>
-        <span>•</span>
-        <Link
-          href="/chart-times"
-          onClick={() => handleCtaClick("tool_button", "/chart-times")}
-          className="text-blue-600 font-semibold hover:underline"
-        >
-          ⏰ Charting Time Tracker
-        </Link>
-        {popularRoutes[0] && (
-          <>
-            <span>•</span>
-            <Link
-              href={`/routes/${popularRoutes[0].routeSlug}`}
-              onClick={() => handleCtaClick("tool_button", `/routes/${popularRoutes[0].routeSlug}`)}
-              className="text-blue-600 font-semibold hover:underline"
-            >
-              🗺️ {popularRoutes[0].label} Guide
-            </Link>
-          </>
-        )}
-      </div>
     </div>
   );
 }
