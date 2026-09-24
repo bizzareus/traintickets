@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "description": "Global train seat availability cache warming targets",
+  "description": "Global train seat availability cache warming targets. Each target warms explicit dates plus a rolling days window (days: 7 = next 7 days from today IST); past dates are skipped.",
   "targets": [
     {
       "trainNumber": "05047",
@@ -470,6 +470,2918 @@
         "2026-11-06"
       ],
       "category": "diwali"
+    },
+    {
+      "trainNumber": "22435",
+      "trainName": "Varanasi - New Delhi Vande Bharat Express",
+      "from": "BSB",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22436",
+      "trainName": "Varanasi - New Delhi Vande Bharat Express",
+      "from": "NDLS",
+      "to": "BSB",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22439",
+      "trainName": "New Delhi - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+      "from": "NDLS",
+      "to": "SVDK",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22440",
+      "trainName": "New Delhi - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+      "from": "SVDK",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20901",
+      "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat Express",
+      "from": "MMCT",
+      "to": "GNC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20902",
+      "trainName": "Mumbai Central - Gandhinagar Capital Vande Bharat Express",
+      "from": "GNC",
+      "to": "MMCT",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22447",
+      "trainName": "New Delhi - Amb Andaura Vande Bharat Express",
+      "from": "NDLS",
+      "to": "AADR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22448",
+      "trainName": "New Delhi - Amb Andaura Vande Bharat Express",
+      "from": "AADR",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20607",
+      "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+      "from": "MAS",
+      "to": "MYS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20608",
+      "trainName": "MGR Chennai Central - Mysuru Vande Bharat Express",
+      "from": "MYS",
+      "to": "MAS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20825",
+      "trainName": "Bilaspur - Nagpur Vande Bharat Express",
+      "from": "BSP",
+      "to": "NGP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20826",
+      "trainName": "Bilaspur - Nagpur Vande Bharat Express",
+      "from": "NGP",
+      "to": "BSP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22301",
+      "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+      "from": "HWH",
+      "to": "NJP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22302",
+      "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+      "from": "NJP",
+      "to": "HWH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20833",
+      "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+      "from": "VSKP",
+      "to": "SC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20834",
+      "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+      "from": "SC",
+      "to": "VSKP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22223",
+      "trainName": "Chhatrapati Shivaji Maharaj Terminus - Sainagar Shirdi Vande Bharat Express",
+      "from": "CSMT",
+      "to": "SNSI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22224",
+      "trainName": "Chhatrapati Shivaji Maharaj Terminus - Sainagar Shirdi Vande Bharat Express",
+      "from": "SNSI",
+      "to": "CSMT",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22225",
+      "trainName": "Chhatrapati Shivaji Maharaj Terminus - Solapur Vande Bharat Express",
+      "from": "CSMT",
+      "to": "SUR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22226",
+      "trainName": "Chhatrapati Shivaji Maharaj Terminus - Solapur Vande Bharat Express",
+      "from": "SUR",
+      "to": "CSMT",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20171",
+      "trainName": "Rani Kamlapati - Hazrat Nizamuddin Vande Bharat Express",
+      "from": "RKMP",
+      "to": "NZM",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20172",
+      "trainName": "Rani Kamlapati - Hazrat Nizamuddin Vande Bharat Express",
+      "from": "NZM",
+      "to": "RKMP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20701",
+      "trainName": "Secunderabad - Tirupati Vande Bharat Express",
+      "from": "SC",
+      "to": "TPTY",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20702",
+      "trainName": "Secunderabad - Tirupati Vande Bharat Express",
+      "from": "TPTY",
+      "to": "SC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20643",
+      "trainName": "MGR Chennai Central - Coimbatore Vande Bharat Express",
+      "from": "MAS",
+      "to": "CBE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20644",
+      "trainName": "MGR Chennai Central - Coimbatore Vande Bharat Express",
+      "from": "CBE",
+      "to": "MAS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20977",
+      "trainName": "Ajmer - Chandigarh Vande Bharat Express",
+      "from": "AII",
+      "to": "CDG",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20978",
+      "trainName": "Ajmer - Chandigarh Vande Bharat Express",
+      "from": "CDG",
+      "to": "AII",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20633",
+      "trainName": "Kasargod - Thiruvananthapuram Central Vande Bharat Express",
+      "from": "KGQ",
+      "to": "TVC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20634",
+      "trainName": "Kasargod - Thiruvananthapuram Central Vande Bharat Express",
+      "from": "TVC",
+      "to": "KGQ",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22895",
+      "trainName": "Howrah - Puri Vande Bharat Express",
+      "from": "HWH",
+      "to": "PURI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22896",
+      "trainName": "Howrah - Puri Vande Bharat Express",
+      "from": "PURI",
+      "to": "HWH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22457",
+      "trainName": "Anand Vihar Terminal - Dehradun Vande Bharat Express",
+      "from": "ANVT",
+      "to": "DDN",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22458",
+      "trainName": "Anand Vihar Terminal - Dehradun Vande Bharat Express",
+      "from": "DDN",
+      "to": "ANVT",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22227",
+      "trainName": "New Jalpaiguri - Guwahati Vande Bharat Express",
+      "from": "NJP",
+      "to": "GHY",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22228",
+      "trainName": "New Jalpaiguri - Guwahati Vande Bharat Express",
+      "from": "GHY",
+      "to": "NJP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20911",
+      "trainName": "Indore - Nagpur Vande Bharat Express",
+      "from": "INDB",
+      "to": "NGP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20912",
+      "trainName": "Indore - Nagpur Vande Bharat Express",
+      "from": "NGP",
+      "to": "INDB",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22229",
+      "trainName": "Chhatrapati Shivaji Maharaj Terminus - Madgaon Vande Bharat Express",
+      "from": "CSMT",
+      "to": "MAO",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22230",
+      "trainName": "Chhatrapati Shivaji Maharaj Terminus - Madgaon Vande Bharat Express",
+      "from": "MAO",
+      "to": "CSMT",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22349",
+      "trainName": "Patna - Ranchi Vande Bharat Express",
+      "from": "PNBE",
+      "to": "RNC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22350",
+      "trainName": "Patna - Ranchi Vande Bharat Express",
+      "from": "RNC",
+      "to": "PNBE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20661",
+      "trainName": "KSR Bengaluru - Dharwad Vande Bharat Express",
+      "from": "SBC",
+      "to": "DWR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20662",
+      "trainName": "KSR Bengaluru - Dharwad Vande Bharat Express",
+      "from": "DWR",
+      "to": "SBC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20173",
+      "trainName": "Rani Kamlapati - Rewa Vande Bharat Express",
+      "from": "RKMP",
+      "to": "REWA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20174",
+      "trainName": "Rani Kamlapati - Rewa Vande Bharat Express",
+      "from": "REWA",
+      "to": "RKMP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22549",
+      "trainName": "Gorakhpur - Prayagraj Vande Bharat Express",
+      "from": "GKP",
+      "to": "PRYJ",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22550",
+      "trainName": "Gorakhpur - Prayagraj Vande Bharat Express",
+      "from": "PRYJ",
+      "to": "GKP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12461",
+      "trainName": "Jodhpur - Sabarmati Vande Bharat Express",
+      "from": "JU",
+      "to": "SBIB",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12462",
+      "trainName": "Jodhpur - Sabarmati Vande Bharat Express",
+      "from": "SBIB",
+      "to": "JU",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22925",
+      "trainName": "Ahmedabad - Okha Vande Bharat Express",
+      "from": "ADI",
+      "to": "OKHA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22926",
+      "trainName": "Ahmedabad - Okha Vande Bharat Express",
+      "from": "OKHA",
+      "to": "ADI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20665",
+      "trainName": "Chennai Egmore - Tirunelveli Vande Bharat Express",
+      "from": "MS",
+      "to": "TEN",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20666",
+      "trainName": "Chennai Egmore - Tirunelveli Vande Bharat Express",
+      "from": "TEN",
+      "to": "MS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20677",
+      "trainName": "MGR Chennai Central - Narasapur Vande Bharat Express",
+      "from": "MAS",
+      "to": "NS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20678",
+      "trainName": "MGR Chennai Central - Narasapur Vande Bharat Express",
+      "from": "NS",
+      "to": "MAS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20703",
+      "trainName": "Kacheguda - Yesvantpur Vande Bharat Express",
+      "from": "KCG",
+      "to": "YPR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20704",
+      "trainName": "Kacheguda - Yesvantpur Vande Bharat Express",
+      "from": "YPR",
+      "to": "KCG",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20631",
+      "trainName": "Mangaluru Central - Thiruvananthapuram Central Vande Bharat Express",
+      "from": "MAQ",
+      "to": "TVC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20632",
+      "trainName": "Mangaluru Central - Thiruvananthapuram Central Vande Bharat Express",
+      "from": "TVC",
+      "to": "MAQ",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26963",
+      "trainName": "Udaipur City - Asarva Vande Bharat Express",
+      "from": "UDZ",
+      "to": "ASV",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26964",
+      "trainName": "Udaipur City - Asarva Vande Bharat Express",
+      "from": "ASV",
+      "to": "UDZ",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22347",
+      "trainName": "Howrah - Patna Vande Bharat Express",
+      "from": "HWH",
+      "to": "PNBE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22348",
+      "trainName": "Howrah - Patna Vande Bharat Express",
+      "from": "PNBE",
+      "to": "HWH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20835",
+      "trainName": "Rourkela - Puri Vande Bharat Express",
+      "from": "ROU",
+      "to": "PURI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20836",
+      "trainName": "Rourkela - Puri Vande Bharat Express",
+      "from": "PURI",
+      "to": "ROU",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20897",
+      "trainName": "Howrah - Ranchi Vande Bharat Express",
+      "from": "HWH",
+      "to": "RNC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20898",
+      "trainName": "Howrah - Ranchi Vande Bharat Express",
+      "from": "RNC",
+      "to": "HWH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22415",
+      "trainName": "Varanasi - New Delhi Vande Bharat Express",
+      "from": "BSB",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22416",
+      "trainName": "Varanasi - New Delhi Vande Bharat Express",
+      "from": "NDLS",
+      "to": "BSB",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20641",
+      "trainName": "Bengaluru Cantt - Coimbatore Vande Bharat Express",
+      "from": "BNC",
+      "to": "CBE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20642",
+      "trainName": "Bengaluru Cantt - Coimbatore Vande Bharat Express",
+      "from": "CBE",
+      "to": "BNC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20645",
+      "trainName": "Madgaon - Mangaluru Central Vande Bharat Express",
+      "from": "MAO",
+      "to": "MAQ",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20646",
+      "trainName": "Madgaon - Mangaluru Central Vande Bharat Express",
+      "from": "MAQ",
+      "to": "MAO",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20705",
+      "trainName": "Huzur Sahib Nanded - Chhatrapati Shivaji Maharaj Terminus Vande Bharat Express",
+      "from": "NED",
+      "to": "CSMT",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20706",
+      "trainName": "Huzur Sahib Nanded - Chhatrapati Shivaji Maharaj Terminus Vande Bharat Express",
+      "from": "CSMT",
+      "to": "NED",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22477",
+      "trainName": "New Delhi - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+      "from": "NDLS",
+      "to": "SVDK",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22478",
+      "trainName": "New Delhi - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+      "from": "SVDK",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22425",
+      "trainName": "Ayodhya Cantt - Anand Vihar Terminal Vande Bharat Express",
+      "from": "AYC",
+      "to": "ANVT",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22426",
+      "trainName": "Ayodhya Cantt - Anand Vihar Terminal Vande Bharat Express",
+      "from": "ANVT",
+      "to": "AYC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22487",
+      "trainName": "Delhi Junction - Amritsar Vande Bharat Express",
+      "from": "DLI",
+      "to": "ASR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22488",
+      "trainName": "Delhi Junction - Amritsar Vande Bharat Express",
+      "from": "ASR",
+      "to": "DLI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22961",
+      "trainName": "Mumbai Central - Ahmedabad Vande Bharat Express",
+      "from": "MMCT",
+      "to": "ADI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22962",
+      "trainName": "Mumbai Central - Ahmedabad Vande Bharat Express",
+      "from": "ADI",
+      "to": "MMCT",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20707",
+      "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+      "from": "SC",
+      "to": "VSKP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20708",
+      "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+      "from": "VSKP",
+      "to": "SC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20663",
+      "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+      "from": "MYS",
+      "to": "MAS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20664",
+      "trainName": "Mysuru - MGR Chennai Central Vande Bharat Express",
+      "from": "MAS",
+      "to": "MYS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22233",
+      "trainName": "New Jalpaiguri - Patna Vande Bharat Express",
+      "from": "NJP",
+      "to": "PNBE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22234",
+      "trainName": "New Jalpaiguri - Patna Vande Bharat Express",
+      "from": "PNBE",
+      "to": "NJP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22469",
+      "trainName": "Khajuraho - Hazrat Nizamuddin Vande Bharat Express",
+      "from": "KURJ",
+      "to": "NZM",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22470",
+      "trainName": "Khajuraho - Hazrat Nizamuddin Vande Bharat Express",
+      "from": "NZM",
+      "to": "KURJ",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22231",
+      "trainName": "Kalaburagi - SMVT Bengaluru Vande Bharat Express",
+      "from": "KLBG",
+      "to": "SMVB",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22232",
+      "trainName": "Kalaburagi - SMVT Bengaluru Vande Bharat Express",
+      "from": "SMVB",
+      "to": "KLBG",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20841",
+      "trainName": "Bhubaneswar - Visakhapatnam Vande Bharat Express",
+      "from": "BBS",
+      "to": "VSKP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20842",
+      "trainName": "Bhubaneswar - Visakhapatnam Vande Bharat Express",
+      "from": "VSKP",
+      "to": "BBS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22345",
+      "trainName": "Patna - Gomti Nagar Vande Bharat Express",
+      "from": "PNBE",
+      "to": "GTNR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22346",
+      "trainName": "Patna - Gomti Nagar Vande Bharat Express",
+      "from": "GTNR",
+      "to": "PNBE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20887",
+      "trainName": "Ranchi - Varanasi Vande Bharat Express",
+      "from": "RNC",
+      "to": "BSB",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20888",
+      "trainName": "Ranchi - Varanasi Vande Bharat Express",
+      "from": "BSB",
+      "to": "RNC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22545",
+      "trainName": "Lucknow Junction - Dehradun Vande Bharat Express",
+      "from": "LJN",
+      "to": "DDN",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22546",
+      "trainName": "Lucknow Junction - Dehradun Vande Bharat Express",
+      "from": "DDN",
+      "to": "LJN",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22489",
+      "trainName": "Varanasi - Meerut City Vande Bharat Express",
+      "from": "BSB",
+      "to": "MTC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22490",
+      "trainName": "Varanasi - Meerut City Vande Bharat Express",
+      "from": "MTC",
+      "to": "BSB",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20627",
+      "trainName": "Chennai Egmore - Nagercoil Vande Bharat Express",
+      "from": "MS",
+      "to": "NCJ",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20628",
+      "trainName": "Chennai Egmore - Nagercoil Vande Bharat Express",
+      "from": "NCJ",
+      "to": "MS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20671",
+      "trainName": "Madurai - Bengaluru Cantt Vande Bharat Express",
+      "from": "MDU",
+      "to": "BNC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20672",
+      "trainName": "Madurai - Bengaluru Cantt Vande Bharat Express",
+      "from": "BNC",
+      "to": "MDU",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22499",
+      "trainName": "Deoghar - Varanasi Vande Bharat Express",
+      "from": "DGHR",
+      "to": "BSB",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22500",
+      "trainName": "Deoghar - Varanasi Vande Bharat Express",
+      "from": "BSB",
+      "to": "DGHR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22309",
+      "trainName": "Howrah - Jamalpur Vande Bharat Express",
+      "from": "HWH",
+      "to": "JMP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22310",
+      "trainName": "Howrah - Jamalpur Vande Bharat Express",
+      "from": "JMP",
+      "to": "HWH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20871",
+      "trainName": "Howrah - Rourkela Vande Bharat Express",
+      "from": "HWH",
+      "to": "ROU",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20872",
+      "trainName": "Howrah - Rourkela Vande Bharat Express",
+      "from": "ROU",
+      "to": "HWH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20893",
+      "trainName": "Tatanagar - Patna Vande Bharat Express",
+      "from": "TATA",
+      "to": "PNBE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20894",
+      "trainName": "Tatanagar - Patna Vande Bharat Express",
+      "from": "PNBE",
+      "to": "TATA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20891",
+      "trainName": "Tatanagar - Brahmapur Vande Bharat Express",
+      "from": "TATA",
+      "to": "BAM",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20892",
+      "trainName": "Tatanagar - Brahmapur Vande Bharat Express",
+      "from": "BAM",
+      "to": "TATA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22303",
+      "trainName": "Howrah - Gaya Vande Bharat Express",
+      "from": "HWH",
+      "to": "GAYA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "22304",
+      "trainName": "Howrah - Gaya Vande Bharat Express",
+      "from": "GAYA",
+      "to": "HWH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20669",
+      "trainName": "Hubballi - Pune Vande Bharat Express",
+      "from": "UBL",
+      "to": "PUNE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20670",
+      "trainName": "Hubballi - Pune Vande Bharat Express",
+      "from": "PUNE",
+      "to": "UBL",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20673",
+      "trainName": "Chhatrapati Shahu Maharaj Terminus Kolhapur - Pune Vande Bharat Express",
+      "from": "KOP",
+      "to": "PUNE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20674",
+      "trainName": "Chhatrapati Shahu Maharaj Terminus Kolhapur - Pune Vande Bharat Express",
+      "from": "PUNE",
+      "to": "KOP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20101",
+      "trainName": "Secunderabad - Nagpur Vande Bharat Express",
+      "from": "SC",
+      "to": "NGP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20102",
+      "trainName": "Secunderabad - Nagpur Vande Bharat Express",
+      "from": "NGP",
+      "to": "SC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20829",
+      "trainName": "Durg - Visakhapatnam Vande Bharat Express",
+      "from": "DURG",
+      "to": "VSKP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20830",
+      "trainName": "Durg - Visakhapatnam Vande Bharat Express",
+      "from": "VSKP",
+      "to": "DURG",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "21893",
+      "trainName": "Tatanagar - Patna Vande Bharat Express",
+      "from": "TATA",
+      "to": "PNBE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "21894",
+      "trainName": "Tatanagar - Patna Vande Bharat Express",
+      "from": "PNBE",
+      "to": "TATA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "21895",
+      "trainName": "Tatanagar - Patna Vande Bharat Express",
+      "from": "TATA",
+      "to": "PNBE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "21896",
+      "trainName": "Tatanagar - Patna Vande Bharat Express",
+      "from": "PNBE",
+      "to": "TATA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20175",
+      "trainName": "Banaras - Agra Cantt Vande Bharat Express",
+      "from": "BSBS",
+      "to": "AGC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "20176",
+      "trainName": "Banaras - Agra Cantt Vande Bharat Express",
+      "from": "AGC",
+      "to": "BSBS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26901",
+      "trainName": "Sabarmati - Veraval Vande Bharat Express",
+      "from": "SBIB",
+      "to": "VRL",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26902",
+      "trainName": "Sabarmati - Veraval Vande Bharat Express",
+      "from": "VRL",
+      "to": "SBIB",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26401",
+      "trainName": "Jammu Tawi - Srinagar Vande Bharat Express",
+      "from": "TAWI",
+      "to": "SINA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26402",
+      "trainName": "Jammu Tawi - Srinagar Vande Bharat Express",
+      "from": "SINA",
+      "to": "TAWI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26403",
+      "trainName": "Jammu Tawi - Srinagar Vande Bharat Express",
+      "from": "TAWI",
+      "to": "SINA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26404",
+      "trainName": "Jammu Tawi - Srinagar Vande Bharat Express",
+      "from": "SINA",
+      "to": "TAWI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26501",
+      "trainName": "Patliputra - Gorakhpur Vande Bharat Express",
+      "from": "PPTA",
+      "to": "GKP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26502",
+      "trainName": "Patliputra - Gorakhpur Vande Bharat Express",
+      "from": "GKP",
+      "to": "PPTA",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26751",
+      "trainName": "Belagavi - KSR Bengaluru Vande Bharat Express",
+      "from": "BGM",
+      "to": "SBC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26752",
+      "trainName": "Belagavi - KSR Bengaluru Vande Bharat Express",
+      "from": "SBC",
+      "to": "BGM",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26405",
+      "trainName": "Amritsar - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+      "from": "ASR",
+      "to": "SVDK",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26406",
+      "trainName": "Amritsar - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+      "from": "SVDK",
+      "to": "ASR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26101",
+      "trainName": "Pune - Ajni Vande Bharat Express",
+      "from": "PUNE",
+      "to": "AJNI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26102",
+      "trainName": "Pune - Ajni Vande Bharat Express",
+      "from": "AJNI",
+      "to": "PUNE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26301",
+      "trainName": "Jogbani - Danapur Vande Bharat Express",
+      "from": "JBN",
+      "to": "DNR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26302",
+      "trainName": "Jogbani - Danapur Vande Bharat Express",
+      "from": "DNR",
+      "to": "JBN",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26481",
+      "trainName": "Jodhpur - Delhi Cantt Vande Bharat Express",
+      "from": "JU",
+      "to": "DEC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26482",
+      "trainName": "Jodhpur - Delhi Cantt Vande Bharat Express",
+      "from": "DEC",
+      "to": "JU",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26471",
+      "trainName": "Bikaner - Delhi Cantt Vande Bharat Express",
+      "from": "BKN",
+      "to": "DEC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26472",
+      "trainName": "Bikaner - Delhi Cantt Vande Bharat Express",
+      "from": "DEC",
+      "to": "BKN",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26461",
+      "trainName": "Delhi Junction - Firozpur Cantt Vande Bharat Express",
+      "from": "DLI",
+      "to": "FZR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26462",
+      "trainName": "Delhi Junction - Firozpur Cantt Vande Bharat Express",
+      "from": "FZR",
+      "to": "DLI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26651",
+      "trainName": "KSR Bengaluru - Ernakulam Vande Bharat Express",
+      "from": "SBC",
+      "to": "ERS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26652",
+      "trainName": "KSR Bengaluru - Ernakulam Vande Bharat Express",
+      "from": "ERS",
+      "to": "SBC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26505",
+      "trainName": "Khajuraho - Banaras Vande Bharat Express",
+      "from": "KURJ",
+      "to": "BSBS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26506",
+      "trainName": "Khajuraho - Banaras Vande Bharat Express",
+      "from": "BSBS",
+      "to": "KURJ",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26503",
+      "trainName": "Saharanpur - Gomti Nagar Vande Bharat Express",
+      "from": "SRE",
+      "to": "GTNR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "26504",
+      "trainName": "Saharanpur - Gomti Nagar Vande Bharat Express",
+      "from": "GTNR",
+      "to": "SRE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "27575",
+      "trainName": "Howrah - Kamakhya Vande Bharat Sleeper Express",
+      "from": "HWH",
+      "to": "KYQ",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "27576",
+      "trainName": "Howrah - Kamakhya Vande Bharat Sleeper Express",
+      "from": "KYQ",
+      "to": "HWH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12001",
+      "trainName": "Rani Kamlapati - New Delhi Shatabdi Express",
+      "from": "RKMP",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12002",
+      "trainName": "Rani Kamlapati - New Delhi Shatabdi Express",
+      "from": "NDLS",
+      "to": "RKMP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12003",
+      "trainName": "New Delhi - Lucknow Jn Swarna Shatabdi Express",
+      "from": "NDLS",
+      "to": "LJN",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12004",
+      "trainName": "New Delhi - Lucknow Jn Swarna Shatabdi Express",
+      "from": "LJN",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12005",
+      "trainName": "New Delhi - Kalka Shatabdi Express",
+      "from": "NDLS",
+      "to": "KLK",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12006",
+      "trainName": "New Delhi - Kalka Shatabdi Express",
+      "from": "KLK",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12007",
+      "trainName": "MGR Chennai Central - Mysuru Shatabdi Express",
+      "from": "MAS",
+      "to": "MYS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12008",
+      "trainName": "MGR Chennai Central - Mysuru Shatabdi Express",
+      "from": "MYS",
+      "to": "MAS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12009",
+      "trainName": "Mumbai Central - Ahmedabad Shatabdi Express",
+      "from": "MMCT",
+      "to": "ADI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12010",
+      "trainName": "Mumbai Central - Ahmedabad Shatabdi Express",
+      "from": "ADI",
+      "to": "MMCT",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12011",
+      "trainName": "New Delhi - Kalka Shatabdi Express",
+      "from": "NDLS",
+      "to": "KLK",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12012",
+      "trainName": "New Delhi - Kalka Shatabdi Express",
+      "from": "KLK",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12013",
+      "trainName": "New Delhi - Amritsar Shatabdi Express",
+      "from": "NDLS",
+      "to": "ASR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12014",
+      "trainName": "New Delhi - Amritsar Shatabdi Express",
+      "from": "ASR",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12015",
+      "trainName": "New Delhi - Daurai (Ajmer) Shatabdi Express",
+      "from": "NDLS",
+      "to": "DAI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12016",
+      "trainName": "New Delhi - Daurai (Ajmer) Shatabdi Express",
+      "from": "DAI",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12017",
+      "trainName": "New Delhi - Dehradun Shatabdi Express",
+      "from": "NDLS",
+      "to": "DDN",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12018",
+      "trainName": "New Delhi - Dehradun Shatabdi Express",
+      "from": "DDN",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12019",
+      "trainName": "Howrah - Ranchi Shatabdi Express",
+      "from": "HWH",
+      "to": "RNC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12020",
+      "trainName": "Howrah - Ranchi Shatabdi Express",
+      "from": "RNC",
+      "to": "HWH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12025",
+      "trainName": "Pune - Secunderabad Shatabdi Express",
+      "from": "PUNE",
+      "to": "SC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12026",
+      "trainName": "Pune - Secunderabad Shatabdi Express",
+      "from": "SC",
+      "to": "PUNE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12027",
+      "trainName": "MGR Chennai Central - KSR Bengaluru Shatabdi Express",
+      "from": "MAS",
+      "to": "SBC",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12028",
+      "trainName": "MGR Chennai Central - KSR Bengaluru Shatabdi Express",
+      "from": "SBC",
+      "to": "MAS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12029",
+      "trainName": "New Delhi - Amritsar Swarna Shatabdi Express",
+      "from": "NDLS",
+      "to": "ASR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12030",
+      "trainName": "New Delhi - Amritsar Swarna Shatabdi Express",
+      "from": "ASR",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12031",
+      "trainName": "New Delhi - Amritsar Shatabdi Express",
+      "from": "NDLS",
+      "to": "ASR",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12032",
+      "trainName": "New Delhi - Amritsar Shatabdi Express",
+      "from": "ASR",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12033",
+      "trainName": "Kanpur Central - New Delhi Shatabdi Express",
+      "from": "CNB",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12034",
+      "trainName": "Kanpur Central - New Delhi Shatabdi Express",
+      "from": "NDLS",
+      "to": "CNB",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12039",
+      "trainName": "Kathgodam - New Delhi Shatabdi Express",
+      "from": "KGM",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12040",
+      "trainName": "Kathgodam - New Delhi Shatabdi Express",
+      "from": "NDLS",
+      "to": "KGM",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12041",
+      "trainName": "Howrah - New Jalpaiguri Shatabdi Express",
+      "from": "HWH",
+      "to": "NJP",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12042",
+      "trainName": "Howrah - New Jalpaiguri Shatabdi Express",
+      "from": "NJP",
+      "to": "HWH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12045",
+      "trainName": "New Delhi - Chandigarh Shatabdi Express",
+      "from": "NDLS",
+      "to": "CDG",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12046",
+      "trainName": "New Delhi - Chandigarh Shatabdi Express",
+      "from": "CDG",
+      "to": "NDLS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12049",
+      "trainName": "Hazrat Nizamuddin - Jhansi Gatimaan Express",
+      "from": "NZM",
+      "to": "VGLJ",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12050",
+      "trainName": "Hazrat Nizamuddin - Jhansi Gatimaan Express",
+      "from": "VGLJ",
+      "to": "NZM",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12087",
+      "trainName": "Naharlagun - Guwahati Shatabdi Express",
+      "from": "NHLN",
+      "to": "GHY",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12088",
+      "trainName": "Naharlagun - Guwahati Shatabdi Express",
+      "from": "GHY",
+      "to": "NHLN",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12243",
+      "trainName": "MGR Chennai Central - Coimbatore Shatabdi Express",
+      "from": "MAS",
+      "to": "CBE",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12244",
+      "trainName": "MGR Chennai Central - Coimbatore Shatabdi Express",
+      "from": "CBE",
+      "to": "MAS",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12277",
+      "trainName": "Howrah - Puri Shatabdi Express",
+      "from": "HWH",
+      "to": "PURI",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
+    },
+    {
+      "trainNumber": "12278",
+      "trainName": "Howrah - Puri Shatabdi Express",
+      "from": "PURI",
+      "to": "HWH",
+      "dates": [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07"
+      ],
+      "days": 7,
+      "category": "premium"
     }
   ]
 }

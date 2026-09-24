@@ -37,7 +37,13 @@ export interface TrainCacheTarget {
   trainName?: string;
   from: string;
   to: string;
-  dates: string[]; // YYYY-MM-DD
+  /** Explicit YYYY-MM-DD dates; past dates are skipped at runtime. */
+  dates?: string[];
+  /**
+   * Rolling window: warm the next N days starting today (IST).
+   * Accepts a number (7) or a "+N" string ("+7").
+   */
+  days?: number | string;
   category?: string;
 }
 
@@ -120,6 +126,40 @@ function ymdToDmy(ymd: string): string {
     return `${parts[2]}-${parts[1]}-${parts[0]}`;
   }
   return ymd;
+}
+
+/** Upper bound for a target's rolling `days` window (typo guard). */
+const MAX_ROLLING_DAYS = 30;
+
+/** Parse a `days` value (7 or "+7") into a day count; garbage => 0. */
+function parseRollingDays(days: unknown): number {
+  const n =
+    typeof days === 'number'
+      ? days
+      : typeof days === 'string'
+        ? parseInt(days.replace(/^\+/, '').trim(), 10)
+        : NaN;
+  return Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0;
+}
+
+/**
+ * Effective YYYY-MM-DD dates for a target: explicit `dates` (past days
+ * skipped) union the rolling `days` window starting today (IST), sorted.
+ */
+export function resolveTargetDates(
+  target: TrainCacheTarget,
+  todayYmd: string = moment().utcOffset(IST_UTC_OFFSET).format('YYYY-MM-DD'),
+): string[] {
+  const out = new Set<string>();
+  for (const d of target.dates ?? []) {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(d) && d >= todayYmd) out.add(d);
+  }
+  const n = Math.min(parseRollingDays(target.days), MAX_ROLLING_DAYS);
+  const base = moment(todayYmd, 'YYYY-MM-DD');
+  for (let i = 0; i < n; i++) {
+    out.add(base.clone().add(i, 'days').format('YYYY-MM-DD'));
+  }
+  return [...out].sort();
 }
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -257,7 +297,7 @@ export class SeatCacheCronService {
 
     // A. Add target routes from JSON (only if options don't restrict to something outside)
     for (const target of targets) {
-      for (const d of target.dates) {
+      for (const d of resolveTargetDates(target)) {
         const key = `${target.from.toUpperCase()}#${target.to.toUpperCase()}#${d}`;
         if (!routeTasks.has(key)) {
           routeTasks.set(key, {
@@ -385,7 +425,7 @@ export class SeatCacheCronService {
       let minFare: number | null = null;
       let grandTotalSeats = 0;
 
-      for (const d of target.dates) {
+      for (const d of resolveTargetDates(target)) {
         const memKey = `${target.from.toUpperCase()}#${target.to.toUpperCase()}#${d}`;
         // Reuse in-memory search from warming pass if available; fallback to DynamoDB
         const cachedRoute =

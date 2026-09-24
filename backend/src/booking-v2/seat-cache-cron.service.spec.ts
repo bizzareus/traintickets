@@ -1,5 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SeatCacheCronService } from './seat-cache-cron.service';
+import {
+  SeatCacheCronService,
+  resolveTargetDates,
+} from './seat-cache-cron.service';
 import { BookingV2Service } from './booking-v2.service';
 import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import { ChartCronLeaderService } from '../chart-cron/chart-cron-leader.service';
@@ -115,7 +118,7 @@ describe('SeatCacheCronService', () => {
 
     // Verify all targets strictly have dates between Nov 4-7, 2026
     for (const target of diwaliTargets) {
-      for (const d of target.dates) {
+      for (const d of target.dates ?? []) {
         expect([
           '2026-11-04',
           '2026-11-05',
@@ -158,5 +161,56 @@ describe('SeatCacheCronService', () => {
         }),
       }),
     );
+  });
+
+  describe('resolveTargetDates', () => {
+    const base = {
+      trainNumber: '22435',
+      from: 'BSB',
+      to: 'NDLS',
+    } as const;
+
+    it('keeps future explicit dates and skips past ones', () => {
+      expect(
+        resolveTargetDates(
+          {
+            ...base,
+            dates: ['2026-09-20', '2026-09-24', '2026-11-04'],
+          },
+          '2026-09-24',
+        ),
+      ).toEqual(['2026-09-24', '2026-11-04']);
+    });
+
+    it('expands days: 7 into the next 7 days from today', () => {
+      expect(resolveTargetDates({ ...base, days: 7 }, '2026-09-24')).toEqual([
+        '2026-09-24',
+        '2026-09-25',
+        '2026-09-26',
+        '2026-09-27',
+        '2026-09-28',
+        '2026-09-29',
+        '2026-09-30',
+      ]);
+    });
+
+    it('accepts "+N" strings and unions with explicit dates, deduped and sorted', () => {
+      expect(
+        resolveTargetDates(
+          { ...base, days: '+2', dates: ['2026-09-25', '2026-11-04'] },
+          '2026-09-24',
+        ),
+      ).toEqual(['2026-09-24', '2026-09-25', '2026-11-04']);
+    });
+
+    it('ignores missing, zero, or garbage days', () => {
+      expect(resolveTargetDates({ ...base }, '2026-09-24')).toEqual([]);
+      expect(resolveTargetDates({ ...base, days: 0 }, '2026-09-24')).toEqual(
+        [],
+      );
+      expect(
+        resolveTargetDates({ ...base, days: 'soon' }, '2026-09-24'),
+      ).toEqual([]);
+    });
   });
 });
