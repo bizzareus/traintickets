@@ -31,6 +31,8 @@ export type JourneyDatePickerProps = {
   minOffsetDays?: number;
   /** Override the trigger input styling (defaults to the large search-field style). */
   inputClassName?: string;
+  /** Optional class name for the datepicker container. */
+  className?: string;
 };
 
 /**
@@ -42,6 +44,7 @@ export function JourneyDatePicker({
   onChange,
   minOffsetDays = 0,
   inputClassName,
+  className,
 }: JourneyDatePickerProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const dpRef = useRef<DatepickerInstance | null>(null);
@@ -111,6 +114,7 @@ export function JourneyDatePicker({
       id={`dp-container-${id}`} 
       className={cn(
         "relative",
+        className,
         // Tailwind arbitrary variants to style the injected datepicker internal cells
         "[&_.datepicker-cell.disabled]:text-gray-300 [&_.datepicker-cell.disabled]:opacity-50 [&_.datepicker-cell.disabled]:cursor-not-allowed [&_.datepicker-cell.disabled]:pointer-events-none",
         "[&_.datepicker-cell.prev]:text-gray-300 [&_.datepicker-cell.prev]:opacity-40",

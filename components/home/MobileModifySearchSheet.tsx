@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useMemo } from "react";
-import { ArrowUpDown, X } from "lucide-react";
+import { ArrowUpDown, Calendar, X } from "lucide-react";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
 import {
   StationFieldSimple,
@@ -166,33 +166,41 @@ export function MobileModifySearchSheet({
         </div>
 
         <div className="mt-3 rounded-xl border border-gray-200 bg-white px-3 py-2.5">
-          <span className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+          <label
+            htmlFor={dateInputId}
+            className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500"
+          >
+            <Calendar className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4" />
             {form.date}
-          </span>
-          <div className="text-base font-semibold text-slate-900">
-            {formatShortDate(journeyDate) || "Select date"}
+          </label>
+          <div className="relative">
+            <JourneyDatePicker
+              id={dateInputId}
+              value={journeyDate}
+              onChange={onDateChange}
+              className="z-20"
+              inputClassName="block w-full cursor-pointer rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-10 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4 touch-manipulation"
+            />
+            <Calendar
+              className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
+              aria-hidden="true"
+            />
           </div>
-          <div className="mt-2 flex flex-wrap items-center gap-2">
+          <div className="mt-2.5 flex items-center gap-2">
             {chips.map((c) => (
               <button
                 key={c.label}
                 type="button"
                 onClick={() => onDateChange(c.ymd)}
-                className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition touch-manipulation ${
+                className={`flex-1 rounded-lg border py-2 text-xs font-semibold transition touch-manipulation text-center ${
                   journeyDate === c.ymd
-                    ? "border-blue-600 bg-blue-50 text-blue-700"
+                    ? "border-blue-600 bg-blue-50 text-blue-700 shadow-2xs"
                     : "border-gray-200 bg-white text-slate-600 hover:bg-slate-50"
                 }`}
               >
                 {c.label}
               </button>
             ))}
-            <JourneyDatePicker
-              id={dateInputId}
-              value={journeyDate}
-              onChange={onDateChange}
-              inputClassName="h-9 w-[132px] cursor-pointer rounded-lg border border-gray-200 bg-white px-2 text-sm font-medium text-slate-700 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25"
-            />
           </div>
         </div>
 
