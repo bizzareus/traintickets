@@ -20,7 +20,10 @@ interface TrainAvailabilityItem {
     string,
     {
       totalSeats: number;
-      classes: Record<string, { status: string; count: number; fare?: number | null }>;
+      classes: Record<
+        string,
+        { status: string; count: number; fare?: number | null }
+      >;
     }
   >;
 }
@@ -75,7 +78,10 @@ export function DiwaliTrainsListClient({ trains }: Props) {
   }, [trains, query]);
 
   const handleCardNavigate = (train: DiwaliSpecialTrain) => {
-    const targetUrl = buildDiwaliSearchRedirectUrl(train, DEFAULT_DIWALI_SEARCH_DATE);
+    const targetUrl = buildDiwaliSearchRedirectUrl(
+      train,
+      DEFAULT_DIWALI_SEARCH_DATE,
+    );
     router.push(targetUrl);
   };
 
@@ -105,8 +111,11 @@ export function DiwaliTrainsListClient({ trains }: Props) {
         {/* Results Count & Reset */}
         <div className="flex items-center justify-between pt-1 text-xs text-slate-500">
           <span>
-            Showing <strong className="font-semibold text-slate-800">{filteredTrains.length}</strong> of{" "}
-            {trains.length} festival special trains
+            Showing{" "}
+            <strong className="font-semibold text-slate-800">
+              {filteredTrains.length}
+            </strong>{" "}
+            of {trains.length} festival special trains
           </span>
           {query && (
             <button
@@ -124,7 +133,9 @@ export function DiwaliTrainsListClient({ trains }: Props) {
       {filteredTrains.length === 0 ? (
         <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center space-y-3">
           <Train className="mx-auto h-10 w-10 text-slate-300" />
-          <h3 className="text-base font-semibold text-slate-800">No special trains matched your search</h3>
+          <h3 className="text-base font-semibold text-slate-800">
+            No special trains matched your search
+          </h3>
           <p className="text-sm text-slate-500 max-w-md mx-auto">
             Try searching for another station name or clearing your search term.
           </p>
@@ -141,7 +152,10 @@ export function DiwaliTrainsListClient({ trains }: Props) {
             const avail = availabilityMap[train.trainNumber];
             const availableCount = avail?.totalAvailableSeats ?? 0;
             const isDirectAvailable = availableCount > 0;
-            const redirectUrl = buildDiwaliSearchRedirectUrl(train, DEFAULT_DIWALI_SEARCH_DATE);
+            const redirectUrl = buildDiwaliSearchRedirectUrl(
+              train,
+              DEFAULT_DIWALI_SEARCH_DATE,
+            );
             const detailUrl = `/trains/${encodeURIComponent(train.trainNumber)}`;
 
             return (
@@ -164,7 +178,8 @@ export function DiwaliTrainsListClient({ trains }: Props) {
                           onClick={(e) => e.stopPropagation()}
                           className="inline-flex items-center rounded-md bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors shrink-0"
                         >
-                          <span className="hidden sm:inline">Train </span>Schedule
+                          <span className="hidden sm:inline">Train </span>
+                          Schedule
                         </Link>
 
                         {isDirectAvailable && (
@@ -190,8 +205,13 @@ export function DiwaliTrainsListClient({ trains }: Props) {
                           className="mt-0.5 text-xs font-semibold text-slate-600 truncate"
                           title={`${train.fromStation.code} - ${train.fromStation.name}`}
                         >
-                          <span className="font-bold text-slate-800">{train.fromStation.code}</span>
-                          <span className="text-slate-500 font-normal"> - {train.fromStation.name}</span>
+                          <span className="font-bold text-slate-800">
+                            {train.fromStation.code}
+                          </span>
+                          <span className="text-slate-500 font-normal">
+                            {" "}
+                            - {train.fromStation.name}
+                          </span>
                         </span>
                       </div>
 
@@ -206,9 +226,6 @@ export function DiwaliTrainsListClient({ trains }: Props) {
                             Direct
                           </span>
                         </div>
-                        <span className="text-[10px] text-slate-400">
-                          {train.halts} halts • {train.distance}
-                        </span>
                       </div>
 
                       {/* Arrival */}
@@ -220,8 +237,13 @@ export function DiwaliTrainsListClient({ trains }: Props) {
                           className="mt-0.5 text-xs font-semibold text-slate-600 truncate max-w-full"
                           title={`${train.toStation.code} - ${train.toStation.name}`}
                         >
-                          <span className="font-bold text-slate-800">{train.toStation.code}</span>
-                          <span className="text-slate-500 font-normal"> - {train.toStation.name}</span>
+                          <span className="font-bold text-slate-800">
+                            {train.toStation.code}
+                          </span>
+                          <span className="text-slate-500 font-normal">
+                            {" "}
+                            - {train.toStation.name}
+                          </span>
                         </span>
                       </div>
                     </div>
@@ -229,7 +251,9 @@ export function DiwaliTrainsListClient({ trains }: Props) {
                     {/* Days & Classes Row */}
                     <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600">
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="font-medium text-slate-500 text-[11px]">Runs On:</span>
+                        <span className="font-medium text-slate-500 text-[11px]">
+                          Runs On:
+                        </span>
                         {train.runningDays?.length > 0 ? (
                           train.runningDays.map((d) => (
                             <span
@@ -240,12 +264,16 @@ export function DiwaliTrainsListClient({ trains }: Props) {
                             </span>
                           ))
                         ) : (
-                          <span className="text-slate-400 italic text-[11px]">Special schedule</span>
+                          <span className="text-slate-400 italic text-[11px]">
+                            Special schedule
+                          </span>
                         )}
                       </div>
 
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="font-medium text-slate-500 text-[11px]">Classes:</span>
+                        <span className="font-medium text-slate-500 text-[11px]">
+                          Classes:
+                        </span>
                         {train.classes?.length > 0 ? (
                           train.classes.map((cls) => (
                             <span
@@ -273,7 +301,8 @@ export function DiwaliTrainsListClient({ trains }: Props) {
                             🎉 {availableCount} Tickets Available
                           </p>
                           <p className="text-xs font-semibold text-emerald-600 truncate">
-                            {avail.availableClasses?.join(", ") || "Direct"} Available
+                            {avail.availableClasses?.join(", ") || "Direct"}{" "}
+                            Available
                           </p>
                           {avail.lowestFare != null && (
                             <p className="text-[11px] text-slate-500 font-medium mt-0.5">
@@ -292,15 +321,6 @@ export function DiwaliTrainsListClient({ trains }: Props) {
                       </>
                     ) : (
                       <>
-                        <div className="text-left md:text-right min-w-0">
-                          <p className="text-sm sm:text-base font-bold text-slate-800 leading-tight">
-                            Diwali Special Rake
-                          </p>
-                          <p className="text-xs font-medium text-blue-600">
-                            Check 5th Nov Seats
-                          </p>
-                        </div>
-
                         <Link
                           href={redirectUrl}
                           onClick={(e) => e.stopPropagation()}
