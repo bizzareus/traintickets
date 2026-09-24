@@ -17,6 +17,17 @@ const ADMIN_SESSION_TTL_MS = 24 * 60 * 60 * 1000;
  * Pass an Express `Request` (with cookies parsed by cookie-parser middleware)
  * so the cookie path works. The header path still works without a request.
  */
+/**
+ * Safely compare two string secrets in constant time using HMAC digests
+ * to prevent timing side-channel attacks during password verification.
+ */
+function safeCompareStrings(a: string, b: string): boolean {
+  if (!a || !b) return false;
+  const aBuf = createHmac('sha256', 'admin-auth-salt').update(a).digest();
+  const bBuf = createHmac('sha256', 'admin-auth-salt').update(b).digest();
+  return timingSafeEqual(aBuf, bBuf);
+}
+
 export function assertAdminAuth(args: {
   headerPw?: string | undefined;
   req?: Request | undefined;
@@ -25,7 +36,8 @@ export function assertAdminAuth(args: {
   if (!expected) {
     throw new UnauthorizedException('Admin password not set.');
   }
-  if (String(args.headerPw ?? '') === expected) return;
+  const headerPw = String(args.headerPw ?? '').trim();
+  if (headerPw && safeCompareStrings(headerPw, expected)) return;
   if (
     args.req &&
     isAdminSessionCookieValid(args.req.cookies?.[ADMIN_SESSION_COOKIE])
