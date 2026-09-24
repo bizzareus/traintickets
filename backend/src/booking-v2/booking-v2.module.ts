@@ -10,6 +10,8 @@ import { PostHogTopRoutesService } from './posthog-top-routes.service';
 import { BestTrainsRouteCache } from './best-trains-cache';
 import { AlternatePathsRouteCache } from './alternate-paths-cache';
 
+import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
+
 @Module({
   imports: [IrctcModule, CronLeaderModule],
   controllers: [BookingV2Controller, SeatCacheController],
@@ -20,7 +22,13 @@ import { AlternatePathsRouteCache } from './alternate-paths-cache';
     PostHogTopRoutesService,
     BestTrainsRouteCache,
     AlternatePathsRouteCache,
+    PostHogAnalyticsService,
   ],
-  exports: [BookingV2Service, DynamoDbSeatCacheService, SeatCacheCronService],
+  exports: [
+    BookingV2Service,
+    DynamoDbSeatCacheService,
+    SeatCacheCronService,
+    PostHogAnalyticsService,
+  ],
 })
 export class BookingV2Module {}

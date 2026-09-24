@@ -19,6 +19,7 @@ import {
 } from './alternate-paths-cache';
 import type { RouteCacheRecord } from '../route-cache/route-cache.store';
 import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
+import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import { fetchWithTimeout } from '../common/fetch-with-timeout';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 
@@ -480,6 +481,7 @@ export class BookingV2Service {
     private readonly bestTrainsCache: BestTrainsRouteCache,
     private readonly altPathsCache: AlternatePathsRouteCache,
     private readonly dynamoDbSeatCache: DynamoDbSeatCacheService,
+    private readonly posthogAnalytics: PostHogAnalyticsService,
   ) {}
 
   async getTrainSchedule(trainNumber: string) {
@@ -597,6 +599,7 @@ export class BookingV2Service {
     dateInput: string,
     classes?: string[],
   ): Promise<unknown> {
+    const startTime = Date.now();
     const dateDdMmYyyy = this.normalizeToRailApiDate(dateInput);
     if (!dateDdMmYyyy) throw new Error('Invalid journey date');
     if (this.isPastDate(dateDdMmYyyy)) {
@@ -616,9 +619,20 @@ export class BookingV2Service {
         dateYmd,
       );
       if (ddbCached) {
+        const durationMs = Date.now() - startTime;
         this.logger.log(
-          `[booking-v2/trains/search] DynamoDB cache HIT for ${f}-${t} on ${dateYmd}`,
+          `[booking-v2/trains/search] DynamoDB cache HIT for ${f}-${t} on ${dateYmd} (${durationMs}ms)`,
         );
+        this.posthogAnalytics.capture('seat_cache_search', {
+          hit: true,
+          status: 'hit',
+          from: f,
+          to: t,
+          route: `${f}-${t}`,
+          journey_date: dateYmd,
+          duration_ms: durationMs,
+          classes: classes ?? [],
+        });
         return this.filterTrainSearchByClasses(ddbCached, classes);
       }
     } catch (err) {
@@ -636,6 +650,18 @@ export class BookingV2Service {
       t,
       dateDdMmYyyy,
     )) as Record<string, unknown>;
+
+    const durationMs = Date.now() - startTime;
+    this.posthogAnalytics.capture('seat_cache_search', {
+      hit: false,
+      status: 'miss',
+      from: f,
+      to: t,
+      route: `${f}-${t}`,
+      journey_date: dateYmd,
+      duration_ms: durationMs,
+      classes: classes ?? [],
+    });
 
     // 3. Save to DynamoDB in background
     void this.dynamoDbSeatCache

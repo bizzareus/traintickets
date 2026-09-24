@@ -11,6 +11,7 @@ import {
   PostHogTopRoutesService,
   type TopRoute,
 } from './posthog-top-routes.service';
+import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import { PrismaService } from '../prisma/prisma.service';
 
 /** Curated popular routes to keep warm, matching top searched OD corridors. */
@@ -139,6 +140,7 @@ export class SeatCacheCronService {
     private readonly leader: ChartCronLeaderService,
     private readonly topRoutes: PostHogTopRoutesService,
     private readonly prisma: PrismaService,
+    private readonly posthogAnalytics: PostHogAnalyticsService,
   ) {}
 
   private get enabled(): boolean {
@@ -511,6 +513,16 @@ export class SeatCacheCronService {
         `[seat-cache-cron] could not persist run record: ${e instanceof Error ? e.message : String(e)}`,
       );
     }
+
+    this.posthogAnalytics.capture('seat_cache_cron_finished', {
+      routes_warmed: warmedCount,
+      routes_failed: failedCount,
+      targets_processed: targets.length,
+      summary_count: Object.keys(summaryMap).length,
+      duration_ms: durationMs,
+      category: options?.category ?? 'all',
+      trigger: options ? 'manual' : 'cron',
+    });
 
     return {
       success: true,

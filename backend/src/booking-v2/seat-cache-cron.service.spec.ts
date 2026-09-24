@@ -5,6 +5,7 @@ import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import { ChartCronLeaderService } from '../chart-cron/chart-cron-leader.service';
 import { PostHogTopRoutesService } from './posthog-top-routes.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 
 describe('SeatCacheCronService', () => {
   let service: SeatCacheCronService;
@@ -94,6 +95,10 @@ describe('SeatCacheCronService', () => {
         { provide: ChartCronLeaderService, useValue: mockLeaderService },
         { provide: PostHogTopRoutesService, useValue: mockTopRoutesService },
         { provide: PrismaService, useValue: mockPrismaService },
+        {
+          provide: PostHogAnalyticsService,
+          useValue: { isEnabled: true, capture: jest.fn() },
+        },
       ],
     }).compile();
 

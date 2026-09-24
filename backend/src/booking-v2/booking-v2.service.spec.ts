@@ -25,6 +25,11 @@ const mockDynamoDbSeatCache: jest.Mocked<
   getAvailabilitySummary: jest.fn().mockResolvedValue(null),
 };
 
+const mockPostHogAnalytics = {
+  isEnabled: true,
+  capture: jest.fn(),
+};
+
 const mockCache: jest.Mocked<
   Pick<CacheService, 'get' | 'set' | 'del' | 'getOrSet'>
 > = {
@@ -156,6 +161,7 @@ describe('BookingV2Service', () => {
       mockBestTrainsCache as unknown as BestTrainsRouteCache,
       mockAltPathsCache as unknown as AlternatePathsRouteCache,
       mockDynamoDbSeatCache as unknown as DynamoDbSeatCacheService,
+      mockPostHogAnalytics as unknown as PostHogAnalyticsService,
     );
   });
 
