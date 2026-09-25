@@ -8,6 +8,7 @@ import {
   Req,
 } from '@nestjs/common';
 import type { Request } from 'express';
+import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 import { ShortLinkService } from './short-link.service';
 
 @Controller('api/short-link')
@@ -16,18 +17,24 @@ export class ShortLinkController {
 
   @Get('admin/overview')
   getAdminOverview(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Query('startDate') startDate?: string,
     @Query('endDate') endDate?: string,
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.shortLinkService.getAdminOverview({ startDate, endDate });
   }
 
   @Get('admin/stats')
   getAdminDailyStats(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Query('groupBy') groupBy?: 'day' | 'week' | 'month',
     @Query('startDate') startDate?: string,
     @Query('endDate') endDate?: string,
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.shortLinkService.getAdminDailyStats({
       groupBy,
       startDate,
@@ -37,6 +44,8 @@ export class ShortLinkController {
 
   @Get('admin/clicks')
   getAdminClicks(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Query('page') page?: string,
     @Query('limit') limit?: string,
     @Query('search') search?: string,
@@ -45,6 +54,7 @@ export class ShortLinkController {
     @Query('startDate') startDate?: string,
     @Query('endDate') endDate?: string,
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.shortLinkService.getAdminClicks({
       page: page ? Number(page) : undefined,
       limit: limit ? Number(limit) : undefined,
@@ -58,6 +68,8 @@ export class ShortLinkController {
 
   @Get('admin/links')
   getAdminLinks(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Query('page') page?: string,
     @Query('limit') limit?: string,
     @Query('search') search?: string,
@@ -67,6 +79,7 @@ export class ShortLinkController {
     @Query('startDate') startDate?: string,
     @Query('endDate') endDate?: string,
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.shortLinkService.getAdminLinks({
       page: page ? Number(page) : undefined,
       limit: limit ? Number(limit) : undefined,
@@ -81,10 +94,13 @@ export class ShortLinkController {
 
   @Get('admin/users')
   getAdminUsers(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Query('search') search?: string,
     @Query('startDate') startDate?: string,
     @Query('endDate') endDate?: string,
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.shortLinkService.getAdminUsers({ search, startDate, endDate });
   }
 

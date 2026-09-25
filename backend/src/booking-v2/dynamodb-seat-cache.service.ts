@@ -240,10 +240,11 @@ export class DynamoDbSeatCacheService {
 
     for (let i = 0; i < items.length; i += BATCH_SIZE) {
       const chunk = items.slice(i, i + BATCH_SIZE);
-      let putRequests: Array<{ PutRequest: { Item: Record<string, unknown> } }> =
-        chunk.map((item) => ({
-          PutRequest: { Item: item as unknown as Record<string, unknown> },
-        }));
+      let putRequests: Array<{
+        PutRequest: { Item: Record<string, unknown> };
+      }> = chunk.map((item) => ({
+        PutRequest: { Item: item as unknown as Record<string, unknown> },
+      }));
 
       let attempt = 0;
       while (putRequests.length > 0 && attempt <= MAX_RETRIES) {
