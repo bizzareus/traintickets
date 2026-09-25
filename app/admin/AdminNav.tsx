@@ -12,12 +12,17 @@ function AdminNavContent() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const isAnalytics = pathname?.startsWith("/admin/analytics") || pathname?.startsWith("/admin/short-links");
+  const isAnalytics =
+    pathname?.startsWith("/admin/analytics") ||
+    pathname?.startsWith("/admin/short-links");
   const currentTab = searchParams?.get("tab") || "notifications";
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setDropdownOpen(false);
       }
     }
@@ -33,7 +38,9 @@ function AdminNavContent() {
           type="button"
           onClick={() => setDropdownOpen((prev) => !prev)}
           className={`inline-flex items-center gap-1.5 text-sm font-medium transition ${
-            isAnalytics ? "text-indigo-600 font-semibold" : "text-slate-600 hover:text-slate-900"
+            isAnalytics
+              ? "text-indigo-600 font-semibold"
+              : "text-slate-600 hover:text-slate-900"
           }`}
         >
           <span>Analytics</span>
@@ -60,7 +67,9 @@ function AdminNavContent() {
               </div>
               <div className="flex flex-col">
                 <span>Notifications</span>
-                <span className="text-[10px] font-normal text-slate-400">Delivery & user alerts</span>
+                <span className="text-[10px] font-normal text-slate-400">
+                  Delivery & user alerts
+                </span>
               </div>
             </Link>
 
@@ -78,7 +87,9 @@ function AdminNavContent() {
               </div>
               <div className="flex flex-col">
                 <span>Short Links</span>
-                <span className="text-[10px] font-normal text-slate-400">Day-on-Day & clicks</span>
+                <span className="text-[10px] font-normal text-slate-400">
+                  Day-on-Day & clicks
+                </span>
               </div>
             </Link>
           </div>
@@ -88,39 +99,39 @@ function AdminNavContent() {
       <Link
         href="/admin/alerts"
         className={`text-sm font-medium transition ${
-          pathname === "/admin/alerts" ? "text-indigo-600 font-semibold" : "text-slate-600 hover:text-slate-900"
+          pathname === "/admin/alerts"
+            ? "text-indigo-600 font-semibold"
+            : "text-slate-600 hover:text-slate-900"
         }`}
       >
         Alerts
       </Link>
       <Link
-        href="/admin/chart-time-ingestion"
+        href="/admin/cache-status"
         className={`text-sm font-medium transition ${
-          pathname === "/admin/chart-time-ingestion" ? "text-indigo-600 font-semibold" : "text-slate-600 hover:text-slate-900"
+          pathname === "/admin/cache-status"
+            ? "font-semibold text-indigo-600"
+            : "text-slate-600 hover:text-slate-900"
         }`}
       >
-        Chart-time ingestion
+        Cache
       </Link>
       <Link
         href="/admin/reddit-gtm"
         className={`text-sm font-medium transition ${
-          pathname === "/admin/reddit-gtm" ? "text-indigo-600 font-semibold" : "text-slate-600 hover:text-slate-900"
+          pathname === "/admin/reddit-gtm"
+            ? "text-indigo-600 font-semibold"
+            : "text-slate-600 hover:text-slate-900"
         }`}
       >
         Reddit GTM
       </Link>
       <Link
-        href="/admin/best-seats-cron"
-        className={`text-sm font-medium transition ${
-          pathname === "/admin/best-seats-cron" ? "text-indigo-600 font-semibold" : "text-slate-600 hover:text-slate-900"
-        }`}
-      >
-        Best-seats cron
-      </Link>
-      <Link
         href="/admin/unsubscribes"
         className={`text-sm font-medium transition ${
-          pathname === "/admin/unsubscribes" ? "text-indigo-600 font-semibold" : "text-slate-600 hover:text-slate-900"
+          pathname === "/admin/unsubscribes"
+            ? "text-indigo-600 font-semibold"
+            : "text-slate-600 hover:text-slate-900"
         }`}
       >
         Unsubscribes
@@ -128,7 +139,9 @@ function AdminNavContent() {
       <Link
         href="/admin/refunds"
         className={`text-sm font-medium transition ${
-          pathname === "/admin/refunds" ? "text-indigo-600 font-semibold" : "text-slate-600 hover:text-slate-900"
+          pathname === "/admin/refunds"
+            ? "text-indigo-600 font-semibold"
+            : "text-slate-600 hover:text-slate-900"
         }`}
       >
         Refunds
@@ -140,7 +153,13 @@ function AdminNavContent() {
 
 export default function AdminNav() {
   return (
-    <Suspense fallback={<nav className="flex items-center gap-4 text-sm text-slate-600">Loading...</nav>}>
+    <Suspense
+      fallback={
+        <nav className="flex items-center gap-4 text-sm text-slate-600">
+          Loading...
+        </nav>
+      }
+    >
       <AdminNavContent />
     </Suspense>
   );

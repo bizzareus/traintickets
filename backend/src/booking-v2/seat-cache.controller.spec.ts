@@ -19,6 +19,11 @@ describe('SeatCacheController', () => {
 
   const mockDynamoDbSeatCache = {
     isAvailable: true,
+    getCacheInventory: jest.fn().mockResolvedValue({
+      available: true,
+      trainCount: 2,
+      trains: [{ trainNumber: '05047' }, { trainNumber: '22436' }],
+    }),
     getAvailabilitySummary: jest.fn().mockImplementation((category: string) => {
       if (category.toLowerCase() === 'diwali') {
         return Promise.resolve({
@@ -40,6 +45,7 @@ describe('SeatCacheController', () => {
   };
 
   beforeEach(async () => {
+    process.env.CHART_TIME_INGESTION_PASSWORD = 'admin-secret';
     const module: TestingModule = await Test.createTestingModule({
       controllers: [SeatCacheController],
       providers: [
@@ -50,6 +56,11 @@ describe('SeatCacheController', () => {
     }).compile();
 
     controller = module.get<SeatCacheController>(SeatCacheController);
+  });
+
+  afterAll(() => {
+    delete process.env.CHART_TIME_INGESTION_PASSWORD;
+    delete process.env.SEAT_CACHE_CRON_API_KEY;
   });
 
   describe('getAvailabilitySummary', () => {
@@ -89,6 +100,26 @@ describe('SeatCacheController', () => {
       expect(mockSeatCacheCron.runNow).toHaveBeenCalledWith({
         category: 'diwali',
       });
+    });
+  });
+
+  describe('getCacheInventory', () => {
+    it('returns valid DynamoDB cache inventory for an authenticated admin', async () => {
+      const result = await controller.getCacheInventory(
+        'admin-secret',
+        {} as never,
+      );
+
+      expect(mockDynamoDbSeatCache.getCacheInventory).toHaveBeenCalled();
+      expect(result).toEqual(
+        expect.objectContaining({ available: true, trainCount: 2 }),
+      );
+    });
+
+    it('rejects unauthenticated cache inventory requests', async () => {
+      await expect(
+        controller.getCacheInventory(undefined, {} as never),
+      ).rejects.toThrow(UnauthorizedException);
     });
   });
 });

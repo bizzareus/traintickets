@@ -326,6 +326,7 @@ resource "aws_iam_policy" "backend_dynamo_policy" {
           "dynamodb:GetItem",
           "dynamodb:PutItem",
           "dynamodb:Query",
+          "dynamodb:Scan",
           "dynamodb:BatchGetItem",
           "dynamodb:BatchWriteItem"
         ]

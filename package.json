@@ -26,7 +26,8 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:install": "playwright install chromium",
-    "proxy:local": "cd backend && npm run proxy:local"
+    "proxy:local": "cd backend && npm run proxy:local",
+    "gsc:fetch": "npx tsx scripts/fetch-gsc-performance.ts"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.1134.0",
@@ -39,6 +40,7 @@
     "browser-use-sdk": "^3.3.0",
     "clsx": "^2.1.1",
     "flowbite": "^4.0.1",
+    "googleapis": "^182.0.0",
     "got-scraping": "^4.2.1",
     "gray-matter": "^4.0.3",
     "html2canvas": "^1.4.1",

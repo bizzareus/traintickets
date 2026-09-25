@@ -111,6 +111,15 @@ export class SeatCacheController {
     };
   }
 
+  @Get('api/admin/seat-cache')
+  async getCacheInventory(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
+    return this.dynamoDbSeatCache.getCacheInventory();
+  }
+
   private assertAuthorized(apiKey?: string, pw?: string, req?: Request): void {
     const expectedKey = String(
       process.env.SEAT_CACHE_CRON_API_KEY ??

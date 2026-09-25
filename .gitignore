@@ -70,3 +70,13 @@ infra/terraform/aws/build/
 .gstack/
 storage/
 backend/storage/
+
+# credentials and service account keys
+*service-account*.json
+*serviceaccount*.json
+*gsc*.json
+*credentials*.json
+*.key.json
+
+# downloaded search console data
+data/gsc/

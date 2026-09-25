@@ -6,6 +6,7 @@ import {
   PutCommand,
   QueryCommand,
   BatchWriteCommand,
+  paginateScan,
 } from '@aws-sdk/lib-dynamodb';
 
 export interface CachedSeatItem {
@@ -35,6 +36,30 @@ export interface RouteSearchRecord {
 export interface RouteCacheLookupResult {
   status: 'hit' | 'miss' | 'error' | 'disabled';
   value: Record<string, unknown> | null;
+}
+
+export interface CachedTrainInventoryItem {
+  trainNumber: string;
+  itemCount: number;
+  dates: string[];
+  classes: string[];
+  expiresAt: string | null;
+  updatedAt: string | null;
+}
+
+export interface SeatCacheInventory {
+  available: boolean;
+  tableName: string;
+  generatedAt: string;
+  scannedItemCount: number;
+  validItemCount: number;
+  trainCount: number;
+  seatItemCount: number;
+  routeCount: number;
+  summaryCount: number;
+  expiresAt: string | null;
+  updatedAt: string | null;
+  trains: CachedTrainInventoryItem[];
 }
 
 const DEFAULT_TABLE_NAME = 'lastberth-train-seat-cache';
@@ -85,6 +110,142 @@ export class DynamoDbSeatCacheService {
 
   get isAvailable(): boolean {
     return this.docClient !== null;
+  }
+
+  async getCacheInventory(): Promise<SeatCacheInventory> {
+    const generatedAt = new Date();
+    if (!this.docClient) {
+      return {
+        available: false,
+        tableName: this.tableName,
+        generatedAt: generatedAt.toISOString(),
+        scannedItemCount: 0,
+        validItemCount: 0,
+        trainCount: 0,
+        seatItemCount: 0,
+        routeCount: 0,
+        summaryCount: 0,
+        expiresAt: null,
+        updatedAt: null,
+        trains: [],
+      };
+    }
+
+    const nowSecs = Math.floor(generatedAt.getTime() / 1000);
+    const items: Record<string, unknown>[] = [];
+    let scannedItemCount = 0;
+
+    for await (const page of paginateScan(
+      { client: this.docClient },
+      {
+        TableName: this.tableName,
+        ProjectionExpression:
+          'trainNumber, dateClass, travelClass, updatedAt, #ttl',
+        FilterExpression: 'attribute_not_exists(#ttl) OR #ttl >= :now',
+        ExpressionAttributeNames: { '#ttl': 'ttl' },
+        ExpressionAttributeValues: { ':now': nowSecs },
+      },
+    )) {
+      scannedItemCount += page.ScannedCount ?? 0;
+      items.push(...((page.Items ?? []) as Record<string, unknown>[]));
+    }
+
+    const trains = new Map<
+      string,
+      {
+        itemCount: number;
+        dates: Set<string>;
+        classes: Set<string>;
+        expiresAt: number | null;
+        updatedAt: string | null;
+      }
+    >();
+    let routeCount = 0;
+    let summaryCount = 0;
+    let seatItemCount = 0;
+    let expiresAt: number | null = null;
+    let updatedAt: string | null = null;
+
+    for (const item of items) {
+      const trainNumber = toSafeString(item.trainNumber);
+      const ttl = typeof item.ttl === 'number' ? item.ttl : null;
+      if (!trainNumber || (ttl !== null && ttl < nowSecs)) continue;
+
+      const itemUpdatedAt = toSafeString(item.updatedAt) || null;
+      if (ttl !== null && (expiresAt === null || ttl < expiresAt)) {
+        expiresAt = ttl;
+      }
+      if (itemUpdatedAt && (!updatedAt || itemUpdatedAt > updatedAt)) {
+        updatedAt = itemUpdatedAt;
+      }
+
+      if (trainNumber.startsWith(ROUTE_PREFIX)) {
+        routeCount++;
+        continue;
+      }
+      if (trainNumber.startsWith('SUMMARY#')) {
+        summaryCount++;
+        continue;
+      }
+
+      seatItemCount++;
+      const dateClass = toSafeString(item.dateClass);
+      const [date, classFromKey] = dateClass.split('#');
+      const travelClass = toSafeString(item.travelClass) || classFromKey;
+      const current = trains.get(trainNumber) ?? {
+        itemCount: 0,
+        dates: new Set<string>(),
+        classes: new Set<string>(),
+        expiresAt: null,
+        updatedAt: null,
+      };
+      current.itemCount++;
+      if (date) current.dates.add(date);
+      if (travelClass) current.classes.add(travelClass);
+      if (
+        ttl !== null &&
+        (current.expiresAt === null || ttl < current.expiresAt)
+      ) {
+        current.expiresAt = ttl;
+      }
+      if (
+        itemUpdatedAt &&
+        (!current.updatedAt || itemUpdatedAt > current.updatedAt)
+      ) {
+        current.updatedAt = itemUpdatedAt;
+      }
+      trains.set(trainNumber, current);
+    }
+
+    const trainItems = Array.from(trains, ([trainNumber, item]) => ({
+      trainNumber,
+      itemCount: item.itemCount,
+      dates: Array.from(item.dates).sort(),
+      classes: Array.from(item.classes).sort(),
+      expiresAt: item.expiresAt
+        ? new Date(item.expiresAt * 1000).toISOString()
+        : null,
+      updatedAt: item.updatedAt,
+    })).sort((a, b) =>
+      a.trainNumber < b.trainNumber
+        ? -1
+        : Number(a.trainNumber > b.trainNumber),
+    );
+
+    return {
+      available: true,
+      tableName: this.tableName,
+      generatedAt: generatedAt.toISOString(),
+      scannedItemCount,
+      validItemCount: routeCount + summaryCount + seatItemCount,
+      trainCount: trainItems.length,
+      seatItemCount,
+      routeCount,
+      summaryCount,
+      expiresAt: expiresAt ? new Date(expiresAt * 1000).toISOString() : null,
+      updatedAt,
+      trains: trainItems,
+    };
   }
 
   /**
