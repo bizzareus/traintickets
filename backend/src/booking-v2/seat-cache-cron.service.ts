@@ -430,11 +430,13 @@ export class SeatCacheCronService {
         // Reuse in-memory search from warming pass if available; fallback to DynamoDB
         const cachedRoute =
           inMemorySearches.get(memKey) ??
-          (await this.dynamoDbSeatCache.getRouteCachedSearch(
-            target.from,
-            target.to,
-            d,
-          ));
+          (
+            await this.dynamoDbSeatCache.getRouteCachedSearch(
+              target.from,
+              target.to,
+              d,
+            )
+          ).value;
 
         const data = cachedRoute?.data as Record<string, unknown> | undefined;
         const trainList = Array.isArray(data?.trainList) ? data.trainList : [];

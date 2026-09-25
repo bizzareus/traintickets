@@ -48,7 +48,10 @@ describe('SeatCacheCronService', () => {
       .fn()
       .mockImplementation((from: string, to: string, date: string) => {
         const key = `ROUTE#${from}#${to}:${date}`;
-        return Promise.resolve(ddbStore.get(key) ?? null);
+        const value = ddbStore.get(key);
+        return Promise.resolve(
+          value ? { status: 'hit', value } : { status: 'miss', value: null },
+        );
       }),
     saveRouteCachedSearch: jest
       .fn()

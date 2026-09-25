@@ -41,7 +41,13 @@ resource "aws_instance" "frontend" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.instance_type
   key_name               = var.ssh_public_key != "" ? aws_key_pair.deployer[0].key_name : null
+  iam_instance_profile   = aws_iam_instance_profile.frontend_instance_profile.name
   vpc_security_group_ids = [aws_security_group.frontend_sg.id]
+
+  lifecycle {
+    # A newer Ubuntu AMI or user-data edit should not replace a live server.
+    ignore_changes = [ami, user_data]
+  }
 
   root_block_device {
     volume_size           = 25 # GB (within AWS Free Tier 30 GB limit)

@@ -15,6 +15,7 @@ export class PostHogAnalyticsService {
     ).replace(/\/+$/, '');
 
     this.apiKey =
+      process.env.POSTHOG_PROJECT_API_KEY?.trim() ||
       process.env.POSTHOG_API_KEY?.trim() ||
       process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim() ||
       process.env.POSTHOG_KEY?.trim() ||
@@ -56,7 +57,7 @@ export class PostHogAnalyticsService {
       },
     };
 
-    fetchWithTimeout(
+    void fetchWithTimeout(
       `${this.host}/capture/`,
       {
         method: 'POST',
@@ -64,10 +65,18 @@ export class PostHogAnalyticsService {
         body: JSON.stringify(payload),
       },
       4000,
-    ).catch((err) => {
-      this.logger.warn(
-        `[PostHogAnalytics] Failed to send "${event}" event: ${err instanceof Error ? err.message : String(err)}`,
-      );
-    });
+    )
+      .then((response) => {
+        if (!response.ok) {
+          this.logger.warn(
+            `[PostHogAnalytics] PostHog rejected "${event}" event with HTTP ${response.status}`,
+          );
+        }
+      })
+      .catch((err) => {
+        this.logger.warn(
+          `[PostHogAnalytics] Failed to send "${event}" event: ${err instanceof Error ? err.message : String(err)}`,
+        );
+      });
   }
 }

@@ -6,6 +6,7 @@ import type { StationCacheService } from '../cache/station-cache.service';
 import type { BestTrainsRouteCache } from './best-trains-cache';
 import type { AlternatePathsRouteCache } from './alternate-paths-cache';
 import type { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
+import type { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import axios from 'axios';
 
 const mockDynamoDbSeatCache: jest.Mocked<
@@ -18,7 +19,9 @@ const mockDynamoDbSeatCache: jest.Mocked<
     | 'getAvailabilitySummary'
   >
 > = {
-  getRouteCachedSearch: jest.fn().mockResolvedValue(null),
+  getRouteCachedSearch: jest
+    .fn()
+    .mockResolvedValue({ status: 'miss', value: null }),
   saveRouteCachedSearch: jest.fn().mockResolvedValue(undefined),
   getTrainCachedSeats: jest.fn().mockResolvedValue([]),
   saveAvailabilitySummary: jest.fn().mockResolvedValue(undefined),
@@ -237,9 +240,10 @@ describe('BookingV2Service', () => {
   describe('searchTrains (cache integration)', () => {
     it('returns cached results from DynamoDB when present without calling upstream', async () => {
       const fakeResult = { data: { trainList: [] } };
-      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce(
-        fakeResult,
-      );
+      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce({
+        status: 'hit',
+        value: fakeResult,
+      });
 
       const result = await service.searchTrains('NDLS', 'CSTM', '2029-04-05');
 
@@ -249,11 +253,18 @@ describe('BookingV2Service', () => {
         '2029-04-05',
       );
       expect(result).toEqual(fakeResult);
+      expect(mockPostHogAnalytics.capture).toHaveBeenCalledWith(
+        'seat_cache_search',
+        expect.objectContaining({ hit: true, status: 'hit' }),
+      );
     });
 
     it('falls back to upstream ConfirmTkt API on DynamoDB miss and saves to DynamoDB', async () => {
       const fakeResult = { data: { trainList: [] } };
-      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce(null);
+      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce({
+        status: 'miss',
+        value: null,
+      });
       const upstreamSpy = jest
         .spyOn(service, 'fetchTrainsFromUpstream')
         .mockResolvedValueOnce(fakeResult);
@@ -268,6 +279,28 @@ describe('BookingV2Service', () => {
         fakeResult,
       );
       expect(result).toEqual(fakeResult);
+      expect(mockPostHogAnalytics.capture).toHaveBeenCalledWith(
+        'seat_cache_search',
+        expect.objectContaining({ hit: false, status: 'miss' }),
+      );
+    });
+
+    it('reports DynamoDB lookup failures separately from ordinary misses', async () => {
+      const fakeResult = { data: { trainList: [] } };
+      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce({
+        status: 'error',
+        value: null,
+      });
+      jest
+        .spyOn(service, 'fetchTrainsFromUpstream')
+        .mockResolvedValueOnce(fakeResult);
+
+      await service.searchTrains('NDLS', 'CSTM', '2029-04-05');
+
+      expect(mockPostHogAnalytics.capture).toHaveBeenCalledWith(
+        'seat_cache_search',
+        expect.objectContaining({ hit: false, status: 'error' }),
+      );
     });
 
     it('throws for an invalid date', async () => {
@@ -300,9 +333,10 @@ describe('BookingV2Service', () => {
           ],
         },
       };
-      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce(
-        fullResponse,
-      );
+      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce({
+        status: 'hit',
+        value: fullResponse,
+      });
 
       const result = (await service.searchTrains('NDLS', 'CSTM', '2029-04-05', [
         '3A',

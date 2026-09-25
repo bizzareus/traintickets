@@ -248,7 +248,7 @@ resource "aws_lambda_permission" "allow_eventbridge_to_invoke_producer" {
   source_arn    = aws_cloudwatch_event_rule.daily_seat_sync.arn
 }
 
-# 9. Frontend EC2 Read Access for DynamoDB
+# 9. EC2 Access for DynamoDB
 resource "aws_iam_role" "frontend_ec2_role" {
   name = "${var.project_name}-frontend-ec2-role"
 
@@ -294,6 +294,55 @@ resource "aws_iam_role_policy_attachment" "frontend_dynamo_attach" {
 resource "aws_iam_instance_profile" "frontend_instance_profile" {
   name = "${var.project_name}-frontend-instance-profile"
   role = aws_iam_role.frontend_ec2_role.name
+}
+
+resource "aws_iam_role" "backend_ec2_role" {
+  name = "${var.project_name}-backend-ec2-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      }
+    ]
+  })
+}
+
+resource "aws_iam_policy" "backend_dynamo_policy" {
+  name        = "${var.project_name}-backend-dynamo-policy"
+  description = "Allows Backend NestJS EC2 to read and write the DynamoDB seat cache"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:Query",
+          "dynamodb:BatchGetItem",
+          "dynamodb:BatchWriteItem"
+        ]
+        Resource = aws_dynamodb_table.train_seat_cache.arn
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "backend_dynamo_attach" {
+  role       = aws_iam_role.backend_ec2_role.name
+  policy_arn = aws_iam_policy.backend_dynamo_policy.arn
+}
+
+resource "aws_iam_instance_profile" "backend_instance_profile" {
+  name = "${var.project_name}-backend-instance-profile"
+  role = aws_iam_role.backend_ec2_role.name
 }
 
 # 10. Outputs

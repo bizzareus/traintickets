@@ -32,6 +32,11 @@ export interface RouteSearchRecord {
   ttl: number;
 }
 
+export interface RouteCacheLookupResult {
+  status: 'hit' | 'miss' | 'error' | 'disabled';
+  value: Record<string, unknown> | null;
+}
+
 const DEFAULT_TABLE_NAME = 'lastberth-train-seat-cache';
 const DEFAULT_REGION = 'ap-south-1';
 const ROUTE_PREFIX = 'ROUTE#';
@@ -89,12 +94,14 @@ export class DynamoDbSeatCacheService {
     from: string,
     to: string,
     journeyDateYmd: string,
-  ): Promise<Record<string, unknown> | null> {
-    if (!this.docClient) return null;
+  ): Promise<RouteCacheLookupResult> {
+    if (!this.docClient) return { status: 'disabled', value: null };
 
     const f = from.trim().toUpperCase();
     const t = to.trim().toUpperCase();
-    if (!STATION_CODE_RE.test(f) || !STATION_CODE_RE.test(t)) return null;
+    if (!STATION_CODE_RE.test(f) || !STATION_CODE_RE.test(t)) {
+      return { status: 'miss', value: null };
+    }
     const d = journeyDateYmd.trim();
     const routeKey = `${ROUTE_PREFIX}${f}#${t}`;
 
@@ -109,23 +116,26 @@ export class DynamoDbSeatCacheService {
         }),
       );
 
-      if (!res.Item) return null;
+      if (!res.Item) return { status: 'miss', value: null };
 
       const nowSecs = Math.floor(Date.now() / 1000);
       if (res.Item.ttl && res.Item.ttl < nowSecs) {
-        return null; // Expired
+        return { status: 'miss', value: null };
       }
 
       const raw = res.Item.rawSearch;
       if (raw && typeof raw === 'object') {
-        return raw as Record<string, unknown>;
+        return {
+          status: 'hit',
+          value: raw as Record<string, unknown>,
+        };
       }
-      return null;
+      return { status: 'miss', value: null };
     } catch (err) {
       this.logger.warn(
         `[DynamoDB] getRouteCachedSearch error for ${routeKey} ${d}: ${err instanceof Error ? err.message : String(err)}`,
       );
-      return null;
+      return { status: 'error', value: null };
     }
   }
 

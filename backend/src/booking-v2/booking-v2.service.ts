@@ -612,38 +612,32 @@ export class BookingV2Service {
     const t = to.trim().toUpperCase();
 
     // 1. Check DynamoDB seat cache first
-    try {
-      const ddbCached = await this.dynamoDbSeatCache.getRouteCachedSearch(
-        f,
-        t,
-        dateYmd,
+    const cacheLookup = await this.dynamoDbSeatCache.getRouteCachedSearch(
+      f,
+      t,
+      dateYmd,
+    );
+    if (cacheLookup.value) {
+      const durationMs = Date.now() - startTime;
+      this.logger.log(
+        `[booking-v2/trains/search] DynamoDB cache HIT for ${f}-${t} on ${dateYmd} (${durationMs}ms)`,
       );
-      if (ddbCached) {
-        const durationMs = Date.now() - startTime;
-        this.logger.log(
-          `[booking-v2/trains/search] DynamoDB cache HIT for ${f}-${t} on ${dateYmd} (${durationMs}ms)`,
-        );
-        this.posthogAnalytics.capture('seat_cache_search', {
-          hit: true,
-          status: 'hit',
-          from: f,
-          to: t,
-          route: `${f}-${t}`,
-          journey_date: dateYmd,
-          duration_ms: durationMs,
-          classes: classes ?? [],
-        });
-        return this.filterTrainSearchByClasses(ddbCached, classes);
-      }
-    } catch (err) {
-      this.logger.warn(
-        `[booking-v2/trains/search] DynamoDB lookup error: ${err instanceof Error ? err.message : String(err)}`,
-      );
+      this.posthogAnalytics.capture('seat_cache_search', {
+        hit: true,
+        status: 'hit',
+        from: f,
+        to: t,
+        route: `${f}-${t}`,
+        journey_date: dateYmd,
+        duration_ms: durationMs,
+        classes: classes ?? [],
+      });
+      return this.filterTrainSearchByClasses(cacheLookup.value, classes);
     }
 
     // 2. Fall back to ConfirmTkt live API on cache miss
     this.logger.log(
-      `[booking-v2/trains/search] DynamoDB cache MISS for ${f}-${t} on ${dateYmd}, fetching live upstream`,
+      `[booking-v2/trains/search] DynamoDB cache ${cacheLookup.status.toUpperCase()} for ${f}-${t} on ${dateYmd}, fetching live upstream`,
     );
     const rawSearch = (await this.fetchTrainsFromUpstream(
       f,
@@ -654,7 +648,7 @@ export class BookingV2Service {
     const durationMs = Date.now() - startTime;
     this.posthogAnalytics.capture('seat_cache_search', {
       hit: false,
-      status: 'miss',
+      status: cacheLookup.status,
       from: f,
       to: t,
       route: `${f}-${t}`,
