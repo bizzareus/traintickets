@@ -210,6 +210,7 @@ export function MobileModifySearchSheet({
             Train Class
           </span>
           <TrainClassMultiSelect
+            variant="dropdown"
             selectedClasses={selectedClasses}
             onChange={onSelectedClassesChange ?? (() => {})}
           />
