@@ -21,6 +21,7 @@ describe('JourneyTaskService', () => {
       create: jest.fn(),
       createMany: jest.fn().mockResolvedValue({ count: 1 }),
       update: jest.fn(),
+      updateMany: jest.fn().mockResolvedValue({ count: 1 }),
     },
     monitoringContact: {
       findFirst: jest.fn().mockResolvedValue(null),
@@ -101,7 +102,10 @@ describe('JourneyTaskService', () => {
 
   describe('runDueTasks', () => {
     it('should pick up due tasks and mark them as running', async () => {
-      const mockTasks = [{ id: 'task-1' }, { id: 'task-2' }];
+      const mockTasks = [
+        { id: 'task-1', retry_count: 1, lease_version: 1 },
+        { id: 'task-2', retry_count: 1, lease_version: 1 },
+      ];
       mockPrisma.$queryRaw.mockResolvedValue(mockTasks);
 
       // Mock runTask to prevent actual execution logic for this test
@@ -137,6 +141,109 @@ describe('JourneyTaskService', () => {
       expect(flat).toContain('NOT EXISTS');
       expect(runTaskSpy).not.toHaveBeenCalled();
     });
+
+    it('starts claimed tasks concurrently instead of serially', async () => {
+      let finishFirst!: () => void;
+      let finishSecond!: () => void;
+      const first = new Promise<void>((resolve) => {
+        finishFirst = resolve;
+      });
+      const second = new Promise<void>((resolve) => {
+        finishSecond = resolve;
+      });
+      mockPrisma.$queryRaw.mockResolvedValue([
+        { id: 'task-1', retry_count: 1, lease_version: 3 },
+        { id: 'task-2', retry_count: 1, lease_version: 4 },
+      ]);
+      const runTaskSpy = jest
+        .spyOn(service, 'runTask')
+        .mockImplementation((id) => (id === 'task-1' ? first : second));
+
+      const run = service.runDueTasks();
+      await Promise.resolve();
+      await Promise.resolve();
+
+      expect(runTaskSpy).toHaveBeenCalledTimes(2);
+      expect(runTaskSpy).toHaveBeenCalledWith('task-1', true, 3);
+      expect(runTaskSpy).toHaveBeenCalledWith('task-2', true, 4);
+
+      finishFirst();
+      finishSecond();
+      await run;
+    });
+
+    it('reuses a worker slot while a sibling task is still blocked', async () => {
+      let finishFast!: () => void;
+      let finishSlow!: () => void;
+      const fast = new Promise<void>((resolve) => {
+        finishFast = resolve;
+      });
+      const slow = new Promise<void>((resolve) => {
+        finishSlow = resolve;
+      });
+      mockPrisma.$queryRaw
+        .mockResolvedValueOnce([
+          { id: 'task-fast', retry_count: 1, lease_version: 1 },
+          { id: 'task-slow', retry_count: 1, lease_version: 1 },
+        ])
+        .mockResolvedValueOnce([
+          { id: 'task-next', retry_count: 1, lease_version: 1 },
+        ]);
+      const runTaskSpy = jest
+        .spyOn(service, 'runTask')
+        .mockImplementation((id) => {
+          if (id === 'task-fast') return fast;
+          if (id === 'task-slow') return slow;
+          return Promise.resolve();
+        });
+
+      const firstRun = service.runDueTasks();
+      await Promise.resolve();
+      await Promise.resolve();
+      finishFast();
+      await new Promise<void>((resolve) => setImmediate(resolve));
+
+      const nextRun = service.runDueTasks();
+      await nextRun;
+      finishSlow();
+      await firstRun;
+
+      expect(runTaskSpy).toHaveBeenCalledWith('task-next', true, 1);
+    });
+
+    it('fences a timed-out attempt before scheduling its retry', async () => {
+      jest.useFakeTimers();
+      process.env.CHART_TASK_DEADLINE_SECONDS = '30';
+      mockPrisma.$queryRaw.mockResolvedValue([
+        { id: 'task-timeout', retry_count: 1, lease_version: 7 },
+      ]);
+      jest.spyOn(service, 'runTask').mockReturnValue(new Promise(() => {}));
+
+      const run = service.runDueTasks();
+      await Promise.resolve();
+      await jest.advanceTimersByTimeAsync(30_000);
+      await run;
+
+      expect(
+        mockPrisma.chartTimeAvailabilityTask.updateMany,
+      ).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: {
+            id: 'task-timeout',
+            leaseVersion: 7,
+            status: 'running',
+          },
+          data: expect.objectContaining({
+            status: 'pending',
+            leaseVersion: { increment: 1 },
+            lockedAt: null,
+          }),
+        }),
+      );
+
+      delete process.env.CHART_TASK_DEADLINE_SECONDS;
+      jest.useRealTimers();
+    });
   });
 
   describe('runTask', () => {
@@ -152,7 +259,23 @@ describe('JourneyTaskService', () => {
       toStationCode: 'BPL',
       status: 'pending',
       retryCount: 0,
+      leaseVersion: 0,
     };
+
+    it('ignores work from an attempt whose lease has been replaced', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
+        ...mockTaskData,
+        status: 'running',
+        leaseVersion: 8,
+      });
+
+      await service.runTask('task-1', true, 7);
+
+      expect(mockBookingV2.findAlternatePaths).not.toHaveBeenCalled();
+      expect(
+        mockPrisma.chartTimeAvailabilityTask.updateMany,
+      ).not.toHaveBeenCalled();
+    });
 
     it('should process a task and send notification if tickets are found', async () => {
       mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue(
@@ -1076,6 +1199,54 @@ describe('JourneyTaskService', () => {
   });
 
   describe('resendFailedWhatsAppNotifications', () => {
+    it('does not let one resend block the rest of the worker pool', async () => {
+      let finishFirst!: (value: {
+        emailSent: boolean;
+        whatsappSent: boolean;
+      }) => void;
+      const first = new Promise<{
+        emailSent: boolean;
+        whatsappSent: boolean;
+      }>((resolve) => {
+        finishFirst = resolve;
+      });
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+        {
+          id: 'task-slow',
+          journeyRequestId: 'jid-slow',
+          trainNumber: '12128',
+          fromStationCode: 'PUNE',
+          toStationCode: 'CSMT',
+          journeyDate: new Date('2026-09-06'),
+          whatsappRetryCount: 0,
+          resultPayload: { status: 'success' },
+          contact: { mobile: '919340004898', email: null },
+        },
+        {
+          id: 'task-fast',
+          journeyRequestId: 'jid-fast',
+          trainNumber: '12128',
+          fromStationCode: 'PUNE',
+          toStationCode: 'CSMT',
+          journeyDate: new Date('2026-09-06'),
+          whatsappRetryCount: 0,
+          resultPayload: { status: 'success' },
+          contact: { mobile: '919340004899', email: null },
+        },
+      ]);
+      mockNotification.notifyUser
+        .mockReturnValueOnce(first)
+        .mockResolvedValueOnce({ emailSent: false, whatsappSent: true });
+
+      const run = service.resendFailedWhatsAppNotifications(24);
+      await Promise.resolve();
+      await Promise.resolve();
+
+      expect(mockNotification.notifyUser).toHaveBeenCalledTimes(2);
+      finishFirst({ emailSent: false, whatsappSent: true });
+      await expect(run).resolves.toEqual({ found: 2, resent: 2, failed: 0 });
+    });
+
     it('should increment whatsappRetryCount and mark as unsend when retries reach 3', async () => {
       mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
         {

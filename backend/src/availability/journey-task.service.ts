@@ -50,6 +50,27 @@ import { ChartAlertRefundsService } from '../chart-alert-payments/chart-alert-re
 import type { AdminMonitoringPaymentDetails } from '../notification/templates';
 
 const MAX_CHART_TASK_ATTEMPTS = 3;
+const DEFAULT_CHART_TASK_CONCURRENCY = 2;
+const DEFAULT_CHART_TASK_DEADLINE_SECONDS = 240;
+
+function boundedEnvInt(
+  name: string,
+  fallback: number,
+  min: number,
+  max: number,
+): number {
+  const parsed = Number.parseInt(process.env[name] ?? '', 10);
+  return Number.isFinite(parsed) && parsed >= min && parsed <= max
+    ? parsed
+    : fallback;
+}
+
+type ChartTaskClaim = {
+  id: string;
+  retry_count: number;
+  lease_version: number;
+  to_station_code?: string;
+};
 
 export type JourneyValidationError = {
   code: string;
@@ -318,6 +339,7 @@ export type RunDueTasksResult = {
 @Injectable()
 export class JourneyTaskService {
   private readonly logger = new Logger(JourneyTaskService.name);
+  private activeChartWorkers = 0;
 
   constructor(
     private prisma: PrismaService,
@@ -332,6 +354,24 @@ export class JourneyTaskService {
     @Optional()
     private refundsService?: ChartAlertRefundsService,
   ) {}
+
+  private chartTaskConcurrency(): number {
+    return boundedEnvInt(
+      'CHART_TASK_CONCURRENCY',
+      DEFAULT_CHART_TASK_CONCURRENCY,
+      1,
+      10,
+    );
+  }
+
+  private chartTaskDeadlineSeconds(): number {
+    return boundedEnvInt(
+      'CHART_TASK_DEADLINE_SECONDS',
+      DEFAULT_CHART_TASK_DEADLINE_SECONDS,
+      30,
+      900,
+    );
+  }
 
   /**
    * Validates journey monitoring request (schedule, run day, route, optional station filter).
@@ -1407,6 +1447,111 @@ export class JourneyTaskService {
    * Run a single ChartTimeAvailabilityTask by calling the Service2 check API
    * internally to find available seats at chart time.
    */
+  private async updateTaskForAttempt(
+    taskId: string,
+    leaseVersion: number | undefined,
+    data: Prisma.ChartTimeAvailabilityTaskUpdateManyMutationInput,
+  ): Promise<boolean> {
+    if (leaseVersion == null) {
+      await this.prisma.chartTimeAvailabilityTask.update({
+        where: { id: taskId },
+        data,
+      });
+      return true;
+    }
+
+    const updated = await this.prisma.chartTimeAvailabilityTask.updateMany({
+      where: { id: taskId, leaseVersion },
+      data,
+    });
+    return updated.count === 1;
+  }
+
+  private async expireTaskAttempt(
+    claim: ChartTaskClaim,
+    reason: string,
+  ): Promise<boolean> {
+    const shouldRetry = claim.retry_count < MAX_CHART_TASK_ATTEMPTS;
+    const nextRunAt = shouldRetry
+      ? new Date(Date.now() + retryDelayMsForAttempt(claim.retry_count))
+      : null;
+    const updated = await this.prisma.chartTimeAvailabilityTask.updateMany({
+      where: {
+        id: claim.id,
+        leaseVersion: claim.lease_version,
+        status: 'running',
+      },
+      data: {
+        status: shouldRetry ? 'pending' : 'failed',
+        nextRunAt,
+        lockedAt: null,
+        completedAt: shouldRetry ? null : new Date(),
+        lastError: reason.slice(0, 1000),
+        leaseVersion: { increment: 1 },
+      },
+    });
+    if (updated.count > 0) {
+      this.logger.warn(
+        `[journey] ${reason}; task=${claim.id} attempt=${claim.retry_count}${nextRunAt ? ` retryAt=${nextRunAt.toISOString()}` : ''}`,
+      );
+    }
+    return updated.count > 0;
+  }
+
+  private async runClaimedTask(claim: ChartTaskClaim): Promise<void> {
+    const deadlineSeconds = this.chartTaskDeadlineSeconds();
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const work = this.runTask(claim.id, true, claim.lease_version).catch(
+      async (error: unknown) => {
+        const message = error instanceof Error ? error.message : String(error);
+        try {
+          await this.expireTaskAttempt(
+            claim,
+            `Chart task worker failed: ${message}`,
+          );
+        } catch (expiryError) {
+          this.logger.error(
+            `Failed to release chart task ${claim.id} after worker error`,
+            expiryError,
+          );
+        }
+      },
+    );
+    if (claim.to_station_code === '') {
+      await work;
+      return;
+    }
+
+    const timeout = new Promise<void>((resolve) => {
+      timer = setTimeout(() => {
+        void (async () => {
+          try {
+            const expired = await this.expireTaskAttempt(
+              claim,
+              `Chart task attempt timed out after ${deadlineSeconds} seconds`,
+            );
+            if (!expired) await work;
+          } catch (expiryError) {
+            this.logger.error(
+              `Failed to expire timed-out chart task ${claim.id}`,
+              expiryError,
+            );
+            await work;
+          } finally {
+            resolve();
+          }
+        })();
+      }, deadlineSeconds * 1000);
+      timer.unref?.();
+    });
+
+    try {
+      await Promise.race([work, timeout]);
+    } finally {
+      if (timer) clearTimeout(timer);
+    }
+  }
+
   /**
    * No-destination variant of `runTask`. Skips the IRCTC availability check
    * and just dispatches a `chart_prepared_only` notification with a
@@ -1417,20 +1562,19 @@ export class JourneyTaskService {
     taskId: string,
     force: boolean,
     task: ChartTimeAvailabilityTask,
+    leaseVersion?: number,
   ): Promise<void> {
     const now = new Date();
     const firstRunAt = task.firstRunAt ?? now;
-    await this.prisma.chartTimeAvailabilityTask.update({
-      where: { id: taskId },
-      data: {
-        status: 'running',
-        retryCount: { increment: task.status === 'pending' ? 1 : 0 },
-        lockedAt: now,
-        completedAt: null,
-        lastError: null,
-        firstRunAt,
-      },
+    const claimed = await this.updateTaskForAttempt(taskId, leaseVersion, {
+      status: 'running',
+      retryCount: { increment: task.status === 'pending' ? 1 : 0 },
+      lockedAt: now,
+      completedAt: null,
+      lastError: null,
+      firstRunAt,
     });
+    if (!claimed) return;
 
     const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
     const chartDateObj =
@@ -1443,15 +1587,12 @@ export class JourneyTaskService {
         where: { journeyRequestId: task.journeyRequestId },
       });
       if (!contact || (!contact.email && !contact.mobile)) {
-        await this.prisma.chartTimeAvailabilityTask.update({
-          where: { id: taskId },
-          data: {
-            status: 'completed',
-            completedAt: new Date(),
-            lockedAt: null,
-            nextRunAt: null,
-            lastError: 'no contact for chart_prepared task',
-          },
+        await this.updateTaskForAttempt(taskId, leaseVersion, {
+          status: 'completed',
+          completedAt: new Date(),
+          lockedAt: null,
+          nextRunAt: null,
+          lastError: 'no contact for chart_prepared task',
         });
         return;
       }
@@ -1479,17 +1620,14 @@ export class JourneyTaskService {
         data.whatsappRetryCount = { increment: 1 };
         data.whatsappStatus = 'pending_retry';
       }
-      await this.prisma.chartTimeAvailabilityTask.update({
-        where: { id: taskId },
-        data: {
-          status: 'completed',
-          completedAt: new Date(),
-          lockedAt: null,
-          nextRunAt: null,
-          lastError: null,
-          firstRunAt,
-          ...data,
-        },
+      await this.updateTaskForAttempt(taskId, leaseVersion, {
+        status: 'completed',
+        completedAt: new Date(),
+        lockedAt: null,
+        nextRunAt: null,
+        lastError: null,
+        firstRunAt,
+        ...data,
       });
       void journeyDateStr; // referenced for clarity
     } catch (e) {
@@ -1497,33 +1635,38 @@ export class JourneyTaskService {
         `runChartPreparedTask failed for task=${taskId}`,
         e instanceof Error ? e.stack || e.message : String(e),
       );
-      await this.prisma.chartTimeAvailabilityTask.update({
-        where: { id: taskId },
-        data: {
-          status: 'failed',
-          lastError: (e instanceof Error ? e.message : String(e)).slice(
-            0,
-            1000,
-          ),
-          completedAt: new Date(),
-          lockedAt: null,
-          nextRunAt: null,
-        },
+      await this.updateTaskForAttempt(taskId, leaseVersion, {
+        status: 'failed',
+        lastError: (e instanceof Error ? e.message : String(e)).slice(0, 1000),
+        completedAt: new Date(),
+        lockedAt: null,
+        nextRunAt: null,
       });
     }
     void force; // signature parity with runTask
   }
 
-  async runTask(taskId: string, force = false): Promise<void> {
+  async runTask(
+    taskId: string,
+    force = false,
+    leaseVersion?: number,
+  ): Promise<void> {
     const task = await this.prisma.chartTimeAvailabilityTask.findUnique({
       where: { id: taskId },
     });
-    if (!task || (!force && task.status !== 'pending')) return;
+    if (
+      !task ||
+      (!force && task.status !== 'pending') ||
+      (leaseVersion != null &&
+        (task.status !== 'running' || task.leaseVersion !== leaseVersion))
+    ) {
+      return;
+    }
 
     // No-destination flow: skip the IRCTC availability check entirely and
     // just send a "chart prepared — check tickets on our platform" notification.
     if (task.toStationCode === '') {
-      await this.runChartPreparedTask(taskId, force, task);
+      await this.runChartPreparedTask(taskId, force, task, leaseVersion);
       return;
     }
 
@@ -1537,17 +1680,15 @@ export class JourneyTaskService {
       if (!firstRunAt) {
         firstRunAt = now;
       }
-      await this.prisma.chartTimeAvailabilityTask.update({
-        where: { id: taskId },
-        data: {
-          status: 'running',
-          retryCount: { increment: 1 },
-          lockedAt: now,
-          completedAt: null,
-          lastError: null,
-          firstRunAt,
-        },
+      const claimed = await this.updateTaskForAttempt(taskId, leaseVersion, {
+        status: 'running',
+        retryCount: { increment: 1 },
+        lockedAt: now,
+        completedAt: null,
+        lastError: null,
+        firstRunAt,
       });
+      if (!claimed) return;
     } else if (!firstRunAt) {
       firstRunAt = new Date();
     }
@@ -1604,19 +1745,17 @@ export class JourneyTaskService {
       if (isNotPrepared) {
         const delayMs = 30 * 60_000; // 30 minutes
         const nextRunAt = new Date(Date.now() + delayMs);
-        await this.prisma.chartTimeAvailabilityTask.update({
-          where: { id: taskId },
-          data: {
-            status: 'pending',
-            resultPayload: result as object,
-            nextRunAt,
-            lockedAt: null,
-            completedAt: null,
-            retryCount: Math.max(0, attemptNumber - 1),
-            lastError: chartTaskFailureText(result).slice(0, 1000),
-            firstRunAt: firstRunAt || new Date(),
-          },
+        const updated = await this.updateTaskForAttempt(taskId, leaseVersion, {
+          status: 'pending',
+          resultPayload: result as object,
+          nextRunAt,
+          lockedAt: null,
+          completedAt: null,
+          retryCount: Math.max(0, attemptNumber - 1),
+          lastError: chartTaskFailureText(result).slice(0, 1000),
+          firstRunAt: firstRunAt || new Date(),
         });
+        if (!updated) return;
         console.log(
           'scheduled chart task retry for chart not prepared',
           taskId,
@@ -1636,6 +1775,7 @@ export class JourneyTaskService {
           result,
           attemptNumber,
           firstRunAt || new Date(),
+          leaseVersion,
         );
         return;
       }
@@ -1651,9 +1791,10 @@ export class JourneyTaskService {
         );
       }
 
-      await this.prisma.chartTimeAvailabilityTask.update({
-        where: { id: taskId },
-        data: {
+      const resultPersisted = await this.updateTaskForAttempt(
+        taskId,
+        leaseVersion,
+        {
           status,
           resultPayload: result as object,
           completedAt: new Date(),
@@ -1665,7 +1806,8 @@ export class JourneyTaskService {
               : null,
           firstRunAt: firstRunAt || new Date(),
         },
-      });
+      );
+      if (!resultPersisted) return;
 
       if (status === 'completed') {
         const contact = await this.prisma.journeyMonitorContact.findUnique({
@@ -1826,10 +1968,7 @@ export class JourneyTaskService {
               data.whatsappStatus = 'pending_retry';
             }
             if (Object.keys(data).length > 0) {
-              await this.prisma.chartTimeAvailabilityTask.update({
-                where: { id: taskId },
-                data,
-              });
+              await this.updateTaskForAttempt(taskId, leaseVersion, data);
             }
           } catch (e) {
             console.error('Notification failed', e);
@@ -1889,21 +2028,19 @@ export class JourneyTaskService {
           { error: message },
           attemptNumber,
           firstRunAt || new Date(),
+          leaseVersion,
         );
         return;
       }
 
-      await this.prisma.chartTimeAvailabilityTask.update({
-        where: { id: taskId },
-        data: {
-          status: 'failed',
-          resultPayload: { error: message } as object,
-          completedAt: new Date(),
-          lockedAt: null,
-          nextRunAt: null,
-          lastError: message.slice(0, 1000),
-          firstRunAt: firstRunAt || new Date(),
-        },
+      await this.updateTaskForAttempt(taskId, leaseVersion, {
+        status: 'failed',
+        resultPayload: { error: message } as object,
+        completedAt: new Date(),
+        lockedAt: null,
+        nextRunAt: null,
+        lastError: message.slice(0, 1000),
+        firstRunAt: firstRunAt || new Date(),
       });
     }
   }
@@ -1913,20 +2050,18 @@ export class JourneyTaskService {
     resultPayload: object,
     attemptNumber: number,
     firstRunAt?: Date,
+    leaseVersion?: number,
   ): Promise<void> {
     const delayMs = retryDelayMsForAttempt(attemptNumber);
     const nextRunAt = new Date(Date.now() + delayMs);
-    await this.prisma.chartTimeAvailabilityTask.update({
-      where: { id: taskId },
-      data: {
-        status: 'pending',
-        resultPayload,
-        nextRunAt,
-        lockedAt: null,
-        completedAt: null,
-        lastError: chartTaskFailureText(resultPayload).slice(0, 1000),
-        ...(firstRunAt ? { firstRunAt } : {}),
-      },
+    await this.updateTaskForAttempt(taskId, leaseVersion, {
+      status: 'pending',
+      resultPayload,
+      nextRunAt,
+      lockedAt: null,
+      completedAt: null,
+      lastError: chartTaskFailureText(resultPayload).slice(0, 1000),
+      ...(firstRunAt ? { firstRunAt } : {}),
     });
     console.log(
       'scheduled chart task retry',
@@ -2006,8 +2141,6 @@ export class JourneyTaskService {
   }
 
   async runDueTasks(): Promise<RunDueTasksResult> {
-    // chartAt is stored as an IST wall-clock timestamp in Postgres.
-    // Operational timestamps (next_run_at/locked_at) use DB NOW().
     const istNow = DateTime.now().setZone('Asia/Kolkata');
     console.log(
       'running due tasks',
@@ -2022,109 +2155,157 @@ export class JourneyTaskService {
       results: [],
     };
 
-    let due: Array<{ id: string; retry_count: number }> = [];
+    const availableWorkers = Math.max(
+      0,
+      this.chartTaskConcurrency() - this.activeChartWorkers,
+    );
+    if (availableWorkers === 0) {
+      return empty;
+    }
+
+    // Reserve slots before the query awaits so overlapping cron ticks cannot
+    // exceed this process's worker limit.
+    this.activeChartWorkers += availableWorkers;
+    let reservedWorkers = availableWorkers;
+
+    let due: ChartTaskClaim[] = [];
     let attempt = 0;
-    while (attempt < 2) {
-      try {
-        due = await this.prisma.$queryRaw<
-          Array<{ id: string; retry_count: number }>
-        >`UPDATE "ChartTimeAvailabilityTask"
-          SET status = 'running',
-              locked_at = (NOW() AT TIME ZONE 'utc'),
-              retry_count = retry_count + 1,
-              last_error = NULL
-          WHERE id IN (
-            SELECT t.id FROM "ChartTimeAvailabilityTask" t
-            WHERE t.completed_at IS NULL
-              AND (
-                (
-                  t.status = 'pending'
-                  AND t.chart_at <= (NOW() AT TIME ZONE 'utc')
-                  AND (t.next_run_at IS NULL OR t.next_run_at <= (NOW() AT TIME ZONE 'utc'))
+    try {
+      while (attempt < 2) {
+        try {
+          const deadlineSeconds = this.chartTaskDeadlineSeconds();
+          due = await this.prisma.$queryRaw<ChartTaskClaim[]>`
+            WITH exhausted AS (
+              UPDATE "ChartTimeAvailabilityTask" t
+              SET status = 'failed',
+                  completed_at = (NOW() AT TIME ZONE 'utc'),
+                  locked_at = NULL,
+                  next_run_at = NULL,
+                  last_error = COALESCE(
+                    t.last_error,
+                    'Chart task retry limit exhausted after an expired lease'
+                  ),
+                  lease_version = t.lease_version + 1
+              WHERE t.completed_at IS NULL
+                AND t.retry_count >= ${MAX_CHART_TASK_ATTEMPTS}
+                AND t.status = 'running'
+                AND (
+                  t.locked_at IS NULL
+                  OR t.locked_at <= (NOW() AT TIME ZONE 'utc') - (${deadlineSeconds} * INTERVAL '1 second')
                 )
-                OR (
-                  t.status = 'running'
-                  AND (
-                    t.locked_at IS NULL
-                    OR t.locked_at <= (NOW() AT TIME ZONE 'utc') - INTERVAL '10 minutes'
+              RETURNING t.id
+            ),
+            candidates AS (
+              SELECT t.id
+              FROM "ChartTimeAvailabilityTask" t
+              WHERE t.completed_at IS NULL
+                AND t.retry_count < ${MAX_CHART_TASK_ATTEMPTS}
+                AND (
+                  (
+                    t.status = 'pending'
+                    AND t.chart_at <= (NOW() AT TIME ZONE 'utc')
+                    AND (t.next_run_at IS NULL OR t.next_run_at <= (NOW() AT TIME ZONE 'utc'))
+                  )
+                  OR (
+                    t.status = 'running'
+                    AND (
+                      t.locked_at IS NULL
+                      OR t.locked_at <= (NOW() AT TIME ZONE 'utc') - (${deadlineSeconds} * INTERVAL '1 second')
+                    )
                   )
                 )
-              )
-              AND NOT EXISTS (
-                SELECT 1 FROM "notification_unsubscribe" nu
-                JOIN "JourneyMonitorContact" jmc
-                  ON jmc.journey_request_id = t.journey_request_id
-                WHERE nu.recipient = LOWER(TRIM(COALESCE(jmc.email, '')))
-                   OR nu.recipient = TRIM(COALESCE(jmc.mobile, ''))
-              )
-            ORDER BY COALESCE(t.next_run_at, t.chart_at) ASC
-            LIMIT 20
-            FOR UPDATE SKIP LOCKED
-          )
-          RETURNING id, retry_count`;
-        break; // Success
-      } catch (error) {
-        attempt++;
-        const msg = error instanceof Error ? error.message : String(error);
-        console.warn(`runDueTasks query failed (attempt ${attempt}):`, msg);
-        if (attempt >= 2) {
-          // Gracefully return 0 tasks if it keeps failing. Cron will retry next minute.
-          return empty;
+                AND NOT EXISTS (
+                  SELECT 1 FROM "notification_unsubscribe" nu
+                  JOIN "JourneyMonitorContact" jmc
+                    ON jmc.journey_request_id = t.journey_request_id
+                  WHERE nu.recipient = LOWER(TRIM(COALESCE(jmc.email, '')))
+                     OR nu.recipient = TRIM(COALESCE(jmc.mobile, ''))
+                )
+              ORDER BY COALESCE(t.next_run_at, t.chart_at) ASC
+              LIMIT ${availableWorkers}
+              FOR UPDATE SKIP LOCKED
+            )
+            UPDATE "ChartTimeAvailabilityTask" t
+            SET status = 'running',
+                locked_at = (NOW() AT TIME ZONE 'utc'),
+                retry_count = t.retry_count + 1,
+                lease_version = t.lease_version + 1,
+                first_run_at = COALESCE(t.first_run_at, (NOW() AT TIME ZONE 'utc')),
+                completed_at = NULL,
+                last_error = NULL
+            FROM candidates
+            WHERE t.id = candidates.id
+            RETURNING t.id, t.retry_count, t.lease_version, t.to_station_code`;
+          break;
+        } catch (error) {
+          attempt++;
+          const msg = error instanceof Error ? error.message : String(error);
+          console.warn(`runDueTasks query failed (attempt ${attempt}):`, msg);
+          if (attempt >= 2) throw error;
+          await new Promise((res) => setTimeout(res, 1000));
         }
-        // Wait 1 second before retrying
-        await new Promise((res) => setTimeout(res, 1000));
       }
-    }
-    console.log('marked as running', due);
-    const claimedTaskIds = due.map((t) => t.id);
-    for (const task of due) {
-      await this.runTask(task.id, true);
-    }
+      this.activeChartWorkers -= availableWorkers - due.length;
+      reservedWorkers = due.length;
+      console.log('marked as running', due);
+      const claimedTaskIds = due.map((t) => t.id);
+      reservedWorkers = 0;
+      await Promise.allSettled(
+        due.map(async (task) => {
+          try {
+            await this.runClaimedTask(task);
+          } finally {
+            this.activeChartWorkers = Math.max(0, this.activeChartWorkers - 1);
+          }
+        }),
+      );
 
-    // Re-read the just-run tasks to capture the run's OUTPUT (final status +
-    // error per task). Note: notification send is fire-and-forget, so
-    // emailNotifiedAt/whatsappNotifiedAt may lag — status/lastError are the
-    // synchronous outcome of this run.
-    let results: RunDueTaskResult[] = [];
-    if (claimedTaskIds.length > 0) {
-      try {
-        const rows = await this.prisma.chartTimeAvailabilityTask.findMany({
-          where: { id: { in: claimedTaskIds } },
-          select: {
-            id: true,
-            trainNumber: true,
-            fromStationCode: true,
-            toStationCode: true,
-            journeyDate: true,
-            status: true,
-            retryCount: true,
-            lastError: true,
-          },
-        });
-        results = (rows ?? []).map((r) => ({
-          taskId: r.id,
-          trainNumber: r.trainNumber,
-          from: r.fromStationCode,
-          to: r.toStationCode,
-          journeyDate: r.journeyDate?.toISOString().slice(0, 10) ?? null,
-          status: r.status,
-          retryCount: r.retryCount ?? 0,
-          lastError: r.lastError ?? null,
-        }));
-      } catch (e) {
-        console.warn(
-          'runDueTasks: failed to summarize task outcomes:',
-          e instanceof Error ? e.message : String(e),
-        );
+      let results: RunDueTaskResult[] = [];
+      if (claimedTaskIds.length > 0) {
+        try {
+          const rows = await this.prisma.chartTimeAvailabilityTask.findMany({
+            where: { id: { in: claimedTaskIds } },
+            select: {
+              id: true,
+              trainNumber: true,
+              fromStationCode: true,
+              toStationCode: true,
+              journeyDate: true,
+              status: true,
+              retryCount: true,
+              lastError: true,
+            },
+          });
+          results = (rows ?? []).map((r) => ({
+            taskId: r.id,
+            trainNumber: r.trainNumber,
+            from: r.fromStationCode,
+            to: r.toStationCode,
+            journeyDate: r.journeyDate?.toISOString().slice(0, 10) ?? null,
+            status: r.status,
+            retryCount: r.retryCount ?? 0,
+            lastError: r.lastError ?? null,
+          }));
+        } catch (e) {
+          console.warn(
+            'runDueTasks: failed to summarize task outcomes:',
+            e instanceof Error ? e.message : String(e),
+          );
+        }
       }
-    }
 
-    return {
-      istNow: istNow.toFormat('yyyy-MM-dd HH:mm:ss'),
-      claimedTaskIds,
-      tasksRun: due.length,
-      results,
-    };
+      return {
+        istNow: istNow.toFormat('yyyy-MM-dd HH:mm:ss'),
+        claimedTaskIds,
+        tasksRun: due.length,
+        results,
+      };
+    } finally {
+      this.activeChartWorkers = Math.max(
+        0,
+        this.activeChartWorkers - reservedWorkers,
+      );
+    }
   }
 
   async getTasksByJourneyRequestId(journeyRequestId: string) {
@@ -2457,20 +2638,20 @@ export class JourneyTaskService {
       include: {
         contact: true,
       },
+      orderBy: { completedAt: 'asc' },
       take: 50,
     });
 
-    let resent = 0;
-    let failed = 0;
-
-    for (const task of tasks) {
+    const processTask = async (
+      task: (typeof tasks)[number],
+    ): Promise<'resent' | 'failed' | 'skipped'> => {
       const contact =
         task.contact ||
         (await this.prisma.journeyMonitorContact.findUnique({
           where: { journeyRequestId: task.journeyRequestId },
         }));
 
-      if (!contact) continue;
+      if (!contact) return 'skipped';
 
       const needsWhatsApp = Boolean(
         contact.mobile?.trim() &&
@@ -2482,98 +2663,109 @@ export class JourneyTaskService {
         contact.email?.trim() && !task.emailNotifiedAt,
       );
 
-      if (!needsWhatsApp && !needsEmail) continue;
+      if (!needsWhatsApp && !needsEmail) return 'skipped';
 
-      if (task.resultPayload) {
-        const result = task.resultPayload as unknown as Service2CheckResult;
-        try {
-          const status = await this.notificationService.notifyUser({
-            email: needsEmail ? contact.email?.trim() || undefined : undefined,
-            mobile: needsWhatsApp
-              ? contact.mobile?.trim() || undefined
-              : undefined,
-            task: {
-              id: task.id,
-              journeyRequestId: task.journeyRequestId,
-              trainNumber: task.trainNumber,
-              trainName: task.trainName,
-              fromStationCode: task.fromStationCode,
-              toStationCode: task.toStationCode,
-              journeyDate: task.journeyDate,
-            },
-            result,
-          });
+      if (!task.resultPayload) return 'failed';
+      const result = task.resultPayload as unknown as Service2CheckResult;
+      try {
+        const status = await this.notificationService.notifyUser({
+          email: needsEmail ? contact.email?.trim() || undefined : undefined,
+          mobile: needsWhatsApp
+            ? contact.mobile?.trim() || undefined
+            : undefined,
+          task: {
+            id: task.id,
+            journeyRequestId: task.journeyRequestId,
+            trainNumber: task.trainNumber,
+            trainName: task.trainName,
+            fromStationCode: task.fromStationCode,
+            toStationCode: task.toStationCode,
+            journeyDate: task.journeyDate,
+          },
+          result,
+        });
 
-          const data: {
-            emailNotifiedAt?: Date;
-            whatsappNotifiedAt?: Date;
-            whatsappRetryCount?: { increment: number };
-            whatsappStatus?: string;
-          } = {};
+        const data: {
+          emailNotifiedAt?: Date;
+          whatsappNotifiedAt?: Date;
+          whatsappRetryCount?: { increment: number };
+          whatsappStatus?: string;
+        } = {};
 
-          if (needsWhatsApp) {
-            if (status.whatsappSent) {
-              data.whatsappNotifiedAt = new Date();
-              data.whatsappStatus = 'sent';
-            } else {
-              const currentRetries = task.whatsappRetryCount ?? 0;
-              const nextRetryCount = currentRetries + 1;
-              data.whatsappRetryCount = { increment: 1 };
-              if (nextRetryCount >= 3) {
-                data.whatsappStatus = 'unsend';
-                this.logger.warn(
-                  `WhatsApp notification retry limit reached (3) for task ${task.id}; marked as unsend`,
-                );
-              }
-            }
-          }
-
-          if (needsEmail && status.emailSent) {
-            data.emailNotifiedAt = new Date();
-          }
-
-          if (Object.keys(data).length > 0) {
-            await this.prisma.chartTimeAvailabilityTask.update({
-              where: { id: task.id },
-              data,
-            });
-            if (status.whatsappSent || status.emailSent) {
-              resent++;
-            } else {
-              failed++;
-            }
+        if (needsWhatsApp) {
+          if (status.whatsappSent) {
+            data.whatsappNotifiedAt = new Date();
+            data.whatsappStatus = 'sent';
           } else {
-            failed++;
-          }
-        } catch (err) {
-          this.logger.error(
-            `Failed to resend notification for task ${task.id}`,
-            err,
-          );
-          if (needsWhatsApp) {
             const currentRetries = task.whatsappRetryCount ?? 0;
             const nextRetryCount = currentRetries + 1;
-            await this.prisma.chartTimeAvailabilityTask
-              .update({
-                where: { id: task.id },
-                data: {
-                  whatsappRetryCount: { increment: 1 },
-                  ...(nextRetryCount >= 3 ? { whatsappStatus: 'unsend' } : {}),
-                },
-              })
-              .catch((updateErr) =>
-                this.logger.error(
-                  `Failed to update retry count for task ${task.id}`,
-                  updateErr,
-                ),
+            data.whatsappRetryCount = { increment: 1 };
+            if (nextRetryCount >= 3) {
+              data.whatsappStatus = 'unsend';
+              this.logger.warn(
+                `WhatsApp notification retry limit reached (3) for task ${task.id}; marked as unsend`,
               );
+            }
           }
-          failed++;
         }
-      }
-    }
 
-    return { found: tasks.length, resent, failed };
+        if (needsEmail && status.emailSent) {
+          data.emailNotifiedAt = new Date();
+        }
+
+        if (Object.keys(data).length === 0) return 'failed';
+        await this.prisma.chartTimeAvailabilityTask.update({
+          where: { id: task.id },
+          data,
+        });
+        return status.whatsappSent || status.emailSent ? 'resent' : 'failed';
+      } catch (err) {
+        this.logger.error(
+          `Failed to resend notification for task ${task.id}`,
+          err,
+        );
+        if (needsWhatsApp) {
+          const currentRetries = task.whatsappRetryCount ?? 0;
+          const nextRetryCount = currentRetries + 1;
+          await this.prisma.chartTimeAvailabilityTask
+            .update({
+              where: { id: task.id },
+              data: {
+                whatsappRetryCount: { increment: 1 },
+                ...(nextRetryCount >= 3 ? { whatsappStatus: 'unsend' } : {}),
+              },
+            })
+            .catch((updateErr) =>
+              this.logger.error(
+                `Failed to update retry count for task ${task.id}`,
+                updateErr,
+              ),
+            );
+        }
+        return 'failed';
+      }
+    };
+
+    const outcomes: Array<'resent' | 'failed' | 'skipped'> = [];
+    let nextTaskIndex = 0;
+    const workerCount = Math.min(
+      tasks.length,
+      boundedEnvInt('NOTIFICATION_RESEND_CONCURRENCY', 5, 1, 20),
+    );
+    await Promise.all(
+      Array.from({ length: workerCount }, async () => {
+        while (nextTaskIndex < tasks.length) {
+          const task = tasks[nextTaskIndex++];
+          outcomes.push(await processTask(task));
+        }
+      }),
+    );
+
+    return {
+      found: tasks.length,
+      resent: outcomes.filter((outcome) => outcome === 'resent').length,
+      failed: outcomes.filter((outcome) => outcome === 'failed').length,
+    };
   }
 
   /**

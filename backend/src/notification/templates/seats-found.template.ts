@@ -12,6 +12,7 @@ import {
   firstPlannedClassCode,
   renderRefundBannerHtml,
   formatJourneyDateShort,
+  journeyDateAtStation,
   to12HourTime,
   formatAvailabilitySeats,
   type RefundInfo,
@@ -337,12 +338,18 @@ export async function buildWhatsAppSeatsFoundText(params: {
     } else {
       const fromName =
         stationNameMap.get(item.fromCode.trim().toUpperCase()) ?? item.fromCode;
+      const legJourneyDate = journeyDateAtStation(
+        journeyDateStr,
+        fromStationCode,
+        item.fromCode,
+        stationScheduleList,
+      );
       const chartOpenInfo = await getChartOpenInfoFn({
         fromCode: item.fromCode,
         fromName,
       });
 
-      let alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}`;
+      let alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(legJourneyDate)}`;
       if (createAlertShortLinkFn) {
         try {
           alertUrl = await createAlertShortLinkFn({
@@ -350,7 +357,7 @@ export async function buildWhatsAppSeatsFoundText(params: {
             trainName: result?.trainSchedule?.trainName,
             fromStationCode: item.fromCode,
             toStationCode: item.toCode,
-            journeyDate: journeyDateStr,
+            journeyDate: legJourneyDate,
             classCode: firstPlannedClassCode(result),
             email: params.email,
             mobile: params.mobile,

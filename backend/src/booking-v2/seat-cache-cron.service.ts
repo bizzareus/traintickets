@@ -228,7 +228,7 @@ export class SeatCacheCronService {
   @Cron('30 3 * * *', { timeZone: 'Asia/Kolkata' })
   async handleCron(): Promise<void> {
     if (!this.enabled) return;
-    if (!(await this.leader.isLeader())) return;
+    if (!(await this.leader.isLeader('seat-cache'))) return;
     if (this.running) return;
 
     this.running = true;

@@ -191,6 +191,7 @@ model ChartTimeAvailabilityTask {
   retryCount         Int       @default(0) @map("retry_count")
   nextRunAt          DateTime? @map("next_run_at")
   lockedAt           DateTime? @map("locked_at")
+  leaseVersion       Int       @default(0) @map("lease_version")
   lastError          String?   @map("last_error")
   firstRunAt         DateTime? @map("first_run_at")
   createdAt          DateTime  @default(now()) @map("created_at")
@@ -457,9 +458,12 @@ model AlternativeSearchTask {
   notificationSent    Boolean   @default(false) @map("notification_sent")
   createdAt           DateTime  @default(now()) @map("created_at")
   processedAt         DateTime? @map("processed_at")
+  lockedAt            DateTime? @map("locked_at")
+  leaseVersion        Int       @default(0) @map("lease_version")
   lastError           String?   @map("last_error")
 
   @@index([status, createdAt])
+  @@index([status, lockedAt])
   @@map("alternative_search_task")
 }
 
@@ -622,4 +626,3 @@ model SplitTicketBooking {
   @@index([paymentStatus, bookingStatus])
   @@map("split_ticket_booking")
 }
-

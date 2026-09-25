@@ -148,6 +148,47 @@ export function formatJourneyDateShort(ymd: string): string {
   return dt.toFormat('ccc, d LLL');
 }
 
+function scheduleStationDayCount(
+  station: ScheduleStation | undefined,
+): number | undefined {
+  const raw = station?.dayCount;
+  const dayCount =
+    typeof raw === 'number'
+      ? raw
+      : typeof raw === 'string'
+        ? Number.parseInt(raw.trim(), 10)
+        : NaN;
+  return Number.isFinite(dayCount) && dayCount >= 1 ? dayCount : undefined;
+}
+
+export function journeyDateAtStation(
+  journeyDateYmd: string,
+  journeyFromStationCode: string,
+  stationCode: string,
+  stationScheduleList?: ScheduleStation[],
+): string {
+  const raw = journeyDateYmd.trim().slice(0, 10);
+  const journeyFromDay = scheduleStationDayCount(
+    findScheduleRow(stationScheduleList, journeyFromStationCode),
+  );
+  const stationDay = scheduleStationDayCount(
+    findScheduleRow(stationScheduleList, stationCode),
+  );
+  if (
+    journeyFromDay == null ||
+    stationDay == null ||
+    stationDay < journeyFromDay
+  ) {
+    return raw;
+  }
+
+  const journeyDate = DateTime.fromISO(raw, { zone: 'Asia/Kolkata' });
+  if (!journeyDate.isValid) return raw;
+  return journeyDate
+    .plus({ days: stationDay - journeyFromDay })
+    .toFormat('yyyy-LL-dd');
+}
+
 /**
  * Convert HH:MM, HH:MM:SS, ISO timestamp, or existing 12h string to 12-hour format e.g. 7:30 PM.
  */

@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { hostname } from 'os';
 import { PrismaService } from '../prisma/prisma.service';
 
-const CHART_CRON_LEASE_NAME = 'chart-cron';
+const DEFAULT_CRON_LEASE_NAME = 'chart-notification';
 const DEFAULT_CHART_CRON_LEASE_SECONDS = 90;
 
 function envFlagDisabled(value: string | undefined): boolean {
@@ -43,14 +43,15 @@ export class ChartCronLeaderService {
     process.env.RAILWAY_REPLICA_ID?.trim() ||
     `${process.env.RAILWAY_DEPLOYMENT_ID?.trim() || hostname()}:${process.pid}`;
   private ensureTablePromise: Promise<void> | null = null;
-  private wasLeader = false;
+  private readonly heldLeases = new Set<string>();
 
   constructor(private prisma: PrismaService) {}
 
-  async isLeader(): Promise<boolean> {
+  async isLeader(leaseName = DEFAULT_CRON_LEASE_NAME): Promise<boolean> {
     if (
-      envFlagEnabled(process.env.CHART_CRON_DISABLED) ||
-      envFlagDisabled(process.env.CHART_CRON_ENABLED)
+      leaseName === DEFAULT_CRON_LEASE_NAME &&
+      (envFlagEnabled(process.env.CHART_CRON_DISABLED) ||
+        envFlagDisabled(process.env.CHART_CRON_ENABLED))
     ) {
       return false;
     }
@@ -68,13 +69,14 @@ export class ChartCronLeaderService {
       >`
         SELECT "owner_id", ("expires_at" <= NOW()) AS expired
         FROM "CronLease"
-        WHERE "name" = ${CHART_CRON_LEASE_NAME}
+        WHERE "name" = ${leaseName}
       `;
       const lease = current[0];
       if (lease && !lease.expired && lease.owner_id !== this.ownerId) {
-        if (this.wasLeader) {
-          this.logger.warn(`chart cron leadership lost owner=${this.ownerId}`);
-          this.wasLeader = false;
+        if (this.heldLeases.delete(leaseName)) {
+          this.logger.warn(
+            `cron leadership lost lease=${leaseName} owner=${this.ownerId}`,
+          );
         }
         return false;
       }
@@ -84,7 +86,7 @@ export class ChartCronLeaderService {
       const rows = await this.prisma.$queryRaw<Array<{ name: string }>>`
         INSERT INTO "CronLease" ("name", "owner_id", "expires_at", "updated_at", "created_at")
         VALUES (
-          ${CHART_CRON_LEASE_NAME},
+          ${leaseName},
           ${this.ownerId},
           NOW() + (${leaseSeconds} * INTERVAL '1 second'),
           NOW(),
@@ -99,20 +101,23 @@ export class ChartCronLeaderService {
         RETURNING "name"
       `;
       const isLeader = rows.length > 0;
-      if (isLeader && !this.wasLeader) {
+      if (isLeader && !this.heldLeases.has(leaseName)) {
         this.logger.log(
-          `chart cron leadership acquired owner=${this.ownerId} leaseSeconds=${leaseSeconds}`,
+          `cron leadership acquired lease=${leaseName} owner=${this.ownerId} leaseSeconds=${leaseSeconds}`,
         );
       }
-      if (!isLeader && this.wasLeader) {
-        this.logger.warn(`chart cron leadership lost owner=${this.ownerId}`);
+      if (!isLeader && this.heldLeases.has(leaseName)) {
+        this.logger.warn(
+          `cron leadership lost lease=${leaseName} owner=${this.ownerId}`,
+        );
       }
-      this.wasLeader = isLeader;
+      if (isLeader) this.heldLeases.add(leaseName);
+      else this.heldLeases.delete(leaseName);
       return isLeader;
     } catch (err) {
-      this.wasLeader = false;
+      this.heldLeases.delete(leaseName);
       this.logger.warn(
-        `chart cron leadership check failed: ${err instanceof Error ? err.message : String(err)}`,
+        `cron leadership check failed lease=${leaseName}: ${err instanceof Error ? err.message : String(err)}`,
       );
       return false;
     }

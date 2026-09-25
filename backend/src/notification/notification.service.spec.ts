@@ -3,6 +3,7 @@ import { NotificationService } from './notification.service';
 import { NotificationDeduplicationService } from './notification-deduplication.service';
 import type { StationCacheService } from '../cache/station-cache.service';
 import type { Service2CheckResult } from '../service2/service2.service';
+import type { ShortLinkService } from '../short-link/short-link.service';
 
 function mockStationCache(): StationCacheService {
   return {
@@ -270,6 +271,71 @@ describe('NotificationService', () => {
       '🚄 Track live seat updates anytime on LastBerth.com!',
     );
     expect(text).not.toContain('Total approx. fare');
+  });
+
+  it('uses the uncovered leg boarding date in its alert short link', async () => {
+    const createAlertShortLink = jest
+      .fn()
+      .mockResolvedValue('https://lastberth.com/s/next-day');
+    const shortLinkService = {
+      createSearchShortLink: jest
+        .fn()
+        .mockResolvedValue('https://lastberth.com/s/search'),
+      createAlertShortLink,
+    } as unknown as ShortLinkService;
+    const svc = new NotificationService(
+      mockConfig(),
+      mockStationCache(),
+      undefined,
+      shortLinkService,
+    );
+    jest.spyOn(svc, 'sendWhatsApp').mockResolvedValue(true);
+
+    await svc.notifyUser({
+      mobile: '919500420793',
+      task: {
+        trainNumber: '11014',
+        trainName: 'Cbe Ltt Exp',
+        fromStationCode: 'SA',
+        toStationCode: 'LTT',
+        journeyDate: new Date('2026-09-25T00:00:00.000Z'),
+      },
+      result: {
+        status: 'success',
+        vacantBerth: { vbd: [], error: null },
+        openAiBookingPlan: [
+          {
+            instruction: 'SA - PUNE - 3A',
+            approx_price: 1475,
+            availability: 'AVAILABLE 1',
+          },
+          {},
+        ],
+        trainSchedule: {
+          trainNumber: '11014',
+          trainName: 'Cbe Ltt Exp',
+          stationFrom: 'CBE',
+          stationTo: 'LTT',
+          stationList: [
+            { stationCode: 'SA', stationName: 'Salem Jn', dayCount: 2 },
+            { stationCode: 'PUNE', stationName: 'Pune Jn', dayCount: 3 },
+            {
+              stationCode: 'LTT',
+              stationName: 'Lokmanya Tilak T',
+              dayCount: 3,
+            },
+          ],
+        },
+      },
+    });
+
+    expect(createAlertShortLink).toHaveBeenCalledWith(
+      expect.objectContaining({
+        fromStationCode: 'PUNE',
+        toStationCode: 'LTT',
+        journeyDate: '2026-09-26',
+      }),
+    );
   });
 
   it('omits chart open time label when no chart preparation info is available', async () => {

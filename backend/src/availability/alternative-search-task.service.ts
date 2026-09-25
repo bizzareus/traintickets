@@ -1,7 +1,21 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { BookingV2Service } from '../booking-v2/booking-v2.service';
 import { NotificationService } from '../notification/notification.service';
+
+const DEFAULT_ALTERNATIVE_SEARCH_CONCURRENCY = 3;
+const ALTERNATIVE_TASK_LEASE_MS = 15 * 60_000;
+
+function alternativeSearchConcurrency(): number {
+  const parsed = Number.parseInt(
+    process.env.ALTERNATIVE_SEARCH_CONCURRENCY ?? '',
+    10,
+  );
+  return Number.isFinite(parsed) && parsed >= 1 && parsed <= 10
+    ? parsed
+    : DEFAULT_ALTERNATIVE_SEARCH_CONCURRENCY;
+}
 
 @Injectable()
 export class AlternativeSearchTaskService {
@@ -54,35 +68,41 @@ export class AlternativeSearchTaskService {
       },
     });
 
-    setImmediate(() => {
-      this.processTask(task.id).catch((err) => {
-        this.logger.error(`Error processing alternative task ${task.id}:`, err);
-      });
-    });
-
     return { id: task.id };
   }
 
   /**
    * Process all pending tasks (used by cron worker).
    */
-  async processDueTasks(limit = 5): Promise<number> {
+  async processDueTasks(
+    limit = alternativeSearchConcurrency(),
+  ): Promise<number> {
+    const staleBefore = new Date(Date.now() - ALTERNATIVE_TASK_LEASE_MS);
     const pendingTasks = await this.prisma.alternativeSearchTask.findMany({
-      where: { status: 'pending' },
+      where: {
+        OR: [
+          { status: 'pending' },
+          { status: 'processing', lockedAt: { lte: staleBefore } },
+        ],
+      },
       orderBy: { createdAt: 'asc' },
       take: limit,
     });
 
-    let processed = 0;
-    for (const task of pendingTasks) {
-      try {
-        await this.processTask(task.id);
-        processed++;
-      } catch (err) {
-        this.logger.error(`Error in processDueTasks for task ${task.id}:`, err);
+    const results = await Promise.allSettled(
+      pendingTasks.map((task) => this.processTask(task.id)),
+    );
+    results.forEach((result, index) => {
+      if (result.status === 'rejected') {
+        this.logger.error(
+          `Error in processDueTasks for task ${pendingTasks[index].id}:`,
+          result.reason,
+        );
       }
-    }
-    return processed;
+    });
+    return results.filter(
+      (result) => result.status === 'fulfilled' && result.value,
+    ).length;
   }
 
   /**
@@ -92,17 +112,41 @@ export class AlternativeSearchTaskService {
    * 3. Filter candidates to full-journey confirmed paths
    * 4. Send follow-up WhatsApp & Email alerts if matching alternatives are found
    */
-  async processTask(taskId: string): Promise<void> {
-    const claim = await this.prisma.alternativeSearchTask.updateMany({
-      where: { id: taskId, status: 'pending' },
-      data: { status: 'processing' },
-    });
-    if (claim.count === 0) return;
-
+  async processTask(taskId: string): Promise<boolean> {
     const task = await this.prisma.alternativeSearchTask.findUnique({
       where: { id: taskId },
     });
-    if (!task) return;
+    if (!task) return false;
+
+    const currentLeaseVersion = task.leaseVersion ?? 0;
+    const claimedLeaseVersion = currentLeaseVersion + 1;
+    const staleBefore = new Date(Date.now() - ALTERNATIVE_TASK_LEASE_MS);
+    const claim = await this.prisma.alternativeSearchTask.updateMany({
+      where: {
+        id: taskId,
+        leaseVersion: currentLeaseVersion,
+        OR: [
+          { status: 'pending' },
+          { status: 'processing', lockedAt: { lte: staleBefore } },
+        ],
+      },
+      data: {
+        status: 'processing',
+        lockedAt: new Date(),
+        leaseVersion: { increment: 1 },
+      },
+    });
+    if (claim.count === 0) return false;
+
+    const updateClaimedTask = async (
+      data: Prisma.AlternativeSearchTaskUpdateManyMutationInput,
+    ): Promise<boolean> => {
+      const updated = await this.prisma.alternativeSearchTask.updateMany({
+        where: { id: taskId, leaseVersion: claimedLeaseVersion },
+        data,
+      });
+      return updated.count === 1;
+    };
 
     try {
       const dateYmd = task.journeyDate.toISOString().slice(0, 10);
@@ -122,19 +166,19 @@ export class AlternativeSearchTaskService {
       });
 
       if (matchingAlternatives.length === 0) {
-        await this.prisma.alternativeSearchTask.update({
-          where: { id: taskId },
-          data: {
-            status: 'no_alternatives_found',
-            processedAt: new Date(),
-            resultPayload: {
-              candidatesEvaluated: candidates.length,
-              matches: 0,
-            },
+        return updateClaimedTask({
+          status: 'no_alternatives_found',
+          processedAt: new Date(),
+          lockedAt: null,
+          resultPayload: {
+            candidatesEvaluated: candidates.length,
+            matches: 0,
           },
         });
-        return;
       }
+
+      const stillOwned = await updateClaimedTask({ lockedAt: new Date() });
+      if (!stillOwned) return false;
 
       const notificationResult =
         await this.notificationService.notifyUserAlternativeTrains({
@@ -149,29 +193,25 @@ export class AlternativeSearchTaskService {
           journeyTaskId: task.journeyTaskId,
         });
 
-      await this.prisma.alternativeSearchTask.update({
-        where: { id: taskId },
-        data: {
-          status: 'completed',
-          processedAt: new Date(),
-          notificationSent:
-            notificationResult.whatsappSent || notificationResult.emailSent,
-          resultPayload: {
-            candidatesEvaluated: candidates.length,
-            matches: matchingAlternatives.length,
-            notificationResult,
-          } as object,
-        },
+      return updateClaimedTask({
+        status: 'completed',
+        processedAt: new Date(),
+        lockedAt: null,
+        notificationSent:
+          notificationResult.whatsappSent || notificationResult.emailSent,
+        resultPayload: {
+          candidatesEvaluated: candidates.length,
+          matches: matchingAlternatives.length,
+          notificationResult,
+        } as object,
       });
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : String(err);
-      await this.prisma.alternativeSearchTask.update({
-        where: { id: taskId },
-        data: {
-          status: 'failed',
-          processedAt: new Date(),
-          lastError: errorMessage.slice(0, 1000),
-        },
+      await updateClaimedTask({
+        status: 'failed',
+        processedAt: new Date(),
+        lockedAt: null,
+        lastError: errorMessage.slice(0, 1000),
       });
       throw err;
     }

@@ -1355,10 +1355,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 onOpenChange={openTo}
                 suggestError={toSuggestError}
               />
-              <div className="z-10 min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 overflow-visible sm:border-t-0 sm:border-r sm:py-2">
-                <label
-                  htmlFor={journeyDateInputId}
-                  className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500"
+              <div className="z-10 min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 overflow-visible sm:flex-[1.5] sm:border-t-0 sm:border-r sm:py-2">
+                <div className="flex items-end gap-2">
+                  <div className="min-w-0 flex-1">
+                    <label
+                      htmlFor={journeyDateInputId}
+                  className="mb-1 flex items-center gap-1.5 whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500"
                 >
                   <svg
                     className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4"
@@ -1381,15 +1383,19 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   id={journeyDateInputId}
                   value={journeyDate}
                   onChange={handleJourneyDateChange}
+                  inputClassName="block w-full cursor-pointer truncate rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-base font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4"
                 />
-                <div className="mt-2.5">
-                  <span className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                    Class
-                  </span>
-                  <TrainClassMultiSelect
-                    selectedClasses={selectedClasses}
-                    onChange={setSelectedClasses}
-                  />
+                  </div>
+                  <div className="w-[96px] shrink-0 sm:w-[104px]">
+                    <span className="mb-1 block whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                      Class
+                    </span>
+                    <TrainClassMultiSelect
+                      variant="dropdown"
+                      selectedClasses={selectedClasses}
+                      onChange={setSelectedClasses}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">

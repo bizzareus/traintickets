@@ -6,6 +6,7 @@ import {
   hasBookablePlanForNotification,
   normalizeIrctcTimeDisplay,
   arrivalTimeAtStation,
+  journeyDateAtStation,
 } from './notification.helpers';
 
 describe('notification.helpers', () => {
@@ -46,6 +47,29 @@ describe('notification.helpers', () => {
       expect(formatJourneyDateReadable('2026-01-01T12:00:00Z')).toBe(
         'Thu, 1st January',
       );
+    });
+  });
+
+  describe('journeyDateAtStation', () => {
+    const schedule: ScheduleStation[] = [
+      { stationCode: 'SA', stationName: 'Salem Jn', dayCount: 2 },
+      { stationCode: 'PUNE', stationName: 'Pune Jn', dayCount: '3' },
+      { stationCode: 'LTT', stationName: 'Lokmanya Tilak T', dayCount: 3 },
+    ];
+
+    it('adds the schedule day difference to the journey origin date', () => {
+      expect(journeyDateAtStation('2026-09-25', 'SA', 'PUNE', schedule)).toBe(
+        '2026-09-26',
+      );
+    });
+
+    it('keeps the journey date when station day counts are unavailable', () => {
+      expect(
+        journeyDateAtStation('2026-09-25', 'SA', 'PUNE', [
+          { stationCode: 'SA', stationName: 'Salem Jn' },
+          { stationCode: 'PUNE', stationName: 'Pune Jn' },
+        ]),
+      ).toBe('2026-09-25');
     });
   });
 

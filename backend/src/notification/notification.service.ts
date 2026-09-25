@@ -31,6 +31,7 @@ import {
   findScheduleRow,
   departureTimeAtStation,
   arrivalTimeAtStation,
+  journeyDateAtStation,
   type JourneyLegCoverage,
   type RefundInfo,
 } from './notification.helpers';
@@ -1286,6 +1287,12 @@ export class NotificationService {
                   ? `${item.toCode} - ${toName} (${arrTime})`
                   : `${item.toCode} - ${toName}`;
                 const segDisplay = `${fromDisplay} → ${toDisplay}`;
+                const legJourneyDate = journeyDateAtStation(
+                  journeyDateStr,
+                  task.fromStationCode,
+                  item.fromCode,
+                  stationScheduleList,
+                );
 
                 const chartOpenInfo = await this.getStationChartOpenTimeLabel({
                   trainNumber: task.trainNumber,
@@ -1297,10 +1304,10 @@ export class NotificationService {
 
                 let actionButtonHtml = '';
                 if (chartOpenInfo.isReleased) {
-                  const alternateClassUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}&trainNo=${encodeURIComponent(task.trainNumber)}`;
+                  const alternateClassUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(legJourneyDate)}&trainNo=${encodeURIComponent(task.trainNumber)}`;
                   actionButtonHtml = `<a href="${alternateClassUrl}" style="display:inline-block; padding:10px 20px; border-radius:8px; background:#2563eb; color:#fff; font-size:13px; font-weight:600; text-decoration:none;">Check Alternate Class Tickets</a>`;
                 } else {
-                  let alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(journeyDateStr)}`;
+                  let alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(legJourneyDate)}`;
                   if (this.shortLinkService) {
                     try {
                       alertUrl =
@@ -1309,7 +1316,7 @@ export class NotificationService {
                           trainName: result?.trainSchedule?.trainName,
                           fromStationCode: item.fromCode,
                           toStationCode: item.toCode,
-                          journeyDate: journeyDateStr,
+                          journeyDate: legJourneyDate,
                           classCode: firstPlannedClassCode(result),
                           email: email || undefined,
                           mobile: mobile || undefined,

@@ -8,7 +8,7 @@ describe('ChartCronService', () => {
 
     await service.handleChartCron();
 
-    expect(leader.isLeader).toHaveBeenCalledTimes(1);
+    expect(leader.isLeader).toHaveBeenCalledWith('chart-notification');
     expect(journeyTask.runDueTasks).not.toHaveBeenCalled();
   });
 
@@ -26,11 +26,11 @@ describe('ChartCronService', () => {
 
     await service.handleChartCron();
 
-    expect(leader.isLeader).toHaveBeenCalledTimes(1);
+    expect(leader.isLeader).toHaveBeenCalledWith('chart-notification');
     expect(journeyTask.runDueTasks).toHaveBeenCalledTimes(1);
   });
 
-  it('does not overlap local cron runs in the same process', async () => {
+  it('does not let a blocked chart run stop alternative searches or resends', async () => {
     let finishRun!: (value: any) => void;
     const running = new Promise<any>((resolve) => {
       finishRun = resolve;
@@ -42,16 +42,29 @@ describe('ChartCronService', () => {
         .fn()
         .mockResolvedValue({ found: 0, resent: 0, failed: 0 }),
     };
+    const alternativeSearchTask = {
+      processDueTasks: jest.fn().mockResolvedValue(2),
+    };
     const leader = { isLeader: jest.fn().mockResolvedValue(true) };
-    const service = new ChartCronService(journeyTask as never, leader as never);
+    const service = new ChartCronService(
+      journeyTask as never,
+      leader as never,
+      alternativeSearchTask as never,
+    );
 
-    const firstRun = service.handleChartCron();
+    const chartRun = service.handleChartCron();
     await Promise.resolve();
-    await service.handleChartCron();
+    await service.handleAlternativeSearchCron();
+    await service.handleNotificationResendCron();
     finishRun({ claimedTaskIds: [], tasksRun: 0, results: [] });
-    await firstRun;
+    await chartRun;
 
-    expect(leader.isLeader).toHaveBeenCalledTimes(2);
+    expect(alternativeSearchTask.processDueTasks).toHaveBeenCalledTimes(1);
+    expect(journeyTask.resendFailedWhatsAppNotifications).toHaveBeenCalledTimes(
+      1,
+    );
     expect(journeyTask.runDueTasks).toHaveBeenCalledTimes(1);
+    expect(leader.isLeader).toHaveBeenCalledWith('alternative-search');
+    expect(leader.isLeader).toHaveBeenCalledWith('failed-notification-resend');
   });
 });
