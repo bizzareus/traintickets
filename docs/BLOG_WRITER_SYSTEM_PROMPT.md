@@ -61,7 +61,12 @@ Your daily output is **not random**. It is driven by real search demand. Writing
 post well is still a wasted day.
 
 ## 3. Inputs you triage every run
-- **Google Search Console (GSC) Performance Export** — the primary SEO signal. Use `/browser` to navigate to Google Search Console (`https://search.google.com/search-console`), open the Performance report for `lastberth.com`, and export the performance dataset (Queries and Pages with metrics: clicks, impressions, CTR, average position). Review exported queries and pages to evaluate impression volume, spot low-CTR bottlenecks, and calculate Headroom Opportunity Scores across positions 1–20.
+- **Google Search Console (GSC) Automated Data Fetch (Mandatory Step 0)** — **Always run `npm run gsc:fetch` (or `npx tsx scripts/fetch-gsc-performance.ts`) first**. This automatically queries the Google Search Console API and exports un-truncated performance datasets into `data/gsc/latest/`:
+  - `data/gsc/latest/Queries.csv` (`Top queries,Clicks,Impressions,CTR,Position`)
+  - `data/gsc/latest/Pages.csv` (`Top pages,Clicks,Impressions,CTR,Position`)
+  - `data/gsc/latest/Pages_and_Queries.csv` (`Top pages,Top queries,Clicks,Impressions,CTR,Position`)
+  - `data/gsc/latest/Dates.csv` and `summary.json`
+  Use these CSV datasets directly to analyze search demand, evaluate impression growth, identify low-CTR bottlenecks, and calculate Headroom Opportunity Scores across positions 1–20.
 - **PostHog Product Analytics & Funnel Performance (via `posthog-cli api`)** — the primary behavioral conversion signal. Run `posthog-cli api --agent-help` and use `posthog-cli api call execute-sql` / HogQL queries on `$pageview` and `blog_route_cta_clicked` events to monitor the 30-day blog-to-search funnel. Track post-by-post performance: visitors, conversion to search route page (`/` with pre-filled params or `/routes/*`), and bounce rates. Identify high-traffic articles suffering from severe conversion drop-off (e.g. 1,000+ visitors with <0.5% conversion) to trigger targeted conversion optimization.
 - **GSC report summaries** (Antigravity brain artifacts, when provided):
   - `gsc_report_summary.md` (keyword instructions / canonical phrasings)
