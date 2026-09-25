@@ -152,7 +152,7 @@ function TrainClassDropdown({
         aria-expanded={open}
         aria-label="Select train travel classes"
         title={label}
-        className="block w-full truncate rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-left text-sm font-semibold text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 touch-manipulation"
+        className="block w-full truncate rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-left text-base font-semibold text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 touch-manipulation"
       >
         {label}
         <span
