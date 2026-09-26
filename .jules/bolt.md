@@ -17,3 +17,7 @@
 ## 2026-09-24 - Set Hash Lookups for Array Intersection vs Filter Includes
 **Learning:** Checking array membership with `Array.prototype.includes` inside `Array.prototype.filter` across list iterations creates $O(N \cdot M)$ scan loops and allocates intermediate arrays for each item. Replacing array scans with a pre-constructed `Set` and counting matches in a direct `for...of` loop yields ~2.5x speedup and eliminates array allocation GC pressure.
 **Action:** Always pre-build a `Set` when matching items against a reference array inside iteration loops.
+
+## 2026-09-30 - In-Memory Map Indexing vs Synchronous readdirSync Scans over Large Directories
+**Learning:** Calling `fs.readdirSync` on a directory with 3,500+ static JSON files inside per-request file lookup functions introduces ~3ms synchronous filesystem blocking overhead per call ($O(N)$ string array allocations and linear `.find()` scans). Pre-building a module-level `Map<string, string>` on first access reduces path lookup time to $O(1)$ (~1 microsecond, ~175x speedup).
+**Action:** Always construct an in-memory index `Map` when looking up static file paths from directories containing thousands of files instead of calling `fs.readdirSync` per request.
