@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Headers,
   Logger,
   Post,
   Req,
@@ -10,6 +11,7 @@ import {
 import type { Request } from 'express';
 import { WhatsappService } from './whatsapp.service';
 import { WasenderHealthcheckService } from './wasender-healthcheck.service';
+import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 import * as crypto from 'crypto';
 
 @Controller('api/whatsapp')
@@ -108,17 +110,29 @@ export class WhatsappController {
   }
 
   @Get('wasender/health')
-  getWasenderHealth() {
+  getWasenderHealth(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.wasenderHealthcheck.getState();
   }
 
   @Post('wasender/healthcheck')
-  async triggerWasenderHealthcheck() {
+  async triggerWasenderHealthcheck(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.wasenderHealthcheck.checkHealth('manual_api');
   }
 
   @Post('wasender/connect')
-  async triggerWasenderConnect() {
+  async triggerWasenderConnect(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
     const state = this.wasenderHealthcheck.getState();
     return this.wasenderHealthcheck.reconnectAndSendQr(
       state.sessionId,
