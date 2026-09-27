@@ -107,10 +107,15 @@ const ROUTE_TRAINS: Record<string, { number: string; name: string }[]> = {
   ],
 };
 
+// Performance Optimization: Map lookup is O(1) compared to STATIONS.find which is O(N) per station scan.
+const STATION_BY_SLUG = new Map<string, Station>(
+  STATIONS.map((s) => [s.slug, s]),
+);
+
 // In a real application, this would query the PostgreSQL database via Prisma
 export async function getRouteData(originSlug: string, destSlug: string): Promise<RouteData | null> {
-  const origin = STATIONS.find((s) => s.slug === originSlug);
-  const dest = STATIONS.find((s) => s.slug === destSlug);
+  const origin = STATION_BY_SLUG.get(originSlug);
+  const dest = STATION_BY_SLUG.get(destSlug);
 
   if (!origin || !dest || origin.slug === dest.slug) return null;
 
