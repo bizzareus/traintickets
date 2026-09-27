@@ -445,10 +445,11 @@ Visually educate railway passengers about ticketing mechanics while consistently
 4. **Smart Seats (Split-Ticketing):**
    - Teach users that when a direct origin-to-destination seat is waitlisted, LastBerth uncovers confirmed contiguous berths on the exact same train without requiring a physical deboarding.
 
-### Visual Asset & Graphic Specs:
-- **Aspect Ratio:** `1:1` Square (`1080x1080px`) or `4:5` Portrait (`1080x1350px`).
-- **Design Aesthetic:** Deep midnight navy/graphite backgrounds, high-contrast emerald green (`#10B981`) and vibrant amber/gold accents, bold modern sans-serif typography, sleek train silhouettes (Vande Bharat/Tejas/LHB), and prominent LastBerth branding badge (`lastberth.com • Find Smart Seats & Chart Times`).
-- **Generation:** Use the `generate_image` tool or programmatic graphic generation pipeline with the prompt output from `scripts/generate_instagram_post.ts`.
+### Visual Asset & Graphic Specs (Mandatory `design.md` Compliance):
+- **Design Standards:** The banner design **MUST strictly follow `design.md`** (or `docs/design.md`) for canvas dimensions, color palettes, visual hierarchy, card depth, typography, and train iconography.
+- **Aspect Ratio:** `1:1` Square (`1080x1080px`) or `4:5` Portrait (`1080x1350px`) as defined in `design.md`.
+- **Design Aesthetic:** Deep midnight navy/graphite backgrounds (`#0B1120`, `#0F172A`), high-contrast emerald green (`#10B981`) for confirmed status, vibrant amber/gold accents (`#F59E0B`) for charting cutoffs, bold modern sans-serif typography, sleek train silhouettes (Vande Bharat/Tejas/LHB), and prominent LastBerth branding badge (`lastberth.com • Find Smart Seats & Chart Times`).
+- **Generation:** Use the `generate_image` tool adhering to the prompt engineering template and composition rules in `design.md` using the prompt output from `scripts/generate_instagram_post.ts`.
 
 ### Caption & Post Structure:
 - **Hook (Lines 1–2):** Stop-the-scroll headline addressing commuter frustration (e.g. *"Thought your train was 100% sold out? Here is how 40+ confirmed berths appear 30 minutes before departure 🚆"*).
@@ -461,8 +462,9 @@ Visually educate railway passengers about ticketing mechanics while consistently
 
 ### Execution Workflow:
 1. Run `npx tsx scripts/generate_instagram_post.ts <slug>` to extract the caption, popular train chart times, and image generation prompt.
-2. Generate the visual asset using `generate_image` with the generated prompt.
+2. Generate the visual banner design using `generate_image`, strictly following the visual rules, layout, and palette in `design.md`.
 3. Open Instagram (`https://www.instagram.com/lastberth.in/`) via browser/MCP to upload the visual asset and post the caption.
 4. Verify publication and include the post confirmation in the job summary.
+
 
 

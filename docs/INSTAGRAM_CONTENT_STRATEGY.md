@@ -44,18 +44,21 @@ Showcase actual historical charting times and typical berth release patterns on 
 
 ---
 
-## 3. Visual Asset Guidelines (Image Generation & Formats)
+## 3. Visual Asset Guidelines (Mandatory `design.md` Compliance)
+
+All visual assets and social banners generated for Instagram must strictly follow the visual design system defined in [`design.md`](file:///Users/kartikarora/Documents/personal/traintickets/design.md).
 
 ### Format & Specs:
+- **Design System Reference:** Follow [`design.md`](file:///Users/kartikarora/Documents/personal/traintickets/design.md) for palette, typography, visual hierarchy, and composition.
 - **Aspect Ratio:** Single Image: `1:1` Square (`1080x1080px`) or `4:5` Portrait (`1080x1350px`).
 - **Carousel Sets:** 4 to 6 slides breaking down complex rules into swipeable cards.
-- **Color Palette:**
+- **Color Palette (from `design.md`):**
   - Background: Deep midnight navy (`#0B1120`, `#0F172A`) or sleek graphite.
   - Accents: Vibrant emerald green (`#10B981` — representing confirmed status), warm amber (`#F59E0B` — urgency/alerts), and clean white (`#FFFFFF`) for typography.
 - **Visual Elements:**
   - Modern Indian train silhouettes (Vande Bharat, Tejas, LHB rakes).
   - Clean UI card mockups displaying countdown clocks ("Chart Prep: 8h before departure").
-  - Prominent LastBerth branding badge (`lastberth.com`).
+  - Prominent LastBerth branding badge (`lastberth.com • Find Smart Seats & Chart Times`).
 
 ---
 
@@ -79,7 +82,7 @@ Showcase actual historical charting times and typical berth release patterns on 
 
 1. **Automated Generation:**  
    Run `npx tsx scripts/generate_instagram_post.ts <slug>` to programmatically extract insights, popular train chart times, and the visual image prompt.
-2. **Visual Generation:**  
-   Use the `generate_image` tool with the generated image prompt to produce the high-res 1:1 or 4:5 image asset.
+2. **Visual Banner Generation:**  
+   Use the `generate_image` tool with the generated image prompt to produce the high-res 1:1 or 4:5 banner graphic, strictly following the design system and prompt template in [`design.md`](file:///Users/kartikarora/Documents/personal/traintickets/design.md).
 3. **Publishing / Staging:**  
    Navigate to `https://www.instagram.com/lastberth.in/` using Chrome DevTools MCP or browser tools to upload the asset, paste the formatted caption, and stage/publish the post.

@@ -190,7 +190,7 @@ TREE=$(git write-tree) && C=$(echo "<msg>" | git commit-tree $TREE -p HEAD) && e
 ## Step 6.5 — Social Media Distribution (LinkedIn & Instagram)
 
 1. **LinkedIn Distribution:** Run `npx tsx scripts/generate_linkedin_post.ts <slug>` and post to the [LastBerth Company Page](https://www.linkedin.com/company/146318972/admin/page-posts/published) via browser/MCP.
-2. **Instagram Distribution (`@lastberth.in`):** Run `npx tsx scripts/generate_instagram_post.ts <slug>` to generate the educational caption and image prompt. Produce a high-contrast visual graphic asset (1:1 or 4:5) educating users on **chart preparation times**, **Current Availability ticket release mechanics**, and **popular train chart times**, driving travellers to search for **last-minute confirmed tickets** on LastBerth. Post or stage the update to [LastBerth Instagram](https://www.instagram.com/lastberth.in/).
+2. **Instagram Distribution (`@lastberth.in`):** Run `npx tsx scripts/generate_instagram_post.ts <slug>` to generate the educational caption and image prompt. Produce a high-contrast visual graphic banner (1:1 or 4:5) **strictly following `design.md`** to educate users on **chart preparation times**, **Current Availability ticket release mechanics**, and **popular train chart times**, driving travellers to search for **last-minute confirmed tickets** on LastBerth. Post or stage the update to [LastBerth Instagram](https://www.instagram.com/lastberth.in/).
 
 ## Step 7 — Summary
 

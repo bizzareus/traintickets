@@ -92,13 +92,13 @@ export function generateInstagramPost(
     `#IndianRailways #IRCTC #TrainTravel #LastMinuteTickets #ChartPreparation #CurrentAvailability #Tatkal #SmartSeats #LastBerth #TrainHacks #ConfirmTicket #VandeBharat #RajdhaniExpress`;
 
   const imagePrompt = 
-    `Clean, premium editorial social media infographic graphic for Instagram (aspect ratio 1:1, 1080x1080px). ` +
-    `Deep midnight navy and dark charcoal background with high-contrast emerald green and vibrant amber accents. ` +
+    `Clean, premium editorial social media infographic graphic for Instagram (aspect ratio 1:1, 1080x1080px) strictly following LastBerth design.md specifications. ` +
+    `Deep midnight navy (#0B1120) and dark charcoal background with high-contrast emerald green (#10B981) and vibrant amber (#F59E0B) accents. ` +
     `Modern bold typography reading: "HOW TO GET CONFIRMED TRAIN TICKETS 30 MINS BEFORE DEPARTURE". ` +
     `Visual elements: A sleek modern Indian Railways train (Vande Bharat / Tejas style) moving across a glowing digital track, ` +
     `alongside a clean split-screen UI card displaying "Chart Preparation Window: ~8 Hours & 30 Mins Before Departure", ` +
     `"Current Availability (CURR_AVBL) = 100% Confirmed Berths Released", and popular train chart countdown badge. ` +
-    `At the bottom: Clean LastBerth branding with "lastberth.com • Find Smart Seats & Chart Times". Professional, minimal, vector graphic design, zero clutter.`;
+    `At the bottom: Clean LastBerth branding with "lastberth.com • Find Smart Seats & Chart Times". Professional, minimal, vector graphic design, zero clutter as specified in design.md.`;
 
   const carouselSlides = [
     {
