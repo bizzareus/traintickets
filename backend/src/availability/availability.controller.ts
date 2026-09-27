@@ -562,7 +562,11 @@ export class AvailabilityController {
   }
 
   @Get('admin/alerts')
-  async getAllAlerts() {
+  async getAllAlerts(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
     const alerts = await this.journeyTask.getAllAlerts();
     const journeyRequestIds = [
       ...new Set(alerts.map((a) => a.journeyRequestId)),
@@ -639,10 +643,13 @@ export class AvailabilityController {
 
   @Get('admin/notifications-analytics')
   async getNotificationsAnalytics(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Query('groupBy') groupBy?: 'day' | 'week' | 'month',
     @Query('startDate') startDate?: string,
     @Query('endDate') endDate?: string,
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     const validGroupBy =
       groupBy === 'week' || groupBy === 'month' ? groupBy : 'day';
     return this.journeyTask.getNotificationsAnalytics(
@@ -670,7 +677,12 @@ export class AvailabilityController {
   }
 
   @Post('admin/alerts/:id/trigger')
-  async triggerAlert(@Param('id') id: string) {
+  async triggerAlert(
+    @Param('id') id: string,
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
     try {
       await this.journeyTask.runTask(id, true);
       return { success: true, message: 'Alert triggered successfully' };
@@ -733,7 +745,12 @@ export class AvailabilityController {
   }
 
   @Post('admin/alerts/:id/resend-notification')
-  async resendNotification(@Param('id') id: string) {
+  async resendNotification(
+    @Param('id') id: string,
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
     try {
       const res = await this.journeyTask.resendTaskNotification(id);
       return {
@@ -753,7 +770,12 @@ export class AvailabilityController {
 
   @Get('admin/resend-failed-notifications')
   @Post('admin/resend-failed-notifications')
-  async resendFailedNotifications(@Query('hours') hours?: string) {
+  async resendFailedNotifications(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+    @Query('hours') hours?: string,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
     const hoursNum = hours ? Number.parseInt(hours, 10) : 24;
     return this.journeyTask.resendFailedWhatsAppNotifications(hoursNum);
   }
