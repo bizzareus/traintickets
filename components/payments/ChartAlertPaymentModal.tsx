@@ -10,6 +10,7 @@ import {
   trackAlertRequested,
   trackAnalyticsEvent,
 } from "@/lib/analytics/track";
+import { ChartAlertDiscountPrice } from "@/components/payments/ChartAlertDiscountPrice";
 
 export interface ChartAlertPaymentModalJourney {
   trainNumber: string;
@@ -177,6 +178,12 @@ export function ChartAlertPaymentModal({
                 {journey.trainName ? ` · ${journey.trainName}` : ""} ·{" "}
                 {journey.fromStationCode} · {journey.journeyDate.slice(0, 10)}
               </p>
+              {status === "paying" && (
+                <ChartAlertDiscountPrice
+                  price={payment.amount}
+                  className="mt-1 text-xs"
+                />
+              )}
             </div>
           </div>
           <button

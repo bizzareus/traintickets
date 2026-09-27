@@ -3,18 +3,34 @@ import { trackAnalyticsEvent } from "@/lib/analytics/track";
 
 /**
  * Class-based chart-alert pricing (display only; backend enforces).
- * 1A/2A/3A pay the premium tier; every other class (including ANY)
- * pays standard. Keep in sync with the backend pricing rule.
+ * ANY covers every available class, 1A/2A/3A pay the premium tier, and
+ * every other class pays standard. Keep in sync with the backend pricing rule.
  */
 const PREMIUM_ALERT_CLASSES = new Set(["1A", "2A", "3A"]);
+export const CHART_ALERT_ANY_PRICE_RUPEES = 50;
 export const CHART_ALERT_PREMIUM_PRICE_RUPEES = 25;
 export const CHART_ALERT_STANDARD_PRICE_RUPEES = 10;
 
 export function chartAlertPriceForClass(classCode?: string | null): number {
   const normalized = (classCode ?? "").trim().toUpperCase();
+  if (normalized === "ANY") return CHART_ALERT_ANY_PRICE_RUPEES;
   return PREMIUM_ALERT_CLASSES.has(normalized)
     ? CHART_ALERT_PREMIUM_PRICE_RUPEES
     : CHART_ALERT_STANDARD_PRICE_RUPEES;
+}
+
+export function chartAlertListPriceForClass(
+  classCode?: string | null,
+): number {
+  return chartAlertPriceForClass(classCode) * 2;
+}
+
+export function chartAlertClassPriceLabel(
+  classLabel: string,
+  classCode: string,
+): string {
+  const price = chartAlertPriceForClass(classCode);
+  return `${classLabel} — ₹${price * 2} → ₹${price} (50% off)`;
 }
 
 export interface ChartAlertPaymentCreateInput {

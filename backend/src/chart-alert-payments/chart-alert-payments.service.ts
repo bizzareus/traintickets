@@ -19,8 +19,9 @@ import {
   type RazorpayPaymentItem,
 } from './razorpay.client';
 
-/** AC classes charged at the premium tier. Everything else (incl. ANY) is standard. */
+/** ANY covers every class; AC classes use premium; everything else is standard. */
 const PREMIUM_ALERT_CLASSES = new Set(['1A', '2A', '3A']);
+const ANY_ALERT_PRICE_RUPEES = 50;
 const PREMIUM_ALERT_PRICE_RUPEES = 25;
 const STANDARD_ALERT_PRICE_RUPEES = 10;
 
@@ -28,12 +29,13 @@ const DEFAULT_MUZOBOX_API_URL =
   'https://ai-jukebox-backend-production.up.railway.app/api';
 
 /**
- * Class-based alert price in rupees: 1A/2A/3A pay the premium tier,
- * every other class (including ANY) pays standard. This is the enforced
- * amount — the frontend only displays it.
+ * Class-based alert price in rupees: ANY covers every class, 1A/2A/3A pay
+ * the premium tier, and every other class pays standard. This is the enforced
+ * amount; the frontend only displays it.
  */
 export function chartAlertPriceForClass(classCode?: string | null): number {
   const normalized = (classCode ?? '').trim().toUpperCase();
+  if (normalized === 'ANY') return ANY_ALERT_PRICE_RUPEES;
   return PREMIUM_ALERT_CLASSES.has(normalized)
     ? PREMIUM_ALERT_PRICE_RUPEES
     : STANDARD_ALERT_PRICE_RUPEES;

@@ -12,6 +12,7 @@ import { useContactFields } from "@/lib/contact";
 import { useChartAlertPayments } from "@/lib/hooks/useChartAlertPayments";
 import { addYmdDays, boardingYmdForStation } from "@/lib/chartTimeDisplay";
 import {
+  chartAlertClassPriceLabel,
   chartAlertPriceForClass,
   createFreeChartAlert,
   getChartAlertErrorMessage,
@@ -24,6 +25,7 @@ import {
 } from "@/components/payments/ChartAlertPaymentModal";
 import { ChartAlertSuccessBox } from "@/components/payments/ChartAlertSuccessBox";
 import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFooter";
+import { ChartAlertDiscountPrice } from "@/components/payments/ChartAlertDiscountPrice";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -448,7 +450,10 @@ export default function RowAlertButton({
 
               <div className="grid grid-cols-2 gap-3">
                 <label className="text-xs font-semibold text-slate-700">
-                  <span className="mb-1 block">Class</span>
+                  <span className="mb-1 flex items-center justify-between gap-2">
+                    Class
+                    <ChartAlertDiscountPrice price={alertPrice} />
+                  </span>
                   <select
                     value={classCode}
                     onChange={(e) => setClassCode(e.target.value)}
@@ -456,7 +461,10 @@ export default function RowAlertButton({
                   >
                     {activeClasses.map((c) => (
                       <option key={c} value={c}>
-                        {CLASS_LABELS[c] || `${c} Class`}
+                        {chartAlertClassPriceLabel(
+                          CLASS_LABELS[c] || `${c} Class`,
+                          c,
+                        )}
                       </option>
                     ))}
                   </select>

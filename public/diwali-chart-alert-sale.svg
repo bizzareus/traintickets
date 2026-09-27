@@ -1,0 +1,75 @@
+<svg width="720" height="1280" viewBox="0 0 720 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>LastBerth Diwali Sale</title>
+  <desc>Get 50 percent off chart alerts that help find confirmed train tickets. Valid till 5 October.</desc>
+  <defs>
+    <linearGradient id="bg" x1="72" y1="0" x2="658" y2="1280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A0A55"/>
+      <stop offset="0.5" stop-color="#671145"/>
+      <stop offset="1" stop-color="#9B2B28"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(360 430) rotate(90) scale(430 420)">
+      <stop stop-color="#FFB329" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#FFB329" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="218" y1="164" x2="500" y2="1035" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE9A6"/>
+      <stop offset="0.48" stop-color="#FFB62E"/>
+      <stop offset="1" stop-color="#F47721"/>
+    </linearGradient>
+    <filter id="shadow" x="94" y="722" width="532" height="244" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#210433" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="720" height="1280" rx="44" fill="url(#bg)"/>
+  <rect width="720" height="1280" rx="44" fill="url(#glow)"/>
+  <rect x="24" y="24" width="672" height="1232" rx="30" stroke="#FFC94D" stroke-width="2" stroke-opacity="0.75"/>
+  <rect x="38" y="38" width="644" height="1204" rx="24" stroke="#FFF0B8" stroke-opacity="0.16"/>
+
+  <g opacity="0.36" fill="#FFD975">
+    <circle cx="92" cy="113" r="4"/>
+    <circle cx="626" cy="172" r="5"/>
+    <circle cx="80" cy="462" r="3"/>
+    <circle cx="644" cy="535" r="4"/>
+    <circle cx="105" cy="1048" r="5"/>
+    <circle cx="617" cy="1114" r="3"/>
+    <path d="M130 219h30M145 204v30" stroke="#FFD975" stroke-width="4" stroke-linecap="round"/>
+    <path d="M586 333h34M603 316v34" stroke="#FFD975" stroke-width="4" stroke-linecap="round"/>
+    <path d="M80 890h28M94 876v28" stroke="#FFD975" stroke-width="4" stroke-linecap="round"/>
+    <path d="M601 965h28M615 951v28" stroke="#FFD975" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <text x="360" y="105" fill="#FFEAB0" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="6" text-anchor="middle">LASTBERTH PRESENTS</text>
+  <path d="M272 142H448" stroke="#EFB542" stroke-width="2" stroke-linecap="round"/>
+
+  <g transform="translate(252 168)">
+    <path d="M108 9C78 43 78 75 108 101C138 75 138 43 108 9Z" fill="#FFCA43"/>
+    <path d="M108 37C94 54 95 70 108 82C121 70 122 54 108 37Z" fill="#FFF4BD"/>
+    <path d="M20 106H196C187 158 153 184 108 184C63 184 29 158 20 106Z" fill="url(#gold)"/>
+    <path d="M9 106H207" stroke="#FFE899" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="108" cy="134" r="9" fill="#8D2440"/>
+    <path d="M70 139C80 152 92 158 108 158C124 158 136 152 146 139" stroke="#8D2440" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <text x="360" y="442" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="900" letter-spacing="2" text-anchor="middle">DIWALI</text>
+  <text x="360" y="518" fill="url(#gold)" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="900" letter-spacing="15" text-anchor="middle">SALE</text>
+
+  <g transform="translate(90 566)">
+    <path d="M0 4H540" stroke="#FFC852" stroke-opacity="0.45" stroke-width="2"/>
+    <circle cx="270" cy="4" r="7" fill="#FFD871"/>
+  </g>
+
+  <text x="360" y="694" fill="#FFE7A0" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="800" letter-spacing="4" text-anchor="middle">GET</text>
+  <text x="360" y="840" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="160" font-weight="900" letter-spacing="-8" text-anchor="middle" filter="url(#shadow)">50%</text>
+  <text x="360" y="920" fill="url(#gold)" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="900" letter-spacing="8" text-anchor="middle">OFF</text>
+
+  <text x="360" y="1000" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="middle">Chart alerts that help find</text>
+  <text x="360" y="1042" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="middle">CONFIRMED TICKETS</text>
+
+  <g transform="translate(126 1090)">
+    <rect width="468" height="72" rx="36" fill="#FFF4CD"/>
+    <text x="234" y="46" fill="#65113E" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="900" letter-spacing="2" text-anchor="middle">1 WEEK ONLY</text>
+  </g>
+
+  <text x="360" y="1211" fill="#FFE9AA" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="800" letter-spacing="2" text-anchor="middle">VALID TILL 5 OCTOBER</text>
+</svg>

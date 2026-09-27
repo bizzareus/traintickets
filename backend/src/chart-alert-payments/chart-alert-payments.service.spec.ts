@@ -460,6 +460,10 @@ describe('ChartAlertPaymentsService', () => {
   });
 
   describe('chartAlertPriceForClass', () => {
+    it.each(['ANY', ' any '])('charges ₹50 for %s', (classCode) => {
+      expect(chartAlertPriceForClass(classCode)).toBe(50);
+    });
+
     it.each(['1A', '2A', '3A', ' 3a ', '2a'])(
       'charges the premium tier (₹25) for %s',
       (classCode) => {
@@ -467,7 +471,7 @@ describe('ChartAlertPaymentsService', () => {
       },
     );
 
-    it.each(['ANY', 'SL', '3E', '2S', 'CC', 'EC', 'FC', '', undefined, null])(
+    it.each(['SL', '3E', '2S', 'CC', 'EC', 'FC', '', undefined, null])(
       'charges the standard tier (₹10) for %s',
       (classCode) => {
         expect(chartAlertPriceForClass(classCode as string | undefined)).toBe(

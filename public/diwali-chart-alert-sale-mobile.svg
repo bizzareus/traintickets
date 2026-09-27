@@ -1,0 +1,55 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>LastBerth Diwali Sale</title>
+  <desc>Get 50 percent off chart alerts that help find confirmed train tickets. Valid till 5 October.</desc>
+  <defs>
+    <linearGradient id="mobile-bg" x1="70" y1="12" x2="1140" y2="350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A0A55"/>
+      <stop offset="0.52" stop-color="#721345"/>
+      <stop offset="1" stop-color="#A53028"/>
+    </linearGradient>
+    <linearGradient id="mobile-gold" x1="92" y1="40" x2="998" y2="316" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0B1"/>
+      <stop offset="0.5" stop-color="#FFBC35"/>
+      <stop offset="1" stop-color="#F47821"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="360" rx="34" fill="url(#mobile-bg)"/>
+  <rect x="16" y="16" width="1168" height="328" rx="24" stroke="#FFC94D" stroke-width="3"/>
+  <rect x="28" y="28" width="1144" height="304" rx="18" stroke="#FFF0B8" stroke-opacity="0.16"/>
+
+  <g opacity="0.35" stroke="#FFD975" stroke-width="4" stroke-linecap="round">
+    <path d="M52 72H76M64 60V84"/>
+    <path d="M1124 82H1148M1136 70V94"/>
+    <path d="M1092 278H1118M1105 265V291"/>
+    <path d="M440 64H460M450 54V74"/>
+  </g>
+
+  <g transform="translate(92 52)">
+    <path d="M82 0C58 27 58 53 82 74C106 53 106 27 82 0Z" fill="#FFC943"/>
+    <path d="M82 24C72 37 72 49 82 58C92 49 92 37 82 24Z" fill="#FFF5C5"/>
+    <path d="M14 78H150C143 118 117 138 82 138C47 138 21 118 14 78Z" fill="url(#mobile-gold)"/>
+    <path d="M4 78H160" stroke="#FFE899" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="82" cy="100" r="7" fill="#8D2440"/>
+    <path d="M52 103C60 114 70 119 82 119C94 119 104 114 112 103" stroke="#8D2440" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <text x="174" y="238" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="900" text-anchor="middle">DIWALI</text>
+  <text x="174" y="292" fill="url(#mobile-gold)" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="900" letter-spacing="8" text-anchor="middle">SALE</text>
+
+  <path d="M346 55V305" stroke="#FFC852" stroke-opacity="0.45" stroke-width="2"/>
+
+  <text x="570" y="106" fill="#FFE8A7" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="800" letter-spacing="4" text-anchor="middle">GET</text>
+  <text x="570" y="226" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="128" font-weight="900" letter-spacing="-5" text-anchor="middle">50%</text>
+  <text x="570" y="292" fill="url(#mobile-gold)" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" letter-spacing="7" text-anchor="middle">OFF</text>
+
+  <path d="M774 55V305" stroke="#FFC852" stroke-opacity="0.45" stroke-width="2"/>
+
+  <text x="980" y="91" fill="#FFE9A9" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="800" letter-spacing="3" text-anchor="middle">LASTBERTH PRESENTS</text>
+  <text x="980" y="147" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">Chart alerts that help find</text>
+  <text x="980" y="184" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="900" text-anchor="middle">CONFIRMED TICKETS</text>
+
+  <rect x="835" y="214" width="290" height="52" rx="26" fill="#FFF4CD"/>
+  <text x="980" y="248" fill="#65113E" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="900" letter-spacing="2" text-anchor="middle">1 WEEK ONLY</text>
+  <text x="980" y="304" fill="#FFE9AA" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="800" letter-spacing="2" text-anchor="middle">VALID TILL 5 OCTOBER</text>
+</svg>
