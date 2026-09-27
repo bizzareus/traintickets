@@ -399,72 +399,23 @@ To syndicate published English blog posts to Medium without risking Google dupli
 4. Enter the canonical URL: `https://lastberth.com/blog/<slug>` and save.
 5. Publish the story.
 
-## 25. LinkedIn Social Media Strategy & Browser Posting Workflow (Dual-Engine)
-Every published daily blog post must be distributed to the official **LastBerth.com LinkedIn Company Page** (`https://www.linkedin.com/company/146318972/admin/dashboard/`) using the browser to build organic visibility and drive high-intent referral traffic.
+## 25. LinkedIn Social Media Strategy & Browser Posting Workflow
+Every published daily blog post must be distributed to the official **LastBerth.com LinkedIn Company Page** (`https://www.linkedin.com/company/146318972/admin/dashboard/`) using the browser.
+- **Strategy & Blueprint:** Follow the complete guide in [`docs/LINKEDIN_CONTENT_STRATEGY.md`](file:///Users/kartikarora/Documents/personal/traintickets/docs/LINKEDIN_CONTENT_STRATEGY.md).
+- **Execution:** Run `npx tsx scripts/generate_linkedin_post.ts <slug>` to extract the post copy with popular train seat discovery mentions.
+- **Posting:** Open the Company Admin Share Composer in the browser (`https://www.linkedin.com/company/146318972/admin/page-posts/published?share=true&shareActorType=ORGANIZATION&shareOrganizationActor=urn%3Ali%3Afsd_company%3A146318972`), insert the copy, verify rendering, and click Post.
 
-### The Dual-Engine Model
-1. **Engine 1: Feed Posts (Short-form Executive Summary, 1,200–1,800 characters)**:
-   - High-density, mobile-scannable hooks addressing immediate commuter pain points (Tatkal, waitlists, REGRET, festival special trains).
-   - **Popular Train & Route Seat Discovery Mentions**: Anchor advice in real, high-demand journeys. Mention popular trains and high-volume corridors where LastBerth uncovers confirmed berths when standard searches are waitlisted or unavailable. For example:
-     > *"Travelling this week to Delhi from Mumbai? Even when direct tickets show WL or REGRET, I have found you confirmed seats in Tejas Express in 3AC, and you can use LastBerth to find that out on your route too."*
-     Weave in concrete examples of popular trains (Tejas Express, Rajdhani, Vande Bharat, Duronto) across high-traffic corridors (Mumbai–Delhi, Delhi–Patna, Bengaluru–Chennai, Howrah–Delhi) to illustrate how LastBerth's Smart Seats and vacancy algorithms unlock real travel options.
-   - Core data points and route tables formatted with clean Unicode bullets (`🚆`, `📅`, `💰`, `💡`, `🎯`).
-   - Call-to-action linking directly to the full blog post or specific LastBerth tool (`https://lastberth.com` or `/blog/<slug>`).
-   - Run `npx tsx scripts/generate_linkedin_post.ts <slug>` to programmatically extract and format the post copy from the blog markdown.
-2. **Engine 2: Native Articles / Pulse (Long-form Syndication)**:
-   - Complete syndication of authoritative blog guides using LinkedIn's native Article editor (`https://www.linkedin.com/article/new/`) with canonical link attribution to capture LinkedIn and Google Search traffic.
+## 26. Instagram Social Media Strategy & Banner Design Workflow
+Every published daily blog post must generate and publish/stage visual social media content for the official **LastBerth Instagram Page** ([`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/)).
+- **Strategy & Blueprint:** Follow the complete guide in [`docs/INSTAGRAM_CONTENT_STRATEGY.md`](file:///Users/kartikarora/Documents/personal/traintickets/docs/INSTAGRAM_CONTENT_STRATEGY.md) when executing the Instagram task.
+- **Core Agenda:** Educate users on **chart preparation times**, **how tickets are released on chart prep (`CURR_AVBL`)**, and **popular train chart times**, driving travellers to search for **last-minute confirmed tickets** on LastBerth (`/`, `/chart-times`, `/chart-vacancy`).
+- **Banner Design Standards:** Follow [`design.md`](file:///Users/kartikarora/Documents/personal/traintickets/design.md) (or `docs/design.md`) strictly for canvas dimensions (`1:1` or `4:5`), brand palette, typography hierarchy, data cards, and train silhouettes when generating banner graphics via `generate_image`.
+- **Execution Workflow:**
+  1. Run `npx tsx scripts/generate_instagram_post.ts <slug>` to extract the caption, popular train chart times, and image generation prompt.
+  2. Generate the banner graphic using `generate_image`, strictly adhering to `design.md`.
+  3. Open Instagram (`https://www.instagram.com/lastberth.in/`) via browser/MCP to upload the visual asset and post the caption.
+  4. Verify publication and report confirmation in the job summary.
 
-### Automated Browser Posting Execution
-1. Open the LastBerth Company Admin Share Composer in the browser via `/browser` or Chrome DevTools MCP:
-   `https://www.linkedin.com/company/146318972/admin/page-posts/published?share=true&shareActorType=ORGANIZATION&shareOrganizationActor=urn%3Ali%3Afsd_company%3A146318972`
-2. Focus the rich text editor (`[aria-label="Text editor for creating content"]`) and insert the generated LinkedIn copy.
-3. Verify that the link preview or link text renders cleanly.
-4. Click the **Post** button to publish live.
-5. Navigate to the generated post URL (`https://www.linkedin.com/feed/update/urn:li:share:...`) to verify publication and report the live link in the job summary.
-
-## 26. Instagram Social Media Strategy & Visual Content Automation Workflow (`https://www.instagram.com/lastberth.in/`)
-Every published daily blog post must generate dedicated visual social media content for the official **LastBerth Instagram Page** ([`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/)).
-
-### Core Mission & Conversion Agenda:
-Visually educate railway passengers about ticketing mechanics while consistently pushing the core agenda: **encouraging users to visit LastBerth (`lastberth.com`) to search for and secure last-minute confirmed tickets.**
-
-### Key Educational Pillars:
-1. **Chart Preparation Times:**
-   - Educate travellers on when reservation charts are actually prepared:
-     - **First Chart:** Prepared **8 to 10 hours** prior to train departure (or at **8:00 PM / 20:00 hrs the previous evening** for morning trains departing before 2:00 PM).
-     - **Second / Final Chart:** Prepared **30 to 45 minutes** before departure at the originating station.
-2. **How Tickets Are Released on Chart Preps (Current Availability):**
-   - Demystify the "Sold Out" / `REGRET` panic: explain that unallocated emergency quotas, VIP/HO quotas, and last-minute cancellations automatically convert into **Current Availability (`CURR_AVBL`)** at chart preparation.
-   - Explain that `CURR_AVBL` berths are **100% confirmed tickets** with assigned coach and seat numbers, available at a **10% discount on base fare**, bookable online on IRCTC or at station counters until 30 minutes before departure.
-3. **Show Popular Train Charting Times & Vacancy Patterns:**
-   - Anchor visuals in real, popular train data so passengers see the concrete opportunity:
-     - *Mumbai ➔ Delhi Tejas/Rajdhani:* 1st chart prepared at 8:00 PM previous night; frequently releases 20–40 confirmed 3AC/2AC berths.
-     - *New Delhi ➔ Patna Rajdhani / Sampoorna Kranti:* 1st chart prepared 8 hours prior; releases 30+ Sleeper & 3E berths.
-     - *Bengaluru ➔ Chennai Vande Bharat / Shatabdi:* 1st chart prepared 8 hours prior; releases 15–20 confirmed Chair Car seats.
-     - *Howrah ➔ Delhi Duronto / Kalka Mail:* 1st chart prepared 8 hours prior; releases pooled quota vacancies.
-4. **Smart Seats (Split-Ticketing):**
-   - Teach users that when a direct origin-to-destination seat is waitlisted, LastBerth uncovers confirmed contiguous berths on the exact same train without requiring a physical deboarding.
-
-### Visual Asset & Graphic Specs (Mandatory `design.md` Compliance):
-- **Design Standards:** The banner design **MUST strictly follow `design.md`** (or `docs/design.md`) for canvas dimensions, color palettes, visual hierarchy, card depth, typography, and train iconography.
-- **Aspect Ratio:** `1:1` Square (`1080x1080px`) or `4:5` Portrait (`1080x1350px`) as defined in `design.md`.
-- **Design Aesthetic:** Deep midnight navy/graphite backgrounds (`#0B1120`, `#0F172A`), high-contrast emerald green (`#10B981`) for confirmed status, vibrant amber/gold accents (`#F59E0B`) for charting cutoffs, bold modern sans-serif typography, sleek train silhouettes (Vande Bharat/Tejas/LHB), and prominent LastBerth branding badge (`lastberth.com • Find Smart Seats & Chart Times`).
-- **Generation:** Use the `generate_image` tool adhering to the prompt engineering template and composition rules in `design.md` using the prompt output from `scripts/generate_instagram_post.ts`.
-
-### Caption & Post Structure:
-- **Hook (Lines 1–2):** Stop-the-scroll headline addressing commuter frustration (e.g. *"Thought your train was 100% sold out? Here is how 40+ confirmed berths appear 30 minutes before departure 🚆"*).
-- **Body:** Tight 3–4 bullet explanation of the chart preparation window and `CURR_AVBL` release.
-- **Popular Train Callout:** Table or bullet list showing chart preparation times for major trains.
-- **Direct Call to Action (CTA):**
-  > *"Stop stressing over waitlists. Head to the link in our bio (@lastberth.in) to scan confirmed split seats and chart preparation times on LastBerth.com."*
-- **Engagement Prompt:** *"Drop your train number or travel route in the comments, and we'll check your exact chart preparation time! 👇"*
-- **Targeted Hashtags (10–15):** `#IndianRailways #IRCTC #TrainTravel #LastMinuteTickets #ChartPreparation #CurrentAvailability #Tatkal #SmartSeats #LastBerth #TrainHacks #ConfirmTicket #VandeBharat #RajdhaniExpress`.
-
-### Execution Workflow:
-1. Run `npx tsx scripts/generate_instagram_post.ts <slug>` to extract the caption, popular train chart times, and image generation prompt.
-2. Generate the visual banner design using `generate_image`, strictly following the visual rules, layout, and palette in `design.md`.
-3. Open Instagram (`https://www.instagram.com/lastberth.in/`) via browser/MCP to upload the visual asset and post the caption.
-4. Verify publication and include the post confirmation in the job summary.
 
 
 
