@@ -64,25 +64,47 @@ All visual assets and social banners generated for Instagram must strictly follo
 
 ## 4. Caption & Copywriting Blueprint
 
-1. **Stop-the-Scroll Hook (Lines 1–2):**  
-   *Example: "Thought this train was 100% sold out? Here is how 40+ confirmed berths appear 30 minutes before departure 🚆"*
-2. **The Problem:** Relatable commuter frustration (*"WL/52 and Tatkal quotas disappeared in 60 seconds?"*).
+1. **Stop-the-Scroll Hook (First 125 Characters before the "more" fold):**  
+   *Example: "Thought this train was sold out? Here is how 40+ confirmed berths appear 30 mins before departure 🚆"*
+2. **The Commuter Problem:** Relatable frustration (*"WL/52 and Tatkal quotas disappeared in 60 seconds?"*).
 3. **The Railway Insider Secret:** Step-by-step breakdown of chart preparation and `CURR_AVBL` release.
-4. **Popular Train Callout:** Real charting time examples.
+4. **Popular Train Callout:** Real charting time examples (e.g. Tejas / Rajdhani / Vande Bharat).
 5. **Clear Call to Action (CTA):**  
    *"Stop stressing over waitlists. Head to the link in our bio (@lastberth.in) to scan confirmed split seats and chart preparation times on LastBerth.com."*
 6. **Engagement Prompt:**  
    *"Drop your train number or travel route in the comments, and we'll reply with its exact chart prep time! 👇"*
-7. **Targeted Hashtags (10–15):**  
-   `#IndianRailways #IRCTC #TrainTravel #LastMinuteTickets #ChartPreparation #CurrentAvailability #Tatkal #SmartSeats #LastBerth #TrainHacks #ConfirmTicket #VandeBharat #RajdhaniExpress`
+7. **Sized Hashtags (3–5 tags via `ig-hashtag-strategist`):**  
+   Never post a 30-tag wall. Assemble a 3–5 sized tag set (2–3 niche, 1–2 mid, 0–1 broad) placed at the very end of the caption:  
+   `#CurrentAvailability #ChartPreparation #LastBerth #TrainTravelIndia #IRCTC`
 
 ---
 
-## 5. Automated Pipeline Integration
+## 5. Integration with `.agents/instagram-skills/` Toolchain
 
-1. **Automated Generation:**  
-   Run `npx tsx scripts/generate_instagram_post.ts <slug>` to programmatically extract insights, popular train chart times, and the visual image prompt.
-2. **Visual Banner Generation:**  
-   Use the `generate_image` tool with the generated image prompt to produce the high-res 1:1 or 4:5 banner graphic, strictly following the design system and prompt template in [`design.md`](file:///Users/kartikarora/Documents/personal/traintickets/design.md).
-3. **Publishing / Staging:**  
-   Navigate to `https://www.instagram.com/lastberth.in/` using Chrome DevTools MCP or browser tools to upload the asset, paste the formatted caption, and stage/publish the post.
+When executing the Instagram social media automation for LastBerth, the agent must trigger the dedicated skills in `.agents/instagram-skills/`:
+
+| Skill | Path | Role in Instagram Workflow |
+|---|---|---|
+| **`ig-repurposer`** | `.agents/instagram-skills/skills/ig-repurposer/SKILL.md` | Ingests the daily blog post (`content/blog/<slug>.md`), extracts the educational spine (chart prep, `CURR_AVBL`, popular trains), strips off-platform artifacts ("link in bio" from other platforms, long prose), and re-hooks before the 125-char fold. |
+| **`ig-carousel-planner`** | `.agents/instagram-skills/skills/ig-carousel-planner/SKILL.md` | Structures a 5-slide educational carousel (1:1 or 4:5 portrait) with one point per slide: <br>• **Slide 1 (Hook):** Relatable waitlist frustration + the promise of last-minute confirmed seats. <br>• **Slide 2 (The Secret):** Chart Preparation Windows (~8–10h first chart, 30m final chart). <br>• **Slide 3 (The Mechanics):** How unallocated quotas convert into `CURR_AVBL` at a 10% discount. <br>• **Slide 4 (Real Examples):** Popular train chart times (Mumbai–Delhi, Delhi–Patna, Bengaluru–Chennai). <br>• **Slide 5 (Payoff & CTA):** Summary table + CTA to search Smart Seats and live vacancies on `lastberth.com`. |
+| **`ig-caption-writer`** | `.agents/instagram-skills/skills/ig-caption-writer/SKILL.md` | Formulates the accompanying high-converting Instagram caption with the punchy first-125-char hook. |
+| **`ig-hashtag-strategist`** | `.agents/instagram-skills/skills/ig-hashtag-strategist/SKILL.md` | Selects a clean, rankable 3–5 hashtag set (niche/mid/broad mix) placed at the end. |
+| **`ig-humanizer`** | `.agents/instagram-skills/skills/ig-humanizer/SKILL.md` | Audits the caption and slide text: eliminates AI buzzwords, ensures punchy natural sentence rhythm, enforces the em-dash cap (1–2 per caption max), and checks the 125-char fold. |
+
+---
+
+## 6. Automated Pipeline Execution Order
+
+1. **Repurpose Blog Content:**  
+   Trigger `ig-repurposer` (or run `npx tsx scripts/generate_instagram_post.ts <slug>`) to distill the post into an Instagram caption and carousel structure.
+2. **Carousel & Caption Audit:**  
+   Apply `ig-carousel-planner` to review slide layouts, `ig-hashtag-strategist` for 3–5 sized tags, and `ig-humanizer` to eliminate AI tells.
+3. **Visual Banner Generation (`design.md` Compliance):**  
+   Use `generate_image` with the prompt template from [`design.md`](file:///Users/kartikarora/Documents/personal/traintickets/design.md). Ensure:
+   - Deep midnight navy (`#0B1120`) background.
+   - Vibrant emerald green (`#10B981`) and amber (`#F59E0B`) accents.
+   - High-contrast typography displaying the chart preparation window and `CURR_AVBL` release.
+   - Clean UI card mockups and modern train silhouettes.
+4. **Publishing / Staging:**  
+   Navigate to [`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/) via browser tools or Publora API client to stage/publish the asset with the finalized caption.
+

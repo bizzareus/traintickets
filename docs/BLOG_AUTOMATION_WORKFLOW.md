@@ -190,7 +190,7 @@ TREE=$(git write-tree) && C=$(echo "<msg>" | git commit-tree $TREE -p HEAD) && e
 ## Step 6.5 — Social Media Distribution (LinkedIn & Instagram)
 
 1. **LinkedIn Distribution:** Run `npx tsx scripts/generate_linkedin_post.ts <slug>` and post to the [LastBerth Company Page](https://www.linkedin.com/company/146318972/admin/page-posts/published) via browser/MCP.
-2. **Instagram Distribution (`@lastberth.in`):** Run `npx tsx scripts/generate_instagram_post.ts <slug>` to generate the educational caption and image prompt. Produce a high-contrast visual graphic banner (1:1 or 4:5) **strictly following `design.md`** to educate users on **chart preparation times**, **Current Availability ticket release mechanics**, and **popular train chart times**, driving travellers to search for **last-minute confirmed tickets** on LastBerth. Post or stage the update to [LastBerth Instagram](https://www.instagram.com/lastberth.in/).
+2. **Instagram Distribution (`@lastberth.in`):** Follow [`docs/INSTAGRAM_CONTENT_STRATEGY.md`](file:///Users/kartikarora/Documents/personal/traintickets/docs/INSTAGRAM_CONTENT_STRATEGY.md) and trigger the `.agents/instagram-skills/` toolchain (`ig-repurposer`, `ig-carousel-planner`, `ig-hashtag-strategist`, `ig-humanizer`). Generate educational captions and a high-contrast visual graphic banner (1:1 or 4:5) **strictly following `design.md`** to educate users on **chart preparation times (~8–10h & 30m)**, **Current Availability (`CURR_AVBL`) quota release mechanics**, and **popular train chart times**, driving travellers to search for **last-minute confirmed tickets** on LastBerth (`/`, `/chart-times`, `/chart-vacancy`). Post or stage the update to [LastBerth Instagram](https://www.instagram.com/lastberth.in/).
 
 ## Step 7 — Summary
 

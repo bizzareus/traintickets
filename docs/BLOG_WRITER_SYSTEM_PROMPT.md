@@ -347,7 +347,7 @@ Once these signal-gathering subagents compile their findings, you will triage th
 - [ ] PostHog conversion telemetry and intent-matching verified (route context mapped and pre-filled CTAs included).
 - [ ] `memory/blog-topics-written.md` updated with the new/updated entry.
 - [ ] LinkedIn post copy generated via `scripts/generate_linkedin_post.ts` and posted to LastBerth Company Page via browser.
-- [ ] Instagram visual graphic & educational caption generated via `scripts/generate_instagram_post.ts` and published/staged for `@lastberth.in` (`https://www.instagram.com/lastberth.in/`).
+- [ ] Instagram visual graphic & educational caption generated following `docs/INSTAGRAM_CONTENT_STRATEGY.md`, triggering `.agents/instagram-skills/` (`ig-repurposer`, `ig-carousel-planner`, `ig-hashtag-strategist`, `ig-humanizer`) and `design.md`, and published/staged for `@lastberth.in` (`https://www.instagram.com/lastberth.in/`).
 - [ ] Only markdown + the memory file changed; no source code touched.
 
 ---
@@ -407,14 +407,16 @@ Every published daily blog post must be distributed to the official **LastBerth.
 
 ## 26. Instagram Social Media Strategy & Banner Design Workflow
 Every published daily blog post must generate and publish/stage visual social media content for the official **LastBerth Instagram Page** ([`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/)).
-- **Strategy & Blueprint:** Follow the complete guide in [`docs/INSTAGRAM_CONTENT_STRATEGY.md`](file:///Users/kartikarora/Documents/personal/traintickets/docs/INSTAGRAM_CONTENT_STRATEGY.md) when executing the Instagram task.
-- **Core Agenda:** Educate users on **chart preparation times**, **how tickets are released on chart prep (`CURR_AVBL`)**, and **popular train chart times**, driving travellers to search for **last-minute confirmed tickets** on LastBerth (`/`, `/chart-times`, `/chart-vacancy`).
-- **Banner Design Standards:** Follow [`design.md`](file:///Users/kartikarora/Documents/personal/traintickets/design.md) (or `docs/design.md`) strictly for canvas dimensions (`1:1` or `4:5`), brand palette, typography hierarchy, data cards, and train silhouettes when generating banner graphics via `generate_image`.
-- **Execution Workflow:**
-  1. Run `npx tsx scripts/generate_instagram_post.ts <slug>` to extract the caption, popular train chart times, and image generation prompt.
-  2. Generate the banner graphic using `generate_image`, strictly adhering to `design.md`.
-  3. Open Instagram (`https://www.instagram.com/lastberth.in/`) via browser/MCP to upload the visual asset and post the caption.
-  4. Verify publication and report confirmation in the job summary.
+- **Master Strategy Document:** Follow [`docs/INSTAGRAM_CONTENT_STRATEGY.md`](file:///Users/kartikarora/Documents/personal/traintickets/docs/INSTAGRAM_CONTENT_STRATEGY.md) as the single source of truth for the complete Instagram content workflow and narrative pillars.
+- **Trigger Dedicated Instagram Skills:** During execution, trigger the specialized skills located in `.agents/instagram-skills/`:
+  - `ig-repurposer`: Adapt the blog post into native Instagram format, stripping off-platform artifacts and re-hooking before the 125-char fold.
+  - `ig-carousel-planner`: Structure swipeable 5-slide carousels (hook slide, chart prep windows, `CURR_AVBL` mechanics, real popular train times, LastBerth CTA).
+  - `ig-hashtag-strategist`: Generate a sized 3–5 hashtag set (niche/mid/broad mix) at the end of the caption.
+  - `ig-humanizer`: Audit captions to remove AI tells, maintain punchy rhythm, and enforce em-dash caps.
+- **Core Agenda:** Educate commuters on **chart preparation times (~8–10h first chart, 30m final chart)**, **how unallocated quotas release into `CURR_AVBL` at a 10% discount**, and **popular train chart times**, driving users to search for **last-minute confirmed tickets** on LastBerth (`/`, `/chart-times`, `/chart-vacancy`).
+- **Banner Design Standards:** Follow [`design.md`](file:///Users/kartikarora/Documents/personal/traintickets/design.md) (or `docs/design.md`) strictly for dimensions (`1:1` or `4:5`), brand palette (`#0B1120`, `#10B981`, `#F59E0B`), typography hierarchy, and train silhouettes when generating visual banners via `generate_image`.
+- **Execution & Staging:** Run `npx tsx scripts/generate_instagram_post.ts <slug>` and apply the skills to prepare the post, generate the banner adhering to `design.md`, then publish/stage to [`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/).
+- **Verification:** Confirm publication and report live URL/status in the final job summary.
 
 
 
