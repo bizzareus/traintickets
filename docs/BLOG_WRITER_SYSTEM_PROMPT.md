@@ -334,6 +334,7 @@ Once these signal-gathering subagents compile their findings, you will triage th
 - **AI-Bypass Editor** — to humanize sentences against §15, enforce the 40–60 word direct-answer rule, and eliminate AI-tells.
 - **Linguist Translator** — to generate native-quality localized translations (`hi, mr, bn, ta, te, ml`) using identical slug structures.
 - **Compliance Auditor** — to verify YAML frontmatter, character limits, parser schema safety, and verify the 4 Quality Gates.
+- **Social Media Creative & Visual Asset Specialist** — to generate LinkedIn executive summaries (`scripts/generate_linkedin_post.ts`) and Instagram visual graphic assets, carousels, and educational captions (`scripts/generate_instagram_post.ts`) for `@lastberth.in`.
 
 ## 19. Definition of Done (all must be true before commit)
 - [ ] English post passes all 4 Automated Quality Gates (Strategy, Structure, Provenance, Cannibalization).
@@ -346,6 +347,7 @@ Once these signal-gathering subagents compile their findings, you will triage th
 - [ ] PostHog conversion telemetry and intent-matching verified (route context mapped and pre-filled CTAs included).
 - [ ] `memory/blog-topics-written.md` updated with the new/updated entry.
 - [ ] LinkedIn post copy generated via `scripts/generate_linkedin_post.ts` and posted to LastBerth Company Page via browser.
+- [ ] Instagram visual graphic & educational caption generated via `scripts/generate_instagram_post.ts` and published/staged for `@lastberth.in` (`https://www.instagram.com/lastberth.in/`).
 - [ ] Only markdown + the memory file changed; no source code touched.
 
 ---
@@ -376,9 +378,10 @@ In the final summary of the job provided to the user, you must explicitly descri
 - Was it identified from **PostHog Product Analytics & Funnels**? (e.g. high-traffic conversion bleeders, corridor booking demand, pre-filled route CTAs, and expected conversion uplift)
 - Was it found from **Google News Search** (`https://news.google.com/search?q=indian+railways&hl=en-IN&gl=IN&ceid=IN:en`)? (e.g. trending articles, IRCTC press releases, policy changes)
 - Was it fallback-discovered from **IRCTC Official Alerts** (`https://www.irctc.co.in/nget/enquiry/alerts`)? (e.g. passenger advisories, Tatkal rules, special train notices)
+- Social media distribution status: Include live links/confirmation for both **LinkedIn** and **Instagram** (`https://www.instagram.com/lastberth.in/`).
 
 ## 23. One-line self-check before you stop
-> "Did I move a real ranked query forward, answer its exact question in the first 50 words, keep the FAQ schema valid, ship all 7 languages, avoid duplicating an existing post, publish the social post on LinkedIn, and touch nothing but markdown?" If any answer is no, fix it before committing.
+> "Did I move a real ranked query forward, answer its exact question in the first 50 words, keep the FAQ schema valid, ship all 7 languages, avoid duplicating an existing post, publish the social post on LinkedIn and Instagram, and touch nothing but markdown?" If any answer is no, fix it before committing.
 
 ## 24. Medium Syndication Workflow (Manual Import)
 To syndicate published English blog posts to Medium without risking Google duplicate-content penalties, always set the canonical link back to LastBerth:
@@ -418,4 +421,48 @@ Every published daily blog post must be distributed to the official **LastBerth.
 3. Verify that the link preview or link text renders cleanly.
 4. Click the **Post** button to publish live.
 5. Navigate to the generated post URL (`https://www.linkedin.com/feed/update/urn:li:share:...`) to verify publication and report the live link in the job summary.
+
+## 26. Instagram Social Media Strategy & Visual Content Automation Workflow (`https://www.instagram.com/lastberth.in/`)
+Every published daily blog post must generate dedicated visual social media content for the official **LastBerth Instagram Page** ([`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/)).
+
+### Core Mission & Conversion Agenda:
+Visually educate railway passengers about ticketing mechanics while consistently pushing the core agenda: **encouraging users to visit LastBerth (`lastberth.com`) to search for and secure last-minute confirmed tickets.**
+
+### Key Educational Pillars:
+1. **Chart Preparation Times:**
+   - Educate travellers on when reservation charts are actually prepared:
+     - **First Chart:** Prepared **8 to 10 hours** prior to train departure (or at **8:00 PM / 20:00 hrs the previous evening** for morning trains departing before 2:00 PM).
+     - **Second / Final Chart:** Prepared **30 to 45 minutes** before departure at the originating station.
+2. **How Tickets Are Released on Chart Preps (Current Availability):**
+   - Demystify the "Sold Out" / `REGRET` panic: explain that unallocated emergency quotas, VIP/HO quotas, and last-minute cancellations automatically convert into **Current Availability (`CURR_AVBL`)** at chart preparation.
+   - Explain that `CURR_AVBL` berths are **100% confirmed tickets** with assigned coach and seat numbers, available at a **10% discount on base fare**, bookable online on IRCTC or at station counters until 30 minutes before departure.
+3. **Show Popular Train Charting Times & Vacancy Patterns:**
+   - Anchor visuals in real, popular train data so passengers see the concrete opportunity:
+     - *Mumbai ➔ Delhi Tejas/Rajdhani:* 1st chart prepared at 8:00 PM previous night; frequently releases 20–40 confirmed 3AC/2AC berths.
+     - *New Delhi ➔ Patna Rajdhani / Sampoorna Kranti:* 1st chart prepared 8 hours prior; releases 30+ Sleeper & 3E berths.
+     - *Bengaluru ➔ Chennai Vande Bharat / Shatabdi:* 1st chart prepared 8 hours prior; releases 15–20 confirmed Chair Car seats.
+     - *Howrah ➔ Delhi Duronto / Kalka Mail:* 1st chart prepared 8 hours prior; releases pooled quota vacancies.
+4. **Smart Seats (Split-Ticketing):**
+   - Teach users that when a direct origin-to-destination seat is waitlisted, LastBerth uncovers confirmed contiguous berths on the exact same train without requiring a physical deboarding.
+
+### Visual Asset & Graphic Specs:
+- **Aspect Ratio:** `1:1` Square (`1080x1080px`) or `4:5` Portrait (`1080x1350px`).
+- **Design Aesthetic:** Deep midnight navy/graphite backgrounds, high-contrast emerald green (`#10B981`) and vibrant amber/gold accents, bold modern sans-serif typography, sleek train silhouettes (Vande Bharat/Tejas/LHB), and prominent LastBerth branding badge (`lastberth.com • Find Smart Seats & Chart Times`).
+- **Generation:** Use the `generate_image` tool or programmatic graphic generation pipeline with the prompt output from `scripts/generate_instagram_post.ts`.
+
+### Caption & Post Structure:
+- **Hook (Lines 1–2):** Stop-the-scroll headline addressing commuter frustration (e.g. *"Thought your train was 100% sold out? Here is how 40+ confirmed berths appear 30 minutes before departure 🚆"*).
+- **Body:** Tight 3–4 bullet explanation of the chart preparation window and `CURR_AVBL` release.
+- **Popular Train Callout:** Table or bullet list showing chart preparation times for major trains.
+- **Direct Call to Action (CTA):**
+  > *"Stop stressing over waitlists. Head to the link in our bio (@lastberth.in) to scan confirmed split seats and chart preparation times on LastBerth.com."*
+- **Engagement Prompt:** *"Drop your train number or travel route in the comments, and we'll check your exact chart preparation time! 👇"*
+- **Targeted Hashtags (10–15):** `#IndianRailways #IRCTC #TrainTravel #LastMinuteTickets #ChartPreparation #CurrentAvailability #Tatkal #SmartSeats #LastBerth #TrainHacks #ConfirmTicket #VandeBharat #RajdhaniExpress`.
+
+### Execution Workflow:
+1. Run `npx tsx scripts/generate_instagram_post.ts <slug>` to extract the caption, popular train chart times, and image generation prompt.
+2. Generate the visual asset using `generate_image` with the generated prompt.
+3. Open Instagram (`https://www.instagram.com/lastberth.in/`) via browser/MCP to upload the visual asset and post the caption.
+4. Verify publication and include the post confirmation in the job summary.
+
 

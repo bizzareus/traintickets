@@ -187,9 +187,14 @@ TREE=$(git write-tree) && C=$(echo "<msg>" | git commit-tree $TREE -p HEAD) && e
 .git/refs/heads/main && cp /tmp/idx .git/index` — then tell the user to clear the stale locks
 (`rm -f .git/index.lock .git/HEAD.lock .git/refs/heads/main.lock`) before pushing.
 
+## Step 6.5 — Social Media Distribution (LinkedIn & Instagram)
+
+1. **LinkedIn Distribution:** Run `npx tsx scripts/generate_linkedin_post.ts <slug>` and post to the [LastBerth Company Page](https://www.linkedin.com/company/146318972/admin/page-posts/published) via browser/MCP.
+2. **Instagram Distribution (`@lastberth.in`):** Run `npx tsx scripts/generate_instagram_post.ts <slug>` to generate the educational caption and image prompt. Produce a high-contrast visual graphic asset (1:1 or 4:5) educating users on **chart preparation times**, **Current Availability ticket release mechanics**, and **popular train chart times**, driving travellers to search for **last-minute confirmed tickets** on LastBerth. Post or stage the update to [LastBerth Instagram](https://www.instagram.com/lastberth.in/).
+
 ## Step 7 — Summary
 
-Report: signals used (GSC + Trends + News, or which were unavailable), the ranked batch and the action taken for each item and why (clearly stating how you arrived at each topic—whether it is from Google Trends, GSC, or Google News), files changed, any CONSOLIDATE redirect/merge recommendations for the user, and push status.
+Report: signals used (GSC + Trends + News, or which were unavailable), the ranked batch and the action taken for each item and why (clearly stating how you arrived at each topic—whether it is from Google Trends, GSC, or Google News), files changed, social media distribution status (LinkedIn + Instagram), any CONSOLIDATE redirect/merge recommendations for the user, and push status.
 
 ## Constraints
 
