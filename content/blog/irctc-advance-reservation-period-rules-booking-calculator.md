@@ -2,6 +2,7 @@
 title: "IRCTC Advance Reservation Period: 60-Day Rules (2026)"
 description: "Book train tickets 60 days in advance on IRCTC. Learn how the 60-day rule works, 8 AM opening time, Day-1 Aadhaar verification, exceptions, and 2026 date chart."
 date: "2026-09-21"
+updated: "2026-09-28"
 tags:
   - train booking
   - irctc
@@ -78,8 +79,8 @@ Use this quick-reference table to identify exactly when booking opens for your u
 
 | Journey / Departure Date | 60-Day Booking Opens (8:00 AM IST) | Month Days Accounting | Demand Status |
 | :--- | :--- | :--- | :--- |
-| **October 15, 2026** | **August 16, 2026** | 14 days Oct + 31 days Sep + 15 days Aug = 60 | Durga Puja Rush |
-| **October 25, 2026** | **August 26, 2026** | 24 days Oct + 31 days Sep + 5 days Aug = 60 | Festive Rush |
+| **October 15, 2026** | **August 16, 2026** | 14 days Oct + 30 days Sep + 16 days Aug = 60 | Durga Puja Rush |
+| **October 25, 2026** | **August 26, 2026** | 24 days Oct + 30 days Sep + 6 days Aug = 60 | Festive Rush |
 | **November 1, 2026** | **September 2, 2026** | 31 days Oct + 29 days Sep = 60 | Pre-Diwali Travel |
 | **November 8, 2026** | **September 9, 2026** | 7 days Nov + 31 days Oct + 22 days Sep = 60 | **Diwali Rush** |
 | **November 15, 2026** | **September 16, 2026** | 14 days Nov + 31 days Oct + 15 days Sep = 60 | **Chhath Puja Peak** |
@@ -165,7 +166,7 @@ When a train shows `WL/45` or `REGRET` for an end-to-end journey, seats are ofte
 
 ### 2. Prepare for Tatkal and Premium Tatkal
 If general quota is full, mark your calendar for the Tatkal window **1 day before the train departs from its originating station**:
-- **10:00 AM IST:** AC Chair Car, Executive Class, 3AC, 2AC, and 1AC.
+- **10:00 AM IST:** AC Chair Car, Executive Class, 3AC, 3E, and 2AC (First AC / 1A is excluded).
 - **11:00 AM IST:** Sleeper Class (SL) and Second Sitting (2S).
 - Pre-save passenger details in your IRCTC Master List to save vital seconds during the Tatkal rush.
 

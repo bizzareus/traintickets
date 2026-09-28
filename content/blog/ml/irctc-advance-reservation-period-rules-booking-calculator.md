@@ -2,6 +2,7 @@
 title: "IRCTC മുൻകൂട്ടി ബുക്കിംഗ് കാലയളവ്: 60-ദിവസ നിയമങ്ങളും തീയതികളും (2026)"
 description: "IRCTC-ൽ 60 ദിവസം മുൻകൂട്ടി ട്രെയിൻ ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യുക. 60-ദിവസ നിയമം എങ്ങനെ പ്രവർത്തിക്കുന്നു, 8 AM തുറക്കൽ സമയം, Day-1 ആധാർ സ്ഥിരീകരണം, വ്യത്യാസങ്ങൾ, 2026 തീയതി ചാർട്ട് എന്നിവയെക്കുറിച്ച് അറിയുക."
 date: "2026-09-21"
+updated: "2026-09-28"
 tags:
   - train booking
   - irctc
@@ -78,8 +79,8 @@ $$\text{Booking Opening Date} = \text{Journey Date} - 60 \text{ Days (Excluding 
 
 | Journey / Departure Date | 60-Day Booking Opens (8:00 AM IST) | Month Days Accounting | Demand Status |
 | :--- | :--- | :--- | :--- |
-| **October 15, 2026** | **August 16, 2026** | 14 days Oct + 31 days Sep + 15 days Aug = 60 | Durga Puja Rush |
-| **October 25, 2026** | **August 26, 2026** | 24 days Oct + 31 days Sep + 5 days Aug = 60 | Festive Rush |
+| **October 15, 2026** | **August 16, 2026** | 14 days Oct + 30 days Sep + 16 days Aug = 60 | Durga Puja Rush |
+| **October 25, 2026** | **August 26, 2026** | 24 days Oct + 30 days Sep + 6 days Aug = 60 | Festive Rush |
 | **November 1, 2026** | **September 2, 2026** | 31 days Oct + 29 days Sep = 60 | Pre-Diwali Travel |
 | **November 8, 2026** | **September 9, 2026** | 7 days Nov + 31 days Oct + 22 days Sep = 60 | **Diwali Rush** |
 | **November 15, 2026** | **September 16, 2026** | 14 days Nov + 31 days Oct + 15 days Sep = 60 | **Chhath Puja Peak** |
@@ -165,7 +166,7 @@ Day-1 തുറക്കലിൽ നഷ്ടപ്പെടുന്നത് 
 
 ### 2. Tatkal & Premium Tatkal-നായി തയ്യാറെടുക്കുക
 സാധാരണ ക്വോട്ടി നിറഞ്ഞാൽ, ട്രെയിൻ ഉത്ഭവ സ്റ്റേഷനിൽ നിന്ന് **1 ദിവസം മുമ്പ്** Tatkal വിൻഡോയ്ക്ക് നിങ്ങളുടെ കലണ്ടർ അടയാളപ്പെടുത്തുക:
-- **10:00 AM IST:** AC ചെയർ കാർ, എക്സിക്യൂട്ടീവ് ക്ലാസ്, 3AC, 2AC, 1AC.
+- **10:00 AM IST:** AC ചെയർ കാർ, എക്സിക്യൂട്ടീവ് ക്ലാസ്, 3AC, 3E, 2AC (First AC / 1A ഒഴിവാക്കിയിരിക്കുന്നു).
 - **11:00 AM IST:** സ്ലീപർ ക്ലാസ് (SL) & സെക്കൻഡ് സിറ്റിംഗ് (2S).
 - Tatkal റഷ് സമയത്ത് വിലപ്പെട്ട സെക്കൻഡുകൾ സംരക്ഷിക്കാൻ IRCTC മാസ്റ്റർ ലിസ്റ്റിൽ യാത്രക്കാരന്റെ വിവരങ്ങൾ മുൻകൂട്ടി സംരക്ഷിക്കുക.
 

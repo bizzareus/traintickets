@@ -2,7 +2,7 @@
 title: "Central Railway 418 Festival Special Trains 2026: List & Routes"
 description: "Full list of 418 Central Railway festival special trains for Diwali, Chhath & Durga Puja 2026 from Mumbai & Pune to UP, Bihar and South India."
 date: "2026-09-27"
-updated: "2026-09-27"
+updated: "2026-09-28"
 tags:
   - festival special trains
   - central railway
@@ -140,7 +140,7 @@ Intermediate stations draw from smaller pooled quotas that exhaust quickly. Book
 Under Indian Railways rules, you can modify your boarding station online on IRCTC up to the preparation of the second reservation chart (around 30 minutes before train departure).
 
 ### 3. Current Availability (CURR_AVBL) Post-Chart Discovery
-When the first reservation chart is prepared (at least 4 to 8 hours before departure, or at 20:00 hrs the previous evening for morning departures), all unallocated quotas and last-minute cancellations are released as `CURR_AVBL` at a 10% discount.
+When the first reservation chart is prepared (at least 4 to 8 hours before departure, or at 21:00 hrs (9:00 PM) the previous evening for morning departures), all unallocated quotas and last-minute cancellations are released as `CURR_AVBL` at a 10% discount.
 
 You can inspect [Chart Vacancy](/chart-vacancy) and track charting timelines on [Chart Times](/chart-times) to claim released berths up to 30 minutes before departure.
 

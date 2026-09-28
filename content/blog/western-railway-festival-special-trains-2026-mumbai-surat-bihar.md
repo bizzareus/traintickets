@@ -140,7 +140,7 @@ Intermediate stations draw from smaller pooled quotas that fill up fast. Booking
 Under railway rules, you can change your boarding station online on IRCTC up to the preparation of the second reservation chart, approximately 30 minutes before train departure.
 
 ### 3. Current Availability (CURR_AVBL) After Chart Preparation
-When the first reservation chart finalizes (around 8 hours before departure, or at 20:00 the prior night for morning departures), unallocated VIP, emergency, and foreign tourist quotas are released into Current Availability (`CURR_AVBL`) at a **10% discount on base fare**.
+When the first reservation chart finalizes (around 8 hours before departure, or at 21:00 (9:00 PM) the prior night for morning departures), unallocated VIP, emergency, and foreign tourist quotas are released into Current Availability (`CURR_AVBL`) at a **10% discount on base fare**.
 
 You can monitor real-time berth vacancy on [Chart Vacancy](/chart-vacancy) and check charting schedules on [Chart Times](/chart-times) to reserve confirmed berths up to 30 minutes before departure.
 

@@ -2,7 +2,7 @@
 title: "IRCTC New Cloud Reservation System (PRS) 2026: Rules & Login"
 description: "Indian Railways' new cloud-based Passenger Reservation System (PRS) rollout in August 2026: 1.5L bookings/min, cloud login, PNR status, and Tatkal speed rules."
 date: "2026-07-04"
-updated: "2026-08-12"
+updated: "2026-09-28"
 tags:
   - train booking
   - irctc
@@ -44,7 +44,7 @@ During intense Tatkal windows, seat inventory shifts in seconds. The upgraded cl
 
 **Yes. Under the August 2026 IRCTC rescheduling policy, passengers with confirmed tickets can change their travel date for the same origin and destination without cancelling their ticket. Rescheduling requires seat availability in the requested class and payment of any applicable fare difference plus nominal administrative fees.**
 
-This feature replaces the costly process of cancelling a confirmed ticket and re-booking a new one. Date changes must be requested online or at PRS counters at least 48 hours before scheduled train departure. Note that if a ticket is cancelled less than 8 hours before departure, no refund is granted under current cancellation window rules.
+This feature replaces the costly process of cancelling a confirmed ticket and re-booking a new one. Date changes must be requested online or at PRS counters at least 48 hours before scheduled train departure. Note that if a ticket is cancelled less than 4 hours before departure (or after chart preparation), no refund is granted under current cancellation window rules.
 
 ---
 
@@ -109,7 +109,7 @@ You can change your journey date on a confirmed ticket up to 48 hours before dep
 Standard IRCTC user accounts can book up to 12 tickets per calendar month. If you link your Aadhaar card to your IRCTC profile and verify at least one passenger per transaction, your monthly booking limit increases to 24 tickets.
 
 ### What happens if an online Tatkal ticket remains in WL status after chart preparation?
-If a Tatkal or General quota e-ticket remains fully waitlisted after final chart preparation (~8 hours before departure), it is automatically cancelled by the system. The full fare (minus clerkage) is refunded to your original payment method. You cannot board the train with a waitlisted e-ticket.
+If a Tatkal or General quota e-ticket remains fully waitlisted after final chart preparation (~30 minutes before departure), it is automatically cancelled by the system. The full fare (with no cancellation or clerkage fee deducted) is refunded to your original payment method. You cannot board the train with a waitlisted e-ticket.
 
 ### When does Current Availability (CURR_AVBL) open for booking?
 Current Availability opens immediately after first chart preparation, approximately 8 hours before the train's scheduled departure from its originating station. CURR_AVBL tickets are 100% confirmed berths sold at standard or discounted rates until 30 minutes before departure.
