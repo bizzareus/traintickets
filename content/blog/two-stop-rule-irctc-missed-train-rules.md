@@ -2,7 +2,7 @@
 title: "Indian Railways Two-Stop Rule: Missed Train Rules & Facts"
 description: "Missed your train at the boarding station? Learn about the Indian Railways two-stop rule, TTE seat reallocation rules, and how to file a TDR for refund."
 date: "2026-06-25"
-updated: "2026-07-29"
+updated: "2026-09-28"
 tags:
   - train booking
   - irctc
@@ -18,7 +18,7 @@ tags:
 
 - **The Two-Stop Myth:** Historically, TTEs waited for two stations before reallocating seats. However, with Handheld Terminals (HHTs), your berth can be marked vacant and assigned to others immediately if you do not show up.
 - **Boarding Later:** You can legally board from the next station if you catch up to the train, but only if the TTE has not already reallocated your berth to RAC or waitlisted passengers.
-- **Refunds:** Missing a train does not trigger an auto-refund. You must manually file a Ticket Deposit Receipt (TDR) online within one hour of the train's actual departure to claim a refund.
+- **Refunds:** Missing a train does not qualify for a refund. Under IRCTC rules, no refund is admissible on confirmed tickets if cancelled or if a TDR is filed less than four hours before scheduled departure or after the train has departed.
 
 ---
 
@@ -66,11 +66,11 @@ Once marked as "Not Turned Up" (NTU) on the HHT, the berth is released back to t
 
 ---
 
-## How to File a TDR and Get a Refund for a Missed Train?
+## Can You File a TDR and Get a Refund for a Missed Train?
 
-To get a refund for a missed train, you must file a Ticket Deposit Receipt (TDR) online through IRCTC within one hour of the train's actual departure. No refund is granted if the TDR is filed late, and refunds are subject to verification of passenger non-travel by the railways.
+**No, you cannot get a refund for a missed train if you fail to cancel or file a TDR at least four hours before scheduled departure. Under official IRCTC cancellation rules, no refund is admissible on confirmed tickets once the four-hour pre-departure window closes or after the train has departed.**
 
-If you miss your train, you cannot cancel your confirmed ticket online or at a counter for a standard refund once the chart is prepared. Instead, you must log into your IRCTC account and file a TDR. Under the refund rules, you must select the reason "Passenger did not travel" and submit it within 60 minutes of the train's departure. The railways will verify the TTE's HHT log to confirm you did not board. If verified, a partial refund (after deducting clerkage charges) will be credited to your account in 30 to 45 days.
+Many passengers mistakenly believe they can file a Ticket Deposit Receipt (TDR) under "Passenger did not travel" within an hour after departure to claim money back. However, under Section 1(d) and Section 8 of the IRCTC Cancellation and Refund Rules, TDRs for non-travelling confirmed passengers must be submitted at least four hours before scheduled departure. Any TDR submitted after the train departs will be automatically rejected during railway verification, forfeiting the entire fare. A post-departure TDR refund is permitted only when Indian Railways is at fault—such as when the train is delayed by more than three hours or when you miss a linked connecting train.
 
 ---
 
@@ -92,7 +92,7 @@ If you are looking for a last-minute ticket, always check for a `"current availa
 If you board from the next station, you can travel on your ticket only if the TTE has not yet reallocated your seat. However, if the TTE has already marked you as a "no-show" on their handheld terminal and assigned the berth to another passenger, you will lose your seat and may have to travel in the general compartment.
 
 ### Can I get a refund if I miss my train?
-Yes, you can get a refund, but only if you file a Ticket Deposit Receipt (TDR) online through the IRCTC website or app within one hour of the train's scheduled departure. If you miss this one-hour window, you will not receive any refund for your ticket.
+No, you cannot get a refund if you miss your train. Under official IRCTC cancellation rules, no refund is admissible on confirmed tickets if not cancelled or if a TDR is not filed at least 4 hours before scheduled departure. Once the train departs, the entire fare is forfeited.
 
 ### Can the TTE give my seat to someone else immediately?
 Yes, with the introduction of digital Handheld Terminals (HHTs), the TTE can mark you absent and reallocate your seat to RAC or waitlisted passengers immediately after the train leaves your scheduled boarding station. The traditional two-stop grace period is no longer officially protected.
@@ -101,4 +101,4 @@ Yes, with the introduction of digital Handheld Terminals (HHTs), the TTE can mar
 No, you cannot travel on another train using a ticket booked for a missed train. A ticket is valid only for the specific train, date, and class for which it was purchased. Boarding another train with it will be treated as traveling without a ticket, and you will be fined.
 
 ### How do I change my boarding station last minute?
-You can change your boarding station online through the IRCTC app or website at least 24 hours before the scheduled departure of the train from its originating station.
+You can change your boarding station online through the IRCTC app or website up to the preparation of the second reservation chart, approximately 30 minutes before scheduled train departure. This change is permitted once per booking.
