@@ -21,3 +21,7 @@
 ## 2026-09-30 - In-Memory Map Indexing vs Synchronous readdirSync Scans over Large Directories
 **Learning:** Calling `fs.readdirSync` on a directory with 3,500+ static JSON files inside per-request file lookup functions introduces ~3ms synchronous filesystem blocking overhead per call ($O(N)$ string array allocations and linear `.find()` scans). Pre-building a module-level `Map<string, string>` on first access reduces path lookup time to $O(1)$ (~1 microsecond, ~175x speedup).
 **Action:** Always construct an in-memory index `Map` when looking up static file paths from directories containing thousands of files instead of calling `fs.readdirSync` per request.
+
+## 2026-09-30 - Persistent Module-Level Map Caches vs React Request Scope Cache
+**Learning:** React's `cache()` only scope-memoizes calls within a single React component render pass and does not persist across HTTP requests or outside React component render trees (such as in sitemap generation `/sitemap.xml`, API handlers, or translation checks). Adding module-level `Map` caches (`postCache`, `postsListCache`, `slugsListCache`) for static file parsing (e.g. Markdown blog posts) eliminates redundant synchronous disk I/O and frontmatter re-parsing across requests, achieving ~12,000x speedup for `listBlogPosts` and ~870x speedup for `getBlogPost`.
+**Action:** Always combine React's `cache()` with persistent module-level `Map` caches for static data parsed from disk so the cache survives across requests and outside React rendering contexts.
