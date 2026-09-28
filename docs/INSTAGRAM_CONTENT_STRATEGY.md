@@ -105,6 +105,16 @@ When executing the Instagram social media automation for LastBerth, the agent mu
    - Vibrant emerald green (`#10B981`) and amber (`#F59E0B`) accents.
    - High-contrast typography displaying the chart preparation window and `CURR_AVBL` release.
    - Clean UI card mockups and modern train silhouettes.
-4. **Publishing / Staging:**  
-   Navigate to [`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/) via browser tools or Publora API client to stage/publish the asset with the finalized caption.
+4. **Publishing / Staging via Browser Automation (`chrome-devtools-mcp`):**  
+   Follow the proven browser direct-posting workflow to publish directly to [`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/):
+   1. **Copy Media to `os.tmpdir()`:** `chrome-devtools-mcp` restricts `upload_file` to workspace roots or `os.tmpdir()`. Copy the generated image from `generate_image` into `require('os').tmpdir()` (e.g. `/private/var/folders/.../T/banner.jpg`).
+   2. **Open Instagram in Browser:** Select the Instagram page via `select_page` or navigate to `https://www.instagram.com/lastberth.in/`.
+   3. **Open New Post Modal:** Click the "New post" navigation button (`a[href="#"]` with "New post").
+   4. **Upload Image via `upload_file`:** Call `upload_file` with the `pageId`, the `uid` of the "Select From Computer" button, and `filePaths: ["<path_in_tmpdir>"]`. Instagram automatically accepts the file and advances to the "Crop" screen (`/create/style/`).
+   5. **Advance Crop & Filter Screens:**
+      - On "Crop" dialog: click `button "Next"`.
+      - On "Edit" (Filters) dialog: click `button "Next"`.
+   6. **Inject Caption & Format:** Focus the caption editor (`div[aria-label="Add a caption..."]`). Insert the generated caption (≤2,200 chars) using `document.execCommand('insertText', false, caption)` or a clipboard paste event via `evaluate_script`.
+   7. **Share Post:** Click `button "Share"`. Wait for the modal to display "Post shared" with the animated checkmark ("Your post has been shared."). Click `button "Done"` to dismiss.
+   8. **Verify & Capture Live URL:** Refresh the profile page (`https://www.instagram.com/lastberth.in/`), click the latest post thumbnail in the grid, and record the live URL (e.g. `https://www.instagram.com/p/<shortcode>/`).
 

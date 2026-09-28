@@ -415,7 +415,14 @@ Every published daily blog post must generate and publish/stage visual social me
   - `ig-humanizer`: Audit captions to remove AI tells, maintain punchy rhythm, and enforce em-dash caps.
 - **Core Agenda:** Educate commuters on **chart preparation times (~8–10h first chart, 30m final chart)**, **how unallocated quotas release into `CURR_AVBL` at a 10% discount**, and **popular train chart times**, driving users to search for **last-minute confirmed tickets** on LastBerth (`/`, `/chart-times`, `/chart-vacancy`).
 - **Banner Design Standards:** Follow [`design.md`](file:///Users/kartikarora/Documents/personal/traintickets/design.md) (or `docs/design.md`) strictly for dimensions (`1:1` or `4:5`), brand palette (`#0B1120`, `#10B981`, `#F59E0B`), typography hierarchy, and train silhouettes when generating visual banners via `generate_image`.
-- **Execution & Staging:** Run `npx tsx scripts/generate_instagram_post.ts <slug>` and apply the skills to prepare the post, generate the banner adhering to `design.md`, then publish/stage to [`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/).
+- **Execution & Staging:** Run `npx tsx scripts/generate_instagram_post.ts <slug>` and apply the skills to prepare the post, generate the banner adhering to `design.md`, then publish live to [`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/) via browser automation:
+  1. Copy the generated banner to `os.tmpdir()` (`/private/var/folders/.../T/banner.jpg`) because `chrome-devtools-mcp` allows uploads from `os.tmpdir()`.
+  2. Select or navigate to the Instagram page (`https://www.instagram.com/lastberth.in/`) using Chrome DevTools MCP.
+  3. Click the "New post" navigation button to open the "Create new post" modal.
+  4. Call `upload_file` targeting the "Select From Computer" button with the file in `os.tmpdir()`. Instagram transitions to the "Crop" screen.
+  5. Click `Next` on the "Crop" dialog, then `Next` on the "Edit" (Filters) dialog.
+  6. Focus the caption editor (`div[aria-label="Add a caption..."]`) and insert the generated caption using `document.execCommand('insertText', false, caption)` or a clipboard event via `evaluate_script`. Verify character length (≤2,200).
+  7. Click `Share`, wait for the "Post shared" confirmation dialog, click `Done`, and verify the live post URL from the profile grid (`https://www.instagram.com/p/<shortcode>/`).
 - **Verification:** Confirm publication and report live URL/status in the final job summary.
 
 
