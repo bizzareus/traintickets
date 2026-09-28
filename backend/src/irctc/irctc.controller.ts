@@ -3,6 +3,7 @@ import {
   Body,
   Controller,
   Get,
+  Logger,
   Param,
   Post,
   Query,
@@ -14,6 +15,8 @@ import { IrctcBrowserUseService } from './irctc-browser-use.service';
 
 @Controller('api/irctc')
 export class IrctcController {
+  private readonly logger = new Logger(IrctcController.name);
+
   constructor(
     private irctc: IrctcService,
     private irctcChart: IrctcChartService,
@@ -59,8 +62,12 @@ export class IrctcController {
     try {
       return await this.browserUse.getTrainChart(trainNumber, date, station);
     } catch (error) {
+      this.logger.error(
+        `Failed to fetch train chart via Browser Use for train ${trainNumber}: ${error instanceof Error ? error.message : String(error)}`,
+        error instanceof Error ? error.stack : undefined,
+      );
       throw new ServiceUnavailableException(
-        `Failed to fetch train chart via Browser Use: ${error.message}`,
+        'Failed to fetch train chart via Browser Use.',
       );
     }
   }
@@ -74,9 +81,11 @@ export class IrctcController {
     try {
       return await this.irctcChart.getTrainChart(trainNumber, date, station);
     } catch (error) {
-      throw new ServiceUnavailableException(
-        `Failed to fetch train chart: ${error.message}`,
+      this.logger.error(
+        `Failed to fetch train chart for train ${trainNumber}: ${error instanceof Error ? error.message : String(error)}`,
+        error instanceof Error ? error.stack : undefined,
       );
+      throw new ServiceUnavailableException('Failed to fetch train chart.');
     }
   }
 
