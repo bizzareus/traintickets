@@ -8,7 +8,6 @@ import { apiClient } from "@/lib/api";
 import {
   buildDiwaliSearchRedirectUrl,
   type DiwaliSpecialTrain,
-  DEFAULT_DIWALI_SEARCH_DATE,
 } from "@/lib/diwaliTrains";
 
 interface TrainAvailabilityItem {
@@ -78,11 +77,7 @@ export function DiwaliTrainsListClient({ trains }: Props) {
   }, [trains, query]);
 
   const handleCardNavigate = (train: DiwaliSpecialTrain) => {
-    const targetUrl = buildDiwaliSearchRedirectUrl(
-      train,
-      DEFAULT_DIWALI_SEARCH_DATE,
-    );
-    router.push(targetUrl);
+    router.push(buildDiwaliSearchRedirectUrl(train));
   };
 
   return (
@@ -152,11 +147,7 @@ export function DiwaliTrainsListClient({ trains }: Props) {
             const avail = availabilityMap[train.trainNumber];
             const availableCount = avail?.totalAvailableSeats ?? 0;
             const isDirectAvailable = availableCount > 0;
-            const redirectUrl = buildDiwaliSearchRedirectUrl(
-              train,
-              DEFAULT_DIWALI_SEARCH_DATE,
-            );
-            const detailUrl = `/trains/${encodeURIComponent(train.trainNumber)}`;
+            const redirectUrl = buildDiwaliSearchRedirectUrl(train);
 
             return (
               <li
@@ -173,15 +164,6 @@ export function DiwaliTrainsListClient({ trains }: Props) {
                       </h2>
 
                       <div className="flex items-center gap-1.5 shrink-0">
-                        <Link
-                          href={detailUrl}
-                          onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center rounded-md bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors shrink-0"
-                        >
-                          <span className="hidden sm:inline">Train </span>
-                          Schedule
-                        </Link>
-
                         {isDirectAvailable && (
                           <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-200 whitespace-nowrap shrink-0">
                             Direct Available

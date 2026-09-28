@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   getDiwaliSpecialTrains,
   getDiwaliTrainRunningDates,
+  getDiwaliTrainSearchDate,
   buildDiwaliSearchRedirectUrl,
   extractAvailableSeatsCount,
   DEFAULT_DIWALI_SEARCH_DATE,
@@ -62,6 +63,24 @@ test("buildDiwaliSearchRedirectUrl - generates search URL with date 2026-11-05",
   assert.equal(
     url,
     `/?from=NDLS&to=PNBE&date=${DEFAULT_DIWALI_SEARCH_DATE}&fromName=New+Delhi&toName=Patna`,
+  );
+});
+
+test("getDiwaliTrainSearchDate - selects the nearest date when each train runs", () => {
+  const trains = getDiwaliSpecialTrains();
+  const wednesdayTrain = trains.find((train) => train.trainNumber === "05047");
+  const tuesdayTrain = trains.find((train) => train.trainNumber === "05048");
+  const sundayTrain = trains.find((train) => train.trainNumber === "04007");
+  assert.ok(wednesdayTrain);
+  assert.ok(tuesdayTrain);
+  assert.ok(sundayTrain);
+
+  assert.equal(getDiwaliTrainSearchDate(wednesdayTrain), "2026-11-04");
+  assert.equal(getDiwaliTrainSearchDate(tuesdayTrain), "2026-11-03");
+  assert.equal(getDiwaliTrainSearchDate(sundayTrain), "2026-11-08");
+  assert.match(
+    buildDiwaliSearchRedirectUrl(wednesdayTrain),
+    /[?&]date=2026-11-04(?:&|$)/,
   );
 });
 

@@ -51,8 +51,8 @@ type Props = {
   onSwap: () => void;
   journeyDate: string | null;
   onDateChange: (ymd: string) => void;
-  selectedClasses?: string[];
-  onSelectedClassesChange?: (classes: string[]) => void;
+  selectedClasses: string[];
+  onSelectedClassesChange: (classes: string[]) => void;
   searchLoading: boolean;
   onSearch: () => void;
   form: HomeStrings["form"];
@@ -70,7 +70,7 @@ export function MobileModifySearchSheet({
   onSwap,
   journeyDate,
   onDateChange,
-  selectedClasses = [],
+  selectedClasses,
   onSelectedClassesChange,
   searchLoading,
   onSearch,
@@ -210,9 +210,9 @@ export function MobileModifySearchSheet({
             Train Class
           </span>
           <TrainClassMultiSelect
-            variant="dropdown"
+            dropUp
             selectedClasses={selectedClasses}
-            onChange={onSelectedClassesChange ?? (() => {})}
+            onChange={onSelectedClassesChange}
           />
         </div>
 

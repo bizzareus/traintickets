@@ -54,6 +54,8 @@ export const DIWALI_TARGET_DATES: ReadonlyArray<{
 ];
 
 export const DEFAULT_DIWALI_SEARCH_DATE = "2026-11-05";
+const DAY_MS = 24 * 60 * 60 * 1000;
+const WEEKDAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
 
 const MONTHS_MAP: Record<string, number> = {
   Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
@@ -78,7 +80,7 @@ export function parseFestivalDate(dateStr: string, year = 2026): Date | null {
  * Filters strictly to 4th - 7th November — no other dates.
  */
 export function getDiwaliTrainRunningDates(
-  train: DiwaliSpecialTrain,
+  train: Pick<DiwaliSpecialTrain, "dateFrom" | "dateTo" | "runningDays">,
   year = 2026,
 ): Array<{ date: string; day: string; dmy: string }> {
   const fromDate = parseFestivalDate(train.dateFrom, year);
@@ -99,20 +101,63 @@ export function getDiwaliTrainRunningDates(
   return valid;
 }
 
+/** Returns the train's operating date nearest the preferred festival date. */
+export function getDiwaliTrainSearchDate(
+  train: Pick<DiwaliSpecialTrain, "dateFrom" | "dateTo" | "runningDays">,
+  preferredDate = DEFAULT_DIWALI_SEARCH_DATE,
+): string {
+  const fromDate = parseFestivalDate(train.dateFrom);
+  const toDate = parseFestivalDate(train.dateTo);
+  const preferred = new Date(`${preferredDate}T00:00:00Z`);
+  if (!fromDate || !toDate || Number.isNaN(preferred.getTime())) {
+    return preferredDate;
+  }
+
+  let nearest: Date | null = null;
+  let nearestDistance = Number.POSITIVE_INFINITY;
+  for (let time = fromDate.getTime(); time <= toDate.getTime(); time += DAY_MS) {
+    const candidate = new Date(time);
+    const runsOnCandidate =
+      train.runningDays.length === 0 ||
+      train.runningDays.includes(WEEKDAY_NAMES[candidate.getUTCDay()]);
+    if (!runsOnCandidate) continue;
+
+    const distance = Math.abs(time - preferred.getTime());
+    if (distance < nearestDistance) {
+      nearest = candidate;
+      nearestDistance = distance;
+    }
+  }
+
+  return nearest?.toISOString().slice(0, 10) ?? preferredDate;
+}
+
 /**
- * Builds the search redirect URL for a Diwali train with destination, origin, and date 2026-11-05.
+ * Builds the search redirect URL using a date when the train actually runs.
  */
 export function buildDiwaliSearchRedirectUrl(
   train: {
     fromStation: { code: string; name?: string };
     toStation: { code: string; name?: string };
+    dateFrom?: string;
+    dateTo?: string;
+    runningDays?: string[];
   },
-  date = DEFAULT_DIWALI_SEARCH_DATE,
+  date?: string,
 ): string {
+  const searchDate =
+    date ??
+    (train.dateFrom && train.dateTo && train.runningDays
+      ? getDiwaliTrainSearchDate({
+          dateFrom: train.dateFrom,
+          dateTo: train.dateTo,
+          runningDays: train.runningDays,
+        })
+      : DEFAULT_DIWALI_SEARCH_DATE);
   const params = new URLSearchParams({
     from: train.fromStation.code.trim().toUpperCase(),
     to: train.toStation.code.trim().toUpperCase(),
-    date,
+    date: searchDate,
   });
   if (train.fromStation.name) {
     params.set("fromName", train.fromStation.name.trim());

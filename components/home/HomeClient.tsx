@@ -1391,7 +1391,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                       Class
                     </span>
                     <TrainClassMultiSelect
-                      variant="dropdown"
                       selectedClasses={selectedClasses}
                       onChange={setSelectedClasses}
                     />

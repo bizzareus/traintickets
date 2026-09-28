@@ -8,16 +8,16 @@ interface TrainClassMultiSelectProps {
   selectedClasses: string[];
   onChange: (classes: string[]) => void;
   compact?: boolean;
+  dropUp?: boolean;
   className?: string;
-  variant?: "chips" | "dropdown";
 }
 
 export function TrainClassMultiSelect({
   selectedClasses,
   onChange,
   compact = false,
+  dropUp = false,
   className,
-  variant = "chips",
 }: TrainClassMultiSelectProps) {
   const isAllSelected = selectedClasses.length === 0;
   const selectedSet = new Set(selectedClasses.map((c) => c.toUpperCase()));
@@ -35,87 +35,34 @@ export function TrainClassMultiSelect({
     onChange([]);
   };
 
-  if (variant === "dropdown") {
-    return <TrainClassDropdown
+  return (
+    <TrainClassDropdown
       selectedSet={selectedSet}
       isAllSelected={isAllSelected}
       onToggle={handleToggle}
       onSelectAll={handleSelectAll}
+      compact={compact}
+      dropUp={dropUp}
       className={className}
-    />;
-  }
-
-  return (
-    <div
-      role="group"
-      aria-label="Select train travel classes"
-      className={cn(
-        compact
-          ? "flex items-center gap-1 overflow-x-auto no-scrollbar max-w-[260px] sm:max-w-[340px] py-0.5"
-          : "flex flex-wrap items-center gap-1.5",
-        className,
-      )}
-    >
-      <button
-        type="button"
-        onClick={handleSelectAll}
-        aria-pressed={isAllSelected}
-        className={cn(
-          "shrink-0 rounded-lg border font-medium transition touch-manipulation",
-          compact
-            ? "px-2 py-0.5 text-[11px]"
-            : "px-2.5 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm",
-          isAllSelected
-            ? "border-blue-600 bg-blue-50 text-blue-700 font-semibold shadow-2xs"
-            : "border-gray-200 bg-white text-slate-600 hover:bg-slate-50",
-        )}
-      >
-        All
-      </button>
-
-      {AVAILABLE_TRAIN_CLASSES.map((cls) => {
-        const active = selectedSet.has(cls.code);
-        return (
-          <button
-            key={cls.code}
-            type="button"
-            title={cls.name}
-            aria-label={cls.name}
-            aria-pressed={active}
-            onClick={() => handleToggle(cls.code)}
-            className={cn(
-              "shrink-0 rounded-lg border font-medium transition touch-manipulation",
-              compact
-                ? "px-2 py-0.5 text-[11px]"
-                : "px-2.5 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm",
-              active
-                ? "border-blue-600 bg-blue-600 text-white font-semibold shadow-2xs hover:bg-blue-700"
-                : "border-gray-200 bg-white text-slate-600 hover:bg-slate-50",
-            )}
-          >
-            {cls.label}
-          </button>
-        );
-      })}
-    </div>
+    />
   );
 }
 
-/**
- * Compact dropdown variant: a toggle button showing "All" or the chosen
- * codes, opening a checkbox panel. Outside-click / Escape closes it.
- */
 function TrainClassDropdown({
   selectedSet,
   isAllSelected,
   onToggle,
   onSelectAll,
+  compact,
+  dropUp,
   className,
 }: {
   selectedSet: Set<string>;
   isAllSelected: boolean;
   onToggle: (code: string) => void;
   onSelectAll: () => void;
+  compact: boolean;
+  dropUp: boolean;
   className?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -144,7 +91,10 @@ function TrainClassDropdown({
     : [...selectedSet].join(", ");
 
   return (
-    <div ref={wrapRef} className={cn("relative", className)}>
+    <div
+      ref={wrapRef}
+      className={cn("relative", compact && "w-[116px]", className)}
+    >
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -152,7 +102,12 @@ function TrainClassDropdown({
         aria-expanded={open}
         aria-label="Select train travel classes"
         title={label}
-        className="block w-full truncate rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-left text-base font-semibold text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 touch-manipulation"
+        className={cn(
+          "block w-full truncate rounded-md text-left font-semibold touch-manipulation",
+          compact
+            ? "h-6 border-0 bg-transparent py-0 pl-0 pr-6 text-sm text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/25"
+            : "border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-base text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4",
+        )}
       >
         {label}
         <span
@@ -178,7 +133,11 @@ function TrainClassDropdown({
           role="listbox"
           aria-label="Train travel classes"
           aria-multiselectable="true"
-          className="absolute inset-x-0 top-full z-[60] mt-1 max-h-64 overflow-auto rounded-lg border border-gray-200 bg-white py-1 shadow-lg"
+          className={cn(
+            "absolute z-[60] max-h-64 overflow-auto rounded-lg border border-gray-200 bg-white py-1 shadow-lg",
+            dropUp ? "bottom-full mb-1" : "top-full mt-1",
+            compact ? "right-0 w-56" : "inset-x-0",
+          )}
         >
           <li role="option" aria-selected={isAllSelected}>
             <button
