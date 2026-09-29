@@ -658,27 +658,22 @@ export class JourneyTaskService {
   }
 
   /**
-   * Asynchronously validates and creates journey monitoring tasks, sends admin notification,
-   * hydrations, and immediate checks in the background.
-   */
-
-  /**
    * Check if an active/existing monitoring request already exists for the same user
    * (matching email or mobile), train number, origin station, destination station, and journey date.
    */
-  async hasDuplicateAlert(params: {
+  async findDuplicateAlert(params: {
     trainNumber: string;
     fromStationCode: string;
     toStationCode: string;
     journeyDate: string | Date;
     email?: string;
     mobile?: string;
-  }): Promise<boolean> {
+  }): Promise<{ id: string } | null> {
     const email = params.email?.trim().toLowerCase() || undefined;
     const rawMobile = params.mobile?.trim() || undefined;
     const mobile = rawMobile ? toE164(rawMobile) : undefined;
 
-    if (!email && !mobile) return false;
+    if (!email && !mobile) return null;
 
     const trainNumber = params.trainNumber.trim();
     const fromCode = params.fromStationCode.trim().toUpperCase();
@@ -688,7 +683,8 @@ export class JourneyTaskService {
         ? params.journeyDate.toISOString().slice(0, 10)
         : String(params.journeyDate).trim().slice(0, 10);
 
-    const existing = await this.prisma.journeyMonitoringRequest.findFirst({
+    return this.prisma.journeyMonitoringRequest.findFirst({
+      select: { id: true },
       where: {
         trainNumber,
         fromStationCode: fromCode,
@@ -699,8 +695,12 @@ export class JourneyTaskService {
         },
       },
     });
+  }
 
-    return Boolean(existing);
+  async hasDuplicateAlert(
+    params: Parameters<JourneyTaskService['findDuplicateAlert']>[0],
+  ): Promise<boolean> {
+    return Boolean(await this.findDuplicateAlert(params));
   }
 
   /**

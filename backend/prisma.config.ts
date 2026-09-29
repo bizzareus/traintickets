@@ -1,15 +1,14 @@
-import "dotenv/config";
-import { defineConfig } from "prisma/config";
+import 'dotenv/config';
+import { defineConfig } from 'prisma/config';
+import { prismaConnectionUrl } from './prisma/connection-url';
 
 export default defineConfig({
-  schema: "prisma/schema.prisma",
+  schema: 'prisma/schema.prisma',
   migrations: {
-    path: "prisma/migrations",
+    path: 'prisma/migrations',
   },
   datasource: {
-    // Single source of truth: DATABASE_URL. It must be a session-pooler (5432)
-    // or direct connection — NOT the transaction pooler (6543), which can't run
-    // migrations (DDL / advisory locks / multi-statement txns).
-    url: process.env["DATABASE_URL"],
+    // CLI only. PrismaService keeps using DATABASE_URL for application traffic.
+    url: prismaConnectionUrl(process.env),
   },
 });

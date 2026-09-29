@@ -46,7 +46,7 @@ describe('ChartAlertRefundsService', () => {
         findUnique: jest.fn(),
       },
     };
-    configGet = jest.fn((key: string) => {
+    configGet = jest.fn((_key: string) => {
       return undefined;
     });
     razorpay = {
@@ -184,6 +184,24 @@ describe('ChartAlertRefundsService', () => {
   });
 
   describe('no-destination (chart-prepared-only) alerts are never refunded', () => {
+    it('allows a chart-prepared-only refund when both delivery channels failed', async () => {
+      prisma.journeyMonitoringRequest.findUnique.mockResolvedValue({
+        toStationCode: '',
+      });
+      prisma.chartAlertPayment.updateMany.mockResolvedValue({ count: 1 });
+      prisma.chartAlertPayment.update.mockResolvedValue({});
+      razorpay.createRefund.mockResolvedValue({ id: 'refund-delivery' });
+
+      await expect(
+        service.initiateRefundForJourney(
+          'jid_123',
+          'notification_delivery_failed_email_and_whatsapp',
+          { allowChartPreparedOnly: true },
+        ),
+      ).resolves.toMatchObject({ outcome: 'succeeded', amount: 25 });
+      expect(razorpay.createRefund).toHaveBeenCalledTimes(1);
+    });
+
     it('skips when the journey request has an empty destination', async () => {
       prisma.journeyMonitoringRequest.findUnique.mockResolvedValue({
         toStationCode: '',

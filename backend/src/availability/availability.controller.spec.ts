@@ -1,5 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BadRequestException, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ServiceUnavailableException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AvailabilityController } from './availability.controller';
 import { AvailabilityService } from './availability.service';
@@ -20,10 +24,26 @@ describe('AvailabilityController Admin Endpoints', () => {
     | 'resendFailedWhatsAppNotifications'
     | 'validateJourneyForMonitoring'
     | 'queueJourneyMonitoring'
-    | 'queueChartPreparedMonitoring',
+    | 'queueChartPreparedMonitoring'
+    | 'getTasksByJourneyRequestId'
+    | 'findDuplicateAlert',
     jest.Mock
   >;
   const originalEnv = process.env[ADMIN_PASSWORD_ENV];
+  const savedTasks = [
+    {
+      id: 'chart-one',
+      stationCode: 'GGN',
+      chartAt: new Date('2026-09-29T15:56:00Z'),
+      status: 'pending',
+    },
+    {
+      id: 'chart-two',
+      stationCode: 'GGN',
+      chartAt: new Date('2026-09-30T00:25:00Z'),
+      status: 'pending',
+    },
+  ];
 
   beforeEach(async () => {
     process.env[ADMIN_PASSWORD_ENV] = 'test-secret-password';
@@ -43,6 +63,8 @@ describe('AvailabilityController Admin Endpoints', () => {
               .mockResolvedValue({ valid: true }),
             queueJourneyMonitoring: jest.fn().mockResolvedValue(true),
             queueChartPreparedMonitoring: jest.fn().mockResolvedValue(true),
+            getTasksByJourneyRequestId: jest.fn().mockResolvedValue(savedTasks),
+            findDuplicateAlert: jest.fn().mockResolvedValue(null),
             getAllAlerts: jest.fn().mockResolvedValue([]),
             getNotificationsAnalytics: jest.fn().mockResolvedValue([]),
             getRecentCronRuns: jest.fn().mockResolvedValue([]),
@@ -130,7 +152,6 @@ describe('AvailabilityController Admin Endpoints', () => {
           '05:35',
           1,
         );
-        await new Promise<void>((resolve) => setImmediate(resolve));
         const queue = destination
           ? journeyTaskService.queueJourneyMonitoring
           : journeyTaskService.queueChartPreparedMonitoring;
@@ -146,6 +167,164 @@ describe('AvailabilityController Admin Endpoints', () => {
         );
       },
     );
+  });
+
+  describe('subscription persistence acknowledgment', () => {
+    const submit = (destination = 'DOZ') =>
+      controller.createJourney(
+        '12015',
+        'Ajmer Shatabdi',
+        'GGN',
+        destination,
+        '2026-09-30',
+        'ANY',
+        ['GGN'],
+        'passenger@example.invalid',
+        '919999999999',
+        '2026-09-30',
+        undefined,
+        '21:26',
+        -1,
+        '05:55',
+        0,
+      );
+
+    it.each(['DOZ', ''])(
+      'waits for persistence for destination %s',
+      async (destination) => {
+        const queue = destination
+          ? journeyTaskService.queueJourneyMonitoring
+          : journeyTaskService.queueChartPreparedMonitoring;
+        let finishWrite!: (created: boolean) => void;
+        queue.mockReturnValue(
+          new Promise<boolean>((resolve) => {
+            finishWrite = resolve;
+          }),
+        );
+        const respond = jest.fn();
+        const pending = submit(destination).then((result) => {
+          respond(result);
+          return result;
+        });
+        await new Promise<void>((resolve) => setImmediate(resolve));
+
+        expect(queue).toHaveBeenCalledTimes(1);
+        expect(respond).not.toHaveBeenCalled();
+        expect(
+          journeyTaskService.getTasksByJourneyRequestId,
+        ).not.toHaveBeenCalled();
+
+        finishWrite(true);
+        const response = await pending;
+        expect(response).toMatchObject({
+          accepted: true,
+          status: 'scheduled',
+          existing: false,
+          journeyRequestId: queue.mock.calls[0][1],
+          tasks: [
+            {
+              id: 'chart-one',
+              stationCode: 'GGN',
+              chartAt: '2026-09-29T15:56:00.000Z',
+              status: 'pending',
+            },
+            {
+              id: 'chart-two',
+              stationCode: 'GGN',
+              chartAt: '2026-09-30T00:25:00.000Z',
+              status: 'pending',
+            },
+          ],
+        });
+        expect(
+          journeyTaskService.getTasksByJourneyRequestId,
+        ).toHaveBeenCalledWith(response.journeyRequestId);
+      },
+    );
+
+    it.each(['DOZ', ''])(
+      'returns 503 when queueing fails for destination %s',
+      async (destination) => {
+        journeyTaskService.queueJourneyMonitoring.mockResolvedValue(false);
+        journeyTaskService.queueChartPreparedMonitoring.mockResolvedValue(
+          false,
+        );
+        await expect(submit(destination)).rejects.toThrow(
+          ServiceUnavailableException,
+        );
+        expect(
+          journeyTaskService.getTasksByJourneyRequestId,
+        ).not.toHaveBeenCalled();
+      },
+    );
+
+    it('returns a safe 503 response when the database write throws', async () => {
+      const cause = new Error(
+        'The column chart_number does not exist in the current database.',
+      );
+      journeyTaskService.queueJourneyMonitoring.mockRejectedValue(cause);
+      const error = await submit().catch((error: unknown) => error);
+      expect(error).toBeInstanceOf(ServiceUnavailableException);
+      const exception = error as ServiceUnavailableException;
+      expect(exception.getStatus()).toBe(503);
+      expect(exception.getResponse()).toMatchObject({
+        message: 'Could not save your alert subscription. Please try again.',
+      });
+      expect(exception.cause).toBe(cause);
+      expect(JSON.stringify(exception.getResponse())).not.toContain(
+        'chart_number',
+      );
+    });
+
+    it('rejects a queue success without persisted tasks', async () => {
+      journeyTaskService.getTasksByJourneyRequestId.mockResolvedValue([]);
+      await expect(submit()).rejects.toThrow(ServiceUnavailableException);
+    });
+
+    it.each(['DOZ', ''])(
+      'returns the existing persisted ID for duplicate destination %s',
+      async (destination) => {
+        journeyTaskService.getTasksByJourneyRequestId
+          .mockResolvedValueOnce([])
+          .mockResolvedValueOnce(savedTasks);
+        journeyTaskService.findDuplicateAlert.mockResolvedValue({
+          id: 'existing-request',
+        });
+
+        await expect(submit(destination)).resolves.toMatchObject({
+          accepted: true,
+          existing: true,
+          journeyRequestId: 'existing-request',
+        });
+        expect(
+          journeyTaskService.getTasksByJourneyRequestId,
+        ).toHaveBeenLastCalledWith('existing-request');
+        expect(journeyTaskService.findDuplicateAlert).toHaveBeenCalledWith(
+          expect.objectContaining({
+            trainNumber: '12015',
+            fromStationCode: 'GGN',
+            toStationCode: destination,
+            journeyDate: '2026-09-30',
+            email: 'passenger@example.invalid',
+          }),
+        );
+      },
+    );
+
+    it('rejects an existing request that has no chart tasks', async () => {
+      journeyTaskService.getTasksByJourneyRequestId.mockResolvedValue([]);
+      journeyTaskService.findDuplicateAlert.mockResolvedValue({
+        id: 'orphan-request',
+      });
+      await expect(submit()).rejects.toThrow(ServiceUnavailableException);
+    });
+
+    it('does not acknowledge success when the persisted tasks cannot be read', async () => {
+      journeyTaskService.getTasksByJourneyRequestId.mockRejectedValue(
+        new Error('Database unavailable'),
+      );
+      await expect(submit()).rejects.toThrow(ServiceUnavailableException);
+    });
   });
 
   describe('unauthenticated admin requests', () => {

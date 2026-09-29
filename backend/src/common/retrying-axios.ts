@@ -2,12 +2,16 @@ import axios, { type AxiosError, type AxiosInstance } from 'axios';
 import axiosRetry from 'axios-retry';
 
 export type RetryingAxiosClientOptions = {
+  client?: AxiosInstance;
   retries?: number;
   serviceName?: string;
   retryPost?: boolean;
   retryTimeouts?: boolean;
   retryStatuses?: number[];
   retryDelayMs?: number;
+  retryCondition?: (error: AxiosError) => boolean;
+  retryDelay?: (retryCount: number, error: AxiosError) => number;
+  logRetries?: boolean;
 };
 
 export function createRetryingAxiosClient(
@@ -17,27 +21,32 @@ export function createRetryingAxiosClient(
   const retryStatuses = new Set(
     opts.retryStatuses ?? [429, 500, 502, 503, 504],
   );
-  const client = axios.create();
+  const client = opts.client ?? axios.create();
 
   axiosRetry(client, {
     retries,
-    retryDelay: (retryCount, error) =>
-      typeof opts.retryDelayMs === 'number'
-        ? opts.retryDelayMs
-        : axiosRetry.exponentialDelay(retryCount, error, 1_000),
+    retryDelay:
+      opts.retryDelay ??
+      ((retryCount, error) =>
+        typeof opts.retryDelayMs === 'number'
+          ? opts.retryDelayMs
+          : axiosRetry.exponentialDelay(retryCount, error, 1_000)),
     shouldResetTimeout: true,
-    retryCondition: (err: AxiosError) => {
-      const method = err.config?.method?.toUpperCase();
-      if (opts.retryPost !== true && method === 'POST') return false;
-      if (opts.retryTimeouts === true && err.code === 'ECONNABORTED') {
-        return true;
-      }
-      if (axiosRetry.isNetworkOrIdempotentRequestError(err)) return true;
+    retryCondition:
+      opts.retryCondition ??
+      ((err: AxiosError) => {
+        const method = err.config?.method?.toUpperCase();
+        if (opts.retryPost !== true && method === 'POST') return false;
+        if (opts.retryTimeouts === true && err.code === 'ECONNABORTED') {
+          return true;
+        }
+        if (axiosRetry.isNetworkOrIdempotentRequestError(err)) return true;
 
-      const status = err.response?.status;
-      return typeof status === 'number' && retryStatuses.has(status);
-    },
+        const status = err.response?.status;
+        return typeof status === 'number' && retryStatuses.has(status);
+      }),
     onRetry: (retryCount, err, config) => {
+      if (opts.logRetries === false) return;
       const method = config.method?.toUpperCase() ?? 'UNKNOWN';
       const url = config.url ?? 'unknown-url';
       const code = err.code ?? 'n/a';

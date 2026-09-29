@@ -28,6 +28,29 @@ function mockConfig(overrides?: {
 }
 
 describe('NotificationService', () => {
+  it('sends a concise automatic-refund email without claiming delivery', async () => {
+    const service = new NotificationService(mockConfig(), mockStationCache());
+    const sendEmail = jest.spyOn(service, 'sendEmail').mockResolvedValue(true);
+    await expect(
+      service.sendAutomaticDeliveryFailureRefundEmail({
+        email: 'passenger@example.com',
+        trainNumber: '12665',
+        journeyDate: '2026-09-29',
+        amount: 10,
+        refundId: 'refund-1',
+      }),
+    ).resolves.toBe(true);
+    expect(sendEmail).toHaveBeenCalledWith(
+      'passenger@example.com',
+      'Automatic refund issued - Train 12665',
+      expect.stringContaining(
+        'Due to a railway systems error, we could not process your chart alert',
+      ),
+    );
+    expect(sendEmail.mock.calls[0][2]).toContain('automatically refunded ₹10');
+    expect(sendEmail.mock.calls[0][2]).toContain('Refund ID: refund-1');
+  });
+
   describe('provider acceptance', () => {
     it.each([
       {

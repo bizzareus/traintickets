@@ -77,6 +77,12 @@ export class AlternativeSearchTaskService {
   async processDueTasks(
     limit = alternativeSearchConcurrency(),
   ): Promise<number> {
+    return (await this.processDueTasksWithStats(limit)).processed;
+  }
+
+  async processDueTasksWithStats(
+    limit = alternativeSearchConcurrency(),
+  ): Promise<{ processed: number; failed: number; skipped: number }> {
     const staleBefore = new Date(Date.now() - ALTERNATIVE_TASK_LEASE_MS);
     const pendingTasks = await this.prisma.alternativeSearchTask.findMany({
       where: {
@@ -100,9 +106,13 @@ export class AlternativeSearchTaskService {
         );
       }
     });
-    return results.filter(
+    const processed = results.filter(
       (result) => result.status === 'fulfilled' && result.value,
     ).length;
+    const failed = results.filter(
+      (result) => result.status === 'rejected',
+    ).length;
+    return { processed, failed, skipped: results.length - processed - failed };
   }
 
   /**

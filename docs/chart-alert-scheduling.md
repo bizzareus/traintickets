@@ -45,6 +45,19 @@ unchanged after payment confirmation. Task creation never replaces the selected
 times with database-cache values or a departure-minus-four-hours estimate. It
 also no longer writes a customer's selection into the shared train chart cache.
 
+## Subscription acknowledgment
+
+`POST /api/availability/journey` returns **HTTP 201** only after task persistence
+finishes and the saved tasks are read back. Its response has `accepted: true`,
+`status: "scheduled"`, the persisted `journeyRequestId`, an `existing` flag, and
+`tasks` containing each task's ID, station code, UTC `chartAt`, and status.
+Duplicate subscriptions return the existing request ID and its tasks.
+
+Invalid inputs still return HTTP 400. Failed writes, missing task rows, or failed
+readback return HTTP 503 with a retryable error message; a generated request ID
+alone is not a successful subscription. Availability checks and customer alerts
+continue to run asynchronously at the saved chart times.
+
 ## Processing and notification outcomes
 
 - Each task saves its chart number and UTC instant. Initial notifications and
@@ -75,6 +88,27 @@ also no longer writes a customer's selection into the shared train chart cache.
   the existing background alternative-search queue handles those separately.
 - Cron logs report failed task/channel outcomes instead of marking them green.
 
+## Daily failed-delivery refunds
+
+At 9:00 AM IST each day (override with `FAILED_DELIVERY_REFUND_CRON`), the leader
+replica audits confirmed paid subscriptions. It refunds only when:
+
+- both an email address and mobile number were supplied;
+- every chart task for the subscription has finished;
+- every task exhausted both email and WhatsApp delivery retries (`unsend`);
+- neither channel has a provider-accepted send timestamp; and
+- the payment is `PAID` and has not already completed this audit.
+
+If either email or WhatsApp succeeded for any chart event, or another chart event
+is still pending, the subscription is ignored. Refunds reuse the existing atomic,
+idempotent Razorpay/Muzobox refund service. After a successful refund, LastBerth
+emails the passenger that a railway systems error prevented timely processing and
+that the amount was returned to the original payment method. If that email fails,
+the next daily audit retries only the communication; it does not issue a second
+refund. Detection, email attempts/errors, and successful communication time are
+recorded on `chart_alert_payment`. The run is also recorded as
+`failed-delivery-refund` in `cron_run_log`.
+
 ## Tests
 
 ```sh
@@ -98,6 +132,17 @@ NOTIFICATION_TEST_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/rai
 ```
 
 ## Rollout
+
+Both the AWS backend workflow and `infra/deploy.sh backend` run `prisma migrate
+deploy` from the new backend image before replacing the running API. A migration
+failure stops deployment. The frontend deployment does not run migrations.
+
+Prisma CLI uses `DIRECT_URL` when configured. Otherwise, a Supabase transaction
+pooler `DATABASE_URL` (`*.pooler.supabase.com:6543`) is converted to the same host,
+credentials, and database on session-pooler port `5432`, with `pgbouncer` removed.
+Other URLs are unchanged. Application traffic continues using `DATABASE_URL`.
+An explicit `DIRECT_URL` must use a direct or session connection; transaction
+pooling causes prepared-statement errors during migrations.
 
 Initial scheduling verification on 29 September 2026: 501 backend unit tests, 5 local PostgreSQL
 integration tests, 34 frontend unit tests, and 8 Chromium desktop/mobile browser

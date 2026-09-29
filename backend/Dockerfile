@@ -39,5 +39,6 @@ RUN npm ci --omit=dev && npx prisma generate
 
 COPY --from=builder /app/dist ./dist
 
+ENV NODE_OPTIONS="--max-old-space-size=450"
 EXPOSE 3009
-CMD ["node", "--max-old-space-size=450", "dist/main.js"]
+CMD ["node", "dist/main.js"]

@@ -1,8 +1,9 @@
-import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
-import { Cron, CronExpression } from '@nestjs/schedule';
+import { Injectable, Logger, Optional } from '@nestjs/common';
+import { Cron, CronExpression, Timeout } from '@nestjs/schedule';
 import puppeteer from 'puppeteer';
 import { captureSentryException } from '../common/sentry-report';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
+import { CronitorService, monitorCron } from '../monitoring/cronitor.service';
 
 /** Resolves the CDP WebSocket endpoint for the remote browser (residential IP). */
 function resolveBrowserWsEndpoint(): string | null {
@@ -74,7 +75,7 @@ function describeError(err: unknown): string {
       .filter((k) => o[k] != null)
       .map((k) => {
         const v = o[k];
-        return `${k}=${typeof v === 'object' ? safeJson(v) : String(v)}`;
+        return `${k}=${typeof v === 'string' ? v : safeJson(v)}`;
       });
     return picked.length > 0 ? picked.join(' ') : safeJson(err);
   }
@@ -94,7 +95,7 @@ function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
       },
       (e) => {
         clearTimeout(t);
-        reject(e);
+        reject(e instanceof Error ? e : new Error(describeError(e)));
       },
     );
   });
@@ -114,13 +115,16 @@ function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
  * Gated by IRCTC_KEEPER_ENABLED=true and BROWSERLESS_API_KEY / BROWSERLESS_WSS / IRCTC_BROWSER_WSS.
  */
 @Injectable()
-export class IrctcSessionKeeperService implements OnModuleInit {
+export class IrctcSessionKeeperService {
   private readonly logger = new Logger(IrctcSessionKeeperService.name);
   private refreshing = false;
   private lastRefreshAt: string | null = null;
   private lastError: string | null = null;
 
-  constructor(private readonly cookieStore: IrctcCookieStoreService) {}
+  constructor(
+    private readonly cookieStore: IrctcCookieStoreService,
+    @Optional() private readonly monitoring?: CronitorService,
+  ) {}
 
   /** Resolves the CDP WebSocket endpoint for Browserless or custom remote browser. */
   private get browserWsEndpoint(): string | null {
@@ -144,18 +148,21 @@ export class IrctcSessionKeeperService implements OnModuleInit {
     );
   }
 
-  onModuleInit(): void {
+  // Managed by the worker scheduler, so API startup never launches a harvest.
+  @Timeout('irctc-keeper-boot', 5_000)
+  async warmCookie(): Promise<void> {
     if (!this.enabled) {
       this.logger.log(
         '[irctc-keeper] disabled (set IRCTC_KEEPER_ENABLED=true + BROWSERLESS_API_KEY / BROWSERLESS_WSS to enable)',
       );
       return;
     }
-    // Warm the cookie file shortly after boot without blocking startup.
-    setTimeout(() => void this.refresh('boot'), 5_000);
+    await this.refresh('boot');
   }
 
-  @Cron(process.env.IRCTC_KEEPER_CRON ?? CronExpression.EVERY_30_MINUTES)
+  @Cron(process.env.IRCTC_KEEPER_CRON ?? CronExpression.EVERY_30_MINUTES, {
+    timeZone: process.env.TZ || 'UTC',
+  })
   async scheduledRefresh(): Promise<void> {
     if (!this.enabled) return;
     await this.refresh('cron');
@@ -241,34 +248,41 @@ export class IrctcSessionKeeperService implements OnModuleInit {
         }
       }
 
-      this.logger.log(
-        `[irctc-keeper] refresh trigger=${trigger} via=${this.providerName}`,
-      );
+      return await monitorCron(
+        trigger === 'manual' ? undefined : this.monitoring,
+        'irctc-session-keeper',
+        async () => {
+          this.logger.log(
+            `[irctc-keeper] refresh trigger=${trigger} via=${this.providerName}`,
+          );
 
-      const cookieString = await withTimeout(
-        this.harvestViaRemoteBrowser(),
-        HARVEST_HARD_TIMEOUT_MS,
-        `${this.providerName} harvest`,
-      );
-      if (!cookieString) throw new Error('no cookies harvested');
+          const cookieString = await withTimeout(
+            this.harvestViaRemoteBrowser(),
+            HARVEST_HARD_TIMEOUT_MS,
+            `${this.providerName} harvest`,
+          );
+          if (!cookieString) throw new Error('no cookies harvested');
 
-      // Opt-in: dump the full cookie to the logs for manual inspection. This is
-      // a secret bundle — only enable IRCTC_KEEPER_LOG_COOKIE while debugging.
-      if (process.env.IRCTC_KEEPER_LOG_COOKIE === 'true') {
-        this.logger.warn(
-          `[irctc-keeper] harvested cookie (IRCTC_KEEPER_LOG_COOKIE on): ${cookieString}`,
-        );
-      }
+          // Opt-in: dump the full cookie to the logs for manual inspection. This is
+          // a secret bundle — only enable IRCTC_KEEPER_LOG_COOKIE while debugging.
+          if (process.env.IRCTC_KEEPER_LOG_COOKIE === 'true') {
+            this.logger.warn(
+              `[irctc-keeper] harvested cookie (IRCTC_KEEPER_LOG_COOKIE on): ${cookieString}`,
+            );
+          }
 
-      await this.cookieStore.setCookie(cookieString, {
-        source: this.providerName,
-      });
-      this.lastRefreshAt = new Date().toISOString();
-      this.lastError = null;
-      this.logger.log(
-        `[irctc-keeper] refresh ok trigger=${trigger} provider=${this.providerName} cookieChars=${cookieString.length}`,
+          await this.cookieStore.setCookie(cookieString, {
+            source: this.providerName,
+          });
+          this.lastRefreshAt = new Date().toISOString();
+          this.lastError = null;
+          this.logger.log(
+            `[irctc-keeper] refresh ok trigger=${trigger} provider=${this.providerName} cookieChars=${cookieString.length}`,
+          );
+          return { ok: true };
+        },
+        () => ({ count: 1 }),
       );
-      return { ok: true };
     } catch (err) {
       const msg = describeError(err);
       this.lastError = msg;

@@ -144,65 +144,103 @@ integration('chart notification PostgreSQL contract', () => {
     };
   }
 
-  it('persists the exact two RJY chart instants in PostgreSQL as UTC-valued timestamps', async () =>
-    rollback(async (tx) => {
-      const prisma = {
-        ...tx,
-        $transaction: (operations: Promise<unknown>[]) =>
-          Promise.all(operations),
-      };
-      const service = new JourneyTaskService(
-        prisma as never,
-        {} as never,
-        {} as never,
-        {} as never,
-        {} as never,
-        {} as never,
-        {} as never,
-      );
-      const journeyRequestId = randomUUID();
-      await service.createJourneyTasks(
-        {
-          trainNumber: '12665',
-          fromStationCode: 'RJY',
-          toStationCode: 'DG',
-          journeyDate: '2026-09-29',
-          classCode: 'SL',
-          email: `${journeyRequestId}@example.invalid`,
-          chartTimeLocal: '19:08',
-          chartOneDayOffset: 0,
-          chartTwoTimeLocal: '05:35',
-          chartTwoDayOffset: 1,
-        },
-        {
-          journeyRequestId,
-          validatedContext: {
-            trainNumber: '12665',
-            fromCode: 'RJY',
-            toCode: 'DG',
-            jYmd: '2026-09-29',
-            trainStartDate: '2026-09-28',
-            stationsToProcess: ['RJY'],
-            schedule: {
-              trainNumber: '12665',
-              trainName: 'HWH CAPE SF EXP',
-              stationFrom: 'HWH',
-              stationTo: 'CAPE',
-              stationList: [],
+  it.each([
+    {
+      trainNumber: '12665',
+      fromStationCode: 'RJY',
+      toStationCode: 'DG',
+      journeyDate: '2026-09-29',
+      trainStartDate: '2026-09-28',
+      classCode: 'SL',
+      chartTimeLocal: '19:08',
+      chartOneDayOffset: 0,
+      chartTwoTimeLocal: '05:35',
+      chartTwoDayOffset: 1,
+      expected: ['2026-09-28 13:38:00', '2026-09-29 00:05:00'],
+    },
+    {
+      trainNumber: '12015',
+      fromStationCode: 'GGN',
+      toStationCode: 'DOZ',
+      journeyDate: '2026-09-30',
+      trainStartDate: '2026-09-30',
+      classCode: 'ANY',
+      chartTimeLocal: '21:26',
+      chartOneDayOffset: -1,
+      chartTwoTimeLocal: '05:55',
+      chartTwoDayOffset: 0,
+      expected: ['2026-09-29 15:56:00', '2026-09-30 00:25:00'],
+    },
+  ])(
+    'persists the exact two $fromStationCode chart instants in PostgreSQL as UTC-valued timestamps',
+    async ({ expected, ...input }) =>
+      rollback(async (tx) => {
+        const prisma = {
+          ...tx,
+          $transaction: (operations: Promise<unknown>[]) =>
+            Promise.all(operations),
+        };
+        const service = new JourneyTaskService(
+          prisma as never,
+          {} as never,
+          {} as never,
+          {} as never,
+          {} as never,
+          {} as never,
+          {} as never,
+        );
+        const journeyRequestId = randomUUID();
+        await service.createJourneyTasks(
+          {
+            ...input,
+            email: `${journeyRequestId}@example.invalid`,
+          },
+          {
+            journeyRequestId,
+            validatedContext: {
+              trainNumber: input.trainNumber,
+              fromCode: input.fromStationCode,
+              toCode: input.toStationCode,
+              jYmd: input.journeyDate,
+              trainStartDate: input.trainStartDate,
+              stationsToProcess: [input.fromStationCode],
+              schedule: {
+                trainNumber: input.trainNumber,
+                trainName: 'Test train',
+                stationFrom: input.fromStationCode,
+                stationTo: input.toStationCode,
+                stationList: [],
+              },
             },
           },
-        },
-      );
-      const rows = await tx.$queryRaw<
-        Array<{ chart_at: string; chart_number: number }>
-      >`
+        );
+        const rows = await tx.$queryRaw<
+          Array<{ chart_at: string; chart_number: number }>
+        >`
       SELECT chart_at::text, chart_number FROM "ChartTimeAvailabilityTask"
       WHERE journey_request_id = ${journeyRequestId} ORDER BY chart_number`;
-      expect(rows).toEqual([
-        { chart_at: '2026-09-28 13:38:00', chart_number: 1 },
-        { chart_at: '2026-09-29 00:05:00', chart_number: 2 },
-      ]);
-    }));
+        expect(rows).toEqual(
+          expected.map((chart_at, index) => ({
+            chart_at,
+            chart_number: index + 1,
+          })),
+        );
+        await expect(
+          tx.journeyMonitoringRequest.findUnique({
+            where: { id: journeyRequestId },
+            select: {
+              trainNumber: true,
+              fromStationCode: true,
+              toStationCode: true,
+            },
+          }),
+        ).resolves.toEqual({
+          trainNumber: input.trainNumber,
+          fromStationCode: input.fromStationCode,
+          toStationCode: input.toStationCode,
+        });
+      }),
+  );
 
   it('allows exactly eight paid retries after the initial failed attempt, then stops both channels', async () =>
     rollback(async (tx) => {

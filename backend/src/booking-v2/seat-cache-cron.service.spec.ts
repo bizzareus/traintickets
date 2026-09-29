@@ -9,10 +9,28 @@ import { ChartCronLeaderService } from '../chart-cron/chart-cron-leader.service'
 import { PostHogTopRoutesService } from './posthog-top-routes.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
+import {
+  CronitorService,
+  type CronitorOutcome,
+} from '../monitoring/cronitor.service';
 
 describe('SeatCacheCronService', () => {
   let service: SeatCacheCronService;
   let ddbStore: Map<string, unknown>;
+  const observed: CronitorOutcome[] = [];
+  const monitoring = {
+    run: jest.fn(
+      async <T>(
+        _job: string,
+        work: () => Promise<T>,
+        summarize: (result: T) => CronitorOutcome,
+      ) => {
+        const result = await work();
+        observed.push(summarize(result));
+        return result;
+      },
+    ),
+  };
 
   const mockBookingV2Service = {
     fetchTrainsFromUpstream: jest
@@ -92,10 +110,13 @@ describe('SeatCacheCronService', () => {
   };
 
   beforeEach(async () => {
+    monitoring.run.mockClear();
+    observed.length = 0;
     ddbStore = new Map();
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         SeatCacheCronService,
+        { provide: CronitorService, useValue: monitoring },
         { provide: BookingV2Service, useValue: mockBookingV2Service },
         { provide: DynamoDbSeatCacheService, useValue: mockDynamoDbSeatCache },
         { provide: ChartCronLeaderService, useValue: mockLeaderService },
@@ -129,6 +150,36 @@ describe('SeatCacheCronService', () => {
           '2026-11-07',
         ]).toContain(d);
       }
+    }
+  });
+
+  it('reports partial cache failures after the enabled/leader guards', async () => {
+    const nodeEnv = process.env.NODE_ENV;
+    const enabled = process.env.SEAT_CACHE_ENABLED;
+    process.env.NODE_ENV = 'production';
+    process.env.SEAT_CACHE_ENABLED = 'true';
+    try {
+      const refresh = jest
+        .spyOn(service, 'refreshSeatCache')
+        .mockResolvedValue({
+          success: true,
+          totalRoutesWarmed: 4,
+          failedRoutes: 2,
+          totalTargetsProcessed: 1,
+          summaryCount: 1,
+        });
+      mockLeaderService.isLeader.mockResolvedValueOnce(false);
+      await service.handleCron();
+      expect(monitoring.run).not.toHaveBeenCalled();
+      expect(refresh).not.toHaveBeenCalled();
+      await service.handleCron();
+      expect(monitoring.run).toHaveBeenCalledTimes(1);
+      expect(observed).toEqual([{ count: 4, errorCount: 2 }]);
+    } finally {
+      if (nodeEnv === undefined) delete process.env.NODE_ENV;
+      else process.env.NODE_ENV = nodeEnv;
+      if (enabled === undefined) delete process.env.SEAT_CACHE_ENABLED;
+      else process.env.SEAT_CACHE_ENABLED = enabled;
     }
   });
 

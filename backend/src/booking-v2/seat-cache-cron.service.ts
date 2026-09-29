@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, Optional } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -13,6 +13,7 @@ import {
 } from './posthog-top-routes.service';
 import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { CronitorService, monitorCron } from '../monitoring/cronitor.service';
 
 /** Curated popular routes to keep warm, matching top searched OD corridors. */
 export const POPULAR_ROUTE_PAIRS: ReadonlyArray<{ from: string; to: string }> =
@@ -181,6 +182,7 @@ export class SeatCacheCronService {
     private readonly topRoutes: PostHogTopRoutesService,
     private readonly prisma: PrismaService,
     private readonly posthogAnalytics: PostHogAnalyticsService,
+    @Optional() private readonly monitoring?: CronitorService,
   ) {}
 
   private get enabled(): boolean {
@@ -233,7 +235,15 @@ export class SeatCacheCronService {
 
     this.running = true;
     try {
-      await this.refreshSeatCache();
+      await monitorCron(
+        this.monitoring,
+        'seat-cache',
+        () => this.refreshSeatCache(),
+        (result) => ({
+          count: result.totalRoutesWarmed,
+          errorCount: result.failedRoutes ?? (result.success ? 0 : 1),
+        }),
+      );
     } catch (err) {
       this.logger.error(
         `[seat-cache-cron] cron tick failed: ${err instanceof Error ? err.message : String(err)}`,
@@ -273,6 +283,7 @@ export class SeatCacheCronService {
     totalRoutesWarmed: number;
     totalTargetsProcessed: number;
     summaryCount: number;
+    failedRoutes: number;
   }> {
     const startedAt = new Date();
     this.logger.log('[seat-cache-cron] starting seat cache warming pass...');
@@ -571,6 +582,7 @@ export class SeatCacheCronService {
       totalRoutesWarmed: warmedCount,
       totalTargetsProcessed: targets.length,
       summaryCount: Object.keys(summaryMap).length,
+      failedRoutes: failedCount,
     };
   }
 }

@@ -350,12 +350,11 @@ export class AvailabilityController {
   }
 
   /**
-   * Accepts a journey monitoring request, validates basic fields synchronously, and executes
-   * external validation, DB task creation, hydration, and immediate checks asynchronously in the background.
-   * Returns HTTP 202 immediately.
+   * Confirm subscription persistence before acknowledging it. Availability checks
+   * and customer alerts still run asynchronously at the saved chart times.
    */
   @Post('journey')
-  @HttpCode(HttpStatus.ACCEPTED)
+  @HttpCode(HttpStatus.CREATED)
   async createJourney(
     @Body('trainNumber') trainNumber: string,
     @Body('trainName') trainName: string,
@@ -488,27 +487,54 @@ export class AvailabilityController {
       }
     }
 
-    setImmediate(() => {
-      if (isChartPreparedOnly) {
-        void this.journeyTask.queueChartPreparedMonitoring(
-          { ...normalized, paymentRef: verifiedPaymentRef },
-          journeyRequestId,
-        );
-      } else {
-        void this.journeyTask.queueJourneyMonitoring(
-          { ...normalized, paymentRef: verifiedPaymentRef },
-          journeyRequestId,
-        );
-      }
-    });
+    try {
+      const params = { ...normalized, paymentRef: verifiedPaymentRef };
+      const created = isChartPreparedOnly
+        ? await this.journeyTask.queueChartPreparedMonitoring(
+            params,
+            journeyRequestId,
+          )
+        : await this.journeyTask.queueJourneyMonitoring(
+            params,
+            journeyRequestId,
+          );
+      if (!created) throw new Error('Subscription creation failed');
 
-    return {
-      accepted: true,
-      status: 'queued',
-      message:
-        'Journey monitoring request has been received and is being processed in the background.',
-      journeyRequestId,
-    };
+      let savedId: string = journeyRequestId;
+      let tasks = await this.journeyTask.getTasksByJourneyRequestId(savedId);
+      if (!tasks.length) {
+        // The queue methods also return true for a duplicate. Return its real
+        // persisted ID instead of the newly generated, nonexistent request ID.
+        const existing = await this.journeyTask.findDuplicateAlert(normalized);
+        if (existing) {
+          savedId = existing.id;
+          tasks = await this.journeyTask.getTasksByJourneyRequestId(savedId);
+        }
+      }
+      if (!tasks.length) throw new Error('No persisted chart tasks found');
+
+      return {
+        accepted: true,
+        status: 'scheduled',
+        message:
+          savedId === journeyRequestId
+            ? 'Journey monitoring has been saved and scheduled.'
+            : 'An existing journey alert is already scheduled.',
+        journeyRequestId: savedId,
+        existing: savedId !== journeyRequestId,
+        tasks: tasks.map((task) => ({
+          id: task.id,
+          stationCode: task.stationCode,
+          chartAt: task.chartAt.toISOString(),
+          status: task.status,
+        })),
+      };
+    } catch (error) {
+      throw new ServiceUnavailableException(
+        'Could not save your alert subscription. Please try again.',
+        { cause: error },
+      );
+    }
   }
 
   @Get('journey/:journeyRequestId')

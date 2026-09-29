@@ -41,6 +41,10 @@ LastBerth brings transparency to Indian Railways train journeys by transforming 
 
 ## 🏗️ Infrastructure & Deployment Architecture
 
+The backend now runs an HTTP API and a separate cron worker from the same image.
+See [cron worker deployment and memory sizing](docs/cron-worker.md) before rollout;
+the historical t3.micro sizing below needs revisiting for two backend containers.
+
 LastBerth runs on a high-efficiency, containerized dual-instance architecture deployed on AWS EC2 (`t3.micro` instances in `ap-south-1` Mumbai) fronted by Cloudflare Proxy and Caddy HTTPS reverse proxies.
 
 ```mermaid

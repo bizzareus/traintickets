@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { APP_FILTER, HttpAdapterHost } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
-import { ScheduleModule } from '@nestjs/schedule';
 import { SentryModule } from '@sentry/nestjs/setup';
 import { SentryHttpExceptionFilter } from './common/sentry-http-exception.filter';
 import { AppController } from './app.controller';
@@ -13,7 +12,6 @@ import { StationsModule } from './stations/stations.module';
 import { SearchModule } from './search/search.module';
 import { WebhookModule } from './webhook/webhook.module';
 import { AdminModule } from './admin/admin.module';
-import { ChartCronModule } from './chart-cron/chart-cron.module';
 import { AvailabilityModule } from './availability/availability.module';
 import { IrctcModule } from './irctc/irctc.module';
 import { ChartTimeModule } from './chart-time/chart-time.module';
@@ -29,12 +27,13 @@ import { ShortLinkModule } from './short-link/short-link.module';
 import { ChartAlertPaymentsModule } from './chart-alert-payments/chart-alert-payments.module';
 import { RefundRequestModule } from './refund-request/refund-request.module';
 import { SplitBookingModule } from './split-booking/split-booking.module';
+import { MonitoringModule } from './monitoring/monitoring.module';
 
 @Module({
   imports: [
     SentryModule.forRoot(),
     ConfigModule.forRoot({ isGlobal: true }),
-    ScheduleModule.forRoot(),
+    MonitoringModule,
     PrismaModule,
     CacheModule,
     AuthModule,
@@ -43,7 +42,6 @@ import { SplitBookingModule } from './split-booking/split-booking.module';
     SearchModule,
     WebhookModule,
     AdminModule,
-    ChartCronModule,
     AvailabilityModule,
     IrctcModule,
     ChartTimeModule,

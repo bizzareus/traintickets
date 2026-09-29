@@ -81,7 +81,7 @@ cmd_backend() {
   check_cloud
   local c_name
   c_name="$(cloud_upper)"
-  color_info "Deploying Backend container to ${c_name} VM..."
+  color_info "Deploying Backend API and cron worker containers to ${c_name} VM..."
   cd "${SCRIPT_DIR}/terraform/${CLOUD}"
   BACKEND_IP="$(terraform output -raw backend_public_ip 2>/dev/null || echo "")"
 
@@ -103,8 +103,8 @@ cmd_backend() {
     --exclude '.env*' \
     "${ROOT_DIR}/backend/" "ubuntu@${BACKEND_IP}:/home/ubuntu/app/backend/"
 
-  # Build & run
-  ssh -o StrictHostKeyChecking=no "ubuntu@${BACKEND_IP}" "cd /home/ubuntu/app/infra && docker compose up -d --build"
+  # Replace the old scheduler/API before starting the worker to avoid overlap on rollout.
+  ssh -o StrictHostKeyChecking=no "ubuntu@${BACKEND_IP}" "cd /home/ubuntu/app/infra && docker compose build backend && docker compose run --rm --no-deps backend npx prisma migrate deploy && docker compose up -d --no-build backend && docker compose up -d --no-build worker caddy"
   color_success "Backend deployed and running on ${c_name} (IP: ${BACKEND_IP})."
 }
 
@@ -122,8 +122,8 @@ cmd_env() {
   fi
 
   color_info "Opening /home/ubuntu/app/backend/.env on ${BACKEND_IP}..."
-  ssh -t -o StrictHostKeyChecking=no "ubuntu@${BACKEND_IP}" "nano /home/ubuntu/app/backend/.env && cd /home/ubuntu/app/infra && docker compose restart backend"
-  color_success "Remote .env updated and backend restarted on ${c_name} (IP: ${BACKEND_IP})."
+  ssh -t -o StrictHostKeyChecking=no "ubuntu@${BACKEND_IP}" "nano /home/ubuntu/app/backend/.env && cd /home/ubuntu/app/infra && docker compose up -d --no-build --force-recreate backend worker"
+  color_success "Remote .env applied to API and worker on ${c_name} (IP: ${BACKEND_IP})."
 }
 
 cmd_all() {
@@ -154,8 +154,8 @@ case "$ACTION" in
     echo "Commands:"
     echo "  setup    [aws|gcp] : Provision cloud infrastructure via Terraform"
     echo "  frontend [aws|gcp] : Build & run frontend container on the cloud VM (preserves remote env)"
-    echo "  backend  [aws|gcp] : Build & run backend container on the cloud VM (preserves remote env)"
-    echo "  env      [aws|gcp] : Edit remote /home/ubuntu/app/backend/.env via SSH & restart backend"
+    echo "  backend  [aws|gcp] : Build & run API and worker containers on the cloud VM (preserves remote env)"
+    echo "  env      [aws|gcp] : Edit remote /home/ubuntu/app/backend/.env via SSH & recreate API and worker"
     echo "  all      [aws|gcp] : Provision and deploy everything"
     exit 1
     ;;

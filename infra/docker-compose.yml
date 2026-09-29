@@ -1,19 +1,34 @@
+x-backend-runtime: &backend-runtime
+  image: ghcr.io/bizzareus/traintickets-backend:latest
+  restart: unless-stopped
+  init: true
+  stop_grace_period: 30s
+  env_file:
+    - ../backend/.env
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "20m"
+      max-file: "10"
+
 services:
   backend:
-    image: ghcr.io/bizzareus/traintickets-backend:latest
+    <<: *backend-runtime
     build:
       context: ../backend
       dockerfile: Dockerfile
-    restart: unless-stopped
-    env_file:
-      - ../backend/.env
+    environment:
+      NODE_OPTIONS: ${BACKEND_NODE_OPTIONS:---max-old-space-size=450}
+    mem_limit: ${BACKEND_MEMORY_LIMIT:-768m}
     ports:
       - "3009:3009"
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "20m"
-        max-file: "10"
+
+  worker:
+    <<: *backend-runtime
+    command: ["node", "dist/worker.js"]
+    environment:
+      NODE_OPTIONS: ${WORKER_NODE_OPTIONS:---max-old-space-size=450}
+    mem_limit: ${WORKER_MEMORY_LIMIT:-768m}
 
   caddy:
     image: caddy:2-alpine

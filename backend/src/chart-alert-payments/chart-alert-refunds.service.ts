@@ -103,7 +103,7 @@ export class ChartAlertRefundsService {
   async initiateRefundForJourney(
     journeyRequestId: string,
     reason: string,
-    opts?: { force?: boolean },
+    opts?: { force?: boolean; allowChartPreparedOnly?: boolean },
   ): Promise<RefundInfo> {
     const jid = String(journeyRequestId ?? '').trim();
     if (!jid) return { attempted: false, outcome: 'skipped' };
@@ -118,7 +118,11 @@ export class ChartAlertRefundsService {
     // No-destination ("chart prepared only") alerts carry no end-to-end
     // availability promise, so they are excluded from auto-refunds.
     // A forced (admin) refund bypasses this exclusion.
-    if (!forced && (await this.isChartPreparedOnlyAlert(jid, record))) {
+    if (
+      !forced &&
+      !opts?.allowChartPreparedOnly &&
+      (await this.isChartPreparedOnlyAlert(jid, record))
+    ) {
       this.logger.log(
         `Refund skipped for jid=${jid}: no destination selected (chart-prepared-only alert)`,
       );

@@ -195,7 +195,7 @@ jobs:
             --cidr "$RUNNER_IP/32" || true
 
   deploy-backend-aws:
-    name: Deploy Backend (AWS EC2 - NestJS)
+    name: Deploy Backend API & Cron Worker (AWS EC2 - NestJS)
     needs: build-and-push
     runs-on: ubuntu-latest
     # Never hang the runner for hours if an SSH step stalls — fail fast instead.
@@ -203,25 +203,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v5
-
-      # Migrations run here on the runner (full internet route to Supabase),
-      # NOT on EC2: the EC2 host cannot route to Supabase direct endpoints
-      # (:5432), and migrate deploy stalls through the pooler (:6543).
-      # Requires the PROD_DIRECT_DATABASE_URL repo secret (port-5432 URL).
-      # NOTE: runner migrations intentionally disabled for now — prod DB is
-      # fully migrated (verified 2026-09-14) and EC2 cannot reach Supabase
-      # direct endpoints. Re-enable with PROD_DIRECT_DATABASE_URL if new
-      # migrations ever need auto-apply on deploy.
-      # - name: Apply Prisma migrations
-      #   working-directory: backend
-      #   env:
-      #     DATABASE_URL: ${{ secrets.PROD_DIRECT_DATABASE_URL }}
-      #   run: |
-      #     if [ -z "$DATABASE_URL" ]; then echo 'PROD_DIRECT_DATABASE_URL secret is not set; cannot migrate'; exit 1; fi
-      #     # prisma.config.ts imports dotenv, so the CLI needs project deps —
-      #     # bare npx prisma cannot load the config. Install once, skip scripts.
-      #     npm ci --ignore-scripts
-      #     ./node_modules/.bin/prisma migrate deploy
 
       - name: Configure AWS Credentials
         if: env.AWS_ACCESS_KEY_ID != ''
@@ -306,7 +287,13 @@ jobs:
               echo \"docker pull attempt \$i failed, retrying in \$((\$i*10))s...\"
               sleep \$((\$i*10))
             done
-            cd /home/ubuntu/app/infra && docker compose -f docker-compose.yml up -d
+            # Prisma CLI uses the session pooler (5432); runtime keeps DATABASE_URL.
+            # Fail before replacing the running API if the new image cannot migrate.
+            docker run --rm --env-file /home/ubuntu/app/backend/.env '$BACKEND_IMAGE' npx prisma migrate deploy
+            # Remove the old API's scheduler before starting the dedicated worker.
+            cd /home/ubuntu/app/infra
+            docker compose -f docker-compose.yml up -d --no-build backend
+            docker compose -f docker-compose.yml up -d --no-build worker caddy
             docker image prune -af || true
             docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'"
 

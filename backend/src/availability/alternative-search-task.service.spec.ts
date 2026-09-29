@@ -5,7 +5,12 @@ import { NotificationService } from '../notification/notification.service';
 
 describe('AlternativeSearchTaskService', () => {
   let service: AlternativeSearchTaskService;
-  let prisma: jest.Mocked<PrismaService>;
+  let prisma: {
+    alternativeSearchTask: Record<
+      'create' | 'findUnique' | 'findMany' | 'update' | 'updateMany',
+      jest.Mock
+    >;
+  };
   let bookingV2: jest.Mocked<BookingV2Service>;
   let notification: jest.Mocked<NotificationService>;
 
@@ -18,7 +23,7 @@ describe('AlternativeSearchTaskService', () => {
         update: jest.fn(),
         updateMany: jest.fn().mockResolvedValue({ count: 1 }),
       },
-    } as unknown as jest.Mocked<PrismaService>;
+    };
 
     bookingV2 = {
       findBestTrains: jest.fn(),
@@ -28,7 +33,11 @@ describe('AlternativeSearchTaskService', () => {
       notifyUserAlternativeTrains: jest.fn(),
     } as unknown as jest.Mocked<NotificationService>;
 
-    service = new AlternativeSearchTaskService(prisma, bookingV2, notification);
+    service = new AlternativeSearchTaskService(
+      prisma as unknown as PrismaService,
+      bookingV2,
+      notification,
+    );
   });
 
   it('should enqueue a task for the isolated cron worker', async () => {
@@ -46,18 +55,12 @@ describe('AlternativeSearchTaskService', () => {
       leaseVersion: 0,
     };
 
-    (prisma.alternativeSearchTask.create as jest.Mock).mockResolvedValue(
-      mockTask,
-    );
-    (prisma.alternativeSearchTask.findUnique as jest.Mock).mockResolvedValue(
-      mockTask,
-    );
+    prisma.alternativeSearchTask.create.mockResolvedValue(mockTask);
+    prisma.alternativeSearchTask.findUnique.mockResolvedValue(mockTask);
     (bookingV2.findBestTrains as jest.Mock).mockResolvedValue({
       results: [],
     });
-    (prisma.alternativeSearchTask.update as jest.Mock).mockResolvedValue(
-      mockTask,
-    );
+    prisma.alternativeSearchTask.update.mockResolvedValue(mockTask);
 
     const result = await service.enqueueTask({
       trainNumber: '11039',
@@ -90,7 +93,7 @@ describe('AlternativeSearchTaskService', () => {
     const second = new Promise<boolean>((resolve) => {
       finishSecond = resolve;
     });
-    (prisma.alternativeSearchTask.findMany as jest.Mock).mockResolvedValue([
+    prisma.alternativeSearchTask.findMany.mockResolvedValue([
       { id: 'alt-1' },
       { id: 'alt-2' },
     ]);
@@ -105,6 +108,26 @@ describe('AlternativeSearchTaskService', () => {
     finishFirst(true);
     finishSecond(true);
     await expect(run).resolves.toBe(2);
+  });
+
+  it('exposes caught task failures to monitoring instead of returning a green count', async () => {
+    prisma.alternativeSearchTask.findMany.mockResolvedValue([
+      { id: 'success' },
+      { id: 'failed' },
+      { id: 'claimed-elsewhere' },
+    ]);
+    jest
+      .spyOn(service, 'processTask')
+      .mockImplementation((id) =>
+        id === 'failed'
+          ? Promise.reject(new Error('search failed'))
+          : Promise.resolve(id === 'success'),
+      );
+    await expect(service.processDueTasksWithStats()).resolves.toEqual({
+      processed: 1,
+      failed: 1,
+      skipped: 1,
+    });
   });
 
   it('should process a task, filter out original train, and send follow-up notifications when alternatives are found', async () => {
@@ -148,12 +171,8 @@ describe('AlternativeSearchTaskService', () => {
       },
     ];
 
-    (prisma.alternativeSearchTask.findUnique as jest.Mock).mockResolvedValue(
-      mockTask,
-    );
-    (prisma.alternativeSearchTask.update as jest.Mock).mockResolvedValue(
-      mockTask,
-    );
+    prisma.alternativeSearchTask.findUnique.mockResolvedValue(mockTask);
+    prisma.alternativeSearchTask.update.mockResolvedValue(mockTask);
     (bookingV2.findBestTrains as jest.Mock).mockResolvedValue({
       results: mockCandidates,
     });
@@ -184,7 +203,7 @@ describe('AlternativeSearchTaskService', () => {
   });
 
   it('reclaims an expired processing task with a new lease', async () => {
-    (prisma.alternativeSearchTask.findUnique as jest.Mock).mockResolvedValue({
+    prisma.alternativeSearchTask.findUnique.mockResolvedValue({
       id: 'alt-stale',
       trainNumber: '11039',
       fromStationCode: 'PUNE',

@@ -55,6 +55,7 @@ import {
   buildFollowUpLegWhatsAppText,
   buildNoSeatsWhatsAppText,
   buildAlternativeTrainsWhatsAppText,
+  renderAutomaticDeliveryFailureRefundEmailHtml,
   type AdminMonitoringPaymentDetails,
 } from './templates';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
@@ -308,6 +309,20 @@ export class NotificationService {
     }
 
     return { emailSent, whatsappSent };
+  }
+
+  async sendAutomaticDeliveryFailureRefundEmail(params: {
+    email: string;
+    trainNumber: string;
+    journeyDate: string;
+    amount: number;
+    refundId?: string;
+  }): Promise<boolean> {
+    return this.sendEmail(
+      params.email,
+      `Automatic refund issued - Train ${params.trainNumber}`,
+      renderAutomaticDeliveryFailureRefundEmailHtml(params),
+    );
   }
 
   async sendAlertFailureReport(params: {
