@@ -52,7 +52,9 @@ import {
   type PinnedChartTime,
 } from './chart-task-schedule';
 import {
-  MAX_NOTIFICATION_ATTEMPTS,
+  NOTIFICATION_RETRY_INTERVAL_MS,
+  notificationAttemptLimit,
+  notificationTerminalStatuses,
   notificationTaskUpdate,
 } from '../notification/notification-task-state';
 
@@ -1223,7 +1225,7 @@ export class JourneyTaskService {
         nextRunAt: null,
         lastError: null,
         firstRunAt,
-        ...notificationTaskUpdate(task, contact, status),
+        ...(await this.notificationStateUpdate(task, contact, status)),
       });
     } catch (e) {
       this.logger.error(
@@ -1485,7 +1487,7 @@ export class JourneyTaskService {
             await this.updateTaskForAttempt(
               taskId,
               leaseVersion,
-              notificationTaskUpdate(task, contact, status),
+              await this.notificationStateUpdate(task, contact, status),
             );
           } catch (e) {
             if (signal?.aborted) return;
@@ -2096,7 +2098,7 @@ export class JourneyTaskService {
     const status = await this.dispatchTaskNotification(task, contact);
     await this.prisma.chartTimeAvailabilityTask.update({
       where: { id: taskId },
-      data: notificationTaskUpdate(task, contact, status),
+      data: await this.notificationStateUpdate(task, contact, status),
     });
 
     const sent = status.emailSent || status.whatsappSent;
@@ -2110,6 +2112,24 @@ export class JourneyTaskService {
           ? 'Notification suppressed: already sent or recipient unsubscribed'
           : 'Notification provider returned failure (check WhatsApp/Resend API status)',
     };
+  }
+
+  private async notificationStateUpdate(
+    task: ChartTimeAvailabilityTask,
+    contact: Parameters<typeof notificationTaskUpdate>[1],
+    result: Parameters<typeof notificationTaskUpdate>[2],
+  ): Promise<Prisma.ChartTimeAvailabilityTaskUpdateInput> {
+    const payment = await this.prisma.chartAlertPayment.findFirst({
+      where: { journeyRequestId: task.journeyRequestId, status: 'PAID' },
+      select: { id: true },
+    });
+    return notificationTaskUpdate(
+      task,
+      contact,
+      result,
+      new Date(),
+      notificationAttemptLimit(Boolean(payment)),
+    );
   }
 
   private dispatchTaskNotification(
@@ -2147,12 +2167,54 @@ export class JourneyTaskService {
     failed: number;
   }> {
     const sinceDate = new Date(Date.now() - hours * 60 * 60 * 1000);
-    const cooldownBefore = new Date(Date.now() - 5 * 60 * 1000);
+    const cooldownBefore = new Date(
+      Date.now() - NOTIFICATION_RETRY_INTERVAL_MS,
+    );
     const cooldown: Prisma.ChartTimeAvailabilityTaskWhereInput = {
       OR: [
         { notificationLastAttemptAt: null },
         { notificationLastAttemptAt: { lte: cooldownBefore } },
       ],
+    };
+    // Resolve payment policy before pagination; exhausted free tasks must not
+    // fill the batch ahead of paid tasks that still have retries remaining.
+    const paidRows = await this.prisma.$queryRaw<
+      Array<{ journey_request_id: string }>
+    >`
+      SELECT DISTINCT p.journey_request_id
+      FROM chart_alert_payment p
+      JOIN "ChartTimeAvailabilityTask" t ON t.journey_request_id = p.journey_request_id
+      WHERE p.status = 'PAID'
+        AND t.status IN ('completed', 'failed')
+        AND t.completed_at >= ${sinceDate} AND t.completed_at <= ${cooldownBefore}
+    `;
+    const paidJourneys = new Set(paidRows.map((row) => row.journey_request_id));
+    const retryableChannels = (
+      isPaid: boolean,
+    ): Prisma.ChartTimeAvailabilityTaskWhereInput[] => {
+      const maxAttempts = notificationAttemptLimit(isPaid);
+      // Paid tasks exhausted under the former three-attempt policy can resume.
+      const excludedStatuses = notificationTerminalStatuses(isPaid);
+      return [
+        {
+          contact: { mobile: { not: null } },
+          whatsappNotifiedAt: null,
+          whatsappRetryCount: { lt: maxAttempts },
+          OR: [
+            { whatsappStatus: null },
+            { whatsappStatus: { notIn: excludedStatuses } },
+          ],
+        },
+        {
+          contact: { email: { not: null } },
+          emailNotifiedAt: null,
+          emailRetryCount: { lt: maxAttempts },
+          OR: [
+            { emailStatus: null },
+            { emailStatus: { notIn: excludedStatuses } },
+          ],
+        },
+      ];
     };
     const tasks = await this.prisma.chartTimeAvailabilityTask.findMany({
       where: {
@@ -2162,22 +2224,12 @@ export class JourneyTaskService {
         AND: [cooldown],
         OR: [
           {
-            contact: { mobile: { not: null } },
-            whatsappNotifiedAt: null,
-            whatsappRetryCount: { lt: MAX_NOTIFICATION_ATTEMPTS },
-            OR: [
-              { whatsappStatus: null },
-              { whatsappStatus: { notIn: ['unsend', 'suppressed'] } },
-            ],
+            journeyRequestId: { in: [...paidJourneys] },
+            OR: retryableChannels(true),
           },
           {
-            contact: { email: { not: null } },
-            emailNotifiedAt: null,
-            emailRetryCount: { lt: MAX_NOTIFICATION_ATTEMPTS },
-            OR: [
-              { emailStatus: null },
-              { emailStatus: { notIn: ['unsend', 'suppressed'] } },
-            ],
+            journeyRequestId: { notIn: [...paidJourneys] },
+            OR: retryableChannels(false),
           },
         ],
       },
@@ -2199,17 +2251,20 @@ export class JourneyTaskService {
 
       if (!contact) return 'skipped';
 
+      const isPaid = paidJourneys.has(task.journeyRequestId);
+      const maxAttempts = notificationAttemptLimit(isPaid);
+      const terminalStatuses = notificationTerminalStatuses(isPaid);
       const needsWhatsApp = Boolean(
         contact.mobile?.trim() &&
         !task.whatsappNotifiedAt &&
-        (task.whatsappRetryCount ?? 0) < MAX_NOTIFICATION_ATTEMPTS &&
-        !['unsend', 'suppressed'].includes(task.whatsappStatus ?? ''),
+        (task.whatsappRetryCount ?? 0) < maxAttempts &&
+        !terminalStatuses.includes(task.whatsappStatus ?? ''),
       );
       const needsEmail = Boolean(
         contact.email?.trim() &&
         !task.emailNotifiedAt &&
-        (task.emailRetryCount ?? 0) < MAX_NOTIFICATION_ATTEMPTS &&
-        !['unsend', 'suppressed'].includes(task.emailStatus ?? ''),
+        (task.emailRetryCount ?? 0) < maxAttempts &&
+        !terminalStatuses.includes(task.emailStatus ?? ''),
       );
 
       if (!needsWhatsApp && !needsEmail) return 'skipped';
@@ -2234,7 +2289,13 @@ export class JourneyTaskService {
         );
         await this.prisma.chartTimeAvailabilityTask.update({
           where: { id: task.id },
-          data: notificationTaskUpdate(task, selectedContact, status),
+          data: notificationTaskUpdate(
+            task,
+            selectedContact,
+            status,
+            new Date(),
+            maxAttempts,
+          ),
         });
         if (
           (needsWhatsApp &&
@@ -2252,10 +2313,16 @@ export class JourneyTaskService {
         await this.prisma.chartTimeAvailabilityTask
           .update({
             where: { id: task.id },
-            data: notificationTaskUpdate(task, selectedContact, {
-              emailSent: false,
-              whatsappSent: false,
-            }),
+            data: notificationTaskUpdate(
+              task,
+              selectedContact,
+              {
+                emailSent: false,
+                whatsappSent: false,
+              },
+              new Date(),
+              maxAttempts,
+            ),
           })
           .catch((updateErr) =>
             this.logger.error(

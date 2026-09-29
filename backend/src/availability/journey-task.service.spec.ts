@@ -20,7 +20,7 @@ describe('JourneyTaskService', () => {
       findFirst: jest.fn().mockResolvedValue(null),
       create: jest.fn(),
       createMany: jest.fn().mockResolvedValue({ count: 1 }),
-      update: jest.fn(),
+      update: jest.fn().mockResolvedValue({}),
       updateMany: jest.fn().mockResolvedValue({ count: 1 }),
     },
     monitoringContact: {
@@ -78,6 +78,8 @@ describe('JourneyTaskService', () => {
 
   beforeEach(async () => {
     jest.clearAllMocks();
+    mockPrisma.$queryRaw.mockReset().mockResolvedValue([]);
+    mockPrisma.chartAlertPayment.findFirst.mockReset().mockResolvedValue(null);
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         JourneyTaskService,
@@ -1286,6 +1288,117 @@ describe('JourneyTaskService', () => {
       contact: { email: 'test@example.com', mobile: '919999999999' },
     };
 
+    it.each([3, 7, 8])(
+      'applies the paid limit to both channels at failure count %s',
+      async (count) => {
+        mockPrisma.$queryRaw.mockResolvedValueOnce([
+          { journey_request_id: retryTask.journeyRequestId },
+        ]);
+        mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+          {
+            ...retryTask,
+            emailRetryCount: count,
+            whatsappRetryCount: count,
+            emailStatus: 'unsend',
+            whatsappStatus: 'unsend',
+          },
+        ]);
+        mockNotification.notifyUser.mockResolvedValueOnce({
+          emailSent: false,
+          whatsappSent: false,
+        });
+        await expect(
+          service.resendFailedWhatsAppNotifications(),
+        ).resolves.toEqual({ found: 1, resent: 0, failed: 1 });
+        expect(
+          mockPrisma.chartTimeAvailabilityTask.update,
+        ).toHaveBeenCalledWith(
+          expect.objectContaining({
+            data: expect.objectContaining({
+              emailStatus: count === 8 ? 'unsend' : 'pending_retry',
+              whatsappStatus: count === 8 ? 'unsend' : 'pending_retry',
+            }),
+          }),
+        );
+      },
+    );
+
+    it('uses the paid limit even when the provider throws', async () => {
+      mockPrisma.$queryRaw.mockResolvedValueOnce([
+        { journey_request_id: retryTask.journeyRequestId },
+      ]);
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+        { ...retryTask, emailRetryCount: 7, whatsappRetryCount: 8 },
+      ]);
+      mockNotification.notifyUser.mockRejectedValueOnce(
+        new Error('provider down'),
+      );
+      await expect(
+        service.resendFailedWhatsAppNotifications(),
+      ).resolves.toEqual({ found: 1, resent: 0, failed: 1 });
+      expect(mockPrisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            emailStatus: 'pending_retry',
+            whatsappStatus: 'unsend',
+          }),
+        }),
+      );
+    });
+
+    it('does not retry an accepted channel while retrying a paid failed channel', async () => {
+      mockPrisma.$queryRaw.mockResolvedValueOnce([
+        { journey_request_id: retryTask.journeyRequestId },
+      ]);
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+        {
+          ...retryTask,
+          emailNotifiedAt: new Date(),
+          emailStatus: 'sent',
+          whatsappRetryCount: 7,
+        },
+      ]);
+      mockNotification.notifyUser.mockResolvedValueOnce({
+        emailSent: false,
+        whatsappSent: true,
+      });
+      await service.resendFailedWhatsAppNotifications();
+      expect(mockNotification.notifyUser).toHaveBeenCalledWith(
+        expect.objectContaining({
+          email: undefined,
+          mobile: retryTask.contact.mobile,
+        }),
+      );
+    });
+
+    it('applies paid policy during direct/manual notification state updates', async () => {
+      mockPrisma.chartAlertPayment.findFirst.mockResolvedValueOnce({
+        id: 'paid-payment',
+      });
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValueOnce({
+        ...retryTask,
+        emailRetryCount: 2,
+        whatsappRetryCount: 2,
+      });
+      mockNotification.notifyUser.mockResolvedValueOnce({
+        emailSent: false,
+        whatsappSent: false,
+      });
+      await service.resendTaskNotification(retryTask.id);
+      expect(mockPrisma.chartAlertPayment.findFirst).toHaveBeenCalledWith({
+        where: { journeyRequestId: retryTask.journeyRequestId, status: 'PAID' },
+        select: { id: true },
+      });
+      expect(mockPrisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            emailStatus: 'pending_retry',
+            whatsappStatus: 'pending_retry',
+          }),
+        }),
+      );
+    });
+
     it('reports a partial resend failure instead of marking the tick successful', async () => {
       mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
         retryTask,
@@ -1348,8 +1461,9 @@ describe('JourneyTaskService', () => {
         gte: expect.any(Date),
         lte: expect.any(Date),
       });
-      expect(where.OR[0].OR).toContainEqual({ whatsappStatus: null });
-      expect(where.OR[1].emailRetryCount).toEqual({ lt: 3 });
+      expect(where.OR[0].OR[0].OR).toContainEqual({ whatsappStatus: null });
+      expect(where.OR[0].OR[1].emailRetryCount).toEqual({ lt: 9 });
+      expect(where.OR[1].OR[1].emailRetryCount).toEqual({ lt: 3 });
     });
 
     it('preserves the saved time, train-start date, and chart number on resend', async () => {
@@ -1467,8 +1581,7 @@ describe('JourneyTaskService', () => {
         .mockResolvedValueOnce({ emailSent: false, whatsappSent: true });
 
       const run = service.resendFailedWhatsAppNotifications(24);
-      await Promise.resolve();
-      await Promise.resolve();
+      await new Promise<void>((resolve) => setImmediate(resolve));
 
       expect(mockNotification.notifyUser).toHaveBeenCalledTimes(2);
       finishFirst({ emailSent: false, whatsappSent: true });

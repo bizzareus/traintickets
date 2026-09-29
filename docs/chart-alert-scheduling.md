@@ -52,14 +52,23 @@ also no longer writes a customer's selection into the shared train chart cache.
 - Deduplication for scheduled alerts is scoped by recipient, channel, train,
   journey date, and chart instant. The second chart remains independently eligible.
 - Per-channel states distinguish `sent` (provider accepted), `pending_retry`,
-  `unsend` (three failed attempts), and `suppressed`. Suppression does not consume
+  `unsend` (attempt limit reached), and `suppressed`. Suppression does not consume
   attempts or invent a send timestamp. **Sent does not mean delivered/read.**
+- Confirmed `PAID` subscriptions get **eight retries after the initial attempt**
+  (nine attempts maximum) per channel. Free, pending-payment, and failed-payment
+  subscriptions retain the three-attempt limit. Payment eligibility is read from
+  `chart_alert_payment` using the journey request ID, not the payment's age.
 - Recovery looks back from task completion, not subscription purchase. It handles
   old subscriptions, NULL legacy statuses, no-destination alerts, and terminal
   check failures. A failed check produces an explicit availability-unconfirmed
   notice, not a no-seats claim.
 - Recovery claims use a five-minute notification-attempt cooldown, preventing
   concurrent workers from immediately resending the same task.
+  The recovery cron polls each minute at second 40, so a due retry runs on the
+  first tick after the five-minute cooldown, normally within five to six minutes.
+  This avoids the nearly ten-minute gaps caused by polling only every five minutes.
+  Recent paid notifications marked `unsend` under the former limit can resume if
+  they still have attempts remaining; accepted or suppressed channels stay excluded.
 - Chart-worker deadlines cancel availability HTTP requests and stop further
   station/class probes. Late results are fenced from updating an expired attempt.
 - The primary chart result is sent without waiting for alternate-train searches;
@@ -90,12 +99,16 @@ NOTIFICATION_TEST_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/rai
 
 ## Rollout
 
-Verification on 29 September 2026: 501 backend unit tests, 5 local PostgreSQL
+Initial scheduling verification on 29 September 2026: 501 backend unit tests, 5 local PostgreSQL
 integration tests, 34 frontend unit tests, and 8 Chromium desktop/mobile browser
 tests passed. Backend production typechecking, Prisma validation, and lint on all
 changed source/test files passed. Repository-wide frontend lint and typechecking
 still report pre-existing issues outside this change (including older E2E files
 and unrelated UI/worktree code).
+
+The paid-retry policy update passed 64 targeted unit tests and 11 PostgreSQL
+integration tests, including the eight-retry boundary, five-minute eligibility,
+confirmed payment status, channel suppression, and selection before pagination.
 
 Apply migrations `20260929200000_chart_notification_state` and
 `20260929201000_notification_chart_event` before running the new backend. Deploy

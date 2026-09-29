@@ -82,6 +82,24 @@ integration('chart notification PostgreSQL contract', () => {
     });
   }
 
+  async function paymentFor(
+    tx: Prisma.TransactionClient,
+    journeyRequestId: string,
+    status: 'PAID' | 'PENDING' | 'FAILED' = 'PAID',
+  ) {
+    await tx.chartAlertPayment.create({
+      data: {
+        journeyRequestId,
+        status,
+        amount: 10,
+        journeyPayload: {},
+        createdAt: new Date(Date.now() - 30 * 86400_000),
+        paidAt:
+          status === 'PAID' ? new Date(Date.now() - 30 * 86400_000) : null,
+      },
+    });
+  }
+
   function resendService(
     tx: Prisma.TransactionClient,
     ids: string[],
@@ -102,6 +120,7 @@ integration('chart notification PostgreSQL contract', () => {
     // Keep queries inside our fixtures even when the developer DB contains unrelated tasks.
     const scoped = {
       ...tx,
+      $queryRaw: tx.$queryRaw.bind(tx),
       chartTimeAvailabilityTask: {
         ...tx.chartTimeAvailabilityTask,
         findMany: (args: Prisma.ChartTimeAvailabilityTaskFindManyArgs) =>
@@ -183,6 +202,145 @@ integration('chart notification PostgreSQL contract', () => {
         { chart_at: '2026-09-28 13:38:00', chart_number: 1 },
         { chart_at: '2026-09-29 00:05:00', chart_number: 2 },
       ]);
+    }));
+
+  it('allows exactly eight paid retries after the initial failed attempt, then stops both channels', async () =>
+    rollback(async (tx) => {
+      const task = await fixture(tx, {
+        emailRetryCount: 1,
+        whatsappRetryCount: 1,
+        emailStatus: 'pending_retry',
+        whatsappStatus: 'pending_retry',
+      });
+      await paymentFor(tx, task.journeyRequestId);
+      const { service, notification } = resendService(tx, [task.id]);
+      notification.notifyUser.mockResolvedValue({
+        emailSent: false,
+        whatsappSent: false,
+      });
+      for (let retry = 1; retry <= 8; retry++) {
+        // Model independent cron ticks, each after the five-minute cooldown.
+        await tx.chartTimeAvailabilityTask.update({
+          where: { id: task.id },
+          data: { notificationLastAttemptAt: new Date(Date.now() - 300_001) },
+        });
+        await expect(
+          service.resendFailedWhatsAppNotifications(),
+        ).resolves.toEqual({ found: 1, resent: 0, failed: 1 });
+        const stored = await tx.chartTimeAvailabilityTask.findUniqueOrThrow({
+          where: { id: task.id },
+        });
+        expect(stored.emailRetryCount).toBe(retry + 1);
+        expect(stored.whatsappRetryCount).toBe(retry + 1);
+        expect(stored.emailStatus).toBe(
+          retry === 8 ? 'unsend' : 'pending_retry',
+        );
+        expect(stored.whatsappStatus).toBe(
+          retry === 8 ? 'unsend' : 'pending_retry',
+        );
+      }
+      await tx.chartTimeAvailabilityTask.update({
+        where: { id: task.id },
+        data: { notificationLastAttemptAt: null },
+      });
+      await expect(
+        service.resendFailedWhatsAppNotifications(),
+      ).resolves.toEqual({ found: 0, resent: 0, failed: 0 });
+      expect(notification.notifyUser).toHaveBeenCalledTimes(8);
+    }));
+
+  it.each(['PENDING', 'FAILED'] as const)(
+    'does not grant the paid retry budget to a %s payment',
+    async (status) =>
+      rollback(async (tx) => {
+        const task = await fixture(tx, {
+          emailRetryCount: 3,
+          whatsappRetryCount: 3,
+          emailStatus: 'unsend',
+          whatsappStatus: 'unsend',
+        });
+        await paymentFor(tx, task.journeyRequestId, status);
+        const { service, notification } = resendService(tx, [task.id]);
+        await expect(
+          service.resendFailedWhatsAppNotifications(),
+        ).resolves.toEqual({ found: 0, resent: 0, failed: 0 });
+        expect(notification.notifyUser).not.toHaveBeenCalled();
+      }),
+  );
+
+  it('makes a paid retry eligible at five minutes, but not at four minutes 59 seconds', async () =>
+    rollback(async (tx) => {
+      const started = Date.now();
+      const task = await fixture(tx, {
+        notificationLastAttemptAt: new Date(started),
+        emailRetryCount: 1,
+        whatsappRetryCount: 1,
+      });
+      await paymentFor(tx, task.journeyRequestId);
+      const { service } = resendService(tx, [task.id]);
+      const clock = jest.spyOn(Date, 'now');
+      try {
+        clock.mockReturnValue(started + 299_000);
+        await expect(
+          service.resendFailedWhatsAppNotifications(),
+        ).resolves.toEqual({ found: 0, resent: 0, failed: 0 });
+        clock.mockReturnValue(started + 300_000);
+        await expect(
+          service.resendFailedWhatsAppNotifications(),
+        ).resolves.toEqual({ found: 1, resent: 1, failed: 0 });
+      } finally {
+        clock.mockRestore();
+      }
+    }));
+
+  it('keeps suppressed and accepted paid channels out of recovery', async () =>
+    rollback(async (tx) => {
+      const task = await fixture(tx, {
+        emailRetryCount: 7,
+        whatsappRetryCount: 7,
+        emailStatus: 'suppressed',
+        whatsappNotifiedAt: new Date(),
+        whatsappStatus: 'sent',
+      });
+      await paymentFor(tx, task.journeyRequestId);
+      const { service, notification } = resendService(tx, [task.id]);
+      await expect(
+        service.resendFailedWhatsAppNotifications(),
+      ).resolves.toEqual({ found: 0, resent: 0, failed: 0 });
+      expect(notification.notifyUser).not.toHaveBeenCalled();
+    }));
+
+  it('filters exhausted free tasks before taking the batch and resumes paid tasks exhausted under the old limit', async () =>
+    rollback(async (tx) => {
+      const free = await Promise.all(
+        Array.from({ length: 51 }, () =>
+          fixture(tx, {
+            emailRetryCount: 3,
+            whatsappRetryCount: 3,
+            emailStatus: 'unsend',
+            whatsappStatus: 'unsend',
+          }),
+        ),
+      );
+      const paid = await fixture(tx, {
+        emailRetryCount: 3,
+        whatsappRetryCount: 3,
+        emailStatus: 'unsend',
+        whatsappStatus: 'unsend',
+      });
+      await paymentFor(tx, paid.journeyRequestId);
+      const { service, notification } = resendService(tx, [
+        ...free.map((t) => t.id),
+        paid.id,
+      ]);
+      await expect(
+        service.resendFailedWhatsAppNotifications(),
+      ).resolves.toEqual({ found: 1, resent: 1, failed: 0 });
+      expect(notification.notifyUser).toHaveBeenCalledWith(
+        expect.objectContaining({
+          task: expect.objectContaining({ id: paid.id }),
+        }),
+      );
     }));
 
   it('recovers recently completed subscriptions purchased a month earlier, including NULL statuses', async () =>

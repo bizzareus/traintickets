@@ -113,7 +113,9 @@ export class ChartCronService {
     }
   }
 
-  @Cron('40 */5 * * * *')
+  // Poll every minute; per-task five-minute cooldown prevents early retries.
+  // A five-minute poll plus send latency would otherwise skip the next slot.
+  @Cron('40 * * * * *')
   async handleNotificationResendCron(): Promise<void> {
     if (this.resendRunning) return;
     if (!(await this.leader.isLeader(RESEND_CRON_NAME))) return;

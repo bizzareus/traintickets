@@ -1,6 +1,22 @@
 import { ChartCronService } from './chart-cron.service';
+import { CronTime } from 'cron';
+import { SCHEDULE_CRON_OPTIONS } from '@nestjs/schedule/dist/schedule.constants';
 
 describe('ChartCronService', () => {
+  it('polls notification recovery every minute so a five-minute cooldown does not become ten minutes', () => {
+    const options = Reflect.getMetadata(
+      SCHEDULE_CRON_OPTIONS,
+      Reflect.get(ChartCronService.prototype, 'handleNotificationResendCron'),
+    ) as { cronTime: string };
+    const cron = new CronTime(options.cronTime);
+    const next = cron
+      .getNextDateFrom(new Date('2026-09-29T12:05:41Z'), 'UTC')
+      .toJSDate();
+    expect(next.toISOString()).toBe('2026-09-29T12:06:40.000Z');
+    expect(cron.getNextDateFrom(next, 'UTC').toMillis() - next.getTime()).toBe(
+      60_000,
+    );
+  });
   it('records a failed task as an unsuccessful cron outcome', async () => {
     const journey = {
       runDueTasks: jest.fn().mockResolvedValue({
