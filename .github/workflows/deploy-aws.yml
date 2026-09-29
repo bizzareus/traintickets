@@ -204,6 +204,18 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v5
 
+      - name: Apply Prisma migrations
+        working-directory: backend
+        env:
+          DIRECT_URL: ${{ secrets.PROD_DIRECT_DATABASE_URL }}
+        run: |
+          if [ -z "$DIRECT_URL" ]; then
+            echo 'PROD_DIRECT_DATABASE_URL secret is not set; cannot migrate'
+            exit 1
+          fi
+          npm ci --ignore-scripts
+          ./node_modules/.bin/prisma migrate deploy
+
       - name: Configure AWS Credentials
         if: env.AWS_ACCESS_KEY_ID != ''
         uses: aws-actions/configure-aws-credentials@v5
@@ -287,9 +299,6 @@ jobs:
               echo \"docker pull attempt \$i failed, retrying in \$((\$i*10))s...\"
               sleep \$((\$i*10))
             done
-            # Prisma CLI uses the session pooler (5432); runtime keeps DATABASE_URL.
-            # Fail before replacing the running API if the new image cannot migrate.
-            docker run --rm --env-file /home/ubuntu/app/backend/.env '$BACKEND_IMAGE' npx prisma migrate deploy
             # Remove the old API's scheduler before starting the dedicated worker.
             cd /home/ubuntu/app/infra
             docker compose -f docker-compose.yml up -d --no-build backend
