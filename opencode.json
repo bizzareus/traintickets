@@ -1,0 +1,20 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["opencode-scheduler@1.3.0"],
+  "mcp": {
+    "lastberth-browser": {
+      "type": "local",
+      "command": [
+        "npx", "-y", "chrome-devtools-mcp@1.10.1",
+        "--browserUrl=http://127.0.0.1:19444",
+        "--no-usage-statistics", "--no-performance-crux",
+        "--redact-network-headers",
+        "--workspace=/Users/kartikarora/.local/share/opencode/lastberth-social"
+      ],
+      "environment": {
+        "PATH": "/Users/kartikarora/.nvm/versions/node/v22.23.2/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      },
+      "enabled": true
+    }
+  }
+}

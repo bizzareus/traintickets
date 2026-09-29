@@ -1,61 +1,46 @@
-# Daily screenshot audit and Instagram publisher
+# OpenCode daily LastBerth social job
 
-Approved configuration: daily **11:00 Europe/London** (BST/GMT aware), account **@lastberth.in**, rotating NDLS→PNBE, ANVT→PPTA, CSMT→PNBE and HWH→PURI, travel dates 1–5 days ahead in India time.
+This workflow is owned and executed by **OpenCode on this Mac**, not a cloud worker, OpenClaw, or a separate AI runtime.
 
-This is an isolated worker, not part of the ticket-search app. It uses Railway's authenticated agent runtime, two persistent Chromium profiles, browser skills, and deterministic verification before invoking the Instagram publishing workflow. AI usage and worker compute are billed by Railway.
+The scheduled job uses a self-contained OpenCode workspace at `~/.local/share/opencode/lastberth-social/workspace`. This avoids macOS blocking unattended processes from accessing the original project under Documents. The source definitions remain in this repository. After editing them, run `node automation/instagram-audit/install-local.mjs` to sync the dedicated workspace and run `npm ci` in its `automation/instagram-audit` folder if dependencies changed.
 
-## Execution
+## Configuration
 
-- The scheduler starts the audit at 11am. Publication follows verification/image generation; it is not guaranteed to occur at exactly 11am.
-- After a host restart past 11am, the worker catches up once if that London day's run was never started. An interrupted/uncertain run is never automatically retried.
-- At most one daily run and one post attempt. No qualifying result means no post.
-- All offered General-quota classes must be explicitly WL/REGRET. Tatkal, RAC, missing statuses, city-cluster substitutions, expanded endpoints and multi-train alternatives are excluded.
-- Exact route/date/train, contiguous legs, positive seats on every leg, timestamps and fare arithmetic are verified by `validation.mjs`.
-- Preserve 1280px-wide original screenshots. Produce 2–4 original-screenshot-based 1080×1350 slides and a caption disclosing split tickets and class/berth changes.
-- The publisher checks fresh availability and the signed-in account, uses Instagram's Create/Post browser flow, clicks Share once, then verifies the permalink. An uncertain attempt stays claimed and is never retried automatically.
-- A missing/expired login, challenge or 2FA stops publication and leaves a report. No credentials are committed.
+- Project `opencode.json` enables `opencode-scheduler@1.3.0` and a dedicated Chrome DevTools MCP.
+- OpenCode agent: `.opencode/agents/lastberth-social.md`, using `openai/gpt-6-astra` with the existing OpenCode API credential.
+- Command: `/lastberth-daily-social` (or arguments `audit-only` / `login-check`).
+- Skill: `.opencode/skills/lastberth-daily-audit/SKILL.md` and its audit/publishing references.
+- Schedule: `0 11 * * *`, 11am on the Mac's UK local calendar. Keep the Mac's timezone set to Europe/London to follow BST/GMT. OpenCode's scheduler uses launchd underneath and catches up on waking from sleep.
+- Account: **@lastberth.in**. One verified post per day; skip when no qualifying result exists.
+- Corridors: NDLS→PNBE, ANVT→PPTA, CSMT→PNBE, HWH→PURI; 1–5 days ahead in India time.
 
-## Host
+The Mac needs to be logged in and online. Closing OpenCode's UI does not remove its scheduler job: the scheduler launches a fresh `opencode run`. Scheduled runs time out after 45 minutes and cannot overlap.
 
-Railway project `8cae8315-8d87-411c-9cd3-e9e8644bff84`, environment `a63efa2d-4e09-4b35-9d50-a3588756bc70`, cloud agent `c8f57243-0324-4561-abb7-49bbd7ec88a6` (`lastberth-instagram-audit`).
-
-Worker runs in Docker with `--restart unless-stopped`, host networking (all HTTP/CDP listeners bind loopback), persistent `/app/instagram-audit/data:/data`, and a read-only mount of `/usr/local/bin/railway-agent` from the host. Supply ONLY `AI_AGENT_KEY`, `AI_GATEWAY_URL` and optional `AI_AGENT_MODEL` through a private environment file. Do not pass a Railway management token into the container.
-
-## Inspection
-
-On the worker host:
+## Browser sign-in
 
 ```sh
-curl http://127.0.0.1:3098/health
-curl -X POST http://127.0.0.1:3098/run-draft  # audit + images; never posts
-docker logs --tail 30 lastberth-instagram-audit
-docker stop lastberth-instagram-audit         # pauses scheduling
-docker start lastberth-instagram-audit
+node automation/instagram-audit/control.mjs ensure-browser
 ```
 
-Each run writes `/data/runs/<London-date>/result.json`, the structured audit, report, original screenshots, slide PNGs and private agent logs. `/data/latest.json` is the latest result. `/data/post-claims/` prevents posting the same train/route/journey date twice, including ambiguous attempts.
+Sign in to @lastberth.in in the dedicated Chrome window. Its profile is under `~/.local/share/opencode/lastberth-social/browser`; the MCP connects at localhost:19444. It does not use your other Chrome profiles. Do not send passwords in chat or commit cookies.
 
-## One-time Instagram login
+## Evidence and publishing checks
 
-The dedicated Instagram browser has no login initially. Authenticate @lastberth.in in that browser through an SSH-forwarded Chrome DevTools connection to port 9223. Do not send a password or cookie value in chat or commit them. Verify the account before enabling a real daily post; `/health` reports whether a session cookie is present, and the publisher separately checks account identity.
+The helper validates same train, exact route/date, General quota, every offered class WL/REGRET, positive available seats on every contiguous leg, non-overlapping times, fresh evidence and fare arithmetic. Tatkal, RAC, unknown classes/statuses, expanded endpoints and train changes are excluded.
 
-On this Mac, the registered SSH identity is `~/.ssh/id_rsa`. A localhost-only tunnel can be opened with:
+The agent preserves original 1280px desktop screenshots and designs 1080×1350 screenshot-led slides. Captions disclose separate tickets and class/berth changes. The helper atomically reserves one candidate and one post per London day; uncertain publications are not retried. The agent verifies the logged-in account and resulting Instagram permalink.
 
-```sh
-ssh -fNT -i ~/.ssh/id_rsa -o IdentitiesOnly=yes -o ExitOnForwardFailure=yes \
-  -o UserKnownHostsFile=~/.railway/known_hosts_relay \
-  -L 127.0.0.1:19223:127.0.0.1:9223 \
-  'agent:a63efa2d-4e09-4b35-9d50-a3588756bc70:lastberth-instagram-audit@ssh.railway.com'
-```
+Artifacts and private reports: `~/.local/share/opencode/lastberth-social/runs/`.
+Latest result: `node automation/instagram-audit/control.mjs status`.
+OpenCode scheduler metadata/logs: `~/.config/opencode/scheduler/` and `~/.config/opencode/logs/scheduler/`.
 
-Open `chrome://inspect/#devices` in Chrome, configure `localhost:19223` under Discover network targets, then inspect the Instagram page. Use Toggle Screencast to interact with the login form. The target ID changes when Chromium restarts; discover it again instead of reusing an old inspector URL. Close the tunnel after login; the remote browser and daily worker keep running.
-
-The worker cannot bypass Instagram login challenges or guarantee that Instagram will keep an unattended session valid. Check the daily result when a post is absent.
+To manage the schedule in OpenCode: “show my scheduled jobs across all workspaces”, “show logs for LastBerth Daily Instagram”, or “delete the LastBerth Daily Instagram job”. Its scope belongs to the dedicated workspace above.
 
 ## Checks
 
 ```sh
-npm ci
-npm test
-node --check worker.mjs
+npm ci --prefix automation/instagram-audit
+npm test --prefix automation/instagram-audit
 ```
+
+Restart the OpenCode UI after adding the configuration so the scheduler tools, agent, command and skill appear in the current session. New CLI sessions load them immediately.

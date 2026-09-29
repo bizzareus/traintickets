@@ -51,24 +51,6 @@ export const auditSchema = z.object({
   report: z.string(),
 });
 
-export const publishSchema = z.object({
-  status: z.enum(['published', 'blocked', 'uncertain']),
-  reason: z.string(),
-  account: z.string(),
-  postUrl: z.string().nullable(),
-});
-
-export function parseAgentResult(log, schema) {
-  for (const line of log.trim().split('\n').reverse()) {
-    try {
-      const event = JSON.parse(line);
-      const parsed = schema.safeParse(event.kind === 'structured_output' ? event.value : event);
-      if (parsed.success) return parsed.data;
-    } catch { /* Progress and completion diagnostics may not be JSON. */ }
-  }
-  throw new Error('Agent did not return a valid structured result');
-}
-
 export function validateCandidate(input, now = new Date(), maxAgeMinutes = 20) {
   const candidate = candidateSchema.parse(input);
   const baseline = candidate.baseline;

@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { Cron } from 'croner';
-import { auditSchema, auditTargets, parseAgentResult, postKey, validateCandidate } from './validation.mjs';
+import { auditTargets, postKey, validateCandidate } from './validation.mjs';
 
 const now = new Date('2026-09-28T10:10:00Z');
 const fixture = () => ({
@@ -23,13 +22,6 @@ const fixture = () => ({
 
 test('accepts a fresh, fully available mixed-class same-train path', () => {
   assert.equal(validateCandidate(fixture(), now).totalFare, 2370);
-});
-
-test('reads Railway NDJSON structured_output envelopes, ignoring progress and trailing diagnostics', () => {
-  const result = { status: 'no_match', reason: 'No verified match', candidate: null, images: [], caption: '', report: '' };
-  const log = ['{"kind":"agent_end"}', JSON.stringify({ kind: 'structured_output', value: result }), '[done]'].join('\n');
-  assert.deepEqual(parseAgentResult(log, auditSchema), result);
-  assert.throws(() => parseAgentResult('{"kind":"agent_end"}', auditSchema));
 });
 
 for (const [name, change] of [
@@ -60,13 +52,6 @@ test('deduplication survives changes in price and class', () => {
   changed.totalFare += 10;
   changed.legs[0].classCode = '2A';
   assert.equal(postKey(fixture()), postKey(changed));
-});
-
-test('the 11am London schedule follows BST and GMT', () => {
-  const cron = new Cron('0 11 * * *', { timezone: 'Europe/London', paused: true });
-  assert.equal(cron.nextRun(new Date('2026-07-01T00:00:00Z')).toISOString(), '2026-07-01T10:00:00.000Z');
-  assert.equal(cron.nextRun(new Date('2026-12-01T00:00:00Z')).toISOString(), '2026-12-01T11:00:00.000Z');
-  cron.stop();
 });
 
 test('target dates follow India midnight and preserve date formats', () => {

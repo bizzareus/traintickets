@@ -10,7 +10,11 @@ import {
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
 import { useChartAlertPayments } from "@/lib/hooks/useChartAlertPayments";
-import { addYmdDays, boardingYmdForStation } from "@/lib/chartTimeDisplay";
+import {
+  addYmdDays,
+  boardingYmdForStation,
+  trainStartYmdForBoarding,
+} from "@/lib/chartTimeDisplay";
 import {
   chartAlertClassPriceLabel,
   chartAlertPriceForClass,
@@ -315,7 +319,7 @@ export default function ChartTimeAlertCTA({
       persistContact();
       const boardingYmd = journeyDate.trim().slice(0, 10);
       const resolvedTrainStart =
-        addYmdDays(boardingYmd, -(boardingDay - 1)) || undefined;
+        trainStartYmdForBoarding(boardingYmd, boardingDay) || undefined;
       const journey: ChartAlertPaymentModalJourney = {
         trainNumber: trainNumber.trim(),
         trainName: trainName?.trim() || undefined,

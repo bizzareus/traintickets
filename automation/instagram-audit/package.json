@@ -4,11 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node worker.mjs",
     "test": "node --test validation.test.mjs"
   },
   "dependencies": {
-    "croner": "^9.1.0",
     "moment": "^2.30.1",
     "playwright": "1.59.1",
     "sharp": "^0.35.5",

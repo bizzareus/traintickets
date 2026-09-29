@@ -136,6 +136,15 @@ export function boardingYmdForStation(
   return addYmdDays(v, day - 1);
 }
 
+/** Train-start date for a boarding date at a Day-N station. */
+export function trainStartYmdForBoarding(
+  boardingYmd: string | null | undefined,
+  stationDay?: number | null,
+): string | null {
+  const day = Math.max(1, Math.trunc(Number(stationDay) || 1));
+  return addYmdDays(boardingYmd ?? "", -(day - 1));
+}
+
 /** Short boarding label (`2026-09-17` -> `17 Sep`) for the Day column. */
 export function formatBoardingShort(
   stationDay: number | null | undefined,
