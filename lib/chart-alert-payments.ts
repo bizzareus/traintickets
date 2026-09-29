@@ -1,6 +1,7 @@
 import { apiClient, PAYMENT_SYSTEM_UNAVAILABLE_MESSAGE } from "@/lib/api";
 import * as Sentry from "@sentry/nextjs";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
+import { withChartTimeSelection } from "@/lib/chart-alert-schedule";
 
 /**
  * Class-based chart-alert pricing (display only; backend enforces).
@@ -100,7 +101,7 @@ export async function createChartAlertPaymentLink(
 ): Promise<ChartAlertPaymentLink> {
   const res = await apiClient.post<
     ChartAlertPaymentLink | { error?: string }
-  >("/api/chart-alert-payments/create", input);
+  >("/api/chart-alert-payments/create", await withChartTimeSelection(input));
   const data = res.data as ChartAlertPaymentLink & { error?: string };
   if (!data?.qrImageUrl || typeof data.qrImageUrl !== "string") {
     throw new Error(
@@ -148,7 +149,10 @@ export async function startChartAlertPayment(
 export async function createFreeChartAlert(
   input: ChartAlertPaymentCreateInput,
 ): Promise<void> {
-  await apiClient.post("/api/availability/journey", input);
+  await apiClient.post(
+    "/api/availability/journey",
+    await withChartTimeSelection(input),
+  );
 }
 
 /** Normalize backend `{ error }`, axios, and generic errors to a message.

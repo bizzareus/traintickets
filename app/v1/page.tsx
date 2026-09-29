@@ -1,4 +1,5 @@
 "use client";
+import { createFreeChartAlert } from "@/lib/chart-alert-payments";
 
 import {
   useState,
@@ -998,11 +999,7 @@ export default function HomePage() {
         return;
       }
 
-      await apiClient.post<{
-        accepted?: boolean;
-        status?: string;
-        message?: string;
-      }>("/api/availability/journey", {
+      await createFreeChartAlert({
         trainNumber: trainNumber.trim(),
         fromStationCode: fromC,
         toStationCode: toC,

@@ -14,6 +14,7 @@ import type { RawBodyRequest } from '@nestjs/common';
 import type { Request } from 'express';
 import { ChartAlertPaymentsService } from './chart-alert-payments.service';
 import type { ChartAlertJourneyInput } from './chart-alert-payments.service';
+import { requirePinnedChartTime } from '../availability/chart-task-schedule';
 
 @Controller('api/chart-alert-payments')
 export class ChartAlertPaymentsController {
@@ -41,6 +42,7 @@ export class ChartAlertPaymentsController {
     if (!body?.email?.trim() && !body?.mobile?.trim()) {
       throw new BadRequestException('An email or mobile number is required');
     }
+    const chartTimes = requirePinnedChartTime(body);
     try {
       return await this.payments.createPaymentLink({
         trainNumber: body.trainNumber.trim(),
@@ -53,10 +55,7 @@ export class ChartAlertPaymentsController {
         email: body.email?.trim() || undefined,
         mobile: body.mobile?.trim() || undefined,
         trainStartDate: body.trainStartDate,
-        chartTimeLocal: body.chartTimeLocal?.trim() || undefined,
-        chartOneDayOffset: body.chartOneDayOffset,
-        chartTwoTimeLocal: body.chartTwoTimeLocal?.trim() || undefined,
-        chartTwoDayOffset: body.chartTwoDayOffset,
+        ...chartTimes,
       });
     } catch (err) {
       if (

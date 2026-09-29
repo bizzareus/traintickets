@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { apiClient } from "@/lib/api";
+import { createFreeChartAlert } from "@/lib/chart-alert-payments";
 import { trackAlertRequested } from "@/lib/analytics/track";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
@@ -60,7 +60,7 @@ export function EntireJourneyAlertCTA({
     setSuccess(false);
 
     try {
-      await apiClient.post("/api/availability/journey", {
+      await createFreeChartAlert({
         trainNumber: trainNumber.trim(),
         trainName: trainName?.trim() || undefined,
         fromStationCode: defaultOrigin,

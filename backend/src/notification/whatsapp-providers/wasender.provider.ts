@@ -56,7 +56,10 @@ export class WasenderProvider implements WhatsAppProvider {
     }
 
     try {
-      await this.httpClient.post(
+      const response = await this.httpClient.post<{
+        success?: boolean;
+        message?: string;
+      }>(
         `${WASENDER_BASE}/api/send-message`,
         {
           to: to.startsWith('+') ? to : `+${to}`,
@@ -70,6 +73,11 @@ export class WasenderProvider implements WhatsAppProvider {
           timeout: 15_000,
         },
       );
+      if (response.data?.success !== true) {
+        throw new Error(
+          response.data?.message || 'WASender did not accept the message',
+        );
+      }
       this.logger.log(`WASender message sent successfully to ${to}`);
       return true;
     } catch (err: unknown) {

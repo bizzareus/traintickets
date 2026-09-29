@@ -1,6 +1,71 @@
 import { ChartCronService } from './chart-cron.service';
 
 describe('ChartCronService', () => {
+  it('records a failed task as an unsuccessful cron outcome', async () => {
+    const journey = {
+      runDueTasks: jest.fn().mockResolvedValue({
+        claimedTaskIds: ['task'],
+        tasksRun: 1,
+        results: [{ status: 'failed' }],
+      }),
+      logCronRun: jest.fn().mockResolvedValue(undefined),
+    };
+    await new ChartCronService(
+      journey as never,
+      { isLeader: jest.fn().mockResolvedValue(true) } as never,
+    ).handleChartCron();
+    expect(journey.logCronRun).toHaveBeenCalledWith(
+      expect.objectContaining({
+        status: 'error',
+        failedCount: 1,
+        completedCount: 0,
+      }),
+    );
+  });
+
+  it('records failed notification attempts in the resend cron status', async () => {
+    const journey = {
+      resendFailedWhatsAppNotifications: jest
+        .fn()
+        .mockResolvedValue({ found: 1, resent: 0, failed: 1 }),
+      logCronRun: jest.fn().mockResolvedValue(undefined),
+    };
+    await new ChartCronService(
+      journey as never,
+      { isLeader: jest.fn().mockResolvedValue(true) } as never,
+    ).handleNotificationResendCron();
+    expect(journey.logCronRun).toHaveBeenCalledWith(
+      expect.objectContaining({ status: 'error', failedCount: 1 }),
+    );
+  });
+
+  it('does not mark the cron green when availability succeeded but a notification failed', async () => {
+    const journey = {
+      runDueTasks: jest.fn().mockResolvedValue({
+        claimedTaskIds: ['task'],
+        tasksRun: 1,
+        results: [
+          {
+            status: 'completed',
+            emailStatus: 'pending_retry',
+            whatsappStatus: 'sent',
+          },
+        ],
+      }),
+      logCronRun: jest.fn().mockResolvedValue(undefined),
+    };
+    await new ChartCronService(
+      journey as never,
+      { isLeader: jest.fn().mockResolvedValue(true) } as never,
+    ).handleChartCron();
+    expect(journey.logCronRun).toHaveBeenCalledWith(
+      expect.objectContaining({
+        status: 'error',
+        failedCount: 1,
+        completedCount: 0,
+      }),
+    );
+  });
   it('skips the cron body when this process is not the leader', async () => {
     const journeyTask = { runDueTasks: jest.fn() };
     const leader = { isLeader: jest.fn().mockResolvedValue(false) };

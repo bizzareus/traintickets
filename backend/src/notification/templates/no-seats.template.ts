@@ -21,6 +21,7 @@ export function renderNoSeatsEmailHtml(params: {
   searchUrl?: string;
   unsubscribeUrl?: string;
   refundInfo?: RefundInfo | null;
+  chartPreparationText?: string;
 }): string {
   const {
     trainLabel,
@@ -121,6 +122,7 @@ export function renderNoSeatsEmailHtml(params: {
     <h2 style="margin:0 0 16px 0;font-size:20px;color:#0f172a;">${title}</h2>
     ${renderRefundBannerHtml(params.refundInfo)}
     <p style="margin:0 0 12px 0;">${mainNote}</p>
+    ${params.chartPreparationText ? `<p>${escapeHtml(params.chartPreparationText)}</p>` : ''}
     ${primaryDetailsBlock}
     ${alternativesHtml}
     <p style="margin:16px 0 16px 0;">Look for alternate trains available for your journey:</p>

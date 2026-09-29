@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AvailabilityController } from './availability.controller';
 import { AvailabilityService } from './availability.service';
@@ -11,7 +11,18 @@ import { ADMIN_PASSWORD_ENV } from '../common/admin-auth';
 
 describe('AvailabilityController Admin Endpoints', () => {
   let controller: AvailabilityController;
-  let journeyTaskService: JourneyTaskService;
+  let journeyTaskService: Record<
+    | 'getAllAlerts'
+    | 'getNotificationsAnalytics'
+    | 'getRecentCronRuns'
+    | 'runTask'
+    | 'resendTaskNotification'
+    | 'resendFailedWhatsAppNotifications'
+    | 'validateJourneyForMonitoring'
+    | 'queueJourneyMonitoring'
+    | 'queueChartPreparedMonitoring',
+    jest.Mock
+  >;
   const originalEnv = process.env[ADMIN_PASSWORD_ENV];
 
   beforeEach(async () => {
@@ -27,6 +38,11 @@ describe('AvailabilityController Admin Endpoints', () => {
         {
           provide: JourneyTaskService,
           useValue: {
+            validateJourneyForMonitoring: jest
+              .fn()
+              .mockResolvedValue({ valid: true }),
+            queueJourneyMonitoring: jest.fn().mockResolvedValue(true),
+            queueChartPreparedMonitoring: jest.fn().mockResolvedValue(true),
             getAllAlerts: jest.fn().mockResolvedValue([]),
             getNotificationsAnalytics: jest.fn().mockResolvedValue([]),
             getRecentCronRuns: jest.fn().mockResolvedValue([]),
@@ -63,7 +79,8 @@ describe('AvailabilityController Admin Endpoints', () => {
     }).compile();
 
     controller = module.get<AvailabilityController>(AvailabilityController);
-    journeyTaskService = module.get<JourneyTaskService>(JourneyTaskService);
+    journeyTaskService =
+      module.get<typeof journeyTaskService>(JourneyTaskService);
   });
 
   afterEach(() => {
@@ -72,6 +89,63 @@ describe('AvailabilityController Admin Endpoints', () => {
     } else {
       delete process.env[ADMIN_PASSWORD_ENV];
     }
+  });
+
+  describe('frontend chart-time contract', () => {
+    it('rejects missing chart times synchronously instead of accepting a guessed schedule', async () => {
+      await expect(
+        controller.createJourney(
+          '12665',
+          'HWH CAPE',
+          'RJY',
+          'DG',
+          '2026-09-29',
+          'SL',
+          ['RJY'],
+          'test@example.com',
+          undefined,
+          '2026-09-28',
+        ),
+      ).rejects.toThrow(BadRequestException);
+      expect(journeyTaskService.queueJourneyMonitoring).not.toHaveBeenCalled();
+    });
+
+    it.each(['DG', ''])(
+      'forwards both supplied events unchanged for destination %s',
+      async (destination) => {
+        await controller.createJourney(
+          '12665',
+          'HWH CAPE',
+          'RJY',
+          destination,
+          '2026-09-29',
+          'SL',
+          ['RJY'],
+          'test@example.com',
+          undefined,
+          '2026-09-28',
+          undefined,
+          '19:08',
+          0,
+          '05:35',
+          1,
+        );
+        await new Promise<void>((resolve) => setImmediate(resolve));
+        const queue = destination
+          ? journeyTaskService.queueJourneyMonitoring
+          : journeyTaskService.queueChartPreparedMonitoring;
+        expect(queue).toHaveBeenCalledWith(
+          expect.objectContaining({
+            chartTimeLocal: '19:08',
+            chartOneDayOffset: 0,
+            chartTwoTimeLocal: '05:35',
+            chartTwoDayOffset: 1,
+            trainStartDate: '2026-09-28',
+          }),
+          expect.any(String),
+        );
+      },
+    );
   });
 
   describe('unauthenticated admin requests', () => {

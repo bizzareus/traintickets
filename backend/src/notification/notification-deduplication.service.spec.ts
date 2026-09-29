@@ -85,7 +85,7 @@ describe('NotificationDeduplicationService', () => {
     expect(prisma.sentNotificationLog.findFirst).not.toHaveBeenCalled();
   });
 
-  it('should query with custom windowHours for alt_trains and no_seats', async () => {
+  it('allows background alternatives after the primary no-seats notification', async () => {
     (prisma.sentNotificationLog.findFirst as jest.Mock).mockResolvedValue(null);
 
     await service.shouldSendNotification({
@@ -104,7 +104,7 @@ describe('NotificationDeduplicationService', () => {
           channel: 'email',
           trainNumber: '12734',
           notificationType: {
-            in: ['no_seats', 'alt_trains', 'seats_found'],
+            in: ['alt_trains', 'seats_found'],
           },
         }),
       }),
@@ -133,14 +133,14 @@ describe('NotificationDeduplicationService', () => {
     expect(result).toBe(false);
   });
 
-  it('should suppress alt_trains notification if no_seats was already sent', async () => {
+  it('should suppress alt_trains notification if alternatives were already sent', async () => {
     (prisma.sentNotificationLog.findFirst as jest.Mock).mockResolvedValue({
       id: 'log-no-seats',
       recipient: '919876543210',
       channel: 'whatsapp',
       trainNumber: '22454',
       journeyDate: new Date('2026-09-02'),
-      notificationType: 'no_seats',
+      notificationType: 'alt_trains',
       sentAt: new Date(),
     });
 

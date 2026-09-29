@@ -19,7 +19,15 @@ describe('ChartAlertPaymentsService', () => {
   let service: ChartAlertPaymentsService;
   let prisma: Record<string, any>;
   let journeyTask: Record<string, any>;
-  let razorpay: Record<string, jest.Mock>;
+  let razorpay: Record<
+    | 'createOrder'
+    | 'createUpiQr'
+    | 'resolveQrIntents'
+    | 'orderPayments'
+    | 'fetchPayment'
+    | 'createRefund',
+    jest.Mock
+  > & { isConfigured: boolean; webhookSecret: string };
   let notificationService: Record<string, jest.Mock>;
 
   const baseInput = {
@@ -29,6 +37,11 @@ describe('ChartAlertPaymentsService', () => {
     journeyDate: '2026-10-01',
     classCode: '3A',
     email: 'a@example.com',
+    trainStartDate: '2026-10-01',
+    chartTimeLocal: '19:08',
+    chartOneDayOffset: 0,
+    chartTwoTimeLocal: '05:35',
+    chartTwoDayOffset: 1,
   };
 
   const appsFor = (ref: string) => ({
@@ -96,6 +109,32 @@ describe('ChartAlertPaymentsService', () => {
   });
 
   describe('createPaymentLink', () => {
+    it('rejects impossible dates before charging, including no-destination alerts', async () => {
+      await expect(
+        service.createPaymentLink({
+          ...baseInput,
+          toStationCode: '',
+          journeyDate: '2026-02-30',
+        }),
+      ).rejects.toThrow(BadRequestException);
+      expect(prisma.chartAlertPayment.create).not.toHaveBeenCalled();
+    });
+
+    it.each([
+      { chartTimeLocal: undefined },
+      { chartTwoTimeLocal: '25:00' },
+      { chartTwoDayOffset: 0 },
+    ])(
+      'rejects an invalid schedule before creating a payment or charging: %j',
+      async (invalid) => {
+        await expect(
+          service.createPaymentLink({ ...baseInput, ...invalid }),
+        ).rejects.toThrow(BadRequestException);
+        expect(prisma.chartAlertPayment.create).not.toHaveBeenCalled();
+        expect(razorpay.createOrder).not.toHaveBeenCalled();
+      },
+    );
+
     it('creates a Razorpay order + QR and returns own-checkout data', async () => {
       prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-1' });
       razorpay.createOrder.mockResolvedValue({ id: 'order-1', amount: 2500 });
@@ -110,6 +149,12 @@ describe('ChartAlertPaymentsService', () => {
       prisma.chartAlertPayment.update.mockResolvedValue({});
 
       const out = await service.createPaymentLink({ ...baseInput });
+
+      expect(prisma.chartAlertPayment.create).toHaveBeenCalledWith({
+        data: expect.objectContaining({
+          journeyPayload: expect.objectContaining(baseInput),
+        }),
+      });
 
       expect(razorpay.createOrder).toHaveBeenCalledWith({
         amountPaise: 2500,
@@ -258,6 +303,10 @@ describe('ChartAlertPaymentsService', () => {
 
       expect(razorpay.orderPayments).toHaveBeenCalledWith('order-1');
       expect(journeyTask.queueJourneyMonitoring).toHaveBeenCalledTimes(1);
+      expect(journeyTask.queueJourneyMonitoring).toHaveBeenCalledWith(
+        baseInput,
+        expect.any(String),
+      );
       expect(
         notificationService.sendChartAlertConfirmation,
       ).toHaveBeenCalledWith(

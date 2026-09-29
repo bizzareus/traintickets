@@ -255,7 +255,7 @@ export async function buildWhatsAppSeatsFoundText(params: {
   email?: string;
   mobile?: string;
   refundInfo?: RefundInfo | null;
-  chartNumber?: '1st' | '2nd';
+  chartNumber?: '1st' | '2nd' | null;
   chartTime?: string;
   getChartOpenInfoFn: (item: {
     fromCode: string;
@@ -293,12 +293,15 @@ export async function buildWhatsAppSeatsFoundText(params: {
   } = params;
 
   const refundLine = buildRefundWhatsappLine(params.refundInfo);
-  const chartNumber = params.chartNumber ?? '1st';
+  const chartLabel =
+    params.chartNumber === null
+      ? 'Chart'
+      : `${params.chartNumber ?? '1st'} Chart`;
   const chartTime = to12HourTime(params.chartTime) || '7:30 PM';
   const dateStr = formatJourneyDateShort(journeyDateStr);
 
   const lines: string[] = [
-    `🔔 ${chartNumber} Chart Alert: ${trainLabel} prepared at ${chartTime}`,
+    `🔔 ${chartLabel} Alert: ${trainLabel} prepared at ${chartTime}`,
     `Route: ${fromStationCode} → ${toStationCode} | Date: ${dateStr}`,
   ];
 

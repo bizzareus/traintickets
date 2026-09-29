@@ -275,8 +275,6 @@ type MultiClassProbeResult = {
   displayRow: AvlDayRow | null;
 };
 
-/** 24 hours in milliseconds — TTL for train search cache entries. */
-const TRAIN_SEARCH_TTL_MS = 24 * 60 * 60 * 1000;
 /**
  * TTL for per-segment availability probes. The alternate-paths fan-out makes one
  * fetchAvailability call per (train, from, to, date, class, quota); caching the
@@ -695,11 +693,7 @@ export class BookingV2Service {
       let hasMatchingClass = false;
       if (Array.isArray(train.avlClasses)) {
         const matchingAvl = (train.avlClasses as unknown[])
-          .map((c) =>
-            String(c ?? '')
-              .trim()
-              .toUpperCase(),
-          )
+          .map((c) => (typeof c === 'string' ? c.trim().toUpperCase() : ''))
           .filter((c) => classesSet.has(c));
         if (matchingAvl.length > 0) {
           hasMatchingClass = true;
@@ -1243,7 +1237,9 @@ export class BookingV2Service {
     dateInput: string,
     travelClass: string,
     quota: string,
+    signal?: AbortSignal,
   ): Promise<unknown> {
+    signal?.throwIfAborted();
     const dateDdMmYyyy = this.normalizeToRailApiDate(dateInput);
     if (!dateDdMmYyyy) throw new Error('Invalid journey date');
     if (this.isPastDate(dateDdMmYyyy)) {
@@ -1269,6 +1265,7 @@ export class BookingV2Service {
     try {
       const res = await availabilityClient.post<unknown>(url, '', {
         headers: BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
+        signal,
       });
       return res.data;
     } catch (err: unknown) {
@@ -1384,10 +1381,12 @@ export class BookingV2Service {
       date: string;
       avlClasses?: string[];
       quota?: string;
+      signal?: AbortSignal;
     },
     onProgress?: (event: AlternatePathProgressEvent) => void,
     segmentCache?: CacheService,
   ): Promise<FindAlternatePathsResult> {
+    input.signal?.throwIfAborted();
     const sharedProbeCache = new Map<string, MultiClassProbeResult>();
 
     // Probe only the classes the train actually offers. When the caller didn't
@@ -1419,6 +1418,7 @@ export class BookingV2Service {
     const finish = (
       result: FindAlternatePathsResult,
     ): FindAlternatePathsResult => {
+      input.signal?.throwIfAborted();
       // legCount is surfaced in the UI as "confirmed tickets", so it must
       // count only confirmed legs — not the check_realtime filler hops that
       // pad partial journeys station-by-station (those collapse into a single
@@ -1458,6 +1458,7 @@ export class BookingV2Service {
       ];
 
       for (const combo of combos) {
+        input.signal?.throwIfAborted();
         const offsetResult = await this.findAlternatePathsInternal(
           {
             ...input,
@@ -1493,11 +1494,13 @@ export class BookingV2Service {
       quota?: string;
       stationsBefore?: number;
       stationsAfter?: number;
+      signal?: AbortSignal;
     },
     onProgress?: (event: AlternatePathProgressEvent) => void,
     sharedProbeCache?: Map<string, MultiClassProbeResult>,
     segmentCache?: CacheService,
   ): Promise<FindAlternatePathsResult> {
+    input.signal?.throwIfAborted();
     const emit = (ev: AlternatePathProgressEvent) => onProgress?.(ev);
     const trainNumber = String(input.trainNumber).trim();
     const from = String(input.from).trim().toUpperCase();
@@ -1529,6 +1532,7 @@ export class BookingV2Service {
     const stationNameMap: Record<string, string> = {};
 
     const sched = await this.irctc.getTrainSchedule(trainNumber);
+    input.signal?.throwIfAborted();
     if (!sched.ok || !sched.schedule?.stationList?.length) {
       logStep(
         `IRCTC schedule: FAILED or empty (ok=${sched.ok}) — cannot list intermediate stops`,
@@ -1649,6 +1653,7 @@ export class BookingV2Service {
     const cacheKey = (a: string, b: string, d: string) => `${a}|${b}|${d}`;
 
     while (currentIdx < targetIdx && iterations < maxIterations) {
+      input.signal?.throwIfAborted();
       iterations += 1;
       hop += 1;
       const destOrder = orderedDestinationIndices(currentIdx, targetIdx);
@@ -1664,6 +1669,7 @@ export class BookingV2Service {
         destOrder,
         ALT_PATH_PROBE_CONCURRENCY,
         async (destIdx, w) => {
+          input.signal?.throwIfAborted();
           const fromStn = stations[currentIdx];
           const fromStopLine = stationList[startIdx + currentIdx];
           const fromDayCount =
@@ -1685,6 +1691,7 @@ export class BookingV2Service {
               classes,
               quota,
               segmentCache,
+              input.signal,
             );
             probeCache.set(key, probe);
           }
@@ -1790,6 +1797,7 @@ export class BookingV2Service {
           classes,
           quota,
           segmentCache,
+          input.signal,
         );
         probeCache.set(key, bridge);
       }
@@ -2083,6 +2091,7 @@ export class BookingV2Service {
     classCodes: readonly string[],
     quota: string,
     segmentCache?: CacheService,
+    signal?: AbortSignal,
   ): Promise<MultiClassProbeResult> {
     // Bounded like the OD fan-out above: each class fetch is a Postgres
     // cache read + upstream HTTP + Postgres upsert, so an unbounded
@@ -2097,6 +2106,7 @@ export class BookingV2Service {
       [...classCodes],
       ALT_PATH_PROBE_CONCURRENCY,
       async (c, i) => {
+        signal?.throwIfAborted();
         perClass[i] = await this.fetchSegmentAvailability(
           trainNo,
           fromStn,
@@ -2105,6 +2115,7 @@ export class BookingV2Service {
           c,
           quota,
           segmentCache,
+          signal,
         );
       },
     );
@@ -2121,11 +2132,13 @@ export class BookingV2Service {
     travelClass: string,
     quota: string,
     segmentCache?: CacheService,
+    signal?: AbortSignal,
   ): Promise<{
     day: AvlDayRow | null;
     fare: number | null;
     fetchError?: string;
   }> {
+    signal?.throwIfAborted();
     if (this.isPastDate(dateDdMmYyyy)) {
       return {
         day: null,
@@ -2141,6 +2154,7 @@ export class BookingV2Service {
     const cached = await cache
       .get<{ day: AvlDayRow | null; fare: number | null }>(cacheKey)
       .catch(() => null);
+    signal?.throwIfAborted();
     if (cached) return cached;
 
     try {
@@ -2151,6 +2165,7 @@ export class BookingV2Service {
         dateDdMmYyyy,
         travelClass,
         quota,
+        signal,
       );
       const day = this.extractAvlDay(raw, dateDdMmYyyy);
       const fare = this.extractFare(raw);
@@ -2161,6 +2176,7 @@ export class BookingV2Service {
         .catch(() => undefined);
       return result;
     } catch (err) {
+      signal?.throwIfAborted();
       const msg = err instanceof Error ? err.message : String(err);
       this.logger.warn(
         `[booking-v2] availability segment failed ${trainNo} ${fromStn}-${toStn}: ${msg}`,

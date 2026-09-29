@@ -28,6 +28,49 @@ function mockConfig(overrides?: {
 }
 
 describe('NotificationService', () => {
+  describe('provider acceptance', () => {
+    it.each([
+      {
+        data: null,
+        error: { message: 'Rate limited', name: 'rate_limit_exceeded' },
+      },
+      { data: null, error: null },
+    ])(
+      'does not mark a Resend rejection/missing message ID as sent: %j',
+      async (response) => {
+        const svc = new NotificationService(mockConfig(), mockStationCache());
+        Reflect.set(svc, 'resend', {
+          emails: { send: jest.fn().mockResolvedValue(response) },
+        });
+        const failureReport = jest
+          .spyOn(svc, 'sendAlertFailureReport')
+          .mockResolvedValue(true);
+        await expect(
+          svc.sendEmail('test@example.com', 'test', '<p>test</p>'),
+        ).resolves.toBe(false);
+        expect(failureReport).toHaveBeenCalledTimes(1);
+      },
+    );
+
+    it('marks an email accepted only when Resend returns a message ID', async () => {
+      const svc = new NotificationService(mockConfig(), mockStationCache());
+      Reflect.set(svc, 'resend', {
+        emails: {
+          send: jest
+            .fn()
+            .mockResolvedValue({ data: { id: 'resend-message' }, error: null }),
+        },
+      });
+      const failure = jest
+        .spyOn(svc, 'sendAlertFailureReport')
+        .mockResolvedValue(true);
+      await expect(
+        svc.sendEmail('test@example.com', 'test', '<p>test</p>'),
+      ).resolves.toBe(true);
+      expect(failure).not.toHaveBeenCalled();
+    });
+  });
+
   const task = {
     trainNumber: '12951',
     trainName: 'Test Express',
@@ -66,6 +109,73 @@ describe('NotificationService', () => {
       ],
     },
   };
+
+  it.each([
+    [1, '2026-09-28T13:38:00Z', '7:08 PM', '1st'],
+    [2, '2026-09-29T00:05:00Z', '5:35 AM', '2nd'],
+  ] as const)(
+    'uses saved chart %s time and number despite changed cache data',
+    async (chartNumber, chartAt, clock, label) => {
+      const cache = {
+        getChartMetaForTrainStation: jest.fn().mockResolvedValue({
+          chartOne: { time: '13:41', dayOffset: 0 },
+          chartTwo: { time: '23:10', dayOffset: 0 },
+        }),
+      };
+      const svc = new NotificationService(
+        mockConfig(),
+        mockStationCache(),
+        cache as never,
+      );
+      const email = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+      const whatsapp = jest.spyOn(svc, 'sendWhatsApp').mockResolvedValue(true);
+      await svc.notifyUser({
+        email: 'test@example.com',
+        mobile: '919999999999',
+        task: {
+          ...task,
+          chartAt: new Date(chartAt),
+          chartNumber,
+          trainStartDate: new Date('2026-09-28'),
+        },
+        result: successWithTickets,
+      });
+      expect(whatsapp.mock.calls[0][1]).toContain(`${label} Chart Alert`);
+      expect(whatsapp.mock.calls[0][1]).toContain(`prepared at ${clock}`);
+      expect(email.mock.calls[0][2]).toContain(`${clock} IST`);
+      expect(cache.getChartMetaForTrainStation).not.toHaveBeenCalled();
+    },
+  );
+
+  it('does not invent a first-chart label for legacy tasks with no saved chart number', async () => {
+    const svc = new NotificationService(mockConfig(), mockStationCache());
+    const send = jest.spyOn(svc, 'sendWhatsApp').mockResolvedValue(true);
+    await svc.notifyUser({
+      mobile: '919999999999',
+      task: { ...task, chartAt: new Date('2026-09-29T00:05:00Z') },
+      result: successWithTickets,
+    });
+    expect(send.mock.calls[0][1]).toContain('🔔 Chart Alert:');
+    expect(send.mock.calls[0][1]).not.toContain('1st Chart');
+    expect(send.mock.calls[0][1]).not.toContain('2nd Chart');
+  });
+
+  it('reports a failed check honestly rather than announcing no seats', async () => {
+    const svc = new NotificationService(mockConfig(), mockStationCache());
+    const email = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+    const whatsapp = jest.spyOn(svc, 'sendWhatsApp').mockResolvedValue(true);
+    const out = await svc.notifyCheckFailed({
+      email: 'test@example.com',
+      mobile: '919999999999',
+      task: { ...task, chartAt: new Date('2026-09-29T00:05:00Z') },
+    });
+    expect(out).toEqual({ emailSent: true, whatsappSent: true });
+    expect(email.mock.calls[0][2]).toContain(
+      'Seat availability is unconfirmed',
+    );
+    expect(whatsapp.mock.calls[0][1]).toContain('5:35 AM IST');
+    expect(whatsapp.mock.calls[0][1]).not.toContain('No Tickets Found');
+  });
 
   it('sends "No Tickets Found" email and WhatsApp when status is success but no bookable plan', async () => {
     const svc = new NotificationService(mockConfig(), mockStationCache());
@@ -347,6 +457,7 @@ describe('NotificationService', () => {
 
     const partialResultNoChartInfo = {
       status: 'success' as const,
+      vacantBerth: { vbd: [], error: null },
       openAiBookingPlan: [
         {
           instruction: 'PUNE - CCH - CC',
@@ -526,7 +637,12 @@ describe('NotificationService', () => {
       isFollowUpLeg: true,
     });
 
-    expect(out).toEqual({ emailSent: false, whatsappSent: false });
+    expect(out).toEqual({
+      emailSent: false,
+      whatsappSent: false,
+      emailSuppressed: true,
+      whatsappSuppressed: true,
+    });
     expect(sendWhatsApp).not.toHaveBeenCalled();
     expect(sendEmail).not.toHaveBeenCalled();
   });
@@ -576,7 +692,12 @@ describe('NotificationService', () => {
       isFollowUpLeg: true,
     });
 
-    expect(out).toEqual({ emailSent: false, whatsappSent: false });
+    expect(out).toEqual({
+      emailSent: false,
+      whatsappSent: false,
+      emailSuppressed: true,
+      whatsappSuppressed: true,
+    });
     expect(sendWhatsApp).not.toHaveBeenCalled();
   });
 
@@ -719,7 +840,12 @@ describe('NotificationService', () => {
     expect(sendEmail).not.toHaveBeenCalled();
     expect(sendWhatsApp).not.toHaveBeenCalled();
     expect(recordNotificationSentMock).not.toHaveBeenCalled();
-    expect(out).toEqual({ emailSent: false, whatsappSent: false });
+    expect(out).toEqual({
+      emailSent: false,
+      whatsappSent: false,
+      emailSuppressed: true,
+      whatsappSuppressed: true,
+    });
   });
 
   it('records sent notification when NotificationDeduplicationService returns true and send succeeds', async () => {
@@ -1208,7 +1334,12 @@ describe('NotificationService', () => {
       );
       const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
       const out = await svc.notifyChartPrepared(chartPreparedParams);
-      expect(out).toEqual({ emailSent: false, whatsappSent: false });
+      expect(out).toEqual({
+        emailSent: false,
+        whatsappSent: false,
+        emailSuppressed: true,
+        whatsappSuppressed: true,
+      });
       expect(sendEmail).not.toHaveBeenCalled();
     });
 

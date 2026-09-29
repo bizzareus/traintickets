@@ -47,16 +47,19 @@ export class ChartCronService {
         console.log('chart_time_tasks_run=' + run.tasksRun);
       }
 
+      const hasFailure = (r: (typeof run.results)[number]) =>
+        r.status === 'failed' ||
+        [r.emailStatus, r.whatsappStatus].some(
+          (status) => status === 'pending_retry' || status === 'unsend',
+        );
       const completedCount = run.results.filter(
-        (r) => r.status === 'completed',
+        (r) => r.status === 'completed' && !hasFailure(r),
       ).length;
-      const failedCount = run.results.filter(
-        (r) => r.status === 'failed',
-      ).length;
+      const failedCount = run.results.filter(hasFailure).length;
       await this.journeyTask.logCronRun({
         cronName: CRON_NAME,
         startedAt,
-        status: 'success',
+        status: failedCount > 0 ? 'error' : 'success',
         isLeader: true,
         tasksClaimed: run.claimedTaskIds.length,
         tasksRun: run.tasksRun,
@@ -124,7 +127,7 @@ export class ChartCronService {
       await this.journeyTask.logCronRun({
         cronName: RESEND_CRON_NAME,
         startedAt,
-        status: 'success',
+        status: result.failed > 0 ? 'error' : 'success',
         isLeader: true,
         tasksClaimed: result.found,
         tasksRun: result.resent + result.failed,

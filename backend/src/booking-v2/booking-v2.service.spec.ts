@@ -72,12 +72,16 @@ const mockAltPathsCache: jest.Mocked<
 const mockIrctc: jest.Mocked<
   Pick<
     IrctcService,
-    'searchStationsViaRapidApi' | 'getTrainClasses' | 'preloadTrainSchedules'
+    | 'searchStationsViaRapidApi'
+    | 'getTrainClasses'
+    | 'preloadTrainSchedules'
+    | 'getTrainSchedule'
   >
 > = {
   searchStationsViaRapidApi: jest.fn().mockResolvedValue([]),
   getTrainClasses: jest.fn().mockResolvedValue([]),
   preloadTrainSchedules: jest.fn().mockResolvedValue(undefined),
+  getTrainSchedule: jest.fn(),
 };
 
 function altResult(
@@ -166,6 +170,93 @@ describe('BookingV2Service', () => {
       mockDynamoDbSeatCache as unknown as DynamoDbSeatCacheService,
       mockPostHogAnalytics as unknown as PostHogAnalyticsService,
     );
+  });
+
+  describe('chart-worker cancellation', () => {
+    it('does not start an already-cancelled search', async () => {
+      const controller = new AbortController();
+      const reason = new Error('expired task');
+      controller.abort(reason);
+      await expect(
+        service.findAlternatePaths({
+          trainNumber: '12665',
+          from: 'RJY',
+          to: 'DG',
+          date: '2099-09-29',
+          signal: controller.signal,
+        }),
+      ).rejects.toBe(reason);
+      expect(mockIrctc.getTrainClasses).not.toHaveBeenCalled();
+    });
+
+    it('stops offset searches after the worker deadline', async () => {
+      const controller = new AbortController();
+      const reason = new Error('expired task');
+      const pass = jest
+        .spyOn(service, 'findAlternatePathsInternal')
+        .mockImplementation(() => {
+          controller.abort(reason);
+          return Promise.resolve(altResult('12665', []));
+        });
+      await expect(
+        service.findAlternatePaths({
+          trainNumber: '12665',
+          from: 'A',
+          to: 'D',
+          date: '2099-09-29',
+          avlClasses: ['SL'],
+          signal: controller.signal,
+        }),
+      ).rejects.toBe(reason);
+      expect(pass).toHaveBeenCalledTimes(1);
+    });
+
+    it('passes cancellation through station and class probes without turning it into no-seats', async () => {
+      const controller = new AbortController();
+      const reason = new Error('expired task');
+      mockIrctc.getTrainSchedule.mockResolvedValueOnce({
+        ok: true,
+        schedule: {
+          trainNumber: '12665',
+          trainName: 'Test',
+          stationFrom: 'A',
+          stationTo: 'B',
+          stationList: [
+            { stationCode: 'A', dayCount: 1, departureTime: '08:00' },
+            { stationCode: 'B', dayCount: 1, arrivalTime: '09:00' },
+          ],
+        },
+      });
+      let started!: () => void;
+      const ready = new Promise<void>((resolve) => {
+        started = resolve;
+      });
+      const availability = jest
+        .spyOn(service, 'checkAvailability')
+        .mockImplementation(async (...args) => {
+          const signal = args[6];
+          expect(signal).toBe(controller.signal);
+          started();
+          return new Promise((_resolve, reject) =>
+            signal!.addEventListener('abort', () => reject(reason), {
+              once: true,
+            }),
+          );
+        });
+      const result = service.findAlternatePaths({
+        trainNumber: '12665',
+        from: 'A',
+        to: 'B',
+        date: '2099-09-29',
+        avlClasses: ['SL'],
+        signal: controller.signal,
+      });
+      const rejected = expect(result).rejects.toBe(reason);
+      await ready;
+      controller.abort(reason);
+      await rejected;
+      expect(availability).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('normalizeToRailApiDate', () => {
@@ -967,6 +1058,7 @@ describe('BookingV2Service', () => {
         expect.any(Array),
         expect.any(String),
         undefined,
+        undefined,
       );
       probeSpy.mockRestore();
     });
@@ -1041,6 +1133,7 @@ describe('BookingV2Service', () => {
         expect.any(Array),
         expect.any(String),
         undefined,
+        undefined,
       );
 
       // NDLS -> BPL offset should be queried on 01-06-2029 (Day 1 departure for Day 2 NZM boarding)
@@ -1051,6 +1144,7 @@ describe('BookingV2Service', () => {
         '01-06-2029',
         expect.any(Array),
         expect.any(String),
+        undefined,
         undefined,
       );
 
@@ -1108,6 +1202,7 @@ describe('BookingV2Service', () => {
         '02-06-2029',
         expect.any(Array),
         expect.any(String),
+        undefined,
         undefined,
       );
 
@@ -1168,6 +1263,7 @@ describe('BookingV2Service', () => {
         '05-06-2029',
         expect.any(Array),
         expect.any(String),
+        undefined,
         undefined,
       );
 

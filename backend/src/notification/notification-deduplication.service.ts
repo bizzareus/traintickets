@@ -20,8 +20,10 @@ export class NotificationDeduplicationService {
       | 'no_seats'
       | 'seats_found'
       | 'alt_trains'
+      | 'check_failed'
       | 'chart_prepared_only';
     windowHours?: number;
+    chartAt?: Date;
   }): Promise<boolean> {
     const { recipient, channel, trainNumber, journeyDate, notificationType } =
       params;
@@ -37,10 +39,21 @@ export class NotificationDeduplicationService {
         : String(journeyDate).slice(0, 10);
     const journeyDateObj = new Date(`${journeyDateStr}T00:00:00.000Z`);
 
-    const notificationTypesToCheck =
-      notificationType === 'seats_found'
-        ? ['seats_found']
-        : ['no_seats', 'alt_trains', 'seats_found'];
+    const notificationTypesToCheck = params.chartAt
+      ? [
+          'no_seats',
+          'alt_trains',
+          'seats_found',
+          'chart_prepared_only',
+          ...(notificationType === 'check_failed' ? ['check_failed'] : []),
+        ]
+      : notificationType === 'chart_prepared_only'
+        ? ['chart_prepared_only']
+        : notificationType === 'alt_trains'
+          ? ['alt_trains', 'seats_found']
+          : notificationType === 'seats_found'
+            ? ['seats_found']
+            : ['no_seats', 'alt_trains', 'seats_found'];
 
     try {
       const existing = await this.prisma.sentNotificationLog.findFirst({
@@ -50,7 +63,9 @@ export class NotificationDeduplicationService {
           trainNumber: trainNumber.trim(),
           journeyDate: journeyDateObj,
           notificationType: { in: notificationTypesToCheck },
-          sentAt: { gte: sinceDate },
+          ...(params.chartAt
+            ? { chartAt: params.chartAt }
+            : { sentAt: { gte: sinceDate } }),
         },
       });
 
@@ -76,10 +91,12 @@ export class NotificationDeduplicationService {
     channel: 'whatsapp' | 'email';
     trainNumber: string;
     journeyDate: Date | string;
+    chartAt?: Date;
     notificationType:
       | 'no_seats'
       | 'seats_found'
       | 'alt_trains'
+      | 'check_failed'
       | 'chart_prepared_only';
   }): Promise<void> {
     const { recipient, channel, trainNumber, journeyDate, notificationType } =
@@ -101,6 +118,7 @@ export class NotificationDeduplicationService {
           trainNumber: trainNumber.trim(),
           journeyDate: journeyDateObj,
           notificationType,
+          chartAt: params.chartAt,
         },
       });
     } catch (err) {

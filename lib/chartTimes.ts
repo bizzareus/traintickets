@@ -188,6 +188,16 @@ function readCachedFile(trainNumber: string): ChartTimesPageData | null {
   }
 }
 
+/** Read the existing page snapshot only; subscription lookup never triggers ingestion. */
+export function getCachedChartTimeStation(
+  trainNumber: string,
+  stationCode: string,
+): ChartTimeStationRow | null {
+  return readCachedFile(trainNumber)?.stations.find(
+    (station) => station.stationCode === stationCode,
+  ) ?? null;
+}
+
 function writeCachedFile(data: ChartTimesPageData): void {
   try {
     if (!fs.existsSync(CHART_TIMES_DIR)) {

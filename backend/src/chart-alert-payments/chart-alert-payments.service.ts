@@ -10,6 +10,8 @@ import { randomUUID } from 'node:crypto';
 import type { ChartAlertPayment } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { JourneyTaskService } from '../availability/journey-task.service';
+import { requirePinnedChartTime } from '../availability/chart-task-schedule';
+import { parseJourneyYmdForValidation } from '../common/train-run-day.validation';
 import { NotificationService } from '../notification/notification.service';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import { captureSentryException } from '../common/sentry-report';
@@ -181,6 +183,16 @@ export class ChartAlertPaymentsService {
   async createPaymentLink(
     input: ChartAlertJourneyInput,
   ): Promise<PaymentLinkResult> {
+    const chartTimes = requirePinnedChartTime(input);
+    if (
+      !parseJourneyYmdForValidation(input.journeyDate) ||
+      (input.trainStartDate != null &&
+        !parseJourneyYmdForValidation(input.trainStartDate))
+    ) {
+      throw new BadRequestException(
+        'Journey and train-start dates must be valid YYYY-MM-DD dates',
+      );
+    }
     if (input.toStationCode?.trim()) {
       const validation = await this.journeyTask.validateJourneyForMonitoring({
         trainNumber: input.trainNumber,
@@ -216,10 +228,7 @@ export class ChartAlertPaymentsService {
           email: input.email,
           mobile: input.mobile,
           trainStartDate: input.trainStartDate,
-          chartTimeLocal: input.chartTimeLocal,
-          chartOneDayOffset: input.chartOneDayOffset,
-          chartTwoTimeLocal: input.chartTwoTimeLocal,
-          chartTwoDayOffset: input.chartTwoDayOffset,
+          ...chartTimes,
         },
       },
     });

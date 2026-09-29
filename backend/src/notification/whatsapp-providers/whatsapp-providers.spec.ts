@@ -50,6 +50,19 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
   });
 
   describe('WasenderProvider', () => {
+    it('does not count an HTTP-200 failure response as provider acceptance', async () => {
+      const provider = new WasenderProvider(
+        mockConfig({ WASENDER_API_KEY: 'test', RESEND_API_KEY: 'test' }),
+      );
+      mockedAxios.post.mockResolvedValueOnce({
+        data: { success: false, message: 'Session disconnected' },
+      });
+      await expect(
+        provider.sendWhatsApp({ mobile: '919999999999', text: 'Test' }),
+      ).resolves.toBe(false);
+      expect(sendEmailMock).toHaveBeenCalledTimes(1);
+    });
+
     it('sends freeform text message when WASENDER_API_KEY is present', async () => {
       const config = mockConfig({
         WASENDER_API_KEY: 'wasender_secret',

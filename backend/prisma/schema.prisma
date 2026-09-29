@@ -186,6 +186,7 @@ model ChartTimeAvailabilityTask {
   journeyDate        DateTime  @map("journey_date") @db.Date
   trainStartDate     DateTime? @map("train_start_date") @db.Date
   chartAt            DateTime  @map("chart_at")
+  chartNumber        Int?      @map("chart_number")
   status             String    @default("pending")
   resultPayload      Json?     @map("result_payload")
   retryCount         Int       @default(0) @map("retry_count")
@@ -197,6 +198,9 @@ model ChartTimeAvailabilityTask {
   createdAt          DateTime  @default(now()) @map("created_at")
   completedAt        DateTime? @map("completed_at")
   emailNotifiedAt    DateTime? @map("email_notified_at")
+  emailStatus        String?   @map("email_status")
+  emailRetryCount    Int       @default(0) @map("email_retry_count")
+  notificationLastAttemptAt DateTime? @map("notification_last_attempt_at")
   whatsappNotifiedAt DateTime? @map("whatsapp_notified_at")
   whatsappRetryCount Int       @default(0) @map("whatsapp_retry_count")
   whatsappStatus     String?   @map("whatsapp_status")
@@ -476,6 +480,7 @@ model SentNotificationLog {
   journeyDate      DateTime @map("journey_date") @db.Date
   notificationType String   @map("notification_type")
   sentAt           DateTime @default(now()) @map("sent_at")
+  chartAt          DateTime? @map("chart_at")
 
   @@index([recipient, trainNumber, journeyDate, notificationType, sentAt])
   @@map("sent_notification_log")

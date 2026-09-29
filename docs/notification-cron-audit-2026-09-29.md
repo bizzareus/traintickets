@@ -4,6 +4,10 @@
 
 **IST conversion and the current minute scheduler are working. End-to-end notification timeliness, message-time accuracy, and delivery accounting do not meet the advertised instant-alert experience.**
 
+Follow-up investigation of train 12665/RJY also confirms a **task-creation scheduling defect**: one estimated departure-minus-four-hours task replaced the two chart events shown on the page. Correct timezone conversion does not mean the stored source time is correct.
+
+Implementation follow-up: the user selected a frontend-owned chart-time contract. The changes and rollout requirements are documented in [chart-alert-scheduling.md](chart-alert-scheduling.md). This supersedes the shared-backend-source recommendation below; the audit measurements remain historical evidence.
+
 Production was inspected through SSH on the backend EC2 instance, read-only SQL against its Supabase database, Docker logs, and read-only WASender API calls. The database audit cutoff was **29 September 2026, 23:26:37 IST** (`17:56:37 UTC`). Final WhatsApp receipt checks completed at **23:33:53 IST**.
 
 The deployed image revision and local HEAD both identified `6aedee693aef87f8379bca0e5c85b44c5805c87d`. This audit made no production configuration/data changes, triggered no cron jobs, and sent no test messages. The email rejection reproduction used a mocked provider in a separate Node process.
@@ -16,6 +20,7 @@ The deployed image revision and local HEAD both identified `6aedee693aef87f8379b
 - Only channels with a nonblank contact address are included in the channel denominators.
 - Delivery requires provider evidence. Task completion, a send-log entry, provider acceptance, and a delivered/read receipt are different events.
 - Timing statistics below measure from `greatest(chart_at, created_at)`. This avoids blaming the scheduler for a subscription created after its chart time. Historical `first_run_at` fields are task state, not immutable attempt history.
+- Pickup latency is measured against the stored schedule. It does not establish that the stored schedule agrees with the chart times displayed to the customer.
 
 ## Samples and results
 
@@ -65,6 +70,25 @@ These are application send timestamps, not recipient delivery timestamps, and in
 
 Of the 50 task schedules, 37 match today's train/station chart cache. Four more apparent cache mismatches are explained by the original payment payload's pinned chart times, which correctly match the tasks. Seven have no current station chart-cache row. Two remain unmatched to current cache; that is not proof of an original timezone error because the cache is mutable and is not versioned by journey date. For one of these, train 12665/BBS, the cache row was created after the task had already executed.
 
+### Follow-up: exact origin of the incorrect 12665/RJY schedule
+
+The screenshot and `content/chart-times/12665-hwh-cape-sf-exp-chart-times.json:126` show first chart `19:08`, day offset `0`, and second chart `05:35`, day offset `1`, charted at VSKP. For train start **28 September**, the correct task timestamps are:
+
+| Event | IST | Stored UTC value |
+| --- | --- | --- |
+| First chart | 28 Sep 2026, 19:08 | `2026-09-28 13:38:00` |
+| Second chart | 29 Sep 2026, 05:35 | `2026-09-29 00:05:00` |
+
+Payment `cmul24fif00xr01oxue7ktufs`, saved at 28 Sep 09:40:35 UTC, contains the correct boarding date and train-start date but **none** of `chartTimeLocal`, `chartOneDayOffset`, `chartTwoTimeLocal`, or `chartTwoDayOffset`. A read-only query found exactly one task for its journey request, and no current `TrainStationChartTime` entry for either 12665/RJY or 12665/VSKP.
+
+Without pinned fields or a station cache entry, `createJourneyTasks` takes its estimate branch (`journey-task.service.ts:714–745`). RJY's departure is 29 Sep **08:40 IST**. Subtracting four hours gives **04:40 IST**, equivalent to **28 Sep 23:10 UTC**: the exact erroneous value in this task. That branch pushes only one task. The best-effort asynchronous lookup can later replace it and add a second task, but no successful correction is reflected in this subscription. Historical application logs do not establish why that lookup did not resolve the times.
+
+This was reproduced using the deployed `JourneyTaskService` with all database and hydration calls mocked: the saved input yields one task at `2026-09-28T23:10:00.000Z`; adding the four displayed chart fields yields exactly the two correct timestamps above.
+
+The page reads a frontend JSON dataset, while the unpinned scheduling path reads the backend database. Those sources can disagree or have different coverage. The current table-row button does forward all four fields, and the payment controller preserves them. Other alert paths can omit them (the search panel omits them, and the gap-leg popup omits them when its metadata fetch has no result). The original payment did not persist its entry-point source. Retained backend access logs confirm the payment-create request but do not contain its body or a page-specific referrer, so the precise originating frontend path is unproven.
+
+Required correction: resolve and persist both real chart events through a shared backend data source before confirming the subscription, preserve the selected event timestamps through payment and task creation, and represent unresolved times explicitly instead of silently substituting one guessed chart event. Add regression coverage for this exact Day-2 boarding/remote-charting example.
+
 ## Findings
 
 ### 1. High: failed processing prevents promised chart alerts
@@ -81,7 +105,7 @@ Task processing can fail even though the containing cron row is marked `success`
 
 All five payment records had `refund_status = NONE` at inspection; this describes recorded state and does not assert that an automatic refund was contractually required. The sixth subscription, train 20605, completed its check but has `whatsapp_status = unsend`, three notification retries, no email address, and no matching WASender message log. A read-only WASender registration check returned `exists: false` for that contact at audit time. This supports an invalid/non-WhatsApp recipient explanation; it is not a historical receipt for the failed attempts.
 
-Example: task `70f92100-cc1e-4a6e-993a-6866ff6e9431` was due **29 Sep 04:40 IST**, first recorded running at **04:40:15**, and failed at **05:08:10** after three attempts. Neither channel has a chart-result send record. This is an execution failure, not a 5h 30m timezone shift.
+Example: task `70f92100-cc1e-4a6e-993a-6866ff6e9431` was stored as due **29 Sep 04:40 IST**, first recorded running at **04:40:15**, and failed at **05:08:10** after three attempts. Neither channel has a chart-result send record. Follow-up investigation confirmed two separate defects: the guessed schedule was wrong before execution, and the availability check subsequently timed out. Neither is explained by a 5h 30m timezone shift.
 
 The existing resend query only selects completed tasks, so these failed checks are outside notification recovery (`journey-task.service.ts:2620`). The current Docker log retention does not cover their execution, so the upstream cause of each historical timeout was not established.
 

@@ -72,6 +72,13 @@ export function toE164(mobile: string): string {
 
 export type { JourneyLegCoverage };
 
+export type NotificationResult = {
+  emailSent: boolean;
+  whatsappSent: boolean;
+  emailSuppressed?: boolean;
+  whatsappSuppressed?: boolean;
+};
+
 @Injectable()
 export class NotificationService {
   private readonly logger = new Logger(NotificationService.name);
@@ -195,13 +202,18 @@ export class NotificationService {
         this.monitoringAdminEmail.toLowerCase() !== to.trim().toLowerCase()
           ? [this.monitoringAdminEmail]
           : undefined;
-      await this.resend.emails.send({
+      const response = await this.resend.emails.send({
         from: RESEND_FROM,
         to: [to],
         ...(bcc ? { bcc } : {}),
         subject,
         html,
       });
+      if (response.error || !response.data?.id) {
+        throw new Error(
+          response.error?.message || 'Resend did not return a message ID',
+        );
+      }
       return true;
     } catch (err) {
       console.error('Resend email send failed', err);
@@ -597,17 +609,20 @@ export class NotificationService {
     chartPreparationText: string;
     journeyRequestId?: string | null;
     isPaid?: boolean;
-  }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
+    chartAt?: Date;
+  }): Promise<NotificationResult> {
     const { email, mobile, trainNumber, trainName, journeyDate } = params;
-    const out = { emailSent: false, whatsappSent: false };
+    const out: NotificationResult = { emailSent: false, whatsappSent: false };
 
     try {
       if (!email?.trim() && !mobile?.trim()) return out;
       if (this.unsubscribeService) {
         if (email && (await this.unsubscribeService.isUnsubscribed(email))) {
+          out.emailSuppressed = out.whatsappSuppressed = true;
           return out;
         }
         if (mobile && (await this.unsubscribeService.isUnsubscribed(mobile))) {
+          out.emailSuppressed = out.whatsappSuppressed = true;
           return out;
         }
       }
@@ -647,7 +662,24 @@ export class NotificationService {
 
       const subject = `Chart prepared for ${trainLabel} on ${journeyDateReadable} — check tickets now`;
 
-      if (email?.trim()) {
+      const canSend = async (
+        recipient: string,
+        channel: 'email' | 'whatsapp',
+      ) =>
+        !this.deduplicationService ||
+        this.deduplicationService.shouldSendNotification({
+          recipient,
+          channel,
+          trainNumber,
+          journeyDate,
+          notificationType: 'chart_prepared_only',
+          chartAt: params.chartAt,
+        });
+      if (email?.trim() && !(await canSend(email.trim(), 'email')))
+        out.emailSuppressed = true;
+      if (mobile?.trim() && !(await canSend(mobile.trim(), 'whatsapp')))
+        out.whatsappSuppressed = true;
+      if (email?.trim() && !out.emailSuppressed) {
         const html = renderChartPreparedNoDestinationEmailHtml({
           trainNumber,
           trainName,
@@ -659,12 +691,13 @@ export class NotificationService {
           skipFailureReport: true,
         });
         if (out.emailSent && this.deduplicationService) {
-          void this.deduplicationService.recordNotificationSent({
+          await this.deduplicationService.recordNotificationSent({
             recipient: email.trim(),
             channel: 'email',
             trainNumber: trainNumber.trim(),
             journeyDate: journeyDateStr,
             notificationType: 'chart_prepared_only',
+            chartAt: params.chartAt,
           });
         }
         if (!out.emailSent) {
@@ -683,7 +716,7 @@ export class NotificationService {
         }
       }
 
-      if (mobile?.trim()) {
+      if (mobile?.trim() && !out.whatsappSuppressed) {
         const text = buildChartPreparedNoDestinationWhatsAppText({
           trainNumber,
           trainName,
@@ -705,12 +738,13 @@ export class NotificationService {
           skipFailureReport: true,
         });
         if (out.whatsappSent && this.deduplicationService) {
-          void this.deduplicationService.recordNotificationSent({
+          await this.deduplicationService.recordNotificationSent({
             recipient: mobile.trim(),
             channel: 'whatsapp',
             trainNumber: trainNumber.trim(),
             journeyDate: journeyDateStr,
             notificationType: 'chart_prepared_only',
+            chartAt: params.chartAt,
           });
         }
         if (!out.whatsappSent) {
@@ -749,6 +783,61 @@ export class NotificationService {
       });
       return out;
     }
+  }
+
+  /** Terminal check failure is not evidence that seats are unavailable. */
+  async notifyCheckFailed(params: {
+    email?: string | null;
+    mobile?: string | null;
+    task: Pick<
+      ChartTimeAvailabilityTask,
+      | 'trainNumber'
+      | 'journeyDate'
+      | 'chartAt'
+      | 'fromStationCode'
+      | 'toStationCode'
+    >;
+  }): Promise<NotificationResult> {
+    const { task } = params;
+    const out: NotificationResult = { emailSent: false, whatsappSent: false };
+    const time = DateTime.fromJSDate(task.chartAt)
+      .setZone('Asia/Kolkata')
+      .toFormat('d LLL yyyy, h:mm a');
+    const url = `https://lastberth.com/search?${new URLSearchParams({ trainNo: task.trainNumber, from: task.fromStationCode, to: task.toStationCode, date: task.journeyDate.toISOString().slice(0, 10) })}`;
+    const text = `We couldn't complete your scheduled seat check for train ${task.trainNumber} (${task.fromStationCode} → ${task.toStationCode}) at ${time} IST. Seat availability is unconfirmed. Please check live availability: ${url}`;
+    for (const channel of ['email', 'whatsapp'] as const) {
+      const recipient = (
+        channel === 'email' ? params.email : params.mobile
+      )?.trim();
+      if (!recipient) continue;
+      const event = {
+        recipient,
+        channel,
+        trainNumber: task.trainNumber,
+        journeyDate: task.journeyDate,
+        chartAt: task.chartAt,
+        notificationType: 'check_failed' as const,
+      };
+      if (
+        (await this.unsubscribeService?.isUnsubscribed(recipient)) ||
+        (this.deduplicationService &&
+          !(await this.deduplicationService.shouldSendNotification(event)))
+      ) {
+        out[`${channel}Suppressed`] = true;
+        continue;
+      }
+      const sent =
+        channel === 'email'
+          ? await this.sendEmail(
+              recipient,
+              `Chart alert check unsuccessful - Train ${task.trainNumber}`,
+              `<p>${escapeHtml(text)}</p>`,
+            )
+          : await this.sendWhatsApp(recipient, text);
+      out[`${channel}Sent`] = sent;
+      if (sent) await this.deduplicationService?.recordNotificationSent(event);
+    }
+    return out;
   }
 
   /**
@@ -793,6 +882,7 @@ export class NotificationService {
     > & {
       id?: string;
       chartAt?: Date;
+      chartNumber?: number | null;
       trainStartDate?: Date | null;
       journeyRequestId?: string | null;
     };
@@ -801,11 +891,11 @@ export class NotificationService {
     isFollowUpLeg?: boolean;
     refundInfo?: RefundInfo | null;
     isPaid?: boolean;
-  }): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
+  }): Promise<NotificationResult> {
     const { email, mobile, task, result, isFollowUpLeg } = params;
     const refundInfo = params.refundInfo ?? null;
     const alternativeTrains = params.alternativeTrains?.slice(0, 5);
-    const out = { emailSent: false, whatsappSent: false };
+    const out: NotificationResult = { emailSent: false, whatsappSent: false };
 
     try {
       if (!email?.trim() && !mobile?.trim()) {
@@ -813,9 +903,11 @@ export class NotificationService {
       }
       if (this.unsubscribeService) {
         if (email && (await this.unsubscribeService.isUnsubscribed(email))) {
+          out.emailSuppressed = out.whatsappSuppressed = true;
           return out;
         }
         if (mobile && (await this.unsubscribeService.isUnsubscribed(mobile))) {
+          out.emailSuppressed = out.whatsappSuppressed = true;
           return out;
         }
       }
@@ -823,6 +915,7 @@ export class NotificationService {
         return out;
       }
       if (isFollowUpLeg) {
+        out.emailSuppressed = out.whatsappSuppressed = true;
         console.log(
           `[notification] Leg update notifications disabled; skipping for train ${task.trainNumber}`,
         );
@@ -870,7 +963,9 @@ export class NotificationService {
       ]);
 
       let chartPreparationText: string | undefined;
-      if (result.chartPreparationDetails) {
+      if (task.chartAt) {
+        chartPreparationText = `Chart scheduled for ${DateTime.fromJSDate(new Date(task.chartAt)).setZone('Asia/Kolkata').toFormat('d LLL yyyy, h:mm a')} IST.`;
+      } else if (result.chartPreparationDetails) {
         const chartingCode = result.chartPreparationDetails.chartingStationCode;
         const chartingName =
           stationNameMap.get(chartingCode.toUpperCase()) ?? chartingCode;
@@ -916,8 +1011,11 @@ export class NotificationService {
               journeyDate: task.journeyDate,
               notificationType,
               windowHours,
+              chartAt: task.chartAt,
             });
         }
+
+        if (!shouldSendWhatsApp) out.whatsappSuppressed = true;
 
         if (shouldSendWhatsApp) {
           let whatsappSearchUrl = `https://lastberth.com/search?from=${encodeURIComponent(task.fromStationCode)}&to=${encodeURIComponent(task.toStationCode)}&date=${encodeURIComponent(journeyDateStr)}&trainNo=${encodeURIComponent(task.trainNumber)}`;
@@ -942,11 +1040,19 @@ export class NotificationService {
             }
           }
 
-          let chartNumber: '1st' | '2nd' = '1st';
-          let chartTimeRaw: string | undefined =
-            result.chartPreparationDetails?.firstChartCreationTime;
+          let chartNumber: '1st' | '2nd' | null =
+            task.chartAt && task.chartNumber == null
+              ? null
+              : task.chartNumber === 2
+                ? '2nd'
+                : '1st';
+          let chartTimeRaw: string | undefined = task.chartAt
+            ? DateTime.fromJSDate(new Date(task.chartAt))
+                .setZone('Asia/Kolkata')
+                .toFormat('h:mm a')
+            : result.chartPreparationDetails?.firstChartCreationTime;
 
-          if (this.chartTimeService) {
+          if (!task.chartAt && this.chartTimeService) {
             try {
               const meta =
                 await this.chartTimeService.getChartMetaForTrainStation(
@@ -955,7 +1061,8 @@ export class NotificationService {
                 );
               if (meta?.chartTwo?.time) {
                 const chartTwoFormatted = formatChartTimeIst(
-                  journeyDateStr,
+                  task.trainStartDate?.toISOString().slice(0, 10) ??
+                    journeyDateStr,
                   meta.chartTwo.time,
                   meta.chartTwo.dayOffset ?? 0,
                 );
@@ -974,12 +1081,6 @@ export class NotificationService {
             } catch {
               // fallback
             }
-          }
-
-          if (!chartTimeRaw && task.chartAt) {
-            chartTimeRaw = DateTime.fromJSDate(new Date(task.chartAt))
-              .setZone('Asia/Kolkata')
-              .toFormat('h:mm a');
           }
 
           const whatsAppText =
@@ -1135,12 +1236,13 @@ export class NotificationService {
           );
 
           if (out.whatsappSent && this.deduplicationService) {
-            void this.deduplicationService.recordNotificationSent({
+            await this.deduplicationService.recordNotificationSent({
               recipient: mobile.trim(),
               channel: 'whatsapp',
               trainNumber: task.trainNumber,
               journeyDate: task.journeyDate,
               notificationType,
+              chartAt: task.chartAt,
             });
           }
 
@@ -1182,8 +1284,11 @@ export class NotificationService {
               journeyDate: task.journeyDate,
               notificationType,
               windowHours,
+              chartAt: task.chartAt,
             });
         }
+
+        if (!shouldSendEmail) out.emailSuppressed = true;
 
         if (shouldSendEmail) {
           const subject =
@@ -1366,6 +1471,7 @@ export class NotificationService {
             });
           } else {
             html = renderNoSeatsEmailHtml({
+              chartPreparationText,
               trainLabel,
               routeDisplay: emailRouteDisplay,
               journeyDateReadable,
@@ -1385,12 +1491,13 @@ export class NotificationService {
           });
 
           if (out.emailSent && this.deduplicationService) {
-            void this.deduplicationService.recordNotificationSent({
+            await this.deduplicationService.recordNotificationSent({
               recipient: email.trim(),
               channel: 'email',
               trainNumber: task.trainNumber,
               journeyDate: task.journeyDate,
               notificationType,
+              chartAt: task.chartAt,
             });
           }
 

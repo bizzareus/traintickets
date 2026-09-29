@@ -57,6 +57,9 @@ describe('JourneyTaskService', () => {
     notifyChartPrepared: jest
       .fn()
       .mockResolvedValue({ emailSent: true, whatsappSent: true }),
+    notifyCheckFailed: jest
+      .fn()
+      .mockResolvedValue({ emailSent: true, whatsappSent: true }),
     extractJourneyLegCoverage: jest.fn().mockReturnValue([]),
     sendAdminMonitoringRequestEmail: jest.fn().mockResolvedValue(true),
   };
@@ -164,8 +167,18 @@ describe('JourneyTaskService', () => {
       await Promise.resolve();
 
       expect(runTaskSpy).toHaveBeenCalledTimes(2);
-      expect(runTaskSpy).toHaveBeenCalledWith('task-1', true, 3);
-      expect(runTaskSpy).toHaveBeenCalledWith('task-2', true, 4);
+      expect(runTaskSpy).toHaveBeenCalledWith(
+        'task-1',
+        true,
+        3,
+        expect.any(AbortSignal),
+      );
+      expect(runTaskSpy).toHaveBeenCalledWith(
+        'task-2',
+        true,
+        4,
+        expect.any(AbortSignal),
+      );
 
       finishFirst();
       finishSecond();
@@ -208,7 +221,12 @@ describe('JourneyTaskService', () => {
       finishSlow();
       await firstRun;
 
-      expect(runTaskSpy).toHaveBeenCalledWith('task-next', true, 1);
+      expect(runTaskSpy).toHaveBeenCalledWith(
+        'task-next',
+        true,
+        1,
+        expect.any(AbortSignal),
+      );
     });
 
     it('fences a timed-out attempt before scheduling its retry', async () => {
@@ -217,12 +235,15 @@ describe('JourneyTaskService', () => {
       mockPrisma.$queryRaw.mockResolvedValue([
         { id: 'task-timeout', retry_count: 1, lease_version: 7 },
       ]);
-      jest.spyOn(service, 'runTask').mockReturnValue(new Promise(() => {}));
+      const worker = jest
+        .spyOn(service, 'runTask')
+        .mockReturnValue(new Promise(() => {}));
 
       const run = service.runDueTasks();
       await Promise.resolve();
       await jest.advanceTimersByTimeAsync(30_000);
       await run;
+      expect(worker.mock.calls[0][3]?.aborted).toBe(true);
 
       expect(
         mockPrisma.chartTimeAvailabilityTask.updateMany,
@@ -247,6 +268,37 @@ describe('JourneyTaskService', () => {
   });
 
   describe('runTask', () => {
+    it('ignores a late availability result after its worker has been cancelled', async () => {
+      const controller = new AbortController();
+      let finish!: (value: unknown) => void;
+      const pending = new Promise((resolve) => {
+        finish = resolve;
+      });
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValueOnce({
+        id: 'late',
+        journeyRequestId: 'late-journey',
+        trainNumber: '12665',
+        fromStationCode: 'RJY',
+        toStationCode: 'DG',
+        stationCode: 'RJY',
+        journeyDate: new Date('2026-09-29'),
+        chartAt: new Date('2026-09-29T00:05:00Z'),
+        status: 'running',
+        leaseVersion: 1,
+        retryCount: 1,
+      });
+      mockBookingV2.findAlternatePaths.mockReturnValueOnce(pending);
+      const run = service.runTask('late', true, 1, controller.signal);
+      await new Promise<void>((resolve) => setImmediate(resolve));
+      controller.abort(new Error('deadline'));
+      finish({ legs: [], debugLog: [] });
+      await run;
+      expect(mockNotification.notifyUser).not.toHaveBeenCalled();
+      expect(
+        mockPrisma.chartTimeAvailabilityTask.updateMany,
+      ).not.toHaveBeenCalled();
+    });
+
     const mockTaskData = {
       id: 'task-1',
       journeyRequestId: 'jid-1',
@@ -402,7 +454,7 @@ describe('JourneyTaskService', () => {
       expect(mockNotification.notifyUser).toHaveBeenCalled();
     });
 
-    it('skips sending leg update notification when existingNotification is found (isFollowUpLeg is true)', async () => {
+    it('lets event-scoped deduplication decide instead of suppressing every later chart for the train', async () => {
       mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
         ...mockTaskData,
         fromStationCode: 'NZM',
@@ -433,10 +485,15 @@ describe('JourneyTaskService', () => {
 
       await service.runTask('task-1', true);
 
-      expect(mockNotification.notifyUser).not.toHaveBeenCalled();
+      expect(mockNotification.notifyUser).toHaveBeenCalledTimes(1);
+      expect(mockPrisma.sentNotificationLog.findFirst).not.toHaveBeenCalled();
     });
 
-    it('attaches alternative trains directly to notifyUser when no tickets found and dispatches single notification', async () => {
+    it('sends the primary chart result without waiting for the background alternative search', async () => {
+      const background = {
+        enqueueTask: jest.fn().mockResolvedValue(undefined),
+      };
+      Reflect.set(service, 'alternativeSearchTaskService', background);
       mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
         id: 'task-alt',
         journeyRequestId: 'req-alt',
@@ -490,11 +547,12 @@ describe('JourneyTaskService', () => {
 
       await service.runTask('task-alt', true);
 
-      expect(mockBookingV2.findBestTrains).toHaveBeenCalledWith(
+      expect(mockBookingV2.findBestTrains).not.toHaveBeenCalled();
+      expect(background.enqueueTask).toHaveBeenCalledWith(
         expect.objectContaining({
-          from: 'GNT',
-          to: 'TPTY',
-          acOnly: false,
+          fromStationCode: 'GNT',
+          toStationCode: 'TPTY',
+          classCode: 'SL',
         }),
       );
 
@@ -503,7 +561,6 @@ describe('JourneyTaskService', () => {
         expect.objectContaining({
           email: 'connectkumar17@gmail.com',
           mobile: '919885515973',
-          alternativeTrains: [mockAltCandidate],
         }),
       );
     });
@@ -666,6 +723,11 @@ describe('JourneyTaskService', () => {
   });
 
   describe('autoSubscribeForMissingLegs', () => {
+    beforeEach(() => {
+      mockChartTime.getChartMetaForTrainStation.mockResolvedValue({
+        chartOne: { time: '06:00', dayOffset: 0 },
+      });
+    });
     const mockTask = {
       trainNumber: '11010',
       trainName: 'Sinhagad Exp',
@@ -701,7 +763,7 @@ describe('JourneyTaskService', () => {
 
       jest
         .spyOn(service['chartTime'], 'getChartMetaForTrainStation')
-        .mockResolvedValue(null as any);
+        .mockResolvedValue({ chartOne: { time: '06:00', dayOffset: 0 } });
 
       mockPrisma.chartTimeAvailabilityTask.findFirst = jest
         .fn()
@@ -1137,7 +1199,7 @@ describe('JourneyTaskService', () => {
   });
 
   describe('createJourneyTasks', () => {
-    it('should parallelize pre-reads and batch inserts into a single array transaction with createMany', async () => {
+    it('batches the frontend chart events in one transaction without consulting the cache', async () => {
       const chartMap = new Map();
       chartMap.set('PUNE', {
         chartOne: { time: '06:00', dayOffset: 0 },
@@ -1155,6 +1217,10 @@ describe('JourneyTaskService', () => {
           journeyDate: '2026-09-01',
           classCode: 'CC',
           email: 'test@example.com',
+          chartTimeLocal: '06:00',
+          chartOneDayOffset: 0,
+          chartTwoTimeLocal: '07:00',
+          chartTwoDayOffset: 0,
         },
         {
           journeyRequestId: 'jid-batch-123',
@@ -1172,7 +1238,7 @@ describe('JourneyTaskService', () => {
 
       expect(
         mockChartTime.getChartTimesWithSecondChartForTrain,
-      ).toHaveBeenCalledWith('12128', ['PUNE'], expect.any(Date));
+      ).not.toHaveBeenCalled();
       expect(mockPrisma.$transaction).toHaveBeenCalledWith(
         expect.arrayContaining([
           expect.anything(),
@@ -1199,6 +1265,168 @@ describe('JourneyTaskService', () => {
   });
 
   describe('resendFailedWhatsAppNotifications', () => {
+    const retryTask = {
+      id: 'retry-event',
+      journeyRequestId: 'retry-journey',
+      trainNumber: '12665',
+      fromStationCode: 'RJY',
+      toStationCode: 'DG',
+      journeyDate: new Date('2026-09-29'),
+      trainStartDate: new Date('2026-09-28'),
+      chartAt: new Date('2026-09-29T00:05:00Z'),
+      chartNumber: 2,
+      status: 'completed',
+      resultPayload: { status: 'success' },
+      emailRetryCount: 0,
+      whatsappRetryCount: 0,
+      emailNotifiedAt: null,
+      whatsappNotifiedAt: null,
+      emailStatus: null,
+      whatsappStatus: null,
+      contact: { email: 'test@example.com', mobile: '919999999999' },
+    };
+
+    it('reports a partial resend failure instead of marking the tick successful', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+        retryTask,
+      ]);
+      mockNotification.notifyUser.mockResolvedValueOnce({
+        emailSent: true,
+        whatsappSent: false,
+      });
+      await expect(
+        service.resendFailedWhatsAppNotifications(),
+      ).resolves.toEqual({ found: 1, resent: 0, failed: 1 });
+      expect(mockPrisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            emailStatus: 'sent',
+            whatsappStatus: 'pending_retry',
+          }),
+        }),
+      );
+    });
+
+    it('manual resend also preserves the immutable chart event', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValueOnce(
+        retryTask,
+      );
+      await service.resendTaskNotification(retryTask.id);
+      expect(mockNotification.notifyUser).toHaveBeenCalledWith(
+        expect.objectContaining({
+          task: expect.objectContaining({
+            chartAt: retryTask.chartAt,
+            chartNumber: 2,
+            trainStartDate: retryTask.trainStartDate,
+          }),
+        }),
+      );
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValueOnce(
+        retryTask,
+      );
+      mockNotification.notifyUser.mockResolvedValueOnce({
+        emailSent: false,
+        whatsappSent: false,
+        emailSuppressed: true,
+        whatsappSuppressed: true,
+      });
+      await expect(
+        service.resendTaskNotification(retryTask.id),
+      ).resolves.toMatchObject({
+        sent: false,
+        reason: expect.stringContaining('suppressed'),
+      });
+    });
+
+    it('selects recent outcomes independently of subscription age and includes legacy NULL channel statuses', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([]);
+      await service.resendFailedWhatsAppNotifications(24);
+      const where =
+        mockPrisma.chartTimeAvailabilityTask.findMany.mock.calls[0][0].where;
+      expect(where.createdAt).toBeUndefined();
+      expect(where.completedAt).toEqual({
+        gte: expect.any(Date),
+        lte: expect.any(Date),
+      });
+      expect(where.OR[0].OR).toContainEqual({ whatsappStatus: null });
+      expect(where.OR[1].emailRetryCount).toEqual({ lt: 3 });
+    });
+
+    it('preserves the saved time, train-start date, and chart number on resend', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+        retryTask,
+      ]);
+      await service.resendFailedWhatsAppNotifications();
+      expect(mockNotification.notifyUser).toHaveBeenCalledWith(
+        expect.objectContaining({
+          task: expect.objectContaining({
+            chartAt: retryTask.chartAt,
+            chartNumber: 2,
+            trainStartDate: retryTask.trainStartDate,
+          }),
+        }),
+      );
+    });
+
+    it('does not burn retries or create send timestamps for deduplicated notifications', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+        retryTask,
+      ]);
+      mockNotification.notifyUser.mockResolvedValueOnce({
+        emailSent: false,
+        whatsappSent: false,
+        emailSuppressed: true,
+        whatsappSuppressed: true,
+      });
+      await expect(
+        service.resendFailedWhatsAppNotifications(),
+      ).resolves.toEqual({ found: 1, resent: 0, failed: 0 });
+      const data =
+        mockPrisma.chartTimeAvailabilityTask.update.mock.calls[0][0].data;
+      expect(data).toMatchObject({
+        emailStatus: 'suppressed',
+        whatsappStatus: 'suppressed',
+      });
+      expect(data.emailNotifiedAt).toBeUndefined();
+      expect(data.whatsappRetryCount).toBeUndefined();
+    });
+
+    it('skips an attempt already claimed by another worker', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+        retryTask,
+      ]);
+      mockPrisma.chartTimeAvailabilityTask.updateMany.mockResolvedValueOnce({
+        count: 0,
+      });
+      await expect(
+        service.resendFailedWhatsAppNotifications(),
+      ).resolves.toEqual({ found: 1, resent: 0, failed: 0 });
+      expect(mockNotification.notifyUser).not.toHaveBeenCalled();
+    });
+
+    it('retries chart-prepared-only alerts through the correct notification method', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+        { ...retryTask, toStationCode: '', resultPayload: null },
+      ]);
+      await service.resendFailedWhatsAppNotifications();
+      expect(mockNotification.notifyChartPrepared).toHaveBeenCalledWith(
+        expect.objectContaining({
+          chartAt: retryTask.chartAt,
+          chartPreparationText: '29th Sep, 05:35 AM',
+        }),
+      );
+      expect(mockNotification.notifyUser).not.toHaveBeenCalled();
+    });
+
+    it('sends an explicit failure notice for an exhausted check even without a result payload', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
+        { ...retryTask, status: 'failed', resultPayload: null },
+      ]);
+      await service.resendFailedWhatsAppNotifications();
+      expect(mockNotification.notifyCheckFailed).toHaveBeenCalledTimes(1);
+      expect(mockNotification.notifyUser).not.toHaveBeenCalled();
+    });
+
     it('does not let one resend block the rest of the worker pool', async () => {
       let finishFirst!: (value: {
         emailSent: boolean;

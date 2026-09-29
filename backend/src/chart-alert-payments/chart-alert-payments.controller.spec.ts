@@ -30,6 +30,11 @@ describe('ChartAlertPaymentsController', () => {
     journeyDate: '2026-10-01',
     classCode: '3A',
     email: 'a@example.com',
+    trainStartDate: '2026-10-01',
+    chartTimeLocal: '19:08',
+    chartOneDayOffset: 0,
+    chartTwoTimeLocal: '05:35',
+    chartTwoDayOffset: 1,
   };
 
   it('creates a payment link for valid input', async () => {
@@ -45,6 +50,19 @@ describe('ChartAlertPaymentsController', () => {
       orderId: 'order-1',
       qrImageUrl: 'https://rzp.test/qr-1.png',
     });
+    expect(payments.createPaymentLink).toHaveBeenCalledWith(
+      expect.objectContaining(validBody),
+    );
+  });
+
+  it('rejects malformed or absent chart snapshots before calling payments', async () => {
+    await expect(
+      controller.create({ ...validBody, chartTimeLocal: undefined }),
+    ).rejects.toThrow(BadRequestException);
+    await expect(
+      controller.create({ ...validBody, chartTwoDayOffset: 0 }),
+    ).rejects.toThrow(BadRequestException);
+    expect(payments.createPaymentLink).not.toHaveBeenCalled();
   });
 
   it('throws 400 for missing contact, bad date, and missing fields', async () => {

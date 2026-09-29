@@ -1,4 +1,5 @@
 "use client";
+import { createFreeChartAlert } from "@/lib/chart-alert-payments";
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { apiClient } from "@/lib/api";
@@ -174,7 +175,7 @@ export function LiveScraperCockpit({
       }
 
       // Submit
-      await apiClient.post("/api/availability/journey", {
+      await createFreeChartAlert({
         trainNumber: trainNumber.trim(),
         trainName: trainName || undefined,
         fromStationCode: fromStationCode.trim().toUpperCase(),

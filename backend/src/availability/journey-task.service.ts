@@ -11,7 +11,6 @@ import { PrismaService } from '../prisma/prisma.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
 import {
   IrctcService,
-  to5DigitTrainNo,
   type TrainScheduleResponse,
 } from '../irctc/irctc.service';
 import { TrainCompositionService } from '../train-composition/train-composition.service';
@@ -45,9 +44,17 @@ import {
   ordinalEnglish,
   type RefundInfo,
 } from '../notification/notification.helpers';
-import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
 import { ChartAlertRefundsService } from '../chart-alert-payments/chart-alert-refunds.service';
 import type { AdminMonitoringPaymentDetails } from '../notification/templates';
+import {
+  buildChartTaskSchedule,
+  requirePinnedChartTime,
+  type PinnedChartTime,
+} from './chart-task-schedule';
+import {
+  MAX_NOTIFICATION_ATTEMPTS,
+  notificationTaskUpdate,
+} from '../notification/notification-task-state';
 
 const MAX_CHART_TASK_ATTEMPTS = 3;
 const DEFAULT_CHART_TASK_CONCURRENCY = 2;
@@ -95,25 +102,6 @@ export type JourneyValidationResult =
   | { valid: true; context: JourneyValidContext }
   | { valid: false; errors: JourneyValidationError[] };
 
-/**
- * Builds chartAt for journeyDate + dayOffset days + HH:MM (for chart two).
- * Aligns with Asia/Kolkata (IST).
- */
-function buildChartAtWithDayOffset(
-  journeyDate: Date,
-  chartTimeLocal: string,
-  dayOffset: number,
-): Date {
-  const jStr = DateTime.fromJSDate(journeyDate)
-    .setZone('Asia/Kolkata')
-    .plus({ days: dayOffset })
-    .toFormat('yyyy-MM-dd');
-  const [h, min] = chartTimeLocal.split(':').map(Number);
-  return DateTime.fromFormat(`${jStr} ${h}:${min}`, 'yyyy-MM-dd H:m', {
-    zone: 'Asia/Kolkata',
-  }).toJSDate();
-}
-
 function stationDayCount(station: unknown): number {
   if (station == null || typeof station !== 'object') return 1;
   const dayCount = (station as { dayCount?: unknown }).dayCount;
@@ -125,54 +113,6 @@ function stationDayCount(station: unknown): number {
     return Number.isFinite(parsed) && parsed >= 1 ? parsed : 1;
   }
   return 1;
-}
-
-/**
- * Chart time pinned by the caller (e.g. the chart-times page row the user
- * subscribed from). Anchored at the train-start date, like cached offsets.
- */
-export type PinnedChartTime = {
-  chartTimeLocal?: string;
-  chartOneDayOffset?: number | null;
-  chartTwoTimeLocal?: string;
-  chartTwoDayOffset?: number | null;
-};
-
-const CHART_CLOCK_RE = /^(\d{1,2}):(\d{2})$/;
-
-/** Validated pinned time, or null when absent/invalid (callers fall back). */
-export function readPinnedChartTime(params: PinnedChartTime): {
-  chartTimeLocal: string;
-  chartOneDayOffset: number;
-  chartTwoTimeLocal?: string;
-  chartTwoDayOffset: number;
-} | null {
-  const m = String(params.chartTimeLocal ?? '')
-    .trim()
-    .match(CHART_CLOCK_RE);
-  if (!m) return null;
-  const h = Number(m[1]);
-  const min = Number(m[2]);
-  if (h < 0 || h > 23 || min < 0 || min > 59) return null;
-  const toOffset = (v: unknown): number => {
-    const n = Number(v);
-    return v !== undefined && v !== null && v !== '' && Number.isInteger(n)
-      ? n
-      : 0;
-  };
-  const two = String(params.chartTwoTimeLocal ?? '')
-    .trim()
-    .match(CHART_CLOCK_RE);
-  return {
-    chartTimeLocal: `${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`,
-    chartOneDayOffset: toOffset(params.chartOneDayOffset),
-    ...(two
-      ? {
-          chartTwoTimeLocal: `${two[1].padStart(2, '0')}:${two[2]}`,
-        }
-      : {}),
-    chartTwoDayOffset: toOffset(params.chartTwoDayOffset),
-  };
 }
 
 function isRetryableRailFailureText(text: string): boolean {
@@ -326,6 +266,8 @@ export type RunDueTaskResult = {
   status: string;
   retryCount: number;
   lastError: string | null;
+  emailStatus?: string | null;
+  whatsappStatus?: string | null;
 };
 
 /** What one `runDueTasks()` invocation processed — the run's input + output. */
@@ -582,13 +524,14 @@ export class JourneyTaskService {
       status: string;
     }>;
   }> {
+    requirePinnedChartTime(params);
     const validation: JourneyValidationResult = opts?.validatedContext
       ? { valid: true, context: opts.validatedContext }
       : await this.validateJourneyForMonitoring(params);
     this.throwIfInvalidJourney(validation);
     const { schedule, fromCode, toCode, trainNumber } = validation.context;
 
-    const journeyDate = new Date(params.journeyDate.trim());
+    const journeyDate = new Date(validation.context.jYmd);
     const classCode = (params.classCode || '3A').trim().toUpperCase();
     const email = params.email?.trim().toLowerCase() || undefined;
     // Normalize to E.164 (add 91 prefix for 10-digit Indian numbers) so the
@@ -597,14 +540,9 @@ export class JourneyTaskService {
     const mobile = rawMobile ? toE164(rawMobile) : undefined;
     const trainStartDate = new Date(validation.context.trainStartDate);
 
-    const [chartTimesWithSecond, existingContact] = await Promise.all([
-      this.chartTime.getChartTimesWithSecondChartForTrain(
-        trainNumber,
-        [fromCode],
-        trainStartDate,
-      ),
+    const existingContact =
       email || mobile
-        ? this.prisma.monitoringContact.findFirst({
+        ? await this.prisma.monitoringContact.findFirst({
             where: {
               OR: [
                 ...(email ? [{ email }] : []),
@@ -612,8 +550,7 @@ export class JourneyTaskService {
               ].filter((o) => Object.keys(o).length > 0),
             },
           })
-        : Promise.resolve(null),
-    ]);
+        : null;
 
     let monitoringContactId: string | undefined;
     if (existingContact) {
@@ -660,90 +597,8 @@ export class JourneyTaskService {
       }
     }
 
-    const taskSpecs: Array<{ stationCode: string; chartAt: Date }> = [];
     const trainName = params.trainName ?? schedule.trainName;
-
-    // Caller-pinned time (chart-times page row) wins over cache/estimate, and
-    // hydration is skipped so a later probe cannot overwrite the pinned time.
-    const pinned = readPinnedChartTime(params);
-    const entry = chartTimesWithSecond.get(fromCode);
-    const needsAsyncHydration = !entry && !pinned;
-
-    if (pinned) {
-      taskSpecs.push({
-        stationCode: fromCode,
-        chartAt: buildChartAtWithDayOffset(
-          trainStartDate,
-          pinned.chartTimeLocal,
-          pinned.chartOneDayOffset,
-        ),
-      });
-      if (pinned.chartTwoTimeLocal) {
-        taskSpecs.push({
-          stationCode: fromCode,
-          chartAt: buildChartAtWithDayOffset(
-            trainStartDate,
-            pinned.chartTwoTimeLocal,
-            pinned.chartTwoDayOffset,
-          ),
-        });
-      }
-      await this.upsertPinnedChartTime(trainNumber, fromCode, pinned);
-    } else if (entry) {
-      const stationCode = fromCode;
-
-      taskSpecs.push({
-        stationCode,
-        chartAt: buildChartAtWithDayOffset(
-          trainStartDate,
-          entry.chartOne.time,
-          entry.chartOne.dayOffset ?? 0,
-        ),
-      });
-
-      if (entry.chartTwo) {
-        taskSpecs.push({
-          stationCode,
-          chartAt: buildChartAtWithDayOffset(
-            trainStartDate,
-            entry.chartTwo.time,
-            entry.chartTwo.dayOffset ?? 0,
-          ),
-        });
-      }
-    } else {
-      // DB does not have chart time for fromCode yet.
-      // Compute estimated chartAt from departure/arrival time or default (4 hours before departure).
-      const boardingStn = schedule.stationList.find(
-        (s) =>
-          String(s.stationCode ?? '')
-            .trim()
-            .toUpperCase() === fromCode,
-      );
-      const dayCount = stationDayCount(boardingStn);
-      const rawTime =
-        boardingStn?.departureTime || boardingStn?.arrivalTime || '08:00';
-      const timeMatch = String(rawTime)
-        .trim()
-        .match(/^(\d{1,2}):(\d{2})/);
-      const timeStr = timeMatch
-        ? `${timeMatch[1].padStart(2, '0')}:${timeMatch[2]}`
-        : '08:00';
-
-      const deptDateTime = buildChartAtWithDayOffset(
-        trainStartDate,
-        timeStr,
-        dayCount - 1,
-      );
-      const estimatedChartAt = new Date(
-        deptDateTime.getTime() - 4 * 3600 * 1000,
-      );
-
-      taskSpecs.push({
-        stationCode: fromCode,
-        chartAt: estimatedChartAt,
-      });
-    }
+    const taskSpecs = buildChartTaskSchedule(trainStartDate, params);
 
     const jid = opts?.journeyRequestId || randomUUID();
 
@@ -754,10 +609,11 @@ export class JourneyTaskService {
       trainName,
       fromStationCode: fromCode,
       toStationCode: toCode,
-      stationCode: spec.stationCode,
+      stationCode: fromCode,
       journeyDate,
       trainStartDate: new Date(validation.context.trainStartDate),
       chartAt: spec.chartAt,
+      chartNumber: spec.chartNumber,
       status: 'pending',
       retryCount: 0,
       nextRunAt: null,
@@ -795,17 +651,6 @@ export class JourneyTaskService {
       chartAt: t.chartAt.toISOString(),
       status: t.status,
     }));
-
-    if (needsAsyncHydration) {
-      setImmediate(() => {
-        void this.asyncHydrateChartTimeAndUpdateTasks(
-          trainNumber,
-          fromCode,
-          trainStartDate,
-          jid,
-        );
-      });
-    }
 
     return { journeyRequestId: jid, tasks };
   }
@@ -854,53 +699,6 @@ export class JourneyTaskService {
     });
 
     return Boolean(existing);
-  }
-
-  /**
-   * Writes a caller-pinned chart time back to the chart-time cache so the DB
-   * reflects the page the user subscribed from. Best-effort: never fails alert
-   * creation. Only time fields are touched; remote-station data is preserved.
-   */
-  private async upsertPinnedChartTime(
-    trainNumber: string,
-    stationCode: string,
-    pinned: NonNullable<ReturnType<typeof readPinnedChartTime>>,
-  ): Promise<void> {
-    try {
-      const num = to5DigitTrainNo(trainNumber);
-      const code = stationCode.trim().toUpperCase();
-      if (!num || !code) return;
-      await this.prisma.trainStationChartTime.upsert({
-        where: {
-          trainNumber_stationCode: { trainNumber: num, stationCode: code },
-        },
-        create: {
-          trainNumber: num,
-          stationCode: code,
-          chartTimeLocal: pinned.chartTimeLocal,
-          chartOneDayOffset: pinned.chartOneDayOffset,
-          chartTwoTimeLocal: pinned.chartTwoTimeLocal ?? null,
-          chartTwoDayOffset: pinned.chartTwoTimeLocal
-            ? pinned.chartTwoDayOffset
-            : null,
-        },
-        update: {
-          chartTimeLocal: pinned.chartTimeLocal,
-          chartOneDayOffset: pinned.chartOneDayOffset,
-          chartTwoTimeLocal: pinned.chartTwoTimeLocal ?? null,
-          chartTwoDayOffset: pinned.chartTwoTimeLocal
-            ? pinned.chartTwoDayOffset
-            : null,
-        },
-      });
-      this.logger.log(
-        `[journey/pinned-chart] cache updated for train=${num} station=${code} chart=${pinned.chartTimeLocal} off=${pinned.chartOneDayOffset}`,
-      );
-    } catch (err) {
-      this.logger.warn(
-        `[journey/pinned-chart] cache update failed: ${err instanceof Error ? err.message : String(err)}`,
-      );
-    }
   }
 
   /**
@@ -1059,6 +857,7 @@ export class JourneyTaskService {
     } & PinnedChartTime,
     journeyRequestId?: string,
   ): Promise<boolean> {
+    requirePinnedChartTime(params);
     if (params.toStationCode) {
       this.logger.warn(
         `[journey/queue-chart-prepared] called with non-empty toStationCode=${params.toStationCode}; falling through to queueJourneyMonitoring`,
@@ -1182,81 +981,7 @@ export class JourneyTaskService {
       }
     }
 
-    // Resolve chartAt for the boarding station (uses cached chart times
-    // when available; falls back to the 4h-before-departure estimate when not).
-    // A caller-pinned time (chart-times page row) wins over both, is written
-    // back to the cache, and skips async hydration so a later probe cannot
-    // overwrite the pinned time.
-    const pinned = readPinnedChartTime(params);
-    const chartTimesWithSecond = pinned
-      ? new Map()
-      : await this.chartTime.getChartTimesWithSecondChartForTrain(
-          trainNumber,
-          [fromCode],
-          trainStartDateObj,
-        );
-    const entry = chartTimesWithSecond.get(fromCode);
-    const needsAsyncHydration = !entry && !pinned;
-
-    const taskSpecs: Array<{ stationCode: string; chartAt: Date }> = [];
-    if (pinned) {
-      taskSpecs.push({
-        stationCode: fromCode,
-        chartAt: buildChartAtWithDayOffset(
-          trainStartDateObj,
-          pinned.chartTimeLocal,
-          pinned.chartOneDayOffset,
-        ),
-      });
-      if (pinned.chartTwoTimeLocal) {
-        taskSpecs.push({
-          stationCode: fromCode,
-          chartAt: buildChartAtWithDayOffset(
-            trainStartDateObj,
-            pinned.chartTwoTimeLocal,
-            pinned.chartTwoDayOffset,
-          ),
-        });
-      }
-      await this.upsertPinnedChartTime(trainNumber, fromCode, pinned);
-    } else if (entry) {
-      taskSpecs.push({
-        stationCode: fromCode,
-        chartAt: buildChartAtWithDayOffset(
-          trainStartDateObj,
-          entry.chartOne.time,
-          entry.chartOne.dayOffset ?? 0,
-        ),
-      });
-      if (entry.chartTwo) {
-        taskSpecs.push({
-          stationCode: fromCode,
-          chartAt: buildChartAtWithDayOffset(
-            trainStartDateObj,
-            entry.chartTwo.time,
-            entry.chartTwo.dayOffset ?? 0,
-          ),
-        });
-      }
-    } else {
-      const rawTime =
-        boardingStn?.departureTime || boardingStn?.arrivalTime || '08:00';
-      const timeMatch = String(rawTime)
-        .trim()
-        .match(/^(\d{1,2}):(\d{2})/);
-      const timeStr = timeMatch
-        ? `${timeMatch[1].padStart(2, '0')}:${timeMatch[2]}`
-        : '08:00';
-      const deptDateTime = buildChartAtWithDayOffset(
-        trainStartDateObj,
-        timeStr,
-        dayCount - 1,
-      );
-      taskSpecs.push({
-        stationCode: fromCode,
-        chartAt: new Date(deptDateTime.getTime() - 4 * 3600 * 1000),
-      });
-    }
+    const taskSpecs = buildChartTaskSchedule(trainStartDateObj, params);
 
     const jid = journeyRequestId || randomUUID();
     const trainName = params.trainName ?? schedule.trainName;
@@ -1272,10 +997,11 @@ export class JourneyTaskService {
       trainName,
       fromStationCode: fromCode,
       toStationCode: '', // sentinel for the no-destination flow
-      stationCode: spec.stationCode,
+      stationCode: fromCode,
       journeyDate: journeyDateObj,
       trainStartDate: trainStartDateObj,
       chartAt: spec.chartAt,
+      chartNumber: spec.chartNumber,
       status: 'pending',
       retryCount: 0,
       nextRunAt: null,
@@ -1308,17 +1034,6 @@ export class JourneyTaskService {
       }),
     ]);
 
-    if (needsAsyncHydration) {
-      setImmediate(() => {
-        void this.asyncHydrateChartTimeAndUpdateTasks(
-          trainNumber,
-          fromCode,
-          trainStartDateObj,
-          jid,
-        );
-      });
-    }
-
     void this.notificationService
       .sendAdminMonitoringRequestEmail({
         journeyRequestId: jid,
@@ -1341,106 +1056,6 @@ export class JourneyTaskService {
         ),
       );
     return true;
-  }
-
-  private async asyncHydrateChartTimeAndUpdateTasks(
-    trainNumber: string,
-    stationCode: string,
-    trainStartDate: Date,
-    journeyRequestId: string,
-  ): Promise<void> {
-    const num = to5DigitTrainNo(trainNumber);
-    const code = stationCode.trim().toUpperCase();
-    const hydrationDateStr = trainStartDate.toISOString().slice(0, 10);
-
-    try {
-      this.logger.log(
-        `[journey/async-hydration] starting for train=${num} station=${code} jid=${journeyRequestId}`,
-      );
-      await this.irctc.getTrainComposition(
-        {
-          trainNo: num,
-          jDate: hydrationDateStr,
-          boardingStation: code,
-        },
-        { allowChartNotPrepared: true },
-      );
-
-      const chartMetaMap =
-        await this.chartTime.getChartTimesWithSecondChartForTrain(
-          num,
-          [code],
-          trainStartDate,
-        );
-      const entry = chartMetaMap.get(code);
-      if (!entry?.chartOne) {
-        this.logger.warn(
-          `[journey/async-hydration] no chart times found for train=${num} station=${code} after composition fetch`,
-        );
-        return;
-      }
-
-      const exactChartOneAt = buildChartAtWithDayOffset(
-        trainStartDate,
-        entry.chartOne.time,
-        entry.chartOne.dayOffset ?? 0,
-      );
-
-      const pendingTasks = await this.prisma.chartTimeAvailabilityTask.findMany(
-        {
-          where: {
-            journeyRequestId,
-            stationCode: code,
-            status: 'pending',
-          },
-          orderBy: { createdAt: 'asc' },
-        },
-      );
-
-      if (pendingTasks.length > 0) {
-        await this.prisma.chartTimeAvailabilityTask.update({
-          where: { id: pendingTasks[0].id },
-          data: { chartAt: exactChartOneAt },
-        });
-
-        if (entry.chartTwo) {
-          const exactChartTwoAt = buildChartAtWithDayOffset(
-            trainStartDate,
-            entry.chartTwo.time,
-            entry.chartTwo.dayOffset ?? 0,
-          );
-          if (pendingTasks.length > 1) {
-            await this.prisma.chartTimeAvailabilityTask.update({
-              where: { id: pendingTasks[1].id },
-              data: { chartAt: exactChartTwoAt },
-            });
-          } else {
-            const firstTask = pendingTasks[0];
-            await this.prisma.chartTimeAvailabilityTask.create({
-              data: {
-                journeyRequestId: firstTask.journeyRequestId,
-                trainNumber: firstTask.trainNumber,
-                trainName: firstTask.trainName,
-                fromStationCode: firstTask.fromStationCode,
-                toStationCode: firstTask.toStationCode,
-                stationCode: firstTask.stationCode,
-                journeyDate: firstTask.journeyDate,
-                trainStartDate: firstTask.trainStartDate,
-                chartAt: exactChartTwoAt,
-                status: 'pending',
-              },
-            });
-          }
-        }
-        this.logger.log(
-          `[journey/async-hydration] updated tasks for jid=${journeyRequestId} with exact chartAt=${exactChartOneAt.toISOString()}`,
-        );
-      }
-    } catch (err: unknown) {
-      this.logger.warn(
-        `[journey/async-hydration] failed for train=${num} station=${code} jid=${journeyRequestId}: ${err instanceof Error ? err.message : String(err)}`,
-      );
-    }
   }
 
   /**
@@ -1500,23 +1115,27 @@ export class JourneyTaskService {
 
   private async runClaimedTask(claim: ChartTaskClaim): Promise<void> {
     const deadlineSeconds = this.chartTaskDeadlineSeconds();
+    const controller = new AbortController();
     let timer: ReturnType<typeof setTimeout> | undefined;
-    const work = this.runTask(claim.id, true, claim.lease_version).catch(
-      async (error: unknown) => {
-        const message = error instanceof Error ? error.message : String(error);
-        try {
-          await this.expireTaskAttempt(
-            claim,
-            `Chart task worker failed: ${message}`,
-          );
-        } catch (expiryError) {
-          this.logger.error(
-            `Failed to release chart task ${claim.id} after worker error`,
-            expiryError,
-          );
-        }
-      },
-    );
+    const work = this.runTask(
+      claim.id,
+      true,
+      claim.lease_version,
+      controller.signal,
+    ).catch(async (error: unknown) => {
+      const message = error instanceof Error ? error.message : String(error);
+      try {
+        await this.expireTaskAttempt(
+          claim,
+          `Chart task worker failed: ${message}`,
+        );
+      } catch (expiryError) {
+        this.logger.error(
+          `Failed to release chart task ${claim.id} after worker error`,
+          expiryError,
+        );
+      }
+    });
     if (claim.to_station_code === '') {
       await work;
       return;
@@ -1530,8 +1149,10 @@ export class JourneyTaskService {
               claim,
               `Chart task attempt timed out after ${deadlineSeconds} seconds`,
             );
+            controller.abort(new Error('Chart task deadline exceeded'));
             if (!expired) await work;
           } catch (expiryError) {
+            controller.abort(new Error('Chart task deadline exceeded'));
             this.logger.error(
               `Failed to expire timed-out chart task ${claim.id}`,
               expiryError,
@@ -1576,12 +1197,6 @@ export class JourneyTaskService {
     });
     if (!claimed) return;
 
-    const journeyDateStr = task.journeyDate.toISOString().slice(0, 10);
-    const chartDateObj =
-      task.chartAt instanceof Date ? task.chartAt : new Date(task.chartAt);
-    const chartDt = DateTime.fromJSDate(chartDateObj).setZone('Asia/Kolkata');
-    const chartPreparationText = `${ordinalEnglish(chartDt.day)} ${chartDt.toFormat('MMM, hh:mm a')}`;
-
     try {
       const contact = await this.prisma.journeyMonitorContact.findUnique({
         where: { journeyRequestId: task.journeyRequestId },
@@ -1597,29 +1212,10 @@ export class JourneyTaskService {
         return;
       }
 
-      const status = await this.notificationService.notifyChartPrepared({
-        email: contact.email,
-        mobile: contact.mobile,
-        trainNumber: task.trainNumber,
-        trainName: task.trainName,
-        journeyDate: task.journeyDate,
-        chartPreparationText,
-        journeyRequestId: task.journeyRequestId,
-      });
-      const data: {
-        emailNotifiedAt?: Date;
-        whatsappNotifiedAt?: Date;
-        whatsappStatus?: string;
-        whatsappRetryCount?: { increment: number };
-      } = {};
-      if (status.emailSent) data.emailNotifiedAt = new Date();
-      if (status.whatsappSent) {
-        data.whatsappNotifiedAt = new Date();
-        data.whatsappStatus = 'sent';
-      } else if (contact.mobile?.trim()) {
-        data.whatsappRetryCount = { increment: 1 };
-        data.whatsappStatus = 'pending_retry';
-      }
+      const status = await this.dispatchTaskNotification(
+        { ...task, status: 'running' },
+        contact,
+      );
       await this.updateTaskForAttempt(taskId, leaseVersion, {
         status: 'completed',
         completedAt: new Date(),
@@ -1627,9 +1223,8 @@ export class JourneyTaskService {
         nextRunAt: null,
         lastError: null,
         firstRunAt,
-        ...data,
+        ...notificationTaskUpdate(task, contact, status),
       });
-      void journeyDateStr; // referenced for clarity
     } catch (e) {
       this.logger.error(
         `runChartPreparedTask failed for task=${taskId}`,
@@ -1650,6 +1245,7 @@ export class JourneyTaskService {
     taskId: string,
     force = false,
     leaseVersion?: number,
+    signal?: AbortSignal,
   ): Promise<void> {
     const task = await this.prisma.chartTimeAvailabilityTask.findUnique({
       where: { id: taskId },
@@ -1730,7 +1326,9 @@ export class JourneyTaskService {
             ? [subscribedClass]
             : undefined,
         quota: 'GN',
+        signal,
       });
+      signal?.throwIfAborted();
       const isChartTimePassed = isTaskChartTimePassed(task);
       const result = alternatePathsToCheckResult(alt, { isChartTimePassed });
 
@@ -1795,10 +1393,10 @@ export class JourneyTaskService {
         taskId,
         leaseVersion,
         {
-          status,
+          status: status === 'completed' ? 'running' : status,
           resultPayload: result as object,
-          completedAt: new Date(),
-          lockedAt: null,
+          completedAt: status === 'completed' ? null : new Date(),
+          lockedAt: status === 'completed' ? task.lockedAt : null,
           nextRunAt: null,
           lastError:
             status === 'failed'
@@ -1831,77 +1429,8 @@ export class JourneyTaskService {
             }
           }
 
-          let alternativeTrains: BestTrainCandidateResult[] | undefined;
           const hasTickets = hasBookablePlanForNotification(result);
-          let monitoredClassCode = '3A';
-
-          const journeyDateDate =
-            task.journeyDate instanceof Date
-              ? task.journeyDate
-              : new Date(String(task.journeyDate).slice(0, 10));
-
-          // Check if user has already received an alert for this train and journey date
-          let existingNotification: unknown = null;
-          try {
-            existingNotification =
-              await this.prisma.sentNotificationLog.findFirst({
-                where: {
-                  trainNumber: task.trainNumber,
-                  journeyDate: journeyDateDate,
-                  recipient: {
-                    in: [
-                      ...(contact.email
-                        ? [contact.email.toLowerCase().trim()]
-                        : []),
-                      ...(contact.mobile ? [contact.mobile.trim()] : []),
-                    ],
-                  },
-                },
-              });
-          } catch (logErr) {
-            this.logger.warn(
-              `[journey] Failed to query sent_notification_log for task=${taskId}: ${logErr}`,
-            );
-          }
-
-          const isFollowUpLeg = Boolean(existingNotification);
-
-          // Leg update notifications to all users are disabled.
-          if (isFollowUpLeg) {
-            console.log(
-              `[journey] Skipping leg update notification for task=${taskId} (already notified)`,
-            );
-            return;
-          }
-
-          if (!hasTickets) {
-            try {
-              const req = await this.prisma.journeyMonitoringRequest.findUnique(
-                {
-                  where: { id: task.journeyRequestId },
-                },
-              );
-              if (req) {
-                const classCode = req.classCode.toUpperCase();
-                monitoredClassCode = classCode;
-                const isAc =
-                  classCode === 'ANY'
-                    ? false
-                    : !['SL', '2S', 'GN', 'FC'].includes(classCode);
-                const bestResult = await this.bookingV2Service.findBestTrains({
-                  from: task.fromStationCode,
-                  to: task.toStationCode,
-                  date: task.journeyDate.toISOString().slice(0, 10),
-                  quota: 'GN',
-                  acOnly: isAc,
-                  maxTrains: 5,
-                });
-                alternativeTrains = bestResult.results.slice(0, 5);
-              }
-            } catch (err) {
-              console.error('Failed to find best alternative trains', err);
-            }
-          }
+          const monitoredClassCode = subscribedClass || '3A';
 
           try {
             const plan = (result.openAiBookingPlan ?? []).filter(
@@ -1934,6 +1463,7 @@ export class JourneyTaskService {
                 refundInfo = { attempted: true, outcome: 'failed' };
               }
             }
+            signal?.throwIfAborted();
             const status = await this.notificationService.notifyUser({
               email: contact.email,
               mobile: contact.mobile,
@@ -1946,31 +1476,19 @@ export class JourneyTaskService {
                 toStationCode: task.toStationCode,
                 journeyDate: task.journeyDate,
                 chartAt: task.chartAt,
+                chartNumber: task.chartNumber,
                 trainStartDate: task.trainStartDate,
               },
               result,
-              alternativeTrains,
-              isFollowUpLeg,
               refundInfo,
             });
-            const data: {
-              emailNotifiedAt?: Date;
-              whatsappNotifiedAt?: Date;
-              whatsappStatus?: string;
-              whatsappRetryCount?: { increment: number };
-            } = {};
-            if (status.emailSent) data.emailNotifiedAt = new Date();
-            if (status.whatsappSent) {
-              data.whatsappNotifiedAt = new Date();
-              data.whatsappStatus = 'sent';
-            } else if (contact.mobile?.trim()) {
-              data.whatsappRetryCount = { increment: 1 };
-              data.whatsappStatus = 'pending_retry';
-            }
-            if (Object.keys(data).length > 0) {
-              await this.updateTaskForAttempt(taskId, leaseVersion, data);
-            }
+            await this.updateTaskForAttempt(
+              taskId,
+              leaseVersion,
+              notificationTaskUpdate(task, contact, status),
+            );
           } catch (e) {
+            if (signal?.aborted) return;
             console.error('Notification failed', e);
             const errLogs =
               e instanceof Error ? e.stack || e.message : String(e);
@@ -2015,8 +1533,15 @@ export class JourneyTaskService {
             }
           }
         }
+        signal?.throwIfAborted();
+        await this.updateTaskForAttempt(taskId, leaseVersion, {
+          status: 'completed',
+          completedAt: new Date(),
+          lockedAt: null,
+        });
       }
     } catch (err) {
+      if (signal?.aborted) return;
       const message = err instanceof Error ? err.message : String(err);
 
       if (
@@ -2274,6 +1799,8 @@ export class JourneyTaskService {
               status: true,
               retryCount: true,
               lastError: true,
+              emailStatus: true,
+              whatsappStatus: true,
             },
           });
           results = (rows ?? []).map((r) => ({
@@ -2285,6 +1812,8 @@ export class JourneyTaskService {
             status: r.status,
             retryCount: r.retryCount ?? 0,
             lastError: r.lastError ?? null,
+            emailStatus: r.emailStatus,
+            whatsappStatus: r.whatsappStatus,
           }));
         } catch (e) {
           console.warn(
@@ -2555,16 +2084,7 @@ export class JourneyTaskService {
       };
     }
 
-    let result = task.resultPayload as unknown as Service2CheckResult;
-    if (!result) {
-      await this.runTask(taskId, true);
-      const updated = await this.prisma.chartTimeAvailabilityTask.findUnique({
-        where: { id: taskId },
-      });
-      result = updated?.resultPayload as unknown as Service2CheckResult;
-    }
-
-    if (!result) {
+    if (task.status !== 'failed' && task.toStationCode && !task.resultPayload) {
       return {
         sent: false,
         emailSent: false,
@@ -2573,31 +2093,11 @@ export class JourneyTaskService {
       };
     }
 
-    const status = await this.notificationService.notifyUser({
-      email: contact.email || undefined,
-      mobile: contact.mobile || undefined,
-      task: {
-        id: task.id,
-        journeyRequestId: task.journeyRequestId,
-        trainNumber: task.trainNumber,
-        trainName: task.trainName,
-        fromStationCode: task.fromStationCode,
-        toStationCode: task.toStationCode,
-        journeyDate: task.journeyDate,
-      },
-      result,
+    const status = await this.dispatchTaskNotification(task, contact);
+    await this.prisma.chartTimeAvailabilityTask.update({
+      where: { id: taskId },
+      data: notificationTaskUpdate(task, contact, status),
     });
-
-    const data: { emailNotifiedAt?: Date; whatsappNotifiedAt?: Date } = {};
-    if (status.emailSent) data.emailNotifiedAt = new Date();
-    if (status.whatsappSent) data.whatsappNotifiedAt = new Date();
-
-    if (Object.keys(data).length > 0) {
-      await this.prisma.chartTimeAvailabilityTask.update({
-        where: { id: taskId },
-        data,
-      });
-    }
 
     const sent = status.emailSent || status.whatsappSent;
     return {
@@ -2606,8 +2106,39 @@ export class JourneyTaskService {
       whatsappSent: status.whatsappSent,
       reason: sent
         ? undefined
-        : 'Notification provider returned failure (check WhatsApp/Resend API status)',
+        : status.emailSuppressed || status.whatsappSuppressed
+          ? 'Notification suppressed: already sent or recipient unsubscribed'
+          : 'Notification provider returned failure (check WhatsApp/Resend API status)',
     };
+  }
+
+  private dispatchTaskNotification(
+    task: ChartTimeAvailabilityTask,
+    contact: { email?: string | null; mobile?: string | null },
+  ) {
+    const result = task.resultPayload as unknown as Service2CheckResult | null;
+    if (task.status === 'failed' && result?.status !== 'success')
+      return this.notificationService.notifyCheckFailed({ ...contact, task });
+    if (task.toStationCode === '') {
+      const chart = DateTime.fromJSDate(task.chartAt).setZone('Asia/Kolkata');
+      return this.notificationService.notifyChartPrepared({
+        ...contact,
+        trainNumber: task.trainNumber,
+        trainName: task.trainName,
+        journeyDate: task.journeyDate,
+        journeyRequestId: task.journeyRequestId,
+        chartAt: task.chartAt,
+        chartPreparationText: `${ordinalEnglish(chart.day)} ${chart.toFormat('MMM, hh:mm a')}`,
+      });
+    }
+    return this.notificationService.notifyUser({
+      ...contact,
+      task,
+      result: result ?? {
+        status: 'failed',
+        vacantBerth: { vbd: [], error: 'No saved availability result' },
+      },
+    });
   }
 
   async resendFailedWhatsAppNotifications(hours = 24): Promise<{
@@ -2617,21 +2148,36 @@ export class JourneyTaskService {
   }> {
     const sinceDate = new Date(Date.now() - hours * 60 * 60 * 1000);
     const cooldownBefore = new Date(Date.now() - 5 * 60 * 1000);
+    const cooldown: Prisma.ChartTimeAvailabilityTaskWhereInput = {
+      OR: [
+        { notificationLastAttemptAt: null },
+        { notificationLastAttemptAt: { lte: cooldownBefore } },
+      ],
+    };
     const tasks = await this.prisma.chartTimeAvailabilityTask.findMany({
       where: {
-        createdAt: { gte: sinceDate },
-        status: 'completed',
-        completedAt: { lte: cooldownBefore },
+        status: { in: ['completed', 'failed'] },
+        chartAt: { lte: new Date() },
+        completedAt: { gte: sinceDate, lte: cooldownBefore },
+        AND: [cooldown],
         OR: [
           {
             contact: { mobile: { not: null } },
             whatsappNotifiedAt: null,
-            whatsappRetryCount: { lt: 3 },
-            whatsappStatus: { not: 'unsend' },
+            whatsappRetryCount: { lt: MAX_NOTIFICATION_ATTEMPTS },
+            OR: [
+              { whatsappStatus: null },
+              { whatsappStatus: { notIn: ['unsend', 'suppressed'] } },
+            ],
           },
           {
             contact: { email: { not: null } },
             emailNotifiedAt: null,
+            emailRetryCount: { lt: MAX_NOTIFICATION_ATTEMPTS },
+            OR: [
+              { emailStatus: null },
+              { emailStatus: { notIn: ['unsend', 'suppressed'] } },
+            ],
           },
         ],
       },
@@ -2656,92 +2202,67 @@ export class JourneyTaskService {
       const needsWhatsApp = Boolean(
         contact.mobile?.trim() &&
         !task.whatsappNotifiedAt &&
-        (task.whatsappRetryCount ?? 0) < 3 &&
-        task.whatsappStatus !== 'unsend',
+        (task.whatsappRetryCount ?? 0) < MAX_NOTIFICATION_ATTEMPTS &&
+        !['unsend', 'suppressed'].includes(task.whatsappStatus ?? ''),
       );
       const needsEmail = Boolean(
-        contact.email?.trim() && !task.emailNotifiedAt,
+        contact.email?.trim() &&
+        !task.emailNotifiedAt &&
+        (task.emailRetryCount ?? 0) < MAX_NOTIFICATION_ATTEMPTS &&
+        !['unsend', 'suppressed'].includes(task.emailStatus ?? ''),
       );
 
       if (!needsWhatsApp && !needsEmail) return 'skipped';
 
-      if (!task.resultPayload) return 'failed';
-      const result = task.resultPayload as unknown as Service2CheckResult;
+      const selectedContact = {
+        email: needsEmail ? contact.email : undefined,
+        mobile: needsWhatsApp ? contact.mobile : undefined,
+      };
+      const claim = await this.prisma.chartTimeAvailabilityTask.updateMany({
+        where: {
+          id: task.id,
+          status: { in: ['completed', 'failed'] },
+          AND: [cooldown],
+        },
+        data: { notificationLastAttemptAt: new Date() },
+      });
+      if (!claim.count) return 'skipped';
       try {
-        const status = await this.notificationService.notifyUser({
-          email: needsEmail ? contact.email?.trim() || undefined : undefined,
-          mobile: needsWhatsApp
-            ? contact.mobile?.trim() || undefined
-            : undefined,
-          task: {
-            id: task.id,
-            journeyRequestId: task.journeyRequestId,
-            trainNumber: task.trainNumber,
-            trainName: task.trainName,
-            fromStationCode: task.fromStationCode,
-            toStationCode: task.toStationCode,
-            journeyDate: task.journeyDate,
-          },
-          result,
-        });
-
-        const data: {
-          emailNotifiedAt?: Date;
-          whatsappNotifiedAt?: Date;
-          whatsappRetryCount?: { increment: number };
-          whatsappStatus?: string;
-        } = {};
-
-        if (needsWhatsApp) {
-          if (status.whatsappSent) {
-            data.whatsappNotifiedAt = new Date();
-            data.whatsappStatus = 'sent';
-          } else {
-            const currentRetries = task.whatsappRetryCount ?? 0;
-            const nextRetryCount = currentRetries + 1;
-            data.whatsappRetryCount = { increment: 1 };
-            if (nextRetryCount >= 3) {
-              data.whatsappStatus = 'unsend';
-              this.logger.warn(
-                `WhatsApp notification retry limit reached (3) for task ${task.id}; marked as unsend`,
-              );
-            }
-          }
-        }
-
-        if (needsEmail && status.emailSent) {
-          data.emailNotifiedAt = new Date();
-        }
-
-        if (Object.keys(data).length === 0) return 'failed';
+        const status = await this.dispatchTaskNotification(
+          task,
+          selectedContact,
+        );
         await this.prisma.chartTimeAvailabilityTask.update({
           where: { id: task.id },
-          data,
+          data: notificationTaskUpdate(task, selectedContact, status),
         });
-        return status.whatsappSent || status.emailSent ? 'resent' : 'failed';
+        if (
+          (needsWhatsApp &&
+            !status.whatsappSent &&
+            !status.whatsappSuppressed) ||
+          (needsEmail && !status.emailSent && !status.emailSuppressed)
+        )
+          return 'failed';
+        return status.whatsappSent || status.emailSent ? 'resent' : 'skipped';
       } catch (err) {
         this.logger.error(
           `Failed to resend notification for task ${task.id}`,
           err,
         );
-        if (needsWhatsApp) {
-          const currentRetries = task.whatsappRetryCount ?? 0;
-          const nextRetryCount = currentRetries + 1;
-          await this.prisma.chartTimeAvailabilityTask
-            .update({
-              where: { id: task.id },
-              data: {
-                whatsappRetryCount: { increment: 1 },
-                ...(nextRetryCount >= 3 ? { whatsappStatus: 'unsend' } : {}),
-              },
-            })
-            .catch((updateErr) =>
-              this.logger.error(
-                `Failed to update retry count for task ${task.id}`,
-                updateErr,
-              ),
-            );
-        }
+        await this.prisma.chartTimeAvailabilityTask
+          .update({
+            where: { id: task.id },
+            data: notificationTaskUpdate(task, selectedContact, {
+              emailSent: false,
+              whatsappSent: false,
+            }),
+          })
+          .catch((updateErr) =>
+            this.logger.error(
+              `Failed to update retry count for task ${task.id}`,
+              updateErr,
+            ),
+          );
         return 'failed';
       }
     };
@@ -2972,6 +2493,11 @@ export class JourneyTaskService {
       }
 
       try {
+        const meta = await this.chartTime.getChartMetaForTrainStation(
+          task.trainNumber,
+          targetStation,
+        );
+        if (!meta?.chartOne) continue;
         const createRes = await this.createJourneyTasks({
           trainNumber: task.trainNumber,
           trainName: task.trainName || undefined,
@@ -2982,6 +2508,14 @@ export class JourneyTaskService {
           email,
           mobile,
           stationCodesToMonitor: [targetStation],
+          chartTimeLocal: meta.chartOne.time,
+          chartOneDayOffset: meta.chartOne.dayOffset ?? 0,
+          ...(meta.chartTwo
+            ? {
+                chartTwoTimeLocal: meta.chartTwo.time,
+                chartTwoDayOffset: meta.chartTwo.dayOffset ?? 0,
+              }
+            : {}),
         });
 
         if (createRes.tasks?.length > 0) {
