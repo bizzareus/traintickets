@@ -7,3 +7,8 @@
 **Vulnerability:** `AvailabilityController` (`@Controller('api/availability')`) contained sub-routes under `admin/*` (`admin/alerts`, `admin/notifications-analytics`, etc.) that were missing `assertAdminAuth`, exposing PII and admin triggers publicly.
 **Learning:** Sub-routes named `admin/*` inside non-admin domain controllers (e.g., `AvailabilityController`) do not automatically inherit admin authentication and need explicit `assertAdminAuth` invocation.
 **Prevention:** Audit all endpoints with `/admin/` in their route path across ALL domain controllers (not just `@Controller('api/admin')`) for explicit `assertAdminAuth` calls.
+
+## 2026-09-29 - Uncaught RangeError in Webhook timingSafeEqual Verification
+**Vulnerability:** In `WebhookController` and `WhatsappController`, passing a malformed signature with a byte length different from expected signature caused `crypto.timingSafeEqual` to throw an uncaught `RangeError`, resulting in 500 server errors or process exceptions instead of failing validation safely with 401 Unauthorized.
+**Learning:** Node.js `crypto.timingSafeEqual(buf1, buf2)` throws `RangeError [ERR_CRYPTO_TIMING_SAFE_EQUAL_LENGTH]` if `buf1.length !== buf2.length`.
+**Prevention:** Always compare buffer lengths (`buf1.length !== buf2.length`) before calling `crypto.timingSafeEqual`, and wrap in `try...catch` as defense-in-depth.
