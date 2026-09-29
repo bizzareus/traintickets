@@ -1,6 +1,6 @@
 ---
-title: "Northern Railway Festival Special Trains 2026: List & Booking"
-description: "Full list of Northern Railway festival special trains for Diwali and Chhath 2026 from Delhi, Anand Vihar & Punjab to Bihar and UP with booking dates and routes."
+title: "Northern Railway Festival Special Trains 2026: Booking List"
+description: "Full list of Northern Railway festival special trains for Diwali and Chhath 2026 from Delhi, Anand Vihar & Punjab to Bihar & UP with booking dates & routes."
 date: "2026-09-29"
 updated: "2026-09-29"
 tags:
