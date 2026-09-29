@@ -9,18 +9,21 @@ import type { Request } from 'express';
 import * as crypto from 'crypto';
 import { PrismaService } from '../prisma/prisma.service';
 
-const WEBHOOK_SECRET = process.env.BROWSER_USE_WEBHOOK_SECRET;
-
 function validateSignature(payload: string, signature: string | null): boolean {
-  if (!WEBHOOK_SECRET || !signature) return false;
+  const secret = process.env.BROWSER_USE_WEBHOOK_SECRET;
+  if (!secret || !signature) return false;
   const expected = crypto
-    .createHmac('sha256', WEBHOOK_SECRET)
+    .createHmac('sha256', secret)
     .update(payload)
     .digest('hex');
-  return crypto.timingSafeEqual(
-    Buffer.from(signature, 'utf8'),
-    Buffer.from(expected, 'utf8'),
-  );
+  const sigBuf = Buffer.from(signature, 'utf8');
+  const expBuf = Buffer.from(expected, 'utf8');
+  if (sigBuf.length !== expBuf.length) return false;
+  try {
+    return crypto.timingSafeEqual(sigBuf, expBuf);
+  } catch {
+    return false;
+  }
 }
 
 @Controller('api/browser/webhook')
@@ -34,7 +37,8 @@ export class WebhookController {
       (req.headers['x-webhook-signature'] as string) ??
       (req.headers['x-signature'] as string) ??
       null;
-    if (WEBHOOK_SECRET && !validateSignature(raw, signature)) {
+    const webhookSecret = process.env.BROWSER_USE_WEBHOOK_SECRET;
+    if (webhookSecret && !validateSignature(raw, signature)) {
       throw new UnauthorizedException('Invalid signature');
     }
 

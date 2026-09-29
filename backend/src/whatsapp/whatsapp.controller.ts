@@ -32,15 +32,16 @@ export class WhatsappController {
       // if missing or not matching, handle error
       if (signature) {
         const raw = JSON.stringify(body);
-        const expected = crypto
+        const expectedHex = crypto
           .createHmac('sha256', secret)
           .update(raw)
           .digest('hex');
+        const expected = `sha256=${expectedHex}`;
+        const sigBuf = Buffer.from(signature, 'utf8');
+        const expBuf = Buffer.from(expected, 'utf8');
         if (
-          !crypto.timingSafeEqual(
-            Buffer.from(signature, 'utf8'),
-            Buffer.from(`sha256=${expected}`, 'utf8'),
-          )
+          sigBuf.length !== expBuf.length ||
+          !crypto.timingSafeEqual(sigBuf, expBuf)
         ) {
           throw new UnauthorizedException('Invalid signature');
         }

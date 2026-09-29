@@ -101,4 +101,35 @@ describe('WhatsappController', () => {
       );
     });
   });
+
+  describe('handleIncoming', () => {
+    it('throws UnauthorizedException when signature length is invalid', () => {
+      process.env.WASENDER_WEBHOOK_SECRET = 'wh-secret';
+      const req = {
+        headers: { 'x-hub-signature-256': 'sha256=invalid' },
+      } as unknown as Request;
+      const body = { test: true };
+
+      expect(() => controller.handleIncoming(req, body)).toThrow(
+        UnauthorizedException,
+      );
+    });
+
+    it('accepts valid HMAC signature', () => {
+      process.env.WASENDER_WEBHOOK_SECRET = 'wh-secret';
+      const body = { test: true };
+      const raw = JSON.stringify(body);
+      const crypto = require('crypto');
+      const expectedHex = crypto
+        .createHmac('sha256', 'wh-secret')
+        .update(raw)
+        .digest('hex');
+      const req = {
+        headers: { 'x-hub-signature-256': `sha256=${expectedHex}` },
+      } as unknown as Request;
+
+      const res = controller.handleIncoming(req, body);
+      expect(res).toEqual({ ok: true, received: true });
+    });
+  });
 });
