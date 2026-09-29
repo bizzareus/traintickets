@@ -32,7 +32,9 @@ describe('AvailabilityController Admin Endpoints', () => {
             getRecentCronRuns: jest.fn().mockResolvedValue([]),
             runTask: jest.fn().mockResolvedValue(undefined),
             resendTaskNotification: jest.fn().mockResolvedValue({ sent: true }),
-            resendFailedWhatsAppNotifications: jest.fn().mockResolvedValue({ found: 0, resent: 0, failed: 0 }),
+            resendFailedWhatsAppNotifications: jest
+              .fn()
+              .mockResolvedValue({ found: 0, resent: 0, failed: 0 }),
           },
         },
         {
@@ -129,25 +131,43 @@ describe('AvailabilityController Admin Endpoints', () => {
     });
 
     it('succeeds on triggerAlert when valid password header is provided', async () => {
-      const res = await controller.triggerAlert('task-123', validHeader, mockReq);
-      expect(res).toEqual({ success: true, message: 'Alert triggered successfully' });
+      const res = await controller.triggerAlert(
+        'task-123',
+        validHeader,
+        mockReq,
+      );
+      expect(res).toEqual({
+        success: true,
+        message: 'Alert triggered successfully',
+      });
       expect(journeyTaskService.runTask).toHaveBeenCalledWith('task-123', true);
     });
 
     it('succeeds on resendNotification when valid password header is provided', async () => {
-      const res = await controller.resendNotification('task-123', validHeader, mockReq);
+      const res = await controller.resendNotification(
+        'task-123',
+        validHeader,
+        mockReq,
+      );
       expect(res).toEqual({
         success: true,
         message: 'Notification resent successfully',
         status: { sent: true },
       });
-      expect(journeyTaskService.resendTaskNotification).toHaveBeenCalledWith('task-123');
+      expect(journeyTaskService.resendTaskNotification).toHaveBeenCalledWith(
+        'task-123',
+      );
     });
 
     it('succeeds on resendFailedNotifications when valid password header is provided', async () => {
-      const res = await controller.resendFailedNotifications(validHeader, mockReq);
+      const res = await controller.resendFailedNotifications(
+        validHeader,
+        mockReq,
+      );
       expect(res).toEqual({ found: 0, resent: 0, failed: 0 });
-      expect(journeyTaskService.resendFailedWhatsAppNotifications).toHaveBeenCalledWith(24);
+      expect(
+        journeyTaskService.resendFailedWhatsAppNotifications,
+      ).toHaveBeenCalledWith(24);
     });
   });
 });

@@ -1,0 +1,15 @@
+{
+  "timezone": "Europe/London",
+  "schedule": "0 11 * * *",
+  "instagramAccount": "lastberth.in",
+  "routes": [
+    { "from": "NDLS", "to": "PNBE" },
+    { "from": "ANVT", "to": "PPTA" },
+    { "from": "CSMT", "to": "PNBE" },
+    { "from": "HWH", "to": "PURI" }
+  ],
+  "daysAhead": [1, 2, 3, 4, 5],
+  "maxRunMinutes": 45,
+  "maxEvidenceAgeMinutes": 20,
+  "maxPostsPerDay": 1
+}

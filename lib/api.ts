@@ -1,20 +1,52 @@
 import axios, { type AxiosError } from "axios";
 import axiosRetry from "axios-retry";
+import * as Sentry from "@sentry/nextjs";
 import { captureApiException } from "@/lib/analytics/track";
 
-/** Report a backend/API error to PostHog, then let the original rejection flow on. */
+export const PAYMENT_SYSTEM_UNAVAILABLE_MESSAGE =
+  "Payment system is currently unavailable. Please try again later.";
+
+/** Report a backend/API error to PostHog and Sentry when applicable, then let the original rejection flow on. */
 function reportApiError(error: AxiosError): Promise<never> {
-  const data = error.response?.data as { message?: string; error?: string } | undefined;
+  const data = error.response?.data as
+    | {
+        message?: string | string[];
+        error?: string;
+        errors?: Array<{ message?: string }>;
+      }
+    | undefined;
+
+  const responseMessage =
+    data?.errors?.[0]?.message ||
+    (Array.isArray(data?.message) ? data.message[0] : data?.message) ||
+    (typeof data?.error === "string" ? data.error : undefined);
+
   captureApiException(error, {
     method: error.config?.method?.toUpperCase(),
     url: error.config?.url,
     status: error.response?.status,
     message: error.message,
-    responseMessage:
-      (typeof data?.message === "string" && data.message) ||
-      (typeof data?.error === "string" && data.error) ||
-      undefined,
+    responseMessage,
   });
+
+  if (
+    responseMessage === PAYMENT_SYSTEM_UNAVAILABLE_MESSAGE ||
+    (typeof responseMessage === "string" &&
+      responseMessage.includes(PAYMENT_SYSTEM_UNAVAILABLE_MESSAGE))
+  ) {
+    (error as unknown as { __sentry_reported__?: boolean }).__sentry_reported__ = true;
+    Sentry.captureException(error, {
+      tags: {
+        payment_system: "unavailable",
+      },
+      extra: {
+        responseMessage,
+        status: error.response?.status,
+        url: error.config?.url,
+      },
+    });
+  }
+
   return Promise.reject(error);
 }
 

@@ -12,6 +12,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { JourneyTaskService } from '../availability/journey-task.service';
 import { NotificationService } from '../notification/notification.service';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
+import { captureSentryException } from '../common/sentry-report';
 import type { AxiosInstance } from 'axios';
 import {
   RazorpayClient,
@@ -341,6 +342,18 @@ export class ChartAlertPaymentsService {
       this.logger.error(
         `Muzobox create-link failed for ref=${record.id} amount=${amount} status=${axiosErr.response?.status ?? 'n/a'}: ${msg} ${responseData}`,
       );
+      captureSentryException(err, {
+        tags: {
+          area: 'chart-alert-payments',
+          service: 'muzobox',
+        },
+        extra: {
+          ref: record.id,
+          amount,
+          status: axiosErr.response?.status,
+          responseData,
+        },
+      });
       throw new ServiceUnavailableException(
         'Payment system is currently unavailable. Please try again later.',
       );

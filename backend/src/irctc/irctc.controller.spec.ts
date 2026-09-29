@@ -24,7 +24,10 @@ describe('IrctcController', () => {
       providers: [
         { provide: IrctcService, useValue: mockIrctcService },
         { provide: IrctcChartService, useValue: mockIrctcChartService },
-        { provide: IrctcBrowserUseService, useValue: mockIrctcBrowserUseService },
+        {
+          provide: IrctcBrowserUseService,
+          useValue: mockIrctcBrowserUseService,
+        },
       ],
     }).compile();
 

@@ -13,6 +13,7 @@ import { RazorpayClient } from './razorpay.client';
 import { PrismaService } from '../prisma/prisma.service';
 import { JourneyTaskService } from '../availability/journey-task.service';
 import { NotificationService } from '../notification/notification.service';
+import * as sentryReport from '../common/sentry-report';
 
 describe('ChartAlertPaymentsService', () => {
   let service: ChartAlertPaymentsService;
@@ -154,6 +155,7 @@ describe('ChartAlertPaymentsService', () => {
     });
 
     it('throws 503 without leaving a usable link when payment systems fail', async () => {
+      const sentrySpy = jest.spyOn(sentryReport, 'captureSentryException');
       prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-3' });
       razorpay.createOrder.mockRejectedValue(new Error('razorpay down'));
       (service as any).muzoboxClient.post = jest
@@ -167,6 +169,16 @@ describe('ChartAlertPaymentsService', () => {
         where: { id: 'ref-3' },
         data: { status: 'FAILED' },
       });
+      expect(sentrySpy).toHaveBeenCalledWith(
+        expect.any(Error),
+        expect.objectContaining({
+          tags: {
+            area: 'chart-alert-payments',
+            service: 'muzobox',
+          },
+        }),
+      );
+      sentrySpy.mockRestore();
     });
 
     it('uses Muzobox proxy when direct Razorpay is not configured', async () => {

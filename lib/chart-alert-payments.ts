@@ -1,4 +1,5 @@
-import { apiClient } from "@/lib/api";
+import { apiClient, PAYMENT_SYSTEM_UNAVAILABLE_MESSAGE } from "@/lib/api";
+import * as Sentry from "@sentry/nextjs";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 
 /**
@@ -165,6 +166,7 @@ export function getChartAlertErrorMessage(
       };
     };
     message?: string;
+    __sentry_reported__?: boolean;
   };
   const raw =
     e?.response?.data?.errors?.[0]?.message ??
@@ -174,7 +176,23 @@ export function getChartAlertErrorMessage(
     e?.response?.data?.error ??
     (typeof e?.message === "string" && e.message) ??
     fallback;
-  return typeof raw === "string" ? raw : JSON.stringify(raw);
+  const message = typeof raw === "string" ? raw : JSON.stringify(raw);
+
+  if (
+    (message === PAYMENT_SYSTEM_UNAVAILABLE_MESSAGE ||
+      message.includes(PAYMENT_SYSTEM_UNAVAILABLE_MESSAGE)) &&
+    !e?.__sentry_reported__
+  ) {
+    if (e && typeof e === "object") {
+      e.__sentry_reported__ = true;
+    }
+    Sentry.captureException(err instanceof Error ? err : new Error(message), {
+      tags: { payment_system: "unavailable" },
+      extra: { message },
+    });
+  }
+
+  return message;
 }
 
 export async function fetchChartAlertPaymentStatus(
