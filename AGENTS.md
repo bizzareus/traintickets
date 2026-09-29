@@ -6,6 +6,8 @@
 
 Two-service monorepo: Next.js frontend (root `/`, port 3010) + NestJS backend (`backend/`, port 3009). Both use **npm**. Database is PostgreSQL via Prisma ORM (`backend/prisma/schema.prisma`).
 
+Deployments are AWS-only. Do not use Railway for this project.
+
 ### AWS Dual-Instance Infrastructure Reference
 
 | Service | Instance IP | Domain / Ports | Topology |

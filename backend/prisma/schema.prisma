@@ -334,31 +334,6 @@ enum AlertLogStatus {
   sent
   failed
 }
-model RedditAnalyzedComment {
-  id               String   @id @map("id")
-  content          String   @map("content")
-  author           String   @map("author")
-  permalink        String   @map("permalink")
-  trainNumber      String?  @map("train_number")
-  origin           String?  @map("origin")
-  destination      String?  @map("destination")
-  pnr              String?  @map("pnr")
-  dateOfTravel     String?  @map("date_of_travel")
-  currentStatus    String?  @map("current_status")
-  rawJson          Json?    @map("raw_json")
-  screenshotUrl    String?  @map("screenshot_url")
-  status           String   @default("PENDING") @map("status")
-  createdAt        DateTime @default(now()) @map("created_at")
-  analyzedAt       DateTime? @map("analyzed_at")
-
-  @@index([trainNumber])
-  @@index([pnr])
-  @@map("reddit_analyzed_comments")
-}
-
-
-
-
 /// Shared, single-row store for the harvested IRCTC cookie bundle so all
 /// Railway replicas read the same cookie, plus a lock so only one replica
 /// harvests per cycle. Managed by IrctcCookieStoreService / the session keeper.

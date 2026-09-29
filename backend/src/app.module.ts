@@ -21,7 +21,6 @@ import { RailFeedProxyModule } from './rail-feed-proxy/rail-feed-proxy.module';
 import { BookingV2Module } from './booking-v2/booking-v2.module';
 import { CacheModule } from './cache/cache.module';
 import { WhatsappModule } from './whatsapp/whatsapp.module';
-import { RedditAutomationModule } from './reddit-automation/reddit-automation.module';
 import { McpModule } from './mcp/mcp.module';
 import { ShortLinkModule } from './short-link/short-link.module';
 import { ChartAlertPaymentsModule } from './chart-alert-payments/chart-alert-payments.module';
@@ -50,7 +49,6 @@ import { MonitoringModule } from './monitoring/monitoring.module';
     RailFeedProxyModule,
     BookingV2Module,
     WhatsappModule,
-    RedditAutomationModule,
     McpModule,
     ShortLinkModule,
     ChartAlertPaymentsModule,

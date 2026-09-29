@@ -136,8 +136,8 @@ logger sees them, preventing telemetry URLs or API keys from entering logs.
    acceptance, not delivered/read or bank settlement. Keep Sentry for stack traces
    and PostHog for product analytics; Cronitor RUM would duplicate existing tooling.
 
-Commented-out Reddit and chart-ingestion decorators are not active cron jobs and
-should not receive scheduled monitors. Account inventory, effective recipients,
+The commented-out chart-ingestion decorator is not an active cron job and should
+not receive a scheduled monitor. Account inventory, effective recipients,
 GitHub execution health, and live AWS deployment state remain unverified until the
 relevant authenticated environments are available.
 

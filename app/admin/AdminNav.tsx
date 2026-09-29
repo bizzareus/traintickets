@@ -117,16 +117,6 @@ function AdminNavContent() {
         Cache
       </Link>
       <Link
-        href="/admin/reddit-gtm"
-        className={`text-sm font-medium transition ${
-          pathname === "/admin/reddit-gtm"
-            ? "text-indigo-600 font-semibold"
-            : "text-slate-600 hover:text-slate-900"
-        }`}
-      >
-        Reddit GTM
-      </Link>
-      <Link
         href="/admin/unsubscribes"
         className={`text-sm font-medium transition ${
           pathname === "/admin/unsubscribes"

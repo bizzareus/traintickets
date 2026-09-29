@@ -104,32 +104,21 @@ export class PrismaService
   }
 
   /**
-   * Defensive check that columns from migration 20260602020237 are in the
-   * expected state. Each ALTER is a DDL event that makes PostgREST reload its
-   * schema cache (which runs an expensive pg_timezone_names scan), so we only
-   * issue an ALTER when the current state actually differs. On a healthy DB
-   * this fires zero DDL.
+   * Defensive check for schema state that can drift in deployed databases.
+   * Each ALTER is a DDL event that makes PostgREST reload its schema cache, so
+   * we only issue one when the current state actually differs.
    */
   private async selfHealSchema() {
     try {
       const [state] = await this.$queryRawUnsafe<
         Array<{
           cronlease_updated_default: string | null;
-          reddit_status_exists: bigint;
-          reddit_analyzed_nullable: string | null;
-          reddit_analyzed_default: string | null;
           cache_expires_idx_exists: bigint;
         }>
       >(`
         SELECT
           (SELECT column_default FROM information_schema.columns
              WHERE table_name = 'CronLease' AND column_name = 'updated_at') AS cronlease_updated_default,
-          (SELECT count(*) FROM information_schema.columns
-             WHERE table_name = 'reddit_analyzed_comments' AND column_name = 'status') AS reddit_status_exists,
-          (SELECT is_nullable FROM information_schema.columns
-             WHERE table_name = 'reddit_analyzed_comments' AND column_name = 'analyzed_at') AS reddit_analyzed_nullable,
-          (SELECT column_default FROM information_schema.columns
-             WHERE table_name = 'reddit_analyzed_comments' AND column_name = 'analyzed_at') AS reddit_analyzed_default,
           (SELECT count(*) FROM pg_indexes
              WHERE tablename = 'cache_entry' AND indexname = 'cache_entry_expires_at_idx') AS cache_expires_idx_exists
       `);
@@ -145,21 +134,6 @@ export class PrismaService
       if (state?.cronlease_updated_default != null) {
         stmts.push(
           'ALTER TABLE "CronLease" ALTER COLUMN "updated_at" DROP DEFAULT',
-        );
-      }
-      if (Number(state?.reddit_status_exists ?? 0) === 0) {
-        stmts.push(
-          `ALTER TABLE "reddit_analyzed_comments" ADD COLUMN "status" TEXT NOT NULL DEFAULT 'PENDING'`,
-        );
-      }
-      if (state?.reddit_analyzed_nullable === 'NO') {
-        stmts.push(
-          'ALTER TABLE "reddit_analyzed_comments" ALTER COLUMN "analyzed_at" DROP NOT NULL',
-        );
-      }
-      if (state?.reddit_analyzed_default != null) {
-        stmts.push(
-          'ALTER TABLE "reddit_analyzed_comments" ALTER COLUMN "analyzed_at" DROP DEFAULT',
         );
       }
 
