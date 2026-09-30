@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
-import { STATIONS } from "@/lib/seo/routes-db";
+import { getStationByCodeOrName } from "@/lib/seo/routes-db";
 import { parseTrainNumberFromSlug } from "@/lib/chartTimesSlug";
 
 export type ScheduleStation = {
@@ -153,16 +153,8 @@ export default function TrainDetailClient({
   }
 
   // Find station slugs and check if this train runs on a popular route page
-  const originSlug = STATIONS.find(
-    (s) =>
-      s.code === train.originStation ||
-      s.name.toLowerCase().includes(train.originStation.toLowerCase()),
-  )?.slug;
-  const destSlug = STATIONS.find(
-    (s) =>
-      s.code === train.destinationStation ||
-      s.name.toLowerCase().includes(train.destinationStation.toLowerCase()),
-  )?.slug;
+  const originSlug = getStationByCodeOrName(train.originStation)?.slug;
+  const destSlug = getStationByCodeOrName(train.destinationStation)?.slug;
   const routeSlug = originSlug && destSlug ? `${originSlug}-to-${destSlug}` : null;
   const POPULAR_SLUGS = [
     "delhi-to-mumbai",
