@@ -3,7 +3,7 @@
     email me@kartikarora.in
 }
 
-api-v2.lastberth.com {
+api.lastberth.com {
     encode zstd gzip
 
     log {

@@ -110,7 +110,7 @@ logger sees them, preventing telemetry URLs or API keys from entering logs.
 
 ## Recommended next monitoring changes (not provisioned here)
 
-1. **External uptime:** add checks for `https://api-v2.lastberth.com/api/health/live`
+1. **External uptime:** add checks for `https://api.lastberth.com/api/health/live`
    and `/api/health/ready`, every minute. Assert HTTP 200, reasonable response time,
    and certificate validity. Liveness detects process/proxy failures; readiness
    additionally checks PostgreSQL.

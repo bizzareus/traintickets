@@ -4,6 +4,6 @@ output "frontend_public_ip" {
 }
 
 output "backend_public_ip" {
-  description = "Elastic IP address for the Backend API VM (point api-v2.lastberth.com here)"
+  description = "Elastic IP address for the Backend API VM (point api.lastberth.com here)"
   value       = aws_eip.backend_eip.public_ip
 }
