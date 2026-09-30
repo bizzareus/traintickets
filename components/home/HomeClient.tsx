@@ -22,6 +22,7 @@ import { TrainSearchV2ProgressBar } from "@/components/home/TrainSearchV2Progres
 import { TrainSearchV2Card } from "@/components/home/TrainSearchV2Card";
 import { TrainSearchSkeleton } from "@/components/home/TrainSearchSkeleton";
 import { sortTrainSearchV2, type TrainScanMeta } from "@/lib/trainSearchV2Sort";
+import { normalizeClassCodes } from "@/lib/trainClasses";
 import { HomeBannerAd, HomeSideAd } from "@/components/home/HomeSideAd";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
@@ -237,8 +238,6 @@ function UrlSearchParamsSync({
 function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const router = useRouter();
   const pathname = usePathname();
-  const autoSearchTriggered = useRef(false);
-  const [hasUrlParams, setHasUrlParams] = useState(false);
   const [fromQ, setFromQ] = useState("");
   const [toQ, setToQ] = useState("");
   const fromDeb = useDebounced(fromQ, 300);
@@ -269,6 +268,14 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   }, []);
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
   const [selectedClasses, setSelectedClasses] = useState<string[]>([]);
+  // Inputs are drafts; results and scans only consume the last submission.
+  const [submittedSearch, setSubmittedSearch] = useState<{
+    from: StationRow;
+    to: StationRow;
+    date: string;
+    classes: string[];
+  } | null>(null);
+  const resultClasses = submittedSearch?.classes;
   const [mobileSheetOpen, setMobileSheetOpen] = useState(false);
 
   const handleJourneyDateChange = useCallback((ymd: string) => {
@@ -314,24 +321,17 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         setToQ(
           toName ? `${toCode.toUpperCase()} - ${toName}` : toCode.toUpperCase(),
         );
-        setHasUrlParams(true);
       }
       if (dateParam) {
         setJourneyDate(dateParam);
       }
-      if (classesParam) {
-        const list = classesParam
-          .split(",")
-          .map((c) => c.trim().toUpperCase())
-          .filter(Boolean);
-        setSelectedClasses(list);
-      }
+      setSelectedClasses(normalizeClassCodes(classesParam?.split(",")));
     },
     [],
   );
   const acOnly = false;
   useEffect(() => {
-    setJourneyDate(todayYmd());
+    setJourneyDate((date) => date ?? todayYmd());
   }, []);
   const [trains, setTrains] = useState<TrainListItem[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
@@ -368,7 +368,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   // alternate paths run on ConfirmTkt + RapidAPI, which stay up during the
   // IRCTC online-charts maintenance window. The gate lives in SeatStatus
   // (Chart Vacancy + Live Seat Tracker), which do hit the online-charts API.
-  const alt = useAlternatePaths({ acOnly, selectedClasses });
+  const alt = useAlternatePaths({ acOnly, selectedClasses: resultClasses });
   const {
     altForTrain,
     altTrainName,
@@ -380,6 +380,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setAltResult,
     setAltForTrain,
     setAltTrainName,
+    reset: resetAlternates,
   } = alt;
 
   const [v2DiscoveredEndToEndTrains, setV2DiscoveredEndToEndTrains] = useState<
@@ -403,22 +404,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     easing: "cubic-bezier(0.25, 1, 0.5, 1)",
   });
 
-  // Reset V2 scan state when search parameters change
-  useEffect(() => {
-    setV2DiscoveredEndToEndTrains(new Set());
-    setV2DiscoveredPartialTrains(new Set());
-    setV2CompletedScans(new Set());
-    setV2ScanMetaMap(new Map());
-    v2TrackedViewKeyRef.current = "";
-    v2TrackedAutoScanKeyRef.current = "";
-  }, [
-    fromSt?.stationCode,
-    toSt?.stationCode,
-    journeyDate,
-    acOnly,
-    selectedClasses,
-  ]);
-
   // Prioritized multi-tier sorting:
   // 1. Direct IRCTC availability (chronological)
   // 2. End-to-end full split journeys (chronological)
@@ -427,7 +412,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const displayTrains = useMemo(() => {
     return sortTrainSearchV2(trains, {
       acOnly,
-      selectedClasses,
+      selectedClasses: resultClasses,
       scanMetaMap: v2ScanMetaMap,
       endToEndTrains: v2DiscoveredEndToEndTrains,
       partialTrains: v2DiscoveredPartialTrains,
@@ -435,7 +420,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   }, [
     trains,
     acOnly,
-    selectedClasses,
+    resultClasses,
     v2ScanMetaMap,
     v2DiscoveredEndToEndTrains,
     v2DiscoveredPartialTrains,
@@ -444,18 +429,18 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const v2AutoScanTrainNumbers = useMemo(() => {
     const set = new Set<string>();
     for (const t of trains) {
-      if (!hasAnyAvailableSeat(t, { acOnly, selectedClasses })) {
+      if (!hasAnyAvailableSeat(t, { acOnly, selectedClasses: resultClasses })) {
         set.add(t.trainNumber);
       }
     }
     return set;
-  }, [trains, acOnly, selectedClasses]);
+  }, [trains, acOnly, resultClasses]);
 
   const v2Stats = useMemo(() => {
     let directAvailableCount = 0;
     let waitlistedCount = 0;
     for (const t of trains) {
-      if (hasAnyAvailableSeat(t, { acOnly, selectedClasses })) {
+      if (hasAnyAvailableSeat(t, { acOnly, selectedClasses: resultClasses })) {
         directAvailableCount++;
       } else {
         waitlistedCount++;
@@ -466,7 +451,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       waitlistedCount,
       totalToScan: waitlistedCount,
     };
-  }, [trains, acOnly, selectedClasses]);
+  }, [trains, acOnly, resultClasses]);
 
   const v2TotalDiscoveredCount = useMemo(() => {
     return new Set([
@@ -561,22 +546,18 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   }, [v2CompletedScans.size, v2Stats.totalToScan]);
 
   useEffect(() => {
-    if (
-      trains.length > 0 &&
-      fromSt?.stationCode &&
-      toSt?.stationCode &&
-      journeyDate
-    ) {
-      const classesKey = selectedClasses.slice().sort().join(",");
-      const searchKey = `${fromSt.stationCode}-${toSt.stationCode}-${journeyDate}-${acOnly}-${classesKey}`;
+    if (trains.length > 0 && submittedSearch) {
+      const { from, to, date, classes } = submittedSearch;
+      const classesKey = classes.slice().sort().join(",");
+      const searchKey = `${from.stationCode}-${to.stationCode}-${date}-${acOnly}-${classesKey}`;
       if (v2TrackedViewKeyRef.current !== searchKey) {
         v2TrackedViewKeyRef.current = searchKey;
         trackAnalyticsEvent({
           name: "train_search_v2_viewed",
           properties: {
-            from_code: fromSt.stationCode,
-            to_code: toSt.stationCode,
-            journey_date: journeyDate,
+            from_code: from.stationCode,
+            to_code: to.stationCode,
+            journey_date: date,
             total_trains: trains.length,
             direct_available_count: v2Stats.directAvailableCount,
             waitlisted_count: v2Stats.waitlistedCount,
@@ -593,9 +574,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
           name: "train_search_v2_auto_scan_started",
           properties: {
             train_numbers: Array.from(v2AutoScanTrainNumbers),
-            from_code: fromSt.stationCode,
-            to_code: toSt.stationCode,
-            journey_date: journeyDate,
+            from_code: from.stationCode,
+            to_code: to.stationCode,
+            journey_date: date,
             total_trains: v2AutoScanTrainNumbers.size,
           },
         });
@@ -603,11 +584,8 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     }
   }, [
     trains.length,
-    fromSt?.stationCode,
-    toSt?.stationCode,
-    journeyDate,
+    submittedSearch,
     acOnly,
-    selectedClasses,
     v2Stats,
     v2AutoScanTrainNumbers,
   ]);
@@ -779,6 +757,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       setSearchError("Pick a journey date.");
       return;
     }
+    setSubmittedSearch({
+      from: fromSt,
+      to: toSt,
+      date: journeyDate,
+      classes: [...selectedClasses],
+    });
     trackAnalyticsEvent({
       name: "search_tickets_clicked",
       properties: {
@@ -803,9 +787,16 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setHasSearched(true);
     setSearchError(null);
     setSearchLoading(true);
+    setV2DiscoveredEndToEndTrains(new Set());
+    setV2DiscoveredPartialTrains(new Set());
+    setV2CompletedScans(new Set());
+    setV2ScanMetaMap(new Map());
     v2TrackedViewKeyRef.current = "";
     v2TrackedAutoScanKeyRef.current = "";
-    if (!hasSearched) setTrains([]);
+    setTrains([]);
+    resetAlternates();
+    bestTrainRequestRef.current?.abort();
+    setBestTrainLoading(false);
     setBestTrainResult(null);
     setBestTrainError(null);
     setBestTrainProgress([]);
@@ -883,45 +874,22 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     journeyDate,
     acOnly,
     selectedClasses,
-    hasSearched,
+    resetAlternates,
     router,
     pathname,
   ]);
 
-  // Performance & UX Optimization: Reset scroll position to top on auto-search trigger when arriving from scrolled pages (e.g. chart-times promo popup) to eliminate footer landing and layout flicker.
-  useEffect(() => {
-    if (
-      fromSt &&
-      toSt &&
-      journeyDate &&
-      hasUrlParams &&
-      !autoSearchTriggered.current
-    ) {
-      autoSearchTriggered.current = true;
-      if (typeof window !== "undefined") {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "instant" as ScrollBehavior,
-        });
-      }
-      void runSearch();
-    }
-  }, [fromSt, toSt, journeyDate, hasUrlParams, runSearch]);
-
   const runBestTrainSearch = useCallback(async () => {
-    if (!fromSt || !toSt) {
-      setBestTrainError("Select both stations.");
-      return;
-    }
-    if (!journeyDate) {
-      setBestTrainError("Pick a journey date.");
-      return;
-    }
-    if (trains.length === 0) {
+    if (!submittedSearch || trains.length === 0) {
       setBestTrainError("Search trains first, then scan the listed trains.");
       return;
     }
+    const {
+      from: fromSt,
+      to: toSt,
+      date: journeyDate,
+      classes: selectedClasses,
+    } = submittedSearch;
     bestTrainRequestRef.current?.abort();
     const controller = new AbortController();
     bestTrainRequestRef.current = controller;
@@ -1028,7 +996,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         setBestTrainLoading(false);
       }
     }
-  }, [fromSt, toSt, journeyDate, trains, acOnly, selectedClasses]);
+  }, [submittedSearch, trains, acOnly]);
 
   const bestTrainProgressSummary = useMemo(() => {
     const ready = [...bestTrainProgress]
@@ -1234,12 +1202,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               className="w-full rounded-full bg-slate-100 px-4 py-2 text-center transition hover:bg-slate-200 touch-manipulation"
             >
               <span className="block truncate text-sm font-bold text-slate-900">
-                {fromSt?.stationCode ?? "—"} - {fromSt?.stationName ?? "—"}
+                {submittedSearch?.from.stationCode ?? "—"} - {submittedSearch?.from.stationName ?? "—"}
                 {" → "}
-                {toSt?.stationCode ?? "—"} - {toSt?.stationName ?? "—"}
+                {submittedSearch?.to.stationCode ?? "—"} - {submittedSearch?.to.stationName ?? "—"}
               </span>
               <span className="mt-0.5 block text-xs font-medium text-slate-500">
-                {formatShortDate(journeyDate)}
+                {formatShortDate(submittedSearch?.date ?? null)}
               </span>
             </button>
           </div>
@@ -1465,10 +1433,10 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         )}
         {searchLoading && (
           <TrainSearchSkeleton
-            fromCode={fromSt?.stationCode}
-            fromName={fromSt?.stationName}
-            toCode={toSt?.stationCode}
-            toName={toSt?.stationName}
+            fromCode={submittedSearch?.from.stationCode}
+            fromName={submittedSearch?.from.stationName}
+            toCode={submittedSearch?.to.stationCode}
+            toName={submittedSearch?.to.stationName}
           />
         )}
 
@@ -1510,13 +1478,13 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               <TrainSearchV2Card
                 key={`v2-${t.trainNumber}`}
                 train={t}
-                journeyDate={journeyDate}
-                fromCode={fromSt?.stationCode}
-                fromName={fromSt?.stationName}
-                toCode={toSt?.stationCode}
-                toName={toSt?.stationName}
+                journeyDate={submittedSearch?.date}
+                fromCode={submittedSearch?.from.stationCode}
+                fromName={submittedSearch?.from.stationName}
+                toCode={submittedSearch?.to.stationCode}
+                toName={submittedSearch?.to.stationName}
                 acOnly={acOnly}
-                selectedClasses={selectedClasses}
+                selectedClasses={resultClasses}
                 autoScanEnabled={v2AutoScanTrainNumbers.has(t.trainNumber)}
                 onOpenSchedule={(trainNumber, from, to) => {
                   setScheduleTrainNumber(trainNumber);
@@ -1569,9 +1537,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   altResult={altResult}
                   altError={altError}
                   altProgress={altProgress}
-                  journeyDate={journeyDate}
-                  fromCode={fromSt?.stationCode}
-                  toCode={toSt?.stationCode}
+                  journeyDate={submittedSearch?.date ?? null}
+                  fromCode={submittedSearch?.from.stationCode}
+                  toCode={submittedSearch?.to.stationCode}
                   originChartTime="4 hours before departure"
                   isAdminUser={isAdminUser}
                   shareBusy={altShareBusy}
