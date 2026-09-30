@@ -63,6 +63,11 @@ const nextConfig = {
         destination: "/special-trains/dusshera",
         statusCode: 308,
       },
+      {
+        source: "/trains/vande-bharat",
+        destination: "/trains/vande_bharat",
+        statusCode: 308,
+      },
     ];
   },
   async headers() {

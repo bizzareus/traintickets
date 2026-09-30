@@ -19,6 +19,7 @@ export interface SplitBookingLeg {
   to: string;
   travelClass: string;
   fare: number;
+  boardingDate: string;
   departureTime?: string | null;
   arrivalTime?: string | null;
   durationMinutes?: number | null;

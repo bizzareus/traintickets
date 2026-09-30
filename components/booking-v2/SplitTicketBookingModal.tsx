@@ -42,6 +42,7 @@ export interface SplitTicketBookingModalProps {
     to: string;
     travelClass: string;
     fare: number;
+    boardingDate: string;
     departureTime?: string | null;
     arrivalTime?: string | null;
     durationMinutes?: number | null;
@@ -105,6 +106,9 @@ export function SplitTicketBookingModal({
     null,
   );
   const pollIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const bookingConfirmed = bookingStatus?.bookingStatus === "CONFIRMED";
+  const bookingFailed = bookingStatus?.bookingStatus === "FAILED";
+  const recordedPnrs = [bookingStatus?.pnrLeg1, bookingStatus?.pnrLeg2];
 
   // Reset form when modal opens
   useEffect(() => {
@@ -829,14 +833,27 @@ export function SplitTicketBookingModal({
             <div className="space-y-6">
               <div className="text-center">
                 <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                  <CheckCircle2 className="h-7 w-7" />
+                  {bookingFailed ? (
+                    <AlertCircle className="h-7 w-7 text-amber-600" />
+                  ) : bookingConfirmed ? (
+                    <CheckCircle2 className="h-7 w-7" />
+                  ) : (
+                    <Loader2 className="h-7 w-7 animate-spin" />
+                  )}
                 </div>
                 <h4 className="text-xl font-extrabold text-slate-900">
-                  We are booking it for you!
+                  {bookingConfirmed
+                    ? "Your tickets are confirmed"
+                    : bookingFailed
+                      ? "Booking needs attention"
+                      : "We are booking it for you!"}
                 </h4>
                 <p className="text-xs text-slate-600 max-w-md mx-auto mt-1">
-                  Payment confirmed. Our automated system is currently
-                  reserving your split tickets on Indian Railways.
+                  {bookingConfirmed
+                    ? "Both reservations have been verified. Your PNRs are below."
+                    : bookingFailed
+                      ? "The automated reservation stopped. Review the details and any recorded PNRs below."
+                      : "Payment confirmed. Our AI booking agent is reserving your split tickets."}
                 </p>
                 <span className="inline-block mt-2 rounded-md bg-slate-100 px-2.5 py-1 text-xs font-mono font-bold text-slate-800">
                   Booking Ref: {paymentData?.bookingRef}
@@ -856,26 +873,30 @@ export function SplitTicketBookingModal({
 
                 <div className="flex items-center gap-3">
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white text-xs font-bold">
-                    {bookingStatus?.bookingStatus === "CONFIRMED" ? (
+                    {bookingConfirmed ? (
                       "✓"
+                    ) : bookingFailed ? (
+                      <AlertCircle className="h-3.5 w-3.5" />
                     ) : (
                       <Loader2 className="h-3.5 w-3.5 animate-spin" />
                     )}
                   </div>
                   <span className="text-xs font-bold text-slate-800">
-                    Reserving Split Tickets on IRCTC / TripMgt
+                    {bookingFailed
+                      ? "AI Reservation Stopped"
+                      : "AI Reservation on IRCTC / TripMgt"}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <div
                     className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
-                      bookingStatus?.bookingStatus === "CONFIRMED"
+                      bookingConfirmed
                         ? "bg-emerald-600 text-white"
                         : "bg-slate-300 text-slate-600"
                     }`}
                   >
-                    {bookingStatus?.bookingStatus === "CONFIRMED" ? "✓" : "3"}
+                    {bookingConfirmed ? "✓" : "3"}
                   </div>
                   <span className="text-xs font-bold text-slate-800">
                     Ticket Confirmation & PNR Generation
@@ -884,38 +905,15 @@ export function SplitTicketBookingModal({
               </div>
 
               {/* Confirmation Details if Finished */}
-              {bookingStatus?.bookingStatus === "CONFIRMED" && (
+              {bookingConfirmed && (
                 <div className="rounded-xl border border-emerald-300 bg-emerald-50 p-4 space-y-2 text-xs">
                   <div className="font-bold text-emerald-900 text-sm">
                     🎉 Booking Successful!
                   </div>
                   <p className="text-emerald-800">
-                    Your split tickets have been secured. Confirmation has been
-                    sent to <strong>{mobile}</strong> and{" "}
-                    <strong>{email}</strong>.
+                    Your split tickets have been secured. Save the PNRs below
+                    for your journey.
                   </p>
-                  <div className="grid grid-cols-2 gap-2 pt-2">
-                    {bookingStatus.pnrLeg1 && (
-                      <div className="rounded bg-white p-2 border border-emerald-200">
-                        <span className="text-slate-500 block text-[10px]">
-                          Leg 1 PNR:
-                        </span>
-                        <span className="font-mono font-bold text-slate-900">
-                          {bookingStatus.pnrLeg1}
-                        </span>
-                      </div>
-                    )}
-                    {bookingStatus.pnrLeg2 && (
-                      <div className="rounded bg-white p-2 border border-emerald-200">
-                        <span className="text-slate-500 block text-[10px]">
-                          Leg 2 PNR:
-                        </span>
-                        <span className="font-mono font-bold text-slate-900">
-                          {bookingStatus.pnrLeg2}
-                        </span>
-                      </div>
-                    )}
-                  </div>
                 </div>
               )}
 
@@ -927,8 +925,36 @@ export function SplitTicketBookingModal({
                   </div>
                   <p>
                     {bookingStatus.bookingError ||
-                      "We could not confirm the seats automatically. Our travel team has been alerted and will process or refund your booking promptly."}
+                      "We could not complete the reservation automatically. Contact support with your booking reference."}
                   </p>
+                </div>
+              )}
+
+              {recordedPnrs.some(Boolean) && (
+                <div className="space-y-2 text-xs">
+                  {!bookingConfirmed && (
+                    <p className="text-amber-800">
+                      The portal issued the PNRs below. The full booking is not
+                      confirmed; check these reservations before booking again.
+                    </p>
+                  )}
+                  <div className="grid grid-cols-2 gap-2">
+                    {recordedPnrs.map((pnr, index) =>
+                      pnr ? (
+                        <div
+                          key={index}
+                          className="rounded border border-slate-200 bg-white p-2"
+                        >
+                          <span className="block text-[10px] text-slate-500">
+                            Leg {index + 1} PNR:
+                          </span>
+                          <span className="font-mono font-bold text-slate-900">
+                            {pnr}
+                          </span>
+                        </div>
+                      ) : null,
+                    )}
+                  </div>
                 </div>
               )}
 

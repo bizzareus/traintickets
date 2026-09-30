@@ -45,7 +45,7 @@ export class SplitBookingController {
 
   /**
    * Helper endpoint for development/testing and local verification:
-   * marks the payment as paid and triggers background Playwright automation.
+   * marks the payment as paid and triggers background computer-use automation.
    */
   @Post('simulate-pay/:bookingRef')
   @Throttle({ global: { limit: 5, ttl: 60_000 } })
@@ -74,6 +74,7 @@ export class SplitBookingController {
     }
 
     const body = req.body as Record<string, unknown>;
+    if (body.event !== 'payment.captured') return { received: true };
     const payload = body?.payload as Record<string, unknown> | undefined;
     const paymentEntity = payload?.payment as
       | Record<string, unknown>
@@ -86,10 +87,22 @@ export class SplitBookingController {
       (notes.bookingRef as string) || (notes.booking_ref as string);
 
     if (bookingRef) {
-      await this.splitBookingService.confirmPayment(
-        bookingRef,
-        payment?.id as string,
-      );
+      if (
+        payment?.status !== 'captured' ||
+        typeof payment.id !== 'string' ||
+        typeof payment.amount !== 'number' ||
+        typeof payment.currency !== 'string'
+      ) {
+        throw new BadRequestException(
+          'A captured payment is required for reservation',
+        );
+      }
+      await this.splitBookingService.confirmPayment(bookingRef, payment.id, {
+        amount: payment.amount,
+        currency: payment.currency,
+        orderId:
+          typeof payment.order_id === 'string' ? payment.order_id : undefined,
+      });
     }
 
     return { received: true };

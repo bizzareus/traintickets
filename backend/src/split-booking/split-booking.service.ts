@@ -8,6 +8,7 @@ import type { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
+import { validateBookingItinerary } from './split-booking.validation';
 import type {
   CreateSplitBookingDto,
   SplitBookingStatusResponse,
@@ -66,6 +67,14 @@ export class SplitBookingService {
     }
     if (!dto.contactEmail?.trim() || !dto.contactEmail.includes('@')) {
       throw new BadRequestException('A valid email address is required');
+    }
+
+    try {
+      validateBookingItinerary(dto);
+    } catch (error: unknown) {
+      throw new BadRequestException(
+        error instanceof Error ? error.message : 'Invalid split itinerary',
+      );
     }
 
     const bookingRef = this.generateBookingRef();
@@ -214,13 +223,29 @@ export class SplitBookingService {
   /**
    * Mark payment paid (used by webhook or dev simulation) and trigger background fulfillment.
    */
-  async confirmPayment(bookingRef: string, paymentId?: string) {
+  async confirmPayment(
+    bookingRef: string,
+    paymentId?: string,
+    capturedPayment?: { amount: number; currency: string; orderId?: string },
+  ) {
     const booking = await this.prisma.splitTicketBooking.findUnique({
       where: { bookingRef },
     });
     if (!booking) {
       throw new NotFoundException(
         `Booking with reference "${bookingRef}" not found`,
+      );
+    }
+
+    if (
+      capturedPayment &&
+      (capturedPayment.amount !== booking.totalFare * 100 ||
+        capturedPayment.currency !== 'INR' ||
+        (capturedPayment.orderId &&
+          capturedPayment.orderId !== booking.razorpayOrderId))
+    ) {
+      throw new BadRequestException(
+        'Captured payment does not match this booking',
       );
     }
 
@@ -245,8 +270,12 @@ export class SplitBookingService {
       },
     ];
 
-    await this.prisma.splitTicketBooking.update({
-      where: { id: booking.id },
+    const claimed = await this.prisma.splitTicketBooking.updateMany({
+      where: {
+        id: booking.id,
+        paymentStatus: 'PENDING',
+        bookingStatus: 'IDLE',
+      },
       data: {
         paymentStatus: 'PAID',
         paidAt: new Date(),
@@ -256,14 +285,23 @@ export class SplitBookingService {
       },
     });
 
-    // Asynchronously dispatch Playwright fulfillment in the background
-    void this.dispatchFulfillment(booking.bookingRef);
+    // Only the winning payment transition may enqueue a reservation.
+    if (claimed.count === 1) {
+      void this.dispatchFulfillment(booking.bookingRef).catch(
+        (error: unknown) => {
+          this.logger.error(
+            `Could not dispatch booking ${booking.bookingRef}`,
+            error instanceof Error ? error.stack : undefined,
+          );
+        },
+      );
+    }
 
     return this.getStatus(bookingRef);
   }
 
   /**
-   * Background runner that launches the TripMgt Playwright automation.
+   * Background runner for OpenAI computer-use reservations.
    */
   private async dispatchFulfillment(bookingRef: string): Promise<void> {
     const booking = await this.prisma.splitTicketBooking.findUnique({
@@ -272,10 +310,23 @@ export class SplitBookingService {
     if (!booking) return;
 
     try {
-      await this.prisma.splitTicketBooking.update({
-        where: { id: booking.id },
+      const claimed = await this.prisma.splitTicketBooking.updateMany({
+        where: {
+          id: booking.id,
+          paymentStatus: 'PAID',
+          bookingStatus: 'QUEUED',
+          pnrLeg1: null,
+          pnrLeg2: null,
+        },
         data: { bookingStatus: 'IN_PROGRESS' },
       });
+      if (claimed.count !== 1) return;
+
+      const logs = Array.isArray(booking.automationLogs)
+        ? ([
+            ...booking.automationLogs,
+          ] as unknown as SplitBookingStatusResponse['logs'])
+        : [];
 
       const passengersData =
         (booking.passengers as Record<string, unknown>) || {};
@@ -297,6 +348,7 @@ export class SplitBookingService {
           journeyDate: booking.journeyDate.toISOString().slice(0, 10),
           travelClass: booking.travelClass,
           quota: booking.quota,
+          totalFare: booking.totalFare,
           legs,
           passengers: adults,
           childPassengers: children,
@@ -304,25 +356,22 @@ export class SplitBookingService {
           contactMobile: booking.contactMobile,
           contactEmail: booking.contactEmail,
         },
-        async (logEntry) => {
-          // Push real-time log to database
-          const b = await this.prisma.splitTicketBooking.findUnique({
-            where: { id: booking.id },
-          });
-          if (b) {
-            const l = Array.isArray(b.automationLogs)
-              ? (b.automationLogs as unknown as typeof result.logs)
-              : [];
+        {
+          onLog: async (logEntry) => {
+            logs.push(logEntry);
             await this.prisma.splitTicketBooking.update({
               where: { id: booking.id },
               data: {
-                automationLogs: [
-                  ...l,
-                  logEntry,
-                ] as unknown as Prisma.InputJsonValue,
+                automationLogs: logs as unknown as Prisma.InputJsonValue,
               },
             });
-          }
+          },
+          onPnr: async (legIndex, pnr) => {
+            await this.prisma.splitTicketBooking.update({
+              where: { id: booking.id },
+              data: legIndex === 0 ? { pnrLeg1: pnr } : { pnrLeg2: pnr },
+            });
+          },
         },
       );
 
@@ -334,7 +383,7 @@ export class SplitBookingService {
           pnrLeg2: result.pnrLeg2 ?? null,
           bookingError: result.error ?? null,
           completedAt: new Date(),
-          automationLogs: result.logs as unknown as Prisma.InputJsonValue,
+          automationLogs: logs as unknown as Prisma.InputJsonValue,
         },
       });
     } catch (err: unknown) {

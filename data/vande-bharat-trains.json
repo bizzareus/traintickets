@@ -1,0 +1,4329 @@
+{
+  "version": 1,
+  "count": 160,
+  "updatedAt": "2026-09-30",
+  "trains": [
+    {
+      "trainNumber": "12461",
+      "trainName": "Jodhpur - Sabarmati Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "JU",
+        "name": "Jodhpur Jn"
+      },
+      "departureTime": "06:05",
+      "destinationStation": {
+        "code": "SBIB",
+        "name": "Sabarmati Bg"
+      },
+      "arrivalTime": "12:05",
+      "duration": "6h 00m",
+      "distance": "449 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12461-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12461-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "ju-sbib-vande-bharat-express-12461",
+      "foodMenuUrl": "/irctc-train-food-menu/ju-sbib-vande-bharat-express-12461",
+      "trainDetailUrl": "/trains/12461"
+    },
+    {
+      "trainNumber": "12462",
+      "trainName": "Sabarmati - Jodhpur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SBIB",
+        "name": "Sabarmati Bg"
+      },
+      "departureTime": "16:55",
+      "destinationStation": {
+        "code": "JU",
+        "name": "Jodhpur Jn"
+      },
+      "arrivalTime": "22:50",
+      "duration": "5h 55m",
+      "distance": "449 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12462-ju-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/12462-ju-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12462"
+    },
+    {
+      "trainNumber": "20101",
+      "trainName": "Nagpur - Secunderabad Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NGP",
+        "name": "Nagpur"
+      },
+      "departureTime": "05:00",
+      "destinationStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "arrivalTime": "12:15",
+      "duration": "7h 15m",
+      "distance": "578 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20101-sc-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20101-sc-vande-bharat-chart-times",
+      "foodMenuSlug": "ngp-sc-vande-bharat-express-20101",
+      "foodMenuUrl": "/irctc-train-food-menu/ngp-sc-vande-bharat-express-20101",
+      "trainDetailUrl": "/trains/20101"
+    },
+    {
+      "trainNumber": "20102",
+      "trainName": "Secunderabad - Nagpur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "departureTime": "13:00",
+      "destinationStation": {
+        "code": "NGP",
+        "name": "Nagpur"
+      },
+      "arrivalTime": "20:20",
+      "duration": "7h 20m",
+      "distance": "578 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20102-ngp-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20102-ngp-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20102"
+    },
+    {
+      "trainNumber": "20171",
+      "trainName": "Rani Kamalapati - H Nizamuddin Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "RKMP",
+        "name": "Rani Kamalapati"
+      },
+      "departureTime": "05:40",
+      "destinationStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "arrivalTime": "13:16",
+      "duration": "7h 36m",
+      "distance": "700 km",
+      "halts": 5,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20171-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20171-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "rkmp-nzm-vande-bharat-express-20171",
+      "foodMenuUrl": "/irctc-train-food-menu/rkmp-nzm-vande-bharat-express-20171",
+      "trainDetailUrl": "/trains/20171"
+    },
+    {
+      "trainNumber": "20172",
+      "trainName": "H Nizamuddin - Rani Kamalapati Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "departureTime": "14:40",
+      "destinationStation": {
+        "code": "RKMP",
+        "name": "Rani Kamalapati"
+      },
+      "arrivalTime": "22:16",
+      "duration": "7h 36m",
+      "distance": "700 km",
+      "halts": 5,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20172-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20172-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20172"
+    },
+    {
+      "trainNumber": "20173",
+      "trainName": "Rani Kamalapati - Rewa Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "RKMP",
+        "name": "Rani Kamalapati"
+      },
+      "departureTime": "15:30",
+      "destinationStation": {
+        "code": "REWA",
+        "name": "Rewa"
+      },
+      "arrivalTime": "23:35",
+      "duration": "8h 05m",
+      "distance": "569 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20173-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20173-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "rkmp-rewa-vande-bharat-express-20173",
+      "foodMenuUrl": "/irctc-train-food-menu/rkmp-rewa-vande-bharat-express-20173",
+      "trainDetailUrl": "/trains/20173"
+    },
+    {
+      "trainNumber": "20174",
+      "trainName": "Rewa - Rani Kamalapati Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "REWA",
+        "name": "Rewa"
+      },
+      "departureTime": "05:20",
+      "destinationStation": {
+        "code": "RKMP",
+        "name": "Rani Kamalapati"
+      },
+      "arrivalTime": "13:30",
+      "duration": "8h 10m",
+      "distance": "576 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20174-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20174-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20174"
+    },
+    {
+      "trainNumber": "20175",
+      "trainName": "Banaras - Agra Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BNRS",
+        "name": "BANARAS"
+      },
+      "departureTime": "15:20",
+      "destinationStation": {
+        "code": "AGC",
+        "name": "Agra Cantt"
+      },
+      "arrivalTime": "22:20",
+      "duration": "7h 00m",
+      "distance": "577 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20175-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20175-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "bsbs-agc-vande-bharat-express-20175",
+      "foodMenuUrl": "/irctc-train-food-menu/bsbs-agc-vande-bharat-express-20175",
+      "trainDetailUrl": "/trains/20175"
+    },
+    {
+      "trainNumber": "20176",
+      "trainName": "Agra - Banaras Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "AGC",
+        "name": "Agra Cantt"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "BNRS",
+        "name": "BANARAS"
+      },
+      "arrivalTime": "13:00",
+      "duration": "7h 00m",
+      "distance": "577 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20176-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20176-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20176"
+    },
+    {
+      "trainNumber": "20607",
+      "trainName": "Mgr Chennai Ctl - Mysuru Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "departureTime": "05:50",
+      "destinationStation": {
+        "code": "MYS",
+        "name": "Mysuru Jn"
+      },
+      "arrivalTime": "12:20",
+      "duration": "6h 30m",
+      "distance": "500 km",
+      "halts": 4,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20607-mys-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20607-mys-vandebharat-chart-times",
+      "foodMenuSlug": "mas-mys-mas-vande-bharat-express-20607",
+      "foodMenuUrl": "/irctc-train-food-menu/mas-mys-mas-vande-bharat-express-20607",
+      "trainDetailUrl": "/trains/20607"
+    },
+    {
+      "trainNumber": "20608",
+      "trainName": "Mysuru - Mgr Chennai Ctl Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MYS",
+        "name": "Mysuru Jn"
+      },
+      "departureTime": "13:05",
+      "destinationStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "arrivalTime": "19:20",
+      "duration": "6h 15m",
+      "distance": "500 km",
+      "halts": 4,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20608-mas-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20608-mas-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20608"
+    },
+    {
+      "trainNumber": "20633",
+      "trainName": "Kasaragod - Trivandrum Cntl Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "KGQ",
+        "name": "Kasaragod"
+      },
+      "departureTime": "14:30",
+      "destinationStation": {
+        "code": "TVC",
+        "name": "Trivandrum Cntl"
+      },
+      "arrivalTime": "22:40",
+      "duration": "8h 10m",
+      "distance": "588 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20633-tvc-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20633-tvc-vandebharat-chart-times",
+      "foodMenuSlug": "tvc-kgq-tvc-vande-bharat-express-20633",
+      "foodMenuUrl": "/irctc-train-food-menu/tvc-kgq-tvc-vande-bharat-express-20633",
+      "trainDetailUrl": "/trains/20633"
+    },
+    {
+      "trainNumber": "20634",
+      "trainName": "Trivandrum Cntl - Kasaragod Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "TVC",
+        "name": "Trivandrum Cntl"
+      },
+      "departureTime": "05:15",
+      "destinationStation": {
+        "code": "KGQ",
+        "name": "Kasaragod"
+      },
+      "arrivalTime": "13:20",
+      "duration": "8h 05m",
+      "distance": "588 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20634-kgq-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20634-kgq-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20634"
+    },
+    {
+      "trainNumber": "20641",
+      "trainName": "Bengaluru Cant - Coimbatore Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BNC",
+        "name": "Bengaluru Cant"
+      },
+      "departureTime": "14:20",
+      "destinationStation": {
+        "code": "CBE",
+        "name": "Coimbatore Jn"
+      },
+      "arrivalTime": "20:40",
+      "duration": "6h 20m",
+      "distance": "376 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20641-cbe-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20641-cbe-vande-bharat-chart-times",
+      "foodMenuSlug": "cbe-bnc-cbe-vande-bharat-express-20641",
+      "foodMenuUrl": "/irctc-train-food-menu/cbe-bnc-cbe-vande-bharat-express-20641",
+      "trainDetailUrl": "/trains/20641"
+    },
+    {
+      "trainNumber": "20642",
+      "trainName": "Coimbatore - Bengaluru Cant Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "CBE",
+        "name": "Coimbatore Jn"
+      },
+      "departureTime": "07:25",
+      "destinationStation": {
+        "code": "BNC",
+        "name": "Bengaluru Cant"
+      },
+      "arrivalTime": "13:45",
+      "duration": "6h 20m",
+      "distance": "377 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20642-bnc-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20642-bnc-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20642"
+    },
+    {
+      "trainNumber": "20643",
+      "trainName": "Mgr Chennai Ctl - Coimbatore Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "departureTime": "14:15",
+      "destinationStation": {
+        "code": "CBE",
+        "name": "Coimbatore Jn"
+      },
+      "arrivalTime": "20:15",
+      "duration": "6h 00m",
+      "distance": "497 km",
+      "halts": 5,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20643-cbe-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20643-cbe-vandebharat-chart-times",
+      "foodMenuSlug": "mas-cbe-mas-vande-bharat-express-20643",
+      "foodMenuUrl": "/irctc-train-food-menu/mas-cbe-mas-vande-bharat-express-20643",
+      "trainDetailUrl": "/trains/20643"
+    },
+    {
+      "trainNumber": "20644",
+      "trainName": "Coimbatore - Mgr Chennai Ctl Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "CBE",
+        "name": "Coimbatore Jn"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "arrivalTime": "11:50",
+      "duration": "5h 50m",
+      "distance": "497 km",
+      "halts": 5,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20644-mas-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20644-mas-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20644"
+    },
+    {
+      "trainNumber": "20645",
+      "trainName": "Madgaon - Mangaluru Cntl Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MAO",
+        "name": "Madgaon"
+      },
+      "departureTime": "17:35",
+      "destinationStation": {
+        "code": "MAQ",
+        "name": "Mangaluru Cntl"
+      },
+      "arrivalTime": "22:45",
+      "duration": "5h 10m",
+      "distance": "437 km",
+      "halts": 4,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20645-maq-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20645-maq-vandebharat-chart-times",
+      "foodMenuSlug": "maq-mao-vande-bharat-express-20645",
+      "foodMenuUrl": "/irctc-train-food-menu/maq-mao-vande-bharat-express-20645",
+      "trainDetailUrl": "/trains/20645"
+    },
+    {
+      "trainNumber": "20646",
+      "trainName": "Mangaluru Cntl - Madgaon Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MAQ",
+        "name": "Mangaluru Cntl"
+      },
+      "departureTime": "08:30",
+      "destinationStation": {
+        "code": "MAO",
+        "name": "Madgaon"
+      },
+      "arrivalTime": "14:10",
+      "duration": "5h 40m",
+      "distance": "437 km",
+      "halts": 4,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20646-mao-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20646-mao-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20646"
+    },
+    {
+      "trainNumber": "20661",
+      "trainName": "KSR Bengaluru - Dharwar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "departureTime": "05:45",
+      "destinationStation": {
+        "code": "DWR",
+        "name": "Dharwar"
+      },
+      "arrivalTime": "12:00",
+      "duration": "6h 15m",
+      "distance": "490 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20661-dwr-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20661-dwr-vande-bharat-chart-times",
+      "foodMenuSlug": "sbc-dwr-vande-bharat-express-20661",
+      "foodMenuUrl": "/irctc-train-food-menu/sbc-dwr-vande-bharat-express-20661",
+      "trainDetailUrl": "/trains/20661"
+    },
+    {
+      "trainNumber": "20662",
+      "trainName": "Dharwar - KSR Bengaluru Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "DWR",
+        "name": "Dharwar"
+      },
+      "departureTime": "13:30",
+      "destinationStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "arrivalTime": "19:45",
+      "duration": "6h 15m",
+      "distance": "490 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20662-sbc-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20662-sbc-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20662"
+    },
+    {
+      "trainNumber": "20663",
+      "trainName": "Mysuru - Mgr Chennai Ctl Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MYS",
+        "name": "Mysuru Jn"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "arrivalTime": "12:30",
+      "duration": "6h 30m",
+      "distance": "500 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20663-mas-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20663-mas-vande-bharat-chart-times",
+      "foodMenuSlug": "mys-mas-mys-vande-bharat-express-20663",
+      "foodMenuUrl": "/irctc-train-food-menu/mys-mas-mys-vande-bharat-express-20663",
+      "trainDetailUrl": "/trains/20663"
+    },
+    {
+      "trainNumber": "20664",
+      "trainName": "Mgr Chennai Ctl - Mysuru Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "departureTime": "17:00",
+      "destinationStation": {
+        "code": "MYS",
+        "name": "Mysuru Jn"
+      },
+      "arrivalTime": "23:30",
+      "duration": "6h 30m",
+      "distance": "500 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20664-mys-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20664-mys-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20664"
+    },
+    {
+      "trainNumber": "20665",
+      "trainName": "Chennai Egmore - Tirunelveli Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MS",
+        "name": "Chennai Egmore"
+      },
+      "departureTime": "15:10",
+      "destinationStation": {
+        "code": "TEN",
+        "name": "Tirunelveli"
+      },
+      "arrivalTime": "23:00",
+      "duration": "7h 50m",
+      "distance": "653 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20665-ten-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20665-ten-vandebharat-chart-times",
+      "foodMenuSlug": "ten-ms-ten-vande-bharat-express-20665",
+      "foodMenuUrl": "/irctc-train-food-menu/ten-ms-ten-vande-bharat-express-20665",
+      "trainDetailUrl": "/trains/20665"
+    },
+    {
+      "trainNumber": "20666",
+      "trainName": "Tirunelveli - Chennai Egmore Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "TEN",
+        "name": "Tirunelveli"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "MS",
+        "name": "Chennai Egmore"
+      },
+      "arrivalTime": "14:00",
+      "duration": "8h 00m",
+      "distance": "653 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20666-ms-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20666-ms-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20666"
+    },
+    {
+      "trainNumber": "20670",
+      "trainName": "Pune - Sss Hubballi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "departureTime": "14:15",
+      "destinationStation": {
+        "code": "UBL",
+        "name": "Sss Hubballi Jn"
+      },
+      "arrivalTime": "22:45",
+      "duration": "8h 30m",
+      "distance": "558 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20670-ubl-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20670-ubl-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20670"
+    },
+    {
+      "trainNumber": "20672",
+      "trainName": "Bengaluru Cant - Madurai Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BNC",
+        "name": "Bengaluru Cant"
+      },
+      "departureTime": "13:30",
+      "destinationStation": {
+        "code": "MDU",
+        "name": "Madurai Jn"
+      },
+      "arrivalTime": "21:40",
+      "duration": "8h 10m",
+      "distance": "586 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20672-mdu-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20672-mdu-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20672"
+    },
+    {
+      "trainNumber": "20673",
+      "trainName": "C Shahumharaj T - Pune Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "KOP",
+        "name": "C SHAHUMHARAJ T"
+      },
+      "departureTime": "08:15",
+      "destinationStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "arrivalTime": "13:30",
+      "duration": "5h 15m",
+      "distance": "326 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20673-pune-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20673-pune-vandebharat-chart-times",
+      "foodMenuSlug": "mmct-gnc-vande-bharat-express-20673",
+      "foodMenuUrl": "/irctc-train-food-menu/mmct-gnc-vande-bharat-express-20673",
+      "trainDetailUrl": "/trains/20673"
+    },
+    {
+      "trainNumber": "20674",
+      "trainName": "Pune - C Shahumharaj T Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "departureTime": "14:15",
+      "destinationStation": {
+        "code": "KOP",
+        "name": "C SHAHUMHARAJ T"
+      },
+      "arrivalTime": "19:40",
+      "duration": "5h 25m",
+      "distance": "326 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20674-kop-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20674-kop-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20674"
+    },
+    {
+      "trainNumber": "20677",
+      "trainName": "Mgr Chennai Ctl - Narasapur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "departureTime": "05:30",
+      "destinationStation": {
+        "code": "NS",
+        "name": "Narasapur"
+      },
+      "arrivalTime": "14:10",
+      "duration": "8h 40m",
+      "distance": "655 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20677-ns-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20677-ns-vande-bharat-chart-times",
+      "foodMenuSlug": "mas-ns-mas-vande-bharat-express-20677",
+      "foodMenuUrl": "/irctc-train-food-menu/mas-ns-mas-vande-bharat-express-20677",
+      "trainDetailUrl": "/trains/20677"
+    },
+    {
+      "trainNumber": "20678",
+      "trainName": "Narasapur - Mgr Chennai Ctl Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NS",
+        "name": "Narasapur"
+      },
+      "departureTime": "14:50",
+      "destinationStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "arrivalTime": "23:45",
+      "duration": "8h 55m",
+      "distance": "655 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20678-mas-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20678-mas-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20678"
+    },
+    {
+      "trainNumber": "20701",
+      "trainName": "Secunderabad - Tirupati Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "TPTY",
+        "name": "Tirupati"
+      },
+      "arrivalTime": "14:35",
+      "duration": "8h 25m",
+      "distance": "661 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20701-tpty-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20701-tpty-vandebharat-chart-times",
+      "foodMenuSlug": "sc-tpty-vande-bharat-express-20701",
+      "foodMenuUrl": "/irctc-train-food-menu/sc-tpty-vande-bharat-express-20701",
+      "trainDetailUrl": "/trains/20701"
+    },
+    {
+      "trainNumber": "20702",
+      "trainName": "Tirupati - Secunderabad Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "TPTY",
+        "name": "Tirupati"
+      },
+      "departureTime": "15:15",
+      "destinationStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "arrivalTime": "23:42",
+      "duration": "8h 27m",
+      "distance": "661 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20702-sc-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20702-sc-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20702"
+    },
+    {
+      "trainNumber": "20703",
+      "trainName": "Kacheguda - Yesvantpur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "KCG",
+        "name": "Kacheguda"
+      },
+      "departureTime": "05:45",
+      "destinationStation": {
+        "code": "YPR",
+        "name": "Yesvantpur Jn"
+      },
+      "arrivalTime": "14:00",
+      "duration": "8h 15m",
+      "distance": "610 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20703-ypr-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20703-ypr-vandebharat-chart-times",
+      "foodMenuSlug": "kcg-ypr-vande-bharat-express-20703",
+      "foodMenuUrl": "/irctc-train-food-menu/kcg-ypr-vande-bharat-express-20703",
+      "trainDetailUrl": "/trains/20703"
+    },
+    {
+      "trainNumber": "20704",
+      "trainName": "Yesvantpur - Kacheguda Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "YPR",
+        "name": "Yesvantpur Jn"
+      },
+      "departureTime": "14:45",
+      "destinationStation": {
+        "code": "KCG",
+        "name": "Kacheguda"
+      },
+      "arrivalTime": "23:00",
+      "duration": "8h 15m",
+      "distance": "610 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20704-kcg-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20704-kcg-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20704"
+    },
+    {
+      "trainNumber": "20705",
+      "trainName": "H Sahib Nanded - C Shivaji Mah T Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NED",
+        "name": "H Sahib Nanded"
+      },
+      "departureTime": "05:20",
+      "destinationStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "arrivalTime": "14:15",
+      "duration": "8h 55m",
+      "distance": "610 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20705-csmt-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20705-csmt-vandebharat-chart-times",
+      "foodMenuSlug": "csmt-j-vande-bharat-express-20705",
+      "foodMenuUrl": "/irctc-train-food-menu/csmt-j-vande-bharat-express-20705",
+      "trainDetailUrl": "/trains/20705"
+    },
+    {
+      "trainNumber": "20706",
+      "trainName": "C Shivaji Mah T - H Sahib Nanded Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "departureTime": "13:15",
+      "destinationStation": {
+        "code": "NED",
+        "name": "H Sahib Nanded"
+      },
+      "arrivalTime": "22:25",
+      "duration": "9h 10m",
+      "distance": "610 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20706-ned-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20706-ned-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20706"
+    },
+    {
+      "trainNumber": "20707",
+      "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "departureTime": "05:00",
+      "destinationStation": {
+        "code": "VSKP",
+        "name": "Visakhapatnam"
+      },
+      "arrivalTime": "13:50",
+      "duration": "8h 50m",
+      "distance": "699 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20707-vskp-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20707-vskp-vandebharat-chart-times",
+      "foodMenuSlug": "sc-vskp-vande-bharat-express-20707",
+      "foodMenuUrl": "/irctc-train-food-menu/sc-vskp-vande-bharat-express-20707",
+      "trainDetailUrl": "/trains/20707"
+    },
+    {
+      "trainNumber": "20708",
+      "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "VSKP",
+        "name": "Visakhapatnam"
+      },
+      "departureTime": "14:30",
+      "destinationStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "arrivalTime": "23:25",
+      "duration": "8h 55m",
+      "distance": "699 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20708-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20708-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20708"
+    },
+    {
+      "trainNumber": "20825",
+      "trainName": "Bilaspur - Nagpur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BSP",
+        "name": "Bilaspur Jn"
+      },
+      "departureTime": "06:45",
+      "destinationStation": {
+        "code": "NGP",
+        "name": "Nagpur"
+      },
+      "arrivalTime": "12:15",
+      "duration": "5h 30m",
+      "distance": "413 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20825-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20825-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "bsp-ngp-vande-bharat-express-20825",
+      "foodMenuUrl": "/irctc-train-food-menu/bsp-ngp-vande-bharat-express-20825",
+      "trainDetailUrl": "/trains/20825"
+    },
+    {
+      "trainNumber": "20826",
+      "trainName": "Nagpur - Bilaspur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NGP",
+        "name": "Nagpur"
+      },
+      "departureTime": "14:05",
+      "destinationStation": {
+        "code": "BSP",
+        "name": "Bilaspur Jn"
+      },
+      "arrivalTime": "19:25",
+      "duration": "5h 20m",
+      "distance": "413 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20826-bsp-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20826-bsp-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20826"
+    },
+    {
+      "trainNumber": "20829",
+      "trainName": "Durg - Visakhapatnam Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "DURG",
+        "name": "Durg"
+      },
+      "departureTime": "05:45",
+      "destinationStation": {
+        "code": "VSKP",
+        "name": "Visakhapatnam"
+      },
+      "arrivalTime": "13:55",
+      "duration": "8h 10m",
+      "distance": "565 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20829-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20829-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "sc-vskp-vande-bharat-express-20829",
+      "foodMenuUrl": "/irctc-train-food-menu/sc-vskp-vande-bharat-express-20829",
+      "trainDetailUrl": "/trains/20829"
+    },
+    {
+      "trainNumber": "20830",
+      "trainName": "Visakhapatnam - Durg Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "VSKP",
+        "name": "Visakhapatnam"
+      },
+      "departureTime": "14:50",
+      "destinationStation": {
+        "code": "DURG",
+        "name": "Durg"
+      },
+      "arrivalTime": "22:50",
+      "duration": "8h 00m",
+      "distance": "565 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20830-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20830-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20830"
+    },
+    {
+      "trainNumber": "20833",
+      "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "VSKP",
+        "name": "Visakhapatnam"
+      },
+      "departureTime": "05:45",
+      "destinationStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "arrivalTime": "14:20",
+      "duration": "8h 35m",
+      "distance": "699 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20833-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20833-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "vskp-sc-vande-bharat-express-20833",
+      "foodMenuUrl": "/irctc-train-food-menu/vskp-sc-vande-bharat-express-20833",
+      "trainDetailUrl": "/trains/20833"
+    },
+    {
+      "trainNumber": "20834",
+      "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "departureTime": "15:00",
+      "destinationStation": {
+        "code": "VSKP",
+        "name": "Visakhapatnam"
+      },
+      "arrivalTime": "23:35",
+      "duration": "8h 35m",
+      "distance": "699 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20834-vande-bharat-ex-chart-times",
+      "chartTimesUrl": "/chart-times/20834-vande-bharat-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20834"
+    },
+    {
+      "trainNumber": "20835",
+      "trainName": "Rourkela - Puri Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "ROU",
+        "name": "Rourkela"
+      },
+      "departureTime": "14:00",
+      "destinationStation": {
+        "code": "PURI",
+        "name": "Puri"
+      },
+      "arrivalTime": "21:40",
+      "duration": "7h 40m",
+      "distance": "505 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20835-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20835-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "puri-rou-vande-bharat-express-20835",
+      "foodMenuUrl": "/irctc-train-food-menu/puri-rou-vande-bharat-express-20835",
+      "trainDetailUrl": "/trains/20835"
+    },
+    {
+      "trainNumber": "20836",
+      "trainName": "Puri - Rourkela Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PURI",
+        "name": "Puri"
+      },
+      "departureTime": "05:00",
+      "destinationStation": {
+        "code": "ROU",
+        "name": "Rourkela"
+      },
+      "arrivalTime": "12:45",
+      "duration": "7h 45m",
+      "distance": "504 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20836-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20836-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20836"
+    },
+    {
+      "trainNumber": "20841",
+      "trainName": "Bhubaneswar - Visakhapatnam Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BBS",
+        "name": "Bhubaneswar"
+      },
+      "departureTime": "05:15",
+      "destinationStation": {
+        "code": "VSKP",
+        "name": "Visakhapatnam"
+      },
+      "arrivalTime": "11:00",
+      "duration": "5h 45m",
+      "distance": "443 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20841-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20841-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "vskp-sc-vande-bharat-express-20841",
+      "foodMenuUrl": "/irctc-train-food-menu/vskp-sc-vande-bharat-express-20841",
+      "trainDetailUrl": "/trains/20841"
+    },
+    {
+      "trainNumber": "20842",
+      "trainName": "Visakhapatnam - Bhubaneswar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "VSKP",
+        "name": "Visakhapatnam"
+      },
+      "departureTime": "15:30",
+      "destinationStation": {
+        "code": "BBS",
+        "name": "Bhubaneswar"
+      },
+      "arrivalTime": "21:30",
+      "duration": "6h 00m",
+      "distance": "443 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20842-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20842-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20842"
+    },
+    {
+      "trainNumber": "20871",
+      "trainName": "Howrah - Rourkela Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "ROU",
+        "name": "Rourkela"
+      },
+      "arrivalTime": "12:05",
+      "duration": "6h 05m",
+      "distance": "413 km",
+      "halts": 5,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20871-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20871-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "hwh-rou-vande-bharat-express-20871",
+      "foodMenuUrl": "/irctc-train-food-menu/hwh-rou-vande-bharat-express-20871",
+      "trainDetailUrl": "/trains/20871"
+    },
+    {
+      "trainNumber": "20872",
+      "trainName": "Rourkela - Howrah Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "ROU",
+        "name": "Rourkela"
+      },
+      "departureTime": "13:30",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "19:50",
+      "duration": "6h 20m",
+      "distance": "413 km",
+      "halts": 5,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20872-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20872-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20872"
+    },
+    {
+      "trainNumber": "20887",
+      "trainName": "Ranchi - Varanasi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "departureTime": "05:10",
+      "destinationStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "arrivalTime": "13:00",
+      "duration": "7h 50m",
+      "distance": "536 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20887-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20887-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "rnc-bsb-vande-bharat-express-20887",
+      "foodMenuUrl": "/irctc-train-food-menu/rnc-bsb-vande-bharat-express-20887",
+      "trainDetailUrl": "/trains/20887"
+    },
+    {
+      "trainNumber": "20888",
+      "trainName": "Varanasi - Ranchi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "departureTime": "16:05",
+      "destinationStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "arrivalTime": "23:55",
+      "duration": "7h 50m",
+      "distance": "536 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20888-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20888-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20888"
+    },
+    {
+      "trainNumber": "20891",
+      "trainName": "Tatanagar - Brahmapur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "TATA",
+        "name": "Tatanagar Jn"
+      },
+      "departureTime": "14:20",
+      "destinationStation": {
+        "code": "BAM",
+        "name": "Brahmapur"
+      },
+      "arrivalTime": "23:55",
+      "duration": "9h 35m",
+      "distance": "590 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20891-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20891-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "tata-bam-vande-bharat-express-20891",
+      "foodMenuUrl": "/irctc-train-food-menu/tata-bam-vande-bharat-express-20891",
+      "trainDetailUrl": "/trains/20891"
+    },
+    {
+      "trainNumber": "20892",
+      "trainName": "Brahmapur - Tatanagar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BAM",
+        "name": "Brahmapur"
+      },
+      "departureTime": "05:15",
+      "destinationStation": {
+        "code": "TATA",
+        "name": "Tatanagar Jn"
+      },
+      "arrivalTime": "14:50",
+      "duration": "9h 35m",
+      "distance": "587 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20892-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20892-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20892"
+    },
+    {
+      "trainNumber": "20893",
+      "trainName": "Tatanagar - Patna Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "TATA",
+        "name": "Tatanagar Jn"
+      },
+      "departureTime": "05:25",
+      "destinationStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "arrivalTime": "12:45",
+      "duration": "7h 20m",
+      "distance": "450 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20893-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20893-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "hwh-njp-vande-bharat-express-20893",
+      "foodMenuUrl": "/irctc-train-food-menu/hwh-njp-vande-bharat-express-20893",
+      "trainDetailUrl": "/trains/20893"
+    },
+    {
+      "trainNumber": "20894",
+      "trainName": "Patna - Tatanagar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "departureTime": "14:05",
+      "destinationStation": {
+        "code": "TATA",
+        "name": "Tatanagar Jn"
+      },
+      "arrivalTime": "21:40",
+      "duration": "7h 35m",
+      "distance": "450 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20894-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20894-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20894"
+    },
+    {
+      "trainNumber": "20897",
+      "trainName": "Howrah - Ranchi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "14:35",
+      "destinationStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "arrivalTime": "22:00",
+      "duration": "7h 25m",
+      "distance": "462 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20897-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20897-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "hwh-rnc-vande-bharat-express-20897",
+      "foodMenuUrl": "/irctc-train-food-menu/hwh-rnc-vande-bharat-express-20897",
+      "trainDetailUrl": "/trains/20897"
+    },
+    {
+      "trainNumber": "20898",
+      "trainName": "Ranchi - Howrah Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "13:10",
+      "duration": "7h 10m",
+      "distance": "462 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20898-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20898-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20898"
+    },
+    {
+      "trainNumber": "20901",
+      "trainName": "Mumbai - Gandhinagar Cap Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MMCT",
+        "name": "Mumbai Central"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "GNC",
+        "name": "Gandhinagar Cap"
+      },
+      "arrivalTime": "12:30",
+      "duration": "6h 30m",
+      "distance": "521 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20901-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20901-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "mmct-gnc-vande-bharat-express-20901",
+      "foodMenuUrl": "/irctc-train-food-menu/mmct-gnc-vande-bharat-express-20901",
+      "trainDetailUrl": "/trains/20901"
+    },
+    {
+      "trainNumber": "20902",
+      "trainName": "Gandhinagar Cap - Mumbai Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "GNC",
+        "name": "Gandhinagar Cap"
+      },
+      "departureTime": "14:00",
+      "destinationStation": {
+        "code": "MMCT",
+        "name": "Mumbai Central"
+      },
+      "arrivalTime": "20:35",
+      "duration": "6h 35m",
+      "distance": "521 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20902-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20902-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20902"
+    },
+    {
+      "trainNumber": "20911",
+      "trainName": "Indore - Nagpur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "INDB",
+        "name": "Indore Jn Bg"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "NGP",
+        "name": "Nagpur"
+      },
+      "arrivalTime": "14:35",
+      "duration": "8h 25m",
+      "distance": "635 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20911-ngp-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20911-ngp-vandebharat-chart-times",
+      "foodMenuSlug": "indb-ngp-vande-bharat-express-20911",
+      "foodMenuUrl": "/irctc-train-food-menu/indb-ngp-vande-bharat-express-20911",
+      "trainDetailUrl": "/trains/20911"
+    },
+    {
+      "trainNumber": "20912",
+      "trainName": "Nagpur - Indore Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NGP",
+        "name": "Nagpur"
+      },
+      "departureTime": "15:20",
+      "destinationStation": {
+        "code": "INDB",
+        "name": "Indore Jn Bg"
+      },
+      "arrivalTime": "23:50",
+      "duration": "8h 30m",
+      "distance": "642 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20912-indb-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20912-indb-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20912"
+    },
+    {
+      "trainNumber": "20977",
+      "trainName": "Ajmer - Chandigarh Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "AII",
+        "name": "Ajmer Jn"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "CDG",
+        "name": "Chandigarh"
+      },
+      "arrivalTime": "14:45",
+      "duration": "8h 35m",
+      "distance": "700 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20977-cdg-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/20977-cdg-vandebharat-chart-times",
+      "foodMenuSlug": "ndls-svdk-vande-bharat-express-20977",
+      "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-20977",
+      "trainDetailUrl": "/trains/20977"
+    },
+    {
+      "trainNumber": "20978",
+      "trainName": "Chandigarh - Ajmer Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "CDG",
+        "name": "Chandigarh"
+      },
+      "departureTime": "15:15",
+      "destinationStation": {
+        "code": "AII",
+        "name": "Ajmer Jn"
+      },
+      "arrivalTime": "23:58",
+      "duration": "8h 43m",
+      "distance": "699 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20978-vandebharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20978-vandebharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20978"
+    },
+    {
+      "trainNumber": "20979",
+      "trainName": "Udaipur - Jaipur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "UDZ",
+        "name": "Udaipur City"
+      },
+      "departureTime": "07:50",
+      "destinationStation": {
+        "code": "JP",
+        "name": "Jaipur"
+      },
+      "arrivalTime": "14:10",
+      "duration": "6h 20m",
+      "distance": "435 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20979-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20979-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "udz-jp-vande-bharat-express-20979",
+      "foodMenuUrl": "/irctc-train-food-menu/udz-jp-vande-bharat-express-20979",
+      "trainDetailUrl": "/trains/20979"
+    },
+    {
+      "trainNumber": "20980",
+      "trainName": "Jaipur - Udaipur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "JP",
+        "name": "Jaipur"
+      },
+      "departureTime": "15:45",
+      "destinationStation": {
+        "code": "UDZ",
+        "name": "Udaipur City"
+      },
+      "arrivalTime": "22:15",
+      "duration": "6h 30m",
+      "distance": "435 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20980-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20980-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20980"
+    },
+    {
+      "trainNumber": "20981",
+      "trainName": "Udaipur - Agra Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "UDZ",
+        "name": "Udaipur City"
+      },
+      "departureTime": "05:45",
+      "destinationStation": {
+        "code": "AGC",
+        "name": "Agra Cantt"
+      },
+      "arrivalTime": "14:30",
+      "duration": "8h 45m",
+      "distance": "613 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20981-agc-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20981-agc-vande-bharat-chart-times",
+      "foodMenuSlug": "udz-agc-vande-bharat-express-20981",
+      "foodMenuUrl": "/irctc-train-food-menu/udz-agc-vande-bharat-express-20981",
+      "trainDetailUrl": "/trains/20981"
+    },
+    {
+      "trainNumber": "20982",
+      "trainName": "Agra - Udaipur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "AGC",
+        "name": "Agra Cantt"
+      },
+      "departureTime": "15:00",
+      "destinationStation": {
+        "code": "UDZ",
+        "name": "Udaipur City"
+      },
+      "arrivalTime": "23:45",
+      "duration": "8h 45m",
+      "distance": "613 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20982-udz-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/20982-udz-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20982"
+    },
+    {
+      "trainNumber": "21893",
+      "trainName": "Tatanagar - Patna Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "TATA",
+        "name": "Tatanagar Jn"
+      },
+      "departureTime": "05:25",
+      "destinationStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "arrivalTime": "15:55",
+      "duration": "10h 30m",
+      "distance": "645 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "21893-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/21893-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "hwh-njp-vande-bharat-express-21893",
+      "foodMenuUrl": "/irctc-train-food-menu/hwh-njp-vande-bharat-express-21893",
+      "trainDetailUrl": "/trains/21893"
+    },
+    {
+      "trainNumber": "21894",
+      "trainName": "Patna - Tatanagar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "departureTime": "13:20",
+      "destinationStation": {
+        "code": "TATA",
+        "name": "Tatanagar Jn"
+      },
+      "arrivalTime": "23:55",
+      "duration": "10h 35m",
+      "distance": "645 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "21894-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/21894-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/21894"
+    },
+    {
+      "trainNumber": "21895",
+      "trainName": "Tatanagar - Patna Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "TATA",
+        "name": "Tatanagar Jn"
+      },
+      "departureTime": "05:25",
+      "destinationStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "arrivalTime": "12:45",
+      "duration": "7h 20m",
+      "distance": "450 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "21895-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/21895-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "hwh-njp-vande-bharat-express-21895",
+      "foodMenuUrl": "/irctc-train-food-menu/hwh-njp-vande-bharat-express-21895",
+      "trainDetailUrl": "/trains/21895"
+    },
+    {
+      "trainNumber": "21896",
+      "trainName": "Patna - Tatanagar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "departureTime": "16:45",
+      "destinationStation": {
+        "code": "TATA",
+        "name": "Tatanagar Jn"
+      },
+      "arrivalTime": "23:55",
+      "duration": "7h 10m",
+      "distance": "450 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "21896-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/21896-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/21896"
+    },
+    {
+      "trainNumber": "22223",
+      "trainName": "C Shivaji Mah T - Sainagar Shirdi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "departureTime": "06:20",
+      "destinationStation": {
+        "code": "SNSI",
+        "name": "Sainagar Shirdi"
+      },
+      "arrivalTime": "11:30",
+      "duration": "5h 10m",
+      "distance": "343 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22223-snsi-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/22223-snsi-vandebharat-chart-times",
+      "foodMenuSlug": "csmt-snsi-vande-bharat-express-22223",
+      "foodMenuUrl": "/irctc-train-food-menu/csmt-snsi-vande-bharat-express-22223",
+      "trainDetailUrl": "/trains/22223"
+    },
+    {
+      "trainNumber": "22224",
+      "trainName": "Sainagar Shirdi - C Shivaji Mah T Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SNSI",
+        "name": "Sainagar Shirdi"
+      },
+      "departureTime": "17:45",
+      "destinationStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "arrivalTime": "22:50",
+      "duration": "5h 05m",
+      "distance": "343 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22224-csmt-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/22224-csmt-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22224"
+    },
+    {
+      "trainNumber": "22225",
+      "trainName": "C Shivaji Mah T - Solapur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "departureTime": "16:05",
+      "destinationStation": {
+        "code": "SUR",
+        "name": "Solapur Jn"
+      },
+      "arrivalTime": "22:40",
+      "duration": "6h 35m",
+      "distance": "455 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22225-sur-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/22225-sur-vande-bharat-chart-times",
+      "foodMenuSlug": "csmt-sur-vande-bharat-express-22225",
+      "foodMenuUrl": "/irctc-train-food-menu/csmt-sur-vande-bharat-express-22225",
+      "trainDetailUrl": "/trains/22225"
+    },
+    {
+      "trainNumber": "22226",
+      "trainName": "Solapur - C Shivaji Mah T Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SUR",
+        "name": "Solapur Jn"
+      },
+      "departureTime": "06:05",
+      "destinationStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "arrivalTime": "12:35",
+      "duration": "6h 30m",
+      "distance": "455 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22226-csmt-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/22226-csmt-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22226"
+    },
+    {
+      "trainNumber": "22227",
+      "trainName": "New Jalpaiguri - Guwahati Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NJP",
+        "name": "New Jalpaiguri"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "GHY",
+        "name": "Guwahati"
+      },
+      "arrivalTime": "11:40",
+      "duration": "5h 30m",
+      "distance": "409 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22227-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22227-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "ghy-njp-vande-bharat-express-22227",
+      "foodMenuUrl": "/irctc-train-food-menu/ghy-njp-vande-bharat-express-22227",
+      "trainDetailUrl": "/trains/22227"
+    },
+    {
+      "trainNumber": "22228",
+      "trainName": "Guwahati - New Jalpaiguri Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "GHY",
+        "name": "Guwahati"
+      },
+      "departureTime": "16:30",
+      "destinationStation": {
+        "code": "NJP",
+        "name": "New Jalpaiguri"
+      },
+      "arrivalTime": "22:00",
+      "duration": "5h 30m",
+      "distance": "409 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22228-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22228-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22228"
+    },
+    {
+      "trainNumber": "22229",
+      "trainName": "C Shivaji Mah T - Madgaon Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "departureTime": "05:25",
+      "destinationStation": {
+        "code": "MAO",
+        "name": "Madgaon"
+      },
+      "arrivalTime": "16:00",
+      "duration": "10h 35m",
+      "distance": "765 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22229-mao-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/22229-mao-vande-bharat-chart-times",
+      "foodMenuSlug": "csmt-mao-vande-bharat-express-22229",
+      "foodMenuUrl": "/irctc-train-food-menu/csmt-mao-vande-bharat-express-22229",
+      "trainDetailUrl": "/trains/22229"
+    },
+    {
+      "trainNumber": "22230",
+      "trainName": "Madgaon - C Shivaji Mah T Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MAO",
+        "name": "Madgaon"
+      },
+      "departureTime": "12:20",
+      "destinationStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "arrivalTime": "22:30",
+      "duration": "10h 10m",
+      "distance": "765 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22230-csmt-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/22230-csmt-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22230"
+    },
+    {
+      "trainNumber": "22231",
+      "trainName": "Kalaburagi - Smvt Bengaluru Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "KLBG",
+        "name": "Kalaburagi"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "SMVB",
+        "name": "Smvt Bengaluru"
+      },
+      "arrivalTime": "14:10",
+      "duration": "8h 00m",
+      "distance": "558 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22231-smvb-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/22231-smvb-vandebharat-chart-times",
+      "foodMenuSlug": "klbg-smvb-vande-bharat-express-22231",
+      "foodMenuUrl": "/irctc-train-food-menu/klbg-smvb-vande-bharat-express-22231",
+      "trainDetailUrl": "/trains/22231"
+    },
+    {
+      "trainNumber": "22232",
+      "trainName": "Smvt Bengaluru - Kalaburagi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SMVB",
+        "name": "Smvt Bengaluru"
+      },
+      "departureTime": "14:40",
+      "destinationStation": {
+        "code": "KLBG",
+        "name": "Kalaburagi"
+      },
+      "arrivalTime": "22:40",
+      "duration": "8h 00m",
+      "distance": "558 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22232-klbg-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/22232-klbg-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22232"
+    },
+    {
+      "trainNumber": "22233",
+      "trainName": "New Jalpaiguri - Patna Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NJP",
+        "name": "New Jalpaiguri"
+      },
+      "departureTime": "05:10",
+      "destinationStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "arrivalTime": "12:10",
+      "duration": "7h 00m",
+      "distance": "471 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22233-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22233-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "njp-pnbe-vande-bharat-express-22233",
+      "foodMenuUrl": "/irctc-train-food-menu/njp-pnbe-vande-bharat-express-22233",
+      "trainDetailUrl": "/trains/22233"
+    },
+    {
+      "trainNumber": "22234",
+      "trainName": "Patna - New Jalpaiguri Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "departureTime": "13:00",
+      "destinationStation": {
+        "code": "NJP",
+        "name": "New Jalpaiguri"
+      },
+      "arrivalTime": "20:05",
+      "duration": "7h 05m",
+      "distance": "471 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22234-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22234-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22234"
+    },
+    {
+      "trainNumber": "22301",
+      "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "05:55",
+      "destinationStation": {
+        "code": "NJP",
+        "name": "New Jalpaiguri"
+      },
+      "arrivalTime": "13:30",
+      "duration": "7h 35m",
+      "distance": "561 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22301-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22301-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "hwh-njp-vande-bharat-express-22301",
+      "foodMenuUrl": "/irctc-train-food-menu/hwh-njp-vande-bharat-express-22301",
+      "trainDetailUrl": "/trains/22301"
+    },
+    {
+      "trainNumber": "22302",
+      "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NJP",
+        "name": "New Jalpaiguri"
+      },
+      "departureTime": "14:55",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "22:30",
+      "duration": "7h 35m",
+      "distance": "561 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22302-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22302-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22302"
+    },
+    {
+      "trainNumber": "22303",
+      "trainName": "Howrah - Gaya Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "06:45",
+      "destinationStation": {
+        "code": "GAYA",
+        "name": "Gaya Jn"
+      },
+      "arrivalTime": "12:30",
+      "duration": "5h 45m",
+      "distance": "458 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22303-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22303-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "hwh-gaya-vande-bharat-express-22303",
+      "foodMenuUrl": "/irctc-train-food-menu/hwh-gaya-vande-bharat-express-22303",
+      "trainDetailUrl": "/trains/22303"
+    },
+    {
+      "trainNumber": "22304",
+      "trainName": "Gaya - Howrah Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "GAYA",
+        "name": "Gaya Jn"
+      },
+      "departureTime": "15:15",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "21:10",
+      "duration": "5h 55m",
+      "distance": "458 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22304-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22304-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22304"
+    },
+    {
+      "trainNumber": "22309",
+      "trainName": "Howrah - Jamalpur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "07:45",
+      "destinationStation": {
+        "code": "JMP",
+        "name": "Jamalpur Jn"
+      },
+      "arrivalTime": "14:15",
+      "duration": "6h 30m",
+      "distance": "441 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22309-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22309-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "hwh-bgp-vande-bharat-express-22309",
+      "foodMenuUrl": "/irctc-train-food-menu/hwh-bgp-vande-bharat-express-22309",
+      "trainDetailUrl": "/trains/22309"
+    },
+    {
+      "trainNumber": "22310",
+      "trainName": "Jamalpur - Howrah Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "JMP",
+        "name": "Jamalpur Jn"
+      },
+      "departureTime": "15:30",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "22:05",
+      "duration": "6h 35m",
+      "distance": "441 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22310-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22310-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22310"
+    },
+    {
+      "trainNumber": "22345",
+      "trainName": "Patna - Gomati Nagar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "departureTime": "06:05",
+      "destinationStation": {
+        "code": "GTNR",
+        "name": "Gomati Nagar"
+      },
+      "arrivalTime": "14:35",
+      "duration": "8h 30m",
+      "distance": "544 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22345-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22345-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "pnbe-gtnr-vande-bharat-express-22345",
+      "foodMenuUrl": "/irctc-train-food-menu/pnbe-gtnr-vande-bharat-express-22345",
+      "trainDetailUrl": "/trains/22345"
+    },
+    {
+      "trainNumber": "22346",
+      "trainName": "Gomati Nagar - Patna Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "GTNR",
+        "name": "Gomati Nagar"
+      },
+      "departureTime": "15:20",
+      "destinationStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "arrivalTime": "23:45",
+      "duration": "8h 25m",
+      "distance": "544 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22346-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22346-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22346"
+    },
+    {
+      "trainNumber": "22347",
+      "trainName": "Howrah - Patna Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "15:50",
+      "destinationStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "arrivalTime": "22:40",
+      "duration": "6h 50m",
+      "distance": "532 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22347-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22347-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "pnbe-hwh-vande-bharat-express-22347",
+      "foodMenuUrl": "/irctc-train-food-menu/pnbe-hwh-vande-bharat-express-22347",
+      "trainDetailUrl": "/trains/22347"
+    },
+    {
+      "trainNumber": "22348",
+      "trainName": "Patna - Howrah Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "departureTime": "08:00",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "14:35",
+      "duration": "6h 35m",
+      "distance": "532 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22348-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22348-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22348"
+    },
+    {
+      "trainNumber": "22349",
+      "trainName": "Patna - Ranchi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "departureTime": "07:00",
+      "destinationStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "arrivalTime": "13:05",
+      "duration": "6h 05m",
+      "distance": "379 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22349-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22349-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "pnbe-rnc-vande-bharat-express-22349",
+      "foodMenuUrl": "/irctc-train-food-menu/pnbe-rnc-vande-bharat-express-22349",
+      "trainDetailUrl": "/trains/22349"
+    },
+    {
+      "trainNumber": "22350",
+      "trainName": "Ranchi - Patna Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "departureTime": "16:15",
+      "destinationStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "arrivalTime": "22:10",
+      "duration": "5h 55m",
+      "distance": "379 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22350-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22350-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22350"
+    },
+    {
+      "trainNumber": "22415",
+      "trainName": "Varanasi - New Delhi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "14:05",
+      "duration": "8h 05m",
+      "distance": "760 km",
+      "halts": 4,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22415-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22415-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "bsb-ndls-vande-bharat-express-22415",
+      "foodMenuUrl": "/irctc-train-food-menu/bsb-ndls-vande-bharat-express-22415",
+      "trainDetailUrl": "/trains/22415"
+    },
+    {
+      "trainNumber": "22416",
+      "trainName": "New Delhi - Varanasi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "15:00",
+      "destinationStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "arrivalTime": "23:05",
+      "duration": "8h 05m",
+      "distance": "760 km",
+      "halts": 4,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22416-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22416-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22416"
+    },
+    {
+      "trainNumber": "22425",
+      "trainName": "Ayodhaya Cant - Anand Vihar TRM Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "AYC",
+        "name": "Ayodhaya Cant"
+      },
+      "departureTime": "15:25",
+      "destinationStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "arrivalTime": "23:40",
+      "duration": "8h 15m",
+      "distance": "629 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22425-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22425-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "ay-anvt-vande-bharat-express-22425",
+      "foodMenuUrl": "/irctc-train-food-menu/ay-anvt-vande-bharat-express-22425",
+      "trainDetailUrl": "/trains/22425"
+    },
+    {
+      "trainNumber": "22426",
+      "trainName": "Anand Vihar TRM - Ayodhaya Cant Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "AYC",
+        "name": "Ayodhaya Cant"
+      },
+      "arrivalTime": "14:30",
+      "duration": "8h 20m",
+      "distance": "629 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22426-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22426-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22426"
+    },
+    {
+      "trainNumber": "22435",
+      "trainName": "Varanasi - New Delhi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "departureTime": "15:00",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "23:00",
+      "duration": "8h 00m",
+      "distance": "771 km",
+      "halts": 4,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22435-vande-bharat-ex-chart-times",
+      "chartTimesUrl": "/chart-times/22435-vande-bharat-ex-chart-times",
+      "foodMenuSlug": "ndls-bsb-vande-bharat-express-22435",
+      "foodMenuUrl": "/irctc-train-food-menu/ndls-bsb-vande-bharat-express-22435",
+      "trainDetailUrl": "/trains/22435"
+    },
+    {
+      "trainNumber": "22436",
+      "trainName": "New Delhi - Varanasi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "arrivalTime": "14:00",
+      "duration": "8h 00m",
+      "distance": "771 km",
+      "halts": 4,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22436-vande-bharat-ex-chart-times",
+      "chartTimesUrl": "/chart-times/22436-vande-bharat-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22436"
+    },
+    {
+      "trainNumber": "22439",
+      "trainName": "New Delhi - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "SVDK",
+        "name": "Shri Mata Vaishno Devi Katra"
+      },
+      "arrivalTime": "14:20",
+      "duration": "8h 20m",
+      "distance": "655 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22439-vande-bharat-ex-chart-times",
+      "chartTimesUrl": "/chart-times/22439-vande-bharat-ex-chart-times",
+      "foodMenuSlug": "ndls-svdk-vande-bharat-express-22439",
+      "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-22439",
+      "trainDetailUrl": "/trains/22439"
+    },
+    {
+      "trainNumber": "22440",
+      "trainName": "Shri Mata Vaishno Devi Katra - New Delhi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SVDK",
+        "name": "Shri Mata Vaishno Devi Katra"
+      },
+      "departureTime": "14:55",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "23:10",
+      "duration": "8h 15m",
+      "distance": "655 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22440-vande-bharat-ex-chart-times",
+      "chartTimesUrl": "/chart-times/22440-vande-bharat-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22440"
+    },
+    {
+      "trainNumber": "22447",
+      "trainName": "New Delhi - Amb  Andaura Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "05:50",
+      "destinationStation": {
+        "code": "AADR",
+        "name": "Amb  Andaura"
+      },
+      "arrivalTime": "11:10",
+      "duration": "5h 20m",
+      "distance": "437 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22447-vande-bharat-ex-chart-times",
+      "chartTimesUrl": "/chart-times/22447-vande-bharat-ex-chart-times",
+      "foodMenuSlug": "aadr-ndls-vande-bharat-express-22447",
+      "foodMenuUrl": "/irctc-train-food-menu/aadr-ndls-vande-bharat-express-22447",
+      "trainDetailUrl": "/trains/22447"
+    },
+    {
+      "trainNumber": "22448",
+      "trainName": "Amb  Andaura - New Delhi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "AADR",
+        "name": "Amb  Andaura"
+      },
+      "departureTime": "13:00",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "18:25",
+      "duration": "5h 25m",
+      "distance": "437 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22448-vande-bharat-ex-chart-times",
+      "chartTimesUrl": "/chart-times/22448-vande-bharat-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22448"
+    },
+    {
+      "trainNumber": "22457",
+      "trainName": "Anand Vihar TRM - Dehradun Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "departureTime": "17:50",
+      "destinationStation": {
+        "code": "DDN",
+        "name": "Dehradun"
+      },
+      "arrivalTime": "22:35",
+      "duration": "4h 45m",
+      "distance": "302 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22457-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22457-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "anvt-ddn-vande-bharat-express-22457",
+      "foodMenuUrl": "/irctc-train-food-menu/anvt-ddn-vande-bharat-express-22457",
+      "trainDetailUrl": "/trains/22457"
+    },
+    {
+      "trainNumber": "22458",
+      "trainName": "Dehradun - Anand Vihar TRM Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "DDN",
+        "name": "Dehradun"
+      },
+      "departureTime": "07:00",
+      "destinationStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "arrivalTime": "11:45",
+      "duration": "4h 45m",
+      "distance": "302 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22458-vande-bharat-ex-chart-times",
+      "chartTimesUrl": "/chart-times/22458-vande-bharat-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22458"
+    },
+    {
+      "trainNumber": "22469",
+      "trainName": "Khajuraho - H Nizamuddin Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "KURJ",
+        "name": "KHAJURAHO"
+      },
+      "departureTime": "14:50",
+      "destinationStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "arrivalTime": "23:10",
+      "duration": "8h 20m",
+      "distance": "659 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22469-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22469-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "ndls-svdk-vande-bharat-express-22469",
+      "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-22469",
+      "trainDetailUrl": "/trains/22469"
+    },
+    {
+      "trainNumber": "22470",
+      "trainName": "H Nizamuddin - Khajuraho Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "KURJ",
+        "name": "KHAJURAHO"
+      },
+      "arrivalTime": "14:20",
+      "duration": "8h 20m",
+      "distance": "659 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22470-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22470-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22470"
+    },
+    {
+      "trainNumber": "22477",
+      "trainName": "New Delhi - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "15:00",
+      "destinationStation": {
+        "code": "SVDK",
+        "name": "Shri Mata Vaishno Devi Katra"
+      },
+      "arrivalTime": "23:20",
+      "duration": "8h 20m",
+      "distance": "655 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22477-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22477-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "svdk-ndls-vande-bharat-express-22477",
+      "foodMenuUrl": "/irctc-train-food-menu/svdk-ndls-vande-bharat-express-22477",
+      "trainDetailUrl": "/trains/22477"
+    },
+    {
+      "trainNumber": "22478",
+      "trainName": "Shri Mata Vaishno Devi Katra - New Delhi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SVDK",
+        "name": "Shri Mata Vaishno Devi Katra"
+      },
+      "departureTime": "05:45",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "14:00",
+      "duration": "8h 15m",
+      "distance": "655 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22478-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22478-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22478"
+    },
+    {
+      "trainNumber": "22487",
+      "trainName": "Old Delhi - Amritsar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "DLI",
+        "name": "Old Delhi"
+      },
+      "departureTime": "15:15",
+      "destinationStation": {
+        "code": "ASR",
+        "name": "Amritsar Jn"
+      },
+      "arrivalTime": "20:45",
+      "duration": "5h 30m",
+      "distance": "447 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22487-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22487-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "asr-dli-vande-bharat-express-22487",
+      "foodMenuUrl": "/irctc-train-food-menu/asr-dli-vande-bharat-express-22487",
+      "trainDetailUrl": "/trains/22487"
+    },
+    {
+      "trainNumber": "22488",
+      "trainName": "Amritsar - Old Delhi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "ASR",
+        "name": "Amritsar Jn"
+      },
+      "departureTime": "08:20",
+      "destinationStation": {
+        "code": "DLI",
+        "name": "Old Delhi"
+      },
+      "arrivalTime": "13:50",
+      "duration": "5h 30m",
+      "distance": "447 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22488-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22488-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22488"
+    },
+    {
+      "trainNumber": "22489",
+      "trainName": "Varanasi - Meerut Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "departureTime": "09:10",
+      "destinationStation": {
+        "code": "MTC",
+        "name": "Meerut City"
+      },
+      "arrivalTime": "21:05",
+      "duration": "11h 55m",
+      "distance": "783 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22489-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22489-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "mtc-lko-vande-bharat-express-22489",
+      "foodMenuUrl": "/irctc-train-food-menu/mtc-lko-vande-bharat-express-22489",
+      "trainDetailUrl": "/trains/22489"
+    },
+    {
+      "trainNumber": "22490",
+      "trainName": "Meerut - Varanasi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MTC",
+        "name": "Meerut City"
+      },
+      "departureTime": "06:35",
+      "destinationStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "arrivalTime": "18:25",
+      "duration": "11h 50m",
+      "distance": "783 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22490-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22490-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22490"
+    },
+    {
+      "trainNumber": "22499",
+      "trainName": "Deoghar - Varanasi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "DGHR",
+        "name": "DEOGHAR"
+      },
+      "departureTime": "15:10",
+      "destinationStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "arrivalTime": "22:30",
+      "duration": "7h 20m",
+      "distance": "454 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22499-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22499-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "ndls-svdk-vande-bharat-express-22499",
+      "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-22499",
+      "trainDetailUrl": "/trains/22499"
+    },
+    {
+      "trainNumber": "22500",
+      "trainName": "Varanasi - Deoghar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "departureTime": "06:20",
+      "destinationStation": {
+        "code": "DGHR",
+        "name": "DEOGHAR"
+      },
+      "arrivalTime": "13:40",
+      "duration": "7h 20m",
+      "distance": "454 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22500-vande-bharat-ex-chart-times",
+      "chartTimesUrl": "/chart-times/22500-vande-bharat-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22500"
+    },
+    {
+      "trainNumber": "22545",
+      "trainName": "Lucknow Ne - Dehradun Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "LJN",
+        "name": "Lucknow Ne"
+      },
+      "departureTime": "05:15",
+      "destinationStation": {
+        "code": "DDN",
+        "name": "Dehradun"
+      },
+      "arrivalTime": "13:40",
+      "duration": "8h 25m",
+      "distance": "545 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22545-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22545-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22545"
+    },
+    {
+      "trainNumber": "22546",
+      "trainName": "Dehradun - Lucknow Ne Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "DDN",
+        "name": "Dehradun"
+      },
+      "departureTime": "14:25",
+      "destinationStation": {
+        "code": "LJN",
+        "name": "Lucknow Ne"
+      },
+      "arrivalTime": "22:40",
+      "duration": "8h 15m",
+      "distance": "545 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22546-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22546-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22546"
+    },
+    {
+      "trainNumber": "22549",
+      "trainName": "Gorakhpur - Prayagraj. Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "GKP",
+        "name": "Gorakhpur Jn"
+      },
+      "departureTime": "06:05",
+      "destinationStation": {
+        "code": "PRYJ",
+        "name": "Prayagraj Jn."
+      },
+      "arrivalTime": "13:35",
+      "duration": "7h 30m",
+      "distance": "500 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22549-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22549-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "gkp-lko-vande-bharat-express-22549",
+      "foodMenuUrl": "/irctc-train-food-menu/gkp-lko-vande-bharat-express-22549",
+      "trainDetailUrl": "/trains/22549"
+    },
+    {
+      "trainNumber": "22550",
+      "trainName": "Prayagraj. - Gorakhpur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PRYJ",
+        "name": "Prayagraj Jn."
+      },
+      "departureTime": "15:15",
+      "destinationStation": {
+        "code": "GKP",
+        "name": "Gorakhpur Jn"
+      },
+      "arrivalTime": "22:40",
+      "duration": "7h 25m",
+      "distance": "500 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22550-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22550-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22550"
+    },
+    {
+      "trainNumber": "22895",
+      "trainName": "Howrah - Puri Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "PURI",
+        "name": "Puri"
+      },
+      "arrivalTime": "13:00",
+      "duration": "6h 50m",
+      "distance": "502 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22895-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22895-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "hwh-puri-vande-bharat-express-22895",
+      "foodMenuUrl": "/irctc-train-food-menu/hwh-puri-vande-bharat-express-22895",
+      "trainDetailUrl": "/trains/22895"
+    },
+    {
+      "trainNumber": "22896",
+      "trainName": "Puri - Howrah Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PURI",
+        "name": "Puri"
+      },
+      "departureTime": "13:40",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "20:30",
+      "duration": "6h 50m",
+      "distance": "502 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22896-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22896-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22896"
+    },
+    {
+      "trainNumber": "22925",
+      "trainName": "Ahmedabad - Okha Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "departureTime": "18:10",
+      "destinationStation": {
+        "code": "OKHA",
+        "name": "Okha"
+      },
+      "arrivalTime": "00:40",
+      "duration": "6h 30m",
+      "distance": "499 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22925-okha-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/22925-okha-vandebharat-chart-times",
+      "foodMenuSlug": "adi-okha-vande-bharat-express-22925",
+      "foodMenuUrl": "/irctc-train-food-menu/adi-okha-vande-bharat-express-22925",
+      "trainDetailUrl": "/trains/22925"
+    },
+    {
+      "trainNumber": "22926",
+      "trainName": "Okha - Ahmedabad Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "OKHA",
+        "name": "Okha"
+      },
+      "departureTime": "03:40",
+      "destinationStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "arrivalTime": "10:10",
+      "duration": "6h 30m",
+      "distance": "499 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22926-sbt-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/22926-sbt-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22926"
+    },
+    {
+      "trainNumber": "22961",
+      "trainName": "Mumbai - Ahmedabad Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MMCT",
+        "name": "Mumbai Central"
+      },
+      "departureTime": "15:45",
+      "destinationStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "arrivalTime": "21:15",
+      "duration": "5h 30m",
+      "distance": "491 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22961-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22961-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "mmct-adi-vande-bharat-express-22961",
+      "foodMenuUrl": "/irctc-train-food-menu/mmct-adi-vande-bharat-express-22961",
+      "trainDetailUrl": "/trains/22961"
+    },
+    {
+      "trainNumber": "22962",
+      "trainName": "Ahmedabad - Mumbai Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "departureTime": "06:05",
+      "destinationStation": {
+        "code": "MMCT",
+        "name": "Mumbai Central"
+      },
+      "arrivalTime": "11:45",
+      "duration": "5h 40m",
+      "distance": "491 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "22962-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22962-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22962"
+    },
+    {
+      "trainNumber": "26101",
+      "trainName": "Pune - Ajni Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "departureTime": "06:25",
+      "destinationStation": {
+        "code": "AJNI",
+        "name": "Ajni"
+      },
+      "arrivalTime": "18:25",
+      "duration": "12h 00m",
+      "distance": "881 km",
+      "halts": 12,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26101-ajni-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/26101-ajni-vandebharat-chart-times",
+      "foodMenuSlug": "mas-mdu-vande-bharat-express-26101",
+      "foodMenuUrl": "/irctc-train-food-menu/mas-mdu-vande-bharat-express-26101",
+      "trainDetailUrl": "/trains/26101"
+    },
+    {
+      "trainNumber": "26102",
+      "trainName": "Ajni - Pune Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "AJNI",
+        "name": "Ajni"
+      },
+      "departureTime": "09:50",
+      "destinationStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "arrivalTime": "21:50",
+      "duration": "12h 00m",
+      "distance": "881 km",
+      "halts": 12,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26102-pune-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/26102-pune-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26102"
+    },
+    {
+      "trainNumber": "26301",
+      "trainName": "Jogbani - Danapur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "JBN",
+        "name": "JOGBANI"
+      },
+      "departureTime": "03:30",
+      "destinationStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "arrivalTime": "11:40",
+      "duration": "8h 10m",
+      "distance": "452 km",
+      "halts": 14,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26301-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26301-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26301"
+    },
+    {
+      "trainNumber": "26302",
+      "trainName": "Danapur - Jogbani Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "departureTime": "17:10",
+      "destinationStation": {
+        "code": "JBN",
+        "name": "JOGBANI"
+      },
+      "arrivalTime": "01:20",
+      "duration": "8h 10m",
+      "distance": "452 km",
+      "halts": 14,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26302-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26302-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26302"
+    },
+    {
+      "trainNumber": "26401",
+      "trainName": "Jammu Tawi - Srinagar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "JAT",
+        "name": "Jammu Tawi"
+      },
+      "departureTime": "06:20",
+      "destinationStation": {
+        "code": "SINA",
+        "name": "Srinagar"
+      },
+      "arrivalTime": "11:10",
+      "duration": "4h 50m",
+      "distance": "269 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26401-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26401-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "jat-sina-vande-bharat-express-26401",
+      "foodMenuUrl": "/irctc-train-food-menu/jat-sina-vande-bharat-express-26401",
+      "trainDetailUrl": "/trains/26401"
+    },
+    {
+      "trainNumber": "26402",
+      "trainName": "Srinagar - Jammu Tawi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SINA",
+        "name": "Srinagar"
+      },
+      "departureTime": "14:00",
+      "destinationStation": {
+        "code": "JAT",
+        "name": "Jammu Tawi"
+      },
+      "arrivalTime": "18:50",
+      "duration": "4h 50m",
+      "distance": "269 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26402-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26402-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26402"
+    },
+    {
+      "trainNumber": "26403",
+      "trainName": "Jammu Tawi - Srinagar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "JAT",
+        "name": "Jammu Tawi"
+      },
+      "departureTime": "13:20",
+      "destinationStation": {
+        "code": "SINA",
+        "name": "Srinagar"
+      },
+      "arrivalTime": "18:05",
+      "duration": "4h 45m",
+      "distance": "269 km",
+      "halts": 5,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26403-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26403-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "jat-sina-vande-bharat-express-26403",
+      "foodMenuUrl": "/irctc-train-food-menu/jat-sina-vande-bharat-express-26403",
+      "trainDetailUrl": "/trains/26403"
+    },
+    {
+      "trainNumber": "26404",
+      "trainName": "Srinagar - Jammu Tawi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SINA",
+        "name": "Srinagar"
+      },
+      "departureTime": "08:00",
+      "destinationStation": {
+        "code": "JAT",
+        "name": "Jammu Tawi"
+      },
+      "arrivalTime": "12:45",
+      "duration": "4h 45m",
+      "distance": "269 km",
+      "halts": 5,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26404-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26404-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26404"
+    },
+    {
+      "trainNumber": "26405",
+      "trainName": "Amritsar - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "ASR",
+        "name": "Amritsar Jn"
+      },
+      "departureTime": "16:40",
+      "destinationStation": {
+        "code": "SVDK",
+        "name": "Shri Mata Vaishno Devi Katra"
+      },
+      "arrivalTime": "21:45",
+      "duration": "5h 05m",
+      "distance": "285 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26405-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26405-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26405"
+    },
+    {
+      "trainNumber": "26406",
+      "trainName": "Shri Mata Vaishno Devi Katra - Amritsar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SVDK",
+        "name": "Shri Mata Vaishno Devi Katra"
+      },
+      "departureTime": "06:40",
+      "destinationStation": {
+        "code": "ASR",
+        "name": "Amritsar Jn"
+      },
+      "arrivalTime": "11:40",
+      "duration": "5h 00m",
+      "distance": "285 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26406-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26406-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26406"
+    },
+    {
+      "trainNumber": "26461",
+      "trainName": "Old Delhi - Firozpur Cant Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "DLI",
+        "name": "Old Delhi"
+      },
+      "departureTime": "16:00",
+      "destinationStation": {
+        "code": "FZR",
+        "name": "Firozpur Cant"
+      },
+      "arrivalTime": "22:35",
+      "duration": "6h 35m",
+      "distance": "486 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26461-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26461-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "ndls-svdk-vande-bharat-express-26461",
+      "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-26461",
+      "trainDetailUrl": "/trains/26461"
+    },
+    {
+      "trainNumber": "26462",
+      "trainName": "Firozpur Cant - Old Delhi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "FZR",
+        "name": "Firozpur Cant"
+      },
+      "departureTime": "07:55",
+      "destinationStation": {
+        "code": "DLI",
+        "name": "Old Delhi"
+      },
+      "arrivalTime": "14:35",
+      "duration": "6h 40m",
+      "distance": "486 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26462-vande-bharat-ex-chart-times",
+      "chartTimesUrl": "/chart-times/26462-vande-bharat-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26462"
+    },
+    {
+      "trainNumber": "26471",
+      "trainName": "Bikaner - Delhi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BKN",
+        "name": "Bikaner Jn"
+      },
+      "departureTime": "05:40",
+      "destinationStation": {
+        "code": "DEC",
+        "name": "Delhi Cantt"
+      },
+      "arrivalTime": "11:55",
+      "duration": "6h 15m",
+      "distance": "448 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26471-dec-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/26471-dec-vande-bharat-chart-times",
+      "foodMenuSlug": "ndls-svdk-vande-bharat-express-26471",
+      "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-26471",
+      "trainDetailUrl": "/trains/26471"
+    },
+    {
+      "trainNumber": "26472",
+      "trainName": "Delhi - Bikaner Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "DEC",
+        "name": "Delhi Cantt"
+      },
+      "departureTime": "16:45",
+      "destinationStation": {
+        "code": "BKN",
+        "name": "Bikaner Jn"
+      },
+      "arrivalTime": "23:05",
+      "duration": "6h 20m",
+      "distance": "448 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26472-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26472-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26472"
+    },
+    {
+      "trainNumber": "26481",
+      "trainName": "Jodhpur - Delhi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "JU",
+        "name": "Jodhpur Jn"
+      },
+      "departureTime": "05:30",
+      "destinationStation": {
+        "code": "DEC",
+        "name": "Delhi Cantt"
+      },
+      "arrivalTime": "13:30",
+      "duration": "8h 00m",
+      "distance": "606 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26481-dec-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/26481-dec-vandebharat-chart-times",
+      "foodMenuSlug": "ndls-svdk-vande-bharat-express-26481",
+      "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-26481",
+      "trainDetailUrl": "/trains/26481"
+    },
+    {
+      "trainNumber": "26482",
+      "trainName": "Delhi - Jodhpur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "DEC",
+        "name": "Delhi Cantt"
+      },
+      "departureTime": "15:10",
+      "destinationStation": {
+        "code": "JU",
+        "name": "Jodhpur Jn"
+      },
+      "arrivalTime": "23:20",
+      "duration": "8h 10m",
+      "distance": "606 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26482-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26482-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26482"
+    },
+    {
+      "trainNumber": "26501",
+      "trainName": "Patliputra - Gorakhpur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "PPTA",
+        "name": "Patliputra"
+      },
+      "departureTime": "15:30",
+      "destinationStation": {
+        "code": "GKP",
+        "name": "Gorakhpur Jn"
+      },
+      "arrivalTime": "22:30",
+      "duration": "7h 00m",
+      "distance": "384 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26501-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26501-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "ppta-gkp-ppta-vande-bharat-express-26501",
+      "foodMenuUrl": "/irctc-train-food-menu/ppta-gkp-ppta-vande-bharat-express-26501",
+      "trainDetailUrl": "/trains/26501"
+    },
+    {
+      "trainNumber": "26502",
+      "trainName": "Gorakhpur - Patliputra Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "GKP",
+        "name": "Gorakhpur Jn"
+      },
+      "departureTime": "05:40",
+      "destinationStation": {
+        "code": "PPTA",
+        "name": "Patliputra"
+      },
+      "arrivalTime": "12:45",
+      "duration": "7h 05m",
+      "distance": "384 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26502-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26502-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26502"
+    },
+    {
+      "trainNumber": "26503",
+      "trainName": "Saharanpur - Gomati Nagar Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SRE",
+        "name": "Saharanpur"
+      },
+      "departureTime": "05:05",
+      "destinationStation": {
+        "code": "GTNR",
+        "name": "Gomati Nagar"
+      },
+      "arrivalTime": "14:05",
+      "duration": "9h 00m",
+      "distance": "535 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26503-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26503-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "ndls-svdk-vande-bharat-express-26503",
+      "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-26503",
+      "trainDetailUrl": "/trains/26503"
+    },
+    {
+      "trainNumber": "26504",
+      "trainName": "Gomati Nagar - Saharanpur Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "GTNR",
+        "name": "Gomati Nagar"
+      },
+      "departureTime": "15:10",
+      "destinationStation": {
+        "code": "SRE",
+        "name": "Saharanpur"
+      },
+      "arrivalTime": "23:50",
+      "duration": "8h 40m",
+      "distance": "535 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26504-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26504-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26504"
+    },
+    {
+      "trainNumber": "26505",
+      "trainName": "Khajuraho - Banaras Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "KURJ",
+        "name": "KHAJURAHO"
+      },
+      "departureTime": "15:20",
+      "destinationStation": {
+        "code": "BNRS",
+        "name": "BANARAS"
+      },
+      "arrivalTime": "23:10",
+      "duration": "7h 50m",
+      "distance": "469 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26505-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26505-vande-bharat-exp-chart-times",
+      "foodMenuSlug": "ndls-svdk-vande-bharat-express-26505",
+      "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-26505",
+      "trainDetailUrl": "/trains/26505"
+    },
+    {
+      "trainNumber": "26506",
+      "trainName": "Banaras - Khajuraho Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BNRS",
+        "name": "BANARAS"
+      },
+      "departureTime": "05:15",
+      "destinationStation": {
+        "code": "KURJ",
+        "name": "KHAJURAHO"
+      },
+      "arrivalTime": "13:10",
+      "duration": "7h 55m",
+      "distance": "469 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26506-vande-bharat-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26506-vande-bharat-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26506"
+    },
+    {
+      "trainNumber": "26651",
+      "trainName": "KSR Bengaluru - Ernakulam Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "departureTime": "05:10",
+      "destinationStation": {
+        "code": "ERS",
+        "name": "Ernakulam Jn"
+      },
+      "arrivalTime": "13:50",
+      "duration": "8h 40m",
+      "distance": "626 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26651-ers-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/26651-ers-vandebharat-chart-times",
+      "foodMenuSlug": "ers-sbc-vande-bharat-express-26651",
+      "foodMenuUrl": "/irctc-train-food-menu/ers-sbc-vande-bharat-express-26651",
+      "trainDetailUrl": "/trains/26651"
+    },
+    {
+      "trainNumber": "26652",
+      "trainName": "Ernakulam - KSR Bengaluru Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "ERS",
+        "name": "Ernakulam Jn"
+      },
+      "departureTime": "14:20",
+      "destinationStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "arrivalTime": "23:00",
+      "duration": "8h 40m",
+      "distance": "627 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26652-sbc-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/26652-sbc-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26652"
+    },
+    {
+      "trainNumber": "26751",
+      "trainName": "Belagavi - KSR Bengaluru Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "BGM",
+        "name": "BELAGAVI"
+      },
+      "departureTime": "05:35",
+      "destinationStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "arrivalTime": "13:50",
+      "duration": "8h 15m",
+      "distance": "611 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26751-sbc-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/26751-sbc-vande-bharat-chart-times",
+      "foodMenuSlug": "bgm-sbc-vande-bharat-train-26751",
+      "foodMenuUrl": "/irctc-train-food-menu/bgm-sbc-vande-bharat-train-26751",
+      "trainDetailUrl": "/trains/26751"
+    },
+    {
+      "trainNumber": "26752",
+      "trainName": "KSR Bengaluru - Belagavi Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "departureTime": "14:20",
+      "destinationStation": {
+        "code": "BGM",
+        "name": "BELAGAVI"
+      },
+      "arrivalTime": "22:30",
+      "duration": "8h 10m",
+      "distance": "611 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26752-bgm-vande-bharat-chart-times",
+      "chartTimesUrl": "/chart-times/26752-bgm-vande-bharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26752"
+    },
+    {
+      "trainNumber": "26901",
+      "trainName": "Sabarmati - Veraval Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "SBIB",
+        "name": "Sabarmati Bg"
+      },
+      "departureTime": "05:25",
+      "destinationStation": {
+        "code": "VRL",
+        "name": "Veraval"
+      },
+      "arrivalTime": "12:25",
+      "duration": "7h 00m",
+      "distance": "438 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26901-vrl-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/26901-vrl-vandebharat-chart-times",
+      "foodMenuSlug": "sbib-vrl-sbib-vande-bharat-express-26901",
+      "foodMenuUrl": "/irctc-train-food-menu/sbib-vrl-sbib-vande-bharat-express-26901",
+      "trainDetailUrl": "/trains/26901"
+    },
+    {
+      "trainNumber": "26902",
+      "trainName": "Veraval - Sabarmati Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "VRL",
+        "name": "Veraval"
+      },
+      "departureTime": "14:45",
+      "destinationStation": {
+        "code": "SBIB",
+        "name": "Sabarmati Bg"
+      },
+      "arrivalTime": "21:35",
+      "duration": "6h 50m",
+      "distance": "438 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "26902-sbib-vandebharat-chart-times",
+      "chartTimesUrl": "/chart-times/26902-sbib-vandebharat-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/26902"
+    },
+    {
+      "trainNumber": "27575",
+      "trainName": "Howrah - Kamakhya Vande Bharat Sleeper Express",
+      "trainType": "Sleeper",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "18:20",
+      "destinationStation": {
+        "code": "KYQ",
+        "name": "Kamakhya"
+      },
+      "arrivalTime": "08:20",
+      "duration": "14h 00m",
+      "distance": "966 km",
+      "halts": 15,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "27575-vande-bharat-sl-chart-times",
+      "chartTimesUrl": "/chart-times/27575-vande-bharat-sl-chart-times",
+      "foodMenuSlug": "hwh-kyq-vande-bharat-express-27575",
+      "foodMenuUrl": "/irctc-train-food-menu/hwh-kyq-vande-bharat-express-27575",
+      "trainDetailUrl": "/trains/27575"
+    },
+    {
+      "trainNumber": "27576",
+      "trainName": "Kamakhya - Howrah Vande Bharat Sleeper Express",
+      "trainType": "Sleeper",
+      "originStation": {
+        "code": "KYQ",
+        "name": "Kamakhya"
+      },
+      "departureTime": "18:15",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "08:15",
+      "duration": "14h 00m",
+      "distance": "966 km",
+      "halts": 15,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "27576-vande-bharat-sl-chart-times",
+      "chartTimesUrl": "/chart-times/27576-vande-bharat-sl-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/27576"
+    }
+  ]
+}

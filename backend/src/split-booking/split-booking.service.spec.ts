@@ -12,6 +12,7 @@ describe('SplitBookingService', () => {
       create: jest.Mock;
       findUnique: jest.Mock;
       update: jest.Mock;
+      updateMany: jest.Mock;
     };
   };
   let razorpay: {
@@ -30,6 +31,7 @@ describe('SplitBookingService', () => {
         create: jest.fn(),
         findUnique: jest.fn(),
         update: jest.fn(),
+        updateMany: jest.fn(),
       },
     };
 
@@ -89,8 +91,20 @@ describe('SplitBookingService', () => {
       travelClass: '3A',
       totalFare: 810,
       legs: [
-        { from: 'AII', to: 'JP', travelClass: '3A', fare: 340 },
-        { from: 'JP', to: 'GGN', travelClass: '3A', fare: 470 },
+        {
+          from: 'AII',
+          to: 'JP',
+          travelClass: '3A',
+          fare: 340,
+          boardingDate: '2026-09-20',
+        },
+        {
+          from: 'JP',
+          to: 'GGN',
+          travelClass: '3A',
+          fare: 470,
+          boardingDate: '2026-09-20',
+        },
       ],
       passengers: [
         {
@@ -149,5 +163,162 @@ describe('SplitBookingService', () => {
     await expect(service.getStatus('LB-SB-NONEXISTENT')).rejects.toThrow(
       NotFoundException,
     );
+  });
+
+  describe('paid AI fulfillment', () => {
+    const flush = () => new Promise<void>((resolve) => setImmediate(resolve));
+    const booking = {
+      id: 'booking1',
+      bookingRef: 'LB-SB-TEST',
+      trainNumber: '12216',
+      fromStationCode: 'AII',
+      toStationCode: 'GGN',
+      journeyDate: new Date('2026-10-01'),
+      travelClass: '3A',
+      totalFare: 810,
+      quota: 'GN',
+      autoUpgrade: false,
+      contactMobile: '9876543210',
+      contactEmail: 'test@example.com',
+      paymentStatus: 'PENDING',
+      bookingStatus: 'IDLE',
+      pnrLeg1: null,
+      pnrLeg2: null,
+      passengers: {
+        adults: [{ name: 'Test', age: 30, gender: 'Male' }],
+        children: [],
+      },
+      legsPayload: [
+        {
+          from: 'AII',
+          to: 'JP',
+          travelClass: '3A',
+          fare: 340,
+          boardingDate: '2026-10-01',
+        },
+        {
+          from: 'JP',
+          to: 'GGN',
+          travelClass: '3A',
+          fare: 470,
+          boardingDate: '2026-10-02',
+        },
+      ],
+      automationLogs: [
+        {
+          timestamp: '2026-09-30T00:00:00Z',
+          step: 'CREATED',
+          message: 'Created',
+        },
+      ],
+    };
+
+    it('dispatches only once for concurrent payment confirmations', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue(booking);
+      let paymentClaimed = false;
+      prisma.splitTicketBooking.updateMany.mockImplementation(
+        ({ data }: { data: { bookingStatus: string } }) => {
+          if (data.bookingStatus === 'IN_PROGRESS') return { count: 1 };
+          const count = paymentClaimed ? 0 : 1;
+          paymentClaimed = true;
+          return { count };
+        },
+      );
+      tripmgt.executeBooking.mockResolvedValue({
+        success: false,
+        error: 'blocked',
+        logs: [],
+      });
+      await Promise.all([
+        service.confirmPayment(booking.bookingRef),
+        service.confirmPayment(booking.bookingRef),
+      ]);
+      await flush();
+      expect(tripmgt.executeBooking).toHaveBeenCalledTimes(1);
+      const [params, callbacks] = tripmgt.executeBooking.mock
+        .calls[0] as Parameters<TripmgtBookingService['executeBooking']>;
+      expect(params).toMatchObject({
+        totalFare: 810,
+        legs: booking.legsPayload,
+      });
+      expect(typeof callbacks?.onPnr).toBe('function');
+    });
+
+    it('persists each PNR immediately and keeps creation/payment logs after partial failure', async () => {
+      const state = structuredClone(booking);
+      prisma.splitTicketBooking.findUnique.mockImplementation(() => state);
+      prisma.splitTicketBooking.updateMany.mockImplementation(
+        ({ data }: { data: object }) => {
+          Object.assign(state, data);
+          return { count: 1 };
+        },
+      );
+      type Callbacks = NonNullable<
+        Parameters<TripmgtBookingService['executeBooking']>[1]
+      >;
+      tripmgt.executeBooking.mockImplementation(
+        async (_params: unknown, callbacks: Callbacks) => {
+          await callbacks.onPnr?.(0, '1234567890');
+          await callbacks.onLog?.({
+            timestamp: 'now',
+            step: 'LEG_CONFIRMED',
+            message: 'Leg 1 verified',
+          });
+          return {
+            success: false,
+            pnrLeg1: '1234567890',
+            error: 'OTP required',
+            logs: [],
+          };
+        },
+      );
+      await service.confirmPayment(booking.bookingRef);
+      await flush();
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith({
+        where: { id: 'booking1' },
+        data: { pnrLeg1: '1234567890' },
+      });
+      const [finalUpdate] = prisma.splitTicketBooking.update.mock.calls.at(
+        -1,
+      ) as [
+        {
+          data: {
+            bookingStatus: string;
+            pnrLeg1: string;
+            pnrLeg2: string | null;
+            automationLogs: Array<{ step: string }>;
+          };
+        },
+      ];
+      expect(finalUpdate.data).toMatchObject({
+        bookingStatus: 'FAILED',
+        pnrLeg1: '1234567890',
+        pnrLeg2: null,
+      });
+      expect(
+        finalUpdate.data.automationLogs.map((entry) => entry.step),
+      ).toEqual(['CREATED', 'PAYMENT_RECEIVED', 'LEG_CONFIRMED']);
+    });
+
+    it('does not launch if another runner already claimed fulfillment', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue(booking);
+      prisma.splitTicketBooking.updateMany
+        .mockResolvedValueOnce({ count: 1 })
+        .mockResolvedValueOnce({ count: 0 });
+      await service.confirmPayment(booking.bookingRef);
+      await flush();
+      expect(tripmgt.executeBooking).not.toHaveBeenCalled();
+    });
+
+    it('does not launch for an underpaid captured payment', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue(booking);
+      await expect(
+        service.confirmPayment(booking.bookingRef, 'pay1', {
+          amount: 100,
+          currency: 'INR',
+        }),
+      ).rejects.toThrow('does not match');
+      expect(prisma.splitTicketBooking.updateMany).not.toHaveBeenCalled();
+    });
   });
 });

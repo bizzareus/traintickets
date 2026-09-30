@@ -1351,6 +1351,7 @@ export function AlternatePathContent({
               to: l.to,
               travelClass: l.travelClass || "3A",
               fare: l.fare || 0,
+              boardingDate: l.boardingDate || "",
               departureTime: l.departureTime,
               arrivalTime: l.arrivalTime,
               durationMinutes: l.durationMinutes,
