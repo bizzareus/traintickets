@@ -5,40 +5,26 @@ import {
   Req,
   UnauthorizedException,
 } from '@nestjs/common';
+import type { RawBodyRequest } from '@nestjs/common';
 import type { Request } from 'express';
-import * as crypto from 'crypto';
 import { PrismaService } from '../prisma/prisma.service';
-
-function validateSignature(payload: string, signature: string | null): boolean {
-  const secret = process.env.BROWSER_USE_WEBHOOK_SECRET;
-  if (!secret || !signature) return false;
-  const expected = crypto
-    .createHmac('sha256', secret)
-    .update(payload)
-    .digest('hex');
-  const sigBuf = Buffer.from(signature, 'utf8');
-  const expBuf = Buffer.from(expected, 'utf8');
-  if (sigBuf.length !== expBuf.length) return false;
-  try {
-    return crypto.timingSafeEqual(sigBuf, expBuf);
-  } catch {
-    return false;
-  }
-}
+import { verifyHmacSha256 } from '../common/webhook-signature';
 
 @Controller('api/browser/webhook')
 export class WebhookController {
   constructor(private prisma: PrismaService) {}
 
   @Post()
-  async handle(@Req() req: Request, @Body() body: Record<string, unknown>) {
-    const raw = JSON.stringify(body);
+  async handle(
+    @Req() req: RawBodyRequest<Request>,
+    @Body() body: Record<string, unknown>,
+  ) {
     const signature =
       (req.headers['x-webhook-signature'] as string) ??
       (req.headers['x-signature'] as string) ??
-      null;
+      undefined;
     const webhookSecret = process.env.BROWSER_USE_WEBHOOK_SECRET;
-    if (webhookSecret && !validateSignature(raw, signature)) {
+    if (!verifyHmacSha256(req.rawBody, signature, webhookSecret)) {
       throw new UnauthorizedException('Invalid signature');
     }
 

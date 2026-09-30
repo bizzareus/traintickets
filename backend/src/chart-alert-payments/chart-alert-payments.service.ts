@@ -4,6 +4,7 @@ import {
   Logger,
   NotFoundException,
   ServiceUnavailableException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { randomUUID } from 'node:crypto';
@@ -380,73 +381,49 @@ export class ChartAlertPaymentsService {
   }
 
   /**
-   * Server-to-server callback / webhook (handles both Razorpay and Muzobox).
+   * Server-to-server Razorpay webhook.
    */
   async handleCallback(
     rawBody: Buffer | string,
     signature: string | undefined,
-    parsedBody?: Record<string, unknown>,
   ): Promise<{ received: boolean }> {
-    // 1. If incoming request has Muzobox callback shape
-    const ref =
-      (parsedBody?.referenceId as string) ||
-      (parsedBody?.reference_id as string) ||
-      (parsedBody?.ref as string);
-    const muzoboxId =
-      (parsedBody?.paymentId as string) || (parsedBody?.payment_id as string);
-
-    if (ref || muzoboxId) {
-      const record = ref
-        ? await this.prisma.chartAlertPayment.findUnique({ where: { id: ref } })
-        : muzoboxId
-          ? await this.prisma.chartAlertPayment.findUnique({
-              where: { muzoboxPaymentId: muzoboxId },
-            })
-          : null;
-      if (record) {
-        await this.confirmIfPaid(record).catch(() => undefined);
-        return { received: true };
-      }
-    }
-
-    // 2. Razorpay direct webhook signature verification
     if (
-      this.razorpay.isConfigured &&
-      verifyRazorpayWebhookSignature(
+      !verifyRazorpayWebhookSignature(
         rawBody,
         signature,
         this.razorpay.webhookSecret,
       )
     ) {
-      let event: RazorpayWebhookEvent;
-      try {
-        event =
-          typeof rawBody === 'string'
-            ? (JSON.parse(rawBody) as RazorpayWebhookEvent)
-            : (JSON.parse(rawBody.toString('utf8')) as RazorpayWebhookEvent);
-      } catch {
-        return { received: true };
-      }
-
-      const extractedRef = this.extractRef(event);
-      if (extractedRef) {
-        const record = await this.prisma.chartAlertPayment.findUnique({
-          where: { id: extractedRef },
-        });
-        if (record) {
-          const paymentEntity = event.payload?.payment?.entity;
-          if (paymentEntity?.id && !record.razorpayPaymentId) {
-            await this.prisma.chartAlertPayment.update({
-              where: { id: record.id },
-              data: { razorpayPaymentId: paymentEntity.id },
-            });
-            record.razorpayPaymentId = paymentEntity.id;
-          }
-          await this.confirmIfPaid(record).catch(() => undefined);
-        }
-      }
+      throw new UnauthorizedException('Invalid webhook signature');
     }
 
+    let event: RazorpayWebhookEvent;
+    try {
+      event =
+        typeof rawBody === 'string'
+          ? (JSON.parse(rawBody) as RazorpayWebhookEvent)
+          : (JSON.parse(rawBody.toString('utf8')) as RazorpayWebhookEvent);
+    } catch {
+      return { received: true };
+    }
+
+    const extractedRef = this.extractRef(event);
+    if (extractedRef) {
+      const record = await this.prisma.chartAlertPayment.findUnique({
+        where: { id: extractedRef },
+      });
+      if (record) {
+        const paymentEntity = event.payload?.payment?.entity;
+        if (paymentEntity?.id && !record.razorpayPaymentId) {
+          await this.prisma.chartAlertPayment.update({
+            where: { id: record.id },
+            data: { razorpayPaymentId: paymentEntity.id },
+          });
+          record.razorpayPaymentId = paymentEntity.id;
+        }
+        await this.confirmIfPaid(record);
+      }
+    }
     return { received: true };
   }
 

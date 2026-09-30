@@ -600,6 +600,9 @@ export default function HomePage() {
   const toDropdownBlurCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(
     null,
   );
+  const service2RequestRef = useRef<AbortController | null>(null);
+
+  useEffect(() => () => service2RequestRef.current?.abort(), []);
   const [trainDropdownOpen, setTrainDropdownOpen] = useState(false);
   const [fromDropdownOpen, setFromDropdownOpen] = useState(false);
   const [toDropdownOpen, setToDropdownOpen] = useState(false);
@@ -819,6 +822,9 @@ export default function HomePage() {
       setError("Please enter train number, from station and date.");
       return;
     }
+    service2RequestRef.current?.abort();
+    const controller = new AbortController();
+    service2RequestRef.current = controller;
     setError(null);
     setCheckResult(null);
     setMonitorJourneyResponse(null);
@@ -891,8 +897,7 @@ export default function HomePage() {
               serviceSource: "service2",
               composition: ev.composition as Service2Composition | undefined,
               chartPreparationDetails: ev.chartPreparationDetails as
-                | ChartPreparationDetails
-                | undefined,
+                ChartPreparationDetails | undefined,
               trainSchedule: ev.trainSchedule as NonNullable<
                 CheckResult["resultPayload"]
               >["trainSchedule"],
@@ -914,6 +919,7 @@ export default function HomePage() {
             );
           }
         },
+        controller.signal,
       )) as Service2CheckOkBody;
       setCheckResult({
         status: data.status ?? "success",
@@ -945,6 +951,7 @@ export default function HomePage() {
         },
       });
     } catch (err: unknown) {
+      if (controller.signal.aborted) return;
       const ax = err as {
         response?: { data?: { message?: string; error?: string } };
       };
@@ -958,9 +965,12 @@ export default function HomePage() {
         properties: { success: false, error: "request_failed" },
       });
     } finally {
-      setLoading(false);
-      setService2StreamLine("");
-      setService2StreamPartial(null);
+      if (service2RequestRef.current === controller) {
+        service2RequestRef.current = null;
+        setLoading(false);
+        setService2StreamLine("");
+        setService2StreamPartial(null);
+      }
     }
   }
 
@@ -2392,10 +2402,21 @@ export default function HomePage() {
                         <details className="rounded-xl border border-slate-200 bg-slate-50/50 p-3 shadow-sm transition-all hover:border-slate-300">
                           <summary className="cursor-pointer text-sm font-bold text-slate-800 flex items-center justify-between group">
                             <span className="flex items-center gap-2">
-                              <svg className="h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                              <svg
+                                className="h-4 w-4 text-slate-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                                />
                               </svg>
-                              Step-by-step debug trace ({uiPayload.debugLog.length} lines)
+                              Step-by-step debug trace (
+                              {uiPayload.debugLog.length} lines)
                             </span>
                             <span className="hidden items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 transition-colors group-hover:bg-slate-200 sm:flex">
                               {uiPayload.vacantBerthApiCalled ? (
@@ -2414,21 +2435,37 @@ export default function HomePage() {
                           <div className="mt-3">
                             <div className="mb-2 flex items-center justify-between sm:hidden">
                               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                                {uiPayload.vacantBerthApiCalled ? "IRCTC API Used" : "Composition Only"}
+                                {uiPayload.vacantBerthApiCalled
+                                  ? "IRCTC API Used"
+                                  : "Composition Only"}
                               </span>
                             </div>
                             <ol className="max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-[11px] leading-relaxed text-slate-600 scrollbar-thin scrollbar-thumb-slate-200">
                               {uiPayload.debugLog.map((line, i) => (
-                                <li key={i} className="whitespace-pre-wrap py-1 border-b border-slate-100 last:border-0 border-dashed">
+                                <li
+                                  key={i}
+                                  className="whitespace-pre-wrap py-1 border-b border-slate-100 last:border-0 border-dashed"
+                                >
                                   {line}
                                 </li>
                               ))}
                             </ol>
                             <p className="mt-2 flex items-center gap-1 text-[10px] font-medium text-slate-400">
-                              <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              <svg
+                                className="h-3 w-3"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
                               </svg>
-                              Logs also available on server as [service2/check …]
+                              Logs also available on server as [service2/check
+                              …]
                             </p>
                           </div>
                         </details>

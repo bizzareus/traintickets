@@ -3,7 +3,9 @@
     email me@kartikarora.in
 }
 
-api.lastberth.com {
+api-v2.lastberth.com {
+    encode zstd gzip
+
     log {
         output file /var/log/caddy/access.log {
             roll_size 20mb

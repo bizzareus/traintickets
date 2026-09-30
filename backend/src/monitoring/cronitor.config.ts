@@ -7,7 +7,6 @@ export const CRONITOR_JOBS = {
   'failed-delivery-refund': 'lastberth-failed-delivery-refund',
   'seat-cache': 'lastberth-seat-cache',
   'wasender-healthcheck': 'lastberth-wasender-healthcheck',
-  'irctc-session-keeper': 'lastberth-irctc-session-keeper',
 } as const;
 
 export type CronitorJob = keyof typeof CRONITOR_JOBS;
@@ -127,22 +126,6 @@ export function cronitorMonitorDefinitions(
             '5 minutes',
             300,
             'Reports the actual provider health result, not merely an HTTP-successful check.',
-          ),
-        ]
-      : []),
-    ...(env.IRCTC_KEEPER_ENABLED === 'true' &&
-    (env.IRCTC_BROWSER_WSS?.trim() ||
-      env.BROWSERLESS_WSS?.trim() ||
-      env.BROWSERLESS_API_KEY?.trim())
-      ? [
-          job(
-            'irctc-session-keeper',
-            'LastBerth: IRCTC cookie refresh',
-            env.IRCTC_KEEPER_CRON || '*/30 * * * *',
-            '4 minutes',
-            1200,
-            'Automatic boot/cron harvests only, after winning the DB claim. Skipped replicas do not ping.',
-            env.TZ || 'UTC',
           ),
         ]
       : []),

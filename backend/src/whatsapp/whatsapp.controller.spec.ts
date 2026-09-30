@@ -5,6 +5,7 @@ import { WhatsappController } from './whatsapp.controller';
 import { WhatsappService } from './whatsapp.service';
 import { WasenderHealthcheckService } from './wasender-healthcheck.service';
 import { ADMIN_PASSWORD_ENV } from '../common/admin-auth';
+import { createHmac } from 'node:crypto';
 
 /* eslint-disable @typescript-eslint/unbound-method */
 describe('WhatsappController', () => {
@@ -105,10 +106,11 @@ describe('WhatsappController', () => {
   describe('handleIncoming', () => {
     it('throws UnauthorizedException when signature length is invalid', () => {
       process.env.WASENDER_WEBHOOK_SECRET = 'wh-secret';
+      const body = { test: true };
       const req = {
         headers: { 'x-hub-signature-256': 'sha256=invalid' },
+        rawBody: Buffer.from(JSON.stringify(body)),
       } as unknown as Request;
-      const body = { test: true };
 
       expect(() => controller.handleIncoming(req, body)).toThrow(
         UnauthorizedException,
@@ -119,13 +121,12 @@ describe('WhatsappController', () => {
       process.env.WASENDER_WEBHOOK_SECRET = 'wh-secret';
       const body = { test: true };
       const raw = JSON.stringify(body);
-      const crypto = require('crypto');
-      const expectedHex = crypto
-        .createHmac('sha256', 'wh-secret')
+      const expectedHex = createHmac('sha256', 'wh-secret')
         .update(raw)
         .digest('hex');
       const req = {
         headers: { 'x-hub-signature-256': `sha256=${expectedHex}` },
+        rawBody: Buffer.from(raw),
       } as unknown as Request;
 
       const res = controller.handleIncoming(req, body);

@@ -12,6 +12,8 @@ import {
 import type { Request } from 'express';
 import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 import { RefundRequestService } from './refund-request.service';
+import { CreateRefundRequestDto } from './refund-request.dto';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('api/refund-requests')
 export class RefundRequestController {
@@ -19,14 +21,9 @@ export class RefundRequestController {
 
   /** Public: submit a manual refund request from the /refund form. */
   @Post()
+  @Throttle({ global: { limit: 5, ttl: 60_000 } })
   async create(
-    @Body()
-    body: {
-      mobile?: string;
-      trainNumber?: string;
-      journeyDate?: string;
-      txnId?: string;
-    },
+    @Body() body: CreateRefundRequestDto,
   ): Promise<{ ok: true; id: string; duplicate: boolean }> {
     if (!body || typeof body !== 'object') {
       throw new BadRequestException({

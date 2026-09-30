@@ -862,9 +862,9 @@ export type Service2CheckHooks = {
     vacantSegmentCount: number;
     vacantBerthApiError: string | null;
     destinationStation: string;
-  }) => void;
+  }) => void | Promise<void>;
   /** Fired immediately before the OpenAI request (only when an API key is configured). */
-  onAiStarted?: (info: { destinationStation: string }) => void;
+  onAiStarted?: (info: { destinationStation: string }) => void | Promise<void>;
   /**
    * First-pass OpenAI result when the plan does not yet reach the user's destination
    * and a chained vacant-berth fetch will run from the next station.
@@ -879,7 +879,7 @@ export type Service2CheckHooks = {
     composition: NonNullable<Service2CheckResult['composition']>;
     chartPreparationDetails?: Service2CheckResult['chartPreparationDetails'];
     trainSchedule: TrainScheduleResponse | undefined;
-  }) => void;
+  }) => void | Promise<void>;
 };
 
 async function trainHasChartTimeRowForAnyStation(
@@ -910,6 +910,13 @@ async function trainHasChartTimeRowForAnyStation(
 @Injectable()
 export class Service2Service {
   private readonly logger = new Logger(Service2Service.name);
+  private readonly openai = process.env.OPENAI_API_KEY?.trim()
+    ? new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY.trim(),
+        timeout: 30_000,
+        maxRetries: 0,
+      })
+    : null;
 
   constructor(
     private irctc: IrctcService,
@@ -929,9 +936,11 @@ export class Service2Service {
       forceVacantBerth?: boolean;
       /** The date the train starts its journey from source (Day 1). Useful for multi-day routes. */
       trainStartDate?: string;
+      signal?: AbortSignal;
     },
     hooks?: Service2CheckHooks,
   ): Promise<Service2CheckResult> {
+    params.signal?.throwIfAborted();
     const debugLog: string[] = [];
     const logStep = (msg: string) => {
       debugLog.push(msg);
@@ -1216,7 +1225,7 @@ export class Service2Service {
 
     const destForUi = destinationStation ?? composition.to ?? boardingStation;
 
-    hooks?.onIrctcDataReady?.({
+    await hooks?.onIrctcDataReady?.({
       vacantSegmentCount: allVbd.length,
       vacantBerthApiError: vacantBerth.error,
       destinationStation: destForUi,
@@ -1257,12 +1266,11 @@ export class Service2Service {
     let resultOpenAiStructuredSeats: OpenAIStructuredSeat[] | undefined;
     let resultOpenAiBookingPlan: OpenAiBookingPlanItem[] | undefined;
     let resultOpenAiTotalPrice: number | undefined;
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (apiKey?.trim()) {
+    const client = this.openai;
+    if (client) {
       try {
         const chainBoardings: string[] = [];
         const maxOpenAiChain = 12;
-        const client = new OpenAI({ apiKey: apiKey.trim() });
         const textVerbosity = openAiTextVerbosity();
         /** True once we emit partial AI SSE (chart hydrate runs before each emit). */
         let service2PartialOpenAiEmitted = false;
@@ -1272,11 +1280,12 @@ export class Service2Service {
           chainAttempt <= maxOpenAiChain;
           chainAttempt++
         ) {
+          params.signal?.throwIfAborted();
           logStep(
             `step=openai_request_start ${baseCtx} chainAttempt=${chainAttempt}/${maxOpenAiChain} model=${process.env.OPENAI_MODEL ?? 'default'}`,
           );
           if (chainAttempt === 1) {
-            hooks?.onAiStarted?.({ destinationStation: destForUi });
+            await hooks?.onAiStarted?.({ destinationStation: destForUi });
           }
 
           vacantBerth = {
@@ -1301,40 +1310,31 @@ export class Service2Service {
           this.logger.log(
             `[service2/check] step=openai_user_message_built ${baseCtx} chainAttempt=${chainAttempt} chars=${userMessage.length}`,
           );
-          const OPENAI_PROMPT_LOG_MAX = 32_000;
-          const instructionsForLog =
-            OPENAI_AGENT_PROMPT.length > OPENAI_PROMPT_LOG_MAX
-              ? `${OPENAI_AGENT_PROMPT.slice(0, OPENAI_PROMPT_LOG_MAX)}… [truncated, totalChars=${OPENAI_AGENT_PROMPT.length}]`
-              : OPENAI_AGENT_PROMPT;
-          this.logger.log(
-            `[service2/check] step=openai_prompt_instructions ${baseCtx} chars=${OPENAI_AGENT_PROMPT.length} ${instructionsForLog}`,
-          );
-          const userMessageForLog =
-            userMessage.length > OPENAI_PROMPT_LOG_MAX
-              ? `${userMessage.slice(0, OPENAI_PROMPT_LOG_MAX)}… [truncated, totalChars=${userMessage.length}]`
-              : userMessage;
-          this.logger.log(
-            `[service2/check] step=openai_prompt_user ${baseCtx} chars=${userMessage.length} ${userMessageForLog}`,
+          this.logger.debug(
+            `[service2/check] step=openai_prompt_ready ${baseCtx} instructionChars=${OPENAI_AGENT_PROMPT.length} userChars=${userMessage.length}`,
           );
 
-          const response = await client.responses.create({
-            model: process.env.OPENAI_MODEL,
-            instructions: OPENAI_AGENT_PROMPT,
-            input: [{ role: 'user', content: userMessage }],
-            ...openAiResponsesTuning(),
-            text: {
-              ...(textVerbosity ? { verbosity: textVerbosity } : {}),
-              format: {
-                type: 'json_schema',
-                name: 'railchart_response',
-                description:
-                  'Response with summary, seats, booking_plan (instruction + approx_price per segment), and total_price (INR)',
-                schema: OPENAI_RESPONSE_JSON_SCHEMA,
-                // booking_plan uses anyOf (filled segment vs {}); strict rejects that union
-                strict: false,
+          const response = await client.responses.create(
+            {
+              model: process.env.OPENAI_MODEL,
+              instructions: OPENAI_AGENT_PROMPT,
+              input: [{ role: 'user', content: userMessage }],
+              ...openAiResponsesTuning(),
+              text: {
+                ...(textVerbosity ? { verbosity: textVerbosity } : {}),
+                format: {
+                  type: 'json_schema',
+                  name: 'railchart_response',
+                  description:
+                    'Response with summary, seats, booking_plan (instruction + approx_price per segment), and total_price (INR)',
+                  schema: OPENAI_RESPONSE_JSON_SCHEMA,
+                  // booking_plan uses anyOf (filled segment vs {}); strict rejects that union
+                  strict: false,
+                },
               },
             },
-          });
+            { signal: params.signal },
+          );
 
           const rawContent = response.output_text?.trim();
           logStep(
@@ -1346,9 +1346,6 @@ export class Service2Service {
             );
             break;
           }
-          this.logger.log(
-            `[service2/check] step=openai_response_output_exact ${baseCtx} chars=${rawContent.length} ${rawContent}`,
-          );
           const parsed = parseOpenAIStructuredResponse(rawContent);
           const summaryTrimmed =
             typeof parsed.summary === 'string' ? parsed.summary.trim() : '';
@@ -1469,7 +1466,7 @@ export class Service2Service {
           }
 
           service2PartialOpenAiEmitted = true;
-          hooks?.onPartialOpenAiResult?.({
+          await hooks?.onPartialOpenAiResult?.({
             chainRound: chainAttempt,
             nextBoardingStation: nextBoarding,
             openAiSummary,
@@ -1515,6 +1512,7 @@ export class Service2Service {
           }
         }
       } catch (err) {
+        params.signal?.throwIfAborted();
         const emsg = err instanceof Error ? err.message : String(err);
         logStep(`step=openai_error ${baseCtx} ${emsg}`);
         openAiSummary = `OpenAI summary unavailable: ${emsg}`;
@@ -1528,7 +1526,7 @@ export class Service2Service {
       typeof openAiSummary === 'string' &&
       openAiSummary.startsWith('OpenAI summary unavailable');
     const gotAiResponse = Boolean(
-      apiKey?.trim() &&
+      client &&
       !openAiFailed &&
       (resultOpenAiStructuredSeats?.length ||
         resultOpenAiBookingPlan?.length ||

@@ -26,4 +26,3 @@ just re-run `list_projects` if a call against these IDs 404s.
 secret values. Never print the full output — pipe the JSON through a script
 that only prints presence (SET/unset) or specific named non-secret keys, e.g.:
 `railway variable list --service backend --json | node -e "const d=JSON.parse(require('fs').readFileSync(0)); console.log('KEY=', d.KEY ? 'SET' : 'unset')"`.
-See [[irctc-keeper-railway-status]] for the project this came up in.

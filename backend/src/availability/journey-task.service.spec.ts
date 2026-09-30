@@ -410,6 +410,29 @@ describe('JourneyTaskService', () => {
       expect(mockNotification.notifyUser).not.toHaveBeenCalled();
     });
 
+    it('should retry a failed check even when its error is not classified as transient', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue(
+        mockTaskData,
+      );
+      mockBookingV2.findAlternatePaths.mockResolvedValueOnce({
+        legs: [],
+        chartStatus: { kind: 'chart_error', error: 'Invalid train' },
+      });
+
+      await service.runTask('task-1', true);
+
+      expect(mockPrisma.chartTimeAvailabilityTask.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            status: 'pending',
+            nextRunAt: expect.any(Date),
+            completedAt: null,
+          }),
+        }),
+      );
+      expect(mockNotification.notifyCheckFailed).not.toHaveBeenCalled();
+    });
+
     it('should run alternate paths check and notify when confirmed legs are present', async () => {
       mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
         ...mockTaskData,
@@ -1451,6 +1474,23 @@ describe('JourneyTaskService', () => {
       });
     });
 
+    it('does not send a failure notice before all chart-check attempts finish', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValueOnce({
+        ...retryTask,
+        status: 'failed',
+        retryCount: 2,
+        resultPayload: null,
+      });
+
+      await expect(
+        service.resendTaskNotification(retryTask.id),
+      ).resolves.toMatchObject({
+        sent: false,
+        reason: 'Chart check retries are not exhausted',
+      });
+      expect(mockNotification.notifyCheckFailed).not.toHaveBeenCalled();
+    });
+
     it('selects recent outcomes independently of subscription age and includes legacy NULL channel statuses', async () => {
       mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([]);
       await service.resendFailedWhatsAppNotifications(24);
@@ -1460,6 +1500,12 @@ describe('JourneyTaskService', () => {
       expect(where.completedAt).toEqual({
         gte: expect.any(Date),
         lte: expect.any(Date),
+      });
+      expect(where.AND).toContainEqual({
+        OR: [
+          { status: 'completed' },
+          { status: 'failed', retryCount: { gte: 3 } },
+        ],
       });
       expect(where.OR[0].OR[0].OR).toContainEqual({ whatsappStatus: null });
       expect(where.OR[0].OR[1].emailRetryCount).toEqual({ lt: 9 });
@@ -1534,7 +1580,12 @@ describe('JourneyTaskService', () => {
 
     it('sends an explicit failure notice for an exhausted check even without a result payload', async () => {
       mockPrisma.chartTimeAvailabilityTask.findMany.mockResolvedValueOnce([
-        { ...retryTask, status: 'failed', resultPayload: null },
+        {
+          ...retryTask,
+          status: 'failed',
+          retryCount: 3,
+          resultPayload: null,
+        },
       ]);
       await service.resendFailedWhatsAppNotifications();
       expect(mockNotification.notifyCheckFailed).toHaveBeenCalledTimes(1);

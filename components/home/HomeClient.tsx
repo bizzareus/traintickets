@@ -12,9 +12,7 @@ import {
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
-import {
-  hasAnyAvailableSeat,
-} from "@/lib/bookingV2Availability";
+import { hasAnyAvailableSeat } from "@/lib/bookingV2Availability";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
 import dynamic from "next/dynamic";
 import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
@@ -23,10 +21,7 @@ import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
 import { TrainSearchV2ProgressBar } from "@/components/home/TrainSearchV2ProgressBar";
 import { TrainSearchV2Card } from "@/components/home/TrainSearchV2Card";
 import { TrainSearchSkeleton } from "@/components/home/TrainSearchSkeleton";
-import {
-  sortTrainSearchV2,
-  type TrainScanMeta,
-} from "@/lib/trainSearchV2Sort";
+import { sortTrainSearchV2, type TrainScanMeta } from "@/lib/trainSearchV2Sort";
 import { HomeBannerAd, HomeSideAd } from "@/components/home/HomeSideAd";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
@@ -164,8 +159,7 @@ type CachedBestTrain = {
 };
 
 type CachedBestTrainResponse =
-  | { cached: true; cachedAt: string; best: CachedBestTrain }
-  | { cached: false };
+  { cached: true; cachedAt: string; best: CachedBestTrain } | { cached: false };
 
 /**
  * Cap the best-train scan at the first N listed trains. Each candidate fans out
@@ -173,9 +167,6 @@ type CachedBestTrainResponse =
  * backend rather than the entire (often 30–60 train) search result.
  */
 const BEST_TRAIN_SCAN_LIMIT = 10;
-
-
-
 
 function useDebounced<T>(value: T, ms: number): T {
   const [v, setV] = useState(value);
@@ -216,7 +207,6 @@ function extractAxiosMessage(e: unknown): string {
   if (e instanceof Error && e.message) return e.message;
   return "Could not load stations. Check that the API is running (NEXT_PUBLIC_API_URL).";
 }
-
 
 function UrlSearchParamsSync({
   onParams,
@@ -355,6 +345,8 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [bestTrainProgress, setBestTrainProgress] = useState<
     BestTrainProgressEvent[]
   >([]);
+  const bestTrainRequestRef = useRef<AbortController | null>(null);
+  useEffect(() => () => bestTrainRequestRef.current?.abort(), []);
   // Precomputed best seat served instantly from the route cache (popular routes).
   const [cachedBest, setCachedBest] = useState<{
     best: CachedBestTrain;
@@ -419,7 +411,13 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setV2ScanMetaMap(new Map());
     v2TrackedViewKeyRef.current = "";
     v2TrackedAutoScanKeyRef.current = "";
-  }, [fromSt?.stationCode, toSt?.stationCode, journeyDate, acOnly, selectedClasses]);
+  }, [
+    fromSt?.stationCode,
+    toSt?.stationCode,
+    journeyDate,
+    acOnly,
+    selectedClasses,
+  ]);
 
   // Prioritized multi-tier sorting:
   // 1. Direct IRCTC availability (chronological)
@@ -538,7 +536,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         });
 
         if (isComplete) {
-          setV2DiscoveredEndToEndTrains((prev) => new Set(prev).add(trainNumber));
+          setV2DiscoveredEndToEndTrains((prev) =>
+            new Set(prev).add(trainNumber),
+          );
           setV2DiscoveredPartialTrains((prev) => {
             if (!prev.has(trainNumber)) return prev;
             const next = new Set(prev);
@@ -546,7 +546,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             return next;
           });
         } else {
-          setV2DiscoveredPartialTrains((prev) => new Set(prev).add(trainNumber));
+          setV2DiscoveredPartialTrains((prev) =>
+            new Set(prev).add(trainNumber),
+          );
         }
       }
     },
@@ -897,7 +899,11 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     ) {
       autoSearchTriggered.current = true;
       if (typeof window !== "undefined") {
-        window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "instant" as ScrollBehavior,
+        });
       }
       void runSearch();
     }
@@ -916,6 +922,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       setBestTrainError("Search trains first, then scan the listed trains.");
       return;
     }
+    bestTrainRequestRef.current?.abort();
+    const controller = new AbortController();
+    bestTrainRequestRef.current = controller;
 
     setHasSearched(true);
     setBestTrainLoading(true);
@@ -946,6 +955,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          signal: controller.signal,
           body: JSON.stringify({
             from: fromSt.stationCode,
             to: toSt.stationCode,
@@ -1010,9 +1020,13 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         }
       }
     } catch (e: unknown) {
+      if (controller.signal.aborted) return;
       setBestTrainError(e instanceof Error ? e.message : "Request failed");
     } finally {
-      setBestTrainLoading(false);
+      if (bestTrainRequestRef.current === controller) {
+        bestTrainRequestRef.current = null;
+        setBestTrainLoading(false);
+      }
     }
   }, [fromSt, toSt, journeyDate, trains, acOnly, selectedClasses]);
 
@@ -1056,8 +1070,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     }
   };
 
-
-
   const tabLabel =
     searchType === "route"
       ? t.tabs.route
@@ -1066,10 +1078,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         : t.tabs.seat;
 
   /** Compact mode: collapse hero + form into a sticky summary bar after search */
-  const isCompact =
-    hasSearched &&
-    searchType === "route" &&
-    !expandSearch;
+  const isCompact = hasSearched && searchType === "route" && !expandSearch;
 
   useEffect(() => {
     if (process.env.NODE_ENV !== "development") return;
@@ -1080,9 +1089,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       expandSearch,
       isCompact,
       searchType,
-      from: fromSt
-        ? `${fromSt.stationCode} - ${fromSt.stationName}`
-        : null,
+      from: fromSt ? `${fromSt.stationCode} - ${fromSt.stationName}` : null,
       to: toSt ? `${toSt.stationCode} - ${toSt.stationName}` : null,
       fromQ,
       toQ,
@@ -1137,8 +1144,19 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 suggestError={fromSuggestError}
                 className="border-0"
               />
-              <svg className="h-3.5 w-3.5 shrink-0 self-center text-gray-400" aria-hidden="true" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              <svg
+                className="h-3.5 w-3.5 shrink-0 self-center text-gray-400"
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                />
               </svg>
               <StationFieldSimple
                 compact
@@ -1164,7 +1182,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               />
             </div>
             <div className="flex h-14 min-w-0 shrink-0 flex-col justify-center rounded-lg border border-gray-200 bg-gray-50 px-2 sm:px-3">
-              <label htmlFor={`compact-${journeyDateInputId}`} className="block text-[9px] font-bold uppercase tracking-wide text-gray-500">Date</label>
+              <label
+                htmlFor={`compact-${journeyDateInputId}`}
+                className="block text-[9px] font-bold uppercase tracking-wide text-gray-500"
+              >
+                Date
+              </label>
               <JourneyDatePicker
                 id={`compact-${journeyDateInputId}`}
                 value={journeyDate}
@@ -1223,10 +1246,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         </div>
       )}
 
-      <div className={cn(
-        "mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-4xl",
-        isCompact ? "py-4" : "py-8",
-      )}>
+      <div
+        className={cn(
+          "mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-4xl",
+          isCompact ? "py-4" : "py-8",
+        )}
+      >
         {/* ── Hero headline (hidden in compact mode) ── */}
         {!isCompact && (
           <header className="mb-8">
@@ -1244,176 +1269,178 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         <div className={cn("mb-8", !isCompact && "min-h-[148px]")}>
           {/* Tab Switcher (hidden in compact mode) */}
           {!isCompact && (
-          <div className="mb-4 flex p-1 bg-slate-200/50 rounded-xl max-w-[360px] sm:max-w-[440px] backdrop-blur-md border border-white/40 shadow-xs">
-            <button
-              type="button"
-              id="tabSearchRoute"
-              onClick={() => handleTabSwitch("route")}
-              className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
-                searchType === "route"
-                  ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
-            >
-              {t.tabs.route}
-            </button>
-            <button
-              type="button"
-              id="tabSearchPnr"
-              onClick={() => handleTabSwitch("pnr")}
-              className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
-                searchType === "pnr"
-                  ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
-            >
-              {t.tabs.pnr}
-            </button>
-            <button
-              type="button"
-              id="tabSeatStatus"
-              onClick={() => handleTabSwitch("seat")}
-              className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
-                searchType === "seat"
-                  ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
-            >
-              {t.tabs.seat}
-            </button>
-          </div>
+            <div className="mb-4 flex p-1 bg-slate-200/50 rounded-xl max-w-[360px] sm:max-w-[440px] backdrop-blur-md border border-white/40 shadow-xs">
+              <button
+                type="button"
+                id="tabSearchRoute"
+                onClick={() => handleTabSwitch("route")}
+                className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
+                  searchType === "route"
+                    ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+              >
+                {t.tabs.route}
+              </button>
+              <button
+                type="button"
+                id="tabSearchPnr"
+                onClick={() => handleTabSwitch("pnr")}
+                className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
+                  searchType === "pnr"
+                    ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+              >
+                {t.tabs.pnr}
+              </button>
+              <button
+                type="button"
+                id="tabSeatStatus"
+                onClick={() => handleTabSwitch("seat")}
+                className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
+                  searchType === "seat"
+                    ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+              >
+                {t.tabs.seat}
+              </button>
+            </div>
           )}
 
           <h2 className="sr-only">{tabLabel}</h2>
           {searchType === "seat" ? (
             <ChartTimesFinder />
           ) : searchType === "route" ? (
-            !isCompact && <form
-              {...({
-                toolname: "search_train_tickets",
-                tooldescription:
-                  "Search confirmed train tickets, alternate segment routes, and seat availability across Indian Railways.",
-              } as Record<string, unknown>)}
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (!searchLoading) void runSearch();
-              }}
-              className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch"
-            >
-              <StationFieldSimple
-                className="rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
-                label={t.form.from}
-                placeholder={t.form.stationPlaceholder}
-                query={fromQ}
-                onUserType={(q) => {
-                  setFromQ(q);
-                  setFromSt(null);
+            !isCompact && (
+              <form
+                {...({
+                  toolname: "search_train_tickets",
+                  tooldescription:
+                    "Search confirmed train tickets, alternate segment routes, and seat availability across Indian Railways.",
+                } as Record<string, unknown>)}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (!searchLoading) void runSearch();
                 }}
-                value={fromSt}
-                onSelect={(s) => {
-                  setFromSt(s);
-                  setFromQ(s.stationName);
-                  trackAnalyticsEvent({
-                    name: "search_from_selected",
-                    properties: {
-                      from_code: s.stationCode,
-                      from_name: s.stationName,
-                    },
-                  });
-                }}
-                suggestions={fromSuggest}
-                loading={fromLoad}
-                pendingDebounce={fromQ !== fromDeb && fromQ.length >= 2}
-                open={fromOpen}
-                onOpenChange={openFrom}
-                suggestError={fromSuggestError}
-              />
-              <StationFieldSimple
-                label={t.form.to}
-                placeholder={t.form.stationPlaceholder}
-                query={toQ}
-                onUserType={(q) => {
-                  setToQ(q);
-                  setToSt(null);
-                }}
-                value={toSt}
-                onSelect={(s) => {
-                  setToSt(s);
-                  setToQ(s.stationName);
-                  trackAnalyticsEvent({
-                    name: "search_to_selected",
-                    properties: {
-                      to_code: s.stationCode,
-                      to_name: s.stationName,
-                    },
-                  });
-                }}
-                suggestions={toSuggest}
-                loading={toLoad}
-                pendingDebounce={toQ !== toDeb && toQ.length >= 2}
-                open={toOpen}
-                onOpenChange={openTo}
-                suggestError={toSuggestError}
-              />
-              <div className="z-10 min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 overflow-visible sm:flex-[1.5] sm:border-t-0 sm:border-r sm:py-2">
-                <div className="flex items-end gap-2">
-                  <div className="min-w-0 flex-1">
-                    <label
-                      htmlFor={journeyDateInputId}
-                  className="mb-1 flex items-center gap-1.5 whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500"
-                >
-                  <svg
-                    className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5a2.25 2.25 0 002.25-2.25m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5a2.25 2.25 0 012.25 2.25v7.5"
-                    />
-                  </svg>
-                  {t.form.date}
-                </label>
-                <JourneyDatePicker
-                  id={journeyDateInputId}
-                  value={journeyDate}
-                  onChange={handleJourneyDateChange}
-                  inputClassName="block w-full cursor-pointer truncate rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-base font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4"
+                className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch"
+              >
+                <StationFieldSimple
+                  className="rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
+                  label={t.form.from}
+                  placeholder={t.form.stationPlaceholder}
+                  query={fromQ}
+                  onUserType={(q) => {
+                    setFromQ(q);
+                    setFromSt(null);
+                  }}
+                  value={fromSt}
+                  onSelect={(s) => {
+                    setFromSt(s);
+                    setFromQ(s.stationName);
+                    trackAnalyticsEvent({
+                      name: "search_from_selected",
+                      properties: {
+                        from_code: s.stationCode,
+                        from_name: s.stationName,
+                      },
+                    });
+                  }}
+                  suggestions={fromSuggest}
+                  loading={fromLoad}
+                  pendingDebounce={fromQ !== fromDeb && fromQ.length >= 2}
+                  open={fromOpen}
+                  onOpenChange={openFrom}
+                  suggestError={fromSuggestError}
                 />
-                  </div>
-                  <div className="w-[96px] shrink-0 sm:w-[104px]">
-                    <span className="mb-1 block whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                      Class
-                    </span>
-                    <TrainClassMultiSelect
-                      selectedClasses={selectedClasses}
-                      onChange={setSelectedClasses}
-                    />
+                <StationFieldSimple
+                  label={t.form.to}
+                  placeholder={t.form.stationPlaceholder}
+                  query={toQ}
+                  onUserType={(q) => {
+                    setToQ(q);
+                    setToSt(null);
+                  }}
+                  value={toSt}
+                  onSelect={(s) => {
+                    setToSt(s);
+                    setToQ(s.stationName);
+                    trackAnalyticsEvent({
+                      name: "search_to_selected",
+                      properties: {
+                        to_code: s.stationCode,
+                        to_name: s.stationName,
+                      },
+                    });
+                  }}
+                  suggestions={toSuggest}
+                  loading={toLoad}
+                  pendingDebounce={toQ !== toDeb && toQ.length >= 2}
+                  open={toOpen}
+                  onOpenChange={openTo}
+                  suggestError={toSuggestError}
+                />
+                <div className="z-10 min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 overflow-visible sm:flex-[1.5] sm:border-t-0 sm:border-r sm:py-2">
+                  <div className="flex items-end gap-2">
+                    <div className="min-w-0 flex-1">
+                      <label
+                        htmlFor={journeyDateInputId}
+                        className="mb-1 flex items-center gap-1.5 whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500"
+                      >
+                        <svg
+                          className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5a2.25 2.25 0 002.25-2.25m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5a2.25 2.25 0 012.25 2.25v7.5"
+                          />
+                        </svg>
+                        {t.form.date}
+                      </label>
+                      <JourneyDatePicker
+                        id={journeyDateInputId}
+                        value={journeyDate}
+                        onChange={handleJourneyDateChange}
+                        inputClassName="block w-full cursor-pointer truncate rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-base font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4"
+                      />
+                    </div>
+                    <div className="w-[96px] shrink-0 sm:w-[104px]">
+                      <span className="mb-1 block whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                        Class
+                      </span>
+                      <TrainClassMultiSelect
+                        selectedClasses={selectedClasses}
+                        onChange={setSelectedClasses}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
-                <button
-                  type="submit"
-                  disabled={searchLoading}
-                  className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base touch-manipulation"
-                >
-                  {searchLoading ? (
-                    <span className="inline-flex items-center gap-2">
-                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-                      {t.form.searching}
-                    </span>
-                  ) : (
-                    t.form.search
-                  )}
-                </button>
-              </div>
-            </form>
+                <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
+                  <button
+                    type="submit"
+                    disabled={searchLoading}
+                    className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base touch-manipulation"
+                  >
+                    {searchLoading ? (
+                      <span className="inline-flex items-center gap-2">
+                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                        {t.form.searching}
+                      </span>
+                    ) : (
+                      t.form.search
+                    )}
+                  </button>
+                </div>
+              </form>
+            )
           ) : (
             <SearchPnrPanel />
           )}

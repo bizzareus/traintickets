@@ -13,10 +13,12 @@ import {
 import type { RawBodyRequest } from '@nestjs/common';
 import type { Request } from 'express';
 import { ChartAlertPaymentsService } from './chart-alert-payments.service';
-import type { ChartAlertJourneyInput } from './chart-alert-payments.service';
 import { requirePinnedChartTime } from '../availability/chart-task-schedule';
+import { SkipThrottle, Throttle } from '@nestjs/throttler';
+import { JourneyRequestDto } from '../availability/journey.dto';
 
 @Controller('api/chart-alert-payments')
+@Throttle({ global: { limit: 60, ttl: 60_000 } })
 export class ChartAlertPaymentsController {
   constructor(private readonly payments: ChartAlertPaymentsService) {}
 
@@ -27,7 +29,8 @@ export class ChartAlertPaymentsController {
    * Throws 400 for invalid input, 503 when Razorpay is unavailable.
    */
   @Post('create')
-  async create(@Body() body: ChartAlertJourneyInput) {
+  @Throttle({ global: { limit: 10, ttl: 60_000 } })
+  async create(@Body() body: JourneyRequestDto) {
     if (!body?.trainNumber?.trim() || !body?.fromStationCode?.trim()) {
       throw new BadRequestException(
         'trainNumber and fromStationCode are required',
@@ -86,20 +89,18 @@ export class ChartAlertPaymentsController {
   /**
    * Server-to-server Razorpay webhook. The HMAC signature is verified
    * against the raw body — this requires `rawBody: true` in main.ts.
-   * Always acks so Razorpay does not retry a poison payload.
+   * Malformed events are acknowledged; retryable processing failures propagate.
    */
   @Post('callback')
+  @SkipThrottle({ global: true })
   async handleCallback(
     @Req() req: RawBodyRequest<Request>,
     @Headers('x-razorpay-signature') signature: string | undefined,
   ) {
-    await this.payments
-      .handleCallback(
-        req.rawBody ?? Buffer.alloc(0),
-        signature,
-        req.body as Record<string, unknown>,
-      )
-      .catch(() => undefined);
+    await this.payments.handleCallback(
+      req.rawBody ?? Buffer.alloc(0),
+      signature,
+    );
     return { received: true };
   }
 }

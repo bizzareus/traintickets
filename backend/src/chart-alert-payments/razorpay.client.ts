@@ -1,7 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { createHmac, timingSafeEqual } from 'node:crypto';
-import axios from 'axios';
 import jsQR from 'jsqr';
 import { PNG } from 'pngjs';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
@@ -261,9 +260,10 @@ export class RazorpayClient {
     apps: UpiAppIntents | null;
   }> {
     try {
-      const res = await axios.get<ArrayBuffer>(qrImageUrl, {
+      const res = await this.client.get<ArrayBuffer>(qrImageUrl, {
         responseType: 'arraybuffer',
         timeout: 15_000,
+        maxContentLength: 2 * 1024 * 1024,
       });
       const intent = decodeQrIntent(Buffer.from(res.data));
       if (!intent) return { intent: null, apps: null };

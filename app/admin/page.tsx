@@ -44,7 +44,7 @@ export default function AdminPage() {
         >
           <h2 className="font-semibold text-slate-900">IRCTC cookies</h2>
           <p className="mt-1 text-sm text-slate-600">
-            View the keeper status, refresh, or paste in a cookie manually.
+            View or replace the manually managed IRCTC cookie.
           </p>
         </Link>
       </ul>

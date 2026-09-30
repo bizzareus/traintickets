@@ -1,4 +1,8 @@
-import { BookingV2Service, confirmTktPnrClient } from './booking-v2.service';
+import {
+  BookingV2Service,
+  confirmTktPnrClient,
+  rapidApiPnrClient,
+} from './booking-v2.service';
 import type { FindAlternatePathsResult } from './booking-v2.service';
 import type { IrctcService } from '../irctc/irctc.service';
 import type { CacheService } from '../cache/cache.service';
@@ -7,7 +11,6 @@ import type { BestTrainsRouteCache } from './best-trains-cache';
 import type { AlternatePathsRouteCache } from './alternate-paths-cache';
 import type { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import type { PostHogAnalyticsService } from '../common/posthog-analytics.service';
-import axios from 'axios';
 
 const mockDynamoDbSeatCache: jest.Mocked<
   Pick<
@@ -362,7 +365,12 @@ describe('BookingV2Service', () => {
 
       const result = await service.searchTrains('NDLS', 'CSTM', '2029-04-05');
 
-      expect(upstreamSpy).toHaveBeenCalledWith('NDLS', 'CSTM', '05-04-2029');
+      expect(upstreamSpy).toHaveBeenCalledWith(
+        'NDLS',
+        'CSTM',
+        '05-04-2029',
+        undefined,
+      );
       expect(mockDynamoDbSeatCache.saveRouteCachedSearch).toHaveBeenCalledWith(
         'NDLS',
         'CSTM',
@@ -877,7 +885,7 @@ describe('BookingV2Service', () => {
       };
 
       const getSpy = jest
-        .spyOn(axios, 'get')
+        .spyOn(rapidApiPnrClient, 'get')
         .mockResolvedValueOnce({ data: rawRapidApiData });
 
       const result = await service.getPnrStatus('4441017627');
@@ -906,7 +914,7 @@ describe('BookingV2Service', () => {
         .mockRejectedValueOnce(new Error('ConfirmTkt network error'));
 
       const getSpy = jest
-        .spyOn(axios, 'get')
+        .spyOn(rapidApiPnrClient, 'get')
         .mockRejectedValueOnce(new Error('RapidAPI 429 Rate Limited'));
 
       await expect(service.getPnrStatus('1234567890')).rejects.toThrow(

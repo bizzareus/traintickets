@@ -9,6 +9,10 @@ async function bootstrap() {
   // rawBody is required by the Razorpay webhook signature check.
   const app = await NestFactory.create(AppModule, { rawBody: true });
   app.enableShutdownHooks();
+  app
+    .getHttpAdapter()
+    .getInstance()
+    .set('trust proxy', 'loopback, linklocal, uniquelocal');
   const isAllowedOrigin = (origin: string | undefined): boolean => {
     if (!origin) return true; // Direct non-browser requests / healthchecks
     return (

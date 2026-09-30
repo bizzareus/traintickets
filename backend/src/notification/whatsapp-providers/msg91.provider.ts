@@ -89,11 +89,11 @@ export class Msg91Provider implements WhatsAppProvider {
     this.apiUrl =
       this.config.get<string>('MSG91_API_URL')?.trim() || MSG91_DEFAULT_API_URL;
     this.httpClient = createRetryingAxiosClient({
-      retries: 3,
-      retryPost: true,
+      retries: 0,
+      retryPost: false,
       serviceName: 'msg91',
-      retryStatuses: [429, 500, 502, 503, 504],
-      retryDelayMs: 1500,
+      timeoutMs: 15_000,
+      maxResponseBytes: 1024 * 1024,
     });
   }
 

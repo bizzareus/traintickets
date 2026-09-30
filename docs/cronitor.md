@@ -59,7 +59,7 @@ separately to avoid expected missing-run alerts.
 
 ## Implemented backend monitors
 
-Keys are prefixed `lastberth-`. All seven handlers are instrumented; provisioning
+Keys are prefixed `lastberth-`. All six handlers are instrumented; provisioning
 omits feature-gated jobs that are disabled in the environment used by `sync`.
 
 | Key suffix | Actual schedule | Missing-run grace | Duration assertion (before grace) | Failure signal |
@@ -70,11 +70,10 @@ omits feature-gated jobs that are disabled in the environment used by `sync`.
 | `failed-delivery-refund` | Daily 09:00 IST | 10 min | 60 min | Refund or explanatory-email failures |
 | `seat-cache` | Daily 03:30 IST | 10 min | 2 hours | Failed routes, even if the overall pass resolves normally |
 | `wasender-healthcheck` | Every 30 minutes | 5 min | 5 min | Provider health result is unhealthy, even if no exception was thrown |
-| `irctc-session-keeper` | Every 30 minutes; actual automatic boot harvests also report | 20 min | 4 min | Cookie harvest/persistence throws |
 
-Daily schedules explicitly use `Asia/Kolkata`. The IRCTC keeper uses `TZ`, or UTC
-when absent. `FAILED_DELIVERY_REFUND_CRON`, `IRCTC_KEEPER_CRON`, and
-`CHART_TASK_DEADLINE_SECONDS` overrides are included in the generated plan.
+Daily schedules explicitly use `Asia/Kolkata`.
+`FAILED_DELIVERY_REFUND_CRON` and `CHART_TASK_DEADLINE_SECONDS` overrides are
+included in the generated plan.
 Nest's fixed second fields are represented as five-field Cronitor schedules with
 grace for seconds 20/40. Sub-minute custom expressions require a separately chosen
 monitor schedule and are rejected by the configuration command.
@@ -87,11 +86,10 @@ Enable the optional jobs using their existing switches:
 
 - Seat cache: enabled outside development unless `SEAT_CACHE_ENABLED` is off.
 - WhatsApp health: `WASENDER_HEALTHCHECK_ENABLED=true`.
-- Cookie keeper: `IRCTC_KEEPER_ENABLED=true` plus its existing browser configuration.
 
-Disabled jobs, standby replicas, overlapping skipped ticks, and lost cookie-harvest
-claims do not emit synthetic successes. Idle scans that actually check the queue
-are healthy and report count 0. No monitor asserts that work must exist every minute.
+Disabled jobs, standby replicas, and overlapping skipped ticks do not emit
+synthetic successes. Idle scans that actually check the queue are healthy and
+report count 0. No monitor asserts that work must exist every minute.
 An older active invocation remains detectable by its duration even if later idle
 ticks complete. Repeated slow/busy minute jobs may need tolerance tuning after
 observing their actual duration distribution.
@@ -112,11 +110,10 @@ logger sees them, preventing telemetry URLs or API keys from entering logs.
 
 ## Recommended next monitoring changes (not provisioned here)
 
-1. **External uptime:** add checks for `https://api.lastberth.com/api/health` and
-   `https://lastberth.com/api/health`, every minute. Assert HTTP 200, `status=ok`
-   where present, reasonable response time, and certificate validity. These detect
-   DNS/TLS/proxy/app failures independently of the backend. The backend health
-   endpoint currently proves process liveness, not Supabase readiness.
+1. **External uptime:** add checks for `https://api-v2.lastberth.com/api/health/live`
+   and `/api/health/ready`, every minute. Assert HTTP 200, reasonable response time,
+   and certificate validity. Liveness detects process/proxy failures; readiness
+   additionally checks PostgreSQL.
 2. **Alert timeliness:** add a separate database-backed check for eligible overdue
    chart tasks and aged unsent paid notifications. A successful empty cron tick is
    not proof that every subscriber received an alert. Filter unsubscribed,

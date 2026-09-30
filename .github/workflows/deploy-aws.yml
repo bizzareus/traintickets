@@ -71,7 +71,7 @@ jobs:
           tags: ${{ steps.meta-frontend.outputs.tags }}
           labels: ${{ steps.meta-frontend.outputs.labels }}
           build-args: |
-            NEXT_PUBLIC_API_URL=https://api.lastberth.com
+            NEXT_PUBLIC_API_URL=https://api-v2.lastberth.com
             NEXT_PUBLIC_APP_URL=https://lastberth.com
             NEXT_PUBLIC_CHART_ALERT_PRICE_RUPEES=5
           cache-from: type=gha,scope=frontend

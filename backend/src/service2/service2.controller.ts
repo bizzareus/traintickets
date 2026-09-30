@@ -4,10 +4,11 @@ import {
   Controller,
   Logger,
   Post,
+  Req,
   Res,
   ServiceUnavailableException,
 } from '@nestjs/common';
-import type { Response } from 'express';
+import type { Request, Response } from 'express';
 import { IrctcService } from '../irctc/irctc.service';
 import { captureSentryException } from '../common/sentry-report';
 import {
@@ -15,6 +16,13 @@ import {
   parseJourneyYmdForValidation,
 } from '../common/train-run-day.validation';
 import { Service2Service } from './service2.service';
+import { Service2CheckDto } from './service2.dto';
+import { Throttle } from '@nestjs/throttler';
+import {
+  createResponseLifecycle,
+  endResponse,
+  writeChunk,
+} from '../common/http-stream';
 
 /** Avoids String(object) → '[object Object]' for request body fields. */
 function unknownToTrimmedString(value: unknown, fallback = ''): string {
@@ -35,7 +43,7 @@ function unknownToOptionalTrimmedString(value: unknown): string | undefined {
   return undefined;
 }
 
-function normalizeCheckBody(body: Record<string, unknown>) {
+function normalizeCheckBody(body: Service2CheckDto) {
   const destinationRaw = unknownToOptionalTrimmedString(
     body.destinationStation,
   );
@@ -48,12 +56,12 @@ function normalizeCheckBody(body: Record<string, unknown>) {
       ? destinationRaw.toUpperCase()
       : undefined,
     passengerDetails: unknownToOptionalTrimmedString(body.passengerDetails),
-    forceVacantBerth:
-      body.forceVacantBerth === true || body.forceVacantBerth === 'true',
+    forceVacantBerth: body.forceVacantBerth === true,
   };
 }
 
 @Controller('api/service2')
+@Throttle({ global: { limit: 10, ttl: 60_000 } })
 export class Service2Controller {
   private readonly logger = new Logger(Service2Controller.name);
 
@@ -64,7 +72,8 @@ export class Service2Controller {
 
   @Post('check/stream')
   async checkStream(
-    @Body() body: Record<string, unknown>,
+    @Body() body: Service2CheckDto,
+    @Req() req: Request,
     @Res({ passthrough: false }) res: Response,
   ) {
     const normalized = normalizeCheckBody(body ?? {});
@@ -95,9 +104,14 @@ export class Service2Controller {
     res.setHeader('Cache-Control', 'no-cache, no-transform');
     res.setHeader('Connection', 'keep-alive');
     res.setHeader('X-Accel-Buffering', 'no');
+    const lifecycle = createResponseLifecycle(req, res, 180_000);
 
-    const writeSse = (event: string, data: unknown) => {
-      res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+    const writeSse = async (event: string, data: unknown) => {
+      await writeChunk(
+        res,
+        `event: ${event}\ndata: ${JSON.stringify(data)}\n\n`,
+        lifecycle.signal,
+      );
       (res as { flush?: () => void }).flush?.();
     };
 
@@ -105,7 +119,7 @@ export class Service2Controller {
       this.logger.log(
         `[service2/check/stream] step=sse_pipeline_start train=${normalized.trainNumber} station=${normalized.stationCode} date=${normalized.journeyDate}`,
       );
-      writeSse('progress', {
+      await writeSse('progress', {
         phase: 'started',
         trainNumber: normalized.trainNumber,
         stationCode: normalized.stationCode,
@@ -116,11 +130,11 @@ export class Service2Controller {
         this.logger.warn(
           `[service2/check/stream] step=validation_failed invalid_journey_date`,
         );
-        writeSse('error', {
+        await writeSse('error', {
           code: 'INVALID_JOURNEY_DATE',
           message: 'Journey date must be a valid YYYY-MM-DD.',
         });
-        res.end();
+        endResponse(res);
         return;
       }
 
@@ -133,12 +147,13 @@ export class Service2Controller {
           },
         },
       );
+      lifecycle.signal.throwIfAborted();
       if (!scheduleResult.ok) {
         if (scheduleResult.reason === 'maintenance') {
           this.logger.warn(
             `[service2/check/stream] step=validation_failed irctc_maintenance`,
           );
-          writeSse('error', {
+          await writeSse('error', {
             code: 'IRCTC_MAINTENANCE',
             message:
               'IRCTC is temporarily unavailable (maintenance or downtime). Please try again later.',
@@ -147,13 +162,13 @@ export class Service2Controller {
           this.logger.warn(
             `[service2/check/stream] step=validation_failed schedule_unavailable`,
           );
-          writeSse('error', {
+          await writeSse('error', {
             code: 'SCHEDULE_UNAVAILABLE',
             message:
               'Train schedule not found. Please try again after the route is loaded.',
           });
         }
-        res.end();
+        endResponse(res);
         return;
       }
 
@@ -162,12 +177,12 @@ export class Service2Controller {
         this.logger.warn(
           `[service2/check/stream] step=validation_failed empty_station_list`,
         );
-        writeSse('error', {
+        await writeSse('error', {
           code: 'SCHEDULE_UNAVAILABLE',
           message:
             'Train schedule not found. Please try again after the route is loaded.',
         });
-        res.end();
+        endResponse(res);
         return;
       }
 
@@ -179,8 +194,8 @@ export class Service2Controller {
         this.logger.warn(
           `[service2/check/stream] step=validation_failed train_does_not_run_on_date code=${runDayErr.code}`,
         );
-        writeSse('error', runDayErr);
-        res.end();
+        await writeSse('error', runDayErr);
+        endResponse(res);
         return;
       }
 
@@ -194,34 +209,39 @@ export class Service2Controller {
           passengerDetails: normalized.passengerDetails,
           triggerSource: 'manual',
           forceVacantBerth: normalized.forceVacantBerth,
+          signal: lifecycle.signal,
         },
         {
-          onIrctcDataReady: (info) => {
+          onIrctcDataReady: async (info) => {
             this.logger.log(
               `[service2/check/stream] step=irctc_data_ready vacantSegmentCount=${info.vacantSegmentCount} dest=${info.destinationStation} vacantBerthApiError=${info.vacantBerthApiError ?? 'null'}`,
             );
-            writeSse('progress', { phase: 'irctc_complete', ...info });
+            await writeSse('progress', { phase: 'irctc_complete', ...info });
           },
-          onAiStarted: (info) => {
+          onAiStarted: async (info) => {
             this.logger.log(
               `[service2/check/stream] step=openai_started dest=${info.destinationStation}`,
             );
-            writeSse('progress', { phase: 'ai_started', ...info });
+            await writeSse('progress', { phase: 'ai_started', ...info });
           },
-          onPartialOpenAiResult: (info) => {
+          onPartialOpenAiResult: async (info) => {
             this.logger.log(
               `[service2/check/stream] step=partial_openai nextBoarding=${info.nextBoardingStation} chainRound=${info.chainRound}`,
             );
-            writeSse('progress', { phase: 'partial_ai_result', ...info });
+            await writeSse('progress', {
+              phase: 'partial_ai_result',
+              ...info,
+            });
           },
         },
       );
       this.logger.log(
         `[service2/check/stream] step=finished status=${result.status} chartStatus=${result.chartStatus ? JSON.stringify(result.chartStatus) : 'none'} hasOpenAiSummary=${Boolean(result.openAiSummary)}`,
       );
-      writeSse('result', result);
-      res.end();
+      await writeSse('result', result);
+      endResponse(res);
     } catch (err) {
+      if (lifecycle.signal.aborted) return;
       const message = err instanceof Error ? err.message : String(err);
       this.logger.error(
         `[service2/check/stream] step=error ${message}`,
@@ -230,28 +250,16 @@ export class Service2Controller {
       captureSentryException(err, {
         tags: { route: 'POST /api/service2/check/stream' },
       });
-      writeSse('error', { message });
-      res.end();
+      await writeSse('error', { message });
+      endResponse(res);
+    } finally {
+      lifecycle.cleanup();
     }
   }
 
   @Post('check')
-  async check(
-    @Body('trainNumber') trainNumber: string,
-    @Body('stationCode') stationCode: string,
-    @Body('journeyDate') journeyDate: string,
-    @Body('classCode') classCode: string,
-    @Body('destinationStation') destinationStation: string,
-    @Body('passengerDetails') passengerDetails: string,
-  ) {
-    const normalized = normalizeCheckBody({
-      trainNumber,
-      stationCode,
-      journeyDate,
-      classCode,
-      destinationStation,
-      passengerDetails,
-    });
+  async check(@Body() body: Service2CheckDto) {
+    const normalized = normalizeCheckBody(body);
     this.logger.log(
       `[service2/check] step=request body=${JSON.stringify({
         trainNumber: normalized.trainNumber,

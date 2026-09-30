@@ -19,11 +19,16 @@ import { IrctcService } from './irctc.service';
 describe('IrctcService', () => {
   let service: IrctcService;
   let mockHttpService: IrctcHttpService;
+  let scheduleCache: { get: jest.Mock; set: jest.Mock };
 
   beforeEach(() => {
     jest.clearAllMocks();
     const mockPrisma = {} as PrismaService;
     const mockCookieStore = {} as IrctcCookieStoreService;
+    scheduleCache = {
+      get: jest.fn().mockResolvedValue(undefined),
+      set: jest.fn().mockResolvedValue(undefined),
+    };
     mockHttpService = {
       postOnlineCharts: jest.fn(),
       getEticketing: jest.fn(),
@@ -32,7 +37,12 @@ describe('IrctcService', () => {
         .mockReturnValue('https://www.irctc.co.in'),
       isProxied: jest.fn().mockReturnValue(false),
     } as unknown as IrctcHttpService;
-    service = new IrctcService(mockPrisma, mockCookieStore, mockHttpService);
+    service = new IrctcService(
+      mockPrisma,
+      mockCookieStore,
+      mockHttpService,
+      scheduleCache as never,
+    );
   });
 
   describe('searchStationsViaRapidApi', () => {
@@ -144,7 +154,12 @@ describe('IrctcService', () => {
           .mockReturnValue('https://www.irctc.co.in'),
         isProxied: jest.fn().mockReturnValue(false),
       } as unknown as IrctcHttpService;
-      service = new IrctcService(mockPrisma, mockCookieStore, mockHttpService);
+      service = new IrctcService(
+        mockPrisma,
+        mockCookieStore,
+        mockHttpService,
+        scheduleCache as never,
+      );
     });
 
     it('fetches schedule from ConfirmTkt API successfully and returns normalized schedule', async () => {

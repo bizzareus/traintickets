@@ -9,9 +9,8 @@ The backend image has two entry points:
 
 Only `WorkerModule` imports `ScheduleModule.forRoot()`. It runs chart alerts,
 alternative searches, notification retries, daily failed-delivery refunds, seat
-cache warming, IRCTC cookie refresh (including the boot refresh), and the Wasender
-healthcheck. Existing enable/disable switches still apply. Manual admin actions
-continue to run in the API process.
+cache warming, and the Wasender healthcheck. Existing enable/disable switches
+still apply. IRCTC cookies are managed manually in the API process.
 
 Both containers use `backend/.env`. PostgreSQL task rows, claims, retry state,
 cron leases and IRCTC cookies, plus the DynamoDB seat cache, remain shared. No
@@ -76,7 +75,7 @@ docker compose -f infra/docker-compose.yml logs --tail=100 worker
 docker compose -f infra/docker-compose.yml stats --no-stream backend worker
 ```
 
-Worker startup logs `Cron worker ready: 7 scheduled jobs; no HTTP listener`.
+Worker startup logs `Cron worker ready: 6 scheduled jobs; no HTTP listener`.
 Verify subsequent cron runs in `cron_run_log` / Cronitor. API logs should no longer
 contain automatic `initiated cron` messages. Deploy both entry points together;
 deploying only the new API leaves scheduled work stopped.

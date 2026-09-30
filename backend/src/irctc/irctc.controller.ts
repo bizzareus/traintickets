@@ -12,8 +12,10 @@ import {
 import { IrctcService } from './irctc.service';
 import { IrctcChartService } from './irctc-chart.service';
 import { IrctcBrowserUseService } from './irctc-browser-use.service';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('api/irctc')
+@Throttle({ global: { limit: 20, ttl: 60_000 } })
 export class IrctcController {
   private readonly logger = new Logger(IrctcController.name);
 

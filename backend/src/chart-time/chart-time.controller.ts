@@ -9,8 +9,10 @@ import {
 } from '@nestjs/common';
 import { ChartTimeService } from './chart-time.service';
 import { BrowserUseService } from '../browser-use/browser-use.service';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('api/chart-time')
+@Throttle({ global: { limit: 20, ttl: 60_000 } })
 export class ChartTimeController {
   constructor(
     private chartTime: ChartTimeService,

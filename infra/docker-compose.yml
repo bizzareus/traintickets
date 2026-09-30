@@ -20,8 +20,14 @@ services:
     environment:
       NODE_OPTIONS: ${BACKEND_NODE_OPTIONS:---max-old-space-size=450}
     mem_limit: ${BACKEND_MEMORY_LIMIT:-768m}
-    ports:
-      - "3009:3009"
+    expose:
+      - "3009"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3009/api/health/ready').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
 
   worker:
     <<: *backend-runtime
@@ -47,7 +53,8 @@ services:
         max-size: "20m"
         max-file: "10"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
 
 volumes:
   caddy_data:

@@ -8,11 +8,12 @@ import {
   Req,
   UnauthorizedException,
 } from '@nestjs/common';
+import type { RawBodyRequest } from '@nestjs/common';
 import type { Request } from 'express';
 import { WhatsappService } from './whatsapp.service';
 import { WasenderHealthcheckService } from './wasender-healthcheck.service';
 import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
-import * as crypto from 'crypto';
+import { verifyHmacSha256 } from '../common/webhook-signature';
 
 @Controller('api/whatsapp')
 export class WhatsappController {
@@ -24,28 +25,14 @@ export class WhatsappController {
   ) {}
 
   @Post('webhook')
-  handleIncoming(@Req() req: Request, @Body() body: Record<string, any>) {
-    // Optional basic webhook validation
+  handleIncoming(
+    @Req() req: RawBodyRequest<Request>,
+    @Body() body: Record<string, any>,
+  ) {
     const secret = process.env.WASENDER_WEBHOOK_SECRET;
-    if (secret) {
-      const signature = req.headers['x-hub-signature-256'] as string;
-      // if missing or not matching, handle error
-      if (signature) {
-        const raw = JSON.stringify(body);
-        const expectedHex = crypto
-          .createHmac('sha256', secret)
-          .update(raw)
-          .digest('hex');
-        const expected = `sha256=${expectedHex}`;
-        const sigBuf = Buffer.from(signature, 'utf8');
-        const expBuf = Buffer.from(expected, 'utf8');
-        if (
-          sigBuf.length !== expBuf.length ||
-          !crypto.timingSafeEqual(sigBuf, expBuf)
-        ) {
-          throw new UnauthorizedException('Invalid signature');
-        }
-      }
+    const signature = req.headers['x-hub-signature-256'] as string | undefined;
+    if (!verifyHmacSha256(req.rawBody, signature, secret, 'sha256=')) {
+      throw new UnauthorizedException('Invalid signature');
     }
 
     try {

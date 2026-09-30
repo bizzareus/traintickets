@@ -130,10 +130,12 @@ export class WasenderHealthcheckService {
 
     this.httpClient = createRetryingAxiosClient({
       retries: 2,
-      retryPost: true,
+      retryPost: false,
       serviceName: 'wasender-healthcheck',
       retryStatuses: [429, 500, 502, 503, 504],
       retryDelayMs: 1500,
+      timeoutMs: 15_000,
+      maxResponseBytes: 1024 * 1024,
     });
   }
 

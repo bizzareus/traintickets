@@ -117,12 +117,6 @@ function stationDayCount(station: unknown): number {
   return 1;
 }
 
-function isRetryableRailFailureText(text: string): boolean {
-  return /fetch failed|ETIMEDOUT|ECONNRESET|ECONNREFUSED|EAI_AGAIN|ENOTFOUND|network|temporarily unavailable|unable to contact rail systems|IRCTC schedule service unavailable|Availability request fail/i.test(
-    text,
-  );
-}
-
 function retryDelayMsForAttempt(attemptNumber: number): number {
   return attemptNumber <= 1 ? 5 * 60_000 : 15 * 60_000;
 }
@@ -136,10 +130,6 @@ function chartTaskFailureText(payload: unknown): string {
   } catch {
     return '[unserializable failure payload]';
   }
-}
-
-function isRetryableChartTaskFailure(payload: unknown): boolean {
-  return isRetryableRailFailureText(chartTaskFailureText(payload));
 }
 
 function isTaskChartTimePassed(task: ChartTimeAvailabilityTask): boolean {
@@ -209,8 +199,7 @@ function alternatePathsToCheckResult(
       status: 'failed',
       vacantBerth: { vbd: [], error: null },
       chartStatus: ((alt as Record<string, unknown>).chartStatus as
-        | Service2CheckResult['chartStatus']
-        | undefined) ?? {
+        Service2CheckResult['chartStatus'] | undefined) ?? {
         kind: 'not_prepared_yet' as const,
         message: 'Confirmed seats not available yet',
       },
@@ -1365,11 +1354,7 @@ export class JourneyTaskService {
         return;
       }
 
-      if (
-        status === 'failed' &&
-        attemptNumber < MAX_CHART_TASK_ATTEMPTS &&
-        isRetryableChartTaskFailure(result)
-      ) {
+      if (status === 'failed' && attemptNumber < MAX_CHART_TASK_ATTEMPTS) {
         await this.scheduleTaskRetry(
           taskId,
           result,
@@ -1546,10 +1531,7 @@ export class JourneyTaskService {
       if (signal?.aborted) return;
       const message = err instanceof Error ? err.message : String(err);
 
-      if (
-        attemptNumber < MAX_CHART_TASK_ATTEMPTS &&
-        isRetryableRailFailureText(message)
-      ) {
+      if (attemptNumber < MAX_CHART_TASK_ATTEMPTS) {
         await this.scheduleTaskRetry(
           taskId,
           { error: message },
@@ -1651,11 +1633,9 @@ export class JourneyTaskService {
           completedCount: entry.completedCount ?? 0,
           failedCount: entry.failedCount ?? 0,
           input: (entry.input ?? undefined) as
-            | Prisma.InputJsonValue
-            | undefined,
+            Prisma.InputJsonValue | undefined,
           output: (entry.output ?? undefined) as
-            | Prisma.InputJsonValue
-            | undefined,
+            Prisma.InputJsonValue | undefined,
           error: entry.error ?? null,
         },
       });
@@ -2071,6 +2051,15 @@ export class JourneyTaskService {
       };
     }
 
+    if (task.status === 'failed' && task.retryCount < MAX_CHART_TASK_ATTEMPTS) {
+      return {
+        sent: false,
+        emailSent: false,
+        whatsappSent: false,
+        reason: 'Chart check retries are not exhausted',
+      };
+    }
+
     const contact =
       task.contact ||
       (await this.prisma.journeyMonitorContact.findUnique({
@@ -2185,7 +2174,10 @@ export class JourneyTaskService {
       FROM chart_alert_payment p
       JOIN "ChartTimeAvailabilityTask" t ON t.journey_request_id = p.journey_request_id
       WHERE p.status = 'PAID'
-        AND t.status IN ('completed', 'failed')
+        AND (
+          t.status = 'completed'
+          OR (t.status = 'failed' AND t.retry_count >= ${MAX_CHART_TASK_ATTEMPTS})
+        )
         AND t.completed_at >= ${sinceDate} AND t.completed_at <= ${cooldownBefore}
     `;
     const paidJourneys = new Set(paidRows.map((row) => row.journey_request_id));
@@ -2218,10 +2210,20 @@ export class JourneyTaskService {
     };
     const tasks = await this.prisma.chartTimeAvailabilityTask.findMany({
       where: {
-        status: { in: ['completed', 'failed'] },
         chartAt: { lte: new Date() },
         completedAt: { gte: sinceDate, lte: cooldownBefore },
-        AND: [cooldown],
+        AND: [
+          cooldown,
+          {
+            OR: [
+              { status: 'completed' },
+              {
+                status: 'failed',
+                retryCount: { gte: MAX_CHART_TASK_ATTEMPTS },
+              },
+            ],
+          },
+        ],
         OR: [
           {
             journeyRequestId: { in: [...paidJourneys] },

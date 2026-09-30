@@ -4,18 +4,22 @@ import { useCallback, useEffect, useState } from "react";
 import { apiClient } from "@/lib/api";
 
 type KeeperStatus = {
-  enabled: boolean;
-  refreshing: boolean;
-  lastRefreshAt: string | null;
-  lastError: string | null;
-  cookieFile: string;
+  cookieStore: string;
   cookie:
-    | { present: true; length: number; updatedAt: string; source?: string; sessionId?: string }
+    | {
+        present: true;
+        length: number;
+        updatedAt: string;
+        source?: string;
+        sessionId?: string;
+      }
     | { present: false };
 };
 
 function extractError(err: unknown, fallback: string): string {
-  const ax = err as { response?: { data?: { message?: string; error?: string } } };
+  const ax = err as {
+    response?: { data?: { message?: string; error?: string } };
+  };
   return ax.response?.data?.message ?? ax.response?.data?.error ?? fallback;
 }
 
@@ -25,7 +29,7 @@ export default function IrctcCookiesAdminPage() {
   const [status, setStatus] = useState<KeeperStatus | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [busy, setBusy] = useState<"refresh" | "manual" | null>(null);
+  const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState("");
   const [cookie, setCookie] = useState("");
   const [password, setPassword] = useState("");
@@ -49,9 +53,12 @@ export default function IrctcCookiesAdminPage() {
     }
     setError("");
     try {
-      const { data } = await apiClient.get<KeeperStatus>("/api/admin/irctc-keeper", {
-        headers: { "x-admin-password": password },
-      });
+      const { data } = await apiClient.get<KeeperStatus>(
+        "/api/admin/irctc-keeper",
+        {
+          headers: { "x-admin-password": password },
+        },
+      );
       setStatus(data);
     } catch (err) {
       setError(extractError(err, "Failed to load keeper status."));
@@ -63,29 +70,6 @@ export default function IrctcCookiesAdminPage() {
   useEffect(() => {
     void loadStatus();
   }, [loadStatus]);
-
-  async function onRefresh() {
-    setBusy("refresh");
-    setNotice("");
-    setError("");
-    try {
-      const { data } = await apiClient.post<{ ok: boolean; error?: string }>(
-        "/api/admin/irctc-keeper/refresh",
-        {},
-        { headers: authHeaders() },
-      );
-      setNotice(
-        data.ok
-          ? "Harvest succeeded — cookies refreshed."
-          : `Harvest did not succeed: ${data.error ?? "unknown error"}`,
-      );
-    } catch (err) {
-      setError(extractError(err, "Refresh request failed."));
-    } finally {
-      setBusy(null);
-      void loadStatus();
-    }
-  }
 
   async function onReveal() {
     setRevealBusy(true);
@@ -104,11 +88,15 @@ export default function IrctcCookiesAdminPage() {
   }
 
   async function onManualSet() {
-    setBusy("manual");
+    setBusy(true);
     setNotice("");
     setError("");
     try {
-      const { data } = await apiClient.post<{ ok: boolean; error?: string; length?: number }>(
+      const { data } = await apiClient.post<{
+        ok: boolean;
+        error?: string;
+        length?: number;
+      }>(
         "/api/admin/irctc-keeper/cookie",
         { cookie },
         { headers: authHeaders() },
@@ -122,7 +110,7 @@ export default function IrctcCookiesAdminPage() {
     } catch (err) {
       setError(extractError(err, "Failed to save cookie."));
     } finally {
-      setBusy(null);
+      setBusy(false);
       void loadStatus();
     }
   }
@@ -133,13 +121,15 @@ export default function IrctcCookiesAdminPage() {
     <div>
       <h1 className="text-2xl font-bold text-slate-900">IRCTC cookies</h1>
       <p className="mt-1 text-slate-600">
-        The session keeper harvests the IRCTC cookie bundle via a browser-use cloud browser and
-        stores it for the backend to use. View its status, force a refresh, or paste in a cookie
-        captured from a working browser session yourself.
+        View or replace the cookie bundle used by backend IRCTC requests.
+        Cookies must be captured from a working browser session and updated
+        manually when they expire.
       </p>
 
       {error && (
-        <div className="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>
+        <div className="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
+          {error}
+        </div>
       )}
       {notice && (
         <div className="mt-4 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-700">
@@ -149,7 +139,9 @@ export default function IrctcCookiesAdminPage() {
 
       {/* Admin password */}
       <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow">
-        <label className="block text-sm font-medium text-slate-700">Admin password</label>
+        <label className="block text-sm font-medium text-slate-700">
+          Admin password
+        </label>
         <div className="mt-2 flex gap-2">
           <input
             type="password"
@@ -171,15 +163,19 @@ export default function IrctcCookiesAdminPage() {
           </button>
         </div>
         <p className="mt-1 text-xs text-slate-500">
-          Same password as the other admin tools. Stored locally in your browser and sent as the{" "}
-          <code className="rounded bg-slate-100 px-0.5">x-admin-password</code> header.
+          Same password as the other admin tools. Stored locally in your browser
+          and sent as the{" "}
+          <code className="rounded bg-slate-100 px-0.5">x-admin-password</code>{" "}
+          header.
         </p>
       </div>
 
       {/* Status */}
       <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-slate-900">Current status</h2>
+          <h2 className="text-lg font-semibold text-slate-900">
+            Current status
+          </h2>
           <button
             type="button"
             onClick={() => void loadStatus()}
@@ -192,35 +188,29 @@ export default function IrctcCookiesAdminPage() {
           <p className="mt-3 text-sm text-slate-500">Loading…</p>
         ) : status ? (
           <dl className="mt-3 grid grid-cols-1 gap-x-8 gap-y-2 text-sm sm:grid-cols-2">
-            <Row label="Keeper enabled" value={status.enabled ? "yes" : "no"} />
-            <Row label="Refreshing now" value={status.refreshing ? "yes" : "no"} />
-            <Row label="Last refresh" value={status.lastRefreshAt ?? "never"} />
             <Row
-              label="Last error"
-              value={status.lastError ?? "none"}
-              danger={Boolean(status.lastError)}
+              label="Cookie present"
+              value={c?.present ? "yes" : "no"}
+              danger={!c?.present}
             />
-            <Row label="Cookie present" value={c?.present ? "yes" : "no"} danger={!c?.present} />
-            {c?.present && <Row label="Cookie length" value={`${c.length} chars`} />}
-            {c?.present && <Row label="Cookie source" value={c.source ?? "n/a"} />}
+            {c?.present && (
+              <Row label="Cookie length" value={`${c.length} chars`} />
+            )}
+            {c?.present && (
+              <Row label="Cookie source" value={c.source ?? "n/a"} />
+            )}
             {c?.present && <Row label="Cookie updated" value={c.updatedAt} />}
-            <Row label="Cookie file" value={status.cookieFile} />
+            <Row label="Cookie store" value={status.cookieStore} />
           </dl>
         ) : null}
 
         <div className="mt-5 flex flex-wrap gap-2">
-          <button
-            type="button"
-            onClick={onRefresh}
-            disabled={busy !== null}
-            className="rounded-lg bg-slate-900 px-5 py-2 text-sm font-medium text-white disabled:opacity-60"
-          >
-            {busy === "refresh" ? "Refreshing…" : "Refresh now (browser-use harvest)"}
-          </button>
           {c?.present && (
             <button
               type="button"
-              onClick={() => (revealed === null ? void onReveal() : setRevealed(null))}
+              onClick={() =>
+                revealed === null ? void onReveal() : setRevealed(null)
+              }
               disabled={revealBusy}
               className="rounded-lg border border-slate-300 px-5 py-2 text-sm font-medium text-slate-800 disabled:opacity-60"
             >
@@ -264,12 +254,15 @@ export default function IrctcCookiesAdminPage() {
 
       {/* Manual cookie */}
       <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow">
-        <h2 className="text-lg font-semibold text-slate-900">Set cookie manually</h2>
+        <h2 className="text-lg font-semibold text-slate-900">
+          Set cookie manually
+        </h2>
         <p className="mt-1 text-sm text-slate-600">
-          Paste the full <code className="rounded bg-slate-100 px-0.5">Cookie:</code> header from a
-          working IRCTC <code className="rounded bg-slate-100 px-0.5">online-charts</code> request
-          (DevTools → Network → copy the Cookie request header). This overrides whatever the keeper
-          last stored, until the next automated refresh overwrites it.
+          Paste the full{" "}
+          <code className="rounded bg-slate-100 px-0.5">Cookie:</code> header
+          from a working IRCTC{" "}
+          <code className="rounded bg-slate-100 px-0.5">online-charts</code>{" "}
+          request (DevTools → Network → copy the Cookie request header).
         </p>
         <textarea
           value={cookie}
@@ -282,21 +275,31 @@ export default function IrctcCookiesAdminPage() {
         <button
           type="button"
           onClick={onManualSet}
-          disabled={busy !== null || cookie.trim().length === 0}
+          disabled={busy || cookie.trim().length === 0}
           className="mt-3 rounded-lg bg-blue-600 px-5 py-2 text-sm font-medium text-white disabled:opacity-60"
         >
-          {busy === "manual" ? "Saving…" : "Save cookie"}
+          {busy ? "Saving…" : "Save cookie"}
         </button>
       </div>
     </div>
   );
 }
 
-function Row({ label, value, danger }: { label: string; value: string; danger?: boolean }) {
+function Row({
+  label,
+  value,
+  danger,
+}: {
+  label: string;
+  value: string;
+  danger?: boolean;
+}) {
   return (
     <div className="flex flex-col">
       <dt className="text-slate-500">{label}</dt>
-      <dd className={`break-all font-medium ${danger ? "text-red-700" : "text-slate-900"}`}>
+      <dd
+        className={`break-all font-medium ${danger ? "text-red-700" : "text-slate-900"}`}
+      >
         {value}
       </dd>
     </div>

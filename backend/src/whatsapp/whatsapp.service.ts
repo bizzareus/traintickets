@@ -1,7 +1,15 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { OpenaiService } from './openai/openai.service';
 import { BookingV2Service } from '../booking-v2/booking-v2.service';
-import axios from 'axios';
+import { createRetryingAxiosClient } from '../common/retrying-axios';
+
+const whatsappClient = createRetryingAxiosClient({
+  retries: 0,
+  retryPost: false,
+  serviceName: 'legacy-whatsapp',
+  timeoutMs: 15_000,
+  maxResponseBytes: 1024 * 1024,
+});
 
 @Injectable()
 export class WhatsappService {
@@ -121,7 +129,7 @@ export class WhatsappService {
     const target = groupId ? groupId : toId;
 
     try {
-      await axios.post(
+      await whatsappClient.post(
         `${wasenderUrl}/api/send/text`,
         {
           number: target,
@@ -131,6 +139,9 @@ export class WhatsappService {
         },
         {
           headers: { Authorization: `Bearer ${wasenderKey}` },
+          timeout: 15_000,
+          maxContentLength: 1024 * 1024,
+          maxBodyLength: 1024 * 1024,
         },
       );
       this.logger.log(`Replied to ${target} via wasenderapi`);

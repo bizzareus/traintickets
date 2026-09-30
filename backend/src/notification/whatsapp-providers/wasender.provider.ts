@@ -35,11 +35,11 @@ export class WasenderProvider implements WhatsAppProvider {
       this.config.get<string>('MONITORING_ADMIN_EMAIL')?.trim() ||
       DEFAULT_MONITORING_ADMIN_EMAIL;
     this.httpClient = createRetryingAxiosClient({
-      retries: 3,
-      retryPost: true,
+      retries: 0,
+      retryPost: false,
       serviceName: 'wasender',
-      retryStatuses: [429, 500, 502, 503, 504],
-      retryDelayMs: 1500,
+      timeoutMs: 15_000,
+      maxResponseBytes: 1024 * 1024,
     });
   }
 

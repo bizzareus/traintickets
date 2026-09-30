@@ -93,17 +93,14 @@ describe('ChartAlertPaymentsController', () => {
     );
   });
 
-  it('always acks callbacks even when handling fails', async () => {
+  it('propagates callback failures so invalid signatures are rejected', async () => {
     payments.handleCallback.mockRejectedValue(new Error('poison'));
     await expect(
       controller.handleCallback({ rawBody: Buffer.alloc(0) } as never, 'sig'),
-    ).resolves.toEqual({
-      received: true,
-    });
+    ).rejects.toThrow('poison');
     expect(payments.handleCallback).toHaveBeenCalledWith(
       Buffer.alloc(0),
       'sig',
-      undefined,
     );
   });
 });

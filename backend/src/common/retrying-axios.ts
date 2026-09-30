@@ -6,12 +6,14 @@ export type RetryingAxiosClientOptions = {
   retries?: number;
   serviceName?: string;
   retryPost?: boolean;
-  retryTimeouts?: boolean;
   retryStatuses?: number[];
   retryDelayMs?: number;
   retryCondition?: (error: AxiosError) => boolean;
   retryDelay?: (retryCount: number, error: AxiosError) => number;
   logRetries?: boolean;
+  timeoutMs?: number;
+  maxResponseBytes?: number;
+  maxRequestBytes?: number;
 };
 
 export function createRetryingAxiosClient(
@@ -21,7 +23,32 @@ export function createRetryingAxiosClient(
   const retryStatuses = new Set(
     opts.retryStatuses ?? [429, 500, 502, 503, 504],
   );
-  const client = opts.client ?? axios.create();
+  const client =
+    opts.client ??
+    axios.create({
+      timeout: opts.timeoutMs ?? 15_000,
+      maxContentLength: opts.maxResponseBytes ?? 5 * 1024 * 1024,
+      maxBodyLength: opts.maxRequestBytes ?? 1024 * 1024,
+    });
+  if (!client.defaults) client.defaults = {} as AxiosInstance['defaults'];
+  const currentTimeout = client.defaults.timeout;
+  const currentResponseLimit = client.defaults.maxContentLength;
+  const currentRequestLimit = client.defaults.maxBodyLength;
+  client.defaults.timeout =
+    opts.timeoutMs ??
+    (typeof currentTimeout === 'number' && currentTimeout > 0
+      ? currentTimeout
+      : 15_000);
+  client.defaults.maxContentLength =
+    opts.maxResponseBytes ??
+    (typeof currentResponseLimit === 'number' && currentResponseLimit >= 0
+      ? currentResponseLimit
+      : 5 * 1024 * 1024);
+  client.defaults.maxBodyLength =
+    opts.maxRequestBytes ??
+    (typeof currentRequestLimit === 'number' && currentRequestLimit >= 0
+      ? currentRequestLimit
+      : 1024 * 1024);
 
   axiosRetry(client, {
     retries,
@@ -31,15 +58,19 @@ export function createRetryingAxiosClient(
         typeof opts.retryDelayMs === 'number'
           ? opts.retryDelayMs
           : axiosRetry.exponentialDelay(retryCount, error, 1_000)),
-    shouldResetTimeout: true,
+    shouldResetTimeout: false,
     retryCondition:
       opts.retryCondition ??
       ((err: AxiosError) => {
         const method = err.config?.method?.toUpperCase();
-        if (opts.retryPost !== true && method === 'POST') return false;
-        if (opts.retryTimeouts === true && err.code === 'ECONNABORTED') {
-          return true;
+        if (
+          err.code === 'ERR_CANCELED' ||
+          err.code === 'ECONNABORTED' ||
+          /maxContentLength|maxBodyLength/i.test(err.message)
+        ) {
+          return false;
         }
+        if (opts.retryPost !== true && method === 'POST') return false;
         if (axiosRetry.isNetworkOrIdempotentRequestError(err)) return true;
 
         const status = err.response?.status;

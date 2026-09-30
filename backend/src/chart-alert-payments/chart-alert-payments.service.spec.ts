@@ -500,13 +500,34 @@ describe('ChartAlertPaymentsService', () => {
       expect(journeyTask.queueJourneyMonitoring).toHaveBeenCalledTimes(1);
     });
 
-    it('acks but ignores webhooks with a bad signature', async () => {
+    it('rejects webhooks with a bad signature', async () => {
       const raw = JSON.stringify(authorizedEvent);
 
-      const out = await service.handleCallback(Buffer.from(raw), 'bad-sig');
-
-      expect(out).toEqual({ received: true });
+      await expect(
+        service.handleCallback(Buffer.from(raw), 'bad-sig'),
+      ).rejects.toThrow('Invalid webhook signature');
       expect(prisma.chartAlertPayment.findUnique).not.toHaveBeenCalled();
+    });
+
+    it('propagates transient persistence failures so Razorpay retries', async () => {
+      const raw = JSON.stringify(authorizedEvent);
+      prisma.chartAlertPayment.findUnique.mockResolvedValue({
+        id: 'ref-1',
+        status: 'PENDING',
+        amount: 25,
+        razorpayOrderId: 'order-1',
+        razorpayPaymentId: null,
+        journeyRequestId: null,
+        journeyPayload: { ...baseInput },
+        paidAt: null,
+      });
+      prisma.chartAlertPayment.update.mockRejectedValue(
+        new Error('database unavailable'),
+      );
+
+      await expect(
+        service.handleCallback(Buffer.from(raw), sign(raw)),
+      ).rejects.toThrow('database unavailable');
     });
 
     it('acks unknown refs without crashing', async () => {

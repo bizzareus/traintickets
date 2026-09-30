@@ -16,12 +16,41 @@ export async function fetchWithTimeout(
   init: RequestInit = {},
   timeoutMs: number = DEFAULT_IRCTC_TIMEOUT_MS,
 ): Promise<Response> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const timeout = AbortSignal.timeout(timeoutMs);
+  const signal = init.signal
+    ? AbortSignal.any([init.signal, timeout])
+    : timeout;
+  return fetch(input, { ...init, signal });
+}
+
+export async function readResponseText(
+  response: Response,
+  maxBytes = 5 * 1024 * 1024,
+): Promise<string> {
+  const declaredSize = Number(response.headers.get('content-length'));
+  if (Number.isFinite(declaredSize) && declaredSize > maxBytes) {
+    await response.body?.cancel();
+    throw new Error(`Upstream response exceeds ${maxBytes} bytes`);
+  }
+
+  if (!response.body) return '';
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let size = 0;
+  let text = '';
   try {
-    return await fetch(input, { ...init, signal: controller.signal });
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) return text + decoder.decode();
+      size += value.byteLength;
+      if (size > maxBytes) {
+        await reader.cancel();
+        throw new Error(`Upstream response exceeds ${maxBytes} bytes`);
+      }
+      text += decoder.decode(value, { stream: true });
+    }
   } finally {
-    clearTimeout(timer);
+    reader.releaseLock();
   }
 }
 
@@ -63,7 +92,9 @@ export function isTransientNetworkError(err: unknown): boolean {
     if (cur instanceof Error) {
       haystack.push(cur.message, cur.name);
       const code = (cur as { code?: unknown }).code;
-      if (code != null) haystack.push(String(code));
+      if (typeof code === 'string' || typeof code === 'number') {
+        haystack.push(`${code}`);
+      }
       cur = (cur as { cause?: unknown }).cause;
     } else {
       break;

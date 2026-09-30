@@ -7,15 +7,19 @@ import {
   Param,
   Post,
   Req,
+  NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import type { RawBodyRequest } from '@nestjs/common';
 import type { Request } from 'express';
 import { SplitBookingService } from './split-booking.service';
-import type { CreateSplitBookingDto } from './split-booking.types';
+import { CreateSplitBookingDto } from './split-booking.dto';
 import { verifyRazorpayWebhookSignature } from '../chart-alert-payments/razorpay.client';
 import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
+import { SkipThrottle, Throttle } from '@nestjs/throttler';
 
 @Controller('api/split-booking')
+@Throttle({ global: { limit: 60, ttl: 60_000 } })
 export class SplitBookingController {
   constructor(
     private readonly splitBookingService: SplitBookingService,
@@ -23,6 +27,7 @@ export class SplitBookingController {
   ) {}
 
   @Post('create')
+  @Throttle({ global: { limit: 10, ttl: 60_000 } })
   async create(@Body() body: CreateSplitBookingDto) {
     if (!body) {
       throw new BadRequestException('Request body is required');
@@ -43,7 +48,9 @@ export class SplitBookingController {
    * marks the payment as paid and triggers background Playwright automation.
    */
   @Post('simulate-pay/:bookingRef')
+  @Throttle({ global: { limit: 5, ttl: 60_000 } })
   async simulatePayment(@Param('bookingRef') bookingRef: string) {
+    if (process.env.NODE_ENV === 'production') throw new NotFoundException();
     if (!bookingRef?.trim()) {
       throw new BadRequestException('bookingRef is required');
     }
@@ -54,6 +61,7 @@ export class SplitBookingController {
    * Razorpay Webhook endpoint for live payments.
    */
   @Post('callback')
+  @SkipThrottle({ global: true })
   async handleCallback(
     @Req() req: RawBodyRequest<Request>,
     @Headers('x-razorpay-signature') signature: string | undefined,
@@ -61,39 +69,27 @@ export class SplitBookingController {
     const rawBody = req.rawBody ?? Buffer.alloc(0);
     const secret = this.razorpay.webhookSecret;
 
-    if (secret && signature) {
-      const isValid = verifyRazorpayWebhookSignature(
-        rawBody,
-        signature,
-        secret,
-      );
-      if (!isValid) {
-        return { received: false, error: 'Invalid webhook signature' };
-      }
+    if (!verifyRazorpayWebhookSignature(rawBody, signature, secret)) {
+      throw new UnauthorizedException('Invalid webhook signature');
     }
 
-    try {
-      const body = req.body as Record<string, unknown>;
-      const payload = body?.payload as Record<string, unknown> | undefined;
-      const paymentEntity = payload?.payment as
-        | Record<string, unknown>
-        | undefined;
-      const payment = paymentEntity?.entity as
-        | Record<string, unknown>
-        | undefined;
+    const body = req.body as Record<string, unknown>;
+    const payload = body?.payload as Record<string, unknown> | undefined;
+    const paymentEntity = payload?.payment as
+      | Record<string, unknown>
+      | undefined;
+    const payment = paymentEntity?.entity as
+      | Record<string, unknown>
+      | undefined;
+    const notes = (payment?.notes as Record<string, unknown>) || {};
+    const bookingRef =
+      (notes.bookingRef as string) || (notes.booking_ref as string);
 
-      const notes = (payment?.notes as Record<string, unknown>) || {};
-      const bookingRef =
-        (notes.bookingRef as string) || (notes.booking_ref as string);
-
-      if (bookingRef) {
-        await this.splitBookingService.confirmPayment(
-          bookingRef,
-          payment?.id as string,
-        );
-      }
-    } catch {
-      // Always ack Razorpay webhooks to prevent retries
+    if (bookingRef) {
+      await this.splitBookingService.confirmPayment(
+        bookingRef,
+        payment?.id as string,
+      );
     }
 
     return { received: true };

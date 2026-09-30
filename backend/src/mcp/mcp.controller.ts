@@ -14,6 +14,7 @@ import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/
 import { z } from 'zod';
 import { BookingV2Service } from '../booking-v2/booking-v2.service';
 import type { CachedBestTrain } from '../booking-v2/best-trains-cache';
+import { Throttle } from '@nestjs/throttler';
 
 /** Hard cap on a live scan triggered from MCP so a tool call never exceeds the
  * client's (ChatGPT/Claude) tool timeout. The scan keeps running in the
@@ -36,6 +37,7 @@ Typical flow:
 Data is IRCTC/Indian Railways. Availability changes constantly, so treat results as guidance and confirm on IRCTC before booking.`;
 
 @Controller('mcp')
+@Throttle({ global: { limit: 30, ttl: 60_000 } })
 export class McpController {
   private readonly logger = new Logger(McpController.name);
   private liveScansInFlight = 0;
@@ -49,6 +51,7 @@ export class McpController {
     const transport = new StreamableHTTPServerTransport({
       // Stateless mode — no sessions to track across our two Railway replicas.
       sessionIdGenerator: undefined,
+      enableJsonResponse: true,
     });
     res.on('close', () => {
       void transport.close();

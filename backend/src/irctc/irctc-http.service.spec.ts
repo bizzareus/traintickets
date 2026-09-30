@@ -1,5 +1,6 @@
 const mockAxiosPost = jest.fn();
 const mockAxiosGet = jest.fn();
+const mockGotStreamPost = jest.fn();
 
 jest.mock('../common/retrying-axios', () => ({
   createRetryingAxiosClient: jest.fn(() => ({
@@ -10,10 +11,9 @@ jest.mock('../common/retrying-axios', () => ({
 
 jest.mock('got-scraping', () => ({
   gotScraping: {
-    post: jest.fn().mockResolvedValue({
-      statusCode: 200,
-      body: JSON.stringify({ vbd: [] }),
-    }),
+    stream: {
+      post: mockGotStreamPost,
+    },
   },
 }));
 
@@ -25,6 +25,13 @@ describe('IrctcHttpService', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    const { Readable } =
+      jest.requireActual<typeof import('node:stream')>('node:stream');
+    mockGotStreamPost.mockImplementation(() => {
+      const stream = Readable.from([JSON.stringify({ vbd: [] })]);
+      process.nextTick(() => stream.emit('response', { statusCode: 200 }));
+      return stream;
+    });
     process.env = { ...originalEnv };
     delete process.env.IRCTC_ONLINE_CHARTS_BASE_URL;
     delete process.env.IRCTC_BASE_URL;
@@ -66,6 +73,26 @@ describe('IrctcHttpService', () => {
   });
 
   describe('postOnlineCharts', () => {
+    it('rejects a direct request error before response headers', async () => {
+      const { PassThrough } =
+        jest.requireActual<typeof import('node:stream')>('node:stream');
+      mockGotStreamPost.mockImplementationOnce(() => {
+        const stream = new PassThrough();
+        process.nextTick(() => stream.destroy(new Error('connect failed')));
+        return stream;
+      });
+
+      await expect(
+        service.postOnlineCharts(
+          '/online-charts/api/vacantBerth',
+          {},
+          {
+            maxAttempts: 1,
+          },
+        ),
+      ).rejects.toThrow('connect failed');
+    });
+
     it('routes requests to ngrok URL when IRCTC_ONLINE_CHARTS_BASE_URL is configured', async () => {
       process.env.IRCTC_ONLINE_CHARTS_BASE_URL =
         'https://tunnel123.ngrok-free.app';

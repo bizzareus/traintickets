@@ -1,6 +1,5 @@
 import { ChartCronService } from '../chart-cron/chart-cron.service';
 import { WasenderHealthcheckService } from '../whatsapp/wasender-healthcheck.service';
-import { IrctcSessionKeeperService } from '../irctc/irctc-session-keeper.service';
 import type { CronitorOutcome } from './cronitor.service';
 import type { CronitorJob } from './cronitor.config';
 
@@ -148,48 +147,5 @@ describe('real cron execution boundaries', () => {
       monitoring as never,
     ).handleScheduledHealthcheck();
     expect(monitoring.run).not.toHaveBeenCalled();
-  });
-
-  describe('IRCTC cookie keeper', () => {
-    const previousEnabled = process.env.IRCTC_KEEPER_ENABLED;
-    const previousWss = process.env.IRCTC_BROWSER_WSS;
-    beforeEach(() => {
-      process.env.IRCTC_KEEPER_ENABLED = 'true';
-      process.env.IRCTC_BROWSER_WSS = 'wss://example.invalid';
-    });
-    afterEach(() => {
-      if (previousEnabled === undefined)
-        delete process.env.IRCTC_KEEPER_ENABLED;
-      else process.env.IRCTC_KEEPER_ENABLED = previousEnabled;
-      if (previousWss === undefined) delete process.env.IRCTC_BROWSER_WSS;
-      else process.env.IRCTC_BROWSER_WSS = previousWss;
-    });
-
-    it('reports only an automatic harvest that wins the database claim', async () => {
-      const monitoring = recorder();
-      const store = {
-        tryClaimHarvest: jest.fn().mockResolvedValue(false),
-        setCookie: jest.fn().mockResolvedValue(undefined),
-      };
-      const keeper = new IrctcSessionKeeperService(
-        store as never,
-        monitoring as never,
-      );
-      const harvest = jest
-        .spyOn(
-          keeper as unknown as { harvestViaRemoteBrowser(): Promise<string> },
-          'harvestViaRemoteBrowser',
-        )
-        .mockResolvedValue('private-cookie=test');
-      await keeper.scheduledRefresh();
-      expect(monitoring.run).not.toHaveBeenCalled();
-      expect(harvest).not.toHaveBeenCalled();
-      store.tryClaimHarvest.mockResolvedValue(true);
-      await keeper.scheduledRefresh();
-      expect(store.setCookie).toHaveBeenCalledTimes(1);
-      expect(monitoring.outcomes).toEqual([
-        { job: 'irctc-session-keeper', outcome: { count: 1 } },
-      ]);
-    });
   });
 });

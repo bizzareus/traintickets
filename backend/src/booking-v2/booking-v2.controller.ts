@@ -6,15 +6,23 @@ import {
   Param,
   Post,
   Query,
+  Req,
   Res,
 } from '@nestjs/common';
-import type { Response } from 'express';
+import type { Request, Response } from 'express';
+import { Throttle } from '@nestjs/throttler';
 import { BookingV2Service } from './booking-v2.service';
 import type {
   AlternatePathProgressEvent,
   BookingV2TrainSearchRow,
   BestTrainProgressEvent,
 } from './booking-v2.service';
+import { AlternatePathsDto, BestTrainsDto } from './booking-v2.dto';
+import {
+  createResponseLifecycle,
+  endResponse,
+  writeChunk,
+} from '../common/http-stream';
 
 function trimStr(v: unknown): string {
   if (v == null) return '';
@@ -41,6 +49,7 @@ function streamErrorMessage(err: unknown): string {
 }
 
 @Controller('api/booking-v2')
+@Throttle({ global: { limit: 20, ttl: 60_000 } })
 export class BookingV2Controller {
   constructor(private readonly bookingV2: BookingV2Service) {}
 
@@ -125,16 +134,7 @@ export class BookingV2Controller {
   @Post('alternate-paths')
   async alternatePaths(
     @Body()
-    body: {
-      trainNumber?: unknown;
-      from?: unknown;
-      to?: unknown;
-      date?: unknown;
-      /** Train search `avlClasses` or selected `classes` — each is probed via fetchAvailability. */
-      avlClasses?: unknown;
-      classes?: unknown;
-      quota?: unknown;
-    },
+    body: AlternatePathsDto,
   ) {
     const trainNumber = trimStr(body?.trainNumber);
     const from = trimStr(body?.from);
@@ -176,16 +176,8 @@ export class BookingV2Controller {
   @Post('alternate-paths/stream')
   async alternatePathsStream(
     @Body()
-    body: {
-      trainNumber?: unknown;
-      from?: unknown;
-      to?: unknown;
-      date?: unknown;
-      avlClasses?: unknown;
-      classes?: unknown;
-      quota?: unknown;
-      forceRefresh?: unknown;
-    },
+    body: AlternatePathsDto,
+    @Req() req: Request,
     @Res() res: Response,
   ) {
     const trainNumber = trimStr(body?.trainNumber);
@@ -216,41 +208,44 @@ export class BookingV2Controller {
     res.setHeader('Transfer-Encoding', 'chunked');
     res.setHeader('Cache-Control', 'no-cache');
     res.flushHeaders();
+    const lifecycle = createResponseLifecycle(req, res, 180_000);
 
-    const writeLine = (obj: unknown) => {
-      res.write(JSON.stringify(obj) + '\n');
-    };
+    const writeLine = (obj: unknown) =>
+      writeChunk(res, `${JSON.stringify(obj)}\n`, lifecycle.signal);
 
     const forceRefresh = Boolean(body?.forceRefresh);
 
     try {
       const { result, cached } = await this.bookingV2.findAlternatePathsCached(
-        { trainNumber, from, to, date, avlClasses, quota, forceRefresh },
-        (event: AlternatePathProgressEvent) => {
-          writeLine({ type: 'progress', event });
+        {
+          trainNumber,
+          from,
+          to,
+          date,
+          avlClasses,
+          quota,
+          forceRefresh,
+          signal: lifecycle.signal,
         },
+        (event: AlternatePathProgressEvent) =>
+          writeLine({ type: 'progress', event }),
       );
-      writeLine({ type: 'result', data: result, cached });
+      await writeLine({ type: 'result', data: result, cached });
     } catch (err: unknown) {
-      writeLine({ type: 'error', message: streamErrorMessage(err) });
+      if (!lifecycle.signal.aborted) {
+        await writeLine({ type: 'error', message: streamErrorMessage(err) });
+      }
     } finally {
-      res.end();
+      endResponse(res);
+      lifecycle.cleanup();
     }
   }
 
   @Post('best-trains/stream')
   async bestTrainsStream(
     @Body()
-    body: {
-      from?: unknown;
-      to?: unknown;
-      date?: unknown;
-      quota?: unknown;
-      acOnly?: unknown;
-      classes?: unknown;
-      maxTrains?: unknown;
-      trains?: unknown;
-    },
+    body: BestTrainsDto,
+    @Req() req: Request,
     @Res() res: Response,
   ) {
     const from = trimStr(body?.from).toUpperCase();
@@ -284,10 +279,10 @@ export class BookingV2Controller {
     res.setHeader('Transfer-Encoding', 'chunked');
     res.setHeader('Cache-Control', 'no-cache');
     res.flushHeaders();
+    const lifecycle = createResponseLifecycle(req, res, 180_000);
 
-    const writeLine = (obj: unknown) => {
-      res.write(JSON.stringify(obj) + '\n');
-    };
+    const writeLine = (obj: unknown) =>
+      writeChunk(res, `${JSON.stringify(obj)}\n`, lifecycle.signal);
 
     try {
       const result = await this.bookingV2.findBestTrains(
@@ -302,12 +297,12 @@ export class BookingV2Controller {
           trains: Array.isArray(body?.trains)
             ? (body.trains as BookingV2TrainSearchRow[])
             : undefined,
+          signal: lifecycle.signal,
         },
-        (event: BestTrainProgressEvent) => {
-          writeLine({ type: 'progress', event });
-        },
+        (event: BestTrainProgressEvent) =>
+          writeLine({ type: 'progress', event }),
       );
-      writeLine({ type: 'result', data: result });
+      await writeLine({ type: 'result', data: result });
       // Warm the route cache from a real full scan (skip AC-only — the cache
       // stores the all-class best). Best-effort; never blocks the response.
       if (!acOnly) {
@@ -316,9 +311,12 @@ export class BookingV2Controller {
           .catch(() => undefined);
       }
     } catch (err: unknown) {
-      writeLine({ type: 'error', message: streamErrorMessage(err) });
+      if (!lifecycle.signal.aborted) {
+        await writeLine({ type: 'error', message: streamErrorMessage(err) });
+      }
     } finally {
-      res.end();
+      endResponse(res);
+      lifecycle.cleanup();
     }
   }
 

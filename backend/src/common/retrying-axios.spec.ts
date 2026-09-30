@@ -4,7 +4,7 @@ import { createRetryingAxiosClient } from './retrying-axios';
 jest.mock('axios', () => ({
   __esModule: true,
   default: {
-    create: jest.fn(() => ({ interceptors: {} })),
+    create: jest.fn(() => ({ interceptors: {}, defaults: {} })),
   },
 }));
 
@@ -62,20 +62,20 @@ describe('createRetryingAxiosClient', () => {
     axiosRetryMock.isNetworkOrIdempotentRequestError.mockReturnValue(false);
   });
 
-  it('resets timeout between retries', () => {
+  it('keeps one total timeout budget across retries', () => {
     createRetryingAxiosClient();
 
-    expect(lastRetryOptions().shouldResetTimeout).toBe(true);
+    expect(lastRetryOptions().shouldResetTimeout).toBe(false);
   });
 
-  it('retries ECONNABORTED timeouts when timeout retries are enabled', () => {
-    createRetryingAxiosClient({ retryTimeouts: true });
+  it('does not retry when the total timeout budget is exhausted', () => {
+    createRetryingAxiosClient();
 
     expect(
       lastRetryOptions().retryCondition(
         errorFor({ method: 'GET', code: 'ECONNABORTED' }),
       ),
-    ).toBe(true);
+    ).toBe(false);
   });
 
   it('does not retry POST requests unless explicitly enabled', () => {

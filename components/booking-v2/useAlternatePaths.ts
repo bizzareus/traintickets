@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import type {
   AlternatePathProgressEvent,
@@ -68,6 +68,9 @@ export function useAlternatePaths(
   const [altProgress, setAltProgress] = useState<AlternatePathProgressEvent[]>(
     [],
   );
+  const requestRef = useRef<AbortController | null>(null);
+
+  useEffect(() => () => requestRef.current?.abort(), []);
 
   const findAlternates = useCallback(
     async (
@@ -81,6 +84,9 @@ export function useAlternatePaths(
       const fromCode = (t.fromStnCode ?? "").trim().toUpperCase();
       const toCode = (t.toStnCode ?? "").trim().toUpperCase();
       if (!fromCode || !toCode) return;
+      requestRef.current?.abort();
+      const controller = new AbortController();
+      requestRef.current = controller;
 
       const fc = focusTravelClass?.trim().toUpperCase();
       const isAcClass = (c: string) =>
@@ -135,6 +141,7 @@ export function useAlternatePaths(
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body,
+            signal: controller.signal,
           },
         );
 
@@ -237,16 +244,23 @@ export function useAlternatePaths(
           }
         }
       } catch (e: unknown) {
+        if (controller.signal.aborted) return;
         const msg = e instanceof Error ? e.message : "Request failed";
         setAltError(msg);
       } finally {
-        setAltLoading(false);
+        if (requestRef.current === controller) {
+          requestRef.current = null;
+          setAltLoading(false);
+        }
       }
     },
     [acOnly, selectedClasses],
   );
 
   const reset = useCallback(() => {
+    requestRef.current?.abort();
+    requestRef.current = null;
+    setAltLoading(false);
     setAltResult(null);
     setAltError(null);
     setAltForTrain(null);
@@ -261,6 +275,9 @@ export function useAlternatePaths(
       avlClasses?: string[];
       result: AlternatePathsResponse;
     }) => {
+      requestRef.current?.abort();
+      requestRef.current = null;
+      setAltLoading(false);
       setAltForTrain(args.trainNumber);
       setAltTrainName(args.trainName?.trim() || null);
       setAltAvlClasses(args.avlClasses);

@@ -27,6 +27,8 @@ import { PrismaService } from '../prisma/prisma.service';
 import { isValidIndianMobile, isValidEmail } from '../common/validation.utils';
 import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 import { ChartAlertRefundsService } from '../chart-alert-payments/chart-alert-refunds.service';
+import { Throttle } from '@nestjs/throttler';
+import { JourneyRequestDto } from './journey.dto';
 
 type NormalizedJourneyCreate = {
   trainNumber: string;
@@ -48,11 +50,11 @@ type NormalizedJourneyCreate = {
 
 function normalizeJourneyCreateParams(
   trainNumber: string,
-  trainName: string,
+  trainName: string | undefined,
   fromStationCode: string,
   toStationCode: string,
   journeyDate: string,
-  classCode: string,
+  classCode: string | undefined,
   stationCodesToMonitor?: string[],
   email?: string,
   mobile?: string,
@@ -90,6 +92,7 @@ function normalizeJourneyCreateParams(
 }
 
 @Controller('api/availability')
+@Throttle({ global: { limit: 30, ttl: 60_000 } })
 export class AvailabilityController {
   constructor(
     private availability: AvailabilityService,
@@ -288,16 +291,17 @@ export class AvailabilityController {
    * Validate a journey monitoring request (schedule, run day, route). Does not write to the DB or call composition.
    */
   @Post('journey/validate')
-  async validateJourney(
-    @Body('trainNumber') trainNumber: string,
-    @Body('trainName') trainName: string,
-    @Body('fromStationCode') fromStationCode: string,
-    @Body('toStationCode') toStationCode: string,
-    @Body('journeyDate') journeyDate: string,
-    @Body('classCode') classCode: string,
-    @Body('stationCodesToMonitor') stationCodesToMonitor?: string[],
-    @Body('trainStartDate') trainStartDate?: string,
-  ) {
+  async validateJourney(@Body() body: JourneyRequestDto) {
+    const {
+      trainNumber,
+      trainName,
+      fromStationCode,
+      toStationCode,
+      journeyDate,
+      classCode,
+      stationCodesToMonitor,
+      trainStartDate,
+    } = body;
     const normalized = normalizeJourneyCreateParams(
       trainNumber,
       trainName,
@@ -355,23 +359,24 @@ export class AvailabilityController {
    */
   @Post('journey')
   @HttpCode(HttpStatus.CREATED)
-  async createJourney(
-    @Body('trainNumber') trainNumber: string,
-    @Body('trainName') trainName: string,
-    @Body('fromStationCode') fromStationCode: string,
-    @Body('toStationCode') toStationCode: string,
-    @Body('journeyDate') journeyDate: string,
-    @Body('classCode') classCode: string,
-    @Body('stationCodesToMonitor') stationCodesToMonitor?: string[],
-    @Body('email') email?: string,
-    @Body('mobile') mobile?: string,
-    @Body('trainStartDate') trainStartDate?: string,
-    @Body('paymentRef') paymentRef?: string,
-    @Body('chartTimeLocal') chartTimeLocal?: string,
-    @Body('chartOneDayOffset') chartOneDayOffset?: number,
-    @Body('chartTwoTimeLocal') chartTwoTimeLocal?: string,
-    @Body('chartTwoDayOffset') chartTwoDayOffset?: number,
-  ) {
+  async createJourney(@Body() body: JourneyRequestDto) {
+    const {
+      trainNumber,
+      trainName,
+      fromStationCode,
+      toStationCode,
+      journeyDate,
+      classCode,
+      stationCodesToMonitor,
+      email,
+      mobile,
+      trainStartDate,
+      paymentRef,
+      chartTimeLocal,
+      chartOneDayOffset,
+      chartTwoTimeLocal,
+      chartTwoDayOffset,
+    } = body;
     const normalized = normalizeJourneyCreateParams(
       trainNumber,
       trainName,

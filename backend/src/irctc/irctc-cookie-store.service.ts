@@ -13,15 +13,10 @@ const CACHE_TTL_MS = 15_000;
 
 /**
  * Shared store for the IRCTC cookie bundle, backed by a single Postgres row
- * (`irctc_session`) so every Railway replica reads the SAME cookie. The session
- * keeper writes it; IrctcService reads it for each protected request. Falls back
- * to the IRCTC_COOKIES env var when the row is empty (e.g. before the first
- * harvest). Reads are cached in-process for CACHE_TTL_MS to keep the DB off the
- * hot path.
- *
- * Also provides an atomic harvest lock (`tryClaimHarvest`) so that, across
- * replicas, only one instance harvests per cycle instead of every replica
- * spinning up its own remote browser session.
+ * (`irctc_session`) so every process reads the same manually managed cookie.
+ * IrctcService reads it for each protected request and falls back to the
+ * IRCTC_COOKIES environment variable when the row is empty. Reads are cached
+ * in-process for CACHE_TTL_MS to keep the DB off the hot path.
  */
 @Injectable()
 export class IrctcCookieStoreService {
@@ -71,7 +66,7 @@ export class IrctcCookieStoreService {
     return 'postgres:irctc_session';
   }
 
-  /** Persist a freshly harvested (or manually pasted) cookie bundle. */
+  /** Persist a manually supplied cookie bundle. */
   async setCookie(cookie: string, meta?: { source?: string }): Promise<void> {
     const trimmed = cookie.trim();
     const now = new Date();
@@ -94,28 +89,5 @@ export class IrctcCookieStoreService {
     this.logger.log(
       `[irctc-cookies] wrote ${trimmed.length} chars source=${meta?.source ?? 'n/a'} -> irctc_session`,
     );
-  }
-
-  /**
-   * Atomically claim the right to harvest. Returns true for exactly one caller
-   * across all replicas when the last claim is older than `staleMs`; others get
-   * false and should skip. Implemented as a conditional UPDATE (a single-row
-   * atomic operation in Postgres).
-   */
-  async tryClaimHarvest(staleMs: number): Promise<boolean> {
-    // Ensure the singleton row exists so the conditional UPDATE can match it.
-    await this.prisma.irctcSession.upsert({
-      where: { id: SINGLETON_ID },
-      update: {},
-      create: { id: SINGLETON_ID },
-    });
-    const cutoff = new Date(Date.now() - staleMs);
-    const affected = await this.prisma.$executeRaw`
-      UPDATE "irctc_session"
-      SET "harvest_locked_at" = now()
-      WHERE "id" = ${SINGLETON_ID}
-        AND ("harvest_locked_at" IS NULL OR "harvest_locked_at" < ${cutoff})
-    `;
-    return affected === 1;
   }
 }

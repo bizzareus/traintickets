@@ -2,20 +2,20 @@ import { Injectable, Logger } from '@nestjs/common';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import { retryTransient } from '../common/fetch-with-timeout';
 import { buildCurl, curlLogEnabled } from '../common/curl-log';
+import { once } from 'node:events';
+
 let gotScrapingFn: typeof import('got-scraping').gotScraping | null = null;
 async function getGotScraping(): Promise<
   typeof import('got-scraping').gotScraping
 > {
   if (!gotScrapingFn) {
     try {
-      const mod = require('got-scraping');
-      gotScrapingFn =
-        mod.gotScraping || mod.default?.gotScraping || mod.default || mod;
+      // Jest's CommonJS runner can load its module mock without VM ESM support.
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      gotScrapingFn = (require('got-scraping') as typeof import('got-scraping'))
+        .gotScraping;
     } catch {
-      const mod = await (Function('return import("got-scraping")')() as Promise<
-        typeof import('got-scraping')
-      >);
-      gotScrapingFn = mod.gotScraping;
+      gotScrapingFn = (await import('got-scraping')).gotScraping;
     }
   }
   if (!gotScrapingFn) {
@@ -25,6 +25,7 @@ async function getGotScraping(): Promise<
 }
 
 const DEFAULT_IRCTC_BASE_URL = 'https://www.irctc.co.in';
+const MAX_IRCTC_RESPONSE_BYTES = 5 * 1024 * 1024;
 
 const DEFAULT_CHART_ATTEMPT_TIMEOUT_MS = (() => {
   const n = Number.parseInt(process.env.IRCTC_CHART_TIMEOUT_MS ?? '', 10);
@@ -75,7 +76,6 @@ export class IrctcHttpService {
   private readonly axiosClient = createRetryingAxiosClient({
     serviceName: 'irctc/http-gateway',
     retries: 2,
-    retryTimeouts: true,
   });
 
   /**
@@ -305,14 +305,35 @@ export class IrctcHttpService {
 
     const gotScraping = await getGotScraping();
     const res = await retryTransient(
-      () =>
-        gotScraping.post(url, {
+      async () => {
+        const request = gotScraping.stream.post(url, {
           headers,
           json: body,
           proxyUrl,
           timeout: { request: timeoutMs },
           retry: { limit: 0 },
-        }),
+        });
+        const [response] = (await once(request, 'response')) as [
+          { statusCode: number },
+        ];
+        const chunks: Buffer[] = [];
+        let size = 0;
+        for await (const chunk of request as AsyncIterable<Buffer | string>) {
+          const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+          size += buffer.length;
+          if (size > MAX_IRCTC_RESPONSE_BYTES) {
+            request.destroy();
+            throw new Error(
+              `IRCTC response exceeds ${MAX_IRCTC_RESPONSE_BYTES} bytes`,
+            );
+          }
+          chunks.push(buffer);
+        }
+        return {
+          statusCode: response.statusCode,
+          body: Buffer.concat(chunks).toString('utf8'),
+        };
+      },
       {
         attempts: maxAttempts,
         onRetry: (attempt, err) =>

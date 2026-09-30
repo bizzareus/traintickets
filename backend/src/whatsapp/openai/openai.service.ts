@@ -32,7 +32,11 @@ export class OpenaiService {
 
   constructor() {
     if (process.env.OPENAI_API_KEY) {
-      this.openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+      this.openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+        timeout: 20_000,
+        maxRetries: 1,
+      });
     }
   }
 
@@ -62,8 +66,9 @@ Extract ticket request details from the user's message.
 If they mention 'tomorrow', calculate the correct YYYY-MM-DD date.
 Translate conversational city names to their English equivalent. (e.g. Bombay -> Mumbai)`,
           },
-          { role: 'user', content: text },
+          { role: 'user', content: text.slice(0, 2_000) },
         ],
+        max_completion_tokens: 500,
         response_format: zodResponseFormat(TicketQuerySchema, 'ticket_query'),
       });
 

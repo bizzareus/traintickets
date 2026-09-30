@@ -9,12 +9,13 @@ import { IrctcModule } from './irctc/irctc.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { WhatsappModule } from './whatsapp/whatsapp.module';
+import { configModuleOptions } from './config/environment';
 
 /** Only this process registers scheduled jobs; shared state stays in the DB. */
 @Module({
   imports: [
     SentryModule.forRoot(),
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot(configModuleOptions),
     MonitoringModule,
     PrismaModule,
     CacheModule,

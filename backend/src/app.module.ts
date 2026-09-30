@@ -1,6 +1,7 @@
-import { Module } from '@nestjs/common';
-import { APP_FILTER, HttpAdapterHost } from '@nestjs/core';
+import { Module, ValidationPipe } from '@nestjs/common';
+import { APP_FILTER, APP_GUARD, APP_PIPE, HttpAdapterHost } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { SentryModule } from '@sentry/nestjs/setup';
 import { SentryHttpExceptionFilter } from './common/sentry-http-exception.filter';
 import { AppController } from './app.controller';
@@ -27,11 +28,14 @@ import { ChartAlertPaymentsModule } from './chart-alert-payments/chart-alert-pay
 import { RefundRequestModule } from './refund-request/refund-request.module';
 import { SplitBookingModule } from './split-booking/split-booking.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
+import { HealthModule } from './health/health.module';
+import { configModuleOptions } from './config/environment';
 
 @Module({
   imports: [
     SentryModule.forRoot(),
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot(configModuleOptions),
+    ThrottlerModule.forRoot([{ name: 'global', ttl: 60_000, limit: 120 }]),
     MonitoringModule,
     PrismaModule,
     CacheModule,
@@ -54,6 +58,7 @@ import { MonitoringModule } from './monitoring/monitoring.module';
     ChartAlertPaymentsModule,
     RefundRequestModule,
     SplitBookingModule,
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [
@@ -62,6 +67,16 @@ import { MonitoringModule } from './monitoring/monitoring.module';
       useFactory: (httpAdapterHost: HttpAdapterHost) =>
         new SentryHttpExceptionFilter(httpAdapterHost),
       inject: [HttpAdapterHost],
+    },
+    { provide: APP_GUARD, useClass: ThrottlerGuard },
+    {
+      provide: APP_PIPE,
+      useValue: new ValidationPipe({
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+        transformOptions: { enableImplicitConversion: false },
+      }),
     },
     AppService,
   ],

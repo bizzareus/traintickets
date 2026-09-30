@@ -20,23 +20,35 @@ import {
 import type { RouteCacheRecord } from '../route-cache/route-cache.store';
 import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
-import { fetchWithTimeout } from '../common/fetch-with-timeout';
+import {
+  fetchWithTimeout,
+  readResponseText,
+} from '../common/fetch-with-timeout';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 
 const availabilityClient = createRetryingAxiosClient({
   retries: 3,
   serviceName: 'confirmtkt-availability',
   retryPost: true,
-  retryTimeouts: true,
   retryDelayMs: 5_000,
+  timeoutMs: 20_000,
+  maxResponseBytes: 5 * 1024 * 1024,
 });
 
 export const confirmTktPnrClient = createRetryingAxiosClient({
   retries: 2,
   serviceName: 'confirmtkt-pnr',
   retryPost: true,
-  retryTimeouts: true,
   retryDelayMs: 1_500,
+  timeoutMs: 15_000,
+  maxResponseBytes: 2 * 1024 * 1024,
+});
+
+export const rapidApiPnrClient = createRetryingAxiosClient({
+  retries: 2,
+  serviceName: 'rapidapi-pnr',
+  timeoutMs: 10_000,
+  maxResponseBytes: 2 * 1024 * 1024,
 });
 import {
   BOOKING_V2_ALTERNATE_PATH_CLASSES,
@@ -196,6 +208,7 @@ export type BestTrainSearchInput = {
   classes?: string[];
   maxTrains?: number;
   trains?: BookingV2TrainSearchRow[];
+  signal?: AbortSignal;
 };
 
 export type BestTrainScore = {
@@ -596,6 +609,7 @@ export class BookingV2Service {
     to: string,
     dateInput: string,
     classes?: string[],
+    signal?: AbortSignal,
   ): Promise<unknown> {
     const startTime = Date.now();
     const dateDdMmYyyy = this.normalizeToRailApiDate(dateInput);
@@ -641,6 +655,7 @@ export class BookingV2Service {
       f,
       t,
       dateDdMmYyyy,
+      signal,
     )) as Record<string, unknown>;
 
     const durationMs = Date.now() - startTime;
@@ -735,7 +750,7 @@ export class BookingV2Service {
 
   async findBestTrains(
     input: BestTrainSearchInput,
-    onProgress?: (event: BestTrainProgressEvent) => void,
+    onProgress?: (event: BestTrainProgressEvent) => void | Promise<void>,
     // When provided, per-segment availability probes read/write this cache
     // instead of the shared Postgres cache_entry (the cron passes an in-memory
     // one so a run never writes to the DB).
@@ -762,15 +777,22 @@ export class BookingV2Service {
     const acOnly = input.acOnly === true;
     const selectedClasses = normalizeAndDedupeClassCodes(input.classes ?? []);
 
-    onProgress?.({ type: 'search_start', from, to, date });
+    input.signal?.throwIfAborted();
+    await onProgress?.({ type: 'search_start', from, to, date });
     let allTrains = normalizeTrainRows(input.trains);
     if (allTrains.length === 0) {
-      const rawSearch = await this.searchTrains(from, to, date);
+      const rawSearch = await this.searchTrains(
+        from,
+        to,
+        date,
+        undefined,
+        input.signal,
+      );
       allTrains = extractTrainListRows(rawSearch);
     }
 
     const candidates = limitBestTrainCandidates(allTrains, input.maxTrains);
-    onProgress?.({
+    await onProgress?.({
       type: 'candidates_ready',
       totalTrainsFound: allTrains.length,
       candidateCount: candidates.length,
@@ -788,8 +810,9 @@ export class BookingV2Service {
       candidates,
       BEST_TRAIN_CONCURRENCY,
       async (train, index) => {
+        input.signal?.throwIfAborted();
         const trainName = train.trainName?.trim() || null;
-        onProgress?.({
+        await onProgress?.({
           type: 'train_started',
           trainNumber: train.trainNumber,
           trainName,
@@ -819,7 +842,7 @@ export class BookingV2Service {
           classesForRequest.length === 0
         ) {
           skippedCount += 1;
-          onProgress?.({
+          await onProgress?.({
             type: 'train_done',
             trainNumber: train.trainNumber,
             trainName,
@@ -843,6 +866,7 @@ export class BookingV2Service {
               date,
               quota,
               avlClasses: classesForRequest,
+              signal: input.signal,
             },
             undefined,
             segmentCache,
@@ -860,7 +884,7 @@ export class BookingV2Service {
           } else {
             skippedCount += 1;
           }
-          onProgress?.({
+          await onProgress?.({
             type: 'train_done',
             trainNumber: train.trainNumber,
             trainName,
@@ -872,12 +896,13 @@ export class BookingV2Service {
               : 'No confirmed ticket starts from the origin',
           });
         } catch (err) {
+          input.signal?.throwIfAborted();
           skippedCount += 1;
           const message = err instanceof Error ? err.message : String(err);
           this.logger.warn(
             `[booking-v2/best-trains] train=${train.trainNumber} failed: ${message}`,
           );
-          onProgress?.({
+          await onProgress?.({
             type: 'train_done',
             trainNumber: train.trainNumber,
             trainName,
@@ -891,7 +916,7 @@ export class BookingV2Service {
     );
 
     results.sort(compareBestTrainResults);
-    onProgress?.({
+    await onProgress?.({
       type: 'done',
       resultCount: results.length,
       evaluatedCount,
@@ -1166,6 +1191,7 @@ export class BookingV2Service {
     from: string,
     to: string,
     dateDdMmYyyy: string,
+    signal?: AbortSignal,
   ): Promise<unknown> {
     if (this.isPastDate(dateDdMmYyyy)) {
       throw new Error('Journey date cannot be in the past');
@@ -1190,8 +1216,9 @@ export class BookingV2Service {
     const url = `${BOOKING_V2_RAIL_API_BASE.trainsSearch}?${params}`;
     const res = await fetchWithTimeout(url, {
       headers: BOOKING_V2_RAIL_API_HEADERS,
+      signal,
     });
-    const text = await res.text();
+    const text = await readResponseText(res, 5 * 1024 * 1024);
     if (!res.ok) {
       this.logger.warn(
         `[booking-v2/trains/search] upstream ${res.status} body=${text.slice(0, 200)}`,
@@ -1304,8 +1331,9 @@ export class BookingV2Service {
       avlClasses?: string[];
       quota?: string;
       forceRefresh?: boolean;
+      signal?: AbortSignal;
     },
-    onProgress?: (event: AlternatePathProgressEvent) => void,
+    onProgress?: (event: AlternatePathProgressEvent) => void | Promise<void>,
   ): Promise<{ result: FindAlternatePathsResult; cached: boolean }> {
     const key = alternatePathsCacheKey(
       input.from,
@@ -1315,6 +1343,7 @@ export class BookingV2Service {
       this.normalizeToRailApiDate(input.date),
     );
 
+    input.signal?.throwIfAborted();
     if (key && !input.forceRefresh) {
       const hit = await this.altPathsCache.get(key);
       if (hit) {
@@ -1345,7 +1374,7 @@ export class BookingV2Service {
     // computation instead of each running the full probe fan-out. Without
     // this, a burst of identical misses (cron + user traffic on the same
     // trains) multiplies DB queries and can saturate a small shared pool.
-    if (key && !input.forceRefresh) {
+    if (key && !input.forceRefresh && !input.signal) {
       const inflight = this.altPathsInflight.get(key);
       if (inflight) {
         this.logger.log(`[alt-paths-cache] JOIN key=${key}`);
@@ -1354,12 +1383,16 @@ export class BookingV2Service {
     }
 
     const computation = this.findAlternatePaths(input, onProgress);
-    if (key && !input.forceRefresh) this.altPathsInflight.set(key, computation);
+    if (key && !input.forceRefresh && !input.signal) {
+      this.altPathsInflight.set(key, computation);
+    }
     let result: FindAlternatePathsResult;
     try {
       result = await computation;
     } finally {
-      if (key && !input.forceRefresh) this.altPathsInflight.delete(key);
+      if (key && !input.forceRefresh && !input.signal) {
+        this.altPathsInflight.delete(key);
+      }
     }
 
     if (key) {
@@ -1383,7 +1416,7 @@ export class BookingV2Service {
       quota?: string;
       signal?: AbortSignal;
     },
-    onProgress?: (event: AlternatePathProgressEvent) => void,
+    onProgress?: (event: AlternatePathProgressEvent) => void | Promise<void>,
     segmentCache?: CacheService,
   ): Promise<FindAlternatePathsResult> {
     input.signal?.throwIfAborted();
@@ -1411,20 +1444,20 @@ export class BookingV2Service {
     // at the true end (see `finish`). Non-`done` events still stream through so
     // the loader keeps showing progress across all passes.
     const passProgress: typeof onProgress = onProgress
-      ? (event) => {
-          if (event.type !== 'done') onProgress(event);
+      ? async (event) => {
+          if (event.type !== 'done') await onProgress(event);
         }
       : undefined;
-    const finish = (
+    const finish = async (
       result: FindAlternatePathsResult,
-    ): FindAlternatePathsResult => {
+    ): Promise<FindAlternatePathsResult> => {
       input.signal?.throwIfAborted();
       // legCount is surfaced in the UI as "confirmed tickets", so it must
       // count only confirmed legs — not the check_realtime filler hops that
       // pad partial journeys station-by-station (those collapse into a single
       // "Not Available" card in the modal).
       const confirmedCount = countConfirmedLegs(result.legs);
-      onProgress?.({
+      await onProgress?.({
         type: 'done',
         isComplete: result.isComplete,
         legCount: confirmedCount,
@@ -1496,12 +1529,12 @@ export class BookingV2Service {
       stationsAfter?: number;
       signal?: AbortSignal;
     },
-    onProgress?: (event: AlternatePathProgressEvent) => void,
+    onProgress?: (event: AlternatePathProgressEvent) => void | Promise<void>,
     sharedProbeCache?: Map<string, MultiClassProbeResult>,
     segmentCache?: CacheService,
   ): Promise<FindAlternatePathsResult> {
     input.signal?.throwIfAborted();
-    const emit = (ev: AlternatePathProgressEvent) => onProgress?.(ev);
+    const emit = async (ev: AlternatePathProgressEvent) => onProgress?.(ev);
     const trainNumber = String(input.trainNumber).trim();
     const from = String(input.from).trim().toUpperCase();
     const to = String(input.to).trim().toUpperCase();
@@ -1537,7 +1570,7 @@ export class BookingV2Service {
       logStep(
         `IRCTC schedule: FAILED or empty (ok=${sched.ok}) — cannot list intermediate stops`,
       );
-      emit({ type: 'schedule_fail' });
+      await emit({ type: 'schedule_fail' });
       return {
         trainNumber,
         legs: [],
@@ -1556,7 +1589,7 @@ export class BookingV2Service {
     logStep(
       `IRCTC schedule: OK — ${sched.schedule.stationList.length} stops on full route (${sched.schedule.trainName ?? 'train'})`,
     );
-    emit({
+    await emit({
       type: 'schedule_ok',
       trainName: sched.schedule.trainName ?? null,
       stopCount: sched.schedule.stationList.length,
@@ -1602,7 +1635,7 @@ export class BookingV2Service {
       logStep(
         `Route slice: FAILED — "${from}" or "${to}" not found in order on this train (or same station)`,
       );
-      emit({ type: 'route_fail', from, to });
+      await emit({ type: 'route_fail', from, to });
       return {
         trainNumber,
         legs: [],
@@ -1628,7 +1661,7 @@ export class BookingV2Service {
     logStep(
       `Route slice: ${stations.length} stops from boarding to destination: ${stations.join(' → ')}`,
     );
-    emit({ type: 'route_ok', from, to, stopCount: stations.length });
+    await emit({ type: 'route_ok', from, to, stopCount: stations.length });
 
     const legTim = (fromSt: string, toSt: string) =>
       legScheduleTiming(stationList, fromSt, toSt);
@@ -1725,7 +1758,7 @@ export class BookingV2Service {
         logStep(
           `Hop ${hop}: CHOSEN ${stations[currentIdx]} → ${stations[chosenDestIdx]} | class=${classes[bc]}${picked.fare != null ? ` fare ₹${picked.fare}` : ''}`,
         );
-        emit({
+        await emit({
           type: 'hop_confirmed',
           from: stations[currentIdx],
           to: stations[chosenDestIdx],
@@ -1805,7 +1838,7 @@ export class BookingV2Service {
         `Hop ${hop}: no confirmed segment in destination order — bridge ${fromStn} → ${toStn} (check realtime)`,
       );
       logStep(this.formatMultiClassProbeLine(fromStn, toStn, bridge, classes));
-      emit({
+      await emit({
         type: 'hop_unavailable',
         from: fromStn,
         to: toStn,
@@ -1819,7 +1852,7 @@ export class BookingV2Service {
         logStep(
           `Hop ${hop}: bridge segment is confirmed in ${classes[bc]}${picked.fare != null ? ` fare ₹${picked.fare}` : ''}`,
         );
-        emit({
+        await emit({
           type: 'hop_confirmed',
           from: fromStn,
           to: toStn,
@@ -1900,7 +1933,7 @@ export class BookingV2Service {
     );
     // legCount backs the "Found N confirmed tickets" copy, so it counts only
     // confirmed legs — realtime filler hops are not bookable tickets.
-    emit({
+    await emit({
       type: 'done',
       isComplete,
       legCount: confirmedLegs.length,
@@ -2396,7 +2429,7 @@ export class BookingV2Service {
       throw new Error('RapidAPI key for IRCTC PNR status is not configured');
     }
 
-    const response = await axios.get<{
+    const response = await rapidApiPnrClient.get<{
       success?: boolean;
       status?: boolean;
       message?: string;

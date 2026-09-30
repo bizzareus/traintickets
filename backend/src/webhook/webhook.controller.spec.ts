@@ -33,10 +33,11 @@ describe('WebhookController', () => {
   });
 
   it('throws UnauthorizedException when signature length is mismatched/invalid', async () => {
+    const body = { status: 'success', job_id: 'job-1' };
     const req = {
       headers: { 'x-webhook-signature': 'invalid-short-sig' },
+      rawBody: Buffer.from(JSON.stringify(body)),
     } as unknown as Request;
-    const body = { status: 'success', job_id: 'job-1' };
 
     await expect(controller.handle(req, body)).rejects.toThrow(
       UnauthorizedException,
@@ -53,11 +54,25 @@ describe('WebhookController', () => {
 
     const req = {
       headers: { 'x-webhook-signature': validSignature },
+      rawBody: Buffer.from(raw),
     } as unknown as Request;
 
     mockPrismaService.availabilityCheck.findUnique.mockResolvedValue(null);
 
     const result = await controller.handle(req, body);
     expect(result).toEqual({ ok: true });
+  });
+
+  it('rejects requests when the server secret is absent', async () => {
+    delete process.env.BROWSER_USE_WEBHOOK_SECRET;
+    const body = { status: 'success', job_id: 'job-1' };
+    const req = {
+      headers: {},
+      rawBody: Buffer.from(JSON.stringify(body)),
+    } as unknown as Request;
+
+    await expect(controller.handle(req, body)).rejects.toThrow(
+      UnauthorizedException,
+    );
   });
 });

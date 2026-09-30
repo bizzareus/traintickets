@@ -25,7 +25,7 @@ variable "domain_name" {
 variable "api_domain_name" {
   description = "API domain name for backend"
   type        = string
-  default     = "api.lastberth.com"
+  default     = "api-v2.lastberth.com"
 }
 
 variable "instance_type" {

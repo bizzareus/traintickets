@@ -36,12 +36,14 @@ export type Service2CheckStreamProgress =
 export async function fetchService2CheckStream(
   body: Record<string, unknown>,
   onProgress?: (event: Service2CheckStreamProgress) => void,
+  signal?: AbortSignal,
 ): Promise<Service2CheckStreamResult> {
   const url = `${getApiUrl()}/api/service2/check/stream`;
   const res = await fetch(url, {
     method: "POST",
     headers: getAuthHeaders(),
     body: JSON.stringify(body),
+    signal,
   });
 
   if (!res.ok) {
@@ -50,9 +52,7 @@ export async function fetchService2CheckStream(
     try {
       const j = JSON.parse(text) as { message?: string | string[] };
       if (j.message != null) {
-        message = Array.isArray(j.message)
-          ? j.message.join(", ")
-          : j.message;
+        message = Array.isArray(j.message) ? j.message.join(", ") : j.message;
       }
     } catch {
       /* use plain text */

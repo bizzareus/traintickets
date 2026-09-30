@@ -1,4 +1,6 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import type { Cache } from 'cache-manager';
 import { isAxiosError } from 'axios';
 import type { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
@@ -14,12 +16,10 @@ const scheduleClient = createRetryingAxiosClient({
 const rapidApiScheduleClient = createRetryingAxiosClient({
   serviceName: 'rapidapi/train-search',
   retries: 2,
-  retryTimeouts: true,
 });
 const railcoreClassesClient = createRetryingAxiosClient({
   serviceName: 'railcore/classes',
   retries: 2,
-  retryTimeouts: true,
 });
 
 const CONFIRMTKT_SCHEDULE_URL =
@@ -250,15 +250,12 @@ export type TrainCompositionResponse = {
 @Injectable()
 export class IrctcService {
   private readonly logger = new Logger(IrctcService.name);
-  private readonly scheduleMemoryCache = new Map<
-    string,
-    { result: GetTrainScheduleResult; expiresAt: number }
-  >();
 
   constructor(
     private prisma: PrismaService,
     private cookieStore: IrctcCookieStoreService,
     private irctcHttpService: IrctcHttpService,
+    @Inject(CACHE_MANAGER) private readonly scheduleCache: Cache,
   ) {}
 
   /** Pre-loads multiple train schedules into memory in a single database query to avoid N+1 queries. */
@@ -270,10 +267,13 @@ export class IrctcService {
           .filter((n) => n.length > 0),
       ),
     );
-    const unCached = uniqueNumbers.filter((n) => {
-      const mem = this.scheduleMemoryCache.get(n);
-      return !mem || mem.expiresAt <= Date.now();
-    });
+    const unCached = (
+      await Promise.all(
+        uniqueNumbers.map(async (number) =>
+          (await this.scheduleCache.get(`schedule:${number}`)) ? null : number,
+        ),
+      )
+    ).filter((number): number is string => number !== null);
     if (unCached.length === 0) return;
 
     try {
@@ -281,7 +281,6 @@ export class IrctcService {
         where: { trainNumber: { in: unCached } },
       })) as TrainScheduleCacheScheduleRow[];
 
-      const now = Date.now();
       for (const cached of rows) {
         const trainRunsOn =
           cached.trainRunsOn != null &&
@@ -301,10 +300,10 @@ export class IrctcService {
             ? { trainRunsOn }
             : {}),
         };
-        this.scheduleMemoryCache.set(cached.trainNumber, {
-          result: { ok: true, schedule },
-          expiresAt: now + 5 * 60 * 1000,
-        });
+        await this.scheduleCache.set(`schedule:${cached.trainNumber}`, {
+          ok: true,
+          schedule,
+        } satisfies GetTrainScheduleResult);
       }
     } catch (err) {
       this.logger.warn(
@@ -321,10 +320,10 @@ export class IrctcService {
     if (!num) return { ok: false, reason: 'unavailable' };
 
     if (!opts?.forceRefresh) {
-      const cachedMem = this.scheduleMemoryCache.get(num);
-      if (cachedMem && cachedMem.expiresAt > Date.now()) {
-        return cachedMem.result;
-      }
+      const cachedMem = await this.scheduleCache.get<GetTrainScheduleResult>(
+        `schedule:${num}`,
+      );
+      if (cachedMem) return cachedMem;
     }
 
     const cached = (await this.prisma.trainScheduleCache.findUnique({
@@ -354,10 +353,7 @@ export class IrctcService {
       );
       schedule = await this.maybeFillScheduleTrainRunsOn(num, schedule, opts);
       const res: GetTrainScheduleResult = { ok: true, schedule };
-      this.scheduleMemoryCache.set(num, {
-        result: res,
-        expiresAt: Date.now() + 5 * 60 * 1000,
-      });
+      await this.scheduleCache.set(`schedule:${num}`, res);
       return res;
     }
 
@@ -409,10 +405,7 @@ export class IrctcService {
           `[irctc/schedule] confirmtkt_success train=${num} stations=${schedule.stationList.length}`,
         );
         const res: GetTrainScheduleResult = { ok: true, schedule };
-        this.scheduleMemoryCache.set(num, {
-          result: res,
-          expiresAt: Date.now() + 5 * 60 * 1000,
-        });
+        await this.scheduleCache.set(`schedule:${num}`, res);
         return res;
       }
     } catch (confirmTktErr) {
@@ -465,10 +458,7 @@ export class IrctcService {
         `[irctc/schedule] ok train=${num} stations=${schedule.stationList.length}`,
       );
       const res: GetTrainScheduleResult = { ok: true, schedule };
-      this.scheduleMemoryCache.set(num, {
-        result: res,
-        expiresAt: Date.now() + 5 * 60 * 1000,
-      });
+      await this.scheduleCache.set(`schedule:${num}`, res);
       return res;
     } catch (err) {
       if (err instanceof IrctcScheduleMaintenanceError) {

@@ -12,11 +12,17 @@ import {
   RAIL_FEED_UPSTREAM_BASE,
 } from './rail-feed-proxy.constants';
 import { isPastRailDate } from '../booking-v2/booking-v2.utils';
+import { Throttle } from '@nestjs/throttler';
+import {
+  fetchWithTimeout,
+  readResponseText,
+} from '../common/fetch-with-timeout';
 
 /**
  * GET proxy: forwards query params to upstream availability POST (empty body).
  */
 @Controller('api/rail-feed')
+@Throttle({ global: { limit: 20, ttl: 60_000 } })
 export class RailFeedProxyController {
   @Get('availability')
   async proxyAvailability(
@@ -41,23 +47,33 @@ export class RailFeedProxyController {
     }
 
     const url = `${RAIL_FEED_UPSTREAM_BASE}?${qs.toString()}`;
+    const abortController = new AbortController();
+    const abort = () => abortController.abort();
+    req.once('aborted', abort);
+    res.once('close', abort);
 
     try {
-      const upstream = await fetch(url, {
+      const upstream = await fetchWithTimeout(url, {
         method: 'POST',
         headers: RAIL_FEED_STATIC_HEADERS,
         body: '',
+        signal: abortController.signal,
       });
-      const text = await upstream.text();
+      const text = await readResponseText(upstream, 2 * 1024 * 1024);
+      if (res.destroyed) return;
       const ct = upstream.headers.get('content-type');
       if (ct) res.setHeader('Content-Type', ct);
       res.status(upstream.status).send(text);
     } catch (err) {
+      if (abortController.signal.aborted) return;
       const msg = err instanceof Error ? err.message : String(err);
       throw new HttpException(
         { message: 'Rail availability proxy request failed', detail: msg },
         HttpStatus.BAD_GATEWAY,
       );
+    } finally {
+      req.off('aborted', abort);
+      res.off('close', abort);
     }
   }
 }

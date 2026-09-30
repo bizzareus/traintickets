@@ -116,18 +116,17 @@ describe('AvailabilityController Admin Endpoints', () => {
   describe('frontend chart-time contract', () => {
     it('rejects missing chart times synchronously instead of accepting a guessed schedule', async () => {
       await expect(
-        controller.createJourney(
-          '12665',
-          'HWH CAPE',
-          'RJY',
-          'DG',
-          '2026-09-29',
-          'SL',
-          ['RJY'],
-          'test@example.com',
-          undefined,
-          '2026-09-28',
-        ),
+        controller.createJourney({
+          trainNumber: '12665',
+          trainName: 'HWH CAPE',
+          fromStationCode: 'RJY',
+          toStationCode: 'DG',
+          journeyDate: '2026-09-29',
+          classCode: 'SL',
+          stationCodesToMonitor: ['RJY'],
+          email: 'test@example.com',
+          trainStartDate: '2026-09-28',
+        }),
       ).rejects.toThrow(BadRequestException);
       expect(journeyTaskService.queueJourneyMonitoring).not.toHaveBeenCalled();
     });
@@ -135,23 +134,21 @@ describe('AvailabilityController Admin Endpoints', () => {
     it.each(['DG', ''])(
       'forwards both supplied events unchanged for destination %s',
       async (destination) => {
-        await controller.createJourney(
-          '12665',
-          'HWH CAPE',
-          'RJY',
-          destination,
-          '2026-09-29',
-          'SL',
-          ['RJY'],
-          'test@example.com',
-          undefined,
-          '2026-09-28',
-          undefined,
-          '19:08',
-          0,
-          '05:35',
-          1,
-        );
+        await controller.createJourney({
+          trainNumber: '12665',
+          trainName: 'HWH CAPE',
+          fromStationCode: 'RJY',
+          toStationCode: destination,
+          journeyDate: '2026-09-29',
+          classCode: 'SL',
+          stationCodesToMonitor: ['RJY'],
+          email: 'test@example.com',
+          trainStartDate: '2026-09-28',
+          chartTimeLocal: '19:08',
+          chartOneDayOffset: 0,
+          chartTwoTimeLocal: '05:35',
+          chartTwoDayOffset: 1,
+        });
         const queue = destination
           ? journeyTaskService.queueJourneyMonitoring
           : journeyTaskService.queueChartPreparedMonitoring;
@@ -171,23 +168,22 @@ describe('AvailabilityController Admin Endpoints', () => {
 
   describe('subscription persistence acknowledgment', () => {
     const submit = (destination = 'DOZ') =>
-      controller.createJourney(
-        '12015',
-        'Ajmer Shatabdi',
-        'GGN',
-        destination,
-        '2026-09-30',
-        'ANY',
-        ['GGN'],
-        'passenger@example.invalid',
-        '919999999999',
-        '2026-09-30',
-        undefined,
-        '21:26',
-        -1,
-        '05:55',
-        0,
-      );
+      controller.createJourney({
+        trainNumber: '12015',
+        trainName: 'Ajmer Shatabdi',
+        fromStationCode: 'GGN',
+        toStationCode: destination,
+        journeyDate: '2026-09-30',
+        classCode: 'ANY',
+        stationCodesToMonitor: ['GGN'],
+        email: 'passenger@example.invalid',
+        mobile: '919999999999',
+        trainStartDate: '2026-09-30',
+        chartTimeLocal: '21:26',
+        chartOneDayOffset: -1,
+        chartTwoTimeLocal: '05:55',
+        chartTwoDayOffset: 0,
+      });
 
     it.each(['DOZ', ''])(
       'waits for persistence for destination %s',
