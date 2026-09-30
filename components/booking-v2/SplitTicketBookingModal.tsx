@@ -329,7 +329,9 @@ export function SplitTicketBookingModal({
                 Ticket Reservation & Booking
               </h3>
               <p className="text-[11px] sm:text-xs text-slate-500 font-medium truncate">
-                {trainName ? `${trainName} (${trainNumber})` : `Train ${trainNumber}`}{" "}
+                {trainName
+                  ? `${trainName} (${trainNumber})`
+                  : `Train ${trainNumber}`}{" "}
                 • {journeyDate} • Class {travelClass}
               </p>
             </div>
@@ -380,7 +382,10 @@ export function SplitTicketBookingModal({
         <div className="overflow-y-auto p-3.5 sm:p-6 space-y-4 sm:space-y-6">
           {/* STEP 1: PASSENGER DETAILS FORM (Image 2 Parity) */}
           {step === "passenger_details" && (
-            <form onSubmit={handleProceedToPayment} className="space-y-4 sm:space-y-6">
+            <form
+              onSubmit={handleProceedToPayment}
+              className="space-y-4 sm:space-y-6"
+            >
               {/* Journey Route & Split Legs Banner */}
               <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-4 space-y-2">
                 <div className="flex items-center justify-between">
@@ -456,7 +461,7 @@ export function SplitTicketBookingModal({
                   <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-700">
                     Passenger Details (Adults)
                   </h4>
-                  {passengers.length < 6 && (
+                  {/* {passengers.length < 6 && (
                     <button
                       type="button"
                       onClick={addPassenger}
@@ -464,7 +469,7 @@ export function SplitTicketBookingModal({
                     >
                       <Plus className="h-3.5 w-3.5" /> Add Passenger
                     </button>
-                  )}
+                  )} */}
                 </div>
 
                 <div className="space-y-2.5">
@@ -606,7 +611,7 @@ export function SplitTicketBookingModal({
               </div>
 
               {/* Child Passenger Details (Below 5 Years - No Ticket Issued) */}
-              <div className="space-y-2">
+              {/* <div className="space-y-2">
                 <button
                   type="button"
                   onClick={() => setShowChildSection(!showChildSection)}
@@ -614,8 +619,7 @@ export function SplitTicketBookingModal({
                 >
                   <span>{showChildSection ? "▼" : "▶"}</span>
                   <span>
-                    Children below 5 years (for whom ticket is not to be
-                    issued)
+                    Children below 5 years (for whom ticket is not to be issued)
                   </span>
                 </button>
 
@@ -695,7 +699,7 @@ export function SplitTicketBookingModal({
                     )}
                   </div>
                 )}
-              </div>
+              </div> */}
 
               {/* Auto Upgradation Checkbox (Image 2 Parity) */}
               <div className="flex items-center gap-2 rounded-lg bg-slate-50 p-3 border border-slate-200">
@@ -936,19 +940,21 @@ export function SplitTicketBookingModal({
               )}
 
               {/* Error display if failed */}
-              {(bookingFailed || (manualPending && bookingStatus?.bookingError)) && bookingStatus && (
-                <div className="rounded-xl border border-red-300 bg-red-50 p-4 space-y-1 text-xs text-red-800">
-                  <div className="font-bold text-red-900">
-                    {manualPending
-                      ? "Booking Request Saved — Delivery Needs Attention"
-                      : "Booking Encountered an Issue"}
+              {(bookingFailed ||
+                (manualPending && bookingStatus?.bookingError)) &&
+                bookingStatus && (
+                  <div className="rounded-xl border border-red-300 bg-red-50 p-4 space-y-1 text-xs text-red-800">
+                    <div className="font-bold text-red-900">
+                      {manualPending
+                        ? "Booking Request Saved — Delivery Needs Attention"
+                        : "Booking Encountered an Issue"}
+                    </div>
+                    <p>
+                      {bookingStatus.bookingError ||
+                        "We could not complete the reservation. Contact support with your booking reference."}
+                    </p>
                   </div>
-                  <p>
-                    {bookingStatus.bookingError ||
-                      "We could not complete the reservation. Contact support with your booking reference."}
-                  </p>
-                </div>
-              )}
+                )}
 
               {recordedPnrs.some(Boolean) && (
                 <div className="space-y-2 text-xs">
