@@ -112,6 +112,24 @@ const STATION_BY_SLUG = new Map<string, Station>(
   STATIONS.map((s) => [s.slug, s]),
 );
 
+const STATION_BY_CODE = new Map<string, Station>(
+  STATIONS.map((s) => [s.code.toUpperCase(), s]),
+);
+
+/**
+ * Performance Optimization: Finds a station by exact code match in O(1) time first,
+ * falling back to case-insensitive name inclusion match if code is not found.
+ */
+export function getStationByCodeOrName(stationCodeOrName: string): Station | undefined {
+  if (!stationCodeOrName) return undefined;
+  const upper = stationCodeOrName.trim().toUpperCase();
+  const byCode = STATION_BY_CODE.get(upper);
+  if (byCode) return byCode;
+
+  const lower = stationCodeOrName.trim().toLowerCase();
+  return STATIONS.find((s) => s.name.toLowerCase().includes(lower));
+}
+
 // In a real application, this would query the PostgreSQL database via Prisma
 export async function getRouteData(originSlug: string, destSlug: string): Promise<RouteData | null> {
   const origin = STATION_BY_SLUG.get(originSlug);
