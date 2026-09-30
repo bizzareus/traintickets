@@ -12,3 +12,8 @@
 **Vulnerability:** In `WebhookController` and `WhatsappController`, passing a malformed signature with a byte length different from expected signature caused `crypto.timingSafeEqual` to throw an uncaught `RangeError`, resulting in 500 server errors or process exceptions instead of failing validation safely with 401 Unauthorized.
 **Learning:** Node.js `crypto.timingSafeEqual(buf1, buf2)` throws `RangeError [ERR_CRYPTO_TIMING_SAFE_EQUAL_LENGTH]` if `buf1.length !== buf2.length`.
 **Prevention:** Always compare buffer lengths (`buf1.length !== buf2.length`) before calling `crypto.timingSafeEqual`, and wrap in `try...catch` as defense-in-depth.
+
+## 2026-09-30 - JwtAuthGuard Missing Role Check on Admin Controllers
+**Vulnerability:** `AdminController` (`@Controller('api/admin')`) used `@UseGuards(JwtAuthGuard)`. Because `JwtStrategy` only checks user existence without role verification, any regular authenticated user could access or modify admin resources (trains, chart rules, event instances).
+**Learning:** `JwtAuthGuard` in this application verifies user identity but not administrative authorization. Admin endpoints must explicitly use `assertAdminAuth({ headerPw: pw, req })` or an explicit admin role check rather than relying solely on `JwtAuthGuard`.
+**Prevention:** Audit any controller using `JwtAuthGuard` to ensure non-admin users cannot access administrative endpoints without `assertAdminAuth`.

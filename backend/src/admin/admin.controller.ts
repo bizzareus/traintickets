@@ -1,19 +1,33 @@
-import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import {
+  Body,
+  Controller,
+  Get,
+  Headers,
+  Post,
+  Query,
+  Req,
+} from '@nestjs/common';
+import type { Request } from 'express';
+import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 import { AdminService } from './admin.service';
 
 @Controller('api/admin')
-@UseGuards(JwtAuthGuard)
 export class AdminController {
   constructor(private admin: AdminService) {}
 
   @Get('trains')
-  getTrains() {
+  getTrains(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.admin.getTrains();
   }
 
   @Post('trains')
   createTrain(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Body()
     body: {
       trainNumber: string;
@@ -25,16 +39,23 @@ export class AdminController {
       active?: boolean;
     },
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.admin.createTrain(body);
   }
 
   @Get('chart-rules')
-  getChartRules() {
+  getChartRules(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.admin.getChartRules();
   }
 
   @Post('chart-rules')
   createChartRule(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Body()
     body: {
       trainId: string;
@@ -44,11 +65,17 @@ export class AdminController {
       active?: boolean;
     },
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.admin.createChartRule(body);
   }
 
   @Get('chart-event-instances')
-  getChartEventInstances(@Query('limit') limit?: string) {
+  getChartEventInstances(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+    @Query('limit') limit?: string,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
     return this.admin.getChartEventInstances(limit ? Number(limit) : 100);
   }
 }
