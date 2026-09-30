@@ -1,0 +1,3645 @@
+{
+  "version": 1,
+  "count": 101,
+  "updatedAt": "2026-09-30",
+  "festivals": {
+    "diwali": 101,
+    "chhath": 68,
+    "dusshera": 36,
+    "puja": 30
+  },
+  "trains": [
+    {
+      "trainNumber": "05047",
+      "trainName": "Kolkata - Banaras Special Fare AC Festival Special",
+      "trainType": "ACExp",
+      "zone": "NER",
+      "dateFrom": "Oct 07",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "KOAA",
+        "name": "Kolkata"
+      },
+      "departureTime": "08:25",
+      "toStation": {
+        "code": "BNRS",
+        "name": "Banaras"
+      },
+      "arrivalTime": "04:45",
+      "duration": "20h 20m",
+      "halts": 22,
+      "runningDays": [
+        "Wed"
+      ],
+      "classes": [
+        "3E"
+      ],
+      "distance": "820 km",
+      "speed": "40 km/hr",
+      "returnTrainNumber": "05048",
+      "festivals": [
+        "diwali",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "05048",
+      "trainName": "Banaras - Kolkata Special Fare AC Festival Special",
+      "trainType": "ACExp",
+      "zone": "NER",
+      "dateFrom": "Oct 06",
+      "dateTo": "Nov 24",
+      "fromStation": {
+        "code": "BNRS",
+        "name": "Banaras"
+      },
+      "departureTime": "10:45",
+      "toStation": {
+        "code": "KOAA",
+        "name": "Kolkata"
+      },
+      "arrivalTime": "06:15",
+      "duration": "19h 30m",
+      "halts": 22,
+      "runningDays": [
+        "Tue"
+      ],
+      "classes": [
+        "3E"
+      ],
+      "distance": "820 km",
+      "speed": "42 km/hr",
+      "returnTrainNumber": "05047",
+      "festivals": [
+        "diwali",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "05978",
+      "trainName": "Dibrugarh - Gorakhpur Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NFR",
+      "dateFrom": "Oct 07",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "DBRG",
+        "name": "Dibrugarh"
+      },
+      "departureTime": "08:45",
+      "toStation": {
+        "code": "GKP",
+        "name": "Gorakhpur"
+      },
+      "arrivalTime": "19:30",
+      "duration": "34h 45m",
+      "halts": 30,
+      "runningDays": [
+        "Wed"
+      ],
+      "classes": [
+        "SL",
+        "3A"
+      ],
+      "distance": "1476 km",
+      "speed": "42 km/hr",
+      "returnTrainNumber": "05977",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "05977",
+      "trainName": "Gorakhpur - Dibrugarh Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NFR",
+      "dateFrom": "Oct 08",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "GKP",
+        "name": "Gorakhpur"
+      },
+      "departureTime": "21:35",
+      "toStation": {
+        "code": "DBRG",
+        "name": "Dibrugarh"
+      },
+      "arrivalTime": "06:30",
+      "duration": "32h 55m",
+      "halts": 29,
+      "runningDays": [
+        "Thu"
+      ],
+      "classes": [
+        "SL",
+        "3A"
+      ],
+      "distance": "1476 km",
+      "speed": "45 km/hr",
+      "returnTrainNumber": "05978",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "04007",
+      "trainName": "Jogbani - Anand Vihar Terminal Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 11",
+      "dateTo": "Nov 08",
+      "fromStation": {
+        "code": "JBN",
+        "name": "Jogbani"
+      },
+      "departureTime": "18:30",
+      "toStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "arrivalTime": "03:00",
+      "duration": "32h 30m",
+      "halts": 24,
+      "runningDays": [
+        "Sun"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1332 km",
+      "speed": "41 km/hr",
+      "returnTrainNumber": "04008",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04008",
+      "trainName": "Anand Vihar Terminal - Jogbani Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 10",
+      "dateTo": "Nov 07",
+      "fromStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "departureTime": "08:30",
+      "toStation": {
+        "code": "JBN",
+        "name": "Jogbani"
+      },
+      "arrivalTime": "15:00",
+      "duration": "30h 30m",
+      "halts": 24,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1332 km",
+      "speed": "44 km/hr",
+      "returnTrainNumber": "04007",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "09097",
+      "trainName": "Udhna - Ayodhya Cantt. Special Fare Festival Special (via Kota) (PT)",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 06",
+      "dateTo": "Nov 24",
+      "fromStation": {
+        "code": "UDN",
+        "name": "Udhna"
+      },
+      "departureTime": "06:45",
+      "toStation": {
+        "code": "AYC",
+        "name": "Ayodhya Cantt."
+      },
+      "arrivalTime": "11:30",
+      "duration": "28h 45m",
+      "halts": 16,
+      "runningDays": [
+        "Tue"
+      ],
+      "classes": [
+        "SL",
+        "3A"
+      ],
+      "distance": "1448 km",
+      "speed": "50 km/hr",
+      "returnTrainNumber": "09098",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "09098",
+      "trainName": "Ayodhya Cantt. - Udhna Special Fare Festival Special (via Kota)",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 07",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "AYC",
+        "name": "Ayodhya Cantt."
+      },
+      "departureTime": "13:30",
+      "toStation": {
+        "code": "UDN",
+        "name": "Udhna"
+      },
+      "arrivalTime": "17:30",
+      "duration": "28h 0m",
+      "halts": 16,
+      "runningDays": [
+        "Wed"
+      ],
+      "classes": [
+        "SL",
+        "3A"
+      ],
+      "distance": "1448 km",
+      "speed": "52 km/hr",
+      "returnTrainNumber": "09097",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "09094",
+      "trainName": "Ayodhya Cantt. - Udhna Special Fare Festival Special (via VGL Jhansi)",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 17",
+      "dateTo": "Nov 14",
+      "fromStation": {
+        "code": "AYC",
+        "name": "Ayodhya Cantt."
+      },
+      "departureTime": "14:45",
+      "toStation": {
+        "code": "UDN",
+        "name": "Udhna"
+      },
+      "arrivalTime": "17:15",
+      "duration": "26h 30m",
+      "halts": 15,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A"
+      ],
+      "distance": "1384 km",
+      "speed": "52 km/hr",
+      "returnTrainNumber": "09093",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "09093",
+      "trainName": "Udhna - Ayodhya Cantt. Special Fare Festival Special (via VGL Jhansi) (PT)",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 16",
+      "dateTo": "Nov 13",
+      "fromStation": {
+        "code": "UDN",
+        "name": "Udhna"
+      },
+      "departureTime": "07:25",
+      "toStation": {
+        "code": "AYC",
+        "name": "Ayodhya Cantt."
+      },
+      "arrivalTime": "10:30",
+      "duration": "27h 5m",
+      "halts": 15,
+      "runningDays": [
+        "Fri"
+      ],
+      "classes": [
+        "SL",
+        "3A"
+      ],
+      "distance": "1384 km",
+      "speed": "51 km/hr",
+      "returnTrainNumber": "09094",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "06014",
+      "trainName": "Madar (Ajmer) - Thiruvananthapuram Central Special Fare AC Festival Special",
+      "trainType": "ACExp",
+      "zone": "SR",
+      "dateFrom": "Oct 24",
+      "dateTo": "Nov 28",
+      "fromStation": {
+        "code": "MDJN",
+        "name": "Madar (Ajmer)"
+      },
+      "departureTime": "21:40",
+      "toStation": {
+        "code": "TVC",
+        "name": "Thiruvananthapuram Central"
+      },
+      "arrivalTime": "00:45",
+      "duration": "51h 5m",
+      "halts": 46,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "3A",
+        "2A",
+        "3E"
+      ],
+      "distance": "2514 km",
+      "speed": "49 km/hr",
+      "returnTrainNumber": "06013",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "06013",
+      "trainName": "Thiruvananthapuram Central - Madar (Ajmer) Special Fare AC Festival Special",
+      "trainType": "Exp",
+      "zone": "SR",
+      "dateFrom": "Oct 21",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "TVC",
+        "name": "Thiruvananthapuram Central"
+      },
+      "departureTime": "07:45",
+      "toStation": {
+        "code": "MDJN",
+        "name": "Madar (Ajmer)"
+      },
+      "arrivalTime": "11:00",
+      "duration": "51h 15m",
+      "halts": 46,
+      "runningDays": [
+        "Wed"
+      ],
+      "classes": [
+        "3A",
+        "2A",
+        "3E"
+      ],
+      "distance": "2514 km",
+      "speed": "49 km/hr",
+      "returnTrainNumber": "06014",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04183",
+      "trainName": "Prayagraj - Hazrat Nizamuddin Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NCR",
+      "dateFrom": "Oct 20",
+      "dateTo": "Dec 01",
+      "fromStation": {
+        "code": "PRYJ",
+        "name": "Prayagraj"
+      },
+      "departureTime": "15:25",
+      "toStation": {
+        "code": "NZM",
+        "name": "Hazrat Nizamuddin"
+      },
+      "arrivalTime": "11:35",
+      "duration": "20h 10m",
+      "halts": 16,
+      "runningDays": [
+        "Tue"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "794 km",
+      "speed": "39 km/hr",
+      "returnTrainNumber": "04184",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04184",
+      "trainName": "Hazrat Nizamuddin - Prayagraj Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NCR",
+      "dateFrom": "Oct 21",
+      "dateTo": "Dec 02",
+      "fromStation": {
+        "code": "NZM",
+        "name": "Hazrat Nizamuddin"
+      },
+      "departureTime": "15:45",
+      "toStation": {
+        "code": "PRYJ",
+        "name": "Prayagraj"
+      },
+      "arrivalTime": "09:10",
+      "duration": "17h 25m",
+      "halts": 16,
+      "runningDays": [
+        "Wed"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "794 km",
+      "speed": "46 km/hr",
+      "returnTrainNumber": "04183",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04604",
+      "trainName": "SMVD Katra - Varanasi Special Fare SF Special",
+      "trainType": "SF",
+      "zone": "NR",
+      "dateFrom": "Oct 04",
+      "dateTo": "Nov 22",
+      "fromStation": {
+        "code": "SVDK",
+        "name": "SMVD Katra"
+      },
+      "departureTime": "18:15",
+      "toStation": {
+        "code": "BSB",
+        "name": "Varanasi"
+      },
+      "arrivalTime": "18:30",
+      "duration": "24h 15m",
+      "halts": 12,
+      "runningDays": [
+        "Sun"
+      ],
+      "classes": [
+        "3A",
+        "2A",
+        "3E"
+      ],
+      "distance": "1356 km",
+      "speed": "56 km/hr",
+      "returnTrainNumber": "04603",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04603",
+      "trainName": "Varanasi - SMVD Katra Special Fare SF Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 06",
+      "dateTo": "Nov 17",
+      "fromStation": {
+        "code": "BSB",
+        "name": "Varanasi"
+      },
+      "departureTime": "04:30",
+      "toStation": {
+        "code": "SVDK",
+        "name": "SMVD Katra"
+      },
+      "arrivalTime": "04:30",
+      "duration": "24h 0m",
+      "halts": 12,
+      "runningDays": [
+        "Tue"
+      ],
+      "classes": [
+        "3A",
+        "2A",
+        "3E"
+      ],
+      "distance": "1356 km",
+      "speed": "56 km/hr",
+      "returnTrainNumber": "04604",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04610",
+      "trainName": "Jammu Tawi - Varanasi Special Fare AC Festival Special",
+      "trainType": "ACExp",
+      "zone": "NR",
+      "dateFrom": "Oct 01",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "JAT",
+        "name": "Jammu Tawi"
+      },
+      "departureTime": "05:15",
+      "toStation": {
+        "code": "BSB",
+        "name": "Varanasi"
+      },
+      "arrivalTime": "05:10",
+      "duration": "23h 55m",
+      "halts": 9,
+      "runningDays": [
+        "Thu"
+      ],
+      "classes": [
+        "3E"
+      ],
+      "distance": "1260 km",
+      "speed": "53 km/hr",
+      "returnTrainNumber": "04609",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04609",
+      "trainName": "Varanasi - Jammu Tawi Special Fare AC Festival Special",
+      "trainType": "ACExp",
+      "zone": "NR",
+      "dateFrom": "Oct 02",
+      "dateTo": "Nov 20",
+      "fromStation": {
+        "code": "BSB",
+        "name": "Varanasi"
+      },
+      "departureTime": "09:00",
+      "toStation": {
+        "code": "JAT",
+        "name": "Jammu Tawi"
+      },
+      "arrivalTime": "08:30",
+      "duration": "23h 30m",
+      "halts": 9,
+      "runningDays": [
+        "Fri"
+      ],
+      "classes": [
+        "3E"
+      ],
+      "distance": "1260 km",
+      "speed": "54 km/hr",
+      "returnTrainNumber": "04610",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "01667",
+      "trainName": "Rani Kamlapati - Danapur Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 13",
+      "dateTo": "Nov 17",
+      "fromStation": {
+        "code": "RKMP",
+        "name": "Rani Kamlapati"
+      },
+      "departureTime": "14:25",
+      "toStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "arrivalTime": "09:15",
+      "duration": "18h 50m",
+      "halts": 16,
+      "runningDays": [
+        "Mon",
+        "Fri"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1034 km",
+      "speed": "55 km/hr",
+      "returnTrainNumber": "01668",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "01668",
+      "trainName": "Danapur - Rani Kamlapati Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 14",
+      "dateTo": "Nov 18",
+      "fromStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "departureTime": "11:20",
+      "toStation": {
+        "code": "RKMP",
+        "name": "Rani Kamlapati"
+      },
+      "arrivalTime": "10:50",
+      "duration": "23h 30m",
+      "halts": 16,
+      "runningDays": [
+        "Tue",
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1034 km",
+      "speed": "44 km/hr",
+      "returnTrainNumber": "01667",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "09824",
+      "trainName": "Danapur - Sogaria (Kota) Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 12",
+      "dateTo": "Nov 16",
+      "fromStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "departureTime": "01:15",
+      "toStation": {
+        "code": "SGAC",
+        "name": "Sogaria (Kota)"
+      },
+      "arrivalTime": "03:45",
+      "duration": "26h 30m",
+      "halts": 17,
+      "runningDays": [
+        "Mon"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "3E"
+      ],
+      "distance": "1173 km",
+      "speed": "44 km/hr",
+      "returnTrainNumber": "09823",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "09823",
+      "trainName": "Sogaria (Kota) - Danapur Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 10",
+      "dateTo": "Nov 14",
+      "fromStation": {
+        "code": "SGAC",
+        "name": "Sogaria (Kota)"
+      },
+      "departureTime": "23:10",
+      "toStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "arrivalTime": "23:45",
+      "duration": "24h 35m",
+      "halts": 17,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "3E"
+      ],
+      "distance": "1173 km",
+      "speed": "48 km/hr",
+      "returnTrainNumber": "09824",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "01709",
+      "trainName": "Dr. Ambedkar Nagar - Rewa Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 11",
+      "dateTo": "Nov 15",
+      "fromStation": {
+        "code": "DADN",
+        "name": "Dr. Ambedkar Nagar"
+      },
+      "departureTime": "21:20",
+      "toStation": {
+        "code": "REWA",
+        "name": "Rewa"
+      },
+      "arrivalTime": "14:30",
+      "duration": "17h 10m",
+      "halts": 16,
+      "runningDays": [
+        "Sun"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "3E"
+      ],
+      "distance": "813 km",
+      "speed": "47 km/hr",
+      "returnTrainNumber": "01710",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "01710",
+      "trainName": "Rewa - Dr. Ambedkar Nagar Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 10",
+      "dateTo": "Nov 14",
+      "fromStation": {
+        "code": "REWA",
+        "name": "Rewa"
+      },
+      "departureTime": "22:50",
+      "toStation": {
+        "code": "DADN",
+        "name": "Dr. Ambedkar Nagar"
+      },
+      "arrivalTime": "15:05",
+      "duration": "16h 15m",
+      "halts": 16,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "3E"
+      ],
+      "distance": "813 km",
+      "speed": "50 km/hr",
+      "returnTrainNumber": "01709",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "02191",
+      "trainName": "Rani Kamalapati - Rewa Special Fare SF Festival Special",
+      "trainType": "SF",
+      "zone": "WCR",
+      "dateFrom": "Oct 17",
+      "dateTo": "Nov 14",
+      "fromStation": {
+        "code": "RKMP",
+        "name": "Rani Kamalapati"
+      },
+      "departureTime": "22:15",
+      "toStation": {
+        "code": "REWA",
+        "name": "Rewa"
+      },
+      "arrivalTime": "07:20",
+      "duration": "9h 5m",
+      "halts": 7,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "1A",
+        "3E"
+      ],
+      "distance": "555 km",
+      "speed": "61 km/hr",
+      "returnTrainNumber": "02192",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "02192",
+      "trainName": "Rewa - Rani Kamalapati Special Fare SF Festival Special",
+      "trainType": "SF",
+      "zone": "WCR",
+      "dateFrom": "Oct 17",
+      "dateTo": "Nov 14",
+      "fromStation": {
+        "code": "REWA",
+        "name": "Rewa"
+      },
+      "departureTime": "12:30",
+      "toStation": {
+        "code": "RKMP",
+        "name": "Rani Kamalapati"
+      },
+      "arrivalTime": "21:15",
+      "duration": "8h 45m",
+      "halts": 7,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "1A",
+        "3E"
+      ],
+      "distance": "555 km",
+      "speed": "63 km/hr",
+      "returnTrainNumber": "02191",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "01703",
+      "trainName": "Jabalpur - Haridwar Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 22",
+      "dateTo": "Nov 12",
+      "fromStation": {
+        "code": "JBP",
+        "name": "Jabalpur"
+      },
+      "departureTime": "15:30",
+      "toStation": {
+        "code": "HW",
+        "name": "Haridwar"
+      },
+      "arrivalTime": "14:20",
+      "duration": "22h 50m",
+      "halts": 12,
+      "runningDays": [
+        "Thu"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1104 km",
+      "speed": "48 km/hr",
+      "returnTrainNumber": "01704",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "01704",
+      "trainName": "Haridwar - Jabalpur Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 23",
+      "dateTo": "Nov 13",
+      "fromStation": {
+        "code": "HW",
+        "name": "Haridwar"
+      },
+      "departureTime": "15:10",
+      "toStation": {
+        "code": "JBP",
+        "name": "Jabalpur"
+      },
+      "arrivalTime": "16:20",
+      "duration": "25h 10m",
+      "halts": 12,
+      "runningDays": [
+        "Fri"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1104 km",
+      "speed": "44 km/hr",
+      "returnTrainNumber": "01703",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "01707",
+      "trainName": "Jabalpur - Hazrat Nizamuddin Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 17",
+      "dateTo": "Nov 14",
+      "fromStation": {
+        "code": "JBP",
+        "name": "Jabalpur"
+      },
+      "departureTime": "20:20",
+      "toStation": {
+        "code": "NZM",
+        "name": "Hazrat Nizamuddin"
+      },
+      "arrivalTime": "14:25",
+      "duration": "18h 5m",
+      "halts": 9,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "904 km",
+      "speed": "50 km/hr",
+      "returnTrainNumber": "01708",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "01708",
+      "trainName": "Hazrat Nizamuddin - Jabalpur Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 18",
+      "dateTo": "Nov 15",
+      "fromStation": {
+        "code": "NZM",
+        "name": "Hazrat Nizamuddin"
+      },
+      "departureTime": "15:45",
+      "toStation": {
+        "code": "JBP",
+        "name": "Jabalpur"
+      },
+      "arrivalTime": "09:30",
+      "duration": "17h 45m",
+      "halts": 9,
+      "runningDays": [
+        "Sun"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "904 km",
+      "speed": "51 km/hr",
+      "returnTrainNumber": "01707",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "07544",
+      "trainName": "Katihar - Manihari DEMU Festival Special",
+      "trainType": "DEMU",
+      "zone": "NFR",
+      "dateFrom": "Oct 01",
+      "dateTo": "Nov 30",
+      "fromStation": {
+        "code": "KIR",
+        "name": "Katihar"
+      },
+      "departureTime": "20:30",
+      "toStation": {
+        "code": "MHI",
+        "name": "Manihari"
+      },
+      "arrivalTime": "21:30",
+      "duration": "1h 0m",
+      "halts": 2,
+      "runningDays": [
+        "Mon",
+        "Thu"
+      ],
+      "classes": [],
+      "distance": "24 km",
+      "speed": "24 km/hr",
+      "returnTrainNumber": "07543",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "07543",
+      "trainName": "Manihari - Katihar DEMU Festival Special",
+      "trainType": "DEMU",
+      "zone": "NFR",
+      "dateFrom": "Oct 02",
+      "dateTo": "Dec 01",
+      "fromStation": {
+        "code": "MHI",
+        "name": "Manihari"
+      },
+      "departureTime": "05:00",
+      "toStation": {
+        "code": "KIR",
+        "name": "Katihar"
+      },
+      "arrivalTime": "06:00",
+      "duration": "1h 0m",
+      "halts": 2,
+      "runningDays": [
+        "Tue",
+        "Fri"
+      ],
+      "classes": [],
+      "distance": "24 km",
+      "speed": "24 km/hr",
+      "returnTrainNumber": "07544",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "07539",
+      "trainName": "Manihari - Katihar Festival Special (UnReserved)",
+      "trainType": "Pass",
+      "zone": "NFR",
+      "dateFrom": "Oct 03",
+      "dateTo": "Nov 30",
+      "fromStation": {
+        "code": "MHI",
+        "name": "Manihari"
+      },
+      "departureTime": "03:15",
+      "toStation": {
+        "code": "KIR",
+        "name": "Katihar"
+      },
+      "arrivalTime": "04:15",
+      "duration": "1h 0m",
+      "halts": 2,
+      "runningDays": [
+        "Sun",
+        "Mon",
+        "Wed",
+        "Thu",
+        "Sat"
+      ],
+      "classes": [],
+      "distance": "24 km",
+      "speed": "24 km/hr",
+      "returnTrainNumber": "07540",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "07540",
+      "trainName": "Katihar - Manihari Festival Special (UnReserved)",
+      "trainType": "Pass",
+      "zone": "NFR",
+      "dateFrom": "Oct 02",
+      "dateTo": "Nov 29",
+      "fromStation": {
+        "code": "KIR",
+        "name": "Katihar"
+      },
+      "departureTime": "19:00",
+      "toStation": {
+        "code": "MHI",
+        "name": "Manihari"
+      },
+      "arrivalTime": "20:00",
+      "duration": "1h 0m",
+      "halts": 2,
+      "runningDays": [
+        "Sun",
+        "Tue",
+        "Wed",
+        "Fri",
+        "Sat"
+      ],
+      "classes": [],
+      "distance": "24 km",
+      "speed": "24 km/hr",
+      "returnTrainNumber": "07539",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "07554",
+      "trainName": "Purnea - Katihar DEMU Festival Special",
+      "trainType": "DEMU",
+      "zone": "NFR",
+      "dateFrom": "Oct 01",
+      "dateTo": "Nov 30",
+      "fromStation": {
+        "code": "PRNA",
+        "name": "Purnea"
+      },
+      "departureTime": "23:40",
+      "toStation": {
+        "code": "KIR",
+        "name": "Katihar"
+      },
+      "arrivalTime": "02:00",
+      "duration": "2h 20m",
+      "halts": 3,
+      "runningDays": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "classes": [],
+      "distance": "28 km",
+      "speed": "12 km/hr",
+      "returnTrainNumber": "07555",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "07555",
+      "trainName": "Katihar - Purnea DEMU Festival Special",
+      "trainType": "DEMU",
+      "zone": "NFR",
+      "dateFrom": "Oct 01",
+      "dateTo": "Nov 30",
+      "fromStation": {
+        "code": "KIR",
+        "name": "Katihar"
+      },
+      "departureTime": "21:30",
+      "toStation": {
+        "code": "PRNA",
+        "name": "Purnea"
+      },
+      "arrivalTime": "22:40",
+      "duration": "1h 10m",
+      "halts": 3,
+      "runningDays": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "classes": [],
+      "distance": "28 km",
+      "speed": "24 km/hr",
+      "returnTrainNumber": "07554",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04667",
+      "trainName": "Barauni - Amritsar Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 06",
+      "dateTo": "Dec 01",
+      "fromStation": {
+        "code": "BJU",
+        "name": "Barauni"
+      },
+      "departureTime": "05:05",
+      "toStation": {
+        "code": "ASR",
+        "name": "Amritsar"
+      },
+      "arrivalTime": "13:50",
+      "duration": "32h 45m",
+      "halts": 22,
+      "runningDays": [
+        "Tue"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1502 km",
+      "speed": "46 km/hr",
+      "returnTrainNumber": "04668",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "05590",
+      "trainName": "Hadapsar (Pune) - Muzaffarpur Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "ECR",
+      "dateFrom": "Sep 24",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "HDP",
+        "name": "Hadapsar (Pune)"
+      },
+      "departureTime": "15:00",
+      "toStation": {
+        "code": "MFP",
+        "name": "Muzaffarpur"
+      },
+      "arrivalTime": "04:30",
+      "duration": "37h 30m",
+      "halts": 20,
+      "runningDays": [
+        "Thu"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "1A",
+        "3E"
+      ],
+      "distance": "1823 km",
+      "speed": "49 km/hr",
+      "returnTrainNumber": "05589",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "05589",
+      "trainName": "Muzaffarpur - Hadapsar (Pune) Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "ECR",
+      "dateFrom": "Sep 22",
+      "dateTo": "Nov 24",
+      "fromStation": {
+        "code": "MFP",
+        "name": "Muzaffarpur"
+      },
+      "departureTime": "19:20",
+      "toStation": {
+        "code": "HDP",
+        "name": "Hadapsar (Pune)"
+      },
+      "arrivalTime": "11:40",
+      "duration": "40h 20m",
+      "halts": 20,
+      "runningDays": [
+        "Tue"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "1A",
+        "3E"
+      ],
+      "distance": "1823 km",
+      "speed": "45 km/hr",
+      "returnTrainNumber": "05590",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "05586",
+      "trainName": "Mumbai LTT - Saharsa Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "ECR",
+      "dateFrom": "Sep 20",
+      "dateTo": "Nov 29",
+      "fromStation": {
+        "code": "LTT",
+        "name": "Mumbai LTT"
+      },
+      "departureTime": "16:35",
+      "toStation": {
+        "code": "SHC",
+        "name": "Saharsa"
+      },
+      "arrivalTime": "09:00",
+      "duration": "40h 25m",
+      "halts": 19,
+      "runningDays": [
+        "Sun"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "3E"
+      ],
+      "distance": "1949 km",
+      "speed": "48 km/hr",
+      "returnTrainNumber": "05585",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "05585",
+      "trainName": "Saharsa - Mumbai LTT Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "ECR",
+      "dateFrom": "Sep 18",
+      "dateTo": "Nov 27",
+      "fromStation": {
+        "code": "SHC",
+        "name": "Saharsa"
+      },
+      "departureTime": "17:45",
+      "toStation": {
+        "code": "LTT",
+        "name": "Mumbai LTT"
+      },
+      "arrivalTime": "05:30",
+      "duration": "35h 45m",
+      "halts": 19,
+      "runningDays": [
+        "Fri"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "3E"
+      ],
+      "distance": "1949 km",
+      "speed": "55 km/hr",
+      "returnTrainNumber": "05586",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "05086",
+      "trainName": "Anand Vihar Terminal - Chhapra Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NER",
+      "dateFrom": "Oct 07",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "departureTime": "10:50",
+      "toStation": {
+        "code": "CPR",
+        "name": "Chhapra"
+      },
+      "arrivalTime": "07:00",
+      "duration": "20h 10m",
+      "halts": 16,
+      "runningDays": [
+        "Wed"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "1A",
+        "3E"
+      ],
+      "distance": "958 km",
+      "speed": "48 km/hr",
+      "returnTrainNumber": "05085",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "05085",
+      "trainName": "Chhapra - Anand Vihar Terminal Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NER",
+      "dateFrom": "Oct 06",
+      "dateTo": "Nov 24",
+      "fromStation": {
+        "code": "CPR",
+        "name": "Chhapra"
+      },
+      "departureTime": "13:05",
+      "toStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "arrivalTime": "09:40",
+      "duration": "20h 35m",
+      "halts": 16,
+      "runningDays": [
+        "Tue"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "1A",
+        "3E"
+      ],
+      "distance": "958 km",
+      "speed": "47 km/hr",
+      "returnTrainNumber": "05086",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04623",
+      "trainName": "Kolkata - Amritsar Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 10",
+      "dateTo": "Nov 28",
+      "fromStation": {
+        "code": "KOAA",
+        "name": "Kolkata"
+      },
+      "departureTime": "04:45",
+      "toStation": {
+        "code": "ASR",
+        "name": "Amritsar"
+      },
+      "arrivalTime": "21:05",
+      "duration": "40h 20m",
+      "halts": 31,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1951 km",
+      "speed": "48 km/hr",
+      "returnTrainNumber": "04624",
+      "festivals": [
+        "diwali",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "04624",
+      "trainName": "Amritsar - Kolkata Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 07",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "ASR",
+        "name": "Amritsar"
+      },
+      "departureTime": "20:10",
+      "toStation": {
+        "code": "KOAA",
+        "name": "Kolkata"
+      },
+      "arrivalTime": "15:00",
+      "duration": "42h 50m",
+      "halts": 30,
+      "runningDays": [
+        "Wed"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1951 km",
+      "speed": "46 km/hr",
+      "returnTrainNumber": "04623",
+      "festivals": [
+        "diwali",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "04668",
+      "trainName": "Amritsar - Barauni Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 04",
+      "dateTo": "Nov 29",
+      "fromStation": {
+        "code": "ASR",
+        "name": "Amritsar"
+      },
+      "departureTime": "20:10",
+      "toStation": {
+        "code": "BJU",
+        "name": "Barauni"
+      },
+      "arrivalTime": "02:10",
+      "duration": "30h 0m",
+      "halts": 22,
+      "runningDays": [
+        "Sun"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1502 km",
+      "speed": "50 km/hr",
+      "returnTrainNumber": "04667",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "04211",
+      "trainName": "Mumbai LTT - Sultanpur Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 22",
+      "dateTo": "Nov 12",
+      "fromStation": {
+        "code": "LTT",
+        "name": "Mumbai LTT"
+      },
+      "departureTime": "15:00",
+      "toStation": {
+        "code": "SLN",
+        "name": "Sultanpur"
+      },
+      "arrivalTime": "23:00",
+      "duration": "32h 0m",
+      "halts": 13,
+      "runningDays": [
+        "Thu"
+      ],
+      "classes": [
+        "3E"
+      ],
+      "distance": "1546 km",
+      "speed": "48 km/hr",
+      "returnTrainNumber": "04212",
+      "festivals": [
+        "diwali"
+      ]
+    },
+    {
+      "trainNumber": "04212",
+      "trainName": "Sultanpur - Mumbai LTT Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 21",
+      "dateTo": "Nov 11",
+      "fromStation": {
+        "code": "SLN",
+        "name": "Sultanpur"
+      },
+      "departureTime": "04:00",
+      "toStation": {
+        "code": "LTT",
+        "name": "Mumbai LTT"
+      },
+      "arrivalTime": "14:00",
+      "duration": "34h 0m",
+      "halts": 13,
+      "runningDays": [
+        "Wed"
+      ],
+      "classes": [
+        "3E"
+      ],
+      "distance": "1546 km",
+      "speed": "45 km/hr",
+      "returnTrainNumber": "04211",
+      "festivals": [
+        "diwali"
+      ]
+    },
+    {
+      "trainNumber": "09619",
+      "trainName": "Ajmer - Ranchi Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NWR",
+      "dateFrom": "Oct 02",
+      "dateTo": "Nov 27",
+      "fromStation": {
+        "code": "AII",
+        "name": "Ajmer"
+      },
+      "departureTime": "23:05",
+      "toStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "arrivalTime": "07:30",
+      "duration": "32h 25m",
+      "halts": 24,
+      "runningDays": [
+        "Fri"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1642 km",
+      "speed": "51 km/hr",
+      "returnTrainNumber": "09620",
+      "festivals": [
+        "diwali",
+        "puja",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "09620",
+      "trainName": "Ranchi - Ajmer Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NWR",
+      "dateFrom": "Oct 04",
+      "dateTo": "Nov 29",
+      "fromStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "departureTime": "10:50",
+      "toStation": {
+        "code": "AII",
+        "name": "Ajmer"
+      },
+      "arrivalTime": "18:35",
+      "duration": "31h 45m",
+      "halts": 24,
+      "runningDays": [
+        "Sun"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1642 km",
+      "speed": "52 km/hr",
+      "returnTrainNumber": "09619",
+      "festivals": [
+        "diwali",
+        "puja",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "03132",
+      "trainName": "Gorakhpur - Sealdah Special Fare Special",
+      "trainType": "Exp",
+      "zone": "ER",
+      "dateFrom": "Oct 14",
+      "dateTo": "Nov 27",
+      "fromStation": {
+        "code": "GKP",
+        "name": "Gorakhpur"
+      },
+      "departureTime": "20:35",
+      "toStation": {
+        "code": "SDAH",
+        "name": "Sealdah"
+      },
+      "arrivalTime": "15:40",
+      "duration": "19h 5m",
+      "halts": 19,
+      "runningDays": [
+        "Wed",
+        "Fri"
+      ],
+      "classes": [
+        "SL",
+        "3A"
+      ],
+      "distance": "794 km",
+      "speed": "42 km/hr",
+      "returnTrainNumber": "03131",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "03528",
+      "trainName": "Gorakhpur - Asansol Special Fare Special",
+      "trainType": "Exp",
+      "zone": "ER",
+      "dateFrom": "Oct 17",
+      "dateTo": "Nov 28",
+      "fromStation": {
+        "code": "GKP",
+        "name": "Gorakhpur"
+      },
+      "departureTime": "06:00",
+      "toStation": {
+        "code": "ASN",
+        "name": "Asansol"
+      },
+      "arrivalTime": "20:45",
+      "duration": "14h 45m",
+      "halts": 15,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "574 km",
+      "speed": "39 km/hr",
+      "returnTrainNumber": "03527",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "05037",
+      "trainName": "Barhni - Bandra Terminus Special (UnReserved)",
+      "trainType": "Exp",
+      "zone": "NER",
+      "dateFrom": "Oct 08",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "BNY",
+        "name": "Barhni"
+      },
+      "departureTime": "19:45",
+      "toStation": {
+        "code": "BDTS",
+        "name": "Bandra Terminus"
+      },
+      "arrivalTime": "06:30",
+      "duration": "34h 45m",
+      "halts": 17,
+      "runningDays": [
+        "Thu"
+      ],
+      "classes": [],
+      "distance": "1798 km",
+      "speed": "52 km/hr",
+      "returnTrainNumber": "05038",
+      "festivals": [
+        "diwali"
+      ]
+    },
+    {
+      "trainNumber": "04311",
+      "trainName": "Kolkata - Yog Nagari Rishikesh Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 18",
+      "dateTo": "Nov 22",
+      "fromStation": {
+        "code": "KOAA",
+        "name": "Kolkata"
+      },
+      "departureTime": "13:55",
+      "toStation": {
+        "code": "YNRK",
+        "name": "Yog Nagari Rishikesh"
+      },
+      "arrivalTime": "23:30",
+      "duration": "33h 35m",
+      "halts": 24,
+      "runningDays": [
+        "Sun"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1515 km",
+      "speed": "45 km/hr",
+      "returnTrainNumber": "04312",
+      "festivals": [
+        "diwali",
+        "puja",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04312",
+      "trainName": "Yog Nagari Rishikesh - Kolkata Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 16",
+      "dateTo": "Nov 20",
+      "fromStation": {
+        "code": "YNRK",
+        "name": "Yog Nagari Rishikesh"
+      },
+      "departureTime": "22:20",
+      "toStation": {
+        "code": "KOAA",
+        "name": "Kolkata"
+      },
+      "arrivalTime": "08:00",
+      "duration": "33h 40m",
+      "halts": 24,
+      "runningDays": [
+        "Fri"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "1515 km",
+      "speed": "45 km/hr",
+      "returnTrainNumber": "04311",
+      "festivals": [
+        "diwali",
+        "puja",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04064",
+      "trainName": "New Delhi - Gaya Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 10",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "11:00",
+      "toStation": {
+        "code": "GAYA",
+        "name": "Gaya"
+      },
+      "arrivalTime": "07:15",
+      "duration": "20h 15m",
+      "halts": 8,
+      "runningDays": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A"
+      ],
+      "distance": "990 km",
+      "speed": "49 km/hr",
+      "returnTrainNumber": "04063",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04063",
+      "trainName": "Gaya - New Delhi Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 11",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "GAYA",
+        "name": "Gaya"
+      },
+      "departureTime": "09:15",
+      "toStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "08:10",
+      "duration": "22h 55m",
+      "halts": 8,
+      "runningDays": [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A"
+      ],
+      "distance": "990 km",
+      "speed": "43 km/hr",
+      "returnTrainNumber": "04064",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "07608",
+      "trainName": "Hadapsar (Pune)- Hazur Sahib Nanded Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "SCR",
+      "dateFrom": "Sep 21",
+      "dateTo": "Sep 21",
+      "fromStation": {
+        "code": "HDP",
+        "name": "Hadapsar (Pune)"
+      },
+      "departureTime": "11:00",
+      "toStation": {
+        "code": "NED",
+        "name": "Hazur Sahib Nanded"
+      },
+      "arrivalTime": "00:35",
+      "duration": "13h 35m",
+      "halts": 11,
+      "runningDays": [
+        "Mon"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "650 km",
+      "speed": "48 km/hr",
+      "returnTrainNumber": "07607",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "01702P",
+      "trainName": "Danapur - Jabalpur Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 15",
+      "dateTo": "Nov 19",
+      "fromStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "departureTime": "11:00",
+      "toStation": {
+        "code": "JBP",
+        "name": "Jabalpur"
+      },
+      "arrivalTime": "04:15",
+      "duration": "17h 15m",
+      "halts": 10,
+      "runningDays": [
+        "Thu",
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "704 km",
+      "speed": "41 km/hr",
+      "returnTrainNumber": "01701Z",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "01701Z",
+      "trainName": "Jabalpur - Danapur Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "WCR",
+      "dateFrom": "Oct 14",
+      "dateTo": "Nov 18",
+      "fromStation": {
+        "code": "JBP",
+        "name": "Jabalpur"
+      },
+      "departureTime": "19:35",
+      "toStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "arrivalTime": "08:45",
+      "duration": "13h 10m",
+      "halts": 10,
+      "runningDays": [
+        "Wed",
+        "Fri"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A"
+      ],
+      "distance": "704 km",
+      "speed": "54 km/hr",
+      "returnTrainNumber": "01702P",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04512",
+      "trainName": "Chandigarh - Patna Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 01",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "CDG",
+        "name": "Chandigarh"
+      },
+      "departureTime": "23:35",
+      "toStation": {
+        "code": "PNBE",
+        "name": "Patna"
+      },
+      "arrivalTime": "21:15",
+      "duration": "21h 40m",
+      "halts": 15,
+      "runningDays": [
+        "Thu"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "1A",
+        "3E"
+      ],
+      "distance": "1157 km",
+      "speed": "53 km/hr",
+      "returnTrainNumber": "04511",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "04511",
+      "trainName": "Patna - Chandigarh Special Fare Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 02",
+      "dateTo": "Nov 27",
+      "fromStation": {
+        "code": "PNBE",
+        "name": "Patna"
+      },
+      "departureTime": "23:15",
+      "toStation": {
+        "code": "CDG",
+        "name": "Chandigarh"
+      },
+      "arrivalTime": "21:40",
+      "duration": "22h 25m",
+      "halts": 15,
+      "runningDays": [
+        "Fri"
+      ],
+      "classes": [
+        "SL",
+        "3A",
+        "2A",
+        "1A",
+        "3E"
+      ],
+      "distance": "1157 km",
+      "speed": "52 km/hr",
+      "returnTrainNumber": "04512",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "02456",
+      "trainName": "New Delhi - Kanpur Central Special Fare SF Special",
+      "trainType": "SF",
+      "zone": "NCR",
+      "dateFrom": "Sep 07",
+      "dateTo": "Oct 30",
+      "fromStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "07:45",
+      "toStation": {
+        "code": "CNB",
+        "name": "Kanpur Central"
+      },
+      "arrivalTime": "13:15",
+      "duration": "5h 30m",
+      "halts": 2,
+      "runningDays": [
+        "Mon",
+        "Tue",
+        "Fri",
+        "Sat"
+      ],
+      "classes": [
+        "SL",
+        "3A"
+      ],
+      "distance": "440 km",
+      "speed": "80 km/hr",
+      "returnTrainNumber": "02455",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04214",
+      "trainName": "Anand Vihar - Ayodhya Cantt Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 10",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "departureTime": "00:30",
+      "toStation": {
+        "code": "AYC",
+        "name": "Ayodhya Cantt"
+      },
+      "arrivalTime": "13:00",
+      "duration": "12h 30m",
+      "halts": 6,
+      "runningDays": [
+        "Tue",
+        "Thu",
+        "Sat"
+      ],
+      "classes": [
+        "2A",
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "628 km",
+      "speed": "50 km/hr",
+      "returnTrainNumber": "04213",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04213",
+      "trainName": "Ayodhya Cantt - Anand Vihar Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 10",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "AYC",
+        "name": "Ayodhya Cantt"
+      },
+      "departureTime": "15:20",
+      "toStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "arrivalTime": "03:40",
+      "duration": "12h 20m",
+      "halts": 6,
+      "runningDays": [
+        "Tue",
+        "Thu",
+        "Sat"
+      ],
+      "classes": [
+        "2A",
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "628 km",
+      "speed": "51 km/hr",
+      "returnTrainNumber": "04214",
+      "festivals": [
+        "diwali",
+        "dusshera"
+      ]
+    },
+    {
+      "trainNumber": "04062",
+      "trainName": "Anand Vihar - Bhagalpur Festive Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 10",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "departureTime": "08:30",
+      "toStation": {
+        "code": "BGP",
+        "name": "Bhagalpur"
+      },
+      "arrivalTime": "06:15",
+      "duration": "21h 45m",
+      "halts": 14,
+      "runningDays": [
+        "Mon",
+        "Fri"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1210 km",
+      "speed": "56 km/hr",
+      "returnTrainNumber": "04061",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "04061",
+      "trainName": "Bhagalpur - Anand Vihar Festive Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 11",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "BGP",
+        "name": "Bhagalpur"
+      },
+      "departureTime": "09:45",
+      "toStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "arrivalTime": "07:30",
+      "duration": "21h 45m",
+      "halts": 14,
+      "runningDays": [
+        "Tue",
+        "Sat"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1210 km",
+      "speed": "56 km/hr",
+      "returnTrainNumber": "04062",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "04078",
+      "trainName": "Anand Vihar - Patna Express Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 08",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "departureTime": "23:55",
+      "toStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "arrivalTime": "16:30",
+      "duration": "16h 35m",
+      "halts": 7,
+      "runningDays": [
+        "Mon",
+        "Wed",
+        "Fri"
+      ],
+      "classes": [
+        "2A",
+        "3A",
+        "SL"
+      ],
+      "distance": "986 km",
+      "speed": "59 km/hr",
+      "returnTrainNumber": "04077",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04077",
+      "trainName": "Patna - Anand Vihar Express Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 09",
+      "dateTo": "Nov 27",
+      "fromStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "departureTime": "18:45",
+      "toStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "arrivalTime": "11:20",
+      "duration": "16h 35m",
+      "halts": 7,
+      "runningDays": [
+        "Tue",
+        "Thu",
+        "Sat"
+      ],
+      "classes": [
+        "2A",
+        "3A",
+        "SL"
+      ],
+      "distance": "986 km",
+      "speed": "59 km/hr",
+      "returnTrainNumber": "04078",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04066",
+      "trainName": "Anand Vihar - Jaynagar Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 11",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "departureTime": "11:10",
+      "toStation": {
+        "code": "JYG",
+        "name": "Jaynagar"
+      },
+      "arrivalTime": "11:25",
+      "duration": "24h 15m",
+      "halts": 16,
+      "runningDays": [
+        "Sun",
+        "Wed"
+      ],
+      "classes": [
+        "3E",
+        "SL"
+      ],
+      "distance": "1238 km",
+      "speed": "51 km/hr",
+      "returnTrainNumber": "04065",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04065",
+      "trainName": "Jaynagar - Anand Vihar Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 12",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "JYG",
+        "name": "Jaynagar"
+      },
+      "departureTime": "14:00",
+      "toStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "arrivalTime": "14:15",
+      "duration": "24h 15m",
+      "halts": 16,
+      "runningDays": [
+        "Mon",
+        "Thu"
+      ],
+      "classes": [
+        "3E",
+        "SL"
+      ],
+      "distance": "1238 km",
+      "speed": "51 km/hr",
+      "returnTrainNumber": "04066",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04098",
+      "trainName": "Anand Vihar - Muzaffarpur Superfast Special",
+      "trainType": "SF",
+      "zone": "NR",
+      "dateFrom": "Oct 07",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "departureTime": "06:15",
+      "toStation": {
+        "code": "MFP",
+        "name": "Muzaffarpur Jn"
+      },
+      "arrivalTime": "02:30",
+      "duration": "20h 15m",
+      "halts": 9,
+      "runningDays": [
+        "Wed"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1060 km",
+      "speed": "53 km/hr",
+      "returnTrainNumber": "04097",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04097",
+      "trainName": "Muzaffarpur - Anand Vihar Superfast Special",
+      "trainType": "SF",
+      "zone": "NR",
+      "dateFrom": "Oct 08",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "MFP",
+        "name": "Muzaffarpur Jn"
+      },
+      "departureTime": "05:00",
+      "toStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar Terminal"
+      },
+      "arrivalTime": "01:15",
+      "duration": "20h 15m",
+      "halts": 9,
+      "runningDays": [
+        "Thu"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1060 km",
+      "speed": "53 km/hr",
+      "returnTrainNumber": "04098",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04072",
+      "trainName": "New Delhi - Supaul Daily Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 01",
+      "dateTo": "Nov 30",
+      "fromStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "19:40",
+      "toStation": {
+        "code": "SOU",
+        "name": "Supaul"
+      },
+      "arrivalTime": "18:00",
+      "duration": "22h 20m",
+      "halts": 15,
+      "runningDays": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ],
+      "classes": [
+        "3E",
+        "SL"
+      ],
+      "distance": "1195 km",
+      "speed": "53 km/hr",
+      "returnTrainNumber": "04071",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04071",
+      "trainName": "Supaul - New Delhi Daily Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 02",
+      "dateTo": "Dec 01",
+      "fromStation": {
+        "code": "SOU",
+        "name": "Supaul"
+      },
+      "departureTime": "20:30",
+      "toStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "18:50",
+      "duration": "22h 20m",
+      "halts": 15,
+      "runningDays": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ],
+      "classes": [
+        "3E",
+        "SL"
+      ],
+      "distance": "1195 km",
+      "speed": "53 km/hr",
+      "returnTrainNumber": "04072",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04210",
+      "trainName": "Delhi - Varanasi Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 05",
+      "dateTo": "Nov 27",
+      "fromStation": {
+        "code": "DLI",
+        "name": "Old Delhi"
+      },
+      "departureTime": "18:15",
+      "toStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "arrivalTime": "07:30",
+      "duration": "13h 15m",
+      "halts": 7,
+      "runningDays": [
+        "Mon",
+        "Wed",
+        "Fri"
+      ],
+      "classes": [
+        "2A",
+        "3A",
+        "SL"
+      ],
+      "distance": "780 km",
+      "speed": "59 km/hr",
+      "returnTrainNumber": "04209",
+      "festivals": [
+        "diwali",
+        "dusshera",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "04209",
+      "trainName": "Varanasi - Delhi Festival Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 06",
+      "dateTo": "Nov 28",
+      "fromStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "departureTime": "19:30",
+      "toStation": {
+        "code": "DLI",
+        "name": "Old Delhi"
+      },
+      "arrivalTime": "08:45",
+      "duration": "13h 15m",
+      "halts": 7,
+      "runningDays": [
+        "Tue",
+        "Thu",
+        "Sat"
+      ],
+      "classes": [
+        "2A",
+        "3A",
+        "SL"
+      ],
+      "distance": "780 km",
+      "speed": "59 km/hr",
+      "returnTrainNumber": "04210",
+      "festivals": [
+        "diwali",
+        "dusshera",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "04012",
+      "trainName": "New Delhi - Darbhanga Special Fare Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 06",
+      "dateTo": "Nov 28",
+      "fromStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "19:25",
+      "toStation": {
+        "code": "DBG",
+        "name": "Darbhanga Jn"
+      },
+      "arrivalTime": "16:00",
+      "duration": "20h 35m",
+      "halts": 11,
+      "runningDays": [
+        "Mon",
+        "Thu",
+        "Sat"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1145 km",
+      "speed": "56 km/hr",
+      "returnTrainNumber": "04011",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "04011",
+      "trainName": "Darbhanga - New Delhi Special Fare Special",
+      "trainType": "Exp",
+      "zone": "NR",
+      "dateFrom": "Oct 07",
+      "dateTo": "Nov 29",
+      "fromStation": {
+        "code": "DBG",
+        "name": "Darbhanga Jn"
+      },
+      "departureTime": "18:00",
+      "toStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "14:35",
+      "duration": "20h 35m",
+      "halts": 11,
+      "runningDays": [
+        "Tue",
+        "Fri",
+        "Sun"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1145 km",
+      "speed": "56 km/hr",
+      "returnTrainNumber": "04012",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "01079",
+      "trainName": "Mumbai CSMT - Gorakhpur Daily Special",
+      "trainType": "Exp",
+      "zone": "CR",
+      "dateFrom": "Oct 01",
+      "dateTo": "Nov 30",
+      "fromStation": {
+        "code": "CSMT",
+        "name": "Mumbai CSMT"
+      },
+      "departureTime": "22:30",
+      "toStation": {
+        "code": "GKP",
+        "name": "Gorakhpur Jn"
+      },
+      "arrivalTime": "08:20",
+      "duration": "33h 50m",
+      "halts": 22,
+      "runningDays": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ],
+      "classes": [
+        "2A",
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1690 km",
+      "speed": "50 km/hr",
+      "returnTrainNumber": "01080",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "01080",
+      "trainName": "Gorakhpur - Mumbai CSMT Daily Special",
+      "trainType": "Exp",
+      "zone": "CR",
+      "dateFrom": "Oct 03",
+      "dateTo": "Dec 02",
+      "fromStation": {
+        "code": "GKP",
+        "name": "Gorakhpur Jn"
+      },
+      "departureTime": "14:30",
+      "toStation": {
+        "code": "CSMT",
+        "name": "Mumbai CSMT"
+      },
+      "arrivalTime": "00:40",
+      "duration": "34h 10m",
+      "halts": 22,
+      "runningDays": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ],
+      "classes": [
+        "2A",
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1690 km",
+      "speed": "49 km/hr",
+      "returnTrainNumber": "01079",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "dusshera",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "01103",
+      "trainName": "Mumbai LTT - Danapur Bi-Weekly Special",
+      "trainType": "Exp",
+      "zone": "CR",
+      "dateFrom": "Oct 05",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "LTT",
+        "name": "Lokmanya Tilak Terminus"
+      },
+      "departureTime": "00:15",
+      "toStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "arrivalTime": "04:30",
+      "duration": "28h 15m",
+      "halts": 15,
+      "runningDays": [
+        "Mon",
+        "Thu"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1675 km",
+      "speed": "59 km/hr",
+      "returnTrainNumber": "01104",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "01104",
+      "trainName": "Danapur - Mumbai LTT Bi-Weekly Special",
+      "trainType": "Exp",
+      "zone": "CR",
+      "dateFrom": "Oct 06",
+      "dateTo": "Nov 27",
+      "fromStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "departureTime": "06:30",
+      "toStation": {
+        "code": "LTT",
+        "name": "Lokmanya Tilak Terminus"
+      },
+      "arrivalTime": "10:45",
+      "duration": "28h 15m",
+      "halts": 15,
+      "runningDays": [
+        "Tue",
+        "Fri"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1675 km",
+      "speed": "59 km/hr",
+      "returnTrainNumber": "01103",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "01409",
+      "trainName": "Pune - Danapur Special",
+      "trainType": "Exp",
+      "zone": "CR",
+      "dateFrom": "Oct 04",
+      "dateTo": "Nov 29",
+      "fromStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "departureTime": "19:55",
+      "toStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "arrivalTime": "04:30",
+      "duration": "32h 35m",
+      "halts": 16,
+      "runningDays": [
+        "Mon",
+        "Wed",
+        "Fri",
+        "Sun"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1750 km",
+      "speed": "54 km/hr",
+      "returnTrainNumber": "01410",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "01410",
+      "trainName": "Danapur - Pune Special",
+      "trainType": "Exp",
+      "zone": "CR",
+      "dateFrom": "Oct 06",
+      "dateTo": "Dec 01",
+      "fromStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "departureTime": "06:30",
+      "toStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "arrivalTime": "15:05",
+      "duration": "32h 35m",
+      "halts": 16,
+      "runningDays": [
+        "Tue",
+        "Thu",
+        "Sat",
+        "Mon"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1750 km",
+      "speed": "54 km/hr",
+      "returnTrainNumber": "01409",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "01147",
+      "trainName": "Mumbai CSMT - Howrah AC Festival Special",
+      "trainType": "ACExp",
+      "zone": "CR",
+      "dateFrom": "Oct 07",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "CSMT",
+        "name": "Mumbai CSMT"
+      },
+      "departureTime": "11:05",
+      "toStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "15:30",
+      "duration": "28h 25m",
+      "halts": 12,
+      "runningDays": [
+        "Wed",
+        "Sun"
+      ],
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "distance": "1968 km",
+      "speed": "69 km/hr",
+      "returnTrainNumber": "01148",
+      "festivals": [
+        "diwali",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "01148",
+      "trainName": "Howrah - Mumbai CSMT AC Festival Special",
+      "trainType": "ACExp",
+      "zone": "CR",
+      "dateFrom": "Oct 08",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "17:45",
+      "toStation": {
+        "code": "CSMT",
+        "name": "Mumbai CSMT"
+      },
+      "arrivalTime": "22:15",
+      "duration": "28h 30m",
+      "halts": 12,
+      "runningDays": [
+        "Thu",
+        "Mon"
+      ],
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "distance": "1968 km",
+      "speed": "69 km/hr",
+      "returnTrainNumber": "01147",
+      "festivals": [
+        "diwali",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "09045",
+      "trainName": "Udhna - Patna Festival Special",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 09",
+      "dateTo": "Nov 27",
+      "fromStation": {
+        "code": "UDN",
+        "name": "Udhna (Surat)"
+      },
+      "departureTime": "08:35",
+      "toStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "arrivalTime": "10:30",
+      "duration": "25h 55m",
+      "halts": 14,
+      "runningDays": [
+        "Fri"
+      ],
+      "classes": [
+        "2A",
+        "3A",
+        "SL"
+      ],
+      "distance": "1595 km",
+      "speed": "61 km/hr",
+      "returnTrainNumber": "09046",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "09046",
+      "trainName": "Patna - Udhna Festival Special",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 10",
+      "dateTo": "Nov 28",
+      "fromStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "departureTime": "13:05",
+      "toStation": {
+        "code": "UDN",
+        "name": "Udhna (Surat)"
+      },
+      "arrivalTime": "15:00",
+      "duration": "25h 55m",
+      "halts": 14,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "2A",
+        "3A",
+        "SL"
+      ],
+      "distance": "1595 km",
+      "speed": "61 km/hr",
+      "returnTrainNumber": "09045",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "09033",
+      "trainName": "Udhna - Danapur Special Fare Special",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 05",
+      "dateTo": "Nov 25",
+      "fromStation": {
+        "code": "UDN",
+        "name": "Udhna (Surat)"
+      },
+      "departureTime": "20:35",
+      "toStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "arrivalTime": "22:00",
+      "duration": "25h 25m",
+      "halts": 12,
+      "runningDays": [
+        "Mon",
+        "Wed"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1585 km",
+      "speed": "62 km/hr",
+      "returnTrainNumber": "09034",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "09034",
+      "trainName": "Danapur - Udhna Special Fare Special",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 07",
+      "dateTo": "Nov 27",
+      "fromStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "departureTime": "00:30",
+      "toStation": {
+        "code": "UDN",
+        "name": "Udhna (Surat)"
+      },
+      "arrivalTime": "02:00",
+      "duration": "25h 30m",
+      "halts": 12,
+      "runningDays": [
+        "Wed",
+        "Fri"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1585 km",
+      "speed": "62 km/hr",
+      "returnTrainNumber": "09033",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "09065",
+      "trainName": "Surat - Chhapra Festive Special",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 05",
+      "dateTo": "Nov 23",
+      "fromStation": {
+        "code": "ST",
+        "name": "Surat"
+      },
+      "departureTime": "08:30",
+      "toStation": {
+        "code": "CPR",
+        "name": "Chhapra"
+      },
+      "arrivalTime": "14:30",
+      "duration": "30h 00m",
+      "halts": 15,
+      "runningDays": [
+        "Mon"
+      ],
+      "classes": [
+        "3E",
+        "SL"
+      ],
+      "distance": "1680 km",
+      "speed": "56 km/hr",
+      "returnTrainNumber": "09066",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "09066",
+      "trainName": "Chhapra - Surat Festive Special",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 06",
+      "dateTo": "Nov 24",
+      "fromStation": {
+        "code": "CPR",
+        "name": "Chhapra"
+      },
+      "departureTime": "17:00",
+      "toStation": {
+        "code": "ST",
+        "name": "Surat"
+      },
+      "arrivalTime": "23:00",
+      "duration": "30h 00m",
+      "halts": 15,
+      "runningDays": [
+        "Tue"
+      ],
+      "classes": [
+        "3E",
+        "SL"
+      ],
+      "distance": "1680 km",
+      "speed": "56 km/hr",
+      "returnTrainNumber": "09065",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "09417",
+      "trainName": "Ahmedabad - Danapur Festival Special",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 05",
+      "dateTo": "Nov 23",
+      "fromStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "departureTime": "09:10",
+      "toStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "arrivalTime": "21:00",
+      "duration": "35h 50m",
+      "halts": 18,
+      "runningDays": [
+        "Mon"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1790 km",
+      "speed": "50 km/hr",
+      "returnTrainNumber": "09418",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "09418",
+      "trainName": "Danapur - Ahmedabad Festival Special",
+      "trainType": "Exp",
+      "zone": "WR",
+      "dateFrom": "Oct 06",
+      "dateTo": "Nov 24",
+      "fromStation": {
+        "code": "DNR",
+        "name": "Danapur"
+      },
+      "departureTime": "23:50",
+      "toStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "arrivalTime": "11:20",
+      "duration": "35h 30m",
+      "halts": 18,
+      "runningDays": [
+        "Tue"
+      ],
+      "classes": [
+        "3A",
+        "3E",
+        "SL"
+      ],
+      "distance": "1790 km",
+      "speed": "50 km/hr",
+      "returnTrainNumber": "09417",
+      "festivals": [
+        "diwali",
+        "chhath"
+      ]
+    },
+    {
+      "trainNumber": "03043",
+      "trainName": "Howrah - Raxaul Festival Special",
+      "trainType": "Exp",
+      "zone": "ER",
+      "dateFrom": "Oct 10",
+      "dateTo": "Nov 21",
+      "fromStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "23:00",
+      "toStation": {
+        "code": "RXL",
+        "name": "Raxaul Jn"
+      },
+      "arrivalTime": "14:15",
+      "duration": "15h 15m",
+      "halts": 11,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "3A",
+        "SL"
+      ],
+      "distance": "700 km",
+      "speed": "46 km/hr",
+      "returnTrainNumber": "03044",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "03044",
+      "trainName": "Raxaul - Howrah Festival Special",
+      "trainType": "Exp",
+      "zone": "ER",
+      "dateFrom": "Oct 11",
+      "dateTo": "Nov 22",
+      "fromStation": {
+        "code": "RXL",
+        "name": "Raxaul Jn"
+      },
+      "departureTime": "16:55",
+      "toStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "08:30",
+      "duration": "15h 35m",
+      "halts": 11,
+      "runningDays": [
+        "Sun"
+      ],
+      "classes": [
+        "3A",
+        "SL"
+      ],
+      "distance": "700 km",
+      "speed": "45 km/hr",
+      "returnTrainNumber": "03043",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "03187",
+      "trainName": "Sealdah - Jaynagar Puja Special",
+      "trainType": "Exp",
+      "zone": "ER",
+      "dateFrom": "Oct 09",
+      "dateTo": "Nov 20",
+      "fromStation": {
+        "code": "SDAH",
+        "name": "Sealdah"
+      },
+      "departureTime": "23:55",
+      "toStation": {
+        "code": "JYG",
+        "name": "Jaynagar"
+      },
+      "arrivalTime": "14:25",
+      "duration": "14h 30m",
+      "halts": 12,
+      "runningDays": [
+        "Fri"
+      ],
+      "classes": [
+        "3A",
+        "SL"
+      ],
+      "distance": "690 km",
+      "speed": "48 km/hr",
+      "returnTrainNumber": "03188",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "03188",
+      "trainName": "Jaynagar - Sealdah Puja Special",
+      "trainType": "Exp",
+      "zone": "ER",
+      "dateFrom": "Oct 10",
+      "dateTo": "Nov 21",
+      "fromStation": {
+        "code": "JYG",
+        "name": "Jaynagar"
+      },
+      "departureTime": "15:25",
+      "toStation": {
+        "code": "SDAH",
+        "name": "Sealdah"
+      },
+      "arrivalTime": "05:15",
+      "duration": "13h 50m",
+      "halts": 12,
+      "runningDays": [
+        "Sat"
+      ],
+      "classes": [
+        "3A",
+        "SL"
+      ],
+      "distance": "690 km",
+      "speed": "50 km/hr",
+      "returnTrainNumber": "03187",
+      "festivals": [
+        "diwali",
+        "chhath",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "02251",
+      "trainName": "Howrah - New Delhi AC Festival Special",
+      "trainType": "ACExp",
+      "zone": "ER",
+      "dateFrom": "Oct 04",
+      "dateTo": "Nov 26",
+      "fromStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "08:00",
+      "toStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "06:00",
+      "duration": "22h 00m",
+      "halts": 8,
+      "runningDays": [
+        "Thu",
+        "Sun"
+      ],
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "distance": "1445 km",
+      "speed": "66 km/hr",
+      "returnTrainNumber": "02252",
+      "festivals": [
+        "diwali",
+        "puja"
+      ]
+    },
+    {
+      "trainNumber": "02252",
+      "trainName": "New Delhi - Howrah AC Festival Special",
+      "trainType": "ACExp",
+      "zone": "ER",
+      "dateFrom": "Oct 05",
+      "dateTo": "Nov 27",
+      "fromStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "08:10",
+      "toStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "06:10",
+      "duration": "22h 00m",
+      "halts": 8,
+      "runningDays": [
+        "Fri",
+        "Mon"
+      ],
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "distance": "1445 km",
+      "speed": "66 km/hr",
+      "returnTrainNumber": "02251",
+      "festivals": [
+        "diwali",
+        "puja"
+      ]
+    }
+  ]
+}

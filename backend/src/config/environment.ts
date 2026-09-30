@@ -89,28 +89,6 @@ const environmentSchema = z
       });
     }
     if (
-      env.BROWSER_USE_API_KEY &&
-      (!env.BROWSER_USE_WEBHOOK_SECRET ||
-        env.BROWSER_USE_WEBHOOK_SECRET.length < 16)
-    ) {
-      context.addIssue({
-        code: 'custom',
-        path: ['BROWSER_USE_WEBHOOK_SECRET'],
-        message:
-          'BROWSER_USE_WEBHOOK_SECRET is required when Browser Use is configured',
-      });
-    }
-    if (
-      env.WHATSAPP_PROVIDER === 'wasender' &&
-      (!env.WASENDER_WEBHOOK_SECRET || env.WASENDER_WEBHOOK_SECRET.length < 16)
-    ) {
-      context.addIssue({
-        code: 'custom',
-        path: ['WASENDER_WEBHOOK_SECRET'],
-        message: 'WASENDER_WEBHOOK_SECRET is required for Wasender',
-      });
-    }
-    if (
       env.RAZORPAY_KEY_ID &&
       (!env.RAZORPAY_WEBHOOK_SECRET || env.RAZORPAY_WEBHOOK_SECRET.length < 16)
     ) {

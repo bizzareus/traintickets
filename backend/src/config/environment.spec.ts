@@ -18,15 +18,19 @@ describe('validateEnvironment', () => {
     expect(result.PORT).toBe('3009');
   });
 
-  it('requires webhook secrets for configured providers', () => {
-    expect(() =>
+  it('allows outbound providers without optional inbound webhooks', () => {
+    expect(
       validateEnvironment({
         NODE_ENV: 'production',
         DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/railchart',
         JWT_SECRET: 'a-secure-production-secret-at-least-32-characters',
         BROWSER_USE_API_KEY: 'configured',
+        WHATSAPP_PROVIDER: 'wasender',
       }),
-    ).toThrow(/BROWSER_USE_WEBHOOK_SECRET/);
+    ).toMatchObject({
+      BROWSER_USE_API_KEY: 'configured',
+      WHATSAPP_PROVIDER: 'wasender',
+    });
   });
 
   it('rejects partial Razorpay credentials and whitespace-only secrets', () => {

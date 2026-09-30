@@ -53,6 +53,16 @@ const nextConfig = {
         destination: "/irctc-train-food-menu/duronto-sleeper-class-food-menu-prices",
         statusCode: 308,
       },
+      {
+        source: "/trains/diwali",
+        destination: "/special-trains/diwali",
+        statusCode: 308,
+      },
+      {
+        source: "/special-trains/dussehra",
+        destination: "/special-trains/dusshera",
+        statusCode: 308,
+      },
     ];
   },
   async headers() {

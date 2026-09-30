@@ -104,6 +104,19 @@ describe('WhatsappController', () => {
   });
 
   describe('handleIncoming', () => {
+    it('rejects inbound requests when no webhook secret is configured', () => {
+      delete process.env.WASENDER_WEBHOOK_SECRET;
+      const body = { test: true };
+      const req = {
+        headers: {},
+        rawBody: Buffer.from(JSON.stringify(body)),
+      } as unknown as Request;
+
+      expect(() => controller.handleIncoming(req, body)).toThrow(
+        UnauthorizedException,
+      );
+    });
+
     it('throws UnauthorizedException when signature length is invalid', () => {
       process.env.WASENDER_WEBHOOK_SECRET = 'wh-secret';
       const body = { test: true };
