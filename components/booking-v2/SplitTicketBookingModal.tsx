@@ -108,6 +108,9 @@ export function SplitTicketBookingModal({
   const pollIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const bookingConfirmed = bookingStatus?.bookingStatus === "CONFIRMED";
   const bookingFailed = bookingStatus?.bookingStatus === "FAILED";
+  const manualBooking =
+    (bookingStatus?.bookingMode ?? paymentData?.bookingMode) === "MANUAL";
+  const manualPending = bookingStatus?.bookingStatus === "MANUAL_PENDING";
   const recordedPnrs = [bookingStatus?.pnrLeg1, bookingStatus?.pnrLeg2];
 
   // Reset form when modal opens
@@ -369,7 +372,7 @@ export function SplitTicketBookingModal({
             }`}
           >
             <span className="sm:hidden">3. Booking</span>
-            <span className="hidden sm:inline">3. Automated Booking</span>
+            <span className="hidden sm:inline">3. Reservation</span>
           </div>
         </div>
 
@@ -808,6 +811,13 @@ export function SplitTicketBookingModal({
                 )}
               </div>
 
+              {manualBooking && (
+                <p className="text-xs text-slate-600">
+                  After payment, your journey and passenger details will be sent
+                  to our booking team for manual reservation.
+                </p>
+              )}
+
               {/* Polling Indicator */}
               <div className="flex items-center justify-center gap-2 text-xs text-slate-500">
                 <Loader2 className="h-3.5 w-3.5 animate-spin text-blue-600" />
@@ -822,7 +832,7 @@ export function SplitTicketBookingModal({
                   disabled={isSubmitting}
                   className="rounded-lg bg-amber-100 px-3 py-1.5 text-[11px] font-bold text-amber-900 hover:bg-amber-200 transition"
                 >
-                  ⚡ Simulate Payment & Trigger Automation (Dev Mode)
+                  ⚡ Simulate Payment & Start Fulfillment (Dev Mode)
                 </button>
               </div>
             </div>
@@ -835,7 +845,7 @@ export function SplitTicketBookingModal({
                 <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                   {bookingFailed ? (
                     <AlertCircle className="h-7 w-7 text-amber-600" />
-                  ) : bookingConfirmed ? (
+                  ) : bookingConfirmed || manualPending ? (
                     <CheckCircle2 className="h-7 w-7" />
                   ) : (
                     <Loader2 className="h-7 w-7 animate-spin" />
@@ -846,14 +856,18 @@ export function SplitTicketBookingModal({
                     ? "Your tickets are confirmed"
                     : bookingFailed
                       ? "Booking needs attention"
-                      : "We are booking it for you!"}
+                      : manualBooking
+                        ? "Your manual booking request is received"
+                        : "We are booking it for you!"}
                 </h4>
                 <p className="text-xs text-slate-600 max-w-md mx-auto mt-1">
                   {bookingConfirmed
                     ? "Both reservations have been verified. Your PNRs are below."
                     : bookingFailed
-                      ? "The automated reservation stopped. Review the details and any recorded PNRs below."
-                      : "Payment confirmed. Our AI booking agent is reserving your split tickets."}
+                      ? "The booking process stopped. Review the details and any recorded PNRs below."
+                      : manualBooking
+                        ? "Payment confirmed. Your details are queued for our booking team. Your tickets are not confirmed yet."
+                        : "Payment confirmed. Our AI booking agent is reserving your split tickets."}
                 </p>
                 <span className="inline-block mt-2 rounded-md bg-slate-100 px-2.5 py-1 text-xs font-mono font-bold text-slate-800">
                   Booking Ref: {paymentData?.bookingRef}
@@ -877,14 +891,18 @@ export function SplitTicketBookingModal({
                       "✓"
                     ) : bookingFailed ? (
                       <AlertCircle className="h-3.5 w-3.5" />
+                    ) : manualPending ? (
+                      "2"
                     ) : (
                       <Loader2 className="h-3.5 w-3.5 animate-spin" />
                     )}
                   </div>
                   <span className="text-xs font-bold text-slate-800">
                     {bookingFailed
-                      ? "AI Reservation Stopped"
-                      : "AI Reservation on IRCTC / TripMgt"}
+                      ? "Reservation Stopped"
+                      : manualBooking
+                        ? "Awaiting Manual Reservation"
+                        : "AI Reservation on IRCTC / TripMgt"}
                   </span>
                 </div>
 
@@ -918,14 +936,16 @@ export function SplitTicketBookingModal({
               )}
 
               {/* Error display if failed */}
-              {bookingStatus?.bookingStatus === "FAILED" && (
+              {(bookingFailed || (manualPending && bookingStatus?.bookingError)) && bookingStatus && (
                 <div className="rounded-xl border border-red-300 bg-red-50 p-4 space-y-1 text-xs text-red-800">
                   <div className="font-bold text-red-900">
-                    Booking Encountered an Issue
+                    {manualPending
+                      ? "Booking Request Saved — Delivery Needs Attention"
+                      : "Booking Encountered an Issue"}
                   </div>
                   <p>
                     {bookingStatus.bookingError ||
-                      "We could not complete the reservation automatically. Contact support with your booking reference."}
+                      "We could not complete the reservation. Contact support with your booking reference."}
                   </p>
                 </div>
               )}

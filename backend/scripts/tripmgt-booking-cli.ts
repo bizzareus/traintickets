@@ -1,5 +1,5 @@
 /**
- * Inspect an existing booking, or trigger the same persisted AI flow in development.
+ * Inspect an existing booking, or trigger its saved AI/manual flow in development.
  * npx tsx scripts/tripmgt-booking-cli.ts BOOKING_REF [--simulate-payment]
  * The backend must be running. API_URL defaults to http://localhost:3009.
  */

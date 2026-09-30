@@ -1,3 +1,9 @@
+import type {
+  SplitBookingMode,
+  SplitBookingPaymentStatus,
+  SplitBookingFulfillmentStatus,
+} from '@prisma/client';
+
 export interface SplitBookingPassenger {
   name: string;
   age: number;
@@ -51,8 +57,9 @@ export interface SplitBookingStatusResponse {
   totalFare: number;
   contactMobile: string;
   contactEmail: string;
-  paymentStatus: 'PENDING' | 'PAID' | 'FAILED';
-  bookingStatus: 'IDLE' | 'QUEUED' | 'IN_PROGRESS' | 'CONFIRMED' | 'FAILED';
+  bookingMode: SplitBookingMode;
+  paymentStatus: SplitBookingPaymentStatus;
+  bookingStatus: SplitBookingFulfillmentStatus;
   pnrLeg1?: string | null;
   pnrLeg2?: string | null;
   bookingError?: string | null;

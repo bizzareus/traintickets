@@ -5,10 +5,13 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import type { Prisma } from '@prisma/client';
+import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../prisma/prisma.service';
 import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
 import { validateBookingItinerary } from './split-booking.validation';
+import { bookingDetails } from './split-booking.helpers';
+import { ManualBookingService } from './manual-booking.service';
 import type {
   CreateSplitBookingDto,
   SplitBookingStatusResponse,
@@ -22,6 +25,8 @@ export class SplitBookingService {
     private readonly prisma: PrismaService,
     private readonly razorpay: RazorpayClient,
     private readonly tripmgt: TripmgtBookingService,
+    private readonly config: ConfigService,
+    private readonly manualBooking: ManualBookingService,
   ) {}
 
   /**
@@ -80,6 +85,10 @@ export class SplitBookingService {
     const bookingRef = this.generateBookingRef();
     const cleanDate = dto.journeyDate.slice(0, 10);
     const totalFareRupees = Math.max(dto.totalFare, 1);
+    const bookingMode =
+      this.config.get<string>('SPLIT_BOOKING_MODE') === 'manual'
+        ? 'MANUAL'
+        : 'AI';
 
     const initialLogs = [
       {
@@ -93,6 +102,7 @@ export class SplitBookingService {
     const booking = await this.prisma.splitTicketBooking.create({
       data: {
         bookingRef,
+        bookingMode,
         trainNumber: dto.trainNumber.trim(),
         trainName: dto.trainName?.trim() || null,
         fromStationCode: dto.fromStationCode.trim().toUpperCase(),
@@ -167,6 +177,7 @@ export class SplitBookingService {
 
     return {
       bookingRef,
+      bookingMode,
       amount: totalFareRupees,
       orderId,
       qrImageUrl,
@@ -209,6 +220,7 @@ export class SplitBookingService {
       totalFare: booking.totalFare,
       contactMobile: booking.contactMobile,
       contactEmail: booking.contactEmail,
+      bookingMode: booking.bookingMode,
       paymentStatus: booking.paymentStatus,
       bookingStatus: booking.bookingStatus,
       pnrLeg1: booking.pnrLeg1,
@@ -250,6 +262,14 @@ export class SplitBookingService {
     }
 
     if (booking.paymentStatus === 'PAID') {
+      // A repeated callback can retry a failed manual delivery, but never an AI purchase.
+      if (
+        booking.bookingMode === 'MANUAL' &&
+        booking.bookingStatus === 'MANUAL_PENDING' &&
+        (!booking.manualEmailSentAt || !booking.manualWhatsappSentAt)
+      ) {
+        this.startFulfillment(bookingRef);
+      }
       return this.getStatus(bookingRef);
     }
 
@@ -287,40 +307,54 @@ export class SplitBookingService {
 
     // Only the winning payment transition may enqueue a reservation.
     if (claimed.count === 1) {
-      void this.dispatchFulfillment(booking.bookingRef).catch(
-        (error: unknown) => {
-          this.logger.error(
-            `Could not dispatch booking ${booking.bookingRef}`,
-            error instanceof Error ? error.stack : undefined,
-          );
-        },
-      );
+      this.startFulfillment(bookingRef);
     }
 
     return this.getStatus(bookingRef);
   }
 
   /**
-   * Background runner for OpenAI computer-use reservations.
+   * Dispatches the fulfillment mode selected when the booking was created.
    */
+  private startFulfillment(bookingRef: string): void {
+    void this.dispatchFulfillment(bookingRef).catch((error: unknown) => {
+      this.logger.error(
+        `Could not dispatch booking ${bookingRef}`,
+        error instanceof Error ? error.stack : undefined,
+      );
+    });
+  }
+
   private async dispatchFulfillment(bookingRef: string): Promise<void> {
-    const booking = await this.prisma.splitTicketBooking.findUnique({
+    let booking = await this.prisma.splitTicketBooking.findUnique({
       where: { bookingRef },
     });
     if (!booking) return;
 
+    let ownsFulfillment = false;
     try {
       const claimed = await this.prisma.splitTicketBooking.updateMany({
         where: {
           id: booking.id,
           paymentStatus: 'PAID',
-          bookingStatus: 'QUEUED',
+          bookingStatus:
+            booking.bookingMode === 'MANUAL'
+              ? { in: ['QUEUED', 'MANUAL_PENDING'] }
+              : 'QUEUED',
           pnrLeg1: null,
           pnrLeg2: null,
         },
         data: { bookingStatus: 'IN_PROGRESS' },
       });
       if (claimed.count !== 1) return;
+      ownsFulfillment = true;
+      // A previous manual handoff may have finished between reading and claiming.
+      // Refresh delivery receipts under our claim before deciding what to resend.
+      booking = await this.prisma.splitTicketBooking.findUnique({
+        where: { bookingRef },
+      });
+      if (!booking) return;
+      const bookingId = booking.id;
 
       const logs = Array.isArray(booking.automationLogs)
         ? ([
@@ -328,47 +362,43 @@ export class SplitBookingService {
           ] as unknown as SplitBookingStatusResponse['logs'])
         : [];
 
-      const passengersData =
-        (booking.passengers as Record<string, unknown>) || {};
-      const adults =
-        (passengersData.adults as CreateSplitBookingDto['passengers']) || [];
-      const children =
-        (passengersData.children as CreateSplitBookingDto['childPassengers']) ||
-        [];
-      const legs =
-        (booking.legsPayload as unknown as CreateSplitBookingDto['legs']) || [];
+      const onLog = async (
+        logEntry: SplitBookingStatusResponse['logs'][number],
+      ) => {
+        logs.push(logEntry);
+        await this.prisma.splitTicketBooking.update({
+          where: { id: bookingId },
+          data: { automationLogs: logs as unknown as Prisma.InputJsonValue },
+        });
+      };
+
+      if (booking.bookingMode === 'MANUAL') {
+        const delivery = await this.manualBooking.notify(booking);
+        await onLog({
+          timestamp: new Date().toISOString(),
+          step: 'MANUAL_HANDOFF',
+          message: `Manual booking requested. Email: ${delivery.emailSent ? 'sent' : 'pending'}; WhatsApp: ${delivery.whatsappSent ? 'sent' : 'pending'}. Awaiting reservation by the booking team.`,
+        });
+        await this.prisma.splitTicketBooking.update({
+          where: { id: booking.id },
+          data: {
+            bookingStatus: 'MANUAL_PENDING',
+            bookingError:
+              delivery.emailSent && delivery.whatsappSent
+                ? null
+                : 'Your booking request is saved, but a notification could not be delivered. Contact support with your booking reference.',
+          },
+        });
+        return;
+      }
 
       const result = await this.tripmgt.executeBooking(
+        bookingDetails(booking),
         {
-          bookingRef: booking.bookingRef,
-          trainNumber: booking.trainNumber,
-          trainName: booking.trainName ?? undefined,
-          fromStationCode: booking.fromStationCode,
-          toStationCode: booking.toStationCode,
-          journeyDate: booking.journeyDate.toISOString().slice(0, 10),
-          travelClass: booking.travelClass,
-          quota: booking.quota,
-          totalFare: booking.totalFare,
-          legs,
-          passengers: adults,
-          childPassengers: children,
-          autoUpgrade: booking.autoUpgrade,
-          contactMobile: booking.contactMobile,
-          contactEmail: booking.contactEmail,
-        },
-        {
-          onLog: async (logEntry) => {
-            logs.push(logEntry);
-            await this.prisma.splitTicketBooking.update({
-              where: { id: booking.id },
-              data: {
-                automationLogs: logs as unknown as Prisma.InputJsonValue,
-              },
-            });
-          },
+          onLog,
           onPnr: async (legIndex, pnr) => {
             await this.prisma.splitTicketBooking.update({
-              where: { id: booking.id },
+              where: { id: bookingId },
               data: legIndex === 0 ? { pnrLeg1: pnr } : { pnrLeg2: pnr },
             });
           },
@@ -392,6 +422,7 @@ export class SplitBookingService {
         `Error during fulfillment of ${bookingRef}: ${msg}`,
         err instanceof Error ? err.stack : undefined,
       );
+      if (!ownsFulfillment || !booking) return;
       await this.prisma.splitTicketBooking
         .update({
           where: { id: booking.id },

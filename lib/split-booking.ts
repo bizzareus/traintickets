@@ -44,6 +44,7 @@ export interface CreateSplitBookingPayload {
 
 export interface SplitBookingPaymentResponse {
   bookingRef: string;
+  bookingMode: "AI" | "MANUAL";
   amount: number;
   orderId: string;
   qrImageUrl: string;
@@ -63,8 +64,15 @@ export interface SplitBookingStatus {
   totalFare: number;
   contactMobile: string;
   contactEmail: string;
+  bookingMode: "AI" | "MANUAL";
   paymentStatus: "PENDING" | "PAID" | "FAILED";
-  bookingStatus: "IDLE" | "QUEUED" | "IN_PROGRESS" | "CONFIRMED" | "FAILED";
+  bookingStatus:
+    | "IDLE"
+    | "QUEUED"
+    | "IN_PROGRESS"
+    | "MANUAL_PENDING"
+    | "CONFIRMED"
+    | "FAILED";
   pnrLeg1?: string | null;
   pnrLeg2?: string | null;
   bookingError?: string | null;

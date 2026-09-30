@@ -1,6 +1,16 @@
 import { validateEnvironment } from './environment';
 
 describe('validateEnvironment', () => {
+  it('defaults to AI and accepts manual fulfillment', () => {
+    expect(validateEnvironment({}).SPLIT_BOOKING_MODE).toBe('ai');
+    expect(
+      validateEnvironment({ SPLIT_BOOKING_MODE: 'manual' }).SPLIT_BOOKING_MODE,
+    ).toBe('manual');
+    expect(() => validateEnvironment({ SPLIT_BOOKING_MODE: 'manul' })).toThrow(
+      'SPLIT_BOOKING_MODE',
+    );
+  });
+
   it('rejects missing production database and JWT configuration', () => {
     expect(() => validateEnvironment({ NODE_ENV: 'production' })).toThrow(
       /DATABASE_URL.*JWT_SECRET/s,

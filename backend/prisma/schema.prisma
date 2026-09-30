@@ -564,11 +564,17 @@ enum SplitBookingFulfillmentStatus {
   IDLE
   QUEUED
   IN_PROGRESS
+  MANUAL_PENDING
   CONFIRMED
   FAILED
 }
 
-/// Split-ticket booking requests fulfilled via TripMgt / IRCTC PSP automation.
+enum SplitBookingMode {
+  AI
+  MANUAL
+}
+
+/// Split-ticket booking requests fulfilled via AI automation or an operator.
 model SplitTicketBooking {
   id                String                        @id @default(cuid())
   bookingRef        String                        @unique @map("booking_ref")
@@ -594,7 +600,10 @@ model SplitTicketBooking {
   paidAt            DateTime?                     @map("paid_at")
 
   // Automation Fulfillment
+  bookingMode       SplitBookingMode              @default(AI) @map("booking_mode")
   bookingStatus     SplitBookingFulfillmentStatus @default(IDLE) @map("booking_status")
+  manualEmailSentAt DateTime?                     @map("manual_email_sent_at")
+  manualWhatsappSentAt DateTime?                  @map("manual_whatsapp_sent_at")
   automationLogs    Json?                         @map("automation_logs")
   pnrLeg1           String?                       @map("pnr_leg1")
   pnrLeg2           String?                       @map("pnr_leg2")

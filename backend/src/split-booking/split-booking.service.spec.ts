@@ -4,9 +4,13 @@ import { SplitBookingService } from './split-booking.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
+import { ConfigService } from '@nestjs/config';
+import { ManualBookingService } from './manual-booking.service';
 
 describe('SplitBookingService', () => {
   let service: SplitBookingService;
+  let config: ConfigService;
+  let manualBooking: { notify: jest.Mock };
   let prisma: {
     splitTicketBooking: {
       create: jest.Mock;
@@ -26,6 +30,12 @@ describe('SplitBookingService', () => {
   };
 
   beforeEach(async () => {
+    config = new ConfigService({ SPLIT_BOOKING_MODE: 'ai' });
+    manualBooking = {
+      notify: jest
+        .fn()
+        .mockResolvedValue({ emailSent: true, whatsappSent: true }),
+    };
     prisma = {
       splitTicketBooking: {
         create: jest.fn(),
@@ -52,6 +62,8 @@ describe('SplitBookingService', () => {
         { provide: PrismaService, useValue: prisma },
         { provide: RazorpayClient, useValue: razorpay },
         { provide: TripmgtBookingService, useValue: tripmgt },
+        { provide: ConfigService, useValue: config },
+        { provide: ManualBookingService, useValue: manualBooking },
       ],
     }).compile();
 
@@ -75,55 +87,67 @@ describe('SplitBookingService', () => {
     ).rejects.toThrow(BadRequestException);
   });
 
-  it('creates booking record with PENDING status and returns payment payload', async () => {
-    prisma.splitTicketBooking.create.mockResolvedValue({
-      id: 'test-booking-id',
-      bookingRef: 'LB-SB-TEST',
-      totalFare: 810,
-    });
+  it.each(['ai', 'manual'])(
+    'persists %s mode when creating the booking',
+    async (mode) => {
+      config.set('SPLIT_BOOKING_MODE', mode);
+      prisma.splitTicketBooking.create.mockResolvedValue({
+        id: 'test-booking-id',
+        bookingRef: 'LB-SB-TEST',
+        totalFare: 810,
+      });
 
-    const result = await service.createBooking({
-      trainNumber: '12216',
-      trainName: 'DEE GARIBRATH',
-      fromStationCode: 'AII',
-      toStationCode: 'GGN',
-      journeyDate: '2026-09-20',
-      travelClass: '3A',
-      totalFare: 810,
-      legs: [
-        {
-          from: 'AII',
-          to: 'JP',
-          travelClass: '3A',
-          fare: 340,
-          boardingDate: '2026-09-20',
-        },
-        {
-          from: 'JP',
-          to: 'GGN',
-          travelClass: '3A',
-          fare: 470,
-          boardingDate: '2026-09-20',
-        },
-      ],
-      passengers: [
-        {
-          name: 'Rahul Sharma',
-          age: 32,
-          gender: 'Male',
-          berthPreference: 'Lower',
-        },
-      ],
-      contactMobile: '9876543210',
-      contactEmail: 'rahul@example.com',
-      autoUpgrade: true,
-    });
+      const result = await service.createBooking({
+        trainNumber: '12216',
+        trainName: 'DEE GARIBRATH',
+        fromStationCode: 'AII',
+        toStationCode: 'GGN',
+        journeyDate: '2026-09-20',
+        travelClass: '3A',
+        totalFare: 810,
+        legs: [
+          {
+            from: 'AII',
+            to: 'JP',
+            travelClass: '3A',
+            fare: 340,
+            boardingDate: '2026-09-20',
+          },
+          {
+            from: 'JP',
+            to: 'GGN',
+            travelClass: '3A',
+            fare: 470,
+            boardingDate: '2026-09-20',
+          },
+        ],
+        passengers: [
+          {
+            name: 'Rahul Sharma',
+            age: 32,
+            gender: 'Male',
+            berthPreference: 'Lower',
+          },
+        ],
+        contactMobile: '9876543210',
+        contactEmail: 'rahul@example.com',
+        autoUpgrade: true,
+      });
 
-    expect(result.amount).toBe(810);
-    expect(result.bookingRef).toBeDefined();
-    expect(result.upiIntent).toContain('upi://pay');
-    expect(prisma.splitTicketBooking.create).toHaveBeenCalled();
-  });
+      expect(result.amount).toBe(810);
+      expect(result.bookingRef).toBeDefined();
+      expect(result.upiIntent).toContain('upi://pay');
+      expect(result.bookingMode).toBe(mode.toUpperCase());
+      const [created] = prisma.splitTicketBooking.create.mock.calls[0] as [
+        { data: { bookingMode: string; paymentStatus: string } },
+      ];
+      expect(created.data).toMatchObject({
+        bookingMode: mode.toUpperCase(),
+        paymentStatus: 'PENDING',
+      });
+      expect(manualBooking.notify).not.toHaveBeenCalled();
+    },
+  );
 
   it('retrieves booking status by bookingRef', async () => {
     prisma.splitTicketBooking.findUnique.mockResolvedValue({
@@ -165,7 +189,7 @@ describe('SplitBookingService', () => {
     );
   });
 
-  describe('paid AI fulfillment', () => {
+  describe('paid fulfillment', () => {
     const flush = () => new Promise<void>((resolve) => setImmediate(resolve));
     const booking = {
       id: 'booking1',
@@ -182,6 +206,7 @@ describe('SplitBookingService', () => {
       contactEmail: 'test@example.com',
       paymentStatus: 'PENDING',
       bookingStatus: 'IDLE',
+      bookingMode: 'AI',
       pnrLeg1: null,
       pnrLeg2: null,
       passengers: {
@@ -214,6 +239,7 @@ describe('SplitBookingService', () => {
     };
 
     it('dispatches only once for concurrent payment confirmations', async () => {
+      config.set('SPLIT_BOOKING_MODE', 'manual'); // Existing AI requests keep their saved mode.
       prisma.splitTicketBooking.findUnique.mockResolvedValue(booking);
       let paymentClaimed = false;
       prisma.splitTicketBooking.updateMany.mockImplementation(
@@ -235,6 +261,7 @@ describe('SplitBookingService', () => {
       ]);
       await flush();
       expect(tripmgt.executeBooking).toHaveBeenCalledTimes(1);
+      expect(manualBooking.notify).not.toHaveBeenCalled();
       const [params, callbacks] = tripmgt.executeBooking.mock
         .calls[0] as Parameters<TripmgtBookingService['executeBooking']>;
       expect(params).toMatchObject({
@@ -319,6 +346,87 @@ describe('SplitBookingService', () => {
         }),
       ).rejects.toThrow('does not match');
       expect(prisma.splitTicketBooking.updateMany).not.toHaveBeenCalled();
+    });
+
+    it('hands a manual booking to the owner without starting AI or confirming a ticket', async () => {
+      const state = { ...structuredClone(booking), bookingMode: 'MANUAL' };
+      prisma.splitTicketBooking.findUnique.mockImplementation(() => state);
+      prisma.splitTicketBooking.updateMany.mockImplementation(
+        ({ data }: { data: object }) => {
+          Object.assign(state, data);
+          return { count: 1 };
+        },
+      );
+      await service.confirmPayment(booking.bookingRef, 'pay-manual');
+      await flush();
+      expect(manualBooking.notify).toHaveBeenCalledWith(state);
+      expect(tripmgt.executeBooking).not.toHaveBeenCalled();
+      expect(prisma.splitTicketBooking.update).toHaveBeenLastCalledWith({
+        where: { id: booking.id },
+        data: { bookingStatus: 'MANUAL_PENDING', bookingError: null },
+      });
+    });
+
+    it('keeps a partially delivered manual request pending with an explicit error', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        ...booking,
+        bookingMode: 'MANUAL',
+      });
+      prisma.splitTicketBooking.updateMany.mockResolvedValue({ count: 1 });
+      manualBooking.notify.mockResolvedValue({
+        emailSent: false,
+        whatsappSent: true,
+      });
+      await service.confirmPayment(booking.bookingRef);
+      await flush();
+      const [update] = prisma.splitTicketBooking.update.mock.calls.at(-1) as [
+        { data: { bookingStatus: string; bookingError: string } },
+      ];
+      expect(update.data.bookingStatus).toBe('MANUAL_PENDING');
+      expect(update.data.bookingError).toContain(
+        'notification could not be delivered',
+      );
+      expect(tripmgt.executeBooking).not.toHaveBeenCalled();
+    });
+
+    it('does not resend a successfully handed-off manual request on duplicate payment callbacks', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        ...booking,
+        bookingMode: 'MANUAL',
+        paymentStatus: 'PAID',
+        bookingStatus: 'MANUAL_PENDING',
+        manualEmailSentAt: new Date(),
+        manualWhatsappSentAt: new Date(),
+      });
+      await service.confirmPayment(booking.bookingRef);
+      await flush();
+      expect(manualBooking.notify).not.toHaveBeenCalled();
+      expect(prisma.splitTicketBooking.updateMany).not.toHaveBeenCalled();
+    });
+
+    it('refreshes manual delivery receipts after a late claim to avoid duplicate sends', async () => {
+      const stale = {
+        ...booking,
+        bookingMode: 'MANUAL',
+        paymentStatus: 'PAID',
+        bookingStatus: 'MANUAL_PENDING',
+        manualEmailSentAt: null,
+        manualWhatsappSentAt: null,
+      };
+      const fresh = {
+        ...stale,
+        manualEmailSentAt: new Date(),
+        manualWhatsappSentAt: new Date(),
+      };
+      prisma.splitTicketBooking.findUnique
+        .mockResolvedValue(fresh)
+        .mockResolvedValueOnce(stale)
+        .mockResolvedValueOnce(stale);
+      prisma.splitTicketBooking.updateMany.mockResolvedValue({ count: 1 });
+      await service.confirmPayment(booking.bookingRef);
+      await flush();
+      expect(manualBooking.notify).toHaveBeenCalledWith(fresh);
+      expect(tripmgt.executeBooking).not.toHaveBeenCalled();
     });
   });
 });
