@@ -1,0 +1,1232 @@
+{
+  "version": 1,
+  "count": 49,
+  "updatedAt": "2026-09-30",
+  "trains": [
+    {
+      "trainNumber": "12113",
+      "trainName": "Ngp Garibrath",
+      "originStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "departureTime": "17:35",
+      "destinationStation": {
+        "code": "NGP",
+        "name": "Nagpur"
+      },
+      "arrivalTime": "09:20",
+      "duration": "15h 45m",
+      "distance": "884 km",
+      "halts": 12,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12113-ngp-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12113-ngp-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12113"
+    },
+    {
+      "trainNumber": "12114",
+      "trainName": "Pune Garibrath",
+      "originStation": {
+        "code": "NGP",
+        "name": "Nagpur"
+      },
+      "departureTime": "18:00",
+      "destinationStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "arrivalTime": "09:30",
+      "duration": "15h 30m",
+      "distance": "884 km",
+      "halts": 12,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12114-pune-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12114-pune-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12114"
+    },
+    {
+      "trainNumber": "12187",
+      "trainName": "Garibrath Exp",
+      "originStation": {
+        "code": "JBP",
+        "name": "Jabalpur"
+      },
+      "departureTime": "19:50",
+      "destinationStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "arrivalTime": "12:20",
+      "duration": "16h 30m",
+      "distance": "997 km",
+      "halts": 14,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12187-garibrath-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12187-garibrath-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12187"
+    },
+    {
+      "trainNumber": "12188",
+      "trainName": "Jbp Garib Rath",
+      "originStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "departureTime": "13:30",
+      "destinationStation": {
+        "code": "JBP",
+        "name": "Jabalpur"
+      },
+      "arrivalTime": "05:05",
+      "duration": "15h 35m",
+      "distance": "997 km",
+      "halts": 14,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12188-jbp-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12188-jbp-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12188"
+    },
+    {
+      "trainNumber": "12201",
+      "trainName": "Tvcn Garibrath",
+      "originStation": {
+        "code": "LTT",
+        "name": "Lokmanyatilak T"
+      },
+      "departureTime": "16:45",
+      "destinationStation": {
+        "code": "TVCN",
+        "name": "TRIVANDRUMNORTH"
+      },
+      "arrivalTime": "22:45",
+      "duration": "30h 00m",
+      "distance": "1809 km",
+      "halts": 22,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12201-tvcn-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12201-tvcn-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12201"
+    },
+    {
+      "trainNumber": "12202",
+      "trainName": "Ltt Garib Rath",
+      "originStation": {
+        "code": "TVCN",
+        "name": "TRIVANDRUMNORTH"
+      },
+      "departureTime": "07:45",
+      "destinationStation": {
+        "code": "LTT",
+        "name": "Lokmanyatilak T"
+      },
+      "arrivalTime": "14:40",
+      "duration": "30h 55m",
+      "distance": "1808 km",
+      "halts": 22,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12202-ltt-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12202-ltt-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12202"
+    },
+    {
+      "trainNumber": "12203",
+      "trainName": "Garib Rath Exp",
+      "originStation": {
+        "code": "SHC",
+        "name": "Saharsa Jn"
+      },
+      "departureTime": "14:30",
+      "destinationStation": {
+        "code": "ASR",
+        "name": "Amritsar Jn"
+      },
+      "arrivalTime": "22:05",
+      "duration": "31h 35m",
+      "distance": "1716 km",
+      "halts": 19,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12203-garib-rath-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12203-garib-rath-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12203"
+    },
+    {
+      "trainNumber": "12204",
+      "trainName": "Shc Garib Rath",
+      "originStation": {
+        "code": "ASR",
+        "name": "Amritsar Jn"
+      },
+      "departureTime": "04:00",
+      "destinationStation": {
+        "code": "SHC",
+        "name": "Saharsa Jn"
+      },
+      "arrivalTime": "11:20",
+      "duration": "31h 20m",
+      "distance": "1716 km",
+      "halts": 23,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12204-shc-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12204-shc-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12204"
+    },
+    {
+      "trainNumber": "12207",
+      "trainName": "Jammu Garibrath",
+      "originStation": {
+        "code": "KGM",
+        "name": "Kathgodam"
+      },
+      "departureTime": "18:15",
+      "destinationStation": {
+        "code": "JAT",
+        "name": "Jammu Tawi"
+      },
+      "arrivalTime": "09:15",
+      "duration": "15h 00m",
+      "distance": "769 km",
+      "halts": 13,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12207-jammu-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12207-jammu-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12207"
+    },
+    {
+      "trainNumber": "12208",
+      "trainName": "Kgm Garib Rath",
+      "originStation": {
+        "code": "JAT",
+        "name": "Jammu Tawi"
+      },
+      "departureTime": "23:20",
+      "destinationStation": {
+        "code": "KGM",
+        "name": "Kathgodam"
+      },
+      "arrivalTime": "13:40",
+      "duration": "14h 20m",
+      "distance": "769 km",
+      "halts": 13,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12208-kgm-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12208-kgm-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12208"
+    },
+    {
+      "trainNumber": "12209",
+      "trainName": "Kgm Garibrath",
+      "originStation": {
+        "code": "CNB",
+        "name": "Kanpur Central"
+      },
+      "departureTime": "06:05",
+      "destinationStation": {
+        "code": "KGM",
+        "name": "Kathgodam"
+      },
+      "arrivalTime": "15:50",
+      "duration": "9h 45m",
+      "distance": "462 km",
+      "halts": 8,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12209-kgm-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12209-kgm-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12209"
+    },
+    {
+      "trainNumber": "12210",
+      "trainName": "Cnb Garibrath",
+      "originStation": {
+        "code": "KGM",
+        "name": "Kathgodam"
+      },
+      "departureTime": "18:15",
+      "destinationStation": {
+        "code": "CNB",
+        "name": "Kanpur Central"
+      },
+      "arrivalTime": "04:35",
+      "duration": "10h 20m",
+      "distance": "462 km",
+      "halts": 8,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12210-cnb-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12210-cnb-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12210"
+    },
+    {
+      "trainNumber": "12211",
+      "trainName": "Anvt Garib Rath",
+      "originStation": {
+        "code": "MFP",
+        "name": "Muzaffarpur Jn"
+      },
+      "departureTime": "15:15",
+      "destinationStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "arrivalTime": "12:25",
+      "duration": "21h 10m",
+      "distance": "1060 km",
+      "halts": 13,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12211-anvt-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12211-anvt-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12211"
+    },
+    {
+      "trainNumber": "12212",
+      "trainName": "Mfp Garib Rath",
+      "originStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "departureTime": "20:55",
+      "destinationStation": {
+        "code": "MFP",
+        "name": "Muzaffarpur Jn"
+      },
+      "arrivalTime": "18:15",
+      "duration": "21h 20m",
+      "distance": "1060 km",
+      "halts": 13,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12212-mfp-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12212-mfp-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12212"
+    },
+    {
+      "trainNumber": "12215",
+      "trainName": "Bdts Garib Rath",
+      "originStation": {
+        "code": "DEE",
+        "name": "Delhi S Rohilla"
+      },
+      "departureTime": "08:55",
+      "destinationStation": {
+        "code": "BDTS",
+        "name": "Bandra Terminus"
+      },
+      "arrivalTime": "07:35",
+      "duration": "22h 40m",
+      "distance": "1433 km",
+      "halts": 22,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12215-bdts-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12215-bdts-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12215"
+    },
+    {
+      "trainNumber": "12216",
+      "trainName": "Dee Garibrath",
+      "originStation": {
+        "code": "BDTS",
+        "name": "Bandra Terminus"
+      },
+      "departureTime": "12:00",
+      "destinationStation": {
+        "code": "DEE",
+        "name": "Delhi S Rohilla"
+      },
+      "arrivalTime": "11:00",
+      "duration": "23h 00m",
+      "distance": "1433 km",
+      "halts": 22,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12216-dee-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12216-dee-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12216"
+    },
+    {
+      "trainNumber": "12359",
+      "trainName": "Pnbe Garib Rath",
+      "originStation": {
+        "code": "KOAA",
+        "name": "Kolkata Chitpur"
+      },
+      "departureTime": "20:05",
+      "destinationStation": {
+        "code": "ARA",
+        "name": "Ara Jn"
+      },
+      "arrivalTime": "07:45",
+      "duration": "11h 40m",
+      "distance": "583 km",
+      "halts": 13,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12359-pnbe-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12359-pnbe-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12359"
+    },
+    {
+      "trainNumber": "12360",
+      "trainName": "Kol Garib Rath",
+      "originStation": {
+        "code": "ARA",
+        "name": "Ara Jn"
+      },
+      "departureTime": "18:30",
+      "destinationStation": {
+        "code": "KOAA",
+        "name": "Kolkata Chitpur"
+      },
+      "arrivalTime": "05:30",
+      "duration": "11h 00m",
+      "distance": "583 km",
+      "halts": 13,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12360-kol-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12360-kol-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12360"
+    },
+    {
+      "trainNumber": "12435",
+      "trainName": "Garib Rath Exp",
+      "originStation": {
+        "code": "JYG",
+        "name": "Jaynagar"
+      },
+      "departureTime": "12:10",
+      "destinationStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "arrivalTime": "09:00",
+      "duration": "20h 50m",
+      "distance": "1252 km",
+      "halts": 20,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12435-garib-rath-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12435-garib-rath-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12435"
+    },
+    {
+      "trainNumber": "12436",
+      "trainName": "Jyg Garib Rath",
+      "originStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "departureTime": "17:20",
+      "destinationStation": {
+        "code": "JYG",
+        "name": "Jaynagar"
+      },
+      "arrivalTime": "13:50",
+      "duration": "20h 30m",
+      "distance": "1254 km",
+      "halts": 20,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12436-jyg-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12436-jyg-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12436"
+    },
+    {
+      "trainNumber": "12501",
+      "trainName": "Agtl Garib Rath",
+      "originStation": {
+        "code": "KOAA",
+        "name": "Kolkata Chitpur"
+      },
+      "departureTime": "21:45",
+      "destinationStation": {
+        "code": "AGTL",
+        "name": "AGARTALA"
+      },
+      "arrivalTime": "06:55",
+      "duration": "33h 10m",
+      "distance": "1588 km",
+      "halts": 20,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12501-agtl-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12501-agtl-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12501"
+    },
+    {
+      "trainNumber": "12502",
+      "trainName": "Koaa Garib Rath",
+      "originStation": {
+        "code": "AGTL",
+        "name": "AGARTALA"
+      },
+      "departureTime": "07:00",
+      "destinationStation": {
+        "code": "KOAA",
+        "name": "Kolkata Chitpur"
+      },
+      "arrivalTime": "14:35",
+      "duration": "31h 35m",
+      "distance": "1588 km",
+      "halts": 20,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12502-koaa-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12502-koaa-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12502"
+    },
+    {
+      "trainNumber": "12517",
+      "trainName": "Ghy Garib Rath",
+      "originStation": {
+        "code": "KOAA",
+        "name": "Kolkata Chitpur"
+      },
+      "departureTime": "21:45",
+      "destinationStation": {
+        "code": "GHY",
+        "name": "Guwahati"
+      },
+      "arrivalTime": "15:55",
+      "duration": "18h 10m",
+      "distance": "1027 km",
+      "halts": 14,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12517-ghy-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12517-ghy-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12517"
+    },
+    {
+      "trainNumber": "12518",
+      "trainName": "Koaa Garib Rath",
+      "originStation": {
+        "code": "GHY",
+        "name": "Guwahati"
+      },
+      "departureTime": "21:00",
+      "destinationStation": {
+        "code": "KOAA",
+        "name": "Kolkata Chitpur"
+      },
+      "arrivalTime": "14:35",
+      "duration": "17h 35m",
+      "distance": "1027 km",
+      "halts": 14,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12518-koaa-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12518-koaa-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12518"
+    },
+    {
+      "trainNumber": "12535",
+      "trainName": "Ljn R Garibrath",
+      "originStation": {
+        "code": "LJN",
+        "name": "Lucknow Ne"
+      },
+      "departureTime": "14:10",
+      "destinationStation": {
+        "code": "R",
+        "name": "Raipur Jn"
+      },
+      "arrivalTime": "07:15",
+      "duration": "17h 05m",
+      "distance": "921 km",
+      "halts": 12,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12535-ljn-r-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12535-ljn-r-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12535"
+    },
+    {
+      "trainNumber": "12536",
+      "trainName": "Ljn Garibrath",
+      "originStation": {
+        "code": "R",
+        "name": "Raipur Jn"
+      },
+      "departureTime": "12:05",
+      "destinationStation": {
+        "code": "LJN",
+        "name": "Lucknow Ne"
+      },
+      "arrivalTime": "05:10",
+      "duration": "17h 05m",
+      "distance": "923 km",
+      "halts": 12,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12536-ljn-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12536-ljn-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12536"
+    },
+    {
+      "trainNumber": "12594",
+      "trainName": "Ljn Garibrath",
+      "originStation": {
+        "code": "BPL",
+        "name": "Bhopal  Jn"
+      },
+      "departureTime": "23:50",
+      "destinationStation": {
+        "code": "LJN",
+        "name": "Lucknow Ne"
+      },
+      "arrivalTime": "09:45",
+      "duration": "9h 55m",
+      "distance": "586 km",
+      "halts": 5,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12594-ljn-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12594-ljn-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12594"
+    },
+    {
+      "trainNumber": "12611",
+      "trainName": "Nzm Garibrath",
+      "originStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "arrivalTime": "10:30",
+      "duration": "28h 30m",
+      "distance": "2180 km",
+      "halts": 10,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12611-nzm-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12611-nzm-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12611"
+    },
+    {
+      "trainNumber": "12612",
+      "trainName": "Mas Garib Rath",
+      "originStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "departureTime": "15:35",
+      "destinationStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "arrivalTime": "21:00",
+      "duration": "29h 25m",
+      "distance": "2176 km",
+      "halts": 9,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12612-mas-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12612-mas-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12612"
+    },
+    {
+      "trainNumber": "12735",
+      "trainName": "Garibrath Exp",
+      "originStation": {
+        "code": "CHZ",
+        "name": "Charlapalli"
+      },
+      "departureTime": "19:45",
+      "destinationStation": {
+        "code": "YPR",
+        "name": "Yesvantpur Jn"
+      },
+      "arrivalTime": "08:20",
+      "duration": "12h 35m",
+      "distance": "710 km",
+      "halts": 11,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12735-garibrath-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12735-garibrath-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12735"
+    },
+    {
+      "trainNumber": "12736",
+      "trainName": "Sc Garib Rath",
+      "originStation": {
+        "code": "YPR",
+        "name": "Yesvantpur Jn"
+      },
+      "departureTime": "16:15",
+      "destinationStation": {
+        "code": "CHZ",
+        "name": "Charlapalli"
+      },
+      "arrivalTime": "05:00",
+      "duration": "12h 45m",
+      "distance": "712 km",
+      "halts": 11,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12736-sc-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12736-sc-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12736"
+    },
+    {
+      "trainNumber": "12739",
+      "trainName": "Garib Rath",
+      "originStation": {
+        "code": "VSKP",
+        "name": "Visakhapatnam"
+      },
+      "departureTime": "20:40",
+      "destinationStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "arrivalTime": "08:20",
+      "duration": "11h 40m",
+      "distance": "699 km",
+      "halts": 9,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12739-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12739-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12739"
+    },
+    {
+      "trainNumber": "12740",
+      "trainName": "Garibrath Exp",
+      "originStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "departureTime": "20:30",
+      "destinationStation": {
+        "code": "VSKP",
+        "name": "Visakhapatnam"
+      },
+      "arrivalTime": "07:50",
+      "duration": "11h 20m",
+      "distance": "699 km",
+      "halts": 9,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12740-garibrath-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12740-garibrath-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12740"
+    },
+    {
+      "trainNumber": "12831",
+      "trainName": "Bbs  Garib Rath",
+      "originStation": {
+        "code": "DHN",
+        "name": "Dhanbad Jn"
+      },
+      "departureTime": "16:00",
+      "destinationStation": {
+        "code": "BBS",
+        "name": "Bhubaneswar"
+      },
+      "arrivalTime": "08:00",
+      "duration": "16h 00m",
+      "distance": "778 km",
+      "halts": 11,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12831-bbs-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12831-bbs-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12831"
+    },
+    {
+      "trainNumber": "12832",
+      "trainName": "Bksc Garib Rath",
+      "originStation": {
+        "code": "BBS",
+        "name": "Bhubaneswar"
+      },
+      "departureTime": "20:25",
+      "destinationStation": {
+        "code": "DHN",
+        "name": "Dhanbad Jn"
+      },
+      "arrivalTime": "10:55",
+      "duration": "14h 30m",
+      "distance": "779 km",
+      "halts": 11,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12832-bksc-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12832-bksc-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12832"
+    },
+    {
+      "trainNumber": "12877",
+      "trainName": "Ndls Garib Rath",
+      "originStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "departureTime": "16:25",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "11:10",
+      "duration": "18h 45m",
+      "distance": "1343 km",
+      "halts": 15,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12877-ndls-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12877-ndls-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12877"
+    },
+    {
+      "trainNumber": "12878",
+      "trainName": "Rnc Garib Rath",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "16:10",
+      "destinationStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "arrivalTime": "11:30",
+      "duration": "19h 20m",
+      "distance": "1343 km",
+      "halts": 15,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12878-rnc-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12878-rnc-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12878"
+    },
+    {
+      "trainNumber": "12881",
+      "trainName": "Puri Garib Rath",
+      "originStation": {
+        "code": "SHM",
+        "name": "Shalimar"
+      },
+      "departureTime": "20:35",
+      "destinationStation": {
+        "code": "PURI",
+        "name": "Puri"
+      },
+      "arrivalTime": "05:20",
+      "duration": "8h 45m",
+      "distance": "500 km",
+      "halts": 8,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12881-puri-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12881-puri-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12881"
+    },
+    {
+      "trainNumber": "12882",
+      "trainName": "Garib Rath",
+      "originStation": {
+        "code": "PURI",
+        "name": "Puri"
+      },
+      "departureTime": "22:10",
+      "destinationStation": {
+        "code": "SHM",
+        "name": "Shalimar"
+      },
+      "arrivalTime": "07:10",
+      "duration": "9h 00m",
+      "distance": "500 km",
+      "halts": 8,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12882-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12882-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12882"
+    },
+    {
+      "trainNumber": "12909",
+      "trainName": "Nzm Garib Rath",
+      "originStation": {
+        "code": "BDTS",
+        "name": "Bandra Terminus"
+      },
+      "departureTime": "17:30",
+      "destinationStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "arrivalTime": "10:15",
+      "duration": "16h 45m",
+      "distance": "1366 km",
+      "halts": 6,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12909-nzm-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/12909-nzm-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12909"
+    },
+    {
+      "trainNumber": "12910",
+      "trainName": "Bdts Garibrath",
+      "originStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "departureTime": "16:30",
+      "destinationStation": {
+        "code": "BDTS",
+        "name": "Bandra Terminus"
+      },
+      "arrivalTime": "09:15",
+      "duration": "16h 45m",
+      "distance": "1366 km",
+      "halts": 6,
+      "classes": [
+        "3A"
+      ],
+      "slug": "12910-bdts-garibrath-chart-times",
+      "chartTimesUrl": "/chart-times/12910-bdts-garibrath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12910"
+    },
+    {
+      "trainNumber": "22405",
+      "trainName": "Anvt Garib Rath",
+      "originStation": {
+        "code": "BGP",
+        "name": "Bhagalpur"
+      },
+      "departureTime": "13:55",
+      "destinationStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "arrivalTime": "09:00",
+      "duration": "19h 05m",
+      "distance": "1209 km",
+      "halts": 18,
+      "classes": [
+        "3A"
+      ],
+      "slug": "22405-anvt-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/22405-anvt-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22405"
+    },
+    {
+      "trainNumber": "22406",
+      "trainName": "Bgp Garib Rath",
+      "originStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "departureTime": "17:20",
+      "destinationStation": {
+        "code": "BGP",
+        "name": "Bhagalpur"
+      },
+      "arrivalTime": "11:00",
+      "duration": "17h 40m",
+      "distance": "1209 km",
+      "halts": 18,
+      "classes": [
+        "3A"
+      ],
+      "slug": "22406-bgp-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/22406-bgp-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22406"
+    },
+    {
+      "trainNumber": "22409",
+      "trainName": "Anvt Garib Rath",
+      "originStation": {
+        "code": "GAYA",
+        "name": "Gaya Jn"
+      },
+      "departureTime": "19:35",
+      "destinationStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "arrivalTime": "08:50",
+      "duration": "13h 15m",
+      "distance": "978 km",
+      "halts": 8,
+      "classes": [
+        "3A"
+      ],
+      "slug": "22409-anvt-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/22409-anvt-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22409"
+    },
+    {
+      "trainNumber": "22410",
+      "trainName": "Gaya Garib Rath",
+      "originStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "departureTime": "20:20",
+      "destinationStation": {
+        "code": "GAYA",
+        "name": "Gaya Jn"
+      },
+      "arrivalTime": "09:45",
+      "duration": "13h 25m",
+      "distance": "978 km",
+      "halts": 8,
+      "classes": [
+        "3A"
+      ],
+      "slug": "22410-gaya-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/22410-gaya-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22410"
+    },
+    {
+      "trainNumber": "22541",
+      "trainName": "Anvt Garib Rath",
+      "originStation": {
+        "code": "BNRS",
+        "name": "BANARAS"
+      },
+      "departureTime": "19:20",
+      "destinationStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "arrivalTime": "09:30",
+      "duration": "14h 10m",
+      "distance": "782 km",
+      "halts": 7,
+      "classes": [
+        "3A"
+      ],
+      "slug": "22541-anvt-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/22541-anvt-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22541"
+    },
+    {
+      "trainNumber": "22542",
+      "trainName": "Bnrs Garib Rath",
+      "originStation": {
+        "code": "ANVT",
+        "name": "Anand Vihar TRM"
+      },
+      "departureTime": "18:15",
+      "destinationStation": {
+        "code": "BNRS",
+        "name": "BANARAS"
+      },
+      "arrivalTime": "08:10",
+      "duration": "13h 55m",
+      "distance": "782 km",
+      "halts": 7,
+      "classes": [
+        "3A"
+      ],
+      "slug": "22542-bnrs-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/22542-bnrs-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22542"
+    },
+    {
+      "trainNumber": "22883",
+      "trainName": "Ypr Garib Rath",
+      "originStation": {
+        "code": "PURI",
+        "name": "Puri"
+      },
+      "departureTime": "15:15",
+      "destinationStation": {
+        "code": "YPR",
+        "name": "Yesvantpur Jn"
+      },
+      "arrivalTime": "19:45",
+      "duration": "28h 30m",
+      "distance": "1503 km",
+      "halts": 23,
+      "classes": [
+        "3A"
+      ],
+      "slug": "22883-ypr-garib-rath-chart-times",
+      "chartTimesUrl": "/chart-times/22883-ypr-garib-rath-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22883"
+    },
+    {
+      "trainNumber": "22884",
+      "trainName": "Garibrath Exp",
+      "originStation": {
+        "code": "YPR",
+        "name": "Yesvantpur Jn"
+      },
+      "departureTime": "22:40",
+      "destinationStation": {
+        "code": "PURI",
+        "name": "Puri"
+      },
+      "arrivalTime": "03:55",
+      "duration": "29h 15m",
+      "distance": "1503 km",
+      "halts": 23,
+      "classes": [
+        "3A"
+      ],
+      "slug": "22884-garibrath-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22884-garibrath-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22884"
+    }
+  ]
+}

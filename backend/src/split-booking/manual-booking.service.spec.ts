@@ -35,6 +35,7 @@ describe('Manual booking owner notifications', () => {
       travelClass: '3A',
       quota: 'GN',
       totalFare: 810,
+      serviceFee: 50,
       legsPayload: [
         {
           from: 'AII',
@@ -77,6 +78,7 @@ describe('Manual booking owner notifications', () => {
       automationLogs: [],
       pnrLeg1: null,
       pnrLeg2: null,
+      pnrs: [],
       bookingError: null,
       completedAt: null,
       manualEmailSentAt: null,
@@ -117,6 +119,8 @@ describe('Manual booking owner notifications', () => {
       '340',
       '470',
       '810',
+      'Service fee: INR 50',
+      'Total collected: INR 860',
       '62',
       'Side Lower',
       'Senior citizen: Yes',
@@ -158,6 +162,48 @@ describe('Manual booking owner notifications', () => {
     });
     expect(sendWhatsApp).toHaveBeenCalledTimes(1);
     expect(update).toHaveBeenCalledTimes(1);
+  });
+
+  it('includes every leg and a single fee in the manual handoff', async () => {
+    booking.legsPayload = [
+      {
+        from: 'DEE',
+        to: 'AWR',
+        fare: 385,
+        travelClass: '3A',
+        boardingDate: '2026-10-01',
+      },
+      {
+        from: 'AWR',
+        to: 'JP',
+        fare: 385,
+        travelClass: '3A',
+        boardingDate: '2026-10-01',
+      },
+      {
+        from: 'JP',
+        to: 'AII',
+        fare: 340,
+        travelClass: '3A',
+        boardingDate: '2026-10-01',
+      },
+    ];
+    booking.fromStationCode = 'DEE';
+    booking.toStationCode = 'AII';
+    booking.totalFare = 1110;
+    await service.notify(booking);
+    const [, , html] = sendEmail.mock.calls[0] as [string, string, string];
+    const [whatsapp] = sendWhatsApp.mock.calls[0] as [{ text: string }];
+    for (const detail of [
+      '1. DEE → AWR',
+      '2. AWR → JP',
+      '3. JP → AII',
+      'Ticket fare: INR 1110 + Service fee: INR 50',
+      'Total collected: INR 1160',
+    ]) {
+      expect(html).toContain(detail);
+      expect(whatsapp.text).toContain(detail);
+    }
   });
 
   it('does not report provider rejection as a successful handoff', async () => {

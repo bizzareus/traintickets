@@ -42,10 +42,15 @@ export interface CreateSplitBookingPayload {
   contactEmail: string;
 }
 
-export interface SplitBookingPaymentResponse {
+export interface SplitBookingPrice {
+  totalFare: number;
+  serviceFee: number;
+  amount: number;
+}
+
+export interface SplitBookingPaymentResponse extends SplitBookingPrice {
   bookingRef: string;
   bookingMode: "AI" | "MANUAL";
-  amount: number;
   orderId: string;
   qrImageUrl: string;
   upiIntent?: string;
@@ -53,7 +58,7 @@ export interface SplitBookingPaymentResponse {
   phonepeIntent?: string;
 }
 
-export interface SplitBookingStatus {
+export interface SplitBookingStatus extends SplitBookingPrice {
   bookingRef: string;
   trainNumber: string;
   trainName?: string;
@@ -61,7 +66,6 @@ export interface SplitBookingStatus {
   toStationCode: string;
   journeyDate: string;
   travelClass: string;
-  totalFare: number;
   contactMobile: string;
   contactEmail: string;
   bookingMode: "AI" | "MANUAL";
@@ -73,6 +77,7 @@ export interface SplitBookingStatus {
     | "MANUAL_PENDING"
     | "CONFIRMED"
     | "FAILED";
+  pnrs: string[];
   pnrLeg1?: string | null;
   pnrLeg2?: string | null;
   bookingError?: string | null;

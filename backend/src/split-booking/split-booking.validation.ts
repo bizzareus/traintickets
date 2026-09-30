@@ -1,16 +1,17 @@
 import moment from 'moment';
 import type { CreateSplitBookingDto } from './split-booking.types';
+import { canonicalStation } from '../booking-v2/station-hubs';
 
 /** Never guess the boarding date of a split leg that may cross midnight. */
 export function validateBookingItinerary(booking: CreateSplitBookingDto): void {
   if (
     !booking.legs ||
-    booking.legs.length !== 2 ||
-    !Number.isFinite(booking.totalFare) ||
+    booking.legs.length < 2 ||
+    !Number.isSafeInteger(booking.totalFare) ||
     booking.totalFare <= 0
   ) {
     throw new Error(
-      'A split booking requires exactly two legs and a positive total fare',
+      'A split booking requires at least two legs and a positive total fare in whole rupees',
     );
   }
   for (const leg of booking.legs) {
@@ -29,14 +30,20 @@ export function validateBookingItinerary(booking: CreateSplitBookingDto): void {
       );
     }
   }
-  const [first, second] = booking.legs;
+  const first = booking.legs[0];
+  const last = booking.legs[booking.legs.length - 1];
   if (
-    first.from !== booking.fromStationCode ||
-    first.to !== second.from ||
-    second.to !== booking.toStationCode ||
+    canonicalStation(first.from) !==
+      canonicalStation(booking.fromStationCode) ||
+    canonicalStation(last.to) !== canonicalStation(booking.toStationCode) ||
     first.boardingDate !== booking.journeyDate ||
-    second.boardingDate < first.boardingDate ||
-    Math.round((first.fare + second.fare) * 100) >
+    booking.legs.some(
+      (leg, index) =>
+        index > 0 &&
+        (booking.legs[index - 1].to !== leg.from ||
+          booking.legs[index - 1].boardingDate > leg.boardingDate),
+    ) ||
+    booking.legs.reduce((sum, leg) => sum + Math.round(leg.fare * 100), 0) >
       Math.round(booking.totalFare * 100)
   ) {
     throw new Error(

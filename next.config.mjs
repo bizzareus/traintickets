@@ -64,8 +64,8 @@ const nextConfig = {
         statusCode: 308,
       },
       {
-        source: "/trains/vande-bharat",
-        destination: "/trains/vande_bharat",
+        source: "/trains/vande_bharat",
+        destination: "/trains/vande-bharat",
         statusCode: 308,
       },
     ];

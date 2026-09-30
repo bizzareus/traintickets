@@ -10,8 +10,12 @@ import { PrismaService } from '../prisma/prisma.service';
 import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
 import { validateBookingItinerary } from './split-booking.validation';
-import { bookingDetails } from './split-booking.helpers';
+import { bookingDetails, bookingPnrFields } from './split-booking.helpers';
 import { ManualBookingService } from './manual-booking.service';
+import {
+  bookingPrice,
+  SPLIT_BOOKING_SERVICE_FEE_RUPEES,
+} from './split-booking.pricing';
 import type {
   CreateSplitBookingDto,
   SplitBookingStatusResponse,
@@ -84,17 +88,19 @@ export class SplitBookingService {
 
     const bookingRef = this.generateBookingRef();
     const cleanDate = dto.journeyDate.slice(0, 10);
-    const totalFareRupees = Math.max(dto.totalFare, 1);
+    const price = bookingPrice(dto.totalFare, SPLIT_BOOKING_SERVICE_FEE_RUPEES);
     const bookingMode =
       this.config.get<string>('SPLIT_BOOKING_MODE') === 'manual'
         ? 'MANUAL'
         : 'AI';
+    const fromStationCode = dto.legs[0].from;
+    const toStationCode = dto.legs[dto.legs.length - 1].to;
 
     const initialLogs = [
       {
         timestamp: new Date().toISOString(),
         step: 'CREATED',
-        message: `Booking request registered for train ${dto.trainNumber} (${dto.fromStationCode} → ${dto.toStationCode}) on ${cleanDate}`,
+        message: `Booking request registered for train ${dto.trainNumber} (${fromStationCode} → ${toStationCode}) on ${cleanDate}`,
       },
     ];
 
@@ -105,12 +111,13 @@ export class SplitBookingService {
         bookingMode,
         trainNumber: dto.trainNumber.trim(),
         trainName: dto.trainName?.trim() || null,
-        fromStationCode: dto.fromStationCode.trim().toUpperCase(),
-        toStationCode: dto.toStationCode.trim().toUpperCase(),
+        fromStationCode,
+        toStationCode,
         journeyDate: new Date(cleanDate),
         travelClass: dto.travelClass.trim().toUpperCase(),
         quota: dto.quota?.trim() || 'GN',
-        totalFare: totalFareRupees,
+        totalFare: price.totalFare,
+        serviceFee: price.serviceFee,
         legsPayload: dto.legs as unknown as Prisma.InputJsonValue,
         passengers: {
           adults: dto.passengers,
@@ -127,15 +134,15 @@ export class SplitBookingService {
 
     // Create payment intent
     let orderId = `order_dev_${bookingRef}`;
-    let qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(`upi://pay?pa=pay@lastberth&pn=LastBerth&am=${totalFareRupees}&tn=${bookingRef}`)}`;
-    let upiIntent = `upi://pay?pa=pay@lastberth&pn=LastBerth&am=${totalFareRupees}&tn=${bookingRef}&cu=INR`;
+    let qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(`upi://pay?pa=pay@lastberth&pn=LastBerth&am=${price.amount}&tn=${bookingRef}`)}`;
+    let upiIntent = `upi://pay?pa=pay@lastberth&pn=LastBerth&am=${price.amount}&tn=${bookingRef}&cu=INR`;
     let gpayIntent = upiIntent.replace(/^upi:/, 'tez:');
     let phonepeIntent = upiIntent.replace(/^upi:\/\/pay/, 'phonepe://pay');
 
     if (this.razorpay.isConfigured) {
       try {
         const order = await this.razorpay.createOrder({
-          amountPaise: totalFareRupees * 100,
+          amountPaise: price.amount * 100,
           receipt: bookingRef,
           notes: {
             bookingRef,
@@ -146,7 +153,7 @@ export class SplitBookingService {
         orderId = order.id;
 
         const qr = await this.razorpay.createUpiQr({
-          amountPaise: totalFareRupees * 100,
+          amountPaise: price.amount * 100,
           name: 'LastBerth Booking',
           description: `Split tickets for ${bookingRef}`,
           notes: { bookingRef },
@@ -178,7 +185,7 @@ export class SplitBookingService {
     return {
       bookingRef,
       bookingMode,
-      amount: totalFareRupees,
+      ...price,
       orderId,
       qrImageUrl,
       upiIntent,
@@ -217,12 +224,13 @@ export class SplitBookingService {
       toStationCode: booking.toStationCode,
       journeyDate: booking.journeyDate.toISOString().slice(0, 10),
       travelClass: booking.travelClass,
-      totalFare: booking.totalFare,
+      ...bookingPrice(booking.totalFare, booking.serviceFee),
       contactMobile: booking.contactMobile,
       contactEmail: booking.contactEmail,
       bookingMode: booking.bookingMode,
       paymentStatus: booking.paymentStatus,
       bookingStatus: booking.bookingStatus,
+      pnrs: booking.pnrs,
       pnrLeg1: booking.pnrLeg1,
       pnrLeg2: booking.pnrLeg2,
       bookingError: booking.bookingError,
@@ -249,9 +257,10 @@ export class SplitBookingService {
       );
     }
 
+    const price = bookingPrice(booking.totalFare, booking.serviceFee);
     if (
       capturedPayment &&
-      (capturedPayment.amount !== booking.totalFare * 100 ||
+      (capturedPayment.amount !== price.amount * 100 ||
         capturedPayment.currency !== 'INR' ||
         (capturedPayment.orderId &&
           capturedPayment.orderId !== booking.razorpayOrderId))
@@ -286,7 +295,7 @@ export class SplitBookingService {
       {
         timestamp: new Date().toISOString(),
         step: 'PAYMENT_RECEIVED',
-        message: `Payment of ₹${booking.totalFare} confirmed successfully. Starting booking fulfillment.`,
+        message: `Payment of ₹${price.amount} confirmed (tickets ₹${price.totalFare} + service fee ₹${price.serviceFee}). Starting booking fulfillment.`,
       },
     ];
 
@@ -343,6 +352,7 @@ export class SplitBookingService {
               : 'QUEUED',
           pnrLeg1: null,
           pnrLeg2: null,
+          pnrs: { isEmpty: true },
         },
         data: { bookingStatus: 'IN_PROGRESS' },
       });
@@ -355,6 +365,7 @@ export class SplitBookingService {
       });
       if (!booking) return;
       const bookingId = booking.id;
+      const pnrs = [...booking.pnrs];
 
       const logs = Array.isArray(booking.automationLogs)
         ? ([
@@ -397,9 +408,10 @@ export class SplitBookingService {
         {
           onLog,
           onPnr: async (legIndex, pnr) => {
+            pnrs[legIndex] = pnr;
             await this.prisma.splitTicketBooking.update({
               where: { id: bookingId },
-              data: legIndex === 0 ? { pnrLeg1: pnr } : { pnrLeg2: pnr },
+              data: bookingPnrFields(pnrs),
             });
           },
         },
@@ -409,8 +421,7 @@ export class SplitBookingService {
         where: { id: booking.id },
         data: {
           bookingStatus: result.success ? 'CONFIRMED' : 'FAILED',
-          pnrLeg1: result.pnrLeg1 ?? null,
-          pnrLeg2: result.pnrLeg2 ?? null,
+          ...bookingPnrFields(result.pnrs),
           bookingError: result.error ?? null,
           completedAt: new Date(),
           automationLogs: logs as unknown as Prisma.InputJsonValue,

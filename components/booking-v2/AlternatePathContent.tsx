@@ -777,6 +777,8 @@ export function AlternatePathContent({
 }: AlternatePathContentProps) {
   const isSplitBookingEnabled = useSplitBookingFeatureFlag();
   const [splitBookingModalOpen, setSplitBookingModalOpen] = useState(false);
+  const bookingLegs =
+    altResult?.legs.filter((leg) => leg.segmentKind === "confirmed") ?? [];
 
   /** Flat list of display items: each is a single leg card or a collapsed "no tickets" span. */
   const alternatePathDisplayItems = useMemo(
@@ -1328,34 +1330,25 @@ export function AlternatePathContent({
           onClose={() => setSplitBookingModalOpen(false)}
           trainNumber={altResult.trainNumber}
           trainName={altTrainName || undefined}
-          journeyDate={journeyDate || ""}
-          fromStationCode={fromCode || altResult.stationCodesOnRoute?.[0] || ""}
-          toStationCode={
-            toCode ||
-            altResult.stationCodesOnRoute?.[
-              altResult.stationCodesOnRoute.length - 1
-            ] ||
-            ""
-          }
+          journeyDate={bookingLegs[0]?.boardingDate || journeyDate || ""}
+          fromStationCode={bookingLegs[0]?.from || fromCode || ""}
+          toStationCode={bookingLegs.at(-1)?.to || toCode || ""}
           travelClass={
-            altResult.legs.find((l) => l.segmentKind === "confirmed")
-              ?.travelClass ||
+            bookingLegs[0]?.travelClass ||
             altAvlClasses?.[0] ||
             "3A"
           }
           totalFare={altResult.totalFare || 0}
-          legs={altResult.legs
-            .filter((l) => l.segmentKind === "confirmed")
-            .map((l) => ({
-              from: l.from,
-              to: l.to,
-              travelClass: l.travelClass || "3A",
-              fare: l.fare || 0,
-              boardingDate: l.boardingDate || "",
-              departureTime: l.departureTime,
-              arrivalTime: l.arrivalTime,
-              durationMinutes: l.durationMinutes,
-            }))}
+          legs={bookingLegs.map((l) => ({
+            from: l.from,
+            to: l.to,
+            travelClass: l.travelClass || "3A",
+            fare: l.fare || 0,
+            boardingDate: l.boardingDate || "",
+            departureTime: l.departureTime,
+            arrivalTime: l.arrivalTime,
+            durationMinutes: l.durationMinutes,
+          }))}
         />
       )}
     </div>

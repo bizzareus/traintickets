@@ -29,6 +29,7 @@ describe('TripMgt AI reservation fulfillment', () => {
   const openBrowser = jest.spyOn(ComputerUseBrowser, 'open');
   let params: TripmgtBookingParams;
   let service: TripmgtBookingService;
+  const pnrs = ['1234567890', '2345678901', '3456789012'];
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -79,8 +80,8 @@ describe('TripMgt AI reservation fulfillment', () => {
     openBrowser.mockResolvedValue(computer as unknown as ComputerUseBrowser);
     run.mockImplementation(async (_client, _computer, options) => {
       const task = JSON.parse(options.task) as { leg: { from: string } };
-      const index = task.leg.from === 'AII' ? 0 : 1;
-      const pnr = index === 0 ? '1234567890' : '2345678901';
+      const index = params.legs.findIndex((leg) => leg.from === task.leg.from);
+      const pnr = pnrs[index];
       computer.visibleText.mockResolvedValue(
         `Reservation confirmed. PNR Number: ${pnr}`,
       );
@@ -108,8 +109,7 @@ describe('TripMgt AI reservation fulfillment', () => {
     const result = await service.executeBooking(params, { onPnr, onLog });
     expect(result).toMatchObject({
       success: true,
-      pnrLeg1: '1234567890',
-      pnrLeg2: '2345678901',
+      pnrs: pnrs.slice(0, 2),
     });
     expect(onPnr.mock.calls).toEqual([
       [0, '1234567890'],
@@ -141,7 +141,7 @@ describe('TripMgt AI reservation fulfillment', () => {
     computer.visibleText.mockResolvedValue('Mobile: 9876543210');
     const result = await service.executeBooking(params);
     expect(result.success).toBe(false);
-    expect(result.pnrLeg1).toBeUndefined();
+    expect(result.pnrs).toEqual([]);
     expect(bookingV2.getPnrStatus).not.toHaveBeenCalled();
     expect(run).toHaveBeenCalledTimes(1);
   });
@@ -156,8 +156,7 @@ describe('TripMgt AI reservation fulfillment', () => {
       }),
     );
     const result = await service.executeBooking(params);
-    expect(result).toMatchObject({ success: false, pnrLeg1: '1234567890' });
-    expect(result.pnrLeg2).toBeUndefined();
+    expect(result).toMatchObject({ success: false, pnrs: ['1234567890'] });
     expect(result.error).toContain('OTP');
   });
 
@@ -173,7 +172,7 @@ describe('TripMgt AI reservation fulfillment', () => {
     bookingV2.getPnrStatus.mockResolvedValue({ status: false });
     const onPnr = jest.fn().mockResolvedValue(undefined);
     const result = await service.executeBooking(params, { onPnr });
-    expect(result).toMatchObject({ success: false, pnrLeg1: '1234567890' });
+    expect(result).toMatchObject({ success: false, pnrs: ['1234567890'] });
     expect(result.error).toContain('could not be verified');
     expect(onPnr).toHaveBeenCalledTimes(1);
     expect(run).toHaveBeenCalledTimes(1);
@@ -218,6 +217,73 @@ describe('TripMgt AI reservation fulfillment', () => {
       'boardingDate',
     );
     expect(openBrowser).not.toHaveBeenCalled();
+  });
+
+  describe('three-leg reservations', () => {
+    beforeEach(() => {
+      params.legs.push({
+        from: 'GGN',
+        to: 'DEE',
+        travelClass: '3A',
+        fare: 100,
+        boardingDate: '2026-10-02',
+      });
+      params.totalFare += 100;
+      params.toStationCode = 'DEE';
+    });
+
+    it('retains and independently verifies all three PNRs', async () => {
+      const onPnr = jest.fn().mockResolvedValue(undefined);
+      const result = await service.executeBooking(params, { onPnr });
+      expect(result).toMatchObject({ success: true, pnrs });
+      expect(onPnr.mock.calls).toEqual(pnrs.map((pnr, index) => [index, pnr]));
+      expect(bookingV2.getPnrStatus.mock.calls).toEqual(
+        pnrs.map((pnr) => [pnr]),
+      );
+      const thirdTask: unknown = JSON.parse(run.mock.calls[2][2].task);
+      expect(thirdTask).toMatchObject({
+        alreadyReservedPnrs: pnrs.slice(0, 2),
+        maxFareRupees: 100,
+      });
+    });
+
+    it('preserves the first two issued PNRs if the third leg stops', async () => {
+      const original = run.getMockImplementation()!;
+      run
+        .mockImplementationOnce(original)
+        .mockImplementationOnce(original)
+        .mockResolvedValueOnce(
+          JSON.stringify({
+            status: 'blocked',
+            pnr: null,
+            reason: 'unavailable',
+          }),
+        );
+      expect(await service.executeBooking(params)).toMatchObject({
+        success: false,
+        pnrs: pnrs.slice(0, 2),
+      });
+    });
+
+    it('rejects a third-leg PNR duplicated from any earlier leg', async () => {
+      const original = run.getMockImplementation()!;
+      run
+        .mockImplementationOnce(original)
+        .mockImplementationOnce(original)
+        .mockImplementationOnce(() => {
+          computer.visibleText.mockResolvedValue(`PNR: ${pnrs[0]}`);
+          return Promise.resolve(
+            JSON.stringify({
+              status: 'confirmed',
+              pnr: pnrs[0],
+              reason: 'none',
+            }),
+          );
+        });
+      const result = await service.executeBooking(params);
+      expect(result).toMatchObject({ success: false, pnrs: pnrs.slice(0, 2) });
+      expect(result.error).toContain('already recorded');
+    });
   });
 
   it('fails clearly if OpenAI is not configured', async () => {

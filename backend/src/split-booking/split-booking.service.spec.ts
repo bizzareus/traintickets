@@ -6,6 +6,7 @@ import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
 import { ConfigService } from '@nestjs/config';
 import { ManualBookingService } from './manual-booking.service';
+import type { CreateSplitBookingDto } from './split-booking.types';
 
 describe('SplitBookingService', () => {
   let service: SplitBookingService;
@@ -134,7 +135,11 @@ describe('SplitBookingService', () => {
         autoUpgrade: true,
       });
 
-      expect(result.amount).toBe(810);
+      expect(result).toMatchObject({
+        totalFare: 810,
+        serviceFee: 50,
+        amount: 860,
+      });
       expect(result.bookingRef).toBeDefined();
       expect(result.upiIntent).toContain('upi://pay');
       expect(result.bookingMode).toBe(mode.toUpperCase());
@@ -159,12 +164,14 @@ describe('SplitBookingService', () => {
       journeyDate: new Date('2026-09-20'),
       travelClass: '3A',
       totalFare: 810,
+      serviceFee: 50,
       contactMobile: '9876543210',
       contactEmail: 'rahul@example.com',
       paymentStatus: 'PAID',
       bookingStatus: 'IN_PROGRESS',
       pnrLeg1: null,
       pnrLeg2: null,
+      pnrs: [],
       automationLogs: [
         {
           timestamp: '2026-09-18T18:00:00.000Z',
@@ -189,6 +196,113 @@ describe('SplitBookingService', () => {
     );
   });
 
+  describe('multi-leg checkout pricing', () => {
+    const request: CreateSplitBookingDto = {
+      trainNumber: '12215',
+      trainName: 'BDTS GARIB RATH',
+      fromStationCode: 'NDLS',
+      toStationCode: 'AII',
+      journeyDate: '2026-10-01',
+      travelClass: '3A',
+      quota: 'GN',
+      totalFare: 1110,
+      legs: [
+        {
+          from: 'DEE',
+          to: 'AWR',
+          travelClass: '3A',
+          fare: 385,
+          boardingDate: '2026-10-01',
+        },
+        {
+          from: 'AWR',
+          to: 'JP',
+          travelClass: '3A',
+          fare: 385,
+          boardingDate: '2026-10-01',
+        },
+        {
+          from: 'JP',
+          to: 'AII',
+          travelClass: '3A',
+          fare: 340,
+          boardingDate: '2026-10-01',
+        },
+      ],
+      passengers: [{ name: 'Test Passenger', age: 30, gender: 'Female' }],
+      childPassengers: [],
+      autoUpgrade: true,
+      contactMobile: '9876543210',
+      contactEmail: 'test@example.com',
+    };
+
+    beforeEach(() => {
+      prisma.splitTicketBooking.create.mockResolvedValue({
+        id: 'three-leg-booking',
+      });
+    });
+
+    it.each(['ai', 'manual'])(
+      'accepts the reported route in %s mode and adds the service fee once',
+      async (mode) => {
+        config.set('SPLIT_BOOKING_MODE', mode);
+        const result = await service.createBooking(request);
+        expect(result).toMatchObject({
+          totalFare: 1110,
+          serviceFee: 50,
+          amount: 1160,
+        });
+        expect(new URL(result.upiIntent).searchParams.get('am')).toBe('1160');
+        const qrPayload = new URL(result.qrImageUrl).searchParams.get('data')!;
+        expect(new URL(qrPayload).searchParams.get('am')).toBe('1160');
+        const [created] = prisma.splitTicketBooking.create.mock.calls[0] as [
+          { data: Record<string, unknown> },
+        ];
+        expect(created.data).toMatchObject({
+          fromStationCode: 'DEE',
+          toStationCode: 'AII',
+          totalFare: 1110,
+          serviceFee: 50,
+          legsPayload: request.legs,
+        });
+      },
+    );
+
+    it('charges the fee in both the Razorpay order and QR', async () => {
+      razorpay.isConfigured = true;
+      razorpay.createOrder.mockResolvedValue({ id: 'order-live' });
+      razorpay.createUpiQr.mockResolvedValue({
+        imageUrl: 'https://example.test/qr.png',
+      });
+      razorpay.resolveQrIntents.mockResolvedValue({});
+      await service.createBooking(request);
+      expect(razorpay.createOrder).toHaveBeenCalledWith(
+        expect.objectContaining({ amountPaise: 116000 }),
+      );
+      expect(razorpay.createUpiQr).toHaveBeenCalledWith(
+        expect.objectContaining({ amountPaise: 116000 }),
+      );
+    });
+
+    it('does not accept a client-supplied service fee override', async () => {
+      const tampered = { ...request, serviceFee: 0 };
+      expect(await service.createBooking(tampered)).toMatchObject({
+        serviceFee: 50,
+        amount: 1160,
+      });
+    });
+
+    it('calculates ₹11,100 + ₹50 as ₹11,150', async () => {
+      expect(
+        await service.createBooking({ ...request, totalFare: 11100 }),
+      ).toMatchObject({
+        totalFare: 11100,
+        serviceFee: 50,
+        amount: 11150,
+      });
+    });
+  });
+
   describe('paid fulfillment', () => {
     const flush = () => new Promise<void>((resolve) => setImmediate(resolve));
     const booking = {
@@ -200,6 +314,7 @@ describe('SplitBookingService', () => {
       journeyDate: new Date('2026-10-01'),
       travelClass: '3A',
       totalFare: 810,
+      serviceFee: 50,
       quota: 'GN',
       autoUpgrade: false,
       contactMobile: '9876543210',
@@ -209,6 +324,7 @@ describe('SplitBookingService', () => {
       bookingMode: 'AI',
       pnrLeg1: null,
       pnrLeg2: null,
+      pnrs: [],
       passengers: {
         adults: [{ name: 'Test', age: 30, gender: 'Male' }],
         children: [],
@@ -252,6 +368,7 @@ describe('SplitBookingService', () => {
       );
       tripmgt.executeBooking.mockResolvedValue({
         success: false,
+        pnrs: [],
         error: 'blocked',
         logs: [],
       });
@@ -293,7 +410,7 @@ describe('SplitBookingService', () => {
           });
           return {
             success: false,
-            pnrLeg1: '1234567890',
+            pnrs: ['1234567890'],
             error: 'OTP required',
             logs: [],
           };
@@ -303,7 +420,7 @@ describe('SplitBookingService', () => {
       await flush();
       expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith({
         where: { id: 'booking1' },
-        data: { pnrLeg1: '1234567890' },
+        data: { pnrs: ['1234567890'], pnrLeg1: '1234567890', pnrLeg2: null },
       });
       const [finalUpdate] = prisma.splitTicketBooking.update.mock.calls.at(
         -1,
@@ -346,6 +463,92 @@ describe('SplitBookingService', () => {
         }),
       ).rejects.toThrow('does not match');
       expect(prisma.splitTicketBooking.updateMany).not.toHaveBeenCalled();
+    });
+
+    it('rejects payment of only the ticket fare when the booking includes a service fee', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue(booking);
+      await expect(
+        service.confirmPayment(booking.bookingRef, 'pay1', {
+          amount: 81000,
+          currency: 'INR',
+        }),
+      ).rejects.toThrow('does not match');
+      expect(prisma.splitTicketBooking.updateMany).not.toHaveBeenCalled();
+    });
+
+    it.each([
+      [50, 86000],
+      [0, 81000],
+    ])(
+      'validates the stored fee %i instead of repricing existing orders',
+      async (serviceFee, amount) => {
+        prisma.splitTicketBooking.findUnique.mockResolvedValue({
+          ...booking,
+          serviceFee,
+        });
+        prisma.splitTicketBooking.updateMany.mockResolvedValue({ count: 0 });
+        const status = await service.confirmPayment(
+          booking.bookingRef,
+          'pay1',
+          { amount, currency: 'INR' },
+        );
+        expect(status).toMatchObject({
+          totalFare: 810,
+          serviceFee,
+          amount: amount / 100,
+        });
+        expect(prisma.splitTicketBooking.updateMany).toHaveBeenCalledTimes(1);
+      },
+    );
+
+    it('persists a third PNR without overwriting either legacy PNR alias', async () => {
+      const pnrs = ['1234567890', '2345678901', '3456789012'];
+      const state = {
+        ...structuredClone(booking),
+        toStationCode: 'DEE',
+        totalFare: 910,
+        legsPayload: [
+          ...booking.legsPayload,
+          {
+            from: 'GGN',
+            to: 'DEE',
+            fare: 100,
+            travelClass: '3A',
+            boardingDate: '2026-10-02',
+          },
+        ],
+      };
+      prisma.splitTicketBooking.findUnique.mockImplementation(() => state);
+      prisma.splitTicketBooking.updateMany.mockImplementation(
+        ({ data }: { data: object }) => {
+          Object.assign(state, data);
+          return { count: 1 };
+        },
+      );
+      type Callbacks = NonNullable<
+        Parameters<TripmgtBookingService['executeBooking']>[1]
+      >;
+      tripmgt.executeBooking.mockImplementation(
+        async (_params: unknown, callbacks: Callbacks) => {
+          for (const [index, pnr] of pnrs.entries())
+            await callbacks.onPnr?.(index, pnr);
+          return { success: true, pnrs, logs: [] };
+        },
+      );
+      await service.confirmPayment(booking.bookingRef);
+      await flush();
+      const data = { pnrs, pnrLeg1: pnrs[0], pnrLeg2: pnrs[1] };
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith({
+        where: { id: booking.id },
+        data,
+      });
+      const [finalUpdate] = prisma.splitTicketBooking.update.mock.calls.at(
+        -1,
+      ) as [{ data: Record<string, unknown> }];
+      expect(finalUpdate.data).toMatchObject({
+        ...data,
+        bookingStatus: 'CONFIRMED',
+      });
     });
 
     it('hands a manual booking to the owner without starting AI or confirming a ticket', async () => {

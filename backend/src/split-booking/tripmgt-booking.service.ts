@@ -21,8 +21,7 @@ type BookingLog = SplitBookingStatusResponse['logs'][number];
 export interface TripmgtBookingResult {
   success: boolean;
   bookingRef: string;
-  pnrLeg1?: string;
-  pnrLeg2?: string;
+  pnrs: string[];
   error?: string;
   logs: BookingLog[];
   screenshotPaths: string[];
@@ -98,6 +97,7 @@ export class TripmgtBookingService {
     const result: TripmgtBookingResult = {
       success: false,
       bookingRef: params.bookingRef,
+      pnrs: [],
       logs: [],
       screenshotPaths: [],
     };
@@ -211,9 +211,7 @@ export class TripmgtBookingService {
               this.config.get('TRIPMGT_USERNAME') &&
               this.config.get('TRIPMGT_PASSWORD'),
             ),
-            alreadyReservedPnrs: [result.pnrLeg1, result.pnrLeg2].filter(
-              Boolean,
-            ),
+            alreadyReservedPnrs: result.pnrs,
           }),
           finishTool: {
             type: 'function',
@@ -255,13 +253,12 @@ export class TripmgtBookingService {
             'No explicitly labelled PNR on the reservation confirmation; inspect before retrying',
           );
         }
-        if (pnr === result.pnrLeg1 || pnr === result.pnrLeg2) {
+        if (result.pnrs.includes(pnr)) {
           throw new Error(
-            'The portal returned the same PNR for both legs; inspect before retrying',
+            'The portal returned a PNR already recorded for another leg; inspect before retrying',
           );
         }
-        if (index === 0) result.pnrLeg1 = pnr;
-        else result.pnrLeg2 = pnr;
+        result.pnrs.push(pnr);
         await callbacks.onPnr?.(index, pnr);
         await saveScreenshot(
           `leg-${index + 1}-confirmation`,
@@ -302,7 +299,10 @@ export class TripmgtBookingService {
         );
       }
       result.success = true;
-      await addLog('SUCCESS', 'Both reservations confirmed and verified');
+      await addLog(
+        'SUCCESS',
+        `All ${params.legs.length} reservations confirmed and verified`,
+      );
     } catch (error: unknown) {
       let message =
         error instanceof z.ZodError || error instanceof SyntaxError

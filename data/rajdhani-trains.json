@@ -1,0 +1,763 @@
+{
+  "version": 1,
+  "count": 28,
+  "updatedAt": "2026-09-30",
+  "trains": [
+    {
+      "trainNumber": "12301",
+      "trainName": "Rajdhani Expres",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "16:50",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "10:05",
+      "duration": "17h 15m",
+      "distance": "1449 km",
+      "halts": 7,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12301-rajdhani-expres-chart-times",
+      "chartTimesUrl": "/chart-times/12301-rajdhani-expres-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12301"
+    },
+    {
+      "trainNumber": "12302",
+      "trainName": "Hwh Rajdhani",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "16:50",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "09:55",
+      "duration": "17h 05m",
+      "distance": "1449 km",
+      "halts": 7,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12302-hwh-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/12302-hwh-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12302"
+    },
+    {
+      "trainNumber": "12305",
+      "trainName": "Rajdhani Expres",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "14:05",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "10:05",
+      "duration": "20h 00m",
+      "distance": "1531 km",
+      "halts": 7,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12305-rajdhani-expres-chart-times",
+      "chartTimesUrl": "/chart-times/12305-rajdhani-expres-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12305"
+    },
+    {
+      "trainNumber": "12313",
+      "trainName": "Rajdhani Expres",
+      "originStation": {
+        "code": "SDAH",
+        "name": "Sealdah"
+      },
+      "departureTime": "16:50",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "10:50",
+      "duration": "18h 00m",
+      "distance": "1455 km",
+      "halts": 6,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12313-rajdhani-expres-chart-times",
+      "chartTimesUrl": "/chart-times/12313-rajdhani-expres-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12313"
+    },
+    {
+      "trainNumber": "12423",
+      "trainName": "Rajdhani Exp",
+      "originStation": {
+        "code": "DBRG",
+        "name": "DIBRUGARH"
+      },
+      "departureTime": "20:35",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "10:30",
+      "duration": "37h 55m",
+      "distance": "2435 km",
+      "halts": 23,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12423-rajdhani-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12423-rajdhani-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12423"
+    },
+    {
+      "trainNumber": "12424",
+      "trainName": "Dbrt Rajdhani",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "16:20",
+      "destinationStation": {
+        "code": "DBRG",
+        "name": "DIBRUGARH"
+      },
+      "arrivalTime": "06:20",
+      "duration": "38h 00m",
+      "distance": "2434 km",
+      "halts": 23,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12424-dbrt-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/12424-dbrt-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12424"
+    },
+    {
+      "trainNumber": "12425",
+      "trainName": "Jammu Rajdhani",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "20:40",
+      "destinationStation": {
+        "code": "JAT",
+        "name": "Jammu Tawi"
+      },
+      "arrivalTime": "05:00",
+      "duration": "8h 20m",
+      "distance": "577 km",
+      "halts": 3,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12425-jammu-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/12425-jammu-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12425"
+    },
+    {
+      "trainNumber": "12426",
+      "trainName": "Jammu Rajdhani",
+      "originStation": {
+        "code": "JAT",
+        "name": "Jammu Tawi"
+      },
+      "departureTime": "21:25",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "05:55",
+      "duration": "8h 30m",
+      "distance": "577 km",
+      "halts": 3,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12426-jammu-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/12426-jammu-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12426"
+    },
+    {
+      "trainNumber": "12431",
+      "trainName": "Rajdhani Exp",
+      "originStation": {
+        "code": "TVC",
+        "name": "Trivandrum Cntl"
+      },
+      "departureTime": "14:40",
+      "destinationStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "arrivalTime": "12:30",
+      "duration": "45h 50m",
+      "distance": "3144 km",
+      "halts": 19,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12431-rajdhani-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12431-rajdhani-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12431"
+    },
+    {
+      "trainNumber": "12432",
+      "trainName": "Tvc Rajdhani",
+      "originStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "departureTime": "06:16",
+      "destinationStation": {
+        "code": "TVC",
+        "name": "Trivandrum Cntl"
+      },
+      "arrivalTime": "01:50",
+      "duration": "43h 34m",
+      "distance": "3144 km",
+      "halts": 19,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12432-tvc-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/12432-tvc-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12432"
+    },
+    {
+      "trainNumber": "12433",
+      "trainName": "Mas Nzm Rajdhani",
+      "originStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "departureTime": "06:05",
+      "destinationStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "arrivalTime": "10:30",
+      "duration": "28h 25m",
+      "distance": "2180 km",
+      "halts": 8,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12433-mas-nzm-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/12433-mas-nzm-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12433"
+    },
+    {
+      "trainNumber": "12434",
+      "trainName": "Nzm Mas Rajdhani",
+      "originStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "departureTime": "15:35",
+      "destinationStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "arrivalTime": "20:50",
+      "duration": "29h 15m",
+      "distance": "2174 km",
+      "halts": 8,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12434-nzm-mas-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/12434-nzm-mas-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12434"
+    },
+    {
+      "trainNumber": "12437",
+      "trainName": "Sc Nzm Rajdhani",
+      "originStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "departureTime": "12:50",
+      "destinationStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "arrivalTime": "10:30",
+      "duration": "21h 40m",
+      "distance": "1667 km",
+      "halts": 5,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12437-sc-nzm-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/12437-sc-nzm-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12437"
+    },
+    {
+      "trainNumber": "12438",
+      "trainName": "Sc Rajdhani",
+      "originStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "departureTime": "15:35",
+      "destinationStation": {
+        "code": "SC",
+        "name": "Secunderabad Jn"
+      },
+      "arrivalTime": "13:40",
+      "duration": "22h 05m",
+      "distance": "1660 km",
+      "halts": 5,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12438-sc-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/12438-sc-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12438"
+    },
+    {
+      "trainNumber": "12454",
+      "trainName": "Rnc Rajdhani",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "16:10",
+      "destinationStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "arrivalTime": "09:45",
+      "duration": "17h 35m",
+      "distance": "1246 km",
+      "halts": 10,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12454-rnc-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/12454-rnc-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12454"
+    },
+    {
+      "trainNumber": "12958",
+      "trainName": "Swran J Rajdhani",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "19:55",
+      "destinationStation": {
+        "code": "SBIB",
+        "name": "Sabarmati Bg"
+      },
+      "arrivalTime": "08:05",
+      "duration": "12h 10m",
+      "distance": "929 km",
+      "halts": 8,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "12958-swran-j-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/12958-swran-j-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12958"
+    },
+    {
+      "trainNumber": "20408",
+      "trainName": "Rnc Rajdhani",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "16:10",
+      "destinationStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "arrivalTime": "08:25",
+      "duration": "16h 15m",
+      "distance": "1249 km",
+      "halts": 6,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "20408-rnc-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/20408-rnc-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20408"
+    },
+    {
+      "trainNumber": "20503",
+      "trainName": "Rajdhani Exp",
+      "originStation": {
+        "code": "DBRG",
+        "name": "DIBRUGARH"
+      },
+      "departureTime": "19:40",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "13:38",
+      "duration": "41h 58m",
+      "distance": "2477 km",
+      "halts": 24,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "20503-rajdhani-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20503-rajdhani-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20503"
+    },
+    {
+      "trainNumber": "20504",
+      "trainName": "Dbrg Rajdhani",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "11:25",
+      "destinationStation": {
+        "code": "DBRG",
+        "name": "DIBRUGARH"
+      },
+      "arrivalTime": "05:00",
+      "duration": "41h 35m",
+      "distance": "2471 km",
+      "halts": 24,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "20504-dbrg-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/20504-dbrg-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20504"
+    },
+    {
+      "trainNumber": "20505",
+      "trainName": "Rajdhani Exp",
+      "originStation": {
+        "code": "DBRG",
+        "name": "DIBRUGARH"
+      },
+      "departureTime": "21:45",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "13:38",
+      "duration": "39h 53m",
+      "distance": "2312 km",
+      "halts": 26,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "20505-rajdhani-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20505-rajdhani-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20505"
+    },
+    {
+      "trainNumber": "20506",
+      "trainName": "Dbrg Rajdhani",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "11:25",
+      "destinationStation": {
+        "code": "DBRG",
+        "name": "DIBRUGARH"
+      },
+      "arrivalTime": "03:10",
+      "duration": "39h 45m",
+      "distance": "2297 km",
+      "halts": 26,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "20506-dbrg-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/20506-dbrg-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20506"
+    },
+    {
+      "trainNumber": "20507",
+      "trainName": "RAJDHANI EXP",
+      "originStation": {
+        "code": "SANG",
+        "name": "SAIRANG"
+      },
+      "departureTime": "16:10",
+      "destinationStation": {
+        "code": "ANVT",
+        "name": "ANAND VIHAR TRM"
+      },
+      "arrivalTime": "10:50",
+      "duration": "",
+      "distance": "2512 km",
+      "halts": 18,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "20507-rajdhani-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20507-rajdhani-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20507"
+    },
+    {
+      "trainNumber": "20508",
+      "trainName": "SANG RAJDHANI",
+      "originStation": {
+        "code": "ANVT",
+        "name": "ANAND VIHAR TRM"
+      },
+      "departureTime": "19:50",
+      "destinationStation": {
+        "code": "SANG",
+        "name": "SAIRANG"
+      },
+      "arrivalTime": "15:25",
+      "duration": "",
+      "distance": "2512 km",
+      "halts": 18,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "20508-sang-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/20508-sang-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20508"
+    },
+    {
+      "trainNumber": "22221",
+      "trainName": "Nzm Rajdhani",
+      "originStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "departureTime": "16:00",
+      "destinationStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "arrivalTime": "09:55",
+      "duration": "17h 55m",
+      "distance": "1543 km",
+      "halts": 8,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "22221-nzm-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/22221-nzm-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22221"
+    },
+    {
+      "trainNumber": "22222",
+      "trainName": "Csmt Rajdhani",
+      "originStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "departureTime": "16:55",
+      "destinationStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "arrivalTime": "11:15",
+      "duration": "18h 20m",
+      "distance": "1537 km",
+      "halts": 8,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "22222-csmt-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/22222-csmt-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22222"
+    },
+    {
+      "trainNumber": "22413",
+      "trainName": "Mao Nzm Rajdhani",
+      "originStation": {
+        "code": "MAO",
+        "name": "Madgaon"
+      },
+      "departureTime": "08:00",
+      "destinationStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "arrivalTime": "12:30",
+      "duration": "28h 30m",
+      "distance": "2094 km",
+      "halts": 9,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "22413-mao-nzm-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/22413-mao-nzm-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22413"
+    },
+    {
+      "trainNumber": "22691",
+      "trainName": "Rajdhani Exp",
+      "originStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "departureTime": "20:00",
+      "destinationStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "arrivalTime": "05:30",
+      "duration": "33h 30m",
+      "distance": "2371 km",
+      "halts": 14,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "22691-rajdhani-exp-chart-times",
+      "chartTimesUrl": "/chart-times/22691-rajdhani-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22691"
+    },
+    {
+      "trainNumber": "22692",
+      "trainName": "Sbc Rajdhani",
+      "originStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "departureTime": "19:50",
+      "destinationStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "arrivalTime": "05:20",
+      "duration": "33h 30m",
+      "distance": "2365 km",
+      "halts": 14,
+      "classes": [
+        "1A",
+        "2A",
+        "3A"
+      ],
+      "slug": "22692-sbc-rajdhani-chart-times",
+      "chartTimesUrl": "/chart-times/22692-sbc-rajdhani-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/22692"
+    }
+  ]
+}

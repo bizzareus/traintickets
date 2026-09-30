@@ -587,6 +587,7 @@ model SplitTicketBooking {
   quota             String                        @default("GN")
 
   totalFare         Int                           @map("total_fare") // in rupees
+  serviceFee        Int                           @default(0) @map("service_fee") // in rupees; existing bookings remain unchanged
   legsPayload       Json                          @map("legs_payload")
   passengers        Json                          @map("passengers")
   contactMobile     String                        @map("contact_mobile")
@@ -605,6 +606,7 @@ model SplitTicketBooking {
   manualEmailSentAt DateTime?                     @map("manual_email_sent_at")
   manualWhatsappSentAt DateTime?                  @map("manual_whatsapp_sent_at")
   automationLogs    Json?                         @map("automation_logs")
+  pnrs              String[]                      @default([]) // ordered by leg; includes issued PNRs pending verification
   pnrLeg1           String?                       @map("pnr_leg1")
   pnrLeg2           String?                       @map("pnr_leg2")
   bookingError      String?                       @map("booking_error")

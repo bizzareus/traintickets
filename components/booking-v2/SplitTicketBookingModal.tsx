@@ -111,12 +111,27 @@ export function SplitTicketBookingModal({
   const manualBooking =
     (bookingStatus?.bookingMode ?? paymentData?.bookingMode) === "MANUAL";
   const manualPending = bookingStatus?.bookingStatus === "MANUAL_PENDING";
-  const recordedPnrs = [bookingStatus?.pnrLeg1, bookingStatus?.pnrLeg2];
+  const recordedPnrs = bookingStatus?.pnrs ?? [
+    bookingStatus?.pnrLeg1,
+    bookingStatus?.pnrLeg2,
+  ];
+  const price = bookingStatus ?? paymentData;
+  const paymentBreakdown = price && (
+    <p className="text-sm text-slate-600">
+      ₹{price.totalFare.toLocaleString("en-IN")} (tickets) + ₹
+      {price.serviceFee.toLocaleString("en-IN")} (service fee) ={" "}
+      <strong className="text-slate-900">
+        ₹{price.amount.toLocaleString("en-IN")}
+      </strong>
+    </p>
+  );
 
   // Reset form when modal opens
   useEffect(() => {
     if (open) {
       setStep("passenger_details");
+      setPaymentData(null);
+      setBookingStatus(null);
       setFormError(null);
       setIsSubmitting(false);
     }
@@ -279,7 +294,7 @@ export function SplitTicketBookingModal({
   }, [paymentData?.bookingRef, step]);
 
   useEffect(() => {
-    if (step === "payment" || step === "booking_in_progress") {
+    if (open && (step === "payment" || step === "booking_in_progress")) {
       pollStatus();
       pollIntervalRef.current = setInterval(pollStatus, 2500);
     }
@@ -288,7 +303,7 @@ export function SplitTicketBookingModal({
         clearInterval(pollIntervalRef.current);
       }
     };
-  }, [step, pollStatus]);
+  }, [open, step, pollStatus]);
 
   // Dev simulation handler
   const handleSimulatePayment = async () => {
@@ -393,7 +408,7 @@ export function SplitTicketBookingModal({
                     Split Journey Route
                   </span>
                   <span className="text-xs sm:text-sm font-extrabold text-blue-900 tabular-nums">
-                    Total Fare: ₹{totalFare}
+                    Ticket Fare: ₹{totalFare}
                   </span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
@@ -748,7 +763,7 @@ export function SplitTicketBookingModal({
                     </>
                   ) : (
                     <>
-                      Proceed to Payment (₹{totalFare}){" "}
+                      Proceed to Payment{" "}
                       <ArrowRight className="h-4 w-4" />
                     </>
                   )}
@@ -766,8 +781,9 @@ export function SplitTicketBookingModal({
                   Instant Checkout
                 </span>
                 <h4 className="text-xl font-extrabold text-slate-900">
-                  Pay ₹{paymentData.amount} via UPI
+                  Pay ₹{paymentData.amount.toLocaleString("en-IN")} via UPI
                 </h4>
+                {paymentBreakdown}
                 <p className="text-xs text-slate-500 mt-0.5">
                   Ref: {paymentData.bookingRef}
                 </p>
@@ -866,7 +882,7 @@ export function SplitTicketBookingModal({
                 </h4>
                 <p className="text-xs text-slate-600 max-w-md mx-auto mt-1">
                   {bookingConfirmed
-                    ? "Both reservations have been verified. Your PNRs are below."
+                    ? "All reservations have been verified. Your PNRs are below."
                     : bookingFailed
                       ? "The booking process stopped. Review the details and any recorded PNRs below."
                       : manualBooking
@@ -885,7 +901,7 @@ export function SplitTicketBookingModal({
                     ✓
                   </div>
                   <span className="text-xs font-bold text-slate-800">
-                    Payment Received (₹{totalFare})
+                    Payment Received (₹{price?.amount.toLocaleString("en-IN")})
                   </span>
                 </div>
 
@@ -925,6 +941,8 @@ export function SplitTicketBookingModal({
                   </span>
                 </div>
               </div>
+
+              {paymentBreakdown}
 
               {/* Confirmation Details if Finished */}
               {bookingConfirmed && (

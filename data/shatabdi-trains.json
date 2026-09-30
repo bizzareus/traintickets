@@ -1,0 +1,1775 @@
+{
+  "version": 1,
+  "count": 68,
+  "updatedAt": "2026-09-30",
+  "trains": [
+    {
+      "trainNumber": "12001",
+      "trainName": "Ndls Shatabdi",
+      "originStation": {
+        "code": "RKMP",
+        "name": "Rani Kamalapati"
+      },
+      "departureTime": "15:10",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "23:50",
+      "duration": "8h 40m",
+      "distance": "707 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12001-ndls-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12001-ndls-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12001"
+    },
+    {
+      "trainNumber": "12002",
+      "trainName": "Shatabdi Expres",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "RKMP",
+        "name": "Rani Kamalapati"
+      },
+      "arrivalTime": "14:40",
+      "duration": "8h 40m",
+      "distance": "707 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12002-shatabdi-expres-chart-times",
+      "chartTimesUrl": "/chart-times/12002-shatabdi-expres-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12002"
+    },
+    {
+      "trainNumber": "12003",
+      "trainName": "Swaran Shatabdi",
+      "originStation": {
+        "code": "LJN",
+        "name": "Lucknow Ne"
+      },
+      "departureTime": "15:30",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "22:25",
+      "duration": "6h 55m",
+      "distance": "512 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12003-swaran-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12003-swaran-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12003"
+    },
+    {
+      "trainNumber": "12004",
+      "trainName": "Shatabdi Express",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "LJN",
+        "name": "Lucknow Ne"
+      },
+      "arrivalTime": "13:00",
+      "duration": "6h 50m",
+      "distance": "512 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12004-shatabdi-express-chart-times",
+      "chartTimesUrl": "/chart-times/12004-shatabdi-express-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12004"
+    },
+    {
+      "trainNumber": "12007",
+      "trainName": "Mys Shatabdi",
+      "originStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "MYS",
+        "name": "Mysuru Jn"
+      },
+      "arrivalTime": "13:00",
+      "duration": "7h 00m",
+      "distance": "500 km",
+      "halts": 2,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12007-mys-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12007-mys-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12007"
+    },
+    {
+      "trainNumber": "12008",
+      "trainName": "Shatabdi Exp",
+      "originStation": {
+        "code": "MYS",
+        "name": "Mysuru Jn"
+      },
+      "departureTime": "14:15",
+      "destinationStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "arrivalTime": "21:25",
+      "duration": "7h 10m",
+      "distance": "500 km",
+      "halts": 2,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12008-shatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12008-shatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12008"
+    },
+    {
+      "trainNumber": "12009",
+      "trainName": "Adi Shatabdi Exp",
+      "originStation": {
+        "code": "MMCT",
+        "name": "Mumbai Central"
+      },
+      "departureTime": "06:20",
+      "destinationStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "arrivalTime": "12:40",
+      "duration": "6h 20m",
+      "distance": "491 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12009-adi-shatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12009-adi-shatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12009"
+    },
+    {
+      "trainNumber": "12010",
+      "trainName": "Mmct Shatabdi Ex",
+      "originStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "departureTime": "15:10",
+      "destinationStation": {
+        "code": "MMCT",
+        "name": "Mumbai Central"
+      },
+      "arrivalTime": "21:45",
+      "duration": "6h 35m",
+      "distance": "491 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12010-mmct-shatabdi-ex-chart-times",
+      "chartTimesUrl": "/chart-times/12010-mmct-shatabdi-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12010"
+    },
+    {
+      "trainNumber": "12015",
+      "trainName": "Ajmer Shatabdi",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "DOZ",
+        "name": "Daurai"
+      },
+      "arrivalTime": "13:35",
+      "duration": "7h 25m",
+      "distance": "450 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12015-ajmer-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12015-ajmer-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12015"
+    },
+    {
+      "trainNumber": "12019",
+      "trainName": "Shatabdi Exp",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "06:05",
+      "destinationStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "arrivalTime": "13:15",
+      "duration": "7h 10m",
+      "distance": "426 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12019-shatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12019-shatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12019"
+    },
+    {
+      "trainNumber": "12020",
+      "trainName": "Shatabdi Exp",
+      "originStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "departureTime": "13:45",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "21:20",
+      "duration": "7h 35m",
+      "distance": "426 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12020-shatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12020-shatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12020"
+    },
+    {
+      "trainNumber": "12021",
+      "trainName": "Bbn Janshatabdi",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "06:20",
+      "destinationStation": {
+        "code": "BBN",
+        "name": "Barabil"
+      },
+      "arrivalTime": "13:20",
+      "duration": "7h 00m",
+      "distance": "398 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12021-bbn-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12021-bbn-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12021"
+    },
+    {
+      "trainNumber": "12022",
+      "trainName": "Hwh Janshatabdi",
+      "originStation": {
+        "code": "BBN",
+        "name": "Barabil"
+      },
+      "departureTime": "13:45",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "21:00",
+      "duration": "7h 15m",
+      "distance": "398 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12022-hwh-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12022-hwh-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12022"
+    },
+    {
+      "trainNumber": "12023",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "14:05",
+      "destinationStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "arrivalTime": "22:20",
+      "duration": "8h 15m",
+      "distance": "532 km",
+      "halts": 14,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12023-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12023-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12023"
+    },
+    {
+      "trainNumber": "12024",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "departureTime": "05:30",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "13:25",
+      "duration": "7h 55m",
+      "distance": "532 km",
+      "halts": 14,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12024-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12024-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12024"
+    },
+    {
+      "trainNumber": "12025",
+      "trainName": "Shatabdi Exp",
+      "originStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "HYB",
+        "name": "Hyderabad Decan"
+      },
+      "arrivalTime": "14:12",
+      "duration": "8h 12m",
+      "distance": "598 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12025-shatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12025-shatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12025"
+    },
+    {
+      "trainNumber": "12026",
+      "trainName": "Pune Shatabdi",
+      "originStation": {
+        "code": "HYB",
+        "name": "Hyderabad Decan"
+      },
+      "departureTime": "14:40",
+      "destinationStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "arrivalTime": "23:10",
+      "duration": "8h 30m",
+      "distance": "598 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12026-pune-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12026-pune-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12026"
+    },
+    {
+      "trainNumber": "12027",
+      "trainName": "Mas Sbc Shatabdi",
+      "originStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "departureTime": "17:30",
+      "destinationStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "arrivalTime": "22:25",
+      "duration": "4h 55m",
+      "distance": "362 km",
+      "halts": 3,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12027-mas-sbc-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12027-mas-sbc-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12027"
+    },
+    {
+      "trainNumber": "12028",
+      "trainName": "Shatabdi Exp",
+      "originStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "arrivalTime": "11:00",
+      "duration": "5h 00m",
+      "distance": "362 km",
+      "halts": 3,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12028-shatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12028-shatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12028"
+    },
+    {
+      "trainNumber": "12029",
+      "trainName": "Swarn Shatabdi",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "07:20",
+      "destinationStation": {
+        "code": "ASR",
+        "name": "Amritsar Jn"
+      },
+      "arrivalTime": "13:30",
+      "duration": "6h 10m",
+      "distance": "448 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12029-swarn-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12029-swarn-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12029"
+    },
+    {
+      "trainNumber": "12030",
+      "trainName": "Swarn Shatabdi",
+      "originStation": {
+        "code": "ASR",
+        "name": "Amritsar Jn"
+      },
+      "departureTime": "16:50",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "22:50",
+      "duration": "6h 00m",
+      "distance": "448 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12030-swarn-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12030-swarn-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12030"
+    },
+    {
+      "trainNumber": "12033",
+      "trainName": "Shatabdi Exp",
+      "originStation": {
+        "code": "CNB",
+        "name": "Kanpur Central"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "11:20",
+      "duration": "5h 20m",
+      "distance": "439 km",
+      "halts": 3,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12033-shatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12033-shatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12033"
+    },
+    {
+      "trainNumber": "12041",
+      "trainName": "Shatabdi Exp",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "14:25",
+      "destinationStation": {
+        "code": "NJP",
+        "name": "New Jalpaiguri"
+      },
+      "arrivalTime": "22:50",
+      "duration": "8h 25m",
+      "distance": "561 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12041-shatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12041-shatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12041"
+    },
+    {
+      "trainNumber": "12042",
+      "trainName": "Shatabdi Exp",
+      "originStation": {
+        "code": "NJP",
+        "name": "New Jalpaiguri"
+      },
+      "departureTime": "05:30",
+      "destinationStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "arrivalTime": "13:45",
+      "duration": "8h 15m",
+      "distance": "561 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12042-shatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12042-shatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12042"
+    },
+    {
+      "trainNumber": "12044",
+      "trainName": "Ndls Shatabdi",
+      "originStation": {
+        "code": "MOGA",
+        "name": "Moga"
+      },
+      "departureTime": "15:00",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "22:05",
+      "duration": "7h 05m",
+      "distance": "397 km",
+      "halts": 6,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12044-ndls-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12044-ndls-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12044"
+    },
+    {
+      "trainNumber": "12045",
+      "trainName": "Cdg Shatabdi",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "19:15",
+      "destinationStation": {
+        "code": "CDG",
+        "name": "Chandigarh"
+      },
+      "arrivalTime": "22:35",
+      "duration": "3h 20m",
+      "distance": "266 km",
+      "halts": 2,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12045-cdg-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12045-cdg-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12045"
+    },
+    {
+      "trainNumber": "12046",
+      "trainName": "Ndls Shatabdi",
+      "originStation": {
+        "code": "CDG",
+        "name": "Chandigarh"
+      },
+      "departureTime": "12:00",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "15:20",
+      "duration": "3h 20m",
+      "distance": "266 km",
+      "halts": 2,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12046-ndls-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12046-ndls-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12046"
+    },
+    {
+      "trainNumber": "12047",
+      "trainName": "Nlp Janshatabdi",
+      "originStation": {
+        "code": "GHY",
+        "name": "Guwahati"
+      },
+      "departureTime": "09:50",
+      "destinationStation": {
+        "code": "NLP",
+        "name": "North Lakhimpur"
+      },
+      "arrivalTime": "16:15",
+      "duration": "6h 25m",
+      "distance": "344 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12047-nlp-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12047-nlp-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12047"
+    },
+    {
+      "trainNumber": "12048",
+      "trainName": "Ghy Janshatabdi",
+      "originStation": {
+        "code": "NLP",
+        "name": "North Lakhimpur"
+      },
+      "departureTime": "17:20",
+      "destinationStation": {
+        "code": "GHY",
+        "name": "Guwahati"
+      },
+      "arrivalTime": "23:45",
+      "duration": "6h 25m",
+      "distance": "344 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12048-ghy-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12048-ghy-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12048"
+    },
+    {
+      "trainNumber": "12051",
+      "trainName": "Mao Janshatabdi",
+      "originStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "departureTime": "05:10",
+      "destinationStation": {
+        "code": "MAO",
+        "name": "Madgaon"
+      },
+      "arrivalTime": "16:40",
+      "duration": "11h 30m",
+      "distance": "765 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12051-mao-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12051-mao-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12051"
+    },
+    {
+      "trainNumber": "12053",
+      "trainName": "Asr Janshatabdi",
+      "originStation": {
+        "code": "HW",
+        "name": "Haridwar Jn"
+      },
+      "departureTime": "14:45",
+      "destinationStation": {
+        "code": "ASR",
+        "name": "Amritsar Jn"
+      },
+      "arrivalTime": "22:45",
+      "duration": "8h 00m",
+      "distance": "407 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12053-asr-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12053-asr-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12053"
+    },
+    {
+      "trainNumber": "12054",
+      "trainName": "Hw Janshatabdi",
+      "originStation": {
+        "code": "ASR",
+        "name": "Amritsar Jn"
+      },
+      "departureTime": "06:50",
+      "destinationStation": {
+        "code": "HW",
+        "name": "Haridwar Jn"
+      },
+      "arrivalTime": "13:50",
+      "duration": "7h 00m",
+      "distance": "407 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12054-hw-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12054-hw-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12054"
+    },
+    {
+      "trainNumber": "12056",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "DDN",
+        "name": "Dehradun"
+      },
+      "departureTime": "05:00",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "11:05",
+      "duration": "6h 05m",
+      "distance": "305 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12056-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12056-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12056"
+    },
+    {
+      "trainNumber": "12057",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "14:35",
+      "destinationStation": {
+        "code": "DLPC",
+        "name": "Daulatpur Chauk"
+      },
+      "arrivalTime": "22:15",
+      "duration": "7h 40m",
+      "distance": "454 km",
+      "halts": 16,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12057-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12057-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12057"
+    },
+    {
+      "trainNumber": "12058",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "DLPC",
+        "name": "Daulatpur Chauk"
+      },
+      "departureTime": "04:10",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "11:45",
+      "duration": "7h 35m",
+      "distance": "454 km",
+      "halts": 16,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12058-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12058-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12058"
+    },
+    {
+      "trainNumber": "12059",
+      "trainName": "Nzm Jan Shatabdi",
+      "originStation": {
+        "code": "KOTA",
+        "name": "Kota Jn"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "arrivalTime": "12:10",
+      "duration": "6h 00m",
+      "distance": "458 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12059-nzm-jan-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12059-nzm-jan-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12059"
+    },
+    {
+      "trainNumber": "12060",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "NZM",
+        "name": "H Nizamuddin"
+      },
+      "departureTime": "12:45",
+      "destinationStation": {
+        "code": "KOTA",
+        "name": "Kota Jn"
+      },
+      "arrivalTime": "18:55",
+      "duration": "6h 10m",
+      "distance": "458 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12060-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12060-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12060"
+    },
+    {
+      "trainNumber": "12061",
+      "trainName": "Jbp Janshatabdi",
+      "originStation": {
+        "code": "RKMP",
+        "name": "Rani Kamalapati"
+      },
+      "departureTime": "17:40",
+      "destinationStation": {
+        "code": "MML",
+        "name": "Madan Mahal"
+      },
+      "arrivalTime": "22:33",
+      "duration": "4h 53m",
+      "distance": "328 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12061-jbp-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12061-jbp-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12061"
+    },
+    {
+      "trainNumber": "12066",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "DEE",
+        "name": "Delhi S Rohilla"
+      },
+      "departureTime": "16:15",
+      "destinationStation": {
+        "code": "AII",
+        "name": "Ajmer Jn"
+      },
+      "arrivalTime": "22:20",
+      "duration": "6h 05m",
+      "distance": "373 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12066-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12066-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12066"
+    },
+    {
+      "trainNumber": "12069",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "RIG",
+        "name": "Raigarh"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "G",
+        "name": "Gondia Jn"
+      },
+      "arrivalTime": "13:40",
+      "duration": "7h 30m",
+      "distance": "415 km",
+      "halts": 13,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12069-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12069-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12069"
+    },
+    {
+      "trainNumber": "12070",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "G",
+        "name": "Gondia Jn"
+      },
+      "departureTime": "14:30",
+      "destinationStation": {
+        "code": "RIG",
+        "name": "Raigarh"
+      },
+      "arrivalTime": "22:00",
+      "duration": "7h 30m",
+      "distance": "415 km",
+      "halts": 13,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12070-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12070-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12070"
+    },
+    {
+      "trainNumber": "12072",
+      "trainName": "Jan Shatabdi",
+      "originStation": {
+        "code": "HNL",
+        "name": "Hingoli Deccan"
+      },
+      "departureTime": "04:15",
+      "destinationStation": {
+        "code": "CSMT",
+        "name": "C Shivaji Mah T"
+      },
+      "arrivalTime": "16:50",
+      "duration": "12h 35m",
+      "distance": "660 km",
+      "halts": 14,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12072-jan-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12072-jan-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12072"
+    },
+    {
+      "trainNumber": "12073",
+      "trainName": "Bbs Janshatabdi",
+      "originStation": {
+        "code": "HWH",
+        "name": "Howrah Jn"
+      },
+      "departureTime": "13:25",
+      "destinationStation": {
+        "code": "BBS",
+        "name": "Bhubaneswar"
+      },
+      "arrivalTime": "20:00",
+      "duration": "6h 35m",
+      "distance": "439 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12073-bbs-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12073-bbs-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12073"
+    },
+    {
+      "trainNumber": "12075",
+      "trainName": "Tvc Janshatabdi",
+      "originStation": {
+        "code": "CLT",
+        "name": "Kozhikkode"
+      },
+      "departureTime": "13:45",
+      "destinationStation": {
+        "code": "TVC",
+        "name": "Trivandrum Cntl"
+      },
+      "arrivalTime": "21:25",
+      "duration": "7h 40m",
+      "distance": "399 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12075-tvc-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12075-tvc-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12075"
+    },
+    {
+      "trainNumber": "12076",
+      "trainName": "Clt Janshatabdi",
+      "originStation": {
+        "code": "TVC",
+        "name": "Trivandrum Cntl"
+      },
+      "departureTime": "05:55",
+      "destinationStation": {
+        "code": "CLT",
+        "name": "Kozhikkode"
+      },
+      "arrivalTime": "13:00",
+      "duration": "7h 05m",
+      "distance": "399 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12076-clt-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12076-clt-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12076"
+    },
+    {
+      "trainNumber": "12077",
+      "trainName": "Bza Janshatabdi",
+      "originStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "departureTime": "07:25",
+      "destinationStation": {
+        "code": "BZA",
+        "name": "Vijayawada Jn"
+      },
+      "arrivalTime": "15:00",
+      "duration": "7h 35m",
+      "distance": "454 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12077-bza-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12077-bza-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12077"
+    },
+    {
+      "trainNumber": "12078",
+      "trainName": "Jan Shatabdi",
+      "originStation": {
+        "code": "BZA",
+        "name": "Vijayawada Jn"
+      },
+      "departureTime": "15:30",
+      "destinationStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "arrivalTime": "23:00",
+      "duration": "7h 30m",
+      "distance": "454 km",
+      "halts": 9,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12078-jan-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12078-jan-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12078"
+    },
+    {
+      "trainNumber": "12079",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "departureTime": "06:00",
+      "destinationStation": {
+        "code": "UBL",
+        "name": "Sss Hubballi Jn"
+      },
+      "arrivalTime": "12:50",
+      "duration": "6h 50m",
+      "distance": "470 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12079-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12079-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12079"
+    },
+    {
+      "trainNumber": "12080",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "UBL",
+        "name": "Sss Hubballi Jn"
+      },
+      "departureTime": "14:10",
+      "destinationStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "arrivalTime": "21:15",
+      "duration": "7h 05m",
+      "distance": "470 km",
+      "halts": 10,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12080-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12080-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12080"
+    },
+    {
+      "trainNumber": "12081",
+      "trainName": "Tvc Janshatabdi",
+      "originStation": {
+        "code": "CAN",
+        "name": "Kannur"
+      },
+      "departureTime": "04:50",
+      "destinationStation": {
+        "code": "TVC",
+        "name": "Trivandrum Cntl"
+      },
+      "arrivalTime": "14:10",
+      "duration": "9h 20m",
+      "distance": "502 km",
+      "halts": 15,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12081-tvc-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12081-tvc-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12081"
+    },
+    {
+      "trainNumber": "12082",
+      "trainName": "Can Janshatabdi",
+      "originStation": {
+        "code": "TVC",
+        "name": "Trivandrum Cntl"
+      },
+      "departureTime": "14:50",
+      "destinationStation": {
+        "code": "CAN",
+        "name": "Kannur"
+      },
+      "arrivalTime": "00:50",
+      "duration": "10h 00m",
+      "distance": "502 km",
+      "halts": 15,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12082-can-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12082-can-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12082"
+    },
+    {
+      "trainNumber": "12083",
+      "trainName": "Cbe Janshatabdi",
+      "originStation": {
+        "code": "MV",
+        "name": "Mayiladuturai J"
+      },
+      "departureTime": "15:05",
+      "destinationStation": {
+        "code": "CBE",
+        "name": "Coimbatore Jn"
+      },
+      "arrivalTime": "21:25",
+      "duration": "6h 20m",
+      "distance": "362 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12083-cbe-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12083-cbe-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12083"
+    },
+    {
+      "trainNumber": "12084",
+      "trainName": "Mv Jan Shatabdi",
+      "originStation": {
+        "code": "CBE",
+        "name": "Coimbatore Jn"
+      },
+      "departureTime": "07:15",
+      "destinationStation": {
+        "code": "MV",
+        "name": "Mayiladuturai J"
+      },
+      "arrivalTime": "13:45",
+      "duration": "6h 30m",
+      "distance": "362 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12084-mv-jan-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12084-mv-jan-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12084"
+    },
+    {
+      "trainNumber": "12085",
+      "trainName": "Shatabdi Exp",
+      "originStation": {
+        "code": "GHY",
+        "name": "Guwahati"
+      },
+      "departureTime": "13:10",
+      "destinationStation": {
+        "code": "DBRG",
+        "name": "DIBRUGARH"
+      },
+      "arrivalTime": "22:15",
+      "duration": "9h 05m",
+      "distance": "506 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12085-shatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12085-shatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12085"
+    },
+    {
+      "trainNumber": "12086",
+      "trainName": "Shatabdi Exp",
+      "originStation": {
+        "code": "DBRG",
+        "name": "DIBRUGARH"
+      },
+      "departureTime": "05:00",
+      "destinationStation": {
+        "code": "GHY",
+        "name": "Guwahati"
+      },
+      "arrivalTime": "13:50",
+      "duration": "8h 50m",
+      "distance": "506 km",
+      "halts": 7,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12086-shatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12086-shatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12086"
+    },
+    {
+      "trainNumber": "12089",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "departureTime": "17:15",
+      "destinationStation": {
+        "code": "SMET",
+        "name": "Shivamogga Town"
+      },
+      "arrivalTime": "21:40",
+      "duration": "4h 25m",
+      "distance": "274 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12089-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12089-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12089"
+    },
+    {
+      "trainNumber": "12090",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "SMET",
+        "name": "Shivamogga Town"
+      },
+      "departureTime": "05:15",
+      "destinationStation": {
+        "code": "SBC",
+        "name": "KSR Bengaluru"
+      },
+      "arrivalTime": "09:50",
+      "duration": "4h 35m",
+      "distance": "274 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12090-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12090-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12090"
+    },
+    {
+      "trainNumber": "12091",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "DDN",
+        "name": "Dehradun"
+      },
+      "departureTime": "15:55",
+      "destinationStation": {
+        "code": "KGM",
+        "name": "Kathgodam"
+      },
+      "arrivalTime": "23:40",
+      "duration": "7h 45m",
+      "distance": "336 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12091-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12091-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12091"
+    },
+    {
+      "trainNumber": "12092",
+      "trainName": "Janshatabdi Exp",
+      "originStation": {
+        "code": "KGM",
+        "name": "Kathgodam"
+      },
+      "departureTime": "05:25",
+      "destinationStation": {
+        "code": "DDN",
+        "name": "Dehradun"
+      },
+      "arrivalTime": "12:40",
+      "duration": "7h 15m",
+      "distance": "336 km",
+      "halts": 8,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12092-janshatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12092-janshatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12092"
+    },
+    {
+      "trainNumber": "12243",
+      "trainName": "Mas Cbe Shatabdi",
+      "originStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "departureTime": "07:15",
+      "destinationStation": {
+        "code": "CBE",
+        "name": "Coimbatore Jn"
+      },
+      "arrivalTime": "14:15",
+      "duration": "7h 00m",
+      "distance": "497 km",
+      "halts": 5,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12243-mas-cbe-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12243-mas-cbe-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12243"
+    },
+    {
+      "trainNumber": "12244",
+      "trainName": "Cbe Mas Shatabdi",
+      "originStation": {
+        "code": "CBE",
+        "name": "Coimbatore Jn"
+      },
+      "departureTime": "15:05",
+      "destinationStation": {
+        "code": "MAS",
+        "name": "Mgr Chennai Ctl"
+      },
+      "arrivalTime": "21:50",
+      "duration": "6h 45m",
+      "distance": "497 km",
+      "halts": 5,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12244-cbe-mas-shatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12244-cbe-mas-shatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12244"
+    },
+    {
+      "trainNumber": "12365",
+      "trainName": "Rnc Janshatabdi",
+      "originStation": {
+        "code": "PNBE",
+        "name": "Patna Jn"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "RNC",
+        "name": "Ranchi"
+      },
+      "arrivalTime": "13:55",
+      "duration": "7h 45m",
+      "distance": "411 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12365-rnc-janshatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12365-rnc-janshatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12365"
+    },
+    {
+      "trainNumber": "12913",
+      "trainName": "Trishatabdi Exp",
+      "originStation": {
+        "code": "INDB",
+        "name": "Indore Jn Bg"
+      },
+      "departureTime": "20:35",
+      "destinationStation": {
+        "code": "NGP",
+        "name": "Nagpur"
+      },
+      "arrivalTime": "08:20",
+      "duration": "11h 45m",
+      "distance": "652 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12913-trishatabdi-exp-chart-times",
+      "chartTimesUrl": "/chart-times/12913-trishatabdi-exp-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12913"
+    },
+    {
+      "trainNumber": "12923",
+      "trainName": "Dadn Trishatabdi",
+      "originStation": {
+        "code": "DADN",
+        "name": "Dr Ambedkar Ngr"
+      },
+      "departureTime": "21:00",
+      "destinationStation": {
+        "code": "NGP",
+        "name": "Nagpur"
+      },
+      "arrivalTime": "08:20",
+      "duration": "11h 20m",
+      "distance": "628 km",
+      "halts": 11,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "12923-dadn-trishatabdi-chart-times",
+      "chartTimesUrl": "/chart-times/12923-dadn-trishatabdi-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/12923"
+    },
+    {
+      "trainNumber": "20947",
+      "trainName": "Jan Shatabdi Ex",
+      "originStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "departureTime": "07:55",
+      "destinationStation": {
+        "code": "EKNR",
+        "name": "Ekata Nagar Kevadiya Kdcy"
+      },
+      "arrivalTime": "10:50",
+      "duration": "2h 55m",
+      "distance": "183 km",
+      "halts": 3,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20947-jan-shatabdi-ex-chart-times",
+      "chartTimesUrl": "/chart-times/20947-jan-shatabdi-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20947"
+    },
+    {
+      "trainNumber": "20948",
+      "trainName": "Jan Shatabdi Ex",
+      "originStation": {
+        "code": "EKNR",
+        "name": "Ekata Nagar Kevadiya Kdcy"
+      },
+      "departureTime": "11:15",
+      "destinationStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "arrivalTime": "14:10",
+      "duration": "2h 55m",
+      "distance": "183 km",
+      "halts": 3,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20948-jan-shatabdi-ex-chart-times",
+      "chartTimesUrl": "/chart-times/20948-jan-shatabdi-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20948"
+    },
+    {
+      "trainNumber": "20949",
+      "trainName": "Jan Shatabdi Ex",
+      "originStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "departureTime": "15:20",
+      "destinationStation": {
+        "code": "EKNR",
+        "name": "Ekata Nagar Kevadiya Kdcy"
+      },
+      "arrivalTime": "18:20",
+      "duration": "3h 00m",
+      "distance": "183 km",
+      "halts": 3,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20949-jan-shatabdi-ex-chart-times",
+      "chartTimesUrl": "/chart-times/20949-jan-shatabdi-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20949"
+    },
+    {
+      "trainNumber": "20950",
+      "trainName": "Jan Shatabdi Ex",
+      "originStation": {
+        "code": "EKNR",
+        "name": "Ekata Nagar Kevadiya Kdcy"
+      },
+      "departureTime": "20:50",
+      "destinationStation": {
+        "code": "ADI",
+        "name": "Ahmedabad Jn"
+      },
+      "arrivalTime": "23:55",
+      "duration": "3h 05m",
+      "distance": "183 km",
+      "halts": 3,
+      "classes": [
+        "CC",
+        "EC"
+      ],
+      "slug": "20950-jan-shatabdi-ex-chart-times",
+      "chartTimesUrl": "/chart-times/20950-jan-shatabdi-ex-chart-times",
+      "foodMenuSlug": null,
+      "foodMenuUrl": null,
+      "trainDetailUrl": "/trains/20950"
+    }
+  ]
+}

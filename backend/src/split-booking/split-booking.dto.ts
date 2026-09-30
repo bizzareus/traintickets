@@ -126,14 +126,13 @@ export class CreateSplitBookingDto {
   @MaxLength(4)
   quota?: string;
 
-  @IsNumber({ maxDecimalPlaces: 2 })
+  @IsInt()
   @Min(1)
   @Max(200_000)
   totalFare!: number;
 
   @IsArray()
   @ArrayMinSize(2)
-  @ArrayMaxSize(2)
   @ValidateNested({ each: true })
   @Type(() => SplitBookingLegDto)
   legs!: SplitBookingLegDto[];

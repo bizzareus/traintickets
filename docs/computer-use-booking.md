@@ -69,14 +69,36 @@ For local development, install Chromium with `npx playwright install chromium`
 from `backend/` if a system browser is not configured. Use the project's local
 database and URL overrides when starting the backend.
 
+## Ticket pricing and service fee
+
+`totalFare` in the create request is the ticket price in whole rupees. The backend
+adds a **₹50 service fee once per booking**, in either AI or manual mode. Do not
+include that fee in the request's `totalFare` or individual leg fares.
+
+For example, a ₹1,110 ticket request returns this payment breakdown:
+
+```json
+{ "totalFare": 1110, "serviceFee": 50, "amount": 1160 }
+```
+
+The checkout, payment receipt, owner notifications, Razorpay order, QR and UPI
+intents use this breakdown. Payment callbacks must match `amount`, including the
+fee. Existing bookings keep a stored fee of zero so their previous payment orders
+remain valid. AI ticket budgets remain the individual leg fares, excluding our
+service fee.
+
 ## AI request and fulfillment
 
 The existing `POST /api/split-booking/create` and status endpoint remain in use.
-Each of the two `legs` now requires an explicit `boardingDate` (`YYYY-MM-DD`),
+The request accepts **two or more legs, with no fixed maximum leg count**.
+Each leg requires an explicit `boardingDate` (`YYYY-MM-DD`),
 in addition to `from`, `to`, `travelClass` and `fare`. These dates are passed from
 the alternate-path search through the booking modal and stored in `legsPayload`.
 Missing dates, disconnected legs and amounts exceeding the total are rejected
-before payment. This avoids guessing the second boarding date on overnight trips.
+before payment. This avoids guessing boarding dates on overnight trips. Adjacent
+legs must connect at the same station and their boarding dates cannot go backwards.
+Search endpoints may use a known city sibling, such as NDLS for DEE; reservations
+store and display the actual first and last stations from the selected legs.
 
 1. A captured, amount-matched payment moves the stored request to `QUEUED`.
 2. A conditional database update claims it as `IN_PROGRESS`; concurrent callbacks
@@ -86,11 +108,13 @@ before payment. This avoids guessing the second boarding date on overnight trips
    instructions limit the fare, including fees, to that leg's stored fare.
 4. Each `computer_call` is executed in order and receives a viewport screenshot
    as `computer_call_output` with the original `call_id`. `previous_response_id`
-   continues the conversation. The same browser stays open for both legs.
+   continues the conversation. The same browser stays open for all legs.
 5. The agent reports the visible labelled PNR. The backend stores it immediately,
    then checks it using the existing PNR status provider against train, date,
    route, class and confirmed adult passenger count.
-6. Only two independently verified reservations produce `CONFIRMED`.
+6. Only when all requested reservations are independently verified does the booking
+   become `CONFIRMED`. Status responses include an ordered `pnrs` array for every
+   leg. `pnrLeg1` and `pnrLeg2` remain aliases for the first two PNRs for older clients.
 
 Credentials are substituted locally into focused login inputs, never included in
 the model prompt. Booking/passenger data and viewport screenshots are sent to
@@ -106,7 +130,7 @@ responses, deadlines and missing confirmations stop the run. Safety checks are
 never auto-acknowledged. A stopped run currently uses the existing `FAILED`
 status and `bookingError`; there is no interactive resume endpoint.
 
-An issued PNR remains stored even if verification is delayed or the second leg
+An issued PNR remains stored even if verification is delayed or a later leg
 fails. Inspect those PNRs and the portal before taking further action. The runner
 does not automatically replay submissions or refund/cancel a partially booked
 journey. A process crash leaves `IN_PROGRESS` for reconciliation rather than

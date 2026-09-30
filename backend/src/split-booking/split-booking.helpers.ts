@@ -1,5 +1,15 @@
 import type { SplitTicketBooking } from '@prisma/client';
 import type { CreateSplitBookingDto } from './split-booking.types';
+import { bookingPrice } from './split-booking.pricing';
+
+/** Retain the first two PNR aliases for older clients while storing every leg. */
+export function bookingPnrFields(pnrs: string[]) {
+  return {
+    pnrs: [...pnrs],
+    pnrLeg1: pnrs[0] || null,
+    pnrLeg2: pnrs[1] || null,
+  };
+}
 
 /** Both fulfillment paths consume the same persisted customer details. */
 export function bookingDetails(
@@ -30,13 +40,15 @@ export function bookingDetails(
 
 export function manualBookingMessage(booking: SplitTicketBooking): string {
   const details = bookingDetails(booking);
+  const price = bookingPrice(booking.totalFare, booking.serviceFee);
   return [
     'MANUAL TRAIN BOOKING REQUEST',
     `Booking reference: ${booking.bookingRef}`,
     `Train: ${booking.trainNumber}${booking.trainName ? ` - ${booking.trainName}` : ''}`,
     `Journey: ${booking.fromStationCode} → ${booking.toStationCode} on ${details.journeyDate}`,
     `Requested class: ${booking.travelClass} | Quota: ${booking.quota}`,
-    `Total collected: INR ${booking.totalFare} | Payment status: ${booking.paymentStatus}`,
+    `Ticket fare: INR ${price.totalFare} + Service fee: INR ${price.serviceFee}`,
+    `Total collected: INR ${price.amount} | Payment status: ${booking.paymentStatus}`,
     `Payment ID: ${booking.razorpayPaymentId ?? 'Not supplied'}`,
     `Order ID: ${booking.razorpayOrderId ?? 'Not supplied'}`,
     `Paid at: ${booking.paidAt?.toISOString() ?? 'Not supplied'}`,

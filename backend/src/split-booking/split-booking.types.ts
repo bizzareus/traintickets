@@ -58,8 +58,11 @@ export interface SplitBookingStatusResponse {
   contactMobile: string;
   contactEmail: string;
   bookingMode: SplitBookingMode;
+  serviceFee: number;
+  amount: number;
   paymentStatus: SplitBookingPaymentStatus;
   bookingStatus: SplitBookingFulfillmentStatus;
+  pnrs: string[];
   pnrLeg1?: string | null;
   pnrLeg2?: string | null;
   bookingError?: string | null;
