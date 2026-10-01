@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { cache as reactCache } from "react";
+import { clearQualityCaches } from "./blog-quality";
 const cache = reactCache || (<T extends (...args: unknown[]) => unknown>(fn: T): T => fn);
 
 export type BlogPostMeta = {
@@ -193,6 +194,7 @@ export function clearBlogCaches(): void {
   postsListCache.clear();
   slugsListCache.clear();
   langSlugsCache.clear();
+  clearQualityCaches();
 }
 
 export const listBlogPostSlugs = cache((lang?: string): string[] => {
