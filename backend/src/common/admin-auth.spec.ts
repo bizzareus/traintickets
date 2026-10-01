@@ -5,7 +5,24 @@ import {
   buildAdminSessionCookieValue,
   buildAdminSessionSetCookie,
   isAdminSessionCookieValid,
+  safeCompareStrings,
 } from './admin-auth';
+
+describe('safeCompareStrings', () => {
+  it('returns true for matching non-empty strings', () => {
+    expect(safeCompareStrings('secret123', 'secret123')).toBe(true);
+  });
+
+  it('returns false for mismatched strings or different lengths', () => {
+    expect(safeCompareStrings('secret123', 'secret124')).toBe(false);
+    expect(safeCompareStrings('secret123', 'secret')).toBe(false);
+  });
+
+  it('returns false when either string is empty or falsy', () => {
+    expect(safeCompareStrings('', 'secret123')).toBe(false);
+    expect(safeCompareStrings('secret123', '')).toBe(false);
+  });
+});
 
 describe('assertAdminPassword (header-only shim)', () => {
   const originalEnv = process.env.CHART_TIME_INGESTION_PASSWORD;
