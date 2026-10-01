@@ -17,3 +17,8 @@
 **Vulnerability:** `AdminController` (`@Controller('api/admin')`) used `@UseGuards(JwtAuthGuard)`. Because `JwtStrategy` only checks user existence without role verification, any regular authenticated user could access or modify admin resources (trains, chart rules, event instances).
 **Learning:** `JwtAuthGuard` in this application verifies user identity but not administrative authorization. Admin endpoints must explicitly use `assertAdminAuth({ headerPw: pw, req })` or an explicit admin role check rather than relying solely on `JwtAuthGuard`.
 **Prevention:** Audit any controller using `JwtAuthGuard` to ensure non-admin users cannot access administrative endpoints without `assertAdminAuth`.
+
+## 2026-10-01 - Non-Constant-Time Secret Comparisons
+**Vulnerability:** API key and admin password verification in `SeatCacheController` and `ChartTimeIngestionService` used non-constant-time equality operators (`===` / `!==`), creating timing side-channel risks.
+**Learning:** Checking credentials with standard string operators leaks timing information about matching prefix lengths. Exporting `safeCompareStrings` from `admin-auth.ts` provides a consistent HMAC-digest constant-time check.
+**Prevention:** Always use `safeCompareStrings(suppliedSecret, expectedSecret)` or `timingSafeEqual` when comparing secrets, passwords, or API keys.

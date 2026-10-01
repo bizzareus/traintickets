@@ -8,6 +8,7 @@ import { DateTime } from 'luxon';
 import { PrismaService } from '../prisma/prisma.service';
 import { IrctcService } from '../irctc/irctc.service';
 import { TrainCompositionService } from '../train-composition/train-composition.service';
+import { safeCompareStrings } from '../common/admin-auth';
 
 const CHART_TASK_STATUSES = [
   'pending',
@@ -101,7 +102,7 @@ export class ChartTimeIngestionService {
         'Ingestion password is not configured.',
       );
     }
-    if (String(adminPassword ?? '') !== expected) {
+    if (!safeCompareStrings(String(adminPassword ?? '').trim(), expected)) {
       throw new UnauthorizedException('Invalid admin password.');
     }
   }

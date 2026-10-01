@@ -21,7 +21,7 @@ const ADMIN_SESSION_TTL_MS = 24 * 60 * 60 * 1000;
  * Safely compare two string secrets in constant time using HMAC digests
  * to prevent timing side-channel attacks during password verification.
  */
-function safeCompareStrings(a: string, b: string): boolean {
+export function safeCompareStrings(a: string, b: string): boolean {
   if (!a || !b) return false;
   const aBuf = createHmac('sha256', 'admin-auth-salt').update(a).digest();
   const bBuf = createHmac('sha256', 'admin-auth-salt').update(b).digest();

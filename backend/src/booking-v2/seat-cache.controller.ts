@@ -11,7 +11,11 @@ import {
 import type { Request } from 'express';
 import { SeatCacheCronService } from './seat-cache-cron.service';
 import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
-import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
+import {
+  ADMIN_PASSWORD_HEADER,
+  assertAdminAuth,
+  safeCompareStrings,
+} from '../common/admin-auth';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Controller()
@@ -128,7 +132,10 @@ export class SeatCacheController {
         '',
     ).trim();
 
-    if (expectedKey && String(apiKey ?? '').trim() === expectedKey) {
+    if (
+      expectedKey &&
+      safeCompareStrings(String(apiKey ?? '').trim(), expectedKey)
+    ) {
       return;
     }
 
