@@ -199,7 +199,8 @@ function alternatePathsToCheckResult(
       status: 'failed',
       vacantBerth: { vbd: [], error: null },
       chartStatus: ((alt as Record<string, unknown>).chartStatus as
-        Service2CheckResult['chartStatus'] | undefined) ?? {
+        | Service2CheckResult['chartStatus']
+        | undefined) ?? {
         kind: 'not_prepared_yet' as const,
         message: 'Confirmed seats not available yet',
       },
@@ -1633,9 +1634,11 @@ export class JourneyTaskService {
           completedCount: entry.completedCount ?? 0,
           failedCount: entry.failedCount ?? 0,
           input: (entry.input ?? undefined) as
-            Prisma.InputJsonValue | undefined,
+            | Prisma.InputJsonValue
+            | undefined,
           output: (entry.output ?? undefined) as
-            Prisma.InputJsonValue | undefined,
+            | Prisma.InputJsonValue
+            | undefined,
           error: entry.error ?? null,
         },
       });

@@ -22,3 +22,8 @@
 **Vulnerability:** API key and admin password verification in `SeatCacheController` and `ChartTimeIngestionService` used non-constant-time equality operators (`===` / `!==`), creating timing side-channel risks.
 **Learning:** Checking credentials with standard string operators leaks timing information about matching prefix lengths. Exporting `safeCompareStrings` from `admin-auth.ts` provides a consistent HMAC-digest constant-time check.
 **Prevention:** Always use `safeCompareStrings(suppliedSecret, expectedSecret)` or `timingSafeEqual` when comparing secrets, passwords, or API keys.
+
+## 2026-10-02 - Non-Constant-Time Secret Comparisons in Next.js API Routes
+**Vulnerability:** Secret header checks in Next.js route handlers (`/api/indexnow` and `/api/chart-times-data/[id]`) used standard string equality (`!==`), exposing secrets to timing side-channel analysis.
+**Learning:** Next.js route handlers run in Node.js runtime and can import `safeCompareStrings` from `lib/security.ts` to perform HMAC-digest constant-time comparison on secret headers (`INDEXNOW_SECRET`, `CHART_TIMES_SYNC_SECRET`).
+**Prevention:** Always use `safeCompareStrings(suppliedSecret, expectedSecret)` when comparing API keys or authorization headers in Next.js route handlers.

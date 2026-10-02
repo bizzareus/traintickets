@@ -2,13 +2,14 @@ import { NextResponse } from "next/server";
 import { submitToIndexNow, IndexNowResult } from "@/lib/seo/indexnow";
 import { buildSitemapBucket } from "@/lib/seo/sitemap-data";
 import { SITEMAP_BUCKETS } from "@/lib/seo/sitemap-buckets";
+import { safeCompareStrings } from "@/lib/security";
 
 export async function POST(request: Request) {
   // Optional security check if secret is configured
   const secretEnv = process.env.INDEXNOW_SECRET;
   if (secretEnv) {
     const authHeader = request.headers.get("x-indexnow-secret") || request.headers.get("authorization");
-    if (authHeader !== secretEnv && authHeader !== `Bearer ${secretEnv}`) {
+    if (!authHeader || (!safeCompareStrings(authHeader, secretEnv) && !safeCompareStrings(authHeader, `Bearer ${secretEnv}`))) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
   }

@@ -1,5 +1,6 @@
 import { getChartTimesPageData } from "@/lib/chartTimes";
 import { parseTrainNumberFromSlug } from "@/lib/chartTimesSlug";
+import { safeCompareStrings } from "@/lib/security";
 
 export const dynamic = "force-dynamic";
 
@@ -16,7 +17,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const secret = process.env.CHART_TIMES_SYNC_SECRET;
-  if (secret && req.headers.get("x-sync-secret") !== secret) {
+  if (secret && !safeCompareStrings(req.headers.get("x-sync-secret"), secret)) {
     return Response.json({ error: "unauthorized" }, { status: 401 });
   }
 

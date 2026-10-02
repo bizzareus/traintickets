@@ -16,7 +16,9 @@ describe('AdminController', () => {
 
     const mockAdminService = {
       getTrains: jest.fn().mockResolvedValue([]),
-      createTrain: jest.fn().mockResolvedValue({ id: '1', trainNumber: '12345' }),
+      createTrain: jest
+        .fn()
+        .mockResolvedValue({ id: '1', trainNumber: '12345' }),
       getChartRules: jest.fn().mockResolvedValue([]),
       createChartRule: jest.fn().mockResolvedValue({ id: '1', trainId: 't1' }),
       getChartEventInstances: jest.fn().mockResolvedValue([]),
