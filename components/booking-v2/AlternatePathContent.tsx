@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useState } from "react";
 import moment from "moment";
 import { apiClient } from "@/lib/api";
 import {
@@ -9,6 +9,13 @@ import {
 } from "@/lib/analytics/track";
 import { cn } from "@/lib/utils";
 import { buildAlternatePathDisplayItems } from "@/lib/bookingV2AlternatePathsDisplay";
+import {
+  buildSplitBookingSelection,
+  getLegClassOptions,
+  getSelectedLegClass,
+  hasClassFare,
+  type LegClassSelections,
+} from "@/lib/splitBookingSelection";
 import { countConfirmedAlternateLegs } from "@/lib/trainSearchV2Sort";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
@@ -31,9 +38,11 @@ import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFoot
 import { BellRing } from "lucide-react";
 import { NextReleaseBottomSheet } from "./NextReleaseBottomSheet";
 import { useSplitBookingFeatureFlag } from "@/lib/hooks/useSplitBookingFeatureFlag";
-import { SplitTicketBookingModal } from "./SplitTicketBookingModal";
+import {
+  SplitTicketBookingModal,
+  type SplitTicketBookingModalProps,
+} from "./SplitTicketBookingModal";
 import type {
-  AlternateClassOption,
   AlternatePathProgressEvent,
   AlternatePathsResponse,
 } from "./alternatePathsTypes";
@@ -776,9 +785,26 @@ export function AlternatePathContent({
   source,
 }: AlternatePathContentProps) {
   const isSplitBookingEnabled = useSplitBookingFeatureFlag();
-  const [splitBookingModalOpen, setSplitBookingModalOpen] = useState(false);
-  const bookingLegs =
-    altResult?.legs.filter((leg) => leg.segmentKind === "confirmed") ?? [];
+  const classGroupId = useId();
+  const [bookingRequest, setBookingRequest] = useState<Omit<
+    SplitTicketBookingModalProps,
+    "open" | "onClose"
+  > | null>(null);
+  const [classSelections, setClassSelections] = useState<{
+    result: AlternatePathsResponse | null;
+    journeyDate: string | null;
+    choices: LegClassSelections;
+  } | null>(null);
+  // A new search/result invalidates old choices immediately, before any effects run.
+  const selectedClasses =
+    classSelections?.result === altResult &&
+    classSelections?.journeyDate === journeyDate
+      ? classSelections.choices
+      : {};
+  const bookingSelection = buildSplitBookingSelection(
+    altResult?.legs ?? [],
+    selectedClasses,
+  );
 
   /** Flat list of display items: each is a single leg card or a collapsed "no tickets" span. */
   const alternatePathDisplayItems = useMemo(
@@ -794,6 +820,13 @@ export function AlternatePathContent({
     () => countConfirmedAlternateLegs(altResult?.legs, altResult?.legCount),
     [altResult],
   );
+  const canChooseLegClasses =
+    isSplitBookingEnabled &&
+    isAdminUser &&
+    confirmedLegCount > 1 &&
+    !IS_TICKET_ALERT_ENABLED;
+  const canBookSelectedLegs =
+    bookingSelection.totalFare !== null && bookingSelection.legs.length > 1;
 
   // One-click "search all other trains" for the same route/date — shown once the
   // search is done and this train can't fully confirm the journey (no complete
@@ -912,7 +945,6 @@ export function AlternatePathContent({
             return null;
           })()}
 
-
           {!altResult.isComplete &&
             altResult.totalFare != null &&
             IS_TICKET_ALERT_ENABLED &&
@@ -1017,24 +1049,12 @@ export function AlternatePathContent({
                         ? `Arr ${arr}`
                         : null;
 
-                // Build class options: use confirmedClassOptions if available, else build from the single leg
-                const classOptions: AlternateClassOption[] = isConfirmed
-                  ? leg.confirmedClassOptions &&
-                    leg.confirmedClassOptions.length > 0
-                    ? leg.confirmedClassOptions
-                    : [
-                        {
-                          travelClass: leg.travelClass ?? "SL",
-                          railDataStatus: leg.railDataStatus ?? null,
-                          availablityStatus: leg.availablityStatus ?? null,
-                          predictionPercentage:
-                            leg.predictionPercentage ?? null,
-                          availabilityDisplayName:
-                            leg.availabilityDisplayName ?? null,
-                          fare: leg.fare ?? null,
-                        },
-                      ]
-                  : [];
+                const classOptions = getLegClassOptions(leg);
+                const legIndex = altResult.legs.indexOf(leg);
+                const selectedOption = getSelectedLegClass(
+                  leg,
+                  selectedClasses[legIndex],
+                );
 
                 return (
                   <li key={i} className="relative flex gap-0">
@@ -1130,8 +1150,18 @@ export function AlternatePathContent({
                       </div>
                       {/* Class rows for confirmed */}
                       {isConfirmed && classOptions.length > 0 && (
-                        <div className="divide-y divide-gray-100">
+                        <fieldset className="min-w-0 divide-y divide-gray-100">
+                          <legend className="sr-only">
+                            Class for leg {stepIndex}: {leg.from} to {leg.to}
+                          </legend>
+                          {canChooseLegClasses && classOptions.length > 1 && (
+                            <p className="px-3 py-2 text-xs font-medium text-blue-800 sm:px-4">
+                              Choose one class for this leg
+                            </p>
+                          )}
                           {classOptions.map((opt) => {
+                            const selected =
+                              selectedOption?.travelClass === opt.travelClass;
                             const optHref = irctcBookingRedirect({
                               from: leg.from,
                               to: leg.to,
@@ -1141,7 +1171,12 @@ export function AlternatePathContent({
                             return (
                               <div
                                 key={opt.travelClass}
-                                className="flex items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4"
+                                className={cn(
+                                  "flex items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4",
+                                  canChooseLegClasses &&
+                                    selected &&
+                                    "bg-blue-50/70",
+                                )}
                               >
                                 <div className="flex items-center gap-x-2.5 gap-y-0.5 min-w-0">
                                   <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-bold text-gray-700">
@@ -1152,16 +1187,47 @@ export function AlternatePathContent({
                                       opt.railDataStatus ??
                                       "Available"}
                                   </span>
-                                  {opt.fare != null && (
+                                  {hasClassFare(opt) && (
                                     <span className="text-xs sm:text-sm font-bold text-gray-900 tabular-nums">
                                       ₹{opt.fare.toFixed(0)}
                                     </span>
                                   )}
                                 </div>
-                                {isSplitBookingEnabled && confirmedLegCount > 1 ? (
-                                  <span className="shrink-0 rounded-md bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 text-xs font-semibold text-emerald-800">
-                                    Leg {stepIndex} Confirmed
-                                  </span>
+                                {canChooseLegClasses ? (
+                                  <label
+                                    className={cn(
+                                      "inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg border px-3 text-xs font-semibold",
+                                      !hasClassFare(opt)
+                                        ? "cursor-not-allowed border-slate-200 text-slate-400"
+                                        : selected
+                                          ? "cursor-pointer border-blue-600 bg-blue-600 text-white"
+                                          : "cursor-pointer border-slate-300 bg-white text-slate-700 hover:border-blue-500 hover:bg-blue-50",
+                                    )}
+                                  >
+                                    <input
+                                      type="radio"
+                                      name={`${classGroupId}-leg-${legIndex}`}
+                                      aria-label={`Leg ${stepIndex}: ${opt.travelClass}, ${hasClassFare(opt) ? `₹${opt.fare}` : "fare unavailable"}`}
+                                      checked={selected}
+                                      disabled={!hasClassFare(opt)}
+                                      onChange={() =>
+                                        setClassSelections({
+                                          result: altResult,
+                                          journeyDate,
+                                          choices: {
+                                            ...selectedClasses,
+                                            [legIndex]: opt.travelClass,
+                                          },
+                                        })
+                                      }
+                                      className="h-4 w-4 text-blue-600 accent-blue-600 checked:border-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+                                    />
+                                    {hasClassFare(opt)
+                                      ? selected
+                                        ? "Selected"
+                                        : "Select"
+                                      : "Fare unavailable"}
+                                  </label>
                                 ) : (
                                   <a
                                     href={optHref}
@@ -1190,7 +1256,7 @@ export function AlternatePathContent({
                               </div>
                             );
                           })}
-                        </div>
+                        </fieldset>
                       )}
                       {/* No tickets row */}
                       {!isConfirmed && (
@@ -1292,28 +1358,61 @@ export function AlternatePathContent({
               The Book Now CTA is admin-only for now; admins also see it for
               partial journeys (e.g. last leg unavailable) to book the
               confirmed legs. */}
-          {altResult.totalFare != null &&
+          {(canChooseLegClasses || altResult.totalFare != null) &&
             !IS_TICKET_ALERT_ENABLED &&
             confirmedLegCount > 1 &&
             (altResult.isComplete || isAdminUser) && (
               <div className="sticky bottom-0 -mx-3.5 -mb-3.5 sm:-mx-6 sm:-mb-6 mt-4 border-t border-slate-200 bg-white/95 backdrop-blur-sm px-4 py-3 sm:px-6 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] z-20">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <div className="min-w-0">
-                    <div className="flex flex-wrap items-baseline gap-x-2">
+                    <div
+                      className="flex flex-wrap items-baseline gap-x-2"
+                      role="status"
+                      aria-label="Total ticket fare"
+                    >
                       <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Total fare
+                        Total ticket fare
                       </span>
                       <span className="text-xl sm:text-2xl font-black text-slate-900 tabular-nums">
-                        ₹{altResult.totalFare.toFixed(0)}
+                        {canChooseLegClasses
+                          ? bookingSelection.totalFare === null
+                            ? "Select classes"
+                            : `₹${bookingSelection.totalFare.toLocaleString("en-IN")}`
+                          : `₹${altResult.totalFare?.toFixed(0)}`}
                       </span>
                     </div>
+                    {canChooseLegClasses && !canBookSelectedLegs && (
+                      <p className="mt-1 text-xs text-slate-600">
+                        Choose a priced class for each available leg to
+                        continue.
+                      </p>
+                    )}
                   </div>
 
-                  {isSplitBookingEnabled && isAdminUser && (
+                  {canChooseLegClasses && (
                     <button
                       type="button"
-                      onClick={() => setSplitBookingModalOpen(true)}
-                      className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.99] transition cursor-pointer sm:w-auto w-full"
+                      disabled={!canBookSelectedLegs}
+                      onClick={() => {
+                        if (
+                          bookingSelection.totalFare === null ||
+                          !canBookSelectedLegs
+                        )
+                          return;
+                        const legs = bookingSelection.legs;
+                        setBookingRequest({
+                          trainNumber: altResult.trainNumber,
+                          trainName: altTrainName || undefined,
+                          journeyDate:
+                            legs[0].boardingDate || journeyDate || "",
+                          fromStationCode: legs[0].from,
+                          toStationCode: legs[legs.length - 1].to,
+                          travelClass: legs[0].travelClass,
+                          totalFare: bookingSelection.totalFare,
+                          legs,
+                        });
+                      }}
+                      className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.99] transition cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none sm:w-auto w-full"
                     >
                       <span>Book Now</span>
                     </button>
@@ -1324,31 +1423,11 @@ export function AlternatePathContent({
         </div>
       )}
 
-      {isSplitBookingEnabled && altResult && (
+      {isSplitBookingEnabled && bookingRequest && (
         <SplitTicketBookingModal
-          open={splitBookingModalOpen}
-          onClose={() => setSplitBookingModalOpen(false)}
-          trainNumber={altResult.trainNumber}
-          trainName={altTrainName || undefined}
-          journeyDate={bookingLegs[0]?.boardingDate || journeyDate || ""}
-          fromStationCode={bookingLegs[0]?.from || fromCode || ""}
-          toStationCode={bookingLegs.at(-1)?.to || toCode || ""}
-          travelClass={
-            bookingLegs[0]?.travelClass ||
-            altAvlClasses?.[0] ||
-            "3A"
-          }
-          totalFare={altResult.totalFare || 0}
-          legs={bookingLegs.map((l) => ({
-            from: l.from,
-            to: l.to,
-            travelClass: l.travelClass || "3A",
-            fare: l.fare || 0,
-            boardingDate: l.boardingDate || "",
-            departureTime: l.departureTime,
-            arrivalTime: l.arrivalTime,
-            durationMinutes: l.durationMinutes,
-          }))}
+          {...bookingRequest}
+          open
+          onClose={() => setBookingRequest(null)}
         />
       )}
     </div>

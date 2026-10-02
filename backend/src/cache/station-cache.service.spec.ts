@@ -77,6 +77,30 @@ describe('StationCacheService', () => {
       expect(codes).toContain('DLI');
     });
 
+    it.each(['WL - WARANGAL', 'wl – Warangal', 'Warangal (WL)'])(
+      'resolves selected label %s from memory without another DB lookup',
+      async (query) => {
+        const prisma = makePrisma([makeStation('WL', 'Warangal')]);
+        const svc = new StationCacheService(prisma);
+        const lookup = jest.spyOn(prisma.stationCache, 'findMany');
+        await svc.onModuleInit();
+
+        expect(await svc.search(query)).toMatchObject([
+          { stationCode: 'WL', stationName: 'Warangal' },
+        ]);
+        expect(lookup).toHaveBeenCalledTimes(1);
+      },
+    );
+
+    it('keeps hyphenated station names searchable when the prefix is not a code', async () => {
+      const svc = new StationCacheService(
+        makePrisma([makeStation('TEST', 'New - Town')]),
+      );
+      expect(await svc.search('New - Town')).toMatchObject([
+        { stationCode: 'TEST' },
+      ]);
+    });
+
     it('normalizes query to uppercase before DB lookup on fallback', async () => {
       const findManyMock = jest
         .fn()

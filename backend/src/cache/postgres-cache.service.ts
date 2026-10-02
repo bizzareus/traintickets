@@ -32,6 +32,18 @@ export class PostgresCacheService extends CacheService {
     });
   }
 
+  async getMany<T>(keys: string[]): Promise<Map<string, T>> {
+    if (keys.length === 0) return new Map();
+    const rows = await this.prisma.cacheEntry.findMany({
+      where: {
+        key: { in: [...new Set(keys)] },
+        OR: [{ expiresAt: null }, { expiresAt: { gt: new Date() } }],
+      },
+      select: { key: true, value: true },
+    });
+    return new Map(rows.map((row) => [row.key, row.value as T]));
+  }
+
   async deleteExpired(): Promise<number> {
     const BATCH = 5000;
     let total = 0;

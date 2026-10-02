@@ -116,6 +116,9 @@ export function SplitTicketBookingModal({
     bookingStatus?.pnrLeg2,
   ];
   const price = bookingStatus ?? paymentData;
+  const selectedTravelClasses = [
+    ...new Set(legs.map((leg) => leg.travelClass)),
+  ];
   const paymentBreakdown = price && (
     <p className="text-sm text-slate-600">
       ₹{price.totalFare.toLocaleString("en-IN")} (tickets) + ₹
@@ -347,7 +350,9 @@ export function SplitTicketBookingModal({
                 {trainName
                   ? `${trainName} (${trainNumber})`
                   : `Train ${trainNumber}`}{" "}
-                • {journeyDate} • Class {travelClass}
+                • {journeyDate} •{" "}
+                {selectedTravelClasses.length > 1 ? "Classes" : "Class"}{" "}
+                {selectedTravelClasses.join(", ")}
               </p>
             </div>
           </div>
@@ -422,7 +427,7 @@ export function SplitTicketBookingModal({
                           Leg {idx + 1}:{" "}
                         </span>
                         <span className="font-semibold text-slate-900">
-                          {leg.from} → {leg.to}
+                          {leg.from} → {leg.to} · {leg.travelClass}
                         </span>
                       </div>
                       <span className="font-bold text-emerald-700 shrink-0">
@@ -763,8 +768,7 @@ export function SplitTicketBookingModal({
                     </>
                   ) : (
                     <>
-                      Proceed to Payment{" "}
-                      <ArrowRight className="h-4 w-4" />
+                      Proceed to Payment <ArrowRight className="h-4 w-4" />
                     </>
                   )}
                 </button>

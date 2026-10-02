@@ -416,3 +416,17 @@ export function collapsibleRealtimeRemainderEndpoints(
   }
   return { from: legs[start].from, to: legs[n - 1].to };
 }
+
+/** Every availability dimension is part of both cache and in-flight identity. */
+export function segmentAvailabilityCacheKey(
+  trainNo: string,
+  from: string,
+  to: string,
+  date: string,
+  travelClass: string,
+  quota: string,
+): string {
+  return `avl:v2:${[trainNo, from, to, date, travelClass, quota || 'GN']
+    .map((part) => part.trim().toUpperCase())
+    .join(':')}`;
+}

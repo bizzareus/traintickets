@@ -103,6 +103,13 @@ export class StationCacheService implements OnModuleInit {
     }
 
     if (this.memoryCache.length > 0) {
+      // Selected UI labels are not free-text searches (e.g. "WL - WARANGAL"
+      // or "Warangal (WL)"). Resolve known codes before falling back upstream.
+      const labelCode =
+        normalized.match(/^([A-Z0-9]{1,5})\s+[-–—]\s+\S/)?.[1] ??
+        normalized.match(/\(([A-Z0-9]{1,5})\)$/)?.[1];
+      const station = labelCode ? this.codeMap.get(labelCode) : undefined;
+      if (station) return [station];
       return this.searchInMemory(normalized);
     }
 

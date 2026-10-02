@@ -17,6 +17,33 @@ function makePrisma(
 }
 
 describe('PostgresCacheService', () => {
+  describe('getMany', () => {
+    it('loads distinct live keys in one query with expiry filtering and a lean projection', async () => {
+      const findMany = jest.fn().mockResolvedValue([
+        { key: 'b', value: { day: null, fare: null } },
+        { key: 'a', value: { fare: 100 } },
+      ]);
+      const svc = new PostgresCacheService(makePrisma({ findMany }));
+      const result = await svc.getMany(['a', 'b', 'a', 'missing']);
+      expect(result.get('a')).toEqual({ fare: 100 });
+      expect(result.has('missing')).toBe(false);
+      expect(findMany).toHaveBeenCalledTimes(1);
+      expect(findMany).toHaveBeenCalledWith({
+        where: {
+          key: { in: ['a', 'b', 'missing'] },
+          OR: [{ expiresAt: null }, { expiresAt: { gt: expect.any(Date) } }],
+        },
+        select: { key: true, value: true },
+      });
+    });
+
+    it('skips the database entirely for an empty wave', async () => {
+      const findMany = jest.fn();
+      const svc = new PostgresCacheService(makePrisma({ findMany }));
+      expect(await svc.getMany([])).toEqual(new Map());
+      expect(findMany).not.toHaveBeenCalled();
+    });
+  });
   describe('get', () => {
     it('returns null when key is not found', async () => {
       const prisma = makePrisma({

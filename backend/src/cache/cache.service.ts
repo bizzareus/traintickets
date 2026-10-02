@@ -16,6 +16,18 @@ export abstract class CacheService {
    */
   abstract deleteExpired(): Promise<number>;
 
+  /** Bulk lookup; stores with network I/O override this with one query. */
+  async getMany<T>(keys: string[]): Promise<Map<string, T>> {
+    const hits = new Map<string, T>();
+    await Promise.all(
+      [...new Set(keys)].map(async (key) => {
+        const value = await this.get<T>(key);
+        if (value !== null) hits.set(key, value);
+      }),
+    );
+    return hits;
+  }
+
   /**
    * Return the cached value for `key`, or call `factory`, cache the result, and return it.
    */

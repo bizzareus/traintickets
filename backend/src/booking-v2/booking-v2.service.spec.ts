@@ -11,6 +11,9 @@ import type { BestTrainsRouteCache } from './best-trains-cache';
 import type { AlternatePathsRouteCache } from './alternate-paths-cache';
 import type { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import type { PostHogAnalyticsService } from '../common/posthog-analytics.service';
+import { InMemoryCacheService } from '../cache/in-memory-cache.service';
+import { segmentAvailabilityCacheKey } from './booking-v2.utils';
+import { alternatePathsCacheKey } from './alternate-paths-cache';
 
 const mockDynamoDbSeatCache: jest.Mocked<
   Pick<
@@ -37,9 +40,10 @@ const mockPostHogAnalytics = {
 };
 
 const mockCache: jest.Mocked<
-  Pick<CacheService, 'get' | 'set' | 'del' | 'getOrSet'>
+  Pick<CacheService, 'get' | 'getMany' | 'set' | 'del' | 'getOrSet'>
 > = {
   get: jest.fn().mockResolvedValue(null),
+  getMany: jest.fn().mockResolvedValue(new Map()),
   set: jest.fn().mockResolvedValue(undefined),
   del: jest.fn().mockResolvedValue(undefined),
   getOrSet: jest
@@ -238,7 +242,8 @@ describe('BookingV2Service', () => {
         .spyOn(service, 'checkAvailability')
         .mockImplementation(async (...args) => {
           const signal = args[6];
-          expect(signal).toBe(controller.signal);
+          expect(signal).toBeInstanceOf(AbortSignal);
+          expect(signal!.aborted).toBe(false);
           started();
           return new Promise((_resolve, reject) =>
             signal!.addEventListener('abort', () => reject(reason), {
@@ -291,6 +296,234 @@ describe('BookingV2Service', () => {
     it('handles descriptive dates with moment fallback', () => {
       expect(service.normalizeToRailApiDate('2 Jun 2026')).toBe('02-06-2026');
       expect(service.normalizeToRailApiDate('June 2, 2026')).toBe('02-06-2026');
+    });
+  });
+
+  describe('batched and shared availability probes', () => {
+    const input = {
+      trainNumber: '12951',
+      from: 'A',
+      to: 'D',
+      date: '2099-06-02',
+      avlClasses: ['SL', '3A'],
+      quota: 'GN',
+    };
+    const confirmed = {
+      day: { availablityType: 1, availablityStatus: 'AVAILABLE 5' },
+      fare: 100,
+    };
+    const upstreamResult = {
+      data: {
+        totalFare: 100,
+        avlDayList: [{ availablityType: 1, availablityStatus: 'AVAILABLE 5' }],
+      },
+    };
+    const drain = () => new Promise<void>((resolve) => setImmediate(resolve));
+
+    beforeEach(() => {
+      mockIrctc.getTrainSchedule.mockResolvedValue({
+        ok: true,
+        schedule: {
+          trainNumber: '12951',
+          trainName: 'Test',
+          stationFrom: 'A',
+          stationTo: 'D',
+          stationList: ['A', 'B', 'C', 'D'].map((stationCode) => ({
+            stationCode,
+            dayCount: 1,
+          })),
+        },
+      });
+    });
+
+    it('serves six cached OD/class probes with one bulk lookup and unchanged route choice', async () => {
+      const keys = ['D', 'C', 'B'].flatMap((to) =>
+        input.avlClasses.map((cls) =>
+          segmentAvailabilityCacheKey(
+            '12951',
+            'A',
+            to,
+            '02-06-2099',
+            cls,
+            'GN',
+          ),
+        ),
+      );
+      mockCache.getMany.mockResolvedValueOnce(
+        new Map(keys.map((key) => [key, confirmed])),
+      );
+      const live = jest.spyOn(service, 'checkAvailability');
+      const result = await service.findAlternatePathsInternal(input);
+
+      expect(mockCache.getMany).toHaveBeenCalledTimes(1);
+      expect(mockCache.getMany).toHaveBeenCalledWith(keys);
+      expect(mockCache.get).not.toHaveBeenCalled();
+      expect(live).not.toHaveBeenCalled();
+      expect(result.isComplete).toBe(true);
+      expect(result.legs).toHaveLength(1);
+      expect(result.legs[0]).toMatchObject({
+        from: 'A',
+        to: 'D',
+        segmentKind: 'confirmed',
+      });
+      expect(result.legs[0].confirmedClassOptions).toHaveLength(2);
+    });
+
+    it('shares upstream calls and writes between two streams while preserving independent progress', async () => {
+      const controllers = [new AbortController(), new AbortController()];
+      const progress = [jest.fn(), jest.fn()];
+      let resolve!: (value: unknown) => void;
+      const response = new Promise<unknown>((res) => {
+        resolve = res;
+      });
+      const live = jest
+        .spyOn(service, 'checkAvailability')
+        .mockReturnValue(response);
+      const first = service.findAlternatePaths(
+        { ...input, signal: controllers[0].signal },
+        progress[0],
+      );
+      const second = service.findAlternatePaths(
+        { ...input, signal: controllers[1].signal },
+        progress[1],
+      );
+      await drain();
+      expect(live).toHaveBeenCalledTimes(6);
+
+      const reason = new Error('first client disconnected');
+      const cancelled = expect(first).rejects.toBe(reason);
+      controllers[0].abort(reason);
+      await cancelled;
+      expect(live.mock.calls.every((args) => !args[6]!.aborted)).toBe(true);
+      resolve(upstreamResult);
+      await expect(second).resolves.toMatchObject({
+        isComplete: true,
+        legCount: 1,
+      });
+      expect(mockCache.set).toHaveBeenCalledTimes(6);
+      expect(progress[0]).not.toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'done' }),
+      );
+      expect(progress[1]).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'done' }),
+      );
+    });
+
+    it('caps active probes across separate searches, rather than per request', async () => {
+      let active = 0;
+      let peak = 0;
+      let release!: () => void;
+      const gate = new Promise<void>((resolve) => {
+        release = resolve;
+      });
+      const live = jest
+        .spyOn(service, 'checkAvailability')
+        .mockImplementation(async () => {
+          peak = Math.max(peak, ++active);
+          await gate;
+          active--;
+          return upstreamResult;
+        });
+      const searches = ['12951', '12952', '12953'].map((trainNumber) =>
+        service.findAlternatePathsInternal({ ...input, trainNumber }),
+      );
+      await drain();
+      expect(active).toBe(6);
+      release();
+      const results = await Promise.all(searches);
+      expect(peak).toBe(6);
+      expect(live).toHaveBeenCalledTimes(18);
+      expect(results.every((result) => result.isComplete)).toBe(true);
+    });
+
+    it('keeps cron probes in their supplied memory cache, including TTL expiry', async () => {
+      const memory = new InMemoryCacheService();
+      await memory.set('expired', confirmed, 1);
+      const now = jest.spyOn(Date, 'now').mockReturnValue(Date.now() + 10);
+      expect((await memory.getMany(['expired'])).size).toBe(0);
+      now.mockRestore();
+      jest
+        .spyOn(service, 'checkAvailability')
+        .mockResolvedValue(upstreamResult);
+      const result = await service.findAlternatePathsInternal(
+        input,
+        undefined,
+        undefined,
+        memory,
+      );
+      expect(result.isComplete).toBe(true);
+      expect(mockCache.getMany).not.toHaveBeenCalled();
+      expect(mockCache.set).not.toHaveBeenCalled();
+      expect(
+        await memory.get(
+          segmentAvailabilityCacheKey(
+            '12951',
+            'A',
+            'D',
+            '02-06-2099',
+            'SL',
+            'GN',
+          ),
+        ),
+      ).toMatchObject({ day: { availablityType: 1 } });
+    });
+
+    it('separates quotas for both stored route results and live probes', async () => {
+      expect(
+        alternatePathsCacheKey('A', 'D', '12951', ['SL'], '02-06-2099', 'GN'),
+      ).not.toBe(
+        alternatePathsCacheKey('A', 'D', '12951', ['SL'], '02-06-2099', 'TQ'),
+      );
+      let resolve!: (value: unknown) => void;
+      const response = new Promise<unknown>((res) => {
+        resolve = res;
+      });
+      const live = jest
+        .spyOn(service, 'checkAvailability')
+        .mockReturnValue(response);
+      const searches = ['GN', 'TQ'].map((quota) =>
+        service.findAlternatePathsInternal({
+          ...input,
+          to: 'B',
+          avlClasses: ['SL'],
+          quota,
+        }),
+      );
+      await drain();
+      expect(live).toHaveBeenCalledTimes(2);
+      expect(live.mock.calls.map((args) => args[5])).toEqual(['GN', 'TQ']);
+      resolve(upstreamResult);
+      await Promise.all(searches);
+    });
+
+    it('does not cache failed probes and permits retry after provider recovery', async () => {
+      const live = jest
+        .spyOn(service, 'checkAvailability')
+        .mockRejectedValueOnce(new Error('provider unavailable'));
+      const single = { ...input, to: 'B', avlClasses: ['SL'] };
+      expect(
+        (await service.findAlternatePathsInternal(single)).isComplete,
+      ).toBe(false);
+      expect(mockCache.set).not.toHaveBeenCalled();
+      live.mockResolvedValueOnce(upstreamResult);
+      expect(
+        (await service.findAlternatePathsInternal(single)).isComplete,
+      ).toBe(true);
+      expect(mockCache.set).toHaveBeenCalledTimes(1);
+    });
+
+    it('falls back to bounded live probes on bulk-cache failure without per-key DB reads', async () => {
+      mockCache.getMany.mockRejectedValueOnce(
+        new Error('database unavailable'),
+      );
+      const live = jest
+        .spyOn(service, 'checkAvailability')
+        .mockResolvedValue(upstreamResult);
+      expect((await service.findAlternatePathsInternal(input)).isComplete).toBe(
+        true,
+      );
+      expect(live).toHaveBeenCalledTimes(6);
+      expect(mockCache.get).not.toHaveBeenCalled();
     });
   });
 
@@ -1067,6 +1300,7 @@ describe('BookingV2Service', () => {
         expect.any(String),
         undefined,
         undefined,
+        expect.any(Map),
       );
       probeSpy.mockRestore();
     });
@@ -1142,6 +1376,7 @@ describe('BookingV2Service', () => {
         expect.any(String),
         undefined,
         undefined,
+        expect.any(Map),
       );
 
       // NDLS -> BPL offset should be queried on 01-06-2029 (Day 1 departure for Day 2 NZM boarding)
@@ -1154,6 +1389,7 @@ describe('BookingV2Service', () => {
         expect.any(String),
         undefined,
         undefined,
+        expect.any(Map),
       );
 
       expect(result.trainStartDate).toBe('2029-06-01');
@@ -1212,6 +1448,7 @@ describe('BookingV2Service', () => {
         expect.any(String),
         undefined,
         undefined,
+        expect.any(Map),
       );
 
       probeSpy.mockRestore();
@@ -1273,6 +1510,7 @@ describe('BookingV2Service', () => {
         expect.any(String),
         undefined,
         undefined,
+        expect.any(Map),
       );
 
       probeSpy.mockRestore();

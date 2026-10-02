@@ -25,6 +25,7 @@ import {
   readResponseText,
 } from '../common/fetch-with-timeout';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
+import { SharedWork } from '../common/shared-work';
 
 const availabilityClient = createRetryingAxiosClient({
   retries: 3,
@@ -68,6 +69,7 @@ import {
   orderedDestinationIndices,
   parseScheduleDayCount,
   parseUpstreamAvailablityType,
+  segmentAvailabilityCacheKey,
 } from './booking-v2.utils';
 
 /** Opaque upstream JSON key for vendor prediction text on availability day rows. */
@@ -329,12 +331,19 @@ const ALT_PATHS_CACHE_TTL_MS = (() => {
  * Cap concurrent origin-destination probes per hop in alternate-paths. The
  * previous unbounded Promise.all could fan out ~6 ODs × ~9 classes ≈ 54
  * concurrent IRCTC calls per hop, exhausting the DB pool / IRCTC rate limit and
- * driving p95 toward 70s. Each probe still fetches its classes in parallel
- * internally, so the effective ceiling is this × class count.
+ * driving p95 toward 70s. Classes have the same per-request limit; the shared
+ * live-probe pool below also caps work across concurrent requests.
  */
 const ALT_PATH_PROBE_CONCURRENCY = (() => {
   const n = Number.parseInt(process.env.ALT_PATH_PROBE_CONCURRENCY ?? '', 10);
   return Number.isFinite(n) && n >= 1 && n <= 12 ? n : 3;
+})();
+const LIVE_PROBE_CONCURRENCY = (() => {
+  const n = Number.parseInt(
+    process.env.BOOKING_V2_LIVE_PROBE_CONCURRENCY ?? '',
+    10,
+  );
+  return Number.isFinite(n) && n >= 1 && n <= 12 ? n : 6;
 })();
 const NON_AC_CLASS_CODES = new Set(['SL', '2S', 'GN', 'FC']);
 
@@ -479,6 +488,9 @@ export interface PnrStatusResponse {
 @Injectable()
 export class BookingV2Service {
   private readonly logger = new Logger(BookingV2Service.name);
+  private readonly segmentWork = new SharedWork<SegmentProbeRow>(
+    LIVE_PROBE_CONCURRENCY,
+  );
   /** In-flight alternate-paths computations by cache key (single-flight). */
   private readonly altPathsInflight = new Map<
     string,
@@ -1341,6 +1353,7 @@ export class BookingV2Service {
       input.trainNumber,
       input.avlClasses,
       this.normalizeToRailApiDate(input.date),
+      input.quota,
     );
 
     input.signal?.throwIfAborted();
@@ -1697,21 +1710,44 @@ export class BookingV2Service {
         `Hop ${hop}: at ${stations[currentIdx]} — parallel fetch (${destOrder.length} ODs × ${classes.length} classes), manual priority: ${waveLabels.join(' > ')}; first confirmed in this order wins`,
       );
 
-      const probes: MultiClassProbeResult[] = new Array(destOrder.length);
+      const probes = new Array<MultiClassProbeResult>(destOrder.length);
+      const fromStn = stations[currentIdx];
+      const fromStopLine = stationList[startIdx + currentIdx];
+      const fromDayCount = parseScheduleDayCount(fromStopLine?.dayCount) ?? 1;
+      const currentHopDate = trainStartMoment
+        .clone()
+        .add(fromDayCount - 1, 'days')
+        .format('DD-MM-YYYY');
+      // One DB read for the entire OD × class wave, including known misses so
+      // individual probes never repeat the same cache lookup.
+      const keys = destOrder
+        .filter(
+          (destIdx) =>
+            !probeCache.has(
+              cacheKey(fromStn, stations[destIdx], currentHopDate),
+            ),
+        )
+        .flatMap((destIdx) =>
+          classes.map((travelClass) =>
+            segmentAvailabilityCacheKey(
+              trainNumber,
+              fromStn,
+              stations[destIdx],
+              currentHopDate,
+              travelClass,
+              quota,
+            ),
+          ),
+        );
+      const cachedSegments = await (segmentCache ?? this.cache)
+        .getMany<SegmentProbeRow>(keys)
+        .catch(() => new Map<string, SegmentProbeRow>());
+      input.signal?.throwIfAborted();
       await this.mapWithConcurrency(
         destOrder,
         ALT_PATH_PROBE_CONCURRENCY,
         async (destIdx, w) => {
           input.signal?.throwIfAborted();
-          const fromStn = stations[currentIdx];
-          const fromStopLine = stationList[startIdx + currentIdx];
-          const fromDayCount =
-            parseScheduleDayCount(fromStopLine?.dayCount) ?? 1;
-          const currentHopDate = trainStartMoment
-            .clone()
-            .add(fromDayCount - 1, 'days')
-            .format('DD-MM-YYYY');
-
           const toStn = stations[destIdx];
           const key = cacheKey(fromStn, toStn, currentHopDate);
           let probe = probeCache.get(key);
@@ -1725,6 +1761,7 @@ export class BookingV2Service {
               quota,
               segmentCache,
               input.signal,
+              cachedSegments,
             );
             probeCache.set(key, probe);
           }
@@ -1736,7 +1773,6 @@ export class BookingV2Service {
       let chosenProbe: MultiClassProbeResult | null = null;
       for (let w = 0; w < destOrder.length; w++) {
         const destIdx = destOrder[w];
-        const fromStn = stations[currentIdx];
         const toStn = stations[destIdx];
         const probe = probes[w];
         logStep(this.formatMultiClassProbeLine(fromStn, toStn, probe, classes));
@@ -1806,27 +1842,19 @@ export class BookingV2Service {
         break;
       }
 
-      const fromStn = stations[currentIdx];
-      const fromStopLine = stationList[startIdx + currentIdx];
-      const fromDayCount = parseScheduleDayCount(fromStopLine?.dayCount) ?? 1;
       const bridgeLegBoardingDate = trainStartMoment
         .clone()
         .add(fromDayCount - 1, 'days')
         .format('YYYY-MM-DD');
-      const bridgeDate = trainStartMoment
-        .clone()
-        .add(fromDayCount - 1, 'days')
-        .format('DD-MM-YYYY');
-
       const toStn = stations[nextIdx];
-      const key = cacheKey(fromStn, toStn, bridgeDate);
+      const key = cacheKey(fromStn, toStn, currentHopDate);
       let bridge = probeCache.get(key);
       if (!bridge) {
         bridge = await this.probeSegmentAllClasses(
           trainNumber,
           fromStn,
           toStn,
-          bridgeDate,
+          currentHopDate,
           classes,
           quota,
           segmentCache,
@@ -2125,12 +2153,26 @@ export class BookingV2Service {
     quota: string,
     segmentCache?: CacheService,
     signal?: AbortSignal,
+    cachedSegments?: ReadonlyMap<string, SegmentProbeRow>,
   ): Promise<MultiClassProbeResult> {
-    // Bounded like the OD fan-out above: each class fetch is a Postgres
-    // cache read + upstream HTTP + Postgres upsert, so an unbounded
-    // Promise.all here fans out to ~9 classes × 2 DB queries per probe,
-    // ~54 concurrent DB queries per hop-wave per request — enough to
-    // saturate a small shared pool (Supabase pooler) under load.
+    signal?.throwIfAborted();
+    // Bridge probes outside a hop wave still load all classes in one query.
+    const hits =
+      cachedSegments ??
+      (await (segmentCache ?? this.cache)
+        .getMany<SegmentProbeRow>(
+          classCodes.map((c) =>
+            segmentAvailabilityCacheKey(
+              trainNo,
+              fromStn,
+              toStn,
+              dateDdMmYyyy,
+              c,
+              quota,
+            ),
+          ),
+        )
+        .catch(() => new Map<string, SegmentProbeRow>()));
     const perClass: SegmentProbeRow[] = classCodes.map(() => ({
       day: null,
       fare: null,
@@ -2149,6 +2191,7 @@ export class BookingV2Service {
           quota,
           segmentCache,
           signal,
+          hits,
         );
       },
     );
@@ -2166,11 +2209,8 @@ export class BookingV2Service {
     quota: string,
     segmentCache?: CacheService,
     signal?: AbortSignal,
-  ): Promise<{
-    day: AvlDayRow | null;
-    fare: number | null;
-    fetchError?: string;
-  }> {
+    cachedSegments?: ReadonlyMap<string, SegmentProbeRow>,
+  ): Promise<SegmentProbeRow> {
     signal?.throwIfAborted();
     if (this.isPastDate(dateDdMmYyyy)) {
       return {
@@ -2183,31 +2223,48 @@ export class BookingV2Service {
     // The cron passes an in-memory cache so its probes never touch Postgres;
     // user requests fall through to the shared Postgres cache.
     const cache = segmentCache ?? this.cache;
-    const cacheKey = `avl:v2:${String(trainNo).trim()}:${fromStn.trim().toUpperCase()}:${toStn.trim().toUpperCase()}:${dateDdMmYyyy}:${travelClass.trim().toUpperCase()}:${(quota || 'GN').trim().toUpperCase()}`;
-    const cached = await cache
-      .get<{ day: AvlDayRow | null; fare: number | null }>(cacheKey)
-      .catch(() => null);
+    const cacheKey = segmentAvailabilityCacheKey(
+      trainNo,
+      fromStn,
+      toStn,
+      dateDdMmYyyy,
+      travelClass,
+      quota,
+    );
+    const cached = cachedSegments
+      ? cachedSegments.get(cacheKey)
+      : await cache.get<SegmentProbeRow>(cacheKey).catch(() => null);
     signal?.throwIfAborted();
     if (cached) return cached;
 
     try {
-      const raw = await this.checkAvailability(
-        trainNo,
-        fromStn,
-        toStn,
-        dateDdMmYyyy,
-        travelClass,
-        quota,
+      return await this.segmentWork.run(
+        cacheKey,
+        async (sharedSignal) => {
+          const raw = await this.checkAvailability(
+            trainNo,
+            fromStn,
+            toStn,
+            dateDdMmYyyy,
+            travelClass,
+            quota,
+            sharedSignal,
+          );
+          sharedSignal.throwIfAborted();
+          const result = {
+            day: this.extractAvlDay(raw, dateDdMmYyyy),
+            fare: this.extractFare(raw),
+          };
+          // Keep the write in the shared bounded job: one write per probe and no
+          // unbounded fire-and-forget writes competing for the DB pool.
+          await cache
+            .set(cacheKey, result, AVL_SEGMENT_TTL_MS)
+            .catch(() => undefined);
+          return result;
+        },
         signal,
+        cache,
       );
-      const day = this.extractAvlDay(raw, dateDdMmYyyy);
-      const fare = this.extractFare(raw);
-      const result = { day, fare };
-      // Cache only successful probes (never errors) for a short window.
-      void cache
-        .set(cacheKey, result, AVL_SEGMENT_TTL_MS)
-        .catch(() => undefined);
-      return result;
     } catch (err) {
       signal?.throwIfAborted();
       const msg = err instanceof Error ? err.message : String(err);

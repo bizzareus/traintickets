@@ -17,6 +17,10 @@ const rapidApiScheduleClient = createRetryingAxiosClient({
   serviceName: 'rapidapi/train-search',
   retries: 2,
 });
+const rapidApiStationClient = createRetryingAxiosClient({
+  serviceName: 'rapidapi/station-search',
+  retries: 0,
+});
 const railcoreClassesClient = createRetryingAxiosClient({
   serviceName: 'railcore/classes',
   retries: 2,
@@ -48,7 +52,7 @@ const RAPIDAPI_SEARCH_STATION_HOST =
 const RAILCORE_CLASSES_URL = 'https://ir.railcore.tech/v1/availability/classes';
 const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
 const RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS = 10_000;
-const RAPIDAPI_SEARCH_STATION_TIMEOUT_MS = 8_000;
+const RAPIDAPI_SEARCH_STATION_TIMEOUT_MS = 1_500;
 const RAILCORE_CLASSES_TIMEOUT_MS = 8_000;
 /**
  * How long a cached trainComposition JSON stays "fresh". Within this window the
@@ -751,9 +755,14 @@ export class IrctcService {
       );
       return [];
     }
+    const cacheKey = `station-search:${q.toUpperCase()}`;
+    const cached = await this.scheduleCache
+      .get<Array<{ stationCode: string; stationName: string }>>(cacheKey)
+      .catch(() => undefined);
+    if (cached) return cached;
     try {
       const url = `${RAPIDAPI_SEARCH_STATION_URL}/${encodeURIComponent(q)}`;
-      const res = await rapidApiScheduleClient.get<unknown>(url, {
+      const res = await rapidApiStationClient.get<unknown>(url, {
         headers: {
           'Content-Type': 'application/json',
           'x-rapidapi-host': RAPIDAPI_SEARCH_STATION_HOST,
@@ -761,6 +770,7 @@ export class IrctcService {
         },
         params: { limit: '20' },
         timeout: RAPIDAPI_SEARCH_STATION_TIMEOUT_MS,
+        signal: AbortSignal.timeout(RAPIDAPI_SEARCH_STATION_TIMEOUT_MS),
       });
       const root =
         res.data && typeof res.data === 'object' && !Array.isArray(res.data)
@@ -770,13 +780,17 @@ export class IrctcService {
         root.data && typeof root.data === 'object' && !Array.isArray(root.data)
           ? (root.data as Record<string, unknown>)
           : null;
+      if (root.success === false || root.status === false) {
+        throw new Error('Station provider reported a failed lookup');
+      }
       const list = Array.isArray(dataObj?.results)
         ? dataObj.results
         : Array.isArray(root.data)
           ? root.data
           : Array.isArray(root.results)
             ? root.results
-            : [];
+            : null;
+      if (!list) throw new Error('Station provider returned malformed results');
       const out: Array<{ stationCode: string; stationName: string }> = [];
       for (const row of list) {
         if (!row || typeof row !== 'object') continue;
@@ -797,6 +811,13 @@ export class IrctcService {
           .trim()
           .toUpperCase();
         if (code && name) out.push({ stationCode: code, stationName: name });
+      }
+      // Only genuine empty results get a short negative TTL. Provider errors
+      // remain uncached so recovery is visible on the next request.
+      if (list.length === 0 || out.length > 0) {
+        await this.scheduleCache
+          .set(cacheKey, out, out.length > 0 ? 5 * 60_000 : 30_000)
+          .catch(() => undefined);
       }
       return out;
     } catch (err) {

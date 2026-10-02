@@ -100,6 +100,8 @@ describe('IrctcService', () => {
             'x-rapidapi-key': 'test-rapidapi-key',
           }),
           params: { limit: '20' },
+          timeout: 1_500,
+          signal: expect.any(AbortSignal),
         }),
       );
 
@@ -132,6 +134,53 @@ describe('IrctcService', () => {
 
       const result = await service.searchStationsViaRapidApi('howrah');
       expect(result).toEqual([]);
+      expect(scheduleCache.set).not.toHaveBeenCalled();
+    });
+
+    it('caches genuine empty results briefly and reuses case-insensitive hits', async () => {
+      mockGet.mockResolvedValueOnce({ data: { data: { results: [] } } });
+      await expect(
+        service.searchStationsViaRapidApi('unknown'),
+      ).resolves.toEqual([]);
+      expect(scheduleCache.set).toHaveBeenCalledWith(
+        'station-search:UNKNOWN',
+        [],
+        30_000,
+      );
+
+      scheduleCache.get.mockResolvedValueOnce([]);
+      await expect(
+        service.searchStationsViaRapidApi('UNKNOWN'),
+      ).resolves.toEqual([]);
+      expect(mockGet).toHaveBeenCalledTimes(1);
+    });
+
+    it.each([
+      { success: false, data: { results: [] } },
+      { status: false, data: [] },
+      { message: 'quota exceeded' },
+      { data: { results: [{ invalid: true }] } },
+    ])(
+      'does not negative-cache provider failures or malformed results: %j',
+      async (data) => {
+        mockGet.mockResolvedValueOnce({ data });
+        await expect(
+          service.searchStationsViaRapidApi('howrah'),
+        ).resolves.toEqual([]);
+        expect(scheduleCache.set).not.toHaveBeenCalled();
+      },
+    );
+
+    it('uses a longer cache TTL for successful fallback results', async () => {
+      mockGet.mockResolvedValueOnce({
+        data: { results: [{ station_code: 'WL', station_name: 'Warangal' }] },
+      });
+      await service.searchStationsViaRapidApi('warangal');
+      expect(scheduleCache.set).toHaveBeenCalledWith(
+        'station-search:WARANGAL',
+        [{ stationCode: 'WL', stationName: 'WARANGAL' }],
+        300_000,
+      );
     });
   });
 

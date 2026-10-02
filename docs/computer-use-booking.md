@@ -71,6 +71,14 @@ database and URL overrides when starting the backend.
 
 ## Ticket pricing and service fee
 
+When a confirmed leg offers multiple classes, the customer must select one in
+that leg's class rows before opening the booking form. A leg with only one class
+is selected automatically. Classes without a quoted fare cannot be selected.
+The ticket total is the sum of the selected class fares, not the search result's
+original cheapest-class total. The form shows each leg's chosen class, and those
+exact classes and fares are sent to both AI and manual fulfillment. Selections
+are scoped to the current search result; a new result requires fresh choices.
+
 `totalFare` in the create request is the ticket price in whole rupees. The backend
 adds a **₹50 service fee once per booking**, in either AI or manual mode. Do not
 include that fee in the request's `totalFare` or individual leg fares.

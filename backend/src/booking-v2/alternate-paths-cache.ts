@@ -6,7 +6,7 @@ import type { FindAlternatePathsResult } from './booking-v2.service';
 /**
  * Cache key for a per-train alternate-paths lookup. Includes the train's OD
  * (from/to are the train's start/end, matching how the frontend probes),
- * the train number, the requested class set, and the date — so a single-class
+ * the train number, quota, the requested class set, and the date — so a single-class
  * "Find in SL" and an all-classes "Search all classes" are cached separately.
  *
  * `avlClasses` is normalized to a stable `CLASSKEY`: sorted, de-duped, upper-cased
@@ -18,6 +18,7 @@ export function alternatePathsCacheKey(
   trainNumber: string,
   avlClasses: string[] | undefined,
   normalizedDate: string | null,
+  quota = 'GN',
 ): string | null {
   const f = String(from ?? '')
     .trim()
@@ -39,7 +40,8 @@ export function alternatePathsCacheKey(
     ? Array.from(new Set(classes)).sort().join(',')
     : 'ALL';
 
-  return `alt-paths:v2:${f}:${t}:${tn}:${classKey}:${normalizedDate}`;
+  // v3 excludes legacy entries that could mix results from different quotas.
+  return `alt-paths:v3:${f}:${t}:${tn}:${classKey}:${normalizedDate}:${quota.trim().toUpperCase() || 'GN'}`;
 }
 
 /**
