@@ -187,6 +187,8 @@ export function useAlternatePaths(
                     last.type === ev.type &&
                     "from" in last &&
                     "from" in ev &&
+                    "to" in last &&
+                    "to" in ev &&
                     last.from === ev.from &&
                     last.to === ev.to
                   ) {
