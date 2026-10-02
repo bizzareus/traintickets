@@ -92,6 +92,8 @@ export type AlternatePathProgressEvent =
       hopIndex: number;
     }
   | { type: "hop_unavailable"; from: string; to: string; hopIndex: number }
+  | { type: "train_departed"; from: string }
+  | { type: "probing_hop"; from: string; to: string; hopIndex: number }
   | {
       type: "done";
       isComplete: boolean;

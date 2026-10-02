@@ -192,6 +192,10 @@ export function AutoSearchTrainCard({
 
                 if (ev.type === "route_ok") {
                   setCurrentSearchRoute(`Searching stops between ${ev.from} → ${ev.to}...`);
+                } else if (ev.type === "train_departed") {
+                  setCurrentSearchRoute(`Train already departed from ${ev.from}`);
+                } else if (ev.type === "probing_hop") {
+                  setCurrentSearchRoute(`Checking ${ev.from} → ${ev.to}...`);
                 } else if (ev.type === "hop_confirmed") {
                   const noticeText = `${ev.from} → ${ev.to} seat found (${ev.travelClass}${ev.fare ? ` · ₹${ev.fare}` : ""})`;
                   const newNotice: FoundSeatNotice = {

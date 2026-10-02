@@ -431,6 +431,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     for (const t of trains) {
       if (!hasAnyAvailableSeat(t, { acOnly, selectedClasses: resultClasses })) {
         set.add(t.trainNumber);
+        break; // Trigger alternate path route search for one train only
       }
     }
     return set;
@@ -449,9 +450,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     return {
       directAvailableCount,
       waitlistedCount,
-      totalToScan: waitlistedCount,
+      totalToScan: v2AutoScanTrainNumbers.size,
     };
-  }, [trains, acOnly, resultClasses]);
+  }, [trains, acOnly, resultClasses, v2AutoScanTrainNumbers.size]);
 
   const v2TotalDiscoveredCount = useMemo(() => {
     return new Set([
@@ -782,6 +783,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         ? { classes: selectedClasses.join(",") }
         : {}),
     });
+    // Keep explicit booking rollout overrides when updating the shareable route.
+    const currentParams = new URLSearchParams(window.location.search);
+    for (const key of ["assisted_booking", "split_booking"]) {
+      const value = currentParams.get(key);
+      if (value !== null) qs.set(key, value);
+    }
     router.replace(`${pathname}?${qs.toString()}`, { scroll: false });
     setExpandSearch(false);
     setHasSearched(true);

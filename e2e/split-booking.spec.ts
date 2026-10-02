@@ -6,11 +6,22 @@ import {
 } from "./fixtures/booking-v2-mocks";
 import type { CreateSplitBookingPayload } from "../lib/split-booking";
 
-for (const multipleClasses of [false, true]) {
-  test(`three-leg checkout with ${multipleClasses ? "chosen" : "single"} classes displays one service fee and all PNRs`, async ({
+for (const scenario of [
+  { multipleClasses: false, flagEnabled: true, admin: false },
+  { multipleClasses: true, flagEnabled: true, admin: false },
+  { multipleClasses: true, flagEnabled: true, admin: false, partial: true },
+  { multipleClasses: true, flagEnabled: false, admin: false },
+  { multipleClasses: true, flagEnabled: false, admin: true },
+]) {
+  const { multipleClasses, flagEnabled, admin } = scenario;
+  const partial = "partial" in scenario && scenario.partial;
+  test(`booking flag ${flagEnabled ? "on" : "off"}, admin ${admin}, ${multipleClasses ? "multiple" : "single"} classes${partial ? ", partial journey" : ""}`, async ({
     page,
   }, testInfo) => {
-    await page.addInitScript(() => localStorage.setItem("admin", "true"));
+    await page.addInitScript((isAdmin) => {
+      if (isAdmin) localStorage.setItem("admin", "true");
+      else localStorage.removeItem("admin");
+    }, admin);
     const requests: CreateSplitBookingPayload[] = [];
     const path = alternatePathTwoIntermediatesConfirmed(
       DEFAULT_TRAIN.trainNumber,
@@ -41,6 +52,25 @@ for (const multipleClasses of [false, true]) {
         option("SL", 385),
         option("2A", 600),
       ];
+      if (partial) {
+        path.isComplete = false;
+        path.legCount = 2;
+        path.totalFare = 505;
+        path.legs[0].confirmedClassOptions = [
+          option("2S", 85),
+          option("CC", 300),
+        ];
+        path.legs[1] = {
+          ...path.legs[1],
+          segmentKind: "check_realtime",
+          fare: null,
+          travelClass: null,
+          confirmedClassOptions: [],
+          availabilityDisplayName: "REGRET / No seats",
+        };
+        path.legs[2].travelClass = "CC";
+        path.legs[2].fare = 420;
+      }
     }
     const price = multipleClasses
       ? { totalFare: 1505, serviceFee: 50, amount: 1555 }
@@ -116,7 +146,10 @@ for (const multipleClasses of [false, true]) {
       });
     });
 
-    await page.goto("/");
+    await page.goto(`/?assisted_booking=${flagEnabled ? "1" : "0"}`);
+    expect(await page.evaluate(() => localStorage.getItem("admin"))).toBe(
+      admin ? "true" : null,
+    );
     // Wait for an interactive client control before filling SSR-rendered inputs.
     const classFilter = page.getByRole("button", {
       name: "Select train travel classes",
@@ -135,8 +168,65 @@ for (const multipleClasses of [false, true]) {
       .click();
     await page.getByRole("button", { name: "Select →", exact: true }).click();
     const bookNow = page.getByRole("button", { name: "Book Now", exact: true });
+    if (!flagEnabled) {
+      await expect(page.getByRole("dialog")).toBeVisible();
+      await expect(bookNow).toHaveCount(0);
+      await expect(page.getByRole("radio")).toHaveCount(0);
+      await expect(
+        page.getByRole("link", { name: "Book Now", exact: true }).first(),
+      ).toBeVisible();
+      expect(requests).toHaveLength(0);
+      return;
+    }
+    await expect(page.getByRole("radio")).toHaveCount(0);
+    await expect(bookNow).toBeEnabled();
+    await bookNow.click();
     if (multipleClasses) {
-      await expect(bookNow).toBeDisabled();
+      const classModal = page.getByRole("dialog").last();
+      await expect(
+        classModal.getByRole("heading", {
+          name: "Choose classes for your tickets",
+        }),
+      ).toBeVisible();
+      const continueButton = classModal.getByRole("button", {
+        name: "Continue to passenger details",
+        exact: true,
+      });
+      await expect(continueButton).toBeDisabled();
+      expect(requests).toHaveLength(0);
+      if (partial) {
+        await expect(classModal.getByRole("group")).toHaveCount(2);
+        await expect(
+          classModal.getByRole("radio", { name: /^Leg 3: CC/ }),
+        ).toBeChecked();
+        await expect(classModal).toContainText(
+          "Unavailable journey segments are not reserved.",
+        );
+        await classModal.getByRole("radio", { name: /^Leg 1: CC/ }).check();
+        await expect(
+          classModal.getByRole("status", { name: "Selected ticket fare" }),
+        ).toContainText("₹720");
+        await expect(continueButton).toBeEnabled();
+        await classModal.screenshot({
+          path: testInfo.outputPath("class-selection.png"),
+        });
+        await classModal
+          .getByRole("button", { name: "Close class selection" })
+          .click();
+        await expect(page.getByRole("dialog")).toHaveCount(1);
+        await bookNow.click();
+        await expect(
+          page
+            .getByRole("dialog")
+            .last()
+            .getByRole("button", {
+              name: "Continue to passenger details",
+              exact: true,
+            }),
+        ).toBeDisabled();
+        expect(requests).toHaveLength(0);
+        return;
+      }
       await expect(
         page.getByRole("radio", { name: /^Leg 3: SL/ }),
       ).toBeChecked();
@@ -148,24 +238,29 @@ for (const multipleClasses of [false, true]) {
       await expect(
         page.getByRole("radio", { name: /^Leg 1: 3A/ }),
       ).toBeChecked();
-      await expect(bookNow).toBeDisabled();
+      await expect(continueButton).toBeDisabled();
       await page.getByRole("radio", { name: /^Leg 2: 2A/ }).check();
-      await expect(bookNow).toBeEnabled();
+      await expect(continueButton).toBeEnabled();
       await expect(
-        page.getByRole("status", { name: "Total ticket fare" }),
+        classModal.getByRole("status", { name: "Selected ticket fare" }),
       ).toContainText("₹1,505");
       await page.getByRole("radio", { name: /^Leg 1: 2A/ }).check();
       await expect(
-        page.getByRole("status", { name: "Total ticket fare" }),
+        classModal.getByRole("status", { name: "Selected ticket fare" }),
       ).toContainText("₹1,710");
       await page.getByRole("radio", { name: /^Leg 1: 3A/ }).check();
-      await page
-        .getByRole("dialog")
-        .first()
-        .screenshot({ path: testInfo.outputPath("class-selection.png") });
+      await classModal.screenshot({
+        path: testInfo.outputPath("class-selection.png"),
+      });
+      await continueButton.click();
     }
-    await bookNow.click();
     const modal = page.getByRole("dialog").last();
+    await expect(
+      modal.getByRole("heading", {
+        name: "Ticket Reservation & Booking",
+        exact: true,
+      }),
+    ).toBeVisible();
     if (multipleClasses) {
       await expect(modal).toContainText("DEE → S1 · 3A");
       await expect(modal).toContainText("S1 → S2 · 2A");

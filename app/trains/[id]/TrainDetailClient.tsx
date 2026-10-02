@@ -425,149 +425,137 @@ export default function TrainDetailClient({
         </button>
       </div>
 
-      {/* ── 1. Hero Card: Midnight Navy Editorial Theme (from design.md) ── */}
-      <header className="rounded-3xl border border-slate-800 bg-gradient-to-br from-[#0B1120] via-[#0F172A] to-[#1E293B] p-6 sm:p-8 md:p-10 text-white shadow-xl relative overflow-hidden">
-        {/* Glow accents */}
-        <div
-          className="absolute -right-16 -top-16 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute -left-16 -bottom-16 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
-
-        <div className="relative z-10 space-y-6">
-          {/* Eyebrow Pill Badges */}
-          <div className="flex flex-wrap items-center gap-2">
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 text-xs font-bold text-emerald-300 backdrop-blur-xs">
-              <Zap className="h-3.5 w-3.5" />
-              <span>⚡ IRCTC TIMETABLE &amp; REAL-TIME CHARTING</span>
-            </div>
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/10 px-3 py-1 text-xs font-semibold text-slate-300">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>{runsPerWeek === 7 ? "Daily Service" : `${runsPerWeek} Days / Week`}</span>
-            </div>
+      {/* ── 1. Clean, Straightforward Header Card ── */}
+      <header className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs space-y-5">
+        {/* Eyebrow & Running Frequency */}
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 border border-blue-200 px-2.5 py-0.5 text-xs font-bold text-blue-700">
+            <Zap className="h-3.5 w-3.5 text-blue-600" />
+            <span>IRCTC Schedule &amp; Timetable</span>
           </div>
-
-          {/* Headline & Train Number */}
-          <div className="flex flex-wrap items-baseline gap-3 md:gap-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              {train.trainName}
-            </h1>
-            <span className="font-mono text-xl sm:text-2xl font-bold px-3 py-1 rounded-xl bg-white/10 border border-white/15 text-slate-200 shadow-inner">
-              #{train.trainNumber}
-            </span>
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 border border-slate-200 px-2.5 py-0.5 text-xs font-semibold text-slate-700">
+            <span className="h-2 w-2 rounded-full bg-emerald-500" />
+            <span>{runsPerWeek === 7 ? "Runs Daily" : `${runsPerWeek} Days / Week`}</span>
           </div>
+        </div>
 
-          {/* Route Overview Arc */}
-          <div className="rounded-2xl bg-white/5 border border-white/10 p-4 sm:p-5 backdrop-blur-sm">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              {/* Origin */}
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/20 border border-emerald-500/30 px-2 py-0.5 rounded-md">
-                    Origin Station
-                  </span>
-                  {firstDeparture && (
-                    <span className="text-xs font-mono text-slate-300">
-                      Departs {firstDeparture}
-                    </span>
-                  )}
-                </div>
-                <p className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
-                  <span>{originStation}</span>
-                  <span className="font-mono text-xs px-1.5 py-0.5 rounded bg-white/10 text-emerald-300">
-                    {originCode}
-                  </span>
-                </p>
-              </div>
+        {/* Headline & Train Number */}
+        <div className="flex flex-wrap items-baseline gap-3">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950">
+            {train.trainName}
+          </h1>
+          <span className="font-mono text-base sm:text-lg font-bold px-2.5 py-0.5 rounded-lg bg-slate-100 border border-slate-200 text-slate-700">
+            #{train.trainNumber}
+          </span>
+        </div>
 
-              {/* Center Travel Metrics */}
-              <div className="flex items-center gap-3 text-center sm:px-4 py-2 border-y sm:border-y-0 sm:border-x border-white/10">
-                <div className="text-left sm:text-center">
-                  <p className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
-                    Journey Time
-                  </p>
-                  <p className="text-base sm:text-lg font-mono font-bold text-emerald-300">
-                    {totalDuration || "7h 25m"}
-                  </p>
-                </div>
-                <div className="hidden sm:block text-slate-500">➔</div>
-                <div className="text-left sm:text-center">
-                  <p className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
-                    Distance
-                  </p>
-                  <p className="text-base sm:text-lg font-mono font-bold text-slate-100">
-                    {totalDistanceKm ? `${totalDistanceKm} km` : "450 km"}
-                  </p>
-                </div>
-                <div className="hidden sm:block text-slate-500">➔</div>
-                <div className="text-left sm:text-center">
-                  <p className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
-                    Stops
-                  </p>
-                  <p className="text-base sm:text-lg font-mono font-bold text-amber-300">
-                    {stationList.length || 11} Halts
-                  </p>
-                </div>
-              </div>
-
-              {/* Destination */}
-              <div className="space-y-1 sm:text-right">
-                <div className="flex items-center sm:justify-end gap-2">
-                  {lastArrival && (
-                    <span className="text-xs font-mono text-slate-300">
-                      Arrives {lastArrival}
-                    </span>
-                  )}
-                  <span className="text-[10px] font-bold text-rose-400 uppercase tracking-widest bg-rose-500/20 border border-rose-500/30 px-2 py-0.5 rounded-md">
-                    Terminus
-                  </span>
-                </div>
-                <p className="text-lg sm:text-xl font-bold text-white flex items-center sm:justify-end gap-2">
-                  <span>{destStation}</span>
-                  <span className="font-mono text-xs px-1.5 py-0.5 rounded bg-white/10 text-rose-300">
-                    {destCode}
-                  </span>
-                </p>
-              </div>
-            </div>
-
-            {/* Popular Route Crosslink */}
-            {routeSlug && (
-              <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs">
-                <span className="text-slate-300">
-                  Looking for other trains on this corridor?
+        {/* Route Overview Arc */}
+        <div className="rounded-xl bg-slate-50 border border-slate-200/80 p-4 sm:p-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            {/* Origin */}
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest bg-emerald-100/70 border border-emerald-200 px-2 py-0.5 rounded-md">
+                  Source
                 </span>
-                <Link
-                  href={`/routes/${routeSlug}`}
-                  className="font-semibold text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1 transition-colors"
-                >
-                  <span>See all trains from {originCode} to {destCode}</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                {firstDeparture && (
+                  <span className="text-xs font-mono text-slate-600 font-medium">
+                    Departs {firstDeparture}
+                  </span>
+                )}
               </div>
-            )}
+              <p className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+                <span>{originStation}</span>
+                <span className="font-mono text-xs px-1.5 py-0.5 rounded bg-white text-slate-700 border border-slate-200">
+                  {originCode}
+                </span>
+              </p>
+            </div>
+
+            {/* Travel Metrics */}
+            <div className="flex items-center gap-4 py-2 border-y sm:border-y-0 sm:border-x border-slate-200 sm:px-6">
+              <div>
+                <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">
+                  Duration
+                </p>
+                <p className="text-sm sm:text-base font-mono font-bold text-slate-900">
+                  {totalDuration || "7h 25m"}
+                </p>
+              </div>
+              <div className="text-slate-300">➔</div>
+              <div>
+                <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">
+                  Distance
+                </p>
+                <p className="text-sm sm:text-base font-mono font-bold text-slate-900">
+                  {totalDistanceKm ? `${totalDistanceKm} km` : "450 km"}
+                </p>
+              </div>
+              <div className="text-slate-300">➔</div>
+              <div>
+                <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">
+                  Stops
+                </p>
+                <p className="text-sm sm:text-base font-mono font-bold text-slate-900">
+                  {stationList.length || 11} Halts
+                </p>
+              </div>
+            </div>
+
+            {/* Destination */}
+            <div className="space-y-1 sm:text-right">
+              <div className="flex items-center sm:justify-end gap-2">
+                {lastArrival && (
+                  <span className="text-xs font-mono text-slate-600 font-medium">
+                    Arrives {lastArrival}
+                  </span>
+                )}
+                <span className="text-[10px] font-bold text-rose-800 uppercase tracking-widest bg-rose-100/70 border border-rose-200 px-2 py-0.5 rounded-md">
+                  Destination
+                </span>
+              </div>
+              <p className="text-base sm:text-lg font-bold text-slate-900 flex items-center sm:justify-end gap-2">
+                <span>{destStation}</span>
+                <span className="font-mono text-xs px-1.5 py-0.5 rounded bg-white text-slate-700 border border-slate-200">
+                  {destCode}
+                </span>
+              </p>
+            </div>
           </div>
 
-          {/* Quick Feature Pills */}
-          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300">
-            {averageSpeedKmH && (
-              <span className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">
-                <Navigation className="h-3.5 w-3.5 text-blue-400" />
-                <span>Avg Speed ~{averageSpeedKmH} km/h</span>
+          {/* Popular Route Crosslink */}
+          {routeSlug && (
+            <div className="mt-3.5 pt-3 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span className="text-slate-600">
+                Looking for other trains on this corridor?
               </span>
-            )}
-            <span className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">
-              <Utensils className="h-3.5 w-3.5 text-amber-400" />
-              <span>Onboard Meals &amp; Catering</span>
+              <Link
+                href={`/routes/${routeSlug}`}
+                className="font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 transition-colors"
+              >
+                <span>See all {originCode} to {destCode} trains</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* Feature Badges */}
+        <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
+          {averageSpeedKmH && (
+            <span className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-lg">
+              <Navigation className="h-3.5 w-3.5 text-slate-500" />
+              <span>Avg Speed ~{averageSpeedKmH} km/h</span>
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">
-              <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
-              <span>Confirmed Seat Prediction</span>
-            </span>
-          </div>
+          )}
+          <span className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-lg">
+            <Utensils className="h-3.5 w-3.5 text-slate-500" />
+            <span>Pantry / Food Available</span>
+          </span>
+          <span className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-lg">
+            <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
+            <span>Verified Station Halts</span>
+          </span>
         </div>
       </header>
 
@@ -1379,13 +1367,13 @@ export default function TrainDetailClient({
       {/* ── 8. Mobile Sticky Bottom Quick-Action Bar (sm:hidden) ── */}
       <aside
         aria-label="Quick Actions"
-        className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B1120]/95 backdrop-blur-md border-t border-slate-800 p-3 shadow-2xl flex items-center justify-between gap-3"
+        className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 p-3 shadow-lg flex items-center justify-between gap-3"
       >
         <div className="truncate">
-          <p className="text-xs font-bold text-white truncate">
+          <p className="text-xs font-bold text-slate-900 truncate">
             {train.trainName}
           </p>
-          <p className="text-[10px] text-emerald-400 font-mono">
+          <p className="text-[10px] text-slate-500 font-mono">
             #{train.trainNumber} • {originCode} ➔ {destCode}
           </p>
         </div>
@@ -1393,13 +1381,13 @@ export default function TrainDetailClient({
         <div className="flex items-center gap-2 shrink-0">
           <Link
             href="/chart-vacancy"
-            className="rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-xs font-bold text-white hover:bg-white/20 transition-colors"
+            className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-100 transition-colors"
           >
             Vacancy
           </Link>
           <Link
             href={primarySearchUrl}
-            className="rounded-xl bg-emerald-500 hover:bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white transition-colors shadow-xs"
+            className="rounded-xl bg-blue-600 hover:bg-blue-700 px-3.5 py-2 text-xs font-bold text-white transition-colors shadow-xs"
           >
             Check Seats
           </Link>

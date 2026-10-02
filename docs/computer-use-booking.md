@@ -71,9 +71,18 @@ database and URL overrides when starting the backend.
 
 ## Ticket pricing and service fee
 
-When a confirmed leg offers multiple classes, the customer must select one in
-that leg's class rows before opening the booking form. A leg with only one class
-is selected automatically. Classes without a quoted fare cannot be selected.
+When a confirmed leg offers multiple classes, clicking **Book Now** opens a
+**Choose classes for your tickets** step. The customer selects one class per
+available ticket, then continues to passenger details and payment. When every
+ticket has a single priced class, Book Now opens passenger details directly.
+Booking and class selection are controlled by the PostHog boolean flag
+`split-ticket-assisted-booking`,
+independently of admin sessions and the `admin` localStorage value. While disabled
+or loading, the UI shows the original per-class IRCTC links. For testing, use
+`?assisted_booking=1` (enable) or `?assisted_booking=0` (disable); `split_booking`
+is an alias. The existing `exp_split_booking` localStorage override also works.
+A leg with only one class is selected automatically. Classes without a quoted
+fare cannot be selected. The total updates inside the class selection step.
 The ticket total is the sum of the selected class fares, not the search result's
 original cheapest-class total. The form shows each leg's chosen class, and those
 exact classes and fares are sent to both AI and manual fulfillment. Selections

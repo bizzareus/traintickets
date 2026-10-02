@@ -215,6 +215,12 @@ export class BookingV2Controller {
 
     const forceRefresh = Boolean(body?.forceRefresh);
 
+    const heartbeatTimer = setInterval(() => {
+      if (!res.destroyed && !res.writableEnded && !lifecycle.signal.aborted) {
+        res.write(`${JSON.stringify({ type: 'heartbeat' })}\n`);
+      }
+    }, 15_000);
+
     try {
       const { result, cached } = await this.bookingV2.findAlternatePathsCached(
         {
@@ -236,6 +242,7 @@ export class BookingV2Controller {
         await writeLine({ type: 'error', message: streamErrorMessage(err) });
       }
     } finally {
+      clearInterval(heartbeatTimer);
       endResponse(res);
       lifecycle.cleanup();
     }
@@ -284,6 +291,12 @@ export class BookingV2Controller {
     const writeLine = (obj: unknown) =>
       writeChunk(res, `${JSON.stringify(obj)}\n`, lifecycle.signal);
 
+    const heartbeatTimer = setInterval(() => {
+      if (!res.destroyed && !res.writableEnded && !lifecycle.signal.aborted) {
+        res.write(`${JSON.stringify({ type: 'heartbeat' })}\n`);
+      }
+    }, 15_000);
+
     try {
       const result = await this.bookingV2.findBestTrains(
         {
@@ -315,6 +328,7 @@ export class BookingV2Controller {
         await writeLine({ type: 'error', message: streamErrorMessage(err) });
       }
     } finally {
+      clearInterval(heartbeatTimer);
       endResponse(res);
       lifecycle.cleanup();
     }

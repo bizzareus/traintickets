@@ -39,7 +39,7 @@ export function TrainSearchV2ProgressBar({
           )}
           <p className="text-xs sm:text-sm font-semibold text-slate-800">
             {isLoading
-              ? `Scanning all seat combinations across ${totalTrains} trains...`
+              ? "Finding alternate seat options for recommended train..."
               : `Found ${totalSeatsDiscovered} train${totalSeatsDiscovered === 1 ? "" : "s"} with confirmed options`}
           </p>
         </div>

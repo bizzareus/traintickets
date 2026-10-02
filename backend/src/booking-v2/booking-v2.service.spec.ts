@@ -1266,6 +1266,45 @@ describe('BookingV2Service', () => {
       probeSpy.mockRestore();
     });
 
+    it('short-circuits immediately without running offset searches when direct route is TRAIN DEPARTED', async () => {
+      const probeSpy = jest
+        .spyOn(service as any, 'probeSegmentAllClasses')
+        .mockImplementation((_trainNumber, fromStn, toStn) => {
+          if (fromStn === 'NZM' && toStn === 'BPL') {
+            return Promise.resolve({
+              bestConfirmedClassIndex: null,
+              perClass: [
+                {
+                  fare: 100,
+                  day: {
+                    availablityStatus: 'TRAIN DEPARTED',
+                    availabilityDisplayName: 'Train Departed',
+                  },
+                },
+              ],
+              displayRow: { availablityStatus: 'TRAIN DEPARTED' },
+            });
+          }
+          return Promise.resolve({
+            bestConfirmedClassIndex: null,
+            perClass: [],
+          });
+        });
+
+      const events: any[] = [];
+      const onProgress = (ev: any) => events.push(ev);
+
+      const result = await service.findAlternatePaths(input, onProgress);
+
+      expect(result.isComplete).toBe(false);
+      expect(result.legCount).toBe(0);
+      expect(result.legs[0].availablityStatus).toBe('TRAIN DEPARTED');
+      expect(events.some((e) => e.type === 'train_departed')).toBe(true);
+      const probedStations = probeSpy.mock.calls.map((c: any[]) => `${c[1]}->${c[2]}`);
+      expect(probedStations.some((s: string) => s.startsWith('NDLS'))).toBe(false);
+      probeSpy.mockRestore();
+    });
+
     it('successfully processes input dates formatted as DD-MM-YYYY without producing invalid dates', async () => {
       const probeSpy = jest
         .spyOn(service as any, 'probeSegmentAllClasses')

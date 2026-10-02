@@ -137,6 +137,8 @@ export type AlternatePathProgressEvent =
       hopIndex: number;
     }
   | { type: 'hop_unavailable'; from: string; to: string; hopIndex: number }
+  | { type: 'train_departed'; from: string }
+  | { type: 'probing_hop'; from: string; to: string; hopIndex: number }
   | {
       type: 'done';
       isComplete: boolean;
@@ -1490,6 +1492,21 @@ export class BookingV2Service {
       return finish(directResult);
     }
 
+    // Short-circuit: if direct journey is already departed or cancelled, offset explorations are futile.
+    const isDirectDepartedOrCancelled = directResult.legs.some((l) => {
+      const s = (l.availablityStatus ?? '').toUpperCase();
+      const d = (l.availabilityDisplayName ?? '').toUpperCase();
+      return (
+        s === 'TRAIN DEPARTED' ||
+        d === 'TRAIN DEPARTED' ||
+        s === 'TRAIN CANCELLED' ||
+        d === 'TRAIN CANCELLED'
+      );
+    });
+    if (isDirectDepartedOrCancelled) {
+      return finish(directResult);
+    }
+
     // 2. If direct is not fully confirmed, try offset fallbacks
     const maxOffset = BOOKING_V2_MAX_STATIONS_OFFSET;
     for (let offset = 1; offset <= maxOffset; offset++) {
@@ -1705,6 +1722,12 @@ export class BookingV2Service {
       logStep(
         `Hop ${hop}: at ${stations[currentIdx]} — parallel fetch (${destOrder.length} ODs × ${classes.length} classes), manual priority: ${waveLabels.join(' > ')}; first confirmed in this order wins`,
       );
+      await emit({
+        type: 'probing_hop',
+        from: stations[currentIdx],
+        to: stations[targetIdx],
+        hopIndex: hop,
+      });
 
       const probes = new Array<MultiClassProbeResult>(destOrder.length);
       const fromStn = stations[currentIdx];
@@ -1764,6 +1787,74 @@ export class BookingV2Service {
           probes[w] = probe;
         },
       );
+
+      // If the direct journey (from → to) was already departed or cancelled,
+      // exploring intermediate stops or offset fallbacks on this train is futile.
+      const directProbe = probes[0];
+      if (
+        currentIdx === 0 &&
+        (input.stationsBefore ?? 0) === 0 &&
+        directProbe &&
+        this.isProbeTrainDepartedOrCancelled(directProbe)
+      ) {
+        const isCancelled =
+          directProbe.displayRow?.availablityStatus === 'TRAIN CANCELLED' ||
+          directProbe.perClass.some(
+            (p) => p.day?.availablityStatus === 'TRAIN CANCELLED',
+          );
+        const statusText = isCancelled ? 'TRAIN CANCELLED' : 'TRAIN DEPARTED';
+        const displayText = isCancelled ? 'Train Cancelled' : 'Train Departed';
+
+        logStep(
+          `Pre-check: ${trainNumber} is ${statusText} from ${from} (${displayText})`,
+        );
+        if (!isCancelled) {
+          await emit({ type: 'train_departed', from });
+        }
+        await emit({
+          type: 'done',
+          isComplete: false,
+          legCount: 0,
+          totalFare: null,
+        });
+
+        const legBoardingDate = trainStartMoment
+          .clone()
+          .add(boardingDayCount - 1, 'days')
+          .format('YYYY-MM-DD');
+
+        return {
+          trainNumber,
+          legs: [
+            {
+              from,
+              to,
+              segmentKind: 'check_realtime',
+              travelClass: null,
+              railDataStatus: statusText,
+              availablityStatus: statusText,
+              predictionPercentage: null,
+              availabilityDisplayName: displayText,
+              fare: null,
+              confirmedClassOptions: [],
+              ...legTim(from, to),
+              boardingDate: legBoardingDate,
+              dayOffset: boardingDayCount - 1,
+            },
+          ],
+          totalFare: null,
+          legCount: 0,
+          isComplete: false,
+          stationCodesOnRoute: stations,
+          stationNameMap,
+          remainderMergedSchedule: null,
+          trainOriginCode:
+            stationList[0]?.stationCode?.trim().toUpperCase() || null,
+          trainOriginDepartureTime: stationList[0]?.departureTime ?? null,
+          debugLog,
+          trainStartDate: trainStartMoment.format('YYYY-MM-DD'),
+        };
+      }
 
       let chosenDestIdx: number | null = null;
       let chosenProbe: MultiClassProbeResult | null = null;
@@ -2194,6 +2285,30 @@ export class BookingV2Service {
     const bestConfirmedClassIndex = this.pickBestConfirmedClassIndex(perClass);
     const displayRow = perClass.find((p) => p.day)?.day ?? null;
     return { perClass, bestConfirmedClassIndex, displayRow };
+  }
+
+  private isProbeTrainDepartedOrCancelled(
+    probe: MultiClassProbeResult,
+  ): boolean {
+    if (probe.bestConfirmedClassIndex != null) return false;
+    const isDepartedOrCancelled = (day: AvlDayRow | null | undefined) => {
+      if (!day) return false;
+      const s = (day.availablityStatus ?? '').toUpperCase();
+      const d = (day.availabilityDisplayName ?? '').toUpperCase();
+      const v = (day.vendorPredictionStatus ?? '').toUpperCase();
+      return (
+        s === 'TRAIN DEPARTED' ||
+        d === 'TRAIN DEPARTED' ||
+        v === 'TRAIN DEPARTED' ||
+        s === 'TRAIN CANCELLED' ||
+        d === 'TRAIN CANCELLED' ||
+        v === 'TRAIN CANCELLED'
+      );
+    };
+    return (
+      isDepartedOrCancelled(probe.displayRow) ||
+      probe.perClass.some((p) => isDepartedOrCancelled(p.day))
+    );
   }
 
   private async fetchSegmentAvailability(

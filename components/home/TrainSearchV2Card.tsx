@@ -76,7 +76,6 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
 }: TrainSearchV2CardProps) {
   const cardRef = useRef<HTMLLIElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
-  const [inView, setInView] = useState(false);
   const [loading, setLoading] = useState(false);
   const [foundSeats, setFoundSeats] = useState<FoundSeatNotice[]>([]);
   const [result, setResult] = useState<AlternatePathsResponse | null>(null);
@@ -194,30 +193,6 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     setCurrentProgressText("");
   }, [journeyDate, fromCode, toCode, acOnly, selectedClasses]);
 
-  // Set up intersection observer for lazy scanning when scrolled into view
-  useEffect(() => {
-    if (isDirectAvailable || hasInitiatedRef.current) return;
-    const el = cardRef.current;
-    if (!el || typeof IntersectionObserver === "undefined") {
-      setInView(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry?.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "300px" },
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [isDirectAvailable]);
-
   // Run alternate paths search stream for waitlisted trains
   const executeScan = useCallback(async () => {
     if (
@@ -321,6 +296,10 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
               const ev = msg.event;
               if (ev.type === "route_ok") {
                 setCurrentProgressText(`Scanning ${ev.from} → ${ev.to}...`);
+              } else if (ev.type === "train_departed") {
+                setCurrentProgressText(`Train already departed from ${ev.from}`);
+              } else if (ev.type === "probing_hop") {
+                setCurrentProgressText(`Checking ${ev.from} → ${ev.to}...`);
               } else if (ev.type === "hop_confirmed") {
                 const newNotice: FoundSeatNotice = {
                   id: `${ev.from}-${ev.to}-${ev.travelClass}-${ev.hopIndex}`,
@@ -391,7 +370,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     onScanComplete,
   ]);
 
-  // Auto-run scan for waitlisted trains on mount or when scrolled into view
+  // Auto-run scan for waitlisted train only when autoScanEnabled is true
   useEffect(() => {
     if (
       !isDirectAvailable &&
@@ -399,7 +378,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
       fromCode &&
       toCode &&
       !hasInitiatedRef.current &&
-      (autoScanEnabled || inView)
+      autoScanEnabled
     ) {
       void executeScan();
     }
@@ -409,7 +388,6 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     fromCode,
     toCode,
     autoScanEnabled,
-    inView,
     executeScan,
   ]);
 
@@ -792,7 +770,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
                 }}
                 className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors whitespace-nowrap shrink-0 min-h-[38px] touch-manipulation"
               >
-                Find Seats
+                Search Tickets
               </button>
             </>
           )}

@@ -1,28 +1,43 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { isAdminUser } from "@/lib/admin";
+import { useFeatureFlagEnabled } from "@posthog/react";
+
+export const SPLIT_BOOKING_FEATURE_FLAG = "split-ticket-assisted-booking";
+
+function getOverride(): boolean | null {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const value =
+      params.get("assisted_booking") ??
+      params.get("split_booking") ??
+      window.localStorage.getItem("exp_split_booking");
+    if (value === "true" || value === "1") return true;
+    if (value === "false" || value === "0") return false;
+  } catch {
+    // Storage can be unavailable; the PostHog flag still controls rollout.
+  }
+  return null;
+}
 
 function subscribe(callback: () => void) {
   window.addEventListener("storage", callback);
-  return () => window.removeEventListener("storage", callback);
+  window.addEventListener("popstate", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener("popstate", callback);
+  };
 }
 
-function getSnapshot(): boolean {
-  return isAdminUser();
-}
+const getServerSnapshot = () => null;
 
-function getServerSnapshot(): boolean {
-  return false;
-}
-
-/**
- * Hook to evaluate whether the split ticket assisted booking flow (unified "Book Now"
- * + passenger form + Razorpay checkout + Playwright TripMgt automation) is enabled.
- *
- * RESTRICTION: Enabled ONLY if `localStorage.getItem("admin") === "true"` (or ?admin=1).
- * Otherwise, the app continues to display the original IRCTC per-leg booking redirects.
- */
+/** PostHog rollout with explicit testing overrides; independent of admin state. */
 export function useSplitBookingFeatureFlag(): boolean {
-  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const enabled = useFeatureFlagEnabled(SPLIT_BOOKING_FEATURE_FLAG);
+  const override = useSyncExternalStore(
+    subscribe,
+    getOverride,
+    getServerSnapshot,
+  );
+  return override ?? enabled === true;
 }
