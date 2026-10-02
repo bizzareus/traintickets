@@ -58,6 +58,20 @@ export const BOOKING_V2_RAIL_API_HEADERS: Record<string, string> = {
   ClientId: 'ct-mweb',
 };
 
+/** Station autocomplete uses the web client's credentials and browser headers. */
+export const CONFIRMTKT_STATION_HEADERS: Record<string, string> = {
+  ...BOOKING_V2_RAIL_API_AVAILABILITY_HEADERS,
+  'CT-Token':
+    '4C4D0A7339DA9229EDE6D49A797AD842F8064312CA350EAAD93FD2CB1B31E155',
+  'CT-Userkey':
+    '38ACB240BF42F6DFC10BC962DC42746779A86F3C62F9D3820F11BC8AF705EB49',
+  DeviceId: 'e22a1dab-a86d-403a-963b-5e1ae7f649f2',
+  'sec-ch-ua':
+    '"Chromium";v="154", "Google Chrome";v="154", "Not A(Brand";v="99"',
+  'User-Agent':
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36',
+};
+
 /**
  * Maximum stations before boarding or after destination to shift when auto-exploring fallbacks.
  */

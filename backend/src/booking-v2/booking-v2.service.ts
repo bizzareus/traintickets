@@ -583,7 +583,7 @@ export class BookingV2Service {
     const q = (searchString || '').trim();
 
     // DB-first: station_cache is the seeded source of truth for autocomplete.
-    // A DB blip must not 500 the autocomplete — fall through to the RapidAPI
+    // A DB blip must not 500 the autocomplete — fall through to the ConfirmTkt
     // fallback (which returns [] on its own failure) instead of throwing.
     let cached: Awaited<ReturnType<StationCacheService['search']>> = [];
     try {
@@ -600,11 +600,11 @@ export class BookingV2Service {
       return { data: { stationList: cached } };
     }
 
-    // Cache miss → RapidAPI fallback (fast/reliable, unlike the IRCTC rail API).
+    // Cache miss → ConfirmTkt station autocomplete.
     // Backfill the cache so the next lookup for this station is served from DB.
-    const fromApi = await this.irctc.searchStationsViaRapidApi(q);
+    const fromApi = await this.irctc.searchStationsViaConfirmTkt(q);
     this.logger.log(
-      `[booking-v2/stations] source=rapidapi reason=cache_miss q=${q.slice(0, 40)} count=${fromApi.length}`,
+      `[booking-v2/stations] source=confirmtkt reason=cache_miss q=${q.slice(0, 40)} count=${fromApi.length}`,
     );
     if (fromApi.length > 0) {
       void this.stationCache
@@ -1436,15 +1436,11 @@ export class BookingV2Service {
     const sharedProbeCache = new Map<string, MultiClassProbeResult>();
 
     // Probe only the classes the train actually offers. When the caller didn't
-    // supply avlClasses, resolve them once (DB-first, Railcore fallback) so we
+    // supply avlClasses, resolve them once from the schedule cache so we
     // don't fan out across every possible class — cuts the per-request probe
     // count ~2-4x. Falls back to the full class list only if classes are unknown.
     if (!input.avlClasses || input.avlClasses.length === 0) {
-      const trainClasses = await this.irctc.getTrainClasses(input.trainNumber, {
-        from: input.from,
-        to: input.to,
-        date: input.date,
-      });
+      const trainClasses = await this.irctc.getTrainClasses(input.trainNumber);
       if (trainClasses.length > 0) {
         input = { ...input, avlClasses: trainClasses };
       }

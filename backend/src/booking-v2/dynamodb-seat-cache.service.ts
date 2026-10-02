@@ -74,6 +74,16 @@ function toSafeString(val: unknown): string {
   return '';
 }
 
+// DynamoDB reports auth failures, validation, throttling, and missing
+// resources all as HTTP 400, so log the AWS exception name
+// (e.g. UnrecognizedClientException, AccessDeniedException,
+// ValidationException) to tell them apart.
+function awsErrorLabel(err: unknown): string {
+  const name = err instanceof Error && err.name ? err.name : 'UnknownError';
+  const message = err instanceof Error ? err.message : String(err);
+  return `${name}: ${message}`;
+}
+
 @Injectable()
 export class DynamoDbSeatCacheService {
   private readonly logger = new Logger(DynamoDbSeatCacheService.name);
@@ -103,7 +113,7 @@ export class DynamoDbSeatCacheService {
       );
     } catch (err) {
       this.logger.warn(
-        `[DynamoDB] Could not initialize DynamoDB client: ${err instanceof Error ? err.message : String(err)}`,
+        `[DynamoDB] Could not initialize DynamoDB client: ${awsErrorLabel(err)}`,
       );
     }
   }
@@ -294,7 +304,7 @@ export class DynamoDbSeatCacheService {
       return { status: 'miss', value: null };
     } catch (err) {
       this.logger.warn(
-        `[DynamoDB] getRouteCachedSearch error for ${routeKey} ${d}: ${err instanceof Error ? err.message : String(err)}`,
+        `[DynamoDB] getRouteCachedSearch error for ${routeKey} ${d}: ${awsErrorLabel(err)}`,
       );
       return { status: 'error', value: null };
     }
@@ -340,7 +350,7 @@ export class DynamoDbSeatCacheService {
       );
     } catch (err) {
       this.logger.warn(
-        `[DynamoDB] Failed saving route search for ${routeKey} ${d}: ${err instanceof Error ? err.message : String(err)}`,
+        `[DynamoDB] Failed saving route search for ${routeKey} ${d}: ${awsErrorLabel(err)}`,
       );
     }
 
@@ -395,7 +405,7 @@ export class DynamoDbSeatCacheService {
       }
     } catch (err) {
       this.logger.warn(
-        `[DynamoDB] Failed writing seat items for ${routeKey} ${d}: ${err instanceof Error ? err.message : String(err)}`,
+        `[DynamoDB] Failed writing seat items for ${routeKey} ${d}: ${awsErrorLabel(err)}`,
       );
     }
   }
@@ -447,7 +457,7 @@ export class DynamoDbSeatCacheService {
           }
         } catch (err) {
           this.logger.warn(
-            `[DynamoDB] BatchWrite failed at offset ${i} (attempt ${attempt}): ${err instanceof Error ? err.message : String(err)}`,
+            `[DynamoDB] BatchWrite failed at offset ${i} (attempt ${attempt}): ${awsErrorLabel(err)}`,
           );
           break;
         }
@@ -496,7 +506,7 @@ export class DynamoDbSeatCacheService {
       );
     } catch (err) {
       this.logger.warn(
-        `[DynamoDB] getTrainCachedSeats failed for ${tn}: ${err instanceof Error ? err.message : String(err)}`,
+        `[DynamoDB] getTrainCachedSeats failed for ${tn}: ${awsErrorLabel(err)}`,
       );
       return [];
     }
@@ -533,7 +543,7 @@ export class DynamoDbSeatCacheService {
       );
     } catch (err) {
       this.logger.warn(
-        `[DynamoDB] Failed saving availability summary for ${catKey}: ${err instanceof Error ? err.message : String(err)}`,
+        `[DynamoDB] Failed saving availability summary for ${catKey}: ${awsErrorLabel(err)}`,
       );
     }
   }
@@ -568,7 +578,7 @@ export class DynamoDbSeatCacheService {
       return null;
     } catch (err) {
       this.logger.warn(
-        `[DynamoDB] getAvailabilitySummary failed for ${catKey}: ${err instanceof Error ? err.message : String(err)}`,
+        `[DynamoDB] getAvailabilitySummary failed for ${catKey}: ${awsErrorLabel(err)}`,
       );
       return null;
     }

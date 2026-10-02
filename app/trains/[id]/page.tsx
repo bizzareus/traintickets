@@ -327,11 +327,11 @@ export default async function TrainDetailPage({ params }: Props) {
         fallback={
           <div className="space-y-6 sm:space-y-8 animate-pulse">
             {/* Hero Skeleton */}
-            <div className="rounded-3xl border border-slate-800 bg-[#0B1120] p-6 sm:p-10 text-white space-y-4">
-              <div className="h-4 bg-slate-800 rounded w-48 mb-2" />
-              <div className="h-10 bg-slate-700 rounded w-3/4 max-w-md" />
-              <div className="h-5 bg-slate-800 rounded w-1/2" />
-              <div className="h-20 bg-slate-900/60 rounded-2xl border border-white/10 mt-6" />
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 space-y-4 shadow-xs">
+              <div className="h-4 bg-slate-100 rounded w-48 mb-2" />
+              <div className="h-8 bg-slate-200 rounded w-2/3 max-w-md" />
+              <div className="h-4 bg-slate-100 rounded w-1/2" />
+              <div className="h-20 bg-slate-50 rounded-xl border border-slate-100 mt-4" />
             </div>
 
             {/* Grid Skeleton */}

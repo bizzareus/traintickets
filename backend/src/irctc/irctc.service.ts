@@ -9,6 +9,11 @@ import moment from 'moment';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import { IrctcCookieStoreService } from './irctc-cookie-store.service';
 import { IrctcHttpService, type IrctcHttpResponse } from './irctc-http.service';
+import type { StationRow } from '../cache/station-cache.service';
+import {
+  BOOKING_V2_RAIL_API_BASE,
+  CONFIRMTKT_STATION_HEADERS,
+} from '../booking-v2/booking-v2.constants';
 
 const scheduleClient = createRetryingAxiosClient({
   serviceName: 'irctc/schedule',
@@ -17,13 +22,9 @@ const rapidApiScheduleClient = createRetryingAxiosClient({
   serviceName: 'rapidapi/train-search',
   retries: 2,
 });
-const rapidApiStationClient = createRetryingAxiosClient({
-  serviceName: 'rapidapi/station-search',
+const confirmTktStationClient = createRetryingAxiosClient({
+  serviceName: 'confirmtkt/station-search',
   retries: 0,
-});
-const railcoreClassesClient = createRetryingAxiosClient({
-  serviceName: 'railcore/classes',
-  retries: 2,
 });
 
 const CONFIRMTKT_SCHEDULE_URL =
@@ -45,15 +46,9 @@ const CONFIRMTKT_SCHEDULE_HEADERS: Record<string, string> = {
 };
 const RAPIDAPI_TRAIN_SEARCH_URL =
   'https://irctc1.p.rapidapi.com/api/v1/getTrainSchedule';
-const RAPIDAPI_SEARCH_STATION_URL =
-  'https://irctc-indian-railway-pnr-status.p.rapidapi.com/autocomplete/station';
-const RAPIDAPI_SEARCH_STATION_HOST =
-  'irctc-indian-railway-pnr-status.p.rapidapi.com';
-const RAILCORE_CLASSES_URL = 'https://ir.railcore.tech/v1/availability/classes';
 const IRCTC_SCHEDULE_TIMEOUT_MS = 5_000;
 const RAPIDAPI_TRAIN_SEARCH_TIMEOUT_MS = 10_000;
-const RAPIDAPI_SEARCH_STATION_TIMEOUT_MS = 1_500;
-const RAILCORE_CLASSES_TIMEOUT_MS = 8_000;
+const CONFIRMTKT_SEARCH_STATION_TIMEOUT_MS = 1_500;
 /**
  * How long a cached trainComposition JSON stays "fresh". Within this window the
  * coach-list endpoint serves the cached copy without hitting IRCTC; past it (or
@@ -738,40 +733,34 @@ export class IrctcService {
   }
 
   /**
-   * Station autocomplete fallback via RapidAPI (irctc-indian-railway-pnr-status.p.rapidapi.com).
-   * Used only when the local station_cache misses. Fast and reliable, unlike
-   * the IRCTC rail-API station endpoint. Never throws — returns [] on any error
-   * so the caller can degrade gracefully.
+   * ConfirmTkt autocomplete fallback when the local station index misses.
+   * Returns [] on upstream failure so callers can degrade gracefully.
    */
-  async searchStationsViaRapidApi(
-    query: string,
-  ): Promise<Array<{ stationCode: string; stationName: string }>> {
+  async searchStationsViaConfirmTkt(query: string): Promise<StationRow[]> {
     const q = query.trim();
     if (q.length < 2) return [];
-    const key = this.rapidApiKey();
-    if (!key) {
-      this.logger.warn(
-        '[irctc/searchStation] RapidAPI key missing; skipping station fallback.',
-      );
-      return [];
-    }
-    const cacheKey = `station-search:${q.toUpperCase()}`;
+    const cacheKey = `station-search:confirmtkt:${q.toUpperCase()}`;
     const cached = await this.scheduleCache
-      .get<Array<{ stationCode: string; stationName: string }>>(cacheKey)
+      .get<StationRow[]>(cacheKey)
       .catch(() => undefined);
     if (cached) return cached;
     try {
-      const url = `${RAPIDAPI_SEARCH_STATION_URL}/${encodeURIComponent(q)}`;
-      const res = await rapidApiStationClient.get<unknown>(url, {
-        headers: {
-          'Content-Type': 'application/json',
-          'x-rapidapi-host': RAPIDAPI_SEARCH_STATION_HOST,
-          'x-rapidapi-key': key,
+      const res = await confirmTktStationClient.get<unknown>(
+        BOOKING_V2_RAIL_API_BASE.stationsSuggest,
+        {
+          headers: CONFIRMTKT_STATION_HEADERS,
+          params: {
+            searchString: q,
+            sourceStnCode: '',
+            popularStnListLimit: 15,
+            preferredStnListLimit: 6,
+            channel: 'mwebd',
+            language: 'EN',
+          },
+          timeout: CONFIRMTKT_SEARCH_STATION_TIMEOUT_MS,
+          signal: AbortSignal.timeout(CONFIRMTKT_SEARCH_STATION_TIMEOUT_MS),
         },
-        params: { limit: '20' },
-        timeout: RAPIDAPI_SEARCH_STATION_TIMEOUT_MS,
-        signal: AbortSignal.timeout(RAPIDAPI_SEARCH_STATION_TIMEOUT_MS),
-      });
+      );
       const root =
         res.data && typeof res.data === 'object' && !Array.isArray(res.data)
           ? (res.data as Record<string, unknown>)
@@ -783,34 +772,25 @@ export class IrctcService {
       if (root.success === false || root.status === false) {
         throw new Error('Station provider reported a failed lookup');
       }
-      const list = Array.isArray(dataObj?.results)
-        ? dataObj.results
-        : Array.isArray(root.data)
-          ? root.data
-          : Array.isArray(root.results)
-            ? root.results
-            : null;
-      if (!list) throw new Error('Station provider returned malformed results');
-      const out: Array<{ stationCode: string; stationName: string }> = [];
+      const list = dataObj?.stationList;
+      if (!Array.isArray(list)) {
+        throw new Error('Station provider returned malformed results');
+      }
+      const out: StationRow[] = [];
       for (const row of list) {
         if (!row || typeof row !== 'object') continue;
         const r = row as Record<string, unknown>;
-        const code = (
-          strFromUnknown(r.station_code) ||
-          strFromUnknown(r.code) ||
-          strFromUnknown(r.stationCode)
-        )
-          .trim()
-          .toUpperCase();
-        const name = (
-          strFromUnknown(r.station_name) ||
-          strFromUnknown(r.eng_name) ||
-          strFromUnknown(r.name) ||
-          strFromUnknown(r.stationName)
-        )
-          .trim()
-          .toUpperCase();
-        if (code && name) out.push({ stationCode: code, stationName: name });
+        const code =
+          typeof r.stationCode === 'string'
+            ? r.stationCode.trim().toUpperCase()
+            : '';
+        const name =
+          typeof r.stationName === 'string'
+            ? r.stationName.trim().toUpperCase()
+            : '';
+        if (code && name) {
+          out.push({ ...r, stationCode: code, stationName: name });
+        }
       }
       // Only genuine empty results get a short negative TTL. Provider errors
       // remain uncached so recovery is visible on the next request.
@@ -822,116 +802,32 @@ export class IrctcService {
       return out;
     } catch (err) {
       this.logger.warn(
-        `[irctc/searchStation] RapidAPI station search failed for "${q}": ${err instanceof Error ? err.message : String(err)}`,
+        `[irctc/searchStation] ConfirmTkt station search failed for "${q}": ${err instanceof Error ? err.message : String(err)}`,
       );
       return [];
     }
   }
 
-  private railcoreKey(): string | null {
-    const key = process.env.RAILCORE_API_KEY?.trim();
-    return key ? key : null;
-  }
-
   /**
-   * Travel classes a train offers (e.g. ["SL","3A","2A","1A"]). DB-first
-   * (TrainScheduleCache.availableClasses); on a miss, falls back to Railcore
-   * availability/classes and persists the result. Used to probe only real
-   * classes in alternate-paths instead of every possible class. Never throws —
-   * returns [] when unknown so the caller falls back to the full class list.
+   * Read known classes from TrainScheduleCache without an external lookup.
+   * Unknown classes return [] so alternate-paths can use its full class list.
    */
-  async getTrainClasses(
-    trainNo: string,
-    opts?: { from?: string; to?: string; date?: string },
-  ): Promise<string[]> {
+  async getTrainClasses(trainNo: string): Promise<string[]> {
     const num = String(trainNo).trim();
     if (!num) return [];
 
-    // DB-first.
     try {
       const row = await this.prisma.trainScheduleCache.findUnique({
         where: { trainNumber: num },
         select: { availableClasses: true },
       });
-      if (row?.availableClasses && row.availableClasses.length > 0) {
-        return row.availableClasses;
-      }
-    } catch {
-      // Column may not exist yet (pre-migration) — fall through to Railcore.
-    }
-
-    const key = this.railcoreKey();
-    if (!key) return [];
-    try {
-      const params: Record<string, string> = { train_number: num };
-      const from = opts?.from?.trim().toUpperCase();
-      const to = opts?.to?.trim().toUpperCase();
-      const date = this.toRailcoreDate(opts?.date);
-      if (from) params.from = from;
-      if (to) params.to = to;
-      if (date) params.date = date;
-      const t0 = Date.now();
-      this.logger.log(
-        `[irctc/getTrainClasses] railcore_request_start train=${num} from=${from ?? '-'} to=${to ?? '-'} date=${date ?? '-'}`,
-      );
-      const res = await railcoreClassesClient.get<unknown>(
-        RAILCORE_CLASSES_URL,
-        {
-          headers: {
-            Accept: 'application/json',
-            'x-railcore-key': key,
-          },
-          params,
-          timeout: RAILCORE_CLASSES_TIMEOUT_MS,
-        },
-      );
-      const root =
-        res.data && typeof res.data === 'object' && !Array.isArray(res.data)
-          ? (res.data as Record<string, unknown>)
-          : {};
-      const data =
-        root.data && typeof root.data === 'object' && !Array.isArray(root.data)
-          ? (root.data as Record<string, unknown>)
-          : {};
-      const rawClasses = Array.isArray(data.classes) ? data.classes : [];
-      const classes = [
-        ...new Set(
-          rawClasses
-            .map((c) => strFromUnknown(c).trim().toUpperCase())
-            .filter(Boolean),
-        ),
-      ];
-      if (classes.length > 0) {
-        // Persist back (only updates if the schedule row exists; no-op otherwise).
-        await this.prisma.trainScheduleCache
-          .updateMany({
-            where: { trainNumber: num },
-            data: { availableClasses: classes },
-          })
-          .catch(() => undefined);
-      }
-      this.logger.log(
-        `[irctc/getTrainClasses] railcore_ok train=${num} ms=${Date.now() - t0} status=${res.status} classes=${classes.join(',') || '-'}`,
-      );
-      return classes;
+      return row?.availableClasses ?? [];
     } catch (err) {
-      const status =
-        isAxiosError(err) && err.response?.status
-          ? ` status=${err.response.status}`
-          : '';
       this.logger.warn(
-        `[irctc/getTrainClasses] Railcore failed for ${num}${status}: ${err instanceof Error ? err.message : String(err)}`,
+        `[irctc/getTrainClasses] Cache lookup failed for ${num}: ${err instanceof Error ? err.message : String(err)}`,
       );
       return [];
     }
-  }
-
-  /** Normalize caller dates (DD-MM-YYYY or YYYY-MM-DD) to Railcore YYYY-MM-DD. */
-  private toRailcoreDate(dateInput?: string): string | null {
-    const raw = dateInput?.trim();
-    if (!raw) return null;
-    const m = moment(raw, ['YYYY-MM-DD', 'DD-MM-YYYY', 'YYYYMMDD'], true);
-    return m.isValid() ? m.format('YYYY-MM-DD') : null;
   }
 
   private async fetchScheduleFromRapidApi(

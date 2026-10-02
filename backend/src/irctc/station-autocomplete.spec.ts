@@ -27,8 +27,6 @@ import { IrctcService } from './irctc.service';
 describe('station autocomplete retry policy', () => {
   it('returns after one failed HTTP attempt, using the real axios-retry policy', async () => {
     jest.useFakeTimers();
-    const originalKey = process.env.RAPIDAPI_IRCTC_KEY;
-    process.env.RAPIDAPI_IRCTC_KEY = 'test-key';
     try {
       mockAdapter.mockImplementation((config) =>
         Promise.reject(
@@ -51,14 +49,12 @@ describe('station autocomplete retry policy', () => {
         {} as IrctcHttpService,
         cache as unknown as Cache,
       );
-      const result = service.searchStationsViaRapidApi('warangal');
+      const result = service.searchStationsViaConfirmTkt('warangal');
       await jest.runAllTimersAsync();
       await expect(result).resolves.toEqual([]);
       expect(mockAdapter).toHaveBeenCalledTimes(1);
       expect(cache.set).not.toHaveBeenCalled();
     } finally {
-      if (originalKey === undefined) delete process.env.RAPIDAPI_IRCTC_KEY;
-      else process.env.RAPIDAPI_IRCTC_KEY = originalKey;
       jest.useRealTimers();
     }
   });

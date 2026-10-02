@@ -79,13 +79,13 @@ const mockAltPathsCache: jest.Mocked<
 const mockIrctc: jest.Mocked<
   Pick<
     IrctcService,
-    | 'searchStationsViaRapidApi'
+    | 'searchStationsViaConfirmTkt'
     | 'getTrainClasses'
     | 'preloadTrainSchedules'
     | 'getTrainSchedule'
   >
 > = {
-  searchStationsViaRapidApi: jest.fn().mockResolvedValue([]),
+  searchStationsViaConfirmTkt: jest.fn().mockResolvedValue([]),
   getTrainClasses: jest.fn().mockResolvedValue([]),
   preloadTrainSchedules: jest.fn().mockResolvedValue(undefined),
   getTrainSchedule: jest.fn(),
@@ -541,21 +541,21 @@ describe('BookingV2Service', () => {
       expect(result).toEqual({ data: { stationList: cached } });
     });
 
-    it('falls back to RapidAPI when the cache misses, and backfills the cache', async () => {
+    it('falls back to ConfirmTkt when the cache misses, and backfills the cache', async () => {
       mockStationCache.search.mockResolvedValueOnce([]);
       const apiRows = [{ stationCode: 'CSTM', stationName: 'MUMBAI CST' }];
-      mockIrctc.searchStationsViaRapidApi.mockResolvedValueOnce(apiRows);
+      mockIrctc.searchStationsViaConfirmTkt.mockResolvedValueOnce(apiRows);
 
       const result = await service.searchStations('mum');
 
-      expect(mockIrctc.searchStationsViaRapidApi).toHaveBeenCalledWith('mum');
+      expect(mockIrctc.searchStationsViaConfirmTkt).toHaveBeenCalledWith('mum');
       expect(result).toEqual({ data: { stationList: apiRows } });
       expect(mockStationCache.upsertMany).toHaveBeenCalledWith(apiRows);
     });
 
-    it('returns an empty list when both cache and RapidAPI miss', async () => {
+    it('returns an empty list when both cache and ConfirmTkt miss', async () => {
       mockStationCache.search.mockResolvedValueOnce([]);
-      mockIrctc.searchStationsViaRapidApi.mockResolvedValueOnce([]);
+      mockIrctc.searchStationsViaConfirmTkt.mockResolvedValueOnce([]);
 
       await expect(service.searchStations('zzzz')).resolves.toEqual({
         data: { stationList: [] },

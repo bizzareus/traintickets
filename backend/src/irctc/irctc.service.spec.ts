@@ -20,10 +20,14 @@ describe('IrctcService', () => {
   let service: IrctcService;
   let mockHttpService: IrctcHttpService;
   let scheduleCache: { get: jest.Mock; set: jest.Mock };
+  let classLookup: jest.Mock;
 
   beforeEach(() => {
     jest.clearAllMocks();
-    const mockPrisma = {} as PrismaService;
+    classLookup = jest.fn().mockResolvedValue(null);
+    const mockPrisma = {
+      trainScheduleCache: { findUnique: classLookup },
+    } as unknown as PrismaService;
     const mockCookieStore = {} as IrctcCookieStoreService;
     scheduleCache = {
       get: jest.fn().mockResolvedValue(undefined),
@@ -45,127 +49,123 @@ describe('IrctcService', () => {
     );
   });
 
-  describe('searchStationsViaRapidApi', () => {
-    const origKey = process.env.RAPIDAPI_IRCTC_KEY;
-
-    beforeEach(() => {
-      process.env.RAPIDAPI_IRCTC_KEY = 'test-rapidapi-key';
-    });
-
-    afterEach(() => {
-      if (origKey) process.env.RAPIDAPI_IRCTC_KEY = origKey;
-      else delete process.env.RAPIDAPI_IRCTC_KEY;
-    });
-
+  describe('searchStationsViaConfirmTkt', () => {
     it('returns empty array when query length is less than 2', async () => {
-      const result = await service.searchStationsViaRapidApi('h');
+      const result = await service.searchStationsViaConfirmTkt('h');
       expect(result).toEqual([]);
       expect(mockGet).not.toHaveBeenCalled();
     });
 
-    it('returns empty array when RapidAPI key is missing', async () => {
-      delete process.env.RAPIDAPI_IRCTC_KEY;
-      delete process.env.IRCTC_RAPIDAPI_KEY;
-      delete process.env.RAPIDAPI_KEY;
-
-      const result = await service.searchStationsViaRapidApi('howrah');
-      expect(result).toEqual([]);
-      expect(mockGet).not.toHaveBeenCalled();
-    });
-
-    it('parses new RapidAPI autocomplete response format correctly', async () => {
+    it('uses the supplied ConfirmTkt request and preserves station metadata and ranking', async () => {
       mockGet.mockResolvedValueOnce({
         data: {
-          success: true,
           data: {
-            query: 'howra',
-            count: 3,
-            results: [
-              { station_code: 'HWH', station_name: 'Howrah Jn' },
-              { station_code: 'BCB', station_name: 'Bhowra Bh' },
-              { station_code: 'DKAE', station_name: 'Dankuni (Howrah)' },
+            stationList: [
+              { stationCode: 'DEL', stationName: 'Denduluru' },
+              {
+                stationCode: ' ndls ',
+                stationName: 'New Delhi',
+                city: 'New Delhi',
+                state: 'Delhi',
+              },
+              { stationCode: 'DLI', stationName: 'Old Delhi' },
             ],
+            popularStationList: [
+              { stationCode: 'HWH', stationName: 'Howrah Jn' },
+            ],
+            preferredStationList: [],
           },
-          generatedTimeStamp: 1787581506522,
         },
       });
 
-      const result = await service.searchStationsViaRapidApi('howra');
+      const result = await service.searchStationsViaConfirmTkt(' del ');
 
       expect(mockGet).toHaveBeenCalledWith(
-        'https://irctc-indian-railway-pnr-status.p.rapidapi.com/autocomplete/station/howra',
+        'https://cttrainsapi.confirmtkt.com/api/v2/trains/stations/auto-suggestion',
         expect.objectContaining({
           headers: expect.objectContaining({
-            'x-rapidapi-host': 'irctc-indian-railway-pnr-status.p.rapidapi.com',
-            'x-rapidapi-key': 'test-rapidapi-key',
+            ApiKey: 'ct-web!2$',
+            ClientId: 'ct-web',
+            DeviceId: 'e22a1dab-a86d-403a-963b-5e1ae7f649f2',
+            Referer: 'https://www.confirmtkt.com/',
           }),
-          params: { limit: '20' },
+          params: {
+            searchString: 'del',
+            sourceStnCode: '',
+            popularStnListLimit: 15,
+            preferredStnListLimit: 6,
+            channel: 'mwebd',
+            language: 'EN',
+          },
           timeout: 1_500,
           signal: expect.any(AbortSignal),
         }),
       );
 
       expect(result).toEqual([
-        { stationCode: 'HWH', stationName: 'HOWRAH JN' },
-        { stationCode: 'BCB', stationName: 'BHOWRA BH' },
-        { stationCode: 'DKAE', stationName: 'DANKUNI (HOWRAH)' },
+        { stationCode: 'DEL', stationName: 'DENDULURU' },
+        {
+          stationCode: 'NDLS',
+          stationName: 'NEW DELHI',
+          city: 'New Delhi',
+          state: 'Delhi',
+        },
+        { stationCode: 'DLI', stationName: 'OLD DELHI' },
       ]);
     });
 
     it('handles empty results array gracefully', async () => {
       mockGet.mockResolvedValueOnce({
         data: {
-          success: true,
           data: {
-            query: 'zzzz',
-            count: 0,
-            results: [],
+            stationList: [],
           },
-          generatedTimeStamp: 1787581639103,
         },
       });
 
-      const result = await service.searchStationsViaRapidApi('zzzz');
+      const result = await service.searchStationsViaConfirmTkt('zzzz');
       expect(result).toEqual([]);
     });
 
     it('catches and returns empty array on network/HTTP error', async () => {
       mockGet.mockRejectedValueOnce(new Error('Network error'));
 
-      const result = await service.searchStationsViaRapidApi('howrah');
+      const result = await service.searchStationsViaConfirmTkt('howrah');
       expect(result).toEqual([]);
       expect(scheduleCache.set).not.toHaveBeenCalled();
     });
 
     it('caches genuine empty results briefly and reuses case-insensitive hits', async () => {
-      mockGet.mockResolvedValueOnce({ data: { data: { results: [] } } });
+      mockGet.mockResolvedValueOnce({ data: { data: { stationList: [] } } });
       await expect(
-        service.searchStationsViaRapidApi('unknown'),
+        service.searchStationsViaConfirmTkt('unknown'),
       ).resolves.toEqual([]);
       expect(scheduleCache.set).toHaveBeenCalledWith(
-        'station-search:UNKNOWN',
+        'station-search:confirmtkt:UNKNOWN',
         [],
         30_000,
       );
 
       scheduleCache.get.mockResolvedValueOnce([]);
       await expect(
-        service.searchStationsViaRapidApi('UNKNOWN'),
+        service.searchStationsViaConfirmTkt('UNKNOWN'),
       ).resolves.toEqual([]);
       expect(mockGet).toHaveBeenCalledTimes(1);
     });
 
     it.each([
-      { success: false, data: { results: [] } },
+      { success: false, data: { stationList: [] } },
       { status: false, data: [] },
       { message: 'quota exceeded' },
-      { data: { results: [{ invalid: true }] } },
+      { data: { stationList: [{ invalid: true }] } },
+      { data: { stationList: [{ stationCode: true, stationName: false }] } },
+      { data: { popularStationList: [] } },
     ])(
       'does not negative-cache provider failures or malformed results: %j',
       async (data) => {
         mockGet.mockResolvedValueOnce({ data });
         await expect(
-          service.searchStationsViaRapidApi('howrah'),
+          service.searchStationsViaConfirmTkt('howrah'),
         ).resolves.toEqual([]);
         expect(scheduleCache.set).not.toHaveBeenCalled();
       },
@@ -173,14 +173,54 @@ describe('IrctcService', () => {
 
     it('uses a longer cache TTL for successful fallback results', async () => {
       mockGet.mockResolvedValueOnce({
-        data: { results: [{ station_code: 'WL', station_name: 'Warangal' }] },
+        data: {
+          data: {
+            stationList: [{ stationCode: 'WL', stationName: 'Warangal' }],
+          },
+        },
       });
-      await service.searchStationsViaRapidApi('warangal');
+      await service.searchStationsViaConfirmTkt('warangal');
       expect(scheduleCache.set).toHaveBeenCalledWith(
-        'station-search:WARANGAL',
+        'station-search:confirmtkt:WARANGAL',
         [{ stationCode: 'WL', stationName: 'WARANGAL' }],
         300_000,
       );
+    });
+  });
+
+  describe('getTrainClasses', () => {
+    it('reads known classes from the database without calling a provider', async () => {
+      classLookup.mockResolvedValueOnce({ availableClasses: ['SL', '3A'] });
+      await expect(service.getTrainClasses(' 12951 ')).resolves.toEqual([
+        'SL',
+        '3A',
+      ]);
+      expect(classLookup).toHaveBeenCalledWith({
+        where: { trainNumber: '12951' },
+        select: { availableClasses: true },
+      });
+      expect(mockGet).not.toHaveBeenCalled();
+    });
+
+    it.each([null, { availableClasses: [] }])(
+      'returns unknown classes on a cache miss without external calls: %j',
+      async (row) => {
+        classLookup.mockResolvedValueOnce(row);
+        await expect(service.getTrainClasses('12951')).resolves.toEqual([]);
+        expect(mockGet).not.toHaveBeenCalled();
+      },
+    );
+
+    it('degrades to unknown classes on a database error without external calls', async () => {
+      classLookup.mockRejectedValueOnce(new Error('database unavailable'));
+      await expect(service.getTrainClasses('12951')).resolves.toEqual([]);
+      expect(mockGet).not.toHaveBeenCalled();
+    });
+
+    it('skips lookups for an empty train number', async () => {
+      await expect(service.getTrainClasses(' ')).resolves.toEqual([]);
+      expect(classLookup).not.toHaveBeenCalled();
+      expect(mockGet).not.toHaveBeenCalled();
     });
   });
 
