@@ -612,6 +612,21 @@ export type AnalyticsEvent =
       properties: {
         bookingRef: string;
       };
+    }
+  | {
+      name: "split_booking_cancellation_looked_up";
+      properties: {
+        booking_ref: string;
+        train_number: string;
+        has_existing: boolean;
+      };
+    }
+  | {
+      name: "split_booking_cancellation_submitted";
+      properties: {
+        booking_ref: string;
+        train_number: string;
+      };
     };
 
 export type AnalyticsEventName = AnalyticsEvent["name"];
