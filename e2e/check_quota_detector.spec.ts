@@ -158,7 +158,7 @@ test('scan rewritten emergency quota draft', async ({ page }) => {
     // Extract highlights
     const highlights = await page.evaluate(() => {
       const spans = Array.from(document.querySelectorAll('#aidr-input-editor span, #aidr-input-editor div'));
-      const highlightedList = [];
+      const highlightedList: string[] = [];
       spans.forEach(el => {
         const style = el.getAttribute('style') || '';
         const className = el.className || '';

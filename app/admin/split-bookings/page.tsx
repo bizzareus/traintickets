@@ -196,7 +196,7 @@ export default function SplitBookingsAdminPage() {
     setNotifyFeedback(null);
     setNotifyPdfFile(null);
     setNotifyMissingWarning(null);
-    const initialPnrs = b.legs.map((_, idx) => {
+    const initialPnrs = b.legsPayload.map((_, idx) => {
       if (b.pnrs && b.pnrs[idx]) return b.pnrs[idx];
       if (idx === 0 && b.pnrLeg1) return b.pnrLeg1;
       if (idx === 1 && b.pnrLeg2) return b.pnrLeg2;
@@ -386,7 +386,7 @@ export default function SplitBookingsAdminPage() {
 
     // Check for missing PNRs or PDF
     const missingLegs: number[] = [];
-    notifyBooking.legs.forEach((_, idx) => {
+    notifyBooking.legsPayload.forEach((_, idx) => {
       if (!notifyLegPnrs[idx]?.trim()) {
         missingLegs.push(idx + 1);
       }
@@ -1172,12 +1172,12 @@ export default function SplitBookingsAdminPage() {
                     PNR for each Leg <span className="text-rose-500">*</span>
                   </label>
                   <span className="text-[11px] font-medium text-slate-500">
-                    {notifyLegPnrs.filter(Boolean).length} of {notifyBooking.legs.length} legs filled
+                    {notifyLegPnrs.filter(Boolean).length} of {notifyBooking.legsPayload.length} legs filled
                   </span>
                 </div>
 
                 <div className="space-y-2">
-                  {notifyBooking.legs.map((leg, idx) => {
+                  {notifyBooking.legsPayload.map((leg, idx) => {
                     const isFilled = !!notifyLegPnrs[idx]?.trim();
                     return (
                       <div

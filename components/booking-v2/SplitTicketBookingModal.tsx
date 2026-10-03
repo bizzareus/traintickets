@@ -335,7 +335,7 @@ export function SplitTicketBookingModal({
     // Use the saved payment time so repeated status polls do not reset the wait.
     const paidAt = moment(bookingStatus?.paidAt ?? undefined);
     const delayMs = paidAt.isValid()
-      ? Math.max(0, paidAt.add(5, "minutes").diff())
+      ? Math.max(0, paidAt.add(5, "minutes").diff(moment()))
       : 5 * 60 * 1000;
     const timer = setTimeout(() => setBookingDelayed(true), delayMs);
     return () => clearTimeout(timer);

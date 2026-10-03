@@ -431,7 +431,7 @@ test.describe("booking v2 (mocked API)", () => {
     );
 
     // Intercept the stream to inject a deliberate delay so we can see the loading state
-    let resolveStream: (() => void) | null = null;
+    const { promise: streamReady, resolve: resolveStream } = Promise.withResolvers<void>();
     await page.route("**/api/booking-v2/alternate-paths/stream", async (route) => {
       const req = route.request();
       let body: Record<string, unknown> = {};
@@ -444,7 +444,7 @@ test.describe("booking v2 (mocked API)", () => {
         JSON.stringify({ type: "result", data: alt }),
       ].join("\n") + "\n";
       // Hold the response momentarily so the loading UI is visible
-      await new Promise<void>((res) => { resolveStream = res; setTimeout(res, 60); });
+      await streamReady;
       await route.fulfill({ status: 200, contentType: "application/x-ndjson", body: ndjson });
     });
 
@@ -456,7 +456,7 @@ test.describe("booking v2 (mocked API)", () => {
       timeout: 5_000,
     });
 
-    resolveStream?.();
+    resolveStream();
 
     // After stream resolves, results should appear
     await expect(dialog.getByText("Best seats on")).toBeVisible({ timeout: 10_000 });
@@ -503,9 +503,9 @@ test.describe("booking v2 (mocked API)", () => {
         alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
     });
 
-    let resolveMeta: (() => void) | null = null;
+    const { promise: metaReady, resolve: resolveMeta } = Promise.withResolvers<void>();
     await page.route("**/api/train-composition/stations-meta", async (route) => {
-      await new Promise<void>((res) => { resolveMeta = res; });
+      await metaReady;
       await route.continue();
     });
 
@@ -519,7 +519,7 @@ test.describe("booking v2 (mocked API)", () => {
     // Alert CTA already visible while still loading
     await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
 
-    resolveMeta?.();
+    resolveMeta();
   });
 
   test("chart time: chart NOT prepared yet — shows chart time and alert CTA", async ({
