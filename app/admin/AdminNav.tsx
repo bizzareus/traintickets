@@ -139,12 +139,22 @@ function AdminNavContent() {
       <Link
         href="/admin/split-bookings"
         className={`text-sm font-medium transition ${
-          pathname === "/admin/split-bookings"
+          pathname === "/admin/split-bookings" && currentTab !== "cancellations"
             ? "text-indigo-600 font-semibold"
             : "text-slate-600 hover:text-slate-900"
         }`}
       >
         Split Bookings
+      </Link>
+      <Link
+        href="/admin/split-bookings?tab=cancellations"
+        className={`text-sm font-medium transition ${
+          pathname === "/admin/split-bookings" && currentTab === "cancellations"
+            ? "text-indigo-600 font-semibold"
+            : "text-slate-600 hover:text-slate-900"
+        }`}
+      >
+        Cancellations
       </Link>
       <AdminLockButton />
     </nav>

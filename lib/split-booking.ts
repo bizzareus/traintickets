@@ -119,3 +119,74 @@ export async function simulateSplitBookingPayment(
   );
   return res.data;
 }
+
+export interface CancellationBookingDetails {
+  bookingRef: string;
+  trainNumber: string;
+  trainName?: string | null;
+  fromStationCode: string;
+  toStationCode: string;
+  journeyDate: string;
+  travelClass: string;
+  quota: string;
+  totalFare: number;
+  serviceFee: number;
+  amount: number;
+  passengers: {
+    adults: Array<{
+      name: string;
+      age: number;
+      gender: string;
+      berthPreference?: string;
+    }>;
+    children?: Array<{ name: string; age: number; gender: string }>;
+  };
+  legsPayload: Array<{
+    from: string;
+    to: string;
+    travelClass: string;
+    fare: number;
+  }>;
+  bookingStatus: string;
+  paymentStatus: string;
+  pnrs: string[];
+  pnrLeg1?: string | null;
+  pnrLeg2?: string | null;
+  createdAt: string;
+  existingCancellation?: {
+    id: string;
+    status: "PENDING" | "PROCESSED" | "REJECTED";
+    createdAt: string;
+  } | null;
+}
+
+/**
+ * Validates booking reference & mobile number to fetch ticket details for cancellation.
+ */
+export async function lookupBookingForCancellation(payload: {
+  bookingRef: string;
+  mobile: string;
+}): Promise<CancellationBookingDetails> {
+  const res = await apiClient.post<CancellationBookingDetails>(
+    "/api/split-booking/cancellation/lookup",
+    payload,
+  );
+  return res.data;
+}
+
+/**
+ * Submits a cancellation request for a confirmed/in-progress booking.
+ */
+export async function submitBookingCancellation(payload: {
+  bookingRef: string;
+  mobile: string;
+  reason?: string;
+}): Promise<{ success: boolean; requestId: string; message: string }> {
+  const res = await apiClient.post<{
+    success: boolean;
+    requestId: string;
+    message: string;
+  }>("/api/split-booking/cancellation/request", payload);
+  return res.data;
+}
+

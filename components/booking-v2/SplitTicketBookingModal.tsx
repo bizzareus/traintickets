@@ -1066,7 +1066,20 @@ export function SplitTicketBookingModal({
                 </div>
               </div>
 
-              {paymentBreakdown}
+              <div className="space-y-1">
+                {paymentBreakdown}
+                <p className="text-xs text-slate-500">
+                  For cancellations, please{" "}
+                  <a
+                    href={`/cancel-booking${paymentData?.bookingRef ? `?ref=${encodeURIComponent(paymentData.bookingRef)}` : ""}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-blue-600 underline underline-offset-2 hover:text-blue-700"
+                  >
+                    click here
+                  </a>
+                </p>
+              </div>
 
               {/* Confirmation Details if Finished */}
               {bookingConfirmed && (

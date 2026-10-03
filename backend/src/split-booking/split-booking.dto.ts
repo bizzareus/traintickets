@@ -163,3 +163,39 @@ export class CreateSplitBookingDto {
   @MaxLength(254)
   contactEmail!: string;
 }
+
+export class LookupCancellationDto {
+  @IsString()
+  @MaxLength(50)
+  bookingRef!: string;
+
+  @IsString()
+  @Matches(/^\+?\d{10,15}$/)
+  mobile!: string;
+}
+
+export class CreateCancellationRequestDto {
+  @IsString()
+  @MaxLength(50)
+  bookingRef!: string;
+
+  @IsString()
+  @Matches(/^\+?\d{10,15}$/)
+  mobile!: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(500)
+  reason?: string;
+}
+
+export class AdminUpdateCancellationDto {
+  @IsOptional()
+  @IsIn(['PENDING', 'PROCESSED', 'REJECTED'])
+  status?: 'PENDING' | 'PROCESSED' | 'REJECTED';
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(1000)
+  adminNotes?: string;
+}

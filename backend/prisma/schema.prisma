@@ -618,13 +618,45 @@ model SplitTicketBooking {
   ticketPdfFilename    String?                       @map("ticket_pdf_filename")
   ticketPdfContentType String?                       @default("application/pdf") @map("ticket_pdf_content_type")
   ticketPdfUploadedAt  DateTime?                     @map("ticket_pdf_uploaded_at")
+  customerPaymentEmailSentAt  DateTime?                     @map("customer_payment_email_sent_at")
+  customerPaymentWhatsappSentAt DateTime?                   @map("customer_payment_whatsapp_sent_at")
   customerEmailSentAt  DateTime?                     @map("customer_email_sent_at")
   customerWhatsappSentAt DateTime?                   @map("customer_whatsapp_sent_at")
 
   createdAt         DateTime                      @default(now()) @map("created_at")
   updatedAt         DateTime                      @updatedAt @map("updated_at")
 
+  cancellationRequests BookingCancellationRequest[]
+
   @@index([bookingRef])
   @@index([paymentStatus, bookingStatus])
   @@map("split_ticket_booking")
+}
+
+enum CancellationRequestStatus {
+  PENDING
+  PROCESSED
+  REJECTED
+}
+
+model BookingCancellationRequest {
+  id                  String                    @id @default(cuid())
+  bookingId           String                    @map("booking_id")
+  booking             SplitTicketBooking        @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  bookingRef          String                    @map("booking_ref")
+  mobile              String
+  reason              String?
+  status              CancellationRequestStatus @default(PENDING)
+  adminNotes          String?                   @map("admin_notes")
+  adminEmailSentAt    DateTime?                 @map("admin_email_sent_at")
+  adminWhatsappSentAt DateTime?                 @map("admin_whatsapp_sent_at")
+  processedAt         DateTime?                 @map("processed_at")
+
+  createdAt           DateTime                  @default(now()) @map("created_at")
+  updatedAt           DateTime                  @updatedAt @map("updated_at")
+
+  @@index([bookingId])
+  @@index([bookingRef])
+  @@index([status, createdAt])
+  @@map("booking_cancellation_request")
 }

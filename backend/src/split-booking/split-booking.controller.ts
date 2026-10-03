@@ -20,7 +20,13 @@ import type { Request, Response } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 import { SplitBookingService } from './split-booking.service';
-import { CreateSplitBookingDto } from './split-booking.dto';
+import {
+  AdminUpdateCancellationDto,
+  CreateCancellationRequestDto,
+  CreateSplitBookingDto,
+  LookupCancellationDto,
+} from './split-booking.dto';
+import type { CancellationRequestStatus } from '@prisma/client';
 import { verifyRazorpayWebhookSignature } from '../chart-alert-payments/razorpay.client';
 import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
 import { SkipThrottle, Throttle } from '@nestjs/throttler';
@@ -232,5 +238,55 @@ export class SplitBookingController {
   ) {
     assertAdminAuth({ headerPw: pw, req });
     return this.splitBookingService.adminNotifyCustomer(id, body);
+  }
+
+  // --- Cancellation flow endpoints -------------------------------------------
+
+  @Post('cancellation/lookup')
+  @Throttle({ global: { limit: 15, ttl: 60_000 } })
+  async lookupCancellation(@Body() body: LookupCancellationDto) {
+    if (!body?.bookingRef || !body?.mobile) {
+      throw new BadRequestException('bookingRef and mobile are required');
+    }
+    return this.splitBookingService.lookupBookingForCancellation(
+      body.bookingRef,
+      body.mobile,
+    );
+  }
+
+  @Post('cancellation/request')
+  @Throttle({ global: { limit: 5, ttl: 60_000 } })
+  async requestCancellation(@Body() body: CreateCancellationRequestDto) {
+    if (!body?.bookingRef || !body?.mobile) {
+      throw new BadRequestException('bookingRef and mobile are required');
+    }
+    return this.splitBookingService.createCancellationRequest(
+      body.bookingRef,
+      body.mobile,
+      body.reason,
+    );
+  }
+
+  @Get('admin/cancellations')
+  @SkipThrottle()
+  async adminListCancellations(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+    @Query('status') status?: CancellationRequestStatus,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
+    return this.splitBookingService.adminListCancellations(status);
+  }
+
+  @Patch('admin/cancellations/:id')
+  @SkipThrottle()
+  async adminUpdateCancellation(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+    @Param('id') id: string,
+    @Body() body: AdminUpdateCancellationDto,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
+    return this.splitBookingService.adminUpdateCancellation(id, body);
   }
 }

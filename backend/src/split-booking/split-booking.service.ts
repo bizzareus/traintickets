@@ -7,6 +7,7 @@ import {
   ServiceUnavailableException,
 } from '@nestjs/common';
 import type {
+  CancellationRequestStatus,
   Prisma,
   SplitBookingFulfillmentStatus,
   SplitBookingPaymentStatus,
@@ -462,6 +463,12 @@ export class SplitBookingService {
         bookingRef,
       );
       this.startFulfillment(bookingRef);
+      void this.sendCustomerPaymentReceivedNotification(booking.id).catch(
+        (err) =>
+          this.logger.error(
+            `Failed to send customer payment notification for ${bookingRef}: ${err instanceof Error ? err.message : String(err)}`,
+          ),
+      );
     }
 
     return this.toStatusResponse(await this.findBooking(bookingRef));
@@ -762,6 +769,15 @@ export class SplitBookingService {
       },
       updated.bookingRef,
     );
+
+    if (updated.paymentStatus === 'PAID' && booking.paymentStatus !== 'PAID') {
+      void this.sendCustomerPaymentReceivedNotification(updated.id).catch(
+        (err) =>
+          this.logger.error(
+            `Failed to send customer payment notification for ${updated.bookingRef}: ${err instanceof Error ? err.message : String(err)}`,
+          ),
+      );
+    }
 
     return { ok: true, booking: updated };
   }
@@ -1105,5 +1121,448 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
       customerEmail: booking.contactEmail,
       customerMobile: booking.contactMobile,
     };
+  }
+
+  /**
+   * Sends customer notification (Email & WhatsApp) when payment is confirmed.
+   */
+  async sendCustomerPaymentReceivedNotification(
+    bookingId: string,
+  ): Promise<{ emailSent: boolean; whatsappSent: boolean }> {
+    const booking = await this.prisma.splitTicketBooking.findUnique({
+      where: { id: bookingId },
+    });
+    if (!booking || booking.paymentStatus !== 'PAID') {
+      return { emailSent: false, whatsappSent: false };
+    }
+
+    const needsEmail =
+      !booking.customerPaymentEmailSentAt && Boolean(booking.contactEmail);
+    const needsWhatsapp =
+      !booking.customerPaymentWhatsappSentAt && Boolean(booking.contactMobile);
+
+    if (!needsEmail && !needsWhatsapp) {
+      return { emailSent: false, whatsappSent: false };
+    }
+
+    const journeyDateStr = booking.journeyDate.toISOString().slice(0, 10);
+    const price = bookingPrice(booking.totalFare, booking.serviceFee);
+    let emailSent = false;
+    let whatsappSent = false;
+
+    if (needsEmail && this.notifications && booking.contactEmail) {
+      const subject = `Payment Received — Booking Ref: ${booking.bookingRef} (Train ${booking.trainNumber})`;
+      const html = `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1e293b;">
+          <div style="background: #0f172a; padding: 24px; text-align: center; border-radius: 12px 12px 0 0;">
+            <h1 style="color: white; margin: 0; font-size: 20px;">Payment Confirmed</h1>
+            <p style="color: #94a3b8; margin: 6px 0 0 0; font-size: 14px;">Booking Ref: <strong style="color: #38bdf8;">${escapeHtml(booking.bookingRef)}</strong></p>
+          </div>
+          <div style="padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px; background: white;">
+            <p style="font-size: 15px; margin-top: 0; color: #334155;">Dear Passenger,</p>
+            <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+              We have received your payment of <strong>₹${price.amount}</strong> for <strong>Train ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</strong> (${escapeHtml(booking.fromStationCode)} → ${escapeHtml(booking.toStationCode)}) on <strong>${escapeHtml(journeyDateStr)}</strong>.
+            </p>
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 20px 0;">
+              <h3 style="margin: 0 0 10px 0; font-size: 13px; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px;">Booking Information</h3>
+              <p style="margin: 4px 0; font-size: 13px;"><strong>Booking Reference:</strong> <span style="font-family: monospace; font-size: 14px; font-weight: bold; color: #0f172a;">${escapeHtml(booking.bookingRef)}</span></p>
+              <p style="margin: 4px 0; font-size: 13px;"><strong>Train:</strong> ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</p>
+              <p style="margin: 4px 0; font-size: 13px;"><strong>Route:</strong> ${escapeHtml(booking.fromStationCode)} → ${escapeHtml(booking.toStationCode)}</p>
+              <p style="margin: 4px 0; font-size: 13px;"><strong>Journey Date:</strong> ${escapeHtml(journeyDateStr)}</p>
+              <p style="margin: 4px 0; font-size: 13px;"><strong>Amount Paid:</strong> ₹${price.amount} (tickets ₹${price.totalFare} + service fee ₹${price.serviceFee})</p>
+            </div>
+            <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+              Your ticket reservation is in progress. Once confirmed, you will receive another update with your confirmed PNR details and ticket PDF.
+            </p>
+            <div style="margin: 20px 0; padding: 12px; background: #eff6ff; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 13px; color: #1e40af;">
+              <strong>Need to cancel?</strong> For cancellations, please visit <a href="https://v2.lastberth.com/cancel-booking?ref=${encodeURIComponent(booking.bookingRef)}" style="color: #2563eb; text-decoration: underline; font-weight: 600;">Cancel Booking</a> anytime using your booking reference and mobile number.
+            </div>
+            <p style="color: #94a3b8; font-size: 12px; margin-top: 24px; border-top: 1px solid #f1f5f9; padding-top: 16px; line-height: 1.5;">
+              Need assistance? Contact LastBerth support at <a href="mailto:support@lastberth.com" style="color: #2563eb;">support@lastberth.com</a> or WhatsApp +91 99992 24767.
+            </p>
+          </div>
+        </div>`;
+
+      emailSent = await this.notifications
+        .sendEmail(booking.contactEmail, subject, html, {
+          skipFailureReport: true,
+        })
+        .catch(() => false);
+    }
+
+    if (needsWhatsapp && this.wasender && booking.contactMobile) {
+      const whatsappText = `*Payment Received — LastBerth*
+Booking Ref: *${booking.bookingRef}*
+Train: ${booking.trainNumber} ${booking.trainName || ''}
+Route: ${booking.fromStationCode} → ${booking.toStationCode}
+Date: ${journeyDateStr}
+Amount Paid: ₹${price.amount}
+
+We have received your payment! Your ticket reservation is currently in progress. We will send your confirmed PNR details and ticket PDF as soon as issued.
+
+*For cancellations, please click here:*
+https://v2.lastberth.com/cancel-booking?ref=${encodeURIComponent(booking.bookingRef)}
+
+Need help? Contact us on WhatsApp at +91 99992 24767.`;
+
+      whatsappSent = await this.wasender
+        .sendWhatsApp({
+          mobile: booking.contactMobile,
+          text: whatsappText,
+        })
+        .catch(() => false);
+    }
+
+    const updates: Prisma.SplitTicketBookingUpdateInput = {};
+    if (emailSent) updates.customerPaymentEmailSentAt = new Date();
+    if (whatsappSent) updates.customerPaymentWhatsappSentAt = new Date();
+
+    if (Object.keys(updates).length > 0) {
+      await this.prisma.splitTicketBooking.update({
+        where: { id: booking.id },
+        data: updates,
+      });
+    }
+
+    this.posthog?.capture(
+      'split_booking_customer_payment_notified',
+      {
+        booking_ref: booking.bookingRef,
+        email_sent: emailSent,
+        whatsapp_sent: whatsappSent,
+      },
+      booking.bookingRef,
+    );
+
+    return { emailSent, whatsappSent };
+  }
+
+  /**
+   * Looks up a booking by reference and mobile number for cancellation.
+   */
+  async lookupBookingForCancellation(bookingRef: string, mobile: string) {
+    const cleanRef = bookingRef.trim().toUpperCase();
+    const cleanMobile = mobile.replace(/\D/g, '').slice(-10);
+
+    if (!cleanRef) {
+      throw new BadRequestException('Booking reference is required');
+    }
+    if (cleanMobile.length !== 10) {
+      throw new BadRequestException(
+        'A valid 10-digit mobile number is required',
+      );
+    }
+
+    const booking = await this.prisma.splitTicketBooking.findUnique({
+      where: { bookingRef: cleanRef },
+    });
+
+    if (!booking) {
+      throw new NotFoundException('No booking found with this reference');
+    }
+
+    const bookingMobileDigits = booking.contactMobile
+      .replace(/\D/g, '')
+      .slice(-10);
+    if (bookingMobileDigits !== cleanMobile) {
+      throw new BadRequestException(
+        'Mobile number does not match the contact number on this booking',
+      );
+    }
+
+    const existingCancellation =
+      await this.prisma.bookingCancellationRequest.findFirst({
+        where: {
+          bookingId: booking.id,
+          status: { in: ['PENDING', 'PROCESSED'] },
+        },
+        orderBy: { createdAt: 'desc' },
+      });
+
+    const price = bookingPrice(booking.totalFare, booking.serviceFee);
+
+    return {
+      bookingRef: booking.bookingRef,
+      trainNumber: booking.trainNumber,
+      trainName: booking.trainName,
+      fromStationCode: booking.fromStationCode,
+      toStationCode: booking.toStationCode,
+      journeyDate: booking.journeyDate.toISOString().slice(0, 10),
+      travelClass: booking.travelClass,
+      quota: booking.quota,
+      ...price,
+      passengers: booking.passengers,
+      legsPayload: booking.legsPayload,
+      bookingStatus: booking.bookingStatus,
+      paymentStatus: booking.paymentStatus,
+      pnrs: booking.pnrs,
+      pnrLeg1: booking.pnrLeg1,
+      pnrLeg2: booking.pnrLeg2,
+      createdAt: booking.createdAt.toISOString(),
+      existingCancellation: existingCancellation
+        ? {
+            id: existingCancellation.id,
+            status: existingCancellation.status,
+            createdAt: existingCancellation.createdAt.toISOString(),
+          }
+        : null,
+    };
+  }
+
+  /**
+   * Records a cancellation request and notifies admin via Email & WhatsApp.
+   */
+  async createCancellationRequest(
+    bookingRef: string,
+    mobile: string,
+    reason?: string,
+  ) {
+    const cleanRef = bookingRef.trim().toUpperCase();
+    const cleanMobile = mobile.replace(/\D/g, '').slice(-10);
+
+    if (!cleanRef) {
+      throw new BadRequestException('Booking reference is required');
+    }
+    if (cleanMobile.length !== 10) {
+      throw new BadRequestException(
+        'A valid 10-digit mobile number is required',
+      );
+    }
+
+    const booking = await this.prisma.splitTicketBooking.findUnique({
+      where: { bookingRef: cleanRef },
+    });
+
+    if (!booking) {
+      throw new NotFoundException('No booking found with this reference');
+    }
+
+    const bookingMobileDigits = booking.contactMobile
+      .replace(/\D/g, '')
+      .slice(-10);
+    if (bookingMobileDigits !== cleanMobile) {
+      throw new BadRequestException(
+        'Mobile number does not match the contact number on this booking',
+      );
+    }
+
+    const pending = await this.prisma.bookingCancellationRequest.findFirst({
+      where: {
+        bookingId: booking.id,
+        status: 'PENDING',
+      },
+    });
+
+    if (pending) {
+      throw new BadRequestException(
+        'A cancellation request is already pending review for this booking',
+      );
+    }
+
+    const request = await this.prisma.bookingCancellationRequest.create({
+      data: {
+        bookingId: booking.id,
+        bookingRef: booking.bookingRef,
+        mobile: cleanMobile,
+        reason: reason?.trim() || null,
+        status: 'PENDING',
+      },
+    });
+
+    const adminEmail =
+      this.config.get<string>('SPLIT_BOOKING_ADMIN_EMAIL') ||
+      this.config.get<string>('MONITORING_ADMIN_EMAIL') ||
+      'me@kartikarora.in';
+
+    const adminMobile =
+      this.config.get<string>('SPLIT_BOOKING_ADMIN_WHATSAPP') ||
+      '+919999224767';
+
+    const journeyDateStr = booking.journeyDate.toISOString().slice(0, 10);
+    const price = bookingPrice(booking.totalFare, booking.serviceFee);
+    const pnrList =
+      [booking.pnrLeg1, booking.pnrLeg2, ...booking.pnrs]
+        .filter((p): p is string => Boolean(p && p.trim()))
+        .join(', ') || 'None issued yet';
+
+    let adminEmailSent = false;
+    let adminWhatsappSent = false;
+
+    if (this.notifications) {
+      const emailSubject = `⚠️ [CANCELLATION REQUEST] Booking Ref: ${booking.bookingRef} — Train ${booking.trainNumber}`;
+      const emailHtml = `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; color: #1e293b;">
+          <div style="background: #dc2626; color: white; padding: 20px; border-radius: 8px 8px 0 0;">
+            <h2 style="margin: 0; font-size: 18px;">⚠️ New Cancellation Request Received</h2>
+            <p style="margin: 4px 0 0 0; font-size: 13px; opacity: 0.9;">Booking Ref: <strong>${escapeHtml(booking.bookingRef)}</strong></p>
+          </div>
+          <div style="padding: 20px; border: 1px solid #e2e8f0; border-top: none; background: white; border-radius: 0 0 8px 8px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+              <tr><td style="padding: 6px 0; color: #64748b;">Train:</td><td style="font-weight: 600;">${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</td></tr>
+              <tr><td style="padding: 6px 0; color: #64748b;">Route:</td><td style="font-weight: 600;">${escapeHtml(booking.fromStationCode)} → ${escapeHtml(booking.toStationCode)}</td></tr>
+              <tr><td style="padding: 6px 0; color: #64748b;">Journey Date:</td><td>${escapeHtml(journeyDateStr)}</td></tr>
+              <tr><td style="padding: 6px 0; color: #64748b;">Customer Mobile:</td><td><a href="tel:${escapeHtml(booking.contactMobile)}">${escapeHtml(booking.contactMobile)}</a></td></tr>
+              <tr><td style="padding: 6px 0; color: #64748b;">Customer Email:</td><td>${escapeHtml(booking.contactEmail)}</td></tr>
+              <tr><td style="padding: 6px 0; color: #64748b;">Total Amount Paid:</td><td style="font-weight: 600; color: #047857;">₹${price.amount}</td></tr>
+              <tr><td style="padding: 6px 0; color: #64748b;">Issued PNRs:</td><td style="font-family: monospace;">${escapeHtml(pnrList)}</td></tr>
+              <tr><td style="padding: 6px 0; color: #64748b;">Booking Status:</td><td>${escapeHtml(booking.bookingStatus)}</td></tr>
+              <tr><td style="padding: 6px 0; color: #64748b;">Reason for Cancellation:</td><td style="font-style: italic; color: #b91c1c;">${escapeHtml(reason || 'None provided')}</td></tr>
+            </table>
+            <div style="margin-top: 20px; text-align: center;">
+              <a href="https://v2.lastberth.com/admin/split-bookings?tab=cancellations" style="display: inline-block; background: #0f172a; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px;">Open Admin Cancellation Table</a>
+            </div>
+          </div>
+        </div>`;
+
+      adminEmailSent = await this.notifications
+        .sendEmail(adminEmail, emailSubject, emailHtml, {
+          skipFailureReport: true,
+        })
+        .catch(() => false);
+    }
+
+    if (this.wasender) {
+      const whatsappText = `⚠️ *NEW CANCELLATION REQUEST*
+Booking Ref: *${booking.bookingRef}*
+Train: ${booking.trainNumber} ${booking.trainName || ''}
+Route: ${booking.fromStationCode} → ${booking.toStationCode}
+Date: ${journeyDateStr}
+Customer Mobile: ${booking.contactMobile}
+Customer Email: ${booking.contactEmail}
+Amount: ₹${price.amount}
+PNRs: ${pnrList}
+Status: ${booking.bookingStatus}
+Reason: ${reason || 'None provided'}
+
+Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
+
+      adminWhatsappSent = await this.wasender
+        .sendWhatsApp({
+          mobile: adminMobile,
+          text: whatsappText,
+        })
+        .catch(() => false);
+    }
+
+    const updates: Prisma.BookingCancellationRequestUpdateInput = {};
+    if (adminEmailSent) updates.adminEmailSentAt = new Date();
+    if (adminWhatsappSent) updates.adminWhatsappSentAt = new Date();
+    if (Object.keys(updates).length > 0) {
+      await this.prisma.bookingCancellationRequest.update({
+        where: { id: request.id },
+        data: updates,
+      });
+    }
+
+    this.posthog?.capture(
+      'split_booking_cancellation_requested',
+      {
+        booking_ref: booking.bookingRef,
+        customer_mobile: cleanMobile,
+        has_reason: Boolean(reason),
+        admin_email_sent: adminEmailSent,
+        admin_whatsapp_sent: adminWhatsappSent,
+      },
+      booking.bookingRef,
+    );
+
+    return {
+      success: true,
+      requestId: request.id,
+      message: 'Cancellation request received successfully.',
+    };
+  }
+
+  /**
+   * Lists all cancellation requests for the admin portal.
+   */
+  async adminListCancellations(status?: CancellationRequestStatus) {
+    const where: Prisma.BookingCancellationRequestWhereInput = status
+      ? { status }
+      : {};
+
+    const items = await this.prisma.bookingCancellationRequest.findMany({
+      where,
+      orderBy: { createdAt: 'desc' },
+      include: {
+        booking: {
+          select: {
+            id: true,
+            bookingRef: true,
+            trainNumber: true,
+            trainName: true,
+            fromStationCode: true,
+            toStationCode: true,
+            journeyDate: true,
+            travelClass: true,
+            totalFare: true,
+            serviceFee: true,
+            contactMobile: true,
+            contactEmail: true,
+            bookingStatus: true,
+            paymentStatus: true,
+            pnrs: true,
+            pnrLeg1: true,
+            pnrLeg2: true,
+            passengers: true,
+          },
+        },
+      },
+    });
+
+    return items.map((item) => ({
+      id: item.id,
+      bookingId: item.bookingId,
+      bookingRef: item.bookingRef,
+      mobile: item.mobile,
+      reason: item.reason,
+      status: item.status,
+      adminNotes: item.adminNotes,
+      adminEmailSentAt: item.adminEmailSentAt?.toISOString() ?? null,
+      adminWhatsappSentAt: item.adminWhatsappSentAt?.toISOString() ?? null,
+      processedAt: item.processedAt?.toISOString() ?? null,
+      createdAt: item.createdAt.toISOString(),
+      updatedAt: item.updatedAt.toISOString(),
+      booking: item.booking
+        ? {
+            ...item.booking,
+            journeyDate: item.booking.journeyDate.toISOString().slice(0, 10),
+            amount: item.booking.totalFare + item.booking.serviceFee,
+          }
+        : null,
+    }));
+  }
+
+  /**
+   * Admin update cancellation request status and notes.
+   */
+  async adminUpdateCancellation(
+    id: string,
+    dto: { status?: CancellationRequestStatus; adminNotes?: string },
+  ) {
+    const existing = await this.prisma.bookingCancellationRequest.findUnique({
+      where: { id },
+    });
+    if (!existing) {
+      throw new NotFoundException(`Cancellation request "${id}" not found`);
+    }
+
+    const data: Prisma.BookingCancellationRequestUpdateInput = {};
+    if (dto.status) {
+      data.status = dto.status;
+      if (dto.status === 'PROCESSED' && !existing.processedAt) {
+        data.processedAt = new Date();
+      }
+    }
+    if (dto.adminNotes !== undefined) {
+      data.adminNotes = dto.adminNotes.trim() || null;
+    }
+
+    const updated = await this.prisma.bookingCancellationRequest.update({
+      where: { id },
+      data,
+    });
+
+    return { ok: true, cancellation: updated };
   }
 }

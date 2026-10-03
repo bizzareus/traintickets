@@ -12,6 +12,8 @@ import { TripmgtBookingService } from './tripmgt-booking.service';
 import { ConfigService } from '@nestjs/config';
 import { ManualBookingService } from './manual-booking.service';
 import { S3StorageService } from '../common/s3-storage.service';
+import { NotificationService } from '../notification/notification.service';
+import { WasenderProvider } from '../notification/whatsapp-providers/wasender.provider';
 import type { CreateSplitBookingDto } from './split-booking.types';
 
 jest.mock('../common/muzobox-client', () => ({
@@ -23,6 +25,8 @@ describe('SplitBookingService', () => {
   let service: SplitBookingService;
   let config: ConfigService;
   let manualBooking: { notify: jest.Mock };
+  let notifications: { sendEmail: jest.Mock };
+  let wasender: { sendWhatsApp: jest.Mock };
   let prisma: {
     splitTicketBooking: {
       create: jest.Mock;
@@ -30,6 +34,13 @@ describe('SplitBookingService', () => {
       findFirst: jest.Mock;
       update: jest.Mock;
       updateMany: jest.Mock;
+    };
+    bookingCancellationRequest: {
+      create: jest.Mock;
+      findUnique: jest.Mock;
+      findFirst: jest.Mock;
+      findMany: jest.Mock;
+      update: jest.Mock;
     };
   };
   let muzobox: { post: jest.Mock; get: jest.Mock };
@@ -53,6 +64,12 @@ describe('SplitBookingService', () => {
         .fn()
         .mockResolvedValue({ emailSent: true, whatsappSent: true }),
     };
+    notifications = {
+      sendEmail: jest.fn().mockResolvedValue(true),
+    };
+    wasender = {
+      sendWhatsApp: jest.fn().mockResolvedValue(true),
+    };
     prisma = {
       splitTicketBooking: {
         create: jest.fn(),
@@ -60,6 +77,13 @@ describe('SplitBookingService', () => {
         findFirst: jest.fn(),
         update: jest.fn(),
         updateMany: jest.fn(),
+      },
+      bookingCancellationRequest: {
+        create: jest.fn(),
+        findUnique: jest.fn(),
+        findFirst: jest.fn(),
+        findMany: jest.fn(),
+        update: jest.fn(),
       },
     };
 
@@ -110,6 +134,8 @@ describe('SplitBookingService', () => {
         { provide: ConfigService, useValue: config },
         { provide: ManualBookingService, useValue: manualBooking },
         { provide: S3StorageService, useValue: s3Storage },
+        { provide: NotificationService, useValue: notifications },
+        { provide: WasenderProvider, useValue: wasender },
       ],
     }).compile();
 
@@ -998,6 +1024,241 @@ describe('SplitBookingService', () => {
       await expect(service.getTicketPdf('LB-NONE')).rejects.toThrow(
         NotFoundException,
       );
+    });
+  });
+
+  describe('customer payment notifications', () => {
+    it('sends email and whatsapp when payment is confirmed and marks timestamps', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        id: 'b-100',
+        bookingRef: 'LB-PAID1',
+        trainNumber: '12782',
+        fromStationCode: 'NZM',
+        toStationCode: 'KOP',
+        journeyDate: new Date('2026-10-10'),
+        totalFare: 2000,
+        serviceFee: 50,
+        paymentStatus: 'PAID',
+        contactEmail: 'passenger@example.com',
+        contactMobile: '9876543210',
+        customerPaymentEmailSentAt: null,
+        customerPaymentWhatsappSentAt: null,
+      });
+
+      const res =
+        await service.sendCustomerPaymentReceivedNotification('b-100');
+
+      expect(res.emailSent).toBe(true);
+      expect(res.whatsappSent).toBe(true);
+      expect(notifications.sendEmail).toHaveBeenCalledWith(
+        'passenger@example.com',
+        expect.stringContaining('Payment Received — Booking Ref: LB-PAID1'),
+        expect.stringContaining('LB-PAID1'),
+        expect.any(Object),
+      );
+      expect(wasender.sendWhatsApp).toHaveBeenCalledWith({
+        mobile: '9876543210',
+        text: expect.stringContaining('LB-PAID1'),
+      });
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith({
+        where: { id: 'b-100' },
+        data: {
+          customerPaymentEmailSentAt: expect.any(Date),
+          customerPaymentWhatsappSentAt: expect.any(Date),
+        },
+      });
+    });
+
+    it('skips sending if notifications were already sent', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        id: 'b-100',
+        bookingRef: 'LB-PAID1',
+        paymentStatus: 'PAID',
+        contactEmail: 'passenger@example.com',
+        contactMobile: '9876543210',
+        customerPaymentEmailSentAt: new Date(),
+        customerPaymentWhatsappSentAt: new Date(),
+      });
+
+      const res =
+        await service.sendCustomerPaymentReceivedNotification('b-100');
+      expect(res.emailSent).toBe(false);
+      expect(res.whatsappSent).toBe(false);
+      expect(notifications.sendEmail).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('cancellation flow', () => {
+    it('looks up booking by ref and matching mobile number', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        id: 'b-200',
+        bookingRef: 'LB-CANCEL',
+        trainNumber: '12782',
+        trainName: 'Swarna Jayanti',
+        fromStationCode: 'NZM',
+        toStationCode: 'KOP',
+        journeyDate: new Date('2026-10-10'),
+        travelClass: '3A',
+        quota: 'GN',
+        totalFare: 2000,
+        serviceFee: 50,
+        passengers: { adults: [{ name: 'John Doe', age: 30, gender: 'Male' }] },
+        legsPayload: [],
+        bookingStatus: 'CONFIRMED',
+        paymentStatus: 'PAID',
+        pnrs: ['1234567890'],
+        pnrLeg1: '1234567890',
+        pnrLeg2: null,
+        contactMobile: '+919876543210',
+        createdAt: new Date(),
+      });
+      prisma.bookingCancellationRequest.findFirst.mockResolvedValue(null);
+
+      const res = await service.lookupBookingForCancellation(
+        'lb-cancel',
+        '9876543210',
+      );
+
+      expect(res.bookingRef).toBe('LB-CANCEL');
+      expect(res.trainNumber).toBe('12782');
+      expect(res.amount).toBe(2050);
+      expect(res.existingCancellation).toBeNull();
+    });
+
+    it('throws BadRequestException if mobile does not match booking', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        id: 'b-200',
+        bookingRef: 'LB-CANCEL',
+        contactMobile: '+919876543210',
+      });
+
+      await expect(
+        service.lookupBookingForCancellation('LB-CANCEL', '9999999999'),
+      ).rejects.toThrow(BadRequestException);
+    });
+
+    it('creates cancellation request and notifies admin via email and whatsapp', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        id: 'b-200',
+        bookingRef: 'LB-CANCEL',
+        trainNumber: '12782',
+        fromStationCode: 'NZM',
+        toStationCode: 'KOP',
+        journeyDate: new Date('2026-10-10'),
+        totalFare: 2000,
+        serviceFee: 50,
+        contactMobile: '9876543210',
+        contactEmail: 'user@test.com',
+        bookingStatus: 'CONFIRMED',
+        pnrs: ['1234567890'],
+      });
+      prisma.bookingCancellationRequest.findFirst.mockResolvedValue(null);
+      prisma.bookingCancellationRequest.create.mockResolvedValue({
+        id: 'cr-1',
+        bookingId: 'b-200',
+        bookingRef: 'LB-CANCEL',
+        mobile: '9876543210',
+        status: 'PENDING',
+      });
+
+      const res = await service.createCancellationRequest(
+        'LB-CANCEL',
+        '9876543210',
+        'Change of plan',
+      );
+
+      expect(res.success).toBe(true);
+      expect(res.requestId).toBe('cr-1');
+      expect(notifications.sendEmail).toHaveBeenCalledWith(
+        'me@kartikarora.in',
+        expect.stringContaining(
+          '[CANCELLATION REQUEST] Booking Ref: LB-CANCEL',
+        ),
+        expect.stringContaining('Change of plan'),
+        expect.any(Object),
+      );
+      expect(wasender.sendWhatsApp).toHaveBeenCalledWith({
+        mobile: '+919999224767',
+        text: expect.stringContaining('LB-CANCEL'),
+      });
+    });
+
+    it('prevents duplicate pending cancellation requests', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        id: 'b-200',
+        bookingRef: 'LB-CANCEL',
+        contactMobile: '9876543210',
+      });
+      prisma.bookingCancellationRequest.findFirst.mockResolvedValue({
+        id: 'cr-existing',
+        status: 'PENDING',
+      });
+
+      await expect(
+        service.createCancellationRequest('LB-CANCEL', '9876543210'),
+      ).rejects.toThrow(BadRequestException);
+    });
+
+    it('lists cancellations for admin', async () => {
+      prisma.bookingCancellationRequest.findMany.mockResolvedValue([
+        {
+          id: 'cr-1',
+          bookingId: 'b-200',
+          bookingRef: 'LB-CANCEL',
+          mobile: '9876543210',
+          reason: 'Test',
+          status: 'PENDING',
+          adminNotes: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          booking: {
+            id: 'b-200',
+            bookingRef: 'LB-CANCEL',
+            trainNumber: '12782',
+            trainName: null,
+            fromStationCode: 'NZM',
+            toStationCode: 'KOP',
+            journeyDate: new Date('2026-10-10'),
+            travelClass: '3A',
+            totalFare: 2000,
+            serviceFee: 50,
+            contactMobile: '9876543210',
+            contactEmail: 'user@test.com',
+            bookingStatus: 'CONFIRMED',
+            paymentStatus: 'PAID',
+            pnrs: [],
+            pnrLeg1: null,
+            pnrLeg2: null,
+            passengers: { adults: [] },
+          },
+        },
+      ]);
+
+      const items = await service.adminListCancellations();
+      expect(items).toHaveLength(1);
+      expect(items[0].bookingRef).toBe('LB-CANCEL');
+      expect(items[0].booking?.amount).toBe(2050);
+    });
+
+    it('updates cancellation request status and admin notes', async () => {
+      prisma.bookingCancellationRequest.findUnique.mockResolvedValue({
+        id: 'cr-1',
+        status: 'PENDING',
+      });
+      prisma.bookingCancellationRequest.update.mockResolvedValue({
+        id: 'cr-1',
+        status: 'PROCESSED',
+        adminNotes: 'Refunded ₹1800',
+        processedAt: new Date(),
+      });
+
+      const res = await service.adminUpdateCancellation('cr-1', {
+        status: 'PROCESSED',
+        adminNotes: 'Refunded ₹1800',
+      });
+
+      expect(res.ok).toBe(true);
+      expect(res.cancellation.status).toBe('PROCESSED');
     });
   });
 });

@@ -92,6 +92,10 @@ describe('Split booking admin controller endpoints', () => {
   const adminUploadTicketPdf = jest.fn();
   const getTicketPdf = jest.fn();
   const adminNotifyCustomer = jest.fn();
+  const lookupBookingForCancellation = jest.fn();
+  const createCancellationRequest = jest.fn();
+  const adminListCancellations = jest.fn();
+  const adminUpdateCancellation = jest.fn();
 
   const service = {
     adminListBookings,
@@ -99,6 +103,10 @@ describe('Split booking admin controller endpoints', () => {
     adminUploadTicketPdf,
     getTicketPdf,
     adminNotifyCustomer,
+    lookupBookingForCancellation,
+    createCancellationRequest,
+    adminListCancellations,
+    adminUpdateCancellation,
   } as unknown as SplitBookingService;
 
   const controller = new SplitBookingController(service, {
@@ -233,6 +241,80 @@ describe('Split booking admin controller endpoints', () => {
     expect(adminNotifyCustomer).toHaveBeenCalledWith('booking-123', {
       channel: 'both',
       message: 'Coach B2',
+    });
+  });
+
+  it('delegates cancellation lookup to service', async () => {
+    lookupBookingForCancellation.mockResolvedValue({
+      bookingRef: 'LB-TEST1',
+      trainNo: '12951',
+    });
+    const res = await controller.lookupCancellation({
+      bookingRef: 'LB-TEST1',
+      mobile: '9876543210',
+    });
+    expect(res).toEqual({ bookingRef: 'LB-TEST1', trainNo: '12951' });
+    expect(lookupBookingForCancellation).toHaveBeenCalledWith(
+      'LB-TEST1',
+      '9876543210',
+    );
+  });
+
+  it('delegates cancellation request submission to service', async () => {
+    createCancellationRequest.mockResolvedValue({
+      success: true,
+      requestId: 'req-123',
+    });
+    const res = await controller.requestCancellation({
+      bookingRef: 'LB-TEST1',
+      mobile: '9876543210',
+      reason: 'Change of plans',
+      confirmIrctcPolicy: true,
+    });
+    expect(res).toEqual({ success: true, requestId: 'req-123' });
+    expect(createCancellationRequest).toHaveBeenCalledWith(
+      'LB-TEST1',
+      '9876543210',
+      'Change of plans',
+    );
+  });
+
+  it('rejects admin list cancellations without valid auth', async () => {
+    await expect(
+      controller.adminListCancellations(undefined, {} as Request),
+    ).rejects.toThrow();
+  });
+
+  it('returns cancellation list for authorized admin', async () => {
+    adminListCancellations.mockResolvedValue({ entries: [] });
+    const res = await controller.adminListCancellations(
+      'admin-secret-password',
+      {} as Request,
+    );
+    expect(res).toEqual({ entries: [] });
+    expect(adminListCancellations).toHaveBeenCalled();
+  });
+
+  it('rejects admin update cancellation without valid auth', async () => {
+    await expect(
+      controller.adminUpdateCancellation(undefined, {} as Request, 'req-1', {
+        status: 'PROCESSED',
+      }),
+    ).rejects.toThrow();
+  });
+
+  it('updates cancellation request for authorized admin', async () => {
+    adminUpdateCancellation.mockResolvedValue({ ok: true });
+    const res = await controller.adminUpdateCancellation(
+      'admin-secret-password',
+      {} as Request,
+      'req-1',
+      { status: 'PROCESSED', refundArn: 'ARN123' },
+    );
+    expect(res).toEqual({ ok: true });
+    expect(adminUpdateCancellation).toHaveBeenCalledWith('req-1', {
+      status: 'PROCESSED',
+      refundArn: 'ARN123',
     });
   });
 });

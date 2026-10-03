@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   AlertCircle,
   ArrowRight,
@@ -133,6 +134,63 @@ const PAYMENT_STATUS_STYLES: Record<
   },
 };
 
+export interface CancellationAdminEntry {
+  id: string;
+  bookingId: string;
+  bookingRef: string;
+  mobile: string;
+  reason: string | null;
+  status: "PENDING" | "PROCESSED" | "REJECTED";
+  adminNotes: string | null;
+  adminEmailSentAt: string | null;
+  adminWhatsappSentAt: string | null;
+  processedAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+  booking: {
+    id: string;
+    bookingRef: string;
+    trainNumber: string;
+    trainName: string | null;
+    fromStationCode: string;
+    toStationCode: string;
+    journeyDate: string;
+    travelClass: string;
+    totalFare: number;
+    serviceFee: number;
+    amount: number;
+    contactMobile: string;
+    contactEmail: string;
+    bookingStatus: string;
+    paymentStatus: string;
+    pnrs: string[];
+    pnrLeg1: string | null;
+    pnrLeg2: string | null;
+    passengers: {
+      adults: Passenger[];
+      children?: Array<{ name: string; age: number; gender: string }>;
+    };
+  } | null;
+}
+
+const CANCELLATION_STATUS_STYLES: Record<
+  CancellationAdminEntry["status"],
+  { badge: string; label: string }
+> = {
+  PENDING: {
+    badge: "border-amber-300 bg-amber-50 text-amber-800 font-semibold",
+    label: "Pending Review",
+  },
+  PROCESSED: {
+    badge: "border-emerald-200 bg-emerald-50 text-emerald-800 font-semibold",
+    label: "Processed & Refunded",
+  },
+  REJECTED: {
+    badge: "border-rose-200 bg-rose-50 text-rose-700 font-semibold",
+    label: "Rejected",
+  },
+};
+
 const MAX_PDF_BYTES = 25 * 1024 * 1024; // 25MB
 
 function extractError(err: unknown, fallback: string): string {
@@ -154,13 +212,23 @@ function extractError(err: unknown, fallback: string): string {
   return ax.response?.data?.message ?? ax.response?.data?.error ?? fallback;
 }
 
-export default function SplitBookingsAdminPage() {
+function SplitBookingsAdminContent() {
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+  const [activeTab, setActiveTab] = useState<"bookings" | "cancellations">(
+    tabParam === "cancellations" ? "cancellations" : "bookings",
+  );
+
   const [entries, setEntries] = useState<SplitBookingAdminEntry[]>([]);
+  const [cancellations, setCancellations] = useState<CancellationAdminEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
+  const [cancellationSearch, setCancellationSearch] = useState("");
+  const [cancellationStatusFilter, setCancellationStatusFilter] =
+    useState<string>("all");
   const [copiedRef, setCopiedRef] = useState<string | null>(null);
 
   // Edit Modal State
@@ -177,6 +245,16 @@ export default function SplitBookingsAdminPage() {
   const [editPnr2, setEditPnr2] = useState("");
   const [editError, setEditError] = useState("");
   const [savingEdit, setSavingEdit] = useState(false);
+
+  // Cancellation Action Modal State
+  const [actionCancellation, setActionCancellation] =
+    useState<CancellationAdminEntry | null>(null);
+  const [actionStatus, setActionStatus] = useState<
+    "PENDING" | "PROCESSED" | "REJECTED"
+  >("PROCESSED");
+  const [actionNotes, setActionNotes] = useState("");
+  const [savingCancellation, setSavingCancellation] = useState(false);
+  const [cancellationActionError, setCancellationActionError] = useState("");
 
   // PDF Upload Modal State
   const [pdfUploadBooking, setPdfUploadBooking] =
@@ -202,6 +280,14 @@ export default function SplitBookingsAdminPage() {
     type: "success" | "error";
     message: string;
   } | null>(null);
+
+  useEffect(() => {
+    if (tabParam === "cancellations") {
+      setActiveTab("cancellations");
+    } else if (tabParam === "bookings") {
+      setActiveTab("bookings");
+    }
+  }, [tabParam]);
 
   const openNotifyModal = (b: SplitBookingAdminEntry) => {
     setNotifyBooking(b);
@@ -232,12 +318,27 @@ export default function SplitBookingsAdminPage() {
     setLoading(true);
     setError("");
     try {
-      const { data } = await apiClient.get<{
-        entries: SplitBookingAdminEntry[];
-      }>("/api/split-booking/admin", { headers: authHeaders() });
-      setEntries(data.entries ?? []);
-    } catch (err) {
-      setError(extractError(err, "Failed to load split ticket bookings."));
+      const [bookingsRes, cancellationsRes] = await Promise.allSettled([
+        apiClient.get<{
+          entries: SplitBookingAdminEntry[];
+        }>("/api/split-booking/admin", { headers: authHeaders() }),
+        apiClient.get<CancellationAdminEntry[]>(
+          "/api/split-booking/admin/cancellations",
+          { headers: authHeaders() },
+        ),
+      ]);
+
+      if (bookingsRes.status === "fulfilled") {
+        setEntries(bookingsRes.value.data.entries ?? []);
+      } else {
+        setError(
+          extractError(bookingsRes.reason, "Failed to load split ticket bookings."),
+        );
+      }
+
+      if (cancellationsRes.status === "fulfilled") {
+        setCancellations(cancellationsRes.value.data ?? []);
+      }
     } finally {
       setLoading(false);
     }
@@ -318,6 +419,84 @@ export default function SplitBookingsAdminPage() {
 
     return { total, manualPending, confirmed, paid, totalRevenue };
   }, [entries]);
+
+  // Cancellation Metrics
+  const cancellationMetrics = useMemo(() => {
+    const total = cancellations.length;
+    const pending = cancellations.filter((c) => c.status === "PENDING").length;
+    const processed = cancellations.filter(
+      (c) => c.status === "PROCESSED",
+    ).length;
+    const rejected = cancellations.filter(
+      (c) => c.status === "REJECTED",
+    ).length;
+    return { total, pending, processed, rejected };
+  }, [cancellations]);
+
+  // Filtered Cancellations
+  const filteredCancellations = useMemo(() => {
+    return cancellations.filter((c) => {
+      if (
+        cancellationStatusFilter !== "all" &&
+        c.status !== cancellationStatusFilter
+      ) {
+        return false;
+      }
+      if (!cancellationSearch.trim()) return true;
+      const q = cancellationSearch.toLowerCase().trim();
+      const refMatch = c.bookingRef.toLowerCase().includes(q);
+      const phoneMatch = c.mobile.includes(q);
+      const reasonMatch = c.reason?.toLowerCase().includes(q) ?? false;
+      const trainMatch =
+        c.booking?.trainNumber.toLowerCase().includes(q) ||
+        (c.booking?.trainName?.toLowerCase().includes(q) ?? false);
+      const notesMatch = c.adminNotes?.toLowerCase().includes(q) ?? false;
+      const passengerMatch =
+        c.booking?.passengers?.adults?.some((p) =>
+          p.name.toLowerCase().includes(q),
+        ) ?? false;
+      return (
+        refMatch ||
+        phoneMatch ||
+        reasonMatch ||
+        trainMatch ||
+        notesMatch ||
+        passengerMatch
+      );
+    });
+  }, [cancellations, cancellationStatusFilter, cancellationSearch]);
+
+  const openCancellationModal = (c: CancellationAdminEntry) => {
+    setActionCancellation(c);
+    setActionStatus(c.status);
+    setActionNotes(c.adminNotes || "");
+    setCancellationActionError("");
+  };
+
+  const handleSaveCancellation = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!actionCancellation || savingCancellation) return;
+    setSavingCancellation(true);
+    setCancellationActionError("");
+    try {
+      await apiClient.patch(
+        `/api/split-booking/admin/cancellations/${actionCancellation.id}`,
+        {
+          status: actionStatus,
+          adminNotes: actionNotes,
+        },
+        { headers: authHeaders() },
+      );
+      setActionCancellation(null);
+      await load();
+    } catch (err) {
+      setCancellationActionError(
+        extractError(err, "Failed to update cancellation request."),
+      );
+    } finally {
+      setSavingCancellation(false);
+    }
+  };
 
   // Open Edit Modal
   const openEditModal = (b: SplitBookingAdminEntry) => {
@@ -547,7 +726,59 @@ export default function SplitBookingsAdminPage() {
         </button>
       </div>
 
-      {/* Metrics Row */}
+      {/* Tab Switcher */}
+      <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
+        <button
+          type="button"
+          onClick={() => setActiveTab("bookings")}
+          className={`inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl transition cursor-pointer ${
+            activeTab === "bookings"
+              ? "bg-slate-900 text-white shadow-xs"
+              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+          }`}
+        >
+          <span>All Bookings</span>
+          <span
+            className={`rounded-full px-2 py-0.5 text-xs ${
+              activeTab === "bookings"
+                ? "bg-slate-800 text-white"
+                : "bg-slate-200 text-slate-700"
+            }`}
+          >
+            {entries.length}
+          </span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab("cancellations")}
+          className={`inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl transition cursor-pointer ${
+            activeTab === "cancellations"
+              ? "bg-slate-900 text-white shadow-xs"
+              : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+          }`}
+        >
+          <span>Cancellation Requests</span>
+          <span
+            className={`rounded-full px-2 py-0.5 text-xs font-bold ${
+              cancellationMetrics.pending > 0
+                ? "bg-amber-500 text-white"
+                : activeTab === "cancellations"
+                  ? "bg-slate-800 text-white"
+                  : "bg-slate-200 text-slate-700"
+            }`}
+          >
+            {cancellations.length}
+            {cancellationMetrics.pending > 0
+              ? ` (${cancellationMetrics.pending} pending)`
+              : ""}
+          </span>
+        </button>
+      </div>
+
+      {activeTab === "bookings" && (
+        <div className="space-y-6">
+          {/* Metrics Row */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
         <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs">
           <span className="text-xs font-medium text-slate-500">
@@ -906,8 +1137,279 @@ export default function SplitBookingsAdminPage() {
           </div>
         )}
       </div>
+    </div>
+  )}
 
-      {/* --- 1. Edit Booking & PNRs Modal --- */}
+      {/* CANCELLATION REQUESTS VIEW */}
+      {activeTab === "cancellations" && (
+        <div className="space-y-6">
+          {/* Cancellation Metrics */}
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs">
+              <span className="text-xs font-medium text-slate-500">
+                Total Cancellation Requests
+              </span>
+              <p className="mt-1 text-2xl font-bold text-slate-900">
+                {cancellationMetrics.total}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-4 shadow-xs">
+              <span className="text-xs font-medium text-amber-800">
+                Pending Review
+              </span>
+              <p className="mt-1 text-2xl font-bold text-amber-900">
+                {cancellationMetrics.pending}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-4 shadow-xs">
+              <span className="text-xs font-medium text-emerald-800">
+                Processed & Refunded
+              </span>
+              <p className="mt-1 text-2xl font-bold text-emerald-900">
+                {cancellationMetrics.processed}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-rose-200 bg-rose-50/70 p-4 shadow-xs">
+              <span className="text-xs font-medium text-rose-800">
+                Rejected
+              </span>
+              <p className="mt-1 text-2xl font-bold text-rose-900">
+                {cancellationMetrics.rejected}
+              </p>
+            </div>
+          </div>
+
+          {/* Cancellation Search & Filter */}
+          <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-3.5 shadow-xs sm:flex-row sm:items-center sm:justify-between">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search cancellations by Booking Ref, Mobile, Train, Reason…"
+                value={cancellationSearch}
+                onChange={(e) => setCancellationSearch(e.target.value)}
+                className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-9 pr-3 text-xs text-slate-800 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600"
+              />
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <select
+                value={cancellationStatusFilter}
+                onChange={(e) => setCancellationStatusFilter(e.target.value)}
+                className="rounded-xl border border-slate-200 bg-slate-50/80 px-3 py-2 text-xs font-medium text-slate-700 focus:outline-hidden focus:ring-2 focus:ring-blue-600/20"
+              >
+                <option value="all">All Request Statuses</option>
+                <option value="PENDING">Pending Review</option>
+                <option value="PROCESSED">Processed & Refunded</option>
+                <option value="REJECTED">Rejected</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Cancellation Requests Table */}
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs">
+            {filteredCancellations.length === 0 ? (
+              <div className="p-12 text-center text-slate-500 text-xs">
+                No cancellation requests found.
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs text-slate-600">
+                  <thead className="border-b border-slate-100 bg-slate-50/80 text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                    <tr>
+                      <th className="px-4 py-3">Requested At</th>
+                      <th className="px-4 py-3">Booking Ref</th>
+                      <th className="px-4 py-3">Train & Route</th>
+                      <th className="px-4 py-3">Customer Contact</th>
+                      <th className="px-4 py-3">Amount & PNRs</th>
+                      <th className="px-4 py-3">Reason</th>
+                      <th className="px-4 py-3">Status</th>
+                      <th className="px-4 py-3">Admin Notes</th>
+                      <th className="px-4 py-3 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {filteredCancellations.map((c) => {
+                      const statusStyle =
+                        CANCELLATION_STATUS_STYLES[c.status] ||
+                        CANCELLATION_STATUS_STYLES.PENDING;
+                      const pnrList = [
+                        c.booking?.pnrLeg1,
+                        c.booking?.pnrLeg2,
+                        ...(c.booking?.pnrs || []),
+                      ]
+                        .filter(Boolean)
+                        .join(", ");
+
+                      return (
+                        <tr
+                          key={c.id}
+                          className="hover:bg-slate-50/50 transition"
+                        >
+                          <td className="px-4 py-3.5 align-top whitespace-nowrap">
+                            <span className="font-medium text-slate-800 block">
+                              {new Date(c.createdAt).toLocaleDateString(
+                                "en-IN",
+                                {
+                                  day: "2-digit",
+                                  month: "short",
+                                },
+                              )}
+                            </span>
+                            <span className="text-[10px] text-slate-400 font-mono">
+                              {new Date(c.createdAt).toLocaleTimeString(
+                                "en-IN",
+                                {
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                },
+                              )}
+                            </span>
+                          </td>
+
+                          <td className="px-4 py-3.5 align-top whitespace-nowrap">
+                            <div className="flex items-center gap-1.5">
+                              <span className="font-mono font-bold text-slate-900">
+                                {c.bookingRef}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => copyToClipboard(c.bookingRef)}
+                                className="text-slate-400 hover:text-slate-600 transition"
+                                title="Copy Booking Ref"
+                              >
+                                {copiedRef === c.bookingRef ? (
+                                  <Check className="h-3 w-3 text-emerald-600" />
+                                ) : (
+                                  <Copy className="h-3 w-3" />
+                                )}
+                              </button>
+                            </div>
+                          </td>
+
+                          <td className="px-4 py-3.5 align-top">
+                            {c.booking ? (
+                              <div>
+                                <span className="font-bold text-slate-900 block">
+                                  {c.booking.trainNumber}{" "}
+                                  {c.booking.trainName || ""}
+                                </span>
+                                <span className="text-[11px] text-slate-600">
+                                  {c.booking.fromStationCode} →{" "}
+                                  {c.booking.toStationCode}
+                                </span>
+                                <span className="block text-[10px] text-slate-400">
+                                  {c.booking.journeyDate} •{" "}
+                                  {c.booking.travelClass}
+                                </span>
+                              </div>
+                            ) : (
+                              <span className="text-slate-400 italic">
+                                Booking data unavailable
+                              </span>
+                            )}
+                          </td>
+
+                          <td className="px-4 py-3.5 align-top whitespace-nowrap">
+                            <div>
+                              <a
+                                href={`tel:${c.mobile}`}
+                                className="font-bold text-blue-600 hover:underline block"
+                              >
+                                {c.mobile}
+                              </a>
+                              {c.booking?.contactEmail && (
+                                <a
+                                  href={`mailto:${c.booking.contactEmail}`}
+                                  className="text-[11px] text-slate-500 hover:underline block truncate max-w-[140px]"
+                                >
+                                  {c.booking.contactEmail}
+                                </a>
+                              )}
+                            </div>
+                          </td>
+
+                          <td className="px-4 py-3.5 align-top">
+                            <span className="font-bold text-slate-900 block">
+                              ₹
+                              {c.booking
+                                ? c.booking.amount.toLocaleString("en-IN")
+                                : "—"}
+                            </span>
+                            {pnrList ? (
+                              <span className="font-mono text-[10px] text-slate-600 block">
+                                PNR: {pnrList}
+                              </span>
+                            ) : (
+                              <span className="text-[10px] text-slate-400">
+                                No PNRs
+                              </span>
+                            )}
+                          </td>
+
+                          <td className="px-4 py-3.5 align-top max-w-[200px]">
+                            <span className="text-xs text-slate-700 italic">
+                              {c.reason || "None"}
+                            </span>
+                          </td>
+
+                          <td className="px-4 py-3.5 align-top whitespace-nowrap">
+                            <span
+                              className={`inline-block rounded-full border px-2.5 py-0.5 text-[11px] ${statusStyle.badge}`}
+                            >
+                              {statusStyle.label}
+                            </span>
+                            {c.processedAt && (
+                              <span className="block text-[10px] text-slate-400 mt-0.5">
+                                {new Date(c.processedAt).toLocaleDateString(
+                                  "en-IN",
+                                )}
+                              </span>
+                            )}
+                          </td>
+
+                          <td className="px-4 py-3.5 align-top max-w-[200px]">
+                            <span className="text-xs text-slate-700">
+                              {c.adminNotes || "—"}
+                            </span>
+                          </td>
+
+                          <td className="px-4 py-3.5 align-top text-right whitespace-nowrap">
+                            <div className="flex flex-col items-end gap-1.5">
+                              <button
+                                type="button"
+                                onClick={() => openCancellationModal(c)}
+                                className="inline-flex items-center gap-1 rounded-lg bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-white shadow-xs hover:bg-slate-800 transition cursor-pointer"
+                              >
+                                Update Status
+                              </button>
+
+                              {c.booking && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const full = entries.find(
+                                      (e) => e.id === c.bookingId,
+                                    );
+                                    if (full) openEditModal(full);
+                                  }}
+                                  className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2 py-0.5 text-[10px] font-medium text-slate-600 hover:bg-slate-50 transition cursor-pointer"
+                                >
+                                  View Booking
+                                </button>
+                              )}
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
       {editingBooking && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-xs"
@@ -1466,6 +1968,153 @@ export default function SplitBookingsAdminPage() {
           </div>
         </div>
       )}
+
+      {/* --- 4. Cancellation Action Modal --- */}
+      {actionCancellation && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-xs"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div>
+                <h3 className="text-base font-bold text-slate-900">
+                  Manage Cancellation Request
+                </h3>
+                <p className="text-xs text-slate-500">
+                  Booking Ref:{" "}
+                  <span className="font-mono font-bold text-slate-800">
+                    {actionCancellation.bookingRef}
+                  </span>
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActionCancellation(null)}
+                className="rounded-lg p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition cursor-pointer"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveCancellation} className="mt-4 space-y-4">
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs space-y-1.5">
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Customer Mobile:</span>
+                  <span className="font-bold text-slate-800">
+                    {actionCancellation.mobile}
+                  </span>
+                </div>
+                {actionCancellation.booking && (
+                  <>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">Train & Route:</span>
+                      <span className="font-semibold text-slate-800">
+                        {actionCancellation.booking.trainNumber} (
+                        {actionCancellation.booking.fromStationCode} →{" "}
+                        {actionCancellation.booking.toStationCode})
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">Total Paid:</span>
+                      <span className="font-bold text-emerald-700">
+                        ₹
+                        {actionCancellation.booking.amount.toLocaleString(
+                          "en-IN",
+                        )}
+                      </span>
+                    </div>
+                  </>
+                )}
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Reason:</span>
+                  <span className="font-medium text-slate-700 italic">
+                    {actionCancellation.reason || "None specified"}
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Request Status *
+                </label>
+                <select
+                  value={actionStatus}
+                  onChange={(e) =>
+                    setActionStatus(
+                      e.target.value as "PENDING" | "PROCESSED" | "REJECTED",
+                    )
+                  }
+                  className="w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-blue-600/20"
+                >
+                  <option value="PENDING">Pending Review</option>
+                  <option value="PROCESSED">Processed & Refunded</option>
+                  <option value="REJECTED">Rejected</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Admin Internal Notes / Refund Details
+                </label>
+                <textarea
+                  rows={3}
+                  placeholder="e.g. Cancelled on IRCTC. Refund amount ₹1,850 credited. Transaction ARN / Razorpay Refund ID: rfc_123456"
+                  value={actionNotes}
+                  onChange={(e) => setActionNotes(e.target.value)}
+                  className="w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-blue-600/20"
+                />
+              </div>
+
+              {cancellationActionError && (
+                <div className="rounded-xl border border-rose-200 bg-rose-50 p-2.5 text-xs text-rose-800">
+                  {cancellationActionError}
+                </div>
+              )}
+
+              <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+                <button
+                  type="button"
+                  onClick={() => setActionCancellation(null)}
+                  className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={savingCancellation}
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-blue-700 transition cursor-pointer disabled:opacity-50"
+                >
+                  {savingCancellation ? (
+                    <>
+                      <RefreshCw className="h-3 w-3 animate-spin" />
+                      Saving…
+                    </>
+                  ) : (
+                    "Save & Update"
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
+export default function SplitBookingsAdminPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-[40vh] items-center justify-center">
+          <RefreshCw className="h-6 w-6 animate-spin text-blue-600" />
+        </div>
+      }
+    >
+      <SplitBookingsAdminContent />
+    </Suspense>
+  );
+}
+
