@@ -165,7 +165,7 @@ export class SplitBookingController {
 
   @Post('admin/:id/ticket-pdf')
   @UseInterceptors(
-    FileInterceptor('file', { limits: { fileSize: 15 * 1024 * 1024 } }),
+    FileInterceptor('file', { limits: { fileSize: 30 * 1024 * 1024 } }),
   )
   async adminUploadTicketPdf(
     @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,

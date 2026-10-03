@@ -882,7 +882,7 @@ describe('SplitBookingService', () => {
             pnrLeg1: '1111111111',
             pnrLeg2: '2222222222',
             bookingStatus: 'CONFIRMED',
-          }),
+          }) as unknown,
         }),
       );
     });

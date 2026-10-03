@@ -2,12 +2,19 @@ import 'dotenv/config';
 import './instrument';
 
 import { NestFactory } from '@nestjs/core';
+import type { NestExpressApplication } from '@nestjs/platform-express';
 import cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   // rawBody is required by the Razorpay webhook signature check.
-  const app = await NestFactory.create(AppModule, { rawBody: true });
+  // bodyParser is set to false so we can configure a 50MB limit for ticket PDF uploads.
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    rawBody: true,
+    bodyParser: false,
+  });
+  app.useBodyParser('json', { limit: '50mb' });
+  app.useBodyParser('urlencoded', { limit: '50mb', extended: true });
   app.enableShutdownHooks();
   app
     .getHttpAdapter()

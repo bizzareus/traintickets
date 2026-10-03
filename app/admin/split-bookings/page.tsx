@@ -133,10 +133,24 @@ const PAYMENT_STATUS_STYLES: Record<
   },
 };
 
+const MAX_PDF_BYTES = 25 * 1024 * 1024; // 25MB
+
 function extractError(err: unknown, fallback: string): string {
   const ax = err as {
-    response?: { data?: { message?: string; error?: string } };
+    response?: {
+      status?: number;
+      data?: { message?: string; error?: string };
+    };
   };
+  const msg = ax.response?.data?.message || "";
+  const errStr = ax.response?.data?.error || "";
+  if (
+    ax.response?.status === 413 ||
+    msg.toLowerCase().includes("too large") ||
+    errStr.toLowerCase().includes("too large")
+  ) {
+    return "The uploaded PDF is too large (maximum size is 25MB). Please upload a smaller or compressed ticket PDF.";
+  }
   return ax.response?.data?.message ?? ax.response?.data?.error ?? fallback;
 }
 
@@ -348,6 +362,12 @@ export default function SplitBookingsAdminPage() {
   const handleUploadPdf = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!pdfUploadBooking || !selectedFile) return;
+    if (selectedFile.size > MAX_PDF_BYTES) {
+      setPdfError(
+        "The selected PDF exceeds the 25MB limit. Please choose a smaller ticket PDF.",
+      );
+      return;
+    }
     setUploadingPdf(true);
     setPdfError("");
     try {
@@ -383,6 +403,13 @@ export default function SplitBookingsAdminPage() {
   const handleSendNotification = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!notifyBooking) return;
+
+    if (notifyPdfFile && notifyPdfFile.size > MAX_PDF_BYTES) {
+      setNotifyMissingWarning(
+        "The selected PDF exceeds the 25MB limit. Please choose a smaller ticket PDF.",
+      );
+      return;
+    }
 
     // Check for missing PNRs or PDF
     const missingLegs: number[] = [];
@@ -1078,7 +1105,7 @@ export default function SplitBookingsAdminPage() {
                   />
                 </label>
                 <p className="mt-1 text-[11px] text-slate-400">
-                  IRCTC e-ticket PDF up to 15MB
+                  IRCTC e-ticket PDF up to 25MB
                 </p>
                 {selectedFile && (
                   <div className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-emerald-50 border border-emerald-200 px-3 py-1.5 text-xs font-semibold text-emerald-800">
