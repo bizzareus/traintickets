@@ -34,6 +34,8 @@ export function initPosthogBrowser(): void {
   const isAdminPath = window.location.pathname.startsWith("/admin");
   const isAdminUser = window.localStorage.getItem("admin") === "true";
   const shouldOptOut = isBrowserOnLocalhost() || isAdminPath || isAdminUser;
+  const isBlogPath = window.location.pathname.startsWith("/blog");
+  const disableSessionRecording = shouldOptOut || isBlogPath;
 
   if (initCalled) return;
   initCalled = true;
@@ -44,8 +46,8 @@ export function initPosthogBrowser(): void {
         api_host: posthogApiHost(),
         capture_pageview: false,
         capture_pageleave: true,
-        disable_session_recording: shouldOptOut,
-        enable_recording_console_log: !shouldOptOut,
+        disable_session_recording: disableSessionRecording,
+        enable_recording_console_log: !disableSessionRecording,
         session_recording: {
           maskAllInputs: false,
           maskInputOptions: {

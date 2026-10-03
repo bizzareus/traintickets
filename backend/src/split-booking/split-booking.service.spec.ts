@@ -112,6 +112,24 @@ describe('SplitBookingService', () => {
     ).rejects.toThrow(BadRequestException);
   });
 
+  it('throws ServiceUnavailableException when booking is disabled via mode', async () => {
+    config.set('SPLIT_BOOKING_MODE', 'disabled');
+    await expect(
+      service.createBooking({
+        trainNumber: '12216',
+        fromStationCode: 'AII',
+        toStationCode: 'GGN',
+        journeyDate: '2026-09-20',
+        travelClass: '3A',
+        totalFare: 810,
+        legs: [],
+        passengers: [],
+        contactMobile: '9876543210',
+        contactEmail: 'rahul@example.com',
+      }),
+    ).rejects.toThrow(ServiceUnavailableException);
+  });
+
   it.each(['ai', 'manual'])(
     'persists %s mode when creating the booking',
     async (mode) => {

@@ -506,6 +506,77 @@ export type AnalyticsEvent =
     }
   // Split ticket assisted booking events
   | {
+      name: "split_booking_book_now_clicked";
+      properties: {
+        train_number: string;
+        train_name?: string;
+        journey_date: string;
+        total_fare: number;
+        leg_count: number;
+      };
+    }
+  | {
+      name: "split_booking_class_selected";
+      properties: {
+        train_number: string;
+        leg_index: number;
+        from_code: string;
+        to_code: string;
+        travel_class: string;
+        fare: number | null;
+      };
+    }
+  | {
+      name: "split_booking_modal_opened";
+      properties: {
+        train_number: string;
+        train_name?: string;
+        journey_date: string;
+        from_code: string;
+        to_code: string;
+        travel_class: string;
+        total_fare: number;
+        leg_count: number;
+      };
+    }
+  | {
+      name: "split_booking_modal_closed";
+      properties: {
+        train_number: string;
+        step: "passenger_details" | "payment" | "booking_in_progress";
+      };
+    }
+  | {
+      name: "split_booking_passenger_added";
+      properties: {
+        train_number: string;
+        passenger_count: number;
+      };
+    }
+  | {
+      name: "split_booking_passenger_removed";
+      properties: {
+        train_number: string;
+        passenger_count: number;
+      };
+    }
+  | {
+      name: "split_booking_intent_failed";
+      properties: {
+        train_number: string;
+        error: string;
+      };
+    }
+  | {
+      name: "split_booking_payment_initiated";
+      properties: {
+        bookingRef: string;
+        amount: number;
+        service_fee: number;
+        total_fare: number;
+      };
+    }
+  | {
       name: "split_booking_details_submitted";
       properties: {
         train_number: string;
@@ -518,6 +589,28 @@ export type AnalyticsEvent =
       properties: {
         bookingRef: string;
         amount: number;
+      };
+    }
+  | {
+      name: "split_booking_confirmed";
+      properties: {
+        bookingRef: string;
+        train_number: string;
+        leg_count: number;
+      };
+    }
+  | {
+      name: "split_booking_failed";
+      properties: {
+        bookingRef: string;
+        train_number: string;
+        error?: string;
+      };
+    }
+  | {
+      name: "split_booking_simulation_triggered";
+      properties: {
+        bookingRef: string;
       };
     };
 

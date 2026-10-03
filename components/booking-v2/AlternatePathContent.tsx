@@ -1315,6 +1315,16 @@ export function AlternatePathContent({
                     <button
                       type="button"
                       onClick={() => {
+                        trackAnalyticsEvent({
+                          name: "split_booking_book_now_clicked",
+                          properties: {
+                            train_number: altResult.trainNumber,
+                            train_name: altTrainName || undefined,
+                            journey_date: journeyDate || "",
+                            total_fare: altResult.totalFare ?? 0,
+                            leg_count: confirmedLegCount,
+                          },
+                        });
                         setBookingRequest({
                           trainNumber: altResult.trainNumber,
                           trainName: altTrainName || undefined,

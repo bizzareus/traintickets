@@ -153,14 +153,19 @@ export class BookingV2Controller {
     if (this.bookingV2.isPastDate(date)) {
       throw new BadRequestException('Journey date cannot be in the past');
     }
-    const { result } = await this.bookingV2.findAlternatePathsCached({
+    const cacheOnly = Boolean(body?.cacheOnly);
+    const { result, cached } = await this.bookingV2.findAlternatePathsCached({
       trainNumber,
       from,
       to,
       date,
       avlClasses,
       quota,
+      cacheOnly,
     });
+    if (cacheOnly) {
+      return { cached, result };
+    }
     return result;
   }
 
@@ -214,6 +219,7 @@ export class BookingV2Controller {
       writeChunk(res, `${JSON.stringify(obj)}\n`, lifecycle.signal);
 
     const forceRefresh = Boolean(body?.forceRefresh);
+    const cacheOnly = Boolean(body?.cacheOnly);
 
     const heartbeatTimer = setInterval(() => {
       if (!res.destroyed && !res.writableEnded && !lifecycle.signal.aborted) {
@@ -231,6 +237,7 @@ export class BookingV2Controller {
           avlClasses,
           quota,
           forceRefresh,
+          cacheOnly,
           signal: lifecycle.signal,
         },
         (event: AlternatePathProgressEvent) =>

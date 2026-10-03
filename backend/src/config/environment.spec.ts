@@ -6,6 +6,10 @@ describe('validateEnvironment', () => {
     expect(
       validateEnvironment({ SPLIT_BOOKING_MODE: 'manual' }).SPLIT_BOOKING_MODE,
     ).toBe('manual');
+    expect(
+      validateEnvironment({ SPLIT_BOOKING_MODE: 'disabled' })
+        .SPLIT_BOOKING_MODE,
+    ).toBe('disabled');
     expect(() => validateEnvironment({ SPLIT_BOOKING_MODE: 'manul' })).toThrow(
       'SPLIT_BOOKING_MODE',
     );

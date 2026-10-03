@@ -39,7 +39,8 @@ const environmentSchema = z
     JWT_SECRET: optionalSecret,
     ENABLE_AUTO_REFUND: booleanString.optional(),
     REQUIRE_JOURNEY_PAYMENT: booleanString.optional(),
-    SPLIT_BOOKING_MODE: z.enum(['ai', 'manual']).default('ai'),
+    SPLIT_BOOKING_ENABLED: booleanString.optional().default('true'),
+    SPLIT_BOOKING_MODE: z.enum(['ai', 'manual', 'disabled']).default('ai'),
     SPLIT_BOOKING_ADMIN_EMAIL: z.string().trim().email().optional(),
     SPLIT_BOOKING_ADMIN_WHATSAPP: z
       .string()

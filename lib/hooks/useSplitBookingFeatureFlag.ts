@@ -6,6 +6,12 @@ import { useFeatureFlagEnabled } from "@posthog/react";
 export const SPLIT_BOOKING_FEATURE_FLAG = "split-ticket-assisted-booking";
 
 function getOverride(): boolean | null {
+  if (process.env.NEXT_PUBLIC_ENABLE_SPLIT_BOOKING === "false" || process.env.NEXT_PUBLIC_ENABLE_SPLIT_BOOKING === "0") {
+    return false;
+  }
+  if (process.env.NEXT_PUBLIC_ENABLE_SPLIT_BOOKING === "true" || process.env.NEXT_PUBLIC_ENABLE_SPLIT_BOOKING === "1") {
+    return true;
+  }
   try {
     const params = new URLSearchParams(window.location.search);
     const value =

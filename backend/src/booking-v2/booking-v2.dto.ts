@@ -51,6 +51,10 @@ export class AlternatePathsDto {
   @IsOptional()
   @IsBoolean()
   forceRefresh?: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  cacheOnly?: boolean;
 }
 
 export class BestTrainsDto {

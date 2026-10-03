@@ -69,11 +69,15 @@ const mockBestTrainsCache: jest.Mocked<
 };
 
 const mockAltPathsCache: jest.Mocked<
-  Pick<AlternatePathsRouteCache, 'get' | 'getRecord' | 'set'>
+  Pick<
+    AlternatePathsRouteCache,
+    'get' | 'getRecord' | 'set' | 'findByRouteAndDate'
+  >
 > = {
   get: jest.fn().mockResolvedValue(null),
   getRecord: jest.fn().mockResolvedValue(null),
   set: jest.fn().mockResolvedValue(undefined),
+  findByRouteAndDate: jest.fn().mockResolvedValue([]),
 };
 
 const mockIrctc: jest.Mocked<
@@ -633,6 +637,60 @@ describe('BookingV2Service', () => {
         'seat_cache_search',
         expect.objectContaining({ hit: false, status: 'error' }),
       );
+    });
+
+    it('enriches train search results with cached alternate paths when found in altPathsCache', async () => {
+      const fakeTrain = { trainNumber: '12066', trainName: 'JAN SHATABDI' };
+      const fakeResult = { data: { trainList: [fakeTrain] } };
+      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce({
+        status: 'hit',
+        value: fakeResult,
+      });
+
+      const mockAltResult = {
+        trainNumber: '12066',
+        isComplete: true,
+        legCount: 2,
+        totalFare: 720,
+        legs: [
+          {
+            from: 'DEE',
+            to: 'RE',
+            segmentKind: 'confirmed',
+            travelClass: 'CC',
+            fare: 300,
+          },
+          {
+            from: 'RE',
+            to: 'AII',
+            segmentKind: 'confirmed',
+            travelClass: 'CC',
+            fare: 420,
+          },
+        ],
+      };
+
+      mockAltPathsCache.findByRouteAndDate.mockResolvedValueOnce([
+        {
+          trainNumber: '12066',
+          classKey: 'ALL',
+          result: mockAltResult as any,
+        },
+      ]);
+
+      const result = (await service.searchTrains(
+        'DEE',
+        'AII',
+        '2029-04-05',
+      )) as any;
+
+      expect(mockAltPathsCache.findByRouteAndDate).toHaveBeenCalledWith(
+        'DEE',
+        'AII',
+        '05-04-2029',
+        'GN',
+      );
+      expect(result.data.trainList[0].cachedAlternatePath).toEqual(mockAltResult);
     });
 
     it('throws for an invalid date', async () => {

@@ -44,6 +44,7 @@ export type TrainListItem = {
   avlClasses?: string[];
   availabilityCache?: Record<string, AvailabilityCacheEntry>;
   trainStartDate?: string;
+  cachedAlternatePath?: AlternatePathsResponse | null;
 };
 
 export type AlternateClassOption = {

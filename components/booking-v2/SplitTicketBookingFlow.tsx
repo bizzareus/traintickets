@@ -3,6 +3,7 @@
 import { useId, useState } from "react";
 import { ArrowRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import {
   buildSplitBookingSelection,
   getLegClassOptions,
@@ -169,12 +170,23 @@ export function SplitTicketBookingFlow({
                             aria-label={`Leg ${index + 1}: ${option.travelClass}, ${priced ? `₹${option.fare}` : "fare unavailable"}`}
                             checked={selected}
                             disabled={!priced}
-                            onChange={() =>
+                            onChange={() => {
+                              trackAnalyticsEvent({
+                                name: "split_booking_class_selected",
+                                properties: {
+                                  train_number: trainNumber,
+                                  leg_index: index,
+                                  from_code: leg.from,
+                                  to_code: leg.to,
+                                  travel_class: option.travelClass,
+                                  fare: option.fare ?? null,
+                                },
+                              });
                               setChoices((current) => ({
                                 ...current,
                                 [index]: option.travelClass,
-                              }))
-                            }
+                              }));
+                            }}
                             className="h-4 w-4 shrink-0 text-blue-600 accent-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
                           />
                           <span className="min-w-0 flex-1">

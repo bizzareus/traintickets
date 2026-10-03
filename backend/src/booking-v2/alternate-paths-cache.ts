@@ -54,4 +54,76 @@ export class AlternatePathsRouteCache extends RouteCachingTableStore<FindAlterna
   constructor(prisma: PrismaService) {
     super(prisma);
   }
+
+  async findByRouteAndDate(
+    from: string,
+    to: string,
+    normalizedDate: string,
+    quota = 'GN',
+  ): Promise<
+    Array<{
+      trainNumber: string;
+      classKey: string;
+      result: FindAlternatePathsResult;
+    }>
+  > {
+    const f = String(from ?? '')
+      .trim()
+      .toUpperCase();
+    const t = String(to ?? '')
+      .trim()
+      .toUpperCase();
+    const q =
+      String(quota ?? 'GN')
+        .trim()
+        .toUpperCase() || 'GN';
+    if (!f || !t || !normalizedDate) return [];
+
+    const prefix = `alt-paths:v3:${f}:${t}:`;
+    const suffix = `:${normalizedDate}:${q}`;
+
+    try {
+      const rows = await this.prisma.routeCaching.findMany({
+        where: {
+          cacheKey: {
+            startsWith: prefix,
+            endsWith: suffix,
+          },
+          expiresAt: {
+            gt: new Date(),
+          },
+        },
+      });
+
+      const out: Array<{
+        trainNumber: string;
+        classKey: string;
+        result: FindAlternatePathsResult;
+      }> = [];
+
+      for (const row of rows) {
+        const parts = row.cacheKey.split(':');
+        // Format: alt-paths:v3:FROM:TO:TRAINNUM:CLASSKEY:DATE:QUOTA
+        if (parts.length < 8) continue;
+        const trainNumber = parts[4];
+        const classKey = parts[5];
+        const result = row.value as FindAlternatePathsResult;
+        if (
+          !result ||
+          !Array.isArray(result.legs) ||
+          result.legs.length === 0
+        ) {
+          continue;
+        }
+        out.push({ trainNumber, classKey, result });
+      }
+
+      return out;
+    } catch (e) {
+      this.logger.warn(
+        `findByRouteAndDate failed for ${f}->${t} on ${normalizedDate}: ${e instanceof Error ? e.message : String(e)}`,
+      );
+      return [];
+    }
+  }
 }

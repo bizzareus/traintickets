@@ -30,6 +30,7 @@ import { ManualBookingService } from './manual-booking.service';
 import { NotificationService } from '../notification/notification.service';
 import { WasenderProvider } from '../notification/whatsapp-providers/wasender.provider';
 import { escapeHtml } from '../notification/notification.helpers';
+import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import {
   bookingPrice,
   SPLIT_BOOKING_SERVICE_FEE_RUPEES,
@@ -51,6 +52,7 @@ export class SplitBookingService {
     private readonly manualBooking: ManualBookingService,
     @Optional() private readonly notifications?: NotificationService,
     @Optional() private readonly wasender?: WasenderProvider,
+    @Optional() private readonly posthog?: PostHogAnalyticsService,
   ) {
     this.muzoboxClient = createMuzoboxClient(config);
   }
@@ -72,6 +74,16 @@ export class SplitBookingService {
    * Create a new split-ticket assisted booking request and prepare payment.
    */
   async createBooking(dto: CreateSplitBookingDto) {
+    if (
+      this.config.get<string>('SPLIT_BOOKING_MODE') === 'disabled' ||
+      this.config.get<string>('SPLIT_BOOKING_ENABLED') === 'false' ||
+      this.config.get<boolean>('SPLIT_BOOKING_ENABLED') === false
+    ) {
+      throw new ServiceUnavailableException(
+        'Assisted booking is currently disabled',
+      );
+    }
+
     if (
       !dto.trainNumber?.trim() ||
       !dto.fromStationCode?.trim() ||
@@ -200,8 +212,36 @@ export class SplitBookingService {
           razorpayOrderId: data.razorpayOrderId ?? null,
         },
       });
+      this.posthog?.capture(
+        'split_booking_created',
+        {
+          booking_ref: bookingRef,
+          booking_mode: bookingMode,
+          train_number: dto.trainNumber.trim(),
+          train_name: dto.trainName?.trim() || null,
+          from_station: fromStationCode,
+          to_station: toStationCode,
+          journey_date: cleanDate,
+          travel_class: dto.travelClass.trim().toUpperCase(),
+          total_fare: price.totalFare,
+          service_fee: price.serviceFee,
+          amount: price.amount,
+          passenger_count: dto.passengers.length,
+          leg_count: dto.legs.length,
+        },
+        bookingRef,
+      );
       return { bookingRef, bookingMode, ...price, payUrl: payUrl.href };
     } catch (error) {
+      this.posthog?.capture(
+        'split_booking_intent_failed',
+        {
+          booking_ref: bookingRef,
+          train_number: dto.trainNumber.trim(),
+          error: error instanceof Error ? error.message : String(error),
+        },
+        bookingRef,
+      );
       await this.prisma.splitTicketBooking.update({
         where: { id: booking.id },
         data: { paymentStatus: 'FAILED' },
@@ -254,6 +294,14 @@ export class SplitBookingService {
         });
       }
       if (remote.status === 'failed') {
+        this.posthog?.capture(
+          'split_booking_payment_failed',
+          {
+            booking_ref: bookingRef,
+            train_number: booking.trainNumber,
+          },
+          bookingRef,
+        );
         await this.prisma.splitTicketBooking.updateMany({
           where: {
             id: booking.id,
@@ -397,6 +445,20 @@ export class SplitBookingService {
 
     // Only the winning payment transition may enqueue a reservation.
     if (claimed.count === 1) {
+      this.posthog?.capture(
+        'split_booking_paid',
+        {
+          booking_ref: bookingRef,
+          payment_id: paymentId || 'simulated',
+          train_number: booking.trainNumber,
+          from_station: booking.fromStationCode,
+          to_station: booking.toStationCode,
+          amount: price.amount,
+          total_fare: price.totalFare,
+          service_fee: price.serviceFee,
+        },
+        bookingRef,
+      );
       this.startFulfillment(bookingRef);
     }
 
@@ -466,6 +528,16 @@ export class SplitBookingService {
 
       if (booking.bookingMode === 'MANUAL') {
         const delivery = await this.manualBooking.notify(booking);
+        this.posthog?.capture(
+          'split_booking_manual_queued',
+          {
+            booking_ref: bookingRef,
+            train_number: booking.trainNumber,
+            email_sent: delivery.emailSent,
+            whatsapp_sent: delivery.whatsappSent,
+          },
+          bookingRef,
+        );
         await onLog({
           timestamp: new Date().toISOString(),
           step: 'MANUAL_HANDOFF',
@@ -498,6 +570,18 @@ export class SplitBookingService {
         },
       );
 
+      this.posthog?.capture(
+        result.success ? 'split_booking_confirmed' : 'split_booking_failed',
+        {
+          booking_ref: bookingRef,
+          train_number: booking.trainNumber,
+          leg_count: pnrs.length,
+          pnr_count: result.pnrs.filter(Boolean).length,
+          error: result.error ?? null,
+        },
+        bookingRef,
+      );
+
       await this.prisma.splitTicketBooking.update({
         where: { id: booking.id },
         data: {
@@ -513,6 +597,15 @@ export class SplitBookingService {
       this.logger.error(
         `Error during fulfillment of ${bookingRef}: ${msg}`,
         err instanceof Error ? err.stack : undefined,
+      );
+      this.posthog?.capture(
+        'split_booking_failed',
+        {
+          booking_ref: bookingRef,
+          train_number: booking?.trainNumber,
+          error: msg,
+        },
+        bookingRef,
       );
       if (!ownsFulfillment || !booking) return;
       await this.prisma.splitTicketBooking
@@ -654,6 +747,18 @@ export class SplitBookingService {
       where: { id },
       data,
     });
+
+    this.posthog?.capture(
+      'split_booking_admin_updated',
+      {
+        booking_ref: updated.bookingRef,
+        booking_status: updated.bookingStatus,
+        payment_status: updated.paymentStatus,
+        previous_booking_status: booking.bookingStatus,
+        previous_payment_status: booking.paymentStatus,
+      },
+      updated.bookingRef,
+    );
 
     return { ok: true, booking: updated };
   }
@@ -934,6 +1039,19 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
         }
       }
     }
+
+    this.posthog?.capture(
+      'split_booking_customer_notified',
+      {
+        booking_ref: booking.bookingRef,
+        channel,
+        email_sent: emailSent,
+        whatsapp_sent: whatsappSent,
+        has_pdf: Boolean(booking.ticketPdfUploadedAt || options.pdf?.base64),
+        pnr_count: legPnrs.filter((l) => l.pnr && l.pnr !== 'Confirmed').length,
+      },
+      booking.bookingRef,
+    );
 
     return {
       ok: true,

@@ -78,7 +78,16 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
   const abortControllerRef = useRef<AbortController | null>(null);
   const [loading, setLoading] = useState(false);
   const [foundSeats, setFoundSeats] = useState<FoundSeatNotice[]>([]);
-  const [result, setResult] = useState<AlternatePathsResponse | null>(null);
+  const [result, setResult] = useState<AlternatePathsResponse | null>(() => {
+    if (
+      train.cachedAlternatePath &&
+      train.cachedAlternatePath.legs &&
+      train.cachedAlternatePath.legs.length > 0
+    ) {
+      return train.cachedAlternatePath;
+    }
+    return null;
+  });
   const [error, setError] = useState<string | null>(null);
   const [currentProgressText, setCurrentProgressText] = useState<string>("");
 
@@ -183,15 +192,48 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     return null;
   }, [foundSeats, result]);
 
-  // Reset scan state on search param changes
+  // Reset scan state on search param changes and sync cachedAlternatePath
   useEffect(() => {
     hasInitiatedRef.current = false;
     setLoading(false);
     setFoundSeats([]);
-    setResult(null);
+    if (
+      train.cachedAlternatePath &&
+      train.cachedAlternatePath.legs &&
+      train.cachedAlternatePath.legs.length > 0
+    ) {
+      setResult(train.cachedAlternatePath);
+      const isComplete = Boolean(train.cachedAlternatePath.isComplete);
+      const confirmedDurationMinutes = calculateConfirmedDurationMinutes(
+        train.cachedAlternatePath.legs || [],
+      );
+      onSeatsDiscovered?.(
+        train.trainNumber,
+        isComplete,
+        confirmedDurationMinutes,
+      );
+      onScanComplete?.(
+        train.trainNumber,
+        true,
+        isComplete,
+        confirmedDurationMinutes,
+      );
+    } else {
+      setResult(null);
+    }
     setError(null);
     setCurrentProgressText("");
-  }, [journeyDate, fromCode, toCode, acOnly, selectedClasses]);
+  }, [
+    journeyDate,
+    fromCode,
+    toCode,
+    acOnly,
+    selectedClasses,
+    train.cachedAlternatePath,
+    train.trainNumber,
+    onSeatsDiscovered,
+    onScanComplete,
+  ]);
 
   // Run alternate paths search stream for waitlisted trains
   const executeScan = useCallback(async () => {
@@ -370,7 +412,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     onScanComplete,
   ]);
 
-  // Auto-run scan for waitlisted train only when autoScanEnabled is true
+  // Auto-run scan for waitlisted train only when autoScanEnabled is true and result not already loaded
   useEffect(() => {
     if (
       !isDirectAvailable &&
@@ -378,7 +420,8 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
       fromCode &&
       toCode &&
       !hasInitiatedRef.current &&
-      autoScanEnabled
+      autoScanEnabled &&
+      !result
     ) {
       void executeScan();
     }
@@ -389,6 +432,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     toCode,
     autoScanEnabled,
     executeScan,
+    result,
   ]);
 
   // Track when confirmed split tickets are loaded

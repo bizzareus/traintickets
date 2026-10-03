@@ -21,7 +21,11 @@ import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
 import { TrainSearchV2ProgressBar } from "@/components/home/TrainSearchV2ProgressBar";
 import { TrainSearchV2Card } from "@/components/home/TrainSearchV2Card";
 import { TrainSearchSkeleton } from "@/components/home/TrainSearchSkeleton";
-import { sortTrainSearchV2, type TrainScanMeta } from "@/lib/trainSearchV2Sort";
+import {
+  sortTrainSearchV2,
+  extractScanMetaFromResult,
+  type TrainScanMeta,
+} from "@/lib/trainSearchV2Sort";
 import { normalizeClassCodes } from "@/lib/trainClasses";
 import { HomeBannerAd, HomeSideAd } from "@/components/home/HomeSideAd";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
@@ -427,15 +431,10 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   ]);
 
   const v2AutoScanTrainNumbers = useMemo(() => {
-    const set = new Set<string>();
-    for (const t of trains) {
-      if (!hasAnyAvailableSeat(t, { acOnly, selectedClasses: resultClasses })) {
-        set.add(t.trainNumber);
-        break; // Trigger alternate path route search for one train only
-      }
-    }
-    return set;
-  }, [trains, acOnly, resultClasses]);
+    // Only trains with cached alternate paths show tickets automatically;
+    // uncached trains remain on the "Search Tickets" button without auto-scanning.
+    return new Set<string>();
+  }, []);
 
   const v2Stats = useMemo(() => {
     let directAvailableCount = 0;
@@ -822,7 +821,33 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
           },
         },
       );
-      setTrains(r.data?.data?.trainList ?? []);
+      const trainList = r.data?.data?.trainList ?? [];
+      setTrains(trainList);
+
+      // Pre-populate discovered split tickets from cached alternate paths
+      const newScanMetaMap = new Map<string, TrainScanMeta>();
+      const newEndToEnd = new Set<string>();
+      const newPartial = new Set<string>();
+      for (const t of trainList) {
+        if (
+          t.cachedAlternatePath &&
+          t.cachedAlternatePath.legs &&
+          t.cachedAlternatePath.legs.length > 0
+        ) {
+          const meta = extractScanMetaFromResult(t.cachedAlternatePath);
+          newScanMetaMap.set(t.trainNumber, meta);
+          if (meta.isComplete) {
+            newEndToEnd.add(t.trainNumber);
+          } else {
+            newPartial.add(t.trainNumber);
+          }
+        }
+      }
+      if (newScanMetaMap.size > 0) {
+        setV2ScanMetaMap((prev) => new Map([...prev, ...newScanMetaMap]));
+        setV2DiscoveredEndToEndTrains((prev) => new Set([...prev, ...newEndToEnd]));
+        setV2DiscoveredPartialTrains((prev) => new Set([...prev, ...newPartial]));
+      }
 
       // Best-effort: if this popular route+date is precomputed, show the best
       // seat instantly. The AC-only / class-filtered cache isn't precomputed (phase 1), so skip.

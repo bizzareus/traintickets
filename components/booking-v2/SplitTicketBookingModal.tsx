@@ -130,6 +130,17 @@ export function SplitTicketBookingModal({
     </p>
   );
 
+  const handleClose = useCallback(() => {
+    trackAnalyticsEvent({
+      name: "split_booking_modal_closed",
+      properties: {
+        train_number: trainNumber,
+        step,
+      },
+    });
+    onClose();
+  }, [trainNumber, step, onClose]);
+
   // Reset form when modal opens
   useEffect(() => {
     if (open) {
@@ -139,8 +150,31 @@ export function SplitTicketBookingModal({
       setBookingDelayed(false);
       setFormError(null);
       setIsSubmitting(false);
+      trackAnalyticsEvent({
+        name: "split_booking_modal_opened",
+        properties: {
+          train_number: trainNumber,
+          train_name: trainName,
+          journey_date: journeyDate,
+          from_code: fromStationCode,
+          to_code: toStationCode,
+          travel_class: travelClass,
+          total_fare: totalFare,
+          leg_count: legs.length,
+        },
+      });
     }
-  }, [open]);
+  }, [
+    open,
+    trainNumber,
+    trainName,
+    journeyDate,
+    fromStationCode,
+    toStationCode,
+    travelClass,
+    totalFare,
+    legs.length,
+  ]);
 
   // Handle passenger input changes
   const updatePassenger = (
@@ -157,6 +191,14 @@ export function SplitTicketBookingModal({
 
   const addPassenger = () => {
     if (passengers.length >= 6) return;
+    const nextCount = passengers.length + 1;
+    trackAnalyticsEvent({
+      name: "split_booking_passenger_added",
+      properties: {
+        train_number: trainNumber,
+        passenger_count: nextCount,
+      },
+    });
     setPassengers((prev) => [
       ...prev,
       {
@@ -171,6 +213,14 @@ export function SplitTicketBookingModal({
 
   const removePassenger = (index: number) => {
     if (passengers.length <= 1) return;
+    const nextCount = passengers.length - 1;
+    trackAnalyticsEvent({
+      name: "split_booking_passenger_removed",
+      properties: {
+        train_number: trainNumber,
+        passenger_count: nextCount,
+      },
+    });
     setPassengers((prev) => prev.filter((_, i) => i !== index));
   };
 
@@ -265,6 +315,15 @@ export function SplitTicketBookingModal({
       });
 
       const payment = await createSplitBooking(payload);
+      trackAnalyticsEvent({
+        name: "split_booking_payment_initiated",
+        properties: {
+          bookingRef: payment.bookingRef,
+          amount: payment.amount,
+          service_fee: payment.serviceFee,
+          total_fare: payment.totalFare,
+        },
+      });
       setPaymentData(payment);
       setStep("payment");
     } catch (err: unknown) {
@@ -274,6 +333,13 @@ export function SplitTicketBookingModal({
         : err instanceof Error
           ? err.message
           : "Failed to create booking intent";
+      trackAnalyticsEvent({
+        name: "split_booking_intent_failed",
+        properties: {
+          train_number: trainNumber,
+          error: msg,
+        },
+      });
       setFormError(msg);
     } finally {
       setIsSubmitting(false);
@@ -341,11 +407,49 @@ export function SplitTicketBookingModal({
     return () => clearTimeout(timer);
   }, [open, step, bookingConfirmed, bookingFailed, bookingStatus?.paidAt]);
 
+  const trackedTerminalStatus = useRef<string | null>(null);
+  useEffect(() => {
+    if (!bookingStatus?.bookingRef) {
+      trackedTerminalStatus.current = null;
+      return;
+    }
+    const terminalKey = `${bookingStatus.bookingRef}:${bookingStatus.bookingStatus}`;
+    if (trackedTerminalStatus.current === terminalKey) return;
+
+    if (bookingStatus.bookingStatus === "CONFIRMED") {
+      trackedTerminalStatus.current = terminalKey;
+      trackAnalyticsEvent({
+        name: "split_booking_confirmed",
+        properties: {
+          bookingRef: bookingStatus.bookingRef,
+          train_number: trainNumber,
+          leg_count: legs.length,
+        },
+      });
+    } else if (bookingStatus.bookingStatus === "FAILED") {
+      trackedTerminalStatus.current = terminalKey;
+      trackAnalyticsEvent({
+        name: "split_booking_failed",
+        properties: {
+          bookingRef: bookingStatus.bookingRef,
+          train_number: trainNumber,
+          error: bookingStatus.bookingError || undefined,
+        },
+      });
+    }
+  }, [bookingStatus, trainNumber, legs.length]);
+
   // Dev simulation handler
   const handleSimulatePayment = async () => {
     if (!paymentData?.bookingRef) return;
     try {
       setIsSubmitting(true);
+      trackAnalyticsEvent({
+        name: "split_booking_simulation_triggered",
+        properties: {
+          bookingRef: paymentData.bookingRef,
+        },
+      });
       const st = await simulateSplitBookingPayment(paymentData.bookingRef);
       setBookingStatus(st);
       setStep("booking_in_progress");
@@ -363,7 +467,7 @@ export function SplitTicketBookingModal({
       className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-2 sm:p-4 backdrop-blur-xs overflow-y-auto"
       role="dialog"
       aria-modal="true"
-      onClick={onClose}
+      onClick={handleClose}
     >
       <div
         className="relative my-auto flex w-full max-w-2xl max-h-[92vh] sm:max-h-[85vh] flex-col rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden"
@@ -390,7 +494,7 @@ export function SplitTicketBookingModal({
             </div>
           </div>
           <button
-            onClick={onClose}
+            onClick={handleClose}
             className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition"
           >
             <X className="h-5 w-5" />
@@ -784,7 +888,7 @@ export function SplitTicketBookingModal({
               <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pt-2">
                 <button
                   type="button"
-                  onClick={onClose}
+                  onClick={handleClose}
                   className="rounded-xl border border-slate-300 px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition text-center min-h-[42px]"
                 >
                   Cancel
@@ -1021,7 +1125,7 @@ export function SplitTicketBookingModal({
               <div className="text-center pt-2">
                 <button
                   type="button"
-                  onClick={onClose}
+                  onClick={handleClose}
                   className="rounded-xl bg-slate-900 px-6 py-2.5 text-xs font-bold text-white hover:bg-slate-800 transition"
                 >
                   Close Window

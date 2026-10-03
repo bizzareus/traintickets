@@ -201,6 +201,7 @@ export type BookingV2TrainSearchRow = {
   avlClasses?: string[];
   availabilityCache?: Record<string, unknown>;
   trainStartDate?: string;
+  cachedAlternatePath?: FindAlternatePathsResult | null;
 };
 
 export type BestTrainSearchInput = {
@@ -638,6 +639,7 @@ export class BookingV2Service {
     const t = to.trim().toUpperCase();
 
     // 1. Check DynamoDB seat cache first
+    let rawSearch: Record<string, unknown>;
     const cacheLookup = await this.dynamoDbSeatCache.getRouteCachedSearch(
       f,
       t,
@@ -658,42 +660,188 @@ export class BookingV2Service {
         duration_ms: durationMs,
         classes: classes ?? [],
       });
-      return this.filterTrainSearchByClasses(cacheLookup.value, classes);
+      rawSearch = cacheLookup.value;
+    } else {
+      // 2. Fall back to ConfirmTkt live API on cache miss
+      this.logger.log(
+        `[booking-v2/trains/search] DynamoDB cache ${cacheLookup.status.toUpperCase()} for ${f}-${t} on ${dateYmd}, fetching live upstream`,
+      );
+      rawSearch = (await this.fetchTrainsFromUpstream(
+        f,
+        t,
+        dateDdMmYyyy,
+        signal,
+      )) as Record<string, unknown>;
+
+      const durationMs = Date.now() - startTime;
+      this.posthogAnalytics.capture('seat_cache_search', {
+        hit: false,
+        status: cacheLookup.status,
+        from: f,
+        to: t,
+        route: `${f}-${t}`,
+        journey_date: dateYmd,
+        duration_ms: durationMs,
+        classes: classes ?? [],
+      });
+
+      // 3. Save to DynamoDB in background
+      void this.dynamoDbSeatCache
+        .saveRouteCachedSearch(f, t, dateYmd, rawSearch)
+        .catch((err) => {
+          this.logger.warn(
+            `[booking-v2/trains/search] Failed to cache live search to DynamoDB: ${err instanceof Error ? err.message : String(err)}`,
+          );
+        });
     }
 
-    // 2. Fall back to ConfirmTkt live API on cache miss
-    this.logger.log(
-      `[booking-v2/trains/search] DynamoDB cache ${cacheLookup.status.toUpperCase()} for ${f}-${t} on ${dateYmd}, fetching live upstream`,
-    );
-    const rawSearch = (await this.fetchTrainsFromUpstream(
+    const filtered = this.filterTrainSearchByClasses(rawSearch, classes);
+    await this.attachCachedAlternatePaths(
+      filtered,
       f,
       t,
       dateDdMmYyyy,
-      signal,
-    )) as Record<string, unknown>;
+      classes,
+    );
+    return filtered;
+  }
 
-    const durationMs = Date.now() - startTime;
-    this.posthogAnalytics.capture('seat_cache_search', {
-      hit: false,
-      status: cacheLookup.status,
-      from: f,
-      to: t,
-      route: `${f}-${t}`,
-      journey_date: dateYmd,
-      duration_ms: durationMs,
-      classes: classes ?? [],
-    });
+  /**
+   * Enriches train search results with cached alternate-path split tickets if present
+   * in the route caching store, allowing instant rendering for all cached trains.
+   */
+  async attachCachedAlternatePaths(
+    filtered: unknown,
+    from: string,
+    to: string,
+    dateDdMmYyyy: string,
+    classes?: string[],
+  ): Promise<void> {
+    if (!filtered || typeof filtered !== 'object') return;
+    const data = (filtered as Record<string, unknown>).data as
+      | Record<string, unknown>
+      | undefined;
+    if (
+      !data ||
+      !Array.isArray(data.trainList) ||
+      data.trainList.length === 0
+    ) {
+      return;
+    }
 
-    // 3. Save to DynamoDB in background
-    void this.dynamoDbSeatCache
-      .saveRouteCachedSearch(f, t, dateYmd, rawSearch)
-      .catch((err) => {
-        this.logger.warn(
-          `[booking-v2/trains/search] Failed to cache live search to DynamoDB: ${err instanceof Error ? err.message : String(err)}`,
+    const trainList = data.trainList as Record<string, unknown>[];
+
+    try {
+      // 1. Query all cached alternate paths for this route and date in single DB query
+      const cachedEntries = await this.altPathsCache.findByRouteAndDate(
+        from,
+        to,
+        dateDdMmYyyy,
+        'GN',
+      );
+
+      const cachedByTrain = new Map<string, FindAlternatePathsResult>();
+
+      for (const entry of cachedEntries) {
+        const { trainNumber, classKey, result } = entry;
+        if (
+          !result ||
+          !Array.isArray(result.legs) ||
+          result.legs.length === 0
+        ) {
+          continue;
+        }
+
+        const hasStale = result.legs.some(
+          (l) =>
+            l.availablityStatus === 'TRAIN DEPARTED' ||
+            l.availabilityDisplayName === 'Train Departed',
         );
-      });
+        if (hasStale) continue;
 
-    return this.filterTrainSearchByClasses(rawSearch, classes);
+        const confirmedCount = countConfirmedLegs(result.legs);
+        if (confirmedCount === 0) continue;
+
+        const normalizedResult =
+          result.legCount !== confirmedCount
+            ? { ...result, legCount: confirmedCount }
+            : result;
+
+        if (classes && classes.length > 0) {
+          const requestedKey = Array.from(
+            new Set(classes.map((c) => c.toUpperCase())),
+          )
+            .sort()
+            .join(',');
+          if (classKey === requestedKey) {
+            cachedByTrain.set(trainNumber, normalizedResult);
+          } else if (!cachedByTrain.has(trainNumber)) {
+            cachedByTrain.set(trainNumber, normalizedResult);
+          }
+        } else {
+          if (classKey === 'ALL' || !cachedByTrain.has(trainNumber)) {
+            cachedByTrain.set(trainNumber, normalizedResult);
+          }
+        }
+      }
+
+      // 2. Best-train route cache fallback if top train wasn't found in altPathsCache
+      try {
+        const bestRecord = await this.getCachedBestTrain(
+          from,
+          to,
+          dateDdMmYyyy,
+        );
+        if (bestRecord?.value?.found === true) {
+          const best = bestRecord.value;
+          const trainNum = best.train?.trainNumber;
+          if (
+            trainNum &&
+            !cachedByTrain.has(trainNum) &&
+            best.legs?.length > 0
+          ) {
+            const confirmedCount = countConfirmedLegs(best.legs);
+            if (confirmedCount > 0) {
+              cachedByTrain.set(trainNum, {
+                trainNumber: trainNum,
+                legs: best.legs,
+                totalFare: best.totalFare,
+                legCount: confirmedCount,
+                isComplete: best.isComplete,
+                stationCodesOnRoute: [],
+                stationNameMap: best.stationNames ?? {},
+                remainderMergedSchedule: null,
+                trainOriginCode: null,
+                trainOriginDepartureTime: null,
+                debugLog: [],
+              });
+            }
+          }
+        }
+      } catch {
+        /* best-effort fallback */
+      }
+
+      // 3. Attach cachedAlternatePath to trains that have cache hits
+      for (const train of trainList) {
+        if (!train || typeof train !== 'object') continue;
+        const rawNum = train.trainNumber;
+        const trainNumber =
+          typeof rawNum === 'string'
+            ? rawNum.trim()
+            : typeof rawNum === 'number'
+              ? String(rawNum)
+              : '';
+        const hit = cachedByTrain.get(trainNumber);
+        if (hit) {
+          train.cachedAlternatePath = hit;
+        }
+      }
+    } catch (err) {
+      this.logger.warn(
+        `[booking-v2/trains/search] Failed attaching cached alternate paths: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
   }
 
   filterTrainSearchByClasses(raw: unknown, classes?: string[]): unknown {
@@ -872,7 +1020,7 @@ export class BookingV2Service {
         }
 
         try {
-          const alternatePath = await this.findAlternatePaths(
+          const { result: alternatePath } = await this.findAlternatePathsCached(
             {
               trainNumber: train.trainNumber,
               from: trainFrom,
@@ -1345,9 +1493,11 @@ export class BookingV2Service {
       avlClasses?: string[];
       quota?: string;
       forceRefresh?: boolean;
+      cacheOnly?: boolean;
       signal?: AbortSignal;
     },
     onProgress?: (event: AlternatePathProgressEvent) => void | Promise<void>,
+    segmentCache?: CacheService,
   ): Promise<{ result: FindAlternatePathsResult; cached: boolean }> {
     const key = alternatePathsCacheKey(
       input.from,
@@ -1385,6 +1535,13 @@ export class BookingV2Service {
       this.logger.log(`[alt-paths-cache] MISS key=${key}`);
     }
 
+    if (input.cacheOnly) {
+      return {
+        result: null as unknown as FindAlternatePathsResult,
+        cached: false,
+      };
+    }
+
     // Single-flight: concurrent requests for the same uncached key share one
     // computation instead of each running the full probe fan-out. Without
     // this, a burst of identical misses (cron + user traffic on the same
@@ -1397,7 +1554,11 @@ export class BookingV2Service {
       }
     }
 
-    const computation = this.findAlternatePaths(input, onProgress);
+    const computation = this.findAlternatePaths(
+      input,
+      onProgress,
+      segmentCache,
+    );
     if (key && !input.forceRefresh && !input.signal) {
       this.altPathsInflight.set(key, computation);
     }
