@@ -58,6 +58,10 @@ const environmentSchema = z
     RAZORPAY_KEY_ID: optionalTrimmedString,
     RAZORPAY_KEY_SECRET: optionalSecret,
     RAZORPAY_WEBHOOK_SECRET: optionalSecret,
+    TICKET_PDF_S3_BUCKET: optionalTrimmedString.default(
+      'lastberth-ticket-storage',
+    ),
+    AWS_REGION: optionalTrimmedString.default('ap-south-1'),
   })
   .passthrough()
   .superRefine((env, context) => {

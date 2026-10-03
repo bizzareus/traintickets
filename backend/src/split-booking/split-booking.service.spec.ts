@@ -11,6 +11,7 @@ import { createMuzoboxClient } from '../common/muzobox-client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
 import { ConfigService } from '@nestjs/config';
 import { ManualBookingService } from './manual-booking.service';
+import { S3StorageService } from '../common/s3-storage.service';
 import type { CreateSplitBookingDto } from './split-booking.types';
 
 jest.mock('../common/muzobox-client', () => ({
@@ -26,6 +27,7 @@ describe('SplitBookingService', () => {
     splitTicketBooking: {
       create: jest.Mock;
       findUnique: jest.Mock;
+      findFirst: jest.Mock;
       update: jest.Mock;
       updateMany: jest.Mock;
     };
@@ -33,6 +35,11 @@ describe('SplitBookingService', () => {
   let muzobox: { post: jest.Mock; get: jest.Mock };
   let tripmgt: {
     executeBooking: jest.Mock;
+  };
+  let s3Storage: {
+    uploadTicketPdf: jest.Mock;
+    getSignedTicketPdfUrl: jest.Mock;
+    deleteTicketPdf: jest.Mock;
   };
 
   beforeEach(async () => {
@@ -50,6 +57,7 @@ describe('SplitBookingService', () => {
       splitTicketBooking: {
         create: jest.fn(),
         findUnique: jest.fn(),
+        findFirst: jest.fn(),
         update: jest.fn(),
         updateMany: jest.fn(),
       },
@@ -82,6 +90,18 @@ describe('SplitBookingService', () => {
       executeBooking: jest.fn(),
     };
 
+    s3Storage = {
+      uploadTicketPdf: jest
+        .fn()
+        .mockResolvedValue('tickets/LB-TEST/ticket.pdf'),
+      getSignedTicketPdfUrl: jest
+        .fn()
+        .mockResolvedValue(
+          'https://lastberth-ticket-storage.s3.ap-south-1.amazonaws.com/tickets/LB-TEST/ticket.pdf?signed=1',
+        ),
+      deleteTicketPdf: jest.fn().mockResolvedValue(undefined),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         SplitBookingService,
@@ -89,6 +109,7 @@ describe('SplitBookingService', () => {
         { provide: TripmgtBookingService, useValue: tripmgt },
         { provide: ConfigService, useValue: config },
         { provide: ManualBookingService, useValue: manualBooking },
+        { provide: S3StorageService, useValue: s3Storage },
       ],
     }).compile();
 
@@ -902,6 +923,80 @@ describe('SplitBookingService', () => {
             bookingStatus: 'CONFIRMED',
           }) as unknown,
         }),
+      );
+    });
+  });
+
+  describe('ticket pdf handling with S3', () => {
+    it('uploads ticket pdf to S3 and updates database with S3 key', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        id: 'b-123',
+        bookingRef: 'LB-TEST',
+      });
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        id: 'b-123',
+        bookingRef: 'LB-TEST',
+        ticketPdfS3Key: 'tickets/LB-TEST/my-ticket.pdf',
+      });
+
+      const res = await service.adminUploadTicketPdf('b-123', undefined, {
+        base64: 'JVBERi0xLjQK...',
+        filename: 'my-ticket.pdf',
+        contentType: 'application/pdf',
+      });
+
+      expect(res.ok).toBe(true);
+      expect(res.s3Key).toBe('tickets/LB-TEST/ticket.pdf');
+      expect(s3Storage.uploadTicketPdf).toHaveBeenCalledWith(
+        'LB-TEST',
+        expect.any(Buffer),
+        'my-ticket.pdf',
+        'application/pdf',
+      );
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith({
+        where: { id: 'b-123' },
+        data: expect.objectContaining({
+          ticketPdfS3Key: 'tickets/LB-TEST/ticket.pdf',
+          ticketPdf: null,
+        }) as unknown,
+      });
+    });
+
+    it('returns signed redirect URL when ticketPdfS3Key is present', async () => {
+      prisma.splitTicketBooking.findFirst.mockResolvedValue({
+        bookingRef: 'LB-TEST',
+        ticketPdfS3Key: 'tickets/LB-TEST/ticket.pdf',
+        ticketPdfFilename: 'ticket.pdf',
+        ticketPdf: null,
+      });
+
+      const res = await service.getTicketPdf('LB-TEST');
+      expect(res).toEqual(
+        expect.objectContaining({
+          redirectUrl:
+            'https://lastberth-ticket-storage.s3.ap-south-1.amazonaws.com/tickets/LB-TEST/ticket.pdf?signed=1',
+          s3Key: 'tickets/LB-TEST/ticket.pdf',
+        }),
+      );
+    });
+
+    it('falls back to binary buffer for legacy records without S3 key', async () => {
+      prisma.splitTicketBooking.findFirst.mockResolvedValue({
+        bookingRef: 'LB-LEGACY',
+        ticketPdfS3Key: null,
+        ticketPdf: Buffer.from('%PDF-1.4'),
+        ticketPdfFilename: 'legacy.pdf',
+        ticketPdfContentType: 'application/pdf',
+      });
+
+      const res = await service.getTicketPdf('LB-LEGACY');
+      expect('buffer' in res && res.buffer).toBeTruthy();
+    });
+
+    it('throws NotFoundException if booking or PDF does not exist', async () => {
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(null);
+      await expect(service.getTicketPdf('LB-NONE')).rejects.toThrow(
+        NotFoundException,
       );
     });
   });

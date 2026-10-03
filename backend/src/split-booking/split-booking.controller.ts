@@ -7,6 +7,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   Req,
   Res,
   UploadedFile,
@@ -186,15 +187,28 @@ export class SplitBookingController {
   @Get('ticket-pdf/:bookingRef')
   async getTicketPdf(
     @Param('bookingRef') bookingRef: string,
+    @Query('json') json: string | undefined,
     @Res() res: Response,
   ) {
-    const pdf = await this.splitBookingService.getTicketPdf(bookingRef);
-    res.setHeader('Content-Type', pdf.contentType);
-    res.setHeader(
-      'Content-Disposition',
-      `inline; filename="${encodeURIComponent(pdf.filename)}"`,
-    );
-    res.send(pdf.buffer);
+    const result = await this.splitBookingService.getTicketPdf(bookingRef);
+    if ('redirectUrl' in result && result.redirectUrl) {
+      if (json === 'true' || json === '1') {
+        return res.json({
+          ok: true,
+          signedUrl: result.redirectUrl,
+          filename: result.filename,
+        });
+      }
+      return res.redirect(302, result.redirectUrl);
+    }
+    if ('buffer' in result) {
+      res.setHeader('Content-Type', result.contentType);
+      res.setHeader(
+        'Content-Disposition',
+        `inline; filename="${encodeURIComponent(result.filename)}"`,
+      );
+      return res.send(Buffer.from(result.buffer));
+    }
   }
 
   @Post('admin/:id/notify-user')

@@ -614,6 +614,7 @@ model SplitTicketBooking {
   bookingError      String?                       @map("booking_error")
   completedAt       DateTime?                     @map("completed_at")
   ticketPdf            Bytes?                        @map("ticket_pdf")
+  ticketPdfS3Key       String?                       @map("ticket_pdf_s3_key")
   ticketPdfFilename    String?                       @map("ticket_pdf_filename")
   ticketPdfContentType String?                       @default("application/pdf") @map("ticket_pdf_content_type")
   ticketPdfUploadedAt  DateTime?                     @map("ticket_pdf_uploaded_at")

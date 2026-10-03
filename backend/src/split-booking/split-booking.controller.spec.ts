@@ -165,7 +165,43 @@ describe('Split booking admin controller endpoints', () => {
     );
   });
 
-  it('streams ticket pdf to response', async () => {
+  it('redirects to signed S3 URL when redirectUrl is available', async () => {
+    getTicketPdf.mockResolvedValue({
+      redirectUrl:
+        'https://lastberth-ticket-storage.s3.ap-south-1.amazonaws.com/tickets/LB-123/ticket.pdf?signed=1',
+      filename: 'ticket-LB-123.pdf',
+      s3Key: 'tickets/LB-123/ticket.pdf',
+    });
+    const redirect = jest.fn();
+    await controller.getTicketPdf('LB-123', undefined, {
+      redirect,
+    } as unknown as Response);
+    expect(redirect).toHaveBeenCalledWith(
+      302,
+      'https://lastberth-ticket-storage.s3.ap-south-1.amazonaws.com/tickets/LB-123/ticket.pdf?signed=1',
+    );
+  });
+
+  it('returns JSON with signed URL when requested via json query param', async () => {
+    getTicketPdf.mockResolvedValue({
+      redirectUrl:
+        'https://lastberth-ticket-storage.s3.ap-south-1.amazonaws.com/tickets/LB-123/ticket.pdf?signed=1',
+      filename: 'ticket-LB-123.pdf',
+      s3Key: 'tickets/LB-123/ticket.pdf',
+    });
+    const json = jest.fn();
+    await controller.getTicketPdf('LB-123', 'true', {
+      json,
+    } as unknown as Response);
+    expect(json).toHaveBeenCalledWith({
+      ok: true,
+      signedUrl:
+        'https://lastberth-ticket-storage.s3.ap-south-1.amazonaws.com/tickets/LB-123/ticket.pdf?signed=1',
+      filename: 'ticket-LB-123.pdf',
+    });
+  });
+
+  it('streams ticket pdf to response for legacy binary storage', async () => {
     getTicketPdf.mockResolvedValue({
       buffer: Buffer.from('%PDF-1.4'),
       filename: 'ticket-LB-123.pdf',
@@ -173,7 +209,7 @@ describe('Split booking admin controller endpoints', () => {
     });
     const setHeader = jest.fn();
     const send = jest.fn();
-    await controller.getTicketPdf('LB-123', {
+    await controller.getTicketPdf('LB-123', undefined, {
       setHeader,
       send,
     } as unknown as Response);

@@ -31,6 +31,7 @@ import { NotificationService } from '../notification/notification.service';
 import { WasenderProvider } from '../notification/whatsapp-providers/wasender.provider';
 import { escapeHtml } from '../notification/notification.helpers';
 import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
+import { S3StorageService } from '../common/s3-storage.service';
 import {
   bookingPrice,
   SPLIT_BOOKING_SERVICE_FEE_RUPEES,
@@ -53,6 +54,7 @@ export class SplitBookingService {
     @Optional() private readonly notifications?: NotificationService,
     @Optional() private readonly wasender?: WasenderProvider,
     @Optional() private readonly posthog?: PostHogAnalyticsService,
+    @Optional() private readonly s3Storage?: S3StorageService,
   ) {
     this.muzoboxClient = createMuzoboxClient(config);
   }
@@ -660,6 +662,7 @@ export class SplitBookingService {
         ticketPdfFilename: true,
         ticketPdfContentType: true,
         ticketPdfUploadedAt: true,
+        ticketPdfS3Key: true,
         bookingError: true,
         completedAt: true,
         createdAt: true,
@@ -671,7 +674,7 @@ export class SplitBookingService {
     return {
       entries: bookings.map((b) => ({
         ...b,
-        hasTicketPdf: Boolean(b.ticketPdfUploadedAt),
+        hasTicketPdf: Boolean(b.ticketPdfUploadedAt || b.ticketPdfS3Key),
         journeyDate: b.journeyDate.toISOString().slice(0, 10),
       })),
     };
@@ -794,20 +797,41 @@ export class SplitBookingService {
       throw new BadRequestException('A PDF file or base64 data is required');
     }
 
+    let s3Key: string | null = null;
+    if (this.s3Storage) {
+      s3Key = await this.s3Storage.uploadTicketPdf(
+        booking.bookingRef,
+        buffer,
+        filename,
+        contentType,
+      );
+    }
+
     await this.prisma.splitTicketBooking.update({
       where: { id },
       data: {
-        ticketPdf: new Uint8Array(buffer),
+        ticketPdfS3Key: s3Key,
         ticketPdfFilename: filename,
         ticketPdfContentType: contentType,
         ticketPdfUploadedAt: new Date(),
+        ticketPdf: s3Key ? null : new Uint8Array(buffer),
       },
     });
 
-    return { ok: true, filename, uploadedAt: new Date().toISOString() };
+    return {
+      ok: true,
+      filename,
+      s3Key,
+      uploadedAt: new Date().toISOString(),
+    };
   }
 
-  async getTicketPdf(bookingRefOrId: string) {
+  async getTicketPdf(
+    bookingRefOrId: string,
+  ): Promise<
+    | { redirectUrl: string; filename?: string; s3Key?: string }
+    | { buffer: Uint8Array; filename: string; contentType: string }
+  > {
     const booking = await this.prisma.splitTicketBooking.findFirst({
       where: {
         OR: [{ bookingRef: bookingRefOrId }, { id: bookingRefOrId }],
@@ -815,20 +839,36 @@ export class SplitBookingService {
       select: {
         bookingRef: true,
         ticketPdf: true,
+        ticketPdfS3Key: true,
         ticketPdfFilename: true,
         ticketPdfContentType: true,
       },
     });
 
-    if (!booking || !booking.ticketPdf) {
+    if (!booking || (!booking.ticketPdfS3Key && !booking.ticketPdf)) {
       throw new NotFoundException('Ticket PDF not found');
     }
 
-    return {
-      buffer: booking.ticketPdf,
-      filename: booking.ticketPdfFilename || `ticket-${booking.bookingRef}.pdf`,
-      contentType: booking.ticketPdfContentType || 'application/pdf',
-    };
+    const filename =
+      booking.ticketPdfFilename || `ticket-${booking.bookingRef}.pdf`;
+
+    if (booking.ticketPdfS3Key && this.s3Storage) {
+      const redirectUrl = await this.s3Storage.getSignedTicketPdfUrl(
+        booking.ticketPdfS3Key,
+        filename,
+      );
+      return { redirectUrl, filename, s3Key: booking.ticketPdfS3Key };
+    }
+
+    if (booking.ticketPdf) {
+      return {
+        buffer: booking.ticketPdf,
+        filename,
+        contentType: booking.ticketPdfContentType || 'application/pdf',
+      };
+    }
+
+    throw new NotFoundException('Ticket PDF not found');
   }
 
   async adminNotifyCustomer(
@@ -884,7 +924,12 @@ export class SplitBookingService {
     const apiUrl =
       this.config.get<string>('API_URL') || 'https://api-v2.lastberth.com';
 
-    const pdfUrl = booking.ticketPdfUploadedAt
+    const hasPdf = Boolean(
+      booking.ticketPdfUploadedAt ||
+      booking.ticketPdfS3Key ||
+      booking.ticketPdf,
+    );
+    const pdfUrl = hasPdf
       ? `${apiUrl}/api/split-booking/ticket-pdf/${booking.bookingRef}`
       : null;
 
@@ -1047,7 +1092,7 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
         channel,
         email_sent: emailSent,
         whatsapp_sent: whatsappSent,
-        has_pdf: Boolean(booking.ticketPdfUploadedAt || options.pdf?.base64),
+        has_pdf: Boolean(hasPdf || options.pdf?.base64),
         pnr_count: legPnrs.filter((l) => l.pnr && l.pnr !== 'Confirmed').length,
       },
       booking.bookingRef,
