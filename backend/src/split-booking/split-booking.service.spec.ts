@@ -1,12 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BadRequestException, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  NotFoundException,
+  ServiceUnavailableException,
+} from '@nestjs/common';
+import type { AxiosInstance } from 'axios';
 import { SplitBookingService } from './split-booking.service';
 import { PrismaService } from '../prisma/prisma.service';
-import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
+import { createMuzoboxClient } from '../common/muzobox-client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
 import { ConfigService } from '@nestjs/config';
 import { ManualBookingService } from './manual-booking.service';
 import type { CreateSplitBookingDto } from './split-booking.types';
+
+jest.mock('../common/muzobox-client', () => ({
+  ...jest.requireActual<object>('../common/muzobox-client'),
+  createMuzoboxClient: jest.fn(),
+}));
 
 describe('SplitBookingService', () => {
   let service: SplitBookingService;
@@ -20,18 +30,17 @@ describe('SplitBookingService', () => {
       updateMany: jest.Mock;
     };
   };
-  let razorpay: {
-    isConfigured: boolean;
-    createOrder: jest.Mock;
-    createUpiQr: jest.Mock;
-    resolveQrIntents: jest.Mock;
-  };
+  let muzobox: { post: jest.Mock; get: jest.Mock };
   let tripmgt: {
     executeBooking: jest.Mock;
   };
 
   beforeEach(async () => {
-    config = new ConfigService({ SPLIT_BOOKING_MODE: 'ai' });
+    config = new ConfigService({
+      SPLIT_BOOKING_MODE: 'ai',
+      API_URL: 'https://api-v2.lastberth.com',
+      MUZOBOX_PROXY_API_KEY: 'test-key',
+    });
     manualBooking = {
       notify: jest
         .fn()
@@ -46,12 +55,28 @@ describe('SplitBookingService', () => {
       },
     };
 
-    razorpay = {
-      isConfigured: false,
-      createOrder: jest.fn(),
-      createUpiQr: jest.fn(),
-      resolveQrIntents: jest.fn(),
+    muzobox = {
+      post: jest
+        .fn()
+        .mockImplementation(
+          (
+            _path: string,
+            payload: { amount: number; referenceId: string },
+          ) => ({
+            data: {
+              id: 'mb_test',
+              amount: payload.amount,
+              referenceId: payload.referenceId,
+              payUrl: 'https://muzobox.com/pay/mb_test',
+              razorpayOrderId: 'order_test',
+            },
+          }),
+        ),
+      get: jest.fn(),
     };
+    jest
+      .mocked(createMuzoboxClient)
+      .mockReturnValue(muzobox as unknown as AxiosInstance);
 
     tripmgt = {
       executeBooking: jest.fn(),
@@ -61,7 +86,6 @@ describe('SplitBookingService', () => {
       providers: [
         SplitBookingService,
         { provide: PrismaService, useValue: prisma },
-        { provide: RazorpayClient, useValue: razorpay },
         { provide: TripmgtBookingService, useValue: tripmgt },
         { provide: ConfigService, useValue: config },
         { provide: ManualBookingService, useValue: manualBooking },
@@ -141,11 +165,18 @@ describe('SplitBookingService', () => {
         amount: 860,
       });
       expect(result.bookingRef).toBeDefined();
-      expect(result.upiIntent).toContain('upi://pay');
+      expect(result.payUrl).toBe('https://muzobox.com/pay/mb_test');
       expect(result.bookingMode).toBe(mode.toUpperCase());
       const [created] = prisma.splitTicketBooking.create.mock.calls[0] as [
-        { data: { bookingMode: string; paymentStatus: string } },
+        {
+          data: {
+            bookingMode: string;
+            paymentStatus: string;
+            bookingRef: string;
+          };
+        },
       ];
+      expect(created.data.bookingRef).toMatch(/^LB-[A-Z0-9]{5}$/);
       expect(created.data).toMatchObject({
         bookingMode: mode.toUpperCase(),
         paymentStatus: 'PENDING',
@@ -252,9 +283,11 @@ describe('SplitBookingService', () => {
           serviceFee: 50,
           amount: 1160,
         });
-        expect(new URL(result.upiIntent).searchParams.get('am')).toBe('1160');
-        const qrPayload = new URL(result.qrImageUrl).searchParams.get('data')!;
-        expect(new URL(qrPayload).searchParams.get('am')).toBe('1160');
+        expect(muzobox.post).toHaveBeenCalledWith(
+          'proxy-payments/create-link',
+          expect.objectContaining({ amount: 1160 }),
+          { headers: { 'x-api-key': 'test-key' } },
+        );
         const [created] = prisma.splitTicketBooking.create.mock.calls[0] as [
           { data: Record<string, unknown> },
         ];
@@ -268,19 +301,72 @@ describe('SplitBookingService', () => {
       },
     );
 
-    it('charges the fee in both the Razorpay order and QR', async () => {
-      razorpay.isConfigured = true;
-      razorpay.createOrder.mockResolvedValue({ id: 'order-live' });
-      razorpay.createUpiQr.mockResolvedValue({
-        imageUrl: 'https://example.test/qr.png',
-      });
-      razorpay.resolveQrIntents.mockResolvedValue({});
-      await service.createBooking(request);
-      expect(razorpay.createOrder).toHaveBeenCalledWith(
-        expect.objectContaining({ amountPaise: 116000 }),
+    it('creates and persists a real Muzobox link with contact prefill and callback', async () => {
+      const result = await service.createBooking(request);
+      expect(muzobox.post).toHaveBeenCalledWith(
+        'proxy-payments/create-link',
+        expect.objectContaining({
+          amount: 1160,
+          referenceId: result.bookingRef,
+          redirectUri: `split-booking/payment-complete?ref=${result.bookingRef}`,
+          callbackUrl:
+            'https://api-v2.lastberth.com/api/split-booking/muzobox-callback',
+          customerName: 'Test Passenger',
+          customerMobile: '9876543210',
+          customerEmail: 'test@example.com',
+        }),
+        { headers: { 'x-api-key': 'test-key' } },
       );
-      expect(razorpay.createUpiQr).toHaveBeenCalledWith(
-        expect.objectContaining({ amountPaise: 116000 }),
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith({
+        where: { id: 'three-leg-booking' },
+        data: {
+          muzoboxPaymentId: 'mb_test',
+          payUrl: 'https://muzobox.com/pay/mb_test',
+          razorpayOrderId: 'order_test',
+        },
+      });
+    });
+
+    it.each([
+      null,
+      {
+        id: 'mb_test',
+        amount: 1160,
+        referenceId: 'wrong',
+        payUrl: 'https://muzobox.com/pay/mb_test',
+      },
+      { id: 'mb_test', amount: 100, payUrl: 'https://muzobox.com/pay/mb_test' },
+      { id: 'mb_test', amount: 1160 },
+    ])(
+      'rejects malformed checkout responses instead of returning a placeholder QR: %j',
+      async (data) => {
+        muzobox.post.mockResolvedValue({ data });
+        await expect(service.createBooking(request)).rejects.toThrow(
+          ServiceUnavailableException,
+        );
+        expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith({
+          where: { id: 'three-leg-booking' },
+          data: { paymentStatus: 'FAILED' },
+        });
+        expect(tripmgt.executeBooking).not.toHaveBeenCalled();
+      },
+    );
+
+    it('fails checkout when Muzobox is unavailable', async () => {
+      muzobox.post.mockRejectedValue(new Error('Gateway unavailable'));
+      await expect(service.createBooking(request)).rejects.toThrow(
+        ServiceUnavailableException,
+      );
+      expect(muzobox.post).toHaveBeenCalledTimes(1);
+    });
+
+    it('omits an unreachable localhost callback for local checkout', async () => {
+      config.set('API_URL', 'http://localhost:3009');
+      await service.createBooking(request);
+      expect(muzobox.post).toHaveBeenCalledWith(
+        'proxy-payments/create-link',
+        expect.objectContaining({ callbackUrl: undefined }),
+        expect.any(Object),
       );
     });
 
@@ -353,6 +439,105 @@ describe('SplitBookingService', () => {
         },
       ],
     };
+
+    describe('Muzobox verification', () => {
+      const remote = {
+        status: 'paid',
+        amount: 860,
+        referenceId: booking.bookingRef,
+        razorpayPaymentId: 'pay_muzobox',
+        razorpayOrderId: 'order_test',
+      };
+      beforeEach(() => {
+        const state = {
+          ...structuredClone(booking),
+          muzoboxPaymentId: 'mb_test',
+          razorpayOrderId: 'order_test',
+        };
+        prisma.splitTicketBooking.findUnique.mockImplementation(() => state);
+        prisma.splitTicketBooking.updateMany.mockImplementation(
+          ({
+            where,
+            data,
+          }: {
+            where: { paymentStatus: string };
+            data: object;
+          }) => {
+            if (where.paymentStatus !== state.paymentStatus)
+              return { count: 0 };
+            Object.assign(state, data);
+            return { count: 1 };
+          },
+        );
+        muzobox.get.mockResolvedValue({ data: remote });
+        tripmgt.executeBooking.mockResolvedValue({
+          success: true,
+          pnrs: ['1234567890'],
+          logs: [],
+        });
+      });
+
+      it('confirms a matching payment and starts fulfillment only once across polling and callbacks', async () => {
+        await Promise.all([
+          service.getStatus(booking.bookingRef),
+          service.handleMuzoboxCallback('mb_test', booking.bookingRef),
+        ]);
+        await flush();
+        expect(muzobox.get).toHaveBeenCalledWith(
+          'proxy-payments/mb_test/status',
+          { headers: { 'x-api-key': 'test-key' } },
+        );
+        expect(tripmgt.executeBooking).toHaveBeenCalledTimes(1);
+        expect(await service.getStatus(booking.bookingRef)).toMatchObject({
+          paymentStatus: 'PAID',
+        });
+      });
+
+      it.each([
+        { status: 'created' },
+        { status: 'authorized' },
+        { amount: 810 },
+        { amount: 86000 },
+        { referenceId: 'another-booking' },
+        { razorpayOrderId: 'another-order' },
+        { razorpayPaymentId: null },
+      ])(
+        'does not fulfill an unverified or mismatched payment: %j',
+        async (override) => {
+          muzobox.get.mockResolvedValue({ data: { ...remote, ...override } });
+          expect(await service.getStatus(booking.bookingRef)).toMatchObject({
+            paymentStatus: 'PENDING',
+          });
+          expect(prisma.splitTicketBooking.updateMany).not.toHaveBeenCalled();
+          expect(tripmgt.executeBooking).not.toHaveBeenCalled();
+        },
+      );
+
+      it('keeps transient status failures pending for the next poll', async () => {
+        muzobox.get.mockRejectedValue(new Error('Timeout'));
+        expect(await service.getStatus(booking.bookingRef)).toMatchObject({
+          paymentStatus: 'PENDING',
+        });
+        expect(prisma.splitTicketBooking.updateMany).not.toHaveBeenCalled();
+      });
+
+      it('records failed payments without starting fulfillment', async () => {
+        muzobox.get.mockResolvedValue({
+          data: { ...remote, status: 'failed' },
+        });
+        expect(await service.getStatus(booking.bookingRef)).toMatchObject({
+          paymentStatus: 'FAILED',
+        });
+        expect(tripmgt.executeBooking).not.toHaveBeenCalled();
+      });
+
+      it('rejects a callback for a different Muzobox payment', async () => {
+        await expect(
+          service.handleMuzoboxCallback('another-payment', booking.bookingRef),
+        ).rejects.toThrow(BadRequestException);
+        expect(muzobox.get).not.toHaveBeenCalled();
+      });
+    });
 
     it('dispatches only once for concurrent payment confirmations', async () => {
       config.set('SPLIT_BOOKING_MODE', 'manual'); // Existing AI requests keep their saved mode.

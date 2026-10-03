@@ -11,6 +11,7 @@ import {
   trackAnalyticsEvent,
 } from "@/lib/analytics/track";
 import { ChartAlertDiscountPrice } from "@/components/payments/ChartAlertDiscountPrice";
+import { MuzoboxPaymentFrame } from "@/components/payments/MuzoboxPaymentFrame";
 
 export interface ChartAlertPaymentModalJourney {
   trainNumber: string;
@@ -36,11 +37,8 @@ type ModalStatus = "paying" | "paid" | "failed";
 const POLL_INTERVAL_MS = 3000;
 
 /**
- * Own-checkout for chart alerts: renders the single-use UPI QR plus
- * per-app intent CTAs (Google Pay / PhonePe / any UPI app) instead of an
- * externally hosted payment page. While open, polls our backend status
- * endpoint (which re-verifies server-to-server with Razorpay and queues
- * the alert on first paid sighting).
+ * Embeds Muzobox checkout (or a direct Razorpay QR). Backend polling verifies
+ * the payment and queues the alert on first paid sighting.
  */
 export function ChartAlertPaymentModal({
   open,
@@ -113,20 +111,6 @@ export function ChartAlertPaymentModal({
     const t = setInterval(() => void check(), POLL_INTERVAL_MS);
     return () => clearInterval(t);
   }, [open, paymentRef, check, source, journey.trainNumber]);
-
-  useEffect(() => {
-    if (!open) return;
-    const onMessage = (event: MessageEvent) => {
-      if (
-        event.data?.type === "payment_complete" &&
-        event.data?.status === "paid"
-      ) {
-        void check();
-      }
-    };
-    window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
-  }, [open, check]);
 
   useEffect(() => {
     if (!open) return;
@@ -243,11 +227,9 @@ export function ChartAlertPaymentModal({
           </div>
         ) : payment.payUrl ? (
           <div className="w-full">
-            <iframe
-              src={`${payment.payUrl}${payment.payUrl.includes("?") ? "&" : "?"}iframe=1`}
-              title="Complete payment via Muzobox"
-              className="h-[520px] w-full border-0 sm:h-[540px]"
-              allow="payment"
+            <MuzoboxPaymentFrame
+              payUrl={payment.payUrl}
+              onPaymentComplete={check}
             />
           </div>
         ) : (

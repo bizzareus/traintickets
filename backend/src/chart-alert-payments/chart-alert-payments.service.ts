@@ -14,7 +14,10 @@ import { JourneyTaskService } from '../availability/journey-task.service';
 import { requirePinnedChartTime } from '../availability/chart-task-schedule';
 import { parseJourneyYmdForValidation } from '../common/train-run-day.validation';
 import { NotificationService } from '../notification/notification.service';
-import { createRetryingAxiosClient } from '../common/retrying-axios';
+import {
+  createMuzoboxClient,
+  muzoboxAuthHeaders,
+} from '../common/muzobox-client';
 import { captureSentryException } from '../common/sentry-report';
 import type { AxiosInstance } from 'axios';
 import {
@@ -28,9 +31,6 @@ const PREMIUM_ALERT_CLASSES = new Set(['1A', '2A', '3A']);
 const ANY_ALERT_PRICE_RUPEES = 50;
 const PREMIUM_ALERT_PRICE_RUPEES = 25;
 const STANDARD_ALERT_PRICE_RUPEES = 10;
-
-const DEFAULT_MUZOBOX_API_URL =
-  'https://ai-jukebox-backend-production.up.railway.app/api';
 
 /**
  * Class-based alert price in rupees: ANY covers every class, 1A/2A/3A pay
@@ -154,27 +154,7 @@ export class ChartAlertPaymentsService {
     private razorpay: RazorpayClient,
     private notificationService: NotificationService,
   ) {
-    this.muzoboxClient = createRetryingAxiosClient({
-      serviceName: 'muzobox',
-      retries: 2,
-      retryPost: false,
-    });
-    this.muzoboxClient.defaults.baseURL = this.muzoboxApiUrl;
-    this.muzoboxClient.defaults.timeout = 15_000;
-  }
-
-  private get muzoboxApiUrl(): string {
-    return (
-      this.configService
-        .get<string>('MUZOBOX_API_URL')
-        ?.trim()
-        .replace(/\/$/, '') || DEFAULT_MUZOBOX_API_URL
-    );
-  }
-
-  private authHeaders(): Record<string, string> | undefined {
-    const key = this.configService.get<string>('MUZOBOX_PROXY_API_KEY')?.trim();
-    return key ? { 'x-api-key': key } : undefined;
+    this.muzoboxClient = createMuzoboxClient(this.configService);
   }
 
   /**
@@ -288,7 +268,7 @@ export class ChartAlertPaymentsService {
           customerEmail: input.email?.trim() || undefined,
           customerMobile: input.mobile?.trim() || undefined,
         },
-        { headers: this.authHeaders() },
+        { headers: muzoboxAuthHeaders(this.configService) },
       );
 
       const data = res.data ?? {};
@@ -511,7 +491,7 @@ export class ChartAlertPaymentsService {
       try {
         const res = await this.muzoboxClient.get<MuzoboxStatusResponse>(
           `proxy-payments/${record.muzoboxPaymentId}/status`,
-          { headers: this.authHeaders() },
+          { headers: muzoboxAuthHeaders(this.configService) },
         );
         const remote = res.data ?? {};
         const normalized = ChartAlertPaymentsService.normalizeRemoteStatus(

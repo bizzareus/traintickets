@@ -5,12 +5,12 @@ import type { ChartAlertPayment } from '@prisma/client';
 import { isAxiosError } from 'axios';
 import type { AxiosInstance } from 'axios';
 import { PrismaService } from '../prisma/prisma.service';
-import { createRetryingAxiosClient } from '../common/retrying-axios';
+import {
+  createMuzoboxClient,
+  muzoboxAuthHeaders,
+} from '../common/muzobox-client';
 import { RazorpayClient } from './razorpay.client';
 import type { RefundInfo } from '../notification/notification.helpers';
-
-const DEFAULT_MUZOBOX_API_URL =
-  'https://ai-jukebox-backend-production.up.railway.app/api';
 
 /** Shape of POST proxy-payments/:id/refund on the Muzobox proxy API. */
 interface MuzoboxRefundResponse {
@@ -39,28 +39,7 @@ export class ChartAlertRefundsService {
     private configService: ConfigService,
     private razorpay: RazorpayClient,
   ) {
-    // No retries on POST: this client only moves money (refund), never polls.
-    this.muzoboxClient = createRetryingAxiosClient({
-      serviceName: 'muzobox',
-      retries: 2,
-      retryPost: false,
-    });
-    this.muzoboxClient.defaults.baseURL = this.muzoboxApiUrl;
-    this.muzoboxClient.defaults.timeout = 15_000;
-  }
-
-  private get muzoboxApiUrl(): string {
-    return (
-      this.configService
-        .get<string>('MUZOBOX_API_URL')
-        ?.trim()
-        .replace(/\/$/, '') || DEFAULT_MUZOBOX_API_URL
-    );
-  }
-
-  private muzoboxAuthHeaders(): Record<string, string> | undefined {
-    const key = this.configService.get<string>('MUZOBOX_PROXY_API_KEY')?.trim();
-    return key ? { 'x-api-key': key } : undefined;
+    this.muzoboxClient = createMuzoboxClient(this.configService);
   }
 
   private get autoRefundEnabled(): boolean {
@@ -248,7 +227,7 @@ export class ChartAlertRefundsService {
           reason: reason.slice(0, 500),
           referenceId: record.id,
         },
-        { headers: this.muzoboxAuthHeaders() },
+        { headers: muzoboxAuthHeaders(this.configService) },
       );
       data = res.data ?? {};
     } catch (err) {

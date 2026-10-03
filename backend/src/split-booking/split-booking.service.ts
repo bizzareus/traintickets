@@ -3,15 +3,33 @@ import {
   Injectable,
   Logger,
   NotFoundException,
+  Optional,
+  ServiceUnavailableException,
 } from '@nestjs/common';
-import type { Prisma } from '@prisma/client';
+import type {
+  Prisma,
+  SplitBookingFulfillmentStatus,
+  SplitBookingPaymentStatus,
+  SplitTicketBooking,
+} from '@prisma/client';
+import type { AxiosInstance } from 'axios';
+import { isURL } from 'class-validator';
+import * as crypto from 'crypto';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../prisma/prisma.service';
-import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
+import {
+  createMuzoboxClient,
+  muzoboxAuthHeaders,
+  type MuzoboxPaymentLink,
+  type MuzoboxPaymentStatus,
+} from '../common/muzobox-client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
 import { validateBookingItinerary } from './split-booking.validation';
 import { bookingDetails, bookingPnrFields } from './split-booking.helpers';
 import { ManualBookingService } from './manual-booking.service';
+import { NotificationService } from '../notification/notification.service';
+import { WasenderProvider } from '../notification/whatsapp-providers/wasender.provider';
+import { escapeHtml } from '../notification/notification.helpers';
 import {
   bookingPrice,
   SPLIT_BOOKING_SERVICE_FEE_RUPEES,
@@ -24,22 +42,30 @@ import type {
 @Injectable()
 export class SplitBookingService {
   private readonly logger = new Logger(SplitBookingService.name);
+  private readonly muzoboxClient: AxiosInstance;
 
   constructor(
     private readonly prisma: PrismaService,
-    private readonly razorpay: RazorpayClient,
     private readonly tripmgt: TripmgtBookingService,
     private readonly config: ConfigService,
     private readonly manualBooking: ManualBookingService,
-  ) {}
+    @Optional() private readonly notifications?: NotificationService,
+    @Optional() private readonly wasender?: WasenderProvider,
+  ) {
+    this.muzoboxClient = createMuzoboxClient(config);
+  }
 
   /**
-   * Generates a unique, user-friendly booking reference.
+   * Generates a unique, user-friendly booking reference in the format LB-{5 random characters}.
    */
   private generateBookingRef(): string {
-    const timePart = Date.now().toString(36).toUpperCase();
-    const randPart = Math.random().toString(36).substring(2, 6).toUpperCase();
-    return `LB-SB-${timePart}-${randPart}`;
+    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const bytes = crypto.randomBytes(5);
+    let code = '';
+    for (let i = 0; i < 5; i++) {
+      code += chars[bytes[i] % chars.length];
+    }
+    return `LB-${code}`;
   }
 
   /**
@@ -132,72 +158,127 @@ export class SplitBookingService {
       },
     });
 
-    // Create payment intent
-    let orderId = `order_dev_${bookingRef}`;
-    let qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(`upi://pay?pa=pay@lastberth&pn=LastBerth&am=${price.amount}&tn=${bookingRef}`)}`;
-    let upiIntent = `upi://pay?pa=pay@lastberth&pn=LastBerth&am=${price.amount}&tn=${bookingRef}&cu=INR`;
-    let gpayIntent = upiIntent.replace(/^upi:/, 'tez:');
-    let phonepeIntent = upiIntent.replace(/^upi:\/\/pay/, 'phonepe://pay');
-
-    if (this.razorpay.isConfigured) {
-      try {
-        const order = await this.razorpay.createOrder({
-          amountPaise: price.amount * 100,
-          receipt: bookingRef,
-          notes: {
-            bookingRef,
-            trainNumber: dto.trainNumber,
-            mobile: dto.contactMobile,
-          },
-        });
-        orderId = order.id;
-
-        const qr = await this.razorpay.createUpiQr({
-          amountPaise: price.amount * 100,
-          name: 'LastBerth Booking',
-          description: `Split tickets for ${bookingRef}`,
-          notes: { bookingRef },
-        });
-
-        qrImageUrl = qr.imageUrl;
-        const resolved = await this.razorpay.resolveQrIntents(qr.imageUrl);
-        if (resolved.intent) {
-          upiIntent = resolved.intent;
-        }
-        if (resolved.apps?.gpayIntent) {
-          gpayIntent = resolved.apps.gpayIntent;
-        }
-        if (resolved.apps?.phonepeIntent) {
-          phonepeIntent = resolved.apps.phonepeIntent;
-        }
-
-        await this.prisma.splitTicketBooking.update({
-          where: { id: booking.id },
-          data: { razorpayOrderId: orderId },
-        });
-      } catch (err) {
-        this.logger.warn(
-          `Failed to create live Razorpay order for ${bookingRef}; falling back to standard intent: ${err}`,
-        );
+    try {
+      const apiUrl = this.config
+        .get<string>('API_URL')
+        ?.trim()
+        .replace(/\/$/, '');
+      const { data } = await this.muzoboxClient.post<MuzoboxPaymentLink>(
+        'proxy-payments/create-link',
+        {
+          amount: price.amount,
+          referenceId: bookingRef,
+          redirectUri: `split-booking/payment-complete?ref=${encodeURIComponent(bookingRef)}`,
+          // Hosted Muzobox cannot call localhost; local checkout uses polling.
+          callbackUrl: isURL(apiUrl ?? '', { require_protocol: true })
+            ? `${apiUrl}/api/split-booking/muzobox-callback`
+            : undefined,
+          description: `Train ${dto.trainNumber} ${fromStationCode}->${toStationCode} ${cleanDate} (tickets + service fee)`,
+          customerName: dto.passengers[0].name.trim(),
+          customerEmail: dto.contactEmail.trim(),
+          customerMobile: dto.contactMobile.trim(),
+        },
+        { headers: muzoboxAuthHeaders(this.config) },
+      );
+      if (
+        !data?.id ||
+        !data.payUrl ||
+        data.amount !== price.amount ||
+        data.referenceId !== bookingRef
+      ) {
+        throw new Error('Muzobox returned an invalid payment link');
       }
+      const payUrl = new URL(data.payUrl, 'https://muzobox.com');
+      if (!['https:', 'http:'].includes(payUrl.protocol)) {
+        throw new Error('Muzobox returned an invalid payment URL');
+      }
+      await this.prisma.splitTicketBooking.update({
+        where: { id: booking.id },
+        data: {
+          muzoboxPaymentId: data.id,
+          payUrl: payUrl.href,
+          razorpayOrderId: data.razorpayOrderId ?? null,
+        },
+      });
+      return { bookingRef, bookingMode, ...price, payUrl: payUrl.href };
+    } catch (error) {
+      await this.prisma.splitTicketBooking.update({
+        where: { id: booking.id },
+        data: { paymentStatus: 'FAILED' },
+      });
+      this.logger.error(
+        `Muzobox checkout failed for ${bookingRef}: ${error instanceof Error ? error.message : String(error)}`,
+      );
+      throw new ServiceUnavailableException(
+        'Payment system is currently unavailable. Please try again later.',
+      );
     }
-
-    return {
-      bookingRef,
-      bookingMode,
-      ...price,
-      orderId,
-      qrImageUrl,
-      upiIntent,
-      gpayIntent,
-      phonepeIntent,
-    };
   }
 
   /**
    * Retrieves live booking and payment status.
    */
   async getStatus(bookingRef: string): Promise<SplitBookingStatusResponse> {
+    const booking = await this.findBooking(bookingRef);
+    if (booking.paymentStatus === 'PENDING' && booking.muzoboxPaymentId) {
+      let remote: MuzoboxPaymentStatus;
+      try {
+        const response = await this.muzoboxClient.get<MuzoboxPaymentStatus>(
+          `proxy-payments/${encodeURIComponent(booking.muzoboxPaymentId)}/status`,
+          { headers: muzoboxAuthHeaders(this.config) },
+        );
+        remote = response.data;
+      } catch (error) {
+        this.logger.warn(
+          `Muzobox status check failed for ${bookingRef}: ${error instanceof Error ? error.message : String(error)}`,
+        );
+        return this.toStatusResponse(booking);
+      }
+      const price = bookingPrice(booking.totalFare, booking.serviceFee);
+      if (
+        remote?.referenceId !== bookingRef ||
+        remote.amount !== price.amount ||
+        (booking.razorpayOrderId &&
+          remote.razorpayOrderId !== booking.razorpayOrderId)
+      ) {
+        this.logger.warn(
+          `Muzobox payment does not match booking ${bookingRef}`,
+        );
+        return this.toStatusResponse(booking);
+      }
+      if (remote.status === 'paid' && remote.razorpayPaymentId) {
+        return this.confirmPayment(bookingRef, remote.razorpayPaymentId, {
+          amount: remote.amount * 100,
+          currency: 'INR',
+          orderId: booking.razorpayOrderId ?? undefined,
+        });
+      }
+      if (remote.status === 'failed') {
+        await this.prisma.splitTicketBooking.updateMany({
+          where: {
+            id: booking.id,
+            paymentStatus: 'PENDING',
+            bookingStatus: 'IDLE',
+          },
+          data: { paymentStatus: 'FAILED' },
+        });
+        return this.toStatusResponse(await this.findBooking(bookingRef));
+      }
+    }
+    return this.toStatusResponse(booking);
+  }
+
+  /** Callback data is only a hint: re-read the stored payment from Muzobox. */
+  async handleMuzoboxCallback(paymentId: string, bookingRef: string) {
+    const booking = await this.findBooking(bookingRef);
+    if (booking.muzoboxPaymentId !== paymentId) {
+      throw new BadRequestException('Payment does not match this booking');
+    }
+    await this.getStatus(bookingRef);
+    return { received: true };
+  }
+
+  private async findBooking(bookingRef: string): Promise<SplitTicketBooking> {
     const booking = await this.prisma.splitTicketBooking.findUnique({
       where: { bookingRef },
     });
@@ -208,6 +289,12 @@ export class SplitBookingService {
       );
     }
 
+    return booking;
+  }
+
+  private toStatusResponse(
+    booking: SplitTicketBooking,
+  ): SplitBookingStatusResponse {
     const logs = Array.isArray(booking.automationLogs)
       ? (booking.automationLogs as unknown as Array<{
           timestamp: string;
@@ -229,6 +316,7 @@ export class SplitBookingService {
       contactEmail: booking.contactEmail,
       bookingMode: booking.bookingMode,
       paymentStatus: booking.paymentStatus,
+      payUrl: booking.payUrl,
       bookingStatus: booking.bookingStatus,
       pnrs: booking.pnrs,
       pnrLeg1: booking.pnrLeg1,
@@ -248,14 +336,7 @@ export class SplitBookingService {
     paymentId?: string,
     capturedPayment?: { amount: number; currency: string; orderId?: string },
   ) {
-    const booking = await this.prisma.splitTicketBooking.findUnique({
-      where: { bookingRef },
-    });
-    if (!booking) {
-      throw new NotFoundException(
-        `Booking with reference "${bookingRef}" not found`,
-      );
-    }
+    const booking = await this.findBooking(bookingRef);
 
     const price = bookingPrice(booking.totalFare, booking.serviceFee);
     if (
@@ -279,7 +360,7 @@ export class SplitBookingService {
       ) {
         this.startFulfillment(bookingRef);
       }
-      return this.getStatus(bookingRef);
+      return this.toStatusResponse(booking);
     }
 
     const currentLogs = Array.isArray(booking.automationLogs)
@@ -319,7 +400,7 @@ export class SplitBookingService {
       this.startFulfillment(bookingRef);
     }
 
-    return this.getStatus(bookingRef);
+    return this.toStatusResponse(await this.findBooking(bookingRef));
   }
 
   /**
@@ -445,5 +526,388 @@ export class SplitBookingService {
         })
         .catch(() => undefined);
     }
+  }
+
+  // --- Admin portal operations ------------------------------------------------
+
+  async adminListBookings() {
+    const bookings = await this.prisma.splitTicketBooking.findMany({
+      orderBy: { createdAt: 'desc' },
+      select: {
+        id: true,
+        bookingRef: true,
+        trainNumber: true,
+        trainName: true,
+        fromStationCode: true,
+        toStationCode: true,
+        journeyDate: true,
+        travelClass: true,
+        quota: true,
+        totalFare: true,
+        serviceFee: true,
+        legsPayload: true,
+        passengers: true,
+        contactMobile: true,
+        contactEmail: true,
+        autoUpgrade: true,
+        paymentStatus: true,
+        payUrl: true,
+        razorpayOrderId: true,
+        razorpayPaymentId: true,
+        paidAt: true,
+        bookingMode: true,
+        bookingStatus: true,
+        manualEmailSentAt: true,
+        manualWhatsappSentAt: true,
+        customerEmailSentAt: true,
+        customerWhatsappSentAt: true,
+        pnrs: true,
+        pnrLeg1: true,
+        pnrLeg2: true,
+        ticketPdfFilename: true,
+        ticketPdfContentType: true,
+        ticketPdfUploadedAt: true,
+        bookingError: true,
+        completedAt: true,
+        createdAt: true,
+        updatedAt: true,
+        automationLogs: true,
+      },
+    });
+
+    return {
+      entries: bookings.map((b) => ({
+        ...b,
+        hasTicketPdf: Boolean(b.ticketPdfUploadedAt),
+        journeyDate: b.journeyDate.toISOString().slice(0, 10),
+      })),
+    };
+  }
+
+  async adminUpdateBooking(
+    id: string,
+    updates: {
+      bookingStatus?: SplitBookingFulfillmentStatus;
+      paymentStatus?: SplitBookingPaymentStatus;
+      razorpayPaymentId?: string;
+      pnrs?: string[];
+      pnrLeg1?: string;
+      pnrLeg2?: string;
+      bookingError?: string | null;
+    },
+  ) {
+    const booking = await this.prisma.splitTicketBooking.findUnique({
+      where: { id },
+    });
+    if (!booking) {
+      throw new NotFoundException(`Booking "${id}" not found`);
+    }
+
+    const data: Prisma.SplitTicketBookingUpdateInput = {};
+
+    if (updates.bookingStatus) {
+      data.bookingStatus = updates.bookingStatus;
+      if (updates.bookingStatus === 'CONFIRMED' && !booking.completedAt) {
+        data.completedAt = new Date();
+      }
+    }
+
+    if (updates.paymentStatus) {
+      data.paymentStatus = updates.paymentStatus;
+      if (updates.paymentStatus === 'PAID' && !booking.paidAt) {
+        data.paidAt = new Date();
+      }
+    }
+
+    if (updates.razorpayPaymentId !== undefined) {
+      data.razorpayPaymentId = updates.razorpayPaymentId.trim() || null;
+    }
+
+    if (updates.bookingError !== undefined) {
+      data.bookingError = updates.bookingError;
+    }
+
+    const currentPnrs = [...booking.pnrs];
+    if (Array.isArray(updates.pnrs)) {
+      currentPnrs.splice(
+        0,
+        currentPnrs.length,
+        ...updates.pnrs.map((p) => p.trim()),
+      );
+    }
+    if (updates.pnrLeg1 !== undefined) {
+      currentPnrs[0] = updates.pnrLeg1.trim();
+    }
+    if (updates.pnrLeg2 !== undefined) {
+      currentPnrs[1] = updates.pnrLeg2.trim();
+    }
+
+    if (
+      updates.pnrs !== undefined ||
+      updates.pnrLeg1 !== undefined ||
+      updates.pnrLeg2 !== undefined
+    ) {
+      Object.assign(data, bookingPnrFields(currentPnrs));
+    }
+
+    const updated = await this.prisma.splitTicketBooking.update({
+      where: { id },
+      data,
+    });
+
+    return { ok: true, booking: updated };
+  }
+
+  async adminUploadTicketPdf(
+    id: string,
+    file?: { buffer: Buffer; originalname?: string; mimetype?: string },
+    body?: { base64?: string; filename?: string; contentType?: string },
+  ) {
+    const booking = await this.prisma.splitTicketBooking.findUnique({
+      where: { id },
+    });
+    if (!booking) {
+      throw new NotFoundException(`Booking "${id}" not found`);
+    }
+
+    let buffer: Buffer;
+    const filename =
+      file?.originalname ||
+      body?.filename ||
+      `ticket-${booking.bookingRef}.pdf`;
+    const contentType =
+      file?.mimetype || body?.contentType || 'application/pdf';
+
+    if (file?.buffer) {
+      buffer = file.buffer;
+    } else if (body?.base64) {
+      const cleanBase64 = body.base64
+        .replace(/^data:application\/pdf;base64,/, '')
+        .trim();
+      buffer = Buffer.from(cleanBase64, 'base64');
+    } else {
+      throw new BadRequestException('A PDF file or base64 data is required');
+    }
+
+    await this.prisma.splitTicketBooking.update({
+      where: { id },
+      data: {
+        ticketPdf: new Uint8Array(buffer),
+        ticketPdfFilename: filename,
+        ticketPdfContentType: contentType,
+        ticketPdfUploadedAt: new Date(),
+      },
+    });
+
+    return { ok: true, filename, uploadedAt: new Date().toISOString() };
+  }
+
+  async getTicketPdf(bookingRefOrId: string) {
+    const booking = await this.prisma.splitTicketBooking.findFirst({
+      where: {
+        OR: [{ bookingRef: bookingRefOrId }, { id: bookingRefOrId }],
+      },
+      select: {
+        bookingRef: true,
+        ticketPdf: true,
+        ticketPdfFilename: true,
+        ticketPdfContentType: true,
+      },
+    });
+
+    if (!booking || !booking.ticketPdf) {
+      throw new NotFoundException('Ticket PDF not found');
+    }
+
+    return {
+      buffer: booking.ticketPdf,
+      filename: booking.ticketPdfFilename || `ticket-${booking.bookingRef}.pdf`,
+      contentType: booking.ticketPdfContentType || 'application/pdf',
+    };
+  }
+
+  async adminNotifyCustomer(
+    id: string,
+    options: {
+      channel?: 'email' | 'whatsapp' | 'both';
+      message?: string;
+    },
+  ) {
+    const booking = await this.prisma.splitTicketBooking.findUnique({
+      where: { id },
+    });
+    if (!booking) {
+      throw new NotFoundException(`Booking "${id}" not found`);
+    }
+
+    const channel = options.channel || 'both';
+    const details = bookingDetails(booking);
+    const journeyDateStr = booking.journeyDate.toISOString().slice(0, 10);
+    const apiUrl =
+      this.config.get<string>('API_URL') || 'https://api-v2.lastberth.com';
+
+    const pdfUrl = booking.ticketPdfUploadedAt
+      ? `${apiUrl}/api/split-booking/ticket-pdf/${booking.bookingRef}`
+      : null;
+
+    const legPnrs = details.legs.map((leg, i) => {
+      const pnr =
+        booking.pnrs[i] ||
+        (i === 0 ? booking.pnrLeg1 : i === 1 ? booking.pnrLeg2 : null) ||
+        'Confirmed';
+      return {
+        step: `Leg ${i + 1}`,
+        route: `${leg.from} → ${leg.to}`,
+        travelClass: leg.travelClass,
+        boardingDate: leg.boardingDate,
+        departureTime: leg.departureTime,
+        pnr,
+      };
+    });
+
+    let emailSent = false;
+    let whatsappSent = false;
+
+    // Send customer email if requested
+    if (channel === 'email' || channel === 'both') {
+      if (this.notifications && booking.contactEmail) {
+        const subject = `Confirmed: Tickets for Train ${booking.trainNumber} (${booking.bookingRef})`;
+        const pnrListHtml = legPnrs
+          .map(
+            (l) => `
+            <div style="padding: 10px 0; border-bottom: 1px solid #f1f5f9;">
+              <div style="font-weight: 600; color: #1e293b;">${escapeHtml(l.step)}: ${escapeHtml(l.route)} (${escapeHtml(l.travelClass)})</div>
+              <div style="font-size: 13px; color: #64748b;">Boarding: ${escapeHtml(l.boardingDate)}${l.departureTime ? ` at ${escapeHtml(l.departureTime)}` : ''}</div>
+              <div style="font-size: 14px; margin-top: 4px;"><span style="color: #059669; font-weight: bold;">PNR:</span> <strong style="font-family: monospace; letter-spacing: 1px; color: #0f172a;">${escapeHtml(l.pnr)}</strong></div>
+            </div>`,
+          )
+          .join('');
+
+        const passengerListHtml = details.passengers
+          .map(
+            (p) =>
+              `<li style="margin-bottom: 4px;">${escapeHtml(p.name)} (${escapeHtml(p.gender)}, Age ${p.age}${p.berthPreference ? ` - ${escapeHtml(p.berthPreference)}` : ''})</li>`,
+          )
+          .join('');
+
+        const pdfDownloadHtml = pdfUrl
+          ? `<div style="text-align: center; margin: 24px 0;">
+              <a href="${pdfUrl}" target="_blank" style="background-color: #2563eb; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">
+                Download Confirmed Ticket PDF
+              </a>
+            </div>`
+          : '';
+
+        const customNoteHtml = options.message
+          ? `<div style="background-color: #f8fafc; border-left: 4px solid #3b82f6; padding: 12px; margin: 16px 0; font-size: 13px; color: #334155;">
+              <strong>Note from Booking Team:</strong><br/>
+              ${escapeHtml(options.message)}
+            </div>`
+          : '';
+
+        const html = `
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1e293b;">
+            <div style="background: #2563eb; padding: 24px; text-align: center; border-radius: 12px 12px 0 0;">
+              <h1 style="color: white; margin: 0; font-size: 22px;">Ticket Confirmation</h1>
+              <p style="color: #dbeafe; margin: 6px 0 0 0; font-size: 14px;">Booking Ref: ${escapeHtml(booking.bookingRef)}</p>
+            </div>
+            <div style="padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px; background: white;">
+              <p style="font-size: 16px; margin-top: 0;">Dear Passenger,</p>
+              <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+                Great news! Your ticket reservation for <strong>Train ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</strong> from <strong>${escapeHtml(booking.fromStationCode)}</strong> to <strong>${escapeHtml(booking.toStationCode)}</strong> on <strong>${escapeHtml(journeyDateStr)}</strong> has been confirmed.
+              </p>
+
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 20px 0;">
+                <h3 style="margin: 0 0 12px 0; font-size: 13px; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px;">Confirmed PNR Details</h3>
+                ${pnrListHtml}
+              </div>
+
+              <div style="margin: 16px 0;">
+                <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #475569;">Passengers:</h4>
+                <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #334155;">
+                  ${passengerListHtml}
+                </ul>
+              </div>
+
+              ${pdfDownloadHtml}
+              ${customNoteHtml}
+
+              <p style="color: #94a3b8; font-size: 12px; margin-top: 24px; border-top: 1px solid #f1f5f9; padding-top: 16px; line-height: 1.5;">
+                Need assistance? Contact LastBerth support at <a href="mailto:support@lastberth.com" style="color: #2563eb;">support@lastberth.com</a> or WhatsApp +91 99992 24767.<br/>
+                Have a safe and comfortable journey!
+              </p>
+            </div>
+          </div>`;
+
+        emailSent = await this.notifications
+          .sendEmail(booking.contactEmail, subject, html, {
+            skipFailureReport: true,
+          })
+          .catch(() => false);
+
+        if (emailSent) {
+          await this.prisma.splitTicketBooking.update({
+            where: { id },
+            data: { customerEmailSentAt: new Date() },
+          });
+        }
+      }
+    }
+
+    // Send customer WhatsApp if requested
+    if (channel === 'whatsapp' || channel === 'both') {
+      if (this.wasender && booking.contactMobile) {
+        const pnrListText = legPnrs
+          .map(
+            (l) => `• *${l.step}* (${l.route} - ${l.travelClass}): *${l.pnr}*`,
+          )
+          .join('\n');
+
+        const passengerListText = details.passengers
+          .map((p) => `• ${p.name} (${p.gender}, Age ${p.age})`)
+          .join('\n');
+
+        const pdfText = pdfUrl ? `\n*Download Ticket PDF:*\n${pdfUrl}\n` : '';
+        const noteText = options.message
+          ? `\n*Note from Booking Team:*\n${options.message}\n`
+          : '';
+
+        const whatsappText = `*Confirmed: Ticket Reservation for Train ${booking.trainNumber}*
+Booking Ref: ${booking.bookingRef}
+Train: ${booking.trainNumber} ${booking.trainName || ''}
+Route: ${booking.fromStationCode} → ${booking.toStationCode}
+Date: ${journeyDateStr}
+
+*Confirmed PNR Details:*
+${pnrListText}
+
+*Passengers:*
+${passengerListText}
+${pdfText}${noteText}
+Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
+
+        whatsappSent = await this.wasender
+          .sendWhatsApp({
+            mobile: booking.contactMobile,
+            text: whatsappText,
+          })
+          .catch(() => false);
+
+        if (whatsappSent) {
+          await this.prisma.splitTicketBooking.update({
+            where: { id },
+            data: { customerWhatsappSentAt: new Date() },
+          });
+        }
+      }
+    }
+
+    return {
+      ok: true,
+      emailSent,
+      whatsappSent,
+      customerEmail: booking.contactEmail,
+      customerMobile: booking.contactMobile,
+    };
   }
 }

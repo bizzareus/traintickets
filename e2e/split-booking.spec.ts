@@ -78,7 +78,7 @@ for (const scenario of [
     const pnrs = ["1234567890", "2345678901", "3456789012"];
     let paid = false;
 
-    // All API requests are intercepted, including payment simulation. No real
+    // All API requests and the hosted checkout are intercepted. No real
     // reservation, payment order, email or WhatsApp can be triggered by this test.
     await page.route("**/api/**", async (route) => {
       const url = new URL(route.request().url());
@@ -120,9 +120,7 @@ for (const scenario of [
           ...price,
           bookingRef: "LB-TEST",
           bookingMode: "AI",
-          orderId: "order-test",
-          qrImageUrl:
-            "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+          payUrl: "https://muzobox.com/pay/mb_test?source=reservation",
         };
       }
       if (url.pathname.includes("/simulate-pay/")) paid = true;
@@ -145,6 +143,11 @@ for (const scenario of [
         body: JSON.stringify(json),
       });
     });
+
+    await page.route("https://muzobox.com/pay/**", (route) => route.fulfill({
+      contentType: "text/html",
+      body: '<button onclick="parent.postMessage({type: \'payment_complete\', status: \'paid\'}, \'*\')">Complete test checkout</button>',
+    }));
 
     await page.goto(`/?assisted_booking=${flagEnabled ? "1" : "0"}`);
     expect(await page.evaluate(() => localStorage.getItem("admin"))).toBe(
@@ -276,7 +279,7 @@ for (const scenario of [
       .click();
     await expect(
       modal.getByRole("heading", {
-        name: `Pay ₹${price.amount.toLocaleString("en-IN")} via UPI`,
+        name: `Pay ₹${price.amount.toLocaleString("en-IN")}`,
       }),
     ).toBeVisible();
     await expect(modal).toContainText(
@@ -291,12 +294,44 @@ for (const scenario of [
     expect(requests[0].legs.map((leg) => leg.fare)).toEqual(
       multipleClasses ? [565, 600, 340] : [385, 385, 340],
     );
-    await modal.getByRole("button", { name: /Simulate Payment/ }).click();
+    const iframe = modal.locator('iframe[title="Complete payment via Muzobox"]');
+    await expect(iframe).toHaveAttribute("src", "https://muzobox.com/pay/mb_test?source=reservation&iframe=1");
+    await expect(iframe).toHaveAttribute("allow", "payment");
+    await expect(modal.getByAltText("UPI QR Code")).toHaveCount(0);
+    const checkout = page.frameLocator('iframe[title="Complete payment via Muzobox"]');
+    // Even a genuine iframe success message cannot advance a still-pending booking.
+    await checkout.getByRole("button", { name: "Complete test checkout" }).click();
+    await expect(iframe).toBeVisible();
+    await expect(modal.getByText(/Payment Received/)).toHaveCount(0);
+    await modal.screenshot({ path: testInfo.outputPath("muzobox-checkout.png") });
+    paid = true;
+    await checkout.getByRole("button", { name: "Complete test checkout" }).click();
     await expect(modal).toContainText(
       `Payment Received (₹${price.amount.toLocaleString("en-IN")})`,
     );
     for (const pnr of pnrs)
       await expect(modal.getByText(pnr, { exact: true })).toBeVisible();
     await expect(modal).toContainText("Leg 3 PNR:");
+  });
+}
+
+for (const [paymentStatus, heading] of [
+  ["PENDING", "Confirming your payment"],
+  ["PAID", "Payment received"],
+  ["FAILED", "Payment failed"],
+] as const) {
+  test(`payment return page uses verified ${paymentStatus} status`, async ({ page }) => {
+    await page.route("**/api/**", (route) => route.fulfill({
+      json: {
+        bookingRef: "LB-TEST",
+        paymentStatus,
+        totalFare: 720,
+        serviceFee: 50,
+        amount: 770,
+      },
+    }));
+    await page.goto("/split-booking/payment-complete?ref=LB-TEST&status=paid&amount=1");
+    await expect(page.getByRole("heading", { name: heading, exact: true })).toBeVisible();
+    await expect(page.getByText("₹720 (tickets) + ₹50 (service fee) = ₹770")).toBeVisible();
   });
 }

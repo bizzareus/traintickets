@@ -596,6 +596,8 @@ model SplitTicketBooking {
 
   // Payment
   paymentStatus     SplitBookingPaymentStatus     @default(PENDING) @map("payment_status")
+  muzoboxPaymentId  String?                       @unique @map("muzobox_payment_id")
+  payUrl            String?                       @map("pay_url")
   razorpayOrderId   String?                       @map("razorpay_order_id")
   razorpayPaymentId String?                       @map("razorpay_payment_id")
   paidAt            DateTime?                     @map("paid_at")
@@ -611,6 +613,12 @@ model SplitTicketBooking {
   pnrLeg2           String?                       @map("pnr_leg2")
   bookingError      String?                       @map("booking_error")
   completedAt       DateTime?                     @map("completed_at")
+  ticketPdf            Bytes?                        @map("ticket_pdf")
+  ticketPdfFilename    String?                       @map("ticket_pdf_filename")
+  ticketPdfContentType String?                       @default("application/pdf") @map("ticket_pdf_content_type")
+  ticketPdfUploadedAt  DateTime?                     @map("ticket_pdf_uploaded_at")
+  customerEmailSentAt  DateTime?                     @map("customer_email_sent_at")
+  customerWhatsappSentAt DateTime?                   @map("customer_whatsapp_sent_at")
 
   createdAt         DateTime                      @default(now()) @map("created_at")
   updatedAt         DateTime                      @updatedAt @map("updated_at")

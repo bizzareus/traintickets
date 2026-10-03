@@ -1,15 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { isAxiosError } from "axios";
 import {
   X,
   Plus,
   Trash2,
   CheckCircle2,
   Loader2,
-  QrCode,
   ShieldCheck,
-  Smartphone,
   AlertCircle,
   Train,
   ArrowRight,
@@ -25,6 +24,7 @@ import {
   type SplitBookingStatus,
 } from "@/lib/split-booking";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
+import { MuzoboxPaymentFrame } from "@/components/payments/MuzoboxPaymentFrame";
 
 export interface SplitTicketBookingModalProps {
   open: boolean;
@@ -105,9 +105,11 @@ export function SplitTicketBookingModal({
   const [bookingStatus, setBookingStatus] = useState<SplitBookingStatus | null>(
     null,
   );
-  const pollIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const activePaymentRef = useRef<string | null>(null);
+  const pollingRef = useRef<string | null>(null);
   const bookingConfirmed = bookingStatus?.bookingStatus === "CONFIRMED";
   const bookingFailed = bookingStatus?.bookingStatus === "FAILED";
+  const paymentFailed = bookingStatus?.paymentStatus === "FAILED";
   const manualBooking =
     (bookingStatus?.bookingMode ?? paymentData?.bookingMode) === "MANUAL";
   const manualPending = bookingStatus?.bookingStatus === "MANUAL_PENDING";
@@ -266,19 +268,37 @@ export function SplitTicketBookingModal({
       setPaymentData(payment);
       setStep("payment");
     } catch (err: unknown) {
-      const msg =
-        err instanceof Error ? err.message : "Failed to create booking intent";
+      const msg = isAxiosError<{ message?: string }>(err)
+        ? err.response?.data?.message ||
+          "Unable to prepare checkout. Please try again."
+        : err instanceof Error
+          ? err.message
+          : "Failed to create booking intent";
       setFormError(msg);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Status Polling for Payment and Automation
+  useEffect(() => {
+    activePaymentRef.current = open ? paymentData?.bookingRef ?? null : null;
+    return () => {
+      activePaymentRef.current = null;
+    };
+  }, [open, paymentData?.bookingRef]);
+
+  // Ignore stale responses and avoid overlapping server-to-server verifications.
   const pollStatus = useCallback(async () => {
-    if (!paymentData?.bookingRef) return;
+    const bookingRef = paymentData?.bookingRef;
+    if (
+      !bookingRef ||
+      activePaymentRef.current !== bookingRef ||
+      pollingRef.current === bookingRef
+    ) return;
+    pollingRef.current = bookingRef;
     try {
-      const st = await fetchSplitBookingStatus(paymentData.bookingRef);
+      const st = await fetchSplitBookingStatus(bookingRef);
+      if (activePaymentRef.current !== bookingRef) return;
       setBookingStatus(st);
 
       if (st.paymentStatus === "PAID" && step === "payment") {
@@ -287,26 +307,26 @@ export function SplitTicketBookingModal({
           name: "split_booking_payment_confirmed",
           properties: {
             bookingRef: st.bookingRef,
-            amount: st.totalFare,
+            amount: st.amount,
           },
         });
       }
     } catch {
       // transient polling error
+    } finally {
+      if (pollingRef.current === bookingRef) pollingRef.current = null;
     }
   }, [paymentData?.bookingRef, step]);
 
   useEffect(() => {
-    if (open && (step === "payment" || step === "booking_in_progress")) {
-      pollStatus();
-      pollIntervalRef.current = setInterval(pollStatus, 2500);
-    }
-    return () => {
-      if (pollIntervalRef.current) {
-        clearInterval(pollIntervalRef.current);
-      }
-    };
-  }, [open, step, pollStatus]);
+    if (
+      !open || paymentFailed || bookingConfirmed || bookingFailed ||
+      step === "passenger_details"
+    ) return;
+    void pollStatus();
+    const interval = setInterval(() => void pollStatus(), 2500);
+    return () => clearInterval(interval);
+  }, [open, step, pollStatus, paymentFailed, bookingConfirmed, bookingFailed]);
 
   // Dev simulation handler
   const handleSimulatePayment = async () => {
@@ -384,7 +404,7 @@ export function SplitTicketBookingModal({
             }`}
           >
             <span className="sm:hidden">2. Payment</span>
-            <span className="hidden sm:inline">2. Payment (UPI)</span>
+            <span className="hidden sm:inline">2. Payment</span>
           </div>
           <div
             className={`flex-1 py-2 px-1 text-center border-b-2 transition ${
@@ -776,7 +796,7 @@ export function SplitTicketBookingModal({
             </form>
           )}
 
-          {/* STEP 2: PAYMENT (UPI QR & INTENTS) */}
+          {/* STEP 2: MUZOBOX CHECKOUT */}
           {step === "payment" && paymentData && (
             <div className="space-y-6 text-center">
               <div>
@@ -785,7 +805,7 @@ export function SplitTicketBookingModal({
                   Instant Checkout
                 </span>
                 <h4 className="text-xl font-extrabold text-slate-900">
-                  Pay ₹{paymentData.amount.toLocaleString("en-IN")} via UPI
+                  Pay ₹{paymentData.amount.toLocaleString("en-IN")}
                 </h4>
                 {paymentBreakdown}
                 <p className="text-xs text-slate-500 mt-0.5">
@@ -793,47 +813,17 @@ export function SplitTicketBookingModal({
                 </p>
               </div>
 
-              {/* QR Code */}
-              <div className="mx-auto flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 shadow-sm max-w-xs">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={paymentData.qrImageUrl}
-                  alt="UPI QR Code"
-                  className="h-56 w-56 rounded-lg object-contain"
+              {paymentFailed ? (
+                <p role="alert" className="rounded-xl bg-red-50 p-4 text-sm text-red-700">
+                  Payment failed. Your reservation has not started. Please close
+                  this window and try again.
+                </p>
+              ) : (
+                <MuzoboxPaymentFrame
+                  payUrl={paymentData.payUrl}
+                  onPaymentComplete={pollStatus}
                 />
-                <div className="mt-2.5 flex items-center gap-1.5 text-xs font-medium text-slate-600">
-                  <QrCode className="h-4 w-4 text-slate-400" />
-                  <span>Scan with GPay, PhonePe, Paytm or Any UPI</span>
-                </div>
-              </div>
-
-              {/* Mobile Deep Link Buttons */}
-              <div className="space-y-2 max-w-xs mx-auto">
-                {paymentData.gpayIntent && (
-                  <a
-                    href={paymentData.gpayIntent}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-slate-800 transition"
-                  >
-                    <Smartphone className="h-4 w-4" /> Pay with Google Pay
-                  </a>
-                )}
-                {paymentData.phonepeIntent && (
-                  <a
-                    href={paymentData.phonepeIntent}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-purple-700 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-purple-800 transition"
-                  >
-                    <Smartphone className="h-4 w-4" /> Pay with PhonePe
-                  </a>
-                )}
-                {paymentData.upiIntent && (
-                  <a
-                    href={paymentData.upiIntent}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition"
-                  >
-                    Open Default UPI App
-                  </a>
-                )}
-              </div>
+              )}
 
               {manualBooking && (
                 <p className="text-xs text-slate-600">
@@ -843,22 +833,26 @@ export function SplitTicketBookingModal({
               )}
 
               {/* Polling Indicator */}
-              <div className="flex items-center justify-center gap-2 text-xs text-slate-500">
-                <Loader2 className="h-3.5 w-3.5 animate-spin text-blue-600" />
-                <span>Waiting for payment confirmation...</span>
-              </div>
+              {!paymentFailed && (
+                <div className="flex items-center justify-center gap-2 text-xs text-slate-500">
+                  <Loader2 className="h-3.5 w-3.5 animate-spin text-blue-600" />
+                  <span>Waiting for payment confirmation...</span>
+                </div>
+              )}
 
               {/* Developer Test Mode Helper */}
-              <div className="pt-2 border-t border-slate-100">
-                <button
-                  type="button"
-                  onClick={handleSimulatePayment}
-                  disabled={isSubmitting}
-                  className="rounded-lg bg-amber-100 px-3 py-1.5 text-[11px] font-bold text-amber-900 hover:bg-amber-200 transition"
-                >
-                  ⚡ Simulate Payment & Start Fulfillment (Dev Mode)
-                </button>
-              </div>
+              {process.env.NODE_ENV === "development" && (
+                <div className="pt-2 border-t border-slate-100">
+                  <button
+                    type="button"
+                    onClick={handleSimulatePayment}
+                    disabled={isSubmitting}
+                    className="rounded-lg bg-amber-100 px-3 py-1.5 text-[11px] font-bold text-amber-900 hover:bg-amber-200 transition"
+                  >
+                    ⚡ Simulate Payment & Start Fulfillment (Dev Mode)
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
@@ -1002,28 +996,6 @@ export function SplitTicketBookingModal({
                         </div>
                       ) : null,
                     )}
-                  </div>
-                </div>
-              )}
-
-              {/* Timestamped Live Audit Logs */}
-              {bookingStatus?.logs && bookingStatus.logs.length > 0 && (
-                <div className="space-y-1.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                    Live Booking Updates
-                  </span>
-                  <div className="max-h-36 overflow-y-auto rounded-lg bg-slate-900 p-3 font-mono text-[11px] text-slate-300 space-y-1">
-                    {bookingStatus.logs.map((log, lIdx) => (
-                      <div key={lIdx} className="flex gap-2">
-                        <span className="text-slate-500 shrink-0">
-                          {log.timestamp.slice(11, 19)}
-                        </span>
-                        <span className="text-emerald-400 font-bold">
-                          [{log.step}]
-                        </span>
-                        <span>{log.message}</span>
-                      </div>
-                    ))}
                   </div>
                 </div>
               )}

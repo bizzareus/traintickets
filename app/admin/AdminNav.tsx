@@ -136,6 +136,16 @@ function AdminNavContent() {
       >
         Refunds
       </Link>
+      <Link
+        href="/admin/split-bookings"
+        className={`text-sm font-medium transition ${
+          pathname === "/admin/split-bookings"
+            ? "text-indigo-600 font-semibold"
+            : "text-slate-600 hover:text-slate-900"
+        }`}
+      >
+        Split Bookings
+      </Link>
       <AdminLockButton />
     </nav>
   );

@@ -61,6 +61,7 @@ export interface SplitBookingStatusResponse {
   serviceFee: number;
   amount: number;
   paymentStatus: SplitBookingPaymentStatus;
+  payUrl: string | null;
   bookingStatus: SplitBookingFulfillmentStatus;
   pnrs: string[];
   pnrLeg1?: string | null;

@@ -51,11 +51,7 @@ export interface SplitBookingPrice {
 export interface SplitBookingPaymentResponse extends SplitBookingPrice {
   bookingRef: string;
   bookingMode: "AI" | "MANUAL";
-  orderId: string;
-  qrImageUrl: string;
-  upiIntent?: string;
-  gpayIntent?: string;
-  phonepeIntent?: string;
+  payUrl: string;
 }
 
 export interface SplitBookingStatus extends SplitBookingPrice {
@@ -70,6 +66,7 @@ export interface SplitBookingStatus extends SplitBookingPrice {
   contactEmail: string;
   bookingMode: "AI" | "MANUAL";
   paymentStatus: "PENDING" | "PAID" | "FAILED";
+  payUrl: string | null;
   bookingStatus:
     | "IDLE"
     | "QUEUED"
