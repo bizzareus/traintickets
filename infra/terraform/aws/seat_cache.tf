@@ -4,12 +4,19 @@
 # ------------------------------------------------------------------------------
 
 # 1. DynamoDB Table for Caching Seat Availability Matrix
+#
+# Free-tier DynamoDB is PROVISIONED only (25 RCU / 25 WCU max). A full-table
+# Scan over this ~54 MB table needs ~13k RCU, so provisioned capacity is the
+# ceiling — see the code-level mitigations in dynamodb-seat-cache.service.ts
+# (adaptive retry, cached inventory, graceful scan-failure handling).
 resource "aws_dynamodb_table" "train_seat_cache" {
-  name         = "${var.project_name}-train-seat-cache"
-  billing_mode = "PAY_PER_REQUEST"
-  table_class  = "STANDARD"
-  hash_key     = "trainNumber"
-  range_key    = "dateClass"
+  name           = "${var.project_name}-train-seat-cache"
+  billing_mode   = "PROVISIONED"
+  table_class    = "STANDARD"
+  read_capacity  = 25
+  write_capacity = 25
+  hash_key       = "trainNumber"
+  range_key      = "dateClass"
 
   attribute {
     name = "trainNumber"
