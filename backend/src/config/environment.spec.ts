@@ -15,6 +15,20 @@ describe('validateEnvironment', () => {
     );
   });
 
+  it('defaults service fee rate to 0.04 and accepts valid decimal values', () => {
+    expect(validateEnvironment({}).SPLIT_BOOKING_SERVICE_FEE_RATE).toBe('0.04');
+    expect(
+      validateEnvironment({ SPLIT_BOOKING_SERVICE_FEE_RATE: '0.05' })
+        .SPLIT_BOOKING_SERVICE_FEE_RATE,
+    ).toBe('0.05');
+    expect(() =>
+      validateEnvironment({ SPLIT_BOOKING_SERVICE_FEE_RATE: '1.5' }),
+    ).toThrow('SPLIT_BOOKING_SERVICE_FEE_RATE');
+    expect(() =>
+      validateEnvironment({ SPLIT_BOOKING_SERVICE_FEE_RATE: 'invalid' }),
+    ).toThrow('SPLIT_BOOKING_SERVICE_FEE_RATE');
+  });
+
   it('rejects missing production database and JWT configuration', () => {
     expect(() => validateEnvironment({ NODE_ENV: 'production' })).toThrow(
       /DATABASE_URL.*JWT_SECRET/s,

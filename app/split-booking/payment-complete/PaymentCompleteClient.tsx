@@ -50,7 +50,7 @@ export function PaymentCompleteClient({ bookingRef }: { bookingRef: string }) {
       {booking && (
         <p className="text-sm text-slate-600">
           ₹{booking.totalFare.toLocaleString("en-IN")} (tickets) + ₹
-          {booking.serviceFee.toLocaleString("en-IN")} (service fee) = ₹
+          {booking.serviceFee.toLocaleString("en-IN")} (payment service charge) = ₹
           {booking.amount.toLocaleString("en-IN")}
         </p>
       )}

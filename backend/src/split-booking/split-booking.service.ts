@@ -35,7 +35,7 @@ import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import { S3StorageService } from '../common/s3-storage.service';
 import {
   bookingPrice,
-  SPLIT_BOOKING_SERVICE_FEE_RUPEES,
+  getSplitBookingServiceFeeRate,
 } from './split-booking.pricing';
 import type {
   CreateSplitBookingDto,
@@ -71,6 +71,19 @@ export class SplitBookingService {
       code += chars[bytes[i] % chars.length];
     }
     return `LB-${code}`;
+  }
+
+  private getServiceFeeRate(): number {
+    const configured = this.config.get<string | number>(
+      'SPLIT_BOOKING_SERVICE_FEE_RATE',
+    );
+    if (configured !== undefined && configured !== '') {
+      const parsed = Number(configured);
+      if (!Number.isNaN(parsed) && parsed >= 0) {
+        return parsed;
+      }
+    }
+    return getSplitBookingServiceFeeRate();
   }
 
   /**
@@ -129,7 +142,8 @@ export class SplitBookingService {
 
     const bookingRef = this.generateBookingRef();
     const cleanDate = dto.journeyDate.slice(0, 10);
-    const price = bookingPrice(dto.totalFare, SPLIT_BOOKING_SERVICE_FEE_RUPEES);
+    const rate = this.getServiceFeeRate();
+    const price = bookingPrice(dto.totalFare, undefined, rate);
     const bookingMode =
       this.config.get<string>('SPLIT_BOOKING_MODE') === 'manual'
         ? 'MANUAL'
@@ -188,7 +202,7 @@ export class SplitBookingService {
           callbackUrl: isURL(apiUrl ?? '', { require_protocol: true })
             ? `${apiUrl}/api/split-booking/muzobox-callback`
             : undefined,
-          description: `Train ${dto.trainNumber} ${fromStationCode}->${toStationCode} ${cleanDate} (tickets + service fee)`,
+          description: `Train ${dto.trainNumber} ${fromStationCode}->${toStationCode} ${cleanDate} (tickets + payment service charge)`,
           customerName: dto.passengers[0].name.trim(),
           customerEmail: dto.contactEmail.trim(),
           customerMobile: dto.contactMobile.trim(),
@@ -427,7 +441,7 @@ export class SplitBookingService {
       {
         timestamp: new Date().toISOString(),
         step: 'PAYMENT_RECEIVED',
-        message: `Payment of ₹${price.amount} confirmed (tickets ₹${price.totalFare} + service fee ₹${price.serviceFee}). Starting booking fulfillment.`,
+        message: `Payment of ₹${price.amount} confirmed (tickets ₹${price.totalFare} + payment service charge ₹${price.serviceFee}). Starting booking fulfillment.`,
       },
     ];
 
@@ -1169,7 +1183,7 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
               <p style="margin: 4px 0; font-size: 13px;"><strong>Train:</strong> ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</p>
               <p style="margin: 4px 0; font-size: 13px;"><strong>Route:</strong> ${escapeHtml(booking.fromStationCode)} → ${escapeHtml(booking.toStationCode)}</p>
               <p style="margin: 4px 0; font-size: 13px;"><strong>Journey Date:</strong> ${escapeHtml(journeyDateStr)}</p>
-              <p style="margin: 4px 0; font-size: 13px;"><strong>Amount Paid:</strong> ₹${price.amount} (tickets ₹${price.totalFare} + service fee ₹${price.serviceFee})</p>
+              <p style="margin: 4px 0; font-size: 13px;"><strong>Amount Paid:</strong> ₹${price.amount} (tickets ₹${price.totalFare} + payment service charge ₹${price.serviceFee})</p>
             </div>
             <p style="color: #475569; font-size: 14px; line-height: 1.6;">
               Your ticket reservation is in progress. Once confirmed, you will receive another update with your confirmed PNR details and ticket PDF.

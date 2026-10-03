@@ -123,7 +123,7 @@ export function SplitTicketBookingModal({
   const paymentBreakdown = price && (
     <p className="text-sm text-slate-600">
       ₹{price.totalFare.toLocaleString("en-IN")} (tickets) + ₹
-      {price.serviceFee.toLocaleString("en-IN")} (service fee) ={" "}
+      {price.serviceFee.toLocaleString("en-IN")} (payment service charge) ={" "}
       <strong className="text-slate-900">
         ₹{price.amount.toLocaleString("en-IN")}
       </strong>

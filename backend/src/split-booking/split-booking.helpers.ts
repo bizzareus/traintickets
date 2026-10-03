@@ -47,7 +47,7 @@ export function manualBookingMessage(booking: SplitTicketBooking): string {
     `Train: ${booking.trainNumber}${booking.trainName ? ` - ${booking.trainName}` : ''}`,
     `Journey: ${booking.fromStationCode} → ${booking.toStationCode} on ${details.journeyDate}`,
     `Requested class: ${booking.travelClass} | Quota: ${booking.quota}`,
-    `Ticket fare: INR ${price.totalFare} + Service fee: INR ${price.serviceFee}`,
+    `Ticket fare: INR ${price.totalFare} + Payment service charge: INR ${price.serviceFee}`,
     `Total collected: INR ${price.amount} | Payment status: ${booking.paymentStatus}`,
     `Payment ID: ${booking.razorpayPaymentId ?? 'Not supplied'}`,
     `Order ID: ${booking.razorpayOrderId ?? 'Not supplied'}`,

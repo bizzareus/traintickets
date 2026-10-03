@@ -226,8 +226,8 @@ describe('SplitBookingService', () => {
 
       expect(result).toMatchObject({
         totalFare: 810,
-        serviceFee: 50,
-        amount: 860,
+        serviceFee: 32,
+        amount: 842,
       });
       expect(result.bookingRef).toBeDefined();
       expect(result.payUrl).toBe('https://muzobox.com/pay/mb_test');
@@ -345,12 +345,12 @@ describe('SplitBookingService', () => {
         const result = await service.createBooking(request);
         expect(result).toMatchObject({
           totalFare: 1110,
-          serviceFee: 50,
-          amount: 1160,
+          serviceFee: 44,
+          amount: 1154,
         });
         expect(muzobox.post).toHaveBeenCalledWith(
           'proxy-payments/create-link',
-          expect.objectContaining({ amount: 1160 }),
+          expect.objectContaining({ amount: 1154 }),
           { headers: { 'x-api-key': 'test-key' } },
         );
         const [created] = prisma.splitTicketBooking.create.mock.calls[0] as [
@@ -360,7 +360,7 @@ describe('SplitBookingService', () => {
           fromStationCode: 'DEE',
           toStationCode: 'AII',
           totalFare: 1110,
-          serviceFee: 50,
+          serviceFee: 44,
           legsPayload: request.legs,
         });
       },
@@ -371,7 +371,7 @@ describe('SplitBookingService', () => {
       expect(muzobox.post).toHaveBeenCalledWith(
         'proxy-payments/create-link',
         expect.objectContaining({
-          amount: 1160,
+          amount: 1154,
           referenceId: result.bookingRef,
           redirectUri: `split-booking/payment-complete?ref=${result.bookingRef}`,
           callbackUrl:
@@ -438,19 +438,34 @@ describe('SplitBookingService', () => {
     it('does not accept a client-supplied service fee override', async () => {
       const tampered = { ...request, serviceFee: 0 };
       expect(await service.createBooking(tampered)).toMatchObject({
-        serviceFee: 50,
-        amount: 1160,
+        serviceFee: 44,
+        amount: 1154,
       });
     });
 
-    it('calculates ₹11,100 + ₹50 as ₹11,150', async () => {
+    it('calculates 4% payment service charge on ₹11,100', async () => {
       expect(
         await service.createBooking({ ...request, totalFare: 11100 }),
       ).toMatchObject({
         totalFare: 11100,
-        serviceFee: 50,
-        amount: 11150,
+        serviceFee: 444,
+        amount: 11544,
       });
+    });
+
+    it('uses configured SPLIT_BOOKING_SERVICE_FEE_RATE from environment', async () => {
+      config.set('SPLIT_BOOKING_SERVICE_FEE_RATE', '0.05');
+      try {
+        expect(
+          await service.createBooking({ ...request, totalFare: 1110 }),
+        ).toMatchObject({
+          totalFare: 1110,
+          serviceFee: 56,
+          amount: 1166,
+        });
+      } finally {
+        config.set('SPLIT_BOOKING_SERVICE_FEE_RATE', undefined);
+      }
     });
   });
 

@@ -9,6 +9,15 @@ const integerString = (min: number, max: number) =>
       return parsed >= min && parsed <= max;
     });
 
+const decimalString = (min: number, max: number) =>
+  z
+    .string()
+    .regex(/^\d*(\.\d+)?$/)
+    .refine((value) => {
+      const parsed = Number(value);
+      return !Number.isNaN(parsed) && parsed >= min && parsed <= max;
+    });
+
 const booleanString = z.enum(['true', 'false']);
 const optionalTrimmedString = z.preprocess(
   (value) => (typeof value === 'string' ? value.trim() || undefined : value),
@@ -41,6 +50,9 @@ const environmentSchema = z
     REQUIRE_JOURNEY_PAYMENT: booleanString.optional(),
     SPLIT_BOOKING_ENABLED: booleanString.optional().default('true'),
     SPLIT_BOOKING_MODE: z.enum(['ai', 'manual', 'disabled']).default('ai'),
+    SPLIT_BOOKING_SERVICE_FEE_RATE: decimalString(0, 1)
+      .optional()
+      .default('0.04'),
     SPLIT_BOOKING_ADMIN_EMAIL: z.string().trim().email().optional(),
     SPLIT_BOOKING_ADMIN_WHATSAPP: z
       .string()

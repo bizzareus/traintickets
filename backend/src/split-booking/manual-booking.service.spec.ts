@@ -119,7 +119,7 @@ describe('Manual booking owner notifications', () => {
       '340',
       '470',
       '810',
-      'Service fee: INR 50',
+      'Payment service charge: INR 50',
       'Total collected: INR 860',
       '62',
       'Side Lower',
@@ -198,7 +198,7 @@ describe('Manual booking owner notifications', () => {
       '1. DEE → AWR',
       '2. AWR → JP',
       '3. JP → AII',
-      'Ticket fare: INR 1110 + Service fee: INR 50',
+      'Ticket fare: INR 1110 + Payment service charge: INR 50',
       'Total collected: INR 1160',
     ]) {
       expect(html).toContain(detail);
