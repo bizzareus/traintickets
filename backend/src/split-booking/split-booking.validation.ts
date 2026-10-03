@@ -39,9 +39,7 @@ export function validateBookingItinerary(booking: CreateSplitBookingDto): void {
     first.boardingDate !== booking.journeyDate ||
     booking.legs.some(
       (leg, index) =>
-        index > 0 &&
-        (booking.legs[index - 1].to !== leg.from ||
-          booking.legs[index - 1].boardingDate > leg.boardingDate),
+        index > 0 && booking.legs[index - 1].boardingDate > leg.boardingDate,
     ) ||
     booking.legs.reduce((sum, leg) => sum + Math.round(leg.fare * 100), 0) >
       Math.round(booking.totalFare * 100)

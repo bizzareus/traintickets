@@ -1300,8 +1300,12 @@ describe('BookingV2Service', () => {
       expect(result.legCount).toBe(0);
       expect(result.legs[0].availablityStatus).toBe('TRAIN DEPARTED');
       expect(events.some((e) => e.type === 'train_departed')).toBe(true);
-      const probedStations = probeSpy.mock.calls.map((c: any[]) => `${c[1]}->${c[2]}`);
-      expect(probedStations.some((s: string) => s.startsWith('NDLS'))).toBe(false);
+      const probedStations = probeSpy.mock.calls.map(
+        (c: any[]) => `${c[1]}->${c[2]}`,
+      );
+      expect(probedStations.some((s: string) => s.startsWith('NDLS'))).toBe(
+        false,
+      );
       probeSpy.mockRestore();
     });
 

@@ -57,10 +57,10 @@ describe('Multi-leg booking validation', () => {
     expect(() => validateBookingItinerary(request)).not.toThrow();
   });
 
-  it('still rejects a disconnected intermediate leg', () => {
-    const invalid = structuredClone(request);
-    invalid.legs[1].from = 'OTHER';
-    expect(() => validateBookingItinerary(invalid)).toThrow();
+  it('accepts non-contiguous intermediate legs when user books confirmed segments', () => {
+    const nonContiguous = structuredClone(request);
+    nonContiguous.legs[1].from = 'OTHER';
+    expect(() => validateBookingItinerary(nonContiguous)).not.toThrow();
   });
 
   it('still rejects an unrelated search origin', () => {
@@ -101,5 +101,46 @@ describe('Multi-leg booking validation', () => {
     expect(() =>
       validateBookingItinerary({ ...request, totalFare: 770 }),
     ).toThrow();
+  });
+
+  it('accepts split booking with a station gap between legs', () => {
+    const splitWithGap = {
+      trainNumber: '12066',
+      trainName: 'JANSHATABDI EXP',
+      fromStationCode: 'DEE',
+      toStationCode: 'AII',
+      journeyDate: '2026-10-03',
+      travelClass: 'CC',
+      quota: 'GN',
+      totalFare: 720,
+      legs: [
+        {
+          from: 'DEE',
+          to: 'RE',
+          travelClass: 'CC',
+          fare: 300,
+          boardingDate: '2026-10-03',
+          departureTime: '16:15',
+          arrivalTime: '17:35',
+          durationMinutes: 80,
+        },
+        {
+          from: 'NMK',
+          to: 'AII',
+          travelClass: 'CC',
+          fare: 420,
+          boardingDate: '2026-10-03',
+          departureTime: '18:59',
+          arrivalTime: '22:20',
+          durationMinutes: 201,
+        },
+      ],
+      passengers: [{ name: 'Kartik Arora', age: 30, gender: 'Male' as const }],
+      childPassengers: [],
+      autoUpgrade: true,
+      contactMobile: '9999224767',
+      contactEmail: 'me@example.com',
+    };
+    expect(() => validateBookingItinerary(splitWithGap)).not.toThrow();
   });
 });
