@@ -5,13 +5,11 @@
 
 # 1. DynamoDB Table for Caching Seat Availability Matrix
 resource "aws_dynamodb_table" "train_seat_cache" {
-  name           = "${var.project_name}-train-seat-cache"
-  billing_mode   = "PROVISIONED"
-  table_class    = "STANDARD"
-  read_capacity  = 10
-  write_capacity = 10
-  hash_key       = "trainNumber"
-  range_key      = "dateClass"
+  name         = "${var.project_name}-train-seat-cache"
+  billing_mode = "PAY_PER_REQUEST"
+  table_class  = "STANDARD"
+  hash_key     = "trainNumber"
+  range_key    = "dateClass"
 
   attribute {
     name = "trainNumber"

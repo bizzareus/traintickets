@@ -67,6 +67,8 @@ const DEFAULT_REGION = 'ap-south-1';
 const ROUTE_PREFIX = 'ROUTE#';
 const DEFAULT_TTL_SECONDS = 48 * 3600; // 48 hours
 const STATION_CODE_RE = /^[A-Z0-9]{2,6}$/;
+/** Serve a repeated admin inventory view from memory instead of re-scanning. */
+const INVENTORY_CACHE_TTL_MS = 5 * 60 * 1000;
 
 function toSafeString(val: unknown): string {
   if (typeof val === 'string') return val;
@@ -89,6 +91,8 @@ export class DynamoDbSeatCacheService {
   private readonly logger = new Logger(DynamoDbSeatCacheService.name);
   private docClient: DynamoDBDocumentClient | null = null;
   private readonly tableName: string;
+  private inventoryCache: { at: number; value: SeatCacheInventory } | null =
+    null;
 
   constructor() {
     this.tableName =
@@ -104,7 +108,13 @@ export class DynamoDbSeatCacheService {
 
     try {
       const region = process.env.AWS_REGION?.trim() || DEFAULT_REGION;
-      const client = new DynamoDBClient({ region });
+      // Adaptive retry backs off on throttling instead of hammering a
+      // capacity-limited table.
+      const client = new DynamoDBClient({
+        region,
+        maxAttempts: 5,
+        retryMode: 'adaptive',
+      });
       this.docClient = DynamoDBDocumentClient.from(client, {
         marshallOptions: { removeUndefinedValues: true },
       });
@@ -123,41 +133,45 @@ export class DynamoDbSeatCacheService {
   }
 
   async getCacheInventory(): Promise<SeatCacheInventory> {
+    const now = Date.now();
+    if (
+      this.inventoryCache &&
+      now - this.inventoryCache.at < INVENTORY_CACHE_TTL_MS
+    ) {
+      return this.inventoryCache.value;
+    }
+
     const generatedAt = new Date();
     if (!this.docClient) {
-      return {
-        available: false,
-        tableName: this.tableName,
-        generatedAt: generatedAt.toISOString(),
-        scannedItemCount: 0,
-        validItemCount: 0,
-        trainCount: 0,
-        seatItemCount: 0,
-        routeCount: 0,
-        summaryCount: 0,
-        expiresAt: null,
-        updatedAt: null,
-        trains: [],
-      };
+      return this.emptyInventory(generatedAt);
     }
 
     const nowSecs = Math.floor(generatedAt.getTime() / 1000);
     const items: Record<string, unknown>[] = [];
     let scannedItemCount = 0;
 
-    for await (const page of paginateScan(
-      { client: this.docClient },
-      {
-        TableName: this.tableName,
-        ProjectionExpression:
-          'trainNumber, dateClass, travelClass, updatedAt, #ttl',
-        FilterExpression: 'attribute_not_exists(#ttl) OR #ttl >= :now',
-        ExpressionAttributeNames: { '#ttl': 'ttl' },
-        ExpressionAttributeValues: { ':now': nowSecs },
-      },
-    )) {
-      scannedItemCount += page.ScannedCount ?? 0;
-      items.push(...((page.Items ?? []) as Record<string, unknown>[]));
+    try {
+      for await (const page of paginateScan(
+        { client: this.docClient },
+        {
+          TableName: this.tableName,
+          ProjectionExpression:
+            'trainNumber, dateClass, travelClass, updatedAt, #ttl',
+          FilterExpression: 'attribute_not_exists(#ttl) OR #ttl >= :now',
+          ExpressionAttributeNames: { '#ttl': 'ttl' },
+          ExpressionAttributeValues: { ':now': nowSecs },
+        },
+      )) {
+        scannedItemCount += page.ScannedCount ?? 0;
+        items.push(...((page.Items ?? []) as Record<string, unknown>[]));
+      }
+    } catch (err) {
+      // A full-table Scan can exceed provisioned read capacity; degrade
+      // gracefully instead of surfacing a 500 to the admin endpoint.
+      this.logger.warn(
+        `[DynamoDB] getCacheInventory scan failed: ${awsErrorLabel(err)}`,
+      );
+      return this.emptyInventory(generatedAt);
     }
 
     const trains = new Map<
@@ -242,7 +256,7 @@ export class DynamoDbSeatCacheService {
         : Number(a.trainNumber > b.trainNumber),
     );
 
-    return {
+    const result: SeatCacheInventory = {
       available: true,
       tableName: this.tableName,
       generatedAt: generatedAt.toISOString(),
@@ -255,6 +269,25 @@ export class DynamoDbSeatCacheService {
       expiresAt: expiresAt ? new Date(expiresAt * 1000).toISOString() : null,
       updatedAt,
       trains: trainItems,
+    };
+    this.inventoryCache = { at: now, value: result };
+    return result;
+  }
+
+  private emptyInventory(generatedAt: Date): SeatCacheInventory {
+    return {
+      available: false,
+      tableName: this.tableName,
+      generatedAt: generatedAt.toISOString(),
+      scannedItemCount: 0,
+      validItemCount: 0,
+      trainCount: 0,
+      seatItemCount: 0,
+      routeCount: 0,
+      summaryCount: 0,
+      expiresAt: null,
+      updatedAt: null,
+      trains: [],
     };
   }
 
