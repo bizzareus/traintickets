@@ -202,7 +202,19 @@ export class SplitBookingController {
     @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
     @Req() req: Request,
     @Param('id') id: string,
-    @Body() body: { channel?: 'email' | 'whatsapp' | 'both'; message?: string },
+    @Body()
+    body: {
+      channel?: 'email' | 'whatsapp' | 'both';
+      message?: string;
+      pnrLeg1?: string;
+      pnrLeg2?: string;
+      pnrs?: string[];
+      pdf?: {
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      };
+    },
   ) {
     assertAdminAuth({ headerPw: pw, req });
     return this.splitBookingService.adminNotifyCustomer(id, body);

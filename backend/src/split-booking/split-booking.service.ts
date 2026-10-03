@@ -731,8 +731,41 @@ export class SplitBookingService {
     options: {
       channel?: 'email' | 'whatsapp' | 'both';
       message?: string;
+      pnrLeg1?: string;
+      pnrLeg2?: string;
+      pnrs?: string[];
+      pdf?: {
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      };
     },
   ) {
+    if (
+      options.pnrLeg1 !== undefined ||
+      options.pnrLeg2 !== undefined ||
+      options.pnrs !== undefined
+    ) {
+      const existing = await this.prisma.splitTicketBooking.findUnique({
+        where: { id },
+        select: { bookingStatus: true },
+      });
+      const autoConfirm =
+        existing &&
+        (existing.bookingStatus === 'MANUAL_PENDING' ||
+          existing.bookingStatus === 'IDLE');
+      await this.adminUpdateBooking(id, {
+        pnrLeg1: options.pnrLeg1,
+        pnrLeg2: options.pnrLeg2,
+        pnrs: options.pnrs,
+        bookingStatus: autoConfirm ? 'CONFIRMED' : undefined,
+      });
+    }
+
+    if (options.pdf?.base64) {
+      await this.adminUploadTicketPdf(id, undefined, options.pdf);
+    }
+
     const booking = await this.prisma.splitTicketBooking.findUnique({
       where: { id },
     });

@@ -178,11 +178,32 @@ export default function SplitBookingsAdminPage() {
     "both" | "email" | "whatsapp"
   >("both");
   const [notifyMessage, setNotifyMessage] = useState("");
+  const [notifyLegPnrs, setNotifyLegPnrs] = useState<string[]>([]);
+  const [notifyPdfFile, setNotifyPdfFile] = useState<File | null>(null);
+  const [notifyMissingWarning, setNotifyMissingWarning] = useState<
+    string | null
+  >(null);
   const [sendingNotify, setSendingNotify] = useState(false);
   const [notifyFeedback, setNotifyFeedback] = useState<{
     type: "success" | "error";
     message: string;
   } | null>(null);
+
+  const openNotifyModal = (b: SplitBookingAdminEntry) => {
+    setNotifyBooking(b);
+    setNotifyChannel("both");
+    setNotifyMessage("");
+    setNotifyFeedback(null);
+    setNotifyPdfFile(null);
+    setNotifyMissingWarning(null);
+    const initialPnrs = b.legs.map((_, idx) => {
+      if (b.pnrs && b.pnrs[idx]) return b.pnrs[idx];
+      if (idx === 0 && b.pnrLeg1) return b.pnrLeg1;
+      if (idx === 1 && b.pnrLeg2) return b.pnrLeg2;
+      return "";
+    });
+    setNotifyLegPnrs(initialPnrs);
+  };
 
   useEffect(() => {
     setPassword(window.localStorage.getItem(PW_STORAGE_KEY) ?? "");
@@ -362,9 +383,59 @@ export default function SplitBookingsAdminPage() {
   const handleSendNotification = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!notifyBooking) return;
+
+    // Check for missing PNRs or PDF
+    const missingLegs: number[] = [];
+    notifyBooking.legs.forEach((_, idx) => {
+      if (!notifyLegPnrs[idx]?.trim()) {
+        missingLegs.push(idx + 1);
+      }
+    });
+    const hasPdf = notifyBooking.hasTicketPdf || !!notifyPdfFile;
+
+    if (missingLegs.length > 0 || !hasPdf) {
+      const missingDetails: string[] = [];
+      if (missingLegs.length > 0) {
+        missingDetails.push(`PNR for Leg ${missingLegs.join(", ")}`);
+      }
+      if (!hasPdf) {
+        missingDetails.push("Ticket PDF");
+      }
+      const confirmSend = window.confirm(
+        `Missing details:\n• ${missingDetails.join("\n• ")}\n\nDo you want to proceed and notify the passenger without them?`,
+      );
+      if (!confirmSend) {
+        setNotifyMissingWarning(
+          `Please provide ${missingDetails.join(" and ")} before sending notification.`,
+        );
+        return;
+      }
+    }
+
     setSendingNotify(true);
     setNotifyFeedback(null);
+    setNotifyMissingWarning(null);
+
     try {
+      let pdfPayload:
+        | { base64: string; filename?: string; contentType?: string }
+        | undefined;
+
+      if (notifyPdfFile) {
+        const reader = new FileReader();
+        const base64Promise = new Promise<string>((resolve, reject) => {
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = reject;
+        });
+        reader.readAsDataURL(notifyPdfFile);
+        const base64Data = await base64Promise;
+        pdfPayload = {
+          base64: base64Data,
+          filename: notifyPdfFile.name,
+          contentType: notifyPdfFile.type || "application/pdf",
+        };
+      }
+
       const res = await apiClient.post<{
         ok: boolean;
         emailSent: boolean;
@@ -374,6 +445,10 @@ export default function SplitBookingsAdminPage() {
         {
           channel: notifyChannel,
           message: notifyMessage.trim() || undefined,
+          pnrLeg1: notifyLegPnrs[0]?.trim() || undefined,
+          pnrLeg2: notifyLegPnrs[1]?.trim() || undefined,
+          pnrs: notifyLegPnrs.map((p) => p.trim()).filter(Boolean),
+          pdf: pdfPayload,
         },
         { headers: authHeaders() },
       );
@@ -381,10 +456,16 @@ export default function SplitBookingsAdminPage() {
       const parts = [];
       if (res.data.emailSent) parts.push("Email sent");
       if (res.data.whatsappSent) parts.push("WhatsApp sent");
-      if (!res.data.emailSent && (notifyChannel === "email" || notifyChannel === "both")) {
+      if (
+        !res.data.emailSent &&
+        (notifyChannel === "email" || notifyChannel === "both")
+      ) {
         parts.push("Email failed or unconfigured");
       }
-      if (!res.data.whatsappSent && (notifyChannel === "whatsapp" || notifyChannel === "both")) {
+      if (
+        !res.data.whatsappSent &&
+        (notifyChannel === "whatsapp" || notifyChannel === "both")
+      ) {
         parts.push("WhatsApp failed or unconfigured");
       }
 
@@ -775,12 +856,7 @@ export default function SplitBookingsAdminPage() {
 
                           <button
                             type="button"
-                            onClick={() => {
-                              setNotifyBooking(b);
-                              setNotifyChannel("both");
-                              setNotifyMessage("");
-                              setNotifyFeedback(null);
-                            }}
+                            onClick={() => openNotifyModal(b)}
                             className="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-2.5 py-1 text-[11px] font-semibold text-white shadow-xs hover:bg-blue-700 transition cursor-pointer"
                           >
                             <Mail className="h-3 w-3" />
@@ -1046,14 +1122,14 @@ export default function SplitBookingsAdminPage() {
           role="dialog"
           aria-modal="true"
         >
-          <div className="w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl">
+          <div className="w-full max-w-xl max-h-[92vh] overflow-y-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div>
                 <h3 className="text-base font-bold text-slate-900">
                   Notify Passenger
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Send confirmed ticket confirmation & PNRs to customer
+                  Provide PNR for each leg & ticket PDF to send complete confirmation
                 </p>
               </div>
               <button
@@ -1069,7 +1145,7 @@ export default function SplitBookingsAdminPage() {
               {/* Recipient summary */}
               <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-3 space-y-1 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Email:</span>
+                  <span className="text-slate-500">Passenger / Email:</span>
                   <span className="font-semibold text-slate-900">
                     {notifyBooking.contactEmail}
                   </span>
@@ -1081,35 +1157,181 @@ export default function SplitBookingsAdminPage() {
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Train & Date:</span>
+                  <span className="text-slate-500">Train & Journey:</span>
                   <span className="font-semibold text-slate-900">
-                    {notifyBooking.trainNumber} on {notifyBooking.journeyDate}
+                    {notifyBooking.trainNumber} ({notifyBooking.fromStationCode} → {notifyBooking.toStationCode}) on {notifyBooking.journeyDate}
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">PNRs Attached:</span>
-                  <span className="font-mono font-semibold text-emerald-800">
-                    {notifyBooking.pnrs?.join(", ") ||
-                      [notifyBooking.pnrLeg1, notifyBooking.pnrLeg2]
-                        .filter(Boolean)
-                        .join(", ") ||
-                      "None (pending)"}
+              </div>
+
+              {/* PNR for Each Leg */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                    <Train className="h-3.5 w-3.5 text-blue-600" />
+                    PNR for each Leg <span className="text-rose-500">*</span>
+                  </label>
+                  <span className="text-[11px] font-medium text-slate-500">
+                    {notifyLegPnrs.filter(Boolean).length} of {notifyBooking.legs.length} legs filled
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Ticket PDF Link:</span>
-                  <span
-                    className={
-                      notifyBooking.hasTicketPdf
-                        ? "text-emerald-700 font-semibold"
-                        : "text-slate-400"
-                    }
+
+                <div className="space-y-2">
+                  {notifyBooking.legs.map((leg, idx) => {
+                    const isFilled = !!notifyLegPnrs[idx]?.trim();
+                    return (
+                      <div
+                        key={idx}
+                        className={`rounded-xl border p-3 transition ${
+                          isFilled
+                            ? "border-emerald-200 bg-emerald-50/20"
+                            : "border-slate-200 bg-slate-50/60"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between text-xs mb-1.5">
+                          <span className="font-semibold text-slate-900 flex items-center gap-1.5">
+                            <span className="flex h-4 w-4 items-center justify-center rounded-full bg-blue-100 text-[10px] font-bold text-blue-700">
+                              {idx + 1}
+                            </span>
+                            Leg {idx + 1}: {leg.from} → {leg.to} ({leg.travelClass})
+                          </span>
+                          <span className="text-[11px] text-slate-500 font-medium">
+                            {leg.boardingDate}{leg.departureTime ? ` at ${leg.departureTime}` : ""}
+                          </span>
+                        </div>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            maxLength={10}
+                            value={notifyLegPnrs[idx] || ""}
+                            onChange={(e) => {
+                              const val = e.target.value.replace(/\D/g, "");
+                              const next = [...notifyLegPnrs];
+                              next[idx] = val;
+                              setNotifyLegPnrs(next);
+                            }}
+                            placeholder={`Enter 10-digit PNR for Leg ${idx + 1} (${leg.from} → ${leg.to})`}
+                            className={`w-full rounded-lg border bg-white px-3 py-2 text-xs font-mono font-semibold tracking-wider text-slate-900 placeholder:text-slate-400 placeholder:font-normal focus:outline-hidden focus:ring-1 ${
+                              isFilled
+                                ? "border-emerald-300 focus:border-emerald-500 focus:ring-emerald-500"
+                                : "border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+                            }`}
+                          />
+                          {notifyLegPnrs[idx]?.length === 10 && (
+                            <span className="absolute right-2.5 top-2 text-[11px] font-semibold text-emerald-600">
+                              ✓ 10 digits
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Ticket PDF Section */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                    <FileText className="h-3.5 w-3.5 text-blue-600" />
+                    Ticket PDF <span className="text-rose-500">*</span>
+                  </label>
+                  {notifyBooking.hasTicketPdf && !notifyPdfFile && (
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700">
+                      <CheckCircle2 className="h-3 w-3" /> PDF on file
+                    </span>
+                  )}
+                </div>
+
+                {notifyBooking.hasTicketPdf && !notifyPdfFile ? (
+                  <div className="rounded-xl border border-emerald-200 bg-emerald-50/40 p-3 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <FileText className="h-4 w-4 text-emerald-600" />
+                      <div className="text-xs">
+                        <span className="font-semibold text-slate-900">
+                          {notifyBooking.ticketPdfFilename || `ticket-${notifyBooking.bookingRef}.pdf`}
+                        </span>
+                        <span className="text-slate-500 ml-1.5">
+                          (Uploaded)
+                        </span>
+                      </div>
+                    </div>
+                    <label className="text-[11px] font-semibold text-blue-600 hover:text-blue-800 cursor-pointer underline">
+                      Upload New PDF
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        className="hidden"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            if (file.type && file.type !== "application/pdf") {
+                              alert("Please upload a PDF file.");
+                              return;
+                            }
+                            setNotifyPdfFile(file);
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                ) : (
+                  <div
+                    className={`rounded-xl border-2 border-dashed p-3 text-center transition ${
+                      notifyPdfFile
+                        ? "border-emerald-300 bg-emerald-50/30"
+                        : "border-slate-300 bg-slate-50/50 hover:bg-slate-50"
+                    }`}
                   >
-                    {notifyBooking.hasTicketPdf
-                      ? "Yes, PDF link included"
-                      : "No PDF uploaded yet"}
-                  </span>
-                </div>
+                    {notifyPdfFile ? (
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-left">
+                          <FileText className="h-5 w-5 text-emerald-600" />
+                          <div>
+                            <p className="text-xs font-semibold text-slate-900">
+                              {notifyPdfFile.name}
+                            </p>
+                            <p className="text-[10px] text-slate-500">
+                              {(notifyPdfFile.size / 1024).toFixed(1)} KB (Will be attached & linked)
+                            </p>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setNotifyPdfFile(null)}
+                          className="text-xs font-semibold text-rose-600 hover:text-rose-700 cursor-pointer"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    ) : (
+                      <label className="flex flex-col items-center justify-center cursor-pointer py-2">
+                        <Upload className="h-5 w-5 text-slate-400 mb-1" />
+                        <span className="text-xs font-semibold text-blue-600 hover:underline">
+                          Select or drop ticket PDF (.pdf)
+                        </span>
+                        <span className="text-[11px] text-slate-500 mt-0.5">
+                          PDF containing confirmed IRCTC e-tickets
+                        </span>
+                        <input
+                          type="file"
+                          accept="application/pdf"
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              if (file.type && file.type !== "application/pdf") {
+                                alert("Please upload a PDF file.");
+                                return;
+                              }
+                              setNotifyPdfFile(file);
+                            }
+                          }}
+                        />
+                      </label>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Channel Selector */}
@@ -1168,6 +1390,13 @@ export default function SplitBookingsAdminPage() {
                 />
               </div>
 
+              {notifyMissingWarning && (
+                <div className="rounded-xl border border-amber-200 bg-amber-50 p-2.5 text-xs font-medium text-amber-900 flex items-start gap-2">
+                  <AlertCircle className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" />
+                  <span>{notifyMissingWarning}</span>
+                </div>
+              )}
+
               {notifyFeedback && (
                 <div
                   className={`rounded-xl p-3 text-xs font-semibold ${
@@ -1196,7 +1425,7 @@ export default function SplitBookingsAdminPage() {
                   {sendingNotify ? (
                     <>
                       <RefreshCw className="h-3 w-3 animate-spin" />
-                      Sending…
+                      Saving & Sending…
                     </>
                   ) : (
                     <>

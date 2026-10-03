@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { isAxiosError } from "axios";
+import moment from "moment";
 import {
   X,
   Plus,
@@ -105,14 +106,12 @@ export function SplitTicketBookingModal({
   const [bookingStatus, setBookingStatus] = useState<SplitBookingStatus | null>(
     null,
   );
+  const [bookingDelayed, setBookingDelayed] = useState(false);
   const activePaymentRef = useRef<string | null>(null);
   const pollingRef = useRef<string | null>(null);
   const bookingConfirmed = bookingStatus?.bookingStatus === "CONFIRMED";
   const bookingFailed = bookingStatus?.bookingStatus === "FAILED";
   const paymentFailed = bookingStatus?.paymentStatus === "FAILED";
-  const manualBooking =
-    (bookingStatus?.bookingMode ?? paymentData?.bookingMode) === "MANUAL";
-  const manualPending = bookingStatus?.bookingStatus === "MANUAL_PENDING";
   const recordedPnrs = bookingStatus?.pnrs ?? [
     bookingStatus?.pnrLeg1,
     bookingStatus?.pnrLeg2,
@@ -137,6 +136,7 @@ export function SplitTicketBookingModal({
       setStep("passenger_details");
       setPaymentData(null);
       setBookingStatus(null);
+      setBookingDelayed(false);
       setFormError(null);
       setIsSubmitting(false);
     }
@@ -327,6 +327,19 @@ export function SplitTicketBookingModal({
     const interval = setInterval(() => void pollStatus(), 2500);
     return () => clearInterval(interval);
   }, [open, step, pollStatus, paymentFailed, bookingConfirmed, bookingFailed]);
+
+  useEffect(() => {
+    if (
+      !open || step !== "booking_in_progress" || bookingConfirmed || bookingFailed
+    ) return;
+    // Use the saved payment time so repeated status polls do not reset the wait.
+    const paidAt = moment(bookingStatus?.paidAt ?? undefined);
+    const delayMs = paidAt.isValid()
+      ? Math.max(0, paidAt.add(5, "minutes").diff())
+      : 5 * 60 * 1000;
+    const timer = setTimeout(() => setBookingDelayed(true), delayMs);
+    return () => clearTimeout(timer);
+  }, [open, step, bookingConfirmed, bookingFailed, bookingStatus?.paidAt]);
 
   // Dev simulation handler
   const handleSimulatePayment = async () => {
@@ -825,13 +838,6 @@ export function SplitTicketBookingModal({
                 />
               )}
 
-              {manualBooking && (
-                <p className="text-xs text-slate-600">
-                  After payment, your journey and passenger details will be sent
-                  to our booking team for manual reservation.
-                </p>
-              )}
-
               {/* Polling Indicator */}
               {!paymentFailed && (
                 <div className="flex items-center justify-center gap-2 text-xs text-slate-500">
@@ -856,14 +862,14 @@ export function SplitTicketBookingModal({
             </div>
           )}
 
-          {/* STEP 3: AUTOMATED BOOKING IN PROGRESS ("We are booking it for you") */}
+          {/* STEP 3: BOOKING PROGRESS */}
           {step === "booking_in_progress" && (
             <div className="space-y-6">
               <div className="text-center">
                 <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                   {bookingFailed ? (
                     <AlertCircle className="h-7 w-7 text-amber-600" />
-                  ) : bookingConfirmed || manualPending ? (
+                  ) : bookingConfirmed ? (
                     <CheckCircle2 className="h-7 w-7" />
                   ) : (
                     <Loader2 className="h-7 w-7 animate-spin" />
@@ -874,18 +880,14 @@ export function SplitTicketBookingModal({
                     ? "Your tickets are confirmed"
                     : bookingFailed
                       ? "Booking needs attention"
-                      : manualBooking
-                        ? "Your manual booking request is received"
-                        : "We are booking it for you!"}
+                      : "Booking in progress"}
                 </h4>
                 <p className="text-xs text-slate-600 max-w-md mx-auto mt-1">
                   {bookingConfirmed
                     ? "All reservations have been verified. Your PNRs are below."
                     : bookingFailed
                       ? "The booking process stopped. Review the details and any recorded PNRs below."
-                      : manualBooking
-                        ? "Payment confirmed. Your details are queued for our booking team. Your tickets are not confirmed yet."
-                        : "Payment confirmed. Our AI booking agent is reserving your split tickets."}
+                      : "Payment confirmed. Your reservation is in progress. We'll show your tickets and PNRs here once confirmed."}
                 </p>
                 <span className="inline-block mt-2 rounded-md bg-slate-100 px-2.5 py-1 text-xs font-mono font-bold text-slate-800">
                   Booking Ref: {paymentData?.bookingRef}
@@ -909,8 +911,6 @@ export function SplitTicketBookingModal({
                       "✓"
                     ) : bookingFailed ? (
                       <AlertCircle className="h-3.5 w-3.5" />
-                    ) : manualPending ? (
-                      "2"
                     ) : (
                       <Loader2 className="h-3.5 w-3.5 animate-spin" />
                     )}
@@ -918,11 +918,33 @@ export function SplitTicketBookingModal({
                   <span className="text-xs font-bold text-slate-800">
                     {bookingFailed
                       ? "Reservation Stopped"
-                      : manualBooking
-                        ? "Awaiting Manual Reservation"
-                        : "AI Reservation on IRCTC / TripMgt"}
+                      : bookingConfirmed
+                        ? "Booking completed"
+                        : "Booking in progress"}
                   </span>
                 </div>
+
+                {bookingDelayed && !bookingConfirmed && !bookingFailed && (
+                  <div
+                    role="status"
+                    className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs text-amber-900"
+                  >
+                    <p className="font-semibold">
+                      It&apos;s taking longer than usual.
+                    </p>
+                    <p className="mt-1">
+                      For any query, contact us on WhatsApp at{" "}
+                      <a
+                        href={`https://wa.me/919999224767?text=${encodeURIComponent(`Hi, I have a query about booking ${paymentData?.bookingRef}.`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold underline underline-offset-2 hover:text-amber-700"
+                      >
+                        +919999224767
+                      </a>.
+                    </p>
+                  </div>
+                )}
 
                 <div className="flex items-center gap-3">
                   <div
@@ -956,21 +978,17 @@ export function SplitTicketBookingModal({
               )}
 
               {/* Error display if failed */}
-              {(bookingFailed ||
-                (manualPending && bookingStatus?.bookingError)) &&
-                bookingStatus && (
-                  <div className="rounded-xl border border-red-300 bg-red-50 p-4 space-y-1 text-xs text-red-800">
-                    <div className="font-bold text-red-900">
-                      {manualPending
-                        ? "Booking Request Saved — Delivery Needs Attention"
-                        : "Booking Encountered an Issue"}
-                    </div>
-                    <p>
-                      {bookingStatus.bookingError ||
-                        "We could not complete the reservation. Contact support with your booking reference."}
-                    </p>
+              {bookingFailed && bookingStatus && (
+                <div className="rounded-xl border border-red-300 bg-red-50 p-4 space-y-1 text-xs text-red-800">
+                  <div className="font-bold text-red-900">
+                    Booking Encountered an Issue
                   </div>
-                )}
+                  <p>
+                    {bookingStatus.bookingError ||
+                      "We could not complete the reservation. Contact support with your booking reference."}
+                  </p>
+                </div>
+              )}
 
               {recordedPnrs.some(Boolean) && (
                 <div className="space-y-2 text-xs">

@@ -817,4 +817,74 @@ describe('SplitBookingService', () => {
       expect(tripmgt.executeBooking).not.toHaveBeenCalled();
     });
   });
+
+  describe('adminNotifyCustomer', () => {
+    it('updates PNRs and uploads PDF when provided before notifying', async () => {
+      const mockBooking = {
+        id: 'b-123',
+        bookingRef: 'LB-TEST1',
+        trainNumber: '12066',
+        trainName: 'JANSHATABDI',
+        fromStationCode: 'DEE',
+        toStationCode: 'AII',
+        journeyDate: new Date('2026-10-03'),
+        travelClass: 'CC',
+        quota: 'GN',
+        bookingStatus: 'MANUAL_PENDING',
+        paymentStatus: 'PAID',
+        legsPayload: [
+          {
+            from: 'DEE',
+            to: 'RE',
+            travelClass: 'CC',
+            boardingDate: '2026-10-03',
+          },
+          {
+            from: 'NMK',
+            to: 'AII',
+            travelClass: 'CC',
+            boardingDate: '2026-10-03',
+          },
+        ],
+        passengers: {
+          adults: [{ name: 'Kartik', age: 30, gender: 'Male' }],
+          children: [],
+        },
+        contactMobile: '9999224767',
+        contactEmail: 'kartik@example.com',
+        pnrs: [],
+        pnrLeg1: null,
+        pnrLeg2: null,
+        ticketPdfUploadedAt: null,
+      };
+
+      prisma.splitTicketBooking.findUnique.mockResolvedValue(mockBooking);
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        ...mockBooking,
+        pnrLeg1: '1111111111',
+        pnrLeg2: '2222222222',
+        pnrs: ['1111111111', '2222222222'],
+        bookingStatus: 'CONFIRMED',
+      });
+
+      const res = await service.adminNotifyCustomer('b-123', {
+        channel: 'email',
+        pnrLeg1: '1111111111',
+        pnrLeg2: '2222222222',
+        pnrs: ['1111111111', '2222222222'],
+      });
+
+      expect(res.ok).toBe(true);
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 'b-123' },
+          data: expect.objectContaining({
+            pnrLeg1: '1111111111',
+            pnrLeg2: '2222222222',
+            bookingStatus: 'CONFIRMED',
+          }),
+        }),
+      );
+    });
+  });
 });

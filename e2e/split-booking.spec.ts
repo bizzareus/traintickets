@@ -76,7 +76,10 @@ for (const scenario of [
       ? { totalFare: 1505, serviceFee: 50, amount: 1555 }
       : { totalFare: 1110, serviceFee: 50, amount: 1160 };
     const pnrs = ["1234567890", "2345678901", "3456789012"];
+    const bookingMode = multipleClasses ? "AI" : "MANUAL";
     let paid = false;
+    let confirmed = false;
+    let paidAt: string | null = null;
 
     // All API requests and the hosted checkout are intercepted. No real
     // reservation, payment order, email or WhatsApp can be triggered by this test.
@@ -119,7 +122,7 @@ for (const scenario of [
         json = {
           ...price,
           bookingRef: "LB-TEST",
-          bookingMode: "AI",
+          bookingMode,
           payUrl: "https://muzobox.com/pay/mb_test?source=reservation",
         };
       }
@@ -131,10 +134,13 @@ for (const scenario of [
         json = {
           ...price,
           bookingRef: "LB-TEST",
-          bookingMode: "AI",
+          bookingMode,
           paymentStatus: paid ? "PAID" : "PENDING",
-          bookingStatus: paid ? "CONFIRMED" : "IDLE",
-          pnrs: paid ? pnrs : [],
+          bookingStatus: confirmed ? "CONFIRMED" : paid
+            ? bookingMode === "MANUAL" ? "MANUAL_PENDING" : "IN_PROGRESS"
+            : "IDLE",
+          pnrs: confirmed ? pnrs : [],
+          paidAt,
           logs: [],
         };
       }
@@ -298,17 +304,45 @@ for (const scenario of [
     await expect(iframe).toHaveAttribute("src", "https://muzobox.com/pay/mb_test?source=reservation&iframe=1");
     await expect(iframe).toHaveAttribute("allow", "payment");
     await expect(modal.getByAltText("UPI QR Code")).toHaveCount(0);
+    await expect(modal).not.toContainText(/manual reservation/i);
     const checkout = page.frameLocator('iframe[title="Complete payment via Muzobox"]');
     // Even a genuine iframe success message cannot advance a still-pending booking.
     await checkout.getByRole("button", { name: "Complete test checkout" }).click();
     await expect(iframe).toBeVisible();
     await expect(modal.getByText(/Payment Received/)).toHaveCount(0);
     await modal.screenshot({ path: testInfo.outputPath("muzobox-checkout.png") });
+
+    // Freeze time at payment confirmation to test the exact five-minute boundary.
+    const paymentTime = new Date();
+    await page.clock.install({ time: paymentTime });
+    await page.clock.pauseAt(new Date(paymentTime.getTime() + 1000));
+    paidAt = await page.evaluate(() => new Date().toISOString());
     paid = true;
     await checkout.getByRole("button", { name: "Complete test checkout" }).click();
     await expect(modal).toContainText(
       `Payment Received (₹${price.amount.toLocaleString("en-IN")})`,
     );
+    await expect(modal.getByRole("heading", { name: "Booking in progress", exact: true })).toBeVisible();
+    await expect(modal.getByText("Booking in progress", { exact: true })).toHaveCount(2);
+    await expect(modal).not.toContainText(/manual|AI booking|AI Reservation/i);
+    const delayMessage = modal.getByRole("status");
+    await expect(delayMessage).toHaveCount(0);
+    await page.clock.fastForward(299_000);
+    await expect(delayMessage).toHaveCount(0);
+    await page.clock.fastForward(1000);
+    await expect(delayMessage).toContainText("It's taking longer than usual.");
+    const whatsapp = delayMessage.getByRole("link", { name: "+919999224767" });
+    await expect(whatsapp).toHaveAttribute(
+      "href",
+      `https://wa.me/919999224767?text=${encodeURIComponent("Hi, I have a query about booking LB-TEST.")}`,
+    );
+    await modal.screenshot({ path: testInfo.outputPath("booking-delayed.png") });
+
+    confirmed = true;
+    await page.clock.resume();
+    await expect(modal.getByRole("heading", { name: "Your tickets are confirmed" })).toBeVisible();
+    await expect(delayMessage).toHaveCount(0);
+    await expect(modal.getByText("Booking completed", { exact: true })).toBeVisible();
     for (const pnr of pnrs)
       await expect(modal.getByText(pnr, { exact: true })).toBeVisible();
     await expect(modal).toContainText("Leg 3 PNR:");
