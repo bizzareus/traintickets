@@ -12,8 +12,11 @@ export type GlossaryTerm = {
 export const GLOSSARY_LANGS = ["en", "hi", "mr", "bn", "ta", "te", "ml"] as const;
 export type GlossaryLang = (typeof GLOSSARY_LANGS)[number];
 
+// Performance Optimization: Pre-build Set for O(1) language validation lookups instead of O(N) array includes scans.
+const GLOSSARY_LANG_SET = new Set<string>(GLOSSARY_LANGS);
+
 export function isGlossaryLang(x: string): x is GlossaryLang {
-  return (GLOSSARY_LANGS as readonly string[]).includes(x);
+  return GLOSSARY_LANG_SET.has(x);
 }
 
 export function getLanguageName(lang: string): string {
