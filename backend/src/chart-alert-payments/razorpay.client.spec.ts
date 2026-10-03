@@ -57,9 +57,20 @@ describe('verifyRazorpayWebhookSignature', () => {
     ).toBe(true);
   });
 
+  it('accepts string rawBody in addition to Buffer', () => {
+    expect(verifyRazorpayWebhookSignature(body, valid, secret)).toBe(true);
+  });
+
   it('rejects wrong signatures, secrets, and empty inputs', () => {
     expect(
       verifyRazorpayWebhookSignature(Buffer.from(body), 'bad', secret),
+    ).toBe(false);
+    expect(
+      verifyRazorpayWebhookSignature(
+        Buffer.from(body),
+        valid + 'extra',
+        secret,
+      ),
     ).toBe(false);
     expect(
       verifyRazorpayWebhookSignature(Buffer.from(body), valid, 'other'),

@@ -1,8 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { createHmac, timingSafeEqual } from 'node:crypto';
+import { createHmac } from 'node:crypto';
 import jsQR from 'jsqr';
 import { PNG } from 'pngjs';
+import { safeCompareStrings } from '../common/admin-auth';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import type { AxiosInstance } from 'axios';
 
@@ -97,12 +98,7 @@ export function verifyRazorpayWebhookSignature(
   const expected = createHmac('sha256', secret)
     .update(typeof rawBody === 'string' ? rawBody : rawBody)
     .digest('hex');
-  if (expected.length !== signature.length) return false;
-  try {
-    return timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
-  } catch {
-    return false;
-  }
+  return safeCompareStrings(expected, signature);
 }
 
 /**
