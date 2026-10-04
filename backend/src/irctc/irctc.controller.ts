@@ -120,8 +120,12 @@ export class IrctcController {
         { allowChartNotPrepared: true, cacheByTrainNumber: true },
       );
     } catch (error) {
+      this.logger.error(
+        `Failed to fetch train composition for train ${trainNo}: ${error instanceof Error ? error.message : String(error)}`,
+        error instanceof Error ? error.stack : undefined,
+      );
       throw new ServiceUnavailableException(
-        `Failed to fetch train composition: ${error instanceof Error ? error.message : String(error)}`,
+        'Failed to fetch train composition.',
       );
     }
   }
@@ -176,8 +180,12 @@ export class IrctcController {
         cls,
       });
     } catch (error) {
+      this.logger.error(
+        `Failed to fetch coach composition for train ${trainNo}: ${error instanceof Error ? error.message : String(error)}`,
+        error instanceof Error ? error.stack : undefined,
+      );
       throw new ServiceUnavailableException(
-        `Failed to fetch coach composition: ${error instanceof Error ? error.message : String(error)}`,
+        'Failed to fetch coach composition.',
       );
     }
   }

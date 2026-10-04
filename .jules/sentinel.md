@@ -27,3 +27,8 @@
 **Vulnerability:** Secret header checks in Next.js route handlers (`/api/indexnow` and `/api/chart-times-data/[id]`) used standard string equality (`!==`), exposing secrets to timing side-channel analysis.
 **Learning:** Next.js route handlers run in Node.js runtime and can import `safeCompareStrings` from `lib/security.ts` to perform HMAC-digest constant-time comparison on secret headers (`INDEXNOW_SECRET`, `CHART_TIMES_SYNC_SECRET`).
 **Prevention:** Always use `safeCompareStrings(suppliedSecret, expectedSecret)` when comparing API keys or authorization headers in Next.js route handlers.
+
+## 2026-10-04 - Raw Exception Message Exposure in Controller Responses
+**Vulnerability:** `IrctcController` endpoints (`getTrainComposition` and `getCoachComposition`) concatenated `error.message` directly into `ServiceUnavailableException`, leaking raw error details and internal system info to clients on upstream failures.
+**Learning:** Returning `error.message` or `String(error)` in NestJS HTTP exceptions exposes internal error details, network messages, or stack traces. Endpoints should log error details internally with `this.logger.error(...)` and return static generic exception messages to API callers.
+**Prevention:** Never include `error.message` or raw error objects in exceptions thrown to public clients; log full error details on the server and throw generic messages.
