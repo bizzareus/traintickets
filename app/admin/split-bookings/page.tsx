@@ -4,7 +4,6 @@ import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   AlertCircle,
-  ArrowRight,
   Check,
   CheckCircle2,
   Copy,
@@ -237,6 +236,11 @@ function SplitBookingsAdminContent() {
   const [cancellationStatusFilter, setCancellationStatusFilter] =
     useState<string>("all");
   const [copiedRef, setCopiedRef] = useState<string | null>(null);
+
+  // Ticket Details Modal State (on row click)
+  const [selectedDetailsBooking, setSelectedDetailsBooking] =
+    useState<SplitBookingAdminEntry | null>(null);
+  const [copiedRawDetails, setCopiedRawDetails] = useState(false);
 
   // Edit Modal State
   const [editingBooking, setEditingBooking] =
@@ -933,11 +937,9 @@ function SplitBookingsAdminContent() {
                 <tr>
                   <th className="px-4 py-3">Booking Ref</th>
                   <th className="px-4 py-3">Train & Date</th>
-                  <th className="px-4 py-3">Route & Fare</th>
                   <th className="px-4 py-3">Passenger & Contact</th>
                   <th className="px-4 py-3">Payment</th>
                   <th className="px-4 py-3">Fulfillment</th>
-                  <th className="px-4 py-3">PNRs & PDF</th>
                   <th className="px-4 py-3 text-right">Actions</th>
                 </tr>
               </thead>
@@ -953,13 +955,13 @@ function SplitBookingsAdminContent() {
                       badge: "bg-slate-100 text-slate-700",
                       label: b.paymentStatus,
                     };
-                  const hasPnrs =
-                    (b.pnrs && b.pnrs.length > 0) || Boolean(b.pnrLeg1);
 
                   return (
                     <tr
                       key={b.id}
-                      className="hover:bg-slate-50/70 transition-colors"
+                      onClick={() => setSelectedDetailsBooking(b)}
+                      className="cursor-pointer hover:bg-blue-50/40 transition-colors"
+                      title="Click row to view full ticket details"
                     >
                       {/* Booking Ref */}
                       <td className="px-4 py-3.5 align-top">
@@ -969,7 +971,10 @@ function SplitBookingsAdminContent() {
                           </span>
                           <button
                             type="button"
-                            onClick={() => copyToClipboard(b.bookingRef)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              copyToClipboard(b.bookingRef);
+                            }}
                             className="text-slate-400 hover:text-slate-600 cursor-pointer"
                             title="Copy Ref"
                           >
@@ -1012,31 +1017,6 @@ function SplitBookingsAdminContent() {
                         </div>
                       </td>
 
-                      {/* Route & Fare */}
-                      <td className="px-4 py-3.5 align-top">
-                        <div className="flex items-center gap-1 font-bold text-slate-800">
-                          <span>{b.fromStationCode}</span>
-                          <ArrowRight className="h-3 w-3 text-slate-400" />
-                          <span>{b.toStationCode}</span>
-                        </div>
-                        <div className="mt-1 flex flex-wrap gap-1">
-                          {b.legsPayload?.map((leg, lIdx) => (
-                            <span
-                              key={lIdx}
-                              className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[10px] text-slate-600 tabular-nums"
-                            >
-                              L{lIdx + 1}: {leg.from}→{leg.to} (₹{leg.fare})
-                            </span>
-                          ))}
-                        </div>
-                        <div className="mt-1 text-slate-900 font-bold tabular-nums">
-                          ₹{b.totalFare + b.serviceFee}{" "}
-                          <span className="text-[10px] font-normal text-slate-400">
-                            (₹{b.totalFare} + ₹{b.serviceFee} fee)
-                          </span>
-                        </div>
-                      </td>
-
                       {/* Passenger & Contact */}
                       <td className="px-4 py-3.5 align-top">
                         <div className="space-y-0.5">
@@ -1055,6 +1035,7 @@ function SplitBookingsAdminContent() {
                               href={`https://wa.me/91${b.contactMobile.replace(/\D/g, "").slice(-10)}`}
                               target="_blank"
                               rel="noreferrer"
+                              onClick={(e) => e.stopPropagation()}
                               className="font-medium text-emerald-700 hover:underline inline-flex items-center gap-1"
                             >
                               <MessageSquare className="h-3 w-3" />
@@ -1064,6 +1045,7 @@ function SplitBookingsAdminContent() {
                           <div>
                             <a
                               href={`mailto:${b.contactEmail}`}
+                              onClick={(e) => e.stopPropagation()}
                               className="text-blue-600 hover:underline inline-flex items-center gap-1 truncate max-w-[160px]"
                             >
                               <Mail className="h-3 w-3 shrink-0" />
@@ -1112,58 +1094,12 @@ function SplitBookingsAdminContent() {
                         )}
                       </td>
 
-                      {/* PNRs & Ticket PDF */}
-                      <td className="px-4 py-3.5 align-top">
-                        {hasPnrs ? (
-                          <div className="space-y-0.5 font-mono text-[11px] font-bold text-slate-900">
-                            {b.pnrLeg1 && <div>L1: {b.pnrLeg1}</div>}
-                            {b.pnrLeg2 && <div>L2: {b.pnrLeg2}</div>}
-                            {!b.pnrLeg1 &&
-                              !b.pnrLeg2 &&
-                              b.pnrs?.map((p, idx) => (
-                                <div key={idx}>
-                                  L{idx + 1}: {p}
-                                </div>
-                              ))}
-                          </div>
-                        ) : (
-                          <span className="text-[11px] text-slate-400">
-                            No PNRs yet
-                          </span>
-                        )}
-
-                        <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                          {b.hasTicketPdf ? (
-                            <a
-                              href={pdfUrl(b.bookingRef)}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center gap-1 rounded-lg bg-emerald-50 border border-emerald-200 px-2 py-1 text-[11px] font-semibold text-emerald-800 hover:bg-emerald-100 transition"
-                            >
-                              <FileText className="h-3 w-3" />
-                              PDF
-                              <ExternalLink className="h-2.5 w-2.5" />
-                            </a>
-                          ) : (
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setPdfUploadBooking(b);
-                                setSelectedFile(null);
-                                setPdfError("");
-                              }}
-                              className="inline-flex items-center gap-1 rounded-lg border border-dashed border-slate-300 bg-slate-50 px-2 py-1 text-[10px] font-medium text-slate-600 hover:bg-slate-100 transition cursor-pointer"
-                            >
-                              <Upload className="h-3 w-3" />
-                              Add PDF
-                            </button>
-                          )}
-                        </div>
-                      </td>
-
                       {/* Actions */}
                       <td className="px-4 py-3.5 align-top text-right">
-                        <div className="flex flex-col items-end gap-1.5">
+                        <div
+                          className="flex flex-col items-end gap-1.5"
+                          onClick={(e) => e.stopPropagation()}
+                        >
                           <button
                             type="button"
                             onClick={() => openEditModal(b)}
@@ -2396,6 +2332,432 @@ function SplitBookingsAdminContent() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+      {/* --- 6. Full Ticket Details Modal (Row Click) --- */}
+      {selectedDetailsBooking && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-xs"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="flex max-h-[90vh] w-full max-w-2xl flex-col rounded-2xl border border-slate-200 bg-white shadow-2xl">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b border-slate-100 p-5 pb-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="rounded-md bg-blue-50 px-2 py-0.5 font-mono text-xs font-bold text-blue-700">
+                    {selectedDetailsBooking.bookingRef}
+                  </span>
+                  <span
+                    className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-wide ${
+                      BOOKING_STATUS_STYLES[selectedDetailsBooking.bookingStatus]?.badge ||
+                      "bg-slate-100 text-slate-700"
+                    }`}
+                  >
+                    {BOOKING_STATUS_STYLES[selectedDetailsBooking.bookingStatus]?.label ||
+                      selectedDetailsBooking.bookingStatus}
+                  </span>
+                </div>
+                <h3 className="mt-1 text-base font-bold text-slate-900">
+                  Manual Train Booking Details
+                </h3>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const text = [
+                      "MANUAL TRAIN BOOKING REQUEST",
+                      `Booking reference: ${selectedDetailsBooking.bookingRef}`,
+                      `Train: ${selectedDetailsBooking.trainNumber}${selectedDetailsBooking.trainName ? ` - ${selectedDetailsBooking.trainName}` : ""}`,
+                      `Journey: ${selectedDetailsBooking.fromStationCode} → ${selectedDetailsBooking.toStationCode} on ${selectedDetailsBooking.journeyDate}`,
+                      `Requested class: ${selectedDetailsBooking.travelClass} | Quota: ${selectedDetailsBooking.quota}`,
+                      `Ticket fare: INR ${selectedDetailsBooking.totalFare} + Payment service charge: INR ${selectedDetailsBooking.serviceFee}`,
+                      `Total collected: INR ${selectedDetailsBooking.totalFare + selectedDetailsBooking.serviceFee} | Payment status: ${selectedDetailsBooking.paymentStatus}`,
+                      `Payment ID: ${selectedDetailsBooking.razorpayPaymentId || selectedDetailsBooking.muzoboxPaymentId || "Not supplied"}`,
+                      `Order ID: ${selectedDetailsBooking.razorpayOrderId || "Not supplied"}`,
+                      `Paid at: ${selectedDetailsBooking.paidAt ? new Date(selectedDetailsBooking.paidAt).toISOString() : "Not supplied"}`,
+                      `Requested at: ${new Date(selectedDetailsBooking.createdAt).toISOString()}`,
+                      "",
+                      "JOURNEY LEGS",
+                      ...(selectedDetailsBooking.legsPayload || []).map(
+                        (leg, idx) =>
+                          `${idx + 1}. ${leg.from} → ${leg.to} | Boarding date: ${leg.boardingDate}\nClass: ${leg.travelClass} | Fare: INR ${leg.fare}\nDeparture: ${leg.departureTime || "Not supplied"} | Arrival: ${leg.arrivalTime || "Not supplied"} | Duration (minutes): ${leg.durationMinutes ?? "Not supplied"}`,
+                      ),
+                      "",
+                      "PASSENGERS",
+                      ...(selectedDetailsBooking.passengers?.adults || []).map(
+                        (p, idx) =>
+                          `${idx + 1}. ${p.name} | Age: ${p.age} | Gender: ${p.gender} | Berth: ${p.berthPreference || "No Preference"} | Senior citizen: ${p.seniorCitizen ? "Yes" : "No"}`,
+                      ),
+                      "",
+                      "CHILDREN / INFANTS (BELOW 5)",
+                      ...(selectedDetailsBooking.passengers?.children?.length
+                        ? selectedDetailsBooking.passengers.children.map(
+                            (c, idx) =>
+                              `${idx + 1}. ${c.name} | Age: ${c.age} | Gender: ${c.gender}`,
+                          )
+                        : ["None"]),
+                      "",
+                      `Auto-upgrade: ${selectedDetailsBooking.autoUpgrade ? "Yes" : "No"}`,
+                      `Customer mobile: ${selectedDetailsBooking.contactMobile}`,
+                      `Customer email: ${selectedDetailsBooking.contactEmail}`,
+                    ].join("\n");
+                    navigator.clipboard.writeText(text);
+                    setCopiedRawDetails(true);
+                    setTimeout(() => setCopiedRawDetails(false), 2000);
+                  }}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-700 shadow-xs hover:bg-slate-50 transition cursor-pointer"
+                  title="Copy full text as sent to me@kartikarora.in"
+                >
+                  {copiedRawDetails ? (
+                    <>
+                      <Check className="h-3.5 w-3.5 text-emerald-600" />
+                      <span className="text-emerald-700">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-3.5 w-3.5" />
+                      <span>Copy Email Text</span>
+                    </>
+                  )}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedDetailsBooking(null)}
+                  className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600 cursor-pointer"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Body */}
+            <div className="flex-1 overflow-y-auto p-5 space-y-5 text-xs text-slate-700">
+              {/* 1. Train & Journey */}
+              <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-4 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-slate-500 uppercase tracking-wider text-[11px]">
+                    Train & Journey
+                  </span>
+                  <span className="font-mono text-[11px] text-slate-400">
+                    Ref: {selectedDetailsBooking.bookingRef}
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Train</span>
+                    <span className="font-bold text-slate-900 text-sm">
+                      {selectedDetailsBooking.trainNumber}{" "}
+                      {selectedDetailsBooking.trainName && (
+                        <span className="font-medium text-slate-600">
+                          - {selectedDetailsBooking.trainName}
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Journey Route & Date</span>
+                    <span className="font-semibold text-slate-900">
+                      {selectedDetailsBooking.fromStationCode} → {selectedDetailsBooking.toStationCode} on {selectedDetailsBooking.journeyDate}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Class & Quota</span>
+                    <span className="font-semibold text-slate-800">
+                      Class: {selectedDetailsBooking.travelClass} | Quota: {selectedDetailsBooking.quota}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Auto-Upgrade</span>
+                    <span className="font-semibold text-slate-800">
+                      {selectedDetailsBooking.autoUpgrade ? "Yes (Requested)" : "No"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2. Fare & Payment Info */}
+              <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-4 space-y-2">
+                <span className="block font-semibold text-slate-500 uppercase tracking-wider text-[11px]">
+                  Fare & Payment
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Ticket Fare + Fee</span>
+                    <span className="font-medium text-slate-800">
+                      INR {selectedDetailsBooking.totalFare} + INR {selectedDetailsBooking.serviceFee} fee
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Total Collected</span>
+                    <span className="font-bold text-slate-900 text-sm tabular-nums">
+                      INR {selectedDetailsBooking.totalFare + selectedDetailsBooking.serviceFee}{" "}
+                      <span className="text-xs font-normal text-slate-500">
+                        ({selectedDetailsBooking.paymentStatus})
+                      </span>
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Payment ID</span>
+                    <span className="font-mono text-slate-800 break-all">
+                      {selectedDetailsBooking.razorpayPaymentId ||
+                        selectedDetailsBooking.muzoboxPaymentId ||
+                        "Not supplied"}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Order ID</span>
+                    <span className="font-mono text-slate-800 break-all">
+                      {selectedDetailsBooking.razorpayOrderId || "Not supplied"}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Paid At</span>
+                    <span className="text-slate-700">
+                      {selectedDetailsBooking.paidAt
+                        ? new Date(selectedDetailsBooking.paidAt).toLocaleString("en-IN")
+                        : "Not supplied"}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Requested At</span>
+                    <span className="text-slate-700">
+                      {new Date(selectedDetailsBooking.createdAt).toLocaleString("en-IN")}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Journey Legs */}
+              <div className="rounded-xl border border-slate-200 bg-white p-4 space-y-2.5">
+                <span className="block font-semibold text-slate-500 uppercase tracking-wider text-[11px]">
+                  Journey Legs ({selectedDetailsBooking.legsPayload?.length || 0})
+                </span>
+                <div className="space-y-2">
+                  {selectedDetailsBooking.legsPayload?.map((leg, idx) => (
+                    <div
+                      key={idx}
+                      className="rounded-lg border border-slate-200 bg-slate-50/50 p-3 space-y-1"
+                    >
+                      <div className="flex items-center justify-between font-bold text-slate-900">
+                        <span>
+                          Leg {idx + 1}: {leg.from} → {leg.to}
+                        </span>
+                        <span className="tabular-nums font-semibold text-slate-700">
+                          INR {leg.fare}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px] text-slate-600 pt-0.5">
+                        <div>
+                          <span className="text-slate-400">Boarding Date: </span>
+                          <span className="font-medium text-slate-800">{leg.boardingDate}</span>
+                        </div>
+                        <div>
+                          <span className="text-slate-400">Class: </span>
+                          <span className="font-medium text-slate-800">{leg.travelClass}</span>
+                        </div>
+                        <div>
+                          <span className="text-slate-400">Duration: </span>
+                          <span className="font-medium text-slate-800">
+                            {leg.durationMinutes ? `${leg.durationMinutes} mins` : "Not supplied"}
+                          </span>
+                        </div>
+                        <div>
+                          <span className="text-slate-400">Departure: </span>
+                          <span className="font-medium text-slate-800">
+                            {leg.departureTime || "Not supplied"}
+                          </span>
+                        </div>
+                        <div>
+                          <span className="text-slate-400">Arrival: </span>
+                          <span className="font-medium text-slate-800">
+                            {leg.arrivalTime || "Not supplied"}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 4. Passengers */}
+              <div className="rounded-xl border border-slate-200 bg-white p-4 space-y-2.5">
+                <span className="block font-semibold text-slate-500 uppercase tracking-wider text-[11px]">
+                  Passengers ({selectedDetailsBooking.passengers?.adults?.length || 0})
+                </span>
+                <div className="divide-y divide-slate-100 rounded-lg border border-slate-200">
+                  {selectedDetailsBooking.passengers?.adults?.map((p, idx) => (
+                    <div
+                      key={idx}
+                      className="flex flex-wrap items-center justify-between p-2.5 text-xs"
+                    >
+                      <div className="font-semibold text-slate-900">
+                        {idx + 1}. {p.name}
+                      </div>
+                      <div className="flex items-center gap-3 text-[11px] text-slate-600">
+                        <span>Age: <strong>{p.age}</strong></span>
+                        <span>Gender: <strong>{p.gender}</strong></span>
+                        <span>Berth: <strong>{p.berthPreference || "No Preference"}</strong></span>
+                        <span>Senior Citizen: <strong>{p.seniorCitizen ? "Yes" : "No"}</strong></span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 5. Children / Infants below 5 */}
+              <div className="rounded-xl border border-slate-200 bg-white p-4 space-y-2">
+                <span className="block font-semibold text-slate-500 uppercase tracking-wider text-[11px]">
+                  Children / Infants (Below 5)
+                </span>
+                {selectedDetailsBooking.passengers?.children?.length ? (
+                  <div className="divide-y divide-slate-100 rounded-lg border border-slate-200">
+                    {selectedDetailsBooking.passengers.children.map((c, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-center justify-between p-2.5 text-xs"
+                      >
+                        <span className="font-semibold text-slate-900">
+                          {idx + 1}. {c.name}
+                        </span>
+                        <span className="text-[11px] text-slate-600">
+                          Age: <strong>{c.age}</strong> · Gender: <strong>{c.gender}</strong>
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-xs text-slate-400 italic">None</p>
+                )}
+              </div>
+
+              {/* 6. Customer Contact & PNRs / Ticket Status */}
+              <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-4 space-y-3">
+                <span className="block font-semibold text-slate-500 uppercase tracking-wider text-[11px]">
+                  Contact & Fulfillment Status
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Customer Mobile</span>
+                    <a
+                      href={`https://wa.me/91${selectedDetailsBooking.contactMobile.replace(/\D/g, "").slice(-10)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-medium text-emerald-700 hover:underline inline-flex items-center gap-1"
+                    >
+                      <MessageSquare className="h-3 w-3" />
+                      {selectedDetailsBooking.contactMobile}
+                    </a>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Customer Email</span>
+                    <a
+                      href={`mailto:${selectedDetailsBooking.contactEmail}`}
+                      className="font-medium text-blue-600 hover:underline inline-flex items-center gap-1"
+                    >
+                      <Mail className="h-3 w-3" />
+                      {selectedDetailsBooking.contactEmail}
+                    </a>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Leg PNRs</span>
+                    <div className="font-mono font-bold text-slate-900 text-xs">
+                      {selectedDetailsBooking.pnrLeg1 && (
+                        <div>Leg 1: {selectedDetailsBooking.pnrLeg1}</div>
+                      )}
+                      {selectedDetailsBooking.pnrLeg2 && (
+                        <div>Leg 2: {selectedDetailsBooking.pnrLeg2}</div>
+                      )}
+                      {!selectedDetailsBooking.pnrLeg1 &&
+                        !selectedDetailsBooking.pnrLeg2 &&
+                        selectedDetailsBooking.pnrs?.length > 0 &&
+                        selectedDetailsBooking.pnrs.map((p, idx) => (
+                          <div key={idx}>Leg {idx + 1}: {p}</div>
+                        ))}
+                      {!selectedDetailsBooking.pnrLeg1 &&
+                        !selectedDetailsBooking.pnrLeg2 &&
+                        (!selectedDetailsBooking.pnrs ||
+                          selectedDetailsBooking.pnrs.length === 0) && (
+                          <span className="text-slate-400 font-normal font-sans">
+                            No PNRs assigned yet
+                          </span>
+                        )}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Ticket PDF</span>
+                    {selectedDetailsBooking.hasTicketPdf ? (
+                      <a
+                        href={pdfUrl(selectedDetailsBooking.bookingRef)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 mt-0.5 rounded-lg bg-emerald-50 border border-emerald-200 px-2.5 py-1 text-xs font-semibold text-emerald-800 hover:bg-emerald-100 transition"
+                      >
+                        <FileText className="h-3.5 w-3.5" />
+                        View Ticket PDF
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPdfUploadBooking(selectedDetailsBooking);
+                          setSelectedFile(null);
+                          setPdfError("");
+                        }}
+                        className="inline-flex items-center gap-1 mt-0.5 rounded-lg border border-dashed border-slate-300 bg-white px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 transition cursor-pointer"
+                      >
+                        <Upload className="h-3.5 w-3.5" />
+                        Attach Ticket PDF
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex items-center justify-between border-t border-slate-100 p-4">
+              <span className="text-[11px] text-slate-400">
+                Created {new Date(selectedDetailsBooking.createdAt).toLocaleString("en-IN")}
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const b = selectedDetailsBooking;
+                    setSelectedDetailsBooking(null);
+                    openEditModal(b);
+                  }}
+                  className="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
+                >
+                  <Edit3 className="h-3.5 w-3.5 text-slate-500" />
+                  Edit & Add PNRs
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const b = selectedDetailsBooking;
+                    setSelectedDetailsBooking(null);
+                    openNotifyModal(b);
+                  }}
+                  className="inline-flex items-center gap-1 rounded-xl bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-blue-700 transition cursor-pointer"
+                >
+                  <Mail className="h-3.5 w-3.5" />
+                  Notify Passenger
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedDetailsBooking(null)}
+                  className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
