@@ -1162,6 +1162,13 @@ export function SplitTicketBookingModal({
                         className="font-bold underline underline-offset-2 hover:text-amber-700"
                       >
                         +919999224767
+                      </a>{" "}
+                      or email{" "}
+                      <a
+                        href={`mailto:support@lastberth.com?subject=${encodeURIComponent(`Query about booking ${paymentData?.bookingRef}`)}`}
+                        className="font-bold underline underline-offset-2 hover:text-amber-700"
+                      >
+                        support@lastberth.com
                       </a>.
                     </p>
                   </div>

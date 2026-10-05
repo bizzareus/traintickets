@@ -16,6 +16,7 @@ export function renderAutomaticDeliveryFailureRefundEmailHtml(params: {
     <p>Due to a railway systems error, we could not process your chart alert for train ${escapeHtml(params.trainNumber)} on ${escapeHtml(params.journeyDate)} in time through email or WhatsApp.</p>
     <p>We have automatically refunded ₹${params.amount} to your original payment method. It usually reflects within 5–7 business days.</p>
     ${reference}
+    <p style="margin:16px 0 0;padding-top:12px;border-top:1px solid #e2e8f0;color:#64748b;font-size:12px;">Questions about your refund? Email <a href="mailto:support@lastberth.com" style="color:#2563eb;">support@lastberth.com</a> or WhatsApp +91 99992 24767.</p>
   </div>
 </body></html>`;
 }

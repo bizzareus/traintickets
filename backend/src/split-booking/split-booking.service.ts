@@ -1274,7 +1274,7 @@ We have received your payment! Your ticket reservation is currently in progress.
 *For cancellations, please click here:*
 https://v2.lastberth.com/cancel-booking?ref=${encodeURIComponent(booking.bookingRef)}
 
-Need help? Contact us on WhatsApp at +91 99992 24767.`;
+Need help? Contact us on WhatsApp at +91 99992 24767 or email support@lastberth.com.`;
 
       // Matches MSG91 `split_booking_payment_received`: {{1}} amount,
       // {{2}} ref, {{3}} train no, {{4}} route, {{5}} date,

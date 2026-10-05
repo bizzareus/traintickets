@@ -1,5 +1,4 @@
 import { ChartCronService } from '../chart-cron/chart-cron.service';
-import { WasenderHealthcheckService } from '../whatsapp/wasender-healthcheck.service';
 import type { CronitorOutcome } from './cronitor.service';
 import type { CronitorJob } from './cronitor.config';
 
@@ -116,36 +115,5 @@ describe('real cron execution boundaries', () => {
     expect(monitoring.run).toHaveBeenCalledTimes(1);
     finish({ found: 0, resent: 0, failed: 0 });
     await first;
-  });
-
-  it('marks a resolved unhealthy WhatsApp result as failed', async () => {
-    const monitoring = recorder();
-    const health = new WasenderHealthcheckService(
-      {
-        get: (key: string) =>
-          key === 'WASENDER_HEALTHCHECK_ENABLED' ? 'true' : undefined,
-      } as never,
-      monitoring as never,
-    );
-    jest.spyOn(health, 'checkHealth').mockResolvedValue({
-      healthy: false,
-      status: 'disconnected',
-      qrSent: false,
-      message: 'private provider detail',
-      timestamp: new Date().toISOString(),
-    });
-    await health.handleScheduledHealthcheck();
-    expect(monitoring.outcomes).toEqual([
-      { job: 'wasender-healthcheck', outcome: { count: 1, errorCount: 1 } },
-    ]);
-  });
-
-  it('does not ping for a disabled WhatsApp healthcheck', async () => {
-    const monitoring = recorder();
-    await new WasenderHealthcheckService(
-      { get: () => undefined } as never,
-      monitoring as never,
-    ).handleScheduledHealthcheck();
-    expect(monitoring.run).not.toHaveBeenCalled();
   });
 });

@@ -242,60 +242,6 @@ describe('WasenderHealthcheckService', () => {
     expect(mockSend).toHaveBeenCalledTimes(1);
   });
 
-  it('skips scheduled cron when NODE_ENV is development / non-production', async () => {
-    jest.spyOn(configService, 'get').mockImplementation((key: string) => {
-      if (key === 'NODE_ENV') return 'development';
-      if (key === 'WHATSAPP_PROVIDER') return 'wasender';
-      if (key === 'WASENDER_API_KEY') return 'test_session_api_key';
-      return undefined;
-    });
-
-    const checkSpy = jest.spyOn(service, 'checkHealth');
-    await service.handleScheduledHealthcheck();
-    expect(checkSpy).not.toHaveBeenCalled();
-  });
-
-  it('allows explicit WASENDER_HEALTHCHECK_ENABLED=true override in development', async () => {
-    jest.spyOn(configService, 'get').mockImplementation((key: string) => {
-      if (key === 'NODE_ENV') return 'development';
-      if (key === 'WASENDER_HEALTHCHECK_ENABLED') return 'true';
-      if (key === 'WHATSAPP_PROVIDER') return 'wasender';
-      if (key === 'WASENDER_API_KEY') return 'test_session_api_key';
-      return undefined;
-    });
-
-    const checkSpy = jest.spyOn(service, 'checkHealth').mockResolvedValue({
-      healthy: true,
-      status: 'connected',
-      qrSent: false,
-      message: 'Session is active',
-      timestamp: new Date().toISOString(),
-    });
-
-    await service.handleScheduledHealthcheck();
-    expect(checkSpy).toHaveBeenCalledWith('cron');
-  });
-
-  it('skips scheduled cron when WHATSAPP_PROVIDER is not wasender', async () => {
-    jest.spyOn(configService, 'get').mockImplementation((key: string) => {
-      if (key === 'NODE_ENV') return 'production';
-      if (key === 'WHATSAPP_PROVIDER') return 'msg91';
-      if (key === 'WASENDER_API_KEY') return 'test_session_api_key';
-      return undefined;
-    });
-
-    const checkSpy = jest.spyOn(service, 'checkHealth');
-    await service.handleScheduledHealthcheck();
-    expect(checkSpy).not.toHaveBeenCalled();
-  });
-
-  it('stays off by default even when NODE_ENV is production and provider is wasender', async () => {
-    const spy = jest.spyOn(service, 'checkHealth');
-
-    await service.handleScheduledHealthcheck();
-    expect(spy).not.toHaveBeenCalled();
-  });
-
   it('throttles repeated cron alert emails within cooldown window', async () => {
     const httpClient = getHttpClient(service);
     jest.spyOn(httpClient, 'get').mockResolvedValue({

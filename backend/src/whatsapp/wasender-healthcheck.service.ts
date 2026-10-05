@@ -1,13 +1,11 @@
-import { Injectable, Logger, Optional } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { Cron, CronExpression } from '@nestjs/schedule';
 import axios, { type AxiosInstance } from 'axios';
 import QRCode from 'qrcode';
 import { Resend } from 'resend';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import { escapeHtml } from '../notification/notification.helpers';
 import { renderWasenderQrEmailHtml } from './templates/wasender-qr-email.template';
-import { CronitorService, monitorCron } from '../monitoring/cronitor.service';
 
 const WASENDER_BASE = 'https://www.wasenderapi.com';
 const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
@@ -118,10 +116,7 @@ export class WasenderHealthcheckService {
   private lastAlertStatus: string | null = null;
   private isChecking = false;
 
-  constructor(
-    private readonly config: ConfigService,
-    @Optional() private readonly monitoring?: CronitorService,
-  ) {
+  constructor(private readonly config: ConfigService) {
     const resendKey = this.config.get<string>('RESEND_API_KEY')?.trim();
     this.resend = resendKey ? new Resend(resendKey) : null;
     this.adminEmail =
@@ -181,39 +176,6 @@ export class WasenderHealthcheckService {
     this.lastAlertSentAt = Date.now();
     this.lastAlertStatus = status;
     this.lastQrSentAt = new Date().toISOString();
-  }
-
-  /**
-   * Cron job running every 30 minutes to check Wasender WhatsApp connection health.
-   */
-  @Cron(CronExpression.EVERY_30_MINUTES)
-  async handleScheduledHealthcheck(): Promise<void> {
-    if (this.isChecking) return;
-    if (!this.isWasenderActive()) {
-      const nodeEnv =
-        this.config.get<string>('NODE_ENV')?.trim().toLowerCase() ||
-        process.env.NODE_ENV ||
-        'development';
-      const provider =
-        this.config.get<string>('WHATSAPP_PROVIDER')?.trim() || 'none';
-      this.logger.debug(
-        `Wasender healthcheck is disabled (NODE_ENV: ${nodeEnv}, provider: ${provider}); skipping scheduled healthcheck.`,
-      );
-      return;
-    }
-
-    this.logger.log('Executing scheduled 30-minute WASender healthcheck...');
-    try {
-      await monitorCron(
-        this.monitoring,
-        'wasender-healthcheck',
-        () => this.checkHealth('cron'),
-        (result) => ({ count: 1, errorCount: result.healthy ? 0 : 1 }),
-      );
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : String(err);
-      this.logger.error(`Scheduled WASender healthcheck failed: ${msg}`);
-    }
   }
 
   /**

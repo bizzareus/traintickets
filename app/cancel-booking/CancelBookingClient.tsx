@@ -242,6 +242,13 @@ export function CancelBookingClient() {
                   className="font-semibold text-blue-600 underline hover:text-blue-800"
                 >
                   +91 99992 24767
+                </a>{" "}
+                or email{" "}
+                <a
+                  href="mailto:support@lastberth.com?subject=Help%20with%20booking%20cancellation"
+                  className="font-semibold text-blue-600 underline hover:text-blue-800"
+                >
+                  support@lastberth.com
                 </a>
               </p>
             </div>
@@ -362,7 +369,8 @@ export function CancelBookingClient() {
                 </p>
                 <p className="mt-1">
                   Our support team is processing it. If you need urgent status,
-                  please contact WhatsApp support at +91 99992 24767.
+                  please contact WhatsApp support at +91 99992 24767 or email{" "}
+                  support@lastberth.com.
                 </p>
               </div>
             )}
