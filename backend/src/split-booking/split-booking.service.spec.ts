@@ -817,7 +817,14 @@ describe('SplitBookingService', () => {
     });
 
     it('hands a manual booking to the owner without starting AI or confirming a ticket', async () => {
-      const state = { ...structuredClone(booking), bookingMode: 'MANUAL' };
+      const state = {
+        ...structuredClone(booking),
+        bookingMode: 'MANUAL',
+        // Payment comms already delivered: keeps the fire-and-forget
+        // payment notification from racing this test's final update.
+        customerPaymentEmailSentAt: new Date('2026-10-01T00:00:00Z'),
+        customerPaymentWhatsappSentAt: new Date('2026-10-01T00:00:00Z'),
+      };
       prisma.splitTicketBooking.findUnique.mockImplementation(() => state);
       prisma.splitTicketBooking.updateMany.mockImplementation(
         ({ data }: { data: object }) => {

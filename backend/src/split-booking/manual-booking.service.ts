@@ -1,11 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Optional } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { SplitTicketBooking } from '@prisma/client';
 import { NotificationService } from '../notification/notification.service';
 import { escapeHtml } from '../notification/notification.helpers';
 import { WasenderProvider } from '../notification/whatsapp-providers/wasender.provider';
+import { WhatsAppProviderFactory } from '../notification/whatsapp-providers/whatsapp.provider-factory';
 import { PrismaService } from '../prisma/prisma.service';
-import { manualBookingMessage } from './split-booking.helpers';
+import { bookingDetails, manualBookingMessage } from './split-booking.helpers';
+import { bookingPrice } from './split-booking.pricing';
 
 @Injectable()
 export class ManualBookingService {
@@ -14,6 +16,7 @@ export class ManualBookingService {
     private readonly notifications: NotificationService,
     private readonly wasender: WasenderProvider,
     private readonly prisma: PrismaService,
+    @Optional() private readonly whatsappFactory?: WhatsAppProviderFactory,
   ) {}
 
   async notify(
@@ -37,14 +40,53 @@ export class ManualBookingService {
       },
       {
         field: 'manualWhatsappSentAt' as const,
-        // Manual bookings always use Wasender, independent of WHATSAPP_PROVIDER.
-        send: () =>
-          this.wasender.sendWhatsApp({
-            mobile:
-              this.config.get<string>('SPLIT_BOOKING_ADMIN_WHATSAPP') ||
-              '+919999224767',
-            text,
-          }),
+        send: async () => {
+          const mobile =
+            this.config.get<string>('SPLIT_BOOKING_ADMIN_WHATSAPP') ||
+            '+919999224767';
+          // Matches MSG91 `manual_booking_admin`: {{1}} ref, {{2}} train,
+          // {{3}} route, {{4}} date, {{5}} class/quota, {{6}} amount,
+          // {{7}} customer contact.
+          const details = bookingDetails(booking);
+          const price = bookingPrice(booking.totalFare, booking.serviceFee);
+          if (this.whatsappFactory) {
+            const sent = await this.whatsappFactory
+              .sendWhatsApp({
+                mobile,
+                text,
+                templateName: 'manual_booking_admin',
+                parameters: [
+                  { name: 'booking_ref', value: booking.bookingRef },
+                  {
+                    name: 'train',
+                    value: `${booking.trainNumber}${booking.trainName ? ` - ${booking.trainName}` : ''}`,
+                  },
+                  {
+                    name: 'route',
+                    value: `${booking.fromStationCode} → ${booking.toStationCode}`,
+                  },
+                  { name: 'journey_date', value: details.journeyDate },
+                  {
+                    name: 'class_quota',
+                    value: `${booking.travelClass}, ${booking.quota}`,
+                  },
+                  { name: 'amount', value: String(price.amount) },
+                  {
+                    name: 'customer',
+                    value: `${booking.contactMobile} / ${booking.contactEmail}`,
+                  },
+                ],
+              })
+              .catch(() => false);
+            if (sent) return true;
+            // Fall back to freeform Wasender while the MSG91 template is
+            // pending Meta approval or erroring.
+            if (this.whatsappFactory.providerName !== 'msg91') return false;
+          }
+          return this.wasender
+            .sendWhatsApp({ mobile, text })
+            .catch(() => false);
+        },
       },
     ];
     const [emailSent, whatsappSent] = await Promise.all(

@@ -4,6 +4,7 @@ import moment from 'moment';
 import {
   IrctcService,
   enrichScheduleStationDayCounts,
+  type GetTrainScheduleResult,
 } from '../irctc/irctc.service';
 import { CacheService } from '../cache/cache.service';
 import { InMemoryCacheService } from '../cache/in-memory-cache.service';
@@ -339,7 +340,7 @@ const ALT_PATHS_CACHE_TTL_MS = (() => {
  */
 const ALT_PATH_PROBE_CONCURRENCY = (() => {
   const n = Number.parseInt(process.env.ALT_PATH_PROBE_CONCURRENCY ?? '', 10);
-  return Number.isFinite(n) && n >= 1 && n <= 12 ? n : 3;
+  return Number.isFinite(n) && n >= 1 && n <= 12 ? n : 6;
 })();
 const LIVE_PROBE_CONCURRENCY = (() => {
   const n = Number.parseInt(
@@ -488,16 +489,25 @@ export interface PnrStatusResponse {
   [key: string]: unknown;
 }
 
+interface InflightAlternatePath {
+  promise: Promise<FindAlternatePathsResult>;
+  controller: AbortController;
+  subscribers: Set<(event: AlternatePathProgressEvent) => void | Promise<void>>;
+  refCount: number;
+}
+
 @Injectable()
 export class BookingV2Service {
   private readonly logger = new Logger(BookingV2Service.name);
   private readonly segmentWork = new SharedWork<SegmentProbeRow>(
     LIVE_PROBE_CONCURRENCY,
   );
-  /** In-flight alternate-paths computations by cache key (single-flight). */
-  private readonly altPathsInflight = new Map<
+  /** In-flight alternate-paths computations by cache key (single-flight deduplication). */
+  private readonly altPathsInflight = new Map<string, InflightAlternatePath>();
+  /** In-flight train searches by route and date (single-flight deduplication). */
+  private readonly searchInflight = new Map<
     string,
-    Promise<FindAlternatePathsResult>
+    Promise<Record<string, unknown>>
   >();
 
   constructor(
@@ -662,16 +672,51 @@ export class BookingV2Service {
       });
       rawSearch = cacheLookup.value;
     } else {
-      // 2. Fall back to ConfirmTkt live API on cache miss
-      this.logger.log(
-        `[booking-v2/trains/search] DynamoDB cache ${cacheLookup.status.toUpperCase()} for ${f}-${t} on ${dateYmd}, fetching live upstream`,
-      );
-      rawSearch = (await this.fetchTrainsFromUpstream(
-        f,
-        t,
-        dateDdMmYyyy,
-        signal,
-      )) as Record<string, unknown>;
+      // 2. Check if identical upstream request is already in-flight to prevent cache stampedes
+      const flightKey = `${f}#${t}#${dateDdMmYyyy}`;
+      let flightPromise = this.searchInflight.get(flightKey);
+
+      if (flightPromise && !signal) {
+        this.logger.log(
+          `[booking-v2/trains/search] Coalescing duplicate search request for ${flightKey}`,
+        );
+        rawSearch = await flightPromise;
+      } else {
+        flightPromise = (async () => {
+          this.logger.log(
+            `[booking-v2/trains/search] DynamoDB cache ${cacheLookup.status.toUpperCase()} for ${f}-${t} on ${dateYmd}, fetching live upstream`,
+          );
+          const liveResult = (await this.fetchTrainsFromUpstream(
+            f,
+            t,
+            dateDdMmYyyy,
+            signal,
+          )) as Record<string, unknown>;
+
+          // 3. Save to DynamoDB in background
+          void this.dynamoDbSeatCache
+            .saveRouteCachedSearch(f, t, dateYmd, liveResult)
+            .catch((err) => {
+              this.logger.warn(
+                `[booking-v2/trains/search] Failed to cache live search to DynamoDB: ${err instanceof Error ? err.message : String(err)}`,
+              );
+            });
+
+          return liveResult;
+        })();
+
+        if (!signal) {
+          this.searchInflight.set(flightKey, flightPromise);
+        }
+
+        try {
+          rawSearch = await flightPromise;
+        } finally {
+          if (!signal) {
+            this.searchInflight.delete(flightKey);
+          }
+        }
+      }
 
       const durationMs = Date.now() - startTime;
       this.posthogAnalytics.capture('seat_cache_search', {
@@ -684,15 +729,6 @@ export class BookingV2Service {
         duration_ms: durationMs,
         classes: classes ?? [],
       });
-
-      // 3. Save to DynamoDB in background
-      void this.dynamoDbSeatCache
-        .saveRouteCachedSearch(f, t, dateYmd, rawSearch)
-        .catch((err) => {
-          this.logger.warn(
-            `[booking-v2/trains/search] Failed to cache live search to DynamoDB: ${err instanceof Error ? err.message : String(err)}`,
-          );
-        });
     }
 
     const filtered = this.filterTrainSearchByClasses(rawSearch, classes);
@@ -1543,30 +1579,111 @@ export class BookingV2Service {
     }
 
     // Single-flight: concurrent requests for the same uncached key share one
-    // computation instead of each running the full probe fan-out. Without
-    // this, a burst of identical misses (cron + user traffic on the same
-    // trains) multiplies DB queries and can saturate a small shared pool.
-    if (key && !input.forceRefresh && !input.signal) {
-      const inflight = this.altPathsInflight.get(key);
-      if (inflight) {
-        this.logger.log(`[alt-paths-cache] JOIN key=${key}`);
-        return { result: await inflight, cached: false };
+    // computation instead of each running the full probe fan-out. Progress events
+    // are broadcast to all active subscribers, and cancellation is ref-counted.
+    const inflight =
+      key && !input.forceRefresh ? this.altPathsInflight.get(key) : undefined;
+    if (inflight) {
+      this.logger.log(`[alt-paths-cache] JOIN key=${key}`);
+      if (onProgress) {
+        inflight.subscribers.add(onProgress);
+      }
+      inflight.refCount += 1;
+
+      const onCallerAbort = () => {
+        if (onProgress) {
+          inflight.subscribers.delete(onProgress);
+        }
+        inflight.refCount -= 1;
+        if (inflight.refCount <= 0) {
+          inflight.controller.abort();
+        }
+      };
+
+      if (input.signal) {
+        if (input.signal.aborted) {
+          onCallerAbort();
+          throw input.signal.reason ?? new Error('Aborted');
+        }
+        input.signal.addEventListener('abort', onCallerAbort, { once: true });
+      }
+
+      try {
+        const result = await inflight.promise;
+        input.signal?.throwIfAborted();
+        return { result, cached: false };
+      } finally {
+        if (input.signal) {
+          input.signal.removeEventListener('abort', onCallerAbort);
+        }
       }
     }
 
+    const controller = new AbortController();
+    const subscribers = new Set<
+      (event: AlternatePathProgressEvent) => void | Promise<void>
+    >();
+    if (onProgress) {
+      subscribers.add(onProgress);
+    }
+
+    const sharedProgress = async (event: AlternatePathProgressEvent) => {
+      for (const sub of subscribers) {
+        try {
+          await sub(event);
+        } catch {
+          // Ignore subscriber write error (e.g. client socket closed)
+        }
+      }
+    };
+
+    let entry: InflightAlternatePath | undefined;
+    if (key && !input.forceRefresh) {
+      entry = {
+        controller,
+        subscribers,
+        refCount: 1,
+        promise: null as unknown as Promise<FindAlternatePathsResult>,
+      };
+      this.altPathsInflight.set(key, entry);
+    }
+
+    const onCallerAbort = () => {
+      if (entry) {
+        if (onProgress) {
+          entry.subscribers.delete(onProgress);
+        }
+        entry.refCount -= 1;
+        if (entry.refCount <= 0) {
+          entry.controller.abort();
+        }
+      } else {
+        controller.abort();
+      }
+    };
+
+    if (input.signal) {
+      input.signal.addEventListener('abort', onCallerAbort, { once: true });
+    }
+
+    const progressHandler = onProgress ? sharedProgress : undefined;
     const computation = this.findAlternatePaths(
-      input,
-      onProgress,
+      { ...input, signal: controller.signal },
+      progressHandler,
       segmentCache,
     );
-    if (key && !input.forceRefresh && !input.signal) {
-      this.altPathsInflight.set(key, computation);
+    if (entry) {
+      entry.promise = computation;
     }
+
     let result: FindAlternatePathsResult;
     try {
       result = await computation;
     } finally {
-      if (key && !input.forceRefresh && !input.signal) {
+      if (input.signal) {
+        input.signal.removeEventListener('abort', onCallerAbort);
+      }
+      if (key && !input.forceRefresh) {
         this.altPathsInflight.delete(key);
       }
     }
@@ -1638,12 +1755,36 @@ export class BookingV2Service {
       return { ...result, legCount: confirmedCount };
     };
 
+    // 0. Pre-fetch schedule once for all passes (direct + offsets).
+    // Failing fast here saves repeated failing attempts in offset loops.
+    const sched = await Promise.resolve(
+      this.irctc.getTrainSchedule(input.trainNumber),
+    ).catch(() => undefined);
+    input.signal?.throwIfAborted();
+    if (sched && (!sched.ok || !sched.schedule?.stationList?.length)) {
+      await onProgress?.({ type: 'schedule_fail' });
+      return {
+        trainNumber: input.trainNumber,
+        legs: [],
+        totalFare: null,
+        legCount: 0,
+        isComplete: false,
+        stationCodesOnRoute: [],
+        stationNameMap: {},
+        trainOriginCode: null,
+        trainOriginDepartureTime: null,
+        remainderMergedSchedule: null,
+        debugLog: [`IRCTC schedule: FAILED or empty (ok=${sched.ok})`],
+      };
+    }
+
     // 1. Try standard/direct route first (no offsets)
     const directResult = await this.findAlternatePathsInternal(
       input,
       passProgress,
       sharedProbeCache,
       segmentCache,
+      sched,
     );
     if (
       directResult.isComplete &&
@@ -1677,8 +1818,14 @@ export class BookingV2Service {
         { before: offset, after: offset },
       ];
 
+      let anySideConfirmed = false;
       for (const combo of combos) {
         input.signal?.throwIfAborted();
+        // Skip combo (before && after) if neither single-side offset yielded any confirmed legs
+        if (combo.before > 0 && combo.after > 0 && !anySideConfirmed) {
+          continue;
+        }
+
         const offsetResult = await this.findAlternatePathsInternal(
           {
             ...input,
@@ -1688,7 +1835,12 @@ export class BookingV2Service {
           passProgress,
           sharedProbeCache,
           segmentCache,
+          sched,
         );
+
+        if (offsetResult.legs.some((l) => l.segmentKind === 'confirmed')) {
+          anySideConfirmed = true;
+        }
 
         if (
           offsetResult.isComplete &&
@@ -1719,6 +1871,7 @@ export class BookingV2Service {
     onProgress?: (event: AlternatePathProgressEvent) => void | Promise<void>,
     sharedProbeCache?: Map<string, MultiClassProbeResult>,
     segmentCache?: CacheService,
+    cachedSched?: GetTrainScheduleResult,
   ): Promise<FindAlternatePathsResult> {
     input.signal?.throwIfAborted();
     const emit = async (ev: AlternatePathProgressEvent) => onProgress?.(ev);
@@ -1751,7 +1904,8 @@ export class BookingV2Service {
 
     const stationNameMap: Record<string, string> = {};
 
-    const sched = await this.irctc.getTrainSchedule(trainNumber);
+    const sched =
+      cachedSched ?? (await this.irctc.getTrainSchedule(trainNumber));
     input.signal?.throwIfAborted();
     if (!sched.ok || !sched.schedule?.stationList?.length) {
       logStep(
@@ -2440,9 +2594,44 @@ export class BookingV2Service {
           segmentCache,
           signal,
           hits,
+          false,
         );
       },
     );
+
+    const newlyFetched: Array<{
+      key: string;
+      value: SegmentProbeRow;
+      ttlMs?: number;
+    }> = [];
+    for (let i = 0; i < classCodes.length; i++) {
+      const c = classCodes[i];
+      const row = perClass[i];
+      const k = segmentAvailabilityCacheKey(
+        trainNo,
+        fromStn,
+        toStn,
+        dateDdMmYyyy,
+        c,
+        quota,
+      );
+      if (!hits.has(k) && row && !row.fetchError) {
+        newlyFetched.push({ key: k, value: row, ttlMs: AVL_SEGMENT_TTL_MS });
+      }
+    }
+    if (newlyFetched.length > 0) {
+      const c = segmentCache ?? this.cache;
+      if (typeof c.setMany === 'function') {
+        await c.setMany(newlyFetched).catch(() => undefined);
+      } else {
+        await Promise.all(
+          newlyFetched.map((it) =>
+            c.set(it.key, it.value, it.ttlMs).catch(() => undefined),
+          ),
+        );
+      }
+    }
+
     const bestConfirmedClassIndex = this.pickBestConfirmedClassIndex(perClass);
     const displayRow = perClass.find((p) => p.day)?.day ?? null;
     return { perClass, bestConfirmedClassIndex, displayRow };
@@ -2482,6 +2671,7 @@ export class BookingV2Service {
     segmentCache?: CacheService,
     signal?: AbortSignal,
     cachedSegments?: ReadonlyMap<string, SegmentProbeRow>,
+    persist = true,
   ): Promise<SegmentProbeRow> {
     signal?.throwIfAborted();
     if (this.isPastDate(dateDdMmYyyy)) {
@@ -2527,11 +2717,11 @@ export class BookingV2Service {
             day: this.extractAvlDay(raw, dateDdMmYyyy),
             fare: this.extractFare(raw),
           };
-          // Keep the write in the shared bounded job: one write per probe and no
-          // unbounded fire-and-forget writes competing for the DB pool.
-          await cache
-            .set(cacheKey, result, AVL_SEGMENT_TTL_MS)
-            .catch(() => undefined);
+          if (persist) {
+            await cache
+              .set(cacheKey, result, AVL_SEGMENT_TTL_MS)
+              .catch(() => undefined);
+          }
           return result;
         },
         signal,

@@ -28,6 +28,15 @@ export abstract class CacheService {
     return hits;
   }
 
+  /** Bulk persist; stores with network I/O override this with one query. */
+  async setMany<T>(
+    items: Array<{ key: string; value: T; ttlMs?: number }>,
+  ): Promise<void> {
+    await Promise.all(
+      items.map((item) => this.set(item.key, item.value, item.ttlMs)),
+    );
+  }
+
   /**
    * Return the cached value for `key`, or call `factory`, cache the result, and return it.
    */

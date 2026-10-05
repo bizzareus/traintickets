@@ -1223,6 +1223,7 @@ describe('NotificationService', () => {
       expect(sendWhatsAppSpy).toHaveBeenCalledWith(
         '9876543210',
         expect.stringContaining('LastBerth Chart Alert Active'),
+        expect.objectContaining({ templateName: 'chart_alert_confirmed' }),
       );
       const whatsappText = sendWhatsAppSpy.mock.calls[0][1];
       expect(whatsappText).toContain('Chart Preparation Schedule (2 Times)');

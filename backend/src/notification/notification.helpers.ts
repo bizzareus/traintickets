@@ -121,6 +121,18 @@ export function normalizeE164Mobile(phone: string): string {
   return digits;
 }
 
+/**
+ * Extract the short code from a `https://lastberth.com/s/<code>` short URL,
+ * for MSG91 templates that embed the `/s/` prefix and take only the code as
+ * a body variable. Passes anything else through unchanged.
+ */
+export function toShortLinkCode(url: string | null | undefined): string {
+  const trimmed = String(url ?? '').trim();
+  if (!trimmed) return 'N/A';
+  const match = /\/s\/([A-Za-z0-9_-]+)\/?(?:[?#].*)?$/.exec(trimmed);
+  return match?.[1] ?? trimmed;
+}
+
 export function ordinalEnglish(day: number): string {
   const j = day % 10;
   const k = day % 100;

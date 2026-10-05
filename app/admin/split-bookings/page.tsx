@@ -26,6 +26,8 @@ interface Passenger {
   age: number;
   gender: string;
   berthPreference?: string;
+  optBerth?: boolean;
+  foodChoice?: string;
   seniorCitizen?: boolean;
 }
 
@@ -56,6 +58,9 @@ export interface SplitBookingAdminEntry {
   passengers: {
     adults: Passenger[];
     children?: Array<{ name: string; age: number; gender: string }>;
+    confirmBerthsOnly?: boolean;
+    preferredCoach?: string | null;
+    travelInsurance?: boolean;
   };
   contactMobile: string;
   contactEmail: string;
@@ -2390,7 +2395,7 @@ function SplitBookingsAdminContent() {
                       "PASSENGERS",
                       ...(selectedDetailsBooking.passengers?.adults || []).map(
                         (p, idx) =>
-                          `${idx + 1}. ${p.name} | Age: ${p.age} | Gender: ${p.gender} | Berth: ${p.berthPreference || "No Preference"} | Senior citizen: ${p.seniorCitizen ? "Yes" : "No"}`,
+                          `${idx + 1}. ${p.name} | Age: ${p.age} | Gender: ${p.gender} | Berth: ${p.berthPreference || "No Preference"}${p.optBerth ? " (Opt Berth)" : ""}${p.foodChoice ? ` | Food: ${p.foodChoice}` : ""} | Senior citizen: ${p.seniorCitizen ? "Yes" : "No"}`,
                       ),
                       "",
                       "CHILDREN / INFANTS (BELOW 5)",
@@ -2402,9 +2407,12 @@ function SplitBookingsAdminContent() {
                         : ["None"]),
                       "",
                       `Auto-upgrade: ${selectedDetailsBooking.autoUpgrade ? "Yes" : "No"}`,
+                      `Book only if confirm berths are allotted: ${selectedDetailsBooking.passengers?.confirmBerthsOnly ? "Yes" : "No"}`,
+                      selectedDetailsBooking.passengers?.preferredCoach ? `Preferred Coach: ${selectedDetailsBooking.passengers.preferredCoach}` : null,
+                      `Travel Insurance: ${selectedDetailsBooking.passengers?.travelInsurance !== false ? "Yes" : "No"}`,
                       `Customer mobile: ${selectedDetailsBooking.contactMobile}`,
                       `Customer email: ${selectedDetailsBooking.contactEmail}`,
-                    ].join("\n");
+                    ].filter(Boolean).join("\n");
                     navigator.clipboard.writeText(text);
                     setCopiedRawDetails(true);
                     setTimeout(() => setCopiedRawDetails(false), 2000);
@@ -2474,6 +2482,24 @@ function SplitBookingsAdminContent() {
                     <span className="block text-slate-400 text-[11px]">Auto-Upgrade</span>
                     <span className="font-semibold text-slate-800">
                       {selectedDetailsBooking.autoUpgrade ? "Yes (Requested)" : "No"}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Confirm Berths Only</span>
+                    <span className="font-semibold text-slate-800">
+                      {selectedDetailsBooking.passengers?.confirmBerthsOnly ? "Yes (Required)" : "No"}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Preferred Coach</span>
+                    <span className="font-semibold text-slate-800">
+                      {selectedDetailsBooking.passengers?.preferredCoach || "None"}
+                    </span>
+                  </div>
+                  <div>
+                    <span className="block text-slate-400 text-[11px]">Travel Insurance</span>
+                    <span className="font-semibold text-slate-800">
+                      {selectedDetailsBooking.passengers?.travelInsurance !== false ? "Yes (Opted In)" : "No"}
                     </span>
                   </div>
                 </div>
@@ -2597,10 +2623,16 @@ function SplitBookingsAdminContent() {
                       <div className="font-semibold text-slate-900">
                         {idx + 1}. {p.name}
                       </div>
-                      <div className="flex items-center gap-3 text-[11px] text-slate-600">
+                      <div className="flex flex-wrap items-center gap-3 text-[11px] text-slate-600">
                         <span>Age: <strong>{p.age}</strong></span>
                         <span>Gender: <strong>{p.gender}</strong></span>
                         <span>Berth: <strong>{p.berthPreference || "No Preference"}</strong></span>
+                        {p.optBerth && (
+                          <span className="rounded bg-blue-50 px-1 py-0.5 text-blue-700 font-medium">Opt Berth</span>
+                        )}
+                        {p.foodChoice && (
+                          <span>Food: <strong>{p.foodChoice}</strong></span>
+                        )}
                         <span>Senior Citizen: <strong>{p.seniorCitizen ? "Yes" : "No"}</strong></span>
                       </div>
                     </div>

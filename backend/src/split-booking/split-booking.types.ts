@@ -9,6 +9,8 @@ export interface SplitBookingPassenger {
   age: number;
   gender: 'Male' | 'Female' | 'Transgender';
   berthPreference?: string;
+  optBerth?: boolean;
+  foodChoice?: 'Veg' | 'Non-Veg' | 'No Food' | '';
   seniorCitizen?: boolean;
 }
 
@@ -42,6 +44,9 @@ export interface CreateSplitBookingDto {
   passengers: SplitBookingPassenger[];
   childPassengers?: SplitBookingChildPassenger[];
   autoUpgrade?: boolean;
+  confirmBerthsOnly?: boolean;
+  preferredCoach?: string;
+  travelInsurance?: boolean;
   contactMobile: string;
   contactEmail: string;
 }

@@ -74,5 +74,12 @@ export const CONFIRMTKT_STATION_HEADERS: Record<string, string> = {
 
 /**
  * Maximum stations before boarding or after destination to shift when auto-exploring fallbacks.
+ * Default is 1 to keep latency bounded; configurable up to 3 via BOOKING_V2_MAX_STATIONS_OFFSET.
  */
-export const BOOKING_V2_MAX_STATIONS_OFFSET = 3;
+export const BOOKING_V2_MAX_STATIONS_OFFSET = (() => {
+  const n = Number.parseInt(
+    process.env.BOOKING_V2_MAX_STATIONS_OFFSET ?? '',
+    10,
+  );
+  return Number.isFinite(n) && n >= 0 && n <= 3 ? n : 1;
+})();

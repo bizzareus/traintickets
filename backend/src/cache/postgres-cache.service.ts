@@ -1,4 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { CacheService } from './cache.service';
 
@@ -30,6 +31,29 @@ export class PostgresCacheService extends CacheService {
       create: { key, value: value as object, expiresAt },
       update: { value: value as object, expiresAt, updatedAt: new Date() },
     });
+  }
+
+  override async setMany<T>(
+    items: Array<{ key: string; value: T; ttlMs?: number }>,
+  ): Promise<void> {
+    if (items.length === 0) return;
+    const now = new Date();
+    const CHUNK = 200;
+    for (let i = 0; i < items.length; i += CHUNK) {
+      const chunk = items.slice(i, i + CHUNK);
+      const values = chunk.map((it) => {
+        const expiresAt = it.ttlMs ? new Date(Date.now() + it.ttlMs) : null;
+        return Prisma.sql`(${it.key}, ${JSON.stringify(it.value)}::jsonb, ${expiresAt}, ${now})`;
+      });
+      await this.prisma.$executeRaw`
+        INSERT INTO "cache_entry" ("key", "value", "expires_at", "updated_at")
+        VALUES ${Prisma.join(values)}
+        ON CONFLICT ("key") DO UPDATE SET
+          "value" = EXCLUDED."value",
+          "expires_at" = EXCLUDED."expires_at",
+          "updated_at" = EXCLUDED."updated_at"
+      `;
+    }
   }
 
   async getMany<T>(keys: string[]): Promise<Map<string, T>> {

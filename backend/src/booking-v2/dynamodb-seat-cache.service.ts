@@ -65,6 +65,8 @@ export interface SeatCacheInventory {
 const DEFAULT_TABLE_NAME = 'lastberth-train-seat-cache';
 const DEFAULT_REGION = 'ap-south-1';
 const ROUTE_PREFIX = 'ROUTE#';
+const ALT_PATH_PREFIX = 'ALTPATH#';
+const BEST_TRAIN_PREFIX = 'BESTTRAIN#';
 const DEFAULT_TTL_SECONDS = 48 * 3600; // 48 hours
 const STATION_CODE_RE = /^[A-Z0-9]{2,6}$/;
 /** Serve a repeated admin inventory view from memory instead of re-scanning. */
@@ -93,6 +95,37 @@ export class DynamoDbSeatCacheService {
   private readonly tableName: string;
   private inventoryCache: { at: number; value: SeatCacheInventory } | null =
     null;
+  /** In-memory L1 cache for hot route searches (TTL 60s, max 500 entries) */
+  private readonly l1RouteCache = new Map<
+    string,
+    { expiresAt: number; value: Record<string, unknown> }
+  >();
+  /** In-memory L1 cache for hot alt path searches (TTL 60s, max 1000 entries) */
+  private readonly l1AltPathCache = new Map<
+    string,
+    { expiresAt: number; value: Record<string, unknown> }
+  >();
+  /** In-memory L1 cache for hot best train searches (TTL 60s, max 500 entries) */
+  private readonly l1BestTrainCache = new Map<
+    string,
+    {
+      expiresAt: number;
+      value: {
+        value: Record<string, unknown>;
+        cachedAt: Date;
+        expiresAt: Date;
+      };
+    }
+  >();
+
+  private trimL1Cache<K, V>(map: Map<K, V>, maxSize: number): void {
+    if (map.size >= maxSize) {
+      const iter = map.keys().next();
+      if (!iter.done && iter.value !== undefined) {
+        map.delete(iter.value);
+      }
+    }
+  }
 
   constructor() {
     this.tableName =
@@ -211,6 +244,12 @@ export class DynamoDbSeatCacheService {
         summaryCount++;
         continue;
       }
+      if (
+        trainNumber.startsWith(ALT_PATH_PREFIX) ||
+        trainNumber.startsWith(BEST_TRAIN_PREFIX)
+      ) {
+        continue;
+      }
 
       seatItemCount++;
       const dateClass = toSafeString(item.dateClass);
@@ -292,15 +331,13 @@ export class DynamoDbSeatCacheService {
   }
 
   /**
-   * Look up precomputed train search results for a route and date from DynamoDB.
+   * Look up precomputed train search results for a route and date from DynamoDB (with in-memory L1 cache).
    */
   async getRouteCachedSearch(
     from: string,
     to: string,
     journeyDateYmd: string,
   ): Promise<RouteCacheLookupResult> {
-    if (!this.docClient) return { status: 'disabled', value: null };
-
     const f = from.trim().toUpperCase();
     const t = to.trim().toUpperCase();
     if (!STATION_CODE_RE.test(f) || !STATION_CODE_RE.test(t)) {
@@ -308,6 +345,18 @@ export class DynamoDbSeatCacheService {
     }
     const d = journeyDateYmd.trim();
     const routeKey = `${ROUTE_PREFIX}${f}#${t}`;
+    const l1Key = `${routeKey}#${d}`;
+
+    const now = Date.now();
+    const l1Hit = this.l1RouteCache.get(l1Key);
+    if (l1Hit) {
+      if (l1Hit.expiresAt > now) {
+        return { status: 'hit', value: l1Hit.value };
+      }
+      this.l1RouteCache.delete(l1Key);
+    }
+
+    if (!this.docClient) return { status: 'disabled', value: null };
 
     try {
       const res = await this.docClient.send(
@@ -322,16 +371,19 @@ export class DynamoDbSeatCacheService {
 
       if (!res.Item) return { status: 'miss', value: null };
 
-      const nowSecs = Math.floor(Date.now() / 1000);
+      const nowSecs = Math.floor(now / 1000);
       if (res.Item.ttl && res.Item.ttl < nowSecs) {
         return { status: 'miss', value: null };
       }
 
       const raw = res.Item.rawSearch;
       if (raw && typeof raw === 'object') {
+        const val = raw as Record<string, unknown>;
+        this.trimL1Cache(this.l1RouteCache, 500);
+        this.l1RouteCache.set(l1Key, { expiresAt: now + 60_000, value: val });
         return {
           status: 'hit',
-          value: raw as Record<string, unknown>,
+          value: val,
         };
       }
       return { status: 'miss', value: null };
@@ -353,13 +405,24 @@ export class DynamoDbSeatCacheService {
     rawSearch: Record<string, unknown>,
     ttlSeconds = DEFAULT_TTL_SECONDS,
   ): Promise<void> {
-    if (!this.docClient || !rawSearch) return;
+    if (!rawSearch) return;
 
     const f = from.trim().toUpperCase();
     const t = to.trim().toUpperCase();
     if (!STATION_CODE_RE.test(f) || !STATION_CODE_RE.test(t)) return;
     const d = journeyDateYmd.trim();
     const routeKey = `${ROUTE_PREFIX}${f}#${t}`;
+    const l1Key = `${routeKey}#${d}`;
+
+    // Update in-memory L1 cache immediately
+    this.trimL1Cache(this.l1RouteCache, 500);
+    this.l1RouteCache.set(l1Key, {
+      expiresAt: Date.now() + 60_000,
+      value: rawSearch,
+    });
+
+    if (!this.docClient) return;
+
     const nowSecs = Math.floor(Date.now() / 1000);
     const ttl = nowSecs + ttlSeconds;
     const nowIso = new Date().toISOString();
@@ -612,6 +675,334 @@ export class DynamoDbSeatCacheService {
     } catch (err) {
       this.logger.warn(
         `[DynamoDB] getAvailabilitySummary failed for ${catKey}: ${awsErrorLabel(err)}`,
+      );
+      return null;
+    }
+  }
+
+  /**
+   * Save a computed alternate-path split result into DynamoDB (with in-memory L1 cache).
+   */
+  async saveAltPath(
+    from: string,
+    to: string,
+    trainNumber: string,
+    dateDdMmYyyy: string,
+    classKey: string,
+    quota: string,
+    result: Record<string, unknown>,
+    ttlSeconds = 6 * 3600,
+  ): Promise<void> {
+    if (!result) return;
+
+    const f = from.trim().toUpperCase();
+    const t = to.trim().toUpperCase();
+    const tn = trainNumber.trim();
+    const d = dateDdMmYyyy.trim();
+    const q = (quota || 'GN').trim().toUpperCase();
+    const ck = (classKey || 'ALL').trim().toUpperCase();
+    const routeKey = `${ALT_PATH_PREFIX}${f}#${t}`;
+    const sortKey = `${tn}#${ck}#${d}#${q}`;
+    const l1Key = `${routeKey}#${sortKey}`;
+
+    // Update in-memory L1 cache
+    this.trimL1Cache(this.l1AltPathCache, 1000);
+    this.l1AltPathCache.set(l1Key, {
+      expiresAt: Date.now() + 60_000,
+      value: result,
+    });
+
+    if (!this.docClient) return;
+
+    const nowSecs = Math.floor(Date.now() / 1000);
+    const ttl = nowSecs + ttlSeconds;
+    const nowIso = new Date().toISOString();
+
+    try {
+      await this.docClient.send(
+        new PutCommand({
+          TableName: this.tableName,
+          Item: {
+            trainNumber: routeKey,
+            dateClass: sortKey,
+            from: f,
+            to: t,
+            trainNo: tn,
+            classKey: ck,
+            date: d,
+            quota: q,
+            result,
+            updatedAt: nowIso,
+            ttl,
+          },
+        }),
+      );
+    } catch (err) {
+      this.logger.warn(
+        `[DynamoDB] Failed saving alt path for ${routeKey} ${sortKey}: ${awsErrorLabel(err)}`,
+      );
+    }
+  }
+
+  /**
+   * Look up a single cached alternate path by exact parameters (with in-memory L1 cache).
+   */
+  async getAltPath(
+    from: string,
+    to: string,
+    trainNumber: string,
+    dateDdMmYyyy: string,
+    classKey: string,
+    quota = 'GN',
+  ): Promise<Record<string, unknown> | null> {
+    const f = from.trim().toUpperCase();
+    const t = to.trim().toUpperCase();
+    const tn = trainNumber.trim();
+    const d = dateDdMmYyyy.trim();
+    const q = (quota || 'GN').trim().toUpperCase();
+    const ck = (classKey || 'ALL').trim().toUpperCase();
+    const routeKey = `${ALT_PATH_PREFIX}${f}#${t}`;
+    const sortKey = `${tn}#${ck}#${d}#${q}`;
+    const l1Key = `${routeKey}#${sortKey}`;
+
+    const now = Date.now();
+    const l1Hit = this.l1AltPathCache.get(l1Key);
+    if (l1Hit) {
+      if (l1Hit.expiresAt > now) {
+        return l1Hit.value;
+      }
+      this.l1AltPathCache.delete(l1Key);
+    }
+
+    if (!this.docClient) return null;
+
+    try {
+      const res = await this.docClient.send(
+        new GetCommand({
+          TableName: this.tableName,
+          Key: {
+            trainNumber: routeKey,
+            dateClass: sortKey,
+          },
+        }),
+      );
+
+      if (!res.Item) return null;
+      const nowSecs = Math.floor(now / 1000);
+      if (res.Item.ttl && res.Item.ttl < nowSecs) return null;
+
+      if (res.Item.result && typeof res.Item.result === 'object') {
+        const val = res.Item.result as Record<string, unknown>;
+        this.trimL1Cache(this.l1AltPathCache, 1000);
+        this.l1AltPathCache.set(l1Key, { expiresAt: now + 60_000, value: val });
+        return val;
+      }
+      return null;
+    } catch (err) {
+      this.logger.warn(
+        `[DynamoDB] getAltPath failed for ${routeKey} ${sortKey}: ${awsErrorLabel(err)}`,
+      );
+      return null;
+    }
+  }
+
+  /**
+   * Find all cached alternate paths for a route and date using a fast DynamoDB Query.
+   */
+  async findAltPathsByRouteAndDate(
+    from: string,
+    to: string,
+    dateDdMmYyyy: string,
+    quota = 'GN',
+  ): Promise<
+    Array<{
+      trainNumber: string;
+      classKey: string;
+      result: Record<string, unknown>;
+    }>
+  > {
+    if (!this.docClient) return [];
+
+    const f = from.trim().toUpperCase();
+    const t = to.trim().toUpperCase();
+    const d = dateDdMmYyyy.trim();
+    const q = (quota || 'GN').trim().toUpperCase();
+    const routeKey = `${ALT_PATH_PREFIX}${f}#${t}`;
+    const dateSuffix = `#${d}#${q}`;
+
+    try {
+      const res = await this.docClient.send(
+        new QueryCommand({
+          TableName: this.tableName,
+          KeyConditionExpression: 'trainNumber = :pk',
+          ExpressionAttributeValues: {
+            ':pk': routeKey,
+          },
+          ConsistentRead: false,
+        }),
+      );
+
+      if (!res.Items || res.Items.length === 0) return [];
+
+      const nowSecs = Math.floor(Date.now() / 1000);
+      const out: Array<{
+        trainNumber: string;
+        classKey: string;
+        result: Record<string, unknown>;
+      }> = [];
+
+      for (const item of res.Items) {
+        if (item.ttl && item.ttl < nowSecs) continue;
+        const sortKey = toSafeString(item.dateClass);
+        if (!sortKey.endsWith(dateSuffix)) continue;
+
+        const parts = sortKey.split('#');
+        if (parts.length < 4) continue;
+        const trainNumber = parts[0];
+        const classKey = parts[1];
+        const result = item.result as Record<string, unknown>;
+        if (!result || typeof result !== 'object') continue;
+
+        out.push({ trainNumber, classKey, result });
+      }
+
+      return out;
+    } catch (err) {
+      this.logger.warn(
+        `[DynamoDB] findAltPathsByRouteAndDate failed for ${routeKey} ${d}: ${awsErrorLabel(err)}`,
+      );
+      return [];
+    }
+  }
+
+  /**
+   * Save a cached best-train payload into DynamoDB (with in-memory L1 cache).
+   */
+  async saveBestTrain(
+    from: string,
+    to: string,
+    dateDdMmYyyy: string,
+    payload: Record<string, unknown>,
+    ttlSeconds = 24 * 3600,
+  ): Promise<void> {
+    if (!payload) return;
+
+    const f = from.trim().toUpperCase();
+    const t = to.trim().toUpperCase();
+    const d = dateDdMmYyyy.trim();
+    const routeKey = `${BEST_TRAIN_PREFIX}${f}#${t}`;
+    const l1Key = `${routeKey}#${d}`;
+    const nowSecs = Math.floor(Date.now() / 1000);
+    const ttl = nowSecs + ttlSeconds;
+    const nowIso = new Date().toISOString();
+
+    // Update in-memory L1 cache
+    this.trimL1Cache(this.l1BestTrainCache, 500);
+    this.l1BestTrainCache.set(l1Key, {
+      expiresAt: Date.now() + 60_000,
+      value: {
+        value: payload,
+        cachedAt: new Date(),
+        expiresAt: new Date(ttl * 1000),
+      },
+    });
+
+    if (!this.docClient) return;
+
+    try {
+      await this.docClient.send(
+        new PutCommand({
+          TableName: this.tableName,
+          Item: {
+            trainNumber: routeKey,
+            dateClass: d,
+            from: f,
+            to: t,
+            date: d,
+            payload,
+            cachedAt: nowIso,
+            updatedAt: nowIso,
+            ttl,
+          },
+        }),
+      );
+    } catch (err) {
+      this.logger.warn(
+        `[DynamoDB] saveBestTrain failed for ${routeKey} ${d}: ${awsErrorLabel(err)}`,
+      );
+    }
+  }
+
+  /**
+   * Look up a cached best-train record by OD and date from DynamoDB (with in-memory L1 cache).
+   */
+  async getBestTrain(
+    from: string,
+    to: string,
+    dateDdMmYyyy: string,
+  ): Promise<{
+    value: Record<string, unknown>;
+    cachedAt: Date;
+    expiresAt: Date;
+  } | null> {
+    const f = from.trim().toUpperCase();
+    const t = to.trim().toUpperCase();
+    const d = dateDdMmYyyy.trim();
+    const routeKey = `${BEST_TRAIN_PREFIX}${f}#${t}`;
+    const l1Key = `${routeKey}#${d}`;
+
+    const now = Date.now();
+    const l1Hit = this.l1BestTrainCache.get(l1Key);
+    if (l1Hit) {
+      if (l1Hit.expiresAt > now) {
+        return l1Hit.value;
+      }
+      this.l1BestTrainCache.delete(l1Key);
+    }
+
+    if (!this.docClient) return null;
+
+    try {
+      const res = await this.docClient.send(
+        new GetCommand({
+          TableName: this.tableName,
+          Key: {
+            trainNumber: routeKey,
+            dateClass: d,
+          },
+        }),
+      );
+
+      if (!res.Item) return null;
+      const nowSecs = Math.floor(now / 1000);
+      if (res.Item.ttl && res.Item.ttl < nowSecs) return null;
+
+      const payload = res.Item.payload;
+      if (!payload || typeof payload !== 'object') return null;
+
+      const cachedAt = res.Item.cachedAt
+        ? new Date(String(res.Item.cachedAt))
+        : new Date();
+      const expiresAt = res.Item.ttl
+        ? new Date(Number(res.Item.ttl) * 1000)
+        : new Date(Date.now() + 86400000);
+
+      const entry = {
+        value: payload as Record<string, unknown>,
+        cachedAt,
+        expiresAt,
+      };
+
+      this.trimL1Cache(this.l1BestTrainCache, 500);
+      this.l1BestTrainCache.set(l1Key, {
+        expiresAt: now + 60_000,
+        value: entry,
+      });
+
+      return entry;
+    } catch (err) {
+      this.logger.warn(
+        `[DynamoDB] getBestTrain failed for ${routeKey} ${d}: ${awsErrorLabel(err)}`,
       );
       return null;
     }

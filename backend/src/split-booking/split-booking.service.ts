@@ -32,6 +32,7 @@ import { bookingDetails, bookingPnrFields } from './split-booking.helpers';
 import { ManualBookingService } from './manual-booking.service';
 import { NotificationService } from '../notification/notification.service';
 import { WasenderProvider } from '../notification/whatsapp-providers/wasender.provider';
+import { WhatsAppProviderFactory } from '../notification/whatsapp-providers/whatsapp.provider-factory';
 import { escapeHtml } from '../notification/notification.helpers';
 import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import { S3StorageService } from '../common/s3-storage.service';
@@ -56,6 +57,7 @@ export class SplitBookingService {
     private readonly manualBooking: ManualBookingService,
     @Optional() private readonly notifications?: NotificationService,
     @Optional() private readonly wasender?: WasenderProvider,
+    @Optional() private readonly whatsappFactory?: WhatsAppProviderFactory,
     @Optional() private readonly posthog?: PostHogAnalyticsService,
     @Optional() private readonly s3Storage?: S3StorageService,
     @Optional() private readonly razorpay?: RazorpayClient,
@@ -74,6 +76,40 @@ export class SplitBookingService {
       code += chars[bytes[i] % chars.length];
     }
     return `LB-${code}`;
+  }
+
+  /**
+   * Send a booking WhatsApp via the active provider (MSG91 template when
+   * configured), falling back to freeform Wasender when the templated send
+   * fails — e.g. while a new MSG91 template is pending Meta approval.
+   */
+  private async sendBookingWhatsApp(
+    mobile: string | null | undefined,
+    text: string,
+    templateName: string,
+    parameters: Array<{ name: string; value: string }>,
+  ): Promise<boolean> {
+    if (!mobile?.trim()) return false;
+    const trimmed = mobile.trim();
+    const factory = this.whatsappFactory;
+    if (factory) {
+      const sent = await factory
+        .sendWhatsApp({ mobile: trimmed, text, templateName, parameters })
+        .catch(() => false);
+      if (sent) return true;
+      if (factory.providerName === 'msg91' && this.wasender) {
+        return this.wasender
+          .sendWhatsApp({ mobile: trimmed, text })
+          .catch(() => false);
+      }
+      return false;
+    }
+    if (this.wasender) {
+      return this.wasender
+        .sendWhatsApp({ mobile: trimmed, text })
+        .catch(() => false);
+    }
+    return false;
   }
 
   private getServiceFeeRate(): number {
@@ -180,6 +216,9 @@ export class SplitBookingService {
         passengers: {
           adults: dto.passengers,
           children: dto.childPassengers ?? [],
+          confirmBerthsOnly: dto.confirmBerthsOnly ?? false,
+          preferredCoach: dto.preferredCoach?.trim() || null,
+          travelInsurance: dto.travelInsurance ?? true,
         } as unknown as Prisma.InputJsonValue,
         contactMobile: dto.contactMobile.trim(),
         contactEmail: dto.contactEmail.trim(),
@@ -1073,7 +1112,7 @@ export class SplitBookingService {
 
     // Send customer WhatsApp if requested
     if (channel === 'whatsapp' || channel === 'both') {
-      if (this.wasender && booking.contactMobile) {
+      if (booking.contactMobile) {
         const pnrListText = legPnrs
           .map(
             (l) => `• *${l.step}* (${l.route} - ${l.travelClass}): *${l.pnr}*`,
@@ -1103,12 +1142,26 @@ ${passengerListText}
 ${pdfText}${noteText}
 Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
 
-        whatsappSent = await this.wasender
-          .sendWhatsApp({
-            mobile: booking.contactMobile,
-            text: whatsappText,
-          })
-          .catch(() => false);
+        // Matches MSG91 `split_booking_confirmed`: {{1}} train no,
+        // {{2}} route, {{3}} date, {{4}} ref, {{5}} PNR block,
+        // {{6}} passenger block, {{7}} PDF/note block.
+        whatsappSent = await this.sendBookingWhatsApp(
+          booking.contactMobile,
+          whatsappText,
+          'split_booking_confirmed',
+          [
+            { name: 'train_number', value: booking.trainNumber },
+            {
+              name: 'route',
+              value: `${booking.fromStationCode} → ${booking.toStationCode}`,
+            },
+            { name: 'journey_date', value: journeyDateStr },
+            { name: 'booking_ref', value: booking.bookingRef },
+            { name: 'pnr_details', value: pnrListText },
+            { name: 'passengers', value: passengerListText },
+            { name: 'ticket_pdf', value: `${pdfText}${noteText}`.trim() },
+          ],
+        );
 
         if (whatsappSent) {
           await this.prisma.splitTicketBooking.update({
@@ -1208,7 +1261,7 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
         .catch(() => false);
     }
 
-    if (needsWhatsapp && this.wasender && booking.contactMobile) {
+    if (needsWhatsapp && booking.contactMobile) {
       const whatsappText = `*Payment Received — LastBerth*
 Booking Ref: *${booking.bookingRef}*
 Train: ${booking.trainNumber} ${booking.trainName || ''}
@@ -1223,12 +1276,25 @@ https://v2.lastberth.com/cancel-booking?ref=${encodeURIComponent(booking.booking
 
 Need help? Contact us on WhatsApp at +91 99992 24767.`;
 
-      whatsappSent = await this.wasender
-        .sendWhatsApp({
-          mobile: booking.contactMobile,
-          text: whatsappText,
-        })
-        .catch(() => false);
+      // Matches MSG91 `split_booking_payment_received`: {{1}} amount,
+      // {{2}} ref, {{3}} train no, {{4}} route, {{5}} date,
+      // {{6}} ref for the cancel link.
+      whatsappSent = await this.sendBookingWhatsApp(
+        booking.contactMobile,
+        whatsappText,
+        'split_booking_payment_received',
+        [
+          { name: 'amount', value: String(price.amount) },
+          { name: 'booking_ref', value: booking.bookingRef },
+          { name: 'train_number', value: booking.trainNumber },
+          {
+            name: 'route',
+            value: `${booking.fromStationCode} → ${booking.toStationCode}`,
+          },
+          { name: 'journey_date', value: journeyDateStr },
+          { name: 'cancel_ref', value: booking.bookingRef },
+        ],
+      );
     }
 
     const updates: Prisma.SplitTicketBookingUpdateInput = {};
@@ -1439,7 +1505,7 @@ Need help? Contact us on WhatsApp at +91 99992 24767.`;
         .catch(() => false);
     }
 
-    if (this.wasender) {
+    if (adminMobile) {
       const whatsappText = `⚠️ *NEW CANCELLATION REQUEST*
 Booking Ref: *${booking.bookingRef}*
 Train: ${booking.trainNumber} ${booking.trainName || ''}
@@ -1454,12 +1520,30 @@ Reason: ${reason || 'None provided'}
 
 Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
 
-      adminWhatsappSent = await this.wasender
-        .sendWhatsApp({
-          mobile: adminMobile,
-          text: whatsappText,
-        })
-        .catch(() => false);
+      // Matches MSG91 `split_booking_cancellation_admin`: {{1}} ref,
+      // {{2}} train no, {{3}} route, {{4}} date, {{5}} amount,
+      // {{6}} customer, {{7}} mobile, {{8}} PNRs, {{9}} status,
+      // {{10}} reason.
+      adminWhatsappSent = await this.sendBookingWhatsApp(
+        adminMobile,
+        whatsappText,
+        'split_booking_cancellation_admin',
+        [
+          { name: 'booking_ref', value: booking.bookingRef },
+          { name: 'train_number', value: booking.trainNumber },
+          {
+            name: 'route',
+            value: `${booking.fromStationCode} → ${booking.toStationCode}`,
+          },
+          { name: 'journey_date', value: journeyDateStr },
+          { name: 'amount', value: String(price.amount) },
+          { name: 'customer', value: booking.contactEmail },
+          { name: 'customer_mobile', value: booking.contactMobile },
+          { name: 'pnrs', value: pnrList },
+          { name: 'status', value: booking.bookingStatus },
+          { name: 'reason', value: reason || 'None provided' },
+        ],
+      );
     }
 
     const updates: Prisma.BookingCancellationRequestUpdateInput = {};

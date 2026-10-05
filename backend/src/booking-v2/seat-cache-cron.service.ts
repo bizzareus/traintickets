@@ -561,9 +561,19 @@ export class SeatCacheCronService {
           ownerId: this.ownerId,
         },
       });
+
+      // Periodically clean up expired route_caching rows from PostgreSQL
+      const deleted = await this.prisma.routeCaching.deleteMany({
+        where: { expiresAt: { lte: new Date() } },
+      });
+      if (deleted.count > 0) {
+        this.logger.log(
+          `[seat-cache-cron] purged ${deleted.count} expired route_caching records from database`,
+        );
+      }
     } catch (e) {
       this.logger.warn(
-        `[seat-cache-cron] could not persist run record: ${e instanceof Error ? e.message : String(e)}`,
+        `[seat-cache-cron] could not persist run record or clean expired cache: ${e instanceof Error ? e.message : String(e)}`,
       );
     }
 

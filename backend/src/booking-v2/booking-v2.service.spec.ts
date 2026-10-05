@@ -40,11 +40,16 @@ const mockPostHogAnalytics = {
 };
 
 const mockCache: jest.Mocked<
-  Pick<CacheService, 'get' | 'getMany' | 'set' | 'del' | 'getOrSet'>
+  Pick<CacheService, 'get' | 'getMany' | 'set' | 'setMany' | 'del' | 'getOrSet'>
 > = {
   get: jest.fn().mockResolvedValue(null),
   getMany: jest.fn().mockResolvedValue(new Map()),
   set: jest.fn().mockResolvedValue(undefined),
+  setMany: jest.fn().mockImplementation(async (items) => {
+    for (const item of items) {
+      await mockCache.set(item.key, item.value, item.ttlMs);
+    }
+  }),
   del: jest.fn().mockResolvedValue(undefined),
   getOrSet: jest
     .fn()

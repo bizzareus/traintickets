@@ -214,7 +214,7 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
   });
 
   describe('Msg91Provider', () => {
-    it('sends chart_alert_tickets_found template with first 4 parameters as bodies', async () => {
+    it('sends chart_alert_tickets_found template with 4 dashboard bodies', async () => {
       const config = mockConfig({
         MSG91_AUTH_KEY: 'msg91_secret',
         MSG91_INTEGRATED_NUMBER: '15554731911',
@@ -227,14 +227,13 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       const result = await provider.sendWhatsApp({
         mobile: '9876543210',
         text: 'Fallback text',
-        templateName: 'subscription_alert',
+        templateName: 'chart_alert_tickets_found',
         parameters: [
-          { name: 'name', value: 'Passenger' },
-          { name: 'train_number', value: '11039' },
-          { name: 'train_name', value: 'Maharashtra Exp' },
-          { name: 'from_code', value: 'PUNE' },
-          { name: 'to_code', value: 'NGP' },
-          { name: 'journey_date', value: '12 Sep 2026' },
+          { name: 'train_line', value: '11039 Maharashtra Exp' },
+          { name: 'route_date', value: 'PUNE → NGP\n12 Sep 2026' },
+          { name: 'availability', value: 'Ticket 1 [2A] | AVL 3' },
+          { name: 'booking', value: 'approx ₹770 Book on IRCTC' },
+          { name: 'extra', value: 'dropped' },
         ],
       });
 
@@ -263,10 +262,10 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
               {
                 to: ['919876543210'],
                 components: {
-                  body_1: { type: 'text', value: 'Passenger' },
-                  body_2: { type: 'text', value: '11039' },
-                  body_3: { type: 'text', value: 'Maharashtra Exp' },
-                  body_4: { type: 'text', value: 'PUNE' },
+                  body_1: { type: 'text', value: '11039 Maharashtra Exp' },
+                  body_2: { type: 'text', value: 'PUNE → NGP\n12 Sep 2026' },
+                  body_3: { type: 'text', value: 'Ticket 1 [2A] | AVL 3' },
+                  body_4: { type: 'text', value: 'approx ₹770 Book on IRCTC' },
                 },
               },
             ],
@@ -275,7 +274,7 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       });
     });
 
-    it('maps uncovered-leg templates to chart_alert_no_ticket_found with 5 bodies', async () => {
+    it('maps legacy uncovered-leg names to chart_alert_no_ticket_found with 5 bodies', async () => {
       const config = mockConfig({ MSG91_AUTH_KEY: 'msg91_secret' });
       const provider = new Msg91Provider(config);
 
@@ -319,7 +318,7 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       });
     });
 
-    it('maps chart-prepare flow (few parameters) to chart_prepare template', async () => {
+    it('sends chart_prepare template directly by dashboard name', async () => {
       const config = mockConfig({ MSG91_AUTH_KEY: 'msg91_secret' });
       const provider = new Msg91Provider(config);
 
@@ -328,20 +327,75 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       const result = await provider.sendWhatsApp({
         mobile: '9876543210',
         text: 'Fallback text',
-        templateName: 'subscription_alert',
+        templateName: 'chart_prepare',
         parameters: [
-          { name: 'train_number', value: '11039' },
-          { name: 'train_name', value: 'Maharashtra Exp' },
-          { name: 'journey_date', value: '2026-09-12' },
-          { name: 'check_url', value: 'https://lastberth.com/r/abc' },
+          { name: 'train_label', value: '11039 Maharashtra Exp' },
+          { name: 'chart_time', value: 'Fri, Sep 12 at 10:19 AM' },
+          { name: 'check_code', value: 'abc123' },
+          { name: 'unsubscribe_code', value: 'def456' },
         ],
       });
 
       expect(result).toBe(true);
       expect(mockedAxios.post.mock.calls[0][1]).toMatchObject({
-        payload: { template: { name: 'chart_prepare' } },
+        payload: {
+          template: {
+            name: 'chart_prepare',
+            to_and_components: [
+              {
+                components: {
+                  body_1: { type: 'text', value: '11039 Maharashtra Exp' },
+                  body_2: {
+                    type: 'text',
+                    value: 'Fri, Sep 12 at 10:19 AM',
+                  },
+                  body_3: { type: 'text', value: 'abc123' },
+                  body_4: { type: 'text', value: 'def456' },
+                },
+              },
+            ],
+          },
+        },
       });
     });
+
+    it.each([
+      ['tatkal_alert_confirmed', 6],
+      ['chart_alert_confirmed', 5],
+      ['check_failed_notice', 4],
+      ['manual_booking_admin', 7],
+      ['split_booking_confirmed', 7],
+      ['split_booking_payment_received', 6],
+      ['split_booking_cancellation_admin', 10],
+    ])(
+      'sends dashboard template %s with %i bodies',
+      async (templateName, slots) => {
+        const config = mockConfig({ MSG91_AUTH_KEY: 'msg91_secret' });
+        const provider = new Msg91Provider(config);
+        mockedAxios.post.mockResolvedValueOnce({ data: { type: 'success' } });
+
+        const result = await provider.sendWhatsApp({
+          mobile: '9876543210',
+          text: 'Fallback text',
+          templateName,
+          parameters: Array.from({ length: slots }, (_, i) => ({
+            name: `p${i + 1}`,
+            value: `v${i + 1}`,
+          })),
+        });
+
+        expect(result).toBe(true);
+        const sentTemplate = mockedAxios.post.mock.calls[0][1].payload
+          .template as {
+          name: string;
+          to_and_components: Array<{ components: Record<string, unknown> }>;
+        };
+        expect(sentTemplate.name).toBe(templateName);
+        expect(
+          Object.keys(sentTemplate.to_and_components[0].components),
+        ).toHaveLength(slots);
+      },
+    );
 
     it('returns false without calling the API when MSG91_AUTH_KEY is missing', async () => {
       const config = mockConfig({});

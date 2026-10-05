@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Optional } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { RouteCachingTableStore } from '../route-cache/route-caching-table.store';
+import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import type { FindAlternatePathsResult } from './booking-v2.service';
 
 /**
@@ -51,8 +52,86 @@ export function alternatePathsCacheKey(
  */
 @Injectable()
 export class AlternatePathsRouteCache extends RouteCachingTableStore<FindAlternatePathsResult> {
-  constructor(prisma: PrismaService) {
+  constructor(
+    prisma: PrismaService,
+    @Optional() private readonly dynamoDb?: DynamoDbSeatCacheService,
+  ) {
     super(prisma);
+  }
+
+  /** Override set to save in DynamoDB and PostgreSQL */
+  override async set(
+    key: string,
+    value: FindAlternatePathsResult,
+    ttlMs: number,
+  ): Promise<void> {
+    // 1. Try DynamoDB first
+    if (this.dynamoDb?.isAvailable) {
+      try {
+        const parts = key.split(':');
+        // Format: alt-paths:v3:FROM:TO:TRAINNUM:CLASSKEY:DATE:QUOTA
+        if (parts.length >= 8) {
+          const from = parts[2];
+          const to = parts[3];
+          const trainNumber = parts[4];
+          const classKey = parts[5];
+          const date = parts[6];
+          const quota = parts[7];
+          const ttlSeconds = Math.max(60, Math.floor(ttlMs / 1000));
+          await this.dynamoDb.saveAltPath(
+            from,
+            to,
+            trainNumber,
+            date,
+            classKey,
+            quota,
+            value as unknown as Record<string, unknown>,
+            ttlSeconds,
+          );
+        }
+      } catch (e) {
+        this.logger.warn(
+          `Failed saving alt path to DynamoDB: ${e instanceof Error ? e.message : String(e)}`,
+        );
+      }
+    }
+
+    // 2. Also keep Postgres in sync
+    await super.set(key, value, ttlMs);
+  }
+
+  /** Override get to read from DynamoDB first, falling back to PostgreSQL */
+  override async get(key: string): Promise<FindAlternatePathsResult | null> {
+    if (this.dynamoDb?.isAvailable) {
+      try {
+        const parts = key.split(':');
+        if (parts.length >= 8) {
+          const from = parts[2];
+          const to = parts[3];
+          const trainNumber = parts[4];
+          const classKey = parts[5];
+          const date = parts[6];
+          const quota = parts[7];
+          const item = await this.dynamoDb.getAltPath(
+            from,
+            to,
+            trainNumber,
+            date,
+            classKey,
+            quota,
+          );
+          if (item) {
+            return item as unknown as FindAlternatePathsResult;
+          }
+        }
+      } catch (e) {
+        this.logger.warn(
+          `Failed reading alt path from DynamoDB: ${e instanceof Error ? e.message : String(e)}`,
+        );
+      }
+    }
+
+    return super.get(key);
   }
 
   async findByRouteAndDate(
@@ -79,13 +158,36 @@ export class AlternatePathsRouteCache extends RouteCachingTableStore<FindAlterna
         .toUpperCase() || 'GN';
     if (!f || !t || !normalizedDate) return [];
 
+    // 1. Try fast DynamoDB query by route first
+    if (this.dynamoDb?.isAvailable) {
+      try {
+        const dynamoResults = await this.dynamoDb.findAltPathsByRouteAndDate(
+          f,
+          t,
+          normalizedDate,
+          q,
+        );
+        if (dynamoResults.length > 0) {
+          return dynamoResults as Array<{
+            trainNumber: string;
+            classKey: string;
+            result: FindAlternatePathsResult;
+          }>;
+        }
+      } catch (e) {
+        this.logger.warn(
+          `findByRouteAndDate DynamoDB failed for ${f}->${t}: ${e instanceof Error ? e.message : String(e)}`,
+        );
+      }
+    }
+
+    // 2. Fall back to PostgreSQL
     const prefix = `alt-paths:v3:${f}:${t}:`;
     const suffix = `:${normalizedDate}:${q}`;
 
     try {
       // Use only `startsWith: prefix` so PostgreSQL can use the B-Tree index
-      // on primary key `cache_key`. `endsWith` prevents index range scans and forces
-      // expensive sequential table scans. We filter `endsWith` in memory instead.
+      // on primary key `cache_key`.
       const rows = await this.prisma.routeCaching.findMany({
         where: {
           cacheKey: {

@@ -62,6 +62,8 @@ const BERTH_OPTIONS = [
   "Window Side",
 ];
 
+const FOOD_OPTIONS = ["Veg", "Non-Veg", "No Food"] as const;
+
 export function SplitTicketBookingModal({
   open,
   onClose,
@@ -84,6 +86,8 @@ export function SplitTicketBookingModal({
       age: 30,
       gender: "Male",
       berthPreference: "No Preference",
+      optBerth: true,
+      foodChoice: "Veg",
       seniorCitizen: false,
     },
   ]);
@@ -93,6 +97,9 @@ export function SplitTicketBookingModal({
   >([]);
   const [showChildSection, setShowChildSection] = useState(false);
   const [autoUpgrade, setAutoUpgrade] = useState(true);
+  const [confirmBerthsOnly, setConfirmBerthsOnly] = useState(false);
+  const [preferredCoach, setPreferredCoach] = useState("");
+  const [travelInsurance, setTravelInsurance] = useState(true);
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
@@ -150,6 +157,10 @@ export function SplitTicketBookingModal({
       setBookingDelayed(false);
       setFormError(null);
       setIsSubmitting(false);
+      setAutoUpgrade(true);
+      setConfirmBerthsOnly(false);
+      setPreferredCoach("");
+      setTravelInsurance(true);
       trackAnalyticsEvent({
         name: "split_booking_modal_opened",
         properties: {
@@ -206,6 +217,8 @@ export function SplitTicketBookingModal({
         age: 30,
         gender: "Male",
         berthPreference: "No Preference",
+        optBerth: true,
+        foodChoice: "Veg",
         seniorCitizen: false,
       },
     ]);
@@ -301,6 +314,9 @@ export function SplitTicketBookingModal({
         passengers,
         childPassengers: showChildSection ? childPassengers : [],
         autoUpgrade,
+        confirmBerthsOnly,
+        preferredCoach: preferredCoach.trim() || undefined,
+        travelInsurance,
         contactMobile: cleanMobile,
         contactEmail: email.trim(),
       };
@@ -693,7 +709,7 @@ export function SplitTicketBookingModal({
                         </div>
 
                         {/* Sex */}
-                        <div className="col-span-8 sm:col-span-3">
+                        <div className="col-span-8 sm:col-span-2">
                           <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
                             Gender
                           </label>
@@ -716,9 +732,9 @@ export function SplitTicketBookingModal({
                         </div>
 
                         {/* Berth Preference */}
-                        <div className="col-span-12 sm:col-span-3">
+                        <div className="col-span-7 sm:col-span-2">
                           <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
-                            Berth Preference
+                            Berth
                           </label>
                           <select
                             value={p.berthPreference || "No Preference"}
@@ -729,11 +745,55 @@ export function SplitTicketBookingModal({
                                 e.target.value,
                               )
                             }
-                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2.5 py-2 sm:py-1.5 text-sm sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden bg-white"
+                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2 sm:px-1.5 py-2 sm:py-1.5 text-sm sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden bg-white"
                           >
                             {BERTH_OPTIONS.map((opt) => (
                               <option key={opt} value={opt}>
                                 {opt}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+
+                        {/* Opt Berth */}
+                        <div className="col-span-5 sm:col-span-1 flex flex-col items-center justify-center">
+                          <label
+                            htmlFor={`opt_berth_${idx}`}
+                            className="block text-[10px] font-medium text-slate-500 mb-1 text-center whitespace-nowrap cursor-pointer"
+                            title="Opt Berth"
+                          >
+                            Opt Berth
+                          </label>
+                          <input
+                            type="checkbox"
+                            id={`opt_berth_${idx}`}
+                            checked={p.optBerth !== false}
+                            onChange={(e) =>
+                              updatePassenger(idx, "optBerth", e.target.checked)
+                            }
+                            className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                          />
+                        </div>
+
+                        {/* Food */}
+                        <div className="col-span-12 sm:col-span-1 sm:min-w-[80px]">
+                          <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
+                            Food
+                          </label>
+                          <select
+                            value={p.foodChoice ?? "Veg"}
+                            onChange={(e) =>
+                              updatePassenger(
+                                idx,
+                                "foodChoice",
+                                e.target.value as SplitBookingPassenger["foodChoice"],
+                              )
+                            }
+                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2 sm:px-1.5 py-2 sm:py-1.5 text-sm sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden bg-white"
+                          >
+                            {FOOD_OPTIONS.map((f) => (
+                              <option key={f} value={f}>
+                                {f}
                               </option>
                             ))}
                           </select>
@@ -858,22 +918,79 @@ export function SplitTicketBookingModal({
                 )}
               </div> */}
 
-              {/* Auto Upgradation Checkbox (Image 2 Parity) */}
-              <div className="flex items-center gap-2 rounded-lg bg-slate-50 p-3 border border-slate-200">
-                <input
-                  type="checkbox"
-                  id="auto_upgradation"
-                  checked={autoUpgrade}
-                  onChange={(e) => setAutoUpgrade(e.target.checked)}
-                  className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-                />
-                <label
-                  htmlFor="auto_upgradation"
-                  className="text-xs font-bold text-slate-800 cursor-pointer"
-                >
-                  Consider for Auto Upgradation (Free upgrade to higher class if
-                  available)
+              {/* Travel Insurance Section (IRCTC Parity) */}
+              <div className="rounded-lg bg-orange-50/80 p-3 border border-orange-200/80 flex flex-wrap items-center justify-between gap-3 text-xs text-orange-950">
+                <span className="font-medium">
+                  Do you want to take Travel Insurance (₹0.45/person)?
+                </span>
+                <div className="flex items-center gap-4">
+                  <label className="inline-flex items-center gap-1.5 cursor-pointer font-medium">
+                    <input
+                      type="radio"
+                      name="travel_insurance"
+                      checked={travelInsurance}
+                      onChange={() => setTravelInsurance(true)}
+                      className="h-4 w-4 text-blue-600 border-slate-300 focus:ring-blue-500"
+                    />
+                    <span>
+                      Yes, and I accept the{" "}
+                      <span className="text-blue-600 underline font-semibold">
+                        terms &amp; conditions
+                      </span>
+                    </span>
+                  </label>
+                  <label className="inline-flex items-center gap-1.5 cursor-pointer font-medium">
+                    <input
+                      type="radio"
+                      name="travel_insurance"
+                      checked={!travelInsurance}
+                      onChange={() => setTravelInsurance(false)}
+                      className="h-4 w-4 text-blue-600 border-slate-300 focus:ring-blue-500"
+                    />
+                    <span>No, I don&apos;t want travel insurance</span>
+                  </label>
+                </div>
+              </div>
+
+              {/* Other Preferences: Auto Upgrade, Confirm Berths, Preferred Coach */}
+              <div className="rounded-lg bg-slate-50 p-3 border border-slate-200 flex flex-wrap items-center gap-4 text-xs">
+                {/* Auto Upgradation Checkbox */}
+                <label className="inline-flex items-center gap-2 cursor-pointer font-semibold text-slate-800">
+                  <input
+                    type="checkbox"
+                    id="auto_upgradation"
+                    checked={autoUpgrade}
+                    onChange={(e) => setAutoUpgrade(e.target.checked)}
+                    className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                  />
+                  <span>Consider Auto Upgrade</span>
                 </label>
+
+                {/* Confirm Berths Only Checkbox */}
+                <label className="inline-flex items-center gap-2 cursor-pointer font-semibold text-slate-800">
+                  <input
+                    type="checkbox"
+                    id="confirm_berths_only"
+                    checked={confirmBerthsOnly}
+                    onChange={(e) => setConfirmBerthsOnly(e.target.checked)}
+                    className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                  />
+                  <span>Book only if confirm berths are allotted.</span>
+                </label>
+
+                {/* Preferred Coach input */}
+                <div className="inline-flex items-center">
+                  <input
+                    type="text"
+                    maxLength={5}
+                    placeholder="Preferred Coach Eg S4"
+                    value={preferredCoach}
+                    onChange={(e) =>
+                      setPreferredCoach(e.target.value.toUpperCase())
+                    }
+                    className="rounded border border-slate-300 px-2.5 py-1 text-xs uppercase min-h-[30px] focus:border-blue-500 focus:outline-hidden bg-white shadow-2xs placeholder:text-slate-400 placeholder:normal-case"
+                  />
+                </div>
               </div>
 
               {/* Error notification */}

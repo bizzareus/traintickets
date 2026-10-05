@@ -18,6 +18,9 @@ export function bookingDetails(
   const passengers = booking.passengers as unknown as {
     adults: CreateSplitBookingDto['passengers'];
     children?: CreateSplitBookingDto['childPassengers'];
+    confirmBerthsOnly?: boolean;
+    preferredCoach?: string;
+    travelInsurance?: boolean;
   };
   return {
     bookingRef: booking.bookingRef,
@@ -33,6 +36,9 @@ export function bookingDetails(
     passengers: passengers.adults,
     childPassengers: passengers.children ?? [],
     autoUpgrade: booking.autoUpgrade,
+    confirmBerthsOnly: passengers.confirmBerthsOnly,
+    preferredCoach: passengers.preferredCoach,
+    travelInsurance: passengers.travelInsurance,
     contactMobile: booking.contactMobile,
     contactEmail: booking.contactEmail,
   };
@@ -66,7 +72,7 @@ export function manualBookingMessage(booking: SplitTicketBooking): string {
     'PASSENGERS',
     ...details.passengers.map(
       (passenger, index) =>
-        `${index + 1}. ${passenger.name} | Age: ${passenger.age} | Gender: ${passenger.gender} | Berth: ${passenger.berthPreference || 'No Preference'} | Senior citizen: ${passenger.seniorCitizen ? 'Yes' : 'No'}`,
+        `${index + 1}. ${passenger.name} | Age: ${passenger.age} | Gender: ${passenger.gender} | Berth: ${passenger.berthPreference || 'No Preference'}${passenger.optBerth ? ' (Opt Berth)' : ''}${passenger.foodChoice ? ` | Food: ${passenger.foodChoice}` : ''} | Senior citizen: ${passenger.seniorCitizen ? 'Yes' : 'No'}`,
     ),
     '',
     'CHILDREN / INFANTS (BELOW 5)',
@@ -78,9 +84,16 @@ export function manualBookingMessage(booking: SplitTicketBooking): string {
       : ['None']),
     '',
     `Auto-upgrade: ${booking.autoUpgrade ? 'Yes' : 'No'}`,
+    `Book only if confirm berths are allotted: ${details.confirmBerthsOnly ? 'Yes' : 'No'}`,
+    details.preferredCoach
+      ? `Preferred Coach: ${details.preferredCoach}`
+      : null,
+    `Travel Insurance: ${details.travelInsurance ? 'Yes' : 'No'}`,
     `Customer mobile: ${booking.contactMobile}`,
     `Customer email: ${booking.contactEmail}`,
     '',
     'Please book these tickets manually. This request has not been reserved by the AI engine.',
-  ].join('\n');
+  ]
+    .filter(Boolean)
+    .join('\n');
 }

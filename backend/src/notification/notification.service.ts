@@ -24,6 +24,7 @@ import {
   extractJourneyLegCoverage,
   hasBookablePlanForNotification,
   normalizeE164Mobile,
+  toShortLinkCode,
   formatJourneyDateReadable,
   formatSegmentScheduleTimes,
   buildSegmentBookUrl,
@@ -49,6 +50,7 @@ import {
   buildTatkalAlertWhatsAppText,
   renderChartAlertConfirmationEmailHtml,
   buildChartAlertConfirmationWhatsAppText,
+  formatChartAtDateTime,
   type ChartAlertConfirmationParams,
   buildChartPreparedNoDestinationWhatsAppText,
   buildWhatsAppSeatsFoundText,
@@ -280,7 +282,30 @@ export class NotificationService {
         freezeWindow,
       });
 
-      whatsappSent = await this.sendWhatsApp(params.mobile.trim(), message);
+      // Matches MSG91 `tatkal_alert_confirmed`: {{1}} train, {{2}} tatkal
+      // date, {{3}} tatkal time, {{4}} journey date, {{5}} class,
+      // {{6}} master-list freeze time.
+      whatsappSent = await this.sendWhatsApp(params.mobile.trim(), message, {
+        templateName: 'tatkal_alert_confirmed',
+        broadcastName: 'lastberth_tatkal_confirmed',
+        parameters: [
+          {
+            name: 'train',
+            value: params.trainName
+              ? `${params.trainName} (${params.trainNumber})`
+              : (params.trainNumber ?? 'your train'),
+          },
+          { name: 'tatkal_date', value: params.tatkalDate },
+          { name: 'tatkal_time', value: params.tatkalTime },
+          { name: 'journey_date', value: params.journeyDate },
+          {
+            name: 'class',
+            value: isAc ? 'AC Classes' : 'Sleeper / 2S',
+          },
+          { name: 'freeze_time', value: freezeWindow.split('–')[0].trim() },
+        ],
+        skipFailureReport: true,
+      });
     }
 
     return { emailSent, whatsappSent };
@@ -305,7 +330,57 @@ export class NotificationService {
 
     if (params.mobile?.trim()) {
       const message = buildChartAlertConfirmationWhatsAppText(params);
-      whatsappSent = await this.sendWhatsApp(params.mobile.trim(), message);
+      const confirmTrainLabel = params.trainName
+        ? `${params.trainName} (${params.trainNumber})`
+        : `Train ${params.trainNumber}`;
+      const confirmRoute = params.toStationCode
+        ? `${params.fromStationCode} → ${params.toStationCode}`
+        : params.fromStationCode;
+      const confirmSchedule = (params.chartTimes || [])
+        .map((item, idx) => {
+          const timeStr =
+            item.formattedDateTime ||
+            (item.chartAt ? formatChartAtDateTime(item.chartAt) : '');
+          if (!timeStr) return '';
+          const label =
+            item.label ||
+            (params.chartTimes && params.chartTimes.length > 1
+              ? `Chart ${idx + 1}`
+              : 'Chart 1');
+          return `${label}: ${timeStr}`;
+        })
+        .filter(Boolean)
+        .join(' | ');
+      // Matches MSG91 `chart_alert_confirmed`: {{1}} train, {{2}} route,
+      // {{3}} date, {{4}} class, {{5}} payment/schedule block.
+      whatsappSent = await this.sendWhatsApp(params.mobile.trim(), message, {
+        templateName: 'chart_alert_confirmed',
+        broadcastName: 'lastberth_chart_alert_confirmed',
+        parameters: [
+          { name: 'train', value: confirmTrainLabel },
+          { name: 'route', value: confirmRoute },
+          {
+            name: 'journey_date',
+            value: formatJourneyDateReadable(params.journeyDate),
+          },
+          {
+            name: 'class',
+            value: (params.classCode || 'All Classes').trim().toUpperCase(),
+          },
+          {
+            name: 'payment_schedule',
+            value: [
+              params.amount || params.paymentRef
+                ? `Payment: ${params.amount ? `₹${params.amount} (Confirmed)` : 'Confirmed'}${params.paymentRef ? ` | ID: ${params.paymentRef}` : ''}`
+                : '',
+              confirmSchedule || 'Charts typically 4-8h before departure',
+            ]
+              .filter(Boolean)
+              .join('\n'),
+          },
+        ],
+        skipFailureReport: true,
+      });
     }
 
     return { emailSent, whatsappSent };
@@ -649,7 +724,7 @@ export class NotificationService {
       const journeyDateReadable = formatJourneyDateReadable(journeyDateStr);
       const trainLabel = [trainNumber, trainName].filter(Boolean).join(' ');
 
-      const [emailCheckUrl, whatsappCheckUrl, emailUnsubUrl] =
+      const [emailCheckUrl, whatsappCheckUrl, emailUnsubUrl, mobileUnsubUrl] =
         await Promise.all([
           email?.trim()
             ? this.createCheckTicketsShortLink({
@@ -667,6 +742,9 @@ export class NotificationService {
             : Promise.resolve(undefined),
           email?.trim()
             ? this.createUnsubscribeShortLink(email.trim(), 'email')
+            : Promise.resolve(undefined),
+          mobile?.trim()
+            ? this.createUnsubscribeShortLink(mobile.trim(), 'whatsapp')
             : Promise.resolve(undefined),
         ]);
       const checkTicketsUrl = emailCheckUrl || whatsappCheckUrl;
@@ -738,16 +816,21 @@ export class NotificationService {
           formattedDateTime: params.chartPreparationText,
           checkTicketsUrl: whatsappCheckUrl || checkTicketsUrl,
         });
+        // Matches MSG91 `chart_prepare`: {{1}} train, {{2}} chart time,
+        // {{3}} check-tickets short code, {{4}} unsubscribe short code.
         out.whatsappSent = await this.sendWhatsApp(mobile.trim(), text, {
-          templateName: 'subscription_alert',
+          templateName: 'chart_prepare',
           broadcastName: 'lastberth_chart_prepared_only',
           parameters: [
-            { name: 'train_number', value: trainNumber },
-            { name: 'train_name', value: trainName || 'Express' },
-            { name: 'journey_date', value: journeyDateStr },
+            { name: 'train_label', value: trainLabel },
+            { name: 'chart_time', value: params.chartPreparationText },
             {
-              name: 'check_url',
-              value: whatsappCheckUrl || checkTicketsUrl,
+              name: 'check_code',
+              value: toShortLinkCode(whatsappCheckUrl || checkTicketsUrl),
+            },
+            {
+              name: 'unsubscribe_code',
+              value: toShortLinkCode(mobileUnsubUrl),
             },
           ],
           skipFailureReport: true,
@@ -841,6 +924,25 @@ export class NotificationService {
         out[`${channel}Suppressed`] = true;
         continue;
       }
+      let checkSearchCode = 'N/A';
+      if (channel === 'whatsapp' && this.shortLinkService) {
+        try {
+          checkSearchCode = toShortLinkCode(
+            await this.shortLinkService.createSearchShortLink({
+              from: task.fromStationCode,
+              to: task.toStationCode,
+              date: task.journeyDate.toISOString().slice(0, 10),
+              trainNo: task.trainNumber,
+              channel: 'whatsapp',
+              recipient,
+            }),
+          );
+        } catch {
+          // Fall back to 'N/A'; provider fills missing slots the same way.
+        }
+      }
+      // Matches MSG91 `check_failed_notice`: {{1}} train, {{2}} route,
+      // {{3}} time, {{4}} search short code.
       const sent =
         channel === 'email'
           ? await this.sendEmail(
@@ -848,7 +950,20 @@ export class NotificationService {
               `Chart alert check unsuccessful - Train ${task.trainNumber}`,
               `<p>${escapeHtml(text)}</p>`,
             )
-          : await this.sendWhatsApp(recipient, text);
+          : await this.sendWhatsApp(recipient, text, {
+              templateName: 'check_failed_notice',
+              broadcastName: 'lastberth_check_failed',
+              parameters: [
+                { name: 'train', value: task.trainNumber },
+                {
+                  name: 'route',
+                  value: `${task.fromStationCode} → ${task.toStationCode}`,
+                },
+                { name: 'time', value: time },
+                { name: 'search_code', value: checkSearchCode },
+              ],
+              skipFailureReport: true,
+            });
       out[`${channel}Sent`] = sent;
       if (sent) await this.deduplicationService?.recordNotificationSent(event);
     }
@@ -1160,8 +1275,11 @@ export class NotificationService {
                   });
 
           const templateName = hasTickets
-            ? 'subscription_alert'
-            : 'uncovered_leg__shortlink_alert';
+            ? 'chart_alert_tickets_found'
+            : 'chart_alert_no_ticket_found';
+          const mobileUnsubUrl = mobile?.trim()
+            ? await this.createUnsubscribeShortLink(mobile.trim(), 'whatsapp')
+            : undefined;
 
           const classCodeExtracted =
             plan?.[0]?.instruction
@@ -1174,67 +1292,49 @@ export class NotificationService {
 
           let parameters: Array<{ name: string; value: string }>;
 
-          if (templateName === 'subscription_alert') {
+          if (templateName === 'chart_alert_tickets_found') {
+            // Matches MSG91 body: {{1}} train line, {{2}} route + date,
+            // {{3}} availability block, {{4}} ticket/booking block.
             parameters = [
-              { name: 'name', value: 'Passenger' },
-              { name: 'train_number', value: task.trainNumber },
-              { name: 'train_name', value: task.trainName || 'Express' },
-              { name: 'from_code', value: task.fromStationCode },
-              { name: 'to_code', value: task.toStationCode },
-              { name: 'journey_date', value: journeyDateReadable },
               {
-                name: 'journey_times',
-                value: journeyTimesLine?.trim() || 'Not Available',
-              },
-              { name: 'ticket_number', value: '1' },
-              { name: 'class_code', value: classCodeExtracted },
-              { name: 'availability_status', value: statusExtracted },
-              {
-                name: 'segment_route',
-                value: `${task.fromStationCode} → ${task.toStationCode}`,
+                name: 'train_line',
+                value:
+                  `${task.trainNumber} ${task.trainName || 'Express'}`.trim(),
               },
               {
-                name: 'approx_price',
-                value: totalPrice ? String(totalPrice) : '0',
+                name: 'route_date',
+                value: [
+                  `${task.fromStationCode} → ${task.toStationCode}`,
+                  journeyDateReadable,
+                  journeyTimesLine?.trim(),
+                ]
+                  .filter(Boolean)
+                  .join('\n'),
               },
               {
-                name: 'irctc_booking_url',
-                value: 'https://www.irctc.co.in/nget/redirect',
-              },
-            ];
-          } else if (
-            templateName === 'uncovered_leg__shortlink_alert' ||
-            templateName === 'uncovered_leg_alert'
-          ) {
-            parameters = [
-              { name: 'name', value: 'Passenger' },
-              { name: 'train_number', value: task.trainNumber },
-              { name: 'train_name', value: task.trainName || 'Express' },
-              { name: 'from_code', value: task.fromStationCode },
-              { name: 'to_code', value: task.toStationCode },
-              { name: 'journey_date', value: journeyDateReadable },
-              {
-                name: 'uncovered_segment_route',
-                value: `${task.fromStationCode} → ${task.toStationCode}`,
+                name: 'availability',
+                value: `Ticket 1 [${classCodeExtracted}] | ${statusExtracted}`,
               },
               {
-                name: 'chart_release_time_label',
-                value: chartPreparationText || 'Chart prepared',
+                name: 'booking',
+                value: `approx ₹${totalPrice ? String(totalPrice) : '0'} Book on IRCTC: https://www.irctc.co.in/nget/redirect`,
               },
-              { name: 'action_button_text', value: 'Check Seat Availability' },
-              { name: 'action_url', value: searchUrl },
             ];
           } else {
+            // Matches MSG91 `chart_alert_no_ticket_found`: {{1}} train,
+            // {{2}} route, {{3}} date, {{4}} search short code,
+            // {{5}} unsubscribe short code.
             parameters = [
-              { name: 'name', value: 'Passenger' },
-              { name: 'train_number', value: task.trainNumber },
-              { name: 'train_name', value: task.trainName || 'Express' },
-              { name: 'from_code', value: task.fromStationCode },
-              { name: 'to_code', value: task.toStationCode },
-              { name: 'journey_date', value: journeyDateReadable },
+              { name: 'train_label', value: trainLabel },
               {
-                name: 'journey_times',
-                value: journeyTimesLine?.trim() || 'Not Available',
+                name: 'route',
+                value: `${task.fromStationCode} → ${task.toStationCode}`,
+              },
+              { name: 'journey_date', value: journeyDateReadable },
+              { name: 'search_code', value: toShortLinkCode(searchUrl) },
+              {
+                name: 'unsubscribe_code',
+                value: toShortLinkCode(mobileUnsubUrl),
               },
             ];
           }
@@ -1651,14 +1751,69 @@ export class NotificationService {
             alternativeTrains,
             stationNameMap,
           });
-          const altTemplateName = 'alternative_train_alert';
+          // Matches MSG91 `ticket_not_found_alternate`: {{1}} original
+          // train, {{2}} route, {{3}} top alt train, {{4}} dep, {{5}} arr,
+          // {{6}} duration, {{7}} availability, {{8}} class, {{9}} alert
+          // short code, {{10}} date.
+          const topAlt = alternativeTrains[0];
+          const topTrain = topAlt.train;
+          const topLeg = topAlt.alternatePath.legs.find(
+            (l) => l.segmentKind === 'confirmed',
+          );
+          const altClass = topLeg?.travelClass ?? '3A';
+          const altAvail =
+            topLeg?.availabilityDisplayName ||
+            topLeg?.railDataStatus ||
+            'Available';
+          const durMinutes =
+            topTrain.duration ?? topLeg?.durationMinutes ?? null;
+          let altAlertCode = 'N/A';
+          if (this.shortLinkService && mobile?.trim()) {
+            try {
+              altAlertCode = toShortLinkCode(
+                await this.shortLinkService.createAlertShortLink({
+                  trainNumber: topTrain.trainNumber,
+                  trainName: topTrain.trainName,
+                  fromStationCode,
+                  toStationCode,
+                  journeyDate: journeyDateStr,
+                  classCode: altClass,
+                  mobile: mobile.trim(),
+                }),
+              );
+            } catch {
+              // Fall back to 'N/A'; provider fills missing slots the same way.
+            }
+          }
+          const altTemplateName = 'ticket_not_found_alternate';
           const altParameters = [
-            { name: 'name', value: 'Passenger' },
-            { name: 'original_train_number', value: originalTrainNumber || '' },
-            { name: 'original_train_name', value: originalTrainName || '' },
-            { name: 'from_code', value: fromStationCode || '' },
-            { name: 'to_code', value: toStationCode || '' },
-            { name: 'journey_date', value: journeyDateReadable || '' },
+            { name: 'original_train', value: originalTrainLabel },
+            { name: 'route', value: routeDisplay },
+            {
+              name: 'alt_train',
+              value: [topTrain.trainNumber, topTrain.trainName]
+                .filter(Boolean)
+                .join(' - '),
+            },
+            {
+              name: 'departure',
+              value: topTrain.departureTime || topLeg?.departureTime || 'N/A',
+            },
+            {
+              name: 'arrival',
+              value: topTrain.arrivalTime || topLeg?.arrivalTime || 'N/A',
+            },
+            {
+              name: 'duration',
+              value:
+                durMinutes != null
+                  ? `${Math.floor(durMinutes / 60)}h ${durMinutes % 60}m`
+                  : 'N/A',
+            },
+            { name: 'availability', value: altAvail },
+            { name: 'class_code', value: altClass },
+            { name: 'alert_code', value: altAlertCode },
+            { name: 'journey_date', value: journeyDateReadable },
           ];
 
           out.whatsappSent = await this.sendWhatsApp(

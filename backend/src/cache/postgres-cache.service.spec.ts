@@ -126,6 +126,32 @@ describe('PostgresCacheService', () => {
     });
   });
 
+  describe('setMany', () => {
+    it('executes a bulk upsert via $executeRaw for multiple items', async () => {
+      const execRaw = jest.fn().mockResolvedValue(2);
+      const prisma = makePrisma();
+      (prisma as any).$executeRaw = execRaw;
+      const svc = new PostgresCacheService(prisma);
+
+      await svc.setMany([
+        { key: 'k1', value: { a: 1 }, ttlMs: 10_000 },
+        { key: 'k2', value: { b: 2 } },
+      ]);
+
+      expect(execRaw).toHaveBeenCalledTimes(1);
+    });
+
+    it('does nothing when items array is empty', async () => {
+      const execRaw = jest.fn();
+      const prisma = makePrisma();
+      (prisma as any).$executeRaw = execRaw;
+      const svc = new PostgresCacheService(prisma);
+
+      await svc.setMany([]);
+      expect(execRaw).not.toHaveBeenCalled();
+    });
+  });
+
   describe('del', () => {
     it('calls delete with the given key', async () => {
       const deleteMock = jest.fn().mockResolvedValue({});

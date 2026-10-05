@@ -15,10 +15,22 @@ const MSG91_DEFAULT_NAMESPACE = '6d56ff76_c549_4ce8_a6b5_280c2377d64b';
 const MSG91_LANGUAGE_CODE = 'en';
 
 /**
- * MSG91 template catalogue. `slots` is the number of `body_N` components the
- * approved template expects. Bodies are filled positionally from the payload
- * parameters (parameters[i] -> body_{i+1}); extras are dropped, missing slots
- * are sent as `N/A`.
+ * MSG91 template catalogue, mirroring the approved WhatsApp templates in the
+ * MSG91 dashboard (WABA Lastberth). `slots` is the number of `body_N`
+ * components the approved template expects. Bodies are filled positionally
+ * from the payload parameters (parameters[i] -> body_{i+1}); extras are
+ * dropped, missing slots are sent as `N/A`.
+ *
+ * Dashboard bodies (en):
+ * - chart_alert_tickets_found (4): {{1}} train line, {{2}} route + date,
+ *   {{3}} availability block, {{4}} ticket/booking block.
+ * - chart_alert_no_ticket_found (5): {{1}} train, {{2}} route, {{3}} date,
+ *   {{4}} alt-trains short code, {{5}} unsubscribe short code.
+ * - chart_prepare (4): {{1}} train, {{2}} chart time, {{3}} check-tickets
+ *   short code, {{4}} unsubscribe short code.
+ * - ticket_not_found_alternate (10): {{1}} class, {{2}} route, {{3}} top alt
+ *   train, {{4}} dep, {{5}} arr, {{6}} duration, {{7}} availability,
+ *   {{8}} class, {{9}} alert short code, {{10}} date.
  */
 const MSG91_TEMPLATES: Record<string, { name: string; slots: number }> = {
   chart_alert_tickets_found: { name: 'chart_alert_tickets_found', slots: 4 },
@@ -28,38 +40,59 @@ const MSG91_TEMPLATES: Record<string, { name: string; slots: number }> = {
   },
   chart_prepare: { name: 'chart_prepare', slots: 4 },
   ticket_not_found_alternate: { name: 'ticket_not_found_alternate', slots: 10 },
+  // Transactional templates (Utility). Bodies:
+  // - tatkal_alert_confirmed (6): {{1}} train, {{2}} tatkal date,
+  //   {{3}} tatkal time, {{4}} journey date, {{5}} class, {{6}} freeze time.
+  tatkal_alert_confirmed: { name: 'tatkal_alert_confirmed', slots: 6 },
+  // - chart_alert_confirmed (5): {{1}} train, {{2}} route, {{3}} date,
+  //   {{4}} class, {{5}} payment/schedule block.
+  chart_alert_confirmed: { name: 'chart_alert_confirmed', slots: 5 },
+  // - check_failed_notice (4): {{1}} train, {{2}} route, {{3}} time,
+  //   {{4}} search short code.
+  check_failed_notice: { name: 'check_failed_notice', slots: 4 },
+  // - manual_booking_admin (7): {{1}} ref, {{2}} train, {{3}} route,
+  //   {{4}} date, {{5}} class/quota, {{6}} amount, {{7}} customer contact.
+  manual_booking_admin: { name: 'manual_booking_admin', slots: 7 },
+  // - split_booking_confirmed (7): {{1}} train no, {{2}} route, {{3}} date,
+  //   {{4}} ref, {{5}} PNR block, {{6}} passenger block, {{7}} PDF block.
+  split_booking_confirmed: { name: 'split_booking_confirmed', slots: 7 },
+  // - split_booking_payment_received (6): {{1}} amount, {{2}} ref,
+  //   {{3}} train no, {{4}} route, {{5}} date, {{6}} ref for cancel link.
+  split_booking_payment_received: {
+    name: 'split_booking_payment_received',
+    slots: 6,
+  },
+  // - split_booking_cancellation_admin (10): {{1}} ref, {{2}} train no,
+  //   {{3}} route, {{4}} date, {{5}} amount, {{6}} customer, {{7}} mobile,
+  //   {{8}} PNRs, {{9}} status, {{10}} reason.
+  split_booking_cancellation_admin: {
+    name: 'split_booking_cancellation_admin',
+    slots: 10,
+  },
 };
 
 /**
- * Legacy template names used by NotificationService mapped to
- * their MSG91 equivalent. `subscription_alert` / `chart_preparation_alert`
- * are shared by the seats-found flow (many parameters) and the
- * chart-prepared-only flow (few parameters) — disambiguated by count.
+ * Legacy template names previously sent by NotificationService, kept as
+ * aliases so older payloads still resolve to the matching dashboard template.
  */
-function resolveMsg91Template(
-  templateName: string | undefined,
-  paramCount: number,
-): { name: string; slots: number } {
+const MSG91_TEMPLATE_ALIASES: Record<string, string> = {
+  subscription_alert: 'chart_alert_tickets_found',
+  chart_preparation_alert: 'chart_prepare',
+  alternative_train_alert: 'ticket_not_found_alternate',
+  uncovered_leg__shortlink_alert: 'chart_alert_no_ticket_found',
+  uncovered_leg_alert: 'chart_alert_no_ticket_found',
+};
+
+function resolveMsg91Template(templateName: string | undefined): {
+  name: string;
+  slots: number;
+} {
   const normalized = String(templateName ?? '')
     .trim()
     .toLowerCase();
   if (MSG91_TEMPLATES[normalized]) return MSG91_TEMPLATES[normalized];
-  if (normalized === 'alternative_train_alert')
-    return MSG91_TEMPLATES.ticket_not_found_alternate;
-  if (
-    normalized === 'uncovered_leg__shortlink_alert' ||
-    normalized === 'uncovered_leg_alert'
-  )
-    return MSG91_TEMPLATES.chart_alert_no_ticket_found;
-  if (
-    normalized === 'subscription_alert' ||
-    normalized === 'chart_preparation_alert' ||
-    !normalized
-  ) {
-    return paramCount <= 5
-      ? MSG91_TEMPLATES.chart_prepare
-      : MSG91_TEMPLATES.chart_alert_tickets_found;
-  }
+  const aliased = MSG91_TEMPLATE_ALIASES[normalized];
+  if (aliased && MSG91_TEMPLATES[aliased]) return MSG91_TEMPLATES[aliased];
   // Unknown template: pass the name through, sending up to 10 bodies.
   return { name: String(templateName).trim(), slots: 10 };
 }
@@ -116,7 +149,7 @@ export class Msg91Provider implements WhatsAppProvider {
     }
 
     const params = payload.parameters ?? [];
-    const template = resolveMsg91Template(payload.templateName, params.length);
+    const template = resolveMsg91Template(payload.templateName);
     const values = params.map((p) => String(p.value ?? '').trim() || 'N/A');
     if (values.length > template.slots) {
       this.logger.warn(
