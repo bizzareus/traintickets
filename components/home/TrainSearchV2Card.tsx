@@ -795,16 +795,13 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
           {/* Waitlisted State: Idle / Pending (Before scroll or scan) */}
           {!isDirectAvailable && !loading && !result && !error && (
             <>
-              <div className="text-left md:text-right min-w-0">
-                {lowestStartingFare != null && (
+              {lowestStartingFare != null && (
+                <div className="text-left md:text-right min-w-0">
                   <p className="text-base sm:text-lg font-extrabold text-slate-900">
                     From ₹{lowestStartingFare}
                   </p>
-                )}
-                <p className="text-xs font-semibold text-amber-600">
-                  Waitlist Only
-                </p>
-              </div>
+                </div>
+              )}
 
               <button
                 type="button"
@@ -814,7 +811,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
                 }}
                 className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors whitespace-nowrap shrink-0 min-h-[38px] touch-manipulation"
               >
-                Search Tickets
+                Find Tickets
               </button>
             </>
           )}
