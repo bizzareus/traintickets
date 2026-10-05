@@ -21,7 +21,7 @@ tags:
 
 ## TL;DR
 
-Eastern Railway and South Eastern Railway are running hundreds of 0-series festival special train trips for Durga Puja, Diwali, and Chhath Puja 2026 from Kolkata (Howrah, Sealdah, Shalimar, Kolkata Terminal) to North Bengal, Assam, Bihar, Uttar Pradesh, and Odisha. These services operate between October 1 and November 30, 2026, under Train on Special Fare (TOSF) rules with a 10% surcharge on Second Sitting (2S) and a 30% surcharge on Sleeper and AC classes. When regular festival expresses show REGRET or heavy waitlists, [Finding Smart Seats](/) discovers confirmed contiguous berths on the same train, while [Chart Vacancy](/chart-vacancy) maps unsold seats released four hours before departure.
+Eastern Railway and South Eastern Railway are running hundreds of 0-series festival special train trips for Durga Puja, Diwali, and Chhath Puja 2026 from Kolkata (Howrah, Sealdah, Shalimar, Kolkata Terminal) to North Bengal, Assam, Bihar, Uttar Pradesh, and Odisha. These services operate between October 1 and November 30, 2026, under Train on Special Fare (TOSF) rules with a 10% surcharge on Second Sitting (2S) and a 30% surcharge on Sleeper and AC classes. When regular festival expresses show REGRET or heavy waitlists, [Finding Smart Seats](/) discovers confirmed contiguous berths on the same train, while [Chart Vacancy](/chart-vacancy) maps unsold seats released roughly eight hours before departure.
 
 ---
 
@@ -162,7 +162,7 @@ Use [Finding Smart Seats](/) on LastBerth to search contiguous confirmed segment
 Intermediate station quotas (`RLWL`) are limited and exhaust rapidly. Originating stations receive the largest `GNWL` pool. You can book from Howrah or Sealdah to your destination, and then change your boarding station online on IRCTC up to the preparation of the second reservation chart (~30 minutes before departure).
 
 ### 3. Track Chart Preparation Schedules & Alerts
-First reservation charts are finalized at least **4 hours before departure** (or 8:00 PM the previous evening for trains departing before 2:00 PM). Use [Chart Times](/chart-times) to look up historical chart finalization schedules for your train and configure free alerts to know the moment charts release.
+First reservation charts are finalized roughly **8 hours before departure** (or 9:00 PM (21:00) the previous evening for trains departing before 2:00 PM). Use [Chart Times](/chart-times) to look up historical chart finalization schedules for your train and configure free alerts to know the moment charts release.
 
 ### 4. Check Vacant Berths on Chart Vacancy Map
 Once charts are prepared, unallocated VIP quotas, cancelled tickets, and vacant berths are released into Current Availability (`CURR_AVBL`) at a 10% discount. Check the [Chart Vacancy Map](/chart-vacancy) to inspect coach layouts and book confirmed berths online up to 30 minutes before train departure. To check vacant berths during a running journey, use [Seat Status](/seat-status).
@@ -187,7 +187,7 @@ If your e-ticket remains on the waiting list after final chart preparation, IRCT
 No, boarding a reserved Sleeper or AC coach on a waitlisted e-ticket is strictly prohibited. Passengers caught travelling without a confirmed seat face a ₹500 fine under Section 138 of the Railways Act plus single journey fare, and will be deboarded.
 
 ### How do I check vacant berths on Eastern Railway special trains after chart preparation?
-You can view physical vacant berths across all coaches on the [Chart Vacancy Map](/chart-vacancy) or check IRCTC Current Reservation starting four hours before departure, where seats are bookable at a 10% discount until 30 minutes before departure.
+You can view physical vacant berths across all coaches on the [Chart Vacancy Map](/chart-vacancy) or check IRCTC Current Reservation starting roughly eight hours before departure (post-first-charting), where seats are bookable at a 10% discount until 30 minutes before departure.
 
 ### How many tickets can I book on IRCTC in one month for festival travel?
 Standard IRCTC accounts can book up to 12 tickets per calendar month. Linking and verifying your Aadhaar on your IRCTC profile increases this limit to 24 tickets per month, provided at least one passenger on tickets 13 to 24 is Aadhaar-verified.

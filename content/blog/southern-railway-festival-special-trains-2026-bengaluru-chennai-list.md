@@ -2,7 +2,7 @@
 title: "Southern Railway Festival Special Trains 2026: Full List"
 description: "Full list of Southern & SWR festival special trains for Diwali and Chhath 2026 from Bengaluru and Chennai to Bihar, UP & Howrah. Routes, fares & booking."
 date: "2026-10-02"
-updated: "2026-10-02"
+updated: "2026-10-05"
 tags:
   - festival special trains
   - southern railway
@@ -23,7 +23,7 @@ tags:
 
 ## TL;DR
 
-Southern Railway and South Western Railway are running dozens of 0-series festival special train services for Durga Puja, Diwali, and Chhath Puja 2026 connecting Bengaluru, Chennai, and Coimbatore with Bihar, Uttar Pradesh, West Bengal, and Assam. These trains operate between October 1 and November 30, 2026, under Train on Special Fare (TOSF) pricing with a 10% surcharge on Second Sitting (2S) and 30% on Sleeper and AC classes. Many services originate from satellite terminals like SMVT Bengaluru and Tambaram to reduce city congestion. When regular trains show REGRET or deep waitlists, [Finding Smart Seats](/) discovers confirmed contiguous berths on the same train, while [Chart Vacancy](/chart-vacancy) maps unsold berths released four hours before departure.
+Southern Railway and South Western Railway are running dozens of 0-series festival special train services for Durga Puja, Diwali, and Chhath Puja 2026 connecting Bengaluru, Chennai, and Coimbatore with Bihar, Uttar Pradesh, West Bengal, and Assam. These trains operate between October 1 and November 30, 2026, under Train on Special Fare (TOSF) pricing with a 10% surcharge on Second Sitting (2S) and 30% on Sleeper and AC classes. Many services originate from satellite terminals like SMVT Bengaluru and Tambaram to reduce city congestion. When regular trains show REGRET or deep waitlists, [Finding Smart Seats](/) discovers confirmed contiguous berths on the same train, while [Chart Vacancy](/chart-vacancy) maps unsold berths released roughly eight hours before departure.
 
 ---
 
@@ -161,7 +161,7 @@ Use [Finding Smart Seats](/) on LastBerth to search contiguous confirmed segment
 Intermediate station quotas (`RLWL`) are limited and fill up quickly. Originating stations receive the largest `GNWL` pool. You can book from SMVT Bengaluru or Chennai Central to your destination, and then update your boarding point online on IRCTC up to the preparation of the second reservation chart (~30 minutes before departure).
 
 ### 3. Track Chart Preparation Schedules & Alerts
-First reservation charts are finalized at least **4 hours before departure** (or 8:00 PM the previous evening for morning trains departing before 2:00 PM). Use [Chart Times](/chart-times) to check historical chart finalization schedules for your train and configure free alerts to know the moment charts release.
+First reservation charts are finalized roughly **8 hours before departure** (or 9:00 PM (21:00) the previous evening for morning trains departing before 2:00 PM). Use [Chart Times](/chart-times) to check historical chart finalization schedules for your train and configure free alerts to know the moment charts release.
 
 ### 4. Check Vacant Berths on Chart Vacancy Map
 Once charts are prepared, unallocated VIP berths, emergency quotas, and cancelled seats convert into Current Availability (`CURR_AVBL`) at a 10% discount. Check the [Chart Vacancy Map](/chart-vacancy) to inspect coach layouts and book confirmed berths online up to 30 minutes before train departure. To check vacant berths during a running journey, use [Seat Status](/seat-status).
