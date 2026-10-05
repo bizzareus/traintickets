@@ -3817,15 +3817,17 @@ export default function HomePage() {
                 )}
                 <div className="space-y-3">
                   <label className="block text-sm font-medium text-slate-700">
-                    Email
+                    Email *
                   </label>
                   <input
                     type="email"
+                    required
                     value={monitorEmail}
                     onChange={(e) => setMonitorEmail(e.target.value)}
                     placeholder="you@example.com"
                     className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none"
                   />
+                  {/* Mobile number field commented out - email is mandatory
                   <label className="block text-sm font-medium text-slate-700">
                     Mobile
                   </label>
@@ -3836,6 +3838,7 @@ export default function HomePage() {
                     placeholder="10-digit mobile number"
                     className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none"
                   />
+                  */}
                 </div>
               </div>
               <div className="p-4 border-t border-slate-100 flex gap-3">

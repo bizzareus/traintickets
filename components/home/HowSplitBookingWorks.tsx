@@ -256,7 +256,7 @@ export function HowSplitBookingWorks({
                   Instant Algorithmic Scan
                 </h3>
                 <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                  LastBerth scans dozens of station combinations along the train's route
+                  LastBerth scans dozens of station combinations along the train&apos;s route
                   in seconds to assemble contiguous confirmed segments automatically.
                 </p>
               </div>

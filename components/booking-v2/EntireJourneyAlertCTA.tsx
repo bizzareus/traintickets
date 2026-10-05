@@ -38,20 +38,13 @@ export function EntireJourneyAlertCTA({
     const em = email.trim();
     const mob = mobile.trim();
 
-    if (!em && !mob) {
-      setError("Please enter an email or mobile number.");
+    if (!em) {
+      setError("Please enter your email address.");
       return;
     }
 
-    if (em && !isValidEmail(em)) {
+    if (!isValidEmail(em)) {
       setError("Please enter a valid email address.");
-      return;
-    }
-
-    if (mob && !isValidIndianMobile(mob)) {
-      setError(
-        "Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).",
-      );
       return;
     }
 
@@ -160,12 +153,14 @@ export function EntireJourneyAlertCTA({
       <div className="flex flex-col gap-1.5 sm:flex-row">
         <input
           type="email"
+          required
           className="w-full rounded border border-blue-200 bg-emerald-50 px-2 py-1 text-xs placeholder:text-gray-400"
-          placeholder="Email"
+          placeholder="Email address (required)"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
         />
+        {/* Mobile number input commented out - email is mandatory
         <input
           type="tel"
           className="w-full rounded border border-blue-200 bg-emerald-50 px-2 py-1 text-xs placeholder:text-gray-400"
@@ -174,6 +169,7 @@ export function EntireJourneyAlertCTA({
           onChange={(e) => setMobile(e.target.value)}
           autoComplete="tel"
         />
+        */}
       </div>
       <div className="mt-2 flex items-center justify-between">
         <div className="flex items-center gap-2">

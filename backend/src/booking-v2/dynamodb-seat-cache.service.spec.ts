@@ -99,4 +99,77 @@ describe('DynamoDbSeatCacheService cache inventory', () => {
       }),
     );
   });
+
+  it('enqueues records asynchronously and flushes them in batches via BatchWriteCommand', async () => {
+    process.env.DISABLE_DYNAMODB_CACHE = '1';
+    const service = new DynamoDbSeatCacheService();
+    const client = DynamoDBDocumentClient.from(
+      new DynamoDBClient({ region: 'ap-south-1' }),
+    );
+    const sendSpy = jest.spyOn(client, 'send').mockResolvedValue({
+      UnprocessedItems: {},
+    } as never);
+    Object.assign(service, { docClient: client });
+
+    await service.saveRouteCachedSearch('NDLS', 'MMCT', '2026-11-05', {
+      success: true,
+      data: {
+        trainList: [
+          {
+            trainNumber: '12952',
+            availabilityCache: {
+              '3A': { availabilityDisplayName: 'AVAILABLE 12', fare: 1800 },
+              '2A': { availabilityDisplayName: 'WL 5', fare: 2500 },
+            },
+          },
+        ],
+      },
+    });
+
+    // Immediate read-after-write from pending queue/L1
+    const readImmediate = await service.getRouteCachedSearch(
+      'NDLS',
+      'MMCT',
+      '2026-11-05',
+    );
+    expect(readImmediate.status).toBe('hit');
+    expect(readImmediate.value).toEqual(
+      expect.objectContaining({ success: true }),
+    );
+
+    // Now flush the queue
+    await service.flushQueue();
+
+    // Verify BatchWriteCommand was sent
+    expect(sendSpy).toHaveBeenCalled();
+    const callArgs = sendSpy.mock.calls[0][0];
+    expect(callArgs.input).toHaveProperty('RequestItems');
+  });
+
+  it('handles throttled BatchWriteCommand and re-queues failed items gracefully', async () => {
+    process.env.DISABLE_DYNAMODB_CACHE = '1';
+    const service = new DynamoDbSeatCacheService();
+    const client = DynamoDBDocumentClient.from(
+      new DynamoDBClient({ region: 'ap-south-1' }),
+    );
+    const err = new Error(
+      'The level of configured provisioned throughput for the table was exceeded',
+    );
+    err.name = 'ProvisionedThroughputExceededException';
+    const sendSpy = jest
+      .spyOn(client, 'send')
+      .mockRejectedValueOnce(err)
+      .mockResolvedValue({ UnprocessedItems: {} } as never);
+    Object.assign(service, { docClient: client });
+
+    await service.saveBestTrain('NDLS', 'MMCT', '05-11-2026', {
+      found: true,
+      train: { trainNumber: '12952' },
+    });
+
+    // Flush will encounter throttle on attempt 1, back off and retry
+    await service.flushQueue();
+
+    expect(sendSpy).toHaveBeenCalledTimes(2);
+  });
 });

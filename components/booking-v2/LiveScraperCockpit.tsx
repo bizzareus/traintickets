@@ -4,6 +4,7 @@ import { createFreeChartAlert } from "@/lib/chart-alert-payments";
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { apiClient } from "@/lib/api";
 import { trackAlertRequested } from "@/lib/analytics/track";
+import { isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
 
 interface LiveScraperCockpitProps {
@@ -144,8 +145,12 @@ export function LiveScraperCockpit({
     const em = email.trim() || undefined;
     const mob = mobile.trim() || undefined;
 
-    if (!em && !mob) {
-      setErrorMsg("Please enter an email or mobile number for alerts.");
+    if (!em) {
+      setErrorMsg("Please enter an email address for alerts.");
+      return;
+    }
+    if (!isValidEmail(em)) {
+      setErrorMsg("Please enter a valid email address.");
       return;
     }
 
@@ -385,17 +390,19 @@ export function LiveScraperCockpit({
           <div className="grid gap-3 sm:grid-cols-2">
             <div>
               <label htmlFor="scraperEmail" className="block text-[10px] font-bold uppercase text-slate-400 tracking-wider mb-1.5">
-                Email Address
+                Email Address *
               </label>
               <input
                 type="email"
                 id="scraperEmail"
+                required
                 placeholder="guardian@lastberth.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500"
               />
             </div>
+            {/* Mobile number field commented out - email is mandatory
             <div>
               <label htmlFor="scraperMobile" className="block text-[10px] font-bold uppercase text-slate-400 tracking-wider mb-1.5">
                 Mobile Number
@@ -409,6 +416,7 @@ export function LiveScraperCockpit({
                 className="w-full rounded-xl border border-slate-800 bg-slate-900/60 px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500"
               />
             </div>
+            */}
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-3 pt-1">

@@ -283,18 +283,12 @@ export default function ChartTimeAlertCTA({
   const subscribe = async () => {
     const em = email.trim();
     const mob = mobile.trim();
-    if (!em && !mob) {
-      setError("Please enter an email or mobile number so we can reach you.");
+    if (!em) {
+      setError("Please enter your email address so we can reach you.");
       return;
     }
-    if (em && !isValidEmail(em)) {
+    if (!isValidEmail(em)) {
       setError("Please enter a valid email address.");
-      return;
-    }
-    if (mob && !isValidIndianMobile(mob)) {
-      setError(
-        "Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).",
-      );
       return;
     }
     if (!journeyDate.trim()) {
@@ -542,15 +536,22 @@ export default function ChartTimeAlertCTA({
         </label>
       </div>
 
-      <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          autoComplete="email"
-          className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
-        />
+      <div className="mt-3">
+        <label className="text-sm">
+          <span className="mb-1 block font-medium text-slate-700">
+            Email address *
+          </span>
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="name@example.com"
+            autoComplete="email"
+            className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
+          />
+        </label>
+        {/* Mobile input commented out - email is mandatory
         <input
           type="tel"
           value={mobile}
@@ -559,6 +560,7 @@ export default function ChartTimeAlertCTA({
           autoComplete="tel"
           className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-400 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
         />
+        */}
       </div>
 
       <div className="mt-4 flex flex-col items-start gap-3">

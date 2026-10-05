@@ -397,18 +397,12 @@ function CompactLegChartCta({
   const subscribe = useCallback(async () => {
     const em = email.trim() || undefined;
     const mob = mobile.trim() || undefined;
-    if (!em && !mob) {
-      setError("Enter an email or mobile number.");
+    if (!em) {
+      setError("Please enter your email address.");
       return;
     }
-    if (em && !isValidEmail(em)) {
+    if (!isValidEmail(em)) {
       setError("Please enter a valid email address.");
-      return;
-    }
-    if (mob && !isValidIndianMobile(mob)) {
-      setError(
-        "Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).",
-      );
       return;
     }
     setSubmitting(true);
@@ -659,12 +653,14 @@ function CompactLegChartCta({
           <div className="flex flex-col gap-2 sm:flex-row sm:gap-1.5">
             <input
               type="email"
+              required
               className="w-full rounded-lg border border-blue-200 bg-white px-2.5 py-2 text-xs placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
-              placeholder="Email"
+              placeholder="Email address (required)"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
             />
+            {/* Mobile number field commented out - email is mandatory
             <input
               type="tel"
               className="w-full rounded-lg border border-blue-200 bg-white px-2.5 py-2 text-xs placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
@@ -673,6 +669,7 @@ function CompactLegChartCta({
               onChange={(e) => setMobile(e.target.value)}
               autoComplete="tel"
             />
+            */}
           </div>
           <div className="mt-2.5 flex items-center">
             <button

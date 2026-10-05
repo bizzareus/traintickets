@@ -332,6 +332,7 @@ export function TrainChartAlertSection({
                   <input
                     id="alertEmailInput"
                     type="email"
+                    required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@example.com"

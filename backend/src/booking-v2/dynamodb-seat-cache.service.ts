@@ -1,9 +1,8 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, OnModuleDestroy } from '@nestjs/common';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import {
   DynamoDBDocumentClient,
   GetCommand,
-  PutCommand,
   QueryCommand,
   BatchWriteCommand,
   paginateScan,
@@ -71,6 +70,14 @@ const DEFAULT_TTL_SECONDS = 48 * 3600; // 48 hours
 const STATION_CODE_RE = /^[A-Z0-9]{2,6}$/;
 /** Serve a repeated admin inventory view from memory instead of re-scanning. */
 const INVENTORY_CACHE_TTL_MS = 5 * 60 * 1000;
+/** DynamoDB BatchWriteItem maximum chunk size */
+const DYNAMODB_BATCH_SIZE = 25;
+/** Pacing delay between batch writes to stay comfortably within provisioned WCU */
+const DEFAULT_PACING_DELAY_MS = 500;
+/** Cap write queue to prevent unbounded memory growth */
+const MAX_QUEUE_SIZE = 2000;
+const INITIAL_BACKOFF_MS = 2000;
+const MAX_BACKOFF_MS = 30000;
 
 function toSafeString(val: unknown): string {
   if (typeof val === 'string') return val;
@@ -88,8 +95,15 @@ function awsErrorLabel(err: unknown): string {
   return `${name}: ${message}`;
 }
 
+interface QueuedWriteItem {
+  trainNumber: string;
+  dateClass: string;
+  item: Record<string, unknown>;
+  isHighPriority: boolean;
+}
+
 @Injectable()
-export class DynamoDbSeatCacheService {
+export class DynamoDbSeatCacheService implements OnModuleDestroy {
   private readonly logger = new Logger(DynamoDbSeatCacheService.name);
   private docClient: DynamoDBDocumentClient | null = null;
   private readonly tableName: string;
@@ -118,6 +132,12 @@ export class DynamoDbSeatCacheService {
     }
   >();
 
+  /** Asynchronous non-blocking write queue for batching updates */
+  private readonly writeQueue = new Map<string, QueuedWriteItem>();
+  private isFlushing = false;
+  private flushTimer: NodeJS.Timeout | null = null;
+  private currentBackoffMs = 0;
+
   private trimL1Cache<K, V>(map: Map<K, V>, maxSize: number): void {
     if (map.size >= maxSize) {
       const iter = map.keys().next();
@@ -141,12 +161,12 @@ export class DynamoDbSeatCacheService {
 
     try {
       const region = process.env.AWS_REGION?.trim() || DEFAULT_REGION;
-      // Adaptive retry backs off on throttling instead of hammering a
-      // capacity-limited table.
+      // Standard retry mode avoids client-side token bucket clamping on reads
+      // when background writes experience provisioned throughput limits.
       const client = new DynamoDBClient({
         region,
-        maxAttempts: 5,
-        retryMode: 'adaptive',
+        maxAttempts: 3,
+        retryMode: 'standard',
       });
       this.docClient = DynamoDBDocumentClient.from(client, {
         marshallOptions: { removeUndefinedValues: true },
@@ -159,6 +179,204 @@ export class DynamoDbSeatCacheService {
         `[DynamoDB] Could not initialize DynamoDB client: ${awsErrorLabel(err)}`,
       );
     }
+  }
+
+  async onModuleDestroy(): Promise<void> {
+    if (this.flushTimer) {
+      clearTimeout(this.flushTimer);
+      this.flushTimer = null;
+    }
+    if (this.writeQueue.size > 0 && this.docClient) {
+      await this.flushQueue();
+    }
+  }
+
+  /**
+   * Enqueue a record for background batch write.
+   */
+  private enqueueWriteItem(
+    item: Record<string, unknown>,
+    isHighPriority = false,
+  ): void {
+    if (!this.docClient) return;
+
+    const trainNumber = toSafeString(item.trainNumber).trim();
+    const dateClass = toSafeString(item.dateClass).trim();
+    if (!trainNumber || !dateClass) return;
+
+    const key = `${trainNumber}#${dateClass}`;
+
+    // If queue is full, evict oldest low-priority item to protect memory
+    if (this.writeQueue.size >= MAX_QUEUE_SIZE && !this.writeQueue.has(key)) {
+      let evicted = false;
+      for (const [k, v] of this.writeQueue.entries()) {
+        if (!v.isHighPriority) {
+          this.writeQueue.delete(k);
+          evicted = true;
+          break;
+        }
+      }
+      if (!evicted) {
+        const firstKey = this.writeQueue.keys().next().value;
+        if (firstKey) this.writeQueue.delete(firstKey);
+      }
+    }
+
+    this.writeQueue.set(key, {
+      trainNumber,
+      dateClass,
+      item,
+      isHighPriority,
+    });
+
+    this.scheduleFlush(0);
+  }
+
+  private scheduleFlush(delayMs = 0): void {
+    if (!this.docClient || this.writeQueue.size === 0 || this.isFlushing) {
+      return;
+    }
+    if (this.flushTimer) return;
+    this.flushTimer = setTimeout(() => {
+      this.flushTimer = null;
+      void this.runFlush();
+    }, delayMs);
+    this.flushTimer?.unref?.();
+  }
+
+  /**
+   * Flushes queued writes to DynamoDB in paced batches of up to 25 items.
+   */
+  private async runFlush(): Promise<void> {
+    if (!this.docClient || this.writeQueue.size === 0 || this.isFlushing) {
+      return;
+    }
+    this.isFlushing = true;
+
+    try {
+      while (this.writeQueue.size > 0 && this.docClient) {
+        const batch: QueuedWriteItem[] = [];
+
+        // 1. Gather high priority items first
+        for (const [key, entry] of this.writeQueue.entries()) {
+          if (entry.isHighPriority) {
+            batch.push(entry);
+            this.writeQueue.delete(key);
+            if (batch.length >= DYNAMODB_BATCH_SIZE) break;
+          }
+        }
+
+        // 2. Gather low priority items if batch still has space
+        if (batch.length < DYNAMODB_BATCH_SIZE) {
+          for (const [key, entry] of this.writeQueue.entries()) {
+            batch.push(entry);
+            this.writeQueue.delete(key);
+            if (batch.length >= DYNAMODB_BATCH_SIZE) break;
+          }
+        }
+
+        if (batch.length === 0) break;
+
+        const putRequests = batch.map((b) => ({
+          PutRequest: { Item: b.item },
+        }));
+
+        try {
+          const res = await this.docClient.send(
+            new BatchWriteCommand({
+              RequestItems: {
+                [this.tableName]: putRequests,
+              },
+            }),
+          );
+
+          const unprocessed = res.UnprocessedItems?.[this.tableName];
+          if (Array.isArray(unprocessed) && unprocessed.length > 0) {
+            for (const req of unprocessed) {
+              const item = req.PutRequest?.Item as
+                | Record<string, unknown>
+                | undefined;
+              if (item) {
+                const trainNumber = toSafeString(item.trainNumber);
+                const dateClass = toSafeString(item.dateClass);
+                if (trainNumber && dateClass) {
+                  const k = `${trainNumber}#${dateClass}`;
+                  this.writeQueue.set(k, {
+                    trainNumber,
+                    dateClass,
+                    item,
+                    isHighPriority: false,
+                  });
+                }
+              }
+            }
+            this.currentBackoffMs = Math.min(
+              MAX_BACKOFF_MS,
+              this.currentBackoffMs
+                ? this.currentBackoffMs * 2
+                : INITIAL_BACKOFF_MS,
+            );
+            await new Promise((resolve) =>
+              setTimeout(resolve, this.currentBackoffMs),
+            );
+          } else {
+            this.currentBackoffMs = 0;
+          }
+        } catch (err) {
+          const isThrottled =
+            err instanceof Error &&
+            /ProvisionedThroughputExceededException|ThrottlingException/i.test(
+              err.name || err.message,
+            );
+
+          if (isThrottled) {
+            this.currentBackoffMs = Math.min(
+              MAX_BACKOFF_MS,
+              this.currentBackoffMs
+                ? this.currentBackoffMs * 2
+                : INITIAL_BACKOFF_MS,
+            );
+            this.logger.warn(
+              `[DynamoDB] BatchWrite throttled (${awsErrorLabel(err)}). Re-queueing ${batch.length} items, backing off ${this.currentBackoffMs}ms...`,
+            );
+            for (const b of batch) {
+              const k = `${b.trainNumber}#${b.dateClass}`;
+              if (!this.writeQueue.has(k)) {
+                this.writeQueue.set(k, b);
+              }
+            }
+            await new Promise((resolve) =>
+              setTimeout(resolve, this.currentBackoffMs),
+            );
+          } else {
+            this.logger.warn(
+              `[DynamoDB] BatchWrite failed: ${awsErrorLabel(err)}`,
+            );
+          }
+        }
+
+        // Pacing delay between batches to stay within provisioned WCU
+        if (this.writeQueue.size > 0) {
+          await new Promise((resolve) =>
+            setTimeout(resolve, DEFAULT_PACING_DELAY_MS),
+          );
+        }
+      }
+    } finally {
+      this.isFlushing = false;
+      if (this.writeQueue.size > 0) {
+        this.scheduleFlush(DEFAULT_PACING_DELAY_MS);
+      }
+    }
+  }
+
+  /** Drain all queued writes (useful for tests and shutdown). */
+  async flushQueue(): Promise<void> {
+    if (this.flushTimer) {
+      clearTimeout(this.flushTimer);
+      this.flushTimer = null;
+    }
+    await this.runFlush();
   }
 
   get isAvailable(): boolean {
@@ -356,6 +574,15 @@ export class DynamoDbSeatCacheService {
       this.l1RouteCache.delete(l1Key);
     }
 
+    // Check pending write queue for instant read-after-write consistency
+    const queued = this.writeQueue.get(`${routeKey}#${d}`);
+    if (queued?.item.rawSearch && typeof queued.item.rawSearch === 'object') {
+      return {
+        status: 'hit',
+        value: queued.item.rawSearch as Record<string, unknown>,
+      };
+    }
+
     if (!this.docClient) return { status: 'disabled', value: null };
 
     try {
@@ -396,20 +623,22 @@ export class DynamoDbSeatCacheService {
   }
 
   /**
-   * Saves a full train search result and all per-train seat classes into DynamoDB.
+   * Saves a full train search result and all per-train seat classes into DynamoDB asynchronously.
    */
-  async saveRouteCachedSearch(
+  saveRouteCachedSearch(
     from: string,
     to: string,
     journeyDateYmd: string,
     rawSearch: Record<string, unknown>,
     ttlSeconds = DEFAULT_TTL_SECONDS,
   ): Promise<void> {
-    if (!rawSearch) return;
+    if (!rawSearch) return Promise.resolve();
 
     const f = from.trim().toUpperCase();
     const t = to.trim().toUpperCase();
-    if (!STATION_CODE_RE.test(f) || !STATION_CODE_RE.test(t)) return;
+    if (!STATION_CODE_RE.test(f) || !STATION_CODE_RE.test(t)) {
+      return Promise.resolve();
+    }
     const d = journeyDateYmd.trim();
     const routeKey = `${ROUTE_PREFIX}${f}#${t}`;
     const l1Key = `${routeKey}#${d}`;
@@ -421,40 +650,31 @@ export class DynamoDbSeatCacheService {
       value: rawSearch,
     });
 
-    if (!this.docClient) return;
+    if (!this.docClient) return Promise.resolve();
 
     const nowSecs = Math.floor(Date.now() / 1000);
     const ttl = nowSecs + ttlSeconds;
     const nowIso = new Date().toISOString();
 
-    // 1. Save the route-level search record
-    try {
-      await this.docClient.send(
-        new PutCommand({
-          TableName: this.tableName,
-          Item: {
-            trainNumber: routeKey,
-            dateClass: d,
-            from: f,
-            to: t,
-            date: d,
-            rawSearch,
-            updatedAt: nowIso,
-            ttl,
-          },
-        }),
-      );
-    } catch (err) {
-      this.logger.warn(
-        `[DynamoDB] Failed saving route search for ${routeKey} ${d}: ${awsErrorLabel(err)}`,
-      );
-    }
+    // 1. Enqueue the route-level search record (high priority)
+    this.enqueueWriteItem(
+      {
+        trainNumber: routeKey,
+        dateClass: d,
+        from: f,
+        to: t,
+        date: d,
+        rawSearch,
+        updatedAt: nowIso,
+        ttl,
+      },
+      true,
+    );
 
-    // 2. Extract and write individual train seat items
+    // 2. Extract and enqueue individual train seat items (low priority)
     try {
       const data = rawSearch.data as Record<string, unknown> | undefined;
       const trainList = Array.isArray(data?.trainList) ? data.trainList : [];
-      const seatItems: CachedSeatItem[] = [];
 
       for (const item of trainList) {
         if (!item || typeof item !== 'object') continue;
@@ -481,84 +701,40 @@ export class DynamoDbSeatCacheService {
             if (!Number.isNaN(parsed) && parsed > 0) fareNum = parsed;
           }
 
-          seatItems.push({
-            trainNumber: trainNo,
-            dateClass: `${d}#${cls.toUpperCase()}`,
-            date: d,
-            travelClass: cls.toUpperCase(),
-            status,
-            fare: fareNum,
-            from: f,
-            to: t,
-            updatedAt: nowIso,
-            ttl,
-          });
+          this.enqueueWriteItem(
+            {
+              trainNumber: trainNo,
+              dateClass: `${d}#${cls.toUpperCase()}`,
+              date: d,
+              travelClass: cls.toUpperCase(),
+              status,
+              fare: fareNum,
+              from: f,
+              to: t,
+              updatedAt: nowIso,
+              ttl,
+            },
+            false,
+          );
         }
-      }
-
-      if (seatItems.length > 0) {
-        await this.batchWriteSeatItems(seatItems);
       }
     } catch (err) {
       this.logger.warn(
-        `[DynamoDB] Failed writing seat items for ${routeKey} ${d}: ${awsErrorLabel(err)}`,
+        `[DynamoDB] Failed extracting seat items for ${routeKey} ${d}: ${awsErrorLabel(err)}`,
       );
     }
+    return Promise.resolve();
   }
 
   /**
-   * Batch write seat items in chunks of 25 (DynamoDB maximum per BatchWriteItem).
+   * Enqueues seat items for background batch write.
    */
-  async batchWriteSeatItems(items: CachedSeatItem[]): Promise<void> {
-    if (!this.docClient || items.length === 0) return;
-
-    const BATCH_SIZE = 25;
-    const MAX_RETRIES = 3;
-
-    for (let i = 0; i < items.length; i += BATCH_SIZE) {
-      const chunk = items.slice(i, i + BATCH_SIZE);
-      let putRequests: Array<{
-        PutRequest: { Item: Record<string, unknown> };
-      }> = chunk.map((item) => ({
-        PutRequest: { Item: item as unknown as Record<string, unknown> },
-      }));
-
-      let attempt = 0;
-      while (putRequests.length > 0 && attempt <= MAX_RETRIES) {
-        try {
-          const res = await this.docClient.send(
-            new BatchWriteCommand({
-              RequestItems: {
-                [this.tableName]: putRequests,
-              },
-            }),
-          );
-
-          const unprocessed = res.UnprocessedItems?.[this.tableName];
-          if (Array.isArray(unprocessed) && unprocessed.length > 0) {
-            putRequests = unprocessed as typeof putRequests;
-            attempt++;
-            if (attempt <= MAX_RETRIES) {
-              await new Promise((resolve) =>
-                setTimeout(resolve, 50 * 2 ** attempt),
-              );
-            } else {
-              this.logger.warn(
-                `[DynamoDB] Dropped ${putRequests.length} unprocessed seat items after ${MAX_RETRIES} retries`,
-              );
-              break;
-            }
-          } else {
-            break;
-          }
-        } catch (err) {
-          this.logger.warn(
-            `[DynamoDB] BatchWrite failed at offset ${i} (attempt ${attempt}): ${awsErrorLabel(err)}`,
-          );
-          break;
-        }
-      }
+  batchWriteSeatItems(items: CachedSeatItem[]): Promise<void> {
+    if (!this.docClient || items.length === 0) return Promise.resolve();
+    for (const item of items) {
+      this.enqueueWriteItem(item as unknown as Record<string, unknown>, false);
     }
+    return Promise.resolve();
   }
 
   /**
@@ -611,37 +787,30 @@ export class DynamoDbSeatCacheService {
   /**
    * Save a computed category summary into DynamoDB.
    */
-  async saveAvailabilitySummary(
+  saveAvailabilitySummary(
     category: string,
     summary: Record<string, unknown>,
     ttlSeconds = DEFAULT_TTL_SECONDS,
   ): Promise<void> {
-    if (!this.docClient) return;
+    if (!this.docClient) return Promise.resolve();
 
     const catKey = `SUMMARY#${(category || 'ALL').trim().toUpperCase()}`;
     const nowSecs = Math.floor(Date.now() / 1000);
     const ttl = nowSecs + ttlSeconds;
     const nowIso = new Date().toISOString();
 
-    try {
-      await this.docClient.send(
-        new PutCommand({
-          TableName: this.tableName,
-          Item: {
-            trainNumber: catKey,
-            dateClass: 'LATEST',
-            category: category.trim().toLowerCase(),
-            summary,
-            updatedAt: nowIso,
-            ttl,
-          },
-        }),
-      );
-    } catch (err) {
-      this.logger.warn(
-        `[DynamoDB] Failed saving availability summary for ${catKey}: ${awsErrorLabel(err)}`,
-      );
-    }
+    this.enqueueWriteItem(
+      {
+        trainNumber: catKey,
+        dateClass: 'LATEST',
+        category: category?.trim().toLowerCase() || 'all',
+        summary,
+        updatedAt: nowIso,
+        ttl,
+      },
+      true,
+    );
+    return Promise.resolve();
   }
 
   /**
@@ -650,9 +819,15 @@ export class DynamoDbSeatCacheService {
   async getAvailabilitySummary(
     category?: string,
   ): Promise<Record<string, unknown> | null> {
+    const catKey = `SUMMARY#${(category || 'ALL').trim().toUpperCase()}`;
+
+    const queued = this.writeQueue.get(`${catKey}#LATEST`);
+    if (queued?.item.summary && typeof queued.item.summary === 'object') {
+      return queued.item.summary as Record<string, unknown>;
+    }
+
     if (!this.docClient) return null;
 
-    const catKey = `SUMMARY#${(category || 'ALL').trim().toUpperCase()}`;
     try {
       const res = await this.docClient.send(
         new GetCommand({
@@ -681,9 +856,9 @@ export class DynamoDbSeatCacheService {
   }
 
   /**
-   * Save a computed alternate-path split result into DynamoDB (with in-memory L1 cache).
+   * Save a computed alternate-path split result into DynamoDB asynchronously.
    */
-  async saveAltPath(
+  saveAltPath(
     from: string,
     to: string,
     trainNumber: string,
@@ -693,7 +868,7 @@ export class DynamoDbSeatCacheService {
     result: Record<string, unknown>,
     ttlSeconds = 6 * 3600,
   ): Promise<void> {
-    if (!result) return;
+    if (!result) return Promise.resolve();
 
     const f = from.trim().toUpperCase();
     const t = to.trim().toUpperCase();
@@ -712,36 +887,29 @@ export class DynamoDbSeatCacheService {
       value: result,
     });
 
-    if (!this.docClient) return;
+    if (!this.docClient) return Promise.resolve();
 
     const nowSecs = Math.floor(Date.now() / 1000);
     const ttl = nowSecs + ttlSeconds;
     const nowIso = new Date().toISOString();
 
-    try {
-      await this.docClient.send(
-        new PutCommand({
-          TableName: this.tableName,
-          Item: {
-            trainNumber: routeKey,
-            dateClass: sortKey,
-            from: f,
-            to: t,
-            trainNo: tn,
-            classKey: ck,
-            date: d,
-            quota: q,
-            result,
-            updatedAt: nowIso,
-            ttl,
-          },
-        }),
-      );
-    } catch (err) {
-      this.logger.warn(
-        `[DynamoDB] Failed saving alt path for ${routeKey} ${sortKey}: ${awsErrorLabel(err)}`,
-      );
-    }
+    this.enqueueWriteItem(
+      {
+        trainNumber: routeKey,
+        dateClass: sortKey,
+        from: f,
+        to: t,
+        trainNo: tn,
+        classKey: ck,
+        date: d,
+        quota: q,
+        result,
+        updatedAt: nowIso,
+        ttl,
+      },
+      true,
+    );
+    return Promise.resolve();
   }
 
   /**
@@ -772,6 +940,11 @@ export class DynamoDbSeatCacheService {
         return l1Hit.value;
       }
       this.l1AltPathCache.delete(l1Key);
+    }
+
+    const queued = this.writeQueue.get(`${routeKey}#${sortKey}`);
+    if (queued?.item.result && typeof queued.item.result === 'object') {
+      return queued.item.result as Record<string, unknown>;
     }
 
     if (!this.docClient) return null;
@@ -876,16 +1049,16 @@ export class DynamoDbSeatCacheService {
   }
 
   /**
-   * Save a cached best-train payload into DynamoDB (with in-memory L1 cache).
+   * Save a cached best-train payload into DynamoDB asynchronously.
    */
-  async saveBestTrain(
+  saveBestTrain(
     from: string,
     to: string,
     dateDdMmYyyy: string,
     payload: Record<string, unknown>,
     ttlSeconds = 24 * 3600,
   ): Promise<void> {
-    if (!payload) return;
+    if (!payload) return Promise.resolve();
 
     const f = from.trim().toUpperCase();
     const t = to.trim().toUpperCase();
@@ -907,30 +1080,23 @@ export class DynamoDbSeatCacheService {
       },
     });
 
-    if (!this.docClient) return;
+    if (!this.docClient) return Promise.resolve();
 
-    try {
-      await this.docClient.send(
-        new PutCommand({
-          TableName: this.tableName,
-          Item: {
-            trainNumber: routeKey,
-            dateClass: d,
-            from: f,
-            to: t,
-            date: d,
-            payload,
-            cachedAt: nowIso,
-            updatedAt: nowIso,
-            ttl,
-          },
-        }),
-      );
-    } catch (err) {
-      this.logger.warn(
-        `[DynamoDB] saveBestTrain failed for ${routeKey} ${d}: ${awsErrorLabel(err)}`,
-      );
-    }
+    this.enqueueWriteItem(
+      {
+        trainNumber: routeKey,
+        dateClass: d,
+        from: f,
+        to: t,
+        date: d,
+        payload,
+        cachedAt: nowIso,
+        updatedAt: nowIso,
+        ttl,
+      },
+      true,
+    );
+    return Promise.resolve();
   }
 
   /**
@@ -958,6 +1124,15 @@ export class DynamoDbSeatCacheService {
         return l1Hit.value;
       }
       this.l1BestTrainCache.delete(l1Key);
+    }
+
+    const queued = this.writeQueue.get(`${routeKey}#${d}`);
+    if (queued?.item.payload && typeof queued.item.payload === 'object') {
+      return {
+        value: queued.item.payload as Record<string, unknown>,
+        cachedAt: new Date(),
+        expiresAt: new Date(Date.now() + 86400000),
+      };
     }
 
     if (!this.docClient) return null;
