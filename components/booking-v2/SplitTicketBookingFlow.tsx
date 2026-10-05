@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight, ShieldCheck, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import {
@@ -238,6 +238,14 @@ export function SplitTicketBookingFlow({
             </button>
           </div>
         </form>
+
+        {/* Official IRCTC Agent Trust Strip */}
+        <div className="border-t border-slate-100 bg-slate-50/90 px-3.5 py-2 sm:px-5 sm:py-2.5">
+          <div className="flex items-center justify-center gap-1.5 text-center text-xs font-medium text-slate-600">
+            <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-600" />
+            <span>LastBerth is an official IRCTC Agent</span>
+          </div>
+        </div>
       </div>
     </div>
   );

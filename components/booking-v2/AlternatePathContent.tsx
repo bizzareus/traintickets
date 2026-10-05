@@ -30,7 +30,7 @@ import {
   type ChartAlertPaymentModalJourney,
 } from "@/components/payments/ChartAlertPaymentModal";
 import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFooter";
-import { BellRing } from "lucide-react";
+import { BellRing, ShieldCheck } from "lucide-react";
 import { NextReleaseBottomSheet } from "./NextReleaseBottomSheet";
 import {
   SplitTicketBookingFlow,
@@ -1338,6 +1338,10 @@ export function AlternatePathContent({
                       <span>Book Now</span>
                     </button>
                   )}
+                </div>
+                <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-center gap-1.5 text-center text-xs font-medium text-slate-500">
+                  <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-600" />
+                  <span>LastBerth is an official IRCTC Agent</span>
                 </div>
               </div>
             )}
