@@ -71,6 +71,7 @@ import {
   formatShortDate,
 } from "@/components/home/MobileModifySearchSheet";
 import { TrainClassMultiSelect } from "@/components/home/TrainClassMultiSelect";
+import { HowSplitBookingWorks } from "@/components/home/HowSplitBookingWorks";
 import ChartTimesFinder from "@/app/chart-times/ChartTimesFinder";
 import type { HomeStrings } from "@/lib/home/home-langs";
 
@@ -1595,6 +1596,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       {/* Homepage content (ads + SEO) is first-landing only — hidden once a search has begun */}
       {!hasSearched && (
         <>
+          {searchType === "route" && (
+            <HowSplitBookingWorks />
+          )}
           <HomeSideAd />
           <HomeSeoContent t={t.seo} />
           <div className="mx-auto my-8 flex min-h-[250px] max-w-3xl items-center justify-center px-4 sm:px-6 lg:max-w-4xl">
