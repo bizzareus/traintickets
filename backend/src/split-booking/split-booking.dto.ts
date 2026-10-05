@@ -18,6 +18,7 @@ import {
 } from 'class-validator';
 
 const GENDERS = ['Male', 'Female', 'Transgender'] as const;
+const FOOD_CHOICES = ['Veg', 'Non-Veg', 'No Food', ''] as const;
 
 class SplitBookingPassengerDto {
   @IsString()
@@ -36,6 +37,14 @@ class SplitBookingPassengerDto {
   @IsString()
   @MaxLength(30)
   berthPreference?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  optBerth?: boolean;
+
+  @IsOptional()
+  @IsIn(FOOD_CHOICES)
+  foodChoice?: (typeof FOOD_CHOICES)[number];
 
   @IsOptional()
   @IsBoolean()
@@ -154,6 +163,19 @@ export class CreateSplitBookingDto {
   @IsOptional()
   @IsBoolean()
   autoUpgrade?: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  confirmBerthsOnly?: boolean;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(10)
+  preferredCoach?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  travelInsurance?: boolean;
 
   @IsString()
   @Matches(/^\+?\d{10,15}$/)
