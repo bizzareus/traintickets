@@ -378,7 +378,7 @@ export class IrctcService {
         await this.prisma.trainScheduleCache.upsert({
           where: { trainNumber: num },
           create: {
-            trainNumber: data.trainNumber,
+            trainNumber: num,
             trainName: data.trainName,
             stationFrom: data.stationFrom,
             stationTo: data.stationTo,
@@ -435,7 +435,7 @@ export class IrctcService {
       await this.prisma.trainScheduleCache.upsert({
         where: { trainNumber: num },
         create: {
-          trainNumber: data.trainNumber,
+          trainNumber: num,
           trainName: data.trainName,
           stationFrom: data.stationFrom,
           stationTo: data.stationTo,
@@ -719,7 +719,7 @@ export class IrctcService {
     );
 
     return {
-      trainNumber: String(parsed.TrainNo || trainNumber).trim(),
+      trainNumber: to5DigitTrainNo(parsed.TrainNo || trainNumber),
       trainName: String(parsed.TrainName || '').trim(),
       stationFrom: String(parsed.SourceCode || '')
         .trim()

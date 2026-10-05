@@ -334,6 +334,49 @@ describe('IrctcService', () => {
       expect(mockPrisma.trainScheduleCache.upsert).toHaveBeenCalledWith(
         expect.objectContaining({
           where: { trainNumber: '12782' },
+          create: expect.objectContaining({ trainNumber: '12782' }),
+        }),
+      );
+    });
+
+    it('normalizes leading zero train numbers (e.g. 03255) in upsert to prevent unique constraint failures', async () => {
+      mockGet.mockResolvedValueOnce({
+        data: {
+          TrainNo: 3255, // ConfirmTkt returns integer 3255 without leading zero
+          TrainName: 'Chz Pnbe Spl',
+          SourceCode: 'CHZ',
+          DestinationCode: 'PNBE',
+          DaysOfRun: { Mon: true },
+          Schedule: [
+            {
+              StationCode: 'CHZ',
+              StationName: 'CHARLAPALLI',
+              ArrivalTime: 'Source',
+              DepartureTime: '21:00',
+              HaltMinutes: '0',
+              Distance: '0',
+              Day: 1,
+            },
+          ],
+        },
+      });
+
+      const result = await service.getTrainSchedule('03255', {
+        forceRefresh: true,
+      });
+
+      expect(result.ok).toBe(true);
+      if (result.ok) {
+        expect(result.schedule.trainNumber).toBe('03255');
+      }
+
+      // Verify that where.trainNumber matches create.trainNumber ('03255')
+      expect(mockPrisma.trainScheduleCache.upsert).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { trainNumber: '03255' },
+          create: expect.objectContaining({
+            trainNumber: '03255',
+          }),
         }),
       );
     });
