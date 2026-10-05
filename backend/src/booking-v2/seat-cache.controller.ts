@@ -132,9 +132,11 @@ export class SeatCacheController {
         '',
     ).trim();
 
+    const suppliedApiKey = String(apiKey ?? '').trim();
     if (
       expectedKey &&
-      safeCompareStrings(String(apiKey ?? '').trim(), expectedKey)
+      suppliedApiKey &&
+      safeCompareStrings(suppliedApiKey, expectedKey)
     ) {
       return;
     }
