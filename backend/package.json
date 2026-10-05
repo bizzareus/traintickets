@@ -53,7 +53,7 @@
     "@nestjs/throttler": "^6.7.1",
     "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
-    "@sentry/nestjs": "^10.47.0",
+    "@sentry/nestjs": "^10.76.0",
     "@sentry/node": "^10.47.0",
     "@sentry/profiling-node": "^10.47.0",
     "@types/cookie-parser": "^1.4.10",

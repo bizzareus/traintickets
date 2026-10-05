@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/nestjs';
+import { consoleLoggingIntegration } from '@sentry/node';
 import { nodeProfilingIntegration } from '@sentry/profiling-node';
 import { isBenignUpstreamErrorMessage } from './common/expected-upstream-errors';
 
@@ -96,7 +97,12 @@ if (dsn) {
       process.env.SENTRY_ENVIRONMENT?.trim() ||
       process.env.NODE_ENV ||
       'development',
-    integrations: [nodeProfilingIntegration()],
+    integrations: [
+      nodeProfilingIntegration() as any,
+      consoleLoggingIntegration({
+        levels: ['log', 'warn', 'error'],
+      }) as any,
+    ],
     tracesSampleRate: parseSampleRate(
       process.env.SENTRY_TRACES_SAMPLE_RATE,
       defaultSampleRate(),
@@ -107,5 +113,10 @@ if (dsn) {
     beforeSend: (event) =>
       isLocalhostEvent(event) || isBenignUpstreamEvent(event) ? null : event,
     beforeSendTransaction: (event) => (isLocalhostEvent(event) ? null : event),
+  });
+
+  // Send a test log to verify Sentry logs are working
+  Sentry.logger.info('Sentry logging test from instrument.ts', {
+    action: 'sentry_test_log',
   });
 }

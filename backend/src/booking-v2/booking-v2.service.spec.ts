@@ -690,7 +690,9 @@ describe('BookingV2Service', () => {
         '05-04-2029',
         'GN',
       );
-      expect(result.data.trainList[0].cachedAlternatePath).toEqual(mockAltResult);
+      expect(result.data.trainList[0].cachedAlternatePath).toEqual(
+        mockAltResult,
+      );
     });
 
     it('throws for an invalid date', async () => {
