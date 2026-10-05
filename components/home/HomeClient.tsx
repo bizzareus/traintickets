@@ -1548,7 +1548,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         {searchType === "route" &&
           (altResult || altError || (altLoading && altForTrain)) && (
             <div
-              className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 sm:items-center sm:p-6"
+              className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 backdrop-blur-xs sm:items-center sm:p-4"
               role="presentation"
               onClick={() => {
                 if (!altLoading) {
@@ -1557,11 +1557,15 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               }}
             >
               <div
-                className="flex h-full w-full flex-col bg-white sm:h-auto sm:max-h-[90vh] sm:max-w-2xl sm:rounded-xl sm:border sm:border-gray-200 sm:shadow-2xl overflow-hidden"
+                className="flex h-[92dvh] sm:h-auto sm:max-h-[88vh] w-full flex-col rounded-t-2xl sm:rounded-2xl bg-white shadow-2xl sm:border sm:border-gray-200 sm:max-w-2xl overflow-hidden animate-in slide-in-from-bottom duration-300 sm:zoom-in-95"
                 role="dialog"
                 aria-modal="true"
                 onClick={(e) => e.stopPropagation()}
               >
+                {/* Mobile drag handle */}
+                <div className="flex justify-center pt-2.5 pb-1 sm:hidden shrink-0">
+                  <div className="h-1.5 w-12 rounded-full bg-slate-300" />
+                </div>
                 <AlternatePathContent
                   altForTrain={altForTrain}
                   altTrainName={altTrainName}

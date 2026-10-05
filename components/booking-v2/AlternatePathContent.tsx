@@ -30,7 +30,7 @@ import {
   type ChartAlertPaymentModalJourney,
 } from "@/components/payments/ChartAlertPaymentModal";
 import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFooter";
-import { BellRing, ShieldCheck } from "lucide-react";
+import { ArrowRight, BellRing, ShieldCheck } from "lucide-react";
 import { NextReleaseBottomSheet } from "./NextReleaseBottomSheet";
 import {
   SplitTicketBookingFlow,
@@ -860,7 +860,7 @@ export function AlternatePathContent({
           )}
           <button
             type="button"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
+            className="flex h-9 w-9 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-slate-100 sm:bg-transparent text-slate-500 sm:text-gray-400 hover:bg-slate-200 sm:hover:bg-gray-100 hover:text-gray-600 transition-colors shrink-0"
             onClick={onClose}
             aria-label="Close"
           >
@@ -1292,23 +1292,17 @@ export function AlternatePathContent({
           {(canStartBooking || altResult.totalFare != null) &&
             !IS_TICKET_ALERT_ENABLED &&
             confirmedLegCount > 1 && (
-              <div className="sticky bottom-0 -mx-3.5 -mb-3.5 sm:-mx-6 sm:-mb-6 mt-4 border-t border-slate-200 bg-white/95 backdrop-blur-sm px-4 py-3 sm:px-6 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] z-20">
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="min-w-0">
-                    <div
-                      className="flex flex-wrap items-baseline gap-x-2"
-                      role="status"
-                      aria-label="Total ticket fare"
-                    >
-                      <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Total ticket fare
-                      </span>
-                      <span className="text-xl sm:text-2xl font-black text-slate-900 tabular-nums">
-                        {altResult.totalFare === null
-                          ? "Select classes at booking"
-                          : `From ₹${altResult.totalFare.toLocaleString("en-IN")}`}
-                      </span>
-                    </div>
+              <div className="sticky bottom-0 -mx-3.5 -mb-3.5 sm:-mx-6 sm:-mb-6 mt-4 border-t border-slate-200 bg-white/95 backdrop-blur-sm px-4 py-3 sm:px-6 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] z-20 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <span className="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 truncate">
+                      Total ticket fare
+                    </span>
+                    <span className="text-lg sm:text-2xl font-black text-slate-900 tabular-nums truncate block">
+                      {altResult.totalFare === null
+                        ? "Select classes at booking"
+                        : `From ₹${altResult.totalFare.toLocaleString("en-IN")}`}
+                    </span>
                   </div>
 
                   {canStartBooking && (
@@ -1333,13 +1327,14 @@ export function AlternatePathContent({
                           stationNameMap: altResult.stationNameMap,
                         });
                       }}
-                      className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.99] transition cursor-pointer sm:w-auto w-full"
+                      className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-blue-600 px-4 py-2.5 sm:px-6 sm:py-3 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.99] transition cursor-pointer"
                     >
                       <span>Book Now</span>
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </button>
                   )}
                 </div>
-                <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-center gap-1.5 text-center text-xs font-medium text-slate-500">
+                <div className="mt-2 pt-1.5 border-t border-slate-100 flex items-center justify-center gap-1.5 text-center text-[11px] sm:text-xs font-medium text-slate-500">
                   <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-600" />
                   <span>LastBerth is an official IRCTC Agent</span>
                 </div>
