@@ -13,6 +13,7 @@ import type {
   SplitBookingPaymentStatus,
   SplitTicketBooking,
 } from '@prisma/client';
+import { isAxiosError } from 'axios';
 import type { AxiosInstance } from 'axios';
 import { isURL } from 'class-validator';
 import * as crypto from 'crypto';
@@ -24,6 +25,7 @@ import {
   type MuzoboxPaymentLink,
   type MuzoboxPaymentStatus,
 } from '../common/muzobox-client';
+import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
 import { validateBookingItinerary } from './split-booking.validation';
 import { bookingDetails, bookingPnrFields } from './split-booking.helpers';
@@ -56,6 +58,7 @@ export class SplitBookingService {
     @Optional() private readonly wasender?: WasenderProvider,
     @Optional() private readonly posthog?: PostHogAnalyticsService,
     @Optional() private readonly s3Storage?: S3StorageService,
+    @Optional() private readonly razorpay?: RazorpayClient,
   ) {
     this.muzoboxClient = createMuzoboxClient(config);
   }
@@ -667,6 +670,7 @@ export class SplitBookingService {
         contactEmail: true,
         autoUpgrade: true,
         paymentStatus: true,
+        muzoboxPaymentId: true,
         payUrl: true,
         razorpayOrderId: true,
         razorpayPaymentId: true,
@@ -1578,5 +1582,242 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
     });
 
     return { ok: true, cancellation: updated };
+  }
+
+  /**
+   * Cancels a split-ticket booking, initiates a full refund to the user via
+   * Muzobox or Razorpay, updates request records, and sends an automated
+   * cancellation & refund confirmation email to the user with the refund ID.
+   */
+  async adminCancelAndRefundBooking(
+    bookingIdOrRef: string,
+    opts?: { reason?: string },
+  ) {
+    const rawId = bookingIdOrRef?.trim();
+    if (!rawId) {
+      throw new BadRequestException('Booking ID or reference is required');
+    }
+
+    const booking = await this.prisma.splitTicketBooking.findFirst({
+      where: {
+        OR: [{ id: rawId }, { bookingRef: rawId.toUpperCase() }],
+      },
+    });
+
+    if (!booking) {
+      throw new NotFoundException(`Booking "${rawId}" not found`);
+    }
+
+    if (booking.bookingStatus === 'CANCELLED') {
+      throw new BadRequestException(
+        `Booking ${booking.bookingRef} is already cancelled`,
+      );
+    }
+
+    if (booking.paymentStatus !== 'PAID') {
+      throw new BadRequestException(
+        `Cannot refund booking ${booking.bookingRef} because payment status is ${booking.paymentStatus}`,
+      );
+    }
+
+    const price = bookingPrice(booking.totalFare, booking.serviceFee);
+    const refundAmount = price.amount;
+    const userReason =
+      opts?.reason?.trim() ||
+      `Admin cancelled and initiated full refund for ${booking.bookingRef}`;
+
+    const muzoboxPaymentId = booking.muzoboxPaymentId?.trim();
+    const razorpayPaymentId = booking.razorpayPaymentId?.trim();
+
+    if (!muzoboxPaymentId && !razorpayPaymentId) {
+      throw new BadRequestException(
+        `No payment ID (Muzobox or Razorpay) recorded for booking ${booking.bookingRef}`,
+      );
+    }
+
+    let refundId: string | undefined;
+
+    // 1. Process refund through payment provider
+    if (muzoboxPaymentId) {
+      try {
+        const res = await this.muzoboxClient.post<{
+          status?: string;
+          amount?: number;
+          referenceId?: string | null;
+          razorpayPaymentId?: string | null;
+          razorpayRefundId?: string;
+        }>(
+          `proxy-payments/${encodeURIComponent(muzoboxPaymentId)}/refund`,
+          {
+            amount: refundAmount,
+            reason: userReason.slice(0, 500),
+            referenceId: booking.bookingRef,
+          },
+          { headers: muzoboxAuthHeaders(this.config) },
+        );
+        const data = res.data ?? {};
+        const status = String(data.status ?? '').toLowerCase();
+        if (status !== 'refunded' && status !== 'already_refunded') {
+          throw new Error(
+            `Muzobox refund returned unexpected status=${String(data.status ?? 'missing')}`,
+          );
+        }
+        refundId = data.razorpayRefundId ?? `rfnd_mb_${booking.bookingRef}`;
+      } catch (err: unknown) {
+        let msg = 'Failed to process refund via Muzobox';
+        if (isAxiosError(err)) {
+          const payload = err.response?.data as
+            | { message?: unknown; error?: unknown }
+            | undefined;
+          const fromBody =
+            (Array.isArray(payload?.message)
+              ? payload?.message.join('; ')
+              : payload?.message) ?? payload?.error;
+          if (typeof fromBody === 'string' && fromBody.trim()) {
+            msg = `Muzobox refund failed: ${fromBody.trim().slice(0, 500)}`;
+          } else if (err.response?.status) {
+            msg = `Muzobox refund failed with HTTP ${err.response.status}`;
+          } else {
+            msg = `Muzobox refund request failed: ${err.message}`;
+          }
+        } else if (err instanceof Error) {
+          msg = err.message;
+        }
+        this.logger.error(
+          `Refund failed for booking ${booking.bookingRef}: ${msg}`,
+        );
+        throw new BadRequestException(msg);
+      }
+    } else if (razorpayPaymentId) {
+      if (!this.razorpay || !this.razorpay.isConfigured) {
+        throw new BadRequestException(
+          'Direct Razorpay refund is not configured on this server',
+        );
+      }
+      try {
+        const refundRes = await this.razorpay.createRefund({
+          paymentId: razorpayPaymentId,
+          amountPaise: refundAmount * 100,
+          notes: {
+            bookingRef: booking.bookingRef,
+            reason: userReason.slice(0, 200),
+          },
+        });
+        refundId = refundRes.id;
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        this.logger.error(
+          `Razorpay direct refund failed for ${booking.bookingRef}: ${msg}`,
+        );
+        throw new BadRequestException(`Razorpay refund failed: ${msg}`);
+      }
+    }
+
+    const finalRefundId = refundId || `rfnd_${Date.now()}`;
+    const refundNote = `Full refund of ₹${refundAmount} initiated on ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (Refund ID: ${finalRefundId}). Reason: ${userReason}`;
+
+    // 2. Update SplitTicketBooking status to CANCELLED
+    await this.prisma.splitTicketBooking.update({
+      where: { id: booking.id },
+      data: {
+        bookingStatus: 'CANCELLED',
+        completedAt: new Date(),
+        bookingError: refundNote,
+      },
+    });
+
+    // 3. Mark any existing PENDING cancellation request as PROCESSED or create one
+    const existingReq = await this.prisma.bookingCancellationRequest.findFirst({
+      where: { bookingId: booking.id, status: 'PENDING' },
+    });
+
+    if (existingReq) {
+      await this.prisma.bookingCancellationRequest.update({
+        where: { id: existingReq.id },
+        data: {
+          status: 'PROCESSED',
+          processedAt: new Date(),
+          adminNotes: existingReq.adminNotes
+            ? `${existingReq.adminNotes}\n${refundNote}`
+            : refundNote,
+        },
+      });
+    } else {
+      await this.prisma.bookingCancellationRequest.create({
+        data: {
+          bookingId: booking.id,
+          bookingRef: booking.bookingRef,
+          mobile: booking.contactMobile,
+          reason: userReason,
+          status: 'PROCESSED',
+          processedAt: new Date(),
+          adminNotes: refundNote,
+        },
+      });
+    }
+
+    // 4. Send automated Email to user with Refund ID
+    let emailSent = false;
+    if (this.notifications && booking.contactEmail) {
+      const journeyDateStr = booking.journeyDate.toISOString().slice(0, 10);
+      const subject = `Booking Cancelled & Refund Initiated — ${booking.bookingRef} (₹${refundAmount})`;
+      const html = `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1e293b;">
+          <div style="background: #0f172a; padding: 24px; text-align: center; border-radius: 12px 12px 0 0;">
+            <h1 style="color: white; margin: 0; font-size: 20px;">Booking Cancelled & Refund Initiated</h1>
+            <p style="color: #94a3b8; margin: 6px 0 0 0; font-size: 14px;">Booking Ref: <strong style="color: #38bdf8;">${escapeHtml(booking.bookingRef)}</strong></p>
+          </div>
+          <div style="padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px; background: white;">
+            <p style="font-size: 15px; margin-top: 0; color: #334155;">Dear Passenger,</p>
+            <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+              Your split-ticket booking for <strong>Train ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</strong> (${escapeHtml(booking.fromStationCode)} → ${escapeHtml(booking.toStationCode)}) on <strong>${escapeHtml(journeyDateStr)}</strong> has been cancelled.
+            </p>
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin: 20px 0;">
+              <h3 style="margin: 0 0 10px 0; font-size: 13px; text-transform: uppercase; color: #166534; letter-spacing: 0.5px;">Refund Details</h3>
+              <p style="margin: 4px 0; font-size: 13px;"><strong>Refund Amount:</strong> <span style="font-size: 15px; font-weight: bold; color: #15803d;">₹${refundAmount} (Full Amount)</span></p>
+              <p style="margin: 4px 0; font-size: 13px;"><strong>Refund ID / Reference:</strong> <span style="font-family: monospace; font-size: 13px; font-weight: bold; color: #0f172a;">${escapeHtml(finalRefundId)}</span></p>
+              <p style="margin: 4px 0; font-size: 13px;"><strong>Status:</strong> <span style="font-weight: 600; color: #15803d;">Initiated to original payment method</span></p>
+              <p style="margin: 8px 0 0 0; font-size: 12px; color: #166534;">
+                The full amount of ₹${refundAmount} has been refunded to the original payment source. Funds typically reflect in your bank account or UPI application within 3 to 7 working days depending on your bank.
+              </p>
+            </div>
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 20px;">
+              <h4 style="margin: 0 0 8px 0; font-size: 12px; text-transform: uppercase; color: #64748b;">Cancelled Journey</h4>
+              <p style="margin: 3px 0; font-size: 13px;"><strong>Train:</strong> ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</p>
+              <p style="margin: 3px 0; font-size: 13px;"><strong>Route:</strong> ${escapeHtml(booking.fromStationCode)} → ${escapeHtml(booking.toStationCode)}</p>
+              <p style="margin: 3px 0; font-size: 13px;"><strong>Date:</strong> ${escapeHtml(journeyDateStr)}</p>
+            </div>
+            <p style="color: #94a3b8; font-size: 12px; margin-top: 24px; border-top: 1px solid #f1f5f9; padding-top: 16px; line-height: 1.5;">
+              If you have any questions or need further assistance, please contact LastBerth support at <a href="mailto:support@lastberth.com" style="color: #2563eb;">support@lastberth.com</a> or WhatsApp +91 99992 24767.
+            </p>
+          </div>
+        </div>`;
+
+      emailSent = await this.notifications
+        .sendEmail(booking.contactEmail, subject, html, {
+          skipFailureReport: true,
+        })
+        .catch(() => false);
+    }
+
+    this.posthog?.capture(
+      'split_booking_cancelled_and_refunded',
+      {
+        booking_ref: booking.bookingRef,
+        amount: refundAmount,
+        refund_id: finalRefundId,
+        email_sent: emailSent,
+      },
+      booking.bookingRef,
+    );
+
+    return {
+      success: true,
+      bookingRef: booking.bookingRef,
+      refundAmount,
+      refundId: finalRefundId,
+      emailSent,
+      message: `Booking ${booking.bookingRef} cancelled. Full refund of ₹${refundAmount} initiated (Refund ID: ${finalRefundId}).`,
+    };
   }
 }

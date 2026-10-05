@@ -73,6 +73,7 @@ export interface SplitBookingStatus extends SplitBookingPrice {
     | "IN_PROGRESS"
     | "MANUAL_PENDING"
     | "CONFIRMED"
+    | "CANCELLED"
     | "FAILED";
   pnrs: string[];
   pnrLeg1?: string | null;

@@ -566,6 +566,7 @@ enum SplitBookingFulfillmentStatus {
   IN_PROGRESS
   MANUAL_PENDING
   CONFIRMED
+  CANCELLED
   FAILED
 }
 

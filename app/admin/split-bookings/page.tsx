@@ -14,6 +14,7 @@ import {
   Mail,
   MessageSquare,
   RefreshCw,
+  RotateCcw,
   Search,
   Train,
   Upload,
@@ -61,6 +62,7 @@ export interface SplitBookingAdminEntry {
   contactEmail: string;
   autoUpgrade: boolean;
   paymentStatus: "PENDING" | "PAID" | "FAILED";
+  muzoboxPaymentId?: string | null;
   payUrl: string | null;
   razorpayOrderId: string | null;
   razorpayPaymentId: string | null;
@@ -72,6 +74,7 @@ export interface SplitBookingAdminEntry {
     | "IN_PROGRESS"
     | "MANUAL_PENDING"
     | "CONFIRMED"
+    | "CANCELLED"
     | "FAILED";
   manualEmailSentAt: string | null;
   manualWhatsappSentAt: string | null;
@@ -109,6 +112,10 @@ const BOOKING_STATUS_STYLES: Record<
   CONFIRMED: {
     badge: "border-emerald-200 bg-emerald-50 text-emerald-800 font-semibold",
     label: "Confirmed",
+  },
+  CANCELLED: {
+    badge: "border-purple-200 bg-purple-50 text-purple-700 font-semibold",
+    label: "Cancelled & Refunded",
   },
   FAILED: {
     badge: "border-rose-200 bg-rose-50 text-rose-700 font-semibold",
@@ -255,6 +262,14 @@ function SplitBookingsAdminContent() {
   const [actionNotes, setActionNotes] = useState("");
   const [savingCancellation, setSavingCancellation] = useState(false);
   const [cancellationActionError, setCancellationActionError] = useState("");
+
+  // Cancel & Refund Modal State
+  const [refundBooking, setRefundBooking] =
+    useState<SplitBookingAdminEntry | null>(null);
+  const [refundReason, setRefundReason] = useState("");
+  const [processingRefund, setProcessingRefund] = useState(false);
+  const [refundModalError, setRefundModalError] = useState("");
+  const [refundSuccessMsg, setRefundSuccessMsg] = useState("");
 
   // PDF Upload Modal State
   const [pdfUploadBooking, setPdfUploadBooking] =
@@ -495,6 +510,52 @@ function SplitBookingsAdminContent() {
       );
     } finally {
       setSavingCancellation(false);
+    }
+  };
+
+  const openCancelAndRefundModal = (b: SplitBookingAdminEntry) => {
+    setRefundBooking(b);
+    setRefundReason("");
+    setRefundModalError("");
+    setRefundSuccessMsg("");
+  };
+
+  const handleProcessCancelAndRefund = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!refundBooking || processingRefund) return;
+    setProcessingRefund(true);
+    setRefundModalError("");
+    setRefundSuccessMsg("");
+    try {
+      const res = await apiClient.post<{
+        success: boolean;
+        refundId: string;
+        refundAmount: number;
+        emailSent: boolean;
+        message: string;
+      }>(
+        `/api/split-booking/admin/${refundBooking.id}/cancel-and-refund`,
+        { reason: refundReason.trim() || undefined },
+        { headers: authHeaders() },
+      );
+
+      const emailNote = res.data.emailSent
+        ? " Automated refund email sent to customer."
+        : " (Customer email was not configured or skipped).";
+      setRefundSuccessMsg(
+        `Success: Refund of ₹${res.data.refundAmount} initiated (Refund ID: ${res.data.refundId}).${emailNote}`,
+      );
+      await load();
+      setTimeout(() => {
+        setRefundBooking(null);
+        setRefundSuccessMsg("");
+      }, 2500);
+    } catch (err) {
+      setRefundModalError(
+        extractError(err, "Failed to cancel booking and initiate refund."),
+      );
+    } finally {
+      setProcessingRefund(false);
     }
   };
 
@@ -1121,6 +1182,18 @@ function SplitBookingsAdminContent() {
                             Notify
                           </button>
 
+                          {b.paymentStatus === "PAID" &&
+                            b.bookingStatus !== "CANCELLED" && (
+                              <button
+                                type="button"
+                                onClick={() => openCancelAndRefundModal(b)}
+                                className="inline-flex items-center gap-1 rounded-lg border border-purple-200 bg-purple-50 px-2.5 py-1 text-[11px] font-semibold text-purple-700 shadow-xs hover:bg-purple-100 transition cursor-pointer"
+                              >
+                                <RotateCcw className="h-3 w-3" />
+                                Cancel & Refund
+                              </button>
+                            )}
+
                           {(b.customerEmailSentAt ||
                             b.customerWhatsappSentAt) && (
                             <span className="text-[10px] text-slate-400">
@@ -1398,6 +1471,72 @@ function SplitBookingsAdminContent() {
                                   View Booking
                                 </button>
                               )}
+
+                              {c.status !== "PROCESSED" &&
+                                c.booking &&
+                                c.booking.paymentStatus === "PAID" && (
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const full = entries.find(
+                                        (e) => e.id === c.bookingId,
+                                      );
+                                      if (full) {
+                                        openCancelAndRefundModal(full);
+                                      } else {
+                                        openCancelAndRefundModal({
+                                          id: c.bookingId,
+                                          bookingRef: c.bookingRef,
+                                          trainNumber: c.booking.trainNumber,
+                                          trainName: c.booking.trainName,
+                                          fromStationCode:
+                                            c.booking.fromStationCode,
+                                          toStationCode:
+                                            c.booking.toStationCode,
+                                          journeyDate: c.booking.journeyDate,
+                                          travelClass: c.booking.travelClass,
+                                          quota: "GN",
+                                          totalFare: c.booking.totalFare,
+                                          serviceFee: c.booking.serviceFee,
+                                          legsPayload: [],
+                                          passengers: { adults: [] },
+                                          contactMobile:
+                                            c.booking.contactMobile,
+                                          contactEmail: c.booking.contactEmail,
+                                          autoUpgrade: true,
+                                          paymentStatus: "PAID",
+                                          payUrl: null,
+                                          razorpayOrderId: null,
+                                          razorpayPaymentId: null,
+                                          paidAt: null,
+                                          bookingMode: "AI",
+                                          bookingStatus:
+                                            c.booking
+                                              .bookingStatus as SplitBookingAdminEntry["bookingStatus"],
+                                          manualEmailSentAt: null,
+                                          manualWhatsappSentAt: null,
+                                          customerEmailSentAt: null,
+                                          customerWhatsappSentAt: null,
+                                          pnrs: c.booking.pnrs || [],
+                                          pnrLeg1: c.booking.pnrLeg1,
+                                          pnrLeg2: c.booking.pnrLeg2,
+                                          ticketPdfFilename: null,
+                                          ticketPdfContentType: null,
+                                          ticketPdfUploadedAt: null,
+                                          hasTicketPdf: false,
+                                          bookingError: null,
+                                          completedAt: null,
+                                          createdAt: c.createdAt,
+                                          updatedAt: c.updatedAt,
+                                        });
+                                      }
+                                    }}
+                                    className="inline-flex items-center gap-1 rounded-lg border border-purple-200 bg-purple-50 px-2 py-0.5 text-[10px] font-semibold text-purple-700 hover:bg-purple-100 transition cursor-pointer"
+                                  >
+                                    <RotateCcw className="h-2.5 w-2.5" />
+                                    Full Refund
+                                  </button>
+                                )}
                             </div>
                           </td>
                         </tr>
@@ -2093,6 +2232,165 @@ function SplitBookingsAdminContent() {
                     </>
                   ) : (
                     "Save & Update"
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* --- 5. Cancel Booking & Full Refund Modal --- */}
+      {refundBooking && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-xs"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div className="flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 text-purple-700">
+                  <RotateCcw className="h-4 w-4" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-slate-900">
+                    Cancel Booking & Issue Full Refund
+                  </h3>
+                  <p className="text-xs text-slate-500">
+                    Ref:{" "}
+                    <span className="font-mono font-bold text-slate-800">
+                      {refundBooking.bookingRef}
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  if (!processingRefund) setRefundBooking(null);
+                }}
+                className="rounded-lg p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition cursor-pointer"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <form
+              onSubmit={handleProcessCancelAndRefund}
+              className="mt-4 space-y-4"
+            >
+              {/* Summary of refund action */}
+              <div className="rounded-xl border border-purple-200 bg-purple-50/60 p-3.5 text-xs space-y-2">
+                <div className="flex justify-between items-center pb-2 border-b border-purple-200/60">
+                  <span className="text-slate-600 font-medium">
+                    Total Refund Amount:
+                  </span>
+                  <span className="text-base font-bold text-purple-700">
+                    ₹
+                    {(
+                      refundBooking.totalFare + refundBooking.serviceFee
+                    ).toLocaleString("en-IN")}{" "}
+                    <span className="text-[11px] font-normal text-purple-600">
+                      (Full 100%)
+                    </span>
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Passenger / Train:</span>
+                  <span className="font-semibold text-slate-800">
+                    Train {refundBooking.trainNumber} (
+                    {refundBooking.fromStationCode} →{" "}
+                    {refundBooking.toStationCode})
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Customer Email:</span>
+                  <span className="font-semibold text-slate-800">
+                    {refundBooking.contactEmail}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Customer Mobile:</span>
+                  <span className="font-semibold text-slate-800">
+                    {refundBooking.contactMobile}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-500">Payment ID:</span>
+                  <span className="font-mono text-slate-700">
+                    {refundBooking.razorpayPaymentId ||
+                      refundBooking.muzoboxPaymentId ||
+                      "Recorded Payment"}
+                  </span>
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-blue-100 bg-blue-50/50 p-3 text-xs text-blue-900 space-y-1">
+                <div className="flex items-center gap-1.5 font-semibold text-blue-800">
+                  <Mail className="h-3.5 w-3.5" />
+                  Automated Customer Email Notification
+                </div>
+                <p className="text-[11px] leading-relaxed text-blue-700">
+                  An automated email will be sent immediately to{" "}
+                  <strong>{refundBooking.contactEmail}</strong> containing the
+                  cancellation notice, full refund amount (₹
+                  {(
+                    refundBooking.totalFare + refundBooking.serviceFee
+                  ).toLocaleString("en-IN")}
+                  ), and the generated Refund ID reference.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Cancellation & Refund Reason (Internal & Audit)
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Passenger requested cancellation / Trains unavailable"
+                  value={refundReason}
+                  onChange={(e) => setRefundReason(e.target.value)}
+                  className="w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-purple-600/20"
+                />
+              </div>
+
+              {refundModalError && (
+                <div className="rounded-xl border border-rose-200 bg-rose-50 p-3 text-xs text-rose-800">
+                  {refundModalError}
+                </div>
+              )}
+
+              {refundSuccessMsg && (
+                <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-xs font-medium text-emerald-800">
+                  {refundSuccessMsg}
+                </div>
+              )}
+
+              <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+                <button
+                  type="button"
+                  disabled={processingRefund}
+                  onClick={() => setRefundBooking(null)}
+                  className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition cursor-pointer disabled:opacity-50"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  disabled={processingRefund}
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-purple-700 px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-purple-800 transition cursor-pointer disabled:opacity-50"
+                >
+                  {processingRefund ? (
+                    <>
+                      <RefreshCw className="h-3 w-3 animate-spin" />
+                      Refunding…
+                    </>
+                  ) : (
+                    <>
+                      <RotateCcw className="h-3.5 w-3.5" />
+                      Confirm Full Refund & Cancel
+                    </>
                   )}
                 </button>
               </div>

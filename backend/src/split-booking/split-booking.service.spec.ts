@@ -1275,5 +1275,108 @@ describe('SplitBookingService', () => {
       expect(res.ok).toBe(true);
       expect(res.cancellation.status).toBe('PROCESSED');
     });
+
+    it('cancels booking, refunds via Muzobox, and emails customer with refund ID', async () => {
+      const mockBooking = {
+        id: 'b-refund-1',
+        bookingRef: 'LB-REF1',
+        trainNumber: '12782',
+        trainName: 'Swarna Jayanti',
+        fromStationCode: 'NZM',
+        toStationCode: 'KOP',
+        journeyDate: new Date('2026-10-15'),
+        totalFare: 2000,
+        serviceFee: 80,
+        contactMobile: '9876543210',
+        contactEmail: 'passenger@example.com',
+        bookingStatus: 'MANUAL_PENDING',
+        paymentStatus: 'PAID',
+        muzoboxPaymentId: 'mb_pay_123',
+        razorpayPaymentId: null,
+      };
+
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(mockBooking);
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        ...mockBooking,
+        bookingStatus: 'CANCELLED',
+      });
+      prisma.bookingCancellationRequest.findFirst.mockResolvedValue(null);
+      prisma.bookingCancellationRequest.create.mockResolvedValue({
+        id: 'cr-new',
+        bookingId: mockBooking.id,
+        status: 'PROCESSED',
+      });
+
+      muzobox.post.mockResolvedValue({
+        data: {
+          status: 'refunded',
+          amount: 2080,
+          razorpayRefundId: 'rfnd_custom_999',
+        },
+      });
+
+      const res = await service.adminCancelAndRefundBooking('LB-REF1', {
+        reason: 'Customer requested full refund',
+      });
+
+      expect(res.success).toBe(true);
+      expect(res.refundAmount).toBe(2080);
+      expect(res.refundId).toBe('rfnd_custom_999');
+      expect(res.emailSent).toBe(true);
+
+      // Verify Muzobox refund payload
+      expect(muzobox.post).toHaveBeenCalledWith(
+        'proxy-payments/mb_pay_123/refund',
+        expect.objectContaining({
+          amount: 2080,
+          referenceId: 'LB-REF1',
+        }),
+        expect.any(Object),
+      );
+
+      // Verify booking updated to CANCELLED
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 'b-refund-1' },
+          data: expect.objectContaining({
+            bookingStatus: 'CANCELLED',
+          }),
+        }),
+      );
+
+      // Verify notification email sent with refund ID and amount
+      expect(notifications.sendEmail).toHaveBeenCalledWith(
+        'passenger@example.com',
+        expect.stringContaining('LB-REF1'),
+        expect.stringContaining('rfnd_custom_999'),
+        expect.any(Object),
+      );
+    });
+
+    it('rejects refund if booking is already CANCELLED', async () => {
+      prisma.splitTicketBooking.findFirst.mockResolvedValue({
+        id: 'b-cancelled',
+        bookingRef: 'LB-ALREADY',
+        bookingStatus: 'CANCELLED',
+        paymentStatus: 'PAID',
+      });
+
+      await expect(
+        service.adminCancelAndRefundBooking('LB-ALREADY'),
+      ).rejects.toThrow(BadRequestException);
+    });
+
+    it('rejects refund if paymentStatus is not PAID', async () => {
+      prisma.splitTicketBooking.findFirst.mockResolvedValue({
+        id: 'b-pending',
+        bookingRef: 'LB-UNPAID',
+        bookingStatus: 'IDLE',
+        paymentStatus: 'PENDING',
+      });
+
+      await expect(
+        service.adminCancelAndRefundBooking('LB-UNPAID'),
+      ).rejects.toThrow(BadRequestException);
+    });
   });
 });

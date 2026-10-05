@@ -240,6 +240,17 @@ export class SplitBookingController {
     return this.splitBookingService.adminNotifyCustomer(id, body);
   }
 
+  @Post('admin/:id/cancel-and-refund')
+  async adminCancelAndRefund(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+    @Param('id') id: string,
+    @Body() body?: { reason?: string },
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
+    return this.splitBookingService.adminCancelAndRefundBooking(id, body);
+  }
+
   // --- Cancellation flow endpoints -------------------------------------------
 
   @Post('cancellation/lookup')
