@@ -2,7 +2,7 @@
 title: "South Central Railway Festival Special Trains 2026: List"
 description: "Full list of South Central Railway festival special trains for Diwali & Chhath 2026 from Hyderabad & Charlapalli to Bihar & UP with booking dates & routes."
 date: "2026-09-30"
-updated: "2026-09-30"
+updated: "2026-10-05"
 tags:
   - festival special trains
   - south central railway
@@ -13,11 +13,11 @@ tags:
 ---
 
 > **🔔 Planning festival travel from Hyderabad, Secunderabad, or Charlapalli?** Find confirmed seats and smart split routes on high-demand festive corridors:
-> - [Search Secunderabad to Danapur Special Trains](/?from=SC&to=DNR&fromName=Secunderabad%20Jn&toName=Danapur)
-> - [Search Secunderabad to Patna Special Trains](/?from=SC&to=PNBE&fromName=Secunderabad%20Jn&toName=Patna%20Jn)
-> - [Search Charlapalli to Sasaram Special Trains](/?from=CHZ&to=SSM&fromName=Charlapalli&toName=Sasaram)
-> - [Search Secunderabad to Gorakhpur Special Trains](/?from=SC&to=GKP&fromName=Secunderabad%20Jn&toName=Gorakhpur%20Jn)
-> - [Search Charlapalli to Delhi Special Trains](/?from=CHZ&to=NZM&fromName=Charlapalli&toName=Hazrat%20Nizamuddin)
+- [Search Secunderabad to Danapur Special Trains](/?from=SC&to=DNR&fromName=Secunderabad%20Jn&toName=Danapur)
+- [Search Secunderabad to Patna Special Trains](/?from=SC&to=PNBE&fromName=Secunderabad%20Jn&toName=Patna%20Jn)
+- [Search Charlapalli to Sasaram Special Trains](/?from=CHZ&to=SSM&fromName=Charlapalli&toName=Sasaram)
+- [Search Secunderabad to Gorakhpur Special Trains](/?from=SC&to=GKP&fromName=Secunderabad%20Jn&toName=Gorakhpur%20Jn)
+- [Search Charlapalli to Delhi Special Trains](/?from=CHZ&to=NZM&fromName=Charlapalli&toName=Hazrat%20Nizamuddin)
 
 ## TL;DR
 
@@ -98,7 +98,7 @@ Keep these practical rules in mind if your ticket shows Charlapalli (CHZ):
    - **By MMTS Suburban Train:** Regular MMTS local trains operate between Secunderabad, Kacheguda, Lingampalli, and Charlapalli.
    - **By Road:** Charlapalli is accessible via the Outer Ring Road (ORR) at Ghatkesar or via Nacharam and Mallapur roads. Allow at least 45 to 60 minutes of travel time from Secunderabad or Central Hyderabad during evening peak traffic hours.
    - **By TSRTC City Buses:** Dedicated festival shuttle buses operate from Secunderabad Railway Station (Rathifile Bus Station) and ECIL X Roads directly to Charlapalli Railway Terminal.
-3. **Boarding Point Changes:** If you mistakenly booked from Secunderabad on a train that stops at both stations, you can update your boarding point online on the IRCTC website up to chart preparation (~8 hours prior to departure).
+3. **Boarding Point Changes:** If you mistakenly booked from Secunderabad on a train that stops at both stations, you can update your boarding point online on the IRCTC website up to the preparation of the second reservation chart (approximately 30 to 45 minutes before departure).
 
 ---
 
@@ -136,7 +136,7 @@ You never step off the train; you simply switch coaches at Nagpur Junction while
 
 ### 2. Leverage First and Second Charting Windows
 South Central Railway prepares reservation charts in two distinct phases:
-- **First Chart Preparation:** Finalized **8 to 10 hours prior to departure** at the originating station (or by 20:00 hrs the previous evening for morning departures). Unused emergency quotas, VIP quotas, and remote location quotas are released into the general pool.
+- **First Chart Preparation:** Finalized roughly **8 hours prior to departure** at the originating station (or at 21:00 hrs the previous evening for morning departures). Unused emergency quotas, VIP quotas, and remote location quotas are released into the general pool.
 - **Second and Final Chart:** Prepared **30 to 45 minutes before departure**. Berths cancelled at the last minute are immediately released under **Current Availability (`CURR_AVBL`)** at a **10% discount** on the basic fare.
 
 Use [Chart Times](/chart-times) to look up historical chart finalization times for your train, and view live coach-by-coach vacant seats on [Chart Vacancy](/chart-vacancy).
@@ -173,7 +173,7 @@ Yes. Unverified IRCTC accounts are capped at **12 tickets per month**. Linking y
 On general quota bookings, you can book up to **6 passengers per PNR**. During the initial Tatkal booking window, the limit is 4 passengers per PNR.
 
 ### Can I change my boarding station on an SCR festival special ticket?
-Yes, you can change your boarding station online via the IRCTC portal up to **first chart preparation** (~8 hours before train departure). Once the chart is finalized, boarding point modifications cannot be made.
+Yes, you can change your boarding station online via the IRCTC portal up to the preparation of the **second reservation chart** (approximately 30 to 45 minutes before train departure). Once the final chart is finalized, boarding point modifications cannot be made.
 
 ---
 

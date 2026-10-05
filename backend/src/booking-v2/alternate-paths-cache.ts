@@ -83,11 +83,13 @@ export class AlternatePathsRouteCache extends RouteCachingTableStore<FindAlterna
     const suffix = `:${normalizedDate}:${q}`;
 
     try {
+      // Use only `startsWith: prefix` so PostgreSQL can use the B-Tree index
+      // on primary key `cache_key`. `endsWith` prevents index range scans and forces
+      // expensive sequential table scans. We filter `endsWith` in memory instead.
       const rows = await this.prisma.routeCaching.findMany({
         where: {
           cacheKey: {
             startsWith: prefix,
-            endsWith: suffix,
           },
           expiresAt: {
             gt: new Date(),
@@ -102,6 +104,7 @@ export class AlternatePathsRouteCache extends RouteCachingTableStore<FindAlterna
       }> = [];
 
       for (const row of rows) {
+        if (!row.cacheKey.endsWith(suffix)) continue;
         const parts = row.cacheKey.split(':');
         // Format: alt-paths:v3:FROM:TO:TRAINNUM:CLASSKEY:DATE:QUOTA
         if (parts.length < 8) continue;

@@ -2,7 +2,7 @@
 title: "Eastern Railway Festival Special Trains 2026: Routes & List"
 description: "Full list of Eastern Railway festival special trains for Durga Puja, Diwali & Chhath 2026 from Howrah and Sealdah to NJP, Puri, Bihar & UP."
 date: "2026-10-01"
-updated: "2026-10-01"
+updated: "2026-10-05"
 tags:
   - festival special trains
   - eastern railway

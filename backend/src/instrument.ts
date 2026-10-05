@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/nestjs';
-import { consoleLoggingIntegration } from '@sentry/node';
+import { consoleLoggingIntegration, prismaIntegration } from '@sentry/node';
 import { nodeProfilingIntegration } from '@sentry/profiling-node';
 import { isBenignUpstreamErrorMessage } from './common/expected-upstream-errors';
 
@@ -102,6 +102,7 @@ if (dsn) {
       consoleLoggingIntegration({
         levels: ['log', 'warn', 'error'],
       }) as any,
+      prismaIntegration(),
     ],
     tracesSampleRate: parseSampleRate(
       process.env.SENTRY_TRACES_SAMPLE_RATE,
