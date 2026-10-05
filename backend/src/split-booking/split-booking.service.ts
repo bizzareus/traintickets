@@ -1637,8 +1637,12 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
 
     let refundId: string | undefined;
 
-    // 1. Process refund through payment provider
-    if (muzoboxPaymentId) {
+    // 1. Process refund through payment provider.
+    // Try the proxy payment refund endpoint (POST proxy-payments/:id/refund) using muzoboxPaymentId or razorpayPaymentId.
+    const proxyPaymentId = muzoboxPaymentId || razorpayPaymentId;
+    let proxyRefundSuccess = false;
+
+    if (proxyPaymentId) {
       try {
         const res = await this.muzoboxClient.post<{
           status?: string;
@@ -1647,7 +1651,7 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
           razorpayPaymentId?: string | null;
           razorpayRefundId?: string;
         }>(
-          `proxy-payments/${encodeURIComponent(muzoboxPaymentId)}/refund`,
+          `proxy-payments/${encodeURIComponent(proxyPaymentId)}/refund`,
           {
             amount: refundAmount,
             reason: userReason.slice(0, 500),
@@ -1657,14 +1661,16 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
         );
         const data = res.data ?? {};
         const status = String(data.status ?? '').toLowerCase();
-        if (status !== 'refunded' && status !== 'already_refunded') {
+        if (status === 'refunded' || status === 'already_refunded') {
+          refundId = data.razorpayRefundId ?? `rfnd_mb_${booking.bookingRef}`;
+          proxyRefundSuccess = true;
+        } else {
           throw new Error(
-            `Muzobox refund returned unexpected status=${String(data.status ?? 'missing')}`,
+            `Proxy payment refund returned unexpected status=${String(data.status ?? 'missing')}`,
           );
         }
-        refundId = data.razorpayRefundId ?? `rfnd_mb_${booking.bookingRef}`;
       } catch (err: unknown) {
-        let msg = 'Failed to process refund via Muzobox';
+        let msg = 'Failed to process refund via payment proxy';
         if (isAxiosError(err)) {
           const payload = err.response?.data as
             | { message?: unknown; error?: unknown }
@@ -1674,24 +1680,40 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
               ? payload?.message.join('; ')
               : payload?.message) ?? payload?.error;
           if (typeof fromBody === 'string' && fromBody.trim()) {
-            msg = `Muzobox refund failed: ${fromBody.trim().slice(0, 500)}`;
+            msg = `Payment proxy refund failed: ${fromBody.trim().slice(0, 500)}`;
           } else if (err.response?.status) {
-            msg = `Muzobox refund failed with HTTP ${err.response.status}`;
+            msg = `Payment proxy refund failed with HTTP ${err.response.status}`;
           } else {
-            msg = `Muzobox refund request failed: ${err.message}`;
+            msg = `Payment proxy refund request failed: ${err.message}`;
           }
         } else if (err instanceof Error) {
           msg = err.message;
         }
-        this.logger.error(
-          `Refund failed for booking ${booking.bookingRef}: ${msg}`,
-        );
-        throw new BadRequestException(msg);
+
+        // If direct Razorpay is configured on this server and we have a razorpayPaymentId,
+        // we can attempt a direct Razorpay fallback. Otherwise re-throw the proxy failure.
+        if (
+          !muzoboxPaymentId &&
+          razorpayPaymentId &&
+          this.razorpay &&
+          this.razorpay.isConfigured
+        ) {
+          this.logger.warn(
+            `Proxy refund failed for ${booking.bookingRef} (${msg}); attempting direct Razorpay refund.`,
+          );
+        } else {
+          this.logger.error(
+            `Refund failed for booking ${booking.bookingRef}: ${msg}`,
+          );
+          throw new BadRequestException(msg);
+        }
       }
-    } else if (razorpayPaymentId) {
+    }
+
+    if (!proxyRefundSuccess && razorpayPaymentId) {
       if (!this.razorpay || !this.razorpay.isConfigured) {
         throw new BadRequestException(
-          'Direct Razorpay refund is not configured on this server',
+          'Direct Razorpay refund is not configured on this server and proxy refund was not successful.',
         );
       }
       try {

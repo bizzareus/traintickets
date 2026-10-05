@@ -1378,5 +1378,61 @@ describe('SplitBookingService', () => {
         service.adminCancelAndRefundBooking('LB-UNPAID'),
       ).rejects.toThrow(BadRequestException);
     });
+
+    it('cancels booking and refunds via proxy endpoint using razorpayPaymentId when muzoboxPaymentId is null', async () => {
+      const mockBooking = {
+        id: 'b-refund-rzp-proxy',
+        bookingRef: 'LB-RZP1',
+        trainNumber: '12951',
+        trainName: 'Rajdhani Express',
+        fromStationCode: 'MMCT',
+        toStationCode: 'NDLS',
+        journeyDate: new Date('2026-10-15'),
+        totalFare: 2000,
+        serviceFee: 80,
+        contactMobile: '9876543210',
+        contactEmail: 'passenger@example.com',
+        bookingStatus: 'MANUAL_PENDING',
+        paymentStatus: 'PAID',
+        muzoboxPaymentId: null,
+        razorpayPaymentId: 'pay_xyz_proxy_987',
+      };
+
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(mockBooking);
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        ...mockBooking,
+        bookingStatus: 'CANCELLED',
+      });
+      prisma.bookingCancellationRequest.findFirst.mockResolvedValue(null);
+      prisma.bookingCancellationRequest.create.mockResolvedValue({
+        id: 'cr-new',
+        bookingId: mockBooking.id,
+        status: 'PROCESSED',
+      });
+
+      muzobox.post.mockResolvedValue({
+        data: {
+          status: 'refunded',
+          amount: 2080,
+          razorpayRefundId: 'rfnd_proxy_rzp_111',
+        },
+      });
+
+      const res = await service.adminCancelAndRefundBooking('LB-RZP1', {
+        reason: 'Proxy refund with razorpayPaymentId',
+      });
+
+      expect(res.success).toBe(true);
+      expect(res.refundAmount).toBe(2080);
+      expect(res.refundId).toBe('rfnd_proxy_rzp_111');
+      expect(muzobox.post).toHaveBeenCalledWith(
+        'proxy-payments/pay_xyz_proxy_987/refund',
+        expect.objectContaining({
+          amount: 2080,
+          referenceId: 'LB-RZP1',
+        }),
+        expect.any(Object),
+      );
+    });
   });
 });

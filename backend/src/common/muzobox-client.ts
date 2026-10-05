@@ -5,7 +5,10 @@ const DEFAULT_MUZOBOX_API_URL =
   'https://ai-jukebox-backend-production.up.railway.app/api';
 
 export function muzoboxAuthHeaders(config: ConfigService) {
-  const key = config.get<string>('MUZOBOX_PROXY_API_KEY')?.trim();
+  const key = (
+    config.get<string>('MUZOBOX_PROXY_API_KEY') ||
+    config.get<string>('PROXY_PAYMENTS_API_KEY')
+  )?.trim();
   return key ? { 'x-api-key': key } : undefined;
 }
 
