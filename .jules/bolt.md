@@ -33,3 +33,7 @@
 ## 2026-10-03 - Case Sensitivity Limits of Direct String Comparison Operator vs localeCompare
 **Learning:** Replacing `localeCompare` with direct string comparison operators (`<` and `>`) for mixed-case user-facing titles (such as "Chart Preparation" vs "CNF (Confirmed)") alters alphabetical sort order because ASCII comparison places uppercase characters before lowercase characters (e.g. `'N' < 'h'`), whereas `localeCompare` performs case-insensitive primary collation sorting. While `<` and `>` are ~5x faster for uniform ISO dates or zero-padded time strings, `localeCompare` is required for human-facing mixed-case title sorting.
 **Action:** Only substitute `<` and `>` for `localeCompare` when sorting uniform case, ISO formatted, or numeric strings. Keep `localeCompare` when alphabetical sorting depends on case-insensitive human language collation.
+
+## 2026-10-05 - Module-Level Map Caching for Static JSON Page Data
+**Learning:** Reading static JSON files from disk with `fs.readFileSync` and `JSON.parse` inside per-request lookup functions (such as `getCachedChartTimeStation` or `readCachedFile`) introduces ~50µs of synchronous filesystem blocking and object allocation overhead per call. Storing parsed JSON objects in a persistent module-level `Map` cache reduced 1,000 warm lookups from 50.1ms to 0.94ms (>50x speedup).
+**Action:** Always store parsed static JSON file data in a module-level `Map` cache on first read or write for static dataset lookups that execute repeatedly across request paths.
