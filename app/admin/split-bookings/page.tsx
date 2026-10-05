@@ -1306,10 +1306,11 @@ function SplitBookingsAdminContent() {
                       const statusStyle =
                         CANCELLATION_STATUS_STYLES[c.status] ||
                         CANCELLATION_STATUS_STYLES.PENDING;
+                      const booking = c.booking;
                       const pnrList = [
-                        c.booking?.pnrLeg1,
-                        c.booking?.pnrLeg2,
-                        ...(c.booking?.pnrs || []),
+                        booking?.pnrLeg1,
+                        booking?.pnrLeg2,
+                        ...(booking?.pnrs || []),
                       ]
                         .filter(Boolean)
                         .join(", ");
@@ -1361,19 +1362,19 @@ function SplitBookingsAdminContent() {
                           </td>
 
                           <td className="px-4 py-3.5 align-top">
-                            {c.booking ? (
+                            {booking ? (
                               <div>
                                 <span className="font-bold text-slate-900 block">
-                                  {c.booking.trainNumber}{" "}
-                                  {c.booking.trainName || ""}
+                                  {booking.trainNumber}{" "}
+                                  {booking.trainName || ""}
                                 </span>
                                 <span className="text-[11px] text-slate-600">
-                                  {c.booking.fromStationCode} →{" "}
-                                  {c.booking.toStationCode}
+                                  {booking.fromStationCode} →{" "}
+                                  {booking.toStationCode}
                                 </span>
                                 <span className="block text-[10px] text-slate-400">
-                                  {c.booking.journeyDate} •{" "}
-                                  {c.booking.travelClass}
+                                  {booking.journeyDate} •{" "}
+                                  {booking.travelClass}
                                 </span>
                               </div>
                             ) : (
@@ -1391,12 +1392,12 @@ function SplitBookingsAdminContent() {
                               >
                                 {c.mobile}
                               </a>
-                              {c.booking?.contactEmail && (
+                              {booking?.contactEmail && (
                                 <a
-                                  href={`mailto:${c.booking.contactEmail}`}
+                                  href={`mailto:${booking.contactEmail}`}
                                   className="text-[11px] text-slate-500 hover:underline block truncate max-w-[140px]"
                                 >
-                                  {c.booking.contactEmail}
+                                  {booking.contactEmail}
                                 </a>
                               )}
                             </div>
@@ -1405,8 +1406,8 @@ function SplitBookingsAdminContent() {
                           <td className="px-4 py-3.5 align-top">
                             <span className="font-bold text-slate-900 block">
                               ₹
-                              {c.booking
-                                ? c.booking.amount.toLocaleString("en-IN")
+                              {booking
+                                ? booking.amount.toLocaleString("en-IN")
                                 : "—"}
                             </span>
                             {pnrList ? (
@@ -1457,7 +1458,7 @@ function SplitBookingsAdminContent() {
                                 Update Status
                               </button>
 
-                              {c.booking && (
+                              {booking && (
                                 <button
                                   type="button"
                                   onClick={() => {
@@ -1473,8 +1474,8 @@ function SplitBookingsAdminContent() {
                               )}
 
                               {c.status !== "PROCESSED" &&
-                                c.booking &&
-                                c.booking.paymentStatus === "PAID" && (
+                                booking &&
+                                booking.paymentStatus === "PAID" && (
                                   <button
                                     type="button"
                                     onClick={() => {
@@ -1487,22 +1488,22 @@ function SplitBookingsAdminContent() {
                                         openCancelAndRefundModal({
                                           id: c.bookingId,
                                           bookingRef: c.bookingRef,
-                                          trainNumber: c.booking.trainNumber,
-                                          trainName: c.booking.trainName,
+                                          trainNumber: booking.trainNumber,
+                                          trainName: booking.trainName,
                                           fromStationCode:
-                                            c.booking.fromStationCode,
+                                            booking.fromStationCode,
                                           toStationCode:
-                                            c.booking.toStationCode,
-                                          journeyDate: c.booking.journeyDate,
-                                          travelClass: c.booking.travelClass,
+                                            booking.toStationCode,
+                                          journeyDate: booking.journeyDate,
+                                          travelClass: booking.travelClass,
                                           quota: "GN",
-                                          totalFare: c.booking.totalFare,
-                                          serviceFee: c.booking.serviceFee,
+                                          totalFare: booking.totalFare,
+                                          serviceFee: booking.serviceFee,
                                           legsPayload: [],
                                           passengers: { adults: [] },
                                           contactMobile:
-                                            c.booking.contactMobile,
-                                          contactEmail: c.booking.contactEmail,
+                                            booking.contactMobile,
+                                          contactEmail: booking.contactEmail,
                                           autoUpgrade: true,
                                           paymentStatus: "PAID",
                                           payUrl: null,
@@ -1511,15 +1512,15 @@ function SplitBookingsAdminContent() {
                                           paidAt: null,
                                           bookingMode: "AI",
                                           bookingStatus:
-                                            c.booking
+                                            booking
                                               .bookingStatus as SplitBookingAdminEntry["bookingStatus"],
                                           manualEmailSentAt: null,
                                           manualWhatsappSentAt: null,
                                           customerEmailSentAt: null,
                                           customerWhatsappSentAt: null,
-                                          pnrs: c.booking.pnrs || [],
-                                          pnrLeg1: c.booking.pnrLeg1,
-                                          pnrLeg2: c.booking.pnrLeg2,
+                                          pnrs: booking.pnrs || [],
+                                          pnrLeg1: booking.pnrLeg1,
+                                          pnrLeg2: booking.pnrLeg2,
                                           ticketPdfFilename: null,
                                           ticketPdfContentType: null,
                                           ticketPdfUploadedAt: null,
