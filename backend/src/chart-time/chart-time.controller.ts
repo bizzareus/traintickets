@@ -2,14 +2,18 @@ import {
   Body,
   Controller,
   Get,
+  Headers,
   Param,
   Post,
   Query,
+  Req,
   ServiceUnavailableException,
 } from '@nestjs/common';
+import { Request } from 'express';
 import { ChartTimeService } from './chart-time.service';
 import { BrowserUseService } from '../browser-use/browser-use.service';
 import { Throttle } from '@nestjs/throttler';
+import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 
 @Controller('api/chart-time')
 @Throttle({ global: { limit: 20, ttl: 60_000 } })
@@ -72,10 +76,13 @@ export class ChartTimeController {
 
   @Post()
   async set(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string,
+    @Req() req: Request,
     @Body('trainNumber') trainNumber: string,
     @Body('stationCode') stationCode: string,
     @Body('chartTimeLocal') chartTimeLocal: string,
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     if (!trainNumber || !stationCode || !chartTimeLocal) {
       return {
         error: 'trainNumber, stationCode and chartTimeLocal are required',
