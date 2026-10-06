@@ -149,28 +149,6 @@ export class NotificationService {
       console.error('WhatsApp send thrown error:', err);
     }
 
-    if (!sent && !options?.skipFailureReport) {
-      const errStr = failureError
-        ? failureError instanceof Error
-          ? failureError.stack || failureError.message
-          : typeof failureError === 'object' && failureError !== null
-            ? JSON.stringify(failureError)
-            : typeof failureError === 'string'
-              ? failureError
-              : 'Unknown error object'
-        : 'WhatsApp provider returned false (sending failed, rate limited, or unconfigured)';
-
-      void this.sendAlertFailureReport({
-        alertType: 'WhatsApp Alert',
-        recipientMobile: mobile,
-        failureReason: failureError
-          ? 'WhatsApp provider threw an exception'
-          : 'WhatsApp provider returned failure status',
-        logs: errStr,
-        payload,
-      });
-    }
-
     return sent;
   }
 
@@ -846,21 +824,9 @@ export class NotificationService {
           });
         }
         if (!out.whatsappSent) {
-          void this.sendAlertFailureReport({
-            alertType: 'Chart Prepared WhatsApp',
-            recipientMobile: mobile,
-            trainNumber,
-            trainName: trainName ?? undefined,
-            fromStationCode: undefined,
-            toStationCode: undefined,
-            journeyDate,
-            failureReason:
-              'Chart prepared WhatsApp send returned false (provider failure or missing key)',
-            payload: { type: 'chart_prepared_only' },
-          });
+          // WhatsApp failure: no email report (was sending spam)
         }
       }
-
       return out;
     } catch (err) {
       console.error('notifyChartPrepared failed', err);
@@ -1362,28 +1328,7 @@ export class NotificationService {
           }
 
           if (!out.whatsappSent) {
-            void this.sendAlertFailureReport({
-              alertType: 'WhatsApp Seat Availability Alert',
-              recipientMobile: mobile.trim(),
-              recipientEmail: email?.trim() || undefined,
-              trainNumber: task.trainNumber,
-              trainName: task.trainName,
-              fromStationCode: task.fromStationCode,
-              toStationCode: task.toStationCode,
-              journeyDate: task.journeyDate,
-              failureReason:
-                'WhatsApp alert sending failed or provider returned failure',
-              logs: `Template: ${templateName}\nRoute: ${task.fromStationCode} -> ${task.toStationCode}\nStatus: ${result.status}`,
-              payload: {
-                task,
-                openAiSummary: result.openAiSummary,
-                bookingPlan: plan,
-                alternativeTrains: alternativeTrains?.map(
-                  (a) => a.train?.trainNumber,
-                ),
-                whatsAppText,
-              },
-            });
+            // WhatsApp failure: no email report
           }
         }
       }
@@ -1838,28 +1783,7 @@ export class NotificationService {
           }
 
           if (!out.whatsappSent) {
-            void this.sendAlertFailureReport({
-              alertType: 'WhatsApp Alternative Trains Alert',
-              recipientMobile: mobile.trim(),
-              recipientEmail: email?.trim() || undefined,
-              trainNumber: originalTrainNumber,
-              trainName: originalTrainName,
-              fromStationCode,
-              toStationCode,
-              journeyDate,
-              failureReason:
-                'WhatsApp alternative trains alert failed to dispatch',
-              logs: `Template: ${altTemplateName}`,
-              payload: {
-                originalTrainNumber,
-                originalTrainName,
-                fromStationCode,
-                toStationCode,
-                journeyDate,
-                alternativeCount: alternativeTrains.length,
-                whatsAppText,
-              },
-            });
+            // WhatsApp failure: no email report
           }
         }
       }
