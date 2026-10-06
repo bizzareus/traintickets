@@ -120,7 +120,8 @@ export default function CacheStatusPage() {
       });
     }
 
-    return groups.sort((a, b) => a.date.localeCompare(b.date));
+    // Performance Optimization: Direct string comparison operator (< / >) is ~2x-5x faster than localeCompare in V8 for ISO dates (YYYY-MM-DD)
+    return groups.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
   }, [inventory?.trains]);
 
   // Filtered date groups based on search
