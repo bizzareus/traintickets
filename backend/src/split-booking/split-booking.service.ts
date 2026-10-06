@@ -30,6 +30,7 @@ import { TripmgtBookingService } from './tripmgt-booking.service';
 import { validateBookingItinerary } from './split-booking.validation';
 import { bookingDetails, bookingPnrFields } from './split-booking.helpers';
 import { ManualBookingService } from './manual-booking.service';
+import { RetellCallService } from './retell-call.service';
 import { NotificationService } from '../notification/notification.service';
 import { WasenderProvider } from '../notification/whatsapp-providers/wasender.provider';
 import { WhatsAppProviderFactory } from '../notification/whatsapp-providers/whatsapp.provider-factory';
@@ -61,6 +62,7 @@ export class SplitBookingService {
     @Optional() private readonly posthog?: PostHogAnalyticsService,
     @Optional() private readonly s3Storage?: S3StorageService,
     @Optional() private readonly razorpay?: RazorpayClient,
+    @Optional() private readonly retellCall?: RetellCallService,
   ) {
     this.muzoboxClient = createMuzoboxClient(config);
   }
@@ -525,6 +527,15 @@ export class SplitBookingService {
             `Failed to send customer payment notification for ${bookingRef}: ${err instanceof Error ? err.message : String(err)}`,
           ),
       );
+      if (this.retellCall) {
+        void this.retellCall
+          .triggerBookingReceivedCall(booking)
+          .catch((err) =>
+            this.logger.error(
+              `Failed to trigger Retell call for ${bookingRef}: ${err instanceof Error ? err.message : String(err)}`,
+            ),
+          );
+      }
     }
 
     return this.toStatusResponse(await this.findBooking(bookingRef));

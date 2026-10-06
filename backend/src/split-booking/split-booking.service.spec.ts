@@ -11,6 +11,7 @@ import { createMuzoboxClient } from '../common/muzobox-client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
 import { ConfigService } from '@nestjs/config';
 import { ManualBookingService } from './manual-booking.service';
+import { RetellCallService } from './retell-call.service';
 import { S3StorageService } from '../common/s3-storage.service';
 import { NotificationService } from '../notification/notification.service';
 import { WasenderProvider } from '../notification/whatsapp-providers/wasender.provider';
@@ -25,6 +26,7 @@ describe('SplitBookingService', () => {
   let service: SplitBookingService;
   let config: ConfigService;
   let manualBooking: { notify: jest.Mock };
+  let retellCall: { triggerBookingReceivedCall: jest.Mock };
   let notifications: { sendEmail: jest.Mock };
   let wasender: { sendWhatsApp: jest.Mock };
   let prisma: {
@@ -63,6 +65,9 @@ describe('SplitBookingService', () => {
       notify: jest
         .fn()
         .mockResolvedValue({ emailSent: true, whatsappSent: true }),
+    };
+    retellCall = {
+      triggerBookingReceivedCall: jest.fn().mockResolvedValue('call_mock_123'),
     };
     notifications = {
       sendEmail: jest.fn().mockResolvedValue(true),
@@ -133,6 +138,7 @@ describe('SplitBookingService', () => {
         { provide: TripmgtBookingService, useValue: tripmgt },
         { provide: ConfigService, useValue: config },
         { provide: ManualBookingService, useValue: manualBooking },
+        { provide: RetellCallService, useValue: retellCall },
         { provide: S3StorageService, useValue: s3Storage },
         { provide: NotificationService, useValue: notifications },
         { provide: WasenderProvider, useValue: wasender },
@@ -644,6 +650,7 @@ describe('SplitBookingService', () => {
       await flush();
       expect(tripmgt.executeBooking).toHaveBeenCalledTimes(1);
       expect(manualBooking.notify).not.toHaveBeenCalled();
+      expect(retellCall.triggerBookingReceivedCall).toHaveBeenCalledTimes(1);
       const [params, callbacks] = tripmgt.executeBooking.mock
         .calls[0] as Parameters<TripmgtBookingService['executeBooking']>;
       expect(params).toMatchObject({

@@ -8,6 +8,7 @@ import { TripmgtBookingService } from './tripmgt-booking.service';
 import { BookingV2Module } from '../booking-v2/booking-v2.module';
 import { NotificationModule } from '../notification/notification.module';
 import { ManualBookingService } from './manual-booking.service';
+import { RetellCallService } from './retell-call.service';
 import { S3StorageService } from '../common/s3-storage.service';
 
 @Module({
@@ -23,8 +24,14 @@ import { S3StorageService } from '../common/s3-storage.service';
     SplitBookingService,
     TripmgtBookingService,
     ManualBookingService,
+    RetellCallService,
     S3StorageService,
   ],
-  exports: [SplitBookingService, TripmgtBookingService, S3StorageService],
+  exports: [
+    SplitBookingService,
+    TripmgtBookingService,
+    RetellCallService,
+    S3StorageService,
+  ],
 })
 export class SplitBookingModule {}
