@@ -9,7 +9,7 @@ import {
   Req,
   ServiceUnavailableException,
 } from '@nestjs/common';
-import { Request } from 'express';
+import type { Request } from 'express';
 import { ChartTimeService } from './chart-time.service';
 import { BrowserUseService } from '../browser-use/browser-use.service';
 import { Throttle } from '@nestjs/throttler';
