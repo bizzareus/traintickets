@@ -9,6 +9,7 @@ import {
   getLegClassOptions,
   getSelectedLegClass,
   hasClassFare,
+  SKIP_LEG,
   type LegClassSelections,
 } from "@/lib/splitBookingSelection";
 import type { AlternateLeg } from "./alternatePathsTypes";
@@ -46,7 +47,8 @@ export function SplitTicketBookingFlow({
   const hasMultipleClasses = legs.some(
     (leg) => getLegClassOptions(leg).length > 1,
   );
-  const canContinue = selection.totalFare !== null && selection.legs.length > 1;
+  const isSkipped = (index: number) => choices[index] === SKIP_LEG;
+  const canContinue = selection.totalFare !== null && selection.legs.length >= 1;
   const toBookingDetails = (): Omit<
     SplitTicketBookingModalProps,
     "open" | "onClose"
@@ -121,8 +123,8 @@ export function SplitTicketBookingFlow({
         >
           <div className="space-y-4 overflow-y-auto p-4 sm:p-6">
             <p className="text-sm text-slate-600">
-              Select one class for each available ticket. Single-class tickets
-              are already selected.
+              Select classes for the tickets you wish to book. You can skip any
+              leg — at least 1 ticket is required.
             </p>
             {legs.some((leg) => leg.segmentKind !== "confirmed") && (
               <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-800">
@@ -133,16 +135,29 @@ export function SplitTicketBookingFlow({
             {legs.map((leg, index) => {
               if (leg.segmentKind !== "confirmed") return null;
               const options = getLegClassOptions(leg);
-              const selectedOption = getSelectedLegClass(leg, choices[index]);
+              const legSkipped = isSkipped(index);
+              const selectedOption = legSkipped
+                ? null
+                : getSelectedLegClass(leg, choices[index]);
               return (
                 <fieldset
                   key={index}
-                  className="min-w-0 rounded-xl border border-slate-200 p-3 sm:p-4"
+                  className={cn(
+                    "min-w-0 rounded-xl border p-3 sm:p-4 transition-colors",
+                    legSkipped
+                      ? "border-dashed border-slate-300 bg-slate-50/60"
+                      : "border-slate-200 bg-white",
+                  )}
                 >
                   <legend className="max-w-full px-1 text-sm font-bold text-slate-900">
                     Leg {index + 1}:{" "}
                     {getStationDisplayName(leg.from, stationNameMap)} →{" "}
                     {getStationDisplayName(leg.to, stationNameMap)}
+                    {legSkipped && (
+                      <span className="ml-2 inline-flex items-center rounded-md bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-600">
+                        Skipped
+                      </span>
+                    )}
                   </legend>
                   <p className="mb-3 text-xs text-slate-500">
                     Boarding date: {leg.boardingDate || journeyDate}
@@ -150,6 +165,7 @@ export function SplitTicketBookingFlow({
                   <div className="space-y-2">
                     {options.map((option) => {
                       const selected =
+                        !legSkipped &&
                         selectedOption?.travelClass === option.travelClass;
                       const priced = hasClassFare(option);
                       return (
@@ -207,6 +223,40 @@ export function SplitTicketBookingFlow({
                         </label>
                       );
                     })}
+                    <label
+                      className={cn(
+                        "flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border p-3 text-sm",
+                        legSkipped
+                          ? "border-slate-400 bg-slate-100/80 text-slate-700 font-medium"
+                          : "border-slate-200 text-slate-500 hover:border-slate-300 hover:bg-slate-50",
+                      )}
+                    >
+                      <input
+                        type="radio"
+                        name={`${groupId}-leg-${index}`}
+                        aria-label={`Leg ${index + 1}: Skip this leg`}
+                        checked={legSkipped}
+                        onChange={() => {
+                          trackAnalyticsEvent({
+                            name: "split_booking_leg_skipped",
+                            properties: {
+                              train_number: trainNumber,
+                              leg_index: index,
+                              from_code: leg.from,
+                              to_code: leg.to,
+                            },
+                          });
+                          setChoices((current) => ({
+                            ...current,
+                            [index]: SKIP_LEG,
+                          }));
+                        }}
+                        className="h-4 w-4 shrink-0 text-slate-500 accent-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-500"
+                      />
+                      <span className="min-w-0 flex-1">
+                        Skip this ticket (do not book this leg)
+                      </span>
+                    </label>
                   </div>
                 </fieldset>
               );
@@ -218,11 +268,14 @@ export function SplitTicketBookingFlow({
               aria-label="Selected ticket fare"
               className="text-sm text-slate-600"
             >
-              {selection.totalFare === null ? (
-                "Choose a priced class for every ticket to continue."
+              {selection.legs.length === 0 ? (
+                "Select at least 1 ticket to continue."
+              ) : selection.totalFare === null ? (
+                "Choose a priced class for selected tickets to continue."
               ) : (
                 <>
-                  Ticket fare:{" "}
+                  Ticket fare ({selection.legs.length}{" "}
+                  {selection.legs.length === 1 ? "ticket" : "tickets"}):{" "}
                   <strong className="text-lg text-slate-900 tabular-nums">
                     ₹{selection.totalFare.toLocaleString("en-IN")}
                   </strong>

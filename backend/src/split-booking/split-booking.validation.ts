@@ -6,12 +6,12 @@ import { canonicalStation } from '../booking-v2/station-hubs';
 export function validateBookingItinerary(booking: CreateSplitBookingDto): void {
   if (
     !booking.legs ||
-    booking.legs.length < 2 ||
+    booking.legs.length < 1 ||
     !Number.isSafeInteger(booking.totalFare) ||
     booking.totalFare <= 0
   ) {
     throw new Error(
-      'A split booking requires at least two legs and a positive total fare in whole rupees',
+      'A booking requires at least one leg and a positive total fare in whole rupees',
     );
   }
   for (const leg of booking.legs) {

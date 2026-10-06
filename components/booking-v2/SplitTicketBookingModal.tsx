@@ -633,67 +633,73 @@ export function SplitTicketBookingModal({
                 </div>
               </div>
 
-              {/* Adult Passenger Details Table (Matches Image 2) */}
-              <div className="space-y-2.5 sm:space-y-3">
+              {/* Adult Passenger Details */}
+              <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-700">
                     Passenger Details (Adults)
                   </h4>
-                  {/* {passengers.length < 6 && (
+                  {passengers.length < 6 && (
                     <button
                       type="button"
                       onClick={addPassenger}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 transition py-1"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-blue-200 bg-blue-50/70 px-2.5 py-1 text-xs font-semibold text-blue-700 hover:bg-blue-100/80 active:scale-95 transition"
                     >
-                      <Plus className="h-3.5 w-3.5" /> Add Passenger
+                      <Plus className="h-3.5 w-3.5" />
+                      <span>Add Passenger</span>
                     </button>
-                  )} */}
+                  )}
                 </div>
 
-                <div className="space-y-2.5">
+                <div className="space-y-3">
                   {passengers.map((p, idx) => (
                     <div
                       key={idx}
-                      className="rounded-xl border border-slate-200 bg-white p-3 shadow-2xs space-y-2"
+                      className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-2xs space-y-3"
                     >
-                      <div className="flex items-center justify-between border-b border-slate-100 pb-1.5">
-                        <span className="text-xs font-bold text-slate-700">
+                      <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 text-[11px] font-bold text-slate-600">
+                            {idx + 1}
+                          </span>
                           Passenger {idx + 1}
                         </span>
                         {passengers.length > 1 && (
                           <button
                             type="button"
                             onClick={() => removePassenger(idx)}
-                            className="p-1 text-slate-400 hover:text-red-600 transition"
+                            className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium text-slate-400 hover:bg-red-50 hover:text-red-600 transition"
                             title="Remove passenger"
                           >
-                            <Trash2 className="h-4 w-4" />
+                            <Trash2 className="h-3.5 w-3.5" />
+                            <span className="hidden sm:inline">Remove</span>
                           </button>
                         )}
                       </div>
 
-                      <div className="grid grid-cols-12 gap-2 text-xs">
+                      {/* Primary Passenger Fields */}
+                      <div className="grid grid-cols-1 sm:grid-cols-12 gap-2.5 text-xs">
                         {/* Name */}
-                        <div className="col-span-12 sm:col-span-4">
-                          <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
-                            Name
+                        <div className="sm:col-span-5">
+                          <label className="block text-[11px] font-medium text-slate-600 mb-1">
+                            Full Name *
                           </label>
                           <input
                             type="text"
                             required
-                            placeholder="Full Name as per ID"
+                            placeholder="Full Name as per Govt ID"
                             value={p.name}
                             onChange={(e) =>
                               updatePassenger(idx, "name", e.target.value)
                             }
-                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2.5 py-2 sm:py-1.5 text-base sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden"
+                            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm min-h-[40px] focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500 placeholder:text-slate-400"
                           />
                         </div>
 
                         {/* Age */}
-                        <div className="col-span-6 sm:col-span-2">
-                          <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
-                            Age
+                        <div className="sm:col-span-3">
+                          <label className="block text-[11px] font-medium text-slate-600 mb-1">
+                            Age *
                           </label>
                           <input
                             type="number"
@@ -709,14 +715,14 @@ export function SplitTicketBookingModal({
                                 parseInt(e.target.value, 10) || 0,
                               )
                             }
-                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2.5 py-2 sm:py-1.5 text-base sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden"
+                            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm min-h-[40px] focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500"
                           />
                         </div>
 
-                        {/* Sex */}
-                        <div className="col-span-6 sm:col-span-2">
-                          <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
-                            Gender
+                        {/* Gender */}
+                        <div className="sm:col-span-4">
+                          <label className="block text-[11px] font-medium text-slate-600 mb-1">
+                            Gender *
                           </label>
                           <select
                             value={p.gender}
@@ -728,7 +734,7 @@ export function SplitTicketBookingModal({
                                   .value as SplitBookingPassenger["gender"],
                               )
                             }
-                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2.5 py-2 sm:py-1.5 text-base sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden bg-white"
+                            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm min-h-[40px] focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500 bg-white"
                           >
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -737,9 +743,9 @@ export function SplitTicketBookingModal({
                         </div>
 
                         {/* Berth Preference */}
-                        <div className="col-span-6 sm:col-span-2">
-                          <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
-                            Berth
+                        <div className="sm:col-span-6">
+                          <label className="block text-[11px] font-medium text-slate-600 mb-1">
+                            Berth Preference
                           </label>
                           <select
                             value={p.berthPreference || "No Preference"}
@@ -750,7 +756,7 @@ export function SplitTicketBookingModal({
                                 e.target.value,
                               )
                             }
-                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2 sm:px-1.5 py-2 sm:py-1.5 text-base sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden bg-white"
+                            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm min-h-[40px] focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500 bg-white"
                           >
                             {BERTH_OPTIONS.map((opt) => (
                               <option key={opt} value={opt}>
@@ -760,10 +766,10 @@ export function SplitTicketBookingModal({
                           </select>
                         </div>
 
-                        {/* Food */}
-                        <div className="col-span-6 sm:col-span-1 sm:min-w-[80px]">
-                          <label className="block text-[10px] font-medium text-slate-500 mb-0.5">
-                            Food
+                        {/* Food Choice */}
+                        <div className="sm:col-span-6">
+                          <label className="block text-[11px] font-medium text-slate-600 mb-1">
+                            Food Choice
                           </label>
                           <select
                             value={p.foodChoice ?? "Veg"}
@@ -771,10 +777,11 @@ export function SplitTicketBookingModal({
                               updatePassenger(
                                 idx,
                                 "foodChoice",
-                                e.target.value as SplitBookingPassenger["foodChoice"],
+                                e.target
+                                  .value as SplitBookingPassenger["foodChoice"],
                               )
                             }
-                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2 sm:px-1.5 py-2 sm:py-1.5 text-base sm:text-xs min-h-[40px] sm:min-h-[32px] focus:border-blue-500 focus:outline-hidden bg-white"
+                            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm min-h-[40px] focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500 bg-white"
                           >
                             {FOOD_OPTIONS.map((f) => (
                               <option key={f} value={f}>
@@ -783,9 +790,14 @@ export function SplitTicketBookingModal({
                             ))}
                           </select>
                         </div>
+                      </div>
 
-                        {/* Opt Berth */}
-                        <div className="col-span-12 sm:col-span-1 flex items-center gap-2 mt-1 sm:mt-0 sm:flex-col sm:items-center sm:justify-center">
+                      {/* Passenger Options: Opt Berth & Senior Citizen Checkboxes */}
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-slate-100 bg-slate-50/50 rounded-lg p-2.5">
+                        <label
+                          htmlFor={`opt_berth_${idx}`}
+                          className="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-700 font-medium select-none"
+                        >
                           <input
                             type="checkbox"
                             id={`opt_berth_${idx}`}
@@ -795,41 +807,42 @@ export function SplitTicketBookingModal({
                             }
                             className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer shrink-0"
                           />
-                          <label
-                            htmlFor={`opt_berth_${idx}`}
-                            className="text-xs sm:text-[10px] font-medium text-slate-600 sm:text-slate-500 whitespace-nowrap cursor-pointer"
-                            title="Opt Berth"
-                          >
-                            Opt Berth
-                          </label>
-                        </div>
-                      </div>
+                          <span>Opt Berth (Allot seat/berth)</span>
+                        </label>
 
-                      {/* Senior Citizen Checkbox */}
-                      <div className="flex items-center gap-2 pt-0.5">
-                        <input
-                          type="checkbox"
-                          id={`sr_${idx}`}
-                          checked={p.seniorCitizen || false}
-                          onChange={(e) =>
-                            updatePassenger(
-                              idx,
-                              "seniorCitizen",
-                              e.target.checked,
-                            )
-                          }
-                          className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-                        />
                         <label
                           htmlFor={`sr_${idx}`}
-                          className="text-xs sm:text-[11px] text-slate-600 font-medium cursor-pointer"
+                          className="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-700 font-medium select-none"
                         >
-                          Senior Citizen concession (if applicable)
+                          <input
+                            type="checkbox"
+                            id={`sr_${idx}`}
+                            checked={p.seniorCitizen || false}
+                            onChange={(e) =>
+                              updatePassenger(
+                                idx,
+                                "seniorCitizen",
+                                e.target.checked,
+                              )
+                            }
+                            className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer shrink-0"
+                          />
+                          <span>Senior Citizen concession (if applicable)</span>
                         </label>
                       </div>
                     </div>
                   ))}
                 </div>
+
+                {passengers.length < 6 && (
+                  <button
+                    type="button"
+                    onClick={addPassenger}
+                    className="w-full py-2.5 border-2 border-dashed border-slate-300 hover:border-blue-400 rounded-xl text-xs font-bold text-slate-600 hover:text-blue-600 bg-white hover:bg-blue-50/30 transition flex items-center justify-center gap-1.5"
+                  >
+                    <Plus className="h-4 w-4" /> Add Another Passenger ({passengers.length}/6)
+                  </button>
+                )}
               </div>
 
               {/* Child Passenger Details (Below 5 Years - No Ticket Issued) */}
@@ -924,12 +937,13 @@ export function SplitTicketBookingModal({
               </div> */}
 
               {/* Travel Insurance Section (IRCTC Parity) */}
-              <div className="rounded-lg bg-orange-50/80 p-3 border border-orange-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-orange-950">
-                <span className="font-medium">
-                  Do you want to take Travel Insurance (₹0.45/person)?
-                </span>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                  <label className="inline-flex items-center gap-1.5 cursor-pointer font-medium">
+              <div className="rounded-xl bg-amber-50/70 p-3.5 border border-amber-200/80 space-y-2 text-xs text-amber-950">
+                <div className="flex items-center gap-1.5 font-bold text-slate-800">
+                  <ShieldCheck className="h-4 w-4 text-amber-600 shrink-0" />
+                  <span>Travel Insurance (₹0.45 per passenger)</span>
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-6 pt-0.5">
+                  <label className="inline-flex items-center gap-2 cursor-pointer font-medium text-slate-800 select-none">
                     <input
                       type="radio"
                       name="travel_insurance"
@@ -938,13 +952,10 @@ export function SplitTicketBookingModal({
                       className="h-4 w-4 text-blue-600 border-slate-300 focus:ring-blue-500 shrink-0"
                     />
                     <span>
-                      Yes, and I accept the{" "}
-                      <span className="text-blue-600 underline font-semibold">
-                        terms &amp; conditions
-                      </span>
+                      Yes, accept insurance &amp; terms
                     </span>
                   </label>
-                  <label className="inline-flex items-center gap-1.5 cursor-pointer font-medium">
+                  <label className="inline-flex items-center gap-2 cursor-pointer font-medium text-slate-800 select-none">
                     <input
                       type="radio"
                       name="travel_insurance"
@@ -952,49 +963,57 @@ export function SplitTicketBookingModal({
                       onChange={() => setTravelInsurance(false)}
                       className="h-4 w-4 text-blue-600 border-slate-300 focus:ring-blue-500 shrink-0"
                     />
-                    <span>No, I don&apos;t want travel insurance</span>
+                    <span>No, do not add insurance</span>
                   </label>
                 </div>
               </div>
 
               {/* Other Preferences: Auto Upgrade, Confirm Berths, Preferred Coach */}
-              <div className="rounded-lg bg-slate-50 p-3 border border-slate-200 flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-2.5 sm:gap-4 text-xs">
-                {/* Auto Upgradation Checkbox */}
-                <label className="inline-flex items-center gap-2 cursor-pointer font-semibold text-slate-800">
-                  <input
-                    type="checkbox"
-                    id="auto_upgradation"
-                    checked={autoUpgrade}
-                    onChange={(e) => setAutoUpgrade(e.target.checked)}
-                    className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 shrink-0"
-                  />
-                  <span>Consider Auto Upgrade</span>
-                </label>
+              <div className="rounded-xl bg-slate-50 p-3.5 border border-slate-200 space-y-3 text-xs">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 block">
+                  Additional Reservation Preferences
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-center">
+                  <div className="space-y-2">
+                    <label className="inline-flex items-center gap-2 cursor-pointer font-medium text-slate-800 select-none">
+                      <input
+                        type="checkbox"
+                        id="auto_upgradation"
+                        checked={autoUpgrade}
+                        onChange={(e) => setAutoUpgrade(e.target.checked)}
+                        className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 shrink-0"
+                      />
+                      <span>Consider for Auto-Upgradation</span>
+                    </label>
 
-                {/* Confirm Berths Only Checkbox */}
-                <label className="inline-flex items-center gap-2 cursor-pointer font-semibold text-slate-800">
-                  <input
-                    type="checkbox"
-                    id="confirm_berths_only"
-                    checked={confirmBerthsOnly}
-                    onChange={(e) => setConfirmBerthsOnly(e.target.checked)}
-                    className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 shrink-0"
-                  />
-                  <span>Book only if confirm berths are allotted.</span>
-                </label>
+                    <label className="inline-flex items-center gap-2 cursor-pointer font-medium text-slate-800 select-none">
+                      <input
+                        type="checkbox"
+                        id="confirm_berths_only"
+                        checked={confirmBerthsOnly}
+                        onChange={(e) => setConfirmBerthsOnly(e.target.checked)}
+                        className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 shrink-0"
+                      />
+                      <span>Book only if confirm berths are allotted</span>
+                    </label>
+                  </div>
 
-                {/* Preferred Coach input */}
-                <div className="w-full sm:w-auto inline-flex items-center">
-                  <input
-                    type="text"
-                    maxLength={5}
-                    placeholder="Preferred Coach (e.g. S4)"
-                    value={preferredCoach}
-                    onChange={(e) =>
-                      setPreferredCoach(e.target.value.toUpperCase())
-                    }
-                    className="w-full sm:w-auto rounded border border-slate-300 px-2.5 py-1.5 sm:py-1 text-base sm:text-xs uppercase min-h-[36px] sm:min-h-[30px] focus:border-blue-500 focus:outline-hidden bg-white shadow-2xs placeholder:text-slate-400 placeholder:normal-case"
-                  />
+                  {/* Preferred Coach input */}
+                  <div>
+                    <label className="block text-[11px] font-medium text-slate-600 mb-1">
+                      Preferred Coach (Optional)
+                    </label>
+                    <input
+                      type="text"
+                      maxLength={5}
+                      placeholder="e.g. S4, B1"
+                      value={preferredCoach}
+                      onChange={(e) =>
+                        setPreferredCoach(e.target.value.toUpperCase())
+                      }
+                      className="w-full sm:w-44 rounded-lg border border-slate-300 px-3 py-2 text-sm uppercase min-h-[40px] focus:border-blue-500 focus:outline-hidden focus:ring-1 focus:ring-blue-500 bg-white placeholder:text-slate-400 placeholder:normal-case"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -1007,23 +1026,22 @@ export function SplitTicketBookingModal({
               )}
 
               {/* Actions */}
-              <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pt-2">
+              <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2">
                 <button
                   type="button"
                   onClick={handleClose}
-                  className="rounded-xl border border-slate-300 px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition text-center min-h-[42px]"
+                  className="rounded-xl border border-slate-300 px-5 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition text-center min-h-[42px]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 sm:py-2.5 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.98] disabled:opacity-50 transition min-h-[44px]"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.98] disabled:opacity-50 transition min-h-[44px]"
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="h-4 w-4 animate-spin" /> Preparing
-                      Checkout...
+                      <Loader2 className="h-4 w-4 animate-spin" /> Preparing Checkout...
                     </>
                   ) : (
                     <>

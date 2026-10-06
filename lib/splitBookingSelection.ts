@@ -33,8 +33,11 @@ export function hasClassFare(
   );
 }
 
+export const SKIP_LEG = "SKIP";
+
 /** Multiple classes require an explicit choice; never silently choose the cheapest. */
 export function getSelectedLegClass(leg: AlternateLeg, selectedClass?: string) {
+  if (selectedClass === SKIP_LEG) return null;
   const options = getLegClassOptions(leg);
   const option = selectedClass
     ? options.find((candidate) => candidate.travelClass === selectedClass)
@@ -44,7 +47,7 @@ export function getSelectedLegClass(leg: AlternateLeg, selectedClass?: string) {
   return option && hasClassFare(option) ? option : null;
 }
 
-/** Class choices and the quoted fares are resolved together from the current result. */
+/** Class choices and the quoted fares are resolved together from the current result. At least 1 leg is mandatory; any leg can be skipped. */
 export function buildSplitBookingSelection(
   legs: AlternateLeg[],
   choices: LegClassSelections,
@@ -53,6 +56,7 @@ export function buildSplitBookingSelection(
   const missingLegIndices: number[] = [];
   for (const [index, leg] of legs.entries()) {
     if (leg.segmentKind !== "confirmed") continue;
+    if (choices[index] === SKIP_LEG) continue;
     const option = getSelectedLegClass(leg, choices[index]);
     if (!option) {
       missingLegIndices.push(index);

@@ -143,4 +143,29 @@ describe('Multi-leg booking validation', () => {
     };
     expect(() => validateBookingItinerary(splitWithGap)).not.toThrow();
   });
+
+  it('accepts a single selected leg when user skips other legs', async () => {
+    const singleLeg = {
+      ...request,
+      fromStationCode: 'DEE',
+      toStationCode: 'AWR',
+      totalFare: 385,
+      legs: [request.legs[0]],
+    };
+    const errors = await validate(
+      plainToInstance(CreateSplitBookingDto, singleLeg),
+    );
+    expect(errors).toEqual([]);
+    expect(() => validateBookingItinerary(singleLeg)).not.toThrow();
+  });
+
+  it('rejects booking with zero legs', () => {
+    const zeroLegs = {
+      ...request,
+      legs: [],
+    };
+    expect(() => validateBookingItinerary(zeroLegs)).toThrow(
+      'A booking requires at least one leg and a positive total fare in whole rupees',
+    );
+  });
 });

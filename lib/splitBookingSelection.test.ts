@@ -132,4 +132,27 @@ describe("per-leg booking class choices", () => {
       1215,
     );
   });
+
+  test("allows skipping any leg and selectively booking a single leg", () => {
+    // Skip leg 0, book leg 1
+    const skipFirst = buildSplitBookingSelection(legs, { 0: "SKIP" });
+    assert.equal(skipFirst.totalFare, 565);
+    assert.equal(skipFirst.legs.length, 1);
+    assert.equal(skipFirst.legs[0].from, "GGN");
+    assert.equal(skipFirst.legs[0].to, "AII");
+    assert.deepEqual(skipFirst.missingLegIndices, []);
+
+    // Book leg 0, skip leg 1
+    const skipSecond = buildSplitBookingSelection(legs, { 0: "2A", 1: "SKIP" });
+    assert.equal(skipSecond.totalFare, 770);
+    assert.equal(skipSecond.legs.length, 1);
+    assert.equal(skipSecond.legs[0].from, "DEC");
+    assert.equal(skipSecond.legs[0].to, "GGN");
+    assert.deepEqual(skipSecond.missingLegIndices, []);
+
+    // Skipping all legs yields totalFare null (at least 1 leg is mandatory)
+    const skipAll = buildSplitBookingSelection(legs, { 0: "SKIP", 1: "SKIP" });
+    assert.equal(skipAll.totalFare, null);
+    assert.equal(skipAll.legs.length, 0);
+  });
 });
