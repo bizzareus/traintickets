@@ -627,6 +627,15 @@ export type AnalyticsEvent =
         booking_ref: string;
         train_number: string;
       };
+    }
+  | {
+      name: "split_booking_leg_skipped";
+      properties: {
+        train_number: string;
+        leg_index: number;
+        from_code: string;
+        to_code: string;
+      };
     };
 
 export type AnalyticsEventName = AnalyticsEvent["name"];
