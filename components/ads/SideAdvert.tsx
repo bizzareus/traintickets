@@ -67,7 +67,7 @@ export function SideAdvert({
           className="group block overflow-hidden rounded-xl border border-slate-200/80 bg-white p-1 shadow-xs transition-all duration-200 hover:border-slate-300 hover:shadow-md"
         >
           <Image
-            src="/advert.jpeg"
+            src="/advert.png"
             alt="Nāri Velvet Collection — A jacket, worth keeping"
             width={220}
             height={600}
