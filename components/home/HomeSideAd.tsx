@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { SideAdvert } from "@/components/ads/SideAdvert";
 
 declare global {
   interface Window {
@@ -50,13 +51,10 @@ export function HomeBannerAd({ zoneId }: { zoneId: string }) {
   return <div ref={bannerRef} />;
 }
 
-export function HomeSideAd() {
-  return (
-    <aside
-      aria-label="Advertisement"
-      className="fixed right-0 top-20 z-10 hidden h-[600px] w-[300px] 2xl:block"
-    >
-      <HomeBannerAd zoneId="12089966" />
-    </aside>
-  );
+export function HomeSideAd({
+  utmMedium = "external_website_homepage",
+}: {
+  utmMedium?: string;
+} = {}) {
+  return <SideAdvert utmMedium={utmMedium} />;
 }

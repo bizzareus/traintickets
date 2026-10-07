@@ -27,7 +27,8 @@ import {
   type TrainScanMeta,
 } from "@/lib/trainSearchV2Sort";
 import { normalizeClassCodes } from "@/lib/trainClasses";
-import { HomeBannerAd, HomeSideAd } from "@/components/home/HomeSideAd";
+import { HomeBannerAd } from "@/components/home/HomeSideAd";
+import { SideAdvert, MobileAdvert } from "@/components/ads/SideAdvert";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const SearchPnrPanel = dynamic(
@@ -168,7 +169,8 @@ type CachedBestTrain = {
 };
 
 type CachedBestTrainResponse =
-  { cached: true; cachedAt: string; best: CachedBestTrain } | { cached: false };
+  | { cached: true; cachedAt: string; best: CachedBestTrain }
+  | { cached: false };
 
 /**
  * Cap the best-train scan at the first N listed trains. Each candidate fans out
@@ -419,14 +421,18 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         const meta = extractScanMetaFromResult(altResult);
         setV2ScanMetaMap((prev) => new Map(prev).set(altForTrain, meta));
         if (meta.isComplete) {
-          setV2DiscoveredEndToEndTrains((prev) => new Set(prev).add(altForTrain));
+          setV2DiscoveredEndToEndTrains((prev) =>
+            new Set(prev).add(altForTrain),
+          );
           setV2DiscoveredPartialTrains((prev) => {
             const next = new Set(prev);
             next.delete(altForTrain);
             return next;
           });
         } else {
-          setV2DiscoveredPartialTrains((prev) => new Set(prev).add(altForTrain));
+          setV2DiscoveredPartialTrains((prev) =>
+            new Set(prev).add(altForTrain),
+          );
           setV2DiscoveredEndToEndTrains((prev) => {
             const next = new Set(prev);
             next.delete(altForTrain);
@@ -619,13 +625,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         });
       }
     }
-  }, [
-    trains.length,
-    submittedSearch,
-    acOnly,
-    v2Stats,
-    v2AutoScanTrainNumbers,
-  ]);
+  }, [trains.length, submittedSearch, acOnly, v2Stats, v2AutoScanTrainNumbers]);
 
   const [isAdminUser, setIsAdminUser] = useState(false);
 
@@ -882,8 +882,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       }
       if (newScanMetaMap.size > 0) {
         setV2ScanMetaMap((prev) => new Map([...prev, ...newScanMetaMap]));
-        setV2DiscoveredEndToEndTrains((prev) => new Set([...prev, ...newEndToEnd]));
-        setV2DiscoveredPartialTrains((prev) => new Set([...prev, ...newPartial]));
+        setV2DiscoveredEndToEndTrains(
+          (prev) => new Set([...prev, ...newEndToEnd]),
+        );
+        setV2DiscoveredPartialTrains(
+          (prev) => new Set([...prev, ...newPartial]),
+        );
       }
 
       // Best-effort: if this popular route+date is precomputed, show the best
@@ -1271,9 +1275,11 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               className="w-full rounded-full bg-slate-100 px-4 py-2 text-center transition hover:bg-slate-200 touch-manipulation"
             >
               <span className="block truncate text-sm font-bold text-slate-900">
-                {submittedSearch?.from.stationCode ?? "—"} - {submittedSearch?.from.stationName ?? "—"}
+                {submittedSearch?.from.stationCode ?? "—"} -{" "}
+                {submittedSearch?.from.stationName ?? "—"}
                 {" → "}
-                {submittedSearch?.to.stationCode ?? "—"} - {submittedSearch?.to.stationName ?? "—"}
+                {submittedSearch?.to.stationCode ?? "—"} -{" "}
+                {submittedSearch?.to.stationName ?? "—"}
               </span>
               <span className="mt-0.5 block text-xs font-medium text-slate-500">
                 {formatShortDate(submittedSearch?.date ?? null)}
@@ -1283,379 +1289,395 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         </div>
       )}
 
-      <div
-        className={cn(
-          "mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-4xl",
-          isCompact ? "py-4" : "py-8",
-        )}
-      >
-        {/* ── Hero headline (hidden in compact mode) ── */}
-        {!isCompact && (
-          <header className="mb-8">
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl text-balance">
-              {t.hero.titleLead}
-              <span className="text-blue-600">{t.hero.titleHighlight}</span>
-              {t.hero.titleTail}
-            </h1>
-            <p className="mt-2 max-w-2xl text-base text-slate-600">
-              {t.hero.subtitle}
-            </p>
-          </header>
-        )}
+      <div className="mx-auto max-w-7xl px-0 xl:px-8">
+        <div className="flex justify-center items-start gap-8">
+          <div className="w-full max-w-3xl lg:max-w-4xl min-w-0">
+            <div
+              className={cn(
+                "mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-4xl",
+                isCompact ? "py-4" : "py-8",
+              )}
+            >
+              {/* ── Hero headline (hidden in compact mode) ── */}
+              {!isCompact && (
+                <header className="mb-8">
+                  <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl text-balance">
+                    {t.hero.titleLead}
+                    <span className="text-blue-600">
+                      {t.hero.titleHighlight}
+                    </span>
+                    {t.hero.titleTail}
+                  </h1>
+                  <p className="mt-2 max-w-2xl text-base text-slate-600">
+                    {t.hero.subtitle}
+                  </p>
+                </header>
+              )}
 
-        <div className={cn("mb-8", !isCompact && "min-h-[148px]")}>
-          {/* Tab Switcher (hidden in compact mode) */}
-          {!isCompact && (
-            <div className="mb-4 flex p-1 bg-slate-200/50 rounded-xl max-w-[360px] sm:max-w-[440px] backdrop-blur-md border border-white/40 shadow-xs">
-              <button
-                type="button"
-                id="tabSearchRoute"
-                onClick={() => handleTabSwitch("route")}
-                className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
-                  searchType === "route"
-                    ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                {t.tabs.route}
-              </button>
-              <button
-                type="button"
-                id="tabSearchPnr"
-                onClick={() => handleTabSwitch("pnr")}
-                className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
-                  searchType === "pnr"
-                    ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                {t.tabs.pnr}
-              </button>
-              <button
-                type="button"
-                id="tabSeatStatus"
-                onClick={() => handleTabSwitch("seat")}
-                className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
-                  searchType === "seat"
-                    ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
-              >
-                {t.tabs.seat}
-              </button>
-            </div>
-          )}
-
-          <h2 className="sr-only">{tabLabel}</h2>
-          {searchType === "seat" ? (
-            <ChartTimesFinder />
-          ) : searchType === "route" ? (
-            !isCompact && (
-              <>
-                <form
-                  {...({
-                    toolname: "search_train_tickets",
-                    tooldescription:
-                      "Search confirmed train tickets, alternate segment routes, and seat availability across Indian Railways.",
-                  } as Record<string, unknown>)}
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    if (!searchLoading) void runSearch();
-                  }}
-                  className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch"
-                >
-                  <StationFieldSimple
-                    className="rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
-                    label={t.form.from}
-                    placeholder={t.form.stationPlaceholder}
-                    query={fromQ}
-                    onUserType={(q) => {
-                      setFromQ(q);
-                      setFromSt(null);
-                    }}
-                    value={fromSt}
-                    onSelect={(s) => {
-                      setFromSt(s);
-                      setFromQ(s.stationName);
-                      trackAnalyticsEvent({
-                        name: "search_from_selected",
-                        properties: {
-                          from_code: s.stationCode,
-                          from_name: s.stationName,
-                        },
-                      });
-                    }}
-                    suggestions={fromSuggest}
-                    loading={fromLoad}
-                    pendingDebounce={fromQ !== fromDeb && fromQ.length >= 2}
-                    open={fromOpen}
-                    onOpenChange={openFrom}
-                    suggestError={fromSuggestError}
-                  />
-                  <StationFieldSimple
-                    label={t.form.to}
-                    placeholder={t.form.stationPlaceholder}
-                    query={toQ}
-                    onUserType={(q) => {
-                      setToQ(q);
-                      setToSt(null);
-                    }}
-                    value={toSt}
-                    onSelect={(s) => {
-                      setToSt(s);
-                      setToQ(s.stationName);
-                      trackAnalyticsEvent({
-                        name: "search_to_selected",
-                        properties: {
-                          to_code: s.stationCode,
-                          to_name: s.stationName,
-                        },
-                      });
-                    }}
-                    suggestions={toSuggest}
-                    loading={toLoad}
-                    pendingDebounce={toQ !== toDeb && toQ.length >= 2}
-                    open={toOpen}
-                    onOpenChange={openTo}
-                    suggestError={toSuggestError}
-                  />
-                  <div className="z-10 min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 overflow-visible sm:flex-[1.5] sm:border-t-0 sm:border-r sm:py-2">
-                    <div className="flex items-end gap-2">
-                      <div className="min-w-0 flex-1">
-                        <label
-                          htmlFor={journeyDateInputId}
-                          className="mb-1 flex items-center gap-1.5 whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500"
-                        >
-                          <svg
-                            className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5a2.25 2.25 0 002.25-2.25m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5a2.25 2.25 0 012.25 2.25v7.5"
-                            />
-                          </svg>
-                          {t.form.date}
-                        </label>
-                        <JourneyDatePicker
-                          id={journeyDateInputId}
-                          value={journeyDate}
-                          onChange={handleJourneyDateChange}
-                          inputClassName="block w-full cursor-pointer truncate rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-base font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4"
-                        />
-                      </div>
-                      <div className="w-[96px] shrink-0 sm:w-[104px]">
-                        <span className="mb-1 block whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                          Class
-                        </span>
-                        <TrainClassMultiSelect
-                          selectedClasses={selectedClasses}
-                          onChange={setSelectedClasses}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
+              <div className={cn("mb-2", !isCompact && "min-h-[148px]")}>
+                {/* Tab Switcher (hidden in compact mode) */}
+                {!isCompact && (
+                  <div className="mb-4 flex p-1 bg-slate-200/50 rounded-xl max-w-[360px] sm:max-w-[440px] backdrop-blur-md border border-white/40 shadow-xs">
                     <button
-                      type="submit"
-                      disabled={searchLoading}
-                      className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base touch-manipulation"
+                      type="button"
+                      id="tabSearchRoute"
+                      onClick={() => handleTabSwitch("route")}
+                      className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
+                        searchType === "route"
+                          ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
+                          : "text-slate-600 hover:text-slate-900"
+                      }`}
                     >
-                      {searchLoading ? (
-                        <span className="inline-flex items-center gap-2">
-                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-                          {t.form.searching}
-                        </span>
-                      ) : (
-                        t.form.search
-                      )}
+                      {t.tabs.route}
+                    </button>
+                    <button
+                      type="button"
+                      id="tabSearchPnr"
+                      onClick={() => handleTabSwitch("pnr")}
+                      className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
+                        searchType === "pnr"
+                          ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
+                          : "text-slate-600 hover:text-slate-900"
+                      }`}
+                    >
+                      {t.tabs.pnr}
+                    </button>
+                    <button
+                      type="button"
+                      id="tabSeatStatus"
+                      onClick={() => handleTabSwitch("seat")}
+                      className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
+                        searchType === "seat"
+                          ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
+                          : "text-slate-600 hover:text-slate-900"
+                      }`}
+                    >
+                      {t.tabs.seat}
                     </button>
                   </div>
-                </form>
-                <HomeTrustStrip />
-              </>
-            )
-          ) : (
-            <SearchPnrPanel />
-          )}
-        </div>
+                )}
 
-        {searchError && (
-          <div
-            className="mb-6 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800"
-            role="alert"
-          >
-            <svg
-              className="mt-0.5 h-5 w-5 shrink-0 text-red-600"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z" />
-            </svg>
-            <span>{searchError}</span>
-          </div>
-        )}
-        {searchLoading && (
-          <TrainSearchSkeleton
-            fromCode={submittedSearch?.from.stationCode}
-            fromName={submittedSearch?.from.stationName}
-            toCode={submittedSearch?.to.stationCode}
-            toName={submittedSearch?.to.stationName}
-          />
-        )}
-
-        {hasSearched &&
-          !searchLoading &&
-          !searchError &&
-          trains.length === 0 && (
-            <div
-              className="mb-6 rounded-lg border border-gray-200 bg-white p-4 text-sm text-gray-700"
-              role="status"
-            >
-              No trains found for this route on the selected date.
-            </div>
-          )}
-
-        {/* Train Search V2 (Skyscanner Experience) Top Progress Bar */}
-        {hasSearched &&
-          !searchLoading &&
-          !searchError &&
-          displayTrains.length > 0 && (
-            <TrainSearchV2ProgressBar
-              totalTrains={displayTrains.length}
-              scannedCount={v2CompletedScans.size}
-              totalToScan={v2Stats.totalToScan}
-              directAvailableCount={v2Stats.directAvailableCount}
-              splitSeatsFoundCount={v2TotalDiscoveredCount}
-              isLoading={v2IsLoading}
-            />
-          )}
-
-        {!searchLoading && displayTrains.length > 0 && (
-          <ul
-            ref={v2TrainListAnimateRef}
-            className="space-y-3.5 sm:space-y-5"
-            role="list"
-            aria-label="Train results"
-          >
-            {displayTrains.map((t) => (
-              <TrainSearchV2Card
-                key={`v2-${t.trainNumber}`}
-                train={t}
-                journeyDate={submittedSearch?.date}
-                fromCode={submittedSearch?.from.stationCode}
-                fromName={submittedSearch?.from.stationName}
-                toCode={submittedSearch?.to.stationCode}
-                toName={submittedSearch?.to.stationName}
-                acOnly={acOnly}
-                selectedClasses={resultClasses}
-                autoScanEnabled={v2AutoScanTrainNumbers.has(t.trainNumber)}
-                onOpenSchedule={(trainNumber, from, to) => {
-                  setScheduleTrainNumber(trainNumber);
-                  setScheduleHighlightFrom(from ?? "");
-                  setScheduleHighlightTo(to ?? "");
-                  setScheduleModalOpen(true);
-                }}
-                onOpenFullResultModal={({
-                  trainNumber,
-                  trainName,
-                  avlClasses,
-                  result,
-                }) => {
-                  alt.showResult({
-                    trainNumber,
-                    trainName,
-                    avlClasses,
-                    result,
-                    from: submittedSearch?.from.stationCode,
-                    to: submittedSearch?.to.stationCode,
-                    date: submittedSearch?.date,
-                  });
-                }}
-                onSeatsDiscovered={handleV2SeatsDiscovered}
-                onScanComplete={handleV2ScanComplete}
-              />
-            ))}
-          </ul>
-        )}
-
-        {searchType === "route" &&
-          (altResult || altError || (altLoading && altForTrain)) && (
-            <div
-              className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 backdrop-blur-xs sm:items-center sm:p-4"
-              role="presentation"
-              onClick={() => {
-                if (!altLoading) {
-                  alt.reset();
-                }
-              }}
-            >
-              <div
-                className="flex h-[92dvh] sm:h-auto sm:max-h-[88vh] w-full flex-col rounded-t-2xl sm:rounded-2xl bg-white shadow-2xl sm:border sm:border-gray-200 sm:max-w-2xl overflow-hidden animate-in slide-in-from-bottom duration-300 sm:zoom-in-95"
-                role="dialog"
-                aria-modal="true"
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Mobile drag handle */}
-                <div className="flex justify-center pt-2.5 pb-1 sm:hidden shrink-0">
-                  <div className="h-1.5 w-12 rounded-full bg-slate-300" />
-                </div>
-                <AlternatePathContent
-                  altForTrain={altForTrain}
-                  altTrainName={altTrainName}
-                  altAvlClasses={altAvlClasses}
-                  altLoading={altLoading}
-                  altResult={altResult}
-                  altError={altError}
-                  altProgress={altProgress}
-                  journeyDate={submittedSearch?.date ?? null}
-                  fromCode={submittedSearch?.from.stationCode}
-                  toCode={submittedSearch?.to.stationCode}
-                  originChartTime="4 hours before departure"
-                  isAdminUser={isAdminUser}
-                  shareBusy={altShareBusy}
-                  onShare={() => void shareAlternatePathScreenshot()}
-                  captureRef={altAlternatePathCaptureRef}
-                  directFares={directFares}
-                  hideSearchAllTrainsBanner={true}
-                  source="skyscanner_search_experiment"
-                  onClose={alt.reset}
-                  onRefresh={alt.refresh}
-                  onOpenSchedule={(trainNumber, from, to) => {
-                    setScheduleTrainNumber(trainNumber);
-                    setScheduleHighlightFrom(from);
-                    setScheduleHighlightTo(to);
-                    setScheduleModalOpen(true);
-                  }}
-                />
+                <h2 className="sr-only">{tabLabel}</h2>
+                {searchType === "seat" ? (
+                  <ChartTimesFinder />
+                ) : searchType === "route" ? (
+                  !isCompact && (
+                    <>
+                      <form
+                        {...({
+                          toolname: "search_train_tickets",
+                          tooldescription:
+                            "Search confirmed train tickets, alternate segment routes, and seat availability across Indian Railways.",
+                        } as Record<string, unknown>)}
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          if (!searchLoading) void runSearch();
+                        }}
+                        className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch"
+                      >
+                        <StationFieldSimple
+                          className="rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
+                          label={t.form.from}
+                          placeholder={t.form.stationPlaceholder}
+                          query={fromQ}
+                          onUserType={(q) => {
+                            setFromQ(q);
+                            setFromSt(null);
+                          }}
+                          value={fromSt}
+                          onSelect={(s) => {
+                            setFromSt(s);
+                            setFromQ(s.stationName);
+                            trackAnalyticsEvent({
+                              name: "search_from_selected",
+                              properties: {
+                                from_code: s.stationCode,
+                                from_name: s.stationName,
+                              },
+                            });
+                          }}
+                          suggestions={fromSuggest}
+                          loading={fromLoad}
+                          pendingDebounce={
+                            fromQ !== fromDeb && fromQ.length >= 2
+                          }
+                          open={fromOpen}
+                          onOpenChange={openFrom}
+                          suggestError={fromSuggestError}
+                        />
+                        <StationFieldSimple
+                          label={t.form.to}
+                          placeholder={t.form.stationPlaceholder}
+                          query={toQ}
+                          onUserType={(q) => {
+                            setToQ(q);
+                            setToSt(null);
+                          }}
+                          value={toSt}
+                          onSelect={(s) => {
+                            setToSt(s);
+                            setToQ(s.stationName);
+                            trackAnalyticsEvent({
+                              name: "search_to_selected",
+                              properties: {
+                                to_code: s.stationCode,
+                                to_name: s.stationName,
+                              },
+                            });
+                          }}
+                          suggestions={toSuggest}
+                          loading={toLoad}
+                          pendingDebounce={toQ !== toDeb && toQ.length >= 2}
+                          open={toOpen}
+                          onOpenChange={openTo}
+                          suggestError={toSuggestError}
+                        />
+                        <div className="z-10 min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 overflow-visible sm:flex-[1.5] sm:border-t-0 sm:border-r sm:py-2">
+                          <div className="flex items-end gap-2">
+                            <div className="min-w-0 flex-1">
+                              <label
+                                htmlFor={journeyDateInputId}
+                                className="mb-1 flex items-center gap-1.5 whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500"
+                              >
+                                <svg
+                                  className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4"
+                                  aria-hidden="true"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  strokeWidth={1.5}
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5a2.25 2.25 0 002.25-2.25m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5a2.25 2.25 0 012.25 2.25v7.5"
+                                  />
+                                </svg>
+                                {t.form.date}
+                              </label>
+                              <JourneyDatePicker
+                                id={journeyDateInputId}
+                                value={journeyDate}
+                                onChange={handleJourneyDateChange}
+                                inputClassName="block w-full cursor-pointer truncate rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-base font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4"
+                              />
+                            </div>
+                            <div className="w-[96px] shrink-0 sm:w-[104px]">
+                              <span className="mb-1 block whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                                Class
+                              </span>
+                              <TrainClassMultiSelect
+                                selectedClasses={selectedClasses}
+                                onChange={setSelectedClasses}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
+                          <button
+                            type="submit"
+                            disabled={searchLoading}
+                            className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base touch-manipulation"
+                          >
+                            {searchLoading ? (
+                              <span className="inline-flex items-center gap-2">
+                                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                                {t.form.searching}
+                              </span>
+                            ) : (
+                              t.form.search
+                            )}
+                          </button>
+                        </div>
+                      </form>
+                      <HomeTrustStrip />
+                      <MobileAdvert utmMedium="external_website_homepage" />
+                    </>
+                  )
+                ) : (
+                  <SearchPnrPanel />
+                )}
               </div>
+
+              {searchError && (
+                <div
+                  className="mb-6 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800"
+                  role="alert"
+                >
+                  <svg
+                    className="mt-0.5 h-5 w-5 shrink-0 text-red-600"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z" />
+                  </svg>
+                  <span>{searchError}</span>
+                </div>
+              )}
+              {searchLoading && (
+                <TrainSearchSkeleton
+                  fromCode={submittedSearch?.from.stationCode}
+                  fromName={submittedSearch?.from.stationName}
+                  toCode={submittedSearch?.to.stationCode}
+                  toName={submittedSearch?.to.stationName}
+                />
+              )}
+
+              {hasSearched &&
+                !searchLoading &&
+                !searchError &&
+                trains.length === 0 && (
+                  <div
+                    className="mb-6 rounded-lg border border-gray-200 bg-white p-4 text-sm text-gray-700"
+                    role="status"
+                  >
+                    No trains found for this route on the selected date.
+                  </div>
+                )}
+
+              {/* Train Search V2 (Skyscanner Experience) Top Progress Bar */}
+              {hasSearched &&
+                !searchLoading &&
+                !searchError &&
+                displayTrains.length > 0 && (
+                  <TrainSearchV2ProgressBar
+                    totalTrains={displayTrains.length}
+                    scannedCount={v2CompletedScans.size}
+                    totalToScan={v2Stats.totalToScan}
+                    directAvailableCount={v2Stats.directAvailableCount}
+                    splitSeatsFoundCount={v2TotalDiscoveredCount}
+                    isLoading={v2IsLoading}
+                  />
+                )}
+
+              {!searchLoading && displayTrains.length > 0 && (
+                <ul
+                  ref={v2TrainListAnimateRef}
+                  className="space-y-3.5 sm:space-y-5"
+                  role="list"
+                  aria-label="Train results"
+                >
+                  {displayTrains.map((t) => (
+                    <TrainSearchV2Card
+                      key={`v2-${t.trainNumber}`}
+                      train={t}
+                      journeyDate={submittedSearch?.date}
+                      fromCode={submittedSearch?.from.stationCode}
+                      fromName={submittedSearch?.from.stationName}
+                      toCode={submittedSearch?.to.stationCode}
+                      toName={submittedSearch?.to.stationName}
+                      acOnly={acOnly}
+                      selectedClasses={resultClasses}
+                      autoScanEnabled={v2AutoScanTrainNumbers.has(
+                        t.trainNumber,
+                      )}
+                      onOpenSchedule={(trainNumber, from, to) => {
+                        setScheduleTrainNumber(trainNumber);
+                        setScheduleHighlightFrom(from ?? "");
+                        setScheduleHighlightTo(to ?? "");
+                        setScheduleModalOpen(true);
+                      }}
+                      onOpenFullResultModal={({
+                        trainNumber,
+                        trainName,
+                        avlClasses,
+                        result,
+                      }) => {
+                        alt.showResult({
+                          trainNumber,
+                          trainName,
+                          avlClasses,
+                          result,
+                          from: submittedSearch?.from.stationCode,
+                          to: submittedSearch?.to.stationCode,
+                          date: submittedSearch?.date,
+                        });
+                      }}
+                      onSeatsDiscovered={handleV2SeatsDiscovered}
+                      onScanComplete={handleV2ScanComplete}
+                    />
+                  ))}
+                </ul>
+              )}
+
+              {searchType === "route" &&
+                (altResult || altError || (altLoading && altForTrain)) && (
+                  <div
+                    className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 backdrop-blur-xs sm:items-center sm:p-4"
+                    role="presentation"
+                    onClick={() => {
+                      if (!altLoading) {
+                        alt.reset();
+                      }
+                    }}
+                  >
+                    <div
+                      className="flex h-[92dvh] sm:h-auto sm:max-h-[88vh] w-full flex-col rounded-t-2xl sm:rounded-2xl bg-white shadow-2xl sm:border sm:border-gray-200 sm:max-w-2xl overflow-hidden animate-in slide-in-from-bottom duration-300 sm:zoom-in-95"
+                      role="dialog"
+                      aria-modal="true"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {/* Mobile drag handle */}
+                      <div className="flex justify-center pt-2.5 pb-1 sm:hidden shrink-0">
+                        <div className="h-1.5 w-12 rounded-full bg-slate-300" />
+                      </div>
+                      <AlternatePathContent
+                        altForTrain={altForTrain}
+                        altTrainName={altTrainName}
+                        altAvlClasses={altAvlClasses}
+                        altLoading={altLoading}
+                        altResult={altResult}
+                        altError={altError}
+                        altProgress={altProgress}
+                        journeyDate={submittedSearch?.date ?? null}
+                        fromCode={submittedSearch?.from.stationCode}
+                        toCode={submittedSearch?.to.stationCode}
+                        originChartTime="4 hours before departure"
+                        isAdminUser={isAdminUser}
+                        shareBusy={altShareBusy}
+                        onShare={() => void shareAlternatePathScreenshot()}
+                        captureRef={altAlternatePathCaptureRef}
+                        directFares={directFares}
+                        hideSearchAllTrainsBanner={true}
+                        source="skyscanner_search_experiment"
+                        onClose={alt.reset}
+                        onRefresh={alt.refresh}
+                        onOpenSchedule={(trainNumber, from, to) => {
+                          setScheduleTrainNumber(trainNumber);
+                          setScheduleHighlightFrom(from);
+                          setScheduleHighlightTo(to);
+                          setScheduleModalOpen(true);
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
             </div>
-          )}
-      </div>
-      {/* Homepage content (ads + SEO) is first-landing only — hidden once a search has begun */}
-      {!hasSearched && (
-        <>
-          {searchType === "route" && <HowSplitBookingWorks />}
-          {searchType === "pnr" && <HowPnrAlternateWorks />}
-          <HomeSideAd />
-          {searchType === "pnr" ? (
-            <HomePnrSeoContent />
-          ) : (
-            <HomeSeoContent t={t.seo} />
-          )}
-          <div className="mx-auto my-8 flex min-h-[250px] max-w-3xl items-center justify-center px-4 sm:px-6 lg:max-w-4xl">
-            <HomeBannerAd zoneId="12090034" />
+            {/* Homepage content (ads + SEO) is first-landing only — hidden once a search has begun */}
+            {!hasSearched && (
+              <>
+                {searchType === "route" && <HowSplitBookingWorks />}
+                {searchType === "pnr" && <HowPnrAlternateWorks />}
+                {searchType === "pnr" ? (
+                  <HomePnrSeoContent />
+                ) : (
+                  <HomeSeoContent t={t.seo} />
+                )}
+                <div className="mx-auto my-8 flex min-h-[250px] max-w-3xl items-center justify-center px-4 sm:px-6 lg:max-w-4xl">
+                  <HomeBannerAd zoneId="12090034" />
+                </div>
+              </>
+            )}
           </div>
-        </>
-      )}
+
+          <aside className="hidden xl:block shrink-0 sticky top-20 pt-8">
+            <SideAdvert utmMedium="external_website_homepage" />
+          </aside>
+        </div>
+      </div>
       <TrainScheduleBottomSheet
         open={scheduleModalOpen}
         onClose={() => setScheduleModalOpen(false)}
