@@ -57,6 +57,7 @@ export class SplitBookingController {
   }
 
   @Post('muzobox-callback')
+  @Throttle({ global: { limit: 10, ttl: 60_000 } })
   async handleMuzoboxCallback(
     @Body() body: { paymentId?: unknown; referenceId?: unknown },
   ) {
