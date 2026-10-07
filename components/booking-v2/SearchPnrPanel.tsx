@@ -531,6 +531,8 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
                     ctaClassCode={pnrData?.Class}
                     originChartTime={originChartTime}
                     isAdminUser={isAdminUser}
+                    onRefresh={alt.refresh}
+                    isRefreshing={alt.altLoading}
                     onClose={alt.reset}
                     onOpenSchedule={(trainNumber, from, to) => {
                       setScheduleTrainNumber(trainNumber);

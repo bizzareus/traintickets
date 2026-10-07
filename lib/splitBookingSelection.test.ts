@@ -155,4 +155,23 @@ describe("per-leg booking class choices", () => {
     assert.equal(skipAll.totalFare, null);
     assert.equal(skipAll.legs.length, 0);
   });
+
+  test("captures availability for each leg at the time of booking", () => {
+    const selection = buildSplitBookingSelection(legs, { 0: "2A" });
+    assert.equal(selection.legs[0].availability, "AVL 10");
+    assert.equal(selection.legs[1].availability, "AVL 10");
+
+    const customLeg = leg("GWL", "BINA", [
+      {
+        travelClass: "3E",
+        fare: 565,
+        availabilityDisplayName: "Available",
+        availablityStatus: "AVAILABLE-0024#",
+        railDataStatus: "AVAILABLE",
+        predictionPercentage: null,
+      },
+    ]);
+    const customSelection = buildSplitBookingSelection([customLeg], {});
+    assert.equal(customSelection.legs[0].availability, "AVAILABLE-0024");
+  });
 });

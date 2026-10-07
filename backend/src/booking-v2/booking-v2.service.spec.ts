@@ -1670,4 +1670,114 @@ describe('BookingV2Service', () => {
       });
     });
   });
+
+  describe('findAlternatePathsCached with forceRefresh', () => {
+    it('returns cached hit when forceRefresh is false or omitted', async () => {
+      const mockResult = {
+        trainNumber: '12626',
+        isComplete: true,
+        legCount: 2,
+        totalFare: 1200,
+        legs: [
+          {
+            from: 'GWL',
+            to: 'BINA',
+            segmentKind: 'confirmed',
+            travelClass: '3E',
+            fare: 565,
+          },
+          {
+            from: 'BINA',
+            to: 'ET',
+            segmentKind: 'confirmed',
+            travelClass: '3E',
+            fare: 565,
+          },
+        ],
+      };
+      mockAltPathsCache.get.mockResolvedValueOnce(mockResult as any);
+
+      const res = await service.findAlternatePathsCached({
+        trainNumber: '12626',
+        from: 'GWL',
+        to: 'ET',
+        date: '08-10-2029',
+        quota: 'GN',
+      });
+
+      expect(res.cached).toBe(true);
+      expect(res.result).toEqual(mockResult);
+      expect(mockAltPathsCache.get).toHaveBeenCalled();
+    });
+
+    it('bypasses cache and updates cache when forceRefresh is true', async () => {
+      const mockCached = {
+        trainNumber: '12626',
+        isComplete: false,
+        legCount: 1,
+        totalFare: 500,
+        legs: [
+          {
+            from: 'GWL',
+            to: 'BINA',
+            segmentKind: 'confirmed',
+            travelClass: '3E',
+            fare: 500,
+          },
+        ],
+      };
+      mockAltPathsCache.get.mockResolvedValueOnce(mockCached as any);
+
+      const freshResult = {
+        trainNumber: '12626',
+        isComplete: true,
+        legCount: 2,
+        totalFare: 1130,
+        legs: [
+          {
+            from: 'GWL',
+            to: 'BINA',
+            segmentKind: 'confirmed',
+            travelClass: '3E',
+            fare: 565,
+          },
+          {
+            from: 'BINA',
+            to: 'ET',
+            segmentKind: 'confirmed',
+            travelClass: '3E',
+            fare: 565,
+          },
+        ],
+        stationCodesOnRoute: ['GWL', 'BINA', 'ET'],
+        stationNameMap: {},
+        remainderMergedSchedule: null,
+        trainOriginCode: null,
+        trainOriginDepartureTime: null,
+        debugLog: ['fresh compute'],
+      };
+
+      jest
+        .spyOn(service, 'findAlternatePaths')
+        .mockResolvedValueOnce(freshResult as any);
+
+      const res = await service.findAlternatePathsCached({
+        trainNumber: '12626',
+        from: 'GWL',
+        to: 'ET',
+        date: '08-10-2029',
+        quota: 'GN',
+        forceRefresh: true,
+      });
+
+      expect(res.cached).toBe(false);
+      expect(res.result).toEqual(freshResult);
+      expect(mockAltPathsCache.get).not.toHaveBeenCalled();
+      expect(mockAltPathsCache.set).toHaveBeenCalledWith(
+        expect.stringContaining('alt-paths:v3:GWL:ET:12626'),
+        expect.objectContaining({ trainNumber: '12626', legCount: 2 }),
+        expect.any(Number),
+      );
+    });
+  });
 });

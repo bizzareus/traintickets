@@ -17,6 +17,7 @@ import {
   fetchSplitBookingStatus,
   simulateSplitBookingPayment,
   type CreateSplitBookingPayload,
+  type SplitBookingLeg,
   type SplitBookingPassenger,
   type SplitBookingPaymentResponse,
   type SplitBookingStatus,
@@ -35,16 +36,7 @@ export interface SplitTicketBookingModalProps {
   travelClass: string;
   quota?: string;
   totalFare: number;
-  legs: Array<{
-    from: string;
-    to: string;
-    travelClass: string;
-    fare: number;
-    boardingDate: string;
-    departureTime?: string | null;
-    arrivalTime?: string | null;
-    durationMinutes?: number | null;
-  }>;
+  legs: SplitBookingLeg[];
 }
 
 type ModalStep = "passenger_details" | "payment" | "booking_in_progress";

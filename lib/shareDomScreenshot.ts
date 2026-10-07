@@ -38,6 +38,12 @@ export async function shareDomElementAsPng(
         if (clonedRoot instanceof HTMLElement) {
           clonedRoot.style.overflow = "visible";
           clonedRoot.style.maxHeight = "none";
+          clonedRoot
+            .querySelectorAll<HTMLElement>(".overflow-y-auto, .overflow-auto")
+            .forEach((child) => {
+              child.style.overflow = "visible";
+              child.style.maxHeight = "none";
+            });
         }
       },
     };

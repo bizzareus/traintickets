@@ -141,11 +141,9 @@ export class NotificationService {
     };
 
     let sent = false;
-    let failureError: unknown = null;
     try {
       sent = await provider.sendWhatsApp(payload);
     } catch (err) {
-      failureError = err;
       console.error('WhatsApp send thrown error:', err);
     }
 

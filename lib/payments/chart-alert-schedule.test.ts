@@ -100,6 +100,46 @@ test("payment and free-alert HTTP payloads both include the same two-chart snaps
   );
 });
 
+test("free chart alert from shortlink params (e.g. 22439/UMB) resolves schedule and posts complete snapshot", async (t) => {
+  const shortlinkJourney = {
+    trainNumber: "22439",
+    fromStationCode: "UMB",
+    toStationCode: "LDH",
+    journeyDate: "2026-10-08",
+    classCode: "CC",
+    email: "ajayk345290@gmail.com",
+  };
+  const umbSnapshot = {
+    stationCode: "UMB",
+    day: 1,
+    chartTimeLocal: "21:19",
+    chartOneDayOffset: -1,
+    chartTwoTimeLocal: "05:45",
+    chartTwoDayOffset: 0,
+  };
+  t.mock.method(globalThis, "fetch", async (url: string) => {
+    assert.equal(url, "/api/chart-alert-schedule/22439/UMB");
+    return Response.json(umbSnapshot);
+  });
+  let postedPayload: Record<string, unknown> | null = null;
+  t.mock.method(apiClient, "post", async (url: string, data: Record<string, unknown>) => {
+    assert.equal(url, "/api/availability/journey");
+    postedPayload = data;
+    return { data: { accepted: true, status: "scheduled" } };
+  });
+
+  await createFreeChartAlert(shortlinkJourney);
+
+  assert.deepEqual(postedPayload, {
+    ...shortlinkJourney,
+    chartTimeLocal: "21:19",
+    chartOneDayOffset: -1,
+    chartTwoTimeLocal: "05:45",
+    chartTwoDayOffset: 0,
+    trainStartDate: "2026-10-08",
+  });
+});
+
 test("missing chart data fails before any payment or subscription POST", async (t) => {
   t.mock.method(globalThis, "fetch", async () =>
     Response.json({ error: "unavailable" }, { status: 404 }),

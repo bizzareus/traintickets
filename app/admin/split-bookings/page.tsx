@@ -40,6 +40,7 @@ interface SplitLeg {
   departureTime?: string | null;
   arrivalTime?: string | null;
   durationMinutes?: number | null;
+  availability?: string | null;
 }
 
 export interface SplitBookingAdminEntry {
@@ -1807,6 +1808,11 @@ function SplitBookingsAdminContent() {
                           </span>
                           <span className="text-[11px] text-slate-500 font-medium">
                             {leg.boardingDate}{leg.departureTime ? ` at ${leg.departureTime}` : ""}
+                            {leg.availability && (
+                              <span className="ml-1.5 font-semibold text-emerald-700">
+                                ({leg.availability})
+                              </span>
+                            )}
                           </span>
                         </div>
                         <div className="relative">
@@ -2389,7 +2395,7 @@ function SplitBookingsAdminContent() {
                       "JOURNEY LEGS",
                       ...(selectedDetailsBooking.legsPayload || []).map(
                         (leg, idx) =>
-                          `${idx + 1}. ${leg.from} → ${leg.to} | Boarding date: ${leg.boardingDate}\nClass: ${leg.travelClass} | Fare: INR ${leg.fare}\nDeparture: ${leg.departureTime || "Not supplied"} | Arrival: ${leg.arrivalTime || "Not supplied"} | Duration (minutes): ${leg.durationMinutes ?? "Not supplied"}`,
+                          `${idx + 1}. ${leg.from} → ${leg.to} | Boarding date: ${leg.boardingDate}\nClass: ${leg.travelClass} | Fare: INR ${leg.fare}${leg.availability ? ` | Availability: ${leg.availability}` : ""}\nDeparture: ${leg.departureTime || "Not supplied"} | Arrival: ${leg.arrivalTime || "Not supplied"} | Duration (minutes): ${leg.durationMinutes ?? "Not supplied"}`,
                       ),
                       "",
                       "PASSENGERS",
@@ -2584,6 +2590,12 @@ function SplitBookingsAdminContent() {
                         <div>
                           <span className="text-slate-400">Class: </span>
                           <span className="font-medium text-slate-800">{leg.travelClass}</span>
+                        </div>
+                        <div>
+                          <span className="text-slate-400">Availability: </span>
+                          <span className="font-semibold text-emerald-700">
+                            {leg.availability || "Not supplied"}
+                          </span>
                         </div>
                         <div>
                           <span className="text-slate-400">Duration: </span>

@@ -601,7 +601,7 @@ describe('NotificationService', () => {
     expect(whatsappText).toContain('Route: SPN → JAT | Date: Sun, 30 Aug');
   });
 
-  it('triggers sendAlertFailureReport to me@kartikarora.in when WhatsApp or Email sending fails', async () => {
+  it('triggers sendAlertFailureReport to me@kartikarora.in when Email sending fails, but not for WhatsApp failures', async () => {
     const svc = new NotificationService(mockConfig(), mockStationCache());
     const failureReportSpy = jest
       .spyOn(svc, 'sendAlertFailureReport')
@@ -620,7 +620,7 @@ describe('NotificationService', () => {
     expect(failureReportSpy).toHaveBeenCalled();
     const calls = failureReportSpy.mock.calls;
     expect(calls.some(([arg]) => arg.alertType.includes('WhatsApp'))).toBe(
-      true,
+      false,
     );
     expect(calls.some(([arg]) => arg.alertType.includes('Email'))).toBe(true);
   });

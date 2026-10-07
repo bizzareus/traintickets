@@ -72,6 +72,7 @@ import {
 } from "@/components/home/MobileModifySearchSheet";
 import { TrainClassMultiSelect } from "@/components/home/TrainClassMultiSelect";
 import { HowSplitBookingWorks } from "@/components/home/HowSplitBookingWorks";
+import { HomeTrustStrip } from "@/components/home/HomeTrustStrip";
 import ChartTimesFinder from "@/app/chart-times/ChartTimesFinder";
 import type { HomeStrings } from "@/lib/home/home-langs";
 
@@ -391,6 +392,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [v2DiscoveredEndToEndTrains, setV2DiscoveredEndToEndTrains] = useState<
     Set<string>
   >(new Set());
+
   const [v2DiscoveredPartialTrains, setV2DiscoveredPartialTrains] = useState<
     Set<string>
   >(new Set());
@@ -400,6 +402,38 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [v2ScanMetaMap, setV2ScanMetaMap] = useState<
     Map<string, TrainScanMeta>
   >(new Map());
+
+  // Keep search result card's cached alternate path and sorting in sync when refreshed
+  useEffect(() => {
+    if (altResult && altForTrain) {
+      setTrains((prev) =>
+        prev.map((t) =>
+          t.trainNumber === altForTrain
+            ? { ...t, cachedAlternatePath: altResult }
+            : t,
+        ),
+      );
+      if (altResult.legs && altResult.legs.length > 0) {
+        const meta = extractScanMetaFromResult(altResult);
+        setV2ScanMetaMap((prev) => new Map(prev).set(altForTrain, meta));
+        if (meta.isComplete) {
+          setV2DiscoveredEndToEndTrains((prev) => new Set(prev).add(altForTrain));
+          setV2DiscoveredPartialTrains((prev) => {
+            const next = new Set(prev);
+            next.delete(altForTrain);
+            return next;
+          });
+        } else {
+          setV2DiscoveredPartialTrains((prev) => new Set(prev).add(altForTrain));
+          setV2DiscoveredEndToEndTrains((prev) => {
+            const next = new Set(prev);
+            next.delete(altForTrain);
+            return next;
+          });
+        }
+      }
+    }
+  }, [altResult, altForTrain]);
   const v2TrackedViewKeyRef = useRef<string>("");
   const v2TrackedAutoScanKeyRef = useRef<string>("");
 
@@ -1315,132 +1349,135 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             <ChartTimesFinder />
           ) : searchType === "route" ? (
             !isCompact && (
-              <form
-                {...({
-                  toolname: "search_train_tickets",
-                  tooldescription:
-                    "Search confirmed train tickets, alternate segment routes, and seat availability across Indian Railways.",
-                } as Record<string, unknown>)}
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  if (!searchLoading) void runSearch();
-                }}
-                className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch"
-              >
-                <StationFieldSimple
-                  className="rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
-                  label={t.form.from}
-                  placeholder={t.form.stationPlaceholder}
-                  query={fromQ}
-                  onUserType={(q) => {
-                    setFromQ(q);
-                    setFromSt(null);
+              <>
+                <form
+                  {...({
+                    toolname: "search_train_tickets",
+                    tooldescription:
+                      "Search confirmed train tickets, alternate segment routes, and seat availability across Indian Railways.",
+                  } as Record<string, unknown>)}
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (!searchLoading) void runSearch();
                   }}
-                  value={fromSt}
-                  onSelect={(s) => {
-                    setFromSt(s);
-                    setFromQ(s.stationName);
-                    trackAnalyticsEvent({
-                      name: "search_from_selected",
-                      properties: {
-                        from_code: s.stationCode,
-                        from_name: s.stationName,
-                      },
-                    });
-                  }}
-                  suggestions={fromSuggest}
-                  loading={fromLoad}
-                  pendingDebounce={fromQ !== fromDeb && fromQ.length >= 2}
-                  open={fromOpen}
-                  onOpenChange={openFrom}
-                  suggestError={fromSuggestError}
-                />
-                <StationFieldSimple
-                  label={t.form.to}
-                  placeholder={t.form.stationPlaceholder}
-                  query={toQ}
-                  onUserType={(q) => {
-                    setToQ(q);
-                    setToSt(null);
-                  }}
-                  value={toSt}
-                  onSelect={(s) => {
-                    setToSt(s);
-                    setToQ(s.stationName);
-                    trackAnalyticsEvent({
-                      name: "search_to_selected",
-                      properties: {
-                        to_code: s.stationCode,
-                        to_name: s.stationName,
-                      },
-                    });
-                  }}
-                  suggestions={toSuggest}
-                  loading={toLoad}
-                  pendingDebounce={toQ !== toDeb && toQ.length >= 2}
-                  open={toOpen}
-                  onOpenChange={openTo}
-                  suggestError={toSuggestError}
-                />
-                <div className="z-10 min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 overflow-visible sm:flex-[1.5] sm:border-t-0 sm:border-r sm:py-2">
-                  <div className="flex items-end gap-2">
-                    <div className="min-w-0 flex-1">
-                      <label
-                        htmlFor={journeyDateInputId}
-                        className="mb-1 flex items-center gap-1.5 whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500"
-                      >
-                        <svg
-                          className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
+                  className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-gray-50/80 sm:flex-row sm:items-stretch"
+                >
+                  <StationFieldSimple
+                    className="rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
+                    label={t.form.from}
+                    placeholder={t.form.stationPlaceholder}
+                    query={fromQ}
+                    onUserType={(q) => {
+                      setFromQ(q);
+                      setFromSt(null);
+                    }}
+                    value={fromSt}
+                    onSelect={(s) => {
+                      setFromSt(s);
+                      setFromQ(s.stationName);
+                      trackAnalyticsEvent({
+                        name: "search_from_selected",
+                        properties: {
+                          from_code: s.stationCode,
+                          from_name: s.stationName,
+                        },
+                      });
+                    }}
+                    suggestions={fromSuggest}
+                    loading={fromLoad}
+                    pendingDebounce={fromQ !== fromDeb && fromQ.length >= 2}
+                    open={fromOpen}
+                    onOpenChange={openFrom}
+                    suggestError={fromSuggestError}
+                  />
+                  <StationFieldSimple
+                    label={t.form.to}
+                    placeholder={t.form.stationPlaceholder}
+                    query={toQ}
+                    onUserType={(q) => {
+                      setToQ(q);
+                      setToSt(null);
+                    }}
+                    value={toSt}
+                    onSelect={(s) => {
+                      setToSt(s);
+                      setToQ(s.stationName);
+                      trackAnalyticsEvent({
+                        name: "search_to_selected",
+                        properties: {
+                          to_code: s.stationCode,
+                          to_name: s.stationName,
+                        },
+                      });
+                    }}
+                    suggestions={toSuggest}
+                    loading={toLoad}
+                    pendingDebounce={toQ !== toDeb && toQ.length >= 2}
+                    open={toOpen}
+                    onOpenChange={openTo}
+                    suggestError={toSuggestError}
+                  />
+                  <div className="z-10 min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 overflow-visible sm:flex-[1.5] sm:border-t-0 sm:border-r sm:py-2">
+                    <div className="flex items-end gap-2">
+                      <div className="min-w-0 flex-1">
+                        <label
+                          htmlFor={journeyDateInputId}
+                          className="mb-1 flex items-center gap-1.5 whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5a2.25 2.25 0 002.25-2.25m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5a2.25 2.25 0 012.25 2.25v7.5"
-                          />
-                        </svg>
-                        {t.form.date}
-                      </label>
-                      <JourneyDatePicker
-                        id={journeyDateInputId}
-                        value={journeyDate}
-                        onChange={handleJourneyDateChange}
-                        inputClassName="block w-full cursor-pointer truncate rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-base font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4"
-                      />
-                    </div>
-                    <div className="w-[96px] shrink-0 sm:w-[104px]">
-                      <span className="mb-1 block whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500">
-                        Class
-                      </span>
-                      <TrainClassMultiSelect
-                        selectedClasses={selectedClasses}
-                        onChange={setSelectedClasses}
-                      />
+                          <svg
+                            className="h-3.5 w-3.5 shrink-0 text-blue-600 sm:h-4 sm:w-4"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5a2.25 2.25 0 002.25-2.25m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5a2.25 2.25 0 012.25 2.25v7.5"
+                            />
+                          </svg>
+                          {t.form.date}
+                        </label>
+                        <JourneyDatePicker
+                          id={journeyDateInputId}
+                          value={journeyDate}
+                          onChange={handleJourneyDateChange}
+                          inputClassName="block w-full cursor-pointer truncate rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-base font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4"
+                        />
+                      </div>
+                      <div className="w-[96px] shrink-0 sm:w-[104px]">
+                        <span className="mb-1 block whitespace-nowrap text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+                          Class
+                        </span>
+                        <TrainClassMultiSelect
+                          selectedClasses={selectedClasses}
+                          onChange={setSelectedClasses}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
-                  <button
-                    type="submit"
-                    disabled={searchLoading}
-                    className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base touch-manipulation"
-                  >
-                    {searchLoading ? (
-                      <span className="inline-flex items-center gap-2">
-                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-                        {t.form.searching}
-                      </span>
-                    ) : (
-                      t.form.search
-                    )}
-                  </button>
-                </div>
-              </form>
+                  <div className="flex items-stretch border-t border-gray-200 p-2 sm:border-t-0 sm:p-0">
+                    <button
+                      type="submit"
+                      disabled={searchLoading}
+                      className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base touch-manipulation"
+                    >
+                      {searchLoading ? (
+                        <span className="inline-flex items-center gap-2">
+                          <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                          {t.form.searching}
+                        </span>
+                      ) : (
+                        t.form.search
+                      )}
+                    </button>
+                  </div>
+                </form>
+                <HomeTrustStrip />
+              </>
             )
           ) : (
             <SearchPnrPanel />
@@ -1536,6 +1573,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                     trainName,
                     avlClasses,
                     result,
+                    from: submittedSearch?.from.stationCode,
+                    to: submittedSearch?.to.stationCode,
+                    date: submittedSearch?.date,
                   });
                 }}
                 onSeatsDiscovered={handleV2SeatsDiscovered}
@@ -1586,6 +1626,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   hideSearchAllTrainsBanner={true}
                   source="skyscanner_search_experiment"
                   onClose={alt.reset}
+                  onRefresh={alt.refresh}
                   onOpenSchedule={(trainNumber, from, to) => {
                     setScheduleTrainNumber(trainNumber);
                     setScheduleHighlightFrom(from);

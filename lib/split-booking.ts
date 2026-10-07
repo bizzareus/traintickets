@@ -25,6 +25,7 @@ export interface SplitBookingLeg {
   departureTime?: string | null;
   arrivalTime?: string | null;
   durationMinutes?: number | null;
+  availability?: string | null;
 }
 
 export interface CreateSplitBookingPayload {

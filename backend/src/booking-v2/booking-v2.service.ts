@@ -1695,6 +1695,40 @@ export class BookingV2Service {
       this.logger.log(
         `[alt-paths-cache] STORED key=${key} legs=${result.legCount} complete=${result.isComplete} ttlMs=${ALT_PATHS_CACHE_TTL_MS}`,
       );
+
+      // If best-trains route cache currently holds this train, keep it in sync
+      try {
+        const bestRecord = await this.getCachedBestTrain(
+          input.from,
+          input.to,
+          input.date,
+        );
+        if (
+          bestRecord?.value?.found === true &&
+          bestRecord.value.train?.trainNumber === input.trainNumber
+        ) {
+          const bestKey = bestTrainsCacheKey(
+            input.from,
+            input.to,
+            this.normalizeToRailApiDate(input.date),
+          );
+          if (bestKey) {
+            const updatedBest: CachedBestTrain = {
+              ...bestRecord.value,
+              legs: result.legs,
+              totalFare: result.totalFare,
+              isComplete: result.isComplete,
+            };
+            await this.bestTrainsCache.set(
+              bestKey,
+              updatedBest,
+              BEST_TRAINS_CACHE_TTL_MS,
+            );
+          }
+        }
+      } catch {
+        /* best-effort */
+      }
     }
     return { result, cached: false };
   }
@@ -1707,6 +1741,7 @@ export class BookingV2Service {
       date: string;
       avlClasses?: string[];
       quota?: string;
+      forceRefresh?: boolean;
       signal?: AbortSignal;
     },
     onProgress?: (event: AlternatePathProgressEvent) => void | Promise<void>,
@@ -1866,6 +1901,7 @@ export class BookingV2Service {
       quota?: string;
       stationsBefore?: number;
       stationsAfter?: number;
+      forceRefresh?: boolean;
       signal?: AbortSignal;
     },
     onProgress?: (event: AlternatePathProgressEvent) => void | Promise<void>,
@@ -2073,9 +2109,11 @@ export class BookingV2Service {
             ),
           ),
         );
-      const cachedSegments = await (segmentCache ?? this.cache)
-        .getMany<SegmentProbeRow>(keys)
-        .catch(() => new Map<string, SegmentProbeRow>());
+      const cachedSegments = input.forceRefresh
+        ? new Map<string, SegmentProbeRow>()
+        : await (segmentCache ?? this.cache)
+            .getMany<SegmentProbeRow>(keys)
+            .catch(() => new Map<string, SegmentProbeRow>());
       input.signal?.throwIfAborted();
       await this.mapWithConcurrency(
         destOrder,
@@ -2096,6 +2134,7 @@ export class BookingV2Service {
               segmentCache,
               input.signal,
               cachedSegments,
+              ...(input.forceRefresh ? [true] : []),
             );
             probeCache.set(key, probe);
           }
@@ -2261,6 +2300,8 @@ export class BookingV2Service {
           quota,
           segmentCache,
           input.signal,
+          undefined,
+          input.forceRefresh ?? false,
         );
         probeCache.set(key, bridge);
       }
@@ -2556,25 +2597,27 @@ export class BookingV2Service {
     segmentCache?: CacheService,
     signal?: AbortSignal,
     cachedSegments?: ReadonlyMap<string, SegmentProbeRow>,
+    forceRefresh = false,
   ): Promise<MultiClassProbeResult> {
     signal?.throwIfAborted();
     // Bridge probes outside a hop wave still load all classes in one query.
-    const hits =
-      cachedSegments ??
-      (await (segmentCache ?? this.cache)
-        .getMany<SegmentProbeRow>(
-          classCodes.map((c) =>
-            segmentAvailabilityCacheKey(
-              trainNo,
-              fromStn,
-              toStn,
-              dateDdMmYyyy,
-              c,
-              quota,
+    const hits = forceRefresh
+      ? new Map<string, SegmentProbeRow>()
+      : (cachedSegments ??
+        (await (segmentCache ?? this.cache)
+          .getMany<SegmentProbeRow>(
+            classCodes.map((c) =>
+              segmentAvailabilityCacheKey(
+                trainNo,
+                fromStn,
+                toStn,
+                dateDdMmYyyy,
+                c,
+                quota,
+              ),
             ),
-          ),
-        )
-        .catch(() => new Map<string, SegmentProbeRow>()));
+          )
+          .catch(() => new Map<string, SegmentProbeRow>())));
     const perClass: SegmentProbeRow[] = classCodes.map(() => ({
       day: null,
       fare: null,
@@ -2595,6 +2638,7 @@ export class BookingV2Service {
           signal,
           hits,
           false,
+          forceRefresh,
         );
       },
     );
@@ -2615,7 +2659,7 @@ export class BookingV2Service {
         c,
         quota,
       );
-      if (!hits.has(k) && row && !row.fetchError) {
+      if ((forceRefresh || !hits.has(k)) && row && !row.fetchError) {
         newlyFetched.push({ key: k, value: row, ttlMs: AVL_SEGMENT_TTL_MS });
       }
     }
@@ -2672,6 +2716,7 @@ export class BookingV2Service {
     signal?: AbortSignal,
     cachedSegments?: ReadonlyMap<string, SegmentProbeRow>,
     persist = true,
+    forceRefresh = false,
   ): Promise<SegmentProbeRow> {
     signal?.throwIfAborted();
     if (this.isPastDate(dateDdMmYyyy)) {
@@ -2693,11 +2738,13 @@ export class BookingV2Service {
       travelClass,
       quota,
     );
-    const cached = cachedSegments
-      ? cachedSegments.get(cacheKey)
-      : await cache.get<SegmentProbeRow>(cacheKey).catch(() => null);
-    signal?.throwIfAborted();
-    if (cached) return cached;
+    if (!forceRefresh) {
+      const cached = cachedSegments
+        ? cachedSegments.get(cacheKey)
+        : await cache.get<SegmentProbeRow>(cacheKey).catch(() => null);
+      signal?.throwIfAborted();
+      if (cached) return cached;
+    }
 
     try {
       return await this.segmentWork.run(

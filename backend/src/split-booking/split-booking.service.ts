@@ -1033,6 +1033,7 @@ export class SplitBookingService {
         travelClass: leg.travelClass,
         boardingDate: leg.boardingDate,
         departureTime: leg.departureTime,
+        availability: leg.availability,
         pnr,
       };
     });
@@ -1049,7 +1050,7 @@ export class SplitBookingService {
             (l) => `
             <div style="padding: 10px 0; border-bottom: 1px solid #f1f5f9;">
               <div style="font-weight: 600; color: #1e293b;">${escapeHtml(l.step)}: ${escapeHtml(l.route)} (${escapeHtml(l.travelClass)})</div>
-              <div style="font-size: 13px; color: #64748b;">Boarding: ${escapeHtml(l.boardingDate)}${l.departureTime ? ` at ${escapeHtml(l.departureTime)}` : ''}</div>
+              <div style="font-size: 13px; color: #64748b;">Boarding: ${escapeHtml(l.boardingDate)}${l.departureTime ? ` at ${escapeHtml(l.departureTime)}` : ''}${l.availability ? ` · Availability at booking: <strong style="color: #047857;">${escapeHtml(l.availability)}</strong>` : ''}</div>
               <div style="font-size: 14px; margin-top: 4px;"><span style="color: #059669; font-weight: bold;">PNR:</span> <strong style="font-family: monospace; letter-spacing: 1px; color: #0f172a;">${escapeHtml(l.pnr)}</strong></div>
             </div>`,
           )
@@ -1239,6 +1240,23 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
 
     if (needsEmail && this.notifications && booking.contactEmail) {
       const subject = `Payment Received — Booking Ref: ${booking.bookingRef} (Train ${booking.trainNumber})`;
+      const details = bookingDetails(booking);
+      const legs = details.legs || [];
+      const legsHtml = legs.length
+        ? `
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 20px 0;">
+              <h3 style="margin: 0 0 10px 0; font-size: 13px; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px;">Journey Legs</h3>
+              ${legs
+                .map(
+                  (l, idx) => `
+                <div style="padding: 8px 0; ${idx < legs.length - 1 ? 'border-bottom: 1px solid #f1f5f9;' : ''}">
+                  <div style="font-weight: 600; color: #1e293b; font-size: 13px;">Leg ${idx + 1}: ${escapeHtml(l.from)} → ${escapeHtml(l.to)} (${escapeHtml(l.travelClass)})</div>
+                  <div style="font-size: 12px; color: #64748b; margin-top: 2px;">Boarding: ${escapeHtml(l.boardingDate)}${l.departureTime ? ` at ${escapeHtml(l.departureTime)}` : ''}${l.availability ? ` · Availability at booking: <strong style="color: #047857;">${escapeHtml(l.availability)}</strong>` : ''}</div>
+                </div>`,
+                )
+                .join('')}
+            </div>`
+        : '';
       const html = `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1e293b;">
           <div style="background: #0f172a; padding: 24px; text-align: center; border-radius: 12px 12px 0 0;">
@@ -1258,6 +1276,7 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
               <p style="margin: 4px 0; font-size: 13px;"><strong>Journey Date:</strong> ${escapeHtml(journeyDateStr)}</p>
               <p style="margin: 4px 0; font-size: 13px;"><strong>Amount Paid:</strong> ₹${price.amount} (tickets ₹${price.totalFare} + payment service charge ₹${price.serviceFee})</p>
             </div>
+            ${legsHtml}
             <p style="color: #475569; font-size: 14px; line-height: 1.6;">
               Your ticket reservation is in progress. Once confirmed, you will receive another update with your confirmed PNR details and ticket PDF.
             </p>

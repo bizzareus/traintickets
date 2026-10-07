@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle2, AlertCircle, Loader2, Train, Calendar, ArrowRight, Phone, Mail } from "lucide-react";
 import { trackAlertRequested } from "@/lib/analytics/track";
+import { createFreeChartAlert, getChartAlertErrorMessage } from "@/lib/chart-alert-payments";
 
 export function SubscribeClient() {
   const searchParams = useSearchParams();
@@ -18,43 +19,52 @@ export function SubscribeClient() {
   const email = searchParams.get("email") || "";
   const mobile = searchParams.get("mobile") || "";
 
-  const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const chartTimeLocal = searchParams.get("chartTimeLocal") || undefined;
+  const chartOneDayOffset = searchParams.get("chartOneDayOffset")
+    ? Number(searchParams.get("chartOneDayOffset"))
+    : undefined;
+  const chartTwoTimeLocal = searchParams.get("chartTwoTimeLocal") || undefined;
+  const chartTwoDayOffset = searchParams.get("chartTwoDayOffset")
+    ? Number(searchParams.get("chartTwoDayOffset"))
+    : undefined;
+  const trainStartDate = searchParams.get("trainStartDate") || undefined;
+
+  const isMissingParams = !trainNo || !fromCode || !date;
+
+  const [status, setStatus] = useState<"loading" | "success" | "error">(() =>
+    isMissingParams ? "error" : "loading",
+  );
+  const [errorMessage, setErrorMessage] = useState<string>(() =>
+    isMissingParams
+      ? "Missing required alert parameters (train number, station, or date)."
+      : "",
+  );
 
   useEffect(() => {
-    if (!trainNo || !fromCode || !toCode || !date) {
-      setStatus("error");
-      setErrorMessage("Missing required alert parameters (train number, stations, or date).");
+    if (isMissingParams) {
       return;
     }
 
     let isMounted = true;
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3009";
 
     async function subscribeAlert() {
       try {
-        const response = await fetch(`${apiUrl}/api/availability/journey`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            trainNumber: trainNo,
-            trainName: trainName || undefined,
-            fromStationCode: fromCode,
-            toStationCode: toCode,
-            journeyDate: date,
-            classCode: travelClass,
-            stationCodesToMonitor: [fromCode],
-            email: email || undefined,
-            mobile: mobile || undefined,
-          }),
+        await createFreeChartAlert({
+          trainNumber: trainNo,
+          trainName: trainName || undefined,
+          fromStationCode: fromCode,
+          toStationCode: toCode,
+          journeyDate: date,
+          classCode: travelClass,
+          stationCodesToMonitor: [fromCode],
+          email: email || undefined,
+          mobile: mobile || undefined,
+          chartTimeLocal,
+          chartOneDayOffset,
+          chartTwoTimeLocal,
+          chartTwoDayOffset,
+          trainStartDate,
         });
-
-        if (!response.ok) {
-          const errData = await response.json().catch(() => ({}));
-          throw new Error(errData.message || "Failed to set up chart preparation alert.");
-        }
 
         if (isMounted) {
           setStatus("success");
@@ -72,7 +82,10 @@ export function SubscribeClient() {
           });
         }
       } catch (err: unknown) {
-        const errStr = err instanceof Error ? err.message : "An error occurred while creating your alert.";
+        const errStr = getChartAlertErrorMessage(
+          err,
+          "An error occurred while creating your alert.",
+        );
         if (isMounted) {
           setStatus("error");
           setErrorMessage(errStr);
@@ -98,7 +111,22 @@ export function SubscribeClient() {
     return () => {
       isMounted = false;
     };
-  }, [trainNo, trainName, fromCode, toCode, date, travelClass, email, mobile]);
+  }, [
+    isMissingParams,
+    trainNo,
+    trainName,
+    fromCode,
+    toCode,
+    date,
+    travelClass,
+    email,
+    mobile,
+    chartTimeLocal,
+    chartOneDayOffset,
+    chartTwoTimeLocal,
+    chartTwoDayOffset,
+    trainStartDate,
+  ]);
 
   const formattedDate = date
     ? new Date(date + "T00:00:00").toLocaleDateString("en-IN", {
@@ -130,12 +158,21 @@ export function SubscribeClient() {
             <h2 className="mt-4 text-xl font-bold text-slate-900">Subscription Notice</h2>
             <p className="mt-2 text-sm text-slate-600">{errorMessage}</p>
             <div className="mt-6 flex justify-center gap-3">
-              <Link
-                href={`/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`}
-                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
-              >
-                Search Trains on LastBerth
-              </Link>
+              {fromCode && toCode ? (
+                <Link
+                  href={`/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`}
+                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+                >
+                  Search Trains on LastBerth
+                </Link>
+              ) : (
+                <Link
+                  href="/"
+                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+                >
+                  Search Trains on LastBerth
+                </Link>
+              )}
             </div>
           </div>
         )}
@@ -161,8 +198,12 @@ export function SubscribeClient() {
                   </span>
                   <div className="mt-0.5 flex items-center gap-1.5 font-medium text-slate-700">
                     <span>{fromCode}</span>
-                    <ArrowRight className="h-3.5 w-3.5 text-slate-400" />
-                    <span>{toCode}</span>
+                    {toCode && (
+                      <>
+                        <ArrowRight className="h-3.5 w-3.5 text-slate-400" />
+                        <span>{toCode}</span>
+                      </>
+                    )}
                     <span className="rounded bg-blue-100 px-1.5 py-0.5 text-xs text-blue-800">
                       Class {travelClass}
                     </span>
@@ -175,7 +216,7 @@ export function SubscribeClient() {
                 <span className="text-slate-700">{formattedDate}</span>
               </div>
 
-              {email && (
+              {(email || mobile) && (
                 <div className="border-t border-slate-200/80 pt-3 space-y-2">
                   {mobile && (
                     <div className="flex items-center gap-3 text-slate-700">
@@ -194,12 +235,14 @@ export function SubscribeClient() {
             </div>
 
             <div className="mt-6 flex flex-col gap-2.5 text-center">
-              <Link
-                href={`/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
-              >
-                Explore Alternate Trains
-              </Link>
+              {toCode && (
+                <Link
+                  href={`/search?from=${encodeURIComponent(fromCode)}&to=${encodeURIComponent(toCode)}&date=${encodeURIComponent(date)}`}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
+                >
+                  Explore Alternate Trains
+                </Link>
+              )}
               <Link href="/" className="text-xs font-medium text-slate-500 hover:text-slate-700 hover:underline">
                 Return to LastBerth Home
               </Link>

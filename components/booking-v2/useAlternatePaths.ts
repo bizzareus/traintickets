@@ -27,6 +27,7 @@ export interface UseAlternatePathsResult {
     t: TrainListItem,
     focusTravelClass?: string,
     overrideDate?: string,
+    options?: { forceRefresh?: boolean },
   ) => Promise<void>;
   /** Clears all alternate-path state. */
   reset: () => void;
@@ -36,7 +37,12 @@ export interface UseAlternatePathsResult {
     trainName?: string | null;
     avlClasses?: string[];
     result: AlternatePathsResponse;
+    from?: string;
+    to?: string;
+    date?: string;
   }) => void;
+  /** Force-refresh current train tickets (bypasses cache and updates cache). */
+  refresh: () => Promise<void>;
   /** Imperatively set the result/train (used for headless screenshot injection). */
   setAltResult: (r: AlternatePathsResponse | null) => void;
   setAltForTrain: (n: string | null) => void;
@@ -69,6 +75,16 @@ export function useAlternatePaths(
     [],
   );
   const requestRef = useRef<AbortController | null>(null);
+  const activeParamsRef = useRef<{
+    trainNumber: string;
+    trainName?: string | null;
+    from: string;
+    to: string;
+    date: string;
+    trainStartDate?: string;
+    avlClasses?: string[];
+    focusTravelClass?: string;
+  } | null>(null);
 
   useEffect(() => () => requestRef.current?.abort(), []);
 
@@ -77,6 +93,7 @@ export function useAlternatePaths(
       t: TrainListItem,
       focusTravelClass?: string,
       overrideDate?: string,
+      options?: { forceRefresh?: boolean },
     ) => {
       const targetDate = overrideDate;
       if (!targetDate) return;
@@ -84,6 +101,16 @@ export function useAlternatePaths(
       const fromCode = (t.fromStnCode ?? "").trim().toUpperCase();
       const toCode = (t.toStnCode ?? "").trim().toUpperCase();
       if (!fromCode || !toCode) return;
+      activeParamsRef.current = {
+        trainNumber: t.trainNumber,
+        trainName: t.trainName,
+        from: fromCode,
+        to: toCode,
+        date: targetDate,
+        trainStartDate: t.trainStartDate,
+        avlClasses: t.avlClasses,
+        focusTravelClass,
+      };
       requestRef.current?.abort();
       const controller = new AbortController();
       requestRef.current = controller;
@@ -129,6 +156,7 @@ export function useAlternatePaths(
         to: toCode,
         date: targetDate,
         quota: "GN",
+        forceRefresh: Boolean(options?.forceRefresh),
         ...(avlClassesForRequest && avlClassesForRequest.length > 0
           ? { avlClasses: avlClassesForRequest }
           : {}),
@@ -262,6 +290,7 @@ export function useAlternatePaths(
   const reset = useCallback(() => {
     requestRef.current?.abort();
     requestRef.current = null;
+    activeParamsRef.current = null;
     setAltLoading(false);
     setAltResult(null);
     setAltError(null);
@@ -276,9 +305,32 @@ export function useAlternatePaths(
       trainName?: string | null;
       avlClasses?: string[];
       result: AlternatePathsResponse;
+      from?: string;
+      to?: string;
+      date?: string;
     }) => {
       requestRef.current?.abort();
       requestRef.current = null;
+      const fromCode =
+        args.from?.trim().toUpperCase() ||
+        args.result.legs?.[0]?.from ||
+        args.result.stationCodesOnRoute?.[0];
+      const toCode =
+        args.to?.trim().toUpperCase() ||
+        args.result.legs?.[args.result.legs.length - 1]?.to ||
+        args.result.stationCodesOnRoute?.[args.result.stationCodesOnRoute.length - 1];
+      const targetDate = args.date || args.result.trainStartDate;
+      if (fromCode && toCode && targetDate) {
+        activeParamsRef.current = {
+          trainNumber: args.trainNumber,
+          trainName: args.trainName,
+          from: fromCode,
+          to: toCode,
+          date: targetDate,
+          trainStartDate: args.result.trainStartDate,
+          avlClasses: args.avlClasses,
+        };
+      }
       setAltLoading(false);
       setAltForTrain(args.trainNumber);
       setAltTrainName(args.trainName?.trim() || null);
@@ -289,6 +341,25 @@ export function useAlternatePaths(
     },
     [],
   );
+
+  const refresh = useCallback(async () => {
+    const current = activeParamsRef.current;
+    if (!current) return;
+    const mockTrain: TrainListItem = {
+      trainNumber: current.trainNumber,
+      trainName: current.trainName ?? "",
+      fromStnCode: current.from,
+      toStnCode: current.to,
+      trainStartDate: current.trainStartDate,
+      avlClasses: current.avlClasses,
+    };
+    await findAlternates(
+      mockTrain,
+      current.focusTravelClass,
+      current.date,
+      { forceRefresh: true },
+    );
+  }, [findAlternates]);
 
   return {
     altForTrain,
@@ -301,6 +372,7 @@ export function useAlternatePaths(
     findAlternates,
     reset,
     showResult,
+    refresh,
     setAltResult,
     setAltForTrain,
     setAltTrainName,

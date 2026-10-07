@@ -52,7 +52,7 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
   describe('WasenderProvider', () => {
     it('does not count an HTTP-200 failure response as provider acceptance', async () => {
       const provider = new WasenderProvider(
-        mockConfig({ WASENDER_API_KEY: 'test', RESEND_API_KEY: 'test' }),
+        mockConfig({ WASENDER_API_KEY: 'test' }),
       );
       mockedAxios.post.mockResolvedValueOnce({
         data: { success: false, message: 'Session disconnected' },
@@ -60,7 +60,7 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       await expect(
         provider.sendWhatsApp({ mobile: '919999999999', text: 'Test' }),
       ).resolves.toBe(false);
-      expect(sendEmailMock).toHaveBeenCalledTimes(1);
+      expect(sendEmailMock).not.toHaveBeenCalled();
     });
 
     it('sends freeform text message when WASENDER_API_KEY is present', async () => {
@@ -144,11 +144,8 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       });
     });
 
-    it('returns false and sends failure email to MONITORING_ADMIN_EMAIL when WASENDER_API_KEY is missing', async () => {
-      const config = mockConfig({
-        RESEND_API_KEY: 'resend_secret',
-        MONITORING_ADMIN_EMAIL: 'admin@example.com',
-      });
+    it('returns false without sending failure email when WASENDER_API_KEY is missing', async () => {
+      const config = mockConfig({});
       const provider = new WasenderProvider(config);
 
       const result = await provider.sendWhatsApp({
@@ -158,20 +155,12 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
 
       expect(result).toBe(false);
       expect(mockedAxios.post.mock.calls.length).toBe(0);
-      expect(sendEmailMock).toHaveBeenCalledTimes(1);
-      const [emailPayload] = sendEmailMock.mock.calls[0] as [
-        { to: string[]; subject: string; html: string },
-      ];
-      expect(emailPayload.to).toEqual(['admin@example.com']);
-      expect(emailPayload.subject).toContain('[WASender Failure]');
-      expect(emailPayload.html).toContain('WASENDER_API_KEY is not set');
+      expect(sendEmailMock).not.toHaveBeenCalled();
     });
 
-    it('returns false and sends failure email with WASender API error response to MONITORING_ADMIN_EMAIL when API call fails with 422 JID error', async () => {
+    it('returns false without sending failure email when API call fails with 422 JID error', async () => {
       const config = mockConfig({
         WASENDER_API_KEY: 'wasender_secret',
-        RESEND_API_KEY: 'resend_secret',
-        MONITORING_ADMIN_EMAIL: 'admin@example.com',
       });
       const provider = new WasenderProvider(config);
 
@@ -199,17 +188,7 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       });
 
       expect(result).toBe(false);
-      expect(sendEmailMock).toHaveBeenCalledTimes(1);
-      const [emailPayload] = sendEmailMock.mock.calls[0] as [
-        { to: string[]; subject: string; html: string },
-      ];
-      expect(emailPayload.to).toEqual(['admin@example.com']);
-      expect(emailPayload.subject).toContain('[WASender Failure]');
-      expect(emailPayload.subject).toContain('919712640278');
-      expect(emailPayload.html).toContain(
-        'The to must be a valid WhatsApp JID',
-      );
-      expect(emailPayload.html).toContain('HTTP 422');
+      expect(sendEmailMock).not.toHaveBeenCalled();
     });
   });
 

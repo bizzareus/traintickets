@@ -30,7 +30,7 @@ import {
   type ChartAlertPaymentModalJourney,
 } from "@/components/payments/ChartAlertPaymentModal";
 import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFooter";
-import { ArrowRight, BellRing, ShieldCheck } from "lucide-react";
+import { ArrowRight, BellRing, RefreshCw, ShieldCheck } from "lucide-react";
 import { NextReleaseBottomSheet } from "./NextReleaseBottomSheet";
 import {
   SplitTicketBookingFlow,
@@ -737,6 +737,10 @@ export interface AlternatePathContentProps {
   isAdminUser: boolean;
   shareBusy?: boolean;
   onShare?: () => void;
+  /** Admin callback to refresh tickets for this train (bypasses cache, calls APIs, updates cache). */
+  onRefresh?: () => Promise<void> | void;
+  /** Whether a refresh is currently in-flight. */
+  isRefreshing?: boolean;
   /** Ref attached to the scrollable capture container for screenshot sharing. */
   captureRef?: React.Ref<HTMLDivElement>;
 
@@ -780,6 +784,8 @@ export function AlternatePathContent({
   isAdminUser,
   shareBusy,
   onShare,
+  onRefresh,
+  isRefreshing,
   captureRef,
   onClose,
   onOpenSchedule,
@@ -832,8 +838,9 @@ export function AlternatePathContent({
   return (
     <div
       ref={captureRef}
-      className="min-h-0 flex-1 overflow-y-auto p-3.5 sm:p-6"
+      className="flex min-h-0 flex-1 flex-col overflow-hidden"
     >
+      <div className="min-h-0 flex-1 overflow-y-auto p-3.5 sm:p-6">
       <div className="mb-3 flex items-start justify-between gap-2">
         <h3 className="text-base sm:text-lg font-bold leading-snug text-gray-900">
           {altLoading
@@ -841,7 +848,7 @@ export function AlternatePathContent({
             : `Best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`}
         </h3>
         <div
-          className="flex shrink-0 items-center gap-1"
+          className="flex shrink-0 items-center gap-1.5"
           data-screenshot-exclude=""
         >
           {isAdminUser && onShare && (
@@ -853,6 +860,26 @@ export function AlternatePathContent({
               onClick={() => onShare()}
             >
               {shareBusy ? "Sharing…" : "Share"}
+            </button>
+          )}
+          {isAdminUser && onRefresh && (
+            <button
+              type="button"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 shadow-2xs hover:border-blue-300 hover:bg-blue-50/60 hover:text-blue-600 active:scale-95 disabled:opacity-50 transition-all touch-manipulation"
+              aria-label="Refresh tickets from APIs (bypass cache)"
+              title="Admin: Bypass cache & fetch live tickets from APIs"
+              disabled={altLoading || isRefreshing}
+              onClick={() => void onRefresh()}
+            >
+              <RefreshCw
+                className={cn(
+                  "h-3.5 w-3.5 text-slate-500",
+                  (altLoading || isRefreshing) && "animate-spin text-blue-600",
+                )}
+              />
+              <span className="hidden sm:inline">
+                {altLoading || isRefreshing ? "Refreshing…" : "Refresh"}
+              </span>
             </button>
           )}
           <button
@@ -1284,61 +1311,64 @@ export function AlternatePathContent({
               );
             })}
           </ol>
-
-          {/* Total fare and booking for journeys with multiple available legs. */}
-          {(canStartBooking || altResult.totalFare != null) &&
-            !IS_TICKET_ALERT_ENABLED &&
-            confirmedLegCount > 1 && (
-              <div className="sticky bottom-0 -mx-3.5 -mb-3.5 sm:-mx-6 sm:-mb-6 mt-4 border-t border-slate-200 bg-white/95 backdrop-blur-sm px-4 py-3 sm:px-6 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] z-20 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="min-w-0 flex-1">
-                    <span className="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 truncate">
-                      Total ticket fare
-                    </span>
-                    <span className="text-lg sm:text-2xl font-black text-slate-900 tabular-nums truncate block">
-                      {altResult.totalFare === null
-                        ? "Select classes at booking"
-                        : `From ₹${altResult.totalFare.toLocaleString("en-IN")}`}
-                    </span>
-                  </div>
-
-                  {canStartBooking && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        trackAnalyticsEvent({
-                          name: "split_booking_book_now_clicked",
-                          properties: {
-                            train_number: altResult.trainNumber,
-                            train_name: altTrainName || undefined,
-                            journey_date: journeyDate || "",
-                            total_fare: altResult.totalFare ?? 0,
-                            leg_count: confirmedLegCount,
-                          },
-                        });
-                        setBookingRequest({
-                          trainNumber: altResult.trainNumber,
-                          trainName: altTrainName || undefined,
-                          journeyDate: journeyDate || "",
-                          legs: altResult.legs,
-                          stationNameMap: altResult.stationNameMap,
-                        });
-                      }}
-                      className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-blue-600 px-4 py-2.5 sm:px-6 sm:py-3 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.99] transition cursor-pointer"
-                    >
-                      <span>Book Now</span>
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </button>
-                  )}
-                </div>
-                <div className="mt-2 pt-1.5 border-t border-slate-100 flex items-center justify-center gap-1.5 text-center text-[11px] sm:text-xs font-medium text-slate-500">
-                  <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-600" />
-                  <span>LastBerth is an official IRCTC Agent</span>
-                </div>
-              </div>
-            )}
         </div>
       )}
+      </div>
+
+      {/* Total fare and booking for journeys with multiple available legs. */}
+      {Boolean(altResult) &&
+        (canStartBooking || altResult!.totalFare != null) &&
+        !IS_TICKET_ALERT_ENABLED &&
+        confirmedLegCount > 1 && (
+          <div className="shrink-0 border-t border-slate-200 bg-white px-4 py-3 sm:px-6 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] z-20 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+            <div className="flex items-center justify-between gap-3">
+              <div className="min-w-0 flex-1">
+                <span className="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 truncate">
+                  Total ticket fare
+                </span>
+                <span className="text-lg sm:text-2xl font-black text-slate-900 tabular-nums truncate block">
+                  {altResult!.totalFare === null
+                    ? "Select classes at booking"
+                    : `From ₹${altResult!.totalFare.toLocaleString("en-IN")}`}
+                </span>
+              </div>
+
+              {canStartBooking && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!altResult) return;
+                    trackAnalyticsEvent({
+                      name: "split_booking_book_now_clicked",
+                      properties: {
+                        train_number: altResult.trainNumber,
+                        train_name: altTrainName || undefined,
+                        journey_date: journeyDate || "",
+                        total_fare: altResult.totalFare ?? 0,
+                        leg_count: confirmedLegCount,
+                      },
+                    });
+                    setBookingRequest({
+                      trainNumber: altResult.trainNumber,
+                      trainName: altTrainName || undefined,
+                      journeyDate: journeyDate || "",
+                      legs: altResult.legs,
+                      stationNameMap: altResult.stationNameMap,
+                    });
+                  }}
+                  className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-blue-600 px-4 py-2.5 sm:px-6 sm:py-3 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.99] transition cursor-pointer"
+                >
+                  <span>Book Now</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </button>
+              )}
+            </div>
+            <div className="mt-2 pt-1.5 border-t border-slate-100 flex items-center justify-center gap-1.5 text-center text-[11px] sm:text-xs font-medium text-slate-500">
+              <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-600" />
+              <span>LastBerth is an official IRCTC Agent</span>
+            </div>
+          </div>
+        )}
 
       {isSplitBookingEnabled && bookingRequest && (
         <SplitTicketBookingFlow

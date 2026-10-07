@@ -190,7 +190,11 @@ describe('SplitBookingService', () => {
         contactMobile: '9876543210',
         contactEmail: 'user@example.com',
       }),
-    ).rejects.toThrow(new BadRequestException('The booking engine currently supports only 1 passenger per booking'));
+    ).rejects.toThrow(
+      new BadRequestException(
+        'The booking engine currently supports only 1 passenger per booking',
+      ),
+    );
   });
 
   it('throws BadRequestException if child passengers are provided', async () => {
@@ -216,7 +220,11 @@ describe('SplitBookingService', () => {
         contactMobile: '9876543210',
         contactEmail: 'user@example.com',
       }),
-    ).rejects.toThrow(new BadRequestException('The booking engine currently supports only 1 passenger per booking'));
+    ).rejects.toThrow(
+      new BadRequestException(
+        'The booking engine currently supports only 1 passenger per booking',
+      ),
+    );
   });
 
   it('throws ServiceUnavailableException when booking is disabled via mode', async () => {

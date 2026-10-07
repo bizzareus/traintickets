@@ -154,6 +154,7 @@ export class BookingV2Controller {
       throw new BadRequestException('Journey date cannot be in the past');
     }
     const cacheOnly = Boolean(body?.cacheOnly);
+    const forceRefresh = Boolean(body?.forceRefresh);
     const { result, cached } = await this.bookingV2.findAlternatePathsCached({
       trainNumber,
       from,
@@ -161,6 +162,7 @@ export class BookingV2Controller {
       date,
       avlClasses,
       quota,
+      forceRefresh,
       cacheOnly,
     });
     if (cacheOnly) {

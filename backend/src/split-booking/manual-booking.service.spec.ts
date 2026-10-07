@@ -46,6 +46,7 @@ describe('Manual booking owner notifications', () => {
           departureTime: '22:00',
           arrivalTime: '01:00',
           durationMinutes: 180,
+          availability: 'AVAILABLE 12',
         },
         {
           from: 'JP',
@@ -53,6 +54,7 @@ describe('Manual booking owner notifications', () => {
           boardingDate: '2026-10-03',
           travelClass: '3A',
           fare: 470,
+          availability: 'AVAILABLE 4',
         },
       ],
       passengers: {
@@ -133,6 +135,8 @@ describe('Manual booking owner notifications', () => {
       'pay1',
       'order1',
       'PAID',
+      'Availability: AVAILABLE 12',
+      'Availability: AVAILABLE 4',
     ]) {
       expect(html).toContain(detail);
       expect(whatsapp.text).toContain(detail);

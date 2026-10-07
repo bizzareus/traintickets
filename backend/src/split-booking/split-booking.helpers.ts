@@ -15,8 +15,8 @@ export function bookingPnrFields(pnrs: string[]) {
 export function bookingDetails(
   booking: SplitTicketBooking,
 ): CreateSplitBookingDto & { bookingRef: string } {
-  const passengers = booking.passengers as unknown as {
-    adults: CreateSplitBookingDto['passengers'];
+  const passengers = (booking.passengers ?? {}) as unknown as {
+    adults?: CreateSplitBookingDto['passengers'];
     children?: CreateSplitBookingDto['childPassengers'];
     confirmBerthsOnly?: boolean;
     preferredCoach?: string;
@@ -28,12 +28,16 @@ export function bookingDetails(
     trainName: booking.trainName ?? undefined,
     fromStationCode: booking.fromStationCode,
     toStationCode: booking.toStationCode,
-    journeyDate: booking.journeyDate.toISOString().slice(0, 10),
+    journeyDate: booking.journeyDate
+      ? booking.journeyDate.toISOString().slice(0, 10)
+      : '',
     travelClass: booking.travelClass,
     quota: booking.quota,
     totalFare: booking.totalFare,
-    legs: booking.legsPayload as unknown as CreateSplitBookingDto['legs'],
-    passengers: passengers.adults,
+    legs: (Array.isArray(booking.legsPayload)
+      ? booking.legsPayload
+      : []) as unknown as CreateSplitBookingDto['legs'],
+    passengers: passengers.adults ?? [],
     childPassengers: passengers.children ?? [],
     autoUpgrade: booking.autoUpgrade,
     confirmBerthsOnly: passengers.confirmBerthsOnly,
@@ -64,7 +68,7 @@ export function manualBookingMessage(booking: SplitTicketBooking): string {
     ...details.legs.map((leg, index) =>
       [
         `${index + 1}. ${leg.from} → ${leg.to} | Boarding date: ${leg.boardingDate}`,
-        `Class: ${leg.travelClass} | Fare: INR ${leg.fare}`,
+        `Class: ${leg.travelClass} | Fare: INR ${leg.fare}${leg.availability ? ` | Availability: ${leg.availability}` : ''}`,
         `Departure: ${leg.departureTime ?? 'Not supplied'} | Arrival: ${leg.arrivalTime ?? 'Not supplied'} | Duration (minutes): ${leg.durationMinutes ?? 'Not supplied'}`,
       ].join('\n'),
     ),

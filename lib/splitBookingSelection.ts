@@ -47,6 +47,32 @@ export function getSelectedLegClass(leg: AlternateLeg, selectedClass?: string) {
   return option && hasClassFare(option) ? option : null;
 }
 
+export function getLegAvailabilityText(
+  option?: {
+    availabilityDisplayName?: string | null;
+    availablityStatus?: string | null;
+    railDataStatus?: string | null;
+  } | null,
+  leg?: {
+    availabilityDisplayName?: string | null;
+    availablityStatus?: string | null;
+    railDataStatus?: string | null;
+  } | null,
+): string | undefined {
+  const disp =
+    option?.availabilityDisplayName?.trim() ||
+    leg?.availabilityDisplayName?.trim();
+  const raw =
+    option?.availablityStatus?.trim() || leg?.availablityStatus?.trim();
+  const rail = option?.railDataStatus?.trim() || leg?.railDataStatus?.trim();
+
+  if (disp && /^available$/i.test(disp) && raw && !/^available$/i.test(raw)) {
+    return raw.replace(/#$/, "").trim();
+  }
+  const chosen = disp || raw || rail;
+  return chosen ? chosen.replace(/#$/, "").trim() : undefined;
+}
+
 /** Class choices and the quoted fares are resolved together from the current result. At least 1 leg is mandatory; any leg can be skipped. */
 export function buildSplitBookingSelection(
   legs: AlternateLeg[],
@@ -71,6 +97,7 @@ export function buildSplitBookingSelection(
       departureTime: leg.departureTime,
       arrivalTime: leg.arrivalTime,
       durationMinutes: leg.durationMinutes,
+      availability: getLegAvailabilityText(option, leg),
     });
   }
   return {
