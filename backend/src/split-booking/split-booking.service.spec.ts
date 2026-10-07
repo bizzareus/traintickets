@@ -165,6 +165,60 @@ describe('SplitBookingService', () => {
     ).rejects.toThrow(BadRequestException);
   });
 
+  it('throws BadRequestException if more than 1 passenger is provided', async () => {
+    await expect(
+      service.createBooking({
+        trainNumber: '12216',
+        fromStationCode: 'AII',
+        toStationCode: 'GGN',
+        journeyDate: '2026-09-20',
+        travelClass: '3A',
+        totalFare: 810,
+        legs: [
+          {
+            from: 'AII',
+            to: 'GGN',
+            travelClass: '3A',
+            fare: 810,
+            boardingDate: '2026-09-20',
+          },
+        ],
+        passengers: [
+          { name: 'Passenger 1', age: 30, gender: 'Male' },
+          { name: 'Passenger 2', age: 28, gender: 'Female' },
+        ],
+        contactMobile: '9876543210',
+        contactEmail: 'user@example.com',
+      }),
+    ).rejects.toThrow(new BadRequestException('The booking engine currently supports only 1 passenger per booking'));
+  });
+
+  it('throws BadRequestException if child passengers are provided', async () => {
+    await expect(
+      service.createBooking({
+        trainNumber: '12216',
+        fromStationCode: 'AII',
+        toStationCode: 'GGN',
+        journeyDate: '2026-09-20',
+        travelClass: '3A',
+        totalFare: 810,
+        legs: [
+          {
+            from: 'AII',
+            to: 'GGN',
+            travelClass: '3A',
+            fare: 810,
+            boardingDate: '2026-09-20',
+          },
+        ],
+        passengers: [{ name: 'Passenger 1', age: 30, gender: 'Male' }],
+        childPassengers: [{ name: 'Child 1', age: 3, gender: 'Male' }],
+        contactMobile: '9876543210',
+        contactEmail: 'user@example.com',
+      }),
+    ).rejects.toThrow(new BadRequestException('The booking engine currently supports only 1 passenger per booking'));
+  });
+
   it('throws ServiceUnavailableException when booking is disabled via mode', async () => {
     config.set('SPLIT_BOOKING_MODE', 'disabled');
     await expect(

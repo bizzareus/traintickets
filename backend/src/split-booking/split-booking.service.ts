@@ -156,9 +156,14 @@ export class SplitBookingService {
     if (!dto.passengers || dto.passengers.length === 0) {
       throw new BadRequestException('At least one passenger is required');
     }
-    if (dto.passengers.length > 6) {
+    if (dto.passengers.length > 1) {
       throw new BadRequestException(
-        'Maximum of 6 passengers allowed per booking',
+        'The booking engine currently supports only 1 passenger per booking',
+      );
+    }
+    if (dto.childPassengers && dto.childPassengers.length > 0) {
+      throw new BadRequestException(
+        'The booking engine currently supports only 1 passenger per booking',
       );
     }
     if (

@@ -148,14 +148,14 @@ export class CreateSplitBookingDto {
 
   @IsArray()
   @ArrayMinSize(1)
-  @ArrayMaxSize(6)
+  @ArrayMaxSize(1)
   @ValidateNested({ each: true })
   @Type(() => SplitBookingPassengerDto)
   passengers!: SplitBookingPassengerDto[];
 
   @IsOptional()
   @IsArray()
-  @ArrayMaxSize(2)
+  @ArrayMaxSize(0)
   @ValidateNested({ each: true })
   @Type(() => SplitBookingChildPassengerDto)
   childPassengers?: SplitBookingChildPassengerDto[];

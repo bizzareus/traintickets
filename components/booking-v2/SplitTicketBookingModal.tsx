@@ -5,8 +5,6 @@ import { isAxiosError } from "axios";
 import moment from "moment";
 import {
   X,
-  Plus,
-  Trash2,
   CheckCircle2,
   Loader2,
   ShieldCheck,
@@ -20,7 +18,6 @@ import {
   simulateSplitBookingPayment,
   type CreateSplitBookingPayload,
   type SplitBookingPassenger,
-  type SplitBookingChildPassenger,
   type SplitBookingPaymentResponse,
   type SplitBookingStatus,
 } from "@/lib/split-booking";
@@ -64,6 +61,16 @@ const BERTH_OPTIONS = [
 
 const FOOD_OPTIONS = ["Veg", "Non-Veg", "No Food"] as const;
 
+const createDefaultPassenger = (): SplitBookingPassenger => ({
+  name: "",
+  age: 30,
+  gender: "Male",
+  berthPreference: "No Preference",
+  optBerth: true,
+  foodChoice: "Veg",
+  seniorCitizen: false,
+});
+
 export function SplitTicketBookingModal({
   open,
   onClose,
@@ -79,23 +86,10 @@ export function SplitTicketBookingModal({
 }: SplitTicketBookingModalProps) {
   const [step, setStep] = useState<ModalStep>("passenger_details");
 
-  // Step 1: Passenger details state matching Image 2
+  // Step 1: Single passenger details state (booking engine supports 1 passenger)
   const [passengers, setPassengers] = useState<SplitBookingPassenger[]>([
-    {
-      name: "",
-      age: 30,
-      gender: "Male",
-      berthPreference: "No Preference",
-      optBerth: true,
-      foodChoice: "Veg",
-      seniorCitizen: false,
-    },
+    createDefaultPassenger(),
   ]);
-
-  const [childPassengers, setChildPassengers] = useState<
-    SplitBookingChildPassenger[]
-  >([]);
-  const [showChildSection, setShowChildSection] = useState(false);
   const [autoUpgrade, setAutoUpgrade] = useState(true);
   const [confirmBerthsOnly, setConfirmBerthsOnly] = useState(false);
   const [preferredCoach, setPreferredCoach] = useState("");
@@ -152,6 +146,7 @@ export function SplitTicketBookingModal({
   useEffect(() => {
     if (open) {
       setStep("passenger_details");
+      setPassengers([createDefaultPassenger()]);
       setPaymentData(null);
       setBookingStatus(null);
       setBookingDelayed(false);
@@ -200,67 +195,6 @@ export function SplitTicketBookingModal({
     });
   };
 
-  const addPassenger = () => {
-    if (passengers.length >= 6) return;
-    const nextCount = passengers.length + 1;
-    trackAnalyticsEvent({
-      name: "split_booking_passenger_added",
-      properties: {
-        train_number: trainNumber,
-        passenger_count: nextCount,
-      },
-    });
-    setPassengers((prev) => [
-      ...prev,
-      {
-        name: "",
-        age: 30,
-        gender: "Male",
-        berthPreference: "No Preference",
-        optBerth: true,
-        foodChoice: "Veg",
-        seniorCitizen: false,
-      },
-    ]);
-  };
-
-  const removePassenger = (index: number) => {
-    if (passengers.length <= 1) return;
-    const nextCount = passengers.length - 1;
-    trackAnalyticsEvent({
-      name: "split_booking_passenger_removed",
-      properties: {
-        train_number: trainNumber,
-        passenger_count: nextCount,
-      },
-    });
-    setPassengers((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  const addChildPassenger = () => {
-    if (childPassengers.length >= 2) return;
-    setChildPassengers((prev) => [
-      ...prev,
-      { name: "", age: 2, gender: "Male" },
-    ]);
-  };
-
-  const removeChildPassenger = (index: number) => {
-    setChildPassengers((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  const updateChild = (
-    index: number,
-    field: keyof SplitBookingChildPassenger,
-    value: unknown,
-  ) => {
-    setChildPassengers((prev) => {
-      const next = [...prev];
-      next[index] = { ...next[index], [field]: value };
-      return next;
-    });
-  };
-
   // Submit passenger details -> create payment
   const handleProceedToPayment = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -277,26 +211,19 @@ export function SplitTicketBookingModal({
       return;
     }
 
-    for (let i = 0; i < passengers.length; i++) {
-      const p = passengers[i];
-      if (!p.name.trim() || p.name.trim().length < 2) {
-        setFormError(`Please enter a valid name for passenger ${i + 1}`);
-        return;
-      }
-      if (!p.age || p.age < 1 || p.age > 125) {
-        setFormError(`Please enter a valid age (1-125) for passenger ${i + 1}`);
-        return;
-      }
+    if (passengers.length !== 1) {
+      setFormError("The booking engine currently supports only 1 passenger per booking.");
+      return;
     }
 
-    if (showChildSection) {
-      for (let i = 0; i < childPassengers.length; i++) {
-        const cp = childPassengers[i];
-        if (!cp.name.trim()) {
-          setFormError(`Please enter a name for infant ${i + 1}`);
-          return;
-        }
-      }
+    const p = passengers[0];
+    if (!p.name.trim() || p.name.trim().length < 2) {
+      setFormError("Please enter a valid name for the passenger");
+      return;
+    }
+    if (!p.age || p.age < 1 || p.age > 125) {
+      setFormError("Please enter a valid age (1-125) for the passenger");
+      return;
     }
 
     setIsSubmitting(true);
@@ -311,8 +238,8 @@ export function SplitTicketBookingModal({
         quota,
         totalFare,
         legs,
-        passengers,
-        childPassengers: showChildSection ? childPassengers : [],
+        passengers: [p],
+        childPassengers: [],
         autoUpgrade,
         confirmBerthsOnly,
         preferredCoach: preferredCoach.trim() || undefined,
@@ -325,7 +252,7 @@ export function SplitTicketBookingModal({
         name: "split_booking_details_submitted",
         properties: {
           train_number: trainNumber,
-          passenger_count: passengers.length,
+          passenger_count: 1,
           total_fare: totalFare,
         },
       });
@@ -633,22 +560,15 @@ export function SplitTicketBookingModal({
                 </div>
               </div>
 
-              {/* Adult Passenger Details */}
+              {/* Passenger Details */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-700">
-                    Passenger Details (Adults)
+                    Passenger Details
                   </h4>
-                  {passengers.length < 6 && (
-                    <button
-                      type="button"
-                      onClick={addPassenger}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-blue-200 bg-blue-50/70 px-2.5 py-1 text-xs font-semibold text-blue-700 hover:bg-blue-100/80 active:scale-95 transition"
-                    >
-                      <Plus className="h-3.5 w-3.5" />
-                      <span>Add Passenger</span>
-                    </button>
-                  )}
+                  <span className="text-[11px] font-semibold text-slate-500">
+                    Single Passenger (1 Max)
+                  </span>
                 </div>
 
                 <div className="space-y-3">
@@ -660,21 +580,10 @@ export function SplitTicketBookingModal({
                       <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                         <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
                           <span className="flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 text-[11px] font-bold text-slate-600">
-                            {idx + 1}
+                            1
                           </span>
-                          Passenger {idx + 1}
+                          Passenger Details
                         </span>
-                        {passengers.length > 1 && (
-                          <button
-                            type="button"
-                            onClick={() => removePassenger(idx)}
-                            className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium text-slate-400 hover:bg-red-50 hover:text-red-600 transition"
-                            title="Remove passenger"
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
-                            <span className="hidden sm:inline">Remove</span>
-                          </button>
-                        )}
                       </div>
 
                       {/* Primary Passenger Fields */}
@@ -834,107 +743,7 @@ export function SplitTicketBookingModal({
                   ))}
                 </div>
 
-                {passengers.length < 6 && (
-                  <button
-                    type="button"
-                    onClick={addPassenger}
-                    className="w-full py-2.5 border-2 border-dashed border-slate-300 hover:border-blue-400 rounded-xl text-xs font-bold text-slate-600 hover:text-blue-600 bg-white hover:bg-blue-50/30 transition flex items-center justify-center gap-1.5"
-                  >
-                    <Plus className="h-4 w-4" /> Add Another Passenger ({passengers.length}/6)
-                  </button>
-                )}
               </div>
-
-              {/* Child Passenger Details (Below 5 Years - No Ticket Issued) */}
-              {/* <div className="space-y-2">
-                <button
-                  type="button"
-                  onClick={() => setShowChildSection(!showChildSection)}
-                  className="text-xs font-bold text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 py-1"
-                >
-                  <span>{showChildSection ? "▼" : "▶"}</span>
-                  <span>
-                    Children below 5 years (for whom ticket is not to be issued)
-                  </span>
-                </button>
-
-                {showChildSection && (
-                  <div className="space-y-2 pt-1">
-                    {childPassengers.map((cp, cIdx) => (
-                      <div
-                        key={cIdx}
-                        className="grid grid-cols-12 gap-2 items-center rounded-lg border border-slate-200 bg-slate-50 p-2.5 text-xs"
-                      >
-                        <div className="col-span-12 sm:col-span-5">
-                          <input
-                            type="text"
-                            placeholder="Child Full Name"
-                            value={cp.name}
-                            onChange={(e) =>
-                              updateChild(cIdx, "name", e.target.value)
-                            }
-                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2.5 py-2 sm:py-1.5 text-base sm:text-xs min-h-[40px] sm:min-h-[32px] bg-white"
-                          />
-                        </div>
-                        <div className="col-span-5 sm:col-span-3">
-                          <select
-                            value={cp.age}
-                            onChange={(e) =>
-                              updateChild(
-                                cIdx,
-                                "age",
-                                parseInt(e.target.value, 10),
-                              )
-                            }
-                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2 py-2 sm:py-1.5 text-sm sm:text-xs min-h-[40px] sm:min-h-[32px] bg-white"
-                          >
-                            <option value={1}>1 year</option>
-                            <option value={2}>2 years</option>
-                            <option value={3}>3 years</option>
-                            <option value={4}>4 years</option>
-                          </select>
-                        </div>
-                        <div className="col-span-5 sm:col-span-3">
-                          <select
-                            value={cp.gender}
-                            onChange={(e) =>
-                              updateChild(
-                                cIdx,
-                                "gender",
-                                e.target
-                                  .value as SplitBookingChildPassenger["gender"],
-                              )
-                            }
-                            className="w-full rounded-lg sm:rounded-md border border-slate-300 px-2 py-2 sm:py-1.5 text-sm sm:text-xs min-h-[40px] sm:min-h-[32px] bg-white"
-                          >
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                          </select>
-                        </div>
-                        <div className="col-span-2 sm:col-span-1 flex justify-end">
-                          <button
-                            type="button"
-                            onClick={() => removeChildPassenger(cIdx)}
-                            className="p-1.5 text-slate-400 hover:text-red-600"
-                            title="Remove child"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                    {childPassengers.length < 2 && (
-                      <button
-                        type="button"
-                        onClick={addChildPassenger}
-                        className="text-xs font-semibold text-blue-600 hover:text-blue-800 py-1"
-                      >
-                        + Add Child Passenger
-                      </button>
-                    )}
-                  </div>
-                )}
-              </div> */}
 
               {/* Travel Insurance Section (IRCTC Parity) */}
               <div className="rounded-xl bg-amber-50/70 p-3.5 border border-amber-200/80 space-y-2 text-xs text-amber-950">
