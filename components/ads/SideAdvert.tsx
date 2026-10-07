@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 export type AdvertUtmMedium =
   | "external_website_homepage"
   | "external_website_blog"
+  | "external_website_food_menu"
+  | "external_website_chart_times"
   | (string & {});
 
 interface SideAdvertProps {
