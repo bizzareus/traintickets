@@ -72,6 +72,8 @@ import {
 } from "@/components/home/MobileModifySearchSheet";
 import { TrainClassMultiSelect } from "@/components/home/TrainClassMultiSelect";
 import { HowSplitBookingWorks } from "@/components/home/HowSplitBookingWorks";
+import { HowPnrAlternateWorks } from "@/components/home/HowPnrAlternateWorks";
+import { HomePnrSeoContent } from "@/components/home/HomePnrSeoContent";
 import { HomeTrustStrip } from "@/components/home/HomeTrustStrip";
 import ChartTimesFinder from "@/app/chart-times/ChartTimesFinder";
 import type { HomeStrings } from "@/lib/home/home-langs";
@@ -1641,11 +1643,14 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       {/* Homepage content (ads + SEO) is first-landing only — hidden once a search has begun */}
       {!hasSearched && (
         <>
-          {searchType === "route" && (
-            <HowSplitBookingWorks />
-          )}
+          {searchType === "route" && <HowSplitBookingWorks />}
+          {searchType === "pnr" && <HowPnrAlternateWorks />}
           <HomeSideAd />
-          <HomeSeoContent t={t.seo} />
+          {searchType === "pnr" ? (
+            <HomePnrSeoContent />
+          ) : (
+            <HomeSeoContent t={t.seo} />
+          )}
           <div className="mx-auto my-8 flex min-h-[250px] max-w-3xl items-center justify-center px-4 sm:px-6 lg:max-w-4xl">
             <HomeBannerAd zoneId="12090034" />
           </div>
