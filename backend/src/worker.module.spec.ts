@@ -40,7 +40,7 @@ describe('API / worker isolation', () => {
     const scheduler = app.get(SchedulerRegistry);
 
     expect(app.get(ChartCronService)).toBeInstanceOf(ChartCronService);
-    expect(scheduler.getCronJobs().size).toBe(6);
+    expect(scheduler.getCronJobs().size).toBe(5);
     expect(scheduler.getTimeouts()).toEqual([]);
 
     await app.close();
