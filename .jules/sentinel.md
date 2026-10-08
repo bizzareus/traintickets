@@ -27,3 +27,8 @@
 **Vulnerability:** Secret header checks in Next.js route handlers (`/api/indexnow` and `/api/chart-times-data/[id]`) used standard string equality (`!==`), exposing secrets to timing side-channel analysis.
 **Learning:** Next.js route handlers run in Node.js runtime and can import `safeCompareStrings` from `lib/security.ts` to perform HMAC-digest constant-time comparison on secret headers (`INDEXNOW_SECRET`, `CHART_TIMES_SYNC_SECRET`).
 **Prevention:** Always use `safeCompareStrings(suppliedSecret, expectedSecret)` when comparing API keys or authorization headers in Next.js route handlers.
+
+## 2026-10-08 - Third-Party SDK Constructor Initialization Crashing DI Container
+**Vulnerability:** `IrctcBrowserUseService` instantiated `new BrowserUse({ apiKey: process.env.BROWSER_USE_API_KEY })` directly in its constructor. When `BROWSER_USE_API_KEY` was missing in environment, the SDK threw an unhandled exception during NestJS dependency injection bootstrapping, crashing the entire NestJS application/worker on startup.
+**Learning:** Third-party SDK constructors executed during NestJS provider instantiation must supply fallback initialization strings or lazy-load clients so that missing optional API keys do not cause unhandled startup exceptions during DI container setup.
+**Prevention:** Provide fallback strings in SDK constructors for optional integrations and guard runtime method calls with explicit key checks throwing `ServiceUnavailableException`.

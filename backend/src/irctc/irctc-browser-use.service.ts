@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, ServiceUnavailableException } from '@nestjs/common';
 import { BrowserUse } from 'browser-use-sdk/v3';
 
 @Injectable()
@@ -8,7 +8,7 @@ export class IrctcBrowserUseService {
 
   constructor() {
     this.client = new BrowserUse({
-      apiKey: process.env.BROWSER_USE_API_KEY,
+      apiKey: process.env.BROWSER_USE_API_KEY || 'unconfigured-browser-use-key',
       baseUrl: process.env.BROWSER_USE_BASE_URL || 'https://api.browseruse.com',
     });
   }
@@ -22,6 +22,12 @@ export class IrctcBrowserUseService {
     journeyDate: string,
     boardingStation: string,
   ) {
+    if (!process.env.BROWSER_USE_API_KEY) {
+      throw new ServiceUnavailableException(
+        'Browser Use API key is not configured',
+      );
+    }
+
     const task = `
 Go to https://www.irctc.co.in/online-charts/.
 1. Enter the train number "${trainNumber}" in the first input field.
