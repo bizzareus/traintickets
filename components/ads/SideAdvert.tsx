@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { trackAdvertClicked } from "@/lib/analytics";
+import { trackAdvertClicked, trackAdvertImpression } from "@/lib/analytics";
 
 export type AdvertUtmMedium =
   | "external_website_homepage"
@@ -43,6 +45,70 @@ export function getAdvertHref({
   return url.toString();
 }
 
+function useAdvertImpression({
+  ref,
+  href,
+  format,
+  utmMedium,
+  utmSource,
+  utmCampaign,
+}: {
+  ref: React.RefObject<HTMLElement | null>;
+  href: string;
+  format: "vertical" | "mobile";
+  utmMedium?: string;
+  utmSource?: string;
+  utmCampaign?: string;
+}) {
+  const pathname = usePathname();
+  const lastTrackedPageRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const page =
+      pathname || (typeof window !== "undefined" ? window.location.pathname : "");
+
+    // Only fire once per page view
+    if (lastTrackedPageRef.current === page) return;
+
+    const recordImpression = () => {
+      if (lastTrackedPageRef.current === page) return;
+      lastTrackedPageRef.current = page;
+      trackAdvertImpression({
+        link: href,
+        page,
+        format,
+        utmMedium,
+        utmSource,
+        utmCampaign,
+      });
+    };
+
+    if (typeof IntersectionObserver === "undefined") {
+      if (el.offsetParent !== null) recordImpression();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          observer.disconnect();
+          recordImpression();
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [ref, href, format, pathname, utmMedium, utmSource, utmCampaign]);
+}
+
 /**
  * Vertical skyscraper side advertisement banner (220x600).
  * Displays advert.jpeg with sponsored link to Nari Velvet Collection.
@@ -54,7 +120,17 @@ export function SideAdvert({
   utmSource = "lastberth",
   utmCampaign = "velvet",
 }: SideAdvertProps) {
+  const adRef = useRef<HTMLElement>(null);
   const href = getAdvertHref({ utmMedium, utmSource, utmCampaign });
+
+  useAdvertImpression({
+    ref: adRef,
+    href,
+    format: "vertical",
+    utmMedium,
+    utmSource,
+    utmCampaign,
+  });
 
   const handleClick = () => {
     trackAdvertClicked({
@@ -68,6 +144,7 @@ export function SideAdvert({
 
   return (
     <aside
+      ref={adRef}
       aria-label="Advertisement"
       className={cn("w-[220px] shrink-0", className)}
     >
@@ -106,7 +183,17 @@ export function MobileAdvert({
   utmSource = "lastberth",
   utmCampaign = "velvet",
 }: MobileAdvertProps) {
+  const adRef = useRef<HTMLDivElement>(null);
   const href = getAdvertHref({ utmMedium, utmSource, utmCampaign });
+
+  useAdvertImpression({
+    ref: adRef,
+    href,
+    format: "mobile",
+    utmMedium,
+    utmSource,
+    utmCampaign,
+  });
 
   const handleClick = () => {
     trackAdvertClicked({
@@ -120,6 +207,7 @@ export function MobileAdvert({
 
   return (
     <div
+      ref={adRef}
       aria-label="Advertisement"
       className={cn("mt-3 block xl:hidden", className)}
     >

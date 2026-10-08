@@ -55,6 +55,33 @@ export function trackAnalyticsEvent(event: AnalyticsEvent): void {
 }
 
 /**
+ * Convenience helper to track when an advertisement is shown/loaded (impression).
+ * Sends the `advert_impression` event to PostHog with link, page, and metadata.
+ */
+export function trackAdvertImpression(params: {
+  link: string;
+  page?: string;
+  format?: "vertical" | "mobile";
+  utmMedium?: string;
+  utmSource?: string;
+  utmCampaign?: string;
+}): void {
+  trackAnalyticsEvent({
+    name: "advert_impression",
+    properties: {
+      link: params.link,
+      page:
+        params.page ||
+        (typeof window !== "undefined" ? window.location.pathname : ""),
+      format: params.format,
+      utm_medium: params.utmMedium,
+      utm_source: params.utmSource,
+      utm_campaign: params.utmCampaign,
+    },
+  });
+}
+
+/**
  * Convenience helper to track when an advertisement is clicked.
  * Sends the `advert_clicked` event to PostHog with link, page, and optional metadata.
  */
