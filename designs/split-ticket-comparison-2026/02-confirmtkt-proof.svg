@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <title>ConfirmTkt screenshot: 30 September, 3A, WL 44 for the full route.</title>
+  <rect width="1080" height="1350" fill="#F3F6FA"/>
+  <rect width="1080" height="10" fill="#101B2C"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="64" y="84" fill="#101B2C" font-size="36" font-weight="700" letter-spacing="-1">LastBerth</text>
+    <text x="1016" y="81" fill="#667387" font-size="22" text-anchor="end" letter-spacing="2">THE END-TO-END RESULT</text>
+    <path d="M64 120H1016" stroke="#D0D8E1"/>
+    <text x="64" y="180" fill="#9E4B3E" font-size="24" font-weight="700" letter-spacing="2">ONE TICKET FOR THE WHOLE JOURNEY</text>
+  </g>
+  <g font-family="DIN Condensed, Arial Narrow, Arial, sans-serif" font-weight="700" fill="#101B2C">
+    <text x="62" y="282" font-size="116">THE DIRECT SEARCH:</text>
+    <text x="61" y="402" font-size="148" fill="#9E4B3E">WAITLISTED.</text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="64" y="462" fill="#536071" font-size="28">12506 · North East Exp · ANVT → PPTA</text>
+    <image href="crops/confirmtkt-logo.png" x="64" y="512" width="231" height="64.6"/>
+    <text x="1016" y="554" fill="#667387" font-size="22" text-anchor="end">Your original screenshot, cropped to the train card</text>
+    <rect x="63" y="602" width="954" height="454" rx="19" fill="#FFFFFF" stroke="#D0D8E1" stroke-width="2"/>
+    <image href="crops/confirmtkt-card.png" x="64" y="603" width="952" height="452"/>
+    <rect x="64" y="1090" width="441" height="52" rx="7" fill="#F6DDD4"/>
+    <text x="85" y="1125" fill="#8E3F32" font-size="26" font-weight="700">30 SEP · 3A · GENERAL QUOTA</text>
+    <text x="64" y="1198" fill="#101B2C" font-size="33" font-weight="700">Next: what LastBerth found on this train →</text>
+    <path d="M64 1245H1016" stroke="#D0D8E1"/>
+    <text x="64" y="1295" fill="#667387" font-size="22">Snapshot supplied. Availability can change.</text>
+    <text x="1016" y="1295" fill="#667387" font-size="22" text-anchor="end">02 / 04</text>
+  </g>
+</svg>

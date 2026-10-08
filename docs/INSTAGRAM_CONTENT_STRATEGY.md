@@ -27,10 +27,10 @@ All daily Instagram posts must follow the battle-tested layout exemplified in th
 | LastBerth                                  REAL SEARCH. REAL SCREENSHOTS. |
 |-------------------------------------------------------------------------|
 | SAME TRAIN. A DIFFERENT WAY TO BOOK.                                    |
-| END-TO-END: WAITLISTED.                                                 |
-| LASTBERTH FOUND A WAY.                                                  |
-| 12506 · NORTH EAST EXP · 30 SEP 2026                                    |
-| Anand Vihar (ANVT) → Patliputra (PPTA)                                  |
+| CONFIRMED TICKET                                                        |
+| {ORIGIN} TO {DESTINATION}                                               |
+| TRAVEL DATE: {TRAVEL DATE}                                              |
+| {TRAIN NAME} · {TRAIN NUMBER} · DEPARTS {TRAIN TIME}                    |
 |                                                                         |
 | +-------------------------+ +-----------------------------------------+ |
 | | ConfirmTkt              | | LastBerth                               | |
@@ -45,7 +45,7 @@ All daily Instagram posts must follow the battle-tested layout exemplified in th
 |                                                                         |
 | 3 tickets · 3A + 3A + 2A · Class / berth change needed                  |
 | +------------------------------------+ +------------------------------+ |
-| | TOTAL FARE  ₹2370                  | | TRY LASTBERTH.COM →          | |
+| | TOTAL FARE  ₹2370                  | | Book on LastBerth.com →      | |
 | +------------------------------------+ +------------------------------+ |
 | Availability and fares shown in screenshots. Recheck before booking.    |
 +-------------------------------------------------------------------------+
@@ -54,14 +54,14 @@ All daily Instagram posts must follow the battle-tested layout exemplified in th
 ### Visual Specifications
 - **Canvas Size:** `1080 x 1350 px` (`4:5` portrait aspect ratio) for maximum vertical screen share in mobile feeds. Also supports `1080 x 1080 px` (`1:1` square).
 - **Background:** Deep slate navy (`#101B2C`) with brand blue top border accent (`#355AED`).
-- **Typography:**
-  - Headlines: Bold condensed sans-serif (`DIN Condensed` or `Arial Narrow Bold`), high-impact white (`#FFFFFF`) and mint green (`#88E2B6`).
-  - Kicker / Subheadings: Warm amber/gold (`#FFBA55`) and crisp slate (`#E4EAF2`).
-  - Body & UI Cards: Clean modern sans-serif (`Arial` / `Helvetica`).
+- **Typography & Headline Contract:**
+  - **Content Headline:** `Confirmed Ticket from {origin} to {destination} for {Travel Date}` (bold condensed `DIN Condensed` / `Arial Narrow Bold`, high-impact mint green `#88E2B6` and white `#FFFFFF`).
+  - **Train Context Subheader:** `{train name} · {train number} · {time of the train}` (crisp slate `#E4EAF2` and amber `#FFBA55`).
+  - **Body & UI Cards:** Clean modern sans-serif (`Arial` / `Helvetica`).
 - **Cards Hierarchy:**
   - **Left Card (Competitor / IRCTC Direct Booking):** Muted warm background (`#FFF4EF`), dark text, red accent strip (`#BC5849`), displaying real status pill `WAITLISTED` (`#8E3F32` on `#F6DDD4`) or `REGRET`.
   - **Right Card (LastBerth Split Legs):** Fresh mint background (`#F1FCF6`), dark green text (`#315A43`), green accent strip (`#247251`), displaying ordered contiguous legs with seat count (`AVL X`) and leg fare (`₹XXX`).
-- **Footer Bar:** Clean white banner with bold `TOTAL FARE ₹XXXX` and vibrant blue action button `TRY LASTBERTH.COM →` (`#355AED`).
+- **Footer Bar:** Clean white banner with bold `TOTAL FARE ₹XXXX` and vibrant blue action button **`Book on LastBerth.com →`** (`#355AED`).
 - **Disclaimers:** Mandatory legible note at base: *"Availability and fares shown in screenshots. Recheck before booking."* and *"Class / berth change needed"*.
 
 ---

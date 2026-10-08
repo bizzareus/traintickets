@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <title>End-to-end waitlisted. LastBerth found available split-ticket options.</title>
+  <rect width="1080" height="1350" fill="#101B2C"/>
+  <rect width="1080" height="10" fill="#355AED"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="64" y="84" fill="#FFFFFF" font-size="36" font-weight="700" letter-spacing="-1">LastBerth</text>
+    <text x="1016" y="81" fill="#B2C0D0" font-size="22" text-anchor="end" letter-spacing="2">REAL SEARCH. REAL SCREENSHOTS.</text>
+    <path d="M64 120H1016" stroke="#324155"/>
+    <text x="64" y="168" fill="#FFBA55" font-size="22" font-weight="700" letter-spacing="2">SAME TRAIN. A DIFFERENT WAY TO BOOK.</text>
+  </g>
+  <g font-family="DIN Condensed, Arial Narrow, Arial, sans-serif" font-weight="700">
+    <text x="64" y="245" fill="#88E2B6" font-size="92">CONFIRMED TICKET</text>
+    <text x="64" y="318" fill="#FFFFFF" font-size="58">ANAND VIHAR (ANVT) → PATLIPUTRA (PPTA)</text>
+    <text x="64" y="375" fill="#FFBA55" font-size="44">TRAVEL DATE: 30 SEP 2026</text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="65" y="430" fill="#E4EAF2" font-size="28" font-weight="700">NORTH EAST EXP · 12506 · DEPARTS 07:40 AM</text>
+
+    <rect x="64" y="480" width="310" height="566" rx="20" fill="#FFF4EF"/>
+    <rect x="396" y="480" width="620" height="566" rx="20" fill="#F1FCF6"/>
+    <rect x="64" y="504" width="5" height="62" fill="#BC5849"/>
+    <rect x="396" y="504" width="5" height="62" fill="#247251"/>
+    <text x="86" y="531" fill="#101B2C" font-size="33" font-weight="700">ConfirmTkt</text>
+    <text x="86" y="572" fill="#795B54" font-size="23">End-to-end · 3A</text>
+    <path d="M86 597H352" stroke="#E3CBC2"/>
+    <text x="86" y="640" fill="#795B54" font-size="18" letter-spacing="1">SCREENSHOT EXCERPT</text>
+    <rect x="80" y="662" width="278" height="127" rx="8" fill="#FFFFFF"/>
+    <image href="crops/confirmtkt-status.png" x="86" y="683" width="266" height="83"/>
+    <rect x="86" y="823" width="218" height="43" rx="6" fill="#F6DDD4"/>
+    <text x="104" y="853" fill="#8E3F32" font-size="24" font-weight="700">WAITLISTED</text>
+    <text x="86" y="916" fill="#574B48" font-size="24">One ticket for</text>
+    <text x="86" y="952" fill="#574B48" font-size="24">the full route.</text>
+
+    <text x="422" y="531" fill="#355AED" font-size="35" font-weight="700" letter-spacing="-1">LastBerth</text>
+    <text x="422" y="572" fill="#466A57" font-size="23">Available seats in split legs</text>
+    <path d="M422 597H990" stroke="#C5E1D1"/>
+    <text x="422" y="635" fill="#315A43" font-size="24" font-weight="700">01  ANVT → PRYJ</text>
+    <rect x="422" y="648" width="568" height="84" rx="8" fill="#FFFFFF"/>
+    <image href="crops/lastberth-leg-1.png" x="442" y="655" width="364" height="70"/>
+    <text x="422" y="768" fill="#315A43" font-size="24" font-weight="700">02  PRYJ → DDU</text>
+    <rect x="422" y="781" width="568" height="84" rx="8" fill="#FFFFFF"/>
+    <image href="crops/lastberth-leg-2.png" x="442" y="788" width="350" height="70"/>
+    <text x="422" y="901" fill="#315A43" font-size="24" font-weight="700">03  DDU → PPTA</text>
+    <rect x="422" y="914" width="568" height="84" rx="8" fill="#FFFFFF"/>
+    <image href="crops/lastberth-leg-3.png" x="442" y="921" width="350" height="70"/>
+
+    <text x="64" y="1091" fill="#D6E0EB" font-size="25">3 tickets · 3A + 3A + 2A · Class / berth change needed</text>
+    <rect x="64" y="1125" width="952" height="105" rx="14" fill="#FFFFFF"/>
+    <image href="crops/lastberth-total.png" x="86" y="1144" width="350" height="67"/>
+    <rect x="548" y="1143" width="447" height="69" rx="9" fill="#355AED"/>
+    <text x="772" y="1186" fill="#FFFFFF" font-size="28" text-anchor="middle" font-weight="700">Book on LastBerth.com →</text>
+    <text x="64" y="1276" fill="#A9B8CA" font-size="22">Availability and fares shown in screenshots. Recheck before booking.</text>
+    <text x="64" y="1311" fill="#A9B8CA" font-size="20">Screenshot excerpts enlarged for readability.</text>
+    <text x="1016" y="1311" fill="#A9B8CA" font-size="22" text-anchor="end">01 / 04</text>
+  </g>
+</svg>

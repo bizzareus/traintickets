@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <title>Three separate tickets on the same train: 3A, 3A and 2A. Displayed total 2,370 rupees.</title>
+  <rect width="1080" height="1350" fill="#F3F6FA"/>
+  <rect width="1080" height="10" fill="#355AED"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="64" y="84" fill="#101B2C" font-size="36" font-weight="700" letter-spacing="-1">LastBerth</text>
+    <text x="1016" y="81" fill="#667387" font-size="22" text-anchor="end" letter-spacing="2">HOW THE ROUTE FITS TOGETHER</text>
+    <path d="M64 120H1016" stroke="#D0D8E1"/>
+    <text x="64" y="183" fill="#355AED" font-size="24" font-weight="700" letter-spacing="2">THE ₹2,370 OPTION SHOWN</text>
+  </g>
+  <g font-family="DIN Condensed, Arial Narrow, Arial, sans-serif" font-weight="700">
+    <text x="61" y="301" fill="#101B2C" font-size="148">3 TICKETS.</text>
+    <text x="61" y="422" fill="#355AED" font-size="148">ONE TRAIN.</text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="64" y="479" fill="#536071" font-size="28">North East Exp (12506) · 30 Sep 2026</text>
+    <path d="M92 573V895" stroke="#B8C9E9" stroke-width="4" stroke-dasharray="7 10"/>
+    <g>
+      <rect x="128" y="526" width="888" height="123" rx="12" fill="#FFFFFF" stroke="#D4DEE9"/>
+      <circle cx="92" cy="572" r="25" fill="#355AED"/>
+      <text x="92" y="581" fill="#FFFFFF" font-size="24" text-anchor="middle" font-weight="700">1</text>
+      <text x="157" y="574" fill="#101B2C" font-size="32" font-weight="700">ANVT → PRYJ</text>
+      <text x="157" y="617" fill="#667387" font-size="24">Anand Vihar → Prayagraj</text>
+      <image href="crops/lastberth-leg-1.png" x="592" y="550" width="382" height="73.5"/>
+    </g>
+    <g>
+      <rect x="128" y="683" width="888" height="123" rx="12" fill="#FFFFFF" stroke="#D4DEE9"/>
+      <circle cx="92" cy="729" r="25" fill="#355AED"/>
+      <text x="92" y="738" fill="#FFFFFF" font-size="24" text-anchor="middle" font-weight="700">2</text>
+      <text x="157" y="731" fill="#101B2C" font-size="32" font-weight="700">PRYJ → DDU</text>
+      <text x="157" y="774" fill="#667387" font-size="24">Prayagraj → DD Upadhyaya</text>
+      <image href="crops/lastberth-leg-2.png" x="592" y="707" width="368" height="73.5"/>
+    </g>
+    <g>
+      <rect x="128" y="840" width="888" height="123" rx="12" fill="#FFFFFF" stroke="#D4DEE9"/>
+      <circle cx="92" cy="886" r="25" fill="#247251"/>
+      <text x="92" y="895" fill="#FFFFFF" font-size="24" text-anchor="middle" font-weight="700">3</text>
+      <text x="157" y="888" fill="#101B2C" font-size="32" font-weight="700">DDU → PPTA</text>
+      <text x="157" y="931" fill="#667387" font-size="24">DD Upadhyaya → Patliputra</text>
+      <image href="crops/lastberth-leg-3.png" x="592" y="864" width="368" height="73.5"/>
+    </g>
+    <rect x="64" y="1000" width="389" height="100" rx="14" fill="#FFFFFF" stroke="#D4DEE9"/>
+    <image href="crops/lastberth-total.png" x="80" y="1017" width="350" height="67"/>
+    <rect x="477" y="1000" width="539" height="100" rx="14" fill="#355AED"/>
+    <text x="507" y="1035" fill="#DCE6FF" font-size="20" font-weight="700" letter-spacing="2">FIND YOUR SPLIT ROUTE</text>
+    <text x="507" y="1080" fill="#FFFFFF" font-size="40" font-weight="700">lastberth.com →</text>
+    <text x="64" y="1153" fill="#101B2C" font-size="28" font-weight="700">Separate tickets. Class / berth change needed.</text>
+    <text x="64" y="1197" fill="#536071" font-size="27">Recheck all three legs before paying.</text>
+    <path d="M64 1245H1016" stroke="#D0D8E1"/>
+    <text x="64" y="1295" fill="#101B2C" font-size="23" font-weight="700">SAVE THIS. SEND IT TO YOUR TRAVEL GROUP.</text>
+    <text x="1016" y="1295" fill="#667387" font-size="22" text-anchor="end">04 / 04</text>
+  </g>
+</svg>
