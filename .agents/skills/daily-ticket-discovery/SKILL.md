@@ -12,8 +12,8 @@ You are equipped with the capability to run the daily LastBerth vs. ConfirmTkt /
 Refer to the master strategy document at [docs/INSTAGRAM_CONTENT_STRATEGY.md](file:///Users/kartikarora/Documents/personal/traintickets/docs/INSTAGRAM_CONTENT_STRATEGY.md) and design specifications at [design.md](file:///Users/kartikarora/Documents/personal/traintickets/design.md).
 
 ### Core Principle
-**"SAME TRAIN. A DIFFERENT WAY TO BOOK. END-TO-END: WAITLISTED. LASTBERTH FOUND A WAY."**  
-Tell users directly: *"We found you tickets in this train from A-B for this price and that's it compared to WL/Regret on IRCTC."*
+**"CONFIRMED TICKET FROM {ORIGIN} TO {DESTINATION} FOR {TRAVEL DATE}"**  
+Direct, transparent messaging to travellers: *"Waitlisted end-to-end on IRCTC? We found you confirmed seats in [Train Name] [Train Number] for ₹[Fare]. Book on LastBerth.com."*
 
 ---
 
@@ -29,7 +29,7 @@ Rotate across high-density waitlisted trunk corridors, scanning departure dates 
 6. `NDLS → MMCT` (Delhi → Mumbai)
 
 ### Step 2: Verification Criteria (Strict Guardrails)
-Before generating any post, both conditions must be verified:
+Before generating any post, all conditions must be verified:
 - **Baseline Check (ConfirmTkt / IRCTC):** Direct booking for the target class (e.g. 3A, SL, 2A) must explicitly be `WL` (Waitlisted) or `REGRET`.
 - **LastBerth Search:** Must find confirmed split legs on the **exact same train**.
 - **Contiguity:** All legs must be contiguous (Station A $\rightarrow$ B $\rightarrow$ C $\rightarrow$ D).
@@ -37,14 +37,33 @@ Before generating any post, both conditions must be verified:
 - **Fare Arithmetic:** Total fare must equal the sum of the individual split leg fares.
 - *If no train satisfies all conditions on the target corridor, advance to the next corridor or stop. Never fabricate data.*
 
-### Step 3: Graphic Rendering
-Generate the `1080 × 1350 px` comparison graphic matching the design in `/designs/split-ticket-comparison-2026/01-comparison.svg`:
-- **Headline Contract:**
-  - **Headline:** `Confirmed Ticket from {origin} to {destination} for {Travel Date}` (stacked for clean layout without horizontal overflow, e.g., `CONFIRMED TICKET` / `{ORIGIN} → {DESTINATION}` / `TRAVEL DATE: {DATE}`).
-  - **Sub-headline:** `{train name} · {train number} · DEPARTS {time of the train}`.
-- **Left Card (Direct Booking):** ConfirmTkt / IRCTC excerpt showing `WL [Number]` or `REGRET` with status pill `WAITLISTED`.
-- **Right Card (LastBerth):** Split legs with station pairs, classes, seat counts (`AVL X`), and individual fares.
-- **Bottom Footer:** Total fare (`TOTAL FARE ₹XXXX`), leg count & classes breakdown, disclaimer note (`Class / berth change needed`), and action button: **`Book on LastBerth.com →`**.
+### Step 3: Graphic Rendering & Template Specs
+The comparison graphic uses the established template in [`designs/split-ticket-comparison-2026/01-comparison.svg`](file:///Users/kartikarora/Documents/personal/traintickets/designs/split-ticket-comparison-2026/01-comparison.svg):
+- **Canvas Dimensions:** `1080 × 1350 px` (4:5 vertical portrait aspect ratio for optimal mobile feed real estate).
+- **Top Accent & Brand:** Deep Slate Navy (`#101B2C`) background with Royal Blue (`#355AED`) 10px accent bar at top, `LastBerth` logo (36px, `#FFFFFF`), and `REAL SEARCH. REAL SCREENSHOTS.` (22px, `#B2C0D0`).
+- **Kicker:** `SAME TRAIN. A DIFFERENT WAY TO BOOK.` (22px, `#FFBA55`).
+- **Headline Contract (Stacked to prevent horizontal clipping):**
+  - Line 1: `CONFIRMED TICKET` (DIN Condensed, 92px bold, Mint `#88E2B6`)
+  - Line 2: `{ORIGIN} → {DESTINATION}` (DIN Condensed, 58px bold, White `#FFFFFF`)
+  - Line 3: `TRAVEL DATE: {TRAVEL DATE}` (DIN Condensed, 44px bold, Amber `#FFBA55`)
+  - Sub-headline: `{TRAIN NAME} · {TRAIN NUMBER} · DEPARTS {DEPARTURE TIME}` (Arial, 28px bold, Slate `#E4EAF2`)
+- **Left Card (Competitor / IRCTC Direct Booking):**
+  - Muted warm surface (`#FFF4EF`, 310×566px) with red accent strip (`#BC5849`).
+  - Real status excerpt showing direct `WL [Number]` or `REGRET` with status badge `WAITLISTED` (`#8E3F32` on `#F6DDD4`).
+- **Right Card (LastBerth Split Legs):**
+  - Fresh mint surface (`#F1FCF6`, 620×566px) with green accent strip (`#247251`).
+  - Ordered contiguous split legs: station codes, travel class, available count (`AVL X`), and individual leg fare (`₹XXX`).
+- **Bottom Footer:**
+  - White card (`#FFFFFF`, 952×105px) with `TOTAL FARE ₹[TOTAL FARE]` in bold navy (`#101B2C`).
+  - Action button: **`Book on LastBerth.com →`** (447×69px, `#355AED` with bold white 28px text).
+  - Summary row: `{N} tickets · {Classes breakdown} · Class / berth change needed` (25px, `#D6E0EB`).
+  - Disclaimers: `Availability and fares shown in screenshots. Recheck before booking.` and `Screenshot excerpts enlarged for readability.`
+- **Rendering Command:**
+  Execute the Playwright renderer from the workspace root:
+  ```bash
+  node designs/split-ticket-comparison-2026/render.cjs
+  ```
+  The renderer automatically verifies font readiness, loads crop excerpts, and checks that no `<text>` bounding boxes overflow the canvas (`0 <= left < right <= 1080` and `0 <= top < bottom <= 1350`).
 
 ### Step 4: Caption Formatting
 Adhere strictly to the direct, no-fluff template:
@@ -68,10 +87,8 @@ Search confirmed split seats for your route at lastberth.com (link in bio).
 ```
 
 ### Step 5: Publishing via Browser Automation
-1. Convert the generated image to a standard baseline JPEG (`.jpg`, sRGB, quality 95, 1080×1350) and copy to `os.tmpdir()` (Instagram Web rejects PNG uploads with `"Media type invalid"`).
-2. Navigate to `https://www.instagram.com/lastberth.in/`.
-3. Click "New post" and upload the JPEG via `upload_file`.
-4. On the Crop screen, click the "Select Crop" button and choose "Original" (to preserve the full 4:5 vertical canvas without 1:1 square clipping).
-5. Advance through Filter to the Caption screen.
-6. Focus the caption editor, clear any existing text, and type the formatted caption.
-7. Click "Share", wait for publication confirmation, and record the live post permalink.
+1. **Format Conversion:** Convert the generated PNG to standard baseline JPEG (`.jpg`, sRGB, quality 95, 1080×1350) and copy to `os.tmpdir()` (`/var/folders/dw/.../T/banner.jpg`). Instagram Web rejects PNG uploads with `"Media type invalid"`.
+2. **Navigate & Upload:** Navigate to `https://www.instagram.com/lastberth.in/`, click "New post", and upload the JPEG via `upload_file`.
+3. **Aspect Ratio:** On the Crop dialog, click the "Select Crop" button and choose "Original" to preserve the full 4:5 vertical framing without automatic 1:1 square cropping.
+4. **Caption Injection:** Advance through Filters to the Caption editor (`div[aria-label="Add a caption..."]`). Clear any draft text, type the standardized caption, and confirm character counter updates.
+5. **Publish & Verify:** Click "Share", wait for publication confirmation modal, and record the live permalink (`https://www.instagram.com/p/...`).
