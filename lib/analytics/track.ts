@@ -55,6 +55,33 @@ export function trackAnalyticsEvent(event: AnalyticsEvent): void {
 }
 
 /**
+ * Convenience helper to track when an advertisement is clicked.
+ * Sends the `advert_clicked` event to PostHog with link, page, and optional metadata.
+ */
+export function trackAdvertClicked(params: {
+  link: string;
+  page?: string;
+  format?: "vertical" | "mobile";
+  utmMedium?: string;
+  utmSource?: string;
+  utmCampaign?: string;
+}): void {
+  trackAnalyticsEvent({
+    name: "advert_clicked",
+    properties: {
+      link: params.link,
+      page:
+        params.page ||
+        (typeof window !== "undefined" ? window.location.pathname : ""),
+      format: params.format,
+      utm_medium: params.utmMedium,
+      utm_source: params.utmSource,
+      utm_campaign: params.utmCampaign,
+    },
+  });
+}
+
+/**
  * Identify a user in PostHog when contact information is provided (e.g. on alert request).
  * Sets person properties so all subsequent and previous session events are attributed to this user.
  * Browser-only and admin-suppressed; never throws. Dispatched asynchronously to preserve fast INP.

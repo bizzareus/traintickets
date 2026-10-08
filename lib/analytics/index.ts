@@ -8,6 +8,7 @@ export type { AnalyticsEvent, AnalyticsEventName } from "./events";
 export { posthog } from "./posthog-client";
 export {
   trackAnalyticsEvent,
+  trackAdvertClicked,
   trackAlertRequested,
   captureApiException,
   identifyUser,

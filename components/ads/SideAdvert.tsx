@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { trackAdvertClicked } from "@/lib/analytics";
 
 export type AdvertUtmMedium =
   | "external_website_homepage"
@@ -53,6 +56,16 @@ export function SideAdvert({
 }: SideAdvertProps) {
   const href = getAdvertHref({ utmMedium, utmSource, utmCampaign });
 
+  const handleClick = () => {
+    trackAdvertClicked({
+      link: href,
+      format: "vertical",
+      utmMedium,
+      utmSource,
+      utmCampaign,
+    });
+  };
+
   return (
     <aside
       aria-label="Advertisement"
@@ -64,6 +77,7 @@ export function SideAdvert({
         </span>
         <a
           href={href}
+          onClick={handleClick}
           target="_blank"
           rel="noopener noreferrer sponsored"
           className="group block overflow-hidden rounded-xl border border-slate-200/80 bg-white p-1 shadow-xs transition-all duration-200 hover:border-slate-300 hover:shadow-md"
@@ -94,6 +108,16 @@ export function MobileAdvert({
 }: MobileAdvertProps) {
   const href = getAdvertHref({ utmMedium, utmSource, utmCampaign });
 
+  const handleClick = () => {
+    trackAdvertClicked({
+      link: href,
+      format: "mobile",
+      utmMedium,
+      utmSource,
+      utmCampaign,
+    });
+  };
+
   return (
     <div
       aria-label="Advertisement"
@@ -105,6 +129,7 @@ export function MobileAdvert({
         </span>
         <a
           href={href}
+          onClick={handleClick}
           target="_blank"
           rel="noopener noreferrer sponsored"
           className="group block w-full overflow-hidden rounded-xl border border-slate-200/80 bg-white p-1 shadow-2xs transition-all duration-200 hover:border-slate-300 hover:shadow-xs"

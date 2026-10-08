@@ -40,6 +40,17 @@ export type HomeButtonId =
 
 export type AnalyticsEvent =
   | {
+      name: "advert_clicked";
+      properties: {
+        link: string;
+        page: string;
+        format?: "vertical" | "mobile";
+        utm_medium?: string;
+        utm_source?: string;
+        utm_campaign?: string;
+      };
+    }
+  | {
       name: "blog_route_cta_clicked";
       properties: {
         slug: string;
