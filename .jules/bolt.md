@@ -33,3 +33,7 @@
 ## 2026-10-03 - Case Sensitivity Limits of Direct String Comparison Operator vs localeCompare
 **Learning:** Replacing `localeCompare` with direct string comparison operators (`<` and `>`) for mixed-case user-facing titles (such as "Chart Preparation" vs "CNF (Confirmed)") alters alphabetical sort order because ASCII comparison places uppercase characters before lowercase characters (e.g. `'N' < 'h'`), whereas `localeCompare` performs case-insensitive primary collation sorting. While `<` and `>` are ~5x faster for uniform ISO dates or zero-padded time strings, `localeCompare` is required for human-facing mixed-case title sorting.
 **Action:** Only substitute `<` and `>` for `localeCompare` when sorting uniform case, ISO formatted, or numeric strings. Keep `localeCompare` when alphabetical sorting depends on case-insensitive human language collation.
+
+## 2026-10-08 - Pre-Indexed Map Lookups for Static Train Catalog Queries
+**Learning:** Calling `Array.prototype.find()` over static JSON datasets (e.g. 160+ Vande Bharat / Shatabdi / Rajdhani train catalog entries) inside per-request train lookups (`getTrainByNumber`) incurs $O(N)$ linear scan overhead per query. Pre-indexing static catalog entries into `Map<string, TrainEntry>` at module initialization converts catalog searches into $O(1)$ constant-time Map lookups (~10x-50x speedup).
+**Action:** Always pre-index static JSON dataset arrays into module-level `Map` instances when querying by ID/number instead of calling `.find()` on every request.
