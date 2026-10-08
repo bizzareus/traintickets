@@ -187,14 +187,14 @@ TREE=$(git write-tree) && C=$(echo "<msg>" | git commit-tree $TREE -p HEAD) && e
 .git/refs/heads/main && cp /tmp/idx .git/index` — then tell the user to clear the stale locks
 (`rm -f .git/index.lock .git/HEAD.lock .git/refs/heads/main.lock`) before pushing.
 
-## Step 6.5 — Social Media Distribution (LinkedIn & Instagram)
+## Step 6.5 — Social Media Distribution (LinkedIn)
 
 1. **LinkedIn Distribution:** Run `npx tsx scripts/generate_linkedin_post.ts <slug>` and post to the [LastBerth Company Page](https://www.linkedin.com/company/146318972/admin/page-posts/published) via browser/MCP.
-2. **Instagram Distribution (`@lastberth.in`):** Follow [`docs/INSTAGRAM_CONTENT_STRATEGY.md`](file:///Users/kartikarora/Documents/personal/traintickets/docs/INSTAGRAM_CONTENT_STRATEGY.md) and trigger the `.agents/instagram-skills/` toolchain (`ig-repurposer`, `ig-carousel-planner`, `ig-hashtag-strategist`, `ig-humanizer`). Generate educational captions and a high-contrast visual graphic banner (1:1 or 4:5) **strictly following `design.md`** to educate users on **chart preparation times (~8–10h & 30m)**, **Current Availability (`CURR_AVBL`) quota release mechanics**, and **popular train chart times**, driving travellers to search for **last-minute confirmed tickets** on LastBerth (`/`, `/chart-times`, `/chart-vacancy`). Post or stage the update to [LastBerth Instagram](https://www.instagram.com/lastberth.in/).
+*(Note: Instagram social distribution is decoupled from the blog workflow and managed via its own dedicated daily ticket discovery automation skill).*
 
 ## Step 7 — Summary
 
-Report: signals used (GSC + Trends + News, or which were unavailable), the ranked batch and the action taken for each item and why (clearly stating how you arrived at each topic—whether it is from Google Trends, GSC, or Google News), files changed, social media distribution status (LinkedIn + Instagram), any CONSOLIDATE redirect/merge recommendations for the user, and push status.
+Report: signals used (GSC + Trends + News, or which were unavailable), the ranked batch and the action taken for each item and why (clearly stating how you arrived at each topic—whether it is from Google Trends, GSC, or Google News), files changed, social media distribution status (LinkedIn), any CONSOLIDATE redirect/merge recommendations for the user, and push status.
 
 ## Constraints
 

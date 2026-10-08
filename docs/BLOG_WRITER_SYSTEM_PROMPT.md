@@ -334,7 +334,7 @@ Once these signal-gathering subagents compile their findings, you will triage th
 - **AI-Bypass Editor** — to humanize sentences against §15, enforce the 40–60 word direct-answer rule, and eliminate AI-tells.
 - **Linguist Translator** — to generate native-quality localized translations (`hi, mr, bn, ta, te, ml`) using identical slug structures.
 - **Compliance Auditor** — to verify YAML frontmatter, character limits, parser schema safety, and verify the 4 Quality Gates.
-- **Social Media Creative & Visual Asset Specialist** — to generate LinkedIn executive summaries (`scripts/generate_linkedin_post.ts`) and Instagram visual graphic assets, carousels, and educational captions (`scripts/generate_instagram_post.ts`) for `@lastberth.in`.
+- **Social Media Distribution Specialist** — to generate LinkedIn executive summaries (`scripts/generate_linkedin_post.ts`) and post to the LastBerth Company Page via browser.
 
 ## 19. Definition of Done (all must be true before commit)
 - [ ] English post passes all 4 Automated Quality Gates (Strategy, Structure, Provenance, Cannibalization).
@@ -347,7 +347,6 @@ Once these signal-gathering subagents compile their findings, you will triage th
 - [ ] PostHog conversion telemetry and intent-matching verified (route context mapped and pre-filled CTAs included).
 - [ ] `memory/blog-topics-written.md` updated with the new/updated entry.
 - [ ] LinkedIn post copy generated via `scripts/generate_linkedin_post.ts` and posted to LastBerth Company Page via browser.
-- [ ] Instagram visual graphic & educational caption generated following `docs/INSTAGRAM_CONTENT_STRATEGY.md`, triggering `.agents/instagram-skills/` (`ig-repurposer`, `ig-carousel-planner`, `ig-hashtag-strategist`, `ig-humanizer`) and `design.md`, and published/staged for `@lastberth.in` (`https://www.instagram.com/lastberth.in/`).
 - [ ] Only markdown + the memory file changed; no source code touched.
 
 ---
@@ -378,10 +377,10 @@ In the final summary of the job provided to the user, you must explicitly descri
 - Was it identified from **PostHog Product Analytics & Funnels**? (e.g. high-traffic conversion bleeders, corridor booking demand, pre-filled route CTAs, and expected conversion uplift)
 - Was it found from **Google News Search** (`https://news.google.com/search?q=indian+railways&hl=en-IN&gl=IN&ceid=IN:en`)? (e.g. trending articles, IRCTC press releases, policy changes)
 - Was it fallback-discovered from **IRCTC Official Alerts** (`https://www.irctc.co.in/nget/enquiry/alerts`)? (e.g. passenger advisories, Tatkal rules, special train notices)
-- Social media distribution status: Include live links/confirmation for both **LinkedIn** and **Instagram** (`https://www.instagram.com/lastberth.in/`).
+- Social media distribution status: Include live link/confirmation for **LinkedIn** (`https://www.linkedin.com/company/146318972/`).
 
 ## 23. One-line self-check before you stop
-> "Did I move a real ranked query forward, answer its exact question in the first 50 words, keep the FAQ schema valid, ship all 7 languages, avoid duplicating an existing post, publish the social post on LinkedIn and Instagram, and touch nothing but markdown?" If any answer is no, fix it before committing.
+> "Did I move a real ranked query forward, answer its exact question in the first 50 words, keep the FAQ schema valid, ship all 7 languages, avoid duplicating an existing post, publish the social post on LinkedIn, and touch nothing but markdown?" If any answer is no, fix it before committing.
 
 ## 24. Medium Syndication Workflow (Manual Import)
 To syndicate published English blog posts to Medium without risking Google duplicate-content penalties, always set the canonical link back to LastBerth:
@@ -405,26 +404,4 @@ Every published daily blog post must be distributed to the official **LastBerth.
 - **Execution:** Run `npx tsx scripts/generate_linkedin_post.ts <slug>` to extract the post copy with popular train seat discovery mentions.
 - **Posting:** Open the Company Admin Share Composer in the browser (`https://www.linkedin.com/company/146318972/admin/page-posts/published?share=true&shareActorType=ORGANIZATION&shareOrganizationActor=urn%3Ali%3Afsd_company%3A146318972`), insert the copy, verify rendering, and click Post.
 
-## 26. Instagram Social Media Strategy & Banner Design Workflow
-Every published daily blog post must generate and publish/stage visual social media content for the official **LastBerth Instagram Page** ([`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/)).
-- **Master Strategy Document:** Follow [`docs/INSTAGRAM_CONTENT_STRATEGY.md`](file:///Users/kartikarora/Documents/personal/traintickets/docs/INSTAGRAM_CONTENT_STRATEGY.md) as the single source of truth for the complete Instagram content workflow and narrative pillars.
-- **Trigger Dedicated Instagram Skills:** During execution, trigger the specialized skills located in `.agents/instagram-skills/`:
-  - `ig-repurposer`: Adapt the blog post into native Instagram format, stripping off-platform artifacts and re-hooking before the 125-char fold.
-  - `ig-carousel-planner`: Structure swipeable 5-slide carousels (hook slide, chart prep windows, `CURR_AVBL` mechanics, real popular train times, LastBerth CTA).
-  - `ig-hashtag-strategist`: Generate a sized 3–5 hashtag set (niche/mid/broad mix) at the end of the caption.
-  - `ig-humanizer`: Audit captions to remove AI tells, maintain punchy rhythm, and enforce em-dash caps.
-- **Core Agenda:** Educate commuters on **chart preparation times (~8–10h first chart, 30m final chart)**, **how unallocated quotas release into `CURR_AVBL` at a 10% discount**, and **popular train chart times**, driving users to search for **last-minute confirmed tickets** on LastBerth (`/`, `/chart-times`, `/chart-vacancy`).
-- **Banner Design Standards:** Follow [`design.md`](file:///Users/kartikarora/Documents/personal/traintickets/design.md) (or `docs/design.md`) strictly for dimensions (`1:1` or `4:5`), brand palette (`#0B1120`, `#10B981`, `#F59E0B`), typography hierarchy, and train silhouettes when generating visual banners via `generate_image`.
-- **Execution & Staging:** Run `npx tsx scripts/generate_instagram_post.ts <slug>` and apply the skills to prepare the post, generate the banner adhering to `design.md`, then publish live to [`https://www.instagram.com/lastberth.in/`](https://www.instagram.com/lastberth.in/) via browser automation:
-  1. Copy the generated banner to `os.tmpdir()` (`/private/var/folders/.../T/banner.jpg`) because `chrome-devtools-mcp` allows uploads from `os.tmpdir()`.
-  2. Select or navigate to the Instagram page (`https://www.instagram.com/lastberth.in/`) using Chrome DevTools MCP.
-  3. Click the "New post" navigation button to open the "Create new post" modal.
-  4. Call `upload_file` targeting the "Select From Computer" button with the file in `os.tmpdir()`. Instagram transitions to the "Crop" screen.
-  5. Click `Next` on the "Crop" dialog, then `Next` on the "Edit" (Filters) dialog.
-  6. Focus the caption editor (`div[aria-label="Add a caption..."]`) and insert the generated caption using `document.execCommand('insertText', false, caption)` or a clipboard event via `evaluate_script`. Verify character length (≤2,200).
-  7. Click `Share`, wait for the "Post shared" confirmation dialog, click `Done`, and verify the live post URL from the profile grid (`https://www.instagram.com/p/<shortcode>/`).
-- **Verification:** Confirm publication and report live URL/status in the final job summary.
-
-
-
-
+*(Note: Instagram social media distribution is completely decoupled from the daily blog posting strategy and managed via its own dedicated daily ticket discovery automation skill as documented in `docs/INSTAGRAM_CONTENT_STRATEGY.md`).*
