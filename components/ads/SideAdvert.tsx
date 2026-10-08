@@ -158,14 +158,14 @@ export function SideAdvert({
           onClick={handleClick}
           target="_blank"
           rel="noopener noreferrer sponsored"
-          className="group block overflow-hidden rounded-xl border border-slate-200/80 bg-white p-1 shadow-xs transition-all duration-200 hover:border-slate-300 hover:shadow-md"
+          className="group block overflow-hidden rounded-xl border border-slate-200/80 bg-white p-1 shadow-xs transition-all duration-200 hover:border-slate-300 hover:shadow-md aspect-[220/600] w-[220px]"
         >
           <Image
             src="/advert.png"
             alt="Nāri Velvet Collection — A jacket, worth keeping"
             width={220}
             height={600}
-            className="rounded-lg object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+            className="h-full w-full rounded-lg object-cover transition-transform duration-300 group-hover:scale-[1.01]"
             priority={false}
           />
         </a>
@@ -221,7 +221,7 @@ export function MobileAdvert({
           onClick={handleClick}
           target="_blank"
           rel="noopener noreferrer sponsored"
-          className="group block w-full overflow-hidden rounded-xl border border-slate-200/80 bg-white p-1 shadow-2xs transition-all duration-200 hover:border-slate-300 hover:shadow-xs"
+          className="group block w-full overflow-hidden rounded-xl border border-slate-200/80 bg-slate-100 p-1 shadow-2xs transition-all duration-200 hover:border-slate-300 hover:shadow-xs aspect-[4/1]"
         >
           <Image
             src="/advert_mobile.png"
@@ -229,7 +229,7 @@ export function MobileAdvert({
             width={1600}
             height={400}
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 768px, 1200px"
-            className="h-auto w-full rounded-lg object-cover transition-transform duration-300 group-hover:scale-[1.005]"
+            className="h-full w-full rounded-lg object-cover transition-transform duration-300 group-hover:scale-[1.005]"
             priority={false}
           />
         </a>

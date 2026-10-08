@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   alternates: {

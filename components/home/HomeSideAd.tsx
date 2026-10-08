@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { SideAdvert } from "@/components/ads/SideAdvert";
 
 declare global {
@@ -11,44 +11,40 @@ declare global {
   }
 }
 
-const AD_SCRIPT_RETRY_LIMIT = 20;
-const AD_SCRIPT_RETRY_MS = 250;
+const subscribeNoop = () => () => {};
 
 export function HomeBannerAd({ zoneId }: { zoneId: string }) {
   const bannerRef = useRef<HTMLDivElement>(null);
+  const hasAclib = useSyncExternalStore(
+    subscribeNoop,
+    () => typeof window !== "undefined" && typeof window.aclib?.runBanner === "function",
+    () => false,
+  );
 
   useEffect(() => {
+    if (!hasAclib) return;
+
     const bannerEl = bannerRef.current;
-    let cancelled = false;
-    let attempts = 0;
+    if (!bannerEl) return;
 
-    const mountBanner = () => {
-      if (cancelled) return;
-
-      if (typeof window.aclib?.runBanner === "function") {
-        bannerEl?.replaceChildren();
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.text = `aclib.runBanner({ zoneId: ${JSON.stringify(zoneId)} });`;
-        bannerEl?.appendChild(script);
-        return;
-      }
-
-      attempts += 1;
-      if (attempts < AD_SCRIPT_RETRY_LIMIT) {
-        window.setTimeout(mountBanner, AD_SCRIPT_RETRY_MS);
-      }
-    };
-
-    mountBanner();
+    bannerEl.replaceChildren();
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.text = `aclib.runBanner({ zoneId: ${JSON.stringify(zoneId)} });`;
+    bannerEl.appendChild(script);
 
     return () => {
-      cancelled = true;
-      bannerEl?.replaceChildren();
+      bannerEl.replaceChildren();
     };
-  }, [zoneId]);
+  }, [zoneId, hasAclib]);
 
-  return <div ref={bannerRef} />;
+  if (!hasAclib) return null;
+
+  return (
+    <div className="mx-auto my-8 flex min-h-[250px] max-w-3xl items-center justify-center px-4 sm:px-6 lg:max-w-4xl">
+      <div ref={bannerRef} />
+    </div>
+  );
 }
 
 export function HomeSideAd({

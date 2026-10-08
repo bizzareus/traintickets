@@ -2,6 +2,7 @@
 
 import {
   Suspense,
+  startTransition,
   useCallback,
   useEffect,
   useId,
@@ -275,6 +276,20 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const openTo = useCallback((open: boolean) => {
     setToOpen(open);
     setFromOpen(false);
+  }, []);
+
+  const handleFromUserType = useCallback((q: string) => {
+    setFromQ(q);
+    startTransition(() => {
+      setFromSt(null);
+    });
+  }, []);
+
+  const handleToUserType = useCallback((q: string) => {
+    setToQ(q);
+    startTransition(() => {
+      setToSt(null);
+    });
   }, []);
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
   const [selectedClasses, setSelectedClasses] = useState<string[]>([]);
@@ -1168,10 +1183,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 label="From"
                 placeholder={t.form.stationPlaceholder}
                 query={fromQ}
-                onUserType={(q) => {
-                  setFromQ(q);
-                  setFromSt(null);
-                }}
+                onUserType={handleFromUserType}
                 value={fromSt}
                 onSelect={(s) => {
                   setFromSt(s);
@@ -1204,10 +1216,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 label="To"
                 placeholder={t.form.stationPlaceholder}
                 query={toQ}
-                onUserType={(q) => {
-                  setToQ(q);
-                  setToSt(null);
-                }}
+                onUserType={handleToUserType}
                 value={toSt}
                 onSelect={(s) => {
                   setToSt(s);
@@ -1380,10 +1389,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                           label={t.form.from}
                           placeholder={t.form.stationPlaceholder}
                           query={fromQ}
-                          onUserType={(q) => {
-                            setFromQ(q);
-                            setFromSt(null);
-                          }}
+                          onUserType={handleFromUserType}
                           value={fromSt}
                           onSelect={(s) => {
                             setFromSt(s);
@@ -1409,10 +1415,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                           label={t.form.to}
                           placeholder={t.form.stationPlaceholder}
                           query={toQ}
-                          onUserType={(q) => {
-                            setToQ(q);
-                            setToSt(null);
-                          }}
+                          onUserType={handleToUserType}
                           value={toSt}
                           onSelect={(s) => {
                             setToSt(s);
@@ -1658,7 +1661,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             </div>
             {/* Homepage content (ads + SEO) is first-landing only — hidden once a search has begun */}
             {!hasSearched && (
-              <>
+              <div className="content-visibility-auto">
                 {searchType === "route" && <HowSplitBookingWorks />}
                 {searchType === "pnr" && <HowPnrAlternateWorks />}
                 {searchType === "pnr" ? (
@@ -1666,10 +1669,8 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 ) : (
                   <HomeSeoContent t={t.seo} />
                 )}
-                <div className="mx-auto my-8 flex min-h-[250px] max-w-3xl items-center justify-center px-4 sm:px-6 lg:max-w-4xl">
-                  <HomeBannerAd zoneId="12090034" />
-                </div>
-              </>
+                <HomeBannerAd zoneId="12090034" />
+              </div>
             )}
           </div>
 
@@ -1690,10 +1691,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
           onClose={() => setMobileSheetOpen(false)}
           from={{
             query: fromQ,
-            onUserType: (q) => {
-              setFromQ(q);
-              setFromSt(null);
-            },
+            onUserType: handleFromUserType,
             value: fromSt,
             onSelect: (s) => {
               setFromSt(s);
@@ -1708,10 +1706,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
           }}
           to={{
             query: toQ,
-            onUserType: (q) => {
-              setToQ(q);
-              setToSt(null);
-            },
+            onUserType: handleToUserType,
             value: toSt,
             onSelect: (s) => {
               setToSt(s);

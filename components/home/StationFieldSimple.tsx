@@ -60,7 +60,7 @@ export function StationFieldSimple(props: {
       if (!wrapRef.current?.contains(e.target as Node)) onOpenChange(false);
     };
     document.addEventListener("mousedown", onDoc);
-    document.addEventListener("touchstart", onDoc);
+    document.addEventListener("touchstart", onDoc, { passive: true });
     return () => {
       document.removeEventListener("mousedown", onDoc);
       document.removeEventListener("touchstart", onDoc);
@@ -183,16 +183,15 @@ export function StationFieldSimple(props: {
             </li>
           )}
           {suggestions.map((s) => (
-            <li key={`${s.stationCode}-${s.stationName}`} role="option">
+            <li
+              key={`${s.stationCode}-${s.stationName}`}
+              role="option"
+              aria-selected={value?.stationCode === s.stationCode}
+            >
               <button
                 type="button"
                 className="block w-full px-4 py-2.5 text-left text-sm text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none touch-manipulation"
                 onMouseDown={(e) => e.preventDefault()}
-                onTouchEnd={(e) => {
-                  e.preventDefault();
-                  onSelect(s);
-                  onOpenChange(false);
-                }}
                 onClick={() => {
                   onSelect(s);
                   onOpenChange(false);

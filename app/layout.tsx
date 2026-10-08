@@ -14,7 +14,7 @@ const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
-  display: "swap",
+  display: "optional",
   preload: true,
   fallback: [
     "system-ui",
@@ -32,7 +32,7 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
-  display: "swap",
+  display: "optional",
   preload: true,
   fallback: [
     "ui-monospace",
@@ -160,6 +160,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MMNZJJZ6');`,
           }}
         />
+        <link rel="dns-prefetch" href="https://us.i.posthog.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <link rel="preconnect" href="https://us.i.posthog.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
@@ -185,7 +189,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <AnalyticsProvider>
           <div className="flex min-h-screen flex-col">
             <main className="flex-1 min-h-[75vh]">{children}</main>
-            <footer className="border-t border-slate-200 bg-slate-50 py-12 text-sm text-slate-600">
+            <footer className="border-t border-slate-200 bg-slate-50 py-12 text-sm text-slate-600 content-visibility-auto">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 <div>
                   <h3 className="font-bold text-slate-900 mb-4">LastBerth</h3>

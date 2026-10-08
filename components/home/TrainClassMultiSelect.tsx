@@ -77,7 +77,7 @@ function TrainClassDropdown({
       if (e.key === "Escape") setOpen(false);
     };
     document.addEventListener("mousedown", onDoc);
-    document.addEventListener("touchstart", onDoc);
+    document.addEventListener("touchstart", onDoc, { passive: true });
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("mousedown", onDoc);
