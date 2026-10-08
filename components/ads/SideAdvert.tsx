@@ -68,7 +68,8 @@ function useAdvertImpression({
     if (!el) return;
 
     const page =
-      pathname || (typeof window !== "undefined" ? window.location.pathname : "");
+      pathname ||
+      (typeof window !== "undefined" ? window.location.pathname : "");
 
     // Only fire once per page view
     if (lastTrackedPageRef.current === page) return;
@@ -98,7 +99,7 @@ function useAdvertImpression({
           recordImpression();
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0.05 },
     );
 
     observer.observe(el);
