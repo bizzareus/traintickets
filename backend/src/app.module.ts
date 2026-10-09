@@ -30,9 +30,15 @@ import { SplitBookingModule } from './split-booking/split-booking.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
 import { HealthModule } from './health/health.module';
 import { configModuleOptions } from './config/environment';
+import { ObserveModule } from './observe';
 
 @Module({
   imports: [
+    ObserveModule.forRoot({
+      appKey: process.env.OBSERVE_APP_KEY!,
+      appSecret: process.env.OBSERVE_APP_SECRET!,
+      serviceId: 'backend',
+    }),
     SentryModule.forRoot(),
     ConfigModule.forRoot(configModuleOptions),
     ThrottlerModule.forRoot([{ name: 'global', ttl: 60_000, limit: 120 }]),

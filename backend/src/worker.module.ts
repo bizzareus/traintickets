@@ -10,10 +10,16 @@ import { MonitoringModule } from './monitoring/monitoring.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { WhatsappModule } from './whatsapp/whatsapp.module';
 import { configModuleOptions } from './config/environment';
+import { ObserveModule } from './observe';
 
 /** Only this process registers scheduled jobs; shared state stays in the DB. */
 @Module({
   imports: [
+    ObserveModule.forRoot({
+      appKey: process.env.OBSERVE_APP_KEY!,
+      appSecret: process.env.OBSERVE_APP_SECRET!,
+      serviceId: 'backend',
+    }),
     SentryModule.forRoot(),
     ConfigModule.forRoot(configModuleOptions),
     MonitoringModule,

@@ -5,11 +5,13 @@ import { NestFactory } from '@nestjs/core';
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
+import { ObserveInstrument } from './observe';
 
 async function bootstrap() {
   // rawBody is required by the Razorpay webhook signature check.
   // bodyParser is set to false so we can configure a 50MB limit for ticket PDF uploads.
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    instrument: ObserveInstrument,
     rawBody: true,
     bodyParser: false,
   });
