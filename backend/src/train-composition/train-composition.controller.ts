@@ -1,7 +1,9 @@
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import { TrainCompositionService } from './train-composition.service';
 
 @Controller('api/train-composition')
+@Throttle({ global: { limit: 20, ttl: 60_000 } })
 export class TrainCompositionController {
   constructor(private readonly trainComposition: TrainCompositionService) {}
 
