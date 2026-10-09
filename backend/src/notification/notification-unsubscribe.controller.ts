@@ -12,8 +12,10 @@ import {
 import type { Request } from 'express';
 import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 import { NotificationUnsubscribeService } from './notification-unsubscribe.service';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('api/notifications')
+@Throttle({ global: { limit: 10, ttl: 60_000 } })
 export class NotificationUnsubscribeController {
   constructor(
     private readonly unsubscribeService: NotificationUnsubscribeService,
