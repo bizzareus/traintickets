@@ -71,3 +71,20 @@ test("getChartAlertErrorMessage triggers Sentry when payment system unavailable 
   }
 });
 
+test("chart alert pricing handles all common PNR travel classes", () => {
+  // AC classes
+  assert.equal(chartAlertPriceForClass("1A"), 25);
+  assert.equal(chartAlertPriceForClass("2A"), 25);
+  assert.equal(chartAlertPriceForClass("3A"), 25);
+  // Standard sleeper & chair classes
+  assert.equal(chartAlertPriceForClass("SL"), 10);
+  assert.equal(chartAlertPriceForClass("3E"), 10);
+  assert.equal(chartAlertPriceForClass("CC"), 10);
+  assert.equal(chartAlertPriceForClass("2S"), 10);
+  // Case & whitespace insensitive
+  assert.equal(chartAlertPriceForClass(" 3a "), 25);
+  assert.equal(chartAlertPriceForClass(" sl "), 10);
+  assert.equal(chartAlertPriceForClass(""), 10);
+  assert.equal(chartAlertPriceForClass(undefined), 10);
+});
+

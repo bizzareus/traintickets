@@ -8,6 +8,7 @@ RUN apk add --no-cache openssl libc6-compat
 
 COPY package*.json ./
 COPY prisma ./prisma/
+COPY patches ./patches/
 RUN npm ci
 
 COPY . .
@@ -35,6 +36,7 @@ ENV PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium-browser
 COPY package*.json ./
 COPY prisma ./prisma/
 COPY prisma.config.ts ./
+COPY patches ./patches/
 RUN npm ci --omit=dev && npx prisma generate
 
 COPY --from=builder /app/dist ./dist

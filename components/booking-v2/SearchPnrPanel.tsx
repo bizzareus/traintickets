@@ -11,6 +11,12 @@ import { formatPassengerStatusDisplay } from "@/components/booking-v2/alternateP
 import { PartyPopperConfetti } from "@/components/booking-v2/PartyPopperConfetti";
 import { TrainScheduleBottomSheet } from "@/components/booking-v2/TrainScheduleBottomSheet";
 import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
+import {
+  ChartAlertPaymentModal,
+  type ChartAlertPaymentModalJourney,
+} from "@/components/payments/ChartAlertPaymentModal";
+import { ChartAlertSuccessBox } from "@/components/payments/ChartAlertSuccessBox";
+import type { ChartAlertPaymentLink } from "@/lib/chart-alert-payments";
 import type {
   PnrPassengerStatus,
   PnrStatusResponse,
@@ -43,6 +49,13 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
   const [isAdminUser, setIsAdminUser] = useState(false);
   const [chartAlertOpen, setChartAlertOpen] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [payment, setPayment] = useState<{
+    link: ChartAlertPaymentLink;
+    ref: string;
+    journey: ChartAlertPaymentModalJourney;
+  } | null>(null);
+  const [subscribedAlertJourney, setSubscribedAlertJourney] =
+    useState<ChartAlertPaymentModalJourney | null>(null);
   const chartAlertShownForPnr = useRef<string | null>(null);
 
   // Schedule modal (opened from within AlternatePathContent leg cards)
@@ -140,6 +153,8 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
     setPnrForCta("");
     setChartAlertOpen(false);
     setShowCelebration(false);
+    setPayment(null);
+    setSubscribedAlertJourney(null);
     alt.reset();
 
     try {
@@ -379,26 +394,56 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
               <span className="text-white font-bold">{pnrData.Class}</span>
             </div>
           </div>
-          {IS_TICKET_ALERT_ENABLED && (
-            <div className="bg-blue-50 border-b border-blue-100 p-3">
-              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm transition flex items-center justify-center gap-2">
+          {subscribedAlertJourney ? (
+            <div className="border-b border-emerald-100 bg-emerald-50 p-3">
+              <div className="flex items-center gap-2 text-xs font-semibold text-emerald-900 sm:text-sm">
                 <svg
-                  className="w-5 h-5"
+                  className="h-4 w-4 shrink-0 text-emerald-600"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  strokeWidth={2}
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                Get Ticket Alert (Chart expected at {originChartTime})
-              </button>
+                <span>
+                  Chart alert active for {subscribedAlertJourney.trainNumber}!
+                  We&apos;ll notify you when charting finishes (around{" "}
+                  {originChartTime}).
+                </span>
+              </div>
             </div>
+          ) : (
+            (!effectiveChartPrepared &&
+              (hasWaitlisted || IS_TICKET_ALERT_ENABLED)) && (
+              <div className="bg-blue-50 border-b border-blue-100 p-3">
+                <button
+                  type="button"
+                  onClick={() => setChartAlertOpen(true)}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm transition flex items-center justify-center gap-2"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                    />
+                  </svg>
+                  Get Ticket Alert (Chart expected at {originChartTime})
+                </button>
+              </div>
+            )
           )}
           <div className="p-4 sm:p-5">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-b border-slate-100 pb-4 mb-4">
@@ -610,29 +655,61 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
               </button>
             </div>
 
-            <p className="mb-4 text-sm leading-relaxed text-slate-600">
-              Your ticket is still on the waiting list. When the reservation
-              chart is prepared (around{" "}
-              <span className="font-semibold text-slate-800">
-                {originChartTime}
-              </span>
-              ), Indian Railways releases unused quota seats for booking.
-              Subscribe to chart alerts and we&apos;ll notify you the moment new
-              seats become available, so you can book a confirmed ticket.
-            </p>
+            {subscribedAlertJourney ? (
+              <div className="mt-4">
+                <ChartAlertSuccessBox journey={subscribedAlertJourney} compact />
+              </div>
+            ) : (
+              <>
+                <p className="mb-4 text-sm leading-relaxed text-slate-600">
+                  Your ticket is still on the waiting list. When the reservation
+                  chart is prepared (around{" "}
+                  <span className="font-semibold text-slate-800">
+                    {originChartTime}
+                  </span>
+                  ), Indian Railways releases unused quota seats for booking.
+                  Subscribe to chart alerts and we&apos;ll notify you the moment new
+                  seats become available, so you can book a confirmed ticket.
+                </p>
 
-            <EntireJourneyAlertCTA
-              trainNumber={pnrData.TrainNo}
-              trainName={pnrData.TrainName}
-              trainStartDate={journeyDateYmd}
-              journeyDate={journeyDateYmd}
-              classCode={pnrData.Class || "SL"}
-              defaultOrigin={pnrData.From}
-              defaultDestination={pnrData.To}
-              originChartTime={originChartTime}
-            />
+                <EntireJourneyAlertCTA
+                  trainNumber={pnrData.TrainNo}
+                  trainName={pnrData.TrainName}
+                  trainStartDate={journeyDateYmd}
+                  journeyDate={journeyDateYmd}
+                  classCode={pnrData.Class || "SL"}
+                  defaultOrigin={pnrData.From}
+                  defaultDestination={pnrData.To}
+                  originChartTime={originChartTime}
+                  initialExpanded={true}
+                  onPaymentCreated={(p) => {
+                    setChartAlertOpen(false);
+                    setPayment(p);
+                  }}
+                  onSuccess={(journey) => {
+                    setSubscribedAlertJourney(journey);
+                    setChartAlertOpen(false);
+                  }}
+                />
+              </>
+            )}
           </div>
         </div>
+      )}
+
+      {payment && (
+        <ChartAlertPaymentModal
+          open={Boolean(payment)}
+          onClose={() => setPayment(null)}
+          payment={payment.link}
+          paymentRef={payment.ref}
+          journey={payment.journey}
+          source="search_panel"
+          onPaid={(paidJourney) => {
+            setSubscribedAlertJourney(paidJourney);
+            setPayment(null);
+          }}
+        />
       )}
 
       <TrainScheduleBottomSheet

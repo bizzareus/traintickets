@@ -443,6 +443,113 @@ integration('chart notification PostgreSQL contract', () => {
       expect(notification.notifyUser).not.toHaveBeenCalled();
     }));
 
+  it.each(['UTC', 'Asia/Kolkata'])(
+    'aggregates chart collections once per payment using IST payment dates with DB timezone %s',
+    async (timezone) =>
+      rollback(async (tx) => {
+        await tx.$queryRaw`SELECT set_config('TimeZone', ${timezone}, true)`;
+        const task = await fixture(tx);
+        await tx.journeyMonitoringRequest.create({
+          data: {
+            id: task.journeyRequestId,
+            trainNumber: task.trainNumber,
+            fromStationCode: task.fromStationCode,
+            toStationCode: task.toStationCode,
+            journeyDate: task.journeyDate,
+            classCode: '3A',
+            createdAt: new Date('2099-09-27T18:29:59.999Z'),
+          },
+        });
+        await tx.chartTimeAvailabilityTask.create({
+          data: {
+            journeyRequestId: task.journeyRequestId,
+            trainNumber: task.trainNumber,
+            fromStationCode: task.fromStationCode,
+            toStationCode: task.toStationCode,
+            stationCode: task.stationCode,
+            journeyDate: task.journeyDate,
+            chartAt: task.chartAt,
+            chartNumber: 2,
+          },
+        });
+        const paidAt = new Date('2099-09-27T18:30:00Z');
+        const payments: Array<
+          Partial<Prisma.ChartAlertPaymentCreateManyInput>
+        > = [
+          { amount: 25, journeyRequestId: task.journeyRequestId },
+          { amount: 25 },
+          { amount: 7, paidAt: new Date('2099-09-28T18:29:59.999Z') },
+          { amount: 11, paidAt: new Date('2099-09-28T18:30:00Z') },
+          {
+            amount: 10,
+            paidAt: new Date('2099-09-30T18:30:00Z'),
+            refundStatus: 'SUCCEEDED',
+          },
+          { status: 'PENDING' },
+          { status: 'FAILED' },
+          { currency: 'USD' },
+          { paidAt: null },
+          { paidAt: new Date('2099-09-26T18:29:59.999Z') },
+          { paidAt: new Date('2099-10-01T18:30:00Z') },
+        ];
+        await tx.chartAlertPayment.createMany({
+          data: payments.map((payment) => ({
+            amount: 999,
+            status: 'PAID',
+            currency: 'INR',
+            journeyPayload: {},
+            createdAt: new Date('2099-09-01T00:00:00Z'),
+            paidAt,
+            ...payment,
+          })),
+        });
+        const service = new JourneyTaskService(
+          tx as never,
+          {} as never,
+          {} as never,
+          {} as never,
+          {} as never,
+          {} as never,
+          {} as never,
+        );
+        for (const [groupBy, startDate, endDate, expected] of [
+          ['day', '2099-09-28', '2099-09-28', [['2099-09-28', 0, 57]]],
+          [
+            'week',
+            '2099-09-27',
+            '2099-10-01',
+            [
+              ['2099-09-21', 1, 0],
+              ['2099-09-28', 0, 78],
+            ],
+          ],
+          [
+            'month',
+            '2099-09-27',
+            '2099-10-01',
+            [
+              ['2099-09-01', 1, 68],
+              ['2099-10-01', 0, 10],
+            ],
+          ],
+          ['week', '2098-01-01', '2098-01-01', []],
+        ] as const) {
+          const result = await service.getNotificationsAnalytics(
+            groupBy,
+            startDate,
+            endDate,
+          );
+          expect(
+            result.stats.map((row) => [
+              row.date,
+              row.totalNotificationsCreated,
+              row.chartSubscriptionAmountCollected,
+            ]),
+          ).toEqual(expected);
+        }
+      }),
+  );
+
   it('deduplicates the same event permanently while allowing the second chart and the other channel', async () =>
     rollback(async (tx) => {
       const service = new NotificationDeduplicationService(tx as never);

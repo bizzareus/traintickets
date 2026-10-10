@@ -35,6 +35,7 @@ type GroupByMode = "day" | "week" | "month";
 type DailyStat = {
   date: string;
   totalNotificationsCreated: number;
+  chartSubscriptionAmountCollected: number;
   totalDelivered: number;
   whatsappDelivered: number;
   emailDelivered: number;
@@ -280,7 +281,6 @@ function NotificationsAnalyticsSection() {
 
   // Tooltip state
   const [hoveredBar, setHoveredBar] = useState<DailyStat | null>(null);
-  const [hoverPos, setHoverPos] = useState<{ x: number; y: number } | null>(null);
 
   // Preset Date range calculation
   useEffect(() => {
@@ -300,6 +300,7 @@ function NotificationsAnalyticsSection() {
   const fetchAnalytics = useCallback(async () => {
     try {
       setLoading(true);
+      setHoveredBar(null);
       const params = new URLSearchParams();
       params.append("groupBy", groupBy);
       if (startDate) params.append("startDate", startDate);
@@ -333,13 +334,13 @@ function NotificationsAnalyticsSection() {
     fetchAnalytics();
   }, [fetchAnalytics]);
 
-  const maxVal = useMemo(() => {
-    if (!data.length) return 10;
-    const max = Math.max(
-      ...data.map((d) => Math.max(d.totalNotificationsCreated, d.totalDelivered || 0))
-    );
-    return max === 0 ? 10 : Math.ceil(max * 1.15);
-  }, [data]);
+  const chartMaxima = useMemo(() => ({
+    created: Math.max(1, ...data.map((d) => d.totalNotificationsCreated)),
+    collected: Math.max(
+      1,
+      ...data.map((d) => d.chartSubscriptionAmountCollected ?? 0)
+    ),
+  }), [data]);
 
   const formatBarLabel = (dateStr: string) => {
     if (groupBy === "month") return moment(dateStr).format("MMM YY");
@@ -530,20 +531,23 @@ function NotificationsAnalyticsSection() {
         <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div>
             <h2 className="text-base font-bold text-slate-900">
-              {periodTitle} Created vs. Delivered Notifications
+              {periodTitle}{" "}
+              Notifications Created &amp; Chart Subscription Collections
             </h2>
-            <span className="text-xs text-slate-400">Hover over bars for details</span>
+            <p className="mt-1 text-xs text-slate-500">
+              Gross collections by payment date (IST), before refunds. Each series uses its own scale.
+            </p>
           </div>
 
           {/* Chart Legend */}
-          <div className="flex items-center gap-4 text-xs font-semibold">
+          <div className="flex flex-wrap items-center gap-4 text-xs font-semibold">
             <div className="flex items-center gap-1.5">
               <span className="h-3 w-3 rounded-sm bg-indigo-500" />
-              <span className="text-slate-700">Created</span>
+              <span className="whitespace-nowrap text-slate-700">Created (left)</span>
             </div>
             <div className="flex items-center gap-1.5">
               <span className="h-3 w-3 rounded-sm bg-emerald-500" />
-              <span className="text-slate-700">Delivered</span>
+              <span className="whitespace-nowrap text-slate-700">Collected ₹ (right)</span>
             </div>
           </div>
         </div>
@@ -564,84 +568,93 @@ function NotificationsAnalyticsSection() {
           </div>
         ) : data.length === 0 ? (
           <div className="flex h-72 items-center justify-center text-sm text-slate-400">
-            No notification data found for the selected date range and grouping.
+            No notifications or chart subscription payments found for the selected date range and grouping.
           </div>
         ) : (
-          <div className="relative">
-            {/* SVG Grouped Bar Chart */}
-            <div className="relative h-72 w-full overflow-x-auto">
-              <div className="flex h-full min-w-full items-end gap-3 pt-8 pb-8">
-                {data.map((item) => {
-                  const createdHeight = Math.max(
-                    item.totalNotificationsCreated > 0 ? 4 : 0,
-                    Math.round((item.totalNotificationsCreated / maxVal) * 100)
-                  );
-                  const deliveredHeight = Math.max(
-                    item.totalDelivered > 0 ? 4 : 0,
-                    Math.round((item.totalDelivered / maxVal) * 100)
-                  );
-                  const isHovered = hoveredBar?.date === item.date;
+          <div>
+            <div className="mb-2 flex justify-between text-[10px] font-semibold">
+              <span className="text-indigo-600">Notifications</span>
+              <span className="text-emerald-700">Amount collected (₹)</span>
+            </div>
+            <div className="flex h-64 gap-2">
+              <div className="flex shrink-0 flex-col justify-between pb-8 text-[10px] tabular-nums text-indigo-600">
+                <span>{chartMaxima.created.toLocaleString("en-IN")}</span>
+                <span>0</span>
+              </div>
+              <div className="min-w-0 flex-1 overflow-x-auto">
+                <div className="flex h-full min-w-full items-end gap-3">
+                  {data.map((item) => {
+                    const createdHeight = Math.max(
+                      item.totalNotificationsCreated > 0 ? 2 : 0,
+                      (item.totalNotificationsCreated / chartMaxima.created) * 100
+                    );
+                    const amountCollected = item.chartSubscriptionAmountCollected ?? 0;
+                    const collectedHeight = Math.max(
+                      amountCollected > 0 ? 2 : 0,
+                      (amountCollected / chartMaxima.collected) * 100
+                    );
+                    const isHovered = hoveredBar?.date === item.date;
 
-                  return (
-                    <div
-                      key={item.date}
-                      className="group relative flex flex-1 flex-col items-center h-full justify-end"
-                      onMouseEnter={(e) => {
-                        setHoveredBar(item);
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        setHoverPos({ x: rect.left + rect.width / 2, y: rect.top });
-                      }}
-                      onMouseLeave={() => {
-                        setHoveredBar(null);
-                        setHoverPos(null);
-                      }}
-                    >
-                      {/* Bar Value Top Label */}
-                      <span
-                        className={`mb-1 text-[10px] font-bold transition ${
-                          isHovered ? "text-indigo-600 scale-110" : "text-slate-500"
-                        }`}
+                    return (
+                      <button
+                        type="button"
+                        key={item.date}
+                        className="group relative flex h-full min-w-[48px] flex-1 flex-col items-center justify-end rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-500"
+                        aria-label={`${formatTooltipDate(item.date)}: ${item.totalNotificationsCreated} notifications created, ₹${amountCollected.toLocaleString("en-IN")} collected from chart subscriptions`}
+                        onMouseEnter={() => setHoveredBar(item)}
+                        onMouseLeave={() => setHoveredBar(null)}
+                        onFocus={() => setHoveredBar(item)}
+                        onBlur={() => setHoveredBar(null)}
+                        onClick={() => setHoveredBar(item)}
+                        onKeyDown={(event) => {
+                          if (event.key === "Escape") setHoveredBar(null);
+                        }}
                       >
-                        {item.totalNotificationsCreated}
-                      </span>
+                        <svg
+                          viewBox="0 0 44 100"
+                          preserveAspectRatio="none"
+                          aria-hidden="true"
+                          className="min-h-0 w-11 flex-1 overflow-visible"
+                        >
+                          <rect
+                            x="3"
+                            y={100 - createdHeight}
+                            width="16"
+                            height={createdHeight}
+                            rx="2"
+                            className={isHovered ? "fill-indigo-600" : "fill-indigo-500"}
+                          />
+                          <rect
+                            x="25"
+                            y={100 - collectedHeight}
+                            width="16"
+                            height={collectedHeight}
+                            rx="2"
+                            className={isHovered ? "fill-emerald-600" : "fill-emerald-500"}
+                          />
+                        </svg>
 
-                      {/* Grouped Bars Container */}
-                      <div className="w-full flex-1 flex items-end justify-center gap-1">
-                        {/* Created Bar */}
-                        <div
-                          style={{ height: `${createdHeight}%` }}
-                          className={`w-full max-w-[18px] rounded-t-md transition-all duration-200 ${
-                            isHovered
-                              ? "bg-indigo-600 shadow-md"
-                              : "bg-indigo-500/85 hover:bg-indigo-600"
-                          }`}
-                        />
-                        {/* Delivered Bar */}
-                        <div
-                          style={{ height: `${deliveredHeight}%` }}
-                          className={`w-full max-w-[18px] rounded-t-md transition-all duration-200 ${
-                            isHovered
-                              ? "bg-emerald-600 shadow-md"
-                              : "bg-emerald-500/85 hover:bg-emerald-600"
-                          }`}
-                        />
-                      </div>
-
-                      {/* X Axis Label */}
-                      <span className="mt-2 text-[10px] font-medium text-slate-400 group-hover:text-slate-700 whitespace-nowrap">
-                        {formatBarLabel(item.date)}
-                      </span>
-                    </div>
-                  );
-                })}
+                        {/* X Axis Label */}
+                        <span className="flex h-8 shrink-0 items-end whitespace-nowrap text-[10px] font-medium text-slate-500 group-hover:text-slate-700">
+                          {formatBarLabel(item.date)}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="flex shrink-0 flex-col justify-between pb-8 text-right text-[10px] tabular-nums text-emerald-700">
+                <span>₹{chartMaxima.collected.toLocaleString("en-IN")}</span>
+                <span>₹0</span>
               </div>
             </div>
+            <p className="mt-3 text-xs text-slate-500">Hover, focus or tap a period for details.</p>
 
             {/* Hover Tooltip Popup */}
-            {hoveredBar && hoverPos && (
+            {hoveredBar && (
               <div
-                className="fixed z-50 pointer-events-none -translate-x-1/2 -translate-y-full mb-2 rounded-xl border border-slate-800 bg-slate-900 p-3 text-xs text-white shadow-xl transition-all min-w-[220px]"
-                style={{ left: hoverPos.x, top: hoverPos.y }}
+                className="pointer-events-none absolute right-4 top-24 z-10 min-w-[220px] max-w-[calc(100%-2rem)] rounded-xl border border-slate-800 bg-slate-900 p-3 text-xs text-white shadow-xl"
+                aria-hidden="true"
               >
                 <div className="font-bold text-slate-200 border-b border-slate-800 pb-1.5">
                   {formatTooltipDate(hoveredBar.date)}
@@ -654,14 +667,10 @@ function NotificationsAnalyticsSection() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-slate-400">Delivered:</span>
-                    <span className="font-bold text-emerald-400">
-                      {hoveredBar.totalDelivered} ({hoveredBar.deliveryRatePct}%)
+                    <span className="text-slate-400">Chart subscriptions:</span>
+                    <span className="font-bold tabular-nums text-emerald-400">
+                      ₹{(hoveredBar.chartSubscriptionAmountCollected ?? 0).toLocaleString("en-IN")}
                     </span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4 text-[10px] text-slate-400 pl-2">
-                    <span>• WhatsApp: {hoveredBar.whatsappDelivered || 0}</span>
-                    <span>• Email: {hoveredBar.emailDelivered || 0}</span>
                   </div>
                   <div className="flex items-center justify-between gap-4 border-t border-slate-800 pt-1">
                     <span className="text-slate-400">Unique Users:</span>

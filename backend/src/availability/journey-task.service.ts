@@ -1844,13 +1844,20 @@ export class JourneyTaskService {
     startDate?: string,
     endDate?: string,
   ) {
-    const periodSql =
-      groupBy === 'week'
-        ? Prisma.sql`DATE_TRUNC('week', jmr.created_at AT TIME ZONE 'Asia/Kolkata')::date::text`
-        : groupBy === 'month'
-          ? Prisma.sql`DATE_TRUNC('month', jmr.created_at AT TIME ZONE 'Asia/Kolkata')::date::text`
-          : Prisma.sql`DATE(jmr.created_at AT TIME ZONE 'Asia/Kolkata')::text`;
+    const start = startDate
+      ? DateTime.fromISO(startDate, { zone: 'Asia/Kolkata' })
+          .startOf('day')
+          .toJSDate()
+      : null;
+    const end = endDate
+      ? DateTime.fromISO(endDate, { zone: 'Asia/Kolkata' })
+          .startOf('day')
+          .plus({ days: 1 })
+          .toJSDate()
+      : null;
 
+    // Payments are separate events so multiple chart tasks cannot multiply revenue.
+    // Prisma timestamps store UTC; group both event streams into IST periods.
     const rawRows = await this.prisma.$queryRaw<
       Array<{
         date: string;
@@ -1860,27 +1867,32 @@ export class JourneyTaskService {
         email_delivered: number;
         unique_users: number;
         unique_trains_monitored: number;
+        chart_subscription_amount_collected: bigint;
       }>
     >`
-      SELECT 
-        ${periodSql} AS date,
-        COUNT(DISTINCT jmr.id)::int AS total_notifications_created,
-        COUNT(DISTINCT CASE WHEN ctat.email_notified_at IS NOT NULL OR ctat.whatsapp_notified_at IS NOT NULL THEN jmr.id END)::int AS total_delivered,
-        COUNT(DISTINCT CASE WHEN ctat.whatsapp_notified_at IS NOT NULL THEN jmr.id END)::int AS whatsapp_delivered,
-        COUNT(DISTINCT CASE WHEN ctat.email_notified_at IS NOT NULL THEN jmr.id END)::int AS email_delivered,
-        COUNT(DISTINCT jmr.monitoring_contact_id)::int AS unique_users,
-        COUNT(DISTINCT jmr.train_number)::int AS unique_trains_monitored
-      FROM "JourneyMonitoringRequest" jmr
-      LEFT JOIN "ChartTimeAvailabilityTask" ctat ON ctat.journey_request_id = jmr.id
-      ${
-        startDate && endDate
-          ? Prisma.sql`WHERE jmr.created_at >= ${startDate}::timestamp AND jmr.created_at <= (${endDate} || ' 23:59:59')::timestamp`
-          : startDate
-            ? Prisma.sql`WHERE jmr.created_at >= ${startDate}::timestamp`
-            : endDate
-              ? Prisma.sql`WHERE jmr.created_at <= (${endDate} || ' 23:59:59')::timestamp`
-              : Prisma.empty
-      }
+      WITH activity AS (
+        SELECT id AS request_id, created_at AS occurred_at,
+          monitoring_contact_id, train_number, 0 AS collected_amount
+        FROM "JourneyMonitoringRequest"
+        UNION ALL
+        SELECT NULL, paid_at, NULL, NULL, amount
+        FROM chart_alert_payment
+        WHERE status = 'PAID' AND currency = 'INR' AND paid_at IS NOT NULL
+      )
+      SELECT
+        DATE_TRUNC(${groupBy}, a.occurred_at AT TIME ZONE 'UTC' AT TIME ZONE 'Asia/Kolkata')::date::text AS date,
+        COUNT(DISTINCT a.request_id)::int AS total_notifications_created,
+        COUNT(DISTINCT CASE WHEN ctat.email_notified_at IS NOT NULL OR ctat.whatsapp_notified_at IS NOT NULL THEN a.request_id END)::int AS total_delivered,
+        COUNT(DISTINCT CASE WHEN ctat.whatsapp_notified_at IS NOT NULL THEN a.request_id END)::int AS whatsapp_delivered,
+        COUNT(DISTINCT CASE WHEN ctat.email_notified_at IS NOT NULL THEN a.request_id END)::int AS email_delivered,
+        COUNT(DISTINCT a.monitoring_contact_id)::int AS unique_users,
+        COUNT(DISTINCT a.train_number)::int AS unique_trains_monitored,
+        SUM(a.collected_amount) AS chart_subscription_amount_collected
+      FROM activity a
+      LEFT JOIN "ChartTimeAvailabilityTask" ctat ON ctat.journey_request_id = a.request_id
+      WHERE TRUE
+        ${start ? Prisma.sql`AND a.occurred_at >= ${start}` : Prisma.empty}
+        ${end ? Prisma.sql`AND a.occurred_at < ${end}` : Prisma.empty}
       GROUP BY 1
       ORDER BY date ASC
     `;
@@ -1922,6 +1934,9 @@ export class JourneyTaskService {
       return {
         date: row.date,
         totalNotificationsCreated: created,
+        chartSubscriptionAmountCollected: Number(
+          row.chart_subscription_amount_collected,
+        ),
         totalDelivered: delivered,
         whatsappDelivered: whatsapp,
         emailDelivered: email,
