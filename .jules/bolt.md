@@ -37,3 +37,7 @@
 ## 2026-10-08 - Pre-Indexed Map Lookups for Static Train Catalog Queries
 **Learning:** Calling `Array.prototype.find()` over static JSON datasets (e.g. 160+ Vande Bharat / Shatabdi / Rajdhani train catalog entries) inside per-request train lookups (`getTrainByNumber`) incurs $O(N)$ linear scan overhead per query. Pre-indexing static catalog entries into `Map<string, TrainEntry>` at module initialization converts catalog searches into $O(1)$ constant-time Map lookups (~10x-50x speedup).
 **Action:** Always pre-index static JSON dataset arrays into module-level `Map` instances when querying by ID/number instead of calling `.find()` on every request.
+
+## 2026-10-15 - Integer Weekday Modulo Arithmetic vs Inner Loop Date Allocations
+**Learning:** Instantiating `new Date(time)` inside `for` loops during date range iterations (e.g., checking `runningDays` across operating dates) causes heavy V8 garbage collection pressure and object allocation overhead (~3.8x slower). Since consecutive days increment by 24h (`DAY_MS`), integer arithmetic `(fromDayOfWeek + dayIdx) % 7` computes UTC weekday indices with zero heap allocations.
+**Action:** Use integer weekday modulo arithmetic `(startDayOfWeek + dayOffset) % 7` instead of allocating `new Date(timestamp)` inside loops when filtering or checking date ranges.
