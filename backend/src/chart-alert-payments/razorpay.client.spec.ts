@@ -70,5 +70,11 @@ describe('verifyRazorpayWebhookSignature', () => {
     expect(
       verifyRazorpayWebhookSignature(undefined as never, valid, secret),
     ).toBe(false);
+    expect(
+      verifyRazorpayWebhookSignature(Buffer.from(''), valid, secret),
+    ).toBe(false);
+    expect(
+      verifyRazorpayWebhookSignature('', valid, secret),
+    ).toBe(false);
   });
 });
