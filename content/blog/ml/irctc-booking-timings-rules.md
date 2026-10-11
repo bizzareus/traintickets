@@ -1,194 +1,226 @@
 ---
-title: "IRCTC Maintenance Time Tonight (11:45 PM–12:20 AM Rules 2026)"
-description: "IRCTC night maintenance runs daily from 11:45 PM to 12:20 AM IST. Check complete server downtime hours, Tatkal opening slots, and failed booking refund rules."
+title: "IRCTC ബുക്കിംഗ് സമയങ്ങൾ: പരിപാലന സമയം, താത്കാൽ & 2026 നിയമങ്ങൾ"
+description: "IRCTC ബുക്കിംഗ് രാത്രി 12:20 AM മുതൽ 11:45 PM വരെ പ്രവർത്തിക്കുന്നു, രാത്രി പരിപാലന സമയത്ത് (11:45 PM–12:20 AM). 8 AM ARP, താത്കാൽ 10/11 AM സ്ലോട്ടുകൾ, ഫെയിൽഡ് പേയ്മെന്റ് റീഫണ്ട് നിയമങ്ങൾ പരിശോധിക്കുക."
 date: "2026-06-18"
-updated: "2026-09-09"
+updated: "2026-10-11"
 tags:
   - train booking
   - irctc
   - irctc timings
   - irctc maintenance time
-  - irctc server down time
+  - irctc booking timings
+  - irctc opening time
   - railway booking timings
 ---
 
-> **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
+> **ഈ ഉത്സവകാലത്ത് ട്രെയിനിൽ യാത്ര ചെയ്യാൻ പോകുന്നുണ്ടോ?** സ്ഥിരീകരിത സീറ്റില്ലാതെ പിടിക്കപ്പെടാൻ അനുവദിക്കരുത്. LastBerth-ൽ ലൈവ് ലഭ്യത, ഇടക്കാല ഒഴിവുകൾ, ഉറപ്പുള്ള സ്പ്ലിറ്റ്-ബർത്ത് ഓപ്ഷനുകൾ പരിശോധിക്കുക:
+> - [Search Delhi ➔ Mumbai Confirmed Seats](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central)
+> - [Search Delhi ➔ Patna Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
+> - [Search Mumbai ➔ Danapur Express Seats](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
+> - [Search Bengaluru ➔ Chennai Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central)
+> - [Search Howrah ➔ Puri Holiday Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri)
 
 ## TL;DR
 
-- **Daily Night Maintenance:** IRCTC servers shut down daily from **11:45 PM to 12:20 AM IST (23:45 to 00:20)** for a mandatory 35-minute batch database backup and banking payment reconciliation.
-- **Service Suspension:** All online ticket booking, cancellations, PNR status lookups, and e-wallet transactions are completely paused during this 35-minute window across both the website and mobile app.
-- **Morning Reservation Slots:** General 60-day Advance Reservation Period (ARP) opens daily at **8:00 AM IST** (Aadhaar authentication mandatory on opening day); AC Tatkal opens at **10:00 AM IST**; Non-AC Tatkal opens at **11:00 AM IST**.
-- **Failed Midnight Transactions:** If money is deducted during the maintenance cutoff without generating a PNR, IRCTC automatically refunds 100% of the debited amount to your original payment mode within 3 to 5 business days.
+IRCTC ടിക്കറ്റിംഗ് ദിവസവും **12:20 AM മുതൽ 11:45 PM IST** വരെ പ്രവർത്തിക്കുന്നു, **11:45 PM മുതൽ 12:20 AM IST (23:45 മുതൽ 00:20)** വരെ നിർബന്ധമായ 35-മിനിറ്റ് രാത്രി സർവർ പരിപാലന സമയത്ത് അടച്ചിടുന്നു. രാവിലെ 60-ദിവസത്തെ അഡ്വാൻസ് റിസർവേഷൻ പീരിയഡ് (ARP) ബുക്കിംഗുകൾ **8:00 AM IST**-ന് (ദിവസം 1-ൽ ആധാർ-അംഗീകരിച്ച പ്രൊഫൈലുകൾക്ക് മാത്രം) തുറക്കുന്നു, അതേസമയം താത്കാൽ **AC** ക്ലാസുകൾക്കായി **10:00 AM IST**-ൽ, **Non-AC** ക്ലാസുകൾക്കായി **11:00 AM IST**-ൽ തുറക്കുന്നു. മിഡ്നൈറ്റ് പരിപാലന സമയത്ത് പണം കത്തിച്ചാൽ, PNR ഉണ്ടാക്കാതെ, IRCTC 3 മുതൽ 5 ബിസിനസ് ദിവസത്തിനുള്ളിൽ 100% റീഫണ്ട് സ്വയം പ്രോസസ്സ് ചെയ്യുന്നു. ട്രെയിനുകൾ REGRET അല്ലെങ്കിൽ ഭാരമുള്ള കാത്തിരിപ്പുകൾ കാണിക്കുമ്പോൾ, [Finding Smart Seats](/) താത്കാൽ മാർക്കപ്പ് നൽകാതെ തന്നെ ഒരേ ട്രെയിനിൽ ഉറപ്പുള്ള തുടർച്ചയായ സ്പ്ലിറ്റ് ടിക്കറ്റുകൾ കണ്ടെത്തുന്നു.
 
 ---
 
-## What Is the IRCTC Night Maintenance Time & Server Downtime Window?
+## IRCTC രാത്രി പരിപാലന സമയം ഇന്ന് എപ്പോഴാണ്?
 
-**The daily IRCTC night maintenance time runs from 11:45 PM to 12:20 AM IST (23:45 to 00:20). During this mandatory 35-minute server downtime window, all online ticket bookings, cancellations, PNR status queries, and e-wallet transactions are completely suspended across the IRCTC website and Next-Gen mobile application.**
+**ദിവസവും IRCTC രാത്രി പരിപാലന സമയം 11:45 PM മുതൽ 12:20 AM IST (23:45 മുതൽ 00:20) വരെ പ്രവർത്തിക്കുന്നു. ഈ 35-മിനിറ്റ് പരിപാലന ബ്ലാക്കൗട്ടിൽ, IRCTC വെബ്സൈറ്റിലും റെയിൽ കണക്ട് മൊബൈൽ ആപ്ലിക്കേഷനിലും എല്ലാ ഓൺലൈൻ ടിക്കറ്റ് ബുക്കിംഗുകൾ, റദ്ദാക്കലുകൾ, PNR സ്ഥിതി പരിശോധിക്കൽ, പേയ്മെന്റ് ഗേറ്റ്‌വേ ചെക്ക്ഔട്ട് എന്നിവ പൂര്‍ണമായും നിർത്തിവയ്ക്കുന്നു.**
 
-This 35-minute midnight pause is an architectural requirement for Indian Railways IT infrastructure managed by the Centre for Railway Information Systems (CRIS). Handling millions of passenger queries, seat searches, and financial transactions each day, the central database must pause active connections to execute critical data syncs and maintain transactional integrity.
+ഈ നിർബന്ധമായ മിഡ്നൈറ്റ് ഇടവേള ഇന്ത്യൻ റെയിൽവേ IT അടിസ്ഥാനസൗകര്യത്തിന് ഒരു ആർക്കിടെക്ചറൽ ആവശ്യമാണ്, ഇത് റെയിൽവേ വിവര സമ്പ്രദായങ്ങൾക്കായുള്ള കേന്ദ്രം (CRIS) കൈകാര്യം ചെയ്യുന്നു. ദിവസവും ദശലക്ഷം യാത്രക്കാരുടെ ചോദ്യങ്ങൾ, സീറ്റ് തിരച്ചിലുകൾ, ബാങ്കിംഗ് സെറ്റൽമെന്റുകൾ എന്നിവ കൈകാര്യം ചെയ്യുമ്പോൾ, കേന്ദ്ര ഡാറ്റാബേസ് ഉപയോക്തൃ-മുഖാമുഖ ബന്ധങ്ങൾ നിർത്തുന്നു, നിർണായക ബാച്ച് പുനഃസമന്വയം നടത്താൻ, ഡാറ്റാ സമഗ്രത നിലനിർത്താൻ.
 
-During the night maintenance window:
-- **No Logins or Availability Checks:** Users cannot log into IRCTC accounts, verify seat availability, or view current coach charts.
-- **Booking & Cancellation Disabled:** Neither reserved e-tickets nor cancellations can be processed online.
-- **Cached Schedules Only:** Static train time tables and station lists remain readable, but any dynamic query requiring real-time PRS server connectivity will fail.
+രാത്രി പരിപാലന സമയത്ത്:
+- **ലോഗിൻ അല്ലെങ്കിൽ ലഭ്യത പരിശോധിക്കൽ ഇല്ല:** ഉപയോക്താക്കൾ IRCTC ഉപയോക്തൃ അക്കൗണ്ടുകളിൽ ലോഗിൻ ചെയ്യാൻ, ലൈവ് സീറ്റ് ലഭ്യത തിരച്ചിൽ ചെയ്യാൻ, അല്ലെങ്കിൽ സജീവ ട്രെയിൻ ബർത്ത് ചാർട്ടുകൾ കാണാൻ കഴിയില്ല.
+- **ബുക്കിംഗ്, റദ്ദാക്കൽ നിർത്തിവയ്ക്കുന്നു:** റിസർവുചെയ്ത ഇ-ടിക്കറ്റുകൾക്കും റദ്ദാക്കലുകൾക്കും ഓൺലൈനിൽ പ്രോസസ്സ് ചെയ്യാൻ കഴിയില്ല.
+- **കാഷ്ഡ് ടൈംടേബിളുകൾ മാത്രം:** സ്റ്റാറ്റിക് ട്രെയിൻ ടൈംടേബിളുകളും സ്റ്റേഷൻ ലിസ്റ്റുകളും വായിക്കാൻ കഴിയുന്നുവെങ്കിലും, യാഥാർത്ഥ്യ PRS സർവർ കണക്ഷൻ ആവശ്യമായ ഏതെങ്കിലും ഡൈനാമിക് ചോദ്യങ്ങൾ പരാജയപ്പെടുന്നു.
+- **PNR സ്ഥിതി അപ്ഡേറ്റുകൾ ഇല്ല:** യാത്രക്കാരുടെ റിസർവേഷൻ സിസ്റ്റം (PRS) സർവറുകൾ പരിപാലന സമയത്ത് സ്ഥിതി പോളിംഗ് സ്വീകരിക്കുന്നില്ല.
 
-If you attempt to finalize a booking at 11:44 PM and your payment gateway transaction settles at 11:45 PM, the system rejects the booking. Your money is safe: IRCTC flags the transaction as an unassigned debit and automatically initiates a full refund.
+നിങ്ങൾ 11:44 PM-ന് ഒരു ബുക്കിംഗ് പൂർത്തിയാക്കാൻ ശ്രമിക്കുമ്പോൾ, നിങ്ങളുടെ പേയ്മെന്റ് ഗേറ്റ്‌വേ ഇടപാട് 11:45 PM-ന് സെറ്റിൽ ചെയ്യുമ്പോൾ, സിസ്റ്റം ബുക്കിംഗ് തള്ളുന്നു. നിങ്ങളുടെ പണം പൂര്‍ണമായും സുരക്ഷിതമാണ്: IRCTC ഇടപാടിനെ ഒരു അസംഘടിത ഡെബിറ്റ് എന്ന നിലയിൽ അടയാളപ്പെടുത്തുന്നു, നിങ്ങളുടെ ഉറവിട പേയ്മെന്റ് അക്കൗണ്ടിലേക്ക് ഒരു പൂർണ്ണ റീഫണ്ട് സ്വയം ക്രെഡിറ്റ് ചെയ്യുന്നു.
 
 ---
 
-## Master IRCTC Daily Operating Schedule (2026)
+## IRCTC ദിനംപ്രതി പ്രവർത്തന ഷെഡ്യൂൾ (2026)
 
-To avoid getting caught by daily server maintenance cutoffs, bookmark this official 24-hour operational timetable:
+ദിവസേന സർവർ പരിപാലന കട്ട് ഓഫ്‌കളിൽ കുടുങ്ങുന്നത് ഒഴിവാക്കാൻ, ഈ ഔദ്യോഗിക 24-മണിക്കൂർ പ്രവർത്തന ടൈംടേബിൾ കൈവശം വെക്കുക:
 
-| Service / Booking Window | Daily Operating Hours (IST) | Advance Window | Key Rules & System Restrictions |
+| സേവനം / ബുക്കിംഗ് വിൻഡോ | ദിനംപ്രതി പ്രവർത്തന മണിക്കൂറുകൾ (IST) | അഡ്വാൻസ് വിൻഡോ | പ്രധാന നിയമങ്ങൾ & സിസ്റ്റം നിയന്ത്രണങ്ങൾ |
 | :--- | :--- | :--- | :--- |
-| **Night Server Maintenance** | 11:45 PM – 12:20 AM | Daily (35 mins) | All booking, cancellations, PNR lookups & logins disabled |
-| **General Booking Window** | 12:20 AM – 11:45 PM | Daily (23h 25m) | Normal reservations across all active quotas & trains |
-| **Opening Day ARP Booking** | 8:00 AM IST | 60 Days prior | **Aadhaar-authenticated profiles only** on opening day |
-| **Subsequent ARP Days** | 12:20 AM – 11:45 PM | Days 59 to 1 | Open to both verified and unverified user accounts |
-| **AC Tatkal Booking** | 10:00 AM IST | 1 Day prior | 2A, 3A, 3E, CC, EC (No 1A; agents blocked 10:00–10:30 AM) |
-| **Non-AC Tatkal Booking** | 11:00 AM IST | 1 Day prior | Sleeper (SL) & 2S (Agents blocked 11:00–11:30 AM) |
-| **Premium Tatkal (PT)** | 10:00 AM / 11:00 AM | 1 Day prior | Dynamic pricing; opens concurrently with regular Tatkal |
-| **First Chart Preparation** | ~8 Hours prior (or 9 PM) | Departure day | Primary waitlists finalized; Current Availability opens |
-| **Current Availability Booking** | Post 1st Chart to -30 mins | Departure day | Vacant berths sold at up to 10% base fare discount |
-| **Second / Final Chart** | 30–45 mins prior | Departure day | Online bookings close; TTE Handheld Terminal (HHT) sync |
-| **Boarding Station Change** | Up to 2nd Charting | Departure day | Permitted online until second chart preparation (~30m) |
+| **രാത്രി സർവർ പരിപാലനം** | 11:45 PM – 12:20 AM | ദിവസവും (35 മിനിറ്റ്) | എല്ലാ ബുക്കിംഗ്, റദ്ദാക്കലുകൾ, PNR തിരച്ചിലുകൾ, ലോഗിൻ എന്നിവ പൂര്‍ണമായും ഓഫ്‌ലൈൻ |
+| **ജനറൽ ബുക്കിംഗ് വിൻഡോ** | 12:20 AM – 11:45 PM | ദിവസവും (23h 25m) | സജീവ ക്വോട്ടുകൾ, ക്ലാസുകൾ, എക്സ്പ്രസ് ട്രെയിനുകൾ എന്നിവയിൽ സാധാരണ റിസർവേഷനുകൾ |
+| **ഓപ്പണിംഗ് ദിന ARP ബുക്കിംഗ്** | 8:00 AM IST | 60 ദിവസം മുമ്പ് | **ആധാർ-അംഗീകരിച്ച പ്രൊഫൈലുകൾ മാത്രം** ഓപ്പണിംഗ് ദിനത്തിൽ |
+| **തുടർന്നുള്ള ARP ദിവസങ്ങൾ** | 12:20 AM – 11:45 PM | 59 മുതൽ 1 വരെ | സ്ഥിരീകരിച്ചയും അസ്വീകരിച്ച ഉപയോക്തൃ അക്കൗണ്ടുകൾക്കായി തുറക്കുന്നു |
+| **AC താത്കാൽ ബുക്കിംഗ്** | 10:00 AM IST | 1 ദിവസം മുമ്പ് | 2A, 3A, 3E, CC, EC (1A ഇല്ല; ഏജന്റുമാർ 10:00–10:30 AM-ന് തടഞ്ഞു) |
+| **Non-AC താത്കാൽ ബുക്കിംഗ്** | 11:00 AM IST | 1 ദിവസം മുമ്പ് | സ്ലീപ്പർ (SL) & 2S (ഏജന്റുമാർ 11:00–11:30 AM-ന് തടഞ്ഞു) |
+| **പ്രീമിയം താത്കാൽ (PT)** | 10:00 AM / 11:00 AM | 1 ദിവസം മുമ്പ് | ഡൈനാമിക് പ്രൈസിംഗ്; സാധാരണ താത്കാളുമായി ഒരുമിച്ച് തുറക്കുന്നു |
+| **അധികൃത ഏജന്റ് താത്കാൽ** | 10:30 AM / 11:30 AM | 1 ദിവസം മുമ്പ് | എല്ലാ രജിസ്റ്റർ ചെയ്ത ടിക്കറ്റിംഗ് ഏജന്റുമാർക്കായി 30-മിനിറ്റ് ആന്റി-ടൗട്ട് എംബാർഗോ ബാധകമാണ് |
+| **പ്രഥമ ചാർട്ട് തയ്യാറാക്കൽ** | ~8 മണിക്കൂർ മുമ്പ് (അല്ലെങ്കിൽ 9 PM) | പുറപ്പെടുന്ന ദിവസം | പ്രാഥമിക കാത്തിരിപ്പുകൾ അവസാനിപ്പിച്ചു; നിലവിലെ ലഭ്യത തുറക്കുന്നു |
+| **നിലവിലെ ലഭ്യത ബുക്കിംഗ്** | 1-ാം ചാർട്ടിന് ശേഷം -30 മിനിറ്റ് | പുറപ്പെടുന്ന ദിവസം | ഒഴിവുള്ള ബർത്ത് ഓൺലൈനിലും കൗണ്ടറുകളിൽ 10% അടിസ്ഥാന നിരക്കിൽ ഡിസ്കൗണ്ടിൽ വിറ്റഴിക്കുന്നു |
+| **രണ്ടാം / അന്തിമ ചാർട്ട്** | 30–45 മിനിറ്റ് മുമ്പ് | പുറപ്പെടുന്ന ദിവസം | ഓൺലൈൻ ബുക്കിംഗ് അടച്ചുപൂട്ടുന്നു; അന്തിമ യാത്രക്കാരുടെ പട്ടികകൾ TTE ഹാൻഡ്‌ഹെൽഡ് ടെർമിനലുകളിലേക്ക് (HHT) മാറ്റുന്നു |
+| **ബോർഡിംഗ് സ്റ്റേഷൻ മാറ്റം** | 2-ാം ചാർട്ടിംഗ് വരെ | പുറപ്പെടുന്ന ദിവസം | രണ്ടാം ചാർട്ട് തയ്യാറാക്കുന്നതുവരെ ഓൺലൈനിൽ അനുവദനീയമാണ് (~30 മിനിറ്റ് ട്രെയിൻ പുറപ്പെടുന്നതിന് മുമ്പ്) |
+
+പ്രധാന ത്രങ്ക് റൂട്ടുകളിൽ റൂട്ടിന്റെ ഷെഡ്യൂളുകളും കോച്ച് രൂപീകരണങ്ങളും പരിശോധിക്കാൻ, ഞങ്ങളുടെ സമർപ്പിത [Delhi to Mumbai Train Route](/routes/delhi-to-mumbai) & [Delhi to Patna Train Schedule](/routes/delhi-to-patna) പരിശോധിക്കുക.
 
 ---
 
-## Why Does IRCTC Shut Down Servers Every Night at 11:45 PM?
+## IRCTC രാത്രി 11:45 PM-ന് സർവറുകൾ അടച്ചിടുന്നതിന്റെ കാരണം എന്താണ്?
 
-**IRCTC shuts down its ticketing servers every night at 11:45 PM to allow the Centre for Railway Information Systems (CRIS) to flush database transaction logs, synchronize Passenger Reservation System (PRS) records across all 17 railway zones, reconcile interbank payment gateway settlements, and execute anti-bot security sweeps.**
+**IRCTC രാത്രി 11:45 PM-ന് ടിക്കറ്റിംഗ് സർവറുകൾ അടച്ചിടുന്നത്, റെയിൽവേ വിവര സമ്പ്രദായങ്ങൾക്കായുള്ള കേന്ദ്രം (CRIS) ഡാറ്റാബേസ് ഇടപാട് ലോഗുകൾ ഫ്ലഷ് ചെയ്യാൻ, എല്ലാ 17 റെയിൽവേ മേഖലകളിലെയും യാത്രക്കാരുടെ റിസർവേഷൻ റെക്കോർഡുകൾ സമന്വയിപ്പിക്കാൻ, ഇടബാങ്ക് പേയ്മെന്റ് ഗേറ്റ്‌വേ സെറ്റൽമെന്റുകൾ പുനഃസമന്വയിപ്പിക്കാൻ, ആന്റി-ബോട്ട് സുരക്ഷാ സ്വീപ്പുകൾ നടത്താൻ അനുവദിക്കുന്നു.**
 
-Without this synchronized 35-minute downtime:
-1. **Database Lock Contention:** Over 150,000 concurrent write operations could lock database rows, leading to payment discrepancies and duplicate berth allocations.
-2. **Interbank Settlement Batch Jobs:** Banks (SBI, HDFC, ICICI, and RBI payment switches) run end-of-day reconciliation batches between 23:45 and 00:15. Disconnecting transaction pipelines prevents orphaned charges.
-3. **Waitlist Queue Cleansing:** The system recalibrates cancelled quotas and prepares inventory for the next morning's 8:00 AM ARP opening.
-4. **Anti-Scraping Security Scans:** Automated security firewalls purge suspicious IP addresses, rate-limit unauthorized scraping bots, and clear cached sessions to prepare for morning Tatkal traffic.
+ഈ സമന്വയിച്ച 35-മിനിറ്റ് ഇടവേള ഇല്ലാതെ, ദേശീയ ടിക്കറ്റിംഗ് ഗ്രിഡ് ഗുരുതര ഇടപാട് അപകടങ്ങൾ നേരിടും:
 
----
+1. **ഡാറ്റാബേസ് ലോക്ക് കണ്ടന്റേഷൻ:** 150,000-ൽ കൂടുതൽ സമകാലിക എഴുത്ത് പ്രവർത്തനങ്ങൾ ഡാറ്റാബേസ് ടേബിളുകൾ ലോക്ക് ചെയ്യാൻ ഇടയാക്കും, പേയ്മെന്റ് വ്യത്യാസങ്ങൾ, ഭൂത ഇടപാടുകൾ, പുനരാവശ്യങ്ങൾ എന്നിവയ്ക്ക് വഴിയൊരുക്കും.
+2. **ഇടബാങ്ക് സെറ്റൽമെന്റ് ബാച്ച് ജോലികൾ:** ബാങ്കിംഗ് പേയ്മെന്റ് ഗേറ്റ്‌വേകൾ (സ്റ്റേറ്റ് ബാങ്ക് ഓഫ് ഇന്ത്യ, HDFC, ICICI, RBI നാഷണൽ പേയ്മെന്റ് കോർപ്പറേഷൻ സ്വിച്ച്) 23:45 മുതൽ 00:15 IST-നു mandatory end-of-day reconciliation batches നടത്തുന്നു. ഇടപാട് പൈപ്പ്‌ലൈൻകൾ ബന്ധം വിച്ഛേദിക്കുന്നത്, അനാഥ ചാർജുകൾ തടയുന്നു.
+3. **കാത്തിരിപ്പുകളുടെ ക്യൂ പുനഃക്രമീകരണം:** സിസ്റ്റം റദ്ദാക്കിയ ക്വോട്ടുകൾ പ്രോസസ്സ് ചെയ്യുന്നു, ക്വോട്ടാ പൂലുകൾ പുനഃകണക്കാക്കുന്നു, രാവിലെ 8:00 AM ARP തുറക്കുന്നതിനായി പുതിയ ഇൻവെന്ററി തയ്യാറാക്കുന്നു.
+4. **ആന്റി-സ്ക്രാപ്പിംഗ് സുരക്ഷാ സ്വീപ്പുകൾ:** ഓട്ടോമേറ്റഡ് ഫയർവാൾ സംശയാസ്പദമായ IP വിലാസങ്ങൾ നീക്കം ചെയ്യുന്നു, അനധികൃത ബോട്ട് സ്ക്രാപ്പർമാർക്ക് നിരക്ക്-പരിമിതിയിടുന്നു, രാവിലെ താത്കാൽ ട്രാഫിക് വർധനവിന് തയ്യാറാക്കാൻ കാഷ്ഡ് സെഷനുകൾ ക്ലിയർ ചെയ്യുന്നു.
 
-## What Happens If Money Is Deducted During IRCTC Maintenance?
-
-**If your bank account or credit card is debited for an IRCTC ticket right around 11:45 PM but no PNR is generated due to server maintenance, your money is completely safe. IRCTC reconciliation systems mark the transaction as a "Payment Received Without PNR Generation" and automatically credit 100% of the funds back to your original payment source within 3 to 5 working days.**
-
-When this occurs:
-- **No Cancellation Fee Deducted:** Because no ticket or PNR was ever created, Indian Railways does not deduct clerkage charges, GST, or convenience fees.
-- **Tracking the Refund:** Check your IRCTC account dashboard under *My Transactions ➔ Ticket Refund History* once the servers come back online at 12:20 AM. The transaction will appear with an official Refund Reference Number.
-- **Escalation Protocol:** If the money is not returned to your bank account after 7 business days, lodge a quick digital complaint on the [RailMadad portal](https://railmadad.indianrailways.gov.in) or call the unified railway helpline at **139** with your bank Transaction ID (TXN ID).
-
-For a detailed breakdown of failed booking scenarios, read our guide on [IRCTC Booking Failed Money Deducted Refund Rules](/blog/irctc-booking-failed-money-deducted-refund-rules).
+നിങ്ങൾ ഉത്സവ കോർഡോറുകളിൽ അവധി യാത്രാ പദ്ധതിയിടുകയാണെങ്കിൽ, ട്രെയിൻ ഷെഡ്യൂളുകൾക്കും സ്ഥിരീകരണ ട്രെൻഡുകൾക്കുമുള്ള ട്രാക്കിംഗ് ഞങ്ങളുടെ [Mumbai to Danapur Route Guide](/routes/mumbai-to-danapur) ഉപയോഗിച്ച് ചെയ്യാം.
 
 ---
 
-## What Error Messages Appear During IRCTC Server Downtime?
+## IRCTC-യിൽ രാവിലെ ടിക്കറ്റ് ബുക്കിംഗ് എപ്പോൾ തുറക്കുന്നു?
 
-**During the nightly 11:45 PM to 12:20 AM downtime window, IRCTC displays standard system notices including "IRCTC site is under maintenance", "User not allowed to login during maintenance window", or an HTTP 503 "Service Temporarily Unavailable" error message.**
+**IRCTC-യിൽ ജനറൽ ട്രെയിൻ ടിക്കറ്റ് ബുക്കിംഗ് എല്ലാ രാവിലെ 8:00 AM IST-ന് 60-ദിവസത്തെ അഡ്വാൻസ് റിസർവേഷൻ പീരിയഡ് (ARP) ഉള്ള ട്രെയിനുകൾക്കായി തുറക്കുന്നു. 60-ദിവസത്തെ വിൻഡോയിലേക്കുള്ള യാത്രകൾക്കായി, ടിക്കറ്റ് ബുക്കിംഗ് 12:20 AM മുതൽ 11:45 PM IST വരെ 23 മണിക്കൂർ 25 മിനിറ്റ് തുടർച്ചയായി തുറക്കുന്നു.**
 
-Common error alerts encountered at midnight include:
-- *"Site is under maintenance from 23:45 to 00:20 hrs. Please try after 00:20 hrs."*
-- *"User is not allowed to login during maintenance hours."*
-- *"503 Service Unavailable / Request Timed Out."*
+പുതുക്കിയ ഇന്ത്യൻ റെയിൽവേ റിസർവേഷൻ നിയമങ്ങൾ പ്രകാരം, അഡ്വാൻസ് റിസർവേഷൻ വിൻഡോ 60 ദിവസമായി (റെയിൽവേയുടെ പുറപ്പെടുന്ന സ്റ്റേഷനിൽ നിന്ന് പുറപ്പെടുന്ന ദിവസത്തെ ഒഴിവാക്കി) സജ്ജീകരിച്ചിരിക്കുന്നു. ഓപ്പണിംഗ് ദിനത്തിലെ റിസർവേഷനുകൾ 8:00 AM IST-ന് IRCTC വെബ്സൈറ്റിലും ഫിസിക്കൽ PRS റെയിൽവേ സ്റ്റേഷൻ കൗണ്ടറുകളിലും കൃത്യമായി ആരംഭിക്കുന്നു.
 
-If you encounter these messages precisely between 23:45 and 00:20 IST, do not panic, reset your router, or repeatedly change your account password. The server shutdown is planned and routine. Simply wait until 12:20 AM IST, refresh your browser cache, and log in again.
+പ്രധാന രാവിലെ ബുക്കിംഗ് നിയമങ്ങൾ ഉൾപ്പെടുന്നു:
 
-If the website remains inaccessible well past 12:30 AM IST, it indicates an unscheduled emergency technical outage. In such rare instances, monitor official announcements on the IRCTC official Twitter/X handle (`@IRCTCofficial`).
+- **ഓപ്പണിംഗ് ദിനത്തിൽ നിർബന്ധമായ ആധാർ നിയമം:** ഔദ്യോഗിക ടിക്കറ്റിംഗ് മാർഗനിർദ്ദേശങ്ങൾ പ്രകാരം, 60-ദിവസ ARP-ന്റെ ഓപ്പണിംഗ് ദിനത്തിൽ ജനറൽ റിസർവുചെയ്ത ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാൻ ആധാർ-അംഗീകരിച്ച ഉപയോക്തൃ അക്കൗണ്ടുകൾക്ക് മാത്രം അനുമതി നൽകുന്നു. അസ്വീകരിച്ച പ്രൊഫൈലുകൾ 2-ാം ദിവസത്തിൽ നിന്ന് ബുക്ക് ചെയ്യാൻ കഴിയും.
+- **മാസ്റ്റർ ലിസ്റ്റ് പ്രീ-റജിസ്ട്രേഷൻ:** 8:00 AM-ന് ഓപ്പണിംഗ് ബെല്ലിന് മുമ്പ്, യാത്രക്കാരുടെ പേരുകൾ, പ്രായം, ബർത്ത് ഇഷ്ടങ്ങൾ എന്നിവ IRCTC മാസ്റ്റർ ലിസ്റ്റിൽ പ്രീ-സേവ് ചെയ്യുക, ചെക്ക്ഔട്ട് സെക്കൻഡുകൾക്കുള്ളിൽ പൂർത്തിയാക്കാൻ.
+- **മാസിക ബുക്കിംഗ് പരിധികൾ:** അസ്വീകരിച്ച അക്കൗണ്ടുകൾക്ക് ഒരു കലണ്ടർ മാസത്തിൽ 12 ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാൻ കഴിയും, ആധാർ-സ്ഥിരീകരിച്ച പ്രൊഫൈലുകൾക്ക് 24 ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാൻ കഴിയും (ടിക്കറ്റുകൾ 13 മുതൽ 24 വരെ ഒരു യാത്രക്കാരൻ ആധാർ-സ്ഥിരീകരിച്ചിരിക്കണം).
+- **പ്രതി-ഉപയോക്തൃ ദിന പരിധികൾ:** IRCTC വ്യക്തിഗത ഉപയോക്താക്കളെ പ്രതിദിനം 6 ടിക്കറ്റുകൾക്ക് പരമാവധി നിയന്ത്രിക്കുന്നു, വ്യക്തിഗത ഉപയോക്തൃ ക്രെഡൻഷ്യലുകളിൽ വ്യാപാര ഹോർഡിംഗ് തടയുന്നു.
 
----
-
-## Does the UTS App or Station PRS Counter Work During IRCTC Maintenance?
-
-**Yes, the UTS mobile app for unreserved general tickets continues to function during IRCTC night maintenance because it operates on a separate CRIS server cluster. However, physical railway station PRS reservation counters are closed overnight, and 24-hour station Current Counters pause operations during the 23:45 to 00:20 maintenance window.**
-
-Key operational nuances across ticketing channels:
-- **UTS Unreserved App:** You can book general unreserved second-class coach tickets and suburban platform tickets between 11:45 PM and 12:20 AM. However, avoid recharging your UTS R-Wallet through net banking or UPI during this window, as banking gateway batch runs may cause top-up delays.
-- **Station PRS Counters:** Regular station advance reservation windows operate between 8:00 AM and 8:00 PM. They are already closed during midnight hours.
-- **Station Current Booking Counters:** 24x7 current ticket counters at major junction stations temporarily halt issuing reserved tickets between 11:45 PM and 12:20 AM because their terminals connect to the same central PRS database.
-- **Enquiry & 139 IVR:** Dialing **139** for train schedule and running status remains functional, though real-time PNR allotment updates are paused until 00:20 AM.
+അക്കൗണ്ട് സ്ഥിരീകരണത്തിന്റെ സമഗ്രമായ വിശദീകരണത്തിനായി, [IRCTC Ticket Booking Limits and Aadhaar Rules](/blog/irctc-ticket-booking-limits-aadhaar-verification) എന്ന нашем ഗൈഡ് വായിക്കുക.
 
 ---
 
-## What Are the Daily Ticket Booking Hours on IRCTC?
+## IRCTC-യിൽ AC, Non-AC ക്ലാസുകൾക്കായി താത്കാൽ ബുക്കിംഗ് എപ്പോൾ തുറക്കുന്നു?
 
-**IRCTC daily ticket booking hours operate from 12:20 AM to 11:45 PM IST. The system supports 60-day Advance Reservation Period (ARP) bookings starting daily at 8:00 AM IST. Powered by Next-Gen PRS infrastructure, the portal handles over 150,000 booking transactions per minute during peak volume periods.**
+**താത്കാൽ ടിക്കറ്റ് ബുക്കിംഗ് ദിവസവും AC ക്ലാസുകൾക്കായി 10:00 AM IST-ൽ (2A, 3A, 3E, CC, EC; ഫസ്റ്റ് AC ഒഴിവാക്കി) & Non-AC ക്ലാസുകൾക്കായി 11:00 AM IST-ൽ (സ്ലീപ്പർ, 2S) ട്രെയിന്റെ പുറപ്പെടുന്ന സ്റ്റേഷനിൽ നിന്ന് ഒരു ദിവസം മുമ്പ് കൃത്യമായി തുറക്കുന്നു.**
 
-Outside of the 35-minute nightly maintenance break, the IRCTC ticketing platform is operational 23 hours and 25 minutes every day. Passengers can book tickets across all standard quotas, including General, Senior Citizen, Ladies, and Divyangjan.
+താത്കാൽ റിസർവേഷൻ യാത്രക്കാർക്ക് അടിയന്തര യാത്രാ ടിക്കറ്റുകൾ നേടാൻ അവസരം നൽകുന്നു. ജനപ്രിയ ട്രെയിൻ ക്വോട്ടുകൾ 60 മുതൽ 120 സെക്കൻഡുകൾക്കുള്ളിൽ തീർന്നുപോകുന്നതിനാൽ, കൃത്യമായ ഷെഡ്യൂളും ബുക്കിംഗ് മെക്കാനിക്കുകളും മനസ്സിലാക്കുന്നത് പ്രധാനമാണ്:
 
-Key booking timing rules include:
-- **General Advance Reservation:** Opens daily at **8:00 AM IST** exactly 60 days before the date of journey from originating station.
-- **Mandatory Aadhaar Rule on Opening Day:** Under official 2026 ticketing guidelines, only Aadhaar-authenticated user accounts are permitted to book general reserved tickets on the opening day of the 60-day ARP. Unverified profiles can book from Day 2 onwards.
-- **Monthly Booking Limits:** Unverified accounts can book up to 12 tickets per calendar month, while Aadhaar-verified profiles can book up to 24 tickets per month. Read our full guide on [IRCTC Ticket Booking Limits](/blog/irctc-ticket-booking-limits-aadhaar-verification).
-- **Waitlist Confirmation Queues:** Standby tickets progress sequentially through:
+| ക്വോട്ട / ക്ലാസ് | തുറക്കാനുള്ള സമയം (IST) | അഡ്വാൻസ് ബുക്കിംഗ് വിൻഡോ | റദ്ദാക്കലിന്റെ റീഫണ്ട് നയം |
+| :--- | :--- | :--- | :--- |
+| **AC താത്കാൽ (2A, 3A, 3E, CC, EC)** | 10:00 AM IST | ട്രെയിൻ ഉറവിടത്തിന് 1 ദിവസം മുമ്പ് | സ്ഥിരീകരിച്ച ടിക്കറ്റുകൾക്ക് ശൂന്യ റീഫണ്ട് |
+| **Non-AC താത്കാൽ (SL, 2S)** | 11:00 AM IST | ട്രെയിൻ ഉറവിടത്തിന് 1 ദിവസം മുമ്പ് | സ്ഥിരീകരിച്ച ടിക്കറ്റുകൾക്ക് ശൂന്യ റീഫണ്ട് |
+| **പ്രീമിയം താത്കാൽ (AC & Non-AC)** | 10:00 AM / 11:00 AM | ട്രെയിൻ ഉറവിടത്തിന് 1 ദിവസം മുമ്പ് | ഡൈനാമിക് ഫെയർ പ്രൈസിംഗ്; ശൂന്യ റീഫണ്ട് |
+| **കാത്തിരിപ്പുള്ള താത്കാൽ (TQWL)** | താത്കാളിന് സമാനമാണ് | ട്രെയിൻ ഉറവിടത്തിന് 1 ദിവസം മുമ്പ് | ചാർട്ടിംഗ് സമയത്ത് സ്ഥിരീകരിക്കപ്പെടാത്തതിനാൽ ഓട്ടോ-റീഫണ്ട് |
+
+സാധാരണ ജനതയുടെ പ്രവേശനം ഉറപ്പാക്കാനും ടിക്കറ്റ് ടൗട്ടുകൾ തടയാനും:
+
+1. **30-മിനിറ്റ് ഏജന്റ് നിരോധനം:** രജിസ്റ്റർ ചെയ്ത IRCTC യാത്രാ ഏജന്റുമാർ ആദ്യ 30 മിനിറ്റ് (AC-യ്ക്ക് 10:00 AM മുതൽ 10:30 AM വരെ, Non-AC-യ്ക്ക് 11:00 AM മുതൽ 11:30 AM വരെ) താത്കാൽ ബുക്കിംഗിൽ പ്രവേശിക്കാൻ കഴിയില്ല.
+2. **യാത്രക്കാരുടെ പരിധികൾ:** ഒരു താത്കാൽ PNR-ൽ പരമാവധി 4 യാത്രക്കാരെ ബുക്ക് ചെയ്യാൻ കഴിയും, സാധാരണ ക്വോട്ടാ ബുക്കിംഗുകളിൽ 6 യാത്രക്കാരെ അപേക്ഷിച്ച്.
+3. **ദിവസേന താത്കാൽ പരിധി:** വ്യക്തിഗത ഉപയോക്താക്കൾക്ക് പ്രതിദിനം 2 താത്കാൽ PNR-കൾ ബുക്ക് ചെയ്യാൻ നിയന്ത്രണം ഉണ്ട്.
+4. **ത്വരിത പേയ്മെന്റ് ഗേറ്റ്‌വേ:** ക്വോട്ടുകൾ നിറയുന്നതിന് മുമ്പ് പേയ്മെന്റ് പൂർത്തിയാക്കാൻ IRCTC e-Wallet അല്ലെങ്കിൽ നേരിട്ടുള്ള UPI QR പോലുള്ള ത്വരിത പേയ്മെന്റ് ചാനലുകൾ ഉപയോഗിക്കുക.
+
+ത്വരിത തന്ത്രങ്ങൾക്കും ബുക്കിംഗ് പ്രവാഹങ്ങൾക്കുമായി, [Tatkal vs Current Availability](/blog/tatkal-vs-current-availability-last-minute-train-ticket) & [Ultimate Tatkal Booking Speed Hacks](/blog/ultimate-tatkal-booking-guide-speed-hacks) എന്ന нашем വിശദമായ ഗൈഡുകൾ പരിശോധിക്കുക.
+
+---
+
+## IRCTC പരിപാലന സമയത്ത് പണം കത്തിച്ചാൽ എന്ത് സംഭവിക്കുന്നു?
+
+**11:45 PM-ന് PNR ഉണ്ടാക്കാതെ നിങ്ങളുടെ ബാങ്ക് അക്കൗണ്ടിൽ നിന്ന് പണം കത്തിച്ചാൽ, നിങ്ങളുടെ ഫണ്ടുകൾ പൂര്‍ണമായും സുരക്ഷിതമാണ്. ഇടപാട് അസംഘടിത സെറ്റൽമെന്റായി അടയാളപ്പെടുത്തുന്നു, IRCTC 3 മുതൽ 5 ബിസിനസ് ദിവസത്തിനുള്ളിൽ നിങ്ങളുടെ ഉറവിട പേയ്മെന്റ് രീതിയിലേക്ക് 100% പൂർണ്ണ റീഫണ്ട് ആരംഭിക്കുന്നു.**
+
+ഇത് സംഭവിക്കുമ്പോൾ, നിങ്ങൾ നിയമപരമായ പേയ്മെന്റ് ക്ലിയറിംഗ് നിയമങ്ങൾക്കു കീഴിലാണ്:
+
+- **ശൂന്യ റദ്ദാക്കൽ ഫീസ് കത്തിക്കില്ല:** ടിക്കറ്റ് അല്ലെങ്കിൽ PNR ഉണ്ടാകാത്തതിനാൽ, ഇന്ത്യൻ റെയിൽവേ ക്ലർകേജ് ചാർജുകൾ, GST, അല്ലെങ്കിൽ സൗകര്യ ഫീസുകൾ കത്തിക്കില്ല.
+- **ഓട്ടോമാറ്റിക് പുനഃസമന്വയം:** 12:20 AM IST-ന് സർവറുകൾ പ്രവർത്തനത്തിലേക്ക് മടങ്ങുമ്പോൾ, CRIS സാമ്പത്തിക എഞ്ചിൻ_PENDING_PAYMENT_GATEWAY_LOGS-നെ ജനറേറ്റുചെയ്ത PNR ഡാറ്റാബേസ് നേരെ പുനഃസമന്വയിക്കുന്നു. പൊരുത്തമില്ലാത്ത ഡെബിറ്റുകൾ ഉടൻ റിവേഴ്സൽ കമാൻഡുകൾ പ്രേരിപ്പിക്കുന്നു.
+- **റീഫണ്ട് സ്ഥിതി പരിശോധിക്കൽ:** നിങ്ങളുടെ IRCTC അക്കൗണ്ട് ഡാഷ്ബോർഡിൽ ലോഗിൻ ചെയ്ത് *My Transactions ➔ Ticket Refund History* എന്നതിലേക്ക് പോകുക. ഇടപാട് ഔദ്യോഗിക റീഫണ്ട് റഫറൻസ് നമ്പർ, പേയ്മെന്റ് ഗേറ്റ്‌വേ ട്രേസ് ID എന്നിവയോടെ കാണപ്പെടുന്നു.
+- **ബാങ്കിംഗ് ടേൺഅറൗണ്ട്:** UPI ഇടപാടുകൾ സാധാരണയായി 24 മുതൽ 48 മണിക്കൂറിനുള്ളിൽ ക്രെഡിറ്റ് ചെയ്യുന്നു, എന്നാൽ നെറ്റ് ബാങ്കിംഗ്, ഡെബിറ്റ്/ക്രെഡിറ്റ് കാർഡ് റീഫണ്ടുകൾ 3 മുതൽ 5 ബിസിനസ് ദിവസങ്ങൾ എടുക്കുന്നു, നിങ്ങളുടെ ബാങ്കിന്റെ ക്ലിയറിംഗ് ചക്രത്തെ ആശ്രയിച്ച്.
+
+നിങ്ങളുടെ ഫണ്ടുകൾ 7 ബിസിനസ് ദിവസത്തിനുള്ളിൽ തിരികെ ലഭിക്കുകയാണെങ്കിൽ, [RailMadad portal](https://railmadad.indianrailways.gov.in) ൽ ഒരു ഓട്ടോമേറ്റഡ് പരാതിയ lodged ചെയ്യുക അല്ലെങ്കിൽ **139** എന്ന ഏകീകരിത റെയിൽവേ ഹെൽപ്ലൈനിൽ നിങ്ങളുടെ ബാങ്ക് ഇടപാട് ID ഉപയോഗിച്ച് വിളിക്കുക. റീഫണ്ട് ട്രാക്കിംഗ് നിർദ്ദേശങ്ങൾക്ക്, [IRCTC Refund Status Tracking](/blog/irctc-refund-status-check-track-ticket-refund) എന്ന нашем മാസ്റ്റർ ഗൈഡ് പരിശോധിക്കുക.
+
+---
+
+## UTS ആപ്പിൽ അല്ലെങ്കിൽ സ്റ്റേഷൻ കൗണ്ടറുകളിൽ പരിപാലന സമയത്ത് ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാൻ കഴിയുമോ?
+
+**അതെ, UTS മൊബൈൽ ആപ്പ് IRCTC പരിപാലന സമയത്ത് റിസർവുചെയ്ത ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാൻ അനുവദിക്കുന്നു, കാരണം ഇത് സ്വതന്ത്ര സർവർ അടിസ്ഥാനസൗകര്യത്തിൽ പ്രവർത്തിക്കുന്നു. എന്നാൽ, ഫിസിക്കൽ സ്റ്റേഷൻ PRS റിസർവേഷൻ കൗണ്ടറുകൾ രാത്രി അടച്ചിടുന്നു, 24-മണിക്കൂർ സ്റ്റേഷൻ നിലവിലെ ബുക്കിംഗ് കൗണ്ടറുകൾ 11:45 PM മുതൽ 12:20 AM IST വരെ പ്രവർത്തനം നിർത്തുന്നു.**
+
+റെയിൽവേ ടിക്കറ്റിംഗ് ചാനലുകൾക്കിടയിലെ പ്രധാന പ്രവർത്തന വ്യത്യാസങ്ങൾ ഉൾപ്പെടുന്നു:
+
+- **UTS മൊബൈൽ ആപ്പ്:** നിങ്ങൾക്ക് 11:45 PM മുതൽ 12:20 AM-നു റിസർവുചെയ്ത ജനറൽ സെക്കൻഡ് ക്ലാസ് കോച്ച് ടിക്കറ്റുകൾ, സ്റ്റേഷൻ പ്ലാറ്റ്ഫോം ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാൻ കഴിയും. എന്നാൽ, ഈ ഇടവേളയിൽ നിങ്ങളുടെ UTS R-Wallet നെറ്റ് ബാങ്കിംഗ് അല്ലെങ്കിൽ UPI വഴി റീചാർജ് ചെയ്യുന്നത് ഒഴിവാക്കുക, കാരണം മൂന്നാം പാർട്ടി ബാങ്കിംഗ് ബാച്ച് പ്രവർത്തനങ്ങൾ വാലറ്റ് ക്രെഡിറ്റിനെ വൈകിപ്പിക്കാം.
+- **സ്റ്റേഷൻ PRS കൗണ്ടറുകൾ:** സ്റ്റേഷൻ അഡ്വാൻസ് റിസർവേഷൻ കൗണ്ടറുകൾ 8:00 AM മുതൽ 8:00 PM വരെ സാധാരണ ഷിഫ്റ്റുകളിൽ പ്രവർത്തിക്കുന്നു, രാത്രി മണിക്കൂറുകളിൽ ഇതിനകം അടച്ചിരിക്കുന്നു.
+- **സ്റ്റേഷൻ നിലവിലെ ബുക്കിംഗ് കൗണ്ടറുകൾ:** പ്രധാന ജംഗ്ഷൻ സ്റ്റേഷനുകളിൽ 24x7 നിലവിലെ ടിക്കറ്റ് കൗണ്ടറുകൾ 11:45 PM മുതൽ 12:20 AM വരെ റിസർവുചെയ്ത ടിക്കറ്റുകൾ നൽകുന്നത് താൽക്കാലികമായി നിർത്തുന്നു, കാരണം അവരുടെ ടെർമിനലുകൾ ഒരേ കേന്ദ്ര PRS ഡാറ്റാബേസുമായി ബന്ധിപ്പിക്കുന്നു.
+- **139 ഫോൺ അന്വേഷണങ്ങൾ:** പൊതുവായ ട്രെയിൻ ടൈംടേബിളുകൾക്കും ഷെഡ്യൂൾ അന്വേഷണങ്ങൾക്കായി **139** എന്ന നമ്പറിൽ വിളിക്കുന്നത് പ്രവർത്തനക്ഷമമാണ്, എന്നാൽ യാഥാർത്ഥ്യ PNR ബർത്ത് സ്ഥിതി പരിശോധിക്കൽ 12:20 AM വരെ നിർത്തുന്നു.
+
+സമഗ്രമായ നഗരപരിധി & ജനറൽ ടിക്കറ്റിംഗ് നിയമങ്ങൾക്കായി, [IRCTC UTS App Booking Guide](/blog/irctc-uts-app-booking-guide) എന്ന нашем ഗൈഡ് പരിശോധിക്കുക.
+
+---
+
+## ചാർട്ടിംഗ് ശേഷം നിലവിലെ ലഭ്യത ബുക്കിംഗ് എപ്പോൾ തുറക്കുന്നു?
+
+**നിലവിലെ ലഭ്യത ടിക്കറ്റ് ബുക്കിംഗ്, ട്രെയിൻ ഉറവിടത്തിൽ നിന്ന് പുറപ്പെടുന്ന 8 മണിക്കൂർ മുമ്പ് (14:00-ന് മുമ്പുള്ള രാവിലെ പുറപ്പെടുന്ന ട്രെയിനുകൾക്കായി 9:00 PM-ന്) 1-ാം ചാർട്ട് തയ്യാറാക്കുന്നതിന് ശേഷം ഉടൻ തുറക്കുന്നു. നിലവിലെ ലഭ്യത സീറ്റുകൾ ട്രെയിൻ പുറപ്പെടുന്നതിന് 30 മിനിറ്റ് മുമ്പുവരെ ഓൺലൈനിലും കൗണ്ടറുകളിലും ബുക്ക് ചെയ്യാൻ കഴിയുന്നു.**
+
+പ്രാഥമിക റിസർവേഷൻ ചാർട്ടുകൾ അവസാനിപ്പിച്ചതിന് ശേഷം ട്രെയിൻ ബർത്ത് വിറ്റുപോകാത്തപ്പോൾ, ഇന്ത്യൻ റെയിൽവേ അവയെ **നിലവിലെ ലഭ്യത** ടിക്കറ്റുകളായി പുറത്തിറക്കുന്നു. കാത്തിരിപ്പുള്ള ടിക്കറ്റുകൾക്കു വ്യത്യസ്തമായി, നിലവിലെ ലഭ്യത ടിക്കറ്റ് **100% ഉറപ്പുള്ള ബർത്ത്** നൽകുന്നു, നിശ്ചിത കോച്ച് & ബർത്ത് നമ്പറുകളോടെ.
+
+നിലവിലെ ലഭ്യത ബുക്കിംഗിന്റെ പ്രധാന നിയമങ്ങൾ:
+
+1. **ഉറപ്പുള്ള സ്ഥിരീകരണം:** സ്ഥിതി `CURR_AVBL` അല്ലെങ്കിൽ `CURR AVL` എന്നത് ഉറപ്പുള്ള സീറ്റ് സൂചിപ്പിക്കുന്നു. നിലവിലെ ബുക്കിംഗ് പ്രകാരം നിങ്ങൾക്ക് RAC അല്ലെങ്കിൽ കാത്തിരിപ്പിന്റെ സ്ഥിതി അനുവദിക്കില്ല.
+2. **10% വരെ നിരക്കിൽ ഡിസ്കൗണ്ട്:** Indian Railways നിലവിലെ ലഭ്യതയിൽ വിറ്റഴിക്കുന്ന ഒഴിവുള്ള ബർത്ത്‌കൾക്ക് **10% വരെ അടിസ്ഥാന നിരക്കിൽ** ഡിസ്കൗണ്ട് നൽകുന്നു, കോച്ച് ഓക്കുപ്പൻസിയെ പരമാവധി ചെയ്യാൻ.
+3. **അടച്ചുപൂട്ടൽ വിൻഡോ:** ബുക്കിംഗ്, രണ്ടാം റിസർവേഷൻ ചാർട്ട് തയ്യാറാക്കുന്നതിന് 30-45 മിനിറ്റ് മുമ്പ്, ഓൺലൈനിലും സ്റ്റേഷൻ കൗണ്ടറുകളിലും പ്രവർത്തനക്ഷമമാണ്.
+4. **ബോർഡിംഗ് സ്റ്റേഷൻ മാറ്റം:** IRCTC-ൽ രണ്ടാം റിസർവേഷൻ ചാർട്ട് തയ്യാറാക്കുന്നതിന് മുമ്പ് (~30 മിനിറ്റ് മുമ്പ്) ഓൺലൈനിൽ നിങ്ങളുടെ ബോർഡിംഗ് സ്റ്റേഷൻ മാറ്റാൻ കഴിയും.
+
+ചാർട്ടിംഗ് തയ്യാറാക്കുന്നതിന് ശേഷം പുറത്തിറക്കിയ ലൈവ് ഒഴിവുള്ള ബർത്ത് പരിശോധിക്കാൻ [Chart Vacancy](/chart-vacancy) ഉപയോഗിക്കുക, ട്രെയിൻ ചാർട്ടിംഗ് ഷെഡ്യൂളുകൾ പരിശോധിക്കാൻ [Chart Times](/chart-times) ഉപയോഗിക്കുക. സമഗ്രമായ ബുക്കിംഗ് നിയമങ്ങൾക്കായി, [IRCTC Current Availability Explained](/blog/irctc-current-availability-explained) എന്ന нашем വിശദീകരണം വായിക്കുക.
+
+---
+
+## നേരിട്ടുള്ള ബുക്കിംഗ് അടച്ചുപൂട്ടുമ്പോൾ അല്ലെങ്കിൽ REGRET കാണിക്കുമ്പോൾ സ്ഥിരീകരിത സീറ്റുകൾ എങ്ങനെ കണ്ടെത്താം?
+
+**ഒരു നേരിട്ടുള്ള ട്രെയിൻ REGRET അല്ലെങ്കിൽ ഗഹന കാത്തിരിപ്പ് കാണിക്കുമ്പോൾ, LastBerth Smart Seats ഉപയോഗിച്ച് ഒരേ ട്രെയിനിൽ തുടർച്ചയായ സ്ഥിരീകരിത സെഗ്മെന്റുകൾ ബുക്ക് ചെയ്യുക, ലൈവ് ചാർട്ട് മാപ്പുകളിൽ ഒഴിവുള്ള ബർത്ത് ട്രാക്ക് ചെയ്യുക, അല്ലെങ്കിൽ പുറപ്പെടുന്നതിന് 30 മിനിറ്റ് മുമ്പ് അനിയന്ത്രിത നിലവിലെ ലഭ്യത സീറ്റുകൾ ബുക്ക് ചെയ്യുക.**
+
+ഇന്ത്യൻ റെയിൽവേ സ്റ്റാൻഡ്‌ബൈ ബുക്കിംഗുകൾ ഒരു കർശന ക്യൂ പുരോഗതിയെ പിന്തുടരുന്നു:
 
 $$\text{WL (Waiting List)} \rightarrow \text{RAC (Reservation Against Cancellation)} \rightarrow \text{Confirmed}$$
 
-If an e-ticket remains fully waitlisted (**WL full form is Waiting List**) after chart preparation, the IRCTC system automatically cancels the ticket and refunds the base fare to the passenger's bank account.
+ഇവിടെ, **WL-ന്റെ പൂർണ്ണ രൂപം Waiting List** ആണ്. ഓൺലൈൻ ഇ-ടിക്കറ്റ് അവസാന ചാർട്ട് തയ്യാറാക്കുന്നതിന് ശേഷം കാത്തിരിപ്പിൽ തുടരുന്നുവെങ്കിൽ, IRCTC സിസ്റ്റം ടിക്കറ്റിനെ സ്വയം റദ്ദാക്കുന്നു, നിങ്ങളുടെ ബാങ്ക് അക്കൗണ്ടിലേക്ക് നിരക്ക് തിരിച്ചടിക്കുന്നു. കാത്തിരിപ്പുള്ള ഇ-ടിക്കറ്റിൽ റിസർവുചെയ്ത കോച്ചുകളിൽ നിങ്ങൾക്ക് ബോർഡ് ചെയ്യാൻ കഴിയില്ല. ജന വിശ്വാസ നിയമം 2026 പ്രകാരം, സ്ഥിരീകരിത ടിക്കറ്റില്ലാതെ ഒരു റിസർവുചെയ്ത കോച്ചിൽ യാത്ര ചെയ്യുന്നത് **₹500 പിഴ** അടയ്ക്കുന്നു, കൂടാതെ ബോർഡ് ചെയ്ത ക്ലാസിലേക്ക് ഏക fare വ്യത്യാസം.
+
+നേരിട്ടുള്ള ലഭ്യത ഇല്ലായ്മ നേരിടുമ്പോൾ, ഈ നാല് തെളിയിച്ച രക്ഷാ തന്ത്രങ്ങൾ ഉപയോഗിക്കുക:
+
+1. **Smart Seats Split Booking:** ഒരു നേരിട്ടുള്ള റൂട്ടിന് (ഉദാഹരണത്തിന്, ന്യൂ ഡൽഹി മുതൽ പാട്ട്ന) മുഴുവൻ വിറ്റുപോയാൽ, [Finding Smart Seats](/) ഒരേ ട്രെയിനിൽ തുടർച്ചയായ സ്ഥിരീകരിത കാലയളവുകൾ കണ്ടെത്തുന്നു (ഉദാഹരണത്തിന്, ന്യൂ ഡൽഹി മുതൽ കാന്പൂർ B2 കോച്ചിൽ, കാന്പൂർ മുതൽ പാട്ട്ന B5 കോച്ചിൽ). നിങ്ങൾക്ക് ഒരേ ട്രെയിനിൽ തന്നെ തുടരാൻ കഴിയും.
+2. **ചാർട്ടിംഗ് ശേഷം ഒഴിവുള്ള ബർത്ത്:** പ്രാഥമിക ചാർട്ടുകൾ അവസാനിപ്പിച്ചതിന് ശേഷം [Chart Vacancy](/chart-vacancy) നിരീക്ഷിക്കുക, ദൂരസ്ഥ സ്ഥലങ്ങളിലെ ക്വോട്ടുകളിൽ വിട്ടുവീഴ്ചയുള്ള ബർത്ത് കണ്ടെത്താൻ, അവയെ `CURR_AVBL` ആയി ബുക്ക് ചെയ്യാൻ.
+3. **ചാർട്ട് അന്തിമീകരണം ട്രാക്കിംഗ്:** നിങ്ങളുടെ ട്രെയിന്റെ ചരിത്ര ചാർട്ടിംഗ് സമയരേഖ സ്ഥിരീകരിക്കുക, നിലവിലെ ലഭ്യത സീറ്റുകൾ ലൈവ് ആകുന്നതിന് കൃത്യമായ മിനുട്ടുകൾ അറിയാൻ [Chart Times](/chart-times) ൽ അലർട്ടുകൾ സജ്ജീകരിക്കുക.
+4. **മിഡ്-റൂട്ടിൽ സീറ്റ് സ്റ്റാറ്റസ് ലുക്കപ്പ്:** [Seat Status Lookup](/seat-status) ഉപയോഗിച്ച് സ്റ്റേഷൻ-മുതൽ-സ്റ്റേഷൻ ബർത്ത് ഓക്കുപ്പൻസി പരിശോധിക്കുക, ഇടക്കാല ജംഗ്ഷനുകളിൽ യാത്രക്കാർ ഇറങ്ങുമ്പോൾ ഒഴിവാകുന്ന സീറ്റുകൾ കണ്ടെത്താൻ.
 
 ---
 
-## What Time Does Tatkal Booking Open on IRCTC?
+## സാധാരണ ബുക്കിംഗ് ചോദ്യങ്ങൾ (FAQ)
 
-**Tatkal ticket booking opens daily at 10:00 AM IST for AC classes (2A, 3A, 3E, CC, EC; 1A excluded) and 11:00 AM IST for Non-AC classes (Sleeper, 2S) one day prior to train departure from origin. Mandatory Aadhaar OTP authentication applies to verified IRCTC user accounts booking Tatkal seats.**
+### IRCTC രാത്രി പരിപാലനം ഇന്ന് എപ്പോഴാണ് ആരംഭിക്കുന്നത് & അവസാനിക്കുന്നത്?
+IRCTC രാത്രി പരിപാലനം ഓരോ രാത്രി 11:45 PM IST (23:45) ന് ആരംഭിച്ച് 12:20 AM IST (00:20) ന് അവസാനിക്കുന്നു, വർഷം മുഴുവൻ 35 മിനിറ്റ് നീണ്ടുനിൽക്കുന്നു.
 
-Tatkal reservation provides last-minute travel access for passengers who need urgent travel bookings. Because seats sell out within seconds, knowing the exact opening schedule and preparation steps is crucial:
+### IRCTC വെബ്സൈറ്റ് 11:45 PM മുതൽ 12:20 AM വരെ ഓരോ രാത്രി അടച്ചിടുന്നതിന്റെ കാരണം എന്താണ്?
+രാത്രി 35-മിനിറ്റ് പരിപാലനം CRIS-ന് എല്ലാ 17 റെയിൽവേ മേഖലകളിലെയും യാത്രക്കാരുടെ റിസർവേഷൻ ഡാറ്റാബേസുകൾ സമന്വയിപ്പിക്കാൻ, ദിവസേനയുടെ പേയ്മെന്റ് ഗേറ്റ്‌വേ സെറ്റൽമെന്റുകൾ പുനഃസമന്വയിപ്പിക്കാൻ, അനധികൃത ബോട്ട് സെഷനുകൾ നീക്കം ചെയ്യാൻ, രാവിലെ 8:00 AM-ന് ബുക്കിംഗ് തുറക്കുന്നതിനായി പുതിയ ഇൻവെന്ററി തയ്യാറാക്കാൻ അനുവദിക്കുന്നു.
 
-| Quota / Class | Booking Opening Time (IST) | Advance Days | Refund Policy |
-| :--- | :--- | :--- | :--- |
-| **AC Tatkal (2A, 3A, 3E, CC, EC)** | 10:00 AM IST | 1 Day Prior | No refund on confirmed tickets |
-| **Non-AC Tatkal (SL, 2S)** | 11:00 AM IST | 1 Day Prior | No refund on confirmed tickets |
-| **Premium Tatkal (AC & Non-AC)** | Same as Tatkal (10 AM / 11 AM) | 1 Day Prior | Dynamic pricing; no refund |
+### രാത്രി പരിപാലന സമയത്ത് PNR സ്ഥിതി പരിശോധിക്കാനോ ടിക്കറ്റ് റദ്ദാക്കാനോ കഴിയും?
+ഇല്ല, 11:45 PM മുതൽ 12:20 AM IST വരെ ഓൺലൈനിൽ ടിക്കറ്റ് റദ്ദാക്കലുകൾ, PNR സ്ഥിതി പരിശോധിക്കൽ, അക്കൗണ്ട് ലോഗിൻ എന്നിവ പൂര്‍ണമായും ഓഫ്‌ലൈൻ ആണ്, കാരണം കേന്ദ്ര PRS ഡാറ്റാബേസ് ബന്ധങ്ങൾ താൽക്കാലികമായി നിർത്തിവയ്ക്കുന്നു.
 
-To prevent automated bot abuse and ticket hoarding:
-1. **Agent Restrictions:** Authorized travel agents are strictly barred from booking Tatkal tickets during the first 30 minutes of opening (10:00 AM to 10:30 AM for AC; 11:00 AM to 11:30 AM for Non-AC).
-2. **Master List Preparation:** Passengers must pre-save passenger names and age details in their IRCTC Master List prior to 9:55 AM.
-3. **Payment Speed:** Use instantaneous payment modes like IRCTC e-Wallet or direct UPI to complete checkout before quotas fill up. Check our comparison guide on [Tatkal vs Current Availability](/blog/tatkal-vs-current-availability-last-minute-train-ticket).
+### IRCTC പരിപാലന സമയത്ത് എന്റെ അക്കൗണ്ടിൽ നിന്ന് പണം കത്തിച്ചാൽ ഞാൻ എന്ത് ചെയ്യണം?
+ആശങ്കപ്പെടേണ്ടതില്ല. പരാജയപ്പെട്ട ഇടപാട് CRIS പുനഃസമന്വയന സംവിധാനങ്ങൾ വഴി ഓട്ടോമാറ്റിക്കായി ലോഗ് ചെയ്യുന്നു, IRCTC 3 മുതൽ 5 ബിസിനസ് ദിവസത്തിനുള്ളിൽ നിങ്ങളുടെ ഉറവിട പേയ്മെന്റ് അക്കൗണ്ടിലേക്ക് 100% പൂർണ്ണ റീഫണ്ട് ആരംഭിക്കുന്നു, ക്ലർകേജ് അല്ലെങ്കിൽ റദ്ദാക്കൽ ചാർജുകൾ കത്തിക്കാതെ.
+
+### ഓരോ രാവിലെ 60-ദിവസത്തെ ട്രെയിൻ ടിക്കറ്റ് ബുക്കിംഗ് എപ്പോൾ തുറക്കുന്നു?
+ജനറൽ 60-ദിവസത്തെ അഡ്വാൻസ് റിസർവേഷൻ പീരിയഡ് (ARP) ടിക്കറ്റ് ബുക്കിംഗ് ദിവസവും 8:00 AM IST-ൽ തുറക്കുന്നു. 2026-ലെ മാർഗനിർദ്ദേശങ്ങൾ പ്രകാരം, 60-ദിവസത്തെ വിൻഡോയുടെയും ഓപ്പണിംഗ് ദിനത്തിൽ ജനറൽ ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാൻ ആധാർ-അംഗീകരിച്ച അക്കൗണ്ടുകൾക്ക് മാത്രമേ അനുമതി നൽകൂ.
+
+### AC & Non-AC ക്ലാസുകൾക്കായി താത്കാൽ ബുക്കിംഗ് എപ്പോൾ തുറക്കുന്നു?
+AC താത്കാൽ (2A, 3A, 3E, CC, EC) 10:00 AM IST-ൽ, Non-AC താത്കാൽ (സ്ലീപ്പർ & 2S) 11:00 AM IST-ൽ, ട്രെയിന്റെ പുറപ്പെടുന്ന സ്റ്റേഷനിൽ നിന്ന് 1 ദിവസം മുമ്പ് കൃത്യമായി തുറക്കുന്നു.
+
+### IRCTC പരിപാലന സമയത്ത് UTS ആപ്പിൽ റിസർവുചെയ്ത ട്രെയിൻ ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാൻ കഴിയുമോ?
+അതെ, UTS മൊബൈൽ ആപ്പ് സ്വതന്ത്ര സർവർ ക്ലസ്റ്ററിൽ പ്രവർത്തിക്കുന്നു, അതിനാൽ പരിപാലന സമയത്ത് റിസർവുചെയ്ത ടിക്കറ്റുകൾ & നഗര പ്ലാറ്റ്ഫോം ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യാൻ അനുവദിക്കുന്നു.
+
+### രാത്രി പരിപാലന സമയത്ത് ഓൺലൈനിൽ എന്റെ ബോർഡിംഗ് സ്റ്റേഷൻ മാറ്റാൻ കഴിയുമോ?
+ഇല്ല, ബോർഡിംഗ് പോയിന്റ് മാറ്റങ്ങൾ സജീവ PRS കണക്ഷൻ ആവശ്യമാണ്, അതിനാൽ പരിപാലന സമയത്ത് നടപ്പിലാക്കാൻ കഴിയില്ല. എന്നാൽ, പരിപാലന സമയത്തിന് പുറത്തു, രണ്ടാം ചാർട്ട് തയ്യാറാക്കുന്നതിന് മുമ്പ് (~30 മിനിറ്റ് മുമ്പ്) ഓൺലൈനിൽ നിങ്ങളുടെ ബോർഡിംഗ് സ്റ്റേഷൻ മാറ്റാൻ കഴിയും.
+
+### IRCTC-യിൽ നിലവിലെ ലഭ്യത ബുക്കിംഗ് എപ്പോൾ തുറക്കുന്നു?
+നിലവിലെ ലഭ്യത ബുക്കിംഗ്, 1-ാം ചാർട്ട് തയ്യാറാക്കുന്നതിന് ശേഷം ഉടൻ, ട്രെയിൻ പുറപ്പെടുന്നതിന് 8 മണിക്കൂർ മുമ്പ് (14:00-ന് മുമ്പുള്ള രാവിലെ പുറപ്പെടുന്ന ട്രെയിനുകൾക്കായി 9:00 PM-ന്) തുറക്കുന്നു, ട്രെയിൻ പുറപ്പെടുന്നതിന് 30 മിനിറ്റ് മുമ്പുവരെ ഓൺലൈനിലും സ്റ്റേഷൻ കൗണ്ടറുകളിൽ ബുക്ക് ചെയ്യാൻ കഴിയും.
+
+### പരിപാലന ബ്ലാക്കൗട്ടിന്റെ സമയത്ത് ഒരു റിസർവുചെയ്ത ട്രെയിൻ കോച്ചിൽ ബോർഡ് ചെയ്യുമ്പോൾ പിഴ എത്ര?
+ഒരു സ്ഥിരീകരിത കാത്തിരിപ്പുള്ള ഇ-ടിക്കറ്റിൽ അല്ലെങ്കിൽ ജനറൽ ടിക്കറ്റിൽ ബോർഡ് ചെയ്യുന്നത് **₹500 പിഴ** അടയ്ക്കുന്നു, കൂടാതെ ബോർഡ് ചെയ്ത ക്ലാസിലേക്ക് fare വ്യത്യാസം, റെയിൽവേ നിയമം (ജന വിശ്വാസ നിയമം 2026-ൽ ഭേദഗതി ചെയ്ത) പ്രകാരം.
 
 ---
 
-## What Time Does Current Availability Booking Open?
+## അടിക്കുറിപ്പ്
 
-**Current availability ticket booking opens approximately 8 hours before scheduled train departure (or 9:00 PM the previous evening for pre-14:00 departures) immediately following first reservation chart preparation. This discounted or normal fare booking window remains active on the IRCTC portal and PRS counters until roughly 30 minutes prior to departure time.**
-
-When train seats remain unsold after the primary reservation charts are finalized, Indian Railways releases them as **Current Availability** tickets. Unlike waitlisted options, a current availability ticket guarantees a **fully confirmed berth** with designated coach and seat numbers.
-
-Features of Current Availability booking:
-- **Opening Time:** Opens right after 1st Chart Preparation (~8 hours before train departure from origin, or 9:00 PM previous day for pre-14:00 departures).
-- **Closing Time:** Closes 30 minutes before departure or when 2nd Chart Preparation occurs.
-- **Fare Discounts:** Indian Railways often applies up to a **10% discount** on basic fares for vacant berths sold under current availability to maximize coach occupancy.
-- **Live Vacancy Check:** You can inspect available empty berths in real time using [Get Confirmed Tickets](/) or check your boarding station chart generation status on [Chart Times](/chart-times).
-
----
-
-## Common Booking Questions (FAQ)
-
-### What time does IRCTC maintenance start tonight?
-IRCTC night maintenance starts every night at 11:45 PM IST (23:45) and concludes at 12:20 AM IST (00:20), lasting for exactly 35 minutes.
-
-### Can I check PNR status during the night maintenance window?
-No, real-time PNR status queries cannot be processed between 11:45 PM and 12:20 AM IST because central PRS database connections are temporarily suspended.
-
-### What should I do if my money is debited at 11:45 PM without getting a ticket?
-Do not worry. The transaction will automatically be flagged as failed, and IRCTC will initiate a 100% refund to your bank account within 3 to 5 business days without any cancellation fee.
-
-### Does IRCTC maintenance happen on weekends and holidays?
-Yes, IRCTC night maintenance occurs every single day of the year, including Saturdays, Sundays, national holidays, and major festivals.
-
-### What time does ticket booking open on IRCTC in the morning?
-General 60-day Advance Reservation Period (ARP) ticket booking opens every morning at 8:00 AM IST. Note that only Aadhaar-authenticated accounts can book general tickets on the opening day.
-
-### What time does AC and Non-AC Tatkal booking open?
-AC Tatkal (2A, 3A, 3E, CC, EC) opens at 10:00 AM IST, while Non-AC Tatkal (Sleeper and 2S) opens at 11:00 AM IST, exactly one day prior to the train's departure from its origin station.
-
-### Can I book unreserved tickets on the UTS app during IRCTC maintenance?
-Yes, the UTS mobile app operates on a separate server network and allows unreserved ticket booking during the midnight maintenance window, though wallet recharges should be avoided.
-
-### Can I change my boarding station during night maintenance?
-No, boarding point changes require active PRS access. However, under 2026 rules, you can change your boarding station online any time outside maintenance hours up until the preparation of the second reservation chart.
-
-### When is the first and second reservation chart prepared?
-The first chart is prepared roughly 8 hours before train departure (or 9:00 PM the previous evening for morning departures before 14:00), and the second final chart is prepared 30 to 45 minutes before departure.
-
-### Can I cancel a confirmed ticket during the night maintenance window?
-No, online cancellations are disabled from 11:45 PM to 12:20 AM IST. If your train departs early in the morning and you need to cancel, do so before 11:45 PM or immediately after 12:20 AM.
+IRCTC ഒരു സമന്വയിത ദിനചര്യയിൽ പ്രവർത്തിക്കുന്നു: ജനറൽ റിസർവേഷനുകൾ **8:00 AM**-ന് തുറക്കുന്നു, താത്കാൽ **10:00 AM (AC)** & **11:00 AM (Non-AC)**-ന് തുറക്കുന്നു, & സർവറുകൾ **11:45 PM മുതൽ 12:20 AM IST** വരെ പരിപാലനത്തിനായി നിർത്തുന്നു. നേരിട്ടുള്ള ടിക്കറ്റുകൾ വിറ്റുപോകുമ്പോൾ അല്ലെങ്കിൽ മിഡ്നൈറ്റ് പരിപാലനം നിങ്ങളുടെ പദ്ധതികൾ തടയുമ്പോൾ, [Finding Smart Seats](/) ഉപയോഗിച്ച് സ്ഥിരീകരിത സ്പ്ലിറ്റ് റൂട്ടുകൾ കണ്ടെത്തുക, [Chart Vacancy](/chart-vacancy) ൽ ലൈവ് ചാർട്ട് റിലീസുകൾ ട്രാക്ക് ചെയ്യുക, & ഉറപ്പുള്ള ബർത്ത് ബുക്ക് ചെയ്യാൻ ആത്മവിശ്വാസത്തോടെ തുടരുക.
