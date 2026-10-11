@@ -107,7 +107,7 @@ service fee.
 ## AI request and fulfillment
 
 The existing `POST /api/split-booking/create` and status endpoint remain in use.
-The request accepts **two or more legs, with no fixed maximum leg count**.
+The request accepts **one or more legs, with no fixed maximum leg count**.
 Each leg requires an explicit `boardingDate` (`YYYY-MM-DD`),
 in addition to `from`, `to`, `travelClass` and `fare`. These dates are passed from
 the alternate-path search through the booking modal and stored in `legsPayload`.

@@ -668,25 +668,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     }
   }, []);
 
-  const altTrainObj = useMemo(() => {
-    return trains.find((t) => t.trainNumber === altForTrain);
-  }, [trains, altForTrain]);
-
-  const directFares = useMemo(() => {
-    const fares: { cls: string; fare: number }[] = [];
-    if (altTrainObj?.availabilityCache) {
-      Object.entries(altTrainObj.availabilityCache).forEach(([cls, avail]) => {
-        if (avail.fare) {
-          const f = parseInt(avail.fare, 10);
-          if (!isNaN(f)) {
-            fares.push({ cls, fare: f });
-          }
-        }
-      });
-    }
-    fares.sort((a, b) => b.fare - a.fare);
-    return fares;
-  }, [altTrainObj]);
   const shareAlternatePathScreenshot = useCallback(async () => {
     const el = altAlternatePathCaptureRef.current;
     if (!el) return;
@@ -1638,12 +1619,10 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                         journeyDate={submittedSearch?.date ?? null}
                         fromCode={submittedSearch?.from.stationCode}
                         toCode={submittedSearch?.to.stationCode}
-                        originChartTime="4 hours before departure"
                         isAdminUser={isAdminUser}
                         shareBusy={altShareBusy}
                         onShare={() => void shareAlternatePathScreenshot()}
                         captureRef={altAlternatePathCaptureRef}
-                        directFares={directFares}
                         hideSearchAllTrainsBanner={true}
                         source="skyscanner_search_experiment"
                         onClose={alt.reset}

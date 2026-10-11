@@ -73,6 +73,58 @@ export function getLegAvailabilityText(
   return chosen ? chosen.replace(/#$/, "").trim() : undefined;
 }
 
+/** Single confirmed leg built from direct IRCTC availability for our booking engine. */
+export function buildDirectBookingLegs(args: {
+  from: string;
+  to: string;
+  boardingDate: string;
+  classes: { cls: string; status: string; fare: number | null }[];
+  cache?: Record<
+    string,
+    {
+      availabilityDisplayName?: string | null;
+      railDataStatus?: string | null;
+      availablityStatus?: string | null;
+    } | null
+  >;
+  departureTime?: string | null;
+  arrivalTime?: string | null;
+  durationMinutes?: number | null;
+}): AlternateLeg[] | null {
+  const { from, to, boardingDate, classes, cache } = args;
+  if (classes.length === 0) return null;
+  const options: AlternateClassOption[] = classes.map((c) => {
+    const row = cache?.[c.cls];
+    return {
+      travelClass: c.cls,
+      fare: c.fare,
+      availabilityDisplayName: row?.availabilityDisplayName ?? c.status,
+      railDataStatus: row?.railDataStatus ?? c.status,
+      availablityStatus: row?.availablityStatus ?? null,
+      predictionPercentage: null,
+    };
+  });
+  const firstPriced = options.find((o) => o.fare != null && o.fare > 0);
+  return [
+    {
+      from,
+      to,
+      segmentKind: "confirmed",
+      travelClass: options[0].travelClass,
+      railDataStatus: options[0].railDataStatus,
+      availablityStatus: options[0].availablityStatus,
+      predictionPercentage: null,
+      availabilityDisplayName: options[0].availabilityDisplayName,
+      fare: firstPriced?.fare ?? null,
+      confirmedClassOptions: options,
+      departureTime: args.departureTime ?? null,
+      arrivalTime: args.arrivalTime ?? null,
+      durationMinutes: args.durationMinutes ?? null,
+      boardingDate,
+    },
+  ];
+}
+
 /** Class choices and the quoted fares are resolved together from the current result. At least 1 leg is mandatory; any leg can be skipped. */
 export function buildSplitBookingSelection(
   legs: AlternateLeg[],

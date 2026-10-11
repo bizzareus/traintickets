@@ -12,7 +12,14 @@ import {
   formatAvailabilityStatus,
 } from "@/lib/bookingV2Availability";
 import { calculateConfirmedDurationMinutes, countConfirmedAlternateLegs } from "@/lib/trainSearchV2Sort";
+import { useSplitBookingFeatureFlag } from "@/lib/hooks/useSplitBookingFeatureFlag";
+import { buildDirectBookingLegs } from "@/lib/splitBookingSelection";
+import {
+  SplitTicketBookingFlow,
+  type SplitTicketBookingFlowProps,
+} from "@/components/booking-v2/SplitTicketBookingFlow";
 import type {
+  AlternateLeg,
   AlternatePathProgressEvent,
   AlternatePathsResponse,
   TrainListItem,
@@ -90,6 +97,11 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
   });
   const [error, setError] = useState<string | null>(null);
   const [currentProgressText, setCurrentProgressText] = useState<string>("");
+  const [directBookingRequest, setDirectBookingRequest] = useState<Omit<
+    SplitTicketBookingFlowProps,
+    "onClose"
+  > | null>(null);
+  const isSplitBookingEnabled = useSplitBookingFeatureFlag();
 
   const hasInitiatedRef = useRef(false);
   const hasTrackedLoadedRef = useRef(false);
@@ -471,6 +483,71 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     lowestDiscoveredFare,
   ]);
 
+  // Direct IRCTC redirect link for available class (fallback when the
+  // booking engine flag is off or the journey date/fare is missing)
+  const directBookingClass = directAvailableClasses[0]?.cls ?? "3A";
+  const directBookingUrl = irctcBookingRedirect({
+    from: fromCode,
+    to: toCode,
+    trainNo: train.trainNumber,
+    classCode: directBookingClass,
+  });
+
+  /** Single confirmed leg built from direct availability for our booking engine. */
+  const directBookingLegs = useMemo<AlternateLeg[] | null>(() => {
+    if (!isDirectAvailable || !journeyDate) return null;
+    return buildDirectBookingLegs({
+      from: fromCode,
+      to: toCode,
+      boardingDate: journeyDate.slice(0, 10),
+      classes: directAvailableClasses,
+      cache: train.availabilityCache,
+      departureTime: train.departureTime ?? null,
+      arrivalTime: train.arrivalTime ?? null,
+      durationMinutes: train.duration ?? null,
+    });
+  }, [
+    isDirectAvailable,
+    journeyDate,
+    directAvailableClasses,
+    train.availabilityCache,
+    train.departureTime,
+    train.arrivalTime,
+    train.duration,
+    fromCode,
+    toCode,
+  ]);
+
+  const canBookDirect =
+    isSplitBookingEnabled &&
+    directBookingLegs !== null &&
+    lowestAvailableDirectFare != null;
+
+  const openDirectBooking = () => {
+    if (!directBookingLegs || !journeyDate) return;
+    trackAnalyticsEvent({
+      name: "split_booking_book_now_clicked",
+      properties: {
+        train_number: train.trainNumber,
+        train_name: train.trainName,
+        journey_date: journeyDate,
+        total_fare: lowestAvailableDirectFare ?? 0,
+        leg_count: 1,
+      },
+    });
+    const stationNameMap: Record<string, string> = {};
+    if (fromName) stationNameMap[fromCode] = fromName;
+    if (toName) stationNameMap[toCode] = toName;
+    setDirectBookingRequest({
+      trainNumber: train.trainNumber,
+      trainName: train.trainName,
+      journeyDate: journeyDate.slice(0, 10),
+      legs: directBookingLegs,
+      stationNameMap:
+        Object.keys(stationNameMap).length > 0 ? stationNameMap : undefined,
+    });
+  };
+
   // Handle card / CTA click to open all-classes modal
   const handleCardClick = () => {
     trackAnalyticsEvent({
@@ -507,37 +584,33 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
         result,
       });
     } else if (isDirectAvailable) {
-      trackAnalyticsEvent({
-        name: "alternate_paths_irctc_clicked",
-        properties: {
-          train_number: train.trainNumber,
-          from_code: fromCode,
-          to_code: toCode,
-          class_code: directBookingClass,
-          source: "skyscanner_card_direct_click",
-        },
-      });
-      window.open(directBookingUrl, "_blank", "noopener,noreferrer");
+      if (canBookDirect) {
+        openDirectBooking();
+      } else {
+        trackAnalyticsEvent({
+          name: "alternate_paths_irctc_clicked",
+          properties: {
+            train_number: train.trainNumber,
+            from_code: fromCode,
+            to_code: toCode,
+            class_code: directBookingClass,
+            source: "skyscanner_card_direct_click",
+          },
+        });
+        window.open(directBookingUrl, "_blank", "noopener,noreferrer");
+      }
     } else if (!loading && !hasInitiatedRef.current) {
       // Start scan on click if not yet initiated
       void executeScan();
     }
   };
 
-  // Direct IRCTC redirect link for available class
-  const directBookingClass = directAvailableClasses[0]?.cls ?? "3A";
-  const directBookingUrl = irctcBookingRedirect({
-    from: fromCode,
-    to: toCode,
-    trainNo: train.trainNumber,
-    classCode: directBookingClass,
-  });
-
   const discoveredCount = result
     ? countConfirmedAlternateLegs(result.legs, result.legCount)
     : foundSeats.length;
 
   return (
+    <>
     <li
       ref={cardRef}
       onClick={handleCardClick}
@@ -677,27 +750,40 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
               </div>
 
               <div className="flex items-center gap-2 shrink-0">
-                <a
-                  href={directBookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    trackAnalyticsEvent({
-                      name: "alternate_paths_irctc_clicked",
-                      properties: {
-                        train_number: train.trainNumber,
-                        from_code: fromCode,
-                        to_code: toCode,
-                        class_code: directBookingClass,
-                        source: "skyscanner_search_experiment",
-                      },
-                    });
-                  }}
-                  className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-emerald-700 transition-colors whitespace-nowrap shrink-0 min-h-[38px] touch-manipulation"
-                >
-                  Book IRCTC ↗
-                </a>
+                {canBookDirect ? (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openDirectBooking();
+                    }}
+                    className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors whitespace-nowrap shrink-0 min-h-[38px] touch-manipulation"
+                  >
+                    Book Now
+                  </button>
+                ) : (
+                  <a
+                    href={directBookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      trackAnalyticsEvent({
+                        name: "alternate_paths_irctc_clicked",
+                        properties: {
+                          train_number: train.trainNumber,
+                          from_code: fromCode,
+                          to_code: toCode,
+                          class_code: directBookingClass,
+                          source: "skyscanner_search_experiment",
+                        },
+                      });
+                    }}
+                    className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-emerald-700 transition-colors whitespace-nowrap shrink-0 min-h-[38px] touch-manipulation"
+                  >
+                    Book IRCTC ↗
+                  </a>
+                )}
               </div>
             </>
           )}
@@ -836,5 +922,12 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
         </div>
       </div>
     </li>
+    {isSplitBookingEnabled && directBookingRequest && (
+      <SplitTicketBookingFlow
+        {...directBookingRequest}
+        onClose={() => setDirectBookingRequest(null)}
+      />
+    )}
+    </>
   );
 });

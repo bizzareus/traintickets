@@ -13,7 +13,6 @@ import { getLegClassOptions, hasClassFare } from "@/lib/splitBookingSelection";
 import { countConfirmedAlternateLegs } from "@/lib/trainSearchV2Sort";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
-import { EntireJourneyAlertCTA } from "@/components/booking-v2/EntireJourneyAlertCTA";
 import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
 import { useChartAlertPayments } from "@/lib/hooks/useChartAlertPayments";
@@ -51,9 +50,6 @@ import {
   markLegAlertSet,
   parseChartDateTimeIst,
 } from "./alternatePathHelpers";
-
-const IS_TICKET_ALERT_ENABLED =
-  process.env.NEXT_PUBLIC_ENABLE_TICKET_ALERT_CTA === "true";
 
 /** Converts a raw progress event into a human-readable status line and icon. */
 function describeProgressEvent(
@@ -725,14 +721,6 @@ export interface AlternatePathContentProps {
   /** Journey destination code (user's search "to" / PNR reservation-upto). */
   toCode?: string;
 
-  // EntireJourneyAlertCTA inputs (fallbacks for PNR-derived values)
-  ctaTrainNumber?: string;
-  ctaTrainName?: string;
-  ctaTrainStartDate?: string;
-  ctaJourneyDate?: string;
-  ctaClassCode?: string;
-  originChartTime: string;
-
   // Admin + share
   isAdminUser: boolean;
   shareBusy?: boolean;
@@ -749,9 +737,6 @@ export interface AlternatePathContentProps {
   /** Opens the train-schedule modal highlighting a leg span. */
   onOpenSchedule: (trainNumber: string, from: string, to: string) => void;
 
-  /** Direct waitlist fares to compare against, sorted highest-first. */
-  directFares?: { cls: string; fare: number }[];
-
   /** When true, disables the "There are no full seats available in this journey" banner (e.g. for Train Search V2). */
   hideSearchAllTrainsBanner?: boolean;
 
@@ -760,7 +745,7 @@ export interface AlternatePathContentProps {
 }
 
 /**
- * The alternate-paths result body (progress feed, fare summary, alert CTA, and
+ * The alternate-paths result body (progress feed, fare summary, booking CTA, and
  * the journey-legs list). Shared by the homepage Route/PNR tabs and the
  * standalone `/pnr-status` page via `SearchPnrPanel`.
  */
@@ -775,12 +760,6 @@ export function AlternatePathContent({
   journeyDate,
   fromCode,
   toCode,
-  ctaTrainNumber,
-  ctaTrainName,
-  ctaTrainStartDate,
-  ctaJourneyDate,
-  ctaClassCode,
-  originChartTime,
   isAdminUser,
   shareBusy,
   onShare,
@@ -789,7 +768,6 @@ export function AlternatePathContent({
   captureRef,
   onClose,
   onOpenSchedule,
-  directFares = [],
   hideSearchAllTrainsBanner = false,
   source,
 }: AlternatePathContentProps) {
@@ -813,8 +791,8 @@ export function AlternatePathContent({
     () => countConfirmedAlternateLegs(altResult?.legs, altResult?.legCount),
     [altResult],
   );
-  const canStartBooking =
-    isSplitBookingEnabled && confirmedLegCount > 1 && !IS_TICKET_ALERT_ENABLED;
+  /** Booking is controlled solely by the `split-ticket-assisted-booking` flag. */
+  const canStartBooking = isSplitBookingEnabled && confirmedLegCount >= 1;
 
   // One-click "search all other trains" for the same route/date — shown once the
   // search is done and this train can't fully confirm the journey (no complete
@@ -955,41 +933,12 @@ export function AlternatePathContent({
           })()}
 
           {!altResult.isComplete &&
-            altResult.totalFare != null &&
-            IS_TICKET_ALERT_ENABLED &&
-            altResult.legs.some((l) => l.segmentKind === "confirmed") && (
-              <div className="rounded-xl bg-gradient-to-r from-blue-50 to-blue-100/70 border border-blue-200 px-4 py-3">
-                <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">
-                  Confirmed tickets fare
-                </p>
-                <p className="mt-0.5 text-2xl font-extrabold tracking-tight text-blue-950 tabular-nums sm:text-3xl">
-                  ₹{altResult.totalFare.toFixed(0)}
-                </p>
-                <p className="mt-0.5 text-xs text-blue-800">
-                  Some legs have no confirmed tickets yet — total may change
-                </p>
-              </div>
-            )}
-          {!altResult.isComplete &&
             !altResult.legs.some((l) => l.segmentKind === "check_realtime") && (
               <p className="rounded-md bg-gray-100 px-3 py-2 text-gray-800">
                 Could not build a full path to your destination with the current
                 search.
               </p>
             )}
-
-          {IS_TICKET_ALERT_ENABLED && (
-            <EntireJourneyAlertCTA
-              trainNumber={altForTrain || ctaTrainNumber || ""}
-              trainName={altTrainName || ctaTrainName || undefined}
-              trainStartDate={ctaTrainStartDate || journeyDate || ""}
-              journeyDate={journeyDate || ctaJourneyDate || ""}
-              classCode={ctaClassCode || "SL"}
-              defaultOrigin={fromCode || ""}
-              defaultDestination={toCode || ""}
-              originChartTime={originChartTime}
-            />
-          )}
 
           {/* Admin debug trace */}
           {isAdminUser &&
@@ -1315,11 +1264,10 @@ export function AlternatePathContent({
       )}
       </div>
 
-      {/* Total fare and booking for journeys with multiple available legs. */}
+      {/* Total fare and booking for journeys with available legs. */}
       {Boolean(altResult) &&
         (canStartBooking || altResult!.totalFare != null) &&
-        !IS_TICKET_ALERT_ENABLED &&
-        confirmedLegCount > 1 && (
+        confirmedLegCount >= 1 && (
           <div className="shrink-0 border-t border-slate-200 bg-white px-4 py-3 sm:px-6 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] z-20 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
             <div className="flex items-center justify-between gap-3">
               <div className="min-w-0 flex-1">

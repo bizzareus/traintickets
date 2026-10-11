@@ -23,9 +23,6 @@ import type {
   TrainListItem,
 } from "@/components/booking-v2/alternatePathsTypes";
 
-const IS_TICKET_ALERT_ENABLED =
-  process.env.NEXT_PUBLIC_ENABLE_TICKET_ALERT_CTA === "true";
-
 interface SearchPnrPanelProps {
   className?: string;
 }
@@ -418,8 +415,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
               </div>
             </div>
           ) : (
-            (!effectiveChartPrepared &&
-              (hasWaitlisted || IS_TICKET_ALERT_ENABLED)) && (
+            (!effectiveChartPrepared && hasWaitlisted) && (
               <div className="bg-blue-50 border-b border-blue-100 p-3">
                 <button
                   type="button"
@@ -569,12 +565,6 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
                     journeyDate={journeyDate}
                     fromCode={pnrData?.From}
                     toCode={pnrData?.To}
-                    ctaTrainNumber={pnrData?.TrainNo}
-                    ctaTrainName={pnrData?.TrainName}
-                    ctaTrainStartDate={journeyDateYmd}
-                    ctaJourneyDate={journeyDateYmd}
-                    ctaClassCode={pnrData?.Class}
-                    originChartTime={originChartTime}
                     isAdminUser={isAdminUser}
                     onRefresh={alt.refresh}
                     isRefreshing={alt.altLoading}
