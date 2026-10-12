@@ -24,7 +24,8 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     showingTranslated: "अनुवादित लेख दिखाए जा रहे हैं:",
     showAllEnglish: "अंग्रेजी में सभी दिखाएं →",
     noTranslationsYet: "",
-    noTranslationsYetSuffix: " में अभी तक कोई लेख अनुवादित नहीं है। इसके बजाय सभी अंग्रेजी लेख दिखाए जा रहे हैं।",
+    noTranslationsYetSuffix:
+      " में अभी तक कोई लेख अनुवादित नहीं है। इसके बजाय सभी अंग्रेजी लेख दिखाए जा रहे हैं।",
     clearFilter: "फ़िल्टर हटाएं",
     noPosts: "अभी तक कोई पोस्ट नहीं है।",
     language: "भाषा:",
@@ -39,7 +40,8 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     showingTranslated: "भाषांतरित लेख दाखवले जात आहेत:",
     showAllEnglish: "इंग्रजीमध्ये सर्व दाखवा →",
     noTranslationsYet: "",
-    noTranslationsYetSuffix: " मध्ये अद्याप कोणतेही लेख भाषांतरित केलेले नाहीत. त्याऐवजी सर्व इंग्रजी लेख दाखवले जात आहेत।",
+    noTranslationsYetSuffix:
+      " मध्ये अद्याप कोणतेही लेख भाषांतरित केलेले नाहीत. त्याऐवजी सर्व इंग्रजी लेख दाखवले जात आहेत।",
     clearFilter: "फिल्टर काढा",
     noPosts: "अद्याप कोणतीही पोस्ट नाही।",
     language: "भाषा:",
@@ -54,7 +56,8 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     showingTranslated: "অনূদিত নিবন্ধগুলি দেখানো হচ্ছে:",
     showAllEnglish: "ইংরেজিতে সব দেখুন →",
     noTranslationsYet: "",
-    noTranslationsYetSuffix: " এ এখনও কোনও অনূদিত নিবন্ধ নেই। পরিবর্তে সব ইংরেজি নিবন্ধ দেখানো হচ্ছে।",
+    noTranslationsYetSuffix:
+      " এ এখনও কোনও অনূদিত নিবন্ধ নেই। পরিবর্তে সব ইংরেজি নিবন্ধ দেখানো হচ্ছে।",
     clearFilter: "ফিল্টার মুছুন",
     noPosts: "এখনও কোনও পোস্ট নেই।",
     language: "ভাষা:",
@@ -64,12 +67,14 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     read: "படிக்க →",
     updated: "புதுப்பிக்கப்பட்டது",
     minRead: "நிமிட வாசிப்பு",
-    title: "உறுதிப்படுத்தப்பட்ட ரயில் டிக்கெட்டுகளைப் படித்துக் கண்டறியவும்: ஐஆர்சிடிசி வழிகாட்டிகள்",
+    title:
+      "உறுதிப்படுத்தப்பட்ட ரயில் டிக்கெட்டுகளைப் படித்துக் கண்டறியவும்: ஐஆர்சிடிசி வழிகாட்டிகள்",
     desc: "லாஸ்ட்பெர்த் வலைப்பதிவு — உறுதிப்படுத்தப்பட்ட ரயில் டிக்கெட்டுகளைக் கண்டறிவதற்கும், ஐஆர்சிடிசி சார்ட்டிங்கைப் புரிந்துகொள்வதற்கும், புத்திசாலித்தனமாக ரயில் பயணங்களை முன்பதிவு செய்வதற்கும் நடைமுறை வழிகாட்டிகள்.",
     showingTranslated: "மொழிபெயர்க்கப்பட்ட கட்டுரைகளைக் காட்டுகிறது:",
     showAllEnglish: "ஆங்கிலத்தில் அனைத்தையும் காட்டு →",
     noTranslationsYet: "",
-    noTranslationsYetSuffix: " இல் இன்னும் கட்டுரைகள் மொழிபெயர்க்கப்படவில்லை. அதற்குப் பதிலாக அனைத்து ஆங்கிலக் கட்டுரைகளும் காட்டப்படுகின்றன.",
+    noTranslationsYetSuffix:
+      " இல் இன்னும் கட்டுரைகள் மொழிபெயர்க்கப்படவில்லை. அதற்குப் பதிலாக அனைத்து ஆங்கிலக் கட்டுரைகளும் காட்டப்படுகின்றன.",
     clearFilter: "வடிகட்டியைக் கூட்டு",
     noPosts: "இன்னும் பதிவுகள் இல்லை.",
     language: "மொழி:",
@@ -79,12 +84,14 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     read: "చదవండి →",
     updated: "నవీకరించబడింది",
     minRead: "నిమిషాల పఠనం",
-    title: "కన్ఫర్మ్డ్ రైలు టిక్కెట్లను చదవండి & కనుగొనండి: ఐఆర్‌సిటిసి గైడ్‌లు",
+    title:
+      "కన్ఫర్మ్డ్ రైలు టిక్కెట్లను చదవండి & కనుగొనండి: ఐఆర్‌సిటిసి గైడ్‌లు",
     desc: "లాస్ట్‌బెర్త్ బ్లాగ్ — కన్ఫర్మ్డ్ రైలు టిక్కెట్లను కనుగొనడం, ఐఆర్‌సిటిసి చార్టింగ్‌ను అర్థం చేసుకోవడం మరియు స్మార్ట్‌గా రైలు ప్రయాణాలను బుక్ చేసుకోవడం కోసం ఆచరణాत्मक గైడ్‌లు.",
     showingTranslated: "అనువదించబడిన కథనాలను చూపుతోంది:",
     showAllEnglish: "ఇంగ్లీషులో అన్నీ చూపించు →",
     noTranslationsYet: "",
-    noTranslationsYetSuffix: " లో ఇంకా కథనాలు అనువదించబడలేదు. బదులుగా అన్ని ఇంగ్లీష్ కథనాలను చూపుతోంది.",
+    noTranslationsYetSuffix:
+      " లో ఇంకా కథనాలు అనువదించబడలేదు. బదులుగా అన్ని ఇంగ్లీష్ కథనాలను చూపుతోంది.",
     clearFilter: "ఫిల్టర్ తొలగించు",
     noPosts: "ఇంకా పోస్ట్‌లు లేవు.",
     language: "భాషా:",
@@ -94,16 +101,18 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     read: "വായിക്കുക →",
     updated: "അപ്ഡേറ്റ് ചെയ്തത്",
     minRead: "മിനിറ്റ് വായന",
-    title: "സ്ഥിരീകരിച്ച ട്രെയിൻ ടിക്കറ്റുകൾ വായിക്കുക, കണ്ടെത്തുക: ഐആർസിടിസി ഗൈഡുകൾ",
+    title:
+      "സ്ഥിരീകരിച്ച ട്രെയിൻ ടിക്കറ്റുകൾ വായിക്കുക, കണ്ടെത്തുക: ഐആർസിടിസി ഗൈഡുകൾ",
     desc: "ലാസ്റ്റ് ബെർത്ത് ബ്ലോഗ് — സ്ഥിരീകരിച്ച ട്രെയിൻ ടിക്കറ്റുകൾ കണ്ടെത്തുന്നതിനും ഐആർസിടിസി ചാർട്ടിംഗ് മനസ്സിലാക്കുന്നതിനും സ്മാർട്ടായി ട്രെയിൻ യാത്രകൾ ബുക്ക് ചെയ്യുന്നതിനുമുള്ള പ്രായോഗിക ഗൈഡുകൾ.",
     showingTranslated: "വിവർത്തനം ചെയ്ത ലേഖനങ്ങൾ കാണിക്കുന്നു:",
     showAllEnglish: "എല്ലാം ഇംഗ്ലീഷിൽ കാണിക്കുക →",
     noTranslationsYet: "",
-    noTranslationsYetSuffix: " ലേക്ക് ഇതുവരെ ലേഖനങ്ങളൊന്നും വിവിർത്തനം ചെയ്തിട്ടില്ല. പകരം എല്ലാ ഇംഗ്ലീഷ് ലേഖനങ്ങളും കാണിക്കുന്നു.",
+    noTranslationsYetSuffix:
+      " ലേക്ക് ഇതുവരെ ലേഖനങ്ങളൊന്നും വിവിർത്തനം ചെയ്തിട്ടില്ല. പകരം എല്ലാ ഇംഗ്ലീഷ് ലേഖനങ്ങളും കാണിക്കുന്നു.",
     clearFilter: "ഫിൽട്ടർ ഒഴിവാക്കുക",
     noPosts: "ഇതുവരെ പോസ്റ്റുകളൊന്നുമില്ല.",
     language: "ഭാഷ:",
-  }
+  },
 };
 
 export function getBlogTranslation(key: string, lang: string): string {
@@ -114,7 +123,8 @@ export function getBlogTranslation(key: string, lang: string): string {
 export function mapStateToLanguage(stateCode: string): string | null {
   const code = stateCode.toUpperCase().trim();
   switch (code) {
-    case "MH": return "mr"; // Marathi
+    case "MH":
+      return "mr"; // Marathi
     case "UP":
     case "BR":
     case "MP":
@@ -124,25 +134,37 @@ export function mapStateToLanguage(stateCode: string): string | null {
     case "UK":
     case "CG":
     case "JH":
-    case "CH": return "hi"; // Hindi
-    case "WB": return "bn"; // Bengali
-    case "TN": return "ta"; // Tamil
+    case "CH":
+      return "hi"; // Hindi
+    case "WB":
+      return "bn"; // Bengali
+    case "TN":
+      return "ta"; // Tamil
     case "TG":
-    case "AP": return "te"; // Telugu
-    case "KL": return "ml"; // Malayalam
-    default: return null;
+    case "AP":
+      return "te"; // Telugu
+    case "KL":
+      return "ml"; // Malayalam
+    default:
+      return null;
   }
 }
 
 export function getLanguageName(langCode: string): string {
   switch (langCode) {
-    case "mr": return "Marathi";
-    case "hi": return "Hindi";
-    case "bn": return "Bengali";
-    case "ta": return "Tamil";
-    case "te": return "Telugu";
-    case "ml": return "Malayalam";
-    default: return "English";
+    case "mr":
+      return "Marathi";
+    case "hi":
+      return "Hindi";
+    case "bn":
+      return "Bengali";
+    case "ta":
+      return "Tamil";
+    case "te":
+      return "Telugu";
+    case "ml":
+      return "Malayalam";
+    default:
+      return "English";
   }
 }
-

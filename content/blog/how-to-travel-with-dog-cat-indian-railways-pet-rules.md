@@ -32,6 +32,7 @@ Booking individual berths in 1AC does not give you pet rights. If you book only 
 **Indian Railways provides an online pet registration facility through its Parcel Management System** for confirmed First AC (1AC) and First Class (FC) passengers. Once your **entire coupe or cabin is confirmed and the first reservation chart is prepared (~8 hours before departure)**, you can book pet luggage online via the IRCTC portal without standing in station counter lines.
 
 ### Step-by-Step Online Booking Process:
+
 1. **Book Your Ticket:** Ensure you hold a confirmed ticket in First AC or First Class, booking all berths in the coupe (2 berths) or cabin (4 berths) under a single PNR.
 2. **Access the Portal:** Visit the official IRCTC website. Under the **"TRAINS"** navigation menu, select **"Dogs/Cats Booking"**.
 3. **Parcel System Link:** The system connects to the official Indian Railways Parcel Management System (`parcel.indianrail.gov.in`).
@@ -48,13 +49,13 @@ Booking individual berths in 1AC does not give you pet rights. If you book only 
 
 **Pets are strictly prohibited inside AC 2-Tier (2A), AC 3-Tier (3A), AC 3-Economy (3E), Sleeper (SL), and General (GS) coaches.** The only permissible passenger compartment is **First AC (1AC) or First Class (FC) with full cabin ownership**. Bringing pets into unauthorized classes incurs penalties of **six times the standard luggage rate** and immediate removal to the luggage van.
 
-| Coach Class | Allowed Inside Coach? | Mandatory Condition |
-| :--- | :--- | :--- |
-| **First AC (1A) / First Class (FC)** | **Yes** | Entire 2-berth coupe or 4-berth cabin booked under one PNR. |
-| **AC 2 Tier (2A)** | **No** | Must be booked in the luggage brake van (dog box). |
-| **AC 3 Tier (3A) & 3 Economy (3E)** | **No** | Prohibited in coach; dog box in luggage van only. |
-| **Sleeper Class (SL)** | **No** | Prohibited in coach; dog box in luggage van only. |
-| **General / Unreserved (GS)** | **No** | Strictly prohibited. |
+| Coach Class                          | Allowed Inside Coach? | Mandatory Condition                                         |
+| :----------------------------------- | :-------------------- | :---------------------------------------------------------- |
+| **First AC (1A) / First Class (FC)** | **Yes**               | Entire 2-berth coupe or 4-berth cabin booked under one PNR. |
+| **AC 2 Tier (2A)**                   | **No**                | Must be booked in the luggage brake van (dog box).          |
+| **AC 3 Tier (3A) & 3 Economy (3E)**  | **No**                | Prohibited in coach; dog box in luggage van only.           |
+| **Sleeper Class (SL)**               | **No**                | Prohibited in coach; dog box in luggage van only.           |
+| **General / Unreserved (GS)**        | **No**                | Strictly prohibited.                                        |
 
 ---
 
@@ -90,10 +91,10 @@ Booking individual berths in 1AC does not give you pet rights. If you book only 
 
 **Pet luggage charges are calculated based on the official railway luggage scale rate by distance and weight.** For pets traveling in the **luggage van dog box, charges are billed on a minimum 30 kg weight slab** (typically ₹200 to ₹700). For accompanied pets in **1AC coupes, charges are billed on a 60 kg weight slab** (typically ₹400 to ₹1,200).
 
-| Booking Type | Billing Slab | Typical Fee Range | Booking Window |
-| :--- | :--- | :--- | :--- |
-| **Luggage Van Dog Box (SLR)** | Min 30 kg scale | ₹200 – ₹700 | 3–4 hours before departure at parcel counter |
-| **First AC Coupe / Cabin (Accompanied)** | Min 60 kg scale | ₹400 – ₹1,200 | Online post-charting or at luggage counter |
+| Booking Type                             | Billing Slab    | Typical Fee Range | Booking Window                               |
+| :--------------------------------------- | :-------------- | :---------------- | :------------------------------------------- |
+| **Luggage Van Dog Box (SLR)**            | Min 30 kg scale | ₹200 – ₹700       | 3–4 hours before departure at parcel counter |
+| **First AC Coupe / Cabin (Accompanied)** | Min 60 kg scale | ₹400 – ₹1,200     | Online post-charting or at luggage counter   |
 
 ---
 
@@ -101,39 +102,47 @@ Booking individual berths in 1AC does not give you pet rights. If you book only 
 
 **Vande Bharat and Shatabdi Express trains do not permit pet travel** because they operate chair-car configurations without 1AC private lockable cabins or luggage dog boxes. **Rajdhani Express allows accompanied pets in First AC coupes/cabins only**, as Rajdhani trains do not carry dog boxes in their brake vans.
 
-| Train Type | 1AC Private Coupe? | Luggage Dog Box? | Pet Travel Permitted? |
-| :--- | :--- | :--- | :--- |
-| **Vande Bharat Express** | No | No | **No** |
-| **Shatabdi Express** | No | No | **No** |
-| **Rajdhani Express** | Yes | No | **Yes (1AC Full Coupe only)** |
-| **Superfast / Mail / Express** | Yes (select rakes) | Yes | **Yes (1AC or Luggage Dog Box)** |
+| Train Type                     | 1AC Private Coupe? | Luggage Dog Box? | Pet Travel Permitted?            |
+| :----------------------------- | :----------------- | :--------------- | :------------------------------- |
+| **Vande Bharat Express**       | No                 | No               | **No**                           |
+| **Shatabdi Express**           | No                 | No               | **No**                           |
+| **Rajdhani Express**           | Yes                | No               | **Yes (1AC Full Coupe only)**    |
+| **Superfast / Mail / Express** | Yes (select rakes) | Yes              | **Yes (1AC or Luggage Dog Box)** |
 
 ---
 
 ## Common Booking Questions (FAQ)
 
 ### How much does it cost to travel with a dog in Indian Railways?
+
 Pet travel charges depend on weight and distance. Luggage van dog boxes are billed on a minimum 30 kg luggage scale rate (₹200 to ₹700), while carrying a pet inside a First AC private coupe is billed on a 60 kg scale rate (₹400 to ₹1,200).
 
 ### Can I travel with a cat in a train?
+
 Yes, cats follow the identical commercial rules as dogs. They are allowed inside First AC (1AC) compartments if you book the entire 2-berth coupe or 4-berth cabin under one PNR, or they can be carried inside an authorized carrier in the luggage van dog box.
 
 ### What happens if a co-passenger objects to my dog in 1AC?
+
 If you booked all berths in the 1AC coupe or cabin under a single PNR, other passengers cannot object. If you booked individual berths without owning the entire cabin, a co-passenger's objection legally obligates the TTE to remove your pet to the luggage van without a refund.
 
 ### Can you take pets on Vande Bharat or Tejas Express trains?
+
 No. Vande Bharat, Tejas, and Shatabdi Express trains consist exclusively of Chair Car (CC) and Executive Class (EC) coaches without lockable 1AC coupes or brake van dog boxes, making pet travel completely prohibited.
 
 ### How early should you reach the station for pet parcel counter booking?
+
 You should reach the parcel and luggage booking office at least 3 to 4 hours before the train's scheduled departure to complete verification of the veterinary certificate, weigh the animal, and pay the luggage charges.
 
 ### What is the validity period of the veterinary fitness certificate?
+
 The veterinary health and fitness certificate must be issued by a registered veterinary practitioner within 24 to 48 hours prior to the scheduled departure of the train.
 
 ### Who feeds and provides water to dogs kept in the luggage van dog box?
+
 The passenger is entirely responsible for feeding and watering their pet. You must visit the guard van at scheduled intermediate station halts with sufficient water and food for your pet.
 
 ### Can you book a pet on a waitlisted or RAC train ticket?
+
 No. Pet booking requires a fully confirmed First AC ticket (for cabin travel) or a confirmed ticket in any class (for luggage van dog box travel). Waitlisted tickets cannot be used to book pets.
 
 ---

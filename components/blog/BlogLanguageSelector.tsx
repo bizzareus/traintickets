@@ -4,13 +4,20 @@ import { useRouter } from "next/navigation";
 
 const getLanguageName = (langCode: string): string => {
   switch (langCode) {
-    case "mr": return "Marathi";
-    case "hi": return "Hindi";
-    case "bn": return "Bengali";
-    case "ta": return "Tamil";
-    case "te": return "Telugu";
-    case "ml": return "Malayalam";
-    default: return "English";
+    case "mr":
+      return "Marathi";
+    case "hi":
+      return "Hindi";
+    case "bn":
+      return "Bengali";
+    case "ta":
+      return "Tamil";
+    case "te":
+      return "Telugu";
+    case "ml":
+      return "Malayalam";
+    default:
+      return "English";
   }
 };
 
@@ -40,14 +47,17 @@ export function BlogLanguageSelector({
 
   return (
     <div className="flex items-center gap-2">
-      <label htmlFor="blog-language" className="text-sm font-semibold text-slate-600">
+      <label
+        htmlFor="blog-language"
+        className="text-sm font-semibold text-slate-600"
+      >
         Language:
       </label>
       <select
         id="blog-language"
         value={currentLang}
         onChange={handleLanguageChange}
-        className="block rounded-lg border-slate-200 bg-slate-50 py-1.5 pl-3 pr-8 text-sm text-slate-700 focus:border-blue-500 focus:ring-blue-500 transition-colors shadow-sm cursor-pointer"
+        className="block cursor-pointer rounded-lg border-slate-200 bg-slate-50 py-1.5 pl-3 pr-8 text-sm text-slate-700 shadow-sm transition-colors focus:border-blue-500 focus:ring-blue-500"
       >
         {availableLangs.map((lang) => (
           <option key={lang} value={lang}>

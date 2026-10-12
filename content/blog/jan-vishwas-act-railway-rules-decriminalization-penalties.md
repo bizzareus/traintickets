@@ -9,8 +9,8 @@ tags:
   - train fines
   - travel guide
 ---
-> **Avoid railway fines for unconfirmed travel:** Check your ticket status on [Smart Seats](/) to ensure your waitlisted ticket confirmed before boarding, and use [Get Confirmed Tickets](/) to find vacant berths lawfully.
 
+> **Avoid railway fines for unconfirmed travel:** Check your ticket status on [Smart Seats](/) to ensure your waitlisted ticket confirmed before boarding, and use [Get Confirmed Tickets](/) to find vacant berths lawfully.
 
 ## TL;DR
 
@@ -44,13 +44,13 @@ Previously, these acts were punishable under the Railways Act of 1989 with a mix
 
 Below is a detailed comparison of the old penalties versus the new civil penalties introduced under the Jan Vishwas Act, 2026:
 
-| Offense | Railways Act Section | Old Penalty / Fine | New Civil Penalty (2026) |
-| :--- | :--- | :--- | :--- |
-| **Ticketless Travel** | Section 138 | Up to ₹250 + excess charge | Minimum **₹500** + excess charge |
-| **Smoking in Train** | Section 167 | Up to ₹100 | Up to **₹2,000** |
-| **Unauthorized Hawking/Vending** | Section 144 | Up to ₹2,000 or 1 year prison | Up to **₹2,000** |
-| **Entering Women's Coach** | Section 162 | Up to ₹500 | Up to **₹2,500** |
-| **Alighting/Boarding Running Train**| Section 156 | Up to ₹500 or 3 months prison | Up to **₹1,000** |
+| Offense                              | Railways Act Section | Old Penalty / Fine            | New Civil Penalty (2026)         |
+| :----------------------------------- | :------------------- | :---------------------------- | :------------------------------- |
+| **Ticketless Travel**                | Section 138          | Up to ₹250 + excess charge    | Minimum **₹500** + excess charge |
+| **Smoking in Train**                 | Section 167          | Up to ₹100                    | Up to **₹2,000**                 |
+| **Unauthorized Hawking/Vending**     | Section 144          | Up to ₹2,000 or 1 year prison | Up to **₹2,000**                 |
+| **Entering Women's Coach**           | Section 162          | Up to ₹500                    | Up to **₹2,500**                 |
+| **Alighting/Boarding Running Train** | Section 156          | Up to ₹500 or 3 months prison | Up to **₹1,000**                 |
 
 By eliminating jail time and replacing it with steeper financial penalties, the administration targets the pocketbooks of violators directly, ensuring better compliance across all zones.
 
@@ -75,25 +75,30 @@ If your ticket is waitlisted and you are worried about boarding on an unconfirme
 ## Common Railway Penalty Questions (FAQ)
 
 ### Can you go to jail for ticketless travel under the Jan Vishwas Act?
+
 No, ticketless travel has been decriminalized under the Jan Vishwas Act 2026, meaning you will not face jail time or a criminal record. Instead, you must pay the fare difference and a minimum civil penalty of ₹500.
 
 ### How is the 10% escalator clause applied to railway fines?
+
 The escalator clause automatically increases the statutory fine amounts by 10% every three years. For example, a ₹500 penalty will rise to ₹550 after three years, keeping pace with economic inflation.
 
 ### What is the penalty for entering a women's coach unauthorized?
+
 Under the Jan Vishwas Act 2026, entering a coach reserved for ladies carries a civil penalty of up to ₹2,500. This is a five-fold increase from the old maximum fine of ₹500.
 
 ### Can a ticketless passenger board a train with a waitlisted e-ticket?
+
 No, waitlisted online e-tickets are auto-cancelled and refunded after chart preparation. Boarding with a cancelled e-ticket is treated as ticketless travel and is subject to the ₹500 civil penalty.
 
 ### What is the fine for smoking or hawking on a train in 2026?
+
 Smoking inside train compartments or hawking/vending without a valid railway permit is subject to a civil penalty of up to ₹2,000 under the amended rules.
 
 ### Who enforces and collects these new civil penalties?
+
 Authorized railway officials, such as Travelling Ticket Examiners (TTEs) and station masters, enforce and collect these administrative penalties directly on behalf of the Zonal Railway.
 
 ---
-
 
 ## What is the Penalty for Traveling on a Waitlisted Ticket Under Jan Vishwas Rules?
 
@@ -105,12 +110,14 @@ Authorized Travelling Ticket Examiners (TTEs) and Ticket Collectors issue offici
 
 ## Bottom line
 
-The Jan Vishwas Act 2026 represents a progressive shift in how Indian Railways manages passenger violations. By replacing criminal trials and imprisonment with higher civil penalties, the law makes travel regulation more efficient while penalizing offenders through strict financial penalties. 
+The Jan Vishwas Act 2026 represents a progressive shift in how Indian Railways manages passenger violations. By replacing criminal trials and imprisonment with higher civil penalties, the law makes travel regulation more efficient while penalizing offenders through strict financial penalties.
 
 To ensure you never face these fines, make sure you always book a valid ticket. If direct trains show a waiting list, use the [Finding Smart Seats](/) tool on LastBerth to split your journey into confirmed seats or use [Get Confirmed Tickets](/) to find confirmed split seats. Always verify your status on the official IRCTC website or app before boarding.
 
 ### Does a decriminalized civil fine show on your police record or passport check?
+
 No. Decriminalized civil defaults under the Jan Vishwas Act are administrative penalties collected directly by Indian Railways and do not generate criminal FIRs, court records, or adverse police verification entries for passport applications.
 
 ### Can you appeal a penalty receipt issued by a TTE onboard?
+
 Yes. If you believe a penalty was wrongfully charged, you can file a formal complaint along with your penalty receipt on the RailMadad portal or appeal to the Senior Divisional Commercial Manager (Sr. DCM) of the relevant railway division.

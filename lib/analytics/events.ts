@@ -65,7 +65,12 @@ export type AnalyticsEvent =
       name: "blog_route_cta_clicked";
       properties: {
         slug: string;
-        cta_type: "inline_card" | "sticky_bar" | "route_chip" | "related_route" | "tool_button";
+        cta_type:
+          | "inline_card"
+          | "sticky_bar"
+          | "route_chip"
+          | "related_route"
+          | "tool_button";
         from?: string;
         to?: string;
         destination_url: string;

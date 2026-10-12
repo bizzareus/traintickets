@@ -27,14 +27,14 @@ Key rules:
 
 Booking calendar (8 AM):
 
-| Travelling for | Date | Book on |
-|---|---|---|
-| Reach early, settle down | Nov 10–11, Tue–Wed | Sept 11–12 |
-| Nahay Khay Day 1 | Nov 12, Thursday | Sept 13 |
-| Kharna Day 2 | Nov 13, Friday | Sept 14 |
-| Sandhya Arghya (main day!) | Nov 14, Saturday | Sept 15 |
-| Usha Arghya / Paran | Nov 15, Sunday | Sept 16 |
-| Return rush | Nov 16–22 | Sept 17–23 |
+| Travelling for             | Date               | Book on    |
+| -------------------------- | ------------------ | ---------- |
+| Reach early, settle down   | Nov 10–11, Tue–Wed | Sept 11–12 |
+| Nahay Khay Day 1           | Nov 12, Thursday   | Sept 13    |
+| Kharna Day 2               | Nov 13, Friday     | Sept 14    |
+| Sandhya Arghya (main day!) | Nov 14, Saturday   | Sept 15    |
+| Usha Arghya / Paran        | Nov 15, Sunday     | Sept 16    |
+| Return rush                | Nov 16–22          | Sept 17–23 |
 
 Don't aim for Nov 12 travel — too tight. Nov 9–10 is my sweet spot, less crowd, time to help at home.
 
@@ -49,7 +49,7 @@ Don't aim for Nov 12 travel — too tight. Nov 9–10 is my sweet spot, less cro
 **3. Check alternative route splits.** When direct bookings show REGRET, check smart split-route combinations on [Get Confirmed Tickets](/) — intermediate stations often have empty confirmed berths waiting on the same train. Keep IRCTC logged in.
 
 ![Smart Seats Split Booking Example: Chhath Puja Travel](/images/blog/chhath-smart-seats-example.png)
-*Two greens instead of one red REGRET — same train, shift berths midway.*
+_Two greens instead of one red REGRET — same train, shift berths midway._
 
 ---
 
@@ -68,7 +68,7 @@ Re-search your date (quotas move daily), but these breaks repeat every Chhath:
 - Break: **NDLS → Gorakhpur (GKP)** confirmed + **Gorakhpur → DBG** confirmed. Gorakhpur halt is long enough for chai + leg-stretch. My cousin reached Darbhanga Kharna morning this way in 2024 — his mother cried. Real story.
 
 ![Smart Seats Split Booking Example: Delhi to Muzaffarpur](/images/blog/chhath-smart-seats-delhi-muzaffarpur.png)
-*North-Bihar splits usually break at Gorakhpur.*
+_North-Bihar splits usually break at Gorakhpur._
 
 ### Mumbai → Danapur / Patna
 
@@ -76,7 +76,7 @@ Re-search your date (quotas move daily), but these breaks repeat every Chhath:
 - Break: **LTT → Jabalpur (JBP)** confirmed + **Jabalpur → Patliputra/DNR** confirmed. Same train. Jabalpur sounds random — that's exactly why seats sit empty there. Shuffle berths half-asleep, wake up in Bihar.
 
 ![Smart Seats Split Booking Example: Mumbai to Danapur](/images/blog/chhath-smart-seats-mumbai-danapur.png)
-*Mumbai splits look odd on map, feel normal in the train.*
+_Mumbai splits look odd on map, feel normal in the train._
 
 ---
 
@@ -109,4 +109,4 @@ Nov 14 sunset at the pond — mohalla gathered, folk songs, your mother holding 
 
 Reach safe — and save me a thekua. Happy Chhath!
 
-*LastBerth is an independent seat-finder I use — not IRCTC or Railways, just reads quotas better.*
+_LastBerth is an independent seat-finder I use — not IRCTC or Railways, just reads quotas better._

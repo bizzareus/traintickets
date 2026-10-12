@@ -109,7 +109,9 @@ export function StandardMenuView({ group }: { group: StandardMenuGroup }) {
               className="scroll-mt-28"
             >
               <div className="mb-3 flex items-end justify-between gap-3 border-b border-slate-100 pb-2">
-                <h2 className="text-lg font-bold text-slate-900">{s.service}</h2>
+                <h2 className="text-lg font-bold text-slate-900">
+                  {s.service}
+                </h2>
                 {s.price != null && (
                   <span className="shrink-0 rounded-full bg-amber-50 px-3 py-1 text-sm font-bold text-amber-700">
                     ₹{s.price}
@@ -162,9 +164,9 @@ export function StandardMenuView({ group }: { group: StandardMenuGroup }) {
       )}
 
       <p className="mt-8 rounded-lg bg-slate-50 p-3 text-xs text-slate-500">
-        Dish images are illustrative. Menus rotate daily (Set 1 to Set 7) and may
-        vary by zone and season. Prices are per meal, inclusive of taxes. Source:
-        official IRCTC menu (
+        Dish images are illustrative. Menus rotate daily (Set 1 to Set 7) and
+        may vary by zone and season. Prices are per meal, inclusive of taxes.
+        Source: official IRCTC menu (
         <a
           href={zone?.sourcePdfUrl}
           target="_blank"

@@ -88,7 +88,7 @@ export function StationFieldSimple(props: {
         htmlFor={inputId}
         className={cn(
           "mb-1 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500",
-            compact && "mb-0 text-[9px] leading-3",
+          compact && "mb-0 text-[9px] leading-3",
         )}
       >
         <svg
@@ -126,8 +126,9 @@ export function StationFieldSimple(props: {
           aria-label={label}
           type="text"
           className={cn(
-            "block w-full rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4 touch-manipulation",
-            compact && "h-6 border-0 bg-transparent py-0 pl-0 pr-4 text-sm focus:border-0 focus:ring-0 sm:py-0 sm:pl-0",
+            "block w-full touch-manipulation rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4",
+            compact &&
+              "h-6 border-0 bg-transparent py-0 pl-0 pr-4 text-sm focus:border-0 focus:ring-0 sm:py-0 sm:pl-0",
           )}
           placeholder={placeholder}
           value={displayText}
@@ -190,7 +191,7 @@ export function StationFieldSimple(props: {
             >
               <button
                 type="button"
-                className="block w-full px-4 py-2.5 text-left text-sm text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none touch-manipulation"
+                className="block w-full touch-manipulation px-4 py-2.5 text-left text-sm text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => {
                   onSelect(s);

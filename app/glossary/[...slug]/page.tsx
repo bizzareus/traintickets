@@ -31,9 +31,7 @@ export async function generateStaticParams() {
 type Props = { params: Promise<{ slug: string[] }> };
 
 /** Parse a slug into { lang, termId } or null if it's not a valid glossary route. */
-function parseSlug(
-  slug: string[],
-): { lang: string; termId?: string } | null {
+function parseSlug(slug: string[]): { lang: string; termId?: string } | null {
   if (slug.length === 1) {
     if (isGlossaryLang(slug[0]) && slug[0] !== "en") return { lang: slug[0] };
     return { lang: "en", termId: slug[0] };
@@ -99,7 +97,7 @@ export default async function GlossarySlugPage({ params }: Props) {
     if (!item) notFound();
     const related = (item.relatedTerms || [])
       .map((id) => getGlossaryTermForLang(id, lang))
-      .filter(Boolean) as typeof item[];
+      .filter(Boolean) as (typeof item)[];
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -113,26 +111,37 @@ export default async function GlossarySlugPage({ params }: Props) {
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <nav className="flex text-sm text-slate-500">
-            <Link href={canonicalFor(lang)} className="hover:text-blue-600 hover:underline">
+            <Link
+              href={canonicalFor(lang)}
+              className="hover:text-blue-600 hover:underline"
+            >
               {ui.crumb}
             </Link>
             <span className="mx-2">/</span>
             <span className="text-slate-900">{item.term}</span>
           </nav>
-          <GlossaryLanguageSelector currentLang={lang} termId={termId} languageLabel={ui.language} />
+          <GlossaryLanguageSelector
+            currentLang={lang}
+            termId={termId}
+            languageLabel={ui.language}
+          />
         </div>
 
         <article className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
             {item.term}
           </h1>
-          <div className="mt-8 prose prose-slate prose-lg max-w-none">
-            <p className="lead text-xl text-slate-700 font-medium">{item.definition}</p>
+          <div className="prose prose-lg prose-slate mt-8 max-w-none">
+            <p className="lead text-xl font-medium text-slate-700">
+              {item.definition}
+            </p>
           </div>
 
           {related.length > 0 && (
             <div className="mt-12 border-t border-slate-100 pt-8">
-              <h2 className="mb-4 text-xl font-bold text-slate-900">{ui.related}</h2>
+              <h2 className="mb-4 text-xl font-bold text-slate-900">
+                {ui.related}
+              </h2>
               <div className="flex flex-wrap gap-3">
                 {related.map((r) => (
                   <Link
@@ -148,7 +157,10 @@ export default async function GlossarySlugPage({ params }: Props) {
           )}
         </article>
 
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </div>
     );
   }
@@ -167,11 +179,16 @@ export default async function GlossarySlugPage({ params }: Props) {
         <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
           {ui.title}
         </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{ui.subtitle}</p>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+          {ui.subtitle}
+        </p>
       </div>
 
       <div className="mb-10 flex justify-center">
-        <GlossaryLanguageSelector currentLang={lang} languageLabel={ui.language} />
+        <GlossaryLanguageSelector
+          currentLang={lang}
+          languageLabel={ui.language}
+        />
       </div>
 
       <div className="space-y-12">
@@ -190,7 +207,9 @@ export default async function GlossarySlugPage({ params }: Props) {
                     className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
                   >
                     <h3 className="font-bold text-slate-900">{item.term}</h3>
-                    <p className="mt-1 line-clamp-2 text-sm text-slate-600">{item.definition}</p>
+                    <p className="mt-1 line-clamp-2 text-sm text-slate-600">
+                      {item.definition}
+                    </p>
                   </Link>
                 ))}
               </div>

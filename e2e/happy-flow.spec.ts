@@ -12,7 +12,7 @@ test.describe("The Happy Flow", () => {
     // 1. Calculate tomorrow's date for a realistic search
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    
+
     // 2. Mock API responses with real-world station codes
     await installBookingV2Mocks(page, {
       stations: [
@@ -27,12 +27,16 @@ test.describe("The Happy Flow", () => {
     await page.goto("/");
 
     // 4. Select stations
-    const waitFrom = page.waitForResponse((r) => r.url().includes("/api/booking-v2/stations/suggest"));
+    const waitFrom = page.waitForResponse((r) =>
+      r.url().includes("/api/booking-v2/stations/suggest"),
+    );
     await page.getByLabel("From", { exact: true }).fill("NDLS");
     await waitFrom;
     await page.getByRole("option", { name: /NDLS/ }).click();
 
-    const waitTo = page.waitForResponse((r) => r.url().includes("/api/booking-v2/stations/suggest"));
+    const waitTo = page.waitForResponse((r) =>
+      r.url().includes("/api/booking-v2/stations/suggest"),
+    );
     await page.getByLabel("To", { exact: true }).fill("MMCT");
     await waitTo;
     await page.getByRole("option", { name: /MMCT/ }).click();
@@ -50,7 +54,9 @@ test.describe("The Happy Flow", () => {
     const trainItem = page
       .getByRole("listitem")
       .filter({ hasText: DEFAULT_TRAIN.trainNumber });
-    await trainItem.getByRole("button", { name: /Search all classes/i }).click();
+    await trainItem
+      .getByRole("button", { name: /Search all classes/i })
+      .click();
 
     // 8. Verify the alternate path modal opens
     const dialog = page.getByRole("dialog");
@@ -60,7 +66,7 @@ test.describe("The Happy Flow", () => {
     // 9. Confirm "Book" button exists
     const bookButton = dialog.getByRole("link", { name: /Book/ }).first();
     await expect(bookButton).toBeVisible();
-    
+
     const href = await bookButton.getAttribute("href");
     expect(href).toContain("irctc.co.in");
     expect(href).toContain("trainNo=" + DEFAULT_TRAIN.trainNumber);

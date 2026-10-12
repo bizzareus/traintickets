@@ -56,13 +56,13 @@ tags:
 
 நீங்கள் ஒரு டிக்கெட்டை மறுசீரமைக்கும்போது, அதை ரத்து செய்வதற்குப் பதிலாக, நீங்கள் அட்டவணை தயாரிப்பிற்கு அருகிலுள்ள கடுமையான ரத்து குறைப்புகளைத் தவிர்க்கிறீர்கள். சாதாரண ரத்து கட்டணங்கள் ₹60 முதல் ₹240 வரை + GST ஒவ்வொரு பயணிக்கும், ஆனால் ஒரு தேதி மாற்றம் உங்கள் அடிப்படை டிக்கெட் மதிப்பை வைத்திருக்கிறது.
 
-| Ticket Class | Normal Cancellation Fee (Within 48h to 12h) | Counter Rescheduling Fee (Clerkage) | Fare Adjustment Rule |
-| :--- | :--- | :--- | :--- |
-| **AC First Class (1A / Executive)** | 25% of fare (min ₹240 + GST) | Nominal clerkage (~₹60 + GST) | Pay difference if new train fare is higher |
-| **AC 2 Tier (2A)** | 25% of fare (min ₹200 + GST) | Nominal clerkage (~₹60 + GST) | Pay difference if new train fare is higher |
-| **AC 3 Tier / 3 Economy (3A / 3E / CC)** | 25% of fare (min ₹180 + GST) | Nominal clerkage (~₹60 + GST) | Pay difference if new train fare is higher |
-| **Sleeper Class (SL)** | 25% of fare (min ₹120) | Nominal clerkage (~₹30–₹60) | Pay difference if new train fare is higher |
-| **Second Sitting (2S)** | 25% of fare (min ₹60) | Nominal clerkage (~₹30) | Pay difference if new train fare is higher |
+| Ticket Class                             | Normal Cancellation Fee (Within 48h to 12h) | Counter Rescheduling Fee (Clerkage) | Fare Adjustment Rule                       |
+| :--------------------------------------- | :------------------------------------------ | :---------------------------------- | :----------------------------------------- |
+| **AC First Class (1A / Executive)**      | 25% of fare (min ₹240 + GST)                | Nominal clerkage (~₹60 + GST)       | Pay difference if new train fare is higher |
+| **AC 2 Tier (2A)**                       | 25% of fare (min ₹200 + GST)                | Nominal clerkage (~₹60 + GST)       | Pay difference if new train fare is higher |
+| **AC 3 Tier / 3 Economy (3A / 3E / CC)** | 25% of fare (min ₹180 + GST)                | Nominal clerkage (~₹60 + GST)       | Pay difference if new train fare is higher |
+| **Sleeper Class (SL)**                   | 25% of fare (min ₹120)                      | Nominal clerkage (~₹30–₹60)         | Pay difference if new train fare is higher |
+| **Second Sitting (2S)**                  | 25% of fare (min ₹60)                       | Nominal clerkage (~₹30)             | Pay difference if new train fare is higher |
 
 உங்கள் மறுசீரமைக்கப்பட்ட டிக்கெட் பின்னர் ரத்து செய்யப்படுமானால், இந்திய ரயில்வே ரத்து குறைப்புகளை அசல் பதிவு தேதி மற்றும் கட்டண அடிப்படையைப் பயன்படுத்தி கணக்கிடுகிறது.
 
@@ -74,13 +74,13 @@ tags:
 
 அனைத்து டிஜிட்டல் பயணிகள் ஆன்லைனில் ரத்து செய்து புதிய பதிவு செய்வது விரைவானதாக இருப்பதாகக் கண்டுபிடிக்கிறார்கள், இருப்புகள் இலக்கு ரயிலில் உள்ளன என்றால். ஆன்லைன் ரத்து உடனடி ஆகும், மற்றும் திருப்பீடுகள் 2 முதல் 4 வேலை நாட்களில் மூல பணப்பரிமாற்ற முறைக்கு திரும்பும்.
 
-| Feature | Online IRCTC E-Ticket | Physical PRS Counter Ticket |
-| :--- | :--- | :--- |
-| **Online date change button** | Not available on IRCTC website/app | Not applicable |
-| **Counter date change permitted** | Yes (with printed ticket + original ID, 48h prior) | Yes (with original ticket, 48h prior) |
-| **Cancellation mechanism** | 100% online via IRCTC portal / app | Physical surrender at PRS ticket counter |
-| **Refund speed** | Direct back to bank / card / UPI in 2–4 days | Instant cash or digital refund at counter |
-| **Chart waitlist status** | Auto-cancelled if WL remains after charting | Permitted to travel in general/unreserved |
+| Feature                           | Online IRCTC E-Ticket                              | Physical PRS Counter Ticket               |
+| :-------------------------------- | :------------------------------------------------- | :---------------------------------------- |
+| **Online date change button**     | Not available on IRCTC website/app                 | Not applicable                            |
+| **Counter date change permitted** | Yes (with printed ticket + original ID, 48h prior) | Yes (with original ticket, 48h prior)     |
+| **Cancellation mechanism**        | 100% online via IRCTC portal / app                 | Physical surrender at PRS ticket counter  |
+| **Refund speed**                  | Direct back to bank / card / UPI in 2–4 days       | Instant cash or digital refund at counter |
+| **Chart waitlist status**         | Auto-cancelled if WL remains after charting        | Permitted to travel in general/unreserved |
 
 நீங்கள் ஒரு ஃபிசிகல் ரயில்வே கவுண்டரில் ஒரு ஈ-டிக்கெட்டை மாற்ற முடிவு செய்தால், CRS ஒரு கவுண்டர் பயண சலுகையை வழங்குகிறது. ஒரு ஈ-டிக்கெட் கவுண்டரில் மாற்றப்பட்ட பிறகு, இது எந்த எதிர்கால ரத்து நடவடிக்கைகளுக்கும் கவுண்டர் கையாளும் விதிகளுக்கு மாறுகிறது என்பதை நினைவில் கொள்ளுங்கள்.
 
@@ -132,33 +132,43 @@ WL முழு வடிவம் காத்திருப்பு பட�
 ## Common Booking Questions (FAQ)
 
 ### Can I change my IRCTC train journey date online without visiting a counter?
+
 இல்லை, IRCTC இணையதளம் மற்றும் மொபைல் செயலி தற்போது ஈ-டிக்கெட்டுகளுக்கான ஆன்லைன் தேதி மாற்றம் அம்சத்தை வழங்கவில்லை. உங்கள் பயண தேதியை ஆன்லைனில் மாற்ற, நீங்கள் உங்கள் தற்போதைய டிக்கெட்டை ரத்து செய்து உங்கள் திட்டமிட்ட தேதிக்கான புதிய டிக்கெட்டை வாங்க வேண்டும். அல்லது, நீங்கள் அச்சிடப்பட்ட ஈ-டிக்கெட் மற்றும் செல்லுபடியாகும் ஐடியுடன் ஒரு ஃபிசிகல் PRS ரயில்வே கவுண்டர் செல்லலாம், குறைந்தது 48 மணி நேரங்களுக்கு முன்பு.
 
 ### What is the time limit for changing the journey date on a confirmed train ticket?
+
 நீங்கள் உங்கள் தேதி மாற்ற கோரிக்கையை ஒரு கணினி ரயில்வே PRS கவுண்டர் மீது ரயில் départureக்கு குறைந்தது 48 மணி நேரங்களுக்கு முன்பு சமர்ப்பிக்க வேண்டும், உங்கள் டிக்கெட் முதலில் பதிவு செய்யப்பட்ட ரயிலில். départureக்கு 48 மணி நேரத்திற்கு உள்ளே சமர்ப்பிக்கப்பட்ட கோரிக்கைகள் இந்திய ரயில்வே வர்த்தக விதிகளின் கீழ் நிராகரிக்கப்படுகின்றன.
 
 ### How many times can you change the journey date on an Indian Railways ticket?
+
 இந்திய ரயில்வே ஒரு டிக்கெட் ஒன்றுக்கு ஒரே பயண தேதி மாற்றத்தை மட்டுமே அனுமதிக்கிறது. ஒரு டிக்கெட் PRS கவுண்டர் மீது முன்னேற்றப்பட்ட அல்லது பின்னேற்றப்பட்ட பிறகு, அந்த பதிவு பதிவில் மேலும் தேதி அல்லது ரயில் மாற்றங்கள் அனுமதிக்கப்படவில்லை.
 
 ### Can I change my train ticket date if the new train has a higher fare?
+
 ஆம், நீங்கள் அதிக கட்டணங்களுடன் (எடுத்துக்காட்டாக, Express ரயிலில் இருந்து Rajdhani, Shatabdi, அல்லது Vande Bharatக்கு மாறுதல் அல்லது வகுப்பை மேம்படுத்துதல்) ஒரு ரயிலுக்கு உங்கள் டிக்கெட்டை மறுசீரமைக்கலாம். நீங்கள் மாற்றம் செயல்முறையின் போது அடிப்படை கட்டணம், பதிவு கட்டணங்கள், மற்றும் சூப்பர்ஃபாஸ்ட் கூடுதல் கட்டணத்தில் வேறுபாட்டை செலுத்த வேண்டும்.
 
 ### Can someone else submit the date change application at the railway counter on my behalf?
+
 ஆம், ஒரு குடும்ப உறுப்பினர் அல்லது பிரதிநிதி உங்கள் சார்பில் கோரிக்கையை சமர்ப்பிக்கலாம். அவர்கள் அசல் டிக்கெட், பயணியின் சார்பில் கையொப்பமிடப்பட்ட எழுத்து அங்கீகாரம் மற்றும் பயணி மற்றும் பிரதிநிதியின் அரசாங்கம் வழங்கிய புகைப்பட அடையாளங்களின் நகல்களை எடுத்துச் செல்ல வேண்டும்.
 
 ### What happens if I want to advance my journey date to a Tatkal ticket?
+
 நீங்கள் பொதுவான ஒதுக்கீட்டு டிக்கெட்டை தற்காலிக ஒதுக்கீட்டாக நேரடியாக மாற்ற முடியாது. நீங்கள் தற்காலிகத்தில் அவசர பயணம் தேவைப்பட்டால், நீங்கள் ஒதுக்கீட்டு ஜன்னல் திறக்கும் போது தனித்துவமான தற்காலிக டிக்கெட்டை வாங்க வேண்டும் (AC வகுப்புகளுக்கான 10:00 AM, தூங்கும் வகுப்புக்கான 11:00 AM) மற்றும் உங்கள் அசல் பொதுவான டிக்கெட்டை தனியாக ரத்து செய்ய வேண்டும்.
 
 ### Can I change both the journey date and the boarding station at the same time?
+
 ஆம், நீங்கள் PRS கவுண்டர் மீது உங்கள் எழுத்து விண்ணப்பத்தை சமர்ப்பிக்கும் போது பயண தேதியை மாற்றுவதுடன் உங்கள் ஏற்றுமதி நிலையத்தை மாற்ற கோரிக்கையைச் செய்யலாம். புதிய ஏற்றுமதி நிலையம் புதிய ரயிலுக்கான அதிகாரப்பூர்வ அட்டவணை நிறுத்தமாக இருக்க வேண்டும்.
 
 ### Does Indian Railways refund the difference if the new train ticket is cheaper?
+
 இல்லை, நீங்கள் உங்கள் பயணத்தை குறைந்த கட்டணத்துடன் உள்ள ரயிலுக்கு அல்லது வகுப்புக்கு மறுசீரமைக்கும்போது, இந்திய ரயில்வே வேறுபாட்டை வைத்திருக்கிறது மற்றும் செலுத்திய அதிக தொகைக்கு திருப்பீடு வழங்காது.
 
 ### What happens to a waitlisted e-ticket if I do not reschedule or cancel it?
+
 நீங்கள் ஆன்லைனில் ஒரு ஈ-டிக்கெட்டை பதிவு செய்தால் மற்றும் அது இறுதி அட்டவணை தயாரிக்கப்பட்ட பிறகு முழுமையாக காத்திருப்பில் (PNR இல் உள்ள அனைத்து பயணிகள் WL நிலை) இருந்தால், IRCTC தானாகவே டிக்கெட்டை ரத்து செய்கிறது மற்றும் ஒரு முழுமையான திருப்பீட்டை நேரடியாக உங்கள் வங்கிக் கணக்குக்கு செயலாக்குகிறது. நீங்கள் முழுமையாக காத்திருப்பில் உள்ள ஈ-டிக்கெட் கொண்டு ஒதுக்கீட்டு கோச்சுகளில் ஏற அனுமதிக்கப்படவில்லை.
 
 ### Can I postpone a confirmed train ticket to a date beyond the 60-day Advance Reservation Period?
+
 இல்லை, நீங்கள் உங்கள் டிக்கெட்டை செயல்பாட்டில் உள்ள தேதிக்கு மட்டுமே பின்னேற்றலாம். இந்திய ரயில்வே 60-நாள் முன்னணி பதிவு காலத்தை (ARP) செயல்படுத்துகிறது, எனவே உங்கள் கோரிய புதிய பயண தேதி உங்கள் விண்ணப்பத்தின் போது இந்த திறந்த ஜன்னலுக்குள் இருக்க வேண்டும்.
 
 ---
@@ -169,4 +179,4 @@ WL முழு வடிவம் காத்திருப்பு பட�
 
 உங்கள் விரும்பிய புதிய தேதி நீண்ட காத்திருப்புகளை காட்டினால், உங்கள் பயணத்தை சந்திக்க விடாதீர்கள். **[Smart Seats](/)** ஐப் பயன்படுத்தி தொடர்ந்த பிரிக்கப்பட்ட பாதைகளை ஆராயுங்கள் அல்லது காலியாக உள்ள இடங்கள் பற்றிய தகவலுக்கு **[Get Confirmed Tickets](/)** ஐச் சரிபார்க்கவும்.
 
-*Disclaimer: LastBerth என்பது ஒரு சுயாதீன தேடல் மற்றும் பயண கண்டுபிடிப்பு கருவி மற்றும் IRCTC அல்லது இந்திய ரயில்வேயுடன் தொடர்புடையது அல்ல. நேரடி இருக்கை கிடைப்பைச் சரிபார்க்கவும் மற்றும் உங்கள் பதிவு முறைகளை அதிகாரப்பூர்வ ரயில்வே சேனல்களில் முடிக்கவும்.*
+_Disclaimer: LastBerth என்பது ஒரு சுயாதீன தேடல் மற்றும் பயண கண்டுபிடிப்பு கருவி மற்றும் IRCTC அல்லது இந்திய ரயில்வேயுடன் தொடர்புடையது அல்ல. நேரடி இருக்கை கிடைப்பைச் சரிபார்க்கவும் மற்றும் உங்கள் பதிவு முறைகளை அதிகாரப்பூர்வ ரயில்வே சேனல்களில் முடிக்கவும்._

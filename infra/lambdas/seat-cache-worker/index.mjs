@@ -1,5 +1,8 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { DynamoDBDocumentClient, BatchWriteCommand } from "@aws-sdk/lib-dynamodb";
+import {
+  DynamoDBDocumentClient,
+  BatchWriteCommand,
+} from "@aws-sdk/lib-dynamodb";
 
 const ddbClient = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(ddbClient);
@@ -12,19 +15,31 @@ const API_URL = process.env.API_URL || "https://api.lastberth.com";
  */
 async function resolveTrainStations(trainNumber) {
   try {
-    const res = await fetch(`${API_URL}/api/trains/${encodeURIComponent(trainNumber)}`, {
-      headers: { "User-Agent": "LastBerth-SeatCacheWorker/1.0" },
-      signal: AbortSignal.timeout(8000),
-    });
+    const res = await fetch(
+      `${API_URL}/api/trains/${encodeURIComponent(trainNumber)}`,
+      {
+        headers: { "User-Agent": "LastBerth-SeatCacheWorker/1.0" },
+        signal: AbortSignal.timeout(8000),
+      },
+    );
     if (!res.ok) return null;
     const data = await res.json();
     return {
-      from: data.originStation || data.schedule?.stationList?.[0]?.stationCode || "",
-      to: data.destinationStation || data.schedule?.stationList?.slice(-1)[0]?.stationCode || "",
+      from:
+        data.originStation ||
+        data.schedule?.stationList?.[0]?.stationCode ||
+        "",
+      to:
+        data.destinationStation ||
+        data.schedule?.stationList?.slice(-1)[0]?.stationCode ||
+        "",
       classes: data.availableClasses || data.schedule?.availableClasses || [],
     };
   } catch (err) {
-    console.warn(`[Worker] Failed to resolve stations for train ${trainNumber}:`, err.message);
+    console.warn(
+      `[Worker] Failed to resolve stations for train ${trainNumber}:`,
+      err.message,
+    );
     return null;
   }
 }
@@ -61,13 +76,18 @@ async function fetchTrainSeats(trainNumber, from, to, journeyDate) {
       if (res.ok) {
         const json = await res.json();
         const trainList = json?.data?.trainList || [];
-        const match = trainList.find((t) => String(t.trainNumber).trim() === cleanTrainNo);
+        const match = trainList.find(
+          (t) => String(t.trainNumber).trim() === cleanTrainNo,
+        );
 
         if (match && match.availabilityCache) {
           const entries = Object.entries(match.availabilityCache);
           if (entries.length > 0) {
             return entries.map(([travelClass, info]) => {
-              const status = info?.availabilityDisplayName || info?.availability || "AVAILABLE";
+              const status =
+                info?.availabilityDisplayName ||
+                info?.availability ||
+                "AVAILABLE";
               const fare = info?.fare ? Number(info.fare) : undefined;
               return {
                 trainNumber: cleanTrainNo,
@@ -83,7 +103,10 @@ async function fetchTrainSeats(trainNumber, from, to, journeyDate) {
         }
       }
     } catch (err) {
-      console.warn(`[Worker] trains/search failed for ${cleanTrainNo} (${origin}->${dest}) on ${journeyDate}:`, err.message);
+      console.warn(
+        `[Worker] trains/search failed for ${cleanTrainNo} (${origin}->${dest}) on ${journeyDate}:`,
+        err.message,
+      );
     }
 
     // 2. Secondary: If not found in direct search, try alternate-paths search API
@@ -112,7 +135,10 @@ async function fetchTrainSeats(trainNumber, from, to, journeyDate) {
         if (confirmedLegs.length > 0) {
           const seats = [];
           for (const leg of confirmedLegs) {
-            if (Array.isArray(leg.confirmedClassOptions) && leg.confirmedClassOptions.length > 0) {
+            if (
+              Array.isArray(leg.confirmedClassOptions) &&
+              leg.confirmedClassOptions.length > 0
+            ) {
               for (const opt of leg.confirmedClassOptions) {
                 if (opt.travelClass) {
                   seats.push({
@@ -120,7 +146,10 @@ async function fetchTrainSeats(trainNumber, from, to, journeyDate) {
                     dateClass: `${journeyDate}#${opt.travelClass}`,
                     date: journeyDate,
                     travelClass: opt.travelClass,
-                    status: opt.availabilityDisplayName || opt.availablityStatus || "AVAILABLE",
+                    status:
+                      opt.availabilityDisplayName ||
+                      opt.availablityStatus ||
+                      "AVAILABLE",
                     fare: opt.fare ? Number(opt.fare) : undefined,
                     updatedAt: new Date().toISOString(),
                   });
@@ -132,7 +161,10 @@ async function fetchTrainSeats(trainNumber, from, to, journeyDate) {
                 dateClass: `${journeyDate}#${leg.travelClass}`,
                 date: journeyDate,
                 travelClass: leg.travelClass,
-                status: leg.availabilityDisplayName || leg.availablityStatus || "AVAILABLE",
+                status:
+                  leg.availabilityDisplayName ||
+                  leg.availablityStatus ||
+                  "AVAILABLE",
                 fare: leg.fare ? Number(leg.fare) : undefined,
                 updatedAt: new Date().toISOString(),
               });
@@ -144,12 +176,16 @@ async function fetchTrainSeats(trainNumber, from, to, journeyDate) {
         }
       }
     } catch (err) {
-      console.warn(`[Worker] alternate-paths failed for ${cleanTrainNo} on ${journeyDate}:`, err.message);
+      console.warn(
+        `[Worker] alternate-paths failed for ${cleanTrainNo} on ${journeyDate}:`,
+        err.message,
+      );
     }
   }
 
   // 3. Fallback: return default classes so table has schema rows
-  const classes = fallbackClasses.length > 0 ? fallbackClasses : ["3A", "2A", "1A", "SL"];
+  const classes =
+    fallbackClasses.length > 0 ? fallbackClasses : ["3A", "2A", "1A", "SL"];
   return classes.map((travelClass) => ({
     trainNumber: cleanTrainNo,
     dateClass: `${journeyDate}#${travelClass}`,
@@ -164,7 +200,7 @@ export async function handler(event) {
   const records = event.Records || [];
   console.log(`[Worker] Received ${records.length} SQS records.`);
 
-  const ttl = Math.floor(Date.now() / 1000) + (48 * 3600); // 48h TTL
+  const ttl = Math.floor(Date.now() / 1000) + 48 * 3600; // 48h TTL
   const itemsByKey = new Map();
 
   for (const record of records) {
@@ -206,14 +242,19 @@ export async function handler(event) {
           RequestItems: {
             [TABLE_NAME]: batch,
           },
-        })
+        }),
       );
     } catch (err) {
-      console.error(`[Worker] DynamoDB BatchWrite failed for chunk starting at ${i}:`, err);
+      console.error(
+        `[Worker] DynamoDB BatchWrite failed for chunk starting at ${i}:`,
+        err,
+      );
     }
   }
 
-  console.log(`[Worker] Successfully stored ${putRequests.length} seat items in DynamoDB.`);
+  console.log(
+    `[Worker] Successfully stored ${putRequests.length} seat items in DynamoDB.`,
+  );
   return {
     status: "ok",
     written: putRequests.length,

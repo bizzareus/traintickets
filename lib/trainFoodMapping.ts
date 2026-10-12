@@ -270,7 +270,10 @@ function buildRajdhaniClasses(zone: TrainZone): FoodMenuClass[] {
                 "Branded Tetra Pack Fruit Drink (Mango/Orange/Guava) or Lassi / Buttermilk.",
             },
             { item: "Vegetarian Breakfast", description: m.breakfastVeg },
-            { item: "Non-Vegetarian Breakfast", description: m.breakfastNonVeg },
+            {
+              item: "Non-Vegetarian Breakfast",
+              description: m.breakfastNonVeg,
+            },
             {
               item: "Beverage",
               description:
@@ -437,7 +440,10 @@ function buildVandeBharatClasses(zone: TrainZone): FoodMenuClass[] {
                 "Corn Flakes, Muesli, Millet Flakes, Oats with milk (Hot/Cold) and sugar.",
             },
             { item: "Vegetarian Breakfast", description: m.breakfastVeg },
-            { item: "Non-Vegetarian Breakfast", description: m.breakfastNonVeg },
+            {
+              item: "Non-Vegetarian Breakfast",
+              description: m.breakfastNonVeg,
+            },
             {
               item: "Cake (Eggless) & Fruits",
               description:
@@ -518,7 +524,10 @@ function buildVandeBharatClasses(zone: TrainZone): FoodMenuClass[] {
           price: 122,
           items: [
             { item: "Vegetarian Breakfast", description: m.breakfastVeg },
-            { item: "Non-Vegetarian Breakfast", description: m.breakfastNonVeg },
+            {
+              item: "Non-Vegetarian Breakfast",
+              description: m.breakfastNonVeg,
+            },
             {
               item: "Cake & Beverage",
               description:
@@ -724,8 +733,7 @@ function buildMailExpressClasses(trainType: TrainType): FoodMenuClass[] {
       },
       {
         item: "AVM Vending Machine Coffee (Humsafar)",
-        description:
-          "100 ml hot coffee via on-board AVM machine. Price: ₹15.",
+        description: "100 ml hot coffee via on-board AVM machine. Price: ₹15.",
       },
       {
         item: "AVM Vending Machine Hot Soup (Humsafar)",

@@ -40,6 +40,7 @@ authentication: Cronitor deliberately returns 200 even for invalid ping keys.
    Existing custom assertions can be stricter than the baseline; review them in
    Cronitor when changing thresholds. A conflicting monitor type or account-limit
    error stops setup; no monitor is deleted or renamed to bypass a limit.
+
 4. Check the account's **default notification list** in Cronitor Settings → Alerts.
    New monitors inherit it. Existing monitors keep their routing. Recommended:
    the operations owner's email plus an existing team incident/Slack destination.
@@ -62,14 +63,14 @@ separately to avoid expected missing-run alerts.
 Keys are prefixed `lastberth-`. All six handlers are instrumented; provisioning
 omits feature-gated jobs that are disabled in the environment used by `sync`.
 
-| Key suffix | Actual schedule | Missing-run grace | Duration assertion (before grace) | Failure signal |
-| --- | --- | --- | --- | --- |
-| `chart-notification` | Every minute, second 0 | 2 min | Chart deadline + 2 min (6 min default) | Failed tasks or failed email/WhatsApp channel outcomes |
-| `alternative-search` | Every minute, second 20 | 3 min | 15 min | Rejected background searches, including failures caught by the batch processor |
-| `failed-notification-resend` | Every minute, second 40 | 3 min | 10 min | Failed or partially failed recovery attempts |
-| `failed-delivery-refund` | Daily 09:00 IST | 10 min | 60 min | Refund or explanatory-email failures |
-| `seat-cache` | Daily 03:30 IST | 10 min | 2 hours | Failed routes, even if the overall pass resolves normally |
-| `wasender-healthcheck` | Every 30 minutes | 5 min | 5 min | Provider health result is unhealthy, even if no exception was thrown |
+| Key suffix                   | Actual schedule         | Missing-run grace | Duration assertion (before grace)      | Failure signal                                                                 |
+| ---------------------------- | ----------------------- | ----------------- | -------------------------------------- | ------------------------------------------------------------------------------ |
+| `chart-notification`         | Every minute, second 0  | 2 min             | Chart deadline + 2 min (6 min default) | Failed tasks or failed email/WhatsApp channel outcomes                         |
+| `alternative-search`         | Every minute, second 20 | 3 min             | 15 min                                 | Rejected background searches, including failures caught by the batch processor |
+| `failed-notification-resend` | Every minute, second 40 | 3 min             | 10 min                                 | Failed or partially failed recovery attempts                                   |
+| `failed-delivery-refund`     | Daily 09:00 IST         | 10 min            | 60 min                                 | Refund or explanatory-email failures                                           |
+| `seat-cache`                 | Daily 03:30 IST         | 10 min            | 2 hours                                | Failed routes, even if the overall pass resolves normally                      |
+| `wasender-healthcheck`       | Every 30 minutes        | 5 min             | 5 min                                  | Provider health result is unhealthy, even if no exception was thrown           |
 
 Daily schedules explicitly use `Asia/Kolkata`.
 `FAILED_DELIVERY_REFUND_CRON` and `CHART_TASK_DEADLINE_SECONDS` overrides are

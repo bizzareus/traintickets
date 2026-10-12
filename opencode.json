@@ -5,9 +5,12 @@
     "lastberth-browser": {
       "type": "local",
       "command": [
-        "npx", "-y", "chrome-devtools-mcp@1.10.1",
+        "npx",
+        "-y",
+        "chrome-devtools-mcp@1.10.1",
         "--browserUrl=http://127.0.0.1:19444",
-        "--no-usage-statistics", "--no-performance-crux",
+        "--no-usage-statistics",
+        "--no-performance-crux",
         "--redact-network-headers",
         "--workspace=/Users/kartikarora/.local/share/opencode/lastberth-social"
       ],

@@ -46,8 +46,7 @@ export function TrainChartAlertSection({
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedClass, setSelectedClass] = useState<string>("3A");
   const alertPrice = chartAlertPriceForClass(selectedClass);
-  const { email, setEmail, mobile, persistContact } =
-    useContactFields();
+  const { email, setEmail, mobile, persistContact } = useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { isFreeAlerts, isAdmin, getButtonLabel } = useChartAlertPayments();
@@ -217,7 +216,7 @@ export function TrainChartAlertSection({
         />
       ) : (
         <div
-          className={`flex h-full flex-col justify-between rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50/70 via-slate-50/50 to-white p-3.5 shadow-2xs transition-all hover:border-blue-200 hover:shadow-sm ${className}`}
+          className={`shadow-2xs flex h-full flex-col justify-between rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50/70 via-slate-50/50 to-white p-3.5 transition-all hover:border-blue-200 hover:shadow-sm ${className}`}
         >
           <div>
             <div className="flex items-center gap-1.5">
@@ -227,15 +226,13 @@ export function TrainChartAlertSection({
               <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
                 Chart Alert
               </span>
-              <span className="inline-flex items-center gap-0.5 rounded-full bg-blue-100/70 px-1.5 py-0.2 text-[9px] font-bold text-blue-700">
-                <Sparkles className="h-2.5 w-2.5 text-blue-600" />₹
-                {alertPrice}
+              <span className="py-0.2 inline-flex items-center gap-0.5 rounded-full bg-blue-100/70 px-1.5 text-[9px] font-bold text-blue-700">
+                <Sparkles className="h-2.5 w-2.5 text-blue-600" />₹{alertPrice}
               </span>
             </div>
-            <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-              We&apos;ll scan {fromCode} &lt;&gt; {toCode} for new
-              tickets that come up when the chart is prepared and notify
-              you instantly.
+            <p className="mt-2 text-xs leading-relaxed text-slate-600">
+              We&apos;ll scan {fromCode} &lt;&gt; {toCode} for new tickets that
+              come up when the chart is prepared and notify you instantly.
             </p>
           </div>
 
@@ -243,7 +240,7 @@ export function TrainChartAlertSection({
             <button
               type="button"
               onClick={handleOpenModal}
-              className="w-full inline-flex items-center justify-center gap-1.5 rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-bold text-blue-700 shadow-2xs hover:bg-blue-600 hover:border-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/20 active:scale-[0.98] transition-all touch-manipulation"
+              className="shadow-2xs inline-flex w-full touch-manipulation items-center justify-center gap-1.5 rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-bold text-blue-700 transition-all hover:border-blue-600 hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-500/20 active:scale-[0.98]"
             >
               <BellRing className="h-3.5 w-3.5" />
               Subscribe to Alert
@@ -255,12 +252,12 @@ export function TrainChartAlertSection({
       {/* Subscription Modal */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4 backdrop-blur-2xs animate-fade-in"
+          className="backdrop-blur-2xs animate-fade-in fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4"
           role="presentation"
           onClick={() => setModalOpen(false)}
         >
           <div
-            className="w-full max-h-[90vh] overflow-y-auto rounded-t-2xl bg-white p-5 shadow-2xl sm:max-w-md sm:rounded-2xl sm:p-6"
+            className="max-h-[90vh] w-full overflow-y-auto rounded-t-2xl bg-white p-5 shadow-2xl sm:max-w-md sm:rounded-2xl sm:p-6"
             role="dialog"
             aria-modal="true"
             aria-labelledby="chartAlertModalTitle"
@@ -288,7 +285,7 @@ export function TrainChartAlertSection({
                 type="button"
                 onClick={() => setModalOpen(false)}
                 aria-label="Close modal"
-                className="rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition"
+                className="rounded-full p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -304,7 +301,7 @@ export function TrainChartAlertSection({
                 <div>
                   <label
                     htmlFor="alertClassSelect"
-                    className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1"
+                    className="mb-1 block text-xs font-bold uppercase tracking-wide text-slate-700"
                   >
                     Travel Class
                   </label>
@@ -325,7 +322,7 @@ export function TrainChartAlertSection({
                 <div>
                   <label
                     htmlFor="alertEmailInput"
-                    className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1"
+                    className="mb-1 block text-xs font-bold uppercase tracking-wide text-slate-700"
                   >
                     Email Address
                   </label>
@@ -372,7 +369,7 @@ export function TrainChartAlertSection({
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25 disabled:cursor-not-allowed disabled:opacity-60 transition touch-manipulation"
+                    className="inline-flex w-full touch-manipulation items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25 disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {loading ? (
                       <>

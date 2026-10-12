@@ -32,7 +32,9 @@ type CronRun = {
 };
 
 function extractError(err: unknown, fallback: string): string {
-  const ax = err as { response?: { data?: { message?: string; error?: string } } };
+  const ax = err as {
+    response?: { data?: { message?: string; error?: string } };
+  };
   return ax.response?.data?.message ?? ax.response?.data?.error ?? fallback;
 }
 
@@ -125,8 +127,8 @@ export default function CronRunsAdminPage() {
       </h1>
       <p className="mt-1 text-sm text-slate-600">
         Every leader tick of the notification cron. Watch for gaps &gt; ~60s
-        (late/missed runs), <code>skipped_overlap</code> (a run ran into the next
-        minute), and errors.
+        (late/missed runs), <code>skipped_overlap</code> (a run ran into the
+        next minute), and errors.
       </p>
 
       {/* Password */}
@@ -248,7 +250,9 @@ export default function CronRunsAdminPage() {
                       </td>
                       <td className="px-3 py-2 text-slate-600">{r.tasksRun}</td>
                       <td className="px-3 py-2 text-slate-600">
-                        <span className="text-green-700">{r.completedCount}</span>
+                        <span className="text-green-700">
+                          {r.completedCount}
+                        </span>
                         {" / "}
                         <span className="text-red-700">{r.failedCount}</span>
                       </td>
@@ -290,7 +294,9 @@ export default function CronRunsAdminPage() {
                               <tbody>
                                 {r.output!.results!.map((t) => (
                                   <tr key={t.taskId}>
-                                    <td className="px-2 py-1">{t.trainNumber}</td>
+                                    <td className="px-2 py-1">
+                                      {t.trainNumber}
+                                    </td>
                                     <td className="px-2 py-1">
                                       {t.from}→{t.to}
                                     </td>
@@ -298,7 +304,9 @@ export default function CronRunsAdminPage() {
                                       {t.journeyDate ?? "—"}
                                     </td>
                                     <td className="px-2 py-1">{t.status}</td>
-                                    <td className="px-2 py-1">{t.retryCount}</td>
+                                    <td className="px-2 py-1">
+                                      {t.retryCount}
+                                    </td>
                                     <td className="px-2 py-1 text-red-700">
                                       {t.lastError ?? ""}
                                     </td>
@@ -319,7 +327,10 @@ export default function CronRunsAdminPage() {
               })}
               {shown.length === 0 && (
                 <tr>
-                  <td colSpan={8} className="px-3 py-6 text-center text-slate-400">
+                  <td
+                    colSpan={8}
+                    className="px-3 py-6 text-center text-slate-400"
+                  >
                     {password ? "No runs found." : "Enter the admin password."}
                   </td>
                 </tr>

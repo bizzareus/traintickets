@@ -1,18 +1,19 @@
 # LastBerth Instagram Strategy: Daily Ticket Discovery & Screenshot Proof
 
 **Official Account:** [`@lastberth.in`](https://www.instagram.com/lastberth.in/) (`https://www.instagram.com/lastberth.in/`)  
-**Core Value Proposition:** *"SAME TRAIN. A DIFFERENT WAY TO BOOK. END-TO-END: WAITLISTED. LASTBERTH FOUND A WAY."*
+**Core Value Proposition:** _"SAME TRAIN. A DIFFERENT WAY TO BOOK. END-TO-END: WAITLISTED. LASTBERTH FOUND A WAY."_
 
 ---
 
 ## 1. Executive Summary & Strategic Focus
 
-This strategy completely decouples Instagram social media publishing from the blog posting workflow. 
+This strategy completely decouples Instagram social media publishing from the blog posting workflow.
 
 Rather than repurposing SEO articles or posting generic advice, the **@lastberth.in** Instagram channel is dedicated entirely to **daily proof-of-value screenshot comparisons**:
+
 - We identify real train journeys where the end-to-end direct ticket is **WAITLISTED (WL)** or **REGRET** on IRCTC / ConfirmTkt.
 - We show how LastBerth found **confirmed available seats** across split legs on the **exact same train**.
-- We tell users straightforwardly: *"We found you confirmed tickets in this train from A → B for this price, compared to WL/Regret on IRCTC."* That's it.
+- We tell users straightforwardly: _"We found you confirmed tickets in this train from A → B for this price, compared to WL/Regret on IRCTC."_ That's it.
 
 Zero theoretical fluff. Undeniable visual proof of product value that solves travellers' immediate ticket crises.
 
@@ -52,6 +53,7 @@ All daily Instagram posts must follow the battle-tested layout exemplified in th
 ```
 
 ### Visual Specifications
+
 - **Canvas Size:** `1080 x 1350 px` (`4:5` portrait aspect ratio) for maximum vertical screen share in mobile feeds. Also supports `1080 x 1080 px` (`1:1` square).
 - **Background:** Deep slate navy (`#101B2C`) with brand blue top border accent (`#355AED`).
 - **Typography & Headline Contract:**
@@ -62,7 +64,7 @@ All daily Instagram posts must follow the battle-tested layout exemplified in th
   - **Left Card (Competitor / IRCTC Direct Booking):** Muted warm background (`#FFF4EF`), dark text, red accent strip (`#BC5849`), displaying real status pill `WAITLISTED` (`#8E3F32` on `#F6DDD4`) or `REGRET`.
   - **Right Card (LastBerth Split Legs):** Fresh mint background (`#F1FCF6`), dark green text (`#315A43`), green accent strip (`#247251`), displaying ordered contiguous legs with seat count (`AVL X`) and leg fare (`₹XXX`).
 - **Footer Bar:** Clean white banner with bold `TOTAL FARE ₹XXXX` and vibrant blue action button **`Book on LastBerth.com →`** (`#355AED`).
-- **Disclaimers:** Mandatory legible note at base: *"Availability and fares shown in screenshots. Recheck before booking."* and *"Class / berth change needed"*.
+- **Disclaimers:** Mandatory legible note at base: _"Availability and fares shown in screenshots. Recheck before booking."_ and _"Class / berth change needed"_.
 
 ---
 
@@ -71,6 +73,7 @@ All daily Instagram posts must follow the battle-tested layout exemplified in th
 The caption must be concise, punchy, and transparent. Do not write essay-length prose. Deliver the core facts immediately.
 
 ### Caption Template:
+
 ```text
 Waitlisted end to end? We found you confirmed seats on [Train Number] [Train Name] from [Origin Station Name] to [Destination Station Name] for ₹[Total Fare]. 🚆
 
@@ -91,6 +94,7 @@ Search confirmed split seats for your route at lastberth.com (link in bio).
 ```
 
 ### Copy Rules:
+
 1. **Hook in line 1:** State the train, route, and total fare right away.
 2. **Direct comparison:** Clearly present the contrast between direct waitlist vs LastBerth split seats.
 3. **Full transparency:** Always disclose that split ticketing means separate bookings and a seat/coach change during the journey.
@@ -104,7 +108,9 @@ Search confirmed split seats for your route at lastberth.com (link in bio).
 This strategy is implemented by a dedicated daily automation skill. The skill executes the following pipeline:
 
 ### Step 1: Corridor & Target Selection
+
 Rotate daily across high-traffic, waitlist-heavy trunk corridors with travel dates 1–5 days ahead (India time):
+
 - `NDLS → PNBE` (New Delhi → Patna)
 - `ANVT → PPTA` (Anand Vihar → Patliputra)
 - `CSMT → PNBE` / `LTT → GKP` (Mumbai → Patna / Gorakhpur)
@@ -113,7 +119,9 @@ Rotate daily across high-traffic, waitlist-heavy trunk corridors with travel dat
 - `NDLS → MMCT` (Delhi → Mumbai)
 
 ### Step 2: Automated Availability Audit & Verification
+
 Before generating any post, verify both ends:
+
 1. **ConfirmTkt / IRCTC Status Check:** Direct origin-to-destination booking for the target class MUST be `WL` (Waitlisted) or `REGRET`.
 2. **LastBerth Search:** Run the route on LastBerth.
 3. **Eligibility Verification:**
@@ -124,6 +132,7 @@ Before generating any post, verify both ends:
    - If no valid match is found on the target corridor, fail gracefully (no post). Never fabricate data.
 
 ### Step 3: Screenshot & Graphic Rendering
+
 1. Capture clean viewport crops or render via the established SVG template (`01-comparison.svg`).
 2. Populate dynamic fields:
    - Train number & name
@@ -134,6 +143,7 @@ Before generating any post, verify both ends:
 3. Export high-resolution PNG (`1080 x 1350 px`) using Sharp or headless Playwright.
 
 ### Step 4: Publication to `@lastberth.in`
+
 1. Use browser automation with dedicated Instagram profile.
 2. Upload the exported comparison graphic (`01-comparison.png`).
 3. Inject the standardized caption.

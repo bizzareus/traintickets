@@ -1,7 +1,7 @@
 # LastBerth Weekly SEO Routine
 
 An automated weekly SEO management routine for **lastberth.com**, adapted from the
-*Claude Fable SEO Playbook* (originally written for e-commerce PDP/collection sites)
+_Claude Fable SEO Playbook_ (originally written for e-commerce PDP/collection sites)
 to this content-plus-tools site: multilingual blog guides + tools (Smart Seats,
 `/chart-vacancy`, `/pnr-status`, `/chart-times`, `/irctc-train-food-menu`, `/routes/*`).
 
@@ -16,7 +16,7 @@ prioritized top-3 — and applies the safe, high-confidence wins itself.
 - **Cadence:** every **Monday 08:00** local time (`0 8 * * 1`). Runs while the app is
   open; if closed at fire time, it runs on next launch.
 - **Data access:** **Claude-in-Chrome**, using your already-logged-in Google session —
-  *not* the Google Cloud service-account MCP the playbook describes. No credentials to
+  _not_ the Google Cloud service-account MCP the playbook describes. No credentials to
   manage. (We skip Ahrefs / backlink work — no account.)
 - **Output:** a dated report at `seo/runs/weekly/YYYY-MM-DD.md` (gitignored — local
   artifact). Actual code/content fixes are committed to `main` normally.
@@ -27,10 +27,10 @@ prioritized top-3 — and applies the safe, high-confidence wins itself.
    drives) and sign in to the Google account that owns the **lastberth.com** GSC
    property. Confirm you can load the Performance report. That's the only hard
    requirement — the routine reads GSC through this logged-in session.
-2. *(Optional)* **GA4** — if you want engagement data in the tech-debt ranking, make sure
+2. _(Optional)_ **GA4** — if you want engagement data in the tech-debt ranking, make sure
    the same Google account can open GA4 for the site. Note: your funnel events live in
    **PostHog**, not GA4 (see memory `lastberth-seo-ctr-vs-content`).
-3. *(Optional)* **PageSpeed** — the routine uses the PageSpeed Insights web UI via Chrome
+3. _(Optional)_ **PageSpeed** — the routine uses the PageSpeed Insights web UI via Chrome
    by default; no API key needed. Add a key later only if you want faster/batch runs.
 
 Nothing else to install — no `claude mcp add`, no service account JSON.

@@ -34,16 +34,16 @@ The five primary days of Diwali set the nationwide passenger surge across Indian
 
 Because millions of passengers travel home simultaneously, trunk routes connecting Delhi, Mumbai, Pune, Gujarat, and Bengaluru to Bihar, Uttar Pradesh, and West Bengal face acute seat shortages.
 
-| Diwali Festival Milestone | Calendar Date (2026) | Target Arrival Date | Booking Window (60-Day ARP) |
-|---|---|---|---|
-| Early Festive Departure | November 5, 2026 (Thursday) | November 5, 2026 | September 6, 2026 |
-| Day 1: Dhanteras | November 6, 2026 (Friday) | November 5–6, 2026 | September 7, 2026 |
-| Day 2: Choti Diwali | November 7, 2026 (Saturday) | November 6–7, 2026 | September 8, 2026 |
-| Day 3: Diwali (Lakshmi Puja) | November 8, 2026 (Sunday) | November 7–8, 2026 | September 9, 2026 |
-| Day 4: Govardhan Puja | November 9, 2026 (Monday) | November 8–9, 2026 | September 10, 2026 |
-| Day 5: Bhai Dooj | November 10, 2026 (Tuesday) | November 9–10, 2026 | September 11, 2026 |
-| Pre-Chhath Travel Wave | November 11–12, 2026 | November 11–12, 2026 | September 12–13, 2026 |
-| Post-Festival Return Peak | November 16–22, 2026 | Return to Metros | September 17–23, 2026 |
+| Diwali Festival Milestone    | Calendar Date (2026)        | Target Arrival Date  | Booking Window (60-Day ARP) |
+| ---------------------------- | --------------------------- | -------------------- | --------------------------- |
+| Early Festive Departure      | November 5, 2026 (Thursday) | November 5, 2026     | September 6, 2026           |
+| Day 1: Dhanteras             | November 6, 2026 (Friday)   | November 5–6, 2026   | September 7, 2026           |
+| Day 2: Choti Diwali          | November 7, 2026 (Saturday) | November 6–7, 2026   | September 8, 2026           |
+| Day 3: Diwali (Lakshmi Puja) | November 8, 2026 (Sunday)   | November 7–8, 2026   | September 9, 2026           |
+| Day 4: Govardhan Puja        | November 9, 2026 (Monday)   | November 8–9, 2026   | September 10, 2026          |
+| Day 5: Bhai Dooj             | November 10, 2026 (Tuesday) | November 9–10, 2026  | September 11, 2026          |
+| Pre-Chhath Travel Wave       | November 11–12, 2026        | November 11–12, 2026 | September 12–13, 2026       |
+| Post-Festival Return Peak    | November 16–22, 2026        | Return to Metros     | September 17–23, 2026       |
 
 ---
 
@@ -71,21 +71,21 @@ These festival services run with customized rake compositions featuring AC 2-Tie
 
 The table below outlines the primary 0-series Diwali special services operating across key corridors:
 
-| Origin Station | Destination Station | Special Train Numbers | Operating Frequency | Key Intermediate Halts |
-|---|---|---|---|---|
-| Anand Vihar / New Delhi | Patna Jn | 04078 / 04077 | 4 to 6 days weekly | Kanpur Central, Prayagraj, Pt. DD Upadhyaya, Buxar, Ara |
-| New Delhi | Darbhanga Jn | 04068 / 04067 | 3 to 4 days weekly | Moradabad, Bareilly, Lucknow, Gorakhpur, Sitamarhi |
-| Anand Vihar | Saharsa Jn | 04010 / 04009 | 2 to 3 days weekly | Moradabad, Bareilly, Gorakhpur, Chhapra, Muzaffarpur |
-| Anand Vihar | Muzaffarpur Jn | 04044 / 04043 | 2 to 3 days weekly | Moradabad, Chandausi, Lucknow, Gorakhpur, Hajipur |
-| New Delhi | Gorakhpur Jn | 04494 / 04493 | 4 to 5 days weekly | Ghaziabad, Moradabad, Bareilly, Sitapur, Gonda, Basti |
-| Mumbai CSMT / LTT | Danapur | 01061 / 01062 | Daily during rush | Kalyan, Bhusaval, Itarsi, Jabalpur, Prayagraj Chheoki, DDU |
-| LTT Mumbai | Gorakhpur Jn | 01079 / 01080 | 3 days weekly | Thane, Nashik Road, Bhusaval, Jhansi, Kanpur Central, Lucknow |
-| LTT Mumbai | Samastipur Jn | 01043 / 01044 | Weekly / Bi-weekly | Kalyan, Bhusaval, Itarsi, Jabalpur, Danapur, Barauni |
-| Pune Jn | Danapur | 01481 / 01482 | 3 days weekly | Daund Chord, Ahmednagar, Manmad, Bhusaval, Itarsi, Jabalpur |
-| Surat / Udhna | Chhapra / Patna | 09031 / 09032 | 2 to 3 days weekly | Nandurbar, Bhusaval, Itarsi, Katni, Satna, Prayagraj, Ballia |
-| Ahmedabad | Patna / Danapur | 09417 / 09418 | Weekly | Vadodara, Ratlam, Kota, Agra Fort, Kanpur Central, DDU |
-| Bengaluru (SMVB) | Danapur | 06261 / 06262 | Weekly | Katpadi, Vijayawada, Warangal, Balharshah, Nagpur, Itarsi |
-| Bengaluru (SMVB) | Howrah Jn | 06585 / 06586 | Weekly | Katpadi, Vijayawada, Visakhapatnam, Bhubaneswar, Kharagpur |
+| Origin Station          | Destination Station | Special Train Numbers | Operating Frequency | Key Intermediate Halts                                        |
+| ----------------------- | ------------------- | --------------------- | ------------------- | ------------------------------------------------------------- |
+| Anand Vihar / New Delhi | Patna Jn            | 04078 / 04077         | 4 to 6 days weekly  | Kanpur Central, Prayagraj, Pt. DD Upadhyaya, Buxar, Ara       |
+| New Delhi               | Darbhanga Jn        | 04068 / 04067         | 3 to 4 days weekly  | Moradabad, Bareilly, Lucknow, Gorakhpur, Sitamarhi            |
+| Anand Vihar             | Saharsa Jn          | 04010 / 04009         | 2 to 3 days weekly  | Moradabad, Bareilly, Gorakhpur, Chhapra, Muzaffarpur          |
+| Anand Vihar             | Muzaffarpur Jn      | 04044 / 04043         | 2 to 3 days weekly  | Moradabad, Chandausi, Lucknow, Gorakhpur, Hajipur             |
+| New Delhi               | Gorakhpur Jn        | 04494 / 04493         | 4 to 5 days weekly  | Ghaziabad, Moradabad, Bareilly, Sitapur, Gonda, Basti         |
+| Mumbai CSMT / LTT       | Danapur             | 01061 / 01062         | Daily during rush   | Kalyan, Bhusaval, Itarsi, Jabalpur, Prayagraj Chheoki, DDU    |
+| LTT Mumbai              | Gorakhpur Jn        | 01079 / 01080         | 3 days weekly       | Thane, Nashik Road, Bhusaval, Jhansi, Kanpur Central, Lucknow |
+| LTT Mumbai              | Samastipur Jn       | 01043 / 01044         | Weekly / Bi-weekly  | Kalyan, Bhusaval, Itarsi, Jabalpur, Danapur, Barauni          |
+| Pune Jn                 | Danapur             | 01481 / 01482         | 3 days weekly       | Daund Chord, Ahmednagar, Manmad, Bhusaval, Itarsi, Jabalpur   |
+| Surat / Udhna           | Chhapra / Patna     | 09031 / 09032         | 2 to 3 days weekly  | Nandurbar, Bhusaval, Itarsi, Katni, Satna, Prayagraj, Ballia  |
+| Ahmedabad               | Patna / Danapur     | 09417 / 09418         | Weekly              | Vadodara, Ratlam, Kota, Agra Fort, Kanpur Central, DDU        |
+| Bengaluru (SMVB)        | Danapur             | 06261 / 06262         | Weekly              | Katpadi, Vijayawada, Warangal, Balharshah, Nagpur, Itarsi     |
+| Bengaluru (SMVB)        | Howrah Jn           | 06585 / 06586         | Weekly              | Katpadi, Vijayawada, Visakhapatnam, Bhubaneswar, Kharagpur    |
 
 > ⚡ **Quick Seat Search by Route:** [Search Delhi ➔ Patna](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn) • [Check Mumbai ➔ Danapur](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur) • [Check Pune ➔ Danapur](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur) • [Check Surat ➔ Patna](/?from=ST&to=PNBE&fromName=Surat&toName=Patna%20Jn) • [Check Bengaluru ➔ Danapur](/?from=SBC&to=DNR&fromName=KSR%20Bengaluru&toName=Danapur)
 
@@ -110,13 +110,13 @@ Commercial pricing rules governing festival special trains:
 
 Here is an illustrative fare comparison for a typical 1,000 km journey (such as New Delhi to Patna):
 
-| Travel Class | Normal Express Fare | 0-Series Special Fare (TOSF) | Price Difference |
-|---|---|---|---|
-| **Second Sitting (2S)** | ~₹245 | ~₹260 | +10% |
-| **Sleeper Class (SL)** | ~₹475 | ~₹630 | +30% |
-| **AC 3-Tier Economy (3E)** | ~₹1,180 | ~₹1,510 | +30% |
-| **AC 3-Tier (3A)** | ~₹1,265 | ~₹1,640 | +30% |
-| **AC 2-Tier (2A)** | ~₹1,825 | ~₹2,320 | +30% |
+| Travel Class               | Normal Express Fare | 0-Series Special Fare (TOSF) | Price Difference |
+| -------------------------- | ------------------- | ---------------------------- | ---------------- |
+| **Second Sitting (2S)**    | ~₹245               | ~₹260                        | +10%             |
+| **Sleeper Class (SL)**     | ~₹475               | ~₹630                        | +30%             |
+| **AC 3-Tier Economy (3E)** | ~₹1,180             | ~₹1,510                      | +30%             |
+| **AC 3-Tier (3A)**         | ~₹1,265             | ~₹1,640                      | +30%             |
+| **AC 2-Tier (2A)**         | ~₹1,825             | ~₹2,320                      | +30%             |
 
 ---
 
@@ -128,16 +128,16 @@ Because the 30% special surcharge is baked into the base ticket fare, percentage
 
 The table below summarizes official cancellation slabs for confirmed, RAC, and waitlisted tickets:
 
-| Ticket Status | Cancellation Timing | Refund Eligibility | Deduction Applied |
-|---|---|---|---|
-| **Confirmed** | More than 48 hours before departure | Full fare minus flat clerkage fee | ₹240 (1AC), ₹200 (2A), ₹180 (3A/3E), ₹120 (SL), ₹60 (2S) |
-| **Confirmed** | Between 48 hours and 12 hours before departure | 75% of total ticket fare | 25% of ticket fare (subject to min clerkage) |
-| **Confirmed** | Between 12 hours and 4 hours (up to 1st chart) | 50% of total ticket fare | 50% of ticket fare (subject to min clerkage) |
-| **Confirmed** | Less than 4 hours or after chart preparation | Zero refund | 100% forfeiture of ticket fare |
-| **RAC / Counter Waitlist** | Up to 30 minutes before departure | Full fare minus clerkage | ₹60 flat clerkage fee per passenger |
-| **Online Waitlist (e-Ticket)** | Automatically cancelled after chart preparation | 100% automated refund to original source | Zero clerkage fee (payment gateway fees retained) |
+| Ticket Status                  | Cancellation Timing                             | Refund Eligibility                       | Deduction Applied                                        |
+| ------------------------------ | ----------------------------------------------- | ---------------------------------------- | -------------------------------------------------------- |
+| **Confirmed**                  | More than 48 hours before departure             | Full fare minus flat clerkage fee        | ₹240 (1AC), ₹200 (2A), ₹180 (3A/3E), ₹120 (SL), ₹60 (2S) |
+| **Confirmed**                  | Between 48 hours and 12 hours before departure  | 75% of total ticket fare                 | 25% of ticket fare (subject to min clerkage)             |
+| **Confirmed**                  | Between 12 hours and 4 hours (up to 1st chart)  | 50% of total ticket fare                 | 50% of ticket fare (subject to min clerkage)             |
+| **Confirmed**                  | Less than 4 hours or after chart preparation    | Zero refund                              | 100% forfeiture of ticket fare                           |
+| **RAC / Counter Waitlist**     | Up to 30 minutes before departure               | Full fare minus clerkage                 | ₹60 flat clerkage fee per passenger                      |
+| **Online Waitlist (e-Ticket)** | Automatically cancelled after chart preparation | 100% automated refund to original source | Zero clerkage fee (payment gateway fees retained)        |
 
-*For partially confirmed group bookings (where some passengers are confirmed and others waitlisted), an online TDR must be submitted up to 30 minutes before scheduled train departure to claim a refund for the unconfirmed passengers.*
+_For partially confirmed group bookings (where some passengers are confirmed and others waitlisted), an online TDR must be submitted up to 30 minutes before scheduled train departure to claim a refund for the unconfirmed passengers._
 
 ---
 
@@ -148,21 +148,25 @@ The table below summarizes official cancellation slabs for confirmed, RAC, and w
 When standard waitlists exceed zonal safety thresholds, IRCTC marks the train as `REGRET`, blocking further bookings. However, you can bypass this bottleneck using four proven methods:
 
 ### 1. Split-Segment Booking via Smart Seats
+
 Indian Railways partitions coach berths into separate intermediate station quotas (`GNWL`, `RLWL`, and `PQWL`). While a direct booking from Delhi to Patna may show `REGRET`, berths may remain available from Delhi to Kanpur, and from Kanpur to Patna on the exact same train.
 
 Use [Smart Seats](/) on LastBerth to discover contiguous split-segment seats, enabling you to travel on a single train without changing rakes.
 
 ### 2. Origin Station Booking with Boarding Modification
+
 Intermediate stations draw from smaller pooled quotas that exhaust quickly. Booking from the originating terminal station secures access to the larger General Quota (`GNWL`).
 
 Under current Indian Railways rules, you can modify your boarding station online on IRCTC up to the preparation of the second reservation chart (~30 minutes before train departure).
 
 ### 3. Current Availability (CURR_AVBL) Post-Chart Discovery
+
 After the first reservation chart is prepared (at least 4 hours before departure, or 20:00 hrs the previous evening for morning trains), all unallocated quotas and cancellations are released as `CURR_AVBL` at a 10% discount.
 
 Inspect [Get Confirmed Tickets](/) and track charting timelines on [Chart Times](/chart-times) to claim released berths up to 30 minutes before departure.
 
 ### 4. Standby Festival Clone Trains
+
 During peak days (November 6 to November 8), zonal railways run unannounced clone trains 15 to 60 minutes behind major express services using spare rakes. These appear on IRCTC with 12 to 24 hours of advance notice, opening with zero waitlists.
 
 ---
@@ -207,4 +211,4 @@ During peak days (November 6 to November 8), zonal railways run unannounced clon
 
 Securing confirmed train tickets during Diwali requires proactive planning across both 60-day reservation openings and 10-to-30-day supplementary special announcements. If direct routes show REGRET, use [Smart Seats](/) to find split berths, track chart prep on [Chart Times](/chart-times), and claim released seats on [Get Confirmed Tickets](/).
 
-*LastBerth is an independent train seat discovery and ticket search tool. It is not affiliated with IRCTC, CRIS, or the Ministry of Railways, and does not issue or sell tickets.*
+_LastBerth is an independent train seat discovery and ticket search tool. It is not affiliated with IRCTC, CRIS, or the Ministry of Railways, and does not issue or sell tickets._

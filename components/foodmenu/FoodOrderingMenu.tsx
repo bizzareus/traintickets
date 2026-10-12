@@ -34,7 +34,8 @@ const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 export function FoodOrderingMenu({ menu }: { menu: TrainFoodMenu }) {
   const [classCode, setClassCode] = useState(menu.classes[0]?.classCode ?? "");
   const [q, setQ] = useState("");
-  const cls = menu.classes.find((c) => c.classCode === classCode) ?? menu.classes[0];
+  const cls =
+    menu.classes.find((c) => c.classCode === classCode) ?? menu.classes[0];
 
   const sections = useMemo(() => {
     const term = q.trim().toLowerCase();
@@ -84,7 +85,7 @@ export function FoodOrderingMenu({ menu }: { menu: TrainFoodMenu }) {
         <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">
           IRCTC on-board catering
         </p>
-        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-slate-900 text-balance sm:text-3xl">
+        <h1 className="mt-1 text-balance text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
           {nameWithRoute} - {menu.trainNumber} Food Menu
         </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
@@ -162,12 +163,18 @@ export function FoodOrderingMenu({ menu }: { menu: TrainFoodMenu }) {
       ) : (
         <div className="space-y-8">
           {sections.map((s) => (
-            <section key={s.service} id={`cat-${slugify(s.service)}`} className="scroll-mt-28">
+            <section
+              key={s.service}
+              id={`cat-${slugify(s.service)}`}
+              className="scroll-mt-28"
+            >
               {/* One priced set meal. The price is the per-meal (set) charge —
                   shown once here, NOT on each item (items are what the meal
                   includes / the options you choose between). */}
               <div className="mb-3 flex items-baseline justify-between gap-3 border-b border-slate-100 pb-2">
-                <h2 className="text-lg font-bold text-slate-900">{s.service}</h2>
+                <h2 className="text-lg font-bold text-slate-900">
+                  {s.service}
+                </h2>
                 {s.price != null && (
                   <span className="shrink-0 whitespace-nowrap rounded-full bg-emerald-50 px-3 py-1 text-base font-extrabold text-emerald-700">
                     ₹{s.price}
@@ -180,7 +187,8 @@ export function FoodOrderingMenu({ menu }: { menu: TrainFoodMenu }) {
 
               <ul className="divide-y divide-slate-100">
                 {s.items.map((it, i) => {
-                  const nonVeg = NON_VEG.test(it.item) || NON_VEG.test(it.description);
+                  const nonVeg =
+                    NON_VEG.test(it.item) || NON_VEG.test(it.description);
                   const v = dishVisual(`${it.item} ${it.description}`);
                   return (
                     <li key={`${it.item}-${i}`} className="flex gap-3 py-3.5">

@@ -12,9 +12,10 @@ In these screenshots for North East Express (12506), 30 September 2026:
 
 • ConfirmTkt shows 3A WL 44 for Anand Vihar → Patliputra.
 • LastBerth finds available-seat options across three legs of the same train:
-  1. ANVT → PRYJ: 3A, AVL 17, ₹1,035
-  2. PRYJ → DDU: 3A, AVL 12, ₹565
-  3. DDU → PPTA: 2A, AVL 1, ₹770
+
+1. ANVT → PRYJ: 3A, AVL 17, ₹1,035
+2. PRYJ → DDU: 3A, AVL 12, ₹565
+3. DDU → PPTA: 2A, AVL 1, ₹770
 
 Displayed total: ₹2,370.
 

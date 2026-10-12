@@ -158,7 +158,7 @@ export function SideAdvert({
           onClick={handleClick}
           target="_blank"
           rel="noopener noreferrer sponsored"
-          className="group block overflow-hidden rounded-xl border border-slate-200/80 bg-white p-1 shadow-xs transition-all duration-200 hover:border-slate-300 hover:shadow-md aspect-[220/600] w-[220px]"
+          className="shadow-xs group block aspect-[220/600] w-[220px] overflow-hidden rounded-xl border border-slate-200/80 bg-white p-1 transition-all duration-200 hover:border-slate-300 hover:shadow-md"
         >
           <Image
             src="/advert.png"
@@ -221,7 +221,7 @@ export function MobileAdvert({
           onClick={handleClick}
           target="_blank"
           rel="noopener noreferrer sponsored"
-          className="group block w-full overflow-hidden rounded-xl border border-slate-200/80 bg-slate-100 p-1 shadow-2xs transition-all duration-200 hover:border-slate-300 hover:shadow-xs aspect-[4/1]"
+          className="shadow-2xs hover:shadow-xs group block aspect-[4/1] w-full overflow-hidden rounded-xl border border-slate-200/80 bg-slate-100 p-1 transition-all duration-200 hover:border-slate-300"
         >
           <Image
             src="/advert_mobile.png"

@@ -6,7 +6,7 @@ import { createHmac, timingSafeEqual } from "crypto";
  */
 export function safeCompareStrings(
   a: string | null | undefined,
-  b: string | null | undefined
+  b: string | null | undefined,
 ): boolean {
   if (!a || !b) return false;
   const aBuf = createHmac("sha256", "lastberth-crypto-salt").update(a).digest();

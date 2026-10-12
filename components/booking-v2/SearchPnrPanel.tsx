@@ -117,9 +117,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
   const hasWaitlisted = useMemo(() => {
     const passengers = pnrData?.PassengerStatus;
     if (!passengers?.length) return false;
-    return passengers.some(
-      (p) => !formatPassengerStatusDisplay(p).isConfirmed,
-    );
+    return passengers.some((p) => !formatPassengerStatusDisplay(p).isConfirmed);
   }, [pnrData]);
 
   // Proactively prompt waitlisted users (once per PNR) to subscribe to chart
@@ -160,7 +158,8 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
       );
       const res = response.data;
       if (!res.status || !res.data) {
-        const customMsg = "There is an issue with railways server we are not able to figure out the status";
+        const customMsg =
+          "There is an issue with railways server we are not able to figure out the status";
         setPnrError(customMsg);
         setPnrForCta(trimmed);
         trackAnalyticsEvent({
@@ -233,7 +232,8 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
         void alt.findAlternates(mockTrain, undefined, parsedDate);
       }
     } catch (err: unknown) {
-      const customMsg = "There is an issue with railways server we are not able to figure out the status";
+      const customMsg =
+        "There is an issue with railways server we are not able to figure out the status";
       let origMsg = "Failed to fetch PNR status.";
       if (err && typeof err === "object" && "response" in err) {
         const ax = err as { response?: { data?: { message?: string } } };
@@ -258,7 +258,8 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
     <form
       {...({
         toolname: "check_pnr_status",
-        tooldescription: "Check live 10-digit Indian Railways PNR status, seat allotment, and waiting list confirmation probability.",
+        tooldescription:
+          "Check live 10-digit Indian Railways PNR status, seat allotment, and waiting list confirmation probability.",
       } as Record<string, unknown>)}
       onSubmit={(e) => {
         e.preventDefault();
@@ -267,7 +268,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
       className={className}
     >
       <div className="flex flex-col overflow-visible rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:gap-4 sm:p-3">
-        <div className="flex-1 min-w-0">
+        <div className="min-w-0 flex-1">
           <label
             htmlFor="pnrInput"
             className="mb-1.5 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500"
@@ -294,7 +295,8 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
             id="pnrInput"
             name="pnr"
             {...({
-              toolparamdescription: "10-digit PNR number printed on Indian Railways ticket",
+              toolparamdescription:
+                "10-digit PNR number printed on Indian Railways ticket",
             } as Record<string, unknown>)}
             inputMode="numeric"
             autoComplete="off"
@@ -328,7 +330,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
 
       {pnrError && (
         <div
-          className="mt-6 flex flex-col gap-3 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800 shadow-sm animate-fade-in"
+          className="animate-fade-in mt-6 flex flex-col gap-3 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800 shadow-sm"
           role="alert"
         >
           <div className="flex items-start gap-3">
@@ -349,7 +351,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
                 href={`https://www.confirmtkt.com/pnr-status/${pnrForCta}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25 transition-all duration-200"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all duration-200 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25"
               >
                 Go to ConfirmTkt for PNR Analysis
                 <svg
@@ -374,21 +376,21 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
 
       {/* PNR Details Card */}
       {pnrData && (
-        <div className="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md animate-fade-in">
-          <div className="bg-slate-900 px-4 py-3 text-white flex justify-between items-center flex-wrap gap-2">
+        <div className="animate-fade-in mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md">
+          <div className="flex flex-wrap items-center justify-between gap-2 bg-slate-900 px-4 py-3 text-white">
             <div className="flex items-center gap-2">
               <span className="rounded bg-blue-600 px-2 py-0.5 text-xs font-black uppercase tracking-wider">
                 PNR
               </span>
-              <span className="text-sm font-bold tracking-wider font-mono">
+              <span className="font-mono text-sm font-bold tracking-wider">
                 {pnrData.Pnr}
               </span>
             </div>
             <div className="text-xs font-semibold text-slate-300">
               Quota:{" "}
-              <span className="text-white font-bold">{pnrData.Quota}</span> |
+              <span className="font-bold text-white">{pnrData.Quota}</span> |
               Class:{" "}
-              <span className="text-white font-bold">{pnrData.Class}</span>
+              <span className="font-bold text-white">{pnrData.Class}</span>
             </div>
           </div>
           {subscribedAlertJourney ? (
@@ -415,15 +417,16 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
               </div>
             </div>
           ) : (
-            (!effectiveChartPrepared && hasWaitlisted) && (
-              <div className="bg-blue-50 border-b border-blue-100 p-3">
+            !effectiveChartPrepared &&
+            hasWaitlisted && (
+              <div className="border-b border-blue-100 bg-blue-50 p-3">
                 <button
                   type="button"
                   onClick={() => setChartAlertOpen(true)}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-sm transition flex items-center justify-center gap-2"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-3 font-bold text-white shadow-sm transition hover:bg-blue-700"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="h-5 w-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -442,15 +445,15 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
             )
           )}
           <div className="p-4 sm:p-5">
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-b border-slate-100 pb-4 mb-4">
+            <div className="mb-4 flex flex-col gap-4 border-b border-slate-100 pb-4 md:flex-row md:items-center md:justify-between">
               <div>
-                <h3 className="text-base font-bold text-slate-900 sm:text-lg flex items-center gap-2">
-                  <span className="text-blue-600 font-extrabold">
+                <h3 className="flex items-center gap-2 text-base font-bold text-slate-900 sm:text-lg">
+                  <span className="font-extrabold text-blue-600">
                     {pnrData.TrainNo}
                   </span>
                   <span>{pnrData.TrainName}</span>
                 </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <p className="mt-0.5 text-xs text-slate-500">
                   Departing on{" "}
                   <span className="font-semibold text-slate-700">
                     {pnrData.Doj}
@@ -468,7 +471,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
               </div>
               <div className="flex items-center gap-3 text-sm font-medium">
                 <div className="text-right">
-                  <span className="block font-black text-slate-900 tracking-wide">
+                  <span className="block font-black tracking-wide text-slate-900">
                     {pnrData.From}
                   </span>
                   <span className="text-xs text-slate-500">
@@ -477,12 +480,12 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
                       "Origin"}
                   </span>
                 </div>
-                <div className="flex flex-col items-center justify-center min-w-[64px]">
-                  <span className="text-[10px] text-slate-400 font-mono tracking-widest uppercase">
+                <div className="flex min-w-[64px] flex-col items-center justify-center">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-slate-400">
                     Direct
                   </span>
-                  <div className="h-0.5 w-full bg-slate-200 relative my-1">
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+                  <div className="relative my-1 h-0.5 w-full bg-slate-200">
+                    <div className="absolute right-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-blue-600"></div>
                   </div>
                   {pnrData.Duration && (
                     <span className="text-[10px] text-slate-500">
@@ -491,7 +494,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
                   )}
                 </div>
                 <div>
-                  <span className="block font-black text-slate-900 tracking-wide">
+                  <span className="block font-black tracking-wide text-slate-900">
                     {pnrData.To}
                   </span>
                   <span className="text-xs text-slate-500">
@@ -503,39 +506,39 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
               </div>
             </div>
 
-            {pnrData.PassengerStatus &&
-              pnrData.PassengerStatus.length > 0 && (
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                    Passenger Seat Status
-                  </h4>
-                  <div className="grid gap-2 sm:grid-cols-2">
-                    {pnrData.PassengerStatus.map((passenger: PnrPassengerStatus) => {
+            {pnrData.PassengerStatus && pnrData.PassengerStatus.length > 0 && (
+              <div>
+                <h4 className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-400">
+                  Passenger Seat Status
+                </h4>
+                <div className="grid gap-2 sm:grid-cols-2">
+                  {pnrData.PassengerStatus.map(
+                    (passenger: PnrPassengerStatus) => {
                       const { bookingDisplay, currentDisplay, isConfirmed } =
                         formatPassengerStatusDisplay(passenger);
                       return (
                         <div
                           key={passenger.Number}
-                          className={`flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-xl border p-3 text-xs shadow-2xs transition-colors ${
+                          className={`shadow-2xs flex flex-col justify-between gap-2 rounded-xl border p-3 text-xs transition-colors sm:flex-row sm:items-center ${
                             isConfirmed
                               ? "border-emerald-200 bg-emerald-50/50"
                               : "border-slate-200 bg-slate-50/60"
                           }`}
                         >
-                          <span className="font-bold text-slate-700 shrink-0">
+                          <span className="shrink-0 font-bold text-slate-700">
                             Passenger {passenger.Number}
                           </span>
                           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                             {bookingDisplay && (
-                              <span className="rounded-md bg-white px-2 py-1 font-medium text-slate-700 border border-slate-200 shadow-2xs">
+                              <span className="shadow-2xs rounded-md border border-slate-200 bg-white px-2 py-1 font-medium text-slate-700">
                                 {bookingDisplay}
                               </span>
                             )}
                             <span
-                              className={`rounded-md px-2.5 py-1 font-bold shadow-2xs ${
+                              className={`shadow-2xs rounded-md px-2.5 py-1 font-bold ${
                                 isConfirmed
-                                  ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
-                                  : "bg-amber-100 text-amber-900 border border-amber-300"
+                                  ? "border border-emerald-300 bg-emerald-100 text-emerald-800"
+                                  : "border border-amber-300 bg-amber-100 text-amber-900"
                               }`}
                             >
                               {currentDisplay}
@@ -543,17 +546,18 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
                           </div>
                         </div>
                       );
-                    })}
-                  </div>
+                    },
+                  )}
                 </div>
-              )}
+              </div>
+            )}
 
             {/* Alternate tickets (full width) */}
             {(alt.altResult ||
               alt.altError ||
               (alt.altLoading && alt.altForTrain)) && (
               <div className="mt-6 border-t border-slate-100 pt-6">
-                <div className="rounded-2xl border border-blue-100 bg-white shadow-sm relative flex flex-col max-h-[80vh] sm:max-h-[600px] overflow-hidden">
+                <div className="relative flex max-h-[80vh] flex-col overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm sm:max-h-[600px]">
                   <AlternatePathContent
                     altForTrain={alt.altForTrain}
                     altTrainName={alt.altTrainName}
@@ -591,7 +595,7 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
           onClick={() => setChartAlertOpen(false)}
         >
           <div
-            className="w-full max-h-[90vh] overflow-y-auto bg-white p-5 shadow-2xl sm:max-w-md sm:rounded-2xl sm:p-6"
+            className="max-h-[90vh] w-full overflow-y-auto bg-white p-5 shadow-2xl sm:max-w-md sm:rounded-2xl sm:p-6"
             role="dialog"
             aria-modal="true"
             aria-labelledby="chartAlertTitle"
@@ -647,7 +651,10 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
 
             {subscribedAlertJourney ? (
               <div className="mt-4">
-                <ChartAlertSuccessBox journey={subscribedAlertJourney} compact />
+                <ChartAlertSuccessBox
+                  journey={subscribedAlertJourney}
+                  compact
+                />
               </div>
             ) : (
               <>
@@ -658,8 +665,9 @@ export function SearchPnrPanel({ className }: SearchPnrPanelProps) {
                     {originChartTime}
                   </span>
                   ), Indian Railways releases unused quota seats for booking.
-                  Subscribe to chart alerts and we&apos;ll notify you the moment new
-                  seats become available, so you can book a confirmed ticket.
+                  Subscribe to chart alerts and we&apos;ll notify you the moment
+                  new seats become available, so you can book a confirmed
+                  ticket.
                 </p>
 
                 <EntireJourneyAlertCTA

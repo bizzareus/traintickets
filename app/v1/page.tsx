@@ -429,14 +429,14 @@ function TicketCardTitleRow({
 }) {
   return (
     <div className="mb-1.5 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-      <p className="text-sm font-semibold text-slate-500 min-w-0">
+      <p className="min-w-0 text-sm font-semibold text-slate-500">
         Ticket {ticketIndex}
         <span className="ml-2 inline-flex rounded-md bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-800">
           {classCode}
         </span>
       </p>
       <p
-        className="text-s font-bold text-slate-500 text-right leading-snug max-w-[min(100%,12.5rem)] shrink-0 sm:max-w-[14rem]"
+        className="text-s max-w-[min(100%,12.5rem)] shrink-0 text-right font-bold leading-snug text-slate-500 sm:max-w-[14rem]"
         title={`Availability as of ${asOfPhrase}`}
       >
         Availability as of {asOfPhrase}
@@ -495,12 +495,12 @@ function TicketJourneyChartStrip({
     >
       <div className="min-w-0 flex-1 text-left">
         {loading && !finalChart ? (
-          <p className="mt-1 text-s leading-snug font-semibold text-amber-800">
+          <p className="text-s mt-1 font-semibold leading-snug text-amber-800">
             Checking chart times for this leg…
           </p>
         ) : (
           <>
-            <p className="mt-0.5 text-s leading-snug font-semibold text-amber-900">
+            <p className="text-s mt-0.5 font-semibold leading-snug text-amber-900">
               Final availability will be on{" "}
               {finalChartDateLabel ? `on ${finalChartDateLabel} ` : ""}
               at <span className="font-semibold">{finalChart?.time}</span>
@@ -1619,14 +1619,14 @@ export default function HomePage() {
     uiPayload?.serviceSource === "service2";
 
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-slate-50/50">
+    <div className="min-h-[100dvh] min-h-screen bg-slate-50/50">
       <div className="sticky top-0 z-20">
         <header
           className="border-b border-slate-100 bg-white/95 backdrop-blur-sm"
           role="banner"
         >
           <div className="mx-auto flex max-w-lg items-center justify-between px-4 py-3">
-            <span className="text-lg font-semibold text-blue-600 tracking-tight">
+            <span className="text-lg font-semibold tracking-tight text-blue-600">
               LastBerth
             </span>
           </div>
@@ -1669,7 +1669,7 @@ export default function HomePage() {
           className="space-y-4"
           aria-label="Search train and find seat availability"
         >
-          <div className="rounded-2xl border border-slate-200/80 bg-white shadow-sm overflow-hidden">
+          <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm">
             {trainsLoading ? (
               <div
                 className="flex min-h-[220px] flex-col items-center justify-center gap-3 px-6 py-14"
@@ -1678,7 +1678,7 @@ export default function HomePage() {
                 aria-busy="true"
               >
                 <div
-                  className="h-10 w-10 rounded-full border-2 border-blue-500 border-t-transparent animate-spin"
+                  className="h-10 w-10 animate-spin rounded-full border-2 border-blue-500 border-t-transparent"
                   aria-hidden
                 />
                 <p className="text-base font-semibold text-slate-800">
@@ -1690,15 +1690,15 @@ export default function HomePage() {
               </div>
             ) : (
               <>
-                <div className="p-4 space-y-4">
-                  <div className="min-w-0 relative">
+                <div className="space-y-4 p-4">
+                  <div className="relative min-w-0">
                     <label
                       htmlFor="train-search-input"
-                      className="block text-m font-semibold text-gray-900 mb-1.5"
+                      className="text-m mb-1.5 block font-semibold text-gray-900"
                     >
                       Train Number or Name
                     </label>
-                    <div className="grid w-full grid-cols-1 cursor-text rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px]">
+                    <div className="grid min-h-[38px] w-full cursor-text grid-cols-1 rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                       <input
                         ref={trainInputRef}
                         id="train-search-input"
@@ -1739,16 +1739,16 @@ export default function HomePage() {
                           }
                         }}
                         placeholder="Search train number or name"
-                        className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 text-inherit placeholder:text-gray-400"
+                        className="col-start-1 row-start-1 w-full min-w-0 border-0 bg-transparent text-inherit outline-none placeholder:text-gray-400 focus:outline-none focus:ring-0"
                         autoComplete="off"
                       />
-                      <span className="col-start-1 row-start-1 self-center justify-self-end pointer-events-none pr-2">
+                      <span className="pointer-events-none col-start-1 row-start-1 self-center justify-self-end pr-2">
                         <ChevronUpDownIcon className="size-5 text-gray-500" />
                       </span>
                     </div>
                     <div
                       id="train-dropdown"
-                      className={`z-10 absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5 ${trainDropdownOpen ? "" : "hidden"}`}
+                      className={`absolute left-0 right-0 top-full z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5 ${trainDropdownOpen ? "" : "hidden"}`}
                     >
                       {mounted && (
                         <ul
@@ -1767,7 +1767,7 @@ export default function HomePage() {
                                   type="button"
                                   role="option"
                                   aria-selected={selected}
-                                  className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
+                                  className="relative block w-full cursor-default select-none py-2 pl-3 pr-9 text-left text-gray-900 focus:bg-indigo-600 focus:text-white focus:outline-none"
                                   onMouseDown={(e) => {
                                     e.preventDefault();
                                   }}
@@ -1827,11 +1827,11 @@ export default function HomePage() {
                   )}
 
                   <div
-                    className={`min-w-0 relative ${scheduleError ? "opacity-60" : !trainSelected ? "opacity-75" : ""}`}
+                    className={`relative min-w-0 ${scheduleError ? "opacity-60" : !trainSelected ? "opacity-75" : ""}`}
                   >
                     <label
                       htmlFor="from-station-input"
-                      className="block text-medium font-semibold text-gray-900 mb-1.5"
+                      className="text-medium mb-1.5 block font-semibold text-gray-900"
                     >
                       From
                     </label>
@@ -1839,12 +1839,12 @@ export default function HomePage() {
                       {!trainSelected && (
                         <button
                           type="button"
-                          className="absolute inset-0 z-[5] rounded-md bg-transparent cursor-pointer"
+                          className="absolute inset-0 z-[5] cursor-pointer rounded-md bg-transparent"
                           aria-label="Select a train before choosing From station"
                           onClick={promptSelectTrainFirst}
                         />
                       )}
-                      <div className="grid w-full grid-cols-1 cursor-text rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px] disabled:pointer-events-none">
+                      <div className="grid min-h-[38px] w-full cursor-text grid-cols-1 rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 disabled:pointer-events-none">
                         <input
                           id="from-station-input"
                           type="text"
@@ -1901,10 +1901,10 @@ export default function HomePage() {
                                   : "Station code"
                           }
                           disabled={!trainSelected || !!scheduleError}
-                          className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 text-inherit placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-90"
+                          className="col-start-1 row-start-1 w-full min-w-0 border-0 bg-transparent text-inherit outline-none placeholder:text-gray-400 focus:outline-none focus:ring-0 disabled:cursor-not-allowed disabled:opacity-90"
                           autoComplete="off"
                         />
-                        <span className="col-start-1 row-start-1 self-center justify-self-end pointer-events-none pr-2">
+                        <span className="pointer-events-none col-start-1 row-start-1 self-center justify-self-end pr-2">
                           <ChevronUpDownIcon className="size-5 text-gray-500" />
                         </span>
                       </div>
@@ -1912,7 +1912,7 @@ export default function HomePage() {
                     {!scheduleError && trainSelected && (
                       <div
                         id="from-dropdown"
-                        className={`z-10 absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5 ${fromDropdownOpen ? "" : "hidden"}`}
+                        className={`absolute left-0 right-0 top-full z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5 ${fromDropdownOpen ? "" : "hidden"}`}
                       >
                         {mounted && (
                           <ul
@@ -1929,7 +1929,7 @@ export default function HomePage() {
                                     type="button"
                                     role="option"
                                     aria-selected={selected}
-                                    className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
+                                    className="relative block w-full cursor-default select-none py-2 pl-3 pr-9 text-left text-gray-900 focus:bg-indigo-600 focus:text-white focus:outline-none"
                                     onMouseDown={(e) => {
                                       e.preventDefault();
                                     }}
@@ -1956,7 +1956,7 @@ export default function HomePage() {
                     )}
                   </div>
 
-                  <div className="flex justify-center -my-1">
+                  <div className="-my-1 flex justify-center">
                     <button
                       type="button"
                       onClick={() => {
@@ -1974,7 +1974,7 @@ export default function HomePage() {
                           ? "Swap disabled: destination must be after boarding station on this route"
                           : undefined
                       }
-                      className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-slate-100 text-slate-500 active:bg-slate-200 active:text-slate-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-slate-100 text-slate-500 transition active:bg-slate-200 active:text-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
                       aria-label="Swap from and to"
                     >
                       <SwapIcon className="h-5 w-5" />
@@ -1982,11 +1982,11 @@ export default function HomePage() {
                   </div>
 
                   <div
-                    className={`min-w-0 relative ${scheduleError ? "opacity-60" : !trainSelected ? "opacity-75" : ""}`}
+                    className={`relative min-w-0 ${scheduleError ? "opacity-60" : !trainSelected ? "opacity-75" : ""}`}
                   >
                     <label
                       htmlFor="to-station-input"
-                      className="block text-medium font-semibold text-gray-900 mb-1.5"
+                      className="text-medium mb-1.5 block font-semibold text-gray-900"
                     >
                       To
                     </label>
@@ -1994,12 +1994,12 @@ export default function HomePage() {
                       {!trainSelected && (
                         <button
                           type="button"
-                          className="absolute inset-0 z-[5] rounded-md bg-transparent cursor-pointer"
+                          className="absolute inset-0 z-[5] cursor-pointer rounded-md bg-transparent"
                           aria-label="Select a train before choosing To station"
                           onClick={promptSelectTrainFirst}
                         />
                       )}
-                      <div className="grid w-full grid-cols-1 cursor-text rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 text-sm min-h-[38px] disabled:pointer-events-none">
+                      <div className="grid min-h-[38px] w-full cursor-text grid-cols-1 rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-sm text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 disabled:pointer-events-none">
                         <input
                           id="to-station-input"
                           type="text"
@@ -2056,10 +2056,10 @@ export default function HomePage() {
                                   : "Station code"
                           }
                           disabled={!trainSelected || !!scheduleError}
-                          className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 text-inherit placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-90"
+                          className="col-start-1 row-start-1 w-full min-w-0 border-0 bg-transparent text-inherit outline-none placeholder:text-gray-400 focus:outline-none focus:ring-0 disabled:cursor-not-allowed disabled:opacity-90"
                           autoComplete="off"
                         />
-                        <span className="col-start-1 row-start-1 self-center justify-self-end pointer-events-none pr-2">
+                        <span className="pointer-events-none col-start-1 row-start-1 self-center justify-self-end pr-2">
                           <ChevronUpDownIcon className="size-5 text-gray-500" />
                         </span>
                       </div>
@@ -2067,7 +2067,7 @@ export default function HomePage() {
                     {!scheduleError && trainSelected && (
                       <div
                         id="to-dropdown"
-                        className={`z-10 absolute left-0 right-0 top-full mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5 ${toDropdownOpen ? "" : "hidden"}`}
+                        className={`absolute left-0 right-0 top-full z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 shadow-lg outline outline-1 outline-black/5 ${toDropdownOpen ? "" : "hidden"}`}
                       >
                         {mounted && (
                           <ul
@@ -2084,7 +2084,7 @@ export default function HomePage() {
                                     type="button"
                                     role="option"
                                     aria-selected={selected}
-                                    className="relative block w-full cursor-default py-2 pl-3 pr-9 text-left text-gray-900 select-none focus:bg-indigo-600 focus:text-white focus:outline-none"
+                                    className="relative block w-full cursor-default select-none py-2 pl-3 pr-9 text-left text-gray-900 focus:bg-indigo-600 focus:text-white focus:outline-none"
                                     onMouseDown={(e) => {
                                       e.preventDefault();
                                     }}
@@ -2114,12 +2114,12 @@ export default function HomePage() {
                   <div className="min-w-0">
                     <label
                       htmlFor="departure-date-select"
-                      className="block text-medium font-semibold text-gray-900 mb-1.5"
+                      className="text-medium mb-1.5 block font-semibold text-gray-900"
                     >
                       Departure Date
                     </label>
                     <div
-                      className={`grid w-full grid-cols-1 cursor-default rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-gray-900 outline outline-1 -outline-offset-1 text-sm min-h-[38px] ${
+                      className={`grid min-h-[38px] w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pl-3 pr-8 text-left text-sm text-gray-900 outline outline-1 -outline-offset-1 ${
                         trainDoesNotRunOnSelectedDate
                           ? "outline-red-400 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-red-500"
                           : "outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600"
@@ -2136,7 +2136,7 @@ export default function HomePage() {
                             ? "departure-date-run-day-error"
                             : undefined
                         }
-                        className="col-start-1 row-start-1 w-full min-w-0 bg-transparent outline-none focus:outline-none focus:ring-0 border-0 p-0 text-inherit appearance-none cursor-pointer"
+                        className="col-start-1 row-start-1 w-full min-w-0 cursor-pointer appearance-none border-0 bg-transparent p-0 text-inherit outline-none focus:outline-none focus:ring-0"
                       >
                         {dateOptions.map((opt) => (
                           <option key={opt.value} value={opt.value}>
@@ -2144,7 +2144,7 @@ export default function HomePage() {
                           </option>
                         ))}
                       </select>
-                      <span className="col-start-1 row-start-1 self-center justify-self-end pointer-events-none pr-2">
+                      <span className="pointer-events-none col-start-1 row-start-1 self-center justify-self-end pr-2">
                         <ChevronUpDownIcon className="size-5 text-gray-500" />
                       </span>
                     </div>
@@ -2168,7 +2168,7 @@ export default function HomePage() {
                       !!scheduleError ||
                       trainDoesNotRunOnSelectedDate
                     }
-                    className="w-full rounded-xl bg-blue-600 py-4 min-h-[48px] font-semibold text-white text-base active:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="min-h-[48px] w-full rounded-xl bg-blue-600 py-4 text-base font-semibold text-white transition active:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {loading ? "Searching…" : "Search"}
                   </button>
@@ -2180,7 +2180,7 @@ export default function HomePage() {
 
         {!loading && !checkResult && (
           <section
-            className="mt-8 mb-4"
+            className="mb-4 mt-8"
             aria-labelledby={
               formAlertMessage ? undefined : "how-it-works-heading"
             }
@@ -2189,7 +2189,7 @@ export default function HomePage() {
             {formAlertMessage ? (
               <div
                 role="alert"
-                className="rounded-xl bg-red-50/80 border border-red-100 px-4 py-3 text-red-700 text-sm"
+                className="rounded-xl border border-red-100 bg-red-50/80 px-4 py-3 text-sm text-red-700"
               >
                 {formAlertMessage}
               </div>
@@ -2197,7 +2197,7 @@ export default function HomePage() {
               <>
                 <h2
                   id="how-it-works-heading"
-                  className="text-center text-base font-semibold text-slate-800 mb-4"
+                  className="mb-4 text-center text-base font-semibold text-slate-800"
                 >
                   How it works
                 </h2>
@@ -2206,7 +2206,7 @@ export default function HomePage() {
                     type="button"
                     aria-label="Previous step"
                     onClick={() => scrollHowItWorksCarousel(-1)}
-                    className="md:hidden absolute left-0 top-1/2 z-10 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm active:bg-slate-50"
+                    className="absolute left-0 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm active:bg-slate-50 md:hidden"
                   >
                     <ChevronLeftIcon className="size-5" />
                   </button>
@@ -2214,14 +2214,14 @@ export default function HomePage() {
                     type="button"
                     aria-label="Next step"
                     onClick={() => scrollHowItWorksCarousel(1)}
-                    className="md:hidden absolute right-0 top-1/2 z-10 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm active:bg-slate-50"
+                    className="absolute right-0 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm active:bg-slate-50 md:hidden"
                   >
                     <ChevronRightIcon className="size-5" />
                   </button>
                   <div
                     ref={howItWorksCarouselRef}
                     onScroll={updateHowItWorksSlideFromScroll}
-                    className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth px-10 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0"
+                    className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-10 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden"
                   >
                     {HOW_IT_WORKS_STEPS.map((item) => (
                       <div
@@ -2229,13 +2229,13 @@ export default function HomePage() {
                         data-how-step
                         className="flex min-w-[min(100%,calc(100vw-5.25rem))] shrink-0 snap-center flex-col items-center rounded-xl border border-slate-100 bg-white px-4 py-5 text-center shadow-sm md:min-w-0"
                       >
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-semibold text-sm mb-3">
+                        <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-sm font-semibold text-blue-600">
                           {item.step}
                         </div>
-                        <h3 className="font-medium text-slate-800 text-sm mb-1">
+                        <h3 className="mb-1 text-sm font-medium text-slate-800">
                           {item.title}
                         </h3>
-                        <p className="text-slate-500 text-sm text-pretty">
+                        <p className="text-pretty text-sm text-slate-500">
                           {item.description}
                         </p>
                       </div>
@@ -2243,7 +2243,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div
-                  className="flex justify-center gap-1.5 mt-3 md:hidden"
+                  className="mt-3 flex justify-center gap-1.5 md:hidden"
                   aria-hidden
                 >
                   {HOW_IT_WORKS_STEPS.map((_, i) => (
@@ -2265,7 +2265,7 @@ export default function HomePage() {
         {loading && !checkResult && !service2StreamPartial && (
           <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
             <SearchLoaderTrainTrack />
-            <p className="text-slate-900 text-left text-lg font-bold leading-snug sm:text-xl">
+            <p className="text-left text-lg font-bold leading-snug text-slate-900 sm:text-xl">
               {service2StreamLine || "Finding you the best possible seats…"}
             </p>
           </div>
@@ -2275,12 +2275,12 @@ export default function HomePage() {
           !loading &&
           (!showChartPendingMonitor || chartPendingModalDismissed)) ||
           (loading && service2StreamPartial != null)) && (
-          <section className="mt-6 rounded-2xl bg-slate-100/60 py-4 px-0">
+          <section className="mt-6 rounded-2xl bg-slate-100/60 px-0 py-4">
             {uiPayload?.serviceSource === "service2" ? (
               uiPayload.chartStatus ? (
                 <div className="rounded-2xl border border-amber-200/90 bg-white p-4 shadow-md">
                   <div className="rounded-xl border border-amber-100 bg-amber-50/80 px-4 py-4">
-                    <p className="font-bold text-amber-900 text-xl">
+                    <p className="text-xl font-bold text-amber-900">
                       {uiPayload.chartStatus.kind === "not_prepared_yet"
                         ? uiPayload.chartStatus.message
                         : uiPayload.chartStatus.kind === "irctc_unavailable"
@@ -2289,12 +2289,12 @@ export default function HomePage() {
                     </p>
                     {uiPayload.chartStatus.kind === "irctc_unavailable" &&
                       uiPayload.chartStatus.detail && (
-                        <p className="mt-2 text-sm text-amber-800/95 leading-snug">
+                        <p className="mt-2 text-sm leading-snug text-amber-800/95">
                           {uiPayload.chartStatus.detail}
                         </p>
                       )}
                     {showChartPendingMonitor && (
-                      <p className="mt-2 text-sm text-amber-800 font-medium">
+                      <p className="mt-2 text-sm font-medium text-amber-800">
                         We can check at chart preparation time and notify you
                         when seats are available. We only find you confirmed
                         tickets once the chart is prepared. You will receive
@@ -2322,7 +2322,7 @@ export default function HomePage() {
                             });
                             setChartPendingModalDismissed(false);
                           }}
-                          className="rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white active:bg-amber-700 transition"
+                          className="rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white transition active:bg-amber-700"
                         >
                           Get Ticket Alert
                         </button>
@@ -2331,13 +2331,13 @@ export default function HomePage() {
                   </div>
                 </div>
               ) : openAiBookingPlanResolved.length > 0 ? (
-                <div className="rounded-2xl border border-slate-200/90 bg-white shadow-lg overflow-hidden">
+                <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-lg">
                   {/* Train header with total fare on top right */}
                   {/* Admin debug trace moved below header */}
 
-                  <div className="border-b border-slate-100 px-4 py-4 flex flex-wrap items-start justify-between gap-3">
+                  <div className="flex flex-wrap items-start justify-between gap-3 border-b border-slate-100 px-4 py-4">
                     <div className="min-w-0">
-                      <h2 className="text-base font-bold text-slate-900 leading-tight">
+                      <h2 className="text-base font-bold leading-tight text-slate-900">
                         {trainNumber} {uiPayload.composition?.trainName ?? ""}
                       </h2>
                       <p className="mt-1 flex items-center gap-1.5 text-sm text-slate-600">
@@ -2363,10 +2363,10 @@ export default function HomePage() {
                     </div>
                     {totalApproxPrice != null && totalApproxPrice > 0 && (
                       <div className="shrink-0 text-right">
-                        <p className="text-slate-800 font-semibold text-sm">
+                        <p className="text-sm font-semibold text-slate-800">
                           Total approx. fare
                         </p>
-                        <p className="mt-0.5 flex items-center justify-end gap-1 text-slate-900 font-bold text-base">
+                        <p className="mt-0.5 flex items-center justify-end gap-1 text-base font-bold text-slate-900">
                           <span>
                             ₹{totalApproxPrice.toLocaleString("en-IN")}
                           </span>
@@ -2377,8 +2377,8 @@ export default function HomePage() {
                   </div>
 
                   {openAiSummaryForDisplay && (
-                    <div className="px-4 pt-3 pb-1">
-                      <p className="text-sm font-semibold text-slate-700 leading-snug">
+                    <div className="px-4 pb-1 pt-3">
+                      <p className="text-sm font-semibold leading-snug text-slate-700">
                         {openAiSummaryForDisplay}
                       </p>
                     </div>
@@ -2400,7 +2400,7 @@ export default function HomePage() {
                     uiPayload.debugLog.length > 0 && (
                       <div className="mx-4 mt-3">
                         <details className="rounded-xl border border-slate-200 bg-slate-50/50 p-3 shadow-sm transition-all hover:border-slate-300">
-                          <summary className="cursor-pointer text-sm font-bold text-slate-800 flex items-center justify-between group">
+                          <summary className="group flex cursor-pointer items-center justify-between text-sm font-bold text-slate-800">
                             <span className="flex items-center gap-2">
                               <svg
                                 className="h-4 w-4 text-slate-500"
@@ -2440,11 +2440,11 @@ export default function HomePage() {
                                   : "Composition Only"}
                               </span>
                             </div>
-                            <ol className="max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-[11px] leading-relaxed text-slate-600 scrollbar-thin scrollbar-thumb-slate-200">
+                            <ol className="scrollbar-thin scrollbar-thumb-slate-200 max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-[11px] leading-relaxed text-slate-600">
                               {uiPayload.debugLog.map((line, i) => (
                                 <li
                                   key={i}
-                                  className="whitespace-pre-wrap py-1 border-b border-slate-100 last:border-0 border-dashed"
+                                  className="whitespace-pre-wrap border-b border-dashed border-slate-100 py-1 last:border-0"
                                 >
                                   {line}
                                 </li>
@@ -2473,7 +2473,7 @@ export default function HomePage() {
                     )}
 
                   {/* Full journey: plan segments as Book cards, then gap legs as Monitor cards */}
-                  <div className="px-4 py-4 space-y-3">
+                  <div className="space-y-3 px-4 py-4">
                     {alignedJourneyLegsForDisplay != null &&
                     alignedJourneyLegsForDisplay.length > 0 ? (
                       <>
@@ -2551,37 +2551,37 @@ export default function HomePage() {
                                       classCode: seg.classCode,
                                     });
                                     return (
-                                      <div className="flex flex-col overflow-hidden rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 pt-4 pb-0 w-full shadow-sm">
+                                      <div className="flex w-full flex-col overflow-hidden rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 pb-0 pt-4 shadow-sm">
                                         <TicketCardTitleRow
                                           ticketIndex={ticketIndex}
                                           classCode={seg.classCode}
                                           asOfPhrase={ticketCardAsOfPhrase}
                                         />
-                                        <div className="flex items-start gap-2 text-sm font-medium text-slate-800 pb-4">
+                                        <div className="flex items-start gap-2 pb-4 text-sm font-medium text-slate-800">
                                           <div className="min-w-0 flex-1">
                                             <p className="leading-tight">
                                               {stationLabel(seg.fromCode)}
                                             </p>
                                             {depTime && (
-                                              <p className="text-s text-slate-500 font-bold mt-0.5">
+                                              <p className="text-s mt-0.5 font-bold text-slate-500">
                                                 Dep {depTime}
                                               </p>
                                             )}
                                           </div>
-                                          <ChevronRightIcon className="h-4 w-4 shrink-0 text-slate-400 mt-0.5" />
+                                          <ChevronRightIcon className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
                                           <div className="min-w-0 flex-1">
                                             <p className="leading-tight">
                                               {stationLabel(seg.toCode)}
                                             </p>
                                             {arrTime && (
-                                              <p className="text-s text-slate-500 font-bold mt-0.5">
+                                              <p className="text-s mt-0.5 font-bold text-slate-500">
                                                 Arr {arrTime}
                                               </p>
                                             )}
                                           </div>
                                         </div>
                                         {seatsForSegment.length > 0 && (
-                                          <p className="mt-2 text-sm text-slate-600 pb-4">
+                                          <p className="mt-2 pb-4 text-sm text-slate-600">
                                             {seatsForSegment
                                               .map(
                                                 (s) =>
@@ -2607,7 +2607,7 @@ export default function HomePage() {
                                               source: "booking_plan",
                                             });
                                           }}
-                                          className="mt-4 w-full rounded-xl bg-emerald-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white active:bg-emerald-700 transition"
+                                          className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-xl bg-emerald-600 px-4 py-3.5 text-base font-semibold text-white transition active:bg-emerald-700"
                                         >
                                           Book
                                         </button>
@@ -2629,8 +2629,8 @@ export default function HomePage() {
                                     );
                                   })()
                                 ) : service2SearchingMoreLegs ? (
-                                  <div className="flex flex-col rounded-xl border border-sky-200/90 bg-sky-50/70 px-4 py-4 w-full shadow-sm">
-                                    <p className="text-sm font-semibold text-slate-500 mb-1.5">
+                                  <div className="flex w-full flex-col rounded-xl border border-sky-200/90 bg-sky-50/70 px-4 py-4 shadow-sm">
+                                    <p className="mb-1.5 text-sm font-semibold text-slate-500">
                                       Upcoming leg
                                     </p>
                                     <p className="text-sm font-medium text-slate-800">
@@ -2645,14 +2645,14 @@ export default function HomePage() {
                                     </div>
                                   </div>
                                 ) : (
-                                  <div className="flex flex-col rounded-xl border border-amber-200/80 bg-amber-50/60 px-4 py-4 w-full shadow-sm">
-                                    <p className="text-sm font-semibold text-slate-500 mb-1.5">
+                                  <div className="flex w-full flex-col rounded-xl border border-amber-200/80 bg-amber-50/60 px-4 py-4 shadow-sm">
+                                    <p className="mb-1.5 text-sm font-semibold text-slate-500">
                                       No tickets
                                     </p>
                                     <p className="text-sm font-medium text-slate-800">
                                       {routeLabel}
                                     </p>
-                                    <p className="mt-2 text-sm text-amber-900/90 leading-snug">
+                                    <p className="mt-2 text-sm leading-snug text-amber-900/90">
                                       Speak to the TTE to figure out a space
                                     </p>
                                     <button
@@ -2675,7 +2675,7 @@ export default function HomePage() {
                                           toCode: leg.toCode,
                                         });
                                       }}
-                                      className="mt-4 rounded-xl bg-amber-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white active:bg-amber-700 transition"
+                                      className="mt-4 flex min-h-[48px] items-center justify-center rounded-xl bg-amber-600 px-4 py-3.5 text-base font-semibold text-white transition active:bg-amber-700"
                                     >
                                       Monitor
                                     </button>
@@ -2748,7 +2748,7 @@ export default function HomePage() {
                                   <ChevronDownIcon className="h-10 w-10 text-slate-400" />
                                 </div>
                               )}
-                              <div className="flex flex-col overflow-hidden rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 pt-4 pb-0 w-full shadow-sm">
+                              <div className="flex w-full flex-col overflow-hidden rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 pb-0 pt-4 shadow-sm">
                                 <TicketCardTitleRow
                                   ticketIndex={i + 1}
                                   classCode={seg.classCode}
@@ -2760,25 +2760,25 @@ export default function HomePage() {
                                       {stationLabel(seg.fromCode)}
                                     </p>
                                     {depTime && (
-                                      <p className="text-s text-slate-500 font-bold mt-0.5">
+                                      <p className="text-s mt-0.5 font-bold text-slate-500">
                                         Dep {depTime}
                                       </p>
                                     )}
                                   </div>
-                                  <ChevronRightIcon className="h-4 w-4 shrink-0 text-slate-400 mt-0.5" />
+                                  <ChevronRightIcon className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
                                   <div className="min-w-0 flex-1">
                                     <p className="leading-tight">
                                       {stationLabel(seg.toCode)}
                                     </p>
                                     {arrTime && (
-                                      <p className="text-s text-slate-500 font-bold mt-0.5">
+                                      <p className="text-s mt-0.5 font-bold text-slate-500">
                                         Arr {arrTime}
                                       </p>
                                     )}
                                   </div>
                                 </div>
                                 {seatsForSegment.length > 0 && (
-                                  <p className="mt-2 text-sm text-slate-600 pb-4">
+                                  <p className="mt-2 pb-4 text-sm text-slate-600">
                                     {seatsForSegment
                                       .map(
                                         (s) =>
@@ -2803,7 +2803,7 @@ export default function HomePage() {
                                       source: "booking_plan",
                                     });
                                   }}
-                                  className="mt-4 w-full rounded-xl bg-emerald-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white active:bg-emerald-700 transition"
+                                  className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-xl bg-emerald-600 px-4 py-3.5 text-base font-semibold text-white transition active:bg-emerald-700"
                                 >
                                   Book
                                 </button>
@@ -2836,15 +2836,15 @@ export default function HomePage() {
                           return (
                             <div
                               key={`gap-${leg.fromCode}-${leg.toCode}`}
-                              className="flex flex-col rounded-xl border border-amber-200/80 bg-amber-50/60 px-4 py-4 w-full shadow-sm"
+                              className="flex w-full flex-col rounded-xl border border-amber-200/80 bg-amber-50/60 px-4 py-4 shadow-sm"
                             >
-                              <p className="text-sm font-semibold text-slate-500 mb-1.5">
+                              <p className="mb-1.5 text-sm font-semibold text-slate-500">
                                 No tickets
                               </p>
                               <p className="text-sm font-medium text-slate-800">
                                 {routeLabel}
                               </p>
-                              <p className="mt-2 text-sm text-amber-900/90 leading-snug">
+                              <p className="mt-2 text-sm leading-snug text-amber-900/90">
                                 Speak to the TTE to figure out a space
                               </p>
                               <button
@@ -2867,7 +2867,7 @@ export default function HomePage() {
                                     toCode: leg.toCode,
                                   });
                                 }}
-                                className="mt-4 rounded-xl bg-amber-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white active:bg-amber-700 transition"
+                                className="mt-4 flex min-h-[48px] items-center justify-center rounded-xl bg-amber-600 px-4 py-3.5 text-base font-semibold text-white transition active:bg-amber-700"
                               >
                                 Monitor
                               </button>
@@ -2909,7 +2909,7 @@ export default function HomePage() {
                           return (
                             <div
                               key={i}
-                              className="flex flex-col rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 py-4 w-full shadow-sm"
+                              className="flex w-full flex-col rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 py-4 shadow-sm"
                             >
                               <TicketCardTitleRow
                                 ticketIndex={i + 1}
@@ -2936,7 +2936,7 @@ export default function HomePage() {
                                     source: "openai_plan",
                                   });
                                 }}
-                                className="mt-4 w-full rounded-xl bg-emerald-600 px-4 py-3.5 min-h-[48px] flex items-center justify-center text-base font-semibold text-white active:bg-emerald-700 transition"
+                                className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-xl bg-emerald-600 px-4 py-3.5 text-base font-semibold text-white transition active:bg-emerald-700"
                               >
                                 Book
                               </button>
@@ -2949,14 +2949,14 @@ export default function HomePage() {
                 </div>
               ) : checkResult?.status === "failed" || apiError ? (
                 <div className="rounded-2xl border border-red-200/80 bg-white p-4 shadow-md">
-                  <div className="rounded-xl border border-red-100 bg-red-50/80 px-4 py-4 min-h-[44px] flex items-center">
-                    <p className="font-medium text-red-800 text-sm">
+                  <div className="flex min-h-[44px] items-center rounded-xl border border-red-100 bg-red-50/80 px-4 py-4">
+                    <p className="text-sm font-medium text-red-800">
                       {SERVICE2_NO_TICKETS_AVAILABLE_COPY}
                     </p>
                   </div>
                 </div>
               ) : (
-                <div className="rounded-2xl border border-slate-200/90 bg-white shadow-lg overflow-hidden">
+                <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-lg">
                   <div className="flex flex-col gap-3 border-b border-slate-100 px-4 py-4">
                     <h2 className="text-base font-bold text-slate-900">
                       {trainNumber} {uiPayload.composition?.trainName ?? ""}
@@ -2971,7 +2971,7 @@ export default function HomePage() {
                       }`}
                     >
                       <p
-                        className={`font-medium text-sm whitespace-pre-wrap ${
+                        className={`whitespace-pre-wrap text-sm font-medium ${
                           openAiSummaryForDisplay
                             ? "text-slate-800"
                             : "text-red-800"
@@ -2990,7 +2990,7 @@ export default function HomePage() {
                 </div>
               )
             ) : (
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
                 <h2 className="text-lg font-semibold text-slate-900">
                   Chart & availability result
                 </h2>
@@ -2999,7 +2999,7 @@ export default function HomePage() {
                   {journeyDate}
                 </p>
                 {checkResult?.status === "failed" || apiError ? (
-                  <div className="mt-4 rounded-xl bg-red-50 border border-red-200 p-4">
+                  <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-4">
                     <p className="font-medium text-red-800">
                       {apiError || SERVICE2_NO_TICKETS_AVAILABLE_COPY}
                     </p>
@@ -3007,7 +3007,7 @@ export default function HomePage() {
                 ) : (
                   <>
                     {chartDetails && (
-                      <div className="mt-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
+                      <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
                         <p className="text-sm font-medium text-slate-700">
                           Chart preparation
                         </p>
@@ -3021,11 +3021,11 @@ export default function HomePage() {
                     )}
                     {fullRouteStations.length > 0 &&
                       uiPayload?.serviceSource !== "service2" && (
-                        <div className="mt-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
                           <p className="text-sm font-medium text-slate-700">
                             Full route ({fullRouteStations.length} stations)
                           </p>
-                          <p className="mt-1 text-sm text-slate-600 font-mono">
+                          <p className="mt-1 font-mono text-sm text-slate-600">
                             {fullRouteStations.map((s, i) => (
                               <span key={i}>
                                 {i > 0 ? " → " : ""}
@@ -3037,7 +3037,7 @@ export default function HomePage() {
                       )}
                     {longestPath && uiPayload?.serviceSource !== "service2" && (
                       <div
-                        className={`mt-4 rounded-xl border p-4 ${longestPath.available ? "bg-green-50 border-green-200" : "bg-amber-50 border-amber-200"}`}
+                        className={`mt-4 rounded-xl border p-4 ${longestPath.available ? "border-green-200 bg-green-50" : "border-amber-200 bg-amber-50"}`}
                       >
                         <p className="text-sm font-medium text-slate-700">
                           Longest path available
@@ -3067,18 +3067,18 @@ export default function HomePage() {
                     )}
                     {fullJourneyConfirmed &&
                       uiPayload?.serviceSource !== "service2" && (
-                        <div className="mt-4 rounded-xl bg-green-50 border border-green-200 p-4">
+                        <div className="mt-4 rounded-xl border border-green-200 bg-green-50 p-4">
                           <p className="font-medium text-green-800">
                             Full journey confirmed.
                           </p>
                         </div>
                       )}
                     {summary && uiPayload?.serviceSource !== "service2" && (
-                      <div className="mt-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
+                      <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
                         <p className="text-sm font-medium text-slate-700">
                           Summary
                         </p>
-                        <p className="mt-1 text-sm text-slate-600 whitespace-pre-wrap">
+                        <p className="mt-1 whitespace-pre-wrap text-sm text-slate-600">
                           {summary}
                         </p>
                       </div>
@@ -3122,8 +3122,8 @@ export default function HomePage() {
                           found.
                         </p>
                         <div className="mt-4 overflow-x-auto rounded-xl border border-slate-200">
-                          <table className="w-full text-sm text-left">
-                            <thead className="bg-slate-50 text-slate-600 font-medium">
+                          <table className="w-full text-left text-sm">
+                            <thead className="bg-slate-50 font-medium text-slate-600">
                               <tr>
                                 <th className="px-4 py-2">Coach</th>
                                 <th className="px-4 py-2">Berth</th>
@@ -3160,7 +3160,7 @@ export default function HomePage() {
                       (Array.isArray(bookings)
                         ? bookings.length === 0
                         : true) && (
-                        <div className="mt-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
+                        <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
                           <p className="text-sm text-slate-600">
                             Check the Browser Use job output for full details.
                           </p>
@@ -3191,17 +3191,17 @@ export default function HomePage() {
             }}
           >
             <div
-              className="w-full max-w-md rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden"
+              className="w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="border-b border-slate-100 px-4 py-4">
                 <h2
                   id="irctc-disclaimer-title"
-                  className="text-lg font-semibold text-slate-900 leading-snug"
+                  className="text-lg font-semibold leading-snug text-slate-900"
                 >
                   Before you open IRCTC
                 </h2>
-                <p className="mt-3 text-sm text-slate-700 leading-relaxed">
+                <p className="mt-3 text-sm leading-relaxed text-slate-700">
                   The seats and fares shown in this ticket box are based on what
                   we found as of{" "}
                   <span className="font-semibold text-slate-900">
@@ -3210,7 +3210,7 @@ export default function HomePage() {
                   . Trains fill up quickly — someone else may have booked those
                   seats since then, or availability may have changed.
                 </p>
-                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
                   Please double-check on the official IRCTC site before you pay.
                 </p>
               </div>
@@ -3234,7 +3234,7 @@ export default function HomePage() {
                     });
                     setIrctcBookConfirm(null);
                   }}
-                  className="w-full sm:w-auto rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 sm:w-auto"
                 >
                   Go back
                 </button>
@@ -3265,7 +3265,7 @@ export default function HomePage() {
                       properties: { popup: "helpful_feedback" },
                     });
                   }}
-                  className="w-full sm:w-auto rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white active:bg-emerald-700"
+                  className="w-full rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white active:bg-emerald-700 sm:w-auto"
                 >
                   Continue to IRCTC
                 </button>
@@ -3292,7 +3292,7 @@ export default function HomePage() {
             }}
           >
             <div
-              className="w-full max-w-md rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden"
+              className="w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="border-b border-slate-100 px-4 py-4">
@@ -3375,11 +3375,11 @@ export default function HomePage() {
             >
               <h2
                 id="journey-run-day-api-title"
-                className="text-lg font-bold text-slate-900 leading-snug"
+                className="text-lg font-bold leading-snug text-slate-900"
               >
                 Train does not run on this date
               </h2>
-              <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
                 {journeyRunDayApiError.message}
               </p>
               {journeyRunDayApiError.runningDayNames.length > 0 && (
@@ -3448,13 +3448,13 @@ export default function HomePage() {
               }}
             >
               <div
-                className="relative w-full max-w-full max-h-[min(92dvh,100dvh)] flex flex-col rounded-none border-y border-amber-200/90 bg-white shadow-2xl overflow-hidden sm:rounded-2xl sm:border sm:max-h-[min(90dvh,40rem)]"
+                className="relative flex max-h-[min(92dvh,100dvh)] w-full max-w-full flex-col overflow-hidden rounded-none border-y border-amber-200/90 bg-white shadow-2xl sm:max-h-[min(90dvh,40rem)] sm:rounded-2xl sm:border"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="shrink-0 border-b border-amber-100 bg-amber-50/95 px-4 py-3 flex items-start justify-between gap-3">
+                <div className="flex shrink-0 items-start justify-between gap-3 border-b border-amber-100 bg-amber-50/95 px-4 py-3">
                   <h2
                     id="chart-pending-modal-title"
-                    className="font-bold text-amber-900 text-lg leading-snug"
+                    className="text-lg font-bold leading-snug text-amber-900"
                   >
                     {chartStatusPayload.kind === "not_prepared_yet"
                       ? chartStatusPayload.message
@@ -3480,7 +3480,7 @@ export default function HomePage() {
                       });
                       setChartPendingModalDismissed(true);
                     }}
-                    className="shrink-0 rounded-lg p-1.5 text-amber-800 hover:bg-amber-100/80 transition"
+                    className="shrink-0 rounded-lg p-1.5 text-amber-800 transition hover:bg-amber-100/80"
                   >
                     <span className="sr-only">Close</span>
                     <svg
@@ -3499,8 +3499,8 @@ export default function HomePage() {
                     </svg>
                   </button>
                 </div>
-                <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-4">
-                  <p className="text-sm text-amber-900/90 font-medium">
+                <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-4 py-4">
+                  <p className="text-sm font-medium text-amber-900/90">
                     We can check at chart preparation time and notify you when
                     seats are available. We only find you confirmed tickets once
                     the chart is prepared. You will receive alerts by WhatsApp
@@ -3521,7 +3521,7 @@ export default function HomePage() {
                       value={monitorMobile}
                       onChange={(e) => setMonitorMobile(e.target.value)}
                       placeholder="10-digit mobile number"
-                      className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 outline-none"
+                      className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 outline-none placeholder:text-slate-400 focus:border-amber-600 focus:ring-2 focus:ring-amber-500/20"
                     />
                     <label className="block text-sm font-medium text-slate-700">
                       Email
@@ -3531,7 +3531,7 @@ export default function HomePage() {
                       value={monitorEmail}
                       onChange={(e) => setMonitorEmail(e.target.value)}
                       placeholder="you@example.com"
-                      className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 outline-none"
+                      className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 outline-none placeholder:text-slate-400 focus:border-amber-600 focus:ring-2 focus:ring-amber-500/20"
                     />
                   </div>
                 </div>
@@ -3554,7 +3554,7 @@ export default function HomePage() {
                       });
                       void submitJourneyMonitor(fromCode, toCode);
                     }}
-                    className="w-full rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed active:bg-amber-700 transition"
+                    className="w-full rounded-xl bg-amber-600 px-4 py-3 text-sm font-semibold text-white transition active:bg-amber-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {monitorSubmitting ? "Getting alert…" : "Get Ticket Alert"}
                   </button>
@@ -3593,17 +3593,17 @@ export default function HomePage() {
               }}
             >
               <div
-                className="relative w-full max-w-full max-h-[min(92dvh,100dvh)] flex flex-col rounded-none border-y border-emerald-200/90 bg-white shadow-2xl overflow-hidden sm:rounded-2xl sm:border sm:max-h-[min(90dvh,36rem)]"
+                className="relative flex max-h-[min(92dvh,100dvh)] w-full max-w-full flex-col overflow-hidden rounded-none border-y border-emerald-200/90 bg-white shadow-2xl sm:max-h-[min(90dvh,36rem)] sm:rounded-2xl sm:border"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="shrink-0 border-b border-emerald-100 bg-emerald-50/95 px-4 py-4 flex items-start justify-between gap-3">
+                <div className="flex shrink-0 items-start justify-between gap-3 border-b border-emerald-100 bg-emerald-50/95 px-4 py-4">
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-emerald-800 uppercase tracking-wide">
+                    <p className="text-sm font-semibold uppercase tracking-wide text-emerald-800">
                       All set
                     </p>
                     <h2
                       id="monitoring-started-title"
-                      className="mt-1 font-bold text-emerald-950 text-xl leading-snug"
+                      className="mt-1 text-xl font-bold leading-snug text-emerald-950"
                     >
                       {journeySetupQueued
                         ? "Your alert is being set up"
@@ -3634,7 +3634,7 @@ export default function HomePage() {
                       setMonitorSuccess(null);
                       setMonitorError(null);
                     }}
-                    className="shrink-0 rounded-lg p-1.5 text-emerald-800 hover:bg-emerald-100/80 transition"
+                    className="shrink-0 rounded-lg p-1.5 text-emerald-800 transition hover:bg-emerald-100/80"
                   >
                     <span className="sr-only">Close</span>
                     <svg
@@ -3653,7 +3653,7 @@ export default function HomePage() {
                     </svg>
                   </button>
                 </div>
-                <div className="flex-1 min-h-0 overflow-y-auto px-4 py-5 space-y-4 text-slate-700 text-base leading-relaxed">
+                <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-4 py-5 text-base leading-relaxed text-slate-700">
                   {journeySetupQueued && (
                     <p className="rounded-lg border border-emerald-200/80 bg-emerald-50/90 px-3 py-2.5 text-sm text-emerald-950">
                       We&apos;re finishing setup in the background—chart times,
@@ -3695,7 +3695,7 @@ export default function HomePage() {
                   <p className="font-semibold text-slate-900">
                     What happens next
                   </p>
-                  <ul className="space-y-2 list-disc list-inside text-slate-700">
+                  <ul className="list-inside list-disc space-y-2 text-slate-700">
                     <li>
                       We run several automatic checks for you before the train
                       leaves.
@@ -3721,7 +3721,7 @@ export default function HomePage() {
                       quickly.
                     </li>
                   </ul>
-                  <p className="text-sm text-slate-500 pt-1 border-t border-slate-100">
+                  <p className="border-t border-slate-100 pt-1 text-sm text-slate-500">
                     This doesn&apos;t hold or reserve a ticket for you; it only
                     tells you when something might be available so you can book
                     yourself on IRCTC.
@@ -3792,10 +3792,10 @@ export default function HomePage() {
             }}
           >
             <div
-              className="bg-white rounded-2xl shadow-xl max-w-md w-full max-h-[85vh] flex flex-col"
+              className="flex max-h-[85vh] w-full max-w-md flex-col rounded-2xl bg-white shadow-xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="p-4 border-b border-slate-100">
+              <div className="border-b border-slate-100 p-4">
                 <h2
                   id="monitor-title"
                   className="text-lg font-semibold text-slate-900"
@@ -3808,7 +3808,7 @@ export default function HomePage() {
                   notified.
                 </p>
               </div>
-              <div className="p-4 overflow-y-auto flex-1 space-y-4">
+              <div className="flex-1 space-y-4 overflow-y-auto p-4">
                 {monitorError && (
                   <p className="text-sm text-red-600">{monitorError}</p>
                 )}
@@ -3825,7 +3825,7 @@ export default function HomePage() {
                     value={monitorEmail}
                     onChange={(e) => setMonitorEmail(e.target.value)}
                     placeholder="you@example.com"
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none"
+                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 outline-none placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                   />
                   {/* Mobile number field commented out - email is mandatory
                   <label className="block text-sm font-medium text-slate-700">
@@ -3841,7 +3841,7 @@ export default function HomePage() {
                   */}
                 </div>
               </div>
-              <div className="p-4 border-t border-slate-100 flex gap-3">
+              <div className="flex gap-3 border-t border-slate-100 p-4">
                 <button
                   type="button"
                   onClick={() => {
@@ -3893,7 +3893,7 @@ export default function HomePage() {
                       monitoringLeg.toCode,
                     );
                   }}
-                  className="flex-1 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed active:bg-blue-700"
+                  className="flex-1 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white active:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {monitorSubmitting ? "Starting…" : "Start monitoring"}
                 </button>

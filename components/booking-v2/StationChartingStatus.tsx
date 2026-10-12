@@ -5,7 +5,11 @@ import { apiClient } from "@/lib/api";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
 import moment from "moment";
 
-function parseChartDateTimeIst(ymd: string, time: string, addDays: number): moment.Moment | null {
+function parseChartDateTimeIst(
+  ymd: string,
+  time: string,
+  addDays: number,
+): moment.Moment | null {
   const datePart = ymd.trim().slice(0, 10);
   const match = time.trim().match(/^(\d{1,2}):(\d{2})/);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(datePart) || !match) return null;
@@ -43,22 +47,35 @@ export function StationChartingStatus({
   useEffect(() => {
     if (!enabled || !trainNumber || !journeyDate || !stationCode) return;
 
-    const parsedDate = moment(journeyDate, ["YYYY-MM-DD", "DD-MMM-YYYY", "DD-MM-YYYY"]);
-    const formattedDate = parsedDate.isValid() ? parsedDate.format("YYYY-MM-DD") : journeyDate;
+    const parsedDate = moment(journeyDate, [
+      "YYYY-MM-DD",
+      "DD-MMM-YYYY",
+      "DD-MM-YYYY",
+    ]);
+    const formattedDate = parsedDate.isValid()
+      ? parsedDate.format("YYYY-MM-DD")
+      : journeyDate;
 
     // Fetch in the background, ignoring any errors
     apiClient
-      .post<{ stations: StationChartMetaItem[] }>("/api/train-composition/stations-meta", {
-        trainNumber,
-        journeyDate: formattedDate,
-        sourceStation: stationCode,
-        refreshFromIrctc: true, // Forces a hit to the traincomposition API
-      })
+      .post<{ stations: StationChartMetaItem[] }>(
+        "/api/train-composition/stations-meta",
+        {
+          trainNumber,
+          journeyDate: formattedDate,
+          sourceStation: stationCode,
+          refreshFromIrctc: true, // Forces a hit to the traincomposition API
+        },
+      )
       .then((r) => {
         if (r.data?.stations?.[0]) {
           const fetchedMeta = r.data.stations[0];
           setMeta(fetchedMeta);
-          if (onStatusFetched && fetchedMeta.isLive !== undefined && fetchedMeta.isLive !== null) {
+          if (
+            onStatusFetched &&
+            fetchedMeta.isLive !== undefined &&
+            fetchedMeta.isLive !== null
+          ) {
             onStatusFetched(fetchedMeta.isLive);
           }
         }
@@ -67,23 +84,36 @@ export function StationChartingStatus({
   }, [enabled, trainNumber, journeyDate, stationCode, onStatusFetched]);
 
   // If disabled, no meta or no definitive live status, we don't render anything as requested
-  if (!enabled || !meta || meta.isLive === undefined || meta.isLive === null) return null;
+  if (!enabled || !meta || meta.isLive === undefined || meta.isLive === null)
+    return null;
 
   let statusContent = (
-    <span className="text-amber-600 font-semibold">Not Prepared</span>
+    <span className="font-semibold text-amber-600">Not Prepared</span>
   );
 
   if (meta.isLive) {
-    statusContent = <span className="text-emerald-600 font-bold">Prepared</span>;
+    statusContent = (
+      <span className="font-bold text-emerald-600">Prepared</span>
+    );
 
     if (meta.chartTwoTime) {
-      const parsedDate = moment(journeyDate, ["YYYY-MM-DD", "DD-MMM-YYYY", "DD-MM-YYYY"]);
-      const formattedDate = parsedDate.isValid() ? parsedDate.format("YYYY-MM-DD") : journeyDate;
-      const chartTwoMoment = parseChartDateTimeIst(formattedDate, meta.chartTwoTime, meta.chartTwoDayOffset || 0);
-      
+      const parsedDate = moment(journeyDate, [
+        "YYYY-MM-DD",
+        "DD-MMM-YYYY",
+        "DD-MM-YYYY",
+      ]);
+      const formattedDate = parsedDate.isValid()
+        ? parsedDate.format("YYYY-MM-DD")
+        : journeyDate;
+      const chartTwoMoment = parseChartDateTimeIst(
+        formattedDate,
+        meta.chartTwoTime,
+        meta.chartTwoDayOffset || 0,
+      );
+
       if (chartTwoMoment && !chartMomentHasPassedIst(chartTwoMoment)) {
         statusContent = (
-          <span className="text-blue-600 font-bold">
+          <span className="font-bold text-blue-600">
             Next at {formatChartMomentIst(chartTwoMoment)}
           </span>
         );
@@ -92,8 +122,8 @@ export function StationChartingStatus({
   }
 
   return (
-    <span className="ml-2 inline-flex items-center gap-1 border-l pl-2 border-slate-300">
-      <span className="text-slate-500 font-medium">Chart:</span>
+    <span className="ml-2 inline-flex items-center gap-1 border-l border-slate-300 pl-2">
+      <span className="font-medium text-slate-500">Chart:</span>
       {statusContent}
     </span>
   );

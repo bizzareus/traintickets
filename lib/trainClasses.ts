@@ -30,11 +30,15 @@ export function isAcClass(code: string): boolean {
 }
 
 /** Normalizes and deduplicates class strings. */
-export function normalizeClassCodes(classes?: readonly string[] | null): string[] {
+export function normalizeClassCodes(
+  classes?: readonly string[] | null,
+): string[] {
   if (!classes || classes.length === 0) return [];
   const set = new Set<string>();
   for (const c of classes) {
-    const trimmed = String(c ?? "").trim().toUpperCase();
+    const trimmed = String(c ?? "")
+      .trim()
+      .toUpperCase();
     if (trimmed) set.add(trimmed);
   }
   return Array.from(set);

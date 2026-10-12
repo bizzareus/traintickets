@@ -3,7 +3,8 @@ import path from "node:path";
 import matter from "gray-matter";
 import { cache as reactCache } from "react";
 import { clearQualityCaches } from "./blog-quality";
-const cache = reactCache || (<T extends (...args: unknown[]) => unknown>(fn: T): T => fn);
+const cache =
+  reactCache || (<T extends (...args: unknown[]) => unknown>(fn: T): T => fn);
 
 export type BlogPostMeta = {
   slug: string;
@@ -44,10 +45,7 @@ export function parseFaqFromMarkdown(markdown: string): FaqEntry[] {
 
   const flushEntry = () => {
     if (currentQuestion && currentAnswerLines.length > 0) {
-      const answer = currentAnswerLines
-        .join(" ")
-        .replace(/\s+/g, " ")
-        .trim();
+      const answer = currentAnswerLines.join(" ").replace(/\s+/g, " ").trim();
       if (answer) {
         entries.push({ question: currentQuestion, answer });
       }
@@ -85,10 +83,10 @@ export function parseFaqFromMarkdown(markdown: string): FaqEntry[] {
       if (trimmed === "" || trimmed === "---") continue;
       // Strip markdown formatting for clean plain-text answer
       const cleanLine = trimmed
-        .replace(/\*\*([^*]+)\*\*/g, "$1")  // bold
-        .replace(/\*([^*]+)\*/g, "$1")       // italic
-        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")  // links
-        .replace(/`([^`]+)`/g, "$1");        // inline code
+        .replace(/\*\*([^*]+)\*\*/g, "$1") // bold
+        .replace(/\*([^*]+)\*/g, "$1") // italic
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // links
+        .replace(/`([^`]+)`/g, "$1"); // inline code
       currentAnswerLines.push(cleanLine);
     }
   }
@@ -96,7 +94,6 @@ export function parseFaqFromMarkdown(markdown: string): FaqEntry[] {
 
   return entries;
 }
-
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -244,30 +241,36 @@ export const listBlogPosts = cache((lang?: string): BlogPostMeta[] => {
   return [...metas];
 });
 
-export const getBlogPost = cache((slug: string, lang?: string): BlogPost | null => {
-  const s = String(slug ?? "")
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9-]/g, "");
-  if (!s) return null;
+export const getBlogPost = cache(
+  (slug: string, lang?: string): BlogPost | null => {
+    const s = String(slug ?? "")
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9-]/g, "");
+    if (!s) return null;
 
-  const key = `${lang && lang !== "en" ? lang : "en"}:${s}`;
-  if (postCache.has(key)) return postCache.get(key) ?? null;
+    const key = `${lang && lang !== "en" ? lang : "en"}:${s}`;
+    if (postCache.has(key)) return postCache.get(key) ?? null;
 
-  const p = postPathForSlug(s, lang);
-  let raw = "";
-  try {
-    raw = fs.readFileSync(p, "utf8");
-  } catch {
-    postCache.set(key, null);
-    return null;
-  }
-  const { data, content } = matter(raw);
-  const meta = parseMetaFromMatter(s, data as Record<string, unknown>, content);
-  const post: BlogPost = { ...meta, content };
-  postCache.set(key, post);
-  return post;
-});
+    const p = postPathForSlug(s, lang);
+    let raw = "";
+    try {
+      raw = fs.readFileSync(p, "utf8");
+    } catch {
+      postCache.set(key, null);
+      return null;
+    }
+    const { data, content } = matter(raw);
+    const meta = parseMetaFromMatter(
+      s,
+      data as Record<string, unknown>,
+      content,
+    );
+    const post: BlogPost = { ...meta, content };
+    postCache.set(key, post);
+    return post;
+  },
+);
 
 // Performance Optimization: Cache directory file lists per language to eliminate repeated synchronous fs.existsSync calls on every blog post check.
 const langSlugsCache = new Map<string, Set<string>>();
@@ -311,7 +314,8 @@ export function getAvailableTranslations(slug: string): string[] {
 export function mapStateToLanguage(stateCode: string): string | null {
   const code = stateCode.toUpperCase().trim();
   switch (code) {
-    case "MH": return "mr"; // Marathi
+    case "MH":
+      return "mr"; // Marathi
     case "UP":
     case "BR":
     case "MP":
@@ -321,25 +325,37 @@ export function mapStateToLanguage(stateCode: string): string | null {
     case "UK":
     case "CG":
     case "JH":
-    case "CH": return "hi"; // Hindi
-    case "WB": return "bn"; // Bengali
-    case "TN": return "ta"; // Tamil
+    case "CH":
+      return "hi"; // Hindi
+    case "WB":
+      return "bn"; // Bengali
+    case "TN":
+      return "ta"; // Tamil
     case "TG":
-    case "AP": return "te"; // Telugu
-    case "KL": return "ml"; // Malayalam
-    default: return null;
+    case "AP":
+      return "te"; // Telugu
+    case "KL":
+      return "ml"; // Malayalam
+    default:
+      return null;
   }
 }
 
 export function getLanguageName(langCode: string): string {
   switch (langCode) {
-    case "mr": return "Marathi";
-    case "hi": return "Hindi";
-    case "bn": return "Bengali";
-    case "ta": return "Tamil";
-    case "te": return "Telugu";
-    case "ml": return "Malayalam";
-    default: return "English";
+    case "mr":
+      return "Marathi";
+    case "hi":
+      return "Hindi";
+    case "bn":
+      return "Bengali";
+    case "ta":
+      return "Tamil";
+    case "te":
+      return "Telugu";
+    case "ml":
+      return "Malayalam";
+    default:
+      return "English";
   }
 }
-

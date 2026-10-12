@@ -13,6 +13,7 @@ tags:
 ---
 
 ## TL;DR
+
 Vande Bharat Express trains are India's signature semi-high-speed train sets. Powered by a distributed traction system, they accelerate rapidly and run on popular corridors like Delhi-Varanasi and Mumbai-Gandhinagar. They are manufactured locally at ICF Chennai, with sleeper variations and global exports coming next.
 
 ---
@@ -35,11 +36,11 @@ To keep average speeds high, the Vande Bharat Express bypasses smaller stations,
 
 ### Popular Vande Bharat Routes & Key Halts
 
-*   **New Delhi - Varanasi (22436):** The first route ever launched. Main stops include Kanpur Central and Prayagraj Junction.
-*   **Mumbai Central - Gandhinagar (20901):** Connecting key financial hubs with stops at Borivali, Surat, Vadodara, and Ahmedabad.
-*   **New Delhi - Katra (22439):** A popular pilgrimage route stopping at Ambala Cantt, Ludhiana, and Jammu Tawi.
-*   **Bengaluru - Dharwad (20661):** Stops include Yesvantpur, Davangere, and Hubballi.
-*   **Chennai - Mysuru (20607):** Connects Tamil Nadu and Karnataka with halts at Katpadi and KSR Bengaluru.
+- **New Delhi - Varanasi (22436):** The first route ever launched. Main stops include Kanpur Central and Prayagraj Junction.
+- **Mumbai Central - Gandhinagar (20901):** Connecting key financial hubs with stops at Borivali, Surat, Vadodara, and Ahmedabad.
+- **New Delhi - Katra (22439):** A popular pilgrimage route stopping at Ambala Cantt, Ludhiana, and Jammu Tawi.
+- **Bengaluru - Dharwad (20661):** Stops include Yesvantpur, Davangere, and Hubballi.
+- **Chennai - Mysuru (20607):** Connects Tamil Nadu and Karnataka with halts at Katpadi and KSR Bengaluru.
 
 ---
 
@@ -49,9 +50,9 @@ To keep average speeds high, the Vande Bharat Express bypasses smaller stations,
 
 Developing the Vande Bharat (initially known as **Train 18**) is a massive achievement for local manufacturing.
 
-*   **Production Hub:** The Integral Coach Factory (ICF) in Chennai led the initial design, testing, and production phases.
-*   **Domestic Sourcing:** Roughly **80% to 85%** of the components—from the aerodynamic steel nose to the interior seating and electrical systems—are supplied by Indian firms.
-*   **Frugal Engineering:** Building a Vande Bharat train set costs about ₹100 crore. That is roughly half of what it would cost to import a similar semi-high-speed train from Europe.
+- **Production Hub:** The Integral Coach Factory (ICF) in Chennai led the initial design, testing, and production phases.
+- **Domestic Sourcing:** Roughly **80% to 85%** of the components—from the aerodynamic steel nose to the interior seating and electrical systems—are supplied by Indian firms.
+- **Frugal Engineering:** Building a Vande Bharat train set costs about ₹100 crore. That is roughly half of what it would cost to import a similar semi-high-speed train from Europe.
 
 To meet growing demand, other coach-building facilities like RCF Kapurthala and MCF Raebareli are now setting up assembly lines to build these sets.
 
@@ -63,9 +64,9 @@ To meet growing demand, other coach-building facilities like RCF Kapurthala and 
 
 The platform is expanding beyond day-trains:
 
-*   **Sleeper Coaches:** Current Vande Bharats are chair-car-only trains for routes under 8 hours. The first Vande Bharat Sleeper train was launched on the Howrah – Kamakhya route. The second sleeper rake has arrived in Bengaluru and is undergoing mandatory safety trials and technical clearances to run on the overnight **KSR Bengaluru to CSMT Mumbai Vande Bharat Sleeper** route. These overnight long-distance rakes feature AC First Class, AC 2-Tier, and AC 3-Tier configurations with advanced shock absorbers and noise-insulated cabins for a smoother night's sleep.
-*   **Visual Upgrades:** Newer sets are rolling out in a saffron-and-grey color scheme, featuring better seat recline angles, reliable washroom sensors, and conveniently placed phone charging sockets.
-*   **International Exports:** Indian Railways is redesigning the train sets to run on standard-gauge tracks for export to African, South American, and East Asian markets.
+- **Sleeper Coaches:** Current Vande Bharats are chair-car-only trains for routes under 8 hours. The first Vande Bharat Sleeper train was launched on the Howrah – Kamakhya route. The second sleeper rake has arrived in Bengaluru and is undergoing mandatory safety trials and technical clearances to run on the overnight **KSR Bengaluru to CSMT Mumbai Vande Bharat Sleeper** route. These overnight long-distance rakes feature AC First Class, AC 2-Tier, and AC 3-Tier configurations with advanced shock absorbers and noise-insulated cabins for a smoother night's sleep.
+- **Visual Upgrades:** Newer sets are rolling out in a saffron-and-grey color scheme, featuring better seat recline angles, reliable washroom sensors, and conveniently placed phone charging sockets.
+- **International Exports:** Indian Railways is redesigning the train sets to run on standard-gauge tracks for export to African, South American, and East Asian markets.
 
 ---
 
@@ -87,11 +88,11 @@ Additionally, you can use LastBerth's [Finding Smart Seats](/) tool to check if 
 
 You can look up the on-board food menu, route and prices for **all 85 Vande Bharat trains** on the [IRCTC train food menu list](/irctc-train-food-menu), and the full station-by-station schedule with chart preparation times for popular services:
 
-| Route | Train numbers | Menu & schedule |
-| :--- | :--- | :--- |
+| Route                    | Train numbers | Menu & schedule                                                                                                                  |
+| :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------- |
 | New Delhi ↔ Katra (SVDK) | 22439 / 22440 | [Menu](/irctc-train-food-menu/ndls-svdk-vande-bharat-express-22439) · [Schedule](/chart-times/22439-vande-bharat-ex-chart-times) |
-| Jodhpur ↔ Sabarmati | 12461 / 12462 | [Schedule](/chart-times/12461-vande-bharat-exp-chart-times) |
-| Howrah ↔ Puri | 22895 / 22896 | [Menu](/irctc-train-food-menu/hwh-puri-vande-bharat-express-22895) |
-| Mumbai ↔ Ahmedabad | 22961 / 22962 | [Menu](/irctc-train-food-menu/mmct-adi-vande-bharat-express-22961) |
+| Jodhpur ↔ Sabarmati      | 12461 / 12462 | [Schedule](/chart-times/12461-vande-bharat-exp-chart-times)                                                                      |
+| Howrah ↔ Puri            | 22895 / 22896 | [Menu](/irctc-train-food-menu/hwh-puri-vande-bharat-express-22895)                                                               |
+| Mumbai ↔ Ahmedabad       | 22961 / 22962 | [Menu](/irctc-train-food-menu/mmct-adi-vande-bharat-express-22961)                                                               |
 
 Browse the [full list of Vande Bharat menus](/irctc-train-food-menu) to find your train's route and catering.

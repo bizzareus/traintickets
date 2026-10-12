@@ -26,7 +26,7 @@ tags:
 
 **General Quota (GN) is the primary seat allocation pool on Indian Railways, making up 70% to 80% of all reserved berths on a train. It is open to all passengers regardless of age, gender, or travel distance when booking advance reserved tickets on IRCTC.**
 
-When you search for train tickets on the IRCTC website or RailConnect app without selecting any special category (like Tatkal, Senior Citizen, or Ladies), your ticket is automatically booked under the **General Quota (GN)**. 
+When you search for train tickets on the IRCTC website or RailConnect app without selecting any special category (like Tatkal, Senior Citizen, or Ladies), your ticket is automatically booked under the **General Quota (GN)**.
 
 General Quota berths are distributed from the train's originating station all the way to its final destination. Because it holds the largest slice of reserved seats on every train, GN is the default quota used by millions of daily travelers across all travel classes—including First AC (1A), Executive Class (EC), AC 2-Tier (2A), AC 3-Tier (3A), AC 3-Economy (3E), Sleeper (SL), and AC Chair Car (CC).
 
@@ -38,13 +38,13 @@ General Quota berths are distributed from the train's originating station all th
 
 Passengers frequently confuse **General Quota** with **General Unreserved Tickets**. Here is how to distinguish them:
 
-| Feature | General Quota (GN) Reserved | General Unreserved Ticket (UTS) |
-| :--- | :--- | :--- |
-| **Seat Assignment** | Confirmed coach and berth number (e.g. S3, Berth 24) | No seat number; first-come, first-served standing/sitting |
-| **Allowed Coaches** | Reserved 1A, 2A, 3A, 3E, SL, CC coaches only | General Unreserved Coaches (GS/UR) only |
-| **Advance Booking** | 60 days in advance (ARP) | Same day / within 3 hours of train departure |
-| **Waiting List Status** | Can generate GNWL if seats fill up | No waiting list; unreserved entry |
-| **Booking Channel** | IRCTC Website, RailConnect App, PRS Counter | UTS App, Station Unreserved Counters |
+| Feature                 | General Quota (GN) Reserved                          | General Unreserved Ticket (UTS)                           |
+| :---------------------- | :--------------------------------------------------- | :-------------------------------------------------------- |
+| **Seat Assignment**     | Confirmed coach and berth number (e.g. S3, Berth 24) | No seat number; first-come, first-served standing/sitting |
+| **Allowed Coaches**     | Reserved 1A, 2A, 3A, 3E, SL, CC coaches only         | General Unreserved Coaches (GS/UR) only                   |
+| **Advance Booking**     | 60 days in advance (ARP)                             | Same day / within 3 hours of train departure              |
+| **Waiting List Status** | Can generate GNWL if seats fill up                   | No waiting list; unreserved entry                         |
+| **Booking Channel**     | IRCTC Website, RailConnect App, PRS Counter          | UTS App, Station Unreserved Counters                      |
 
 If you attempt to board a reserved Sleeper or AC coach with a UTS unreserved ticket using General Quota rules, you will be penalized by the TTE for travelling without a valid reserved ticket.
 
@@ -54,7 +54,7 @@ If you attempt to board a reserved Sleeper or AC coach with a UTS unreserved tic
 
 **General Quota offers the highest waitlist confirmation probability (GNWL) among all IRCTC quotas. Because GN draws from the largest pool of berths, cancellations directly move GNWL passengers into confirmed seats before chart preparation.**
 
-When General Quota seats fill up, subsequent bookings enter the **General Waiting List (GNWL)**. 
+When General Quota seats fill up, subsequent bookings enter the **General Waiting List (GNWL)**.
 
 ### Why GNWL Clears Faster Than Other Quotas
 
@@ -81,27 +81,35 @@ Here is how General Quota compares to other IRCTC booking quotas:
 ## Common Booking Questions (FAQ)
 
 ### Can I change my General Quota ticket to Tatkal or Senior Citizen quota after booking?
+
 No. Once a ticket is issued under General Quota (GN), the quota cannot be changed. You would need to cancel your GN ticket (subject to standard cancellation charges) and book a fresh ticket under the desired quota.
 
 ### Does General Quota have concession discounts?
+
 Concessions for Divyangjan (specially-abled) passengers, accredited journalists, and eligible student groups apply primarily to General Quota bookings when booked at PRS counters with valid documentary proof.
 
 ### What happens if my General Quota ticket remains GNWL after chart preparation?
+
 If booked online via IRCTC, a fully waitlisted GNWL ticket is automatically cancelled and the refund is credited back to your bank account within 3–5 working days. Counter-booked PRS tickets must be manually surrendered at a station ticket window for refund.
 
 ### How many seats are reserved under General Quota per train?
+
 Approximately 70% to 80% of all reserved coach berths are allocated to General Quota (GN), making it the single largest seat allocation pool on Indian Railways.
 
 ### Is General Quota cheaper than Tatkal or Premium Tatkal?
+
 Yes, General Quota tickets are charged at standard base distance fares with no Tatkal surcharges or dynamic pricing markups.
 
 ### Can I book General Quota tickets at PRS station counters?
+
 Yes, General Quota tickets can be booked both online on IRCTC and in person at computerized PRS counter booking windows.
 
 ### What is the Advance Reservation Period for General Quota?
+
 The Advance Reservation Period (ARP) for General Quota bookings is 60 days (excluding the date of journey), opening daily at 8:00 AM IST.
 
 ### Can a waitlisted General Quota passenger get RAC before chart preparation?
+
 Yes, as confirmed general passengers cancel their tickets, GNWL passengers systematically advance to RAC status and then to full Confirmed berths.
 
 ---

@@ -4,7 +4,10 @@ import { buildFoodMenuSlug } from "../lib/foodMenuSlug";
 
 const CUSTOM_DIR = path.join(__dirname, "../content/irctc-train-food-menu");
 const TRAINLIST_PATH = path.join(__dirname, "../backend/prisma/trainlist.txt");
-const OUT_FILE = path.join(__dirname, "../content/train-food-menu-registry.json");
+const OUT_FILE = path.join(
+  __dirname,
+  "../content/train-food-menu-registry.json",
+);
 
 export type TrainType =
   | "vande-bharat"
@@ -68,15 +71,23 @@ function cleanTrainName(rawName: string): string {
 
 function detectTrainType(name: string): TrainType {
   const upper = name.toUpperCase();
-  if (upper.includes("VANDE") || upper.includes("VB") || upper.includes("V.B.")) return "vande-bharat";
+  if (upper.includes("VANDE") || upper.includes("VB") || upper.includes("V.B."))
+    return "vande-bharat";
   if (upper.includes("TEJAS")) return "tejas";
-  if (upper.includes("GATIMAAN") || upper.includes("GATIMAN")) return "gatimaan";
+  if (upper.includes("GATIMAAN") || upper.includes("GATIMAN"))
+    return "gatimaan";
   if (upper.includes("RAJDHANI")) return "rajdhani";
   if (upper.includes("SHATABDI") && !upper.includes("JAN")) return "shatabdi";
   if (upper.includes("DURONTO")) return "duronto";
-  if (upper.includes("GARIB RATH") || upper.includes("GARIBRATH") || upper.includes("GR ")) return "garib-rath";
+  if (
+    upper.includes("GARIB RATH") ||
+    upper.includes("GARIBRATH") ||
+    upper.includes("GR ")
+  )
+    return "garib-rath";
   if (upper.includes("HUMSAFAR")) return "humsafar";
-  if (upper.includes("JAN SHATABDI") || upper.includes("JANSHATABDI")) return "jan-shatabdi";
+  if (upper.includes("JAN SHATABDI") || upper.includes("JANSHATABDI"))
+    return "jan-shatabdi";
   if (
     upper.includes("AC EXP") ||
     upper.includes("AC SF") ||
@@ -257,7 +268,12 @@ function generateRegistry(): TrainRegistryEntry[] {
     const raw = fs.readFileSync(TRAINLIST_PATH, "utf8");
     const lines = raw
       .split(/\r?\n/)
-      .map((l) => l.trim().replace(/^"|",?$/g, "").trim())
+      .map((l) =>
+        l
+          .trim()
+          .replace(/^"|",?$/g, "")
+          .trim(),
+      )
       .filter(Boolean);
 
     for (const line of lines) {
@@ -337,8 +353,15 @@ function generateRegistry(): TrainRegistryEntry[] {
   // Sort by train number
   // Performance Optimization: Direct numeric parsing with string fallback is ~150x faster than localeCompare with { numeric: true } in V8
   entries.sort((a, b) => {
-    const diff = (parseInt(a.trainNumber, 10) || 0) - (parseInt(b.trainNumber, 10) || 0);
-    return diff !== 0 ? diff : (a.trainNumber < b.trainNumber ? -1 : a.trainNumber > b.trainNumber ? 1 : 0);
+    const diff =
+      (parseInt(a.trainNumber, 10) || 0) - (parseInt(b.trainNumber, 10) || 0);
+    return diff !== 0
+      ? diff
+      : a.trainNumber < b.trainNumber
+        ? -1
+        : a.trainNumber > b.trainNumber
+          ? 1
+          : 0;
   });
   return entries;
 }

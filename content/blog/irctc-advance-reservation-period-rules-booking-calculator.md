@@ -50,7 +50,7 @@ The most frequent mistake travellers make when planning holiday trips is countin
 
 $$\text{Booking Opening Date} = \text{Journey Date} - 60 \text{ Days (Excluding Departure Day)}$$
 
-Because calendar months have differing lengths (28, 29, 30, or 31 days), simply subtracting "two months" from your date of travel will lead to incorrect calculations. 
+Because calendar months have differing lengths (28, 29, 30, or 31 days), simply subtracting "two months" from your date of travel will lead to incorrect calculations.
 
 ### Concrete Examples for 2026 Travel Planning
 
@@ -77,19 +77,19 @@ If your route has already slipped into high waiting lists or REGRET, use [Smart 
 
 Use this quick-reference table to identify exactly when booking opens for your upcoming 2026 journey:
 
-| Journey / Departure Date | 60-Day Booking Opens (8:00 AM IST) | Month Days Accounting | Demand Status |
-| :--- | :--- | :--- | :--- |
-| **October 15, 2026** | **August 16, 2026** | 14 days Oct + 30 days Sep + 16 days Aug = 60 | Durga Puja Rush |
-| **October 25, 2026** | **August 26, 2026** | 24 days Oct + 30 days Sep + 6 days Aug = 60 | Festive Rush |
-| **November 1, 2026** | **September 2, 2026** | 31 days Oct + 29 days Sep = 60 | Pre-Diwali Travel |
-| **November 8, 2026** | **September 9, 2026** | 7 days Nov + 31 days Oct + 22 days Sep = 60 | **Diwali Rush** |
-| **November 15, 2026** | **September 16, 2026** | 14 days Nov + 31 days Oct + 15 days Sep = 60 | **Chhath Puja Peak** |
-| **November 20, 2026** | **September 21, 2026** | 19 days Nov + 31 days Oct + 10 days Sep = 60 | Post-Chhath Return |
-| **December 1, 2026** | **October 2, 2026** | 30 days Nov + 30 days Oct = 60 | Winter Season |
-| **December 24, 2026** | **October 25, 2026** | 23 days Dec + 30 days Nov + 7 days Oct = 60 | **Christmas Eve** |
-| **December 31, 2026** | **November 1, 2026** | 30 days Dec + 30 days Nov = 60 | **New Year Eve** |
-| **January 15, 2027** | **November 16, 2026** | 14 days Jan + 31 days Dec + 15 days Nov = 60 | Makar Sankranti |
-| **January 26, 2027** | **November 27, 2026** | 25 days Jan + 31 days Dec + 4 days Nov = 60 | Republic Day Weekend |
+| Journey / Departure Date | 60-Day Booking Opens (8:00 AM IST) | Month Days Accounting                        | Demand Status        |
+| :----------------------- | :--------------------------------- | :------------------------------------------- | :------------------- |
+| **October 15, 2026**     | **August 16, 2026**                | 14 days Oct + 30 days Sep + 16 days Aug = 60 | Durga Puja Rush      |
+| **October 25, 2026**     | **August 26, 2026**                | 24 days Oct + 30 days Sep + 6 days Aug = 60  | Festive Rush         |
+| **November 1, 2026**     | **September 2, 2026**              | 31 days Oct + 29 days Sep = 60               | Pre-Diwali Travel    |
+| **November 8, 2026**     | **September 9, 2026**              | 7 days Nov + 31 days Oct + 22 days Sep = 60  | **Diwali Rush**      |
+| **November 15, 2026**    | **September 16, 2026**             | 14 days Nov + 31 days Oct + 15 days Sep = 60 | **Chhath Puja Peak** |
+| **November 20, 2026**    | **September 21, 2026**             | 19 days Nov + 31 days Oct + 10 days Sep = 60 | Post-Chhath Return   |
+| **December 1, 2026**     | **October 2, 2026**                | 30 days Nov + 30 days Oct = 60               | Winter Season        |
+| **December 24, 2026**    | **October 25, 2026**               | 23 days Dec + 30 days Nov + 7 days Oct = 60  | **Christmas Eve**    |
+| **December 31, 2026**    | **November 1, 2026**               | 30 days Dec + 30 days Nov = 60               | **New Year Eve**     |
+| **January 15, 2027**     | **November 16, 2026**              | 14 days Jan + 31 days Dec + 15 days Nov = 60 | Makar Sankranti      |
+| **January 26, 2027**     | **November 27, 2026**              | 25 days Jan + 31 days Dec + 4 days Nov = 60  | Republic Day Weekend |
 
 ---
 
@@ -100,14 +100,18 @@ Use this quick-reference table to identify exactly when booking opens for your u
 Understanding the operational timing nuances prevents disappointment when trying to secure seats:
 
 ### 1. The 8:00 AM IST Synchronization
+
 Online booking on `irctc.co.in` and the IRCTC Rail Connect app unlocks at exactly **08:00:00 AM IST**. Physical reservation counters at railway stations across India connect to the same central CRIS (Centre for Railway Information Systems) database and open at the exact same second.
 
 ### 2. The Multi-Day Train Origin Rule
+
 The 60-day window is **calculated from the date the train starts from its originating station**, not when it reaches your intermediate boarding station:
+
 - If a train departs Dibrugarh on Day 1 (Monday) and reaches your boarding stop in Patna on Day 2 (Tuesday), booking for your journey opens **60 days before Monday**, not 60 days before Tuesday.
 - Failing to account for originating station departure dates means other passengers further up the route may book berths a full day before you log in.
 
 ### 3. Daily Server Maintenance Shutdown
+
 IRCTC shuts down its reservation servers daily between **11:45 PM and 12:20 AM IST** for routine database maintenance. No ticket bookings, cancellations, or PNR enquiries can be executed during this 35-minute blackout window.
 
 ---
@@ -119,11 +123,13 @@ IRCTC shuts down its reservation servers daily between **11:45 PM and 12:20 AM I
 This critical rule was introduced to level the playing field for genuine citizens. In the past, automated scripts and commercial touts deployed dozens of dummy unverified IRCTC IDs to corner confirmed berths within seconds of 8:00 AM opening.
 
 ### What Happens on Opening Day (Day 60)?
+
 - **Aadhaar-Verified Users:** Can log in and book general reservation tickets without restriction from 8:00 AM IST onwards.
 - **Unverified Accounts:** Online booking for opening-day berths is restricted or delayed. If your profile is not linked to Aadhaar, the system will prevent you from completing payment during the high-demand opening window.
 - **Master List Verification:** In addition to verifying your own profile, at least one passenger on the booking form must be pre-added and Aadhaar-verified in your IRCTC **Master List**.
 
 ### How to Verify Your Aadhaar on IRCTC in 3 Minutes
+
 1. Log into your account on the official IRCTC website or mobile app.
 2. Go to **My Account** > **Link Your Aadhaar**.
 3. Enter your 12-digit Aadhaar number and full name exactly as printed on your Aadhaar card.
@@ -139,14 +145,14 @@ This critical rule was introduced to level the playing field for genuine citizen
 
 Not every rail service follows the standard 60-day calendar. Here are the official exceptions recognized by Indian Railways:
 
-| Train Service / Category | Applicable Advance Reservation Period | Opening Time | Key Booking Conditions |
-| :--- | :--- | :--- | :--- |
-| **Standard Express / Mail / Vande Bharat** | **60 Days** | 8:00 AM IST | Standard general reservation rule across 1A, 2A, 3A, CC, EC, SL. |
-| **Short-Distance Day Intercity (e.g. Taj Express)** | **15 or 30 Days** | 8:00 AM IST | Specifically notified intercity chair car services. |
-| **Foreign Tourist Quota (FTQ)** | **365 Days** | 8:00 AM IST | Valid for foreign passport holders and NRIs via international cards. |
-| **Tatkal Quota (AC Classes: 2A, 3A, 3E, CC, EC)** | **1 Day Prior** | 10:00 AM IST | Opens 1 day before journey departure from train origin. |
-| **Tatkal Quota (Non-AC Classes: SL, 2S)** | **1 Day Prior** | 11:00 AM IST | Opens 1 day before journey departure from train origin. |
-| **Current Reservation (Post-Charting)** | **~4 to 8 Hours Prior** | Continuous | Opens after First Chart preparation until 30 mins before departure. |
+| Train Service / Category                            | Applicable Advance Reservation Period | Opening Time | Key Booking Conditions                                               |
+| :-------------------------------------------------- | :------------------------------------ | :----------- | :------------------------------------------------------------------- |
+| **Standard Express / Mail / Vande Bharat**          | **60 Days**                           | 8:00 AM IST  | Standard general reservation rule across 1A, 2A, 3A, CC, EC, SL.     |
+| **Short-Distance Day Intercity (e.g. Taj Express)** | **15 or 30 Days**                     | 8:00 AM IST  | Specifically notified intercity chair car services.                  |
+| **Foreign Tourist Quota (FTQ)**                     | **365 Days**                          | 8:00 AM IST  | Valid for foreign passport holders and NRIs via international cards. |
+| **Tatkal Quota (AC Classes: 2A, 3A, 3E, CC, EC)**   | **1 Day Prior**                       | 10:00 AM IST | Opens 1 day before journey departure from train origin.              |
+| **Tatkal Quota (Non-AC Classes: SL, 2S)**           | **1 Day Prior**                       | 11:00 AM IST | Opens 1 day before journey departure from train origin.              |
+| **Current Reservation (Post-Charting)**             | **~4 to 8 Hours Prior**               | Continuous   | Opens after First Chart preparation until 30 mins before departure.  |
 
 ---
 
@@ -157,7 +163,9 @@ Not every rail service follows the standard 60-day calendar. Here are the offici
 Missing out on Day-1 opening does not mean your journey is cancelled. Smart travellers employ several proven fallback strategies:
 
 ### 1. Discover Split-Leg Confirmed Seats with Smart Seats
+
 When a train shows `WL/45` or `REGRET` for an end-to-end journey, seats are often vacant for individual legs of the trip (e.g., Seat A from Station 1 to Station 4, and Seat B from Station 4 to Station 7). LastBerth's **[Smart Seats](/)** algorithm searches contiguous availability across intermediate station quotas to construct a confirmed journey on the exact same train rake:
+
 - [New Delhi to Patna Smart Seats](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna)
 - [Mumbai to Ahmedabad Smart Seats](/?from=MMCT&to=ADI&fromName=Mumbai%20Central&toName=Ahmedabad)
 - [New Delhi to Varanasi Smart Seats](/?from=NDLS&to=BSB&fromName=New%20Delhi&toName=Varanasi)
@@ -165,13 +173,17 @@ When a train shows `WL/45` or `REGRET` for an end-to-end journey, seats are ofte
 - [Bangalore to Chennai Smart Seats](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=Chennai%20Central)
 
 ### 2. Prepare for Tatkal and Premium Tatkal
+
 If general quota is full, mark your calendar for the Tatkal window **1 day before the train departs from its originating station**:
+
 - **10:00 AM IST:** AC Chair Car, Executive Class, 3AC, 3E, and 2AC (First AC / 1A is excluded).
 - **11:00 AM IST:** Sleeper Class (SL) and Second Sitting (2S).
 - Pre-save passenger details in your IRCTC Master List to save vital seconds during the Tatkal rush.
 
 ### 3. Track Chart Preparation Times and Vacant Berths
+
 Indian Railways prepares the First Reservation Chart approximately **8 hours before departure** for morning trains and around **4 hours before departure** for afternoon and evening trains.
+
 - Use **[Chart Times](/chart-times)** to look up the exact charting schedule for your specific train and station.
 - As soon as the first chart is prepared, any unallocated emergency quotas, VIP berths, or cancelled seats are released to the general public as **Current Booking**.
 - Use the **[Get Confirmed Tickets](/)** map to see empty berths by coach and book them directly on IRCTC at normal base fares without any Tatkal surcharge.

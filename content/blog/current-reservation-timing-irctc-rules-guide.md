@@ -43,11 +43,11 @@ Current Reservation opens immediately after 1st chart preparation (typically 4 t
 
 Here is the exact timeline for Current Reservation ticket availability:
 
-| Stage / Milestone | Timing Window | Seat Status & Availability |
-| :--- | :--- | :--- |
-| **1st Chart Preparation** | 4 to 8 hours before departure | Unsold quota berths released to Current Reservation pool |
+| Stage / Milestone          | Timing Window                           | Seat Status & Availability                                          |
+| :------------------------- | :-------------------------------------- | :------------------------------------------------------------------ |
+| **1st Chart Preparation**  | 4 to 8 hours before departure           | Unsold quota berths released to Current Reservation pool            |
 | **Current Booking Window** | Post 1st chart to 30 mins pre-departure | Confirmed tickets open for booking on IRCTC app, web & PRS counters |
-| **2nd Chart Preparation** | 30 minutes before departure | Current reservation closes; remaining vacant berths handed to TTE |
+| **2nd Chart Preparation**  | 30 minutes before departure             | Current reservation closes; remaining vacant berths handed to TTE   |
 
 Passengers can track exact station chart preparation schedules using [Chart Times](/chart-times) to know precisely when current reservation berths will go live for their train.
 
@@ -58,6 +58,7 @@ Passengers can track exact station chart preparation schedules using [Chart Time
 You can book Current Reservation tickets online through the IRCTC website/app by searching for your train after chart preparation, selecting the train, and choosing berths marked as "CURR_AVBL" or "CURRENT AVAILABLE". Alternatively, you can buy them directly at railway station PRS booking counters.
 
 To book online:
+
 1. Log in to the IRCTC Rail Connect App or web portal after chart preparation.
 2. Enter your source and destination stations.
 3. Select your train. If chart preparation is complete and vacant seats exist, availability will show as **CURR_AVBL** (Current Available).
@@ -72,6 +73,7 @@ If you are already at the station, you can also view vacant berths on visual coa
 Current reservation tickets are offered at a discounted rate of up to 10% to 50% off base fares for specific trains, encouraging passengers to utilize empty capacity. However, cancellation rules are strict: confirmed current tickets cancelled before departure incur standard cancellation fees.
 
 Key financial and cancellation rules include:
+
 - **Base Fare Discount:** Up to 10% base fare discount applied automatically by IRCTC on select express and superfast trains.
 - **Cancellation Deadline:** Tickets can be cancelled online up to 30 minutes before train departure (before 2nd chart preparation).
 - **Post 2nd Chart Rules:** No refund or online cancellation is allowed after 2nd chart preparation; TDR must be filed for valid exceptions (e.g., train cancellation or major delay).
@@ -81,13 +83,17 @@ Key financial and cancellation rules include:
 ## Frequently Asked Questions (FAQ)
 
 ### When does current reservation open in IRCTC?
+
 Current reservation opens immediately after the 1st reservation chart is prepared, which is typically 4 to 8 hours before the train's scheduled departure from its originating station.
 
 ### Is a current reservation ticket guaranteed to be confirmed?
+
 Yes, a current reservation ticket (marked as CURR_AVBL) is always a fully confirmed ticket with an allocated coach and berth number.
 
 ### Can you cancel a current reservation ticket for a refund?
+
 Yes, you can cancel a current reservation ticket online up to 30 minutes before the train's scheduled departure. Standard cancellation charges will apply.
 
 ### What is the difference between Tatkal and Current Reservation?
+
 Tatkal booking opens 1 day prior to travel at 10:00 AM (AC) or 11:00 AM (Non-AC) with extra premium charges. Current Reservation opens 4 hours before departure post-chart prep, offers confirmed unsold berths, and often includes base fare discounts.

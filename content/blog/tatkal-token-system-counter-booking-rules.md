@@ -44,10 +44,10 @@ Here is how the counter token allocation operates:
 
 Below is the official timeline for counter token collection versus actual booking execution:
 
-| Travel Class | Token Collection Window | Counter Booking Opens | Max Passengers / Form |
-| :--- | :--- | :--- | :--- |
-| **AC Classes (2A, 3A, 3E, EC, CC)** | **8:30 AM – 9:00 AM** | **10:00 AM** | 4 Passengers |
-| **Non-AC Classes (SL, 2S)** | **9:00 AM – 9:30 AM** | **11:00 AM** | 4 Passengers |
+| Travel Class                        | Token Collection Window | Counter Booking Opens | Max Passengers / Form |
+| :---------------------------------- | :---------------------- | :-------------------- | :-------------------- |
+| **AC Classes (2A, 3A, 3E, EC, CC)** | **8:30 AM – 9:00 AM**   | **10:00 AM**          | 4 Passengers          |
+| **Non-AC Classes (SL, 2S)**         | **9:00 AM – 9:30 AM**   | **11:00 AM**          | 4 Passengers          |
 
 If you arrive after the token distribution window closes (e.g. at 9:45 AM for AC Tatkal), you will only be served after all token-holding passengers ahead of you have completed their transactions.
 
@@ -57,14 +57,14 @@ If you arrive after the token distribution window closes (e.g. at 9:45 AM for AC
 
 **Physical counter Tatkal booking uses the new morning token queue system at station PRS offices, whereas online IRCTC Tatkal booking operates through website and app authentication using mandatory Aadhaar OTP validation. Both systems enforce identical class opening times and passenger caps.**
 
-| Feature | PRS Station Counter Tatkal | Online IRCTC Website & App |
-| :--- | :--- | :--- |
-| **Queue Control** | Physical morning token system (8:30/9:00 AM) | Virtual captcha & Aadhaar OTP prompt |
-| **AC Opening Time** | 10:00 AM sharp | 10:00 AM sharp |
-| **Non-AC Opening Time** | 11:00 AM sharp | 11:00 AM sharp |
-| **Verification Requirement** | Physical Government Photo ID proof | Aadhaar profile link + mobile OTP |
+| Feature                      | PRS Station Counter Tatkal                                 | Online IRCTC Website & App                       |
+| :--------------------------- | :--------------------------------------------------------- | :----------------------------------------------- |
+| **Queue Control**            | Physical morning token system (8:30/9:00 AM)               | Virtual captcha & Aadhaar OTP prompt             |
+| **AC Opening Time**          | 10:00 AM sharp                                             | 10:00 AM sharp                                   |
+| **Non-AC Opening Time**      | 11:00 AM sharp                                             | 11:00 AM sharp                                   |
+| **Verification Requirement** | Physical Government Photo ID proof                         | Aadhaar profile link + mobile OTP                |
 | **Waitlist Handling (TQWL)** | Counter TQWL tickets permit station board check if partial | Online TQWL e-tickets auto-cancel after charting |
-| **Payment Mode** | Cash, UPI, Debit/Credit Card at counter | Net banking, UPI, Wallets, Cards online |
+| **Payment Mode**             | Cash, UPI, Debit/Credit Card at counter                    | Net banking, UPI, Wallets, Cards online          |
 
 ---
 
@@ -89,8 +89,8 @@ If your Tatkal ticket lands high on the waiting list, do not rely solely on conf
 
 Follow this pre-booking preparation guide:
 
-1. **Link Profile with Aadhaar:** Log into IRCTC, navigate to *My Account → Link Your Aadhaar*, and verify your 12-digit number via mobile OTP.
-2. **Verify Master List Passengers:** Save your travel companions in *My Master List* under profile settings. Ensure a green "Verified" checkmark appears next to each name.
+1. **Link Profile with Aadhaar:** Log into IRCTC, navigate to _My Account → Link Your Aadhaar_, and verify your 12-digit number via mobile OTP.
+2. **Verify Master List Passengers:** Save your travel companions in _My Master List_ under profile settings. Ensure a green "Verified" checkmark appears next to each name.
 3. **Log in 5 Minutes Early:** Sign into the IRCTC app or portal at 9:55 AM for AC Tatkal or 10:55 AM for Non-AC Tatkal.
 4. **Select Master List at Checkout:** During booking, fetch passenger details directly from the Master List instead of typing manually to bypass delays.
 5. **Complete Aadhaar OTP:** Promptly enter the verification OTP sent to your registered mobile number during the payment flow.

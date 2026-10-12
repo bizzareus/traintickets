@@ -6,7 +6,7 @@ export default function PnrStatusLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-gray-900 antialiased">
+    <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-gray-900 antialiased">
       <Header />
       <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-4xl">
         {children}

@@ -1,6 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { getRouteData, getTopRoutes, getStationByCodeOrName, STATIONS } from "./routes-db";
+import {
+  getRouteData,
+  getTopRoutes,
+  getStationByCodeOrName,
+  STATIONS,
+} from "./routes-db";
 
 test("getRouteData - returns valid route data for existing station slugs", async () => {
   const data = await getRouteData("delhi", "mumbai");

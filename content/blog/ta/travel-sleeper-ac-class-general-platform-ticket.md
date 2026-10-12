@@ -14,6 +14,7 @@ tags:
 ---
 
 > **₹500 அபராதத்தை சந்திக்காமல் உறுதி செய்யப்பட்ட இடம் தேவைதா?** LastBerth இல் உயர் தேவையுள்ள வழிகளில் நேரடி உறுதி செய்யப்பட்ட இடங்கள் மற்றும் தொடர்ச்சியான பிளவுபட்ட இடங்களை சரிபார்க்கவும்:
+>
 > - [Search Delhi ➔ Patna Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
 > - [Search Mumbai ➔ Pune Express Trains](/?from=CSMT&to=PUNE&fromName=Mumbai%20CSMT&toName=Pune%20Jn)
 > - [Search Delhi ➔ Mumbai Trains](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central)
@@ -60,14 +61,14 @@ tags:
 
 செலுத்த வேண்டிய மொத்த தொகை, நீங்கள் வைத்திருக்கும் டிக்கெட், நீங்கள் நுழைந்த கோச்சு மற்றும் நீங்கள் ஏற்றிய இடம் ஆகியவற்றின் அடிப்படையில் இருக்கும்:
 
-| Travel Scenario | Base Fare Assessed by TTE | Statutory Penalty (Jan Vishwas Act 2026) | Sample 500 km Route Payable | Legal Action on Refusal |
-|---|---|---|---|---|
-| **General Ticket in Sleeper Coach** | Fare Difference (Sleeper Fare − General Fare Paid) | **₹500 flat fine** | ~₹150 fare diff + ₹500 = **₹650** | Deboarding at next halt, handover to RPF |
-| **Platform Ticket in Sleeper Coach** | Full Sleeper Fare from Boarding Station | **₹500 flat fine** | ~₹310 base fare + ₹500 = **₹810** | Deboarding at next halt, Section 138 recovery |
-| **No Ticket at All (Ticketless)** | Full Sleeper Fare from Train Originating Terminal | **₹500 flat fine** | ~₹600–₹1,200 origin fare + ₹500 = **₹1,100–₹1,700** | RPF custody, Section 137 prosecution |
-| **Sleeper Ticket in AC 3-Tier (3A)** | Fare Difference (3AC Fare − Sleeper Fare Paid) | **₹500 flat fine** | ~₹520 fare diff + ₹500 = **₹1,020** | Compulsory return to Sleeper coach |
-| **Sleeper Ticket in AC 3 Economy (3E)** | Fare Difference (3E Fare − Sleeper Fare Paid) | **₹500 flat fine** | ~₹460 fare diff + ₹500 = **₹960** | Compulsory return to Sleeper coach |
-| **General Ticket in AC 3-Tier (3A)** | Fare Difference (3AC Fare − General Fare Paid) | **₹500 flat fine** | ~₹680 fare diff + ₹500 = **₹1,180** | Deboarding, Handover to RPF at junction |
+| Travel Scenario                         | Base Fare Assessed by TTE                          | Statutory Penalty (Jan Vishwas Act 2026) | Sample 500 km Route Payable                         | Legal Action on Refusal                       |
+| --------------------------------------- | -------------------------------------------------- | ---------------------------------------- | --------------------------------------------------- | --------------------------------------------- |
+| **General Ticket in Sleeper Coach**     | Fare Difference (Sleeper Fare − General Fare Paid) | **₹500 flat fine**                       | ~₹150 fare diff + ₹500 = **₹650**                   | Deboarding at next halt, handover to RPF      |
+| **Platform Ticket in Sleeper Coach**    | Full Sleeper Fare from Boarding Station            | **₹500 flat fine**                       | ~₹310 base fare + ₹500 = **₹810**                   | Deboarding at next halt, Section 138 recovery |
+| **No Ticket at All (Ticketless)**       | Full Sleeper Fare from Train Originating Terminal  | **₹500 flat fine**                       | ~₹600–₹1,200 origin fare + ₹500 = **₹1,100–₹1,700** | RPF custody, Section 137 prosecution          |
+| **Sleeper Ticket in AC 3-Tier (3A)**    | Fare Difference (3AC Fare − Sleeper Fare Paid)     | **₹500 flat fine**                       | ~₹520 fare diff + ₹500 = **₹1,020**                 | Compulsory return to Sleeper coach            |
+| **Sleeper Ticket in AC 3 Economy (3E)** | Fare Difference (3E Fare − Sleeper Fare Paid)      | **₹500 flat fine**                       | ~₹460 fare diff + ₹500 = **₹960**                   | Compulsory return to Sleeper coach            |
+| **General Ticket in AC 3-Tier (3A)**    | Fare Difference (3AC Fare − General Fare Paid)     | **₹500 flat fine**                       | ~₹680 fare diff + ₹500 = **₹1,180**                 | Deboarding, Handover to RPF at junction       |
 
 ஒரு பயணி அதிக கட்டணத்தை மற்றும் அபராதத்தை செலுத்த மறுத்தால், TTE உடல் மோதலில் ஈடுபட முடியாது. பதிலாக, ரயில்வே சட்டத்தின் பிரிவு 145 மற்றும் பிரிவு 179 இன் கீழ், TTE ரயிலில் பயணிக்கும் ரயில்வே பாதுகாப்பு படையினருக்கு எச்சரிக்கையளிக்கிறார். அடுத்த திட்டமிட்ட சந்தியில், பயணி இறக்கப்படுகிறார் மற்றும் ரயில்வே நீதிபதிக்கு முன்னிலைப்படுத்தப்படுகிறார். நீதிபதி ₹2,000 வரை கூடுதல் நீதிமன்ற அபராதங்களை விதிக்கலாம் அல்லது கட்டணத்தை செலுத்தாதால் எளிய சிறைத் தண்டனை வழங்கலாம்.
 
@@ -114,6 +115,7 @@ tags:
 3. **பொதுத்தொகுப்பு வைத்தவர்கள் கடைசி:** அனைத்து RAC பயணிகள் உறுதி செய்யப்பட்ட தனி இடங்களை பெற்ற பிறகு மட்டுமே, TTE பொதுத்தொகுப்பு பயணியை சரியாக்கக் கருதுவார்.
 
 ஒரு இடம் சரியாக்கப்பட்டால்:
+
 - TTE உங்கள் ஏற்றுமதி புள்ளி, இலக்கு மற்றும் டிக்கெட் விவரங்களை கைபேசி டெர்மினலில் உள்ளீடு செய்கிறார்.
 - டெர்மினல் சரியான வேறுபாட்டு கட்டணத்தை மற்றும் சட்டப்படி ₹500 அபராதத்தை கணக்கீடு செய்கிறது.
 - TTE QR குறியீடு மற்றும் பரிவர்த்தனை PNR குறிப்புடன் உள்ள மின்னணு Excess Fare Ticket (EFT) ரசீதை அச்சிடுகிறார்.
@@ -143,17 +145,22 @@ AC 3 Economy (3E) மற்றும் சாதாரண AC 3-Tier (3A) என
 ரயில்வே அதிகாரிகள் கடுமையான டிக்கெட் இல்லாத நடவடிக்கைகளை அமல்படுத்தும் போது, பயணிகள் இந்திய ரயில்வே வர்த்தக கையேட்டின் கீழ் குறிப்பிட்ட சட்ட பாதுகாப்புகளை அனுபவிக்கிறார்கள்:
 
 ### 1. 10:00 PM முதல் 6:00 AM வரை தூங்கும் மணிநேரங்கள் விதி
+
 TTEகள் 10:00 PM மற்றும் 6:00 AM இடையிலான நேரத்தில் பயணிகளை டிக்கெட் சரிபார்ப்பிற்காக அசைக்கக் கூடாது.
+
 - **விலக்கு:** நீங்கள் 10:00 PM க்கு பிறகு ஒரு நிலையத்தில் ரயிலில் ஏறினால், TTE உங்களுக்கு நுழைவில் உங்கள் டிக்கெட்டை சரிபார்க்க உரிமை உண்டு.
 - **மத்திய இடம் விதி:** மத்திய இடங்களைப் பெற்ற பயணிகள் 10:00 PM முதல் 6:00 AM வரை தங்கள் இடங்களில் விரித்து உறங்க அனுமதிக்கப்படுகிறார்கள். இந்த மணிநேரங்களுக்கு வெளியே, மத்திய இடங்களை கீழே மடிக்க வேண்டும், கீழ் இடம் கொண்ட பயணிகள் வசதியாக உட்கார அனுமதிக்க வேண்டும்.
 
 ### 2. இட ஒதுக்கீட்டிற்கு முன் இரண்டு நிறுத்தங்கள் விதி
+
 ஒரு உறுதி செய்யப்பட்ட டிக்கெட்டை வைத்த பயணி, ரயில் தனது திட்டமிட்ட ஏற்றுமதி நிலையத்தை புறப்பட்ட பிறகு, TTE உடனடியாக அந்த இடத்தை வேறு ஒருவருக்கு ஒதுக்க முடியாது. **இரு நிறுத்தங்கள் விதியின்** கீழ், TTE ரயில் **இரு திட்டமிட்ட இடைக்கால நிறுத்தங்களை** கடந்தவுடன் அல்லது **ஒரு மணி நேரம்** (எது பின்னணி) கடந்த பிறகு, பயணியை காணாமல் போனதாக (No-Show) கைபேசி டெர்மினலில் பதிவு செய்ய வேண்டும்.
 
 ### 3. இரவில் பெண்கள் மற்றும் குழந்தைகள் இறக்குதலுக்கான பாதுகாப்புகள்
+
 ரயில்வே சட்டத்தின் பிரிவு 139 இன் கீழ், ஒரு ரயில்வே ஊழியர், செல்லுபடியாகாத டிக்கெட் இல்லாவிட்டாலும், தனியாக பயணிக்கும் பெண்களை அல்லது சிறிய குழந்தைகளை இரவில் இறக்க முடியாது. அவர்களுக்கு அருகிலுள்ள முக்கிய சந்தி அல்லது நிலையத்திற்குச் செல்ல அனுமதிக்க வேண்டும், அங்கு பெண்கள் ரயில்வே ஊழியர்கள் அல்லது அரசாங்க ரயில்வே போலீசார்கள் உதவலாம்.
 
 ### 4. அதிகாரப்பூர்வ TTE அடையாளத்தை சரிபார்க்க
+
 பணியில் உள்ள ஒவ்வொரு TTEக்கும் அதிகாரப்பூர்வ உடை, நீல நிற பிளேசர் அல்லது கோட், அவர்களது பதவியுடன் பெயர் அடையாளம் மற்றும் அதிகாரப்பூர்வ CRIS வழங்கிய கைபேசி டெர்மினல் (HHT) செயல்படுத்த வேண்டும். பயணிகள், டிக்கெட்டுகள் அல்லது பணங்களை வழங்குவதற்கு முன் TTEக்கு அவர்களின் பெயர் மற்றும் அடையாளத்தை கேட்க உரிமை உள்ளனர்.
 
 ---
@@ -164,27 +171,32 @@ TTEகள் 10:00 PM மற்றும் 6:00 AM இடையிலான ந
 
 நேரடி ரயில் இருக்கைகள் `REGRET` அல்லது உயர்ந்த காத்திருப்புகள் காட்டும் போது, நீங்கள் சட்டவிரோதமாக ஏறுவதையும் ₹500 அபராதங்களைச் சந்திக்க வேண்டிய அவசியமில்லை. பதிலாக, இந்த நான்கு சோதிக்கப்பட்ட, 100% சட்ட விருப்பங்களைப் பயன்படுத்தவும்:
 
-| Legal Travel Option | Booking Window | Pricing & Surcharges | Confirmation Guarantee | Best Use Case |
-|---|---|---|---|---|
-| **Unreserved General Coach (GS/UR)** | Up to departure time | Standard base unreserved fare | No seat guarantee (Open seating) | Short daylight journeys, budget travel |
-| **Current Availability (`CURR_AVBL`)** | ~4 hours to 30 mins before departure | **10% discount** on base fare | **100% confirmed** berth with coach & seat | Last-minute travel post chart prep |
-| **Smart Seats Contiguous Split Booking** | Standard booking window | Normal telescopic / segment fares | **100% confirmed** split seats on same train | Bypassing waitlists on long-distance routes |
-| **Onboard TTE Regularization (EFT)** | After train departs | Fare difference + ₹500 fine | Contingent on onboard vacancy | Genuine medical / unavoidable rush |
+| Legal Travel Option                      | Booking Window                       | Pricing & Surcharges              | Confirmation Guarantee                       | Best Use Case                               |
+| ---------------------------------------- | ------------------------------------ | --------------------------------- | -------------------------------------------- | ------------------------------------------- |
+| **Unreserved General Coach (GS/UR)**     | Up to departure time                 | Standard base unreserved fare     | No seat guarantee (Open seating)             | Short daylight journeys, budget travel      |
+| **Current Availability (`CURR_AVBL`)**   | ~4 hours to 30 mins before departure | **10% discount** on base fare     | **100% confirmed** berth with coach & seat   | Last-minute travel post chart prep          |
+| **Smart Seats Contiguous Split Booking** | Standard booking window              | Normal telescopic / segment fares | **100% confirmed** split seats on same train | Bypassing waitlists on long-distance routes |
+| **Onboard TTE Regularization (EFT)**     | After train departs                  | Fare difference + ₹500 fine       | Contingent on onboard vacancy                | Genuine medical / unavoidable rush          |
 
 ### 1. Purchase General Tickets via the UTS Mobile App
+
 நீங்கள் அதிகாரப்பூர்வ UTS மொபைல் பயன்பாட்டில் பதிவு செய்யாத காகிதம் இல்லாத டிக்கெட்டுகளை வாங்குவதன் மூலம் கவுண்டர் வரிசைகளை தவிர்க்கலாம். நீங்கள் புறப்படுவதற்கான நிலையத்திற்குள் 20 மீட்டர் மற்றும் 20 கிலோமீட்டர் இடையே உள்ள போது பதிவு செய்ய வேண்டும் (மோசடியைத் தடுக்கும் வகையில்).
 
 ### 2. Book Current Availability (`CURR_AVBL`) Tickets
+
 முதல் பதிவு அட்டவணை முடிந்த பிறகு (ஆரம்ப நிலையத்திலிருந்து புறப்படுவதற்கு 4 மணி நேரத்திற்கு முன்பு தயாரிக்கப்படும், அல்லது 2:00 PM க்கு முன்பு புறப்படும் காலை ரயிலுக்கு முந்தைய இரவு 8:00 PMக்கு), ஒதுக்கப்படாத VIP, அவசர மற்றும் வெளிநாட்டு சுற்றுலா குவோட்டாக்கள் பொதுமக்களுக்கு வெளியிடப்படுகின்றன.
+
 - நிலை `CURR_AVBL` அல்லது `CURR AVL` எனக் காட்டப்படுகிறது.
 - இடங்கள் அடிப்படைக் கட்டணத்தில் **10% தள்ளுபடியுடன்** விற்கப்படுகின்றன.
 - IRCTC இணையதளம், மொபைல் செயலி, அல்லது PRS கவுண்டர்களில் **30 நிமிடங்களுக்கு முன்பு** முன்பதிவு செய்யலாம்.
 - [IRCTC current availability works](/blog/irctc-current-availability-explained) என்ற எங்கள் விரிவான வழிகாட்டியில் மேலும் அறியவும்.
 
 ### 3. Use Smart Seats on LastBerth
+
 முக்கிய நகரங்களுக்கு இடையே முடிவுக்கு முடிவுக்கு இருக்கைகள் முழுமையாக பதிவு செய்யப்பட்டால், இடைக்கால குவோட்டாக்கள் காலியாக இருக்கும். [Finding Smart Seats](/) ஒரே ரயிலில் தொடர்ச்சியான பகுதிகளைத் தேடுகிறது, உங்களுக்கு உறுதி செய்யப்பட்ட பாதையை கண்டுபிடிக்கிறது (உதாரணமாக, டெல்லியிலிருந்து கான்பூர் வரை B2 கோச்சில், கான்பூரிலிருந்து பாட்டனா வரை B5 கோச்சில் மாறுதல்). நீங்கள் ஒரு ரயிலில் உறுதி செய்யப்பட்ட இடங்களில் பயணம் செய்கிறீர்கள்.
 
 ### 4. Check Vacant Berths via Chart Vacancy Map
+
 TTEக்கு அருகிலுள்ள இடத்திற்கு அணுகும் முன், [Chart Vacancy](/chart-vacancy) அல்லது [Seat Status](/seat-status) ஐத் திறக்கவும். உங்கள் ரயில் எண்ணிக்கையை உள்ளீடு செய்து, உங்கள் குறிப்பிட்ட பயண நிலையங்களில் ஒதுக்கப்படாத இடங்களின் கோச்சு-படி காட்சி வரைபடத்தைப் பார்க்கவும், TTEக்கு எந்த இடம் காலியாக உள்ளது என்பதைச் சொல்லவும்.
 
 ---

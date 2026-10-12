@@ -12,12 +12,12 @@
 
 Explore our detailed guides and reference documentation below:
 
-| Wiki Page | Description |
-|---|---|
-| ⏱️ **[Chart Preparation Rules & Timelines](IRCTC-Chart-Preparation-Rules-&-Timelines)** | Complete guide to 1st & 2nd chart timing rules, 8 PM previous day rule, and current reservation. |
-| 🍱 **[Official IRCTC Food Menu & Rates](IRCTC-Approved-Food-Menu-&-Official-Rates)** | Approved Indian Railways pantry prices, standard meal charges, and passenger overcharging rights. |
-| 🎫 **[Waitlist Confirmation Guide](Waitlist-Confirmation-Guide-(GNWL-vs-PQWL-vs-RLWL))** | Explanation of GNWL, PQWL, and RLWL quotas and how vacant berths are allotted at chart time. |
-| 🛠️ **[Developer & API Guide](Developer-&-API-Guide)** | Architecture, train dataset structures, chart time ingestion API, and backend setup instructions. |
+| Wiki Page                                                                                  | Description                                                                                       |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| ⏱️ **[Chart Preparation Rules & Timelines](IRCTC-Chart-Preparation-Rules-&-Timelines)**    | Complete guide to 1st & 2nd chart timing rules, 8 PM previous day rule, and current reservation.  |
+| 🍱 **[Official IRCTC Food Menu & Rates](IRCTC-Approved-Food-Menu-&-Official-Rates)**       | Approved Indian Railways pantry prices, standard meal charges, and passenger overcharging rights. |
+| 🎫 **[Waitlist Confirmation Guide](<Waitlist-Confirmation-Guide-(GNWL-vs-PQWL-vs-RLWL)>)** | Explanation of GNWL, PQWL, and RLWL quotas and how vacant berths are allotted at chart time.      |
+| 🛠️ **[Developer & API Guide](Developer-&-API-Guide)**                                      | Architecture, train dataset structures, chart time ingestion API, and backend setup instructions. |
 
 ---
 
@@ -29,4 +29,4 @@ Explore our detailed guides and reference documentation below:
 
 ---
 
-*Maintained by the LastBerth Engineering & Product Team. For inquiries or feature requests, visit [lastberth.com](https://lastberth.com).*
+_Maintained by the LastBerth Engineering & Product Team. For inquiries or feature requests, visit [lastberth.com](https://lastberth.com)._

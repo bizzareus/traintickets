@@ -264,8 +264,8 @@ export function ChartAlertPaymentModal({
                 </p>
               )}
               <p className="mt-3 hidden text-center text-xs text-slate-400 sm:block">
-                On desktop? Scan the QR with your phone&apos;s camera or any
-                UPI app.
+                On desktop? Scan the QR with your phone&apos;s camera or any UPI
+                app.
               </p>
             </div>
             <div className="flex items-center justify-center gap-3 border-t border-slate-100 px-5 py-3">

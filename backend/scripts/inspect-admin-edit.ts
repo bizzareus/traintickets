@@ -16,8 +16,16 @@ async function main() {
     throw new Error('TRIPMGT_COOKIES is empty in backend/.env');
   }
 
-  const rawPairs = customCookies.split(';').map((c) => c.trim()).filter(Boolean);
-  const cookieObjects: Array<{ name: string; value: string; domain: string; path: string }> = [];
+  const rawPairs = customCookies
+    .split(';')
+    .map((c) => c.trim())
+    .filter(Boolean);
+  const cookieObjects: Array<{
+    name: string;
+    value: string;
+    domain: string;
+    path: string;
+  }> = [];
   for (const pair of rawPairs) {
     const eqIdx = pair.indexOf('=');
     if (eqIdx === -1) continue;
@@ -29,15 +37,22 @@ async function main() {
     });
   }
   await context.addCookies(cookieObjects);
-  console.log(`[1] Injected ${cookieObjects.length} cookies into browser context.`);
+  console.log(
+    `[1] Injected ${cookieObjects.length} cookies into browser context.`,
+  );
 
   const page = await context.newPage();
   const url = 'https://tripmgt.in/admin_edit/?ID=6a9ff06a3140a99ed3b57b3e';
   console.log(`[2] Navigating to ${url}...`);
 
-  const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+  const response = await page.goto(url, {
+    waitUntil: 'domcontentloaded',
+    timeout: 30000,
+  });
   const finalUrl = page.url();
-  console.log(`[3] Final URL: ${finalUrl} (HTTP ${response?.status() ?? 'N/A'})`);
+  console.log(
+    `[3] Final URL: ${finalUrl} (HTTP ${response?.status() ?? 'N/A'})`,
+  );
   console.log(`[4] Page Title: "${await page.title()}"`);
 
   const outDir = path.resolve(process.cwd(), 'storage', 'cli-debug');
@@ -48,13 +63,19 @@ async function main() {
 
   // Extract structural links, buttons, headers, or any visible text
   const links = await page.evaluate(() => {
-    return Array.from(document.querySelectorAll('a, button, input[type="submit"], input[type="button"]')).map((el) => ({
-      tag: el.tagName,
-      id: el.id,
-      text: el.textContent?.trim().slice(0, 50),
-      href: el.getAttribute('href'),
-      onclick: el.getAttribute('onclick'),
-    })).filter((x) => x.text || x.href);
+    return Array.from(
+      document.querySelectorAll(
+        'a, button, input[type="submit"], input[type="button"]',
+      ),
+    )
+      .map((el) => ({
+        tag: el.tagName,
+        id: el.id,
+        text: el.textContent?.trim().slice(0, 50),
+        href: el.getAttribute('href'),
+        onclick: el.getAttribute('onclick'),
+      }))
+      .filter((x) => x.text || x.href);
   });
   console.log('\n--- KEY INTERACTIVE ELEMENTS ON THIS PAGE ---');
   console.log(JSON.stringify(links.slice(0, 25), null, 2));

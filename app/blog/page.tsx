@@ -25,9 +25,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps) {
+export default async function BlogIndexPage({
+  searchParams,
+}: BlogIndexPageProps) {
   const { lang = "en" } = (await searchParams) || {};
-  
+
   if (lang !== "en") {
     redirect(`/blog/${lang}`);
   }

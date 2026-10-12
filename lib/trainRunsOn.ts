@@ -99,7 +99,9 @@ export function nextRunRelativeParenthetical(nextYmd: string): string {
 }
 
 /** e.g. `2nd April (tomorrow)` — moment `Do` = ordinal day, `MMMM` = full month */
-export function formatNextTrainRunPhrase(nextYmd: string | null): string | null {
+export function formatNextTrainRunPhrase(
+  nextYmd: string | null,
+): string | null {
   if (!nextYmd) return null;
   const m = moment(nextYmd, "YYYY-MM-DD", true);
   if (!m.isValid()) return null;

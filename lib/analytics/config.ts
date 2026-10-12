@@ -6,14 +6,13 @@
 export function isAnalyticsEnabled(): boolean {
   return Boolean(
     typeof process !== "undefined" &&
-      process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim(),
+    process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim(),
   );
 }
 
 export function posthogApiHost(): string {
   return (
-    process.env.NEXT_PUBLIC_POSTHOG_HOST?.trim() ||
-    "https://us.i.posthog.com"
+    process.env.NEXT_PUBLIC_POSTHOG_HOST?.trim() || "https://us.i.posthog.com"
   );
 }
 

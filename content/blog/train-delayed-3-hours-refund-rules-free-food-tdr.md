@@ -28,19 +28,19 @@ tags:
 
 **Yes, Indian Railways rules grant a 100% full refund of your entire ticket fare with zero clerkage or cancellation fee deduction if your train is delayed by more than three hours at your journey boarding station and you choose not to travel.**
 
-Under standard railway cancellation rules, cancelling a confirmed ticket between 12 and 4 hours before departure results in a 50% penalty, while cancelling within 4 hours of departure or after chart preparation gives zero refund. However, when the railway itself causes the delay by over 3 hours (180 minutes), this penalty structure is completely waived. 
+Under standard railway cancellation rules, cancelling a confirmed ticket between 12 and 4 hours before departure results in a 50% penalty, while cancelling within 4 hours of departure or after chart preparation gives zero refund. However, when the railway itself causes the delay by over 3 hours (180 minutes), this penalty structure is completely waived.
 
-Indian Railways treats the journey as cancelled due to operational failure. You receive your base fare, reservation fee, superfast surcharge, and GST back into your original payment method. 
+Indian Railways treats the journey as cancelled due to operational failure. You receive your base fare, reservation fee, superfast surcharge, and GST back into your original payment method.
 
 Here is how the 3+ hour delay refund compares to regular cancellation slabs:
 
-| Ticket Type / Scenario | Standard Cancellation Fee | 3+ Hours Delay Refund (Passenger Not Travelled) | Mandatory Requirement |
-| :--- | :--- | :--- | :--- |
-| **Confirmed AC (1A/2A/3A/3E)** | ₹120 to ₹240 flat or up to 50% fare | **100% Full Refund (₹0 deduction)** | File TDR before actual train departure |
-| **Confirmed Sleeper (SL)** | ₹60 to ₹120 or 50% fare | **100% Full Refund (₹0 deduction)** | File TDR before actual train departure |
-| **RAC / Partially Confirmed** | ₹60 clerkage fee | **100% Full Refund (₹0 deduction)** | File TDR before actual train departure |
-| **Tatkal / Premium Tatkal** | 0% refund (100% fare forfeited) | **100% Full Refund (₹0 deduction)** | File TDR before actual train departure |
-| **Counter (PRS) Paper Ticket** | Standard slab deduction | **100% Full Refund (₹0 deduction)** | Surrender ticket at PRS counter before departure |
+| Ticket Type / Scenario         | Standard Cancellation Fee           | 3+ Hours Delay Refund (Passenger Not Travelled) | Mandatory Requirement                            |
+| :----------------------------- | :---------------------------------- | :---------------------------------------------- | :----------------------------------------------- |
+| **Confirmed AC (1A/2A/3A/3E)** | ₹120 to ₹240 flat or up to 50% fare | **100% Full Refund (₹0 deduction)**             | File TDR before actual train departure           |
+| **Confirmed Sleeper (SL)**     | ₹60 to ₹120 or 50% fare             | **100% Full Refund (₹0 deduction)**             | File TDR before actual train departure           |
+| **RAC / Partially Confirmed**  | ₹60 clerkage fee                    | **100% Full Refund (₹0 deduction)**             | File TDR before actual train departure           |
+| **Tatkal / Premium Tatkal**    | 0% refund (100% fare forfeited)     | **100% Full Refund (₹0 deduction)**             | File TDR before actual train departure           |
+| **Counter (PRS) Paper Ticket** | Standard slab deduction             | **100% Full Refund (₹0 deduction)**             | Surrender ticket at PRS counter before departure |
 
 ---
 
@@ -66,11 +66,11 @@ Once filed, IRCTC sends the claim to the concerned Zonal Railway's Chief Commerc
 
 **The strict deadline to file an IRCTC TDR for a train delayed by more than three hours is before the actual departure of the train from your scheduled boarding station. If you file after the train departs, your refund claim will be permanently rejected.**
 
-This is the single biggest mistake passengers make during major railway delays. Many travellers wait until the next morning or until the train reaches its destination to file their claim. 
+This is the single biggest mistake passengers make during major railway delays. Many travellers wait until the next morning or until the train reaches its destination to file their claim.
 
 Railway rules explicitly measure the deadline against the **actual departure time**, not the original scheduled timetable departure time:
 
-- **Example:** If your train was scheduled to depart at 4:00 PM but is delayed until 8:30 PM (4.5 hours late), you can file your TDR anytime up until 8:29 PM. 
+- **Example:** If your train was scheduled to depart at 4:00 PM but is delayed until 8:30 PM (4.5 hours late), you can file your TDR anytime up until 8:29 PM.
 - **The Cutoff:** The moment the train physically leaves your boarding platform at 8:30 PM, the IRCTC system locks out the TDR reason. Any subsequent filing will be rejected because the Travelling Ticket Examiner (TTE) prepares the chart and marks berths on their Handheld Terminal (HHT).
 
 If you are unsure whether your train will make up time along the route, check live running status on NTES or track your charting status on [Chart Times](/chart-times).
@@ -81,9 +81,10 @@ If you are unsure whether your train will make up time along the route, check li
 
 **Yes, passengers holding confirmed or RAC tickets on premium trains with bundled catering (Rajdhani, Shatabdi, Duronto, Vande Bharat, Tejas) and mail/express trains with attached pantry cars are entitled to complimentary meals and drinking water if the train is delayed by more than 2 hours during scheduled meal times.**
 
-Under the Indian Railways Passenger Citizen Charter and IRCTC Catering Policy, train delays caused by operational snags, fog, track maintenance, or weather trigger mandatory free catering. 
+Under the Indian Railways Passenger Citizen Charter and IRCTC Catering Policy, train delays caused by operational snags, fog, track maintenance, or weather trigger mandatory free catering.
 
 Key conditions for free meal entitlements include:
+
 - **Eligible Trains:** All Rajdhani, Shatabdi, Duronto, Vande Bharat, Tejas Express, and Mail/Express trains with operational pantry cars.
 - **Minimum Delay Threshold:** The train must be running late by more than **2 hours** (for premium trains) or **3 hours** (for regular express trains).
 - **Meal Time Window:** The delay must overlap with regular meal hours (Breakfast: 7:00 AM – 9:00 AM, Lunch: 12:30 PM – 2:00 PM, Evening Tea: 4:30 PM – 6:00 PM, Dinner: 7:30 PM – 9:30 PM).
@@ -97,12 +98,12 @@ Key conditions for free meal entitlements include:
 
 The catering contractor on board is mandated by the Railway Board to serve the following complimentary items based on the delay duration:
 
-| Time of Delay / Slot | Complimentary Items Provided by IRCTC | Packaged Inclusions |
-| :--- | :--- | :--- |
-| **Morning Delay (7:00 AM – 9:00 AM)** | 2 slices of bread + butter / jam blister pack, or 2 veg cutlets / idli-vada combo + 1 dip | 1 Tea/Coffee kit (tea bag, milk powder, sugar sachet, hot water) |
-| **Lunch Delay (12:30 PM – 2:00 PM)** | 70g Rice + 100g Dal (or Rajma/Chole) + 2 Parathas/Rotis + Pickle sachet | 1 Rail Neer packaged water bottle (1L) |
-| **Evening Tea Delay (4:30 PM – 6:00 PM)** | 2 sweet/salt biscuits or samosa/kachori + 1 packaged snack packet | 1 Tea/Coffee kit with hot water |
-| **Dinner Delay (7:30 PM – 9:30 PM)** | 70g Rice + 100g Dal / Mix Veg + 2 Rotis + Pickle sachet | 1 Rail Neer packaged water bottle (1L) |
+| Time of Delay / Slot                      | Complimentary Items Provided by IRCTC                                                     | Packaged Inclusions                                              |
+| :---------------------------------------- | :---------------------------------------------------------------------------------------- | :--------------------------------------------------------------- |
+| **Morning Delay (7:00 AM – 9:00 AM)**     | 2 slices of bread + butter / jam blister pack, or 2 veg cutlets / idli-vada combo + 1 dip | 1 Tea/Coffee kit (tea bag, milk powder, sugar sachet, hot water) |
+| **Lunch Delay (12:30 PM – 2:00 PM)**      | 70g Rice + 100g Dal (or Rajma/Chole) + 2 Parathas/Rotis + Pickle sachet                   | 1 Rail Neer packaged water bottle (1L)                           |
+| **Evening Tea Delay (4:30 PM – 6:00 PM)** | 2 sweet/salt biscuits or samosa/kachori + 1 packaged snack packet                         | 1 Tea/Coffee kit with hot water                                  |
+| **Dinner Delay (7:30 PM – 9:30 PM)**      | 70g Rice + 100g Dal / Mix Veg + 2 Rotis + Pickle sachet                                   | 1 Rail Neer packaged water bottle (1L)                           |
 
 If onboard pantry staff refuse to provide complimentary meals during an eligible delay, dial **RailMadad on 139** or register an immediate complaint on the RailMadad mobile app with your PNR and coach number.
 
@@ -164,27 +165,35 @@ Sitting on a crowded platform waiting for a 5-hour late train is exhausting. If 
 ## Common Booking Questions (FAQ)
 
 ### Can I get a full refund if my train is 2 hours and 50 minutes late?
+
 No, the 100% full refund rule requires a minimum delay of more than 3 hours (at least 3 hours and 1 minute) at your boarding station. For delays under 3 hours, standard IRCTC cancellation slabs apply.
 
 ### Do I get a full refund on Tatkal tickets if the train is delayed by over 3 hours?
+
 Yes, Tatkal and Premium Tatkal tickets are eligible for a 100% full refund with zero cancellation charges if the train is delayed by more than 3 hours at your boarding station and you file a TDR before actual departure.
 
 ### What happens if the train is delayed by 3 hours at the destination but departed on time?
+
 You cannot claim a full ticket fare refund if the train departed on time and you completed the journey. Delay refunds apply only when you choose not to travel due to a >3 hour delay at your boarding station.
 
 ### How long does an IRCTC delay TDR refund take to credit?
+
 Online TDR refunds for trains delayed by more than 3 hours typically take between 5 to 7 business days to process and credit back to your original bank account, card, or UPI wallet.
 
 ### Can RAC passengers claim a full refund if the train is running late?
+
 Yes, RAC and waitlisted passengers on e-tickets or counter tickets can claim a 100% refund with zero clerkage fee if the train is delayed by more than 3 hours and a TDR is filed before departure.
 
 ### Can I get free food on a normal Mail or Express train during delays?
+
 Yes, if the Mail or Express train has an attached pantry car and is delayed by more than 3 hours overlapping with meal times, IRCTC catering is required to provide complimentary meals.
 
 ### What if the IRCTC website is down during the train delay?
+
 If the IRCTC website is down during late hours, call the railway helpline at 139 or visit the nearest PRS counter or Station Master office before actual train departure to log your refund claim.
 
 ### Do I need a TTE certificate to file a delay TDR for an e-ticket?
+
 No, for online e-tickets, you do not need a physical TTE certificate because IRCTC automatically cross-references the official train delay timestamps recorded in the National Train Enquiry System (NTES).
 
 ---

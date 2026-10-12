@@ -1,10 +1,7 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
 import { permanentRedirect } from "next/navigation";
-import TrainDetailClient, {
-  Train,
-  StationChartMap,
-} from "./TrainDetailClient";
+import TrainDetailClient, { Train, StationChartMap } from "./TrainDetailClient";
 import {
   buildTrainSlug,
   getTopTrainSlugs,
@@ -72,7 +69,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const { trainNumber, local } = resolveTrainParam(id);
   const train = await fetchTrainData(trainNumber);
-  const chartTimesData = !train ? await getChartTimesPageData(trainNumber) : null;
+  const chartTimesData = !train
+    ? await getChartTimesPageData(trainNumber)
+    : null;
 
   const trainName =
     train?.trainName || chartTimesData?.trainName || local?.trainName;
@@ -192,8 +191,7 @@ export default async function TrainDetailPage({ params }: Props) {
     effectiveTrain.schedule = {
       trainNumber: chartTimesData.trainNumber,
       trainName: effectiveTrain.trainName || chartTimesData.trainName,
-      stationFrom:
-        effectiveTrain.originStation || chartTimesData.originStation,
+      stationFrom: effectiveTrain.originStation || chartTimesData.originStation,
       stationTo:
         effectiveTrain.destinationStation || chartTimesData.destinationStation,
       stationList: chartTimesData.stations.map((s) => ({
@@ -325,37 +323,37 @@ export default async function TrainDetailPage({ params }: Props) {
       )}
       <Suspense
         fallback={
-          <div className="space-y-6 sm:space-y-8 animate-pulse">
+          <div className="animate-pulse space-y-6 sm:space-y-8">
             {/* Hero Skeleton */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 space-y-4 shadow-xs">
-              <div className="h-4 bg-slate-100 rounded w-48 mb-2" />
-              <div className="h-8 bg-slate-200 rounded w-2/3 max-w-md" />
-              <div className="h-4 bg-slate-100 rounded w-1/2" />
-              <div className="h-20 bg-slate-50 rounded-xl border border-slate-100 mt-4" />
+            <div className="shadow-xs space-y-4 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+              <div className="mb-2 h-4 w-48 rounded bg-slate-100" />
+              <div className="h-8 w-2/3 max-w-md rounded bg-slate-200" />
+              <div className="h-4 w-1/2 rounded bg-slate-100" />
+              <div className="mt-4 h-20 rounded-xl border border-slate-100 bg-slate-50" />
             </div>
 
             {/* Grid Skeleton */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[1, 2, 3, 4].map((i) => (
                 <div
                   key={i}
-                  className="h-28 rounded-2xl border border-slate-200 bg-white p-5 flex flex-col justify-between"
+                  className="flex h-28 flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5"
                 >
-                  <div className="h-3 bg-slate-100 rounded w-20" />
-                  <div className="h-6 bg-slate-200 rounded w-24" />
-                  <div className="h-3 bg-slate-50 rounded w-full" />
+                  <div className="h-3 w-20 rounded bg-slate-100" />
+                  <div className="h-6 w-24 rounded bg-slate-200" />
+                  <div className="h-3 w-full rounded bg-slate-50" />
                 </div>
               ))}
             </div>
 
             {/* Timetable Skeleton */}
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 space-y-4">
-              <div className="h-6 bg-slate-200 rounded w-1/3" />
+            <div className="space-y-4 rounded-3xl border border-slate-200 bg-white p-6">
+              <div className="h-6 w-1/3 rounded bg-slate-200" />
               <div className="space-y-3">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div
                     key={i}
-                    className="h-16 bg-slate-50 rounded-xl border border-slate-100"
+                    className="h-16 rounded-xl border border-slate-100 bg-slate-50"
                   />
                 ))}
               </div>

@@ -10,6 +10,7 @@ tags:
   - middle berth rules
   - passenger rights
 ---
+
 > **Planning overnight train travel?** Find confirmed seats with [Smart Seats](/) or check coach berth layout and seat status using [Get Confirmed Tickets](/).
 
 ## TL;DR
@@ -18,8 +19,7 @@ tags:
 - **Daytime Rules:** Outside this window (6:00 AM to 10:00 PM), the middle berth must remain folded down, and the lower berth serves as a shared seating space for lower, middle, and upper berth passengers.
 - **Disputes:** If a passenger refuses to follow these rules, you can resolve the issue through the on-duty Ticket Examiner (TTE) or file a complaint on the RailMadad portal.
 
-
-Travel in Indian Railways is as much about the social experience as it is about reaching your destination. However, when traveling overnight in Sleeper (SL) or AC Tier classes, one of the most common flashpoints among passengers is berth sharing—specifically regarding the middle berth. 
+Travel in Indian Railways is as much about the social experience as it is about reaching your destination. However, when traveling overnight in Sleeper (SL) or AC Tier classes, one of the most common flashpoints among passengers is berth sharing—specifically regarding the middle berth.
 
 If you hold a middle berth, when can you fold it up? If you hold a lower berth, do you have to let others sit on it all day? If you are traveling on a waitlisted ticket, what are your rights? (Note that **WL full form is Waiting List** in railway terms). Understanding the official rules is key to avoiding uncomfortable arguments and securing a peaceful journey.
 
@@ -33,10 +33,10 @@ Historically, the sleeping window was 9:00 PM to 6:00 AM, but the Ministry of Ra
 
 Here is the quick breakdown of the official schedule:
 
-| Time Slot | Status | Permitted Action |
-| :--- | :--- | :--- |
+| Time Slot               | Status             | Permitted Action                                                              |
+| :---------------------- | :----------------- | :---------------------------------------------------------------------------- |
 | **10:00 PM to 6:00 AM** | **Sleeping Hours** | Middle berths can be raised; lower berths can be fully occupied for sleeping. |
-| **6:00 AM to 10:00 PM** | **Daytime Hours** | Middle berths must be folded down; lower berths must be shared for sitting. |
+| **6:00 AM to 10:00 PM** | **Daytime Hours**  | Middle berths must be folded down; lower berths must be shared for sitting.   |
 
 ---
 
@@ -44,9 +44,9 @@ Here is the quick breakdown of the official schedule:
 
 No, a middle berth passenger cannot sleep during the day outside the official hours of 10:00 PM to 6:00 AM. They must keep their middle berth folded down during daytime hours. This ensures that the lower berth passengers and other co-passengers have sufficient space to sit comfortably.
 
-If you are assigned a middle berth, you do not have the right to keep it raised during the day. Keeping it up prevents passengers on the lower berth from sitting upright, which violates railway rules. 
+If you are assigned a middle berth, you do not have the right to keep it raised during the day. Keeping it up prevents passengers on the lower berth from sitting upright, which violates railway rules.
 
-However, there are exceptions. If a passenger is sick, pregnant, elderly, or has a physical disability, co-passengers are expected to accommodate them. In such cases, they can sleep during daytime hours if the bay members agree. 
+However, there are exceptions. If a passenger is sick, pregnant, elderly, or has a physical disability, co-passengers are expected to accommodate them. In such cases, they can sleep during daytime hours if the bay members agree.
 
 ---
 
@@ -54,7 +54,7 @@ However, there are exceptions. If a passenger is sick, pregnant, elderly, or has
 
 During daytime hours from 6:00 AM to 10:00 PM, the lower berth serves as a shared seating space for lower, middle, and upper berth passengers. The lower berth owner must accommodate their co-passengers for sitting, though side-berth passengers are generally expected to use their own side-lower seats.
 
-If you own a lower berth, you cannot claim exclusive use of it during the day. The passengers on the middle and upper berths of your bay have the right to sit there with you. 
+If you own a lower berth, you cannot claim exclusive use of it during the day. The passengers on the middle and upper berths of your bay have the right to sit there with you.
 
 However, this rule does not apply to side berths. The side lower berth passenger is only required to share their seat with the side upper berth passenger. They do not have to share it with passengers from the main bay.
 
@@ -101,25 +101,33 @@ The TTE is empowered to enforce passenger guidelines on running trains. RailMada
 ## Indian Railways Sleeping Rules (FAQ)
 
 ### Can a passenger sleep on the lower berth during the day?
+
 During daytime hours (6:00 AM to 10:00 PM), the lower berth is a shared seating space. A passenger cannot sleep on it during the day if it prevents middle or upper berth passengers from sitting.
 
 ### What is the middle berth rule in railway?
+
 The middle berth must be kept folded down between 6:00 AM and 10:00 PM. It can only be raised for sleeping during the official sleeping hours of 10:00 PM to 6:00 AM.
 
 ### What should I do if a passenger refuses to lower the middle berth?
+
 You should first request them politely, citing the official rules (10:00 PM to 6:00 AM sleeping hours). If they do not agree, contact the TTE on duty or raise a complaint on the RailMadad app/website.
 
 ### Can RAC passengers sleep on the side lower berth?
+
 RAC passengers are allotted a sitting space on a shared side lower berth (two passengers per berth). They can only sleep in a sitting position unless a full berth becomes vacant due to a cancellation, in which case the TTE will allocate it to them.
 
 ### What happens to a waitlisted e-ticket if it remains unconfirmed?
+
 If a waitlisted e-ticket does not confirm after chart preparation, it is automatically cancelled by the system, and a refund is processed back to the passenger's account. Passengers cannot board the train with an unconfirmed e-ticket.
 
 ### How does LastBerth help with booking confirmed seats?
+
 LastBerth uses advanced algorithms to find seat combinations across different segments of a train journey (smart seat bookings) where a single direct seat is unavailable, helping you travel with a confirmed ticket.
 
 ### Can a lower berth passenger sleep during daytime outside official sleeping hours?
+
 During day hours (6 AM to 10 PM), lower berth seats are shared for sitting between lower, middle, and upper berth passengers. A lower berth passenger cannot claim exclusive sleeping rights on the berth during daytime if it prevents co-passengers from sitting.
 
 ### Are sick or pregnant passengers exempt from middle berth sleeping hour restrictions?
+
 Passengers with medical conditions, senior citizens, and pregnant women are accommodated with mutual consent or TTE assistance. While standard rules prescribe 10:00 PM to 6:00 AM sleeping hours, onboard staff and co-passengers grant flexible sleeping permissions on humanitarian grounds.

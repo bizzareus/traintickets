@@ -31,19 +31,19 @@ Demand on routes connecting major metros (Delhi, Mumbai, Bengaluru, Pune) to Bih
 
 Here is the complete day-by-day 60-day ARP booking calendar for the 2026 festival season:
 
-| Festival / Journey Milestone | Travel Date (2026) | IRCTC Booking Opens (8:00 AM IST) |
-|---|---|---|
-| **Dhanteras Travel** | November 6, 2026 (Friday) | September 7, 2026 |
-| **Choti Diwali Travel** | November 7, 2026 (Saturday) | September 8, 2026 |
-| **Diwali (Lakshmi Puja)** | November 8, 2026 (Sunday) | September 9, 2026 |
-| **Govardhan Puja / Annakut** | November 9, 2026 (Monday) | September 10, 2026 |
-| **Bhai Dooj** | November 10, 2026 (Tuesday) | September 11, 2026 |
-| **Chhath Puja: Nahay Khay** | November 12, 2026 (Thursday) | September 13, 2026 |
-| **Chhath Puja: Kharna** | November 13, 2026 (Friday) | September 14, 2026 |
-| **Chhath Puja: Sandhya Arghya** | November 14, 2026 (Saturday) | September 15, 2026 |
-| **Chhath Puja: Usha Arghya** | November 15, 2026 (Sunday) | September 16, 2026 |
-| **Post-Chhath Return Rush Day 1** | November 16, 2026 (Monday) | September 17, 2026 |
-| **Post-Chhath Return Weekend** | November 20–22, 2026 (Fri–Sun) | September 21–23, 2026 |
+| Festival / Journey Milestone      | Travel Date (2026)             | IRCTC Booking Opens (8:00 AM IST) |
+| --------------------------------- | ------------------------------ | --------------------------------- |
+| **Dhanteras Travel**              | November 6, 2026 (Friday)      | September 7, 2026                 |
+| **Choti Diwali Travel**           | November 7, 2026 (Saturday)    | September 8, 2026                 |
+| **Diwali (Lakshmi Puja)**         | November 8, 2026 (Sunday)      | September 9, 2026                 |
+| **Govardhan Puja / Annakut**      | November 9, 2026 (Monday)      | September 10, 2026                |
+| **Bhai Dooj**                     | November 10, 2026 (Tuesday)    | September 11, 2026                |
+| **Chhath Puja: Nahay Khay**       | November 12, 2026 (Thursday)   | September 13, 2026                |
+| **Chhath Puja: Kharna**           | November 13, 2026 (Friday)     | September 14, 2026                |
+| **Chhath Puja: Sandhya Arghya**   | November 14, 2026 (Saturday)   | September 15, 2026                |
+| **Chhath Puja: Usha Arghya**      | November 15, 2026 (Sunday)     | September 16, 2026                |
+| **Post-Chhath Return Rush Day 1** | November 16, 2026 (Monday)     | September 17, 2026                |
+| **Post-Chhath Return Weekend**    | November 20–22, 2026 (Fri–Sun) | September 21–23, 2026             |
 
 ---
 
@@ -54,6 +54,7 @@ Here is the complete day-by-day 60-day ARP booking calendar for the 2026 festiva
 To calculate your exact booking day, count backwards 60 full days from your intended departure date. For instance, if your train leaves its origin station on November 8, you subtract 60 days to arrive at September 9.
 
 Three critical ARP rules you need to know:
+
 1. **Origin Station Departure Date:** The 60-day timer counts down from the date and time the train departs its originating station, not an intermediate boarding point. If you board on Day 2 of a long-distance route, booking opens on the day calculated for Day 1.
 2. **Opening Window Timings:** General quota bookings open at 8:00 AM IST sharp. AC Tatkal opens at 10:00 AM IST, and non-AC Sleeper Tatkal opens at 11:00 AM IST one day before origin departure.
 3. **Foreign Tourist Quota Exception:** Foreign passport holders can book designated berths up to 365 days in advance under the Foreign Tourist Quota (FTQ) for 1AC, 2AC, and Executive classes.
@@ -77,6 +78,7 @@ During festival rushes, IRCTC deploys strict OTP-based multi-factor authenticati
 Manually typing passenger details when the clock strikes 8:00 AM costs between 30 and 45 valuable seconds. In that window, hundreds of confirmed berths vanish into waitlists.
 
 Follow these steps to set up your Master List beforehand:
+
 1. Log into `irctc.co.in` or the Rail Connect app at least one day before your booking opens.
 2. Navigate to **My Account > My Profile > Add / Modify Master List**.
 3. Enter the full legal name, age, gender, berth preference (Lower, Middle, Upper, Side Lower), food preference, and Aadhaar or ID details for each family member.
@@ -95,12 +97,15 @@ The progression queue moves from **WL (Waiting List) → RAC (Reservation Agains
 When direct booking hits a wall, use these proven rescue strategies:
 
 ### 1. Finding Smart Seats (Split-Segment Journey)
+
 Indian Railways reserves separate seat quotas for intermediate stations. While a direct seat from New Delhi to Patna may show `REGRET`, seats on the same train might be vacant from New Delhi to Kanpur, and from Kanpur to Patna. Using [Finding Smart Seats](/) on LastBerth helps you identify contiguous confirmed segments on the exact same rake without having to change trains.
 
 ### 2. Book from Origin and Change Boarding Point
+
 If berths from your local station are waitlisted under Remote Location Waiting List (RLWL) or Pooled Quota (PQWL), search availability from the train's originating station under General Waiting List (GNWL). GNWL has the highest seat allocation and confirmation priority. Once booked, change your boarding point online at least 24 hours before train departure.
 
 ### 3. Track Waitlist Progression with PNR Status
+
 If you hold an existing waitlisted e-ticket, monitor its confirmation odds with [PNR Status Search & Direct Booking](/). Fully waitlisted online e-tickets that remain unconfirmed after chart preparation are automatically cancelled with a full refund.
 
 ---
@@ -111,13 +116,13 @@ If you hold an existing waitlisted e-ticket, monitor its confirmation odds with 
 
 Tatkal tickets carry a surcharge ranging from ₹100 to ₹200 for Sleeper and ₹300 to ₹500 for AC classes. Premium Tatkal (PT) uses dynamic pricing where base fares surge up to double based on real-time demand.
 
-| Tatkal Rule | AC Classes (2A, 3A, 3E, CC, EC) | Non-AC Sleeper (SL, 2S) |
-|---|---|---|
-| **Opening Time** | 10:00 AM IST (1 day prior) | 11:00 AM IST (1 day prior) |
-| **Max Passengers per PNR** | 4 Passengers | 4 Passengers |
-| **Confirmed Ticket Refund** | 0% (Non-refundable) | 0% (Non-refundable) |
-| **Authorized Agent Entry** | 10:30 AM IST (30-min block) | 11:30 AM IST (30-min block) |
-| **Token System Counter Hours** | 8:30 AM – 9:00 AM IST | 9:00 AM – 9:30 AM IST |
+| Tatkal Rule                    | AC Classes (2A, 3A, 3E, CC, EC) | Non-AC Sleeper (SL, 2S)     |
+| ------------------------------ | ------------------------------- | --------------------------- |
+| **Opening Time**               | 10:00 AM IST (1 day prior)      | 11:00 AM IST (1 day prior)  |
+| **Max Passengers per PNR**     | 4 Passengers                    | 4 Passengers                |
+| **Confirmed Ticket Refund**    | 0% (Non-refundable)             | 0% (Non-refundable)         |
+| **Authorized Agent Entry**     | 10:30 AM IST (30-min block)     | 11:30 AM IST (30-min block) |
+| **Token System Counter Hours** | 8:30 AM – 9:00 AM IST           | 9:00 AM – 9:30 AM IST       |
 
 Keep in mind that First AC (1A) and Executive Anubhuti coaches do not have Tatkal quotas. Premium Tatkal never issues RAC or waitlisted tickets; it only sells confirmed berths.
 
@@ -130,6 +135,7 @@ Keep in mind that First AC (1A) and Executive Anubhuti coaches do not have Tatka
 Every year, Indian Railways operates thousands of festival special trips (numbered starting with 0, such as 04044 or 02394) to manage festive crowds on high-density routes. These trains usually carry special train fare structures (around 1.15 to 1.3 times regular fares) and have independent 60-day or 30-day booking windows.
 
 If you miss both general and Tatkal bookings, check for Current Availability tickets:
+
 - The first reservation chart is prepared **~8 hours before departure** from the originating station.
 - Any unallocated berths from VIP, emergency, or remote location quotas convert into `CURR_AVBL` (Current Availability).
 - A Current Available ticket is **100% fully confirmed** with assigned coach and berth numbers.

@@ -15,4 +15,6 @@ async function main() {
   console.log(rows.length);
   console.log(rows);
 }
-main().catch(console.error).finally(() => prisma.$disconnect());
+main()
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());

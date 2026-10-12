@@ -12,7 +12,8 @@ const GA_MEASUREMENT_ID =
  */
 export function GoogleAnalytics() {
   const pathname = usePathname();
-  if (!GA_MEASUREMENT_ID || (pathname && pathname.startsWith("/admin"))) return null;
+  if (!GA_MEASUREMENT_ID || (pathname && pathname.startsWith("/admin")))
+    return null;
 
   return (
     <>

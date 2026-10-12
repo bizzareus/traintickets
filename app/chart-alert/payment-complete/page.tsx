@@ -12,8 +12,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   openGraph: {
     title: "Chart Alert Payment — LastBerth",
-    description:
-      "Confirming your chart alert payment with LastBerth.",
+    description: "Confirming your chart alert payment with LastBerth.",
     type: "website",
     url: `${siteUrl}/chart-alert/payment-complete`,
   },

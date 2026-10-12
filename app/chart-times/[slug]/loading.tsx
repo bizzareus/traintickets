@@ -5,7 +5,11 @@
  */
 export default function ChartTimesLoading() {
   return (
-    <div className="animate-pulse" role="status" aria-label="Loading chart times">
+    <div
+      className="animate-pulse"
+      role="status"
+      aria-label="Loading chart times"
+    >
       {/* Breadcrumb */}
       <div className="mb-4 h-4 w-48 rounded bg-slate-200" />
 

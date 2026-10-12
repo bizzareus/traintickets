@@ -13,6 +13,7 @@ tags:
 ---
 
 > **🔔 Ticket cancelled or waitlist dropped?** Do not let a cancelled booking ruin your travel plans. Find guaranteed confirmed seats and smart split-ticket routes on high-demand corridors:
+>
 > - [Search Delhi ➔ Patna Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
 > - [Search Mumbai ➔ Danapur Special Trains](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
 > - [Search Bengaluru ➔ Chennai Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central)
@@ -51,15 +52,15 @@ The processing duration depends entirely on your original payment mode rather th
 
 The table below details the official refund timelines across all authorized payment channels in 2026:
 
-| Payment Method | IRCTC Processing Window | Banking Settlement Timeline | Expected Total Turnaround | Tracking Identifier |
-|---|---|---|---|---|
-| **IRCTC e-Wallet** | Immediate (< 1 hour) | Instantaneous | Same day | Wallet Transaction ID |
-| **IRCTC iPay (UPI Mandate / Single-Block)** | Same day | Instant to 24 hours | 1 business day | UPI UTR Number |
-| **Standard BHIM UPI / GPay / PhonePe** | 24 hours | 1 to 3 working days | 2 to 4 business days | 12-digit UTR Number |
-| **Net Banking (All Scheduled Banks)** | 24 to 48 hours | 3 to 5 working days | 3 to 6 business days | Bank Ref / Core Banking ID |
-| **Debit Cards (RuPay / Visa / Mastercard)** | 24 to 48 hours | 3 to 7 working days | 4 to 8 business days | 23-digit ARN Number |
-| **Credit Cards (Domestic & International)** | 24 to 48 hours | 3 to 7 working days | 1 to 2 billing cycles | 23-digit ARN Number |
-| **Ticket Deposit Receipt (TDR) Claims** | 15 to 30 days | 5 to 15 working days | 15 to 45 working days | TDR Registration Number |
+| Payment Method                              | IRCTC Processing Window | Banking Settlement Timeline | Expected Total Turnaround | Tracking Identifier        |
+| ------------------------------------------- | ----------------------- | --------------------------- | ------------------------- | -------------------------- |
+| **IRCTC e-Wallet**                          | Immediate (< 1 hour)    | Instantaneous               | Same day                  | Wallet Transaction ID      |
+| **IRCTC iPay (UPI Mandate / Single-Block)** | Same day                | Instant to 24 hours         | 1 business day            | UPI UTR Number             |
+| **Standard BHIM UPI / GPay / PhonePe**      | 24 hours                | 1 to 3 working days         | 2 to 4 business days      | 12-digit UTR Number        |
+| **Net Banking (All Scheduled Banks)**       | 24 to 48 hours          | 3 to 5 working days         | 3 to 6 business days      | Bank Ref / Core Banking ID |
+| **Debit Cards (RuPay / Visa / Mastercard)** | 24 to 48 hours          | 3 to 7 working days         | 4 to 8 business days      | 23-digit ARN Number        |
+| **Credit Cards (Domestic & International)** | 24 to 48 hours          | 3 to 7 working days         | 1 to 2 billing cycles     | 23-digit ARN Number        |
+| **Ticket Deposit Receipt (TDR) Claims**     | 15 to 30 days           | 5 to 15 working days        | 15 to 45 working days     | TDR Registration Number    |
 
 Weekends and public bank holidays do not count as working days for clearing houses. If you cancel a ticket on a Friday evening, the interbank clearing window only begins on Monday morning.
 
@@ -91,13 +92,13 @@ When an automated refund packet bounces back to IRCTC, the funds sit in a railwa
 
 The table below breaks down the common refund failure triggers and their direct fixes:
 
-| Failure Scenario | Root Cause | Primary Remedy | Resolution Time |
-|---|---|---|---|
-| **Expired or Blocked Card** | Issuing bank rejected credit to a deactivated card number. | Contact card issuer to transfer credit to your new card or bank account. | 3 to 5 business days |
-| **Closed Bank Account** | The bank account used for net banking or debit card booking is closed. | Email IRCTC accounts department with cancelled cheque and NOC from old bank. | 7 to 14 business days |
-| **UPI VPA Deactivated** | The UPI ID or mobile handle linked to the payment was deleted. | Bank routes credit to underlying account number via central NPCI mapper. | 3 to 5 business days |
-| **Gateway Timeout (Status Failed)** | Network break during nightly batch settlement between bank and CRIS. | IRCTC re-attempts the refund automatically during the next settlement cycle. | 48 to 72 hours |
-| **System Glitch During Tatkal Rush** | Severe server congestion leading to unmapped reversal response. | Log complaint on RailMadad portal under Refund of Unutilized Ticket category. | 2 to 4 business days |
+| Failure Scenario                     | Root Cause                                                             | Primary Remedy                                                                | Resolution Time       |
+| ------------------------------------ | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------- |
+| **Expired or Blocked Card**          | Issuing bank rejected credit to a deactivated card number.             | Contact card issuer to transfer credit to your new card or bank account.      | 3 to 5 business days  |
+| **Closed Bank Account**              | The bank account used for net banking or debit card booking is closed. | Email IRCTC accounts department with cancelled cheque and NOC from old bank.  | 7 to 14 business days |
+| **UPI VPA Deactivated**              | The UPI ID or mobile handle linked to the payment was deleted.         | Bank routes credit to underlying account number via central NPCI mapper.      | 3 to 5 business days  |
+| **Gateway Timeout (Status Failed)**  | Network break during nightly batch settlement between bank and CRIS.   | IRCTC re-attempts the refund automatically during the next settlement cycle.  | 48 to 72 hours        |
+| **System Glitch During Tatkal Rush** | Severe server congestion leading to unmapped reversal response.        | Log complaint on RailMadad portal under Refund of Unutilized Ticket category. | 2 to 4 business days  |
 
 Always check your bank statement directly rather than waiting for an SMS notification. Many private and public sector banks credit refund entries silently under generic merchant identifiers such as `IRCTC-PG`, `CRIS-DELHI`, or `ATOM-TECH` without triggering an automated text alert.
 
@@ -124,7 +125,7 @@ Under Reserve Bank of India (RBI) mandates, banks must process inward refund fil
 
 **IRCTC automatically cancels fully waitlisted e-tickets upon final chart preparation (~4 hours before train departure) and initiates a refund within 24 hours. The railway refunds the entire fare back to the original payment source after deducting a flat clerkage fee of ₹60 plus GST per passenger.**
 
-In Indian Railways reservation terminology, **WL full form is Waiting List**. The booking queue moves mathematically from **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. When final charts are prepared, any passenger whose online e-ticket remains on the waiting list is automatically dropped from the passenger manifest. 
+In Indian Railways reservation terminology, **WL full form is Waiting List**. The booking queue moves mathematically from **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. When final charts are prepared, any passenger whose online e-ticket remains on the waiting list is automatically dropped from the passenger manifest.
 
 Here are the exact rules governing waitlist cancellations and refunds:
 
@@ -146,13 +147,13 @@ A TDR is an official refund application filed when unusual circumstances prevent
 
 The table below outlines the major TDR filing scenarios and their approval windows:
 
-| TDR Filing Reason | Mandatory Filing Cutoff | Zonal Verification Authority | Settlement Window | Refund Eligibility |
-|---|---|---|---|---|
-| **Train Delayed > 3 Hours** | Before actual train departure | Station Superintendent / NTES Logs | 15 to 30 days | Full fare refunded (₹0 clerkage) |
-| **AC Failure in 2A / 3A Coach** | Within 72 hours of arrival | TTE Certificate / Handheld Terminal Log | 30 to 45 days | Difference between AC and SL fare |
-| **Party Partially Confirmed** | Up to 30 mins before train departure | CRIS Reservation Chart Audit | 15 to 30 days | Full fare for waitlisted passengers |
-| **Improper Berth Allocation** | Within 72 hours of departure | Commercial Controller | 30 to 45 days | Subject to Zonal audit review |
-| **Train Diverted / Short Terminated** | Within 72 hours of departure | Operating Department Circular | 15 to 30 days | Pro-rata fare for untraveled distance |
+| TDR Filing Reason                     | Mandatory Filing Cutoff              | Zonal Verification Authority            | Settlement Window | Refund Eligibility                    |
+| ------------------------------------- | ------------------------------------ | --------------------------------------- | ----------------- | ------------------------------------- |
+| **Train Delayed > 3 Hours**           | Before actual train departure        | Station Superintendent / NTES Logs      | 15 to 30 days     | Full fare refunded (₹0 clerkage)      |
+| **AC Failure in 2A / 3A Coach**       | Within 72 hours of arrival           | TTE Certificate / Handheld Terminal Log | 30 to 45 days     | Difference between AC and SL fare     |
+| **Party Partially Confirmed**         | Up to 30 mins before train departure | CRIS Reservation Chart Audit            | 15 to 30 days     | Full fare for waitlisted passengers   |
+| **Improper Berth Allocation**         | Within 72 hours of departure         | Commercial Controller                   | 30 to 45 days     | Subject to Zonal audit review         |
+| **Train Diverted / Short Terminated** | Within 72 hours of departure         | Operating Department Circular           | 15 to 30 days     | Pro-rata fare for untraveled distance |
 
 Unlike regular ticket cancellations, filing a false TDR or submitting a claim after the train departs can lead to outright rejection. Once approved by the Zonal Railway office, CRIS transmits the electronic payout advice to your original bank account within 3 to 5 business days.
 
@@ -195,33 +196,43 @@ You can also check companion booking guides for deeper insights, including [IRCT
 ## Common Booking Questions (FAQ)
 
 ### How can I check my railway refund status online?
+
 You can check your railway refund status online by logging into the official IRCTC portal or Rail Connect mobile application, clicking on **My Account**, opening **My Transactions**, and selecting **Ticket Refund History**. The page displays your refund amount, cancellation date, and the unique Bank Reference ID or Acquirer Reference Number (ARN) for banking verification.
 
 ### Why is my IRCTC refund status showing as Refund Amount ₹0?
+
 An IRCTC refund showing ₹0 is a temporary database placeholder indicating that your cancellation is accepted, but the backend CRIS rules engine has not yet finished calculating the clerkage fee and net payout. The zero amount automatically updates to your actual refund figure during nightly batch reconciliation between 11:30 PM and 01:00 AM IST.
 
 ### How long does an IRCTC refund take for Google Pay or PhonePe UPI?
+
 An IRCTC refund for UPI transactions made via Google Pay, PhonePe, Paytm, or BHIM takes between **1 and 3 working days** to reflect in your bank account. Once IRCTC releases the payment during its daily settlement, NPCI clears the funds directly to the underlying bank account linked to your Virtual Payment Address (VPA).
 
 ### What happens if an IRCTC refund is marked as Refunded but not received in bank?
+
 If IRCTC marks your refund as Refunded but your bank statement does not reflect the credit within 7 business days, copy the 23-digit ARN or 12-digit UPI UTR number from your IRCTC refund history and contact your bank's merchant refund desk. The bank uses this unique reference code to track and release payments held in internal nodal clearing accounts.
 
 ### How much clerkage fee is deducted on auto-cancelled waitlist e-tickets?
+
 Indian Railways deducts a flat administrative clerkage fee of **₹60 plus GST per passenger** on fully waitlisted e-tickets that fail to confirm and are automatically cancelled at chart preparation. The remaining fare balance is refunded automatically to your original payment source without requiring any manual cancellation.
 
 ### How many days does an IRCTC TDR refund take to get approved?
+
 An IRCTC Ticket Deposit Receipt (TDR) refund takes between **15 and 45 working days** to process and credit to your account. Unlike automated ticket cancellations, TDR claims undergo manual verification and auditing by the Chief Commercial Manager (CCM - Refunds) of the destination Zonal Railway to confirm non-travel before releasing funds.
 
 ### What is the full form of WL in Indian Railways ticketing?
+
 WL full form is **Waiting List**. It represents passengers who have booked a ticket on a fully occupied train and are placed in an electronic queue. As confirmed passengers cancel their journeys, waitlisted tickets progress mathematically through the queue: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**.
 
 ### Can I travel on a train if my waitlist e-ticket is auto-cancelled?
+
 No, you cannot travel on any train coach with an auto-cancelled waitlist e-ticket. Once chart preparation is complete, dropped waitlisted e-tickets are completely purged from the passenger manifest. Boarding a Sleeper or AC coach on a dropped ticket constitutes ticketless travel under Section 138 of the Railways Act, punishable by a minimum ₹500 fine plus the single journey fare.
 
 ### Do I get a full refund if a train is cancelled by Indian Railways?
+
 Yes, if a train is cancelled by Indian Railways due to natural disasters, operational accidents, or weather disruptions, you receive a **100% full refund of the total ticket fare with zero clerkage fee**. For e-tickets, the system issues this refund automatically without requiring you to file a TDR or cancel manually.
 
 ### What should I do if my IRCTC refund status shows Failed?
+
 If your refund status displays Failed, it usually indicates that your bank account is closed, your card has expired, or a transmission timeout occurred between payment switches. Email your 10-digit PNR, transaction ID, and bank account details to `care@irctc.co.in`, or log a formal service grievance on the official RailMadad portal at `railmadad.indianrailways.gov.in`.
 
 ---

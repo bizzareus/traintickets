@@ -14,6 +14,7 @@ tags:
 > **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
+
 The Vande Bharat Express is India's premier semi-high-speed train, capable of running up to 160 km/h. It comes equipped with automatic sliding doors, bio-vacuum toilets, and onboard Wi-Fi. Ticket booking follows the standard IRCTC system, and meals can be added optionally or mandatorily depending on the route.
 
 ---
@@ -34,9 +35,9 @@ Passengers can book **Vande Bharat tickets** through the official **IRCTC websit
 
 Getting a ticket on the Vande Bharat is straightforward, but seats fill up fast.
 
-*   **Booking Windows:** The regular advance reservation window opens **60 days** before the journey date at 8:00 AM.
-*   **Tatkal Reservations:** Tatkal bookings open **1 day** before the train starts from its originating station. For AC classes, this starts at 10:00 AM. Fares are higher, and seats often disappear within a minute.
-*   **Concession Rules:** General concessions, including senior citizen discounts, are not allowed. Only specific Divyangjan (disability) bookings are supported.
+- **Booking Windows:** The regular advance reservation window opens **60 days** before the journey date at 8:00 AM.
+- **Tatkal Reservations:** Tatkal bookings open **1 day** before the train starts from its originating station. For AC classes, this starts at 10:00 AM. Fares are higher, and seats often disappear within a minute.
+- **Concession Rules:** General concessions, including senior citizen discounts, are not allowed. Only specific Divyangjan (disability) bookings are supported.
 
 ---
 
@@ -57,6 +58,7 @@ Meals are optional on some routes, but mandatory on others. If you choose "no fo
 The **Vande Bharat Sleeper trains** are Indian Railways' next-generation overnight trains designed for comfortable long-distance travel at speeds up to **160 km/h**. Following the launch of the first Vande Bharat Sleeper rake between **Howrah and Kamakhya**, the second rake has arrived in Bengaluru. It is currently undergoing mandatory technical trials and safety clearances for the upcoming overnight **KSR Bengaluru to CSMT Mumbai Vande Bharat Sleeper** route.
 
 These long-distance sleeper trains feature **AC First Class, AC 2-Tier, and AC 3-Tier** classes, bringing major comfort upgrades over standard LHB coaches:
+
 - **Enhanced Comfort:** Ergonomically designed berths with superior cushioning, individual passenger-friendly reading lights, and dedicated charging ports for every berth.
 - **Advanced Technology:** Noise-insulated cabins, fully sealed gangways, vacuum toilets, and improved shock-absorbing suspension systems to reduce night-time vibrations at high speeds.
 - **Overnight Travel:** The Bengaluru-Mumbai corridor will allow commuters to complete their intercity journey overnight in a clean, modern, and high-speed environment.
@@ -82,22 +84,29 @@ If you are booking within 4 hours of departure, check if there is a `"current av
 ## Common Vande Bharat Questions (FAQ)
 
 ### What is the full form of WL in Vande Bharat booking?
+
 **WL full form is Waiting List**. It means your ticket is not confirmed and you do not have a seat assignment.
 
 ### Is food free on Vande Bharat trains?
+
 No, catering is not free. Meals are charged as part of the ticket fare. However, you can opt out of the catering service during booking to reduce the ticket price.
 
 ### Are senior citizen discounts available on Vande Bharat?
+
 No, Indian Railways does not offer senior citizen concessions on Vande Bharat trains. The full ticket price applies to all passengers, with exceptions only for authorized Divyangjan quotas.
 
 ### What is a current available ticket in Vande Bharat?
+
 A `"current available ticket"` is a confirmed seat that becomes available after chart preparation (8 hours before departure). You can book these online or at the station until 30 minutes before the train starts.
 
 ### Which classes are available in Vande Bharat Sleeper trains?
+
 Vande Bharat Sleeper trains offer overnight berths in AC 3-Tier (3A), AC 2-Tier (2A), and AC First Class (1A) configurations, featuring enhanced cushioning, charging ports for every berth, and reading lights.
 
 ### What are the proposed routes for Vande Bharat Sleeper trains?
+
 The first Vande Bharat Sleeper train connects Howrah and Kamakhya. The second service is currently undergoing safety and track trials to run overnight between KSR Bengaluru and CSMT Mumbai.
 
 ### Can we travel on a waitlisted ticket in Vande Bharat?
+
 No, you cannot travel with a waitlisted e-ticket. If your ticket remains unconfirmed after the chart is prepared, it is automatically cancelled and refunded. Boarding with a waitlisted ticket carries heavy penalties.

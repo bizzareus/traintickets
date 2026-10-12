@@ -35,12 +35,12 @@ To manage your group bookings and speed up checkout, you can save up to 20 passe
 
 **Section 143 of the Railways Act, 1989, makes it a criminal offense to carry on the business of procuring and supplying railway tickets without authorization. Under this section, anyone who sells or purchases tickets commercially using a personal IRCTC account faces strict penal action, including imprisonment and fines.**
 
-| Legal Aspect | Rule Details under Section 143 |
-| :--- | :--- |
-| **Offense Definition** | Procuring or supplying tickets commercially without written authority from the Railways. |
-| **Imprisonment Penalty** | Up to **3 years of jail time** for unauthorized commercial agents. |
-| **Financial Penalty** | A fine of up to **₹10,000**, or both jail time and fine. |
-| **Personal Account Rule** | Personal IDs must only be used for self, family, and non-commercial friend bookings. |
+| Legal Aspect              | Rule Details under Section 143                                                           |
+| :------------------------ | :--------------------------------------------------------------------------------------- |
+| **Offense Definition**    | Procuring or supplying tickets commercially without written authority from the Railways. |
+| **Imprisonment Penalty**  | Up to **3 years of jail time** for unauthorized commercial agents.                       |
+| **Financial Penalty**     | A fine of up to **₹10,000**, or both jail time and fine.                                 |
+| **Personal Account Rule** | Personal IDs must only be used for self, family, and non-commercial friend bookings.     |
 
 This law target unauthorized ticketing agents (scalpers) who create fake personal profiles to hoard tickets during high-demand periods like the Tatkal rush, which opens at 10:00 AM for AC classes and 11:00 AM for Sleeper class. If the Railway Protection Force (RPF) detects bulk commercial transactions on a personal ID, the account is deactivated and the tickets are cancelled under Section 143.
 
@@ -83,6 +83,7 @@ When booking Tatkal tickets for friends, add their details to your IRCTC account
 When you purchase train tickets for friends or family members using your personal IRCTC ID, the money is debited directly from your linked bank account or card. Accepting reimbursement for the exact ticket fare, transaction fees, and GST via digital wallets or UPI tools like Google Pay, Paytm, or PhonePe is standard practice and fully compliant with Indian Railways regulations.
 
 To stay clear of fraud alerts and maintain transparent records:
+
 - Retain the official IRCTC e-ticket receipt reflecting the total booking price.
 - Ensure the digital payment received matches the invoice amount precisely without any extra surcharge.
 - Avoid charging extra service fees, booking convenience markups, or rounded-up cash payments.
@@ -97,14 +98,14 @@ If an account consistently receives payments exceeding face values from multiple
 
 Understanding the operational differences between personal accounts and official agent accounts helps ensure compliance with Indian Railways ticketing laws. The table below details the main distinctions:
 
-| Feature / Aspect | Personal IRCTC Account | Authorized IRCTC Agent Account |
-| :--- | :--- | :--- |
-| **Permitted Use** | Personal travel for self, family, and friends with zero profit. | Commercial ticket booking for general public for a prescribed service fee. |
-| **Legal Status** | Non-commercial individual user account under standard terms. | Officially registered commercial ticket agent with IRCTC Principal Provider. |
-| **Monthly Ticket Limit** | 12 tickets/month (up to 24 tickets if Aadhaar-verified). | Higher commercial booking limits tailored for ticketing businesses. |
-| **Tatkal Window Access** | Opens at 10:00 AM (AC) & 11:00 AM (Non-AC); max 2 tickets/IP. | Restricted during initial 30 mins; opens at 10:30 AM (AC) & 11:30 AM (Non-AC). |
-| **Service Fee Collection** | Strictly illegal (violates Section 143 of Railways Act). | Permitted (capped fees, e.g., ₹20 for AC / ₹10 for Non-AC per ticket). |
-| **Legal Liability** | Misuse leads to jail up to 3 years, ₹10,000 fine, and blacklisting. | Agent license suspension, penalty, or cancellation for rule breaches. |
+| Feature / Aspect           | Personal IRCTC Account                                              | Authorized IRCTC Agent Account                                                 |
+| :------------------------- | :------------------------------------------------------------------ | :----------------------------------------------------------------------------- |
+| **Permitted Use**          | Personal travel for self, family, and friends with zero profit.     | Commercial ticket booking for general public for a prescribed service fee.     |
+| **Legal Status**           | Non-commercial individual user account under standard terms.        | Officially registered commercial ticket agent with IRCTC Principal Provider.   |
+| **Monthly Ticket Limit**   | 12 tickets/month (up to 24 tickets if Aadhaar-verified).            | Higher commercial booking limits tailored for ticketing businesses.            |
+| **Tatkal Window Access**   | Opens at 10:00 AM (AC) & 11:00 AM (Non-AC); max 2 tickets/IP.       | Restricted during initial 30 mins; opens at 10:30 AM (AC) & 11:30 AM (Non-AC). |
+| **Service Fee Collection** | Strictly illegal (violates Section 143 of Railways Act).            | Permitted (capped fees, e.g., ₹20 for AC / ₹10 for Non-AC per ticket).         |
+| **Legal Liability**        | Misuse leads to jail up to 3 years, ₹10,000 fine, and blacklisting. | Agent license suspension, penalty, or cancellation for rule breaches.          |
 
 Personal IRCTC accounts are ideal for individual travelers and family coordinators. If you run a travel agency or frequently book tickets for clients while collecting service fees, registering as an authorized IRCTC agent is mandatory to avoid criminal liability.
 

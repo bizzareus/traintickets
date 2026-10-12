@@ -13,6 +13,7 @@ tags:
 ---
 
 > **🔔 Planning festival travel from Mumbai, Surat, or Ahmedabad?** Find confirmed seats and smart split routes on high-demand festive corridors:
+>
 > - [Search Mumbai to Danapur Special Trains](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
 > - [Search Surat to Patna Special Trains](/?from=ST&to=PNBE&fromName=Surat&toName=Patna%20Jn)
 > - [Search Udhna to Danapur Special Trains](/?from=UDN&to=DNR&fromName=Udhna%20Jn&toName=Danapur)
@@ -50,13 +51,13 @@ Surat and Udhna represent the busiest originating cluster for eastern-bound fest
 
 The table below details the primary festival special services operating from Surat and Udhna to Bihar and Uttar Pradesh:
 
-| Train Number | Train Name / Route | Origin Station | Destination Station | Frequency | Coach Composition |
-|---|---|---|---|---|---|
-| **09045 / 09046** | Udhna – Patna Superfast Special | Udhna Jn (UDN) | Patna Jn (PNBE) | Weekly (Fridays) | 2A, 3A, 3E, SL, GS |
-| **09033 / 09034** | Udhna – Danapur Express Special | Udhna Jn (UDN) | Danapur (DNR) | Bi-Weekly (Mon, Wed) | 3A, 3E, SL, GS |
-| **09065 / 09066** | Surat – Chhapra Express Special | Surat (ST) | Chhapra Jn (CPR) | Weekly (Mondays) | 2A, 3A, SL, GS |
-| **09015 / 09016** | Udhna – Malda Town Special | Udhna Jn (UDN) | Malda Town (MLDT) | Weekly (Thursdays) | 3A, SL, GS |
-| **09069 / 09070** | Surat – Subedarganj Special | Surat (ST) | Subedarganj (SFG) | Weekly (Fridays) | 3E, SL, GS |
+| Train Number      | Train Name / Route              | Origin Station | Destination Station | Frequency            | Coach Composition  |
+| ----------------- | ------------------------------- | -------------- | ------------------- | -------------------- | ------------------ |
+| **09045 / 09046** | Udhna – Patna Superfast Special | Udhna Jn (UDN) | Patna Jn (PNBE)     | Weekly (Fridays)     | 2A, 3A, 3E, SL, GS |
+| **09033 / 09034** | Udhna – Danapur Express Special | Udhna Jn (UDN) | Danapur (DNR)       | Bi-Weekly (Mon, Wed) | 3A, 3E, SL, GS     |
+| **09065 / 09066** | Surat – Chhapra Express Special | Surat (ST)     | Chhapra Jn (CPR)    | Weekly (Mondays)     | 2A, 3A, SL, GS     |
+| **09015 / 09016** | Udhna – Malda Town Special      | Udhna Jn (UDN) | Malda Town (MLDT)   | Weekly (Thursdays)   | 3A, SL, GS         |
+| **09069 / 09070** | Surat – Subedarganj Special     | Surat (ST)     | Subedarganj (SFG)   | Weekly (Fridays)     | 3E, SL, GS         |
 
 These trains run via Nandurbar, Jalgaon, Bhusaval, Khandwa, Itarsi, Jabalpur, Katni, Satna, Manikpur, and Pt. Deen Dayal Upadhyaya (DDU) Junction. Passengers can board at major intermediate junctions across Maharashtra and Madhya Pradesh.
 
@@ -72,13 +73,13 @@ Passengers departing from the Mumbai metropolitan region can board Western Railw
 
 The table below highlights the primary Mumbai-originating special trains for Diwali and Chhath 2026:
 
-| Train Number | Train Name / Route | Origin Station | Destination Station | Frequency | Routing & Key Halts |
-|---|---|---|---|---|---|
-| **09025 / 09026** | Bandra – Danapur Superfast Special | Bandra Terminus (BDTS) | Danapur (DNR) | Weekly (Mondays) | Borivali, Surat, Vadodara, Ratlam, Kota, Pt. DDU |
-| **09011 / 09012** | Bandra – Gorakhpur Festive Special | Bandra Terminus (BDTS) | Gorakhpur Jn (GKP) | Weekly (Thursdays) | Borivali, Vapi, Surat, Kota, Bharatpur, Mathura, Lucknow |
-| **09017 / 09018** | Mumbai Central – Subedarganj Special | Mumbai Central (MMCT) | Subedarganj (SFG) | Bi-Weekly (Tue, Sat) | Borivali, Surat, Vadodara, Kota, Agra Fort, Kanpur |
-| **09093 / 09094** | Mumbai Central – Bhagalpur Special | Mumbai Central (MMCT) | Bhagalpur (BGP) | Weekly (Wednesdays) | Borivali, Surat, Ratlam, Kota, Kanpur, Pt. DDU, Jamalpur |
-| **09041 / 09042** | Bandra – Mau Superfast Special | Bandra Terminus (BDTS) | Mau Jn (MAU) | Bi-Weekly (Sun, Wed) | Borivali, Surat, Vadodara, Kota, Shamshabad, Varanasi |
+| Train Number      | Train Name / Route                   | Origin Station         | Destination Station | Frequency            | Routing & Key Halts                                      |
+| ----------------- | ------------------------------------ | ---------------------- | ------------------- | -------------------- | -------------------------------------------------------- |
+| **09025 / 09026** | Bandra – Danapur Superfast Special   | Bandra Terminus (BDTS) | Danapur (DNR)       | Weekly (Mondays)     | Borivali, Surat, Vadodara, Ratlam, Kota, Pt. DDU         |
+| **09011 / 09012** | Bandra – Gorakhpur Festive Special   | Bandra Terminus (BDTS) | Gorakhpur Jn (GKP)  | Weekly (Thursdays)   | Borivali, Vapi, Surat, Kota, Bharatpur, Mathura, Lucknow |
+| **09017 / 09018** | Mumbai Central – Subedarganj Special | Mumbai Central (MMCT)  | Subedarganj (SFG)   | Bi-Weekly (Tue, Sat) | Borivali, Surat, Vadodara, Kota, Agra Fort, Kanpur       |
+| **09093 / 09094** | Mumbai Central – Bhagalpur Special   | Mumbai Central (MMCT)  | Bhagalpur (BGP)     | Weekly (Wednesdays)  | Borivali, Surat, Ratlam, Kota, Kanpur, Pt. DDU, Jamalpur |
+| **09041 / 09042** | Bandra – Mau Superfast Special       | Bandra Terminus (BDTS) | Mau Jn (MAU)        | Bi-Weekly (Sun, Wed) | Borivali, Surat, Vadodara, Kota, Shamshabad, Varanasi    |
 
 Travellers staying in western suburbs like Andheri, Borivali, or Virar can use Borivali as their convenient boarding station instead of travelling down to Bandra Terminus or Mumbai Central.
 
@@ -94,12 +95,12 @@ Ahmedabad, along with Anand, Nadiad, and Vadodara, houses a substantial populati
 
 The table below lists the primary festival special trains running from Ahmedabad and central Gujarat:
 
-| Train Number | Train Name / Route | Origin Station | Destination Station | Frequency | Coach Composition |
-|---|---|---|---|---|---|
-| **09417 / 09418** | Ahmedabad – Danapur Special | Ahmedabad Jn (ADI) | Danapur (DNR) | Weekly (Mondays) | 2A, 3A, SL, GS |
-| **09483 / 09484** | Ahmedabad – Barauni Special | Ahmedabad Jn (ADI) | Barauni Jn (BJU) | Tri-Weekly | 3A, 3E, SL, GS |
-| **09421 / 09422** | Sabarmati – Sitamarhi Special | Sabarmati (SBT) | Sitamarhi (SMI) | Weekly (Saturdays) | 3E, SL, GS |
-| **09405 / 09406** | Ahmedabad – Patna Superfast Special | Ahmedabad Jn (ADI) | Patna Jn (PNBE) | Weekly (Tuesdays) | 2A, 3A, 3E, SL, GS |
+| Train Number      | Train Name / Route                  | Origin Station     | Destination Station | Frequency          | Coach Composition  |
+| ----------------- | ----------------------------------- | ------------------ | ------------------- | ------------------ | ------------------ |
+| **09417 / 09418** | Ahmedabad – Danapur Special         | Ahmedabad Jn (ADI) | Danapur (DNR)       | Weekly (Mondays)   | 2A, 3A, SL, GS     |
+| **09483 / 09484** | Ahmedabad – Barauni Special         | Ahmedabad Jn (ADI) | Barauni Jn (BJU)    | Tri-Weekly         | 3A, 3E, SL, GS     |
+| **09421 / 09422** | Sabarmati – Sitamarhi Special       | Sabarmati (SBT)    | Sitamarhi (SMI)     | Weekly (Saturdays) | 3E, SL, GS         |
+| **09405 / 09406** | Ahmedabad – Patna Superfast Special | Ahmedabad Jn (ADI) | Patna Jn (PNBE)     | Weekly (Tuesdays)  | 2A, 3A, 3E, SL, GS |
 
 These Ahmedabad specials pick up passengers at Nadiad, Anand, Chhayapuri (Vadodara), Godhra, Dahod, and Ratlam, providing vital rail connections for travellers throughout central Gujarat.
 
@@ -130,21 +131,25 @@ Navigating the booking schedule correctly is essential for securing confirmed be
 Even supplementary special trains can exhaust their reservation quotas quickly. If your target train displays `WL` (Waiting List) or `REGRET`, use these proven booking strategies to secure your seat:
 
 ### 1. Contiguous Split-Ticketing via Smart Seats
+
 Indian Railways allocates berths across separate quota pools for different origin-destination pairs on the same train (`GNWL`, `RLWL`, and `PQWL`). While a direct seat from Surat to Danapur may show `REGRET`, berths often remain open from Surat to Itarsi and from Itarsi to Danapur on the identical train rake.
 
 Use [Smart Seats](/) to identify contiguous split-segment seats, allowing you to complete your journey on the same train without shifting coaches.
 
 ### 2. Booking from Terminus with Boarding Point Modification
+
 Intermediate stations draw from smaller pooled quotas that fill up fast. Booking from the originating terminal (such as Bandra Terminus instead of Surat, or Udhna instead of Nandurbar) grants access to the larger General Quota (`GNWL`).
 
 Under railway rules, you can change your boarding station online on IRCTC up to the preparation of the second reservation chart, approximately 30 minutes before train departure.
 
 ### 3. Current Availability (CURR_AVBL) After Chart Preparation
+
 When the first reservation chart finalizes (around 8 hours before departure, or at 21:00 (9:00 PM) the prior night for morning departures), unallocated VIP, emergency, and foreign tourist quotas are released into Current Availability (`CURR_AVBL`) at a **10% discount on base fare**.
 
 You can monitor real-time berth vacancy on [Chart Vacancy](/chart-vacancy) and check charting schedules on [Chart Times](/chart-times) to reserve confirmed berths up to 30 minutes before departure.
 
 ### 4. General Second Class (GS) Bio-Metric Queue
+
 For completely waitlisted travellers, select Western Railway festival specials include 4 to 6 unreserved General Second Class (GS) coaches. At major hubs like Surat and Udhna, railways administer a bio-metric token queue system to prevent platform overcrowding, ensuring orderly boarding for unreserved ticket holders.
 
 ---
@@ -189,4 +194,4 @@ Festival special trains to Bihar depart primarily from Surat, Udhna Junction, Ah
 
 Western Railway's festival special train services provide vital travel capacity for passengers journeying from Mumbai, Surat, and Ahmedabad to Bihar and Uttar Pradesh for Diwali and Chhath Puja 2026. Book your tickets early starting September 28, 2026 at 08:00 AM IST on IRCTC. If your train enters a waiting list, use [Smart Seats](/) to find confirmed split journeys, check [Chart Times](/chart-times) for charting notifications, and claim released berths on [Chart Vacancy](/chart-vacancy).
 
-*LastBerth is an independent rail seat discovery and ticketing information tool. It is not affiliated with IRCTC, CRIS, or Indian Railways, and does not issue or sell tickets.*
+_LastBerth is an independent rail seat discovery and ticketing information tool. It is not affiliated with IRCTC, CRIS, or Indian Railways, and does not issue or sell tickets._

@@ -19,11 +19,7 @@
       "duration": "17h 15m",
       "distance": "1449 km",
       "halts": 7,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12301-rajdhani-expres-chart-times",
       "chartTimesUrl": "/chart-times/12301-rajdhani-expres-chart-times",
       "foodMenuSlug": null,
@@ -46,11 +42,7 @@
       "duration": "17h 05m",
       "distance": "1449 km",
       "halts": 7,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12302-hwh-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/12302-hwh-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -73,11 +65,7 @@
       "duration": "20h 00m",
       "distance": "1531 km",
       "halts": 7,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12305-rajdhani-expres-chart-times",
       "chartTimesUrl": "/chart-times/12305-rajdhani-expres-chart-times",
       "foodMenuSlug": null,
@@ -100,11 +88,7 @@
       "duration": "18h 00m",
       "distance": "1455 km",
       "halts": 6,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12313-rajdhani-expres-chart-times",
       "chartTimesUrl": "/chart-times/12313-rajdhani-expres-chart-times",
       "foodMenuSlug": null,
@@ -127,11 +111,7 @@
       "duration": "37h 55m",
       "distance": "2435 km",
       "halts": 23,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12423-rajdhani-exp-chart-times",
       "chartTimesUrl": "/chart-times/12423-rajdhani-exp-chart-times",
       "foodMenuSlug": null,
@@ -154,11 +134,7 @@
       "duration": "38h 00m",
       "distance": "2434 km",
       "halts": 23,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12424-dbrt-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/12424-dbrt-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -181,11 +157,7 @@
       "duration": "8h 20m",
       "distance": "577 km",
       "halts": 3,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12425-jammu-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/12425-jammu-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -208,11 +180,7 @@
       "duration": "8h 30m",
       "distance": "577 km",
       "halts": 3,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12426-jammu-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/12426-jammu-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -235,11 +203,7 @@
       "duration": "45h 50m",
       "distance": "3144 km",
       "halts": 19,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12431-rajdhani-exp-chart-times",
       "chartTimesUrl": "/chart-times/12431-rajdhani-exp-chart-times",
       "foodMenuSlug": null,
@@ -262,11 +226,7 @@
       "duration": "43h 34m",
       "distance": "3144 km",
       "halts": 19,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12432-tvc-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/12432-tvc-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -289,11 +249,7 @@
       "duration": "28h 25m",
       "distance": "2180 km",
       "halts": 8,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12433-mas-nzm-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/12433-mas-nzm-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -316,11 +272,7 @@
       "duration": "29h 15m",
       "distance": "2174 km",
       "halts": 8,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12434-nzm-mas-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/12434-nzm-mas-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -343,11 +295,7 @@
       "duration": "21h 40m",
       "distance": "1667 km",
       "halts": 5,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12437-sc-nzm-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/12437-sc-nzm-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -370,11 +318,7 @@
       "duration": "22h 05m",
       "distance": "1660 km",
       "halts": 5,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12438-sc-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/12438-sc-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -397,11 +341,7 @@
       "duration": "17h 35m",
       "distance": "1246 km",
       "halts": 10,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12454-rnc-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/12454-rnc-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -424,11 +364,7 @@
       "duration": "12h 10m",
       "distance": "929 km",
       "halts": 8,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "12958-swran-j-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/12958-swran-j-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -451,11 +387,7 @@
       "duration": "16h 15m",
       "distance": "1249 km",
       "halts": 6,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "20408-rnc-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/20408-rnc-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -478,11 +410,7 @@
       "duration": "41h 58m",
       "distance": "2477 km",
       "halts": 24,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "20503-rajdhani-exp-chart-times",
       "chartTimesUrl": "/chart-times/20503-rajdhani-exp-chart-times",
       "foodMenuSlug": null,
@@ -505,11 +433,7 @@
       "duration": "41h 35m",
       "distance": "2471 km",
       "halts": 24,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "20504-dbrg-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/20504-dbrg-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -532,11 +456,7 @@
       "duration": "39h 53m",
       "distance": "2312 km",
       "halts": 26,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "20505-rajdhani-exp-chart-times",
       "chartTimesUrl": "/chart-times/20505-rajdhani-exp-chart-times",
       "foodMenuSlug": null,
@@ -559,11 +479,7 @@
       "duration": "39h 45m",
       "distance": "2297 km",
       "halts": 26,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "20506-dbrg-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/20506-dbrg-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -586,11 +502,7 @@
       "duration": "",
       "distance": "2512 km",
       "halts": 18,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "20507-rajdhani-exp-chart-times",
       "chartTimesUrl": "/chart-times/20507-rajdhani-exp-chart-times",
       "foodMenuSlug": null,
@@ -613,11 +525,7 @@
       "duration": "",
       "distance": "2512 km",
       "halts": 18,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "20508-sang-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/20508-sang-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -640,11 +548,7 @@
       "duration": "17h 55m",
       "distance": "1543 km",
       "halts": 8,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "22221-nzm-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/22221-nzm-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -667,11 +571,7 @@
       "duration": "18h 20m",
       "distance": "1537 km",
       "halts": 8,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "22222-csmt-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/22222-csmt-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -694,11 +594,7 @@
       "duration": "28h 30m",
       "distance": "2094 km",
       "halts": 9,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "22413-mao-nzm-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/22413-mao-nzm-rajdhani-chart-times",
       "foodMenuSlug": null,
@@ -721,11 +617,7 @@
       "duration": "33h 30m",
       "distance": "2371 km",
       "halts": 14,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "22691-rajdhani-exp-chart-times",
       "chartTimesUrl": "/chart-times/22691-rajdhani-exp-chart-times",
       "foodMenuSlug": null,
@@ -748,11 +640,7 @@
       "duration": "33h 30m",
       "distance": "2365 km",
       "halts": 14,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "22692-sbc-rajdhani-chart-times",
       "chartTimesUrl": "/chart-times/22692-sbc-rajdhani-chart-times",
       "foodMenuSlug": null,

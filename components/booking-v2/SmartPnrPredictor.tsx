@@ -33,7 +33,10 @@ interface SmartPnrPredictorProps {
   compactMode?: boolean;
 }
 
-export function getConfirmationProbability(statusStr: string | undefined, bookingStr?: string): {
+export function getConfirmationProbability(
+  statusStr: string | undefined,
+  bookingStr?: string,
+): {
   probability: number;
   type: string;
   current: number;
@@ -69,7 +72,13 @@ export function getConfirmationProbability(statusStr: string | undefined, bookin
   if (s.includes("PQWL") || b.includes("PQWL")) wlType = "PQWL";
   else if (s.includes("RLWL") || b.includes("RLWL")) wlType = "RLWL";
   else if (s.includes("RSWL") || b.includes("RSWL")) wlType = "RSWL";
-  else if (s.includes("TQWL") || b.includes("TQWL") || s.includes("CKWL") || b.includes("CKWL")) wlType = "TQWL";
+  else if (
+    s.includes("TQWL") ||
+    b.includes("TQWL") ||
+    s.includes("CKWL") ||
+    b.includes("CKWL")
+  )
+    wlType = "TQWL";
 
   let currentWl = 15; // default fallback
   const parts = s.split("/");
@@ -99,18 +108,27 @@ export function getConfirmationProbability(statusStr: string | undefined, bookin
     decay = 5.5;
   }
 
-  const probability = Math.max(8, Math.round(baseProb - (currentWl - 1) * decay));
+  const probability = Math.max(
+    8,
+    Math.round(baseProb - (currentWl - 1) * decay),
+  );
   return { probability, type: wlType, current: currentWl };
 }
 
-export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPredictorProps) {
+export function SmartPnrPredictor({
+  pnrData,
+  compactMode = false,
+}: SmartPnrPredictorProps) {
   const analysis = useMemo(() => {
     if (!pnrData.PassengerStatus || pnrData.PassengerStatus.length === 0) {
       return { minProb: 100, passengers: [], confirmedCount: 0 };
     }
 
     const passengers = pnrData.PassengerStatus.map((p) => {
-      const { probability, type, current } = getConfirmationProbability(p.CurrentStatus, p.BookingStatus);
+      const { probability, type, current } = getConfirmationProbability(
+        p.CurrentStatus,
+        p.BookingStatus,
+      );
       return {
         number: p.Number,
         status: p.CurrentStatus,
@@ -121,7 +139,9 @@ export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPred
     });
 
     const minProb = Math.min(...passengers.map((p) => p.probability));
-    const confirmedCount = passengers.filter((p) => p.probability === 100).length;
+    const confirmedCount = passengers.filter(
+      (p) => p.probability === 100,
+    ).length;
 
     return { minProb, passengers, confirmedCount };
   }, [pnrData]);
@@ -138,7 +158,8 @@ export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPred
         shadowColor: "shadow-emerald-500/10",
         glowFilter: "drop-shadow(0 0 10px rgba(16, 185, 129, 0.4))",
         label: "High Chance",
-        description: "Your tickets are extremely safe! High rate of historical cancellations on this leg indicates smooth confirmation.",
+        description:
+          "Your tickets are extremely safe! High rate of historical cancellations on this leg indicates smooth confirmation.",
       };
     } else if (p >= 40) {
       return {
@@ -149,7 +170,8 @@ export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPred
         shadowColor: "shadow-amber-500/10",
         glowFilter: "drop-shadow(0 0 10px rgba(245, 158, 11, 0.4))",
         label: "Moderate Risk",
-        description: "Borderline probability. Waitlist clearance could halt near chart preparation. Consider utilizing our Rescue paths.",
+        description:
+          "Borderline probability. Waitlist clearance could halt near chart preparation. Consider utilizing our Rescue paths.",
       };
     } else {
       return {
@@ -160,7 +182,8 @@ export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPred
         shadowColor: "shadow-rose-500/10",
         glowFilter: "drop-shadow(0 0 10px rgba(244, 63, 94, 0.4))",
         label: "Critical Waitlist",
-        description: "Remote waitlist category or heavy congestion. Highly unlikely to confirm. We strongly recommend booking segment alternates.",
+        description:
+          "Remote waitlist category or heavy congestion. Highly unlikely to confirm. We strongly recommend booking segment alternates.",
       };
     }
   }, [analysis.minProb]);
@@ -168,18 +191,24 @@ export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPred
   // Radial calculation (Circle radius = 40, circumference = 2 * PI * 40 ≈ 251.3)
   const radius = 40;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (analysis.minProb / 100) * circumference;
+  const strokeDashoffset =
+    circumference - (analysis.minProb / 100) * circumference;
 
   if (compactMode) {
     return (
-      <div className={`overflow-hidden rounded-2xl border ${config.borderColor} ${config.bgColor} p-6 backdrop-blur-md transition-all duration-500 shadow-md ${config.shadowColor} flex flex-col items-center justify-center`}>
+      <div
+        className={`overflow-hidden rounded-2xl border ${config.borderColor} ${config.bgColor} p-6 shadow-md backdrop-blur-md transition-all duration-500 ${config.shadowColor} flex flex-col items-center justify-center`}
+      >
         <div className="relative flex shrink-0 items-center justify-center">
-          <svg className="h-32 w-32 rotate-[-90deg] transform" aria-label={`Confirmation probability ${analysis.minProb}%`}>
+          <svg
+            className="h-32 w-32 rotate-[-90deg] transform"
+            aria-label={`Confirmation probability ${analysis.minProb}%`}
+          >
             <circle
               cx="64"
               cy="64"
               r={radius}
-              className="stroke-slate-200/40 fill-none"
+              className="fill-none stroke-slate-200/40"
               strokeWidth="8"
             />
             <circle
@@ -195,7 +224,7 @@ export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPred
             />
           </svg>
           <div className="absolute flex flex-col items-center justify-center">
-            <span className="text-3xl font-black tracking-tight text-slate-800 tabular-nums">
+            <span className="text-3xl font-black tabular-nums tracking-tight text-slate-800">
               {analysis.minProb}%
             </span>
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
@@ -204,10 +233,12 @@ export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPred
           </div>
         </div>
         <div className="mt-4 text-center">
-          <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold ${config.textColor} bg-white/80 shadow-sm border border-current/10 mb-2`}>
+          <span
+            className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold ${config.textColor} border-current/10 mb-2 border bg-white/80 shadow-sm`}
+          >
             {config.label}
           </span>
-          <p className="text-xs text-slate-600 font-medium">
+          <p className="text-xs font-medium text-slate-600">
             {analysis.confirmedCount} / {analysis.passengers.length} Booked CNF
           </p>
         </div>
@@ -216,17 +247,22 @@ export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPred
   }
 
   return (
-    <div className={`mt-5 overflow-hidden rounded-2xl border ${config.borderColor} ${config.bgColor} p-5 backdrop-blur-md transition-all duration-500 shadow-md ${config.shadowColor}`}>
+    <div
+      className={`mt-5 overflow-hidden rounded-2xl border ${config.borderColor} ${config.bgColor} p-5 shadow-md backdrop-blur-md transition-all duration-500 ${config.shadowColor}`}
+    >
       <div className="flex flex-col gap-6 md:flex-row md:items-center">
         {/* Radial gauge container */}
-        <div className="relative flex shrink-0 items-center justify-center mx-auto md:mx-0">
-          <svg className="h-32 w-32 rotate-[-90deg] transform" aria-label={`Confirmation probability ${analysis.minProb}%`}>
+        <div className="relative mx-auto flex shrink-0 items-center justify-center md:mx-0">
+          <svg
+            className="h-32 w-32 rotate-[-90deg] transform"
+            aria-label={`Confirmation probability ${analysis.minProb}%`}
+          >
             {/* Background circle */}
             <circle
               cx="64"
               cy="64"
               r={radius}
-              className="stroke-slate-200/40 fill-none"
+              className="fill-none stroke-slate-200/40"
               strokeWidth="8"
             />
             {/* Progress circle */}
@@ -244,7 +280,7 @@ export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPred
           </svg>
           {/* Central text */}
           <div className="absolute flex flex-col items-center justify-center">
-            <span className="text-3xl font-black tracking-tight text-slate-800 tabular-nums">
+            <span className="text-3xl font-black tabular-nums tracking-tight text-slate-800">
               {analysis.minProb}%
             </span>
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
@@ -255,15 +291,18 @@ export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPred
 
         {/* Insight content */}
         <div className="flex-1 text-center md:text-left">
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
-            <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold ${config.textColor} bg-white/80 shadow-sm border border-current/10 animate-pulse`}>
+          <div className="mb-2 flex flex-wrap items-center justify-center gap-2 md:justify-start">
+            <span
+              className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold ${config.textColor} border-current/10 animate-pulse border bg-white/80 shadow-sm`}
+            >
               {config.label}
             </span>
-            <span className="text-xs text-slate-500 font-medium">
-              {analysis.confirmedCount} / {analysis.passengers.length} Booked CNF
+            <span className="text-xs font-medium text-slate-500">
+              {analysis.confirmedCount} / {analysis.passengers.length} Booked
+              CNF
             </span>
           </div>
-          <h4 className="text-base font-extrabold text-slate-900 tracking-tight">
+          <h4 className="text-base font-extrabold tracking-tight text-slate-900">
             Confirmation Analytics
           </h4>
           <p className="mt-1 text-sm leading-relaxed text-slate-700">
@@ -278,11 +317,17 @@ export function SmartPnrPredictor({ pnrData, compactMode = false }: SmartPnrPred
                 className="rounded-lg border border-slate-200/50 bg-white/50 p-2 text-xs shadow-sm"
               >
                 <p className="font-bold text-slate-500">Pax {p.number}</p>
-                <div className="mt-0.5 flex justify-between items-baseline gap-1">
+                <div className="mt-0.5 flex items-baseline justify-between gap-1">
                   <span className="font-black text-slate-800">{p.status}</span>
-                  <span className={`font-extrabold font-mono ${
-                    p.probability >= 75 ? "text-emerald-600" : p.probability >= 40 ? "text-amber-600" : "text-rose-600"
-                  }`}>
+                  <span
+                    className={`font-mono font-extrabold ${
+                      p.probability >= 75
+                        ? "text-emerald-600"
+                        : p.probability >= 40
+                          ? "text-amber-600"
+                          : "text-rose-600"
+                    }`}
+                  >
                     {p.probability}%
                   </span>
                 </div>

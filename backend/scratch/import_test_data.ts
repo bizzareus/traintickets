@@ -5,7 +5,8 @@ import { parse } from 'csv-parse/sync';
 import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
 
-const connectionString = process.env.DATABASE_URL ?? 'postgresql://localhost:5432/railchart';
+const connectionString =
+  process.env.DATABASE_URL ?? 'postgresql://localhost:5432/railchart';
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
@@ -13,7 +14,10 @@ const TEST_DATA_DIR = path.join(__dirname, '../../test-data');
 
 async function importTasks() {
   console.log('--- Importing ChartTimeAvailabilityTask ---');
-  const filePath = path.join(TEST_DATA_DIR, 'ChartTimeAvailabilityTask_rows.csv');
+  const filePath = path.join(
+    TEST_DATA_DIR,
+    'ChartTimeAvailabilityTask_rows.csv',
+  );
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const records = parse(fileContent, { columns: true, skip_empty_lines: true });
 
@@ -23,7 +27,7 @@ async function importTasks() {
       await prisma.journeyMonitorContact.upsert({
         where: { journeyRequestId: record.journey_request_id },
         update: {},
-        create: { journeyRequestId: record.journey_request_id }
+        create: { journeyRequestId: record.journey_request_id },
       });
     }
 
@@ -43,12 +47,20 @@ async function importTasks() {
           classCode: record.class_code,
           chartAt: new Date(record.chart_at),
           status: record.status,
-          resultPayload: record.result_payload ? JSON.parse(record.result_payload) : undefined,
+          resultPayload: record.result_payload
+            ? JSON.parse(record.result_payload)
+            : undefined,
           createdAt: new Date(record.created_at),
-          completedAt: record.completed_at ? new Date(record.completed_at) : undefined,
-          emailNotifiedAt: record.email_notified_at ? new Date(record.email_notified_at) : undefined,
-          whatsappNotifiedAt: record.whatsapp_notified_at ? new Date(record.whatsapp_notified_at) : undefined,
-        }
+          completedAt: record.completed_at
+            ? new Date(record.completed_at)
+            : undefined,
+          emailNotifiedAt: record.email_notified_at
+            ? new Date(record.email_notified_at)
+            : undefined,
+          whatsappNotifiedAt: record.whatsapp_notified_at
+            ? new Date(record.whatsapp_notified_at)
+            : undefined,
+        },
       });
     } catch (e) {
       console.error(`Failed to import task ${record.id}:`, e.message);
@@ -73,13 +85,20 @@ async function importScheduleCache() {
           trainName: record.train_name,
           stationFrom: record.station_from,
           stationTo: record.station_to,
-          stationList: record.station_list ? JSON.parse(record.station_list) : undefined,
+          stationList: record.station_list
+            ? JSON.parse(record.station_list)
+            : undefined,
           fetchedAt: new Date(record.fetched_at),
-          trainRunsOn: record.train_runs_on ? JSON.parse(record.train_runs_on) : undefined,
-        }
+          trainRunsOn: record.train_runs_on
+            ? JSON.parse(record.train_runs_on)
+            : undefined,
+        },
       });
     } catch (e) {
-      console.error(`Failed to import schedule cache ${record.train_number}:`, e.message);
+      console.error(
+        `Failed to import schedule cache ${record.train_number}:`,
+        e.message,
+      );
     }
   }
 }
@@ -98,9 +117,11 @@ async function importCacheEntries() {
         create: {
           key: record.key,
           value: record.value ? JSON.parse(record.value) : undefined,
-          expiresAt: record.expires_at ? new Date(record.expires_at) : undefined,
+          expiresAt: record.expires_at
+            ? new Date(record.expires_at)
+            : undefined,
           updatedAt: new Date(record.updated_at),
-        }
+        },
       });
     } catch (e) {
       console.error(`Failed to import cache entry ${record.key}:`, e.message);
@@ -124,10 +145,13 @@ async function importStationCache() {
           stationName: record.station_name,
           metadata: record.metadata ? JSON.parse(record.metadata) : undefined,
           updatedAt: new Date(record.updated_at),
-        }
+        },
       });
     } catch (e) {
-      console.error(`Failed to import station cache ${record.station_code}:`, e.message);
+      console.error(
+        `Failed to import station cache ${record.station_code}:`,
+        e.message,
+      );
     }
   }
 }
@@ -139,4 +163,6 @@ async function main() {
   await importTasks();
 }
 
-main().catch(console.error).finally(() => prisma.$disconnect());
+main()
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());

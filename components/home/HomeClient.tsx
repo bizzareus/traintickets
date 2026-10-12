@@ -39,7 +39,7 @@ const SearchPnrPanel = dynamic(
     ),
   {
     loading: () => (
-      <div className="flex h-36 items-center justify-center rounded-xl bg-white p-6 shadow-xs border border-gray-200">
+      <div className="shadow-xs flex h-36 items-center justify-center rounded-xl border border-gray-200 bg-white p-6">
         <span className="h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-blue-600" />
       </div>
     ),
@@ -170,8 +170,7 @@ type CachedBestTrain = {
 };
 
 type CachedBestTrainResponse =
-  | { cached: true; cachedAt: string; best: CachedBestTrain }
-  | { cached: false };
+  { cached: true; cachedAt: string; best: CachedBestTrain } | { cached: false };
 
 /**
  * Cap the best-train scan at the first N listed trains. Each candidate fans out
@@ -1148,7 +1147,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   ]);
 
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-gray-900 antialiased">
+    <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-gray-900 antialiased">
       <Suspense fallback={null}>
         <UrlSearchParamsSync onParams={handleUrlParams} />
       </Suspense>
@@ -1156,7 +1155,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
 
       {/* ── Compact search bar (desktop only after search; mobile uses the summary pill + sheet) ── */}
       {isCompact && (
-        <div className="hidden sm:block sticky top-[49px] z-[19] border-b border-gray-200 bg-white/95 backdrop-blur-sm transition-all">
+        <div className="sticky top-[49px] z-[19] hidden border-b border-gray-200 bg-white/95 backdrop-blur-sm transition-all sm:block">
           <div className="mx-auto flex max-w-3xl items-center gap-2 px-4 py-2 sm:gap-3 sm:px-6 lg:max-w-4xl">
             <div className="flex h-14 min-w-0 flex-1 items-stretch rounded-lg border border-gray-200 bg-gray-50 px-2 sm:px-3">
               <StationFieldSimple
@@ -1242,7 +1241,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 if (!searchLoading) void runSearch();
               }}
               disabled={searchLoading}
-              className="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500/35 disabled:opacity-60 touch-manipulation sm:px-5 sm:text-sm"
+              className="inline-flex shrink-0 touch-manipulation items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500/35 disabled:opacity-60 sm:px-5 sm:text-sm"
             >
               {searchLoading ? (
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
@@ -1262,7 +1261,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               type="button"
               onClick={() => setMobileSheetOpen(true)}
               aria-label="Modify your search"
-              className="w-full rounded-full bg-slate-100 px-4 py-2 text-center transition hover:bg-slate-200 touch-manipulation"
+              className="w-full touch-manipulation rounded-full bg-slate-100 px-4 py-2 text-center transition hover:bg-slate-200"
             >
               <span className="block truncate text-sm font-bold text-slate-900">
                 {submittedSearch?.from.stationCode ?? "—"} -{" "}
@@ -1280,8 +1279,8 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       )}
 
       <div className="mx-auto max-w-7xl px-0 xl:px-8">
-        <div className="flex justify-center items-start gap-8">
-          <div className="w-full max-w-3xl lg:max-w-4xl min-w-0">
+        <div className="flex items-start justify-center gap-8">
+          <div className="w-full min-w-0 max-w-3xl lg:max-w-4xl">
             <div
               className={cn(
                 "mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-4xl",
@@ -1291,7 +1290,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               {/* ── Hero headline (hidden in compact mode) ── */}
               {!isCompact && (
                 <header className="mb-8">
-                  <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl text-balance">
+                  <h1 className="text-balance text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
                     {t.hero.titleLead}
                     <span className="text-blue-600">
                       {t.hero.titleHighlight}
@@ -1307,14 +1306,14 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               <div className={cn("mb-2", !isCompact && "min-h-[148px]")}>
                 {/* Tab Switcher (hidden in compact mode) */}
                 {!isCompact && (
-                  <div className="mb-4 flex p-1 bg-slate-200/50 rounded-xl max-w-[360px] sm:max-w-[440px] backdrop-blur-md border border-white/40 shadow-xs">
+                  <div className="shadow-xs mb-4 flex max-w-[360px] rounded-xl border border-white/40 bg-slate-200/50 p-1 backdrop-blur-md sm:max-w-[440px]">
                     <button
                       type="button"
                       id="tabSearchRoute"
                       onClick={() => handleTabSwitch("route")}
-                      className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
+                      className={`flex-1 touch-manipulation rounded-lg py-1.5 text-xs font-bold transition-all duration-200 sm:py-2 sm:text-sm ${
                         searchType === "route"
-                          ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
+                          ? "shadow-xs scale-[1.01] bg-white text-blue-600"
                           : "text-slate-600 hover:text-slate-900"
                       }`}
                     >
@@ -1324,9 +1323,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                       type="button"
                       id="tabSearchPnr"
                       onClick={() => handleTabSwitch("pnr")}
-                      className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
+                      className={`flex-1 touch-manipulation rounded-lg py-1.5 text-xs font-bold transition-all duration-200 sm:py-2 sm:text-sm ${
                         searchType === "pnr"
-                          ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
+                          ? "shadow-xs scale-[1.01] bg-white text-blue-600"
                           : "text-slate-600 hover:text-slate-900"
                       }`}
                     >
@@ -1336,9 +1335,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                       type="button"
                       id="tabSeatStatus"
                       onClick={() => handleTabSwitch("seat")}
-                      className={`flex-1 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-200 touch-manipulation ${
+                      className={`flex-1 touch-manipulation rounded-lg py-1.5 text-xs font-bold transition-all duration-200 sm:py-2 sm:text-sm ${
                         searchType === "seat"
-                          ? "bg-white text-blue-600 shadow-xs scale-[1.01]"
+                          ? "shadow-xs scale-[1.01] bg-white text-blue-600"
                           : "text-slate-600 hover:text-slate-900"
                       }`}
                     >
@@ -1416,7 +1415,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                           onOpenChange={openTo}
                           suggestError={toSuggestError}
                         />
-                        <div className="z-10 min-w-0 flex-1 border-t border-gray-200 bg-white px-3 py-2.5 overflow-visible sm:flex-[1.5] sm:border-t-0 sm:border-r sm:py-2">
+                        <div className="z-10 min-w-0 flex-1 overflow-visible border-t border-gray-200 bg-white px-3 py-2.5 sm:flex-[1.5] sm:border-r sm:border-t-0 sm:py-2">
                           <div className="flex items-end gap-2">
                             <div className="min-w-0 flex-1">
                               <label
@@ -1462,7 +1461,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                           <button
                             type="submit"
                             disabled={searchLoading}
-                            className="inline-flex w-full items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base touch-manipulation"
+                            className="inline-flex w-full touch-manipulation items-center justify-center rounded-b-xl bg-blue-600 px-4 py-4 text-center text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/35 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-0 sm:min-w-[128px] sm:rounded-b-none sm:rounded-r-xl sm:px-5 sm:py-0 sm:text-base"
                           >
                             {searchLoading ? (
                               <span className="inline-flex items-center gap-2">
@@ -1590,7 +1589,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               {searchType === "route" &&
                 (altResult || altError || (altLoading && altForTrain)) && (
                   <div
-                    className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 backdrop-blur-xs sm:items-center sm:p-4"
+                    className="backdrop-blur-xs fixed inset-0 z-50 flex items-end justify-center bg-black/50 sm:items-center sm:p-4"
                     role="presentation"
                     onClick={() => {
                       if (!altLoading) {
@@ -1599,13 +1598,13 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                     }}
                   >
                     <div
-                      className="flex h-[92dvh] sm:h-auto sm:max-h-[88vh] w-full flex-col rounded-t-2xl sm:rounded-2xl bg-white shadow-2xl sm:border sm:border-gray-200 sm:max-w-2xl overflow-hidden animate-in slide-in-from-bottom duration-300 sm:zoom-in-95"
+                      className="animate-in slide-in-from-bottom sm:zoom-in-95 flex h-[92dvh] w-full flex-col overflow-hidden rounded-t-2xl bg-white shadow-2xl duration-300 sm:h-auto sm:max-h-[88vh] sm:max-w-2xl sm:rounded-2xl sm:border sm:border-gray-200"
                       role="dialog"
                       aria-modal="true"
                       onClick={(e) => e.stopPropagation()}
                     >
                       {/* Mobile drag handle */}
-                      <div className="flex justify-center pt-2.5 pb-1 sm:hidden shrink-0">
+                      <div className="flex shrink-0 justify-center pb-1 pt-2.5 sm:hidden">
                         <div className="h-1.5 w-12 rounded-full bg-slate-300" />
                       </div>
                       <AlternatePathContent
@@ -1653,7 +1652,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             )}
           </div>
 
-          <aside className="hidden xl:block shrink-0 sticky top-20 pt-8">
+          <aside className="sticky top-20 hidden shrink-0 pt-8 xl:block">
             <SideAdvert utmMedium="external_website_homepage" />
           </aside>
         </div>

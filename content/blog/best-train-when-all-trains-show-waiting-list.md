@@ -175,9 +175,11 @@ Availability can change, and different ticket types have different travel rules.
 ## Common Booking Questions (FAQ)
 
 ### What does "Regret" status mean on IRCTC?
-It means the train is 100% full. The waitlist has hit its limit too. Once a route goes into "Regret" status, IRCTC won't let you book a ticket or even join the waitlist queue. 
+
+It means the train is 100% full. The waitlist has hit its limit too. Once a route goes into "Regret" status, IRCTC won't let you book a ticket or even join the waitlist queue.
 
 ### Can I board the train with a fully waitlisted e-ticket?
+
 No. Fully waitlisted e-tickets (where all passengers on the PNR remain waitlisted after chart preparation) are automatically cancelled and refunded to your original payment account. Boarding a train with an invalid, waitlisted e-ticket is treated as traveling without a ticket, which is a punishable offense.
 
 ---

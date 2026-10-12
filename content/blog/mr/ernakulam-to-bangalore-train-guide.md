@@ -26,14 +26,14 @@ tags:
 
 एर्नाकुलम आणि बंगलोर जोडणाऱ्या प्रमुख थेट ट्रेन पर्यायांचा सारांश खालीलप्रमाणे आहे:
 
-| ट्रेनचे नाव व क्रमांक | प्रस्थान स्टेशन (एर्नाकुलम) | आगमन स्टेशन (बंगलोर) | वारंवारता | प्रवासाची वेळ | उपलब्ध वर्ग |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Ernakulam - SMVB Vande Bharat (20638/20637)** | Ernakulam Jn (ERS) | SMVT Bengaluru (SMVB) | आठवड्यातून 6 दिवस | ~8ता 30मि | CC, EC |
-| **Ernakulam - KSR Bengaluru Intercity (12678)** | Ernakulam Jn (ERS) | KSR Bengaluru (SBC) | दररोज | ~10ता 30मि | CC, 2S |
-| **Ernakulam - SMVT Express (16316)** | Ernakulam Jn (ERS) | SMVT Bengaluru (SMVB) | दररोज | ~11ता 45मि | 2A, 3A, SL |
-| **Kanyakumari - KSR Bengaluru Express (16525)** | Ernakulam Town (ERN) | KSR Bengaluru (SBC) | दररोज | ~12ता 15मि | 1A, 2A, 3A, SL |
-| **Kochuveli - SMVT AC Express (22678)** | Ernakulam Town (ERN) | SMVT Bengaluru (SMVB) | साप्ताहिक / स्पेशल | ~10ता 15मि | 1A, 2A, 3A |
-| **Kochuveli - YPR Garib Rath (12258)** | Ernakulam Town (ERN) | Yesvantpur Jn (YPR) | आठवड्यातून 3 दिवस | ~11ता 00मि | 3A |
+| ट्रेनचे नाव व क्रमांक                           | प्रस्थान स्टेशन (एर्नाकुलम) | आगमन स्टेशन (बंगलोर)  | वारंवारता          | प्रवासाची वेळ | उपलब्ध वर्ग    |
+| :---------------------------------------------- | :-------------------------- | :-------------------- | :----------------- | :------------ | :------------- |
+| **Ernakulam - SMVB Vande Bharat (20638/20637)** | Ernakulam Jn (ERS)          | SMVT Bengaluru (SMVB) | आठवड्यातून 6 दिवस  | ~8ता 30मि     | CC, EC         |
+| **Ernakulam - KSR Bengaluru Intercity (12678)** | Ernakulam Jn (ERS)          | KSR Bengaluru (SBC)   | दररोज              | ~10ता 30मि    | CC, 2S         |
+| **Ernakulam - SMVT Express (16316)**            | Ernakulam Jn (ERS)          | SMVT Bengaluru (SMVB) | दररोज              | ~11ता 45मि    | 2A, 3A, SL     |
+| **Kanyakumari - KSR Bengaluru Express (16525)** | Ernakulam Town (ERN)        | KSR Bengaluru (SBC)   | दररोज              | ~12ता 15मि    | 1A, 2A, 3A, SL |
+| **Kochuveli - SMVT AC Express (22678)**         | Ernakulam Town (ERN)        | SMVT Bengaluru (SMVB) | साप्ताहिक / स्पेशल | ~10ता 15मि    | 1A, 2A, 3A     |
+| **Kochuveli - YPR Garib Rath (12258)**          | Ernakulam Town (ERN)        | Yesvantpur Jn (YPR)   | आठवड्यातून 3 दिवस  | ~11ता 00मि    | 3A             |
 
 ---
 
@@ -57,6 +57,7 @@ tags:
 **Ernakulam – SMVT Bengaluru Vande Bharat Express हा प्रवास अवघ्या 8 तास 30 मिनिटांत पूर्ण करते, ज्यामुळे ती या मार्गावरील सर्वात जलद ट्रेन ठरते. AC Chair Car (CC) चे भाडे अंदाजे ₹1,450 ते ₹1,650 आहे, तर Executive Chair Car (EC) चे भाडे सुमारे ₹2,800 ते ₹3,100 आहे, ज्यामध्ये ऐच्छिक ऑनबोर्ड कॅटरिंगचा समावेश आहे.**
 
 एर्नाकुलम ते बंगलोर Vande Bharat साठी महत्त्वाचे तपशील:
+
 - **प्रस्थान:** Ernakulam Junction (ERS) वरून भल्या पहाटे (~05:10 AM) निघते आणि SMVT Bengaluru (SMVB) येथे दुपारी ~01:40 PM वाजता पोहोचते.
 - **मुख्य थांबे:** Thrissur, Palakkad Junction, Coimbatore Junction, Erode Junction आणि Salem Junction.
 - **कॅटरिंग पर्याय:** ऑनबोर्ड कॅटरिंग ऐच्छिक आहे. बुकिंग दरम्यान कॅटरिंग न निवडल्यास प्रति तिकीट ₹150 ते ₹350 ची बचत होते.

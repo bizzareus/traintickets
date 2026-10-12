@@ -137,8 +137,7 @@ export class TrainsService {
 
     // 3. Fetch schedule cache details for the train
     let schedule:
-      | (TrainScheduleResponse & { availableClasses?: string[] })
-      | null = null;
+      (TrainScheduleResponse & { availableClasses?: string[] }) | null = null;
     try {
       const scheduleResult = await this.irctcService.getTrainSchedule(
         train.trainNumber,

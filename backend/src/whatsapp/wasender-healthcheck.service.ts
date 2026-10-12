@@ -234,9 +234,7 @@ export class WasenderHealthcheckService {
         if (axios.isAxiosError(err)) {
           const statusCode = err.response?.status;
           const resData = err.response?.data as
-            | WasenderStatusPayload
-            | string
-            | undefined;
+            WasenderStatusPayload | string | undefined;
           const resMsg: string =
             typeof resData === 'object' && typeof resData?.message === 'string'
               ? resData.message

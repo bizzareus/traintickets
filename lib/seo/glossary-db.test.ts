@@ -24,7 +24,7 @@ test("getAllGlossaryTerms - returns pre-sorted terms", () => {
   for (let i = 0; i < terms.length - 1; i++) {
     assert.ok(
       terms[i].term.localeCompare(terms[i + 1].term) <= 0,
-      `Expected ${terms[i].term} <= ${terms[i + 1].term}`
+      `Expected ${terms[i].term} <= ${terms[i + 1].term}`,
     );
   }
 });

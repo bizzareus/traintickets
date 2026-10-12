@@ -229,24 +229,24 @@ export default function TrainConfirmedTicketsClient({
     <div className="space-y-6 sm:space-y-8">
       {/* ── Breadcrumb ── */}
       <nav
-        className="flex items-center text-xs sm:text-sm text-slate-500 font-medium"
+        className="flex items-center text-xs font-medium text-slate-500 sm:text-sm"
         aria-label="Breadcrumb"
       >
-        <Link href="/" className="hover:text-blue-600 transition-colors">
+        <Link href="/" className="transition-colors hover:text-blue-600">
           Home
         </Link>
-        <ChevronRight className="mx-1.5 h-3.5 w-3.5 text-slate-400 shrink-0" />
+        <ChevronRight className="mx-1.5 h-3.5 w-3.5 shrink-0 text-slate-400" />
         <span className="text-slate-500">Confirmed Tickets</span>
-        <ChevronRight className="mx-1.5 h-3.5 w-3.5 text-slate-400 shrink-0" />
-        <span className="text-slate-900 font-semibold truncate">
+        <ChevronRight className="mx-1.5 h-3.5 w-3.5 shrink-0 text-slate-400" />
+        <span className="truncate font-semibold text-slate-900">
           {trainName} ({trainNumber})
         </span>
       </nav>
 
       {/* ── Main Hero Card & Seat Availability Matrix ── */}
-      <header className="rounded-xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs space-y-6">
+      <header className="shadow-xs space-y-6 rounded-xl border border-slate-200 bg-white p-5 sm:p-7">
         <div>
-          <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             {chartTimesSlug && (
               <Link
                 href={`/chart-times/${chartTimesSlug}`}
@@ -258,11 +258,11 @@ export default function TrainConfirmedTicketsClient({
             )}
           </div>
 
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
+          <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
             Confirmed Tickets for {trainName}{" "}
-            <span className="text-blue-600 font-bold">({trainNumber})</span>
+            <span className="font-bold text-blue-600">({trainNumber})</span>
           </h1>
-          <p className="mt-2 text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
             Live seat availability, post-charting vacant berths, and Smart Seats
             split-booking options for travel from{" "}
             <span className="font-semibold text-slate-800">{fromStation}</span>{" "}
@@ -272,17 +272,17 @@ export default function TrainConfirmedTicketsClient({
         </div>
 
         {/* ── Route Station Selector ("Between the routes") ── */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+        <div className="flex flex-col justify-between gap-3 rounded-xl border border-slate-200/80 bg-slate-50 p-3.5 sm:flex-row sm:items-center">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
               Route:
             </span>
             {stations.length > 1 ? (
-              <div className="flex items-center gap-1.5 flex-wrap">
+              <div className="flex flex-wrap items-center gap-1.5">
                 <select
                   value={fromStation}
                   onChange={(e) => handleFromChange(e.target.value)}
-                  className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-800 shadow-2xs focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="shadow-2xs rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   aria-label="Select origin station"
                 >
                   {stations.slice(0, -1).map((st) => (
@@ -291,11 +291,11 @@ export default function TrainConfirmedTicketsClient({
                     </option>
                   ))}
                 </select>
-                <ArrowRight className="h-3.5 w-3.5 text-slate-400 shrink-0" />
+                <ArrowRight className="h-3.5 w-3.5 shrink-0 text-slate-400" />
                 <select
                   value={toStation}
                   onChange={(e) => setToStation(e.target.value)}
-                  className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-800 shadow-2xs focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="shadow-2xs rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   aria-label="Select destination station"
                 >
                   {stations.slice(1).map((st) => (
@@ -307,11 +307,11 @@ export default function TrainConfirmedTicketsClient({
               </div>
             ) : (
               <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
-                <span className="rounded bg-white px-2 py-0.5 border border-slate-200">
+                <span className="rounded border border-slate-200 bg-white px-2 py-0.5">
                   {origin}
                 </span>
                 <ArrowRight className="h-3.5 w-3.5 text-slate-400" />
-                <span className="rounded bg-white px-2 py-0.5 border border-slate-200">
+                <span className="rounded border border-slate-200 bg-white px-2 py-0.5">
                   {dest}
                 </span>
               </div>
@@ -324,10 +324,10 @@ export default function TrainConfirmedTicketsClient({
               <button
                 type="button"
                 onClick={() => setSelectedClass("ALL")}
-                className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
+                className={`rounded-lg px-3 py-1 text-xs font-semibold transition ${
                   selectedClass === "ALL"
-                    ? "bg-blue-600 text-white shadow-xs"
-                    : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-200"
+                    ? "shadow-xs bg-blue-600 text-white"
+                    : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-200"
                 }`}
               >
                 All Classes
@@ -337,10 +337,10 @@ export default function TrainConfirmedTicketsClient({
                   type="button"
                   key={cls}
                   onClick={() => setSelectedClass(cls)}
-                  className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
+                  className={`rounded-lg px-3 py-1 text-xs font-semibold transition ${
                     selectedClass === cls
-                      ? "bg-blue-600 text-white shadow-xs"
-                      : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-200"
+                      ? "shadow-xs bg-blue-600 text-white"
+                      : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-200"
                   }`}
                 >
                   {cls}
@@ -352,12 +352,12 @@ export default function TrainConfirmedTicketsClient({
 
         {/* ── Direct Seat Availability Matrix for Dates ── */}
         <div>
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+          <div className="mb-3 flex items-center justify-between">
+            <h2 className="flex items-center gap-2 text-base font-bold text-slate-900">
               <Calendar className="h-4 w-4 text-blue-600" />
               Seat Availability across Dates
             </h2>
-            <span className="text-xs text-slate-500 font-medium">
+            <span className="text-xs font-medium text-slate-500">
               {fromStation} → {toStation}
             </span>
           </div>
@@ -376,15 +376,15 @@ export default function TrainConfirmedTicketsClient({
                     <span className="text-xs font-semibold text-slate-700">
                       {formatSeatDateLabel(seat.date)}
                     </span>
-                    <span className="rounded-md bg-slate-100 border border-slate-200 px-2 py-0.5 text-xs font-bold text-slate-800">
+                    <span className="rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-800">
                       Class {seat.travelClass}
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between gap-2 pt-1 border-t border-slate-100">
+                  <div className="flex items-center justify-between gap-2 border-t border-slate-100 pt-1">
                     <div>
                       <div
-                        className={`text-sm sm:text-base font-extrabold ${details.statusColor}`}
+                        className={`text-sm font-extrabold sm:text-base ${details.statusColor}`}
                       >
                         {seat.status}
                       </div>
@@ -404,7 +404,7 @@ export default function TrainConfirmedTicketsClient({
                     ) : (
                       <Link
                         href={cardUrl}
-                        className="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-blue-700 transition active:scale-[0.99]"
+                        className="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-blue-700 active:scale-[0.99]"
                       >
                         Smart Seat
                         <ArrowRight className="h-3 w-3" />
@@ -418,17 +418,17 @@ export default function TrainConfirmedTicketsClient({
         </div>
 
         {/* ── Direct Action Buttons ── */}
-        <div className="flex flex-wrap items-center gap-3 pt-5 border-t border-slate-100">
+        <div className="flex flex-wrap items-center gap-3 border-t border-slate-100 pt-5">
           <Link
             href={searchUrl}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-700 transition active:scale-[0.99]"
+            className="shadow-xs inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-[0.99]"
           >
             <Search className="h-4 w-4" />
             Search Smart Seats ({fromStation} → {toStation})
           </Link>
           <Link
             href="/chart-vacancy"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition active:scale-[0.99]"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-slate-900 active:scale-[0.99]"
           >
             <Train className="h-4 w-4 text-slate-500" />
             Check Chart Vacancy
@@ -436,7 +436,7 @@ export default function TrainConfirmedTicketsClient({
           {chartTimesSlug && (
             <Link
               href={`/chart-times/${chartTimesSlug}`}
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition active:scale-[0.99]"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-slate-900 active:scale-[0.99]"
             >
               <Clock className="h-4 w-4 text-slate-500" />
               Chart Timing
@@ -446,26 +446,26 @@ export default function TrainConfirmedTicketsClient({
       </header>
 
       {/* ── Guaranteed Confirmation Guide Card ── */}
-      <section className="rounded-xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs space-y-5">
+      <section className="shadow-xs space-y-5 rounded-xl border border-slate-200 bg-white p-5 sm:p-7">
         <div>
           <h2 className="text-xl font-bold text-slate-900">
             How to Guarantee a Confirmed Seat on {trainName} ({trainNumber})
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
+          <p className="mt-0.5 text-xs text-slate-600 sm:text-sm">
             Two proven booking strategies when direct tickets are sold out or on
             Waitlist.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="rounded-xl bg-blue-50/50 border border-blue-100 p-5 space-y-2">
-            <h3 className="text-base font-bold text-blue-950 flex items-center gap-2">
-              <ShieldCheck className="h-5 w-5 text-blue-600 shrink-0" />
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="space-y-2 rounded-xl border border-blue-100 bg-blue-50/50 p-5">
+            <h3 className="flex items-center gap-2 text-base font-bold text-blue-950">
+              <ShieldCheck className="h-5 w-5 shrink-0 text-blue-600" />
               1. Smart Seats (Contiguous Split Booking)
             </h3>
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+            <p className="text-xs leading-relaxed text-slate-700 sm:text-sm">
               When tickets from {origin} to {dest} show{" "}
-              <span className="inline-block rounded bg-rose-100 px-1 py-0.5 font-bold text-rose-700 text-xs">
+              <span className="inline-block rounded bg-rose-100 px-1 py-0.5 text-xs font-bold text-rose-700">
                 REGRET
               </span>
               , Indian Railways locks the full route. LastBerth scans
@@ -475,16 +475,16 @@ export default function TrainConfirmedTicketsClient({
             </p>
           </div>
 
-          <div className="rounded-xl bg-slate-50 border border-slate-200/80 p-5 space-y-2">
-            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <Train className="h-5 w-5 text-slate-700 shrink-0" />
+          <div className="space-y-2 rounded-xl border border-slate-200/80 bg-slate-50 p-5">
+            <h3 className="flex items-center gap-2 text-base font-bold text-slate-900">
+              <Train className="h-5 w-5 shrink-0 text-slate-700" />
               2. Post-Chart Current Reservation (`CURR_AVBL`)
             </h3>
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+            <p className="text-xs leading-relaxed text-slate-700 sm:text-sm">
               When 1st reservation charts are prepared (typically 4 hours before
               departure), unallotted Tatkal and quota seats are released to the
               public as{" "}
-              <span className="inline-block rounded bg-emerald-100 px-1 py-0.5 font-bold text-emerald-800 text-xs">
+              <span className="inline-block rounded bg-emerald-100 px-1 py-0.5 text-xs font-bold text-emerald-800">
                 CURR_AVBL
               </span>
               . Check{" "}
@@ -502,27 +502,27 @@ export default function TrainConfirmedTicketsClient({
 
       {/* ── Train Route Halts & Split Opportunities Table ── */}
       {stations.length > 0 && (
-        <section className="rounded-xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+        <section className="shadow-xs rounded-xl border border-slate-200 bg-white p-5 sm:p-7">
+          <div className="mb-4 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
             <div>
-              <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+              <h2 className="flex items-center gap-2 text-xl font-bold text-slate-900">
                 <MapPin className="h-5 w-5 text-blue-600" />
                 Scheduled Halts &amp; Split Booking Stations
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
+              <p className="mt-0.5 text-xs text-slate-600 sm:text-sm">
                 Intermediate stations on {trainName} ({trainNumber}) where split
                 segments can be booked.
               </p>
             </div>
-            <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200 self-start sm:self-auto">
+            <span className="self-start rounded-md border border-slate-200 bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-500 sm:self-auto">
               {stations.length} Stops Total
             </span>
           </div>
 
           <div className="overflow-x-auto rounded-lg border border-slate-200">
-            <table className="w-full text-left text-xs text-slate-700 border-collapse">
+            <table className="w-full border-collapse text-left text-xs text-slate-700">
               <thead>
-                <tr className="border-b border-slate-200 bg-slate-50 text-slate-900 font-bold">
+                <tr className="border-b border-slate-200 bg-slate-50 font-bold text-slate-900">
                   <th className="p-3">#</th>
                   <th className="p-3">Station</th>
                   <th className="p-3">Arrival</th>
@@ -539,15 +539,15 @@ export default function TrainConfirmedTicketsClient({
                   return (
                     <tr
                       key={i}
-                      className="hover:bg-slate-50/80 transition-colors"
+                      className="transition-colors hover:bg-slate-50/80"
                     >
-                      <td className="p-3 text-slate-400 font-medium">
+                      <td className="p-3 font-medium text-slate-400">
                         {i + 1}
                       </td>
                       <td className="p-3 font-semibold text-slate-900">
                         <div className="flex items-center gap-1.5">
                           <span>{st.stationName}</span>
-                          <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-bold text-slate-600 border border-slate-200">
+                          <span className="rounded border border-slate-200 bg-slate-100 px-1.5 py-0.5 text-[10px] font-bold text-slate-600">
                             {st.stationCode}
                           </span>
                         </div>
@@ -590,8 +590,8 @@ export default function TrainConfirmedTicketsClient({
 
       {/* ── FAQ Section ── */}
       {faqEntries.length > 0 && (
-        <section className="rounded-xl border border-slate-200 bg-white p-5 sm:p-7 shadow-xs">
-          <h2 className="text-xl font-bold text-slate-900 mb-4">
+        <section className="shadow-xs rounded-xl border border-slate-200 bg-white p-5 sm:p-7">
+          <h2 className="mb-4 text-xl font-bold text-slate-900">
             Frequently Asked Questions
           </h2>
           <div className="divide-y divide-slate-100">
@@ -602,7 +602,7 @@ export default function TrainConfirmedTicketsClient({
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-4 text-left font-semibold text-slate-900 hover:text-blue-600 transition-colors"
+                    className="flex w-full items-center justify-between gap-4 text-left font-semibold text-slate-900 transition-colors hover:text-blue-600"
                   >
                     <span className="text-sm sm:text-base">{faq.q}</span>
                     <ChevronDown
@@ -612,7 +612,7 @@ export default function TrainConfirmedTicketsClient({
                     />
                   </button>
                   {isOpen && (
-                    <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed pr-6">
+                    <p className="mt-2.5 pr-6 text-xs leading-relaxed text-slate-600 sm:text-sm">
                       {faq.a}
                     </p>
                   )}

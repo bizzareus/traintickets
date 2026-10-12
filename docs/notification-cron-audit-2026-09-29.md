@@ -26,22 +26,22 @@ The deployed image revision and local HEAD both identified `6aedee693aef87f8379b
 
 Three different “last 50” samples were checked so idle ticks would not conceal failed alerts:
 
-| Sample | Result |
-| --- | --- |
-| Latest 50 chart cron ticks | 29 Sep, 22:37–23:26 IST; all successful, all idle |
-| Tick spacing | 59.906–60.098 seconds; no gap over 90 seconds |
-| IST timestamp labels | All 50 agree with UTC-to-IST conversion |
-| Latest 50 nonempty chart cron runs | 21–29 Sep; 66 task attempts, 39 completed results, 16 failed results, 11 other results |
-| Misleading green runs | 9 of those 50 runs say `success` while containing failed tasks |
-| Latest 50 distinct executed tasks | Recorded first execution 22 Sep 13:00 IST through 29 Sep 04:40:15 IST; 31 subscriptions |
-| Task outcomes | 38 completed; 12 failed |
-| Failure reasons | 7 exhausted 240-second timeout attempts; 5 “Journey date cannot be in the past” |
-| Pickup within 60 seconds of eligibility | 36/50; median 1.210 seconds; maximum recorded delay 13h 53m 06s |
-| Subscriptions created after chart time | 17 tasks |
-| Email flags | 30/42 eligible tasks marked sent |
-| WhatsApp flags | 24/47 eligible tasks marked sent |
-| No send flag on either channel | 17 tasks, including 5 completed tasks |
-| Latest 50 send-log entries | 28 email; 22 WhatsApp, spanning 22–28 Sep |
+| Sample                                  | Result                                                                                  |
+| --------------------------------------- | --------------------------------------------------------------------------------------- |
+| Latest 50 chart cron ticks              | 29 Sep, 22:37–23:26 IST; all successful, all idle                                       |
+| Tick spacing                            | 59.906–60.098 seconds; no gap over 90 seconds                                           |
+| IST timestamp labels                    | All 50 agree with UTC-to-IST conversion                                                 |
+| Latest 50 nonempty chart cron runs      | 21–29 Sep; 66 task attempts, 39 completed results, 16 failed results, 11 other results  |
+| Misleading green runs                   | 9 of those 50 runs say `success` while containing failed tasks                          |
+| Latest 50 distinct executed tasks       | Recorded first execution 22 Sep 13:00 IST through 29 Sep 04:40:15 IST; 31 subscriptions |
+| Task outcomes                           | 38 completed; 12 failed                                                                 |
+| Failure reasons                         | 7 exhausted 240-second timeout attempts; 5 “Journey date cannot be in the past”         |
+| Pickup within 60 seconds of eligibility | 36/50; median 1.210 seconds; maximum recorded delay 13h 53m 06s                         |
+| Subscriptions created after chart time  | 17 tasks                                                                                |
+| Email flags                             | 30/42 eligible tasks marked sent                                                        |
+| WhatsApp flags                          | 24/47 eligible tasks marked sent                                                        |
+| No send flag on either channel          | 17 tasks, including 5 completed tasks                                                   |
+| Latest 50 send-log entries              | 28 email; 22 WhatsApp, spanning 22–28 Sep                                               |
 
 The 25 sampled tasks first recorded after the 25 September cron rearchitecture began running include **23 pickups within 60 seconds**, two longer recorded pickup delays, and seven failed tasks. These observations distinguish improvements in scheduling from continuing execution failures. Some historical first-run timestamps can represent later attempts; they should not be read as a full reconstruction of every original pickup.
 
@@ -55,10 +55,10 @@ At subscription level, rather than per chart task:
 
 These are application send timestamps, not recipient delivery timestamps, and include processing and resend delay:
 
-| Channel | Recorded sends | Median after eligibility | More than 5 minutes | Maximum |
-| --- | ---: | ---: | ---: | ---: |
-| Email | 30 | 4m 59.802s | 15 | 7h 29m 49.406s |
-| WhatsApp | 24 | 3m 32.634s | 10 | 4h 52m 55.906s |
+| Channel  | Recorded sends | Median after eligibility | More than 5 minutes |        Maximum |
+| -------- | -------------: | -----------------------: | ------------------: | -------------: |
+| Email    |             30 |               4m 59.802s |                  15 | 7h 29m 49.406s |
+| WhatsApp |             24 |               3m 32.634s |                  10 | 4h 52m 55.906s |
 
 ## IST configuration: correct conversion, separate source-time concerns
 
@@ -74,9 +74,9 @@ Of the 50 task schedules, 37 match today's train/station chart cache. Four more 
 
 The screenshot and `content/chart-times/12665-hwh-cape-sf-exp-chart-times.json:126` show first chart `19:08`, day offset `0`, and second chart `05:35`, day offset `1`, charted at VSKP. For train start **28 September**, the correct task timestamps are:
 
-| Event | IST | Stored UTC value |
-| --- | --- | --- |
-| First chart | 28 Sep 2026, 19:08 | `2026-09-28 13:38:00` |
+| Event        | IST                | Stored UTC value      |
+| ------------ | ------------------ | --------------------- |
+| First chart  | 28 Sep 2026, 19:08 | `2026-09-28 13:38:00` |
 | Second chart | 29 Sep 2026, 05:35 | `2026-09-29 00:05:00` |
 
 Payment `cmul24fif00xr01oxue7ktufs`, saved at 28 Sep 09:40:35 UTC, contains the correct boarding date and train-start date but **none** of `chartTimeLocal`, `chartOneDayOffset`, `chartTwoTimeLocal`, or `chartTwoDayOffset`. A read-only query found exactly one task for its journey request, and no current `TrainStationChartTime` entry for either 12665/RJY or 12665/VSKP.
@@ -95,11 +95,11 @@ Required correction: resolve and persist both real chart events through a shared
 
 Task processing can fail even though the containing cron row is marked `success`. Seven sampled tasks exhausted the 240-second deadline; five older tasks failed after the journey date had passed. The five paid subscriptions without any chart-result send record are:
 
-| Train | Journey request | Sampled task failure | Payment |
-| --- | --- | --- | --- |
-| 12665 | `62f49067-887d-4447-9b36-3ceeb2cf98e3` | 240-second timeout, three attempts | PAID, ₹10 |
-| 18521 | `ccf8d6f7-5d30-4400-b3bf-cf07a24f03db` | Both chart tasks timed out | PAID, ₹10 |
-| 22931 | `d829409c-69b6-4cb2-9d5c-b87e05ace48c` | Both chart tasks timed out | PAID, ₹10 |
+| Train | Journey request                        | Sampled task failure                     | Payment   |
+| ----- | -------------------------------------- | ---------------------------------------- | --------- |
+| 12665 | `62f49067-887d-4447-9b36-3ceeb2cf98e3` | 240-second timeout, three attempts       | PAID, ₹10 |
+| 18521 | `ccf8d6f7-5d30-4400-b3bf-cf07a24f03db` | Both chart tasks timed out               | PAID, ₹10 |
+| 22931 | `d829409c-69b6-4cb2-9d5c-b87e05ace48c` | Both chart tasks timed out               | PAID, ₹10 |
 | 12953 | `c5ef7125-6667-48c5-bf9b-76fad7cbac5d` | Both tasks failed with past journey date | PAID, ₹10 |
 | 18117 | `d86b6e58-78a3-4006-8e35-21fd359c482b` | Both tasks failed with past journey date | PAID, ₹10 |
 
@@ -121,12 +121,12 @@ An attempted read of Resend's email history returned HTTP 401: **“This API key
 
 Provider message content confirms these examples:
 
-| Task | Saved schedule / send time (IST) | Actual message text |
-| --- | --- | --- |
-| `f661360b-5578-4afa-98d3-1a8017dc339a`, train 12166 | 26 Sep 05:27 / 05:27:45 | “prepared at 1:41 PM” |
-| `5d630e13-1554-45cd-8169-ba9255fd754e`, train 11077 | 24 Sep 07:59 / 07:59:59 | “prepared at 1:35 PM” |
+| Task                                                | Saved schedule / send time (IST)      | Actual message text               |
+| --------------------------------------------------- | ------------------------------------- | --------------------------------- |
+| `f661360b-5578-4afa-98d3-1a8017dc339a`, train 12166 | 26 Sep 05:27 / 05:27:45               | “prepared at 1:41 PM”             |
+| `5d630e13-1554-45cd-8169-ba9255fd754e`, train 11077 | 24 Sep 07:59 / 07:59:59               | “prepared at 1:35 PM”             |
 | `69c0a072-518b-4b7c-b8b5-c9e9f5e50691`, train 19325 | Second chart, 23 Sep 01:20 / 01:26:03 | “1st Chart … prepared at 5:35 PM” |
-| `bcb50586-f912-43cd-8739-8b23806ed6cf`, train 22945 | Second chart, 28 Sep 00:52 / 01:00:43 | “Chart Alert : 3:31 PM” |
+| `bcb50586-f912-43cd-8739-8b23806ed6cf`, train 22945 | Second chart, 28 Sep 00:52 / 01:00:43 | “Chart Alert : 3:31 PM”           |
 
 For the first two, the payment payload explicitly pinned the saved task time. The outgoing message instead reads current chart metadata before falling back to `task.chartAt` (`notification.service.ts:945–982`). Second-chart formatting also anchors metadata offsets to the boarding journey date rather than the train-start date (`:957`), which is wrong for some overnight routes. The resend path omits `chartAt` and `trainStartDate` when reconstructing the notification task (`journey-task.service.ts:2676`).
 
@@ -138,11 +138,11 @@ All **24** WhatsApp send flags in the task sample were matched to **24 unique WA
 
 Individual `/api/messages/{msgId}/info` responses reported:
 
-| WASender status | Count | Interpretation |
-| --- | ---: | --- |
-| 2: SENT | 16 | No delivered/read receipt confirmed by the queried status |
-| 3: DELIVERED | 6 | Reached recipient device |
-| 4: READ | 2 | Recipient read receipt |
+| WASender status | Count | Interpretation                                            |
+| --------------- | ----: | --------------------------------------------------------- |
+| 2: SENT         |    16 | No delivered/read receipt confirmed by the queried status |
+| 3: DELIVERED    |     6 | Reached recipient device                                  |
+| 4: READ         |     2 | Recipient read receipt                                    |
 
 Thus **8/24 have delivered-or-read confirmation**. The other 16 must not be counted as delivered; a stale/missing receipt is also possible, so this does not prove all 16 were physically undelivered. These are receipt states at audit time, not measured delivery latencies.
 
@@ -184,30 +184,30 @@ The cutoff fixes sample selection, not historical row versions. Later retries or
 Task IDs are shortened here; the SQL returns full IDs. Receipt states were queried at audit time and can change later.
 
 | Task prefix | Train | WASender message ID | Receipt state |
-| --- | --- | --- | --- |
-| `c7616aab` | 12665 | 83530273 | READ |
-| `3d8fb0ad` | 22940 | 83502343 | SENT |
-| `68ec974d` | 18449 | 83475169 | SENT |
-| `08ad0a1f` | 18449 | 83443845 | SENT |
-| `bcb50586` | 22945 | 83359805 | SENT |
-| `0d68d4e8` | 16588 | 83311460 | SENT |
-| `d4fcebd1` | 22945 | 83265355 | SENT |
-| `dfd1186b` | 12478 | 83248815 | DELIVERED |
-| `422e7c7c` | 20819 | 83247366 | SENT |
-| `b3b1a52b` | 22666 | 83210302 | READ |
-| `21b4336a` | 22157 | 83133364 | DELIVERED |
-| `65f66a68` | 16525 | 83111947 | SENT |
-| `f661360b` | 12166 | 82966026 | SENT |
-| `67734259` | 12833 | 82678307 | SENT |
-| `aeceaffc` | 12166 | 82675289 | SENT |
-| `619d2a99` | 11014 | 82644179 | SENT |
-| `c6170534` | 11014 | 82613616 | DELIVERED |
-| `79c05da5` | 16308 | 82613171 | DELIVERED |
-| `5d630e13` | 11077 | 82391107 | SENT |
-| `69c0a072` | 19325 | 82008502 | DELIVERED |
-| `bb0e01b4` | 20155 | 81987264 | SENT |
-| `913a610e` | 19325 | 81986850 | DELIVERED |
-| `c56275c9` | 22582 | 81880168 | SENT |
-| `82c8e7b9` | 16344 | 81817173 | SENT |
+| ----------- | ----- | ------------------- | ------------- |
+| `c7616aab`  | 12665 | 83530273            | READ          |
+| `3d8fb0ad`  | 22940 | 83502343            | SENT          |
+| `68ec974d`  | 18449 | 83475169            | SENT          |
+| `08ad0a1f`  | 18449 | 83443845            | SENT          |
+| `bcb50586`  | 22945 | 83359805            | SENT          |
+| `0d68d4e8`  | 16588 | 83311460            | SENT          |
+| `d4fcebd1`  | 22945 | 83265355            | SENT          |
+| `dfd1186b`  | 12478 | 83248815            | DELIVERED     |
+| `422e7c7c`  | 20819 | 83247366            | SENT          |
+| `b3b1a52b`  | 22666 | 83210302            | READ          |
+| `21b4336a`  | 22157 | 83133364            | DELIVERED     |
+| `65f66a68`  | 16525 | 83111947            | SENT          |
+| `f661360b`  | 12166 | 82966026            | SENT          |
+| `67734259`  | 12833 | 82678307            | SENT          |
+| `aeceaffc`  | 12166 | 82675289            | SENT          |
+| `619d2a99`  | 11014 | 82644179            | SENT          |
+| `c6170534`  | 11014 | 82613616            | DELIVERED     |
+| `79c05da5`  | 16308 | 82613171            | DELIVERED     |
+| `5d630e13`  | 11077 | 82391107            | SENT          |
+| `69c0a072`  | 19325 | 82008502            | DELIVERED     |
+| `bb0e01b4`  | 20155 | 81987264            | SENT          |
+| `913a610e`  | 19325 | 81986850            | DELIVERED     |
+| `c56275c9`  | 22582 | 81880168            | SENT          |
+| `82c8e7b9`  | 16344 | 81817173            | SENT          |
 
 WASender references: [message logs](https://wasenderapi.com/api-docs/sessions/get-message-logs), [message status meanings](https://wasenderapi.com/api-docs/messages/get-message-info).

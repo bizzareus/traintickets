@@ -14,6 +14,7 @@ tags:
 ---
 
 > **Need a confirmed seat instead of risking a ₹500 fine?** Check live confirmed seats and contiguous split berths across high-demand corridors on LastBerth:
+>
 > - [Search Delhi ➔ Patna Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
 > - [Search Mumbai ➔ Pune Express Trains](/?from=CSMT&to=PUNE&fromName=Mumbai%20CSMT&toName=Pune%20Jn)
 > - [Search Delhi ➔ Mumbai Trains](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central)
@@ -44,7 +45,7 @@ If vacant berths exist on the train after chart finalization, the TTE can regula
 
 A platform ticket costs ₹10 and serves one specific legal purpose: it permits visitors to enter station platforms to assist elderly relatives, carry luggage, or see off family members. It is strictly non-travel documentation that expires exactly two hours after issuance.
 
-However, during genuine medical or family emergencies where long booking counter queues make buying a journey ticket impossible before train departure, a platform ticket provides one critical statutory protection: **it proves your exact boarding station and entry timestamp**. 
+However, during genuine medical or family emergencies where long booking counter queues make buying a journey ticket impossible before train departure, a platform ticket provides one critical statutory protection: **it proves your exact boarding station and entry timestamp**.
 
 Under Indian Railways commercial rules, if you board a train with a platform ticket, you must seek out the TTE immediately in the coach corridors before ticket inspection begins. Present your platform ticket and declare your emergency. The TTE will treat your platform ticket as proof of origin, calculate the journey fare from that station to your destination, add the mandatory ₹500 penalty under Section 138, and generate an official EFT.
 
@@ -60,14 +61,14 @@ Indian Railways updated its penalty framework under the Jan Vishwas (Amendment o
 
 The total amount payable depends on what ticket you hold, which coach you entered, and where you boarded:
 
-| Travel Scenario | Base Fare Assessed by TTE | Statutory Penalty (Jan Vishwas Act 2026) | Sample 500 km Route Payable | Legal Action on Refusal |
-|---|---|---|---|---|
-| **General Ticket in Sleeper Coach** | Fare Difference (Sleeper Fare − General Fare Paid) | **₹500 flat fine** | ~₹150 fare diff + ₹500 = **₹650** | Deboarding at next halt, handover to RPF |
-| **Platform Ticket in Sleeper Coach** | Full Sleeper Fare from Boarding Station | **₹500 flat fine** | ~₹310 base fare + ₹500 = **₹810** | Deboarding at next halt, Section 138 recovery |
-| **No Ticket at All (Ticketless)** | Full Sleeper Fare from Train Originating Terminal | **₹500 flat fine** | ~₹600–₹1,200 origin fare + ₹500 = **₹1,100–₹1,700** | RPF custody, Section 137 prosecution |
-| **Sleeper Ticket in AC 3-Tier (3A)** | Fare Difference (3AC Fare − Sleeper Fare Paid) | **₹500 flat fine** | ~₹520 fare diff + ₹500 = **₹1,020** | Compulsory return to Sleeper coach |
-| **Sleeper Ticket in AC 3 Economy (3E)** | Fare Difference (3E Fare − Sleeper Fare Paid) | **₹500 flat fine** | ~₹460 fare diff + ₹500 = **₹960** | Compulsory return to Sleeper coach |
-| **General Ticket in AC 3-Tier (3A)** | Fare Difference (3AC Fare − General Fare Paid) | **₹500 flat fine** | ~₹680 fare diff + ₹500 = **₹1,180** | Deboarding, Handover to RPF at junction |
+| Travel Scenario                         | Base Fare Assessed by TTE                          | Statutory Penalty (Jan Vishwas Act 2026) | Sample 500 km Route Payable                         | Legal Action on Refusal                       |
+| --------------------------------------- | -------------------------------------------------- | ---------------------------------------- | --------------------------------------------------- | --------------------------------------------- |
+| **General Ticket in Sleeper Coach**     | Fare Difference (Sleeper Fare − General Fare Paid) | **₹500 flat fine**                       | ~₹150 fare diff + ₹500 = **₹650**                   | Deboarding at next halt, handover to RPF      |
+| **Platform Ticket in Sleeper Coach**    | Full Sleeper Fare from Boarding Station            | **₹500 flat fine**                       | ~₹310 base fare + ₹500 = **₹810**                   | Deboarding at next halt, Section 138 recovery |
+| **No Ticket at All (Ticketless)**       | Full Sleeper Fare from Train Originating Terminal  | **₹500 flat fine**                       | ~₹600–₹1,200 origin fare + ₹500 = **₹1,100–₹1,700** | RPF custody, Section 137 prosecution          |
+| **Sleeper Ticket in AC 3-Tier (3A)**    | Fare Difference (3AC Fare − Sleeper Fare Paid)     | **₹500 flat fine**                       | ~₹520 fare diff + ₹500 = **₹1,020**                 | Compulsory return to Sleeper coach            |
+| **Sleeper Ticket in AC 3 Economy (3E)** | Fare Difference (3E Fare − Sleeper Fare Paid)      | **₹500 flat fine**                       | ~₹460 fare diff + ₹500 = **₹960**                   | Compulsory return to Sleeper coach            |
+| **General Ticket in AC 3-Tier (3A)**    | Fare Difference (3AC Fare − General Fare Paid)     | **₹500 flat fine**                       | ~₹680 fare diff + ₹500 = **₹1,180**                 | Deboarding, Handover to RPF at junction       |
 
 If a passenger refuses to pay the excess fare and penalty, the TTE cannot engage in physical altercation. Instead, under Section 145 and Section 179 of the Railways Act, the TTE alerts Railway Protection Force (RPF) personnel travelling on the train. At the next scheduled junction, the passenger is deboarded and produced before a Railway Magistrate. The magistrate can impose additional judicial penalties of up to ₹2,000 or order simple imprisonment in default of payment.
 
@@ -77,7 +78,7 @@ If a passenger refuses to pay the excess fare and penalty, the TTE cannot engage
 
 **From October 1 to October 31, 2026, Indian Railways and Central Railway are conducting an intensive month-long ticket-checking and quota verification drive across major express trains and stations. Flying squads and TTEs are strictly inspecting unreserved passengers inside Sleeper and AC coaches, verifying original photo IDs, and deboarding unauthorized passengers at intermediate stops.**
 
-To curb extreme passenger crowding during the festive rush of Durga Puja, Diwali, and Chhath Puja, Indian Railways initiated a coordinated nationwide ticket-checking operation running throughout October 2026. 
+To curb extreme passenger crowding during the festive rush of Durga Puja, Diwali, and Chhath Puja, Indian Railways initiated a coordinated nationwide ticket-checking operation running throughout October 2026.
 
 Commercial circulars issued to zonal divisions (including Northern, Central, Western, Eastern, and South Western Railway) highlight several strict enforcement mandates:
 
@@ -114,6 +115,7 @@ Many commuters assume that once a train departs, vacant berths are permanently l
 3. **General Ticket Holders Last:** Only when all onboard RAC passengers have received confirmed single berths can the TTE consider regularizing a general ticket passenger.
 
 When a berth is regularized:
+
 - The TTE enters your boarding point, destination, and ticket details into the Handheld Terminal.
 - The terminal calculates the exact differential fare and the statutory ₹500 penalty.
 - The TTE prints a digital Excess Fare Ticket (EFT) receipt containing a QR code and transactional PNR reference.
@@ -143,17 +145,22 @@ Note that AC 3 Economy (3E) and standard AC 3-Tier (3A) are distinct commercial 
 While railway authorities enforce strict anti-ticketless measures, passengers enjoy specific statutory protections under the Indian Railways Commercial Manual:
 
 ### 1. The 10:00 PM to 6:00 AM Sleeping Hours Rule
-TTEs are explicitly instructed not to disturb passengers for ticket verification between 10:00 PM and 6:00 AM. 
+
+TTEs are explicitly instructed not to disturb passengers for ticket verification between 10:00 PM and 6:00 AM.
+
 - **Exception:** If you boarded the train at a station after 10:00 PM, the TTE has the right to verify your ticket upon entry.
 - **Middle Berth Rule:** Passengers assigned middle berths are permitted to unfold and sleep on their berths from 10:00 PM to 6:00 AM. Outside these hours, middle berths must be folded down to allow lower-berth passengers to sit comfortably.
 
 ### 2. The Two-Stop Rule Before Berth Reallocation
+
 If a passenger with a confirmed ticket does not appear at their assigned seat when the train departs their scheduled boarding station, the TTE cannot immediately reallocate that berth to someone else. Under the **Two-Stop Rule**, the TTE must wait until the train has passed **two scheduled intermediate halts** or for **one hour** (whichever is later) before marking the passenger absent (No-Show) on the Handheld Terminal and assigning the berth to an RAC passenger.
 
 ### 3. Nighttime Deboarding Safeguards for Women and Children
+
 Under Section 139 of the Railways Act, a railway servant cannot deboard a female passenger travelling alone or accompanied solely by minor children at night, even if she is found travelling without a ticket or in an unauthorized class. The railway administration must allow her to continue to the nearest major junction or terminal station where woman railway staff or Government Railway Police (GRP) personnel can assist.
 
 ### 4. Verification of Official TTE Identity
+
 Every TTE on duty must wear an official uniform with a navy-blue blazer or coat, display a name badge with their designation, and operate an official CRIS-issued Handheld Terminal (HHT). Passengers have the legal right to ask the TTE for their name and badge identification before handing over tickets or cash.
 
 ---
@@ -164,27 +171,32 @@ Every TTE on duty must wear an official uniform with a navy-blue blazer or coat,
 
 When direct train seats show `REGRET` or high waitlists, you do not need to risk illegal boarding and ₹500 penalties. Instead, use these four proven, 100% legal alternatives:
 
-| Legal Travel Option | Booking Window | Pricing & Surcharges | Confirmation Guarantee | Best Use Case |
-|---|---|---|---|---|
-| **Unreserved General Coach (GS/UR)** | Up to departure time | Standard base unreserved fare | No seat guarantee (Open seating) | Short daylight journeys, budget travel |
-| **Current Availability (`CURR_AVBL`)** | ~4 hours to 30 mins before departure | **10% discount** on base fare | **100% confirmed** berth with coach & seat | Last-minute travel post chart prep |
-| **Smart Seats Contiguous Split Booking** | Standard booking window | Normal telescopic / segment fares | **100% confirmed** split seats on same train | Bypassing waitlists on long-distance routes |
-| **Onboard TTE Regularization (EFT)** | After train departs | Fare difference + ₹500 fine | Contingent on onboard vacancy | Genuine medical / unavoidable rush |
+| Legal Travel Option                      | Booking Window                       | Pricing & Surcharges              | Confirmation Guarantee                       | Best Use Case                               |
+| ---------------------------------------- | ------------------------------------ | --------------------------------- | -------------------------------------------- | ------------------------------------------- |
+| **Unreserved General Coach (GS/UR)**     | Up to departure time                 | Standard base unreserved fare     | No seat guarantee (Open seating)             | Short daylight journeys, budget travel      |
+| **Current Availability (`CURR_AVBL`)**   | ~4 hours to 30 mins before departure | **10% discount** on base fare     | **100% confirmed** berth with coach & seat   | Last-minute travel post chart prep          |
+| **Smart Seats Contiguous Split Booking** | Standard booking window              | Normal telescopic / segment fares | **100% confirmed** split seats on same train | Bypassing waitlists on long-distance routes |
+| **Onboard TTE Regularization (EFT)**     | After train departs                  | Fare difference + ₹500 fine       | Contingent on onboard vacancy                | Genuine medical / unavoidable rush          |
 
 ### 1. Purchase General Tickets via the UTS Mobile App
+
 You can bypass counter lines by buying unreserved paperless tickets on the official UTS mobile application. Ensure you book while positioned between 20 meters and 20 kilometers from the departure station (geofenced to prevent fraud from moving trains).
 
 ### 2. Book Current Availability (`CURR_AVBL`) Tickets
+
 After the first reservation chart is finalized (prepared at least 4 hours before departure from the originating station, or at 8:00 PM the previous evening for morning trains departing before 2:00 PM), unallocated VIP, emergency, and foreign tourist quotas are released to the general public.
+
 - Status displays as `CURR_AVBL` or `CURR AVL`.
 - Berths are sold at an automatic **10% discount** on basic fare.
 - Bookable on the IRCTC website, mobile app, or PRS counters until **30 minutes before departure**.
 - Learn more in our detailed guide to [how IRCTC current availability works](/blog/irctc-current-availability-explained).
 
 ### 3. Use Smart Seats on LastBerth
+
 When end-to-end seats between major cities are completely booked, intermediate quotas often remain vacant. [Finding Smart Seats](/) scans contiguous segments on the same train, finding you a confirmed path (for example, Coach B2 from Delhi to Kanpur, switching to Coach B5 from Kanpur to Patna). You travel on one train with confirmed berths throughout.
 
 ### 4. Check Vacant Berths via Chart Vacancy Map
+
 Before approaching the TTE onboard, open [Chart Vacancy](/chart-vacancy) or [Seat Status](/seat-status). Enter your train number to view a coach-by-coach visual map of unallocated berths across your specific travel stations, allowing you to tell the TTE exactly which berth is free.
 
 ---

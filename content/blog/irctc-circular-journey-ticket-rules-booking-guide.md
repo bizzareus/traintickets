@@ -29,20 +29,20 @@ Here is the catch: you can't just pick random destinations out of a hat. Your jo
 
 To prevent system abuse, the railways have set down some non-negotiable guidelines:
 
-* **The Loop Rule:** Your route must start and end at the identical station.
-* **Halt Rules:** You get a maximum of eight break journeys. A break journey means you're staying at that station for longer than 24 hours. If your stop is shorter than 24 hours, it's just considered a connection, not a break.
-* **How Long is it Valid?** The ticket's validity is calculated by adding your travel days and your break days. You get one travel day for every 400 km (or any fraction of it), plus an extra two days for every approved break journey.
-* **Keep the Class Consistent:** You generally cannot mix different classes (like Sleeper and 3AC) on the same circular ticket. The travel class has to stay consistent.
+- **The Loop Rule:** Your route must start and end at the identical station.
+- **Halt Rules:** You get a maximum of eight break journeys. A break journey means you're staying at that station for longer than 24 hours. If your stop is shorter than 24 hours, it's just considered a connection, not a break.
+- **How Long is it Valid?** The ticket's validity is calculated by adding your travel days and your break days. You get one travel day for every 400 km (or any fraction of it), plus an extra two days for every approved break journey.
+- **Keep the Class Consistent:** You generally cannot mix different classes (like Sleeper and 3AC) on the same circular ticket. The travel class has to stay consistent.
 
 Here is a summary of the core booking rules for quick reference:
 
-| Rule Parameter | Requirement / Limit |
-| :--- | :--- |
-| **Minimum Route Distance** | 1,000 Kilometers |
-| **Start & End Stations** | Must be identical |
-| **Maximum Break Journeys** | 8 stops (each > 24 hours) |
+| Rule Parameter             | Requirement / Limit                         |
+| :------------------------- | :------------------------------------------ |
+| **Minimum Route Distance** | 1,000 Kilometers                            |
+| **Start & End Stations**   | Must be identical                           |
+| **Maximum Break Journeys** | 8 stops (each > 24 hours)                   |
 | **Halt Limit per Station** | Minimum 24 hours for it to count as a break |
-| **Booking Mode** | Counter Booking only (No online booking) |
+| **Booking Mode**           | Counter Booking only (No online booking)    |
 
 ## Step-by-Step: How to Book Your Circular Ticket
 
@@ -66,10 +66,10 @@ What if one of your legs is waitlisted? Since you're booking multiple segments a
 
 Here is the breakdown of how waitlists behave on circular tickets:
 
-* **The standard progression:** Your ticket moves through three states: **WL → RAC → Confirmed**.
-* **Confirmation chances:** A low waitlist number has a solid shot of clearing before the final chart is prepared, while double-digit waitlists will need a lot of cancellations.
-* **Watch out for refunds:** This is crucial. If you book an online e-ticket and it stays waitlisted, the system cancels it automatically and refunds your money. But circular tickets are paper counter tickets. They *never* cancel automatically. If your ticket is still waitlisted after chart preparation, you must physically walk up to a station counter to cancel it and claim your refund.
-* **Keep tabs on your status:** Use the **PNR Status Search & Direct Booking** tool on LastBerth to keep an eye on your queue position and see realistic confirmation probabilities. If a specific leg looks hopeless, LastBerth can suggest alternative train routes to save your trip.
+- **The standard progression:** Your ticket moves through three states: **WL → RAC → Confirmed**.
+- **Confirmation chances:** A low waitlist number has a solid shot of clearing before the final chart is prepared, while double-digit waitlists will need a lot of cancellations.
+- **Watch out for refunds:** This is crucial. If you book an online e-ticket and it stays waitlisted, the system cancels it automatically and refunds your money. But circular tickets are paper counter tickets. They _never_ cancel automatically. If your ticket is still waitlisted after chart preparation, you must physically walk up to a station counter to cancel it and claim your refund.
+- **Keep tabs on your status:** Use the **PNR Status Search & Direct Booking** tool on LastBerth to keep an eye on your queue position and see realistic confirmation probabilities. If a specific leg looks hopeless, LastBerth can suggest alternative train routes to save your trip.
 
 If your waitlisted seat doesn't clear, don't panic. You can check for a **current available ticket**. These are confirmed berths that open up right after chart preparation (8 hours before the train starts) and remain bookable until 30 minutes before departure. Another trick is to use the **Get Confirmed Tickets** on LastBerth to locate empty berths on the running train for specific sections of your travel.
 
@@ -81,14 +81,14 @@ Say you decide to travel from Delhi, spend a few days in Lucknow, move on to Var
 
 We ran the numbers for a standard Sleeper Class trip to show you the difference:
 
-| Journey Legs / Booking Type | Distance (km) | Point-to-Point Cost (Approx) | Circular Ticket Cost |
-| :--- | :--- | :--- | :--- |
-| Leg 1: New Delhi to Lucknow | 512 km | ₹325 | Billed on total distance |
-| Leg 2: Lucknow to Varanasi | 300 km | ₹210 | No separate base fare |
-| Leg 3: Varanasi to Patna | 230 km | ₹175 | Covered by unified ticket |
-| Leg 4: Patna to New Delhi | 1,000 km | ₹490 | Included in single pass |
-| **Total Cumulative Cost** | **2,042 km** | **₹1,200** | **₹720** |
-| **Total Savings** | - | - | **₹480 (40% Saved)** |
+| Journey Legs / Booking Type | Distance (km) | Point-to-Point Cost (Approx) | Circular Ticket Cost      |
+| :-------------------------- | :------------ | :--------------------------- | :------------------------ |
+| Leg 1: New Delhi to Lucknow | 512 km        | ₹325                         | Billed on total distance  |
+| Leg 2: Lucknow to Varanasi  | 300 km        | ₹210                         | No separate base fare     |
+| Leg 3: Varanasi to Patna    | 230 km        | ₹175                         | Covered by unified ticket |
+| Leg 4: Patna to New Delhi   | 1,000 km      | ₹490                         | Included in single pass   |
+| **Total Cumulative Cost**   | **2,042 km**  | **₹1,200**                   | **₹720**                  |
+| **Total Savings**           | -             | -                            | **₹480 (40% Saved)**      |
 
 By putting all your stops onto a single circular sheet, you skip paying the highest base fare bracket repeatedly. That alone cuts your travel bill significantly. The total price drop is massive—especially for family trips or when you choose AC classes, where individual base rates really add up.
 
@@ -127,20 +127,25 @@ Circular Journey Tickets allow a maximum of 8 break journeys (halt stops longer 
 ## Common Booking Questions (FAQ)
 
 ### Can I book a circular journey ticket online?
+
 No, the online portal won't let you book these. You'll need to write down your route, submit it to the Station Manager or DCM at your starting station for approval, buy the paper ticket at the counter, and then manually book your seats for each leg.
 
 ### How is the validity of a circular journey ticket calculated?
+
 The validity is a mix of your travel days and break days. The system gives you one travel day for every 400 km of the total route (or fraction thereof), plus an extra two days of stay for each approved break journey station along the way.
 
 ### What is telescopic fare calculation in Indian Railways?
+
 It's a pricing strategy where the per-kilometer fare rate drops as your total distance increases. Circular tickets take advantage of this rule by adding up all the individual legs of your trip into one single, long distance, giving you a much cheaper rate.
 
 ### What happens if my waitlisted circular ticket does not get confirmed?
+
 Since these are paper tickets bought at a station counter, they won't cancel automatically and you won't get an auto-refund. If a segment stays waitlisted, you have to go to a physical reservation window to cancel that part and claim your refund manually.
 
-
 ### How much can you save with an IRCTC Circular Journey Ticket?
+
 You can save 20% to 30% on multi-city train travel using a Circular Journey Ticket because Indian Railways applies telescopic pricing across your combined total distance instead of charging separate base fares for each leg.
 
 ### Can you book a Circular Journey Ticket online on IRCTC?
+
 No, Circular Journey Tickets cannot be booked online. You must submit your printed itinerary to the Divisional Commercial Manager (DCM) office at a major railway station to receive a fare authority sheet for counter booking.

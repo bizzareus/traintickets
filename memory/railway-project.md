@@ -1,7 +1,7 @@
 ---
 name: railway-project
 description: Railway project/environment IDs for the traintickets (lastberth) app — use for Railway MCP/CLI calls without re-discovering via list_projects.
-metadata: 
+metadata:
   node_type: memory
   type: reference
   originSessionId: 9c2355a7-56c9-427a-ae44-6ea3e0905eb3

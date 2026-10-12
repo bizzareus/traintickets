@@ -73,7 +73,9 @@ Rules:
 async function run() {
   const apiKey = getApiKey();
   if (!apiKey) {
-    console.error("OpenAI API key missing. Set OPENAI_API_KEY in backend/.env.");
+    console.error(
+      "OpenAI API key missing. Set OPENAI_API_KEY in backend/.env.",
+    );
     process.exit(1);
   }
   const client = new OpenAI({ apiKey });
@@ -87,14 +89,18 @@ async function run() {
   }
 
   for (const lang of langs) {
-    process.stdout.write(`Translating glossary -> ${lang.name} (${lang.code})… `);
+    process.stdout.write(
+      `Translating glossary -> ${lang.name} (${lang.code})… `,
+    );
     try {
       const obj = await translateLang(client, lang.name, lang.code);
       const outPath = path.join(OUT_DIR, `${lang.code}.json`);
       fs.writeFileSync(outPath, JSON.stringify(obj, null, 2) + "\n", "utf8");
       console.log(`wrote ${Object.keys(obj).length} terms -> ${outPath}`);
     } catch (err) {
-      console.error(`failed: ${err instanceof Error ? err.message : String(err)}`);
+      console.error(
+        `failed: ${err instanceof Error ? err.message : String(err)}`,
+      );
     }
   }
 }

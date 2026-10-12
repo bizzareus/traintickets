@@ -63,16 +63,16 @@ Unlike traditional locomotive-hauled LHB (Linke Hofmann Busch) rakes where a sin
 
 The table below provides the operational blueprint, distance, expected travel time, and time saved compared to existing Rajdhani / Express services for the 2026 Vande Bharat Sleeper rollout:
 
-| Corridor / Route | Origin & Destination Stations | Distance (km) | Vande Bharat Sleeper Duration | Conventional Rajdhani Duration | Journey Time Saved |
-| :--- | :--- | :---: | :---: | :---: | :---: |
-| **Delhi ➔ Mumbai** | New Delhi (NDLS) ➔ Mumbai Central (MMCT) | 1,386 km | **12 hrs 30 mins** | 15 hrs 35 mins | **3 hrs 05 mins** |
-| **Delhi ➔ Howrah** | New Delhi (NDLS) ➔ Howrah Jn (HWH) | 1,450 km | **11 hrs 45 mins** | 17 hrs 05 mins | **5 hrs 20 mins** |
-| **Bengaluru ➔ Mumbai** | KSR Bengaluru (SBC) ➔ Mumbai Central (MMCT) | 1,130 km | **13 hrs 15 mins** | 21 hrs 10 mins | **7 hrs 55 mins** |
-| **Delhi ➔ Srinagar** | New Delhi (NDLS) ➔ Srinagar (SINA via USBRL) | 820 km | **13 hrs 00 mins** | 18+ hrs (Train+Road) | **5 hrs 00 mins** |
-| **Delhi ➔ Patna** | Anand Vihar (ANVT) ➔ Patna Jn (PNBE) | 998 km | **09 hrs 45 mins** | 12 hrs 30 mins | **2 hrs 45 mins** |
-| **Mumbai ➔ Ahmedabad** | Mumbai Central (MMCT) ➔ Ahmedabad (ADI) | 491 km | **05 hrs 15 mins** | 06 hrs 45 mins | **1 hr 30 mins** |
-| **Howrah ➔ Guwahati** | Howrah (HWH) ➔ Guwahati (GHY via NJP) | 992 km | **12 hrs 15 mins** | 18 hrs 00 mins | **5 hrs 45 mins** |
-| **Chennai ➔ Bengaluru** | Chennai Central (MAS) ➔ KSR Bengaluru (SBC) | 359 km | **04 hrs 15 mins** | 05 hrs 30 mins | **1 hr 15 mins** |
+| Corridor / Route        | Origin & Destination Stations                | Distance (km) | Vande Bharat Sleeper Duration | Conventional Rajdhani Duration | Journey Time Saved |
+| :---------------------- | :------------------------------------------- | :-----------: | :---------------------------: | :----------------------------: | :----------------: |
+| **Delhi ➔ Mumbai**      | New Delhi (NDLS) ➔ Mumbai Central (MMCT)     |   1,386 km    |      **12 hrs 30 mins**       |         15 hrs 35 mins         | **3 hrs 05 mins**  |
+| **Delhi ➔ Howrah**      | New Delhi (NDLS) ➔ Howrah Jn (HWH)           |   1,450 km    |      **11 hrs 45 mins**       |         17 hrs 05 mins         | **5 hrs 20 mins**  |
+| **Bengaluru ➔ Mumbai**  | KSR Bengaluru (SBC) ➔ Mumbai Central (MMCT)  |   1,130 km    |      **13 hrs 15 mins**       |         21 hrs 10 mins         | **7 hrs 55 mins**  |
+| **Delhi ➔ Srinagar**    | New Delhi (NDLS) ➔ Srinagar (SINA via USBRL) |    820 km     |      **13 hrs 00 mins**       |      18+ hrs (Train+Road)      | **5 hrs 00 mins**  |
+| **Delhi ➔ Patna**       | Anand Vihar (ANVT) ➔ Patna Jn (PNBE)         |    998 km     |      **09 hrs 45 mins**       |         12 hrs 30 mins         | **2 hrs 45 mins**  |
+| **Mumbai ➔ Ahmedabad**  | Mumbai Central (MMCT) ➔ Ahmedabad (ADI)      |    491 km     |      **05 hrs 15 mins**       |         06 hrs 45 mins         |  **1 hr 30 mins**  |
+| **Howrah ➔ Guwahati**   | Howrah (HWH) ➔ Guwahati (GHY via NJP)        |    992 km     |      **12 hrs 15 mins**       |         18 hrs 00 mins         | **5 hrs 45 mins**  |
+| **Chennai ➔ Bengaluru** | Chennai Central (MAS) ➔ KSR Bengaluru (SBC)  |    359 km     |      **04 hrs 15 mins**       |         05 hrs 30 mins         |  **1 hr 15 mins**  |
 
 ---
 
@@ -100,16 +100,19 @@ The table below provides the operational blueprint, distance, expected travel ti
 ```
 
 ### 1. AC First Class (1A) — 24 Berths
+
 - **Coupes and Cabins:** Configured with 2-berth private coupes and 4-berth shared cabins featuring electronic keypad locks and touchless sliding doors.
 - **Hot Water Shower Facility:** Includes an exclusive onboard hot water shower cubicle with temperature regulation and a personal grooming station.
 - **Berth Comfort:** Premium cushioned leatherette berths that convert smoothly into flat sleeping surfaces, accompanied by dedicated attendants and on-demand dining service.
 
 ### 2. AC 2-Tier (2A) — 188 Berths (4 Coaches)
+
 - **Spacious 2x2 Bay Layout:** Features 4 berths per bay (Lower, Upper) and 2 side berths (Side Lower, Side Upper) with heavy acoustic fabric privacy curtains.
 - **Enhanced Headroom:** Generous vertical clearance allowing tall passengers to sit upright comfortably on both lower and upper bunks without hunching.
 - **Storage Amenities:** Concealed under-berth luggage clamps, integrated bottle holders, and magnetic coat hooks.
 
 ### 3. AC 3-Tier (3A) — 611 Berths (11 Coaches)
+
 - **Spacious 3x2 Bay Layout:** 6 berths per bay (Lower, Middle, Upper) and 2 side berths (Side Lower, Side Upper).
 - **Middle Berth Mechanism:** Redesigned single-motion folding middle berth with hydraulic damping to prevent sudden drops or midnight rattling.
 - **Individual Air Vents:** Dedicated diffused AC louvers for each passenger berth, eliminating cold air blasts directly onto the face.
@@ -122,14 +125,14 @@ The table below provides the operational blueprint, distance, expected travel ti
 
 The table below illustrates the base fare comparison across major distance slabs and sample routes:
 
-| Journey Distance / Sector | Travel Class | Vande Bharat Sleeper Fare (With Food) | Rajdhani Express Base Fare | Dynamic Tatkal Fare | Food Opt-Out Deduction |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Short Distance (~400 km)**<br>*e.g. Chennai ➔ Bengaluru* | **3A**<br>**2A**<br>**1A** | ₹1,080<br>₹1,620<br>₹2,550 | ₹890<br>₹1,380<br>₹2,180 | ₹1,430<br>₹2,120<br>N/A (No 1A Tatkal) | ₹210<br>₹270<br>₹320 |
-| **Medium Distance (~1,000 km)**<br>*e.g. Delhi ➔ Patna* | **3A**<br>**2A**<br>**1A** | ₹2,150<br>₹3,200<br>₹4,850 | ₹1,820<br>₹2,750<br>₹4,200 | ₹2,800<br>₹4,100<br>N/A (No 1A Tatkal) | ₹380<br>₹440<br>₹510 |
-| **Long Distance (~1,400 km)**<br>*e.g. Delhi ➔ Mumbai* | **3A**<br>**2A**<br>**1A** | ₹2,850<br>₹4,250<br>₹6,400 | ₹2,420<br>₹3,650<br>₹5,550 | ₹3,650<br>₹5,400<br>N/A (No 1A Tatkal) | ₹490<br>₹580<br>₹680 |
-| **Extended Distance (~2,000 km)**<br>*e.g. Delhi ➔ Bengaluru* | **3A**<br>**2A**<br>**1A** | ₹3,950<br>₹5,900<br>₹8,850 | ₹3,350<br>₹5,100<br>₹7,800 | ₹4,950<br>₹7,450<br>N/A (No 1A Tatkal) | ₹650<br>₹760<br>₹850 |
+| Journey Distance / Sector                                     |        Travel Class        | Vande Bharat Sleeper Fare (With Food) | Rajdhani Express Base Fare |          Dynamic Tatkal Fare           | Food Opt-Out Deduction |
+| :------------------------------------------------------------ | :------------------------: | :-----------------------------------: | :------------------------: | :------------------------------------: | :--------------------: |
+| **Short Distance (~400 km)**<br>_e.g. Chennai ➔ Bengaluru_    | **3A**<br>**2A**<br>**1A** |      ₹1,080<br>₹1,620<br>₹2,550       |  ₹890<br>₹1,380<br>₹2,180  | ₹1,430<br>₹2,120<br>N/A (No 1A Tatkal) |  ₹210<br>₹270<br>₹320  |
+| **Medium Distance (~1,000 km)**<br>_e.g. Delhi ➔ Patna_       | **3A**<br>**2A**<br>**1A** |      ₹2,150<br>₹3,200<br>₹4,850       | ₹1,820<br>₹2,750<br>₹4,200 | ₹2,800<br>₹4,100<br>N/A (No 1A Tatkal) |  ₹380<br>₹440<br>₹510  |
+| **Long Distance (~1,400 km)**<br>_e.g. Delhi ➔ Mumbai_        | **3A**<br>**2A**<br>**1A** |      ₹2,850<br>₹4,250<br>₹6,400       | ₹2,420<br>₹3,650<br>₹5,550 | ₹3,650<br>₹5,400<br>N/A (No 1A Tatkal) |  ₹490<br>₹580<br>₹680  |
+| **Extended Distance (~2,000 km)**<br>_e.g. Delhi ➔ Bengaluru_ | **3A**<br>**2A**<br>**1A** |      ₹3,950<br>₹5,900<br>₹8,850       | ₹3,350<br>₹5,100<br>₹7,800 | ₹4,950<br>₹7,450<br>N/A (No 1A Tatkal) |  ₹650<br>₹760<br>₹850  |
 
-*Note: Fares include GST (5% on AC classes) and reservation fees. Superfast and dynamic surge pricing may apply on peak festival dates.*
+_Note: Fares include GST (5% on AC classes) and reservation fees. Superfast and dynamic surge pricing may apply on peak festival dates._
 
 ---
 
@@ -154,6 +157,7 @@ The table below illustrates the base fare comparison across major distance slabs
 ```
 
 ### How the Food Opt-Out Works
+
 1. When booking your ticket on the IRCTC Rail Connect app or website, locate the **Catering Preference** dropdown for each passenger.
 2. Select **No Food / Opt-Out**.
 3. The booking system automatically deducts the full catering fee from the total payable amount in real time.
@@ -166,6 +170,7 @@ The table below illustrates the base fare comparison across major distance slabs
 **Unlike conventional Mail/Express trains that issue hundreds of Waiting List (GNWL/RLWL/PQWL) and RAC (Reservation Against Cancellation) tickets, Vande Bharat Sleeper trains operate on a strict Zero-WL / Zero-RAC model. Once all physical berths are booked, the booking engine immediately displays `REGRET`.**
 
 This policy was instituted by the Railway Board to ensure:
+
 - **No Overcrowding:** Eliminates unauthorized passenger movement, standing passengers, or RAC passengers sharing side-lower berths in air-conditioned coaches.
 - **Acoustic and Climate Integrity:** Automatic plug doors and vestibules remain closed, maintaining cabin air pressure and acoustic insulation throughout the night.
 - **Guaranteed Berths:** Every passenger who holds an issued ticket is guaranteed a dedicated flat berth with complete linen and pillow sets.
@@ -205,15 +210,19 @@ Follow this step-by-step procedure to book within the opening minutes:
 When your direct Vande Bharat Sleeper search displays `REGRET`, conventional booking methods will fail. Use these proven passenger tactics to secure your journey:
 
 ### 1. Discover Split-Leg Contiguous Berths on Smart Seats
+
 If the direct route from Delhi to Mumbai is sold out, vacant berths often exist across consecutive segments on the same train (e.g., Delhi to Kota, and Kota to Mumbai). Use [Smart Seats](/) to search your entire route. Smart Seats automatically analyzes intermediate station quotas and identifies contiguous berths, allowing you to travel on the same train with two confirmed segment tickets.
 
 ### 2. Check Vacant Berths on Chart Vacancy (4 Hours Before Departure)
+
 When Indian Railways prepares the first reservation chart 4 hours before departure, unutilized VIP/Emergency Quotas (EQ), foreign tourist berths, and railway operational quotas are released to the public as **Current Availability (CURR_AVBL)**. Visit [Get Confirmed Tickets](/) 4 hours before departure to see coach-by-coach vacant berths bookable at a 10% discount on base fare.
 
 ### 3. Track Charting Countdown on Chart Times
+
 Different originating stations prepare charts at different milestones. Use [Chart Times](/chart-times) to look up the exact chart preparation schedule for your train number and set automated alerts so you are logged in the moment remaining berths go live.
 
 ### Search Popular Vande Bharat Express Corridors
+
 Planning your trip? Use these direct search links with pre-filled parameters to check live seat availability and split-ticket options:
 
 - 🚄 [Search Delhi to Varanasi (`NDLS ➔ BSB`)](https://lastberth.com/?from=NDLS&to=BSB)
@@ -270,7 +279,7 @@ If you miss your train, your ticket cannot be transferred to another service or 
 
 ## Bottom line
 
-The Vande Bharat Sleeper sets a new benchmark for Indian rail travel by combining 160 km/h distributed-traction speed with 1AC/2AC/3AC luxury sleeping comfort. Because trains operate under a strict Zero-WL policy, confirmed berths sell out rapidly within the 60-day opening window. 
+The Vande Bharat Sleeper sets a new benchmark for Indian rail travel by combining 160 km/h distributed-traction speed with 1AC/2AC/3AC luxury sleeping comfort. Because trains operate under a strict Zero-WL policy, confirmed berths sell out rapidly within the 60-day opening window.
 
 If direct searches show `REGRET`, use [Smart Seats](/) to find confirmed split-leg bookings on the same train, track final charting schedules on [Chart Times](/chart-times), and check available berths 4 hours before departure on [Get Confirmed Tickets](/).
 

@@ -48,7 +48,8 @@ export function SplitTicketBookingFlow({
     (leg) => getLegClassOptions(leg).length > 1,
   );
   const isSkipped = (index: number) => choices[index] === SKIP_LEG;
-  const canContinue = selection.totalFare !== null && selection.legs.length >= 1;
+  const canContinue =
+    selection.totalFare !== null && selection.legs.length >= 1;
   const toBookingDetails = (): Omit<
     SplitTicketBookingModalProps,
     "open" | "onClose"
@@ -77,7 +78,7 @@ export function SplitTicketBookingFlow({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-2 backdrop-blur-xs sm:p-4"
+      className="backdrop-blur-xs fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-2 sm:p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby={`${groupId}-title`}
@@ -143,7 +144,7 @@ export function SplitTicketBookingFlow({
                 <fieldset
                   key={index}
                   className={cn(
-                    "min-w-0 rounded-xl border p-3 sm:p-4 transition-colors",
+                    "min-w-0 rounded-xl border p-3 transition-colors sm:p-4",
                     legSkipped
                       ? "border-dashed border-slate-300 bg-slate-50/60"
                       : "border-slate-200 bg-white",
@@ -227,7 +228,7 @@ export function SplitTicketBookingFlow({
                       className={cn(
                         "flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border p-3 text-sm",
                         legSkipped
-                          ? "border-slate-400 bg-slate-100/80 text-slate-700 font-medium"
+                          ? "border-slate-400 bg-slate-100/80 font-medium text-slate-700"
                           : "border-slate-200 text-slate-500 hover:border-slate-300 hover:bg-slate-50",
                       )}
                     >
@@ -276,7 +277,7 @@ export function SplitTicketBookingFlow({
                 <>
                   Ticket fare ({selection.legs.length}{" "}
                   {selection.legs.length === 1 ? "ticket" : "tickets"}):{" "}
-                  <strong className="text-lg text-slate-900 tabular-nums">
+                  <strong className="text-lg tabular-nums text-slate-900">
                     ₹{selection.totalFare.toLocaleString("en-IN")}
                   </strong>
                 </>

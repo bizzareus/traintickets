@@ -10,7 +10,7 @@ import { isBrowserOnLocalhost } from "@/lib/observability";
  */
 const POSTHOG_KEY =
   typeof process !== "undefined"
-    ? process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim() ?? ""
+    ? (process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim() ?? "")
     : "";
 
 declare global {

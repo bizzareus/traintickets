@@ -1,13 +1,13 @@
 ---
 name: lastberth-seo-weekly-routine
 description: "The lastberth-seo-weekly scheduled task — what it does, how it gets data (Claude-in-Chrome, no MCP/Ahrefs), and its guardrails"
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: ccf1bdeb-5519-4f01-aaf5-09ba2220eca1
 ---
 
-A weekly SEO management routine for lastberth.com, built 2026-07-13 from the *Claude Fable SEO Playbook* (a Google Doc; e-commerce-oriented, adapted to this content+tools site). Created via the scheduled-tasks system, NOT a repo skill.
+A weekly SEO management routine for lastberth.com, built 2026-07-13 from the _Claude Fable SEO Playbook_ (a Google Doc; e-commerce-oriented, adapted to this content+tools site). Created via the scheduled-tasks system, NOT a repo skill.
 
 - **Task:** `lastberth-seo-weekly` — `~/.claude/scheduled-tasks/lastberth-seo-weekly/SKILL.md`. Cron `0 8 * * 1` (Mon 08:00 local). Sits alongside `daily-blog-writing`, `blog-fact-audit`, and the reeltripper tasks.
 - **Data:** via **Claude-in-Chrome** using the user's logged-in Google session — deliberately NOT the playbook's Google Cloud service-account + `mcp-server-gsc` MCP (user chose "keep using claude computer"). **No Ahrefs** (no account → backlink workflow dropped). PageSpeed via web UI, no key.

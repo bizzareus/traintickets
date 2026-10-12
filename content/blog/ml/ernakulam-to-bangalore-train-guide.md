@@ -26,14 +26,14 @@ tags:
 
 എറണാകുളത്തെയും ബാംഗ്ലൂരിനെയും ബന്ധിപ്പിക്കുന്ന പ്രധാന ഡയറക്ട് ട്രെയിനുകളുടെ വിവരങ്ങൾ താഴെ നൽകുന്നു:
 
-| ട്രെയിൻ പേരും നമ്പറും | പുറപ്പെടുന്ന സ്റ്റേഷൻ (Ernakulam) | എത്തുന്ന സ്റ്റേഷൻ (Bangalore) | സർവീസ് ദിവസങ്ങൾ | യാത്രാ സമയം | ലഭ്യമായ ക്ലാസുകൾ |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Ernakulam - SMVB Vande Bharat (20638/20637)** | Ernakulam Jn (ERS) | SMVT Bengaluru (SMVB) | ആഴ്ചയിൽ 6 ദിവസം | ~8h 30m | CC, EC |
-| **Ernakulam - KSR Bengaluru Intercity (12678)** | Ernakulam Jn (ERS) | KSR Bengaluru (SBC) | ദിവസേന | ~10h 30m | CC, 2S |
-| **Ernakulam - SMVT Express (16316)** | Ernakulam Jn (ERS) | SMVT Bengaluru (SMVB) | ദിവസേന | ~11h 45m | 2A, 3A, SL |
-| **Kanyakumari - KSR Bengaluru Express (16525)** | Ernakulam Town (ERN) | KSR Bengaluru (SBC) | ദിവസേന | ~12h 15m | 1A, 2A, 3A, SL |
-| **Kochuveli - SMVT AC Express (22678)** | Ernakulam Town (ERN) | SMVT Bengaluru (SMVB) | ആഴ്ചയിലൊരിക്കൽ / സ്പെഷ്യൽ | ~10h 15m | 1A, 2A, 3A |
-| **Kochuveli - YPR Garib Rath (12258)** | Ernakulam Town (ERN) | Yesvantpur Jn (YPR) | ആഴ്ചയിൽ 3 ദിവസം | ~11h 00m | 3A |
+| ട്രെയിൻ പേരും നമ്പറും                           | പുറപ്പെടുന്ന സ്റ്റേഷൻ (Ernakulam) | എത്തുന്ന സ്റ്റേഷൻ (Bangalore) | സർവീസ് ദിവസങ്ങൾ           | യാത്രാ സമയം | ലഭ്യമായ ക്ലാസുകൾ |
+| :---------------------------------------------- | :-------------------------------- | :---------------------------- | :------------------------ | :---------- | :--------------- |
+| **Ernakulam - SMVB Vande Bharat (20638/20637)** | Ernakulam Jn (ERS)                | SMVT Bengaluru (SMVB)         | ആഴ്ചയിൽ 6 ദിവസം           | ~8h 30m     | CC, EC           |
+| **Ernakulam - KSR Bengaluru Intercity (12678)** | Ernakulam Jn (ERS)                | KSR Bengaluru (SBC)           | ദിവസേന                    | ~10h 30m    | CC, 2S           |
+| **Ernakulam - SMVT Express (16316)**            | Ernakulam Jn (ERS)                | SMVT Bengaluru (SMVB)         | ദിവസേന                    | ~11h 45m    | 2A, 3A, SL       |
+| **Kanyakumari - KSR Bengaluru Express (16525)** | Ernakulam Town (ERN)              | KSR Bengaluru (SBC)           | ദിവസേന                    | ~12h 15m    | 1A, 2A, 3A, SL   |
+| **Kochuveli - SMVT AC Express (22678)**         | Ernakulam Town (ERN)              | SMVT Bengaluru (SMVB)         | ആഴ്ചയിലൊരിക്കൽ / സ്പെഷ്യൽ | ~10h 15m    | 1A, 2A, 3A       |
+| **Kochuveli - YPR Garib Rath (12258)**          | Ernakulam Town (ERN)              | Yesvantpur Jn (YPR)           | ആഴ്ചയിൽ 3 ദിവസം           | ~11h 00m    | 3A               |
 
 ---
 
@@ -57,6 +57,7 @@ tags:
 **Ernakulam – SMVT Bengaluru Vande Bharat Express കേവലം 8 മണിക്കൂറും 30 മിനിറ്റും കൊണ്ട് യാത്ര പൂർത്തിയാക്കുന്നു, ഇത് ഈ റൂട്ടിലെ ഏറ്റവും വേഗതയേറിയ ട്രെയിനാണ്. AC Chair Car (CC) നിരക്ക് ഏകദേശം ₹1,450 മുതൽ ₹1,650 വരെയും, Executive Chair Car (EC) നിരക്ക് ഏകദേശം ₹2,800 മുതൽ ₹3,100 വരെയുമാണ് (ഭക്ഷണം ഉൾപ്പെടെ).**
 
 എറണാകുളം - ബാംഗ്ലൂർ Vande Bharat-ന്റെ പ്രധാന വിവരങ്ങൾ:
+
 - **സമയക്രമം:** രാവിലെ (~05:10 AM) Ernakulam Junction (ERS)-ൽ നിന്ന് പുറപ്പെട്ട് ഉച്ചയ്ക്ക് (~01:40 PM) SMVT Bengaluru (SMVB)-ൽ എത്തുന്നു.
 - **പ്രധാന സ്റ്റോപ്പുകൾ:** Thrissur, Palakkad Junction, Coimbatore Junction, Erode Junction, Salem Junction.
 - **ഭക്ഷണ സേവനം (Catering):** ഭക്ഷണം വേണമെന്നത് നിർബന്ധമില്ല. ബുക്ക് ചെയ്യുമ്പോൾ ഓപ്റ്റ്-ഔട്ട് ചെയ്താൽ ടിക്കറ്റൊന്നിന് ₹150 മുതൽ ₹350 വരെ ലാഭിക്കാം.

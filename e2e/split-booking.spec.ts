@@ -136,9 +136,13 @@ for (const scenario of [
           bookingRef: "LB-TEST",
           bookingMode,
           paymentStatus: paid ? "PAID" : "PENDING",
-          bookingStatus: confirmed ? "CONFIRMED" : paid
-            ? bookingMode === "MANUAL" ? "MANUAL_PENDING" : "IN_PROGRESS"
-            : "IDLE",
+          bookingStatus: confirmed
+            ? "CONFIRMED"
+            : paid
+              ? bookingMode === "MANUAL"
+                ? "MANUAL_PENDING"
+                : "IN_PROGRESS"
+              : "IDLE",
           pnrs: confirmed ? pnrs : [],
           paidAt,
           logs: [],
@@ -150,10 +154,12 @@ for (const scenario of [
       });
     });
 
-    await page.route("https://muzobox.com/pay/**", (route) => route.fulfill({
-      contentType: "text/html",
-      body: '<button onclick="parent.postMessage({type: \'payment_complete\', status: \'paid\'}, \'*\')">Complete test checkout</button>',
-    }));
+    await page.route("https://muzobox.com/pay/**", (route) =>
+      route.fulfill({
+        contentType: "text/html",
+        body: "<button onclick=\"parent.postMessage({type: 'payment_complete', status: 'paid'}, '*')\">Complete test checkout</button>",
+      }),
+    );
 
     await page.goto(`/?assisted_booking=${flagEnabled ? "1" : "0"}`);
     expect(await page.evaluate(() => localStorage.getItem("admin"))).toBe(
@@ -225,13 +231,10 @@ for (const scenario of [
         await expect(page.getByRole("dialog")).toHaveCount(1);
         await bookNow.click();
         await expect(
-          page
-            .getByRole("dialog")
-            .last()
-            .getByRole("button", {
-              name: "Continue to passenger details",
-              exact: true,
-            }),
+          page.getByRole("dialog").last().getByRole("button", {
+            name: "Continue to passenger details",
+            exact: true,
+          }),
         ).toBeDisabled();
         expect(requests).toHaveLength(0);
         return;
@@ -300,17 +303,28 @@ for (const scenario of [
     expect(requests[0].legs.map((leg) => leg.fare)).toEqual(
       multipleClasses ? [565, 600, 340] : [385, 385, 340],
     );
-    const iframe = modal.locator('iframe[title="Complete payment via Muzobox"]');
-    await expect(iframe).toHaveAttribute("src", "https://muzobox.com/pay/mb_test?source=reservation&iframe=1");
+    const iframe = modal.locator(
+      'iframe[title="Complete payment via Muzobox"]',
+    );
+    await expect(iframe).toHaveAttribute(
+      "src",
+      "https://muzobox.com/pay/mb_test?source=reservation&iframe=1",
+    );
     await expect(iframe).toHaveAttribute("allow", "payment");
     await expect(modal.getByAltText("UPI QR Code")).toHaveCount(0);
     await expect(modal).not.toContainText(/manual reservation/i);
-    const checkout = page.frameLocator('iframe[title="Complete payment via Muzobox"]');
+    const checkout = page.frameLocator(
+      'iframe[title="Complete payment via Muzobox"]',
+    );
     // Even a genuine iframe success message cannot advance a still-pending booking.
-    await checkout.getByRole("button", { name: "Complete test checkout" }).click();
+    await checkout
+      .getByRole("button", { name: "Complete test checkout" })
+      .click();
     await expect(iframe).toBeVisible();
     await expect(modal.getByText(/Payment Received/)).toHaveCount(0);
-    await modal.screenshot({ path: testInfo.outputPath("muzobox-checkout.png") });
+    await modal.screenshot({
+      path: testInfo.outputPath("muzobox-checkout.png"),
+    });
 
     // Freeze time at payment confirmation to test the exact five-minute boundary.
     const paymentTime = new Date();
@@ -318,12 +332,18 @@ for (const scenario of [
     await page.clock.pauseAt(new Date(paymentTime.getTime() + 1000));
     paidAt = await page.evaluate(() => new Date().toISOString());
     paid = true;
-    await checkout.getByRole("button", { name: "Complete test checkout" }).click();
+    await checkout
+      .getByRole("button", { name: "Complete test checkout" })
+      .click();
     await expect(modal).toContainText(
       `Payment Received (₹${price.amount.toLocaleString("en-IN")})`,
     );
-    await expect(modal.getByRole("heading", { name: "Booking in progress", exact: true })).toBeVisible();
-    await expect(modal.getByText("Booking in progress", { exact: true })).toHaveCount(2);
+    await expect(
+      modal.getByRole("heading", { name: "Booking in progress", exact: true }),
+    ).toBeVisible();
+    await expect(
+      modal.getByText("Booking in progress", { exact: true }),
+    ).toHaveCount(2);
     await expect(modal).not.toContainText(/manual|AI booking|AI Reservation/i);
     const delayMessage = modal.getByRole("status");
     await expect(delayMessage).toHaveCount(0);
@@ -336,13 +356,19 @@ for (const scenario of [
       "href",
       `https://wa.me/919999224767?text=${encodeURIComponent("Hi, I have a query about booking LB-TEST.")}`,
     );
-    await modal.screenshot({ path: testInfo.outputPath("booking-delayed.png") });
+    await modal.screenshot({
+      path: testInfo.outputPath("booking-delayed.png"),
+    });
 
     confirmed = true;
     await page.clock.resume();
-    await expect(modal.getByRole("heading", { name: "Your tickets are confirmed" })).toBeVisible();
+    await expect(
+      modal.getByRole("heading", { name: "Your tickets are confirmed" }),
+    ).toBeVisible();
     await expect(delayMessage).toHaveCount(0);
-    await expect(modal.getByText("Booking completed", { exact: true })).toBeVisible();
+    await expect(
+      modal.getByText("Booking completed", { exact: true }),
+    ).toBeVisible();
     for (const pnr of pnrs)
       await expect(modal.getByText(pnr, { exact: true })).toBeVisible();
     await expect(modal).toContainText("Leg 3 PNR:");
@@ -354,18 +380,28 @@ for (const [paymentStatus, heading] of [
   ["PAID", "Payment received"],
   ["FAILED", "Payment failed"],
 ] as const) {
-  test(`payment return page uses verified ${paymentStatus} status`, async ({ page }) => {
-    await page.route("**/api/**", (route) => route.fulfill({
-      json: {
-        bookingRef: "LB-TEST",
-        paymentStatus,
-        totalFare: 720,
-        serviceFee: 50,
-        amount: 770,
-      },
-    }));
-    await page.goto("/split-booking/payment-complete?ref=LB-TEST&status=paid&amount=1");
-    await expect(page.getByRole("heading", { name: heading, exact: true })).toBeVisible();
-    await expect(page.getByText("₹720 (tickets) + ₹50 (service fee) = ₹770")).toBeVisible();
+  test(`payment return page uses verified ${paymentStatus} status`, async ({
+    page,
+  }) => {
+    await page.route("**/api/**", (route) =>
+      route.fulfill({
+        json: {
+          bookingRef: "LB-TEST",
+          paymentStatus,
+          totalFare: 720,
+          serviceFee: 50,
+          amount: 770,
+        },
+      }),
+    );
+    await page.goto(
+      "/split-booking/payment-complete?ref=LB-TEST&status=paid&amount=1",
+    );
+    await expect(
+      page.getByRole("heading", { name: heading, exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByText("₹720 (tickets) + ₹50 (service fee) = ₹770"),
+    ).toBeVisible();
   });
 }

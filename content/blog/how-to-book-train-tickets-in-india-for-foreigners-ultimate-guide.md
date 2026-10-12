@@ -27,7 +27,7 @@ Here's the easiest way to get through it:
 1. Head over to the [official IRCTC registration page](https://www.irctc.co.in/nget/profile/user-registration).
 2. Pick a username you'll remember and fill out the personal details. Double-check that you set your nationality to your home country (like the US or UK) rather than letting it default to India.
 3. Punch in your international phone number, prefixing it with the correct country code.
-4. Once you submit, the portal will ask you to pay the **₹100 + GST** verification fee (which comes out to roughly $1.50 USD). 
+4. Once you submit, the portal will ask you to pay the **₹100 + GST** verification fee (which comes out to roughly $1.50 USD).
 5. Complete that payment, then check your email and phone messages. You will need to copy both of the OTP codes.
 6. Submit both codes on the verification page, and you are all set.
 
@@ -43,18 +43,19 @@ Here's the easiest way to get through it:
 If you are planning your trip months in advance, you should definitely know about the Foreign Tourist Quota (FT Quota). Indian Railways sets aside a dedicated number of berths on popular routes—like Delhi to Agra, Jaipur, Varanasi, or Mumbai—specifically to help international visitors get confirmed seats.
 
 Here is why this quota is a lifesaver:
+
 - **A huge booking window:** While regular tickets can only be booked 60 days in advance, the FT quota opens a full **365 days before departure** for air-conditioned classes. This lets you plan your itinerary way ahead of time.
 - **Better availability:** Because only foreign passport holders can book these seats, they don't sell out instantly like the general quota tickets.
 - **Slightly higher cost:** FT quota tickets do carry a service charge, making them a bit more expensive, but the peace of mind of having a confirmed seat is well worth the extra couple of dollars.
 
 To check these seats, just select "Foreign Tourist" from the Quota dropdown menu before you hit search on the IRCTC page.
 
-| Quota Feature | General Quota | Foreign Tourist Quota |
-| :--- | :--- | :--- |
-| **Booking Window** | 60 Days | 365 Days (AC Classes) |
-| **Ticket Cost** | Base Fare | Base Fare + Service Charge |
-| **Availability** | Hard to get on popular routes | Much better availability for tourists |
-| **Eligibility** | Indian Residents | Foreign Passports & NRIs |
+| Quota Feature      | General Quota                 | Foreign Tourist Quota                 |
+| :----------------- | :---------------------------- | :------------------------------------ |
+| **Booking Window** | 60 Days                       | 365 Days (AC Classes)                 |
+| **Ticket Cost**    | Base Fare                     | Base Fare + Service Charge            |
+| **Availability**   | Hard to get on popular routes | Much better availability for tourists |
+| **Eligibility**    | Indian Residents              | Foreign Passports & NRIs              |
 
 ---
 
@@ -80,6 +81,7 @@ If your payment keeps failing, here are the best ways to bypass the issue:
 Tatkal tickets are meant for last-minute, urgent journeys. While foreigners are technically allowed to book them, the reality is that doing so is an uphill battle.
 
 Here is why you should avoid relying on Tatkal:
+
 - **Extreme competition:** You will be competing with millions of locals who know the system inside out, and the seats disappear in a flash.
 - **No tourist buffer:** There is no special foreign tourist quota for Tatkal bookings, so you are buying from the general pool.
 - **OTP bottlenecks:** During the frantic booking hour, SMS delivery can slow down. If your verification code is delayed by even thirty seconds, the tickets will already be gone.
@@ -91,10 +93,13 @@ Instead of stressful last-minute bookings, it is always safer to check **Current
 ## Common Booking Questions (FAQ)
 
 ### How much is the IRCTC registration fee for foreigners?
+
 The registration fee is ₹100 plus GST (around $1.50 USD). This is a one-time fee required to verify your international mobile number.
 
 ### What documents do foreigners need to travel on Indian trains?
+
 You must carry your original, physical passport and a valid Indian visa (or printout of your e-Visa) during the journey. A digital copy of your ticket on your phone is perfectly fine.
 
 ### Can a foreigner book tickets for an Indian citizen under the Foreign Tourist Quota?
+
 No, the Foreign Tourist Quota is strictly reserved for foreign nationals and NRIs. Any passenger traveling under this quota must have a foreign passport or NRI status, and Indian residents cannot use these tickets.

@@ -26,13 +26,13 @@ Key rules, no fluff:
 
 Booking calendar (8 AM):
 
-| Travelling for | Date | Book on |
-|---|---|---|
-| Dhanteras — I missed this once, spent Diwali in a Delhi PG with noodles. Never again | Nov 6, Friday | Sept 7 |
-| Choti Diwali | Nov 7, Saturday | Sept 8 |
-| Diwali / Lakshmi Puja | Nov 8, Sunday | Sept 9 |
-| Govardhan Puja | Nov 9, Monday | Sept 10 |
-| Bhai Dooj | Nov 10, Tuesday | Sept 11 |
+| Travelling for                                                                       | Date            | Book on |
+| ------------------------------------------------------------------------------------ | --------------- | ------- |
+| Dhanteras — I missed this once, spent Diwali in a Delhi PG with noodles. Never again | Nov 6, Friday   | Sept 7  |
+| Choti Diwali                                                                         | Nov 7, Saturday | Sept 8  |
+| Diwali / Lakshmi Puja                                                                | Nov 8, Sunday   | Sept 9  |
+| Govardhan Puja                                                                       | Nov 9, Monday   | Sept 10 |
+| Bhai Dooj                                                                            | Nov 10, Tuesday | Sept 11 |
 
 Missed the window? That's what the rest of this guide is for — specials + splits + chart leftovers.
 
@@ -47,7 +47,7 @@ Missed the window? That's what the rest of this guide is for — specials + spli
 **3. Pounce post-chart.** After first chart, leftover VIP/defence/middle-station seats release as CURR_AVBL — confirmed, normal price, bookable till ~30 mins before. Check [Get Confirmed Tickets](/) right after chart (timing on [Chart Times](/chart-times)). My sister grabbed Mumbai–Surat CC at 9 PM for next morning this way. Keep IRCTC logged in + UPI ready — these fly.
 
 ![Smart Seats Split Booking Example: Delhi to Patna](/images/blog/diwali-smart-seats-delhi-patna.png)
-*Direct REGRET, both halves green and confirmed — same train.*
+_Direct REGRET, both halves green and confirmed — same train._
 
 ---
 
@@ -66,7 +66,7 @@ Quotas change daily, so re-search your date. But these breaks repeat most Diwali
 - Break: **NZM → Kota** confirmed + **Kota → MMCT** confirmed. Same Rajdhani. Kota halt is enough to shift; Rajdhani khana makes the extra ticket feel okay.
 
 ![Smart Seats Split Booking Example: Delhi to Mumbai](/images/blog/diwali-smart-seats-delhi-mumbai.png)
-*Delhi–Mumbai splits usually break at Kota — less searched, more seats.*
+_Delhi–Mumbai splits usually break at Kota — less searched, more seats._
 
 ### Mumbai → Ahmedabad (festival weekend)
 
@@ -74,7 +74,7 @@ Quotas change daily, so re-search your date. But these breaks repeat most Diwali
 - Break: **MMCT → Surat (ST)** confirmed + **Surat → ADI** confirmed. Same Shatabdi. Barely finish your cutting chai and it's time to shift.
 
 ![Smart Seats Split Booking Example: Mumbai to Ahmedabad](/images/blog/diwali-smart-seats-mumbai-ahmedabad.png)
-*Short routes open Surat splits constantly — check it first.*
+_Short routes open Surat splits constantly — check it first._
 
 ---
 
@@ -115,4 +115,4 @@ Don't sit on a Diwali WL 150 and pray. Try splits on [Smart Seats](/), origin-st
 
 Light one extra diya for me if you reach. Happy Diwali!
 
-*LastBerth is an independent seat-finder I use — not IRCTC or Railways, just reads quotas better.*
+_LastBerth is an independent seat-finder I use — not IRCTC or Railways, just reads quotas better._

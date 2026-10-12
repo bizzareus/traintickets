@@ -49,7 +49,9 @@ test("buildVandeBharatSearchRedirectUrl - formats query parameters properly", ()
   assert.ok(url.includes("from=NDLS"));
   assert.ok(url.includes("to=BSB"));
   assert.ok(url.includes("date=2026-10-15"));
-  assert.ok(url.includes("fromName=New+Delhi") || url.includes("fromName=New%20Delhi"));
+  assert.ok(
+    url.includes("fromName=New+Delhi") || url.includes("fromName=New%20Delhi"),
+  );
   assert.ok(url.includes("toName=Varanasi"));
 });
 

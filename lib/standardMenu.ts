@@ -49,7 +49,8 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
     slug: "ac-coach-food-menu-prices",
     classGroup: "2A-3A-CC",
     classGroupName: "AC 2-Tier, 3-Tier & Chair Car",
-    covers: "Rajdhani, Shatabdi and AC Mail/Express, in AC 2-Tier (2A), 3-Tier (3A) and Chair Car (CC)",
+    covers:
+      "Rajdhani, Shatabdi and AC Mail/Express, in AC 2-Tier (2A), 3-Tier (3A) and Chair Car (CC)",
     heading: "AC 2A / 3A / Chair Car Food Menu & Meal Prices",
     metaTitle: "AC 2A/3A/Chair Car Food Menu & Meal Prices",
   },
@@ -57,7 +58,8 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
     slug: "north-zone-2ac-3ac-cc-food-menu",
     classGroup: "2A-3A-CC",
     classGroupName: "North Zone AC 2A, 3A & Chair Car",
-    covers: "Northern Zone trains (NR, NCR, NWR, NER) in AC 2-Tier (2A), 3-Tier (3A) and Chair Car (CC)",
+    covers:
+      "Northern Zone trains (NR, NCR, NWR, NER) in AC 2-Tier (2A), 3-Tier (3A) and Chair Car (CC)",
     heading: "North Zone AC 2A / 3A / Chair Car Food Menu",
     metaTitle: "North Zone AC 2A/3A/CC Food Menu & Prices",
     zoneFilter: "North",
@@ -66,7 +68,8 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
     slug: "south-zone-2ac-3ac-cc-food-menu",
     classGroup: "2A-3A-CC",
     classGroupName: "South Zone AC 2A, 3A & Chair Car",
-    covers: "Southern Zone trains (SR, SWR, SCR) in AC 2-Tier (2A), 3-Tier (3A) and Chair Car (CC)",
+    covers:
+      "Southern Zone trains (SR, SWR, SCR) in AC 2-Tier (2A), 3-Tier (3A) and Chair Car (CC)",
     heading: "South Zone AC 2A / 3A / Chair Car Food Menu",
     metaTitle: "South Zone AC 2A/3A/CC Food Menu & Prices",
     zoneFilter: "South",
@@ -75,7 +78,8 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
     slug: "east-zone-2ac-3ac-cc-food-menu",
     classGroup: "2A-3A-CC",
     classGroupName: "East Zone AC 2A, 3A & Chair Car",
-    covers: "Eastern Zone trains (ER, ECR, SER, NFR) in AC 2-Tier (2A), 3-Tier (3A) and Chair Car (CC)",
+    covers:
+      "Eastern Zone trains (ER, ECR, SER, NFR) in AC 2-Tier (2A), 3-Tier (3A) and Chair Car (CC)",
     heading: "East Zone AC 2A / 3A / Chair Car Food Menu",
     metaTitle: "East Zone AC 2A/3A/CC Food Menu & Prices",
     zoneFilter: "East",
@@ -84,7 +88,8 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
     slug: "west-zone-2ac-3ac-cc-food-menu",
     classGroup: "2A-3A-CC",
     classGroupName: "West Zone AC 2A, 3A & Chair Car",
-    covers: "Western Zone trains (WR, CR, WCR) in AC 2-Tier (2A), 3-Tier (3A) and Chair Car (CC)",
+    covers:
+      "Western Zone trains (WR, CR, WCR) in AC 2-Tier (2A), 3-Tier (3A) and Chair Car (CC)",
     heading: "West Zone AC 2A / 3A / Chair Car Food Menu",
     metaTitle: "West Zone AC 2A/3A/CC Food Menu & Prices",
     zoneFilter: "West",
@@ -161,7 +166,8 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
     slug: "rajdhani-express-food-menu-prices",
     classGroup: "1AC-EC",
     classGroupName: "Rajdhani Express (1AC, 2A, 3A, EC)",
-    covers: "All Rajdhani Express trains across First AC (1A), 2-Tier (2A), 3-Tier (3A) and Executive Chair Car (EC)",
+    covers:
+      "All Rajdhani Express trains across First AC (1A), 2-Tier (2A), 3-Tier (3A) and Executive Chair Car (EC)",
     heading: "Rajdhani Express Food Menu & Meal Charges",
     metaTitle: "Rajdhani Express Food Menu & Meal Prices",
   },
@@ -169,7 +175,8 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
     slug: "shatabdi-express-food-menu-prices",
     classGroup: "2A-3A-CC",
     classGroupName: "Shatabdi Express (Executive & Chair Car)",
-    covers: "Shatabdi Express trains in Executive Chair Car (EC) and AC Chair Car (CC)",
+    covers:
+      "Shatabdi Express trains in Executive Chair Car (EC) and AC Chair Car (CC)",
     heading: "Shatabdi Express Food Menu & Catering Prices",
     metaTitle: "Shatabdi Express Food Menu & Meal Prices",
   },
@@ -177,7 +184,8 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
     slug: "duronto-express-food-menu-prices",
     classGroup: "duronto-sleeper",
     classGroupName: "Duronto Express (1AC, 2A, 3A & Sleeper)",
-    covers: "Duronto Express trains across Sleeper Class, AC 3-Tier, 2-Tier and First AC",
+    covers:
+      "Duronto Express trains across Sleeper Class, AC 3-Tier, 2-Tier and First AC",
     heading: "Duronto Express Food Menu & Catering Prices",
     metaTitle: "Duronto Express Food Menu & Meal Prices",
   },
@@ -185,7 +193,8 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
     slug: "vande-bharat-express-food-menu-prices",
     classGroup: "2A-3A-CC",
     classGroupName: "Vande Bharat Express (Executive & Chair Car)",
-    covers: "Vande Bharat Express trains in Executive Class (EC) and AC Chair Car (CC)",
+    covers:
+      "Vande Bharat Express trains in Executive Class (EC) and AC Chair Car (CC)",
     heading: "Vande Bharat Express Food Menu & Catering Charges",
     metaTitle: "Vande Bharat Express Food Menu & Meal Prices",
   },
@@ -201,7 +210,8 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
     slug: "rajdhani-1ac-executive",
     classGroup: "1AC-EC",
     classGroupName: "AC First Class & Executive Chair Car",
-    covers: "Rajdhani and premium trains, First AC (1A) and Executive Chair Car (EC)",
+    covers:
+      "Rajdhani and premium trains, First AC (1A) and Executive Chair Car (EC)",
     heading: "Rajdhani (1AC & Executive Chair Car) Food Menu",
     metaTitle: "Rajdhani Food Menu & Price: What's Included?",
   },
@@ -227,11 +237,12 @@ const ZONE_ORDER = [
 ];
 
 // Performance Optimization: Map lookup is O(1) compared to Array.indexOf which is O(N) per comparison pass.
-const ZONE_ORDER_MAP = new Map(
-  ZONE_ORDER.map((zone, idx) => [zone, idx + 1]),
-);
+const ZONE_ORDER_MAP = new Map(ZONE_ORDER.map((zone, idx) => [zone, idx + 1]));
 
-type RawMenu = StandardZoneMenu & { classGroup: string; classGroupName: string };
+type RawMenu = StandardZoneMenu & {
+  classGroup: string;
+  classGroupName: string;
+};
 
 // Performance Optimization: Cache parsed raw menus in-memory to eliminate repeated synchronous disk I/O and JSON parsing on every call.
 let cachedRawMenus: RawMenu[] | null = null;
@@ -243,7 +254,9 @@ function readAll(): RawMenu[] {
   for (const f of fs.readdirSync(DIR)) {
     if (!f.endsWith(".json")) continue;
     try {
-      out.push(JSON.parse(fs.readFileSync(path.join(DIR, f), "utf8")) as RawMenu);
+      out.push(
+        JSON.parse(fs.readFileSync(path.join(DIR, f), "utf8")) as RawMenu,
+      );
     } catch {
       /* skip bad file */
     }
@@ -254,7 +267,8 @@ function readAll(): RawMenu[] {
 
 function resolveSlugAlias(slug: string): string {
   if (slug === "ac-2a-3a-cc") return "ac-coach-food-menu-prices";
-  if (slug === "duronto-sleeper") return "duronto-sleeper-class-food-menu-prices";
+  if (slug === "duronto-sleeper")
+    return "duronto-sleeper-class-food-menu-prices";
   return slug;
 }
 

@@ -13,13 +13,14 @@ tags:
 
 > **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
-Looking for the complete rules and gotchas of the IRCTC Vikalp Scheme? 
+Looking for the complete rules and gotchas of the IRCTC Vikalp Scheme?
 
 We have consolidated this guide into our main article to ensure you have the most up-to-date and comprehensive information in one place.
 
 👉 **Read the updated canonical guide here:** [IRCTC Vikalp Scheme Explained: How to Get Confirmed Alternative Train Tickets](/blog/irctc-vikalp-scheme-explained)
 
 This consolidated guide includes:
+
 - Exactly how the Vikalp algorithm works behind the scenes.
 - The 5 hidden rules and limitations (including boarding station changes and refund traps).
 - How to maximize your chances of allocation.

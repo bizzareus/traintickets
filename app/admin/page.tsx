@@ -10,7 +10,7 @@ export default function AdminPage() {
       <ul className="mt-8 grid gap-4 sm:grid-cols-2">
         <Link
           href="/admin/analytics"
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
+          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:-translate-y-0.5 hover:shadow-lg"
         >
           <h2 className="font-semibold text-slate-900">
             Analytics & Short Links
@@ -22,7 +22,7 @@ export default function AdminPage() {
         </Link>
         <Link
           href="/admin/alerts"
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
+          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:-translate-y-0.5 hover:shadow-lg"
         >
           <h2 className="font-semibold text-slate-900">Alerts</h2>
           <p className="mt-1 text-sm text-slate-600">
@@ -40,16 +40,17 @@ export default function AdminPage() {
         </Link>
         <Link
           href="/admin/split-bookings"
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
+          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:-translate-y-0.5 hover:shadow-lg"
         >
           <h2 className="font-semibold text-slate-900">Split Bookings</h2>
           <p className="mt-1 text-sm text-slate-600">
-            View booking requests, update status, add PNRs, upload ticket PDFs, and notify passengers.
+            View booking requests, update status, add PNRs, upload ticket PDFs,
+            and notify passengers.
           </p>
         </Link>
         <Link
           href="/admin/irctc-cookies"
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:shadow-lg hover:-translate-y-0.5"
+          className="rounded-2xl border border-slate-200 bg-white p-6 shadow transition hover:-translate-y-0.5 hover:shadow-lg"
         >
           <h2 className="font-semibold text-slate-900">IRCTC cookies</h2>
           <p className="mt-1 text-sm text-slate-600">

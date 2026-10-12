@@ -44,31 +44,31 @@ export function FestivalSpecialTrainsPage({ festivalKey }: Props) {
   };
 
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-slate-900 antialiased">
+    <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-slate-900 antialiased">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
 
-      <main className="mx-auto max-w-5xl px-4 py-6 sm:py-10 sm:px-6 lg:px-8 space-y-8">
+      <main className="mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
         {/* ── Breadcrumb ── */}
         <nav
-          className="flex items-center text-xs sm:text-sm text-slate-500 font-medium"
+          className="flex items-center text-xs font-medium text-slate-500 sm:text-sm"
           aria-label="Breadcrumb"
         >
-          <Link href="/" className="hover:text-blue-600 transition-colors">
+          <Link href="/" className="transition-colors hover:text-blue-600">
             Home
           </Link>
-          <ChevronRight className="mx-1.5 h-3.5 w-3.5 text-slate-400 shrink-0" />
+          <ChevronRight className="mx-1.5 h-3.5 w-3.5 shrink-0 text-slate-400" />
           <Link
             href="/special-trains"
-            className="hover:text-blue-600 transition-colors"
+            className="transition-colors hover:text-blue-600"
           >
             Special Trains
           </Link>
-          <ChevronRight className="mx-1.5 h-3.5 w-3.5 text-slate-400 shrink-0" />
-          <span className="text-slate-900 font-semibold truncate">
+          <ChevronRight className="mx-1.5 h-3.5 w-3.5 shrink-0 text-slate-400" />
+          <span className="truncate font-semibold text-slate-900">
             {cfg.title}
           </span>
         </nav>
@@ -84,12 +84,12 @@ export function FestivalSpecialTrainsPage({ festivalKey }: Props) {
         />
 
         {/* ── Comprehensive Guide & FAQs ── */}
-        <section className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 space-y-6">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+        <section className="space-y-6 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
             Frequently Asked Questions about {cfg.title}
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600">
+          <div className="grid grid-cols-1 gap-6 text-sm text-slate-600 md:grid-cols-2">
             {cfg.faqs.map((faq) => (
               <div key={faq.question} className="space-y-2">
                 <h3 className="font-semibold text-slate-900">{faq.question}</h3>

@@ -68,14 +68,14 @@ In the **Rail Connect app**, the path is **Profile → Master List → Add Passe
 
 The fields you can pre-save include:
 
-| Field | Why it matters |
-| --- | --- |
-| **Name** | Must match a valid photo ID exactly — a mismatch can mean a penalty during checking |
-| **Age & Gender** | Drives senior-citizen fares and lower-berth auto-allocation |
-| **Berth preference** | Lower / Middle / Upper / Side Lower, etc. — set your usual choice |
-| **Food preference** | Veg / Non-veg / no food — only used on trains with catering like Rajdhani, Shatabdi, Vande Bharat |
-| **Nationality** | Indian or foreign national |
-| **ID card type & number** | Needed for senior-citizen, Aadhaar 24-ticket limit, and quota bookings |
+| Field                     | Why it matters                                                                                    |
+| ------------------------- | ------------------------------------------------------------------------------------------------- |
+| **Name**                  | Must match a valid photo ID exactly — a mismatch can mean a penalty during checking               |
+| **Age & Gender**          | Drives senior-citizen fares and lower-berth auto-allocation                                       |
+| **Berth preference**      | Lower / Middle / Upper / Side Lower, etc. — set your usual choice                                 |
+| **Food preference**       | Veg / Non-veg / no food — only used on trains with catering like Rajdhani, Shatabdi, Vande Bharat |
+| **Nationality**           | Indian or foreign national                                                                        |
+| **ID card type & number** | Needed for senior-citizen, Aadhaar 24-ticket limit, and quota bookings                            |
 
 Getting the name spelling right here pays off twice: it saves typing, and it prevents the [name mismatch problems](/blog/irctc-name-correction-spelling-age-gender-rules) that get flagged during ticket checking.
 
@@ -87,7 +87,7 @@ Getting the name spelling right here pays off twice: it saves typing, and it pre
 
 The Tatkal booking sequence, compared:
 
-- **Without a Master List:** train → class → *type every passenger's name, age, gender, preference by hand* → captcha → payment. The typing step is slow and error-prone under pressure.
+- **Without a Master List:** train → class → _type every passenger's name, age, gender, preference by hand_ → captcha → payment. The typing step is slow and error-prone under pressure.
 - **With a Master List:** train → class → **tick saved passengers** → captcha → payment. The slowest manual step is gone.
 
 That saved time compounds with the other Tatkal fundamentals — logging in early, having your payment method ready (UPI or a saved card), and knowing the exact opening time for your class. Pair the Master List with the tactics in our [Ultimate Tatkal Booking Guide](/blog/ultimate-tatkal-booking-guide-speed-hacks) for the full speed setup.

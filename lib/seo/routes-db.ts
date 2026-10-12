@@ -56,9 +56,7 @@ const ROUTE_TRAINS: Record<string, { number: string; name: string }[]> = {
     { number: "12141", name: "Mumbai LTT Patliputra Express" },
     { number: "12336", name: "Bhagalpur Express" },
   ],
-  "pune-to-danapur": [
-    { number: "12149", name: "Pune Danapur SF Express" },
-  ],
+  "pune-to-danapur": [{ number: "12149", name: "Pune Danapur SF Express" }],
   "delhi-to-varanasi": [
     { number: "22436", name: "Vande Bharat Express" },
     { number: "12560", name: "Shiv Ganga Express" },
@@ -120,7 +118,9 @@ const STATION_BY_CODE = new Map<string, Station>(
  * Performance Optimization: Finds a station by exact code match in O(1) time first,
  * falling back to case-insensitive name inclusion match if code is not found.
  */
-export function getStationByCodeOrName(stationCodeOrName: string): Station | undefined {
+export function getStationByCodeOrName(
+  stationCodeOrName: string,
+): Station | undefined {
   if (!stationCodeOrName) return undefined;
   const upper = stationCodeOrName.trim().toUpperCase();
   const byCode = STATION_BY_CODE.get(upper);
@@ -131,7 +131,10 @@ export function getStationByCodeOrName(stationCodeOrName: string): Station | und
 }
 
 // In a real application, this would query the PostgreSQL database via Prisma
-export async function getRouteData(originSlug: string, destSlug: string): Promise<RouteData | null> {
+export async function getRouteData(
+  originSlug: string,
+  destSlug: string,
+): Promise<RouteData | null> {
   const origin = STATION_BY_SLUG.get(originSlug);
   const dest = STATION_BY_SLUG.get(destSlug);
 
@@ -144,8 +147,9 @@ export async function getRouteData(originSlug: string, destSlug: string): Promis
   ];
 
   // Pseudo-random generation based on station codes for demo purposes
-  const distance = (origin.code.charCodeAt(0) * dest.code.charCodeAt(1)) % 2000 + 500;
-  
+  const distance =
+    ((origin.code.charCodeAt(0) * dest.code.charCodeAt(1)) % 2000) + 500;
+
   return {
     origin,
     destination: dest,
@@ -157,7 +161,9 @@ export async function getRouteData(originSlug: string, destSlug: string): Promis
   };
 }
 
-export async function getTopRoutes(): Promise<{ origin: string; dest: string }[]> {
+export async function getTopRoutes(): Promise<
+  { origin: string; dest: string }[]
+> {
   return [
     { origin: "delhi", dest: "mumbai" },
     { origin: "delhi", dest: "patna" },
@@ -176,4 +182,3 @@ export async function getTopRoutes(): Promise<{ origin: string; dest: string }[]
     { origin: "kolkata", dest: "puri" },
   ];
 }
-

@@ -1,19 +1,19 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import OpenAI from 'openai';
+import * as fs from "fs";
+import * as path from "path";
+import OpenAI from "openai";
 
 // Supported languages and their names
 const LANGUAGES = [
-  { code: 'hi', name: 'Hindi' },
-  { code: 'mr', name: 'Marathi' },
-  { code: 'bn', name: 'Bengali' },
-  { code: 'ta', name: 'Tamil' },
-  { code: 'te', name: 'Telugu' },
-  { code: 'ml', name: 'Malayalam' }
+  { code: "hi", name: "Hindi" },
+  { code: "mr", name: "Marathi" },
+  { code: "bn", name: "Bengali" },
+  { code: "ta", name: "Tamil" },
+  { code: "te", name: "Telugu" },
+  { code: "ml", name: "Malayalam" },
 ];
 
-const BLOG_DIR = path.join(__dirname, '../content/blog');
-const ENV_PATH = path.join(__dirname, '../backend/.env');
+const BLOG_DIR = path.join(__dirname, "../content/blog");
+const ENV_PATH = path.join(__dirname, "../backend/.env");
 
 // Simple parser to extract API key from backend/.env
 function getApiKey(): string | undefined {
@@ -21,7 +21,7 @@ function getApiKey(): string | undefined {
     console.error(`❌ Env file not found at: ${ENV_PATH}`);
     return undefined;
   }
-  const envContent = fs.readFileSync(ENV_PATH, 'utf8');
+  const envContent = fs.readFileSync(ENV_PATH, "utf8");
   const match = envContent.match(/OPENAI_API_KEY=["']?([^"'\n\s]+)["']?/);
   return match ? match[1] : undefined;
 }
@@ -30,7 +30,7 @@ async function translateFile(
   client: OpenAI,
   content: string,
   langName: string,
-  langCode: string
+  langCode: string,
 ): Promise<string> {
   const systemPrompt = `You are a professional translator and content writer specializing in Indian Railways (IRCTC) terminology and ticketing rules.
 Translate the following English blog post into ${langName} (language code: ${langCode}).
@@ -52,40 +52,42 @@ Strict Rules for Low AI Detection (AI Bypass):
       attempt++;
       console.log(`   (Attempt ${attempt}/${maxRetries} to call OpenAI...)`);
       const apiCall = client.chat.completions.create({
-        model: langCode === 'ml' ? 'gpt-4o' : 'gpt-4o-mini',
+        model: langCode === "ml" ? "gpt-4o" : "gpt-4o-mini",
         messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: content }
+          { role: "system", content: systemPrompt },
+          { role: "user", content: content },
         ],
-        temperature: 0.3
+        temperature: 0.3,
       });
 
       const timeoutPromise = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error('Promise Timeout (300s)')), 300000)
+        setTimeout(() => reject(new Error("Promise Timeout (300s)")), 300000),
       );
 
-      completion = await Promise.race([apiCall, timeoutPromise]) as any;
+      completion = (await Promise.race([apiCall, timeoutPromise])) as any;
       break; // Success!
     } catch (err: any) {
       console.error(`   ⚠️ Attempt ${attempt} failed: ${err?.message || err}`);
       if (attempt >= maxRetries) {
         throw err;
       }
-      console.log('   Waiting 5 seconds before retrying...');
+      console.log("   Waiting 5 seconds before retrying...");
       await new Promise((resolve) => setTimeout(resolve, 5000));
     }
   }
 
-  let translated = completion?.choices[0]?.message?.content || '';
-  
+  let translated = completion?.choices[0]?.message?.content || "";
+
   // Clean up any markdown code block wrap (e.g. ```markdown ... ```) if returned by the LLM
   translated = translated.trim();
-  if (translated.startsWith('```markdown')) {
-    translated = translated.replace(/^```markdown\r?\n/, '').replace(/\r?\n```$/, '');
-  } else if (translated.startsWith('```md')) {
-    translated = translated.replace(/^```md\r?\n/, '').replace(/\r?\n```$/, '');
-  } else if (translated.startsWith('```') && translated.endsWith('```')) {
-    translated = translated.replace(/^```\r?\n/, '').replace(/\r?\n```$/, '');
+  if (translated.startsWith("```markdown")) {
+    translated = translated
+      .replace(/^```markdown\r?\n/, "")
+      .replace(/\r?\n```$/, "");
+  } else if (translated.startsWith("```md")) {
+    translated = translated.replace(/^```md\r?\n/, "").replace(/\r?\n```$/, "");
+  } else if (translated.startsWith("```") && translated.endsWith("```")) {
+    translated = translated.replace(/^```\r?\n/, "").replace(/\r?\n```$/, "");
   }
 
   return translated.trim();
@@ -94,28 +96,33 @@ Strict Rules for Low AI Detection (AI Bypass):
 async function run() {
   const apiKey = getApiKey();
   if (!apiKey) {
-    console.error('❌ OpenAI API key is missing. Check backend/.env');
+    console.error("❌ OpenAI API key is missing. Check backend/.env");
     process.exit(1);
   }
 
   const client = new OpenAI({ apiKey });
-  console.log('🤖 OpenAI client initialized successfully.');
+  console.log("🤖 OpenAI client initialized successfully.");
 
   // Find all English blog markdown files (root of content/blog/)
   const files = fs.readdirSync(BLOG_DIR).filter((file) => {
     const filePath = path.join(BLOG_DIR, file);
-    return fs.statSync(filePath).isFile() && file.endsWith('.md');
+    return fs.statSync(filePath).isFile() && file.endsWith(".md");
   });
 
   console.log(`📂 Found ${files.length} English source blog posts.`);
 
   let totalTranslationsNeeded = 0;
-  const queue: { srcPath: string; destPath: string; lang: typeof LANGUAGES[0]; filename: string }[] = [];
+  const queue: {
+    srcPath: string;
+    destPath: string;
+    lang: (typeof LANGUAGES)[0];
+    filename: string;
+  }[] = [];
 
   // Build the queue of translations needed
   for (const file of files) {
     const srcPath = path.join(BLOG_DIR, file);
-    const content = fs.readFileSync(srcPath, 'utf8');
+    const content = fs.readFileSync(srcPath, "utf8");
 
     for (const lang of LANGUAGES) {
       const destDir = path.join(BLOG_DIR, lang.code);
@@ -134,10 +141,12 @@ async function run() {
     }
   }
 
-  console.log(`🔄 Total new translation files to write: ${totalTranslationsNeeded}`);
+  console.log(
+    `🔄 Total new translation files to write: ${totalTranslationsNeeded}`,
+  );
 
   if (queue.length === 0) {
-    console.log('✅ All translations are already up-to-date! Nothing to do.');
+    console.log("✅ All translations are already up-to-date! Nothing to do.");
     process.exit(0);
   }
 
@@ -146,17 +155,29 @@ async function run() {
 
   for (let i = 0; i < queue.length; i++) {
     const item = queue[i];
-    console.log(`[${i + 1}/${queue.length}] Translating ${item.filename} into ${item.lang.name} (${item.lang.code})...`);
+    console.log(
+      `[${i + 1}/${queue.length}] Translating ${item.filename} into ${item.lang.name} (${item.lang.code})...`,
+    );
 
     try {
-      const englishContent = fs.readFileSync(item.srcPath, 'utf8');
-      const translatedContent = await translateFile(client, englishContent, item.lang.name, item.lang.code);
-      
-      fs.writeFileSync(item.destPath, translatedContent, 'utf8');
-      console.log(`   ✅ Saved to: content/blog/${item.lang.code}/${item.filename}`);
+      const englishContent = fs.readFileSync(item.srcPath, "utf8");
+      const translatedContent = await translateFile(
+        client,
+        englishContent,
+        item.lang.name,
+        item.lang.code,
+      );
+
+      fs.writeFileSync(item.destPath, translatedContent, "utf8");
+      console.log(
+        `   ✅ Saved to: content/blog/${item.lang.code}/${item.filename}`,
+      );
       successCount++;
     } catch (err) {
-      console.error(`   ❌ Failed to translate ${item.filename} to ${item.lang.code}:`, err instanceof Error ? err.message : String(err));
+      console.error(
+        `   ❌ Failed to translate ${item.filename} to ${item.lang.code}:`,
+        err instanceof Error ? err.message : String(err),
+      );
       failureCount++;
     }
 
@@ -166,13 +187,15 @@ async function run() {
     }
   }
 
-  console.log('--------------------------------------------------');
-  console.log(`🎉 Translation job finished! Success: ${successCount}, Failures: ${failureCount}`);
-  console.log('--------------------------------------------------');
+  console.log("--------------------------------------------------");
+  console.log(
+    `🎉 Translation job finished! Success: ${successCount}, Failures: ${failureCount}`,
+  );
+  console.log("--------------------------------------------------");
   process.exit(0);
 }
 
 run().catch((err) => {
-  console.error('Critical translation runner error:', err);
+  console.error("Critical translation runner error:", err);
   process.exit(1);
 });

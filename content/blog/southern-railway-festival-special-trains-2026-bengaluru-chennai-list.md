@@ -15,6 +15,7 @@ tags:
 ---
 
 > **Travelling home from South India for Durga Puja, Diwali, or Chhath 2026?** Check confirmed seats across Southern & South Western Railway special corridors on LastBerth:
+>
 > - [Search Bengaluru ➔ Danapur/Patna Special Trains](/?from=SMVT&to=DNR&fromName=SMVT%20Bengaluru&toName=Danapur)
 > - [Search Chennai ➔ Howrah/Kolkata Special Trains](/?from=MAS&to=HWH&fromName=MGR%20Chennai%20Central&toName=Howrah%20Jn)
 > - [Search Bengaluru ➔ Gorakhpur Special Trains](/?from=YPR&to=GKP&fromName=Yesvantpur%20Jn&toName=Gorakhpur%20Jn)
@@ -52,13 +53,13 @@ Regular trains from Bengaluru to Bihar and Uttar Pradesh are among the most cong
 
 The table below details prominent festival special trains originating from Bengaluru:
 
-| Train Number | Train Name / Corridor | Origin Terminal | Destination Station | Frequency | Coach Composition & Halts |
-|---|---|---|---|---|---|
-| **06217 / 06218** | Bengaluru – Danapur Festival Special | SMVT Bengaluru (SMVT) | Danapur Jn (DNR) | Weekly | Katpadi, Vijayawada, Warangal, Nagpur, Itarsi, Jabalpur, Pt. DD Upadhyaya, Danapur (2A, 3A, 3E, SL, GS) |
-| **06563 / 06564** | SMVT Bengaluru – Howrah Special | SMVT Bengaluru (SMVT) | Howrah Jn (HWH) | Weekly (Fridays) | Jolarpettai, Katpadi, Renigunta, Vijayawada, Visakhapatnam, Cuttack, Kharagpur (3A, SL, GS) |
-| **04131 / 04132** | Kanpur Central – SMVT Bengaluru Special | SMVT Bengaluru (SMVT) | Kanpur Central (CNB) | Weekly (Wednesdays) | Jolarpettai, Katpadi, Vijayawada, Balharshah, Nagpur, Bhopal, VGL Jhansi (2A, 3A, SL, GS) |
-| **06545 / 06546** | Yesvantpur – Gorakhpur Special | Yesvantpur (YPR) | Gorakhpur Jn (GKP) | Weekly | Dharmavaram, Guntakal, Secunderabad, Nagpur, Bhopal, VGL Jhansi, Kanpur, Lucknow, Basti (2A, 3A, SL, GS) |
-| **05951 / 05952** | SMVT Bengaluru – New Tinsukia Special | SMVT Bengaluru (SMVT) | New Tinsukia (NTSK) | Weekly | Katpadi, Vijayawada, Visakhapatnam, Kharagpur, Malda Town, New Jalpaiguri, Guwahati (2A, 3A, SL, GS) |
+| Train Number      | Train Name / Corridor                   | Origin Terminal       | Destination Station  | Frequency           | Coach Composition & Halts                                                                                |
+| ----------------- | --------------------------------------- | --------------------- | -------------------- | ------------------- | -------------------------------------------------------------------------------------------------------- |
+| **06217 / 06218** | Bengaluru – Danapur Festival Special    | SMVT Bengaluru (SMVT) | Danapur Jn (DNR)     | Weekly              | Katpadi, Vijayawada, Warangal, Nagpur, Itarsi, Jabalpur, Pt. DD Upadhyaya, Danapur (2A, 3A, 3E, SL, GS)  |
+| **06563 / 06564** | SMVT Bengaluru – Howrah Special         | SMVT Bengaluru (SMVT) | Howrah Jn (HWH)      | Weekly (Fridays)    | Jolarpettai, Katpadi, Renigunta, Vijayawada, Visakhapatnam, Cuttack, Kharagpur (3A, SL, GS)              |
+| **04131 / 04132** | Kanpur Central – SMVT Bengaluru Special | SMVT Bengaluru (SMVT) | Kanpur Central (CNB) | Weekly (Wednesdays) | Jolarpettai, Katpadi, Vijayawada, Balharshah, Nagpur, Bhopal, VGL Jhansi (2A, 3A, SL, GS)                |
+| **06545 / 06546** | Yesvantpur – Gorakhpur Special          | Yesvantpur (YPR)      | Gorakhpur Jn (GKP)   | Weekly              | Dharmavaram, Guntakal, Secunderabad, Nagpur, Bhopal, VGL Jhansi, Kanpur, Lucknow, Basti (2A, 3A, SL, GS) |
+| **05951 / 05952** | SMVT Bengaluru – New Tinsukia Special   | SMVT Bengaluru (SMVT) | New Tinsukia (NTSK)  | Weekly              | Katpadi, Vijayawada, Visakhapatnam, Kharagpur, Malda Town, New Jalpaiguri, Guwahati (2A, 3A, SL, GS)     |
 
 ---
 
@@ -70,13 +71,13 @@ Chennai and Western Tamil Nadu host large working populations from Bihar, Jharkh
 
 The table below outlines key festival special trains operating from Chennai and Tamil Nadu:
 
-| Train Number | Train Name / Corridor | Origin Station | Destination Station | Frequency | Key Stops & Booking Links |
-|---|---|---|---|---|---|
-| **06055 / 06056** | Tambaram – Barauni Festival Special | Tambaram (TBM) | Barauni Jn (BJU) | Weekly | Chennai Egmore, Gudur, Vijayawada, Rajahmundry, Visakhapatnam, Sambalpur, Rourkela, Ranchi, Bokaro, Kiul • [Check Seats](/?from=TBM&to=BJU&fromName=Tambaram&toName=Barauni%20Jn) |
-| **06021 / 06022** | Podanur – Barauni Festival Special | Podanur Jn (PTJ) | Barauni Jn (BJU) | Weekly | Erode, Salem, Jolarpettai, Katpadi, Renigunta, Vijayawada, Warangal, Balharshah, Nagpur, Jabalpur, Prayagraj Chheoki, Pt. DD Upadhyaya, Buxar, Danapur • [Check Seats](/?from=SMVT&to=DNR&fromName=SMVT%20Bengaluru&toName=Danapur) |
-| **06059 / 06060** | Chennai Central – Santragachi AC Special | Chennai Central (MAS) | Santragachi Jn (SRC) | Weekly | Gudur, Nellore, Ongole, Vijayawada, Rajahmundry, Visakhapatnam, Cuttack, Balasore, Kharagpur • [Check Seats](/?from=MAS&to=HWH&fromName=MGR%20Chennai%20Central&toName=Howrah%20Jn) |
-| **06037 / 06038** | Chennai Central – Santragachi Special | Chennai Central (MAS) | Santragachi Jn (SRC) | Weekly | Sullurupeta, Nayudupeta, Gudur, Vijayawada, Samalkot, Visakhapatnam, Vizianagaram, Bhubaneswar, Cuttack, Kharagpur (2A, 3A, SL, GS) |
-| **06085 / 06086** | Ernakulam – Patna Festival Special | Ernakulam Jn (ERS) | Patna Jn (PNBE) | Weekly | Coimbatore, Erode, Salem, Jolarpettai, Katpadi, Renigunta, Vijayawada, Warangal, Balharshah, Nagpur, Itarsi, Jabalpur, Pt. DD Upadhyaya, Danapur • [Check Seats](/?from=SMVT&to=DNR&fromName=SMVT%20Bengaluru&toName=Danapur) |
+| Train Number      | Train Name / Corridor                    | Origin Station        | Destination Station  | Frequency | Key Stops & Booking Links                                                                                                                                                                                                           |
+| ----------------- | ---------------------------------------- | --------------------- | -------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **06055 / 06056** | Tambaram – Barauni Festival Special      | Tambaram (TBM)        | Barauni Jn (BJU)     | Weekly    | Chennai Egmore, Gudur, Vijayawada, Rajahmundry, Visakhapatnam, Sambalpur, Rourkela, Ranchi, Bokaro, Kiul • [Check Seats](/?from=TBM&to=BJU&fromName=Tambaram&toName=Barauni%20Jn)                                                   |
+| **06021 / 06022** | Podanur – Barauni Festival Special       | Podanur Jn (PTJ)      | Barauni Jn (BJU)     | Weekly    | Erode, Salem, Jolarpettai, Katpadi, Renigunta, Vijayawada, Warangal, Balharshah, Nagpur, Jabalpur, Prayagraj Chheoki, Pt. DD Upadhyaya, Buxar, Danapur • [Check Seats](/?from=SMVT&to=DNR&fromName=SMVT%20Bengaluru&toName=Danapur) |
+| **06059 / 06060** | Chennai Central – Santragachi AC Special | Chennai Central (MAS) | Santragachi Jn (SRC) | Weekly    | Gudur, Nellore, Ongole, Vijayawada, Rajahmundry, Visakhapatnam, Cuttack, Balasore, Kharagpur • [Check Seats](/?from=MAS&to=HWH&fromName=MGR%20Chennai%20Central&toName=Howrah%20Jn)                                                 |
+| **06037 / 06038** | Chennai Central – Santragachi Special    | Chennai Central (MAS) | Santragachi Jn (SRC) | Weekly    | Sullurupeta, Nayudupeta, Gudur, Vijayawada, Samalkot, Visakhapatnam, Vizianagaram, Bhubaneswar, Cuttack, Kharagpur (2A, 3A, SL, GS)                                                                                                 |
+| **06085 / 06086** | Ernakulam – Patna Festival Special       | Ernakulam Jn (ERS)    | Patna Jn (PNBE)      | Weekly    | Coimbatore, Erode, Salem, Jolarpettai, Katpadi, Renigunta, Vijayawada, Warangal, Balharshah, Nagpur, Itarsi, Jabalpur, Pt. DD Upadhyaya, Danapur • [Check Seats](/?from=SMVT&to=DNR&fromName=SMVT%20Bengaluru&toName=Danapur)       |
 
 ---
 
@@ -102,16 +103,17 @@ Because running seasonal special trains requires positioning empty rakes across 
 
 The table below details the fare structure and conditions for 0-series special trains:
 
-| Travel Class | Special Surcharge Rate | Minimum Surcharge Cap | Maximum Surcharge Cap | Concession Eligibility | Linen & Bedroll Inclusions |
-|---|---|---|---|---|---|
-| **Second Sitting (2S)** | **10% of Base Fare** | ₹10 | ₹15 | No Concessions (₹0) | Not Provided |
-| **Sleeper Class (SL)** | **30% of Base Fare** | ₹100 | ₹200 | No Concessions (₹0) | Not Provided |
-| **AC 3-Tier Economy (3E)** | **30% of Base Fare** | ₹250 | ₹350 | No Concessions (₹0) | Complete Bedroll Included |
-| **AC 3-Tier (3A)** | **30% of Base Fare** | ₹300 | ₹400 | No Concessions (₹0) | Complete Bedroll Included |
-| **AC 2-Tier (2A)** | **30% of Base Fare** | ₹400 | ₹500 | No Concessions (₹0) | Complete Bedroll Included |
-| **AC First Class (1A)** | **30% of Base Fare** | ₹400 | ₹500 | No Concessions (₹0) | Complete Bedroll Included |
+| Travel Class               | Special Surcharge Rate | Minimum Surcharge Cap | Maximum Surcharge Cap | Concession Eligibility | Linen & Bedroll Inclusions |
+| -------------------------- | ---------------------- | --------------------- | --------------------- | ---------------------- | -------------------------- |
+| **Second Sitting (2S)**    | **10% of Base Fare**   | ₹10                   | ₹15                   | No Concessions (₹0)    | Not Provided               |
+| **Sleeper Class (SL)**     | **30% of Base Fare**   | ₹100                  | ₹200                  | No Concessions (₹0)    | Not Provided               |
+| **AC 3-Tier Economy (3E)** | **30% of Base Fare**   | ₹250                  | ₹350                  | No Concessions (₹0)    | Complete Bedroll Included  |
+| **AC 3-Tier (3A)**         | **30% of Base Fare**   | ₹300                  | ₹400                  | No Concessions (₹0)    | Complete Bedroll Included  |
+| **AC 2-Tier (2A)**         | **30% of Base Fare**   | ₹400                  | ₹500                  | No Concessions (₹0)    | Complete Bedroll Included  |
+| **AC First Class (1A)**    | **30% of Base Fare**   | ₹400                  | ₹500                  | No Concessions (₹0)    | Complete Bedroll Included  |
 
 Important fare conditions to keep in mind:
+
 - **No Concession Discounts:** Concessions for senior citizens, students, and other categories do not apply on festival special trains.
 - **Fixed Pricing Model:** Unlike Suvidha trains with dynamic pricing slabs that increase fares up to 3x base rates, 0-series TOSF specials use a fixed 10% to 30% surcharge.
 - **Linen Inclusions:** All AC classes (3E, 3A, 2A, 1A) include two bedsheets, a pillow, a blanket, and a face towel at no extra charge. Sleeper class does not include linen.
@@ -123,22 +125,24 @@ Important fare conditions to keep in mind:
 **Tatkal quota on notified Southern Railway special trains opens at 10:00 AM IST for AC classes and 11:00 AM IST for Sleeper class one day before departure from originating stations, while fully waitlisted online e-tickets receive an automatic 100% refund with zero clerkage fee.**
 
 ### Tatkal Rules on 0-Series Specials
+
 - Tatkal quotas apply only to specific festival specials notified by Zonal Railways.
 - When enabled, bookings open at **10:00 AM IST** for AC coaches (3A, 2A, 3E) and **11:00 AM IST** for Sleeper class, exactly one day before departure from the originating station.
 - **Aadhaar Verification:** Booking tickets during the peak morning window on IRCTC requires an Aadhaar-verified profile with pre-added Master List passengers.
 
 ### Cancellation & Refund Policy
+
 Cancellation fees for confirmed tickets on festival specials follow standard Indian Railways commercial rules:
 
-| Cancellation Timing (Before Train Departure) | Cancellation Deduction Amount |
-|---|---|
-| **More than 48 hours** | Flat cancellation fee: ₹240 (1A/EC), ₹200 (2A), ₹180 (3A/3E/CC), ₹120 (SL), ₹60 (2S) |
-| **Between 48 hours and 12 hours** | **25% of total ticket fare** (subject to minimum flat fee per passenger) |
-| **Between 12 hours and 4 hours** (or before 1st chart prep) | **50% of total ticket fare** (subject to minimum flat fee per passenger) |
-| **Less than 4 hours / After chart preparation** | **Zero refund (100% fare forfeited)** |
-| **Waitlisted E-Ticket Dropped Post-Charting** | **100% Full Refund** credited automatically with **zero clerkage fee** |
-| **Train Cancelled by Railways** | **100% Full Refund** credited automatically without filing a TDR |
-| **Train Delayed Over 3 Hours** | **100% Full Refund** by filing an online TDR before train leaves boarding station |
+| Cancellation Timing (Before Train Departure)                | Cancellation Deduction Amount                                                        |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| **More than 48 hours**                                      | Flat cancellation fee: ₹240 (1A/EC), ₹200 (2A), ₹180 (3A/3E/CC), ₹120 (SL), ₹60 (2S) |
+| **Between 48 hours and 12 hours**                           | **25% of total ticket fare** (subject to minimum flat fee per passenger)             |
+| **Between 12 hours and 4 hours** (or before 1st chart prep) | **50% of total ticket fare** (subject to minimum flat fee per passenger)             |
+| **Less than 4 hours / After chart preparation**             | **Zero refund (100% fare forfeited)**                                                |
+| **Waitlisted E-Ticket Dropped Post-Charting**               | **100% Full Refund** credited automatically with **zero clerkage fee**               |
+| **Train Cancelled by Railways**                             | **100% Full Refund** credited automatically without filing a TDR                     |
+| **Train Delayed Over 3 Hours**                              | **100% Full Refund** by filing an online TDR before train leaves boarding station    |
 
 Under Section 138 of the Railways Act (as amended by the Jan Vishwas Act), passengers holding fully waitlisted online e-tickets cannot board reserved coaches. Doing so incurs a flat **₹500 penalty** plus single journey fare, followed by deboarding at the next station.
 
@@ -153,17 +157,21 @@ Waiting lists progress through a defined order: **WL (Waiting List full form) �
 Here are four practical strategies to secure confirmed travel:
 
 ### 1. Split-Segment Smart Seats
+
 Indian Railways allocates reserved seats in fixed station quotas. While a direct ticket from Bengaluru to Danapur might show `REGRET`, seats may be open from SMVT Bengaluru to Vijayawada and Vijayawada to Danapur on the exact same train.
 
 Use [Finding Smart Seats](/) on LastBerth to search contiguous confirmed segments along your route, letting you travel on a single train without changing rakes.
 
 ### 2. Origin Station Booking with 30-Minute Boarding Modification
+
 Intermediate station quotas (`RLWL`) are limited and fill up quickly. Originating stations receive the largest `GNWL` pool. You can book from SMVT Bengaluru or Chennai Central to your destination, and then update your boarding point online on IRCTC up to the preparation of the second reservation chart (~30 minutes before departure).
 
 ### 3. Track Chart Preparation Schedules & Alerts
+
 First reservation charts are finalized roughly **8 hours before departure** (or 9:00 PM (21:00) the previous evening for morning trains departing before 2:00 PM). Use [Chart Times](/chart-times) to check historical chart finalization schedules for your train and configure free alerts to know the moment charts release.
 
 ### 4. Check Vacant Berths on Chart Vacancy Map
+
 Once charts are prepared, unallocated VIP berths, emergency quotas, and cancelled seats convert into Current Availability (`CURR_AVBL`) at a 10% discount. Check the [Chart Vacancy Map](/chart-vacancy) to inspect coach layouts and book confirmed berths online up to 30 minutes before train departure. To check vacant berths during a running journey, use [Seat Status](/seat-status).
 
 ---
@@ -171,33 +179,43 @@ Once charts are prepared, unallocated VIP berths, emergency quotas, and cancelle
 ## Common Booking Questions (FAQ)
 
 ### When does booking open for Southern Railway festival special trains?
+
 Booking for regular express trains opens 60 days in advance at 8:00 AM IST, while Southern Railway and SWR 0-series festival special trains open on rolling schedules of 10 to 30 days before departure once Zonal Railway notifications are issued.
 
 ### Are ticket fares on Bengaluru and Chennai festival specials higher than normal trains?
+
 Yes, 0-series festival specials operate under Trains on Special Fares (TOSF) rules, carrying a flat 10% surcharge on Second Sitting (2S) and a 30% surcharge on Sleeper and AC classes compared to regular express base fares.
 
 ### Does Tatkal booking exist on Southern Railway festival special trains?
+
 Tatkal quota is available only on specific special trains notified by Southern Railway and SWR. When enabled, it opens at 10:00 AM IST for AC classes and 11:00 AM IST for Sleeper class one day prior to departure from the originating station.
 
 ### What happens if my festival special e-ticket remains waitlisted after charting?
+
 If your e-ticket remains on the waiting list after final chart preparation, IRCTC cancels it automatically and issues a 100% full refund to your original payment account with zero clerkage fee deductions.
 
 ### Can I board Sleeper or AC coaches on a waitlisted festival special e-ticket?
+
 No, boarding a reserved Sleeper or AC coach on a waitlisted e-ticket is strictly prohibited. Passengers caught travelling without a confirmed seat face a ₹500 fine under Section 138 of the Railways Act plus single journey fare, and will be deboarded.
 
 ### How do I reach SMVT Bengaluru station for my festival special train?
+
 SMVT Bengaluru is located in Baiyappanahalli. Commuters can reach it via the Namma Metro Purple Line (Baiyappanahalli or Swami Vivekananda Road stations), followed by a short feeder bus or auto ride directly to the terminal.
 
 ### How many tickets can I book on IRCTC in one month for festival travel?
+
 Standard unverified IRCTC accounts can book up to 12 tickets per calendar month. Linking and verifying your Aadhaar on your IRCTC profile increases this limit to 24 tickets per month, provided at least one passenger on tickets 13 to 24 is Aadhaar-verified.
 
 ### Can I change my boarding station on a festival special train ticket?
+
 Yes, Indian Railways allows passengers to change their boarding station online through the IRCTC portal up to the preparation of the second reservation chart, approximately 30 to 60 minutes before scheduled train departure.
 
 ### What is the difference between GNWL and PQWL on Bengaluru to Patna trains?
+
 GNWL (General Waiting List) applies to passengers boarding at the originating station (SMVT or SBC) and offers the highest confirmation probability. PQWL (Pooled Quota Waiting List) applies to intermediate journey segments and clears much slower because it draws from a smaller seat pool.
 
 ### How can I get a confirmed ticket if all Bengaluru to Danapur trains show Regret?
+
 When direct trains show Regret, use [Finding Smart Seats](/) on LastBerth to discover split-ticket options across intermediate stations like Vijayawada, Warangal, or Jabalpur on the exact same train.
 
 ---

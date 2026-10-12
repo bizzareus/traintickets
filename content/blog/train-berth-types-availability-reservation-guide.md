@@ -87,13 +87,13 @@ Positioned above the side lower, this berth is shorter and narrower than a regul
 
 ## Berth Comparison at a Glance
 
-| Berth Type | Width | Privacy | Ease of Access | Luggage Storage | Daytime Comfort | Overall Rating |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Lower Berth (LB)** | Widest | Low (shared seating) | Easiest | Best (under-berth) | Best | ⭐⭐⭐⭐⭐ |
-| **Middle Berth (MB)** | Standard | Medium | Moderate | Limited | Poor (folded up) | ⭐⭐⭐ |
-| **Upper Berth (UB)** | Standard | Highest | Difficult | Overhead rack only | Poor (too high) | ⭐⭐⭐⭐ |
-| **Side Lower (SL)** | Narrow | Low (corridor) | Easy | Minimal | Moderate | ⭐⭐⭐ |
-| **Side Upper (SU)** | Narrowest | Medium | Difficult | Minimal | Poor | ⭐⭐ |
+| Berth Type            | Width     | Privacy              | Ease of Access | Luggage Storage    | Daytime Comfort  | Overall Rating |
+| :-------------------- | :-------- | :------------------- | :------------- | :----------------- | :--------------- | :------------- |
+| **Lower Berth (LB)**  | Widest    | Low (shared seating) | Easiest        | Best (under-berth) | Best             | ⭐⭐⭐⭐⭐     |
+| **Middle Berth (MB)** | Standard  | Medium               | Moderate       | Limited            | Poor (folded up) | ⭐⭐⭐         |
+| **Upper Berth (UB)**  | Standard  | Highest              | Difficult      | Overhead rack only | Poor (too high)  | ⭐⭐⭐⭐       |
+| **Side Lower (SL)**   | Narrow    | Low (corridor)       | Easy           | Minimal            | Moderate         | ⭐⭐⭐         |
+| **Side Upper (SU)**   | Narrowest | Medium               | Difficult      | Minimal            | Poor             | ⭐⭐           |
 
 ---
 
@@ -156,6 +156,7 @@ Within a coach, berths are filled from the middle bays outward. If you are among
 ### Step 3: Age, Gender, and Choice
 
 This is where your details come into play. Older passengers automatically get priority. The booking engine tries to assign lower berths to men over 60 and women over 45. If you book them using the [Senior Citizen Quota](/blog/irctc-special-quotas-senior-citizen-ladies-disability-lower-berth), they almost always get a lower berth.
+
 - **Ladies Quota**: Solo female travelers or all-women groups get grouped together in the same bay.
 - **Your preferences**: If you picked a specific berth when booking (like Upper or Side Lower), the system does try to match it. But remember, "tries" is the keyword here. Your choice is just a request. If the train is packed, don't expect the system to match it.
 
@@ -199,11 +200,11 @@ Once the chart is prepared (usually 8 hours before departure), the picture chang
 
 Your ticket's reservation status determines whether you are assigned a full private berth, a shared seat, or placed in a queue. Confirmed tickets allocate a complete bunk, Reservation Against Cancellation (RAC) offers a shared side-lower berth, and Waitlisted (WL) tickets assign no berth until they are upgraded.
 
-| Status | What You Get | Can You Board? | Berth Assignment |
-| :--- | :--- | :--- | :--- |
-| **Available (CNF)** | Full individual berth (LB, MB, UB, SL, or SU) | Yes | Assigned immediately or at chart time |
-| **RAC** | Shared side-lower berth (2 passengers per SL) | Yes | Partial — may upgrade to full berth if cancellations happen |
-| **WL (Waitlist)** | Nothing yet — you are in a queue | No (if fully WL on e-ticket after chart) | No berth assigned until status changes to RAC or CNF |
+| Status              | What You Get                                  | Can You Board?                           | Berth Assignment                                            |
+| :------------------ | :-------------------------------------------- | :--------------------------------------- | :---------------------------------------------------------- |
+| **Available (CNF)** | Full individual berth (LB, MB, UB, SL, or SU) | Yes                                      | Assigned immediately or at chart time                       |
+| **RAC**             | Shared side-lower berth (2 passengers per SL) | Yes                                      | Partial — may upgrade to full berth if cancellations happen |
+| **WL (Waitlist)**   | Nothing yet — you are in a queue              | No (if fully WL on e-ticket after chart) | No berth assigned until status changes to RAC or CNF        |
 
 The critical thing to remember: a fully waitlisted e-ticket after chart preparation gets **auto-cancelled and refunded**. You cannot board the train with it. This is different from counter tickets, which have slightly different rules. The [RAC vs WL guide](/blog/rac-vs-wl-explained) covers the edge cases in detail.
 
@@ -227,7 +228,7 @@ When typing in passenger details, you'll see a dropdown for berth preference. Pi
 
 ### 4. Use "Book Only If Lower Berth" Preference
 
-Under **Other Preferences**, IRCTC offers a checkbox: *"Book only if at least one lower berth is allotted."* If the system cannot allocate a lower berth, it automatically cancels the transaction and refunds your money. Risky during peak demand, but effective when you absolutely cannot compromise.
+Under **Other Preferences**, IRCTC offers a checkbox: _"Book only if at least one lower berth is allotted."_ If the system cannot allocate a lower berth, it automatically cancels the transaction and refunds your money. Risky during peak demand, but effective when you absolutely cannot compromise.
 
 ### 5. Avoid Over-Specifying for Groups
 
@@ -250,6 +251,7 @@ If you got a middle or upper berth despite needing a lower, locate the TTE withi
 The "berth not available for this station" error occurs because the specific booking quota (like Pooled Quota or Remote Location Quota) allocated to your station pair is completely sold out. Even if seats are physically empty on other legs of the train's route, you cannot book them.
 
 Indian Railways divides train berths into multiple quotas to ensure passengers traveling the entire distance get priority:
+
 - **Pooled Quota (PQWL):** Shared among several intermediate stations. If this small pool is full, you see the "berth not available" message.
 - **Remote Location Quota (RLWL):** Allocated for major intermediate cities.
 - **How to Bypass This:** You can check the [Vacancy Chart](https://www.irctc.co.in/online-charts) to see where the physical berths are empty. If you find berths, use segment booking or book from the train's origin station with a changed boarding point.
@@ -261,6 +263,7 @@ Indian Railways divides train berths into multiple quotas to ensure passengers t
 When you book a ticket on IRCTC or receive an SMS confirmation, your seat number is accompanied by a two-letter code indicating your berth type. **LB** stands for Lower Berth, **MB** for Middle Berth, **UB** for Upper Berth, **SL** for Side Lower, and **SU** for Side Upper (plus **SUB** for Side Upper Berth in 3E economy coaches). Each code specifies your assigned sleeping platform position in the coach bay.
 
 On IRCTC tickets, these codes help you identify your seat position before boarding:
+
 - **LB (Lower Berth):** Located at floor level in the main 6-berth bay.
 - **MB (Middle Berth):** Foldable middle platform between LB and UB in SL and 3AC.
 - **UB (Upper Berth):** Highest sleeping berth in the main bay near the ceiling.
@@ -274,6 +277,7 @@ On IRCTC tickets, these codes help you identify your seat position before boardi
 While booking train tickets on the IRCTC app or website, you can select your preferred berth type under the "Berth Preference" dropdown. However, IRCTC allocates berths dynamically based on availability and passenger age/gender algorithms, meaning preferences are not guaranteed unless specific conditions are met.
 
 To maximize your chances of getting your preferred berth position:
+
 - **For Senior Citizens:** Select lower berth preference and book eligible seniors (60+ men, 45+ women) under the Senior Citizen (SS) Quota without non-eligible co-passengers.
 - **For Couples or Solo Travelers:** Selecting "Side Lower" or "Lower Berth" early in the Advance Reservation Period (ARP) increases allocation success before bays fill up.
 - **Book Early:** Berth preferences are processed on a first-come, first-served basis as berths are booked.

@@ -25,9 +25,9 @@ If you feel your toddler needs their own space, you have the option to buy them 
 
 It is a simple tradeoff between comfort and cash. You select your preference when entering passenger details on the IRCTC website or app:
 
-| Passenger Age | Option Selected | Berth Allocated? | Fare Charged |
-| :--- | :--- | :--- | :--- |
-| **5 to 11 Years** | Book with Berth | Yes (Full Berth) | 100% Adult Fare |
+| Passenger Age     | Option Selected    | Berth Allocated? | Fare Charged               |
+| :---------------- | :----------------- | :--------------- | :------------------------- |
+| **5 to 11 Years** | Book with Berth    | Yes (Full Berth) | 100% Adult Fare            |
 | **5 to 11 Years** | Book without Berth | No (Share Berth) | 50% Base Fare + Full Taxes |
 
 For an overnight journey, we always recommend getting a full berth. Trying to squeeze an adult and a 10-year-old onto one sleeper berth is a recipe for a sleepless night. For short daytime trips, the half-fare option works perfectly.
@@ -44,7 +44,7 @@ If your family's tickets are waitlisted, keep checking them. You can use LastBer
 
 **ഒരു കുട്ടി ടിക്കറ്റ് കാത്തിരിപ്പ് പട്ടികയിൽ ഉണ്ടെങ്കിൽ, അത് സാധാരണ റിസർവേഷൻ ക്യൂയെ പിന്തുടരുന്നു. കാത്തിരിപ്പ് പട്ടികയിൽ ഉള്ള ടിക്കറ്റ്, ചാർട്ട് തയ്യാറാക്കുന്നതിന് മുമ്പ് RAC-ലേക്ക് അപ്ഗ്രേഡ് ചെയ്യപ്പെടുകയോ പൂർണ്ണമായും സ്ഥിരീകരിക്കപ്പെടുകയോ ചെയ്യാതെ യാത്രയ്ക്കായി ഉപയോഗിക്കാനാവില്ല; ഇല്ലെങ്കിൽ, ഓൺലൈൻ ഇ-ടിക്കറ്റുകൾ സ്വയം റദ്ദാക്കുകയും തിരിച്ചടവു നൽകുകയും ചെയ്യും.**
 
-In Indian Railways, **WL full form is Waiting List**. The booking status progress follows a specific progression: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. 
+In Indian Railways, **WL full form is Waiting List**. The booking status progress follows a specific progression: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**.
 
 A ticket at `WL/1` has a very high chance of moving to RAC or getting confirmed. But if your child's ticket is stuck at `WL/10` or higher, it might not clear. Remember, online e-tickets that remain on the waiting list after chart preparation are automatically cancelled and refunded. If that happens, look for a `"current available ticket"`. This is a **fully confirmed seat** with coach/berth numbers that opens 8 hours before the train leaves and closes 30 minutes before.
 
@@ -53,13 +53,17 @@ A ticket at `WL/1` has a very high chance of moving to RAC or getting confirmed.
 Here are the answers to the most common questions about booking train tickets for kids on Indian Railways.
 
 ### Do I need to carry age proof for my child?
+
 Yes. You must carry a valid ID like an Aadhaar card, school ID, or birth certificate to prove your child's age to the ticket examiner.
 
 ### Is the half-fare rule applicable in AC classes?
+
 Yes, you can choose the half-fare option (without a berth) in Sleeper and all AC classes (3A, 2A, 1A). If you want a separate berth, you must pay full adult fare.
 
 ### Can a child travel alone on a child ticket?
+
 No. Children under 5 must travel with an adult. Children between 5 and 11 years using half-fare tickets must also have an adult passenger traveling with them.
 
 ### What is a current available ticket and is it confirmed?
+
 A "current available ticket" is a fully confirmed seat with coach/berth numbers. It opens 8 hours before the train leaves and closes 30 minutes before.

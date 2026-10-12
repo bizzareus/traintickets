@@ -53,26 +53,26 @@ export function BlogStickyMobileCta({ slug, context }: Props) {
   return (
     <aside
       aria-label="Mobile Train Search Quick Access"
-      className="fixed bottom-0 inset-x-0 z-40 block sm:hidden border-t border-slate-200/90 bg-white/95 backdrop-blur-md px-4 py-2.5 shadow-2xl transition-transform"
+      className="fixed inset-x-0 bottom-0 z-40 block border-t border-slate-200/90 bg-white/95 px-4 py-2.5 shadow-2xl backdrop-blur-md transition-transform sm:hidden"
     >
       <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2 min-w-0">
-          <span className="text-xl shrink-0">🚆</span>
+        <div className="flex min-w-0 items-center gap-2">
+          <span className="shrink-0 text-xl">🚆</span>
           <div className="min-w-0">
-            <p className="text-xs font-bold text-slate-900 truncate">
+            <p className="truncate text-xs font-bold text-slate-900">
               {getLabel()}
             </p>
-            <p className="text-[10px] text-slate-500 truncate">
+            <p className="truncate text-[10px] text-slate-500">
               Guaranteed smart seats & split tickets
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex shrink-0 items-center gap-2">
           <Link
             href={targetUrl}
             onClick={handleClick}
-            className="rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs hover:bg-blue-700 active:scale-95 transition-all"
+            className="shadow-xs rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white transition-all hover:bg-blue-700 active:scale-95"
           >
             Get Confirmed →
           </Link>
@@ -80,10 +80,20 @@ export function BlogStickyMobileCta({ slug, context }: Props) {
             type="button"
             onClick={handleDismiss}
             aria-label="Close search banner"
-            className="rounded-md p-1 text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+            className="rounded-md p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>

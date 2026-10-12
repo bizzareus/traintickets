@@ -47,7 +47,7 @@ To check your IRCTC PNR status, go to the IRCTC website or app, open the "PNR En
 You have several reliable ways to check, in order of authority:
 
 1. **IRCTC website/app:** The official source. Enter the 10-digit PNR in the PNR Enquiry box.
-2. **LastBerth:** Enter your PNR to see the status *plus* a confirmation probability and alternative options if it looks unlikely to clear.
+2. **LastBerth:** Enter your PNR to see the status _plus_ a confirmation probability and alternative options if it looks unlikely to clear.
 3. **NTES and third-party apps** (ixigo, ConfirmTkt, RailYatri): These pull the same data and often add prediction features.
 
 The key thing to understand: PNR status is **live**. A waitlisted ticket can move up as other passengers cancel, right up until the chart is prepared. So check again the day before and a few hours before departure, not just once at booking.
@@ -60,10 +60,10 @@ To check PNR status by SMS, send **"PNR <your 10-digit number>"** to **139**, th
 
 The single helpline **139** handles enquiries by both SMS and IVRS (voice). For PNR specifically:
 
-| Method | What to do |
-|---|---|
-| SMS | Send `PNR <10-digit number>` to 139 |
-| Call | Dial 139, choose the PNR enquiry option, enter the number |
+| Method | What to do                                                |
+| ------ | --------------------------------------------------------- |
+| SMS    | Send `PNR <10-digit number>` to 139                       |
+| Call   | Dial 139, choose the PNR enquiry option, enter the number |
 
 Standard SMS rates apply. This route is genuinely useful when you're on a moving train with patchy data or helping an older relative who isn't comfortable with apps.
 
@@ -71,21 +71,21 @@ Standard SMS rates apply. This route is genuinely useful when you're on a moving
 
 ## What Do the PNR Status Codes Mean?
 
-PNR status codes describe exactly where your booking stands. "CNF" means confirmed with a berth, "RAC" means you'll get to board with a shared seat, and "WL" means you're waitlisted. The prefix on a waitlist code (GNWL, RLWL, PQWL, TQWL) tells you the *type* of waitlist, which affects your confirmation chances.
+PNR status codes describe exactly where your booking stands. "CNF" means confirmed with a berth, "RAC" means you'll get to board with a shared seat, and "WL" means you're waitlisted. The prefix on a waitlist code (GNWL, RLWL, PQWL, TQWL) tells you the _type_ of waitlist, which affects your confirmation chances.
 
 Here's what the common abbreviations mean:
 
-| Code | Full form | What it means for you |
-|---|---|---|
-| **CNF** | Confirmed | You have a confirmed seat. Coach/berth shown after chart prep. |
-| **RAC** | Reservation Against Cancellation | You can board; two passengers share one side-lower berth until a berth frees up. |
-| **WL** | Waiting List | Not yet confirmed; your number moves up as others cancel. |
-| **GNWL** | General Waiting List | Booked from the train's originating region; **best** chance of confirming. |
-| **RLWL** | Remote Location Waiting List | For intermediate stations; confirms more slowly. |
-| **PQWL** | Pooled Quota Waiting List | Shared across several short-distance stations; lower chance. |
-| **TQWL** | Tatkal Waiting List | Tatkal tickets; clears only if Tatkal-confirmed passengers cancel. |
-| **CAN / MOD** | Cancelled / Modified | Ticket was cancelled or changed. |
-| **RLGN** | Reservation Cancelled | A waitlisted ticket that did not clear and was dropped. |
+| Code          | Full form                        | What it means for you                                                            |
+| ------------- | -------------------------------- | -------------------------------------------------------------------------------- |
+| **CNF**       | Confirmed                        | You have a confirmed seat. Coach/berth shown after chart prep.                   |
+| **RAC**       | Reservation Against Cancellation | You can board; two passengers share one side-lower berth until a berth frees up. |
+| **WL**        | Waiting List                     | Not yet confirmed; your number moves up as others cancel.                        |
+| **GNWL**      | General Waiting List             | Booked from the train's originating region; **best** chance of confirming.       |
+| **RLWL**      | Remote Location Waiting List     | For intermediate stations; confirms more slowly.                                 |
+| **PQWL**      | Pooled Quota Waiting List        | Shared across several short-distance stations; lower chance.                     |
+| **TQWL**      | Tatkal Waiting List              | Tatkal tickets; clears only if Tatkal-confirmed passengers cancel.               |
+| **CAN / MOD** | Cancelled / Modified             | Ticket was cancelled or changed.                                                 |
+| **RLGN**      | Reservation Cancelled            | A waitlisted ticket that did not clear and was dropped.                          |
 
 A status like **"GNWL 8/WL 3"** means your ticket started at waitlist 8 (booking status) and is now at waitlist 3 (current status) — it has moved up five places. That movement is the real signal of whether you'll confirm.
 
@@ -159,31 +159,41 @@ Search your 10-digit PNR on LastBerth Smart Seats to receive real-time updates o
 ## Common PNR Questions (FAQ)
 
 ### How do I check my PNR status?
+
 Enter your 10-digit PNR number in the PNR Enquiry section of the IRCTC website or app, on LastBerth, or send `PNR <10-digit number>` to 139 by SMS. Each shows the current status of every passenger on the ticket — Confirmed, RAC, or Waiting List — and the coach and berth once confirmed.
 
 ### Where do I find my PNR number?
+
 Your 10-digit PNR number is printed at the top-left corner of a counter ticket and at the top of an e-ticket or the booking confirmation SMS/email. It is unique to that single booking and covers all passengers travelling together on that journey.
 
 ### What does CNF, RAC, and WL mean in PNR status?
+
 CNF means Confirmed — you have a reserved berth. RAC (Reservation Against Cancellation) means you can board with a shared seat until a full berth frees up. WL means Waiting List — you are not yet confirmed and move up as others cancel, following the order WL → RAC → Confirmed.
 
 ### Can I travel if my ticket is still waitlisted?
+
 No. If your e-ticket is still fully waitlisted when the chart is prepared, the system automatically cancels it and refunds the fare, so you cannot board. You need at least RAC or Confirmed status to travel legally on a reserved coach.
 
 ### What is the difference between GNWL and RLWL?
+
 GNWL (General Waiting List) is issued for journeys from a train's originating station and has the best chance of confirming. RLWL (Remote Location Waiting List) is for intermediate stations and clears more slowly, because it depends on cancellations specific to that smaller station quota.
 
 ### How accurate is PNR confirmation prediction?
+
 Prediction tools estimate confirmation chances using historical cancellation trends for that train, route, quota, and waitlist position. They are a helpful guide, not a guarantee. Always re-check your live current status close to departure and keep a backup plan if you are on a high or pooled waitlist.
 
 ### How often is PNR status updated on IRCTC servers?
+
 PNR status updates in real-time whenever a passenger cancels a booking, during charting, or when seat reallocations occur.
 
 ### Can you check PNR status for counter paper tickets online?
+
 Yes, you can check live PNR status for paper tickets issued at railway PRS counters online using your 10-digit PNR number.
 
 ### Why does PNR status show chart not prepared until 8 hours before train departure?
+
 Indian Railways rules mandate that the first reservation chart is generated 8 hours prior to departure (or 21:00 / 9:00 PM the previous evening for morning trains).
 
 ### Can PNR status change after boarding the train?
+
 Yes, if on-board passengers fail to turn up, TTEs allocate vacant berths to RAC or waitlisted passengers during the journey.

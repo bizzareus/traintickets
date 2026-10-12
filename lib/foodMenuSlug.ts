@@ -18,7 +18,10 @@ export function slugifyTrainName(name: string): string {
 }
 
 /** `NDLS-SVDK Vande Bharat Express` + `22439` -> `ndls-svdk-vande-bharat-express-22439`. */
-export function buildFoodMenuSlug(trainName: string, trainNumber: string): string {
+export function buildFoodMenuSlug(
+  trainName: string,
+  trainNumber: string,
+): string {
   const namePart = slugifyTrainName(trainName);
   const num = String(trainNumber || "").trim();
   return namePart ? `${namePart}-${num}` : num;

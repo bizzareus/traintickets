@@ -7,25 +7,48 @@ type Props = {
 
 const TABS = [
   { key: "all", href: "/special-trains", label: "All Specials", icon: "🚆" },
-  { key: "diwali", href: "/special-trains/diwali", label: "Diwali Specials", icon: "🪔" },
-  { key: "chhath", href: "/special-trains/chhath", label: "Chhath Specials", icon: "🌅" },
-  { key: "dusshera", href: "/special-trains/dusshera", label: "Dusshera Specials", icon: "🏹" },
-  { key: "puja", href: "/special-trains/puja", label: "Puja Specials", icon: "🌺" },
+  {
+    key: "diwali",
+    href: "/special-trains/diwali",
+    label: "Diwali Specials",
+    icon: "🪔",
+  },
+  {
+    key: "chhath",
+    href: "/special-trains/chhath",
+    label: "Chhath Specials",
+    icon: "🌅",
+  },
+  {
+    key: "dusshera",
+    href: "/special-trains/dusshera",
+    label: "Dusshera Specials",
+    icon: "🏹",
+  },
+  {
+    key: "puja",
+    href: "/special-trains/puja",
+    label: "Puja Specials",
+    icon: "🌺",
+  },
 ] as const;
 
 export function FestivalNavTabs({ currentKey = "all" }: Props) {
   return (
-    <nav className="flex items-center gap-1.5 overflow-x-auto pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none" aria-label="Festival Specials navigation">
+    <nav
+      className="scrollbar-none -mx-4 flex items-center gap-1.5 overflow-x-auto px-4 pb-1 sm:mx-0 sm:px-0"
+      aria-label="Festival Specials navigation"
+    >
       {TABS.map((tab) => {
         const isActive = currentKey === tab.key;
         return (
           <Link
             key={tab.key}
             href={tab.href}
-            className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs sm:text-sm font-semibold transition-all shrink-0 ${
+            className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all sm:text-sm ${
               isActive
-                ? "bg-slate-900 text-white shadow-xs"
-                : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+                ? "shadow-xs bg-slate-900 text-white"
+                : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100"
             }`}
           >
             <span>{tab.icon}</span>

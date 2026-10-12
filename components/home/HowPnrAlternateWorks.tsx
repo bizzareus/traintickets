@@ -33,7 +33,7 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
         className,
       )}
     >
-      <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xs">
+      <div className="shadow-xs overflow-hidden rounded-2xl border border-slate-200/80 bg-white">
         {/* Header section */}
         <div className="border-b border-slate-100 bg-gradient-to-b from-slate-50/80 to-white p-5 sm:p-7">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -51,7 +51,7 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
                 className={cn(
                   "rounded-md px-3 py-1 transition-all",
                   activeTab === "visual"
-                    ? "bg-white font-semibold text-slate-900 shadow-xs"
+                    ? "shadow-xs bg-white font-semibold text-slate-900"
                     : "hover:text-slate-900",
                 )}
               >
@@ -63,7 +63,7 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
                 className={cn(
                   "rounded-md px-3 py-1 transition-all",
                   activeTab === "why"
-                    ? "bg-white font-semibold text-slate-900 shadow-xs"
+                    ? "shadow-xs bg-white font-semibold text-slate-900"
                     : "hover:text-slate-900",
                 )}
               >
@@ -79,18 +79,21 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
             Waitlisted PNR? How We Find You Confirmed Seats
           </h2>
           <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-slate-600">
-            When you enter your 10-digit PNR, we inspect live IRCTC passenger status.
-            If your ticket is waitlisted, our engine automatically searches intermediate
-            quotas on your <span className="font-semibold text-slate-800">exact same train</span> to
-            find you the most available confirmed seat options.
+            When you enter your 10-digit PNR, we inspect live IRCTC passenger
+            status. If your ticket is waitlisted, our engine automatically
+            searches intermediate quotas on your{" "}
+            <span className="font-semibold text-slate-800">
+              exact same train
+            </span>{" "}
+            to find you the most available confirmed seat options.
           </p>
         </div>
 
         {/* Tab 1: Visual comparison */}
         {activeTab === "visual" ? (
-          <div className="p-5 sm:p-7 space-y-6">
+          <div className="space-y-6 p-5 sm:p-7">
             {/* Example Train Ribbon */}
-            <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-slate-50 border border-slate-200/60 px-4 py-2.5 text-xs text-slate-600">
+            <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-200/60 bg-slate-50 px-4 py-2.5 text-xs text-slate-600">
               <div className="flex items-center gap-2 font-medium">
                 <Train className="h-4 w-4 text-blue-600" aria-hidden="true" />
                 <span>
@@ -100,7 +103,7 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
                   </strong>
                 </span>
               </div>
-              <span className="inline-flex items-center rounded-md bg-blue-100/60 px-2 py-0.5 font-semibold text-blue-800 text-[11px]">
+              <span className="inline-flex items-center rounded-md bg-blue-100/60 px-2 py-0.5 text-[11px] font-semibold text-blue-800">
                 Same Train · Guaranteed Travel
               </span>
             </div>
@@ -152,26 +155,27 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
                     </div>
                   </div>
 
-                  <div className="mt-4 rounded-lg bg-white/80 p-3 text-xs text-rose-900/90 border border-rose-100">
+                  <div className="mt-4 rounded-lg border border-rose-100 bg-white/80 p-3 text-xs text-rose-900/90">
                     <p className="font-semibold text-rose-900">
                       What standard apps tell you:
                     </p>
                     <p className="mt-0.5 text-slate-600">
-                      You are waitlisted (WL 38). Standard apps only show your queue position.
-                      If it stays WL at chart preparation, your e-ticket is auto-cancelled and you cannot board.
+                      You are waitlisted (WL 38). Standard apps only show your
+                      queue position. If it stays WL at chart preparation, your
+                      e-ticket is auto-cancelled and you cannot board.
                     </p>
                   </div>
                 </div>
 
-                <div className="mt-4 border-t border-rose-200/60 pt-3 text-[11px] text-slate-500 flex items-center gap-1.5">
+                <div className="mt-4 flex items-center gap-1.5 border-t border-rose-200/60 pt-3 text-[11px] text-slate-500">
                   <span className="h-2 w-2 rounded-full bg-rose-400" />
                   Leaves you uncertain until chart preparation
                 </div>
               </div>
 
               {/* Card B: LastBerth PNR alternate seat solution */}
-              <div className="flex flex-col justify-between rounded-xl border border-emerald-300 bg-emerald-50/40 p-4 sm:p-5 relative ring-1 ring-emerald-500/10">
-                <div className="absolute -top-3 right-4 rounded-full bg-emerald-600 px-3 py-0.5 text-[11px] font-bold text-white shadow-xs">
+              <div className="relative flex flex-col justify-between rounded-xl border border-emerald-300 bg-emerald-50/40 p-4 ring-1 ring-emerald-500/10 sm:p-5">
+                <div className="shadow-xs absolute -top-3 right-4 rounded-full bg-emerald-600 px-3 py-0.5 text-[11px] font-bold text-white">
                   LastBerth Solution
                 </div>
 
@@ -200,7 +204,7 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
                   {/* Visual segments list */}
                   <div className="mt-3 space-y-2">
                     {/* Leg 1 */}
-                    <div className="flex items-center justify-between rounded-lg border border-emerald-200 bg-white p-2.5 shadow-2xs">
+                    <div className="shadow-2xs flex items-center justify-between rounded-lg border border-emerald-200 bg-white p-2.5">
                       <div className="min-w-0">
                         <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900">
                           <span>New Delhi (NDLS)</span>
@@ -220,7 +224,7 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
                     </div>
 
                     {/* Leg 2 */}
-                    <div className="flex items-center justify-between rounded-lg border border-emerald-200 bg-white p-2.5 shadow-2xs">
+                    <div className="shadow-2xs flex items-center justify-between rounded-lg border border-emerald-200 bg-white p-2.5">
                       <div className="min-w-0">
                         <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900">
                           <span>Kota (KOTA)</span>
@@ -241,13 +245,14 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
                   </div>
                 </div>
 
-                <div className="mt-4 border-t border-emerald-200/60 pt-3 text-[11px] font-medium text-emerald-800 flex items-center gap-1.5">
+                <div className="mt-4 flex items-center gap-1.5 border-t border-emerald-200/60 pt-3 text-[11px] font-medium text-emerald-800">
                   <CheckCircle2
-                    className="h-3.5 w-3.5 text-emerald-600 shrink-0"
+                    className="h-3.5 w-3.5 shrink-0 text-emerald-600"
                     aria-hidden="true"
                   />
                   <span>
-                    You board at Delhi and travel all the way to Mumbai with confirmed berths!
+                    You board at Delhi and travel all the way to Mumbai with
+                    confirmed berths!
                   </span>
                 </div>
               </div>
@@ -255,7 +260,7 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
           </div>
         ) : (
           /* Tab 2: Why it works */
-          <div className="p-5 sm:p-7 space-y-5">
+          <div className="space-y-5 p-5 sm:p-7">
             <div className="grid gap-4 sm:grid-cols-3">
               <div className="rounded-xl border border-slate-200/80 bg-slate-50/60 p-4">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 text-blue-700">
@@ -264,10 +269,10 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
                 <h3 className="mt-3 text-sm font-bold text-slate-900">
                   Hidden Quota Availability
                 </h3>
-                <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                  Indian Railways divides train berths across multiple intermediate
-                  quotas. When end-to-end direct berths are sold out, intermediate segments
-                  frequently remain vacant.
+                <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                  Indian Railways divides train berths across multiple
+                  intermediate quotas. When end-to-end direct berths are sold
+                  out, intermediate segments frequently remain vacant.
                 </p>
               </div>
 
@@ -278,9 +283,10 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
                 <h3 className="mt-3 text-sm font-bold text-slate-900">
                   100% Legal IRCTC Booking
                 </h3>
-                <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                  Booking consecutive segments for the same passenger on the same train
-                  is completely permitted under official Indian Railways ticketing guidelines.
+                <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                  Booking consecutive segments for the same passenger on the
+                  same train is completely permitted under official Indian
+                  Railways ticketing guidelines.
                 </p>
               </div>
 
@@ -291,9 +297,10 @@ export function HowPnrAlternateWorks({ className }: HowPnrAlternateWorksProps) {
                 <h3 className="mt-3 text-sm font-bold text-slate-900">
                   Zero Train Changing
                 </h3>
-                <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                  You board at your originating station and disembark at your destination.
-                  You never switch trains or wait on platforms between stations.
+                <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                  You board at your originating station and disembark at your
+                  destination. You never switch trains or wait on platforms
+                  between stations.
                 </p>
               </div>
             </div>

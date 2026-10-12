@@ -13,7 +13,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Garib Rath Express Trains 2026: List, Routes, Timings & Booking | LastBerth",
+  title:
+    "Garib Rath Express Trains 2026: List, Routes, Timings & Booking | LastBerth",
   description:
     "Complete list of Garib Rath Express trains in India. Check routes, timetables, affordable AC 3-Tier classes, and book confirmed tickets on LastBerth.",
   alternates: { canonical: "/trains/garib-rath" },
@@ -79,33 +80,42 @@ export default function GaribRathTrainsPage() {
   };
 
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-slate-900 antialiased">
+    <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-slate-900 antialiased">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
 
-      <main className="mx-auto max-w-5xl px-4 py-6 sm:py-10 sm:px-6 lg:px-8 space-y-8">
+      <main className="mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center text-xs sm:text-sm text-slate-500 font-medium" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
-          <ChevronRight className="mx-1.5 h-3.5 w-3.5 text-slate-400 shrink-0" />
-          <span className="text-slate-900 font-semibold truncate">Garib Rath Express</span>
+        <nav
+          className="flex items-center text-xs font-medium text-slate-500 sm:text-sm"
+          aria-label="Breadcrumb"
+        >
+          <Link href="/" className="transition-colors hover:text-blue-600">
+            Home
+          </Link>
+          <ChevronRight className="mx-1.5 h-3.5 w-3.5 shrink-0 text-slate-400" />
+          <span className="truncate font-semibold text-slate-900">
+            Garib Rath Express
+          </span>
         </nav>
 
         {/* Hero */}
-        <header className="rounded-3xl border border-green-900/40 bg-gradient-to-br from-slate-950 via-green-950 to-emerald-950 p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+        <header className="relative overflow-hidden rounded-3xl border border-green-900/40 bg-gradient-to-br from-slate-950 via-green-950 to-emerald-950 p-6 text-white shadow-xl sm:p-10">
           <div className="relative z-10 max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full bg-green-500/20 px-3 py-1 text-xs font-bold text-green-300 backdrop-blur-xs border border-green-400/30">
+            <div className="backdrop-blur-xs inline-flex items-center gap-2 rounded-full border border-green-400/30 bg-green-500/20 px-3 py-1 text-xs font-bold text-green-300">
               <Wallet className="h-3.5 w-3.5" />
               <span>Budget AC Overnight Express</span>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
               Garib Rath Express Trains 2026
             </h1>
-            <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
-              India&apos;s affordable AC overnight express trains — fully air-conditioned 3-Tier berths at subsidised fares. Browse all {trains.length} Garib Rath trains and book confirmed tickets.
+            <p className="text-sm leading-relaxed text-slate-200 sm:text-base">
+              India&apos;s affordable AC overnight express trains — fully
+              air-conditioned 3-Tier berths at subsidised fares. Browse all{" "}
+              {trains.length} Garib Rath trains and book confirmed tickets.
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-2 text-xs font-medium text-slate-300">
               <span className="inline-flex items-center gap-1.5">
@@ -122,18 +132,27 @@ export default function GaribRathTrainsPage() {
               </span>
             </div>
           </div>
-          <div className="absolute -right-16 -bottom-16 h-64 w-64 rounded-full bg-green-600/20 blur-3xl pointer-events-none" aria-hidden="true" />
+          <div
+            className="pointer-events-none absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-green-600/20 blur-3xl"
+            aria-hidden="true"
+          />
         </header>
 
         {/* Top Corridors */}
         <section aria-labelledby="corridors-heading" className="space-y-3">
-          <h2 id="corridors-heading" className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+          <h2
+            id="corridors-heading"
+            className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500"
+          >
             <MapPin className="h-3.5 w-3.5 text-green-600" />
             Popular Garib Rath Corridors
           </h2>
           <div className="flex flex-wrap gap-2">
             {POPULAR_CORRIDORS.map((c) => (
-              <span key={c} className="rounded-lg bg-white border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-2xs hover:border-green-400 hover:text-green-600 transition-colors">
+              <span
+                key={c}
+                className="shadow-2xs rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:border-green-400 hover:text-green-600"
+              >
                 {c}
               </span>
             ))}
@@ -149,11 +168,11 @@ export default function GaribRathTrainsPage() {
         />
 
         {/* FAQs */}
-        <section className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 space-y-6">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+        <section className="space-y-6 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
             Frequently Asked Questions about Garib Rath Express
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600">
+          <div className="grid grid-cols-1 gap-6 text-sm text-slate-600 md:grid-cols-2">
             {FAQS.map((faq) => (
               <div key={faq.question} className="space-y-2">
                 <h3 className="font-semibold text-slate-900">{faq.question}</h3>

@@ -101,9 +101,11 @@ If you can't afford any risks, just go for a train that has confirmed or RAC sea
 ## Quick FAQs
 
 ### How do I book segment tickets on the same train?
+
 Open IRCTC. Search and book each station leg separately. You'll get different PNRs and different seats, but it works.
 
 ### Will I need to move to another seat?
+
 Most likely. Since they're different tickets, your coach or seat number will change. When the train reaches the junction where your first ticket ends, grab your luggage and walk over to your next seat. For schedules or general guidelines, check the [official Indian Railways passenger services site](https://www.indianrail.gov.in/).
 
 ---

@@ -37,19 +37,44 @@ const CLASS_GROUPS = [
     cg: "1AC-EC",
     name: "AC First Class & Executive Chair Car",
     dir: "1AC-EC",
-    zones: ["East", "North", "West", "South-Central", "South", "Jain-Meal", "Diabetic-Meal", "Continental-Menu"],
+    zones: [
+      "East",
+      "North",
+      "West",
+      "South-Central",
+      "South",
+      "Jain-Meal",
+      "Diabetic-Meal",
+      "Continental-Menu",
+    ],
   },
   {
     cg: "2A-3A-CC",
     name: "AC 2-Tier, 3-Tier & Chair Car",
     dir: "2A-3A-CC",
-    zones: ["East", "North", "West", "South-Central", "South", "Jain-Meal", "Diabetic-Meal"],
+    zones: [
+      "East",
+      "North",
+      "West",
+      "South-Central",
+      "South",
+      "Jain-Meal",
+      "Diabetic-Meal",
+    ],
   },
   {
     cg: "duronto-sleeper",
     name: "Duronto Sleeper Class",
     dir: "duronto-sleeper-class-menu",
-    zones: ["East", "North", "West", "South-Central", "South", "Jain-Meal", "Diabetic-Meal"],
+    zones: [
+      "East",
+      "North",
+      "West",
+      "South-Central",
+      "South",
+      "Jain-Meal",
+      "Diabetic-Meal",
+    ],
   },
 ];
 
@@ -73,7 +98,12 @@ function getApiKey(): string | undefined {
 
 /** Cache filename used by the local text cache (matches scratchpad naming). */
 function cacheName(src: Source): string {
-  const g = src.classGroup === "1AC-EC" ? "1acec" : src.classGroup === "2A-3A-CC" ? "2a3acc" : "duronto";
+  const g =
+    src.classGroup === "1AC-EC"
+      ? "1acec"
+      : src.classGroup === "2A-3A-CC"
+        ? "2a3acc"
+        : "duronto";
   return `${g}-${src.zone.replace(/ /g, "-")}`;
 }
 
@@ -81,12 +111,27 @@ function getText(src: Source): string {
   const cacheDir = process.env.STD_TXT_CACHE;
   if (cacheDir) {
     const fp = path.join(cacheDir, `${cacheName(src)}.txt`);
-    if (fs.existsSync(fp) && fs.statSync(fp).size > 0) return fs.readFileSync(fp, "utf8");
+    if (fs.existsSync(fp) && fs.statSync(fp).size > 0)
+      return fs.readFileSync(fp, "utf8");
   }
   const tmp = path.join(os.tmpdir(), `std-${src.key}.pdf`);
   try {
-    execFileSync("curl", ["-sL", "--retry", "3", "--retry-delay", "2", "--max-time", "90", "-o", tmp, src.url]);
-    return execFileSync("pdftotext", ["-layout", tmp, "-"], { encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
+    execFileSync("curl", [
+      "-sL",
+      "--retry",
+      "3",
+      "--retry-delay",
+      "2",
+      "--max-time",
+      "90",
+      "-o",
+      tmp,
+      src.url,
+    ]);
+    return execFileSync("pdftotext", ["-layout", tmp, "-"], {
+      encoding: "utf8",
+      maxBuffer: 16 * 1024 * 1024,
+    });
   } finally {
     fs.rmSync(tmp, { force: true });
   }
@@ -115,15 +160,20 @@ Rules:
 type StdService = { service: string; price: number | null; sets: string[] };
 
 function validate(o: { services?: StdService[] }): string | null {
-  if (!o || !Array.isArray(o.services) || o.services.length === 0) return "no services";
+  if (!o || !Array.isArray(o.services) || o.services.length === 0)
+    return "no services";
   for (const s of o.services) {
     if (!s.service) return "service missing name";
-    if (!Array.isArray(s.sets) || s.sets.length === 0) return `service ${s.service} has no sets`;
+    if (!Array.isArray(s.sets) || s.sets.length === 0)
+      return `service ${s.service} has no sets`;
   }
   return null;
 }
 
-async function extractOne(client: OpenAI, src: Source): Promise<{ services: StdService[] }> {
+async function extractOne(
+  client: OpenAI,
+  src: Source,
+): Promise<{ services: StdService[] }> {
   const text = getText(src);
   const completion = await client.chat.completions.create({
     model: MODEL,
@@ -131,10 +181,15 @@ async function extractOne(client: OpenAI, src: Source): Promise<{ services: StdS
     response_format: { type: "json_object" },
     messages: [
       { role: "system", content: SYSTEM_PROMPT },
-      { role: "user", content: `Class group: ${src.classGroupName}. Zone: ${src.zone}.\n\nMenu text:\n${text}` },
+      {
+        role: "user",
+        content: `Class group: ${src.classGroupName}. Zone: ${src.zone}.\n\nMenu text:\n${text}`,
+      },
     ],
   });
-  const parsed = JSON.parse(completion.choices[0]?.message?.content || "{}") as { services: StdService[] };
+  const parsed = JSON.parse(
+    completion.choices[0]?.message?.content || "{}",
+  ) as { services: StdService[] };
   const err = validate(parsed);
   if (err) throw new Error(`validation failed: ${err}`);
   return parsed;
@@ -152,9 +207,13 @@ async function run() {
   const args = process.argv.slice(2);
   const force = args.includes("--force");
   const only = args.filter((a) => !a.startsWith("--"));
-  const targets = only.length ? SOURCES.filter((s) => only.includes(s.key) || only.includes(cacheName(s))) : SOURCES;
+  const targets = only.length
+    ? SOURCES.filter((s) => only.includes(s.key) || only.includes(cacheName(s)))
+    : SOURCES;
 
-  console.log(`Processing ${targets.length} menus (model=${MODEL}, force=${force}).`);
+  console.log(
+    `Processing ${targets.length} menus (model=${MODEL}, force=${force}).`,
+  );
   const ok: string[] = [];
   const failed: { key: string; reason: string }[] = [];
 
@@ -182,12 +241,19 @@ async function run() {
         ok.push(src.key);
         console.log(`ok   ${src.key} (${services.length} services)`);
       } catch (e) {
-        failed.push({ key: src.key, reason: e instanceof Error ? e.message : String(e) });
-        console.warn(`FAIL ${src.key}: ${e instanceof Error ? e.message : String(e)}`);
+        failed.push({
+          key: src.key,
+          reason: e instanceof Error ? e.message : String(e),
+        });
+        console.warn(
+          `FAIL ${src.key}: ${e instanceof Error ? e.message : String(e)}`,
+        );
       }
     }
   }
-  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, targets.length) }, worker));
+  await Promise.all(
+    Array.from({ length: Math.min(CONCURRENCY, targets.length) }, worker),
+  );
   console.log(`\nDone. written=${ok.length} failed=${failed.length}`);
   failed.forEach((f) => console.log(`  ${f.key}: ${f.reason}`));
 }

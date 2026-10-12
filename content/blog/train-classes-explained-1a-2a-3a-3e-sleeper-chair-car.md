@@ -50,14 +50,14 @@ Here is what every passenger receives with a confirmed 3A ticket:
 
 Understanding these two-letter codes helps you immediately locate your assigned berth upon boarding, assess your privacy, and determine whether you will need to climb an access ladder:
 
-| Berth Code | Full Form | Vertical Tier | Window Access | Best Suited For |
-| :--- | :--- | :--- | :--- | :--- |
-| **LB** | Lower Berth | Bottom tier (floor level) | Direct window view | Senior citizens, pregnant women, and travellers with limited mobility. Converts to shared daytime seating. |
-| **MB** | Middle Berth | Middle tier | Partial / none (stowed during day) | Passengers who do not mind climbing a low ladder. Must be folded down flat between 6:00 AM and 10:00 PM. |
-| **UB** | Upper Berth | Top tier (ceiling clearance) | High side angle | Solo travellers, young adults, and light sleepers wanting full daytime privacy to nap anytime undisturbed. |
-| **SL** | Side Lower | Aisle bottom tier | Full private window view | Travellers who love scenic track views. Converts from two daytime single chairs into a flat single bed at night. |
-| **SU** | Side Upper | Aisle top tier | Overhead angle | Budget solo passengers wanting a secluded private space without co-passengers sitting on their berth during daytime. |
-| **SM** | Side Middle | Aisle middle tier (3E only) | Narrow aisle slit | Budget travellers booking 3E AC Economy. Tighter vertical clearance (~18 inches) and shorter length. |
+| Berth Code | Full Form    | Vertical Tier                | Window Access                      | Best Suited For                                                                                                      |
+| :--------- | :----------- | :--------------------------- | :--------------------------------- | :------------------------------------------------------------------------------------------------------------------- |
+| **LB**     | Lower Berth  | Bottom tier (floor level)    | Direct window view                 | Senior citizens, pregnant women, and travellers with limited mobility. Converts to shared daytime seating.           |
+| **MB**     | Middle Berth | Middle tier                  | Partial / none (stowed during day) | Passengers who do not mind climbing a low ladder. Must be folded down flat between 6:00 AM and 10:00 PM.             |
+| **UB**     | Upper Berth  | Top tier (ceiling clearance) | High side angle                    | Solo travellers, young adults, and light sleepers wanting full daytime privacy to nap anytime undisturbed.           |
+| **SL**     | Side Lower   | Aisle bottom tier            | Full private window view           | Travellers who love scenic track views. Converts from two daytime single chairs into a flat single bed at night.     |
+| **SU**     | Side Upper   | Aisle top tier               | Overhead angle                     | Budget solo passengers wanting a secluded private space without co-passengers sitting on their berth during daytime. |
+| **SM**     | Side Middle  | Aisle middle tier (3E only)  | Narrow aisle slit                  | Budget travellers booking 3E AC Economy. Tighter vertical clearance (~18 inches) and shorter length.                 |
 
 You can inspect the precise seat map and coach layout for your assigned train using LastBerth's **[Get Confirmed Tickets](/)**.
 
@@ -68,27 +68,35 @@ You can inspect the precise seat map and coach layout for your assigned train us
 **Indian Railways operates eight primary reserved passenger travel classes, ranging from un-airconditioned Second Sitting (2S) and Sleeper (SL) up to luxury AC First Class (1A) private coupes. Classes are divided into berth coaches (with flat sleeping bunks for overnight travel) and chair car coaches (with airline-style seats for daytime intercity routes).**
 
 ### 1. AC First Class (1A)
+
 The highest regular luxury class on Indian Railways. A 1A coach carries just 18 to 24 passengers inside lockable 2-berth coupes (ideal for couples) and 4-berth cabins (ideal for families). Features carpeted floors, sliding privacy doors, personal reading lamps, plush wide mattresses, hot shower facilities on select Rajdhani trains, and curated room-service catering. Coach designation: **H1, H2**.
 
 ### 2. AC 2-Tier (2A)
+
 The premier open-bay class. Each bay has only **four berths instead of six** (two Lower, two Upper) because there is **no middle berth**. Across the aisle are two side berths (Side Lower, Side Upper). Each bay and side berth is shielded by heavy privacy curtains. Accommodates 46 to 54 passengers per coach, offering ample headroom to sit upright all day. Coach designation: **A1, A2, A3**.
 
 ### 3. AC 3-Tier (3A)
+
 The flagship mass-transit AC sleeper class. Features 64 to 72 berths per coach across 8-berth bays with Lower, Middle, and Upper berths on both sides, plus Side Lower and Side Upper. Includes free bedroll kits and climate control. Coach designation: **B1, B2, B3...**.
 
 ### 4. AC 3-Tier Economy (3E)
+
 Introduced in 2021 as a high-density, lower-cost alternative to standard 3A. Fits **83 berths** per coach by redesigning interior ducting and adding a **Side Middle (SM)** berth to the aisle bay. Fares are roughly 6% to 8% cheaper than 3A, and free bedding is bundled into the fare. Coach designation: **M1, M2, M3...**.
 
 ### 5. AC Chair Car (CC)
+
 Designed specifically for daytime intercity journeys between 3 and 8 hours on trains like Shatabdi, Jan Shatabdi, Intercity Express, and Vande Bharat. Coaches feature 73 to 78 air-conditioned reclining seats in a 3+2 row configuration with overhead luggage racks, foldable snack tables, and wide panoramic windows. Coach designation: **C1, C2, C3...**.
 
 ### 6. Executive Chair Car (EC)
+
 The premium daytime business class found on Shatabdi, Tejas, and Vande Bharat trains. Offers spacious 2+2 leather reclining seats, expansive legroom, footrests, and complimentary multicourse gourmet catering bundled into the ticket fare. Accommodates 46 to 56 passengers per coach. Coach designation: **E1, E2**.
 
 ### 7. Sleeper Class (SL)
+
 The traditional backbone of Indian rail travel. Non-airconditioned 3-tier sleeper layout matching 3A dimensions (72 to 80 berths per coach), but with open barred windows and ceiling fans. No bedrolls are provided. Fares are highly subsidized, making it the most economical overnight option. Coach designation: **S1, S2, S3...**.
 
 ### 8. Second Sitting (2S)
+
 Reserved non-airconditioned bench seating for short-distance daytime commutes under 4 hours. Passengers are assigned numbered cushioned bench seats in a 3+3 layout. Very low fares with zero sleeping facilities. Coach designation: **D1, D2, D3...**.
 
 To decode exterior coach identifiers on platforms, read our comprehensive [Coach Composition Guide](/blog/understanding-coach-composition-find-train-platform).
@@ -99,16 +107,16 @@ To decode exterior coach identifiers on platforms, read our comprehensive [Coach
 
 **This master comparison matrix summarizes the technical dimensions, passenger capacity, bedding rules, fare multipliers, and operational differences across all eight Indian Railways travel classes. Use it to quickly choose the ideal class for your budget and travel duration.**
 
-| Class Code | Full Name | AC? | Berth vs Seat | Capacity per Coach | Free Bedroll? | Fare Multiplier (vs SL) | Best Suited For |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **1A** | AC First Class | Yes | Berth (Coupe / Cabin) | 18 – 24 | Premium linen kit | 3.5× – 4.5× | Luxury overnight travel, VIPs, couples desiring total privacy |
-| **2A** | AC 2-Tier | Yes | Berth (No middle bunk) | 46 – 54 | Full linen kit | 2.0× – 2.5× | Comfort-conscious travellers, light sleepers, tall passengers |
-| **3A** | AC 3-Tier | Yes | Berth (3-tier bay) | 64 – 72 | Full linen kit | 1.5× – 1.8× | Families, professionals, budget AC overnight journeys |
-| **3E** | AC 3-Tier Economy | Yes | Berth (High density) | 83 | Full linen kit | 1.4× – 1.6× | Budget AC travellers, last-minute confirmed seat hunters |
-| **CC** | AC Chair Car | Yes | Reclining Seat (3+2) | 73 – 78 | None | 1.3× – 1.6× | Daytime business trips, 4 to 7 hour intercity hops |
-| **EC** | Executive Chair Car | Yes | Reclining Seat (2+2) | 46 – 56 | None | 2.5× – 3.2× | Premium daytime journeys on Shatabdi & Vande Bharat |
-| **SL** | Sleeper Class | No | Berth (Open windows) | 72 – 80 | None (BYO linen) | 1.0× (Base) | Budget travellers, students, cooler winter & monsoon journeys |
-| **2S** | Second Sitting | No | Bench Seat (3+3) | 100 – 108 | None | 0.4× – 0.6× | Short daytime travel under 3 hours on tight budgets |
+| Class Code | Full Name           | AC? | Berth vs Seat          | Capacity per Coach | Free Bedroll?     | Fare Multiplier (vs SL) | Best Suited For                                               |
+| :--------- | :------------------ | :-- | :--------------------- | :----------------- | :---------------- | :---------------------- | :------------------------------------------------------------ |
+| **1A**     | AC First Class      | Yes | Berth (Coupe / Cabin)  | 18 – 24            | Premium linen kit | 3.5× – 4.5×             | Luxury overnight travel, VIPs, couples desiring total privacy |
+| **2A**     | AC 2-Tier           | Yes | Berth (No middle bunk) | 46 – 54            | Full linen kit    | 2.0× – 2.5×             | Comfort-conscious travellers, light sleepers, tall passengers |
+| **3A**     | AC 3-Tier           | Yes | Berth (3-tier bay)     | 64 – 72            | Full linen kit    | 1.5× – 1.8×             | Families, professionals, budget AC overnight journeys         |
+| **3E**     | AC 3-Tier Economy   | Yes | Berth (High density)   | 83                 | Full linen kit    | 1.4× – 1.6×             | Budget AC travellers, last-minute confirmed seat hunters      |
+| **CC**     | AC Chair Car        | Yes | Reclining Seat (3+2)   | 73 – 78            | None              | 1.3× – 1.6×             | Daytime business trips, 4 to 7 hour intercity hops            |
+| **EC**     | Executive Chair Car | Yes | Reclining Seat (2+2)   | 46 – 56            | None              | 2.5× – 3.2×             | Premium daytime journeys on Shatabdi & Vande Bharat           |
+| **SL**     | Sleeper Class       | No  | Berth (Open windows)   | 72 – 80            | None (BYO linen)  | 1.0× (Base)             | Budget travellers, students, cooler winter & monsoon journeys |
+| **2S**     | Second Sitting      | No  | Bench Seat (3+3)       | 100 – 108          | None              | 0.4× – 0.6×             | Short daytime travel under 3 hours on tight budgets           |
 
 ---
 

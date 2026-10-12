@@ -62,14 +62,14 @@ The physical paper ticket remains an active travel instrument until manually sur
 
 ### Comparison: Online E-Ticket vs PRS Counter Ticket
 
-| Feature / Rule | Online IRCTC E-Ticket (Fully WL) | PRS Counter Physical Ticket (Fully WL) |
-| :--- | :--- | :--- |
-| **Status After Final Charting** | Automatically cancelled | Remains active until cancelled manually |
-| **Boarding General (GS) Coaches** | Prohibited (treated as ticketless) | Permitted without extra base fare |
-| **Boarding Sleeper (SL) Coaches** | Prohibited (treated as ticketless) | Prohibited (violates reserved travel rules) |
-| **Boarding AC Coaches (3A/2A/1A)** | Prohibited (treated as ticketless) | Prohibited (violates reserved travel rules) |
-| **Refund Method** | Automatic bank credit (3–5 days) | Manual surrender at PRS counter |
-| **TTE Allotment Eligibility** | Ineligible (name dropped from chart) | Eligible only if unbooked berths remain after RAC |
+| Feature / Rule                     | Online IRCTC E-Ticket (Fully WL)     | PRS Counter Physical Ticket (Fully WL)            |
+| :--------------------------------- | :----------------------------------- | :------------------------------------------------ |
+| **Status After Final Charting**    | Automatically cancelled              | Remains active until cancelled manually           |
+| **Boarding General (GS) Coaches**  | Prohibited (treated as ticketless)   | Permitted without extra base fare                 |
+| **Boarding Sleeper (SL) Coaches**  | Prohibited (treated as ticketless)   | Prohibited (violates reserved travel rules)       |
+| **Boarding AC Coaches (3A/2A/1A)** | Prohibited (treated as ticketless)   | Prohibited (violates reserved travel rules)       |
+| **Refund Method**                  | Automatic bank credit (3–5 days)     | Manual surrender at PRS counter                   |
+| **TTE Allotment Eligibility**      | Ineligible (name dropped from chart) | Eligible only if unbooked berths remain after RAC |
 
 ---
 
@@ -90,13 +90,13 @@ Total Out-of-Pocket Cost = Class Fare Difference + Standard Penalty (₹500) + D
 
 ### Fine and Penalty Breakdown by Travel Class
 
-| Traveling Class | Ticket Held | Action Taken by TTE | Penalty Amount |
-| :--- | :--- | :--- | :--- |
-| **Sleeper (SL)** | Cancelled Online E-Ticket | Treated as Ticketless Passenger | Full SL Fare + ₹500 Penalty + Deboarding |
-| **Sleeper (SL)** | PRS Counter WL Ticket | Unauthorized Class Entry | Difference (SL - GS Fare) + ₹500 Penalty + Shifted to GS |
-| **3rd AC / 3E** | Cancelled Online E-Ticket | Treated as Ticketless Passenger | Full 3AC Fare + ₹500 Penalty + Deboarding |
-| **3rd AC / 2nd AC** | PRS Counter WL Ticket | Unauthorized Class Entry | Difference (AC - GS Fare) + ₹500 Penalty + Deboarding |
-| **Any Reserved Class** | Platform Ticket Only | Irregular Travel | Full Journey Fare from Origin + ₹500 Penalty |
+| Traveling Class        | Ticket Held               | Action Taken by TTE             | Penalty Amount                                           |
+| :--------------------- | :------------------------ | :------------------------------ | :------------------------------------------------------- |
+| **Sleeper (SL)**       | Cancelled Online E-Ticket | Treated as Ticketless Passenger | Full SL Fare + ₹500 Penalty + Deboarding                 |
+| **Sleeper (SL)**       | PRS Counter WL Ticket     | Unauthorized Class Entry        | Difference (SL - GS Fare) + ₹500 Penalty + Shifted to GS |
+| **3rd AC / 3E**        | Cancelled Online E-Ticket | Treated as Ticketless Passenger | Full 3AC Fare + ₹500 Penalty + Deboarding                |
+| **3rd AC / 2nd AC**    | PRS Counter WL Ticket     | Unauthorized Class Entry        | Difference (AC - GS Fare) + ₹500 Penalty + Deboarding    |
+| **Any Reserved Class** | Platform Ticket Only      | Irregular Travel                | Full Journey Fare from Origin + ₹500 Penalty             |
 
 If a passenger refuses to pay the assessed penalty or declines to deboard at the next scheduled junction, the TTE will summon Railway Protection Force (RPF) personnel to escort the passenger off the train under Section 145 and Section 147 of the Railways Act.
 
@@ -142,15 +142,19 @@ Key aspects of the HHT system include:
 If your primary ticket remains on the waiting list, several reliable methods can secure a confirmed seat:
 
 ### 1. Finding Smart Seats via Segmented Booking
+
 Direct end-to-end station pairs often run out of quota while intermediate sections have empty berths. By using [Finding Smart Seats](/), you can uncover contiguous confirmed segments on the exact same train. For instance, booking New Delhi to Kanpur in coach B3 and Kanpur to Prayagraj in coach B6 allows you to complete the journey on confirmed tickets without touching the waiting list.
 
 ### 2. Tatkal and Premium Tatkal Quotas
+
 Tatkal quota opens one day before the journey date from the originating station (10:00 AM for AC classes, 11:00 AM for non-AC Sleeper, excluding the date of journey). Securing a Tatkal ticket provides an immediate confirmed or RAC status.
 
 ### 3. Current Availability (`CURR_AVBL`)
+
 After charts are finalized ~8 hours before departure, unsold berths, cancelled seats, and unused VIP or emergency quotas are released to the general public under Current Booking. Current tickets offer 100% confirmed berths at regular fares and remain bookable on IRCTC or at PRS counters until 30 minutes before train departure.
 
 ### 4. Running Train Vacancy Check
+
 If you are already travelling on a valid ticket, use [Get Confirmed Tickets](/) to inspect which berths become vacant between specific upcoming stations, making it straightforward to request an official berth upgrade from the TTE.
 
 ---
@@ -158,27 +162,35 @@ If you are already travelling on a valid ticket, use [Get Confirmed Tickets](/) 
 ## Common Booking Questions (FAQ)
 
 ### Can I board an AC coach if I have a counter waitlist ticket?
+
 No, you cannot board an AC coach with a counter waitlist ticket. Physical counter waitlist tickets are valid for travel strictly in unreserved General (GS) coaches. If you enter an AC coach, the TTE will treat you as an unauthorized passenger, levy a minimum ₹500 fine plus class fare difference, and ask you to deboard.
 
 ### Will IRCTC refund my money automatically if my e-ticket is WL after chart prep?
+
 Yes, IRCTC automatically cancels fully waitlisted e-tickets after chart preparation and initiates a full refund with no clerkage or cancellation fee deducted. The refunded amount is credited back to your original payment account (credit card, debit card, UPI, or net banking) within 3 to 5 business days.
 
 ### Can a TTE allot me a vacant berth onboard if I hold a counter WL ticket?
+
 A TTE can allot you a vacant berth only if all RAC passengers onboard have already received confirmed berths and vacant seats remain unassigned in the Handheld Terminal (HHT). You must pay the full class fare difference and obtain an official computerized excess fare receipt (EFT).
 
 ### What is the fine if a waitlisted passenger enters a Sleeper coach?
+
 A waitlisted passenger entering a Sleeper coach without authorization is charged a minimum penalty of ₹500 in addition to the fare difference between General class and Sleeper class from the boarding point under Section 138 of the Railways Act. The TTE will also direct the passenger to move to the General compartment.
 
 ### Can I cancel a counter waiting list ticket after chart preparation?
+
 Yes, you can cancel a PRS counter waiting list ticket up to 30 minutes before the scheduled departure of the train at any computerized reservation counter. Once surrendered within the prescribed timeframe, the counter clerk issues your cash refund after deducting standard clerkage fees.
 
 ### What happens if 1 passenger is confirmed and 1 is waitlisted on the same e-ticket?
+
 If one passenger is confirmed or RAC and another remains waitlisted on the same PNR, the e-ticket is not auto-cancelled. Both passengers are permitted to board the train, and the waitlisted passenger can share the confirmed berth or request an available vacant seat from the TTE onboard.
 
 ### Can I travel in General coach with an unconfirmed online e-ticket?
+
 No, you cannot travel in General coaches with an unconfirmed online e-ticket. When an online e-ticket remains fully waitlisted after chart preparation, it is automatically cancelled and refunded by IRCTC. Boarding any part of the train with an auto-cancelled e-ticket is treated as ticketless travel.
 
 ### How does LastBerth help when my ticket is stuck on the waiting list?
+
 LastBerth analyzes station-to-station quotas to find hidden confirmed segments on your train through split-journey routing. Instead of waiting on an uncertain queue, you can discover contiguous confirmed seats across coaches or track live vacant berths after chart preparation.
 
 ---

@@ -140,7 +140,7 @@ export function MobileModifySearchSheet({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="flex h-10 w-10 items-center justify-center rounded-full text-slate-700 hover:bg-slate-200 touch-manipulation"
+            className="flex h-10 w-10 touch-manipulation items-center justify-center rounded-full text-slate-700 hover:bg-slate-200"
           >
             <X className="h-5 w-5" />
           </button>
@@ -156,15 +156,13 @@ export function MobileModifySearchSheet({
             type="button"
             onClick={onSwap}
             aria-label="Swap origin and destination"
-            className="absolute right-4 top-0 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-slate-600 shadow-sm hover:bg-slate-50 touch-manipulation"
+            className="absolute right-4 top-0 flex h-10 w-10 -translate-y-1/2 touch-manipulation items-center justify-center rounded-full border border-gray-200 bg-white text-slate-600 shadow-sm hover:bg-slate-50"
           >
             <ArrowUpDown className="h-4 w-4" />
           </button>
         </div>
 
-        <div className="mt-3">
-          {renderStationField(to, form.to)}
-        </div>
+        <div className="mt-3">{renderStationField(to, form.to)}</div>
 
         <div className="mt-3 rounded-xl border border-gray-200 bg-white px-3 py-2.5">
           <label
@@ -193,9 +191,9 @@ export function MobileModifySearchSheet({
                 key={c.label}
                 type="button"
                 onClick={() => onDateChange(c.ymd)}
-                className={`flex-1 rounded-lg border py-2 text-xs font-semibold transition touch-manipulation text-center ${
+                className={`flex-1 touch-manipulation rounded-lg border py-2 text-center text-xs font-semibold transition ${
                   journeyDate === c.ymd
-                    ? "border-blue-600 bg-blue-50 text-blue-700 shadow-2xs"
+                    ? "shadow-2xs border-blue-600 bg-blue-50 text-blue-700"
                     : "border-gray-200 bg-white text-slate-600 hover:bg-slate-50"
                 }`}
               >
@@ -220,7 +218,7 @@ export function MobileModifySearchSheet({
           type="button"
           disabled={searchLoading}
           onClick={onSearch}
-          className="mt-3 w-full rounded-xl bg-blue-600 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 touch-manipulation"
+          className="mt-3 w-full touch-manipulation rounded-xl bg-blue-600 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {searchLoading ? (
             <span className="inline-flex items-center justify-center gap-2">

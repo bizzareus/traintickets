@@ -62,16 +62,20 @@ Here is the step-by-step process on the official IRCTC portal:
 **The key rules for IRCTC Auto Upgradation dictate that only confirmed tickets can be upgraded, all passengers on a single PNR must be upgraded together, and upgrades are limited to one class level. Additionally, tickets booked under special quotas or concessions are generally excluded from the upgrade pool.**
 
 ### 1. The PNR Rule (All or Nothing)
+
 The reservation system will never split a group booked under a single PNR. If your PNR has 4 passengers, the system will only upgrade you if there are at least 4 vacant berths available in the higher class. If there are only 3 vacant berths, your PNR will be skipped.
 
 ### 2. Single-Step Upgrades
+
 Upgrades happen progressively by exactly one class level:
+
 - **Sleeper (SL)** upgrades to **AC 3 Tier (3A)** or **3AC Economy (3E)**.
 - **AC 3 Tier (3A)** upgrades to **AC 2 Tier (2A)**.
 - **AC 2 Tier (2A)** upgrades to **AC First Class (1A)**.
 - **Second Sitting (2S)** upgrades to **AC Chair Car (CC)**.
 
 ### 3. Excluded Quotas and Tickets
+
 - **Waitlisted and RAC tickets:** Only confirmed ticket holders at chart preparation are upgraded.
 - **Tatkal and Premium Tatkal bookings:** These are last-minute premium bookings and do not qualify.
 - **Concession tickets:** Senior citizen concessions and railway privilege passes are excluded.

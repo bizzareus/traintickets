@@ -17,7 +17,10 @@ import {
 test("getAllSpecialTrains - loads full catalog of festival special trains", () => {
   const trains = getAllSpecialTrains();
   assert.ok(Array.isArray(trains));
-  assert.ok(trains.length >= 100, `Expected at least 100 special trains, got ${trains.length}`);
+  assert.ok(
+    trains.length >= 100,
+    `Expected at least 100 special trains, got ${trains.length}`,
+  );
 
   for (const t of trains) {
     assert.ok(t.trainNumber && t.trainNumber.length > 0);
@@ -50,7 +53,10 @@ test("getSpecialTrainsForFestival - correctly filters by festival", () => {
 
   assert.ok(diwaliTrains.length >= 90, `Diwali trains: ${diwaliTrains.length}`);
   assert.ok(chhathTrains.length >= 50, `Chhath trains: ${chhathTrains.length}`);
-  assert.ok(dussheraTrains.length >= 30, `Dusshera trains: ${dussheraTrains.length}`);
+  assert.ok(
+    dussheraTrains.length >= 30,
+    `Dusshera trains: ${dussheraTrains.length}`,
+  );
   assert.ok(pujaTrains.length >= 25, `Puja trains: ${pujaTrains.length}`);
 });
 

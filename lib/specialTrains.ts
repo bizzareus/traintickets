@@ -30,8 +30,8 @@ export type SpecialTrain = {
 
 export type FestivalTargetDate = {
   date: string; // YYYY-MM-DD
-  day: string;  // Short weekday (e.g. Wed)
-  dmy: string;  // DD-MM-YYYY
+  day: string; // Short weekday (e.g. Wed)
+  dmy: string; // DD-MM-YYYY
 };
 
 export type FestivalConfig = {
@@ -107,7 +107,8 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
     heroBadge: "Diwali Rush 2026",
     description:
       "Indian Railways has deployed 100+ dedicated 0-series festival special trains across major trunk routes (Delhi, Mumbai, Kolkata, Patna, Gorakhpur, Banaras, Ayodhya, and Bengaluru) to ease the holiday rush. Check schedules, running days, and book confirmed tickets on LastBerth.",
-    metaTitle: "Diwali Special Trains 2026: List, Routes & Book Confirm Tickets | LastBerth",
+    metaTitle:
+      "Diwali Special Trains 2026: List, Routes & Book Confirm Tickets | LastBerth",
     metaDescription:
       "Complete list of 100+ Diwali festival special trains launched by Indian Railways. Explore routes, schedules, stops, running days, and book confirmed tickets on LastBerth.",
     canonicalPath: "/special-trains/diwali",
@@ -144,7 +145,8 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
           "Most festival specials operate under Train on Special Fare (TOSF) tariffs with standard dynamic pricing. Some specific services also have a limited Tatkal quota opening at 10:00 AM (AC) and 11:00 AM (Non-AC) one day prior to departure.",
       },
       {
-        question: "How can I get a confirmed seat if a special train is waitlisted?",
+        question:
+          "How can I get a confirmed seat if a special train is waitlisted?",
         answer:
           "Use LastBerth's Smart Seats feature. Even when end-to-end tickets show Regret or deep waitlists, searching intermediate stations or split-journey bookings often unlocks confirmed berths within the same rake.",
       },
@@ -159,7 +161,8 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
     heroBadge: "Chhath Mahaparv 2026",
     description:
       "Dedicated festival special trains connecting Delhi, Mumbai, Surat, Ahmedabad, Kolkata, and Punjab to Bihar and Purvanchal (Patna, Danapur, Darbhanga, Saharsa, Muzaffarpur, Bhagalpur, Gaya, and Gorakhpur) for Chhath Puja 2026.",
-    metaTitle: "Chhath Puja Special Trains 2026: List, Routes & Book Seats | LastBerth",
+    metaTitle:
+      "Chhath Puja Special Trains 2026: List, Routes & Book Seats | LastBerth",
     metaDescription:
       "Full list of official Chhath Puja 2026 special trains from Delhi, Mumbai, Surat, and Punjab to Bihar & Eastern UP (Patna, Darbhanga, Muzaffarpur, Saharsa, Bhagalpur). Check dates and book confirmed seats.",
     canonicalPath: "/special-trains/chhath",
@@ -211,7 +214,8 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
     heroBadge: "Navratri & Dusshera 2026",
     description:
       "Explore official Indian Railways special trains for Navratri and Dusshera (Vijayadashami) 2026 connecting Delhi, Katra (Mata Vaishno Devi), Varanasi, Ayodhya, Haridwar, Rishikesh, Mumbai, and Mysore.",
-    metaTitle: "Dusshera Special Trains 2026: List, Routes & Book Seats | LastBerth",
+    metaTitle:
+      "Dusshera Special Trains 2026: List, Routes & Book Seats | LastBerth",
     metaDescription:
       "Official list of Dusshera and Navratri 2026 festival special trains connecting Katra Vaishno Devi, Varanasi, Ayodhya, Haridwar, Delhi, Mumbai, and Southern hubs. Check schedules and book confirmed seats.",
     canonicalPath: "/special-trains/dusshera",
@@ -238,7 +242,8 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
           "Vijayadashami (Dusshera) falls on October 20, 2026, culminating Navratri celebrations (October 11–20). Travel rush peaks between Friday, October 16 and Tuesday, October 20.",
       },
       {
-        question: "Are there special trains to Mata Vaishno Devi (Katra) for Navratri?",
+        question:
+          "Are there special trains to Mata Vaishno Devi (Katra) for Navratri?",
         answer:
           "Yes, Northern Railway operates dedicated special trains connecting New Delhi, Varanasi, and Punjab to Shri Mata Vaishno Devi Katra (SVDK) to cater to the heavy influx of Navratri pilgrims.",
       },
@@ -248,7 +253,8 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
           "Several special trains link Delhi, Mumbai, Gujarat, and Kolkata to Varanasi (BSB/BSBS), Prayagraj (PRYJ), and Ayodhya Cantt (AYC) to support festive pilgrimage and holiday travelers.",
       },
       {
-        question: "How do I monitor seat availability on Dusshera special trains?",
+        question:
+          "How do I monitor seat availability on Dusshera special trains?",
         answer:
           "LastBerth tracks live seat vacancies and charting status across all festival trains. Click 'Book Confirm Tickets' on any train to see real-time seat counts and smart split-journey routes.",
       },
@@ -263,7 +269,8 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
     heroBadge: "Durga Puja 2026",
     description:
       "Comprehensive list of Durga Puja 2026 festival special trains connecting Kolkata (Howrah, Sealdah, KOAA, Shalimar) and Eastern India to Delhi, Mumbai, Banaras, Gorakhpur, Dibrugarh, Guwahati, and Amritsar.",
-    metaTitle: "Durga Puja Special Trains 2026: List, Routes & Book Seats | LastBerth",
+    metaTitle:
+      "Durga Puja Special Trains 2026: List, Routes & Book Seats | LastBerth",
     metaDescription:
       "Directory of Durga Puja 2026 festival special trains from Kolkata, Howrah, Sealdah to Delhi, Mumbai, Banaras, Gorakhpur, and the Northeast. Check timetables, stops, and book confirmed tickets.",
     canonicalPath: "/special-trains/puja",
@@ -290,17 +297,20 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
           "Durga Puja 2026 celebrations run from Maha Sasthi (October 17) through Maha Saptami (Oct 18), Maha Ashtami (Oct 19), Maha Navami (Oct 20), to Bijoya Dashami (October 21). Outbound travel into Kolkata peaks from October 15 to 17, and return travel peaks from October 21 to 25.",
       },
       {
-        question: "Which stations in Kolkata originate Durga Puja special trains?",
+        question:
+          "Which stations in Kolkata originate Durga Puja special trains?",
         answer:
           "Eastern Railway (ER) and South Eastern Railway (SER) operate special festival services from Howrah (HWH), Sealdah (SDAH), Kolkata Station / Chitpur (KOAA), and Shalimar (SHM).",
       },
       {
-        question: "Are AC Economy (3E) and 3-Tier coaches available on Puja specials?",
+        question:
+          "Are AC Economy (3E) and 3-Tier coaches available on Puja specials?",
         answer:
           "Yes, most festival special rakes feature high-capacity 3E (AC 3-Tier Economy) coaches alongside 3A, 2A, and Sleeper accommodation, offering cheaper AC fares than standard 3AC.",
       },
       {
-        question: "How can I get tickets if Kolkata-bound express trains show REGRET?",
+        question:
+          "How can I get tickets if Kolkata-bound express trains show REGRET?",
         answer:
           "Special trains frequently have seats released in phases. Additionally, LastBerth's Smart Seats algorithm identifies available seats on overlapping sub-segments (e.g. Asansol, Barddhaman, Kharagpur) to help you reach Kolkata.",
       },
@@ -308,14 +318,37 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
   },
 };
 
-export const FESTIVAL_KEYS: FestivalKey[] = ["diwali", "chhath", "dusshera", "puja"];
+export const FESTIVAL_KEYS: FestivalKey[] = [
+  "diwali",
+  "chhath",
+  "dusshera",
+  "puja",
+];
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-const WEEKDAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
+const WEEKDAY_NAMES = [
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat",
+] as const;
 
 const MONTHS_MAP: Record<string, number> = {
-  Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
-  Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11,
 };
 
 // Performance Optimization: Cache parsed festival Date objects to avoid repeated
@@ -364,7 +397,9 @@ const festivalCache = new Map<FestivalKey, SpecialTrain[]>();
 /**
  * Returns special trains filtered by festival.
  */
-export function getSpecialTrainsForFestival(festival: FestivalKey): SpecialTrain[] {
+export function getSpecialTrainsForFestival(
+  festival: FestivalKey,
+): SpecialTrain[] {
   let cached = festivalCache.get(festival);
   if (!cached) {
     const all = getAllSpecialTrains();
@@ -407,7 +442,11 @@ export function getSpecialTrainRunningDates(
   for (const target of cfg.targetDates) {
     const curDate = new Date(`${target.date}T00:00:00Z`);
     if (curDate >= fromDate && curDate <= toDate) {
-      if (!train.runningDays || train.runningDays.length === 0 || train.runningDays.includes(target.day)) {
+      if (
+        !train.runningDays ||
+        train.runningDays.length === 0 ||
+        train.runningDays.includes(target.day)
+      ) {
         valid.push(target);
       }
     }
@@ -427,7 +466,8 @@ export function getSpecialTrainSearchDate(
   preferredDate?: string,
 ): string {
   const cfg = FESTIVALS_MAP[festivalKey];
-  const targetPreferred = preferredDate || cfg?.defaultSearchDate || "2026-11-05";
+  const targetPreferred =
+    preferredDate || cfg?.defaultSearchDate || "2026-11-05";
 
   const fromDate = parseFestivalDate(train.dateFrom);
   const toDate = parseFestivalDate(train.dateTo);
@@ -460,7 +500,9 @@ export function getSpecialTrainSearchDate(
     }
   }
 
-  return nearestTime !== null ? new Date(nearestTime).toISOString().slice(0, 10) : targetPreferred;
+  return nearestTime !== null
+    ? new Date(nearestTime).toISOString().slice(0, 10)
+    : targetPreferred;
 }
 
 /**
@@ -512,7 +554,9 @@ export function buildSpecialTrainSearchRedirectUrl(
  */
 export function extractAvailableSeatsCount(statusText?: string | null): number {
   if (!statusText) return 0;
-  const match = statusText.match(/(?:AVAILABLE|AVAIL|CURR_AVBL|CURR_AVL|AVL)[-\s]*(\d+)/i);
+  const match = statusText.match(
+    /(?:AVAILABLE|AVAIL|CURR_AVBL|CURR_AVL|AVL)[-\s]*(\d+)/i,
+  );
   if (match && match[1]) {
     const num = parseInt(match[1], 10);
     return Number.isFinite(num) ? num : 0;

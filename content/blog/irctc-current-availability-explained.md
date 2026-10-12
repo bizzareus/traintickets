@@ -18,12 +18,13 @@ tags:
 
 > **⚡ Need a Confirmed Train Berth Today?**
 > Check real-time seat availability across high-demand corridors before chart preparation:
+>
 > - **Delhi ➔ Mumbai**: [Search Delhi ➔ Mumbai Confirmed Seats](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central)
 > - **Delhi ➔ Patna**: [Search Delhi ➔ Patna Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
 > - **Mumbai ➔ Danapur**: [Search Mumbai ➔ Danapur Express Seats](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
 > - **Bengaluru ➔ Chennai**: [Search Bengaluru ➔ Chennai Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central)
 > - **Howrah ➔ Puri**: [Search Howrah ➔ Puri Holiday Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri)
-> 
+>
 > You can also explore the live coach-by-coach [Chart Vacancy Map](/chart-vacancy) or check exact charting schedules and alerts on [Chart Preparation Times & Alerts](/chart-times).
 
 ## TL;DR
@@ -39,6 +40,7 @@ Curr available (CURR_AVBL) in train booking means physical vacant seats released
 When checking train availability on the IRCTC Rail Connect app or the official website shortly before travel, you will often spot entries like `CURR_AVBL-0014`, `CURR_AVBL-0002`, or `CURR AVL`. This status indicates that after accommodating confirmed passengers, RAC holders, and waitlisted travellers, empty berths remain unallocated on the train.
 
 These vacant berths originate from several specific railway pools:
+
 - Unused Emergency Quotas (EQ) and VIP allocations surrendered back to the general pool.
 - Unsold Tatkal and Premium Tatkal quotas released at the charting threshold.
 - Unclaimed foreign tourist, defence, and parliament quotas.
@@ -55,6 +57,7 @@ Rather than running coaches with empty berths, Indian Railways throws these seat
 Many travellers confuse `CURR_AVBL` with waiting list progression or worry that they might receive an RAC ticket requiring them to share a side lower berth. That concern is unnecessary. A current available ticket is a fully confirmed reservation from the second your payment succeeds.
 
 The differences between regular waiting list processing and current booking are decisive:
+
 - **Instant Coach and Berth Numbers:** Your electronic ticket immediately displays your confirmed coach (such as B3, M2, or S4) and your designated berth number (such as 21 Lower or 45 Side Upper).
 - **No Automatic Cancellation:** Waitlisted e-tickets that fail to confirm during chart preparation are automatically cancelled and refunded by IRCTC. In contrast, a current booking ticket is generated post-charting, meaning it can never be dropped from the train manifest.
 - **Immediate Boarding Rights:** You possess complete legal rights to board the reserved coach, place your luggage, and occupy your designated berth without asking the Train Ticket Examiner (TTE) for permission.
@@ -67,12 +70,12 @@ The differences between regular waiting list processing and current booking are 
 
 The current reservation timing depends strictly on the train's scheduled departure time from its originating source station. Indian Railways operates under standardized charting windows:
 
-| Train Departure Window | First Chart Preparation (Booking Opens) | Booking Cutoff Time | Route Example |
-| :--- | :--- | :--- | :--- |
-| **Morning Trains (06:00 to 11:59)** | **Previous evening by 20:00 IST** (giving an overnight booking window) | Exactly 30 minutes before departure | A train departing at 06:30 opens for current booking by 20:00 the prior night. |
-| **Afternoon Trains (12:00 to 17:59)** | **4 to 8 hours before departure** (typically 08:00 to 10:00 IST) | Exactly 30 minutes before departure | A train departing at 16:15 opens for current booking between 08:15 and 12:15. |
-| **Evening Trains (18:00 to 23:59)** | **4 to 8 hours before departure** (typically 12:00 to 14:00 IST) | Exactly 30 minutes before departure | A train departing at 20:45 opens for current booking by 14:45 the same afternoon. |
-| **Night & Early Hours (00:00 to 05:59)** | **Previous evening between 20:00 and 22:00 IST** | Exactly 30 minutes before departure | A train departing at 01:30 opens for current booking around 20:30 the preceding evening. |
+| Train Departure Window                   | First Chart Preparation (Booking Opens)                                | Booking Cutoff Time                 | Route Example                                                                            |
+| :--------------------------------------- | :--------------------------------------------------------------------- | :---------------------------------- | :--------------------------------------------------------------------------------------- |
+| **Morning Trains (06:00 to 11:59)**      | **Previous evening by 20:00 IST** (giving an overnight booking window) | Exactly 30 minutes before departure | A train departing at 06:30 opens for current booking by 20:00 the prior night.           |
+| **Afternoon Trains (12:00 to 17:59)**    | **4 to 8 hours before departure** (typically 08:00 to 10:00 IST)       | Exactly 30 minutes before departure | A train departing at 16:15 opens for current booking between 08:15 and 12:15.            |
+| **Evening Trains (18:00 to 23:59)**      | **4 to 8 hours before departure** (typically 12:00 to 14:00 IST)       | Exactly 30 minutes before departure | A train departing at 20:45 opens for current booking by 14:45 the same afternoon.        |
+| **Night & Early Hours (00:00 to 05:59)** | **Previous evening between 20:00 and 22:00 IST**                       | Exactly 30 minutes before departure | A train departing at 01:30 opens for current booking around 20:30 the preceding evening. |
 
 Two operational rules govern how current available ticket booking time works in practice:
 
@@ -88,11 +91,13 @@ Two operational rules govern how current available ticket booking time works in 
 Because current booking often takes place while you are travelling to the railway station or already standing on the platform, you do not need to visit a counter to validate your ticket.
 
 When boarding with an electronic current ticket, keep these essentials ready:
+
 - **Digital ERS or Confirmation SMS:** Keep the IRCTC booking confirmation SMS, email, or downloaded PDF on your smartphone.
 - **Original Photo Identification:** Carry a valid government ID (Aadhaar card, driving licence, passport, voter ID, or PAN card). A digital Aadhaar stored inside the DigiLocker or mAadhaar app is legally recognized.
 - **Direct Coach Entry:** Walk straight to your assigned coach and occupy your seat.
 
 ### Avoid Section 138 Penalties
+
 Never board a reserved Sleeper or AC coach hoping to buy a ticket inside. Under Section 138 of the Railways Act and the Jan Vishwas Act rules, entering a reserved coach with an unreserved/general ticket or a platform ticket attracts a mandatory ₹500 penalty in addition to the single fare to the next station. Similarly, boarding with a waitlisted e-ticket is treated as travelling without a valid ticket. Booking a legitimate `CURR_AVBL` ticket completely protects you from fines and disputes.
 
 ---
@@ -104,6 +109,7 @@ Never board a reserved Sleeper or AC coach hoping to buy a ticket inside. Under 
 You can book current available seats through two official channels.
 
 ### Method 1: IRCTC Rail Connect App & Website
+
 1. **Sign In Early:** Open the IRCTC app or visit the web portal. Log in with your credentials.
 2. **Search Your Station Pair:** Enter your origin, destination, and travel date. Click "Search Trains".
 3. **Identify Green CURR_AVBL Status:** Select your preferred train and travel class (1A, 2A, 3A, 3E, CC, or SL). If the chart has been prepared and berths remain vacant, the status displays green text reading `CURR_AVBL-0008` (or the count of remaining berths).
@@ -111,6 +117,7 @@ You can book current available seats through two official channels.
 5. **Pay with Instant Gateways:** Complete payment swiftly using UPI or net banking before the session timer expires or the 30-minute pre-departure cutoff arrives. Your confirmed coach and berth will appear immediately on the screen.
 
 ### Method 2: Station PRS Counters
+
 1. **Visit the Current Reservation Counter:** Major railway stations operate dedicated "Current Booking" windows alongside regular Passenger Reservation System (PRS) counters.
 2. **Submit a Reservation Slip:** Fill out the standard blue reservation requisition form with your train number, date, class, and passenger details.
 3. **Pay and Collect Physical Ticket:** Pay the counter clerk via cash, UPI, or card. The PRS terminal issues a printed computerised ticket showing your confirmed coach and berth.
@@ -123,15 +130,15 @@ You can book current available seats through two official channels.
 
 Understanding how these three booking avenues differ helps you select the most economical ticketing option:
 
-| Parameter | General Quota (GN) | Tatkal Quota (TQ) | Current Availability (CURR_AVBL) |
-| :--- | :--- | :--- | :--- |
-| **Booking Opening** | 60 days before journey at 08:00 AM IST | 1 day before journey (10:00 AM AC / 11:00 AM Non-AC) | Post-charting (4 to 8 hours before departure) |
-| **Booking Cutoff** | When first reservation chart is prepared | When first reservation chart is prepared | Exactly 30 minutes before scheduled train departure |
-| **Additional Surcharges** | Nil (standard base fare) | ₹125 to ₹500 extra markup per passenger | Nil (standard base fare, often with 10% base discount) |
-| **Ticket Status Outcome** | Confirmed, RAC, or Waiting List (GNWL) | Confirmed or Tatkal Waiting List (TQWL) | Always 100% Confirmed (assigned coach and berth) |
-| **Source of Berths** | Standard master train inventory | Dedicated quota coaches carved out in advance | Unused quotas, unsold Tatkal seats, and cancellations |
-| **Cancellation Refund** | Permitted as per standard cancellation slabs | Zero refund on confirmed Tatkal tickets | Zero refund once booked post-charting |
-| **Best Used For** | Planned vacations and advance travel | Urgent next-day trips when general seats are full | Last-minute travel on departure day without extra fees |
+| Parameter                 | General Quota (GN)                           | Tatkal Quota (TQ)                                    | Current Availability (CURR_AVBL)                       |
+| :------------------------ | :------------------------------------------- | :--------------------------------------------------- | :----------------------------------------------------- |
+| **Booking Opening**       | 60 days before journey at 08:00 AM IST       | 1 day before journey (10:00 AM AC / 11:00 AM Non-AC) | Post-charting (4 to 8 hours before departure)          |
+| **Booking Cutoff**        | When first reservation chart is prepared     | When first reservation chart is prepared             | Exactly 30 minutes before scheduled train departure    |
+| **Additional Surcharges** | Nil (standard base fare)                     | ₹125 to ₹500 extra markup per passenger              | Nil (standard base fare, often with 10% base discount) |
+| **Ticket Status Outcome** | Confirmed, RAC, or Waiting List (GNWL)       | Confirmed or Tatkal Waiting List (TQWL)              | Always 100% Confirmed (assigned coach and berth)       |
+| **Source of Berths**      | Standard master train inventory              | Dedicated quota coaches carved out in advance        | Unused quotas, unsold Tatkal seats, and cancellations  |
+| **Cancellation Refund**   | Permitted as per standard cancellation slabs | Zero refund on confirmed Tatkal tickets              | Zero refund once booked post-charting                  |
+| **Best Used For**         | Planned vacations and advance travel         | Urgent next-day trips when general seats are full    | Last-minute travel on departure day without extra fees |
 
 If you missed the Tatkal window or refuse to pay inflated dynamic pricing, read our detailed comparison on [Tatkal vs Current Availability](/blog/tatkal-vs-current-availability-last-minute-train-ticket).
 

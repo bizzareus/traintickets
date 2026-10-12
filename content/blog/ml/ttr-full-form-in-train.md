@@ -15,6 +15,7 @@ tags:
 ---
 
 > **ഈ ഉത്സവ സീസണിൽ ട്രെയിനിൽ യാത്ര ചെയ്യാൻ പോകുന്നുണ്ടോ?** സ്ഥിരീകരിച്ച സീറ്റില്ലാതെ പിടിയിലാകരുത്. LastBerth-ൽ നേരിട്ടുള്ള ലഭ്യത, ഇടക്കാല ഒഴിവുകൾ, ഉറപ്പുള്ള സ്പ്ലിറ്റ്-ബർത്ത് ഓപ്ഷനുകൾ പരിശോധിക്കുക:
+>
 > - [ഡെൽഹി ➔ മുംബൈ സ്ഥിരീകരിച്ച സീറ്റുകൾ തിരയുക](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central)
 > - [ഡെൽഹി ➔ പട്നാ പ്രത്യേക ട്രെയിനുകൾ തിരയുക](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
 > - [മുംബൈ ➔ ഡാനാപൂർ എക്സ്പ്രസ് സീറ്റുകൾ തിരയുക](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
@@ -49,12 +50,12 @@ tags:
 
 യാത്രക്കാർ ഈ റെയിൽവേ ചുരുക്കങ്ങൾക്കിടയിൽ പലപ്പോഴും തെറ്റിദ്ധരിക്കുന്നു. ഇന്ത്യൻ റെയിൽവേസ് വരുമാനത്തിന്റെ അഖണ്ഡതയും യാത്രക്കാരുടെ സുരക്ഷയും ഉറപ്പാക്കാൻ വാണിജ്യ പരിശോധനാ കേഡറുകൾക്കിടയിൽ കടുത്ത പ്രവർത്തന വിഭജനം നിലനിര്‍ത്തുന്നു:
 
-| Designation Code | Formal Full Form | Official Cadre? | Primary Work Location | Core Operational Responsibilities |
-| :--- | :--- | :--- | :--- | :--- |
-| **TTE** | Travelling Ticket Examiner | **Yes** (Statutory post) | Onboard running trains (reserved Sleeper, 3A, 2A, 1A) | Verifying reservations, checking original IDs on HHTs, marking absentees, allotting berths to RAC passengers, collecting excess fares. |
-| **TTR** | Travelling Ticket Regulator | **No** (Passenger slang) | Onboard running trains (colloquial usage for TTE) | Used interchangeably with TTE by travelers across India; carries identical legal responsibilities as an official TTE. |
-| **TC** | Ticket Collector | **Yes** (Stationary post) | Railway station platforms, FOBs, concourses & exit barriers | Checking platform tickets, validating unreserved journey tickets at entry and exit gates, penalizing unauthorized station entry. |
-| **TTI** | Travelling Ticket Inspector | **Yes** (Supervisory post) | Flying squads across junctions, divisional zones & express trains | Conducting surprise checks on running trains, auditing TTE duty logs, checking fraud rings, verifying catering overcharging. |
+| Designation Code | Formal Full Form            | Official Cadre?            | Primary Work Location                                             | Core Operational Responsibilities                                                                                                      |
+| :--------------- | :-------------------------- | :------------------------- | :---------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
+| **TTE**          | Travelling Ticket Examiner  | **Yes** (Statutory post)   | Onboard running trains (reserved Sleeper, 3A, 2A, 1A)             | Verifying reservations, checking original IDs on HHTs, marking absentees, allotting berths to RAC passengers, collecting excess fares. |
+| **TTR**          | Travelling Ticket Regulator | **No** (Passenger slang)   | Onboard running trains (colloquial usage for TTE)                 | Used interchangeably with TTE by travelers across India; carries identical legal responsibilities as an official TTE.                  |
+| **TC**           | Ticket Collector            | **Yes** (Stationary post)  | Railway station platforms, FOBs, concourses & exit barriers       | Checking platform tickets, validating unreserved journey tickets at entry and exit gates, penalizing unauthorized station entry.       |
+| **TTI**          | Travelling Ticket Inspector | **Yes** (Supervisory post) | Flying squads across junctions, divisional zones & express trains | Conducting surprise checks on running trains, auditing TTE duty logs, checking fraud rings, verifying catering overcharging.           |
 
 Before boarding, you can locate your coach position and train layout using our [Coach Composition & Platform Guide](/blog/understanding-coach-composition-find-train-platform).
 
@@ -133,14 +134,14 @@ You can monitor vacant berth finalization schedules and historical chart pattern
 
 TTEകൾ സാധാരണ ടിക്കറ്റ് ലംഘനങ്ങൾക്കായി നടപ്പിലാക്കുന്ന വാണിജ്യ പിഴക്രമം താഴെപ്പറയുന്നവയാണ്:
 
-| Violation Category | Statutory Section | Mandatory Penalty & Excess Fare | Immediate Operational Action |
-| :--- | :--- | :--- | :--- |
-| **Travelling Without Ticket (Ticketless)** | Section 138 | **Flat ₹500 penalty** + Class fare from train origin | Digital Excess Fare Ticket (EFT) issued; passenger moved to general unreserved coach or deboarded. |
-| **General Ticket in Sleeper Coach** | Section 138 | **Flat ₹500 penalty** + Fare difference from boarding point | Excess Fare Ticket issued for fare difference; passenger directed back to unreserved coach. |
-| **General Ticket in AC Coach (3A/2A/1A)** | Section 138 | **Flat ₹500 penalty** + AC fare difference from boarding point | Excess Fare Ticket issued; passenger deboarded at next station if no AC berths are available. |
-| **Travelling on Auto-Cancelled WL E-Ticket** | Section 138 | **Flat ₹500 penalty** + Full fare from train originating station | Treated as completely ticketless since booking was refunded; passenger deboarded at next halt. |
-| **Travelling in Higher Class (SL in 3AC)** | Section 138 | **Flat ₹500 penalty** + Difference between SL and 3AC fare | Upgraded if 3AC berth is vacant, or sent back to Sleeper coach. |
-| **Fraudulent Travel (Impersonation / Fake ID)** | Section 137 | Fine up to **₹1,000** or imprisonment up to 6 months | Ticket forfeited; passenger handed over to Government Railway Police (GRP) at next junction. |
+| Violation Category                              | Statutory Section | Mandatory Penalty & Excess Fare                                  | Immediate Operational Action                                                                       |
+| :---------------------------------------------- | :---------------- | :--------------------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
+| **Travelling Without Ticket (Ticketless)**      | Section 138       | **Flat ₹500 penalty** + Class fare from train origin             | Digital Excess Fare Ticket (EFT) issued; passenger moved to general unreserved coach or deboarded. |
+| **General Ticket in Sleeper Coach**             | Section 138       | **Flat ₹500 penalty** + Fare difference from boarding point      | Excess Fare Ticket issued for fare difference; passenger directed back to unreserved coach.        |
+| **General Ticket in AC Coach (3A/2A/1A)**       | Section 138       | **Flat ₹500 penalty** + AC fare difference from boarding point   | Excess Fare Ticket issued; passenger deboarded at next station if no AC berths are available.      |
+| **Travelling on Auto-Cancelled WL E-Ticket**    | Section 138       | **Flat ₹500 penalty** + Full fare from train originating station | Treated as completely ticketless since booking was refunded; passenger deboarded at next halt.     |
+| **Travelling in Higher Class (SL in 3AC)**      | Section 138       | **Flat ₹500 penalty** + Difference between SL and 3AC fare       | Upgraded if 3AC berth is vacant, or sent back to Sleeper coach.                                    |
+| **Fraudulent Travel (Impersonation / Fake ID)** | Section 137       | Fine up to **₹1,000** or imprisonment up to 6 months             | Ticket forfeited; passenger handed over to Government Railway Police (GRP) at next junction.       |
 
 Before planning travel on unconfirmed tickets, read our detailed legal analysis on [Can Waiting List Passenger Travel in Train? Rules & Fines](/blog/can-waiting-list-ticket-passenger-travel-in-train-rules-fines).
 
@@ -153,26 +154,28 @@ Before planning travel on unconfirmed tickets, read our detailed legal analysis 
 TTE റിക്രൂട്ട്മെന്റ് ഇന്ത്യയിലെ ഏറ്റവും മത്സരം നിറഞ്ഞ റെയിൽവേ പരീക്ഷകളിൽ ഒന്നാണ്, ആകർഷകമായ പ്രവർത്തന ആനുകൂല്യങ്ങൾ, വാസ സൗകര്യങ്ങൾ, യാത്രാ ആനുകൂല്യങ്ങൾ എന്നിവ കാരണം:
 
 ### യോഗ്യതാ മാനദണ്ഡങ്ങൾ
+
 - **വിദ്യാഭ്യാസ യോഗ്യത:** അംഗീകൃത സംസ്ഥാന അല്ലെങ്കിൽ കേന്ദ്ര ബോർഡിൽ 50% മാർക്കുകൾക്കൊപ്പം 12-ാം ക്ലാസ് (10+2) അല്ലെങ്കിൽ 3-വർഷ പോളിടെക്നിക് ഡിപ്ലോമ അല്ലെങ്കിൽ ഏതെങ്കിലും വിഷയത്തിൽ ബാച്ചിലർ ഡിഗ്രി.
 - **പ്രായ പരിധി:** ജനറൽ വിഭാഗത്തിലെ ഉദ്യോഗാർത്ഥികൾക്ക് 18 മുതൽ 30 വർഷം, OBC (3 വർഷം) மற்றும் SC/ST (5 വർഷം) എന്നിവയ്ക്ക് സാധാരണ പ്രായം ഇളവുകൾ.
 - **മെഡിക്കൽ സ്റ്റാൻഡർഡ്:** A-2 / B-1 മെഡിക്കൽ വിഭാഗം, ദൂരദർശന സ്റ്റാൻഡേർഡ് (6/9, 6/12 കണ്ണടയോടെ അല്ലെങ്കിൽ ഇല്ലാതെ) കൂടാതെ സാധാരണ നിറം തിരിച്ചറിയൽ.
 
 ### തിരഞ്ഞെടുപ്പ് പ്രക്രിയ & പരീക്ഷാ മാതൃക
+
 1. **CBT-1 (കമ്പ്യൂട്ടർ അടിസ്ഥാന പരീക്ഷ):** പൊതുവായ ബോധവൽക്കരണം (40 മാർക്ക്), ഗണിതം (30 മാർക്ക്), പൊതുവായ ബുദ്ധിമുട്ടും & തർക്കം (30 മാർക്ക്) അടങ്ങിയ പ്രാഥമിക സ്ക്രീനിംഗ് പരീക്ഷ.
 2. **CBT-2:** സംഖ്യാ വേഗത, തർക്കം, സമഗ്രമായ മേഖലാ യോഗ്യത എന്നിവയെ വിലയിരുത്തുന്ന പുരോഗമന വിലയിരുത്തൽ.
 3. **ഡോക്യുമെന്റ് സ്ഥിരീകരണം & മെഡിക്കൽ ഫിറ്റ്നസ് ടെസ്റ്റ്:** അക്കാദമിക് രേഖകളുടെ ആഴത്തിലുള്ള സ്ഥിരീകരണം, ഔദ്യോഗിക റെയിൽവേ ആശുപത്രിയിൽ കഠിനമായ ശാരീരിക ഫിറ്റ്നസ് പരീക്ഷണം.
 
 ### ശമ്പളം & പേ സ്കെയിൽ വിഭജനം (7-ാം CPC ലെവൽ 3)
 
-| Salary Component | Compensation / Pay Scale | Operational Details |
-| :--- | :--- | :--- |
-| **Pay Matrix Level** | Level 3 (Grade Pay ₹2,000) | 7th Central Pay Commission |
-| **Basic Pay** | **₹21,700 – ₹69,100** | Initial starting basic pay is ₹21,700 per month |
-| **Dearness Allowance (DA)** | ~50% of Basic Pay | Revised bi-annually by Central Government |
-| **House Rent Allowance (HRA)** | 9% / 18% / 27% | Depending on city tier (X, Y, Z classification) |
-| **Transport Allowance (TA)** | ₹1,800 – ₹3,600 | Based on posting divisional station |
-| **Running Allowance (KMA)** | ₹400 – ₹800 per duty day | Mileage allowance calculated per 100 km traveled on duty |
-| **Total In-Hand Starting Salary** | **₹36,000 – ₹46,000 / month** | Net monthly compensation including all duty allowances |
+| Salary Component                  | Compensation / Pay Scale      | Operational Details                                      |
+| :-------------------------------- | :---------------------------- | :------------------------------------------------------- |
+| **Pay Matrix Level**              | Level 3 (Grade Pay ₹2,000)    | 7th Central Pay Commission                               |
+| **Basic Pay**                     | **₹21,700 – ₹69,100**         | Initial starting basic pay is ₹21,700 per month          |
+| **Dearness Allowance (DA)**       | ~50% of Basic Pay             | Revised bi-annually by Central Government                |
+| **House Rent Allowance (HRA)**    | 9% / 18% / 27%                | Depending on city tier (X, Y, Z classification)          |
+| **Transport Allowance (TA)**      | ₹1,800 – ₹3,600               | Based on posting divisional station                      |
+| **Running Allowance (KMA)**       | ₹400 – ₹800 per duty day      | Mileage allowance calculated per 100 km traveled on duty |
+| **Total In-Hand Starting Salary** | **₹36,000 – ₹46,000 / month** | Net monthly compensation including all duty allowances   |
 
 ---
 

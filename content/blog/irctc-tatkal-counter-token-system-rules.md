@@ -28,7 +28,7 @@ tags:
 
 **The new IRCTC Tatkal counter token system is a queue management policy implemented by Indian Railways at Passenger Reservation System (PRS) counters to eliminate physical crowding and line-jumping. Passengers receive a unique numbered token prior to Tatkal window opening, which dictates their exact turn at the booking window based on arrival order and priority category.**
 
-Before this update, Tatkal booking at physical railway counters was chaotic. Passengers stood in line for hours overnight, often resulting in heated arguments or unauthorized agents jumping the line. 
+Before this update, Tatkal booking at physical railway counters was chaotic. Passengers stood in line for hours overnight, often resulting in heated arguments or unauthorized agents jumping the line.
 
 Under the updated system, PRS counters issue numbered tokens during fixed morning windows. Once you receive your token, your position in line is secured. When the Tatkal opening time arrives (10:00 AM for AC, 11:00 AM for Sleeper), railway clerks call token numbers sequentially. This ensures a transparent, orderly process for every traveller at the counter.
 
@@ -40,10 +40,10 @@ Under the updated system, PRS counters issue numbered tokens during fixed mornin
 
 The table below outlines the exact schedule for collecting tokens and booking Tatkal tickets at PRS counters under the August 1, 2026 rules:
 
-| Travel Class | Token Issuance Window | Tatkal Window Opens | Key Requirement |
-| :--- | :--- | :--- | :--- |
-| **AC Classes (1A, 2A, 3A, 3E, CC)** | **8:30 AM – 9:30 AM** | **10:00 AM** | Token collected before 9:30 AM; presence required at 10:00 AM |
-| **Non-AC Classes (SL, 2S)** | **9:00 AM – 9:30 AM** | **11:00 AM** | Token collected before 9:30 AM; presence required at 9:30 AM cutoff |
+| Travel Class                        | Token Issuance Window | Tatkal Window Opens | Key Requirement                                                     |
+| :---------------------------------- | :-------------------- | :------------------ | :------------------------------------------------------------------ |
+| **AC Classes (1A, 2A, 3A, 3E, CC)** | **8:30 AM – 9:30 AM** | **10:00 AM**        | Token collected before 9:30 AM; presence required at 10:00 AM       |
+| **Non-AC Classes (SL, 2S)**         | **9:00 AM – 9:30 AM** | **11:00 AM**        | Token collected before 9:30 AM; presence required at 9:30 AM cutoff |
 
 Arriving at the PRS counter after 9:30 AM means you will not be issued a numbered token for that day's Tatkal opening. In such cases, counter staff will only serve tokenless passengers after all token holders have been processed, by which time Tatkal quotas are typically exhausted.
 
@@ -85,14 +85,14 @@ When securing a Tatkal token at the PRS counter, keep these ID rules in mind:
 
 Here is how counter Tatkal compares with online Tatkal booking:
 
-| Feature | PRS Counter Tatkal | Online IRCTC Website / App |
-| :--- | :--- | :--- |
-| **Token / Queue Requirement** | Token required (8:30 AM / 9:00 AM) | Aadhaar OTP verification required |
-| **Opening Time (AC)** | 10:00 AM | 10:00 AM |
-| **Opening Time (Sleeper)** | 11:00 AM | 11:00 AM |
-| **Payment Options** | Cash, UPI, Debit/Credit Card | UPI, Netbanking, e-Wallet |
-| **Max Passengers per PNR** | 4 passengers | 4 passengers |
-| **Failure Risk** | Counter queue position / quota exhaust | Bank OTP delay / session timeout |
+| Feature                       | PRS Counter Tatkal                     | Online IRCTC Website / App        |
+| :---------------------------- | :------------------------------------- | :-------------------------------- |
+| **Token / Queue Requirement** | Token required (8:30 AM / 9:00 AM)     | Aadhaar OTP verification required |
+| **Opening Time (AC)**         | 10:00 AM                               | 10:00 AM                          |
+| **Opening Time (Sleeper)**    | 11:00 AM                               | 11:00 AM                          |
+| **Payment Options**           | Cash, UPI, Debit/Credit Card           | UPI, Netbanking, e-Wallet         |
+| **Max Passengers per PNR**    | 4 passengers                           | 4 passengers                      |
+| **Failure Risk**              | Counter queue position / quota exhaust | Bank OTP delay / session timeout  |
 
 If you book online, ensure your IRCTC profile is Aadhaar-linked. For counter bookings, arrive early to secure a low Category A token number.
 

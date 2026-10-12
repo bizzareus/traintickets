@@ -62,14 +62,14 @@ $$\text{WL (Waiting List)} \longrightarrow \text{RAC (Reservation Against Cancel
 
 ### Comparison: Online E-Ticket vs PRS Counter Ticket
 
-| Feature / Rule | Online IRCTC E-Ticket (Fully WL) | PRS Counter Physical Ticket (Fully WL) |
-| :--- | :--- | :--- |
-| **Status After Final Charting** | Automatically cancelled | Remains active until cancelled manually |
-| **Boarding General (GS) Coaches** | Prohibited (treated as ticketless) | Permitted without extra base fare |
-| **Boarding Sleeper (SL) Coaches** | Prohibited (treated as ticketless) | Prohibited (violates reserved travel rules) |
-| **Boarding AC Coaches (3A/2A/1A)** | Prohibited (treated as ticketless) | Prohibited (violates reserved travel rules) |
-| **Refund Method** | Automatic bank credit (3–5 days) | Manual surrender at PRS counter |
-| **TTE Allotment Eligibility** | Ineligible (name dropped from chart) | Eligible only if unbooked berths remain after RAC |
+| Feature / Rule                     | Online IRCTC E-Ticket (Fully WL)     | PRS Counter Physical Ticket (Fully WL)            |
+| :--------------------------------- | :----------------------------------- | :------------------------------------------------ |
+| **Status After Final Charting**    | Automatically cancelled              | Remains active until cancelled manually           |
+| **Boarding General (GS) Coaches**  | Prohibited (treated as ticketless)   | Permitted without extra base fare                 |
+| **Boarding Sleeper (SL) Coaches**  | Prohibited (treated as ticketless)   | Prohibited (violates reserved travel rules)       |
+| **Boarding AC Coaches (3A/2A/1A)** | Prohibited (treated as ticketless)   | Prohibited (violates reserved travel rules)       |
+| **Refund Method**                  | Automatic bank credit (3–5 days)     | Manual surrender at PRS counter                   |
+| **TTE Allotment Eligibility**      | Ineligible (name dropped from chart) | Eligible only if unbooked berths remain after RAC |
 
 ---
 
@@ -90,13 +90,13 @@ Total Out-of-Pocket Cost = Class Fare Difference + Standard Penalty (₹500) + D
 
 ### Fine and Penalty Breakdown by Travel Class
 
-| Traveling Class | Ticket Held | Action Taken by TTE | Penalty Amount |
-| :--- | :--- | :--- | :--- |
-| **Sleeper (SL)** | Cancelled Online E-Ticket | Treated as Ticketless Passenger | Full SL Fare + ₹500 Penalty + Deboarding |
-| **Sleeper (SL)** | PRS Counter WL Ticket | Unauthorized Class Entry | Difference (SL - GS Fare) + ₹500 Penalty + Shifted to GS |
-| **3rd AC / 3E** | Cancelled Online E-Ticket | Treated as Ticketless Passenger | Full 3AC Fare + ₹500 Penalty + Deboarding |
-| **3rd AC / 2nd AC** | PRS Counter WL Ticket | Unauthorized Class Entry | Difference (AC - GS Fare) + ₹500 Penalty + Deboarding |
-| **Any Reserved Class** | Platform Ticket Only | Irregular Travel | Full Journey Fare from Origin + ₹500 Penalty |
+| Traveling Class        | Ticket Held               | Action Taken by TTE             | Penalty Amount                                           |
+| :--------------------- | :------------------------ | :------------------------------ | :------------------------------------------------------- |
+| **Sleeper (SL)**       | Cancelled Online E-Ticket | Treated as Ticketless Passenger | Full SL Fare + ₹500 Penalty + Deboarding                 |
+| **Sleeper (SL)**       | PRS Counter WL Ticket     | Unauthorized Class Entry        | Difference (SL - GS Fare) + ₹500 Penalty + Shifted to GS |
+| **3rd AC / 3E**        | Cancelled Online E-Ticket | Treated as Ticketless Passenger | Full 3AC Fare + ₹500 Penalty + Deboarding                |
+| **3rd AC / 2nd AC**    | PRS Counter WL Ticket     | Unauthorized Class Entry        | Difference (AC - GS Fare) + ₹500 Penalty + Deboarding    |
+| **Any Reserved Class** | Platform Ticket Only      | Irregular Travel                | Full Journey Fare from Origin + ₹500 Penalty             |
 
 ഒരു യാത്രക്കാരൻ വിലയിരുത്തിയ പിഴ നൽകാൻ നിരസിക്കുകയോ അടുത്ത ഷെഡ്യൂൾ ജംഗ്ഷനിൽ ഇറക്കാൻ നിരസിക്കുകയോ ചെയ്താൽ, TTE Section 145, Section 147 പ്രകാരം യാത്രക്കാരനെ ട്രെയിനിൽ നിന്ന് ഇറക്കാൻ റെയിൽവേ സംരക്ഷണ ഫോഴ്സിനെ (RPF) വിളിക്കും.
 
@@ -142,15 +142,19 @@ HHT സിസ്റ്റത്തിന്റെ പ്രധാന ഘടക�
 നിങ്ങളുടെ പ്രാഥമിക ടിക്കറ്റ് കാത്തിരിപ്പു പട്ടികയിൽ തുടരുമ്പോൾ, ഒരു സ്ഥിരീകരിത സീറ്റ് ഉറപ്പാക്കാൻ ചില വിശ്വാസയോഗ്യമായ മാർഗങ്ങൾ:
 
 ### 1. Finding Smart Seats via Segmented Booking
+
 നേരിട്ട് അവസാനത്തെ സ്റ്റേഷൻ ജോഡികൾ പലപ്പോഴും ക്വോട്ടയിൽ നിന്ന് പുറത്താക്കപ്പെടുന്നു, അതേസമയം ഇടക്കാല വിഭാഗങ്ങളിൽ ഒഴിവായ ബെർത്ത് ഉണ്ട്. [Finding Smart Seats](/) ഉപയോഗിച്ച്, നിങ്ങൾക്ക് ഒരേ ട്രെയിനിൽ തുടർച്ചയായ സ്ഥിരീകരിത സെഗ്മെന്റുകൾ കണ്ടെത്താൻ കഴിയും. ഉദാഹരണത്തിന്, ന്യൂ ഡൽഹി മുതൽ കാന്പൂർ വരെ B3 കോച്ചിൽ ബുക്ക് ചെയ്ത് കാന്പൂർ മുതൽ പ്രയാഗരാജ് വരെ B6 കോച്ചിൽ ബുക്ക് ചെയ്യുന്നത്, കാത്തിരിപ്പു പട്ടികയിലേക്ക് സ്പർശിക്കാതെ സ്ഥിരീകരിത ടിക്കറ്റുകളിൽ യാത്ര പൂർത്തിയാക്കാൻ അനുവദിക്കുന്നു.
 
 ### 2. Tatkal and Premium Tatkal Quotas
-ടക്കൽ ക്വോട്ട  യാത്രാ തീയതിയുടെ ഒരു ദിവസം മുമ്പ് ഉറവിട സ്റ്റേഷനിൽ തുറക്കുന്നു (AC ക്ലാസുകൾക്കായി 10:00 AM, എസി അല്ലാത്ത സ്ലീപർ ക്ലാസുകൾക്കായി 11:00 AM, യാത്രയുടെ തീയതി ഒഴികെ). ടക്കൽ ടിക്കറ്റ് ഉറപ്പാക്കുന്നത് ഉടൻ സ്ഥിരീകരിത അല്ലെങ്കിൽ RAC നില നൽകുന്നു.
+
+ടക്കൽ ക്വോട്ട യാത്രാ തീയതിയുടെ ഒരു ദിവസം മുമ്പ് ഉറവിട സ്റ്റേഷനിൽ തുറക്കുന്നു (AC ക്ലാസുകൾക്കായി 10:00 AM, എസി അല്ലാത്ത സ്ലീപർ ക്ലാസുകൾക്കായി 11:00 AM, യാത്രയുടെ തീയതി ഒഴികെ). ടക്കൽ ടിക്കറ്റ് ഉറപ്പാക്കുന്നത് ഉടൻ സ്ഥിരീകരിത അല്ലെങ്കിൽ RAC നില നൽകുന്നു.
 
 ### 3. Current Availability (`CURR_AVBL`)
+
 ചാർട്ടുകൾ النهائية ~8 മണിക്കൂർ മുമ്പ്, വിറ്റുപോകാത്ത ബെർത്ത്, റദ്ദാക്കിയ സീറ്റുകൾ, ഉപയോഗിക്കാത്ത VIP അല്ലെങ്കിൽ അടിയന്തര ക്വോട്ടകൾ പൊതുജനങ്ങൾക്ക് Current Booking പ്രകാരം റിലീസ് ചെയ്യപ്പെടുന്നു. നിലവിലെ ടിക്കറ്റുകൾ 100% സ്ഥിരീകരിത ബെർത്ത് നൽകുന്നു, സാധാരണ നിരക്കിൽ, IRCTC അല്ലെങ്കിൽ PRS കൗണ്ടറുകളിൽ 30 മിനിറ്റ് മുമ്പ് ട്രെയിൻ പുറപ്പെടുന്നതുവരെ ബുക്ക് ചെയ്യാവുന്നതാണ്.
 
 ### 4. Running Train Vacancy Check
+
 നിങ്ങൾക്ക് ഇതിനകം സാധുവായ ടിക്കറ്റിൽ യാത്ര ചെയ്യുകയാണെങ്കിൽ, [Get Confirmed Tickets](/) ഉപയോഗിച്ച് പ്രത്യേകമായ അടുത്ത സ്റ്റേഷനുകൾക്കിടയിൽ ഏതെല്ലാം ബെർത്ത് ഒഴിവാകുന്നു എന്ന് പരിശോധിക്കുക, TTE യുടെ ഔദ്യോഗിക ബെർത്ത് അപ്ഗ്രേഡ് ആവശ്യപ്പെടാൻ എളുപ്പമാണ്.
 
 ---
@@ -158,27 +162,35 @@ HHT സിസ്റ്റത്തിന്റെ പ്രധാന ഘടക�
 ## Common Booking Questions (FAQ)
 
 ### Can I board an AC coach if I have a counter waitlist ticket?
+
 ഇല്ല, നിങ്ങൾക്ക് കൗണ്ടർ കാത്തിരിപ്പു ടിക്കറ്റോടെ എസി കോച്ചിൽ ബോർഡ് ചെയ്യാൻ കഴിയില്ല. ഫിസിക്കൽ കൗണ്ടർ കാത്തിരിപ്പു ടിക്കറ്റുകൾ അന്യരക്ഷിത ജനറൽ (GS) കോച്ചുകളിൽ യാത്ര ചെയ്യാൻ മാത്രം സാധുവാണ്. നിങ്ങൾ എസി കോച്ചിൽ പ്രവേശിച്ചാൽ, TTE നിങ്ങൾക്കു അനധികൃത യാത്രക്കാരനായി കണക്കാക്കുകയും, ₹500 പിഴയും ക്ലാസ് ഫെയർ വ്യത്യാസവും ചാർജ്ജ് ചെയ്യുകയും, നിങ്ങൾക്ക് ഇറക്കാൻ ആവശ്യപ്പെടും.
 
 ### Will IRCTC refund my money automatically if my e-ticket is WL after chart prep?
+
 അതെ, IRCTC സ്വയം മുഴുവൻ കാത്തിരിപ്പു പട്ടികയിലുള്ള ഇ-ടിക്കറ്റുകൾ ചാർട്ട് തയ്യാറാക്കുന്നതിന് ശേഷം റദ്ദാക്കുകയും, ക്ലർകേജ് അല്ലെങ്കിൽ റദ്ദാക്കൽ ഫീസ് കുത്തിവെയ്ക്കാതെ മുഴുവൻ തിരിച്ചടവു ആരംഭിക്കുകയും ചെയ്യുന്നു. തിരിച്ചടവു ലഭിക്കുന്ന തുക നിങ്ങളുടെ പ്രാഥമിക പേയ്മെന്റ് അക്കൗണ്ടിലേക്ക് (ക്രെഡിറ്റ് കാർഡ്, ഡെബിറ്റ് കാർഡ്, UPI, അല്ലെങ്കിൽ നെറ്റ് ബാങ്കിംഗ്) 3 മുതൽ 5 ബിസിനസ് ദിവസങ്ങൾക്കുള്ളിൽ ക്രെഡിറ്റ് ചെയ്യപ്പെടുന്നു.
 
 ### Can a TTE allot me a vacant berth onboard if I hold a counter WL ticket?
+
 TTE നിങ്ങൾക്ക് ഒരു ഒഴിവായ ബെർത്ത് അനുവദിക്കാൻ കഴിയും, എന്നാൽ എല്ലാ RAC യാത്രക്കാരും ഇതിനകം സ്ഥിരീകരിത ബെർത്ത് ലഭിച്ചിട്ടുണ്ടെങ്കിൽ മാത്രമേ, Handheld Terminal (HHT) ൽ ഒഴിവായ സീറ്റുകൾ അവകാശപ്പെടുന്നുണ്ടെങ്കിൽ. നിങ്ങൾക്ക് മുഴുവൻ ക്ലാസ് ഫെയർ വ്യത്യാസം നൽകണം, ഔദ്യോഗിക കമ്പ്യൂട്ടറൈസ്ഡ് അധിക ഫെയർ റസീറ്റ് (EFT) നേടണം.
 
 ### What is the fine if a waitlisted passenger enters a Sleeper coach?
+
 അനധികൃതമായി സ്ലീപർ കോച്ചിൽ പ്രവേശിക്കുന്ന കാത്തിരിപ്പു യാത്രക്കാരനോട് ₹500 എന്ന അടിസ്ഥാന പിഴയും ബോർഡിംഗ് പോയിന്റിൽ നിന്ന് ജനറൽ ക്ലാസ് മുതൽ സ്ലീപർ ക്ലാസ് വരെ ഫെയർ വ്യത്യാസവും ചാർജ്ജ് ചെയ്യപ്പെടുന്നു, Section 138 of the Railways Act പ്രകാരം. TTE യാത്രക്കാരനെ ജനറൽ കോമ്പാർട്ട്മെന്റിലേക്ക് മാറ്റാൻ നിർദ്ദേശിക്കും.
 
 ### Can I cancel a counter waiting list ticket after chart preparation?
+
 അതെ, നിങ്ങൾക്ക് PRS കൗണ്ടർ കാത്തിരിപ്പു ടിക്കറ്റ് ട്രെയിൻ പുറപ്പെടുന്നതിന് 30 മിനിറ്റ് മുമ്പ് ഏതെങ്കിലും കമ്പ്യൂട്ടറൈസ്ഡ് റിസർവേഷൻ കൗണ്ടറിൽ റദ്ദാക്കാൻ കഴിയും. നിർദ്ദേശിച്ച സമയപരിധിയിൽ surrendered ചെയ്താൽ, കൗണ്ടർ ക്ലർക്ക് നിങ്ങളുടെ പണം തിരിച്ചടവു നൽകും, സാധാരണ ക്ലർകേജ് ഫീസ് കുത്തിവെയ്ക്കുന്നതിന് ശേഷം.
 
 ### What happens if 1 passenger is confirmed and 1 is waitlisted on the same e-ticket?
+
 ഒരു യാത്രക്കാരൻ സ്ഥിരീകരിത അല്ലെങ്കിൽ RAC ആയപ്പോൾ മറ്റൊന്ന് കാത്തിരിപ്പിൽ തുടരുന്ന ഒരു ഏക PNR ൽ, ഇ-ടിക്കറ്റ് സ്വയം റദ്ദാക്കപ്പെടുന്നില്ല. രണ്ടു യാത്രക്കാരനും ട്രെയിൻ ബോർഡ് ചെയ്യാൻ അനുവദിക്കുന്നു, കാത്തിരിപ്പു യാത്രക്കാരൻ സ്ഥിരീകരിത ബെർത്ത് പങ്കിടുകയോ TTE യുടെ ബോർഡിൽ ലഭ്യമായ ഒരു ഒഴിവായ സീറ്റ് ആവശ്യപ്പെടുകയോ ചെയ്യാം.
 
 ### Can I travel in General coach with an unconfirmed online e-ticket?
+
 ഇല്ല, നിങ്ങൾക്ക് അന്യരക്ഷിത ജനറൽ കോച്ചുകളിൽ ഒരു സ്ഥിരീകരിതമല്ലാത്ത ഓൺലൈൻ ഇ-ടിക്കറ്റോടെ യാത്ര ചെയ്യാൻ കഴിയില്ല. ഒരു ഓൺലൈൻ ഇ-ടിക്കറ്റ് ചാർട്ട് തയ്യാറാക്കുന്നതിന് ശേഷം മുഴുവൻ കാത്തിരിപ്പു പട്ടികയിൽ തുടരുമ്പോൾ, IRCTC അത് സ്വയം റദ്ദാക്കുകയും തിരിച്ചടവു നൽകുകയും ചെയ്യുന്നു. ഒരു ഓട്ടോ-റദ്ദാക്കപ്പെട്ട ഇ-ടിക്കറ്റോടെ ട്രെയിൻ ഏതെങ്കിലും ഭാഗത്ത് ബോർഡ് ചെയ്യുന്നത് ടിക്കറ്റ് ഇല്ലാത്ത യാത്രയായി കണക്കാക്കപ്പെടുന്നു.
 
 ### How does LastBerth help when my ticket is stuck on the waiting list?
+
 LastBerth സ്റ്റേഷനുകൾക്കിടയിലെ ക്വോട്ടുകൾ വിശകലനം ചെയ്യുന്നു, നിങ്ങളുടെ ട്രെയിനിൽ ഒളിച്ചിരിക്കുന്ന സ്ഥിരീകരിത സെഗ്മെന്റുകൾ കണ്ടെത്താൻ സ്പ്ലിറ്റ്-ജേർണി റൂട്ടിംഗ് വഴി. ഒരു അനിശ്ചിത ക്യൂയിൽ കാത്തിരിക്കേണ്ടതിന്റെ പകരം, നിങ്ങൾക്ക് കോച്ചുകൾക്കിടയിൽ തുടർച്ചയായ സ്ഥിരീകരിത സീറ്റുകൾ കണ്ടെത്താൻ കഴിയും, അല്ലെങ്കിൽ ചാർട്ട് തയ്യാറാക്കുന്നതിന് ശേഷം നേരിട്ടുള്ള ഒഴിവായ ബെർത്ത് പരിശോധിക്കാനും കഴിയും.
 
 ---

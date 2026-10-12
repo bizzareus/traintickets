@@ -3,19 +3,45 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle2, AlertCircle, Loader2, Train, Calendar, ArrowRight, Phone, Mail } from "lucide-react";
+import {
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
+  Train,
+  Calendar,
+  ArrowRight,
+  Phone,
+  Mail,
+} from "lucide-react";
 import { trackAlertRequested } from "@/lib/analytics/track";
-import { createFreeChartAlert, getChartAlertErrorMessage } from "@/lib/chart-alert-payments";
+import {
+  createFreeChartAlert,
+  getChartAlertErrorMessage,
+} from "@/lib/chart-alert-payments";
 
 export function SubscribeClient() {
   const searchParams = useSearchParams();
 
-  const trainNo = searchParams.get("trainNo") || searchParams.get("trainNumber") || "";
+  const trainNo =
+    searchParams.get("trainNo") || searchParams.get("trainNumber") || "";
   const trainName = searchParams.get("trainName") || "";
-  const fromCode = (searchParams.get("from") || searchParams.get("fromStationCode") || "").toUpperCase();
-  const toCode = (searchParams.get("to") || searchParams.get("toStationCode") || "").toUpperCase();
-  const date = searchParams.get("date") || searchParams.get("journeyDate") || "";
-  const travelClass = (searchParams.get("class") || searchParams.get("classCode") || "3A").toUpperCase();
+  const fromCode = (
+    searchParams.get("from") ||
+    searchParams.get("fromStationCode") ||
+    ""
+  ).toUpperCase();
+  const toCode = (
+    searchParams.get("to") ||
+    searchParams.get("toStationCode") ||
+    ""
+  ).toUpperCase();
+  const date =
+    searchParams.get("date") || searchParams.get("journeyDate") || "";
+  const travelClass = (
+    searchParams.get("class") ||
+    searchParams.get("classCode") ||
+    "3A"
+  ).toUpperCase();
   const email = searchParams.get("email") || "";
   const mobile = searchParams.get("mobile") || "";
 
@@ -138,12 +164,14 @@ export function SubscribeClient() {
     : date;
 
   return (
-    <div className="min-h-[70vh] flex items-center justify-center px-4 py-12">
+    <div className="flex min-h-[70vh] items-center justify-center px-4 py-12">
       <div className="w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8">
         {status === "loading" && (
           <div className="py-8 text-center">
             <Loader2 className="mx-auto h-12 w-12 animate-spin text-blue-600" />
-            <h2 className="mt-4 text-xl font-bold text-slate-900">Setting Up Your Chart Alert...</h2>
+            <h2 className="mt-4 text-xl font-bold text-slate-900">
+              Setting Up Your Chart Alert...
+            </h2>
             <p className="mt-2 text-sm text-slate-600">
               Subscribing you to chart preparation alerts for Train {trainNo}...
             </p>
@@ -155,7 +183,9 @@ export function SubscribeClient() {
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-red-100 text-red-600">
               <AlertCircle className="h-8 w-8" />
             </div>
-            <h2 className="mt-4 text-xl font-bold text-slate-900">Subscription Notice</h2>
+            <h2 className="mt-4 text-xl font-bold text-slate-900">
+              Subscription Notice
+            </h2>
             <p className="mt-2 text-sm text-slate-600">{errorMessage}</p>
             <div className="mt-6 flex justify-center gap-3">
               {fromCode && toCode ? (
@@ -183,9 +213,12 @@ export function SubscribeClient() {
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                 <CheckCircle2 className="h-9 w-9" />
               </div>
-              <h1 className="mt-4 text-2xl font-bold text-slate-900">Alert Subscribed! 🔔</h1>
+              <h1 className="mt-4 text-2xl font-bold text-slate-900">
+                Alert Subscribed! 🔔
+              </h1>
               <p className="mt-1.5 text-sm text-slate-600">
-                You will receive a WhatsApp & Email notification as soon as chart preparation completes.
+                You will receive a WhatsApp & Email notification as soon as
+                chart preparation completes.
               </p>
             </div>
 
@@ -217,17 +250,27 @@ export function SubscribeClient() {
               </div>
 
               {(email || mobile) && (
-                <div className="border-t border-slate-200/80 pt-3 space-y-2">
+                <div className="space-y-2 border-t border-slate-200/80 pt-3">
                   {mobile && (
                     <div className="flex items-center gap-3 text-slate-700">
                       <Phone className="h-4 w-4 text-emerald-600" />
-                      <span>WhatsApp alert configured for <strong className="font-semibold text-slate-900">{mobile}</strong></span>
+                      <span>
+                        WhatsApp alert configured for{" "}
+                        <strong className="font-semibold text-slate-900">
+                          {mobile}
+                        </strong>
+                      </span>
                     </div>
                   )}
                   {email && (
                     <div className="flex items-center gap-3 text-slate-700">
                       <Mail className="h-4 w-4 text-blue-600" />
-                      <span>Email alert configured for <strong className="font-semibold text-slate-900">{email}</strong></span>
+                      <span>
+                        Email alert configured for{" "}
+                        <strong className="font-semibold text-slate-900">
+                          {email}
+                        </strong>
+                      </span>
                     </div>
                   )}
                 </div>
@@ -243,7 +286,10 @@ export function SubscribeClient() {
                   Explore Alternate Trains
                 </Link>
               )}
-              <Link href="/" className="text-xs font-medium text-slate-500 hover:text-slate-700 hover:underline">
+              <Link
+                href="/"
+                className="text-xs font-medium text-slate-500 hover:text-slate-700 hover:underline"
+              >
                 Return to LastBerth Home
               </Link>
             </div>

@@ -292,8 +292,7 @@ export class ChartAlertRefundsService {
   private describeMuzoboxError(err: unknown): string {
     if (isAxiosError(err)) {
       const payload = err.response?.data as
-        | { message?: unknown; error?: unknown }
-        | undefined;
+        { message?: unknown; error?: unknown } | undefined;
       const fromBody =
         (Array.isArray(payload?.message)
           ? payload?.message.join('; ')

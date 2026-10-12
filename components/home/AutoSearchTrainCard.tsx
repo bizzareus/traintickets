@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { formatDurationMinutes, formatTimeAmPm } from "@/components/booking-v2/alternatePathHelpers";
+import {
+  formatDurationMinutes,
+  formatTimeAmPm,
+} from "@/components/booking-v2/alternatePathHelpers";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import { isBrowserOnLocalhost } from "@/lib/observability";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
@@ -12,8 +15,6 @@ import type {
 } from "@/components/booking-v2/alternatePathsTypes";
 import { countConfirmedAlternateLegs } from "@/lib/trainSearchV2Sort";
 import { TrainChartAlertSection } from "@/components/home/TrainChartAlertSection";
-
-
 
 interface AutoSearchTrainCardProps {
   train: TrainListItem;
@@ -32,7 +33,6 @@ interface AutoSearchTrainCardProps {
   }) => void;
   onFallbackToControl?: () => void;
 }
-
 
 interface FoundSeatNotice {
   id: string;
@@ -55,7 +55,9 @@ export function AutoSearchTrainCard({
   onFallbackToControl,
 }: AutoSearchTrainCardProps) {
   const [loading, setLoading] = useState(false);
-  const [progressEvents, setProgressEvents] = useState<AlternatePathProgressEvent[]>([]);
+  const [progressEvents, setProgressEvents] = useState<
+    AlternatePathProgressEvent[]
+  >([]);
   const [foundSeats, setFoundSeats] = useState<FoundSeatNotice[]>([]);
   const [result, setResult] = useState<AlternatePathsResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -63,7 +65,6 @@ export function AutoSearchTrainCard({
   const [statusMessage] = useState<string>(
     "Finding you the best seats available in the train..this may take sometime since we are scanning across multiple routes, seats and coaches",
   );
-
 
   const hasInitiatedRef = useRef(false);
   const hasTrackedLoadedRef = useRef(false);
@@ -90,12 +91,24 @@ export function AutoSearchTrainCard({
           from_code: fromCode,
           to_code: toCode,
           journey_date: journeyDate || "",
-          ticket_count: countConfirmedAlternateLegs(result.legs, result.legCount),
+          ticket_count: countConfirmedAlternateLegs(
+            result.legs,
+            result.legCount,
+          ),
           is_complete: result.isComplete,
         },
       });
     }
-  }, [loading, error, result, train.trainNumber, train.trainName, fromCode, toCode, journeyDate]);
+  }, [
+    loading,
+    error,
+    result,
+    train.trainNumber,
+    train.trainName,
+    fromCode,
+    toCode,
+    journeyDate,
+  ]);
 
   // Auto-run search on mount for unavailable trains
   useEffect(() => {
@@ -108,7 +121,6 @@ export function AutoSearchTrainCard({
     setProgressEvents([]);
     setFoundSeats([]);
     setCurrentSearchRoute("");
-
 
     const controller = new AbortController();
 
@@ -191,9 +203,13 @@ export function AutoSearchTrainCard({
                 setProgressEvents((prev) => [...prev, ev]);
 
                 if (ev.type === "route_ok") {
-                  setCurrentSearchRoute(`Searching stops between ${ev.from} → ${ev.to}...`);
+                  setCurrentSearchRoute(
+                    `Searching stops between ${ev.from} → ${ev.to}...`,
+                  );
                 } else if (ev.type === "train_departed") {
-                  setCurrentSearchRoute(`Train already departed from ${ev.from}`);
+                  setCurrentSearchRoute(
+                    `Train already departed from ${ev.from}`,
+                  );
                 } else if (ev.type === "probing_hop") {
                   setCurrentSearchRoute(`Checking ${ev.from} → ${ev.to}...`);
                 } else if (ev.type === "hop_confirmed") {
@@ -210,12 +226,15 @@ export function AutoSearchTrainCard({
                     if (prev.some((p) => p.id === newNotice.id)) return prev;
                     return [...prev, newNotice];
                   });
-                  setCurrentSearchRoute(`✓ Found seat: ${ev.from} → ${ev.to} (${ev.travelClass})`);
+                  setCurrentSearchRoute(
+                    `✓ Found seat: ${ev.from} → ${ev.to} (${ev.travelClass})`,
+                  );
                 } else if (ev.type === "hop_unavailable") {
-                  setCurrentSearchRoute(`Checking combinations around ${ev.from} → ${ev.to}...`);
+                  setCurrentSearchRoute(
+                    `Checking combinations around ${ev.from} → ${ev.to}...`,
+                  );
                 }
-              }
- else if (msg.type === "result" && msg.data && isMounted) {
+              } else if (msg.type === "result" && msg.data && isMounted) {
                 setResult(msg.data);
               } else if (msg.type === "error" && isMounted) {
                 setError(msg.message ?? "Failed to find available seats");
@@ -245,8 +264,15 @@ export function AutoSearchTrainCard({
       isMounted = false;
       controller.abort();
     };
-
-  }, [journeyDate, fromCode, toCode, train.trainNumber, train.avlClasses, acOnly, selectedClasses]);
+  }, [
+    journeyDate,
+    fromCode,
+    toCode,
+    train.trainNumber,
+    train.avlClasses,
+    acOnly,
+    selectedClasses,
+  ]);
 
   // Direct IRCTC redirect link for intermediate legs
   const getBookingUrl = (fromSt: string, toSt: string, cls?: string | null) => {
@@ -264,9 +290,9 @@ export function AutoSearchTrainCard({
     : 0;
 
   return (
-    <li className="rounded-xl border border-blue-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg flex flex-col md:flex-row md:items-stretch justify-between gap-5">
+    <li className="flex flex-col justify-between gap-5 rounded-xl border border-blue-200 bg-white p-5 shadow-md transition-shadow hover:shadow-lg md:flex-row md:items-stretch">
       {/* Left Column: Header Info + Live Stream / Completed Results */}
-      <div className="flex-1 min-w-0 flex flex-col justify-between">
+      <div className="flex min-w-0 flex-1 flex-col justify-between">
         <div>
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
             <div>
@@ -282,7 +308,8 @@ export function AutoSearchTrainCard({
               </div>
               <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-slate-600">
                 <span className="font-semibold text-slate-900">
-                  {formatTimeAmPm(train.departureTime) ?? "—"} {train.fromStnCode}
+                  {formatTimeAmPm(train.departureTime) ?? "—"}{" "}
+                  {train.fromStnCode}
                 </span>
                 <span className="text-slate-400">
                   {formatDurationMinutes(train.duration)}
@@ -296,7 +323,13 @@ export function AutoSearchTrainCard({
             {onOpenSchedule && (
               <button
                 type="button"
-                onClick={() => onOpenSchedule(train.trainNumber, train.fromStnCode, train.toStnCode)}
+                onClick={() =>
+                  onOpenSchedule(
+                    train.trainNumber,
+                    train.fromStnCode,
+                    train.toStnCode,
+                  )
+                }
                 className="text-xs font-semibold text-blue-600 hover:underline"
               >
                 View Train Schedule
@@ -310,11 +343,11 @@ export function AutoSearchTrainCard({
               <div className="flex items-start gap-3">
                 <div className="mt-0.5 h-5 w-5 shrink-0 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
                 <div>
-                  <p className="text-sm font-medium text-slate-700 leading-relaxed">
+                  <p className="text-sm font-medium leading-relaxed text-slate-700">
                     {statusMessage}
                   </p>
                   {currentSearchRoute && (
-                    <p className="mt-1 text-xs font-semibold text-blue-600 animate-pulse">
+                    <p className="mt-1 animate-pulse text-xs font-semibold text-blue-600">
                       🔍 {currentSearchRoute}
                     </p>
                   )}
@@ -323,7 +356,7 @@ export function AutoSearchTrainCard({
 
               {/* Animated progress bar */}
               <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
-                <div className="h-full animate-pulse rounded-full bg-blue-600 transition-all duration-300 w-3/4" />
+                <div className="h-full w-3/4 animate-pulse rounded-full bg-blue-600 transition-all duration-300" />
               </div>
 
               {/* Real-time found seats feed */}
@@ -336,9 +369,13 @@ export function AutoSearchTrainCard({
                     {foundSeats.map((seat) => (
                       <span
                         key={seat.id}
-                        className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700 border border-emerald-200"
+                        className="inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700"
                       >
-                        <span className="font-bold">✓ {seat.from} → {seat.to}</span> ({seat.travelClass}{seat.fare ? ` · ₹${seat.fare}` : ""})
+                        <span className="font-bold">
+                          ✓ {seat.from} → {seat.to}
+                        </span>{" "}
+                        ({seat.travelClass}
+                        {seat.fare ? ` · ₹${seat.fare}` : ""})
                       </span>
                     ))}
                   </div>
@@ -374,7 +411,8 @@ export function AutoSearchTrainCard({
               {result.legs && result.legs.length > 0 ? (
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-sm font-bold text-slate-900">
-                    🎉 Found {confirmedCount} confirmed ticket{confirmedCount > 1 ? "s" : ""}!
+                    🎉 Found {confirmedCount} confirmed ticket
+                    {confirmedCount > 1 ? "s" : ""}!
                   </p>
 
                   <button
@@ -388,7 +426,10 @@ export function AutoSearchTrainCard({
                           from_code: fromCode,
                           to_code: toCode,
                           journey_date: journeyDate || "",
-                          ticket_count: countConfirmedAlternateLegs(result.legs, result.legCount),
+                          ticket_count: countConfirmedAlternateLegs(
+                            result.legs,
+                            result.legCount,
+                          ),
                           is_complete: result.isComplete,
                         },
                       });
@@ -399,7 +440,7 @@ export function AutoSearchTrainCard({
                         result,
                       });
                     }}
-                    className="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25 touch-manipulation"
+                    className="inline-flex shrink-0 touch-manipulation items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25"
                   >
                     Ticket Details
                   </button>
@@ -410,7 +451,8 @@ export function AutoSearchTrainCard({
                     No split seat options available for this train.
                   </p>
                   <p className="mt-1 text-xs text-slate-500">
-                    All classes and station combinations are currently fully booked or waitlisted.
+                    All classes and station combinations are currently fully
+                    booked or waitlisted.
                   </p>
                 </div>
               )}
@@ -420,7 +462,7 @@ export function AutoSearchTrainCard({
       </div>
 
       {/* Right Column: Vertical Subscribe to Chart Alert CTA */}
-      <div className="w-full md:w-52 lg:w-56 shrink-0 border-t md:border-t-0 md:border-l border-slate-100 pt-4 md:pt-0 md:pl-4 flex flex-col justify-center">
+      <div className="flex w-full shrink-0 flex-col justify-center border-t border-slate-100 pt-4 md:w-52 md:border-l md:border-t-0 md:pl-4 md:pt-0 lg:w-56">
         <TrainChartAlertSection
           trainNumber={train.trainNumber}
           trainName={train.trainName}
@@ -433,4 +475,3 @@ export function AutoSearchTrainCard({
     </li>
   );
 }
-

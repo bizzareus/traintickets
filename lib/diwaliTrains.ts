@@ -36,13 +36,19 @@ export type DiwaliTrainAvailabilityItem = {
     string,
     {
       totalSeats: number;
-      classes: Record<string, { status: string; count: number; fare?: number | null }>;
+      classes: Record<
+        string,
+        { status: string; count: number; fare?: number | null }
+      >;
     }
   >;
   lastUpdated?: string;
 };
 
-export type DiwaliAvailabilitySummaryMap = Record<string, DiwaliTrainAvailabilityItem>;
+export type DiwaliAvailabilitySummaryMap = Record<
+  string,
+  DiwaliTrainAvailabilityItem
+>;
 
 /** Target dates in 2026 for Diwali travel peak (strictly Nov 4 - Nov 7, 2026). */
 export const DIWALI_TARGET_DATES: ReadonlyArray<{
@@ -58,7 +64,15 @@ export const DIWALI_TARGET_DATES: ReadonlyArray<{
 
 export const DEFAULT_DIWALI_SEARCH_DATE = "2026-11-05";
 const DAY_MS = 24 * 60 * 60 * 1000;
-const WEEKDAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
+const WEEKDAY_NAMES = [
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat",
+] as const;
 
 export { parseFestivalDate };
 
@@ -79,7 +93,11 @@ export function getDiwaliTrainRunningDates(
   for (const target of DIWALI_TARGET_DATES) {
     const curDate = new Date(`${target.date}T00:00:00Z`);
     if (curDate >= fromDate && curDate <= toDate) {
-      if (!train.runningDays || train.runningDays.length === 0 || train.runningDays.includes(target.day)) {
+      if (
+        !train.runningDays ||
+        train.runningDays.length === 0 ||
+        train.runningDays.includes(target.day)
+      ) {
         valid.push(target);
       }
     }
@@ -126,7 +144,9 @@ export function getDiwaliTrainSearchDate(
     }
   }
 
-  return nearestTime !== null ? new Date(nearestTime).toISOString().slice(0, 10) : preferredDate;
+  return nearestTime !== null
+    ? new Date(nearestTime).toISOString().slice(0, 10)
+    : preferredDate;
 }
 
 /**

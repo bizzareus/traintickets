@@ -49,12 +49,16 @@ export default function AdminAlertsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [nowIst, setNowIst] = useState("");
-  const [sortField, setSortField] = useState<"createdAt" | "chartAt">("createdAt");
+  const [sortField, setSortField] = useState<"createdAt" | "chartAt">(
+    "createdAt",
+  );
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
 
   useEffect(() => {
     const update = () => {
-      setNowIst(moment().utcOffset("+05:30").format("DD MMM, HH:mm:ss") + " IST");
+      setNowIst(
+        moment().utcOffset("+05:30").format("DD MMM, HH:mm:ss") + " IST",
+      );
     };
     update();
     const timer = setInterval(update, 1000);
@@ -68,7 +72,9 @@ export default function AdminAlertsPage() {
   async function fetchAlerts() {
     try {
       setLoading(true);
-      const res = await apiClient.get<{ alerts: Alert[] }>("/api/availability/admin/alerts");
+      const res = await apiClient.get<{ alerts: Alert[] }>(
+        "/api/availability/admin/alerts",
+      );
       setAlerts(res.data.alerts);
       setError(null);
     } catch (err) {
@@ -103,7 +109,7 @@ export default function AdminAlertsPage() {
     if (refundStatus === "SUCCEEDED" || refundStatus === "INITIATED") return;
     if (
       !confirm(
-        `Initiate refund of ₹${item.payment?.amount} for ${item.trainNumber} (${item.payment?.ref})?`
+        `Initiate refund of ₹${item.payment?.amount} for ${item.trainNumber} (${item.payment?.ref})?`,
       )
     )
       return;
@@ -112,7 +118,7 @@ export default function AdminAlertsPage() {
       const res = await apiClient.post<{ success: boolean; message?: string }>(
         `/api/availability/admin/alerts/${item.id}/refund`,
         {},
-        { headers: adminAuthHeaders() }
+        { headers: adminAuthHeaders() },
       );
       if (!res.data.success) {
         window.alert(res.data.message ?? "Refund attempt failed");
@@ -126,7 +132,7 @@ export default function AdminAlertsPage() {
       window.alert(
         ax.response?.data?.message ??
           ax.response?.data?.error ??
-          "Failed to initiate refund. Save the admin password (same as Refunds page) or re-unlock the admin gate, then retry."
+          "Failed to initiate refund. Save the admin password (same as Refunds page) or re-unlock the admin gate, then retry.",
       );
     } finally {
       setRefundingId(null);
@@ -147,7 +153,7 @@ export default function AdminAlertsPage() {
   }));
 
   alertsWithTs.sort((a, b) =>
-    sortOrder === "asc" ? a.ts - b.ts : b.ts - a.ts
+    sortOrder === "asc" ? a.ts - b.ts : b.ts - a.ts,
   );
 
   const sortedAlerts = alertsWithTs.map((item) => item.alert);
@@ -159,9 +165,7 @@ export default function AdminAlertsPage() {
   const filteredAlerts =
     statusFilter === "all"
       ? sortedAlerts
-      : sortedAlerts.filter(
-          (a) => a.status.toLowerCase() === statusFilter
-        );
+      : sortedAlerts.filter((a) => a.status.toLowerCase() === statusFilter);
 
   const toggleSort = (field: "createdAt" | "chartAt") => {
     if (sortField === field) {
@@ -191,14 +195,23 @@ export default function AdminAlertsPage() {
   const [resendResult, setResendResult] = useState<string | null>(null);
 
   async function resendFailedAlerts() {
-    if (!confirm("Are you sure you want to resend notifications for all alerts that failed or were unsent in the last 24 hours?")) return;
+    if (
+      !confirm(
+        "Are you sure you want to resend notifications for all alerts that failed or were unsent in the last 24 hours?",
+      )
+    )
+      return;
     try {
       setResending(true);
       setResendResult(null);
-      const res = await apiClient.post<{ found: number; resent: number; failed: number }>(
-        "/api/availability/admin/resend-failed-notifications?hours=24"
+      const res = await apiClient.post<{
+        found: number;
+        resent: number;
+        failed: number;
+      }>("/api/availability/admin/resend-failed-notifications?hours=24");
+      setResendResult(
+        `Batch resend finished: ${res.data.resent} sent successfully out of ${res.data.found} found (${res.data.failed} failed).`,
       );
-      setResendResult(`Batch resend finished: ${res.data.resent} sent successfully out of ${res.data.found} found (${res.data.failed} failed).`);
       fetchAlerts();
     } catch (err) {
       console.error("Failed to resend alerts", err);
@@ -249,7 +262,10 @@ export default function AdminAlertsPage() {
       {resendResult && (
         <div className="flex items-center justify-between rounded-2xl border border-indigo-200 bg-indigo-50 p-4 text-sm font-medium text-indigo-900">
           <span>{resendResult}</span>
-          <button onClick={() => setResendResult(null)} className="text-xs font-semibold text-indigo-600 hover:underline">
+          <button
+            onClick={() => setResendResult(null)}
+            className="text-xs font-semibold text-indigo-600 hover:underline"
+          >
             Dismiss
           </button>
         </div>
@@ -276,7 +292,7 @@ export default function AdminAlertsPage() {
                 {f === "all" ? "all" : f} ({count})
               </button>
             );
-          }
+          },
         )}
         <div className="basis-full text-xs text-slate-500">
           {filteredAlerts.length} of {alerts.length} shown
@@ -311,11 +327,21 @@ export default function AdminAlertsPage() {
                       )}
                     </div>
                   </th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Contact</th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Payment</th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Train</th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Journey</th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Monitor Station</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">
+                    Contact
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">
+                    Payment
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">
+                    Train
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">
+                    Journey
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">
+                    Monitor Station
+                  </th>
                   <th
                     className="cursor-pointer px-6 py-4 font-semibold text-slate-900 transition hover:bg-slate-100"
                     onClick={() => toggleSort("chartAt")}
@@ -327,17 +353,30 @@ export default function AdminAlertsPage() {
                       )}
                     </div>
                   </th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Status / Run Info</th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">First Run / Delay</th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Email</th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">WhatsApp</th>
-                  <th className="px-6 py-4 font-semibold text-slate-900">Actions</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">
+                    Status / Run Info
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">
+                    First Run / Delay
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">
+                    Email
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">
+                    WhatsApp
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {filteredAlerts.length === 0 ? (
                   <tr>
-                      <td colSpan={12} className="px-6 py-12 text-center text-slate-500">
+                    <td
+                      colSpan={12}
+                      className="px-6 py-12 text-center text-slate-500"
+                    >
                       {alerts.length === 0
                         ? "No alerts have been setup yet."
                         : `No ${statusFilter} alerts.`}
@@ -345,20 +384,32 @@ export default function AdminAlertsPage() {
                   </tr>
                 ) : (
                   filteredAlerts.map((alert) => (
-                    <tr key={alert.id} className="transition hover:bg-slate-50/50">
+                    <tr
+                      key={alert.id}
+                      className="transition hover:bg-slate-50/50"
+                    >
                       <td className="whitespace-nowrap px-6 py-4 text-slate-600">
-                        {moment.utc(alert.createdAt).utcOffset("+01:00").format("DD MMM, HH:mm")}
+                        {moment
+                          .utc(alert.createdAt)
+                          .utcOffset("+01:00")
+                          .format("DD MMM, HH:mm")}
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex flex-col gap-0.5">
                           {alert.contact?.email && (
-                            <span className="font-medium text-slate-900">{alert.contact.email}</span>
+                            <span className="font-medium text-slate-900">
+                              {alert.contact.email}
+                            </span>
                           )}
                           {alert.contact?.mobile && (
-                            <span className="text-xs text-slate-500">{alert.contact.mobile}</span>
+                            <span className="text-xs text-slate-500">
+                              {alert.contact.mobile}
+                            </span>
                           )}
                           {!alert.contact?.email && !alert.contact?.mobile && (
-                            <span className="italic text-slate-400">Anonymous</span>
+                            <span className="italic text-slate-400">
+                              Anonymous
+                            </span>
                           )}
                         </div>
                       </td>
@@ -367,12 +418,16 @@ export default function AdminAlertsPage() {
                           <div className="flex flex-col gap-0.5">
                             <span
                               className={`inline-flex w-fit items-center rounded-lg border px-2 py-0.5 text-xs font-semibold ${getStatusColor(
-                                alert.payment.status
+                                alert.payment.status,
                               )}`}
                             >
-                              ₹{alert.payment.amount} · {alert.payment.status.toUpperCase()}
+                              ₹{alert.payment.amount} ·{" "}
+                              {alert.payment.status.toUpperCase()}
                             </span>
-                            <span className="max-w-[140px] truncate text-[10px] text-slate-500" title={alert.payment.ref}>
+                            <span
+                              className="max-w-[140px] truncate text-[10px] text-slate-500"
+                              title={alert.payment.ref}
+                            >
                               {alert.payment.ref}
                             </span>
                             {alert.payment.razorpayPaymentId && (
@@ -388,29 +443,34 @@ export default function AdminAlertsPage() {
                             )}
                             {alert.payment.paidAt && (
                               <span className="text-[10px] text-slate-500">
-                                {moment.utc(alert.payment.paidAt).utcOffset("+05:30").format("DD MMM, HH:mm")}
+                                {moment
+                                  .utc(alert.payment.paidAt)
+                                  .utcOffset("+05:30")
+                                  .format("DD MMM, HH:mm")}
                               </span>
                             )}
-                            {alert.payment.refund && alert.payment.refund.status !== "NONE" && (
-                              <span
-                                className={`inline-flex w-fit items-center rounded-lg border px-2 py-0.5 text-[10px] font-semibold ${getStatusColor(
-                                  alert.payment.refund.status === "SUCCEEDED"
-                                    ? "completed"
-                                    : alert.payment.refund.status === "FAILED"
-                                      ? "failed"
-                                      : alert.payment.refund.status === "INITIATED"
-                                        ? "running"
-                                        : "pending"
-                                )}`}
-                                title={
-                                  alert.payment.refund.error ??
-                                  alert.payment.refund.razorpayRefundId ??
-                                  undefined
-                                }
-                              >
-                                Refund · {alert.payment.refund.status}
-                              </span>
-                            )}
+                            {alert.payment.refund &&
+                              alert.payment.refund.status !== "NONE" && (
+                                <span
+                                  className={`inline-flex w-fit items-center rounded-lg border px-2 py-0.5 text-[10px] font-semibold ${getStatusColor(
+                                    alert.payment.refund.status === "SUCCEEDED"
+                                      ? "completed"
+                                      : alert.payment.refund.status === "FAILED"
+                                        ? "failed"
+                                        : alert.payment.refund.status ===
+                                            "INITIATED"
+                                          ? "running"
+                                          : "pending",
+                                  )}`}
+                                  title={
+                                    alert.payment.refund.error ??
+                                    alert.payment.refund.razorpayRefundId ??
+                                    undefined
+                                  }
+                                >
+                                  Refund · {alert.payment.refund.status}
+                                </span>
+                              )}
                           </div>
                         ) : (
                           <span className="inline-flex items-center rounded-lg border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-500">
@@ -420,8 +480,13 @@ export default function AdminAlertsPage() {
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex flex-col gap-0.5">
-                          <span className="font-bold text-slate-900">{alert.trainNumber}</span>
-                          <span className="max-w-[150px] truncate text-xs text-slate-500" title={alert.trainName || ""}>
+                          <span className="font-bold text-slate-900">
+                            {alert.trainNumber}
+                          </span>
+                          <span
+                            className="max-w-[150px] truncate text-xs text-slate-500"
+                            title={alert.trainName || ""}
+                          >
                             {alert.trainName || "Unknown Train"}
                           </span>
                         </div>
@@ -431,17 +496,27 @@ export default function AdminAlertsPage() {
                           <span className="font-medium text-slate-900">
                             {moment(alert.journeyDate).format("DD MMM YYYY")}
                           </span>
-                          <span>{alert.fromStationCode} → {alert.toStationCode} ({alert.classCode})</span>
+                          <span>
+                            {alert.fromStationCode} → {alert.toStationCode} (
+                            {alert.classCode})
+                          </span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex flex-col gap-0.5">
-                          <span className="font-semibold text-slate-900">{alert.stationCode}</span>
+                          <span className="font-semibold text-slate-900">
+                            {alert.stationCode}
+                          </span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="flex flex-col gap-0.5 font-medium text-slate-700 uppercase leading-tight">
-                          <span>{moment.utc(alert.chartAt).utcOffset("+05:30").format("DD MMM, HH:mm")}</span>
+                        <div className="flex flex-col gap-0.5 font-medium uppercase leading-tight text-slate-700">
+                          <span>
+                            {moment
+                              .utc(alert.chartAt)
+                              .utcOffset("+05:30")
+                              .format("DD MMM, HH:mm")}
+                          </span>
                           {alert.status === "pending" && (
                             <span className="text-[10px] font-normal lowercase text-slate-400">
                               ({moment(alert.chartAt).fromNow(true)})
@@ -453,43 +528,62 @@ export default function AdminAlertsPage() {
                         <div className="flex flex-col items-start gap-1">
                           <span
                             className={`inline-flex items-center rounded-lg border px-2 py-0.5 text-xs font-semibold ${getStatusColor(
-                              alert.status
+                              alert.status,
                             )}`}
                           >
                             {alert.status.toUpperCase()}
                           </span>
                           {alert.completedAt && (
-                            <span className="text-[10px] text-slate-500 font-medium">
-                              Ran at: {moment.utc(alert.completedAt).utcOffset("+05:30").format("HH:mm:ss")}
+                            <span className="text-[10px] font-medium text-slate-500">
+                              Ran at:{" "}
+                              {moment
+                                .utc(alert.completedAt)
+                                .utcOffset("+05:30")
+                                .format("HH:mm:ss")}
                             </span>
                           )}
-                          {alert.completedAt && moment(alert.completedAt).diff(moment(alert.chartAt), 'minutes') > 10 && (
-                            <span className="text-[10px] text-rose-500 font-medium bg-rose-50 px-1.5 py-0.5 rounded border border-rose-100">
-                              {moment(alert.completedAt).diff(moment(alert.chartAt), 'minutes')}m Late
-                            </span>
-                          )}
+                          {alert.completedAt &&
+                            moment(alert.completedAt).diff(
+                              moment(alert.chartAt),
+                              "minutes",
+                            ) > 10 && (
+                              <span className="rounded border border-rose-100 bg-rose-50 px-1.5 py-0.5 text-[10px] font-medium text-rose-500">
+                                {moment(alert.completedAt).diff(
+                                  moment(alert.chartAt),
+                                  "minutes",
+                                )}
+                                m Late
+                              </span>
+                            )}
                         </div>
                       </td>
                       <td className="px-6 py-4">
                         {alert.firstRunAt ? (
                           <div className="flex flex-col items-start gap-1 text-xs">
-                            <span className="font-semibold text-slate-900 leading-tight">
-                              {moment.utc(alert.firstRunAt).utcOffset("+05:30").format("DD MMM, HH:mm:ss")}
+                            <span className="font-semibold leading-tight text-slate-900">
+                              {moment
+                                .utc(alert.firstRunAt)
+                                .utcOffset("+05:30")
+                                .format("DD MMM, HH:mm:ss")}
                             </span>
                             {(() => {
-                              const diffMs = moment(alert.firstRunAt).diff(moment(alert.chartAt));
+                              const diffMs = moment(alert.firstRunAt).diff(
+                                moment(alert.chartAt),
+                              );
                               const diffSecsTotal = Math.floor(diffMs / 1000);
                               const isLate = diffSecsTotal > 0;
                               const absSecsTotal = Math.abs(diffSecsTotal);
                               const diffMins = Math.floor(absSecsTotal / 60);
                               const diffSecs = absSecsTotal % 60;
                               return (
-                                <span className={`font-semibold text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded border leading-none inline-flex items-center mt-1 ${
-                                  isLate 
-                                    ? 'text-rose-600 bg-rose-50 border-rose-100' 
-                                    : 'text-emerald-600 bg-emerald-50 border-emerald-100'
-                                }`}>
-                                  {isLate ? 'Late ' : 'Early '}
+                                <span
+                                  className={`mt-1 inline-flex items-center rounded border px-1.5 py-0.5 text-[10px] font-semibold uppercase leading-none tracking-wide ${
+                                    isLate
+                                      ? "border-rose-100 bg-rose-50 text-rose-600"
+                                      : "border-emerald-100 bg-emerald-50 text-emerald-600"
+                                  }`}
+                                >
+                                  {isLate ? "Late " : "Early "}
                                   {diffMins}m {diffSecs}s
                                 </span>
                               );
@@ -502,7 +596,9 @@ export default function AdminAlertsPage() {
                       <td className="px-6 py-4">
                         {alert.emailNotifiedAt ? (
                           <span className="text-xs text-slate-600">
-                            {moment(alert.emailNotifiedAt).format("DD MMM, HH:mm")}
+                            {moment(alert.emailNotifiedAt).format(
+                              "DD MMM, HH:mm",
+                            )}
                           </span>
                         ) : (
                           <span className="text-slate-300">—</span>
@@ -511,7 +607,9 @@ export default function AdminAlertsPage() {
                       <td className="px-6 py-4">
                         {alert.whatsappNotifiedAt ? (
                           <span className="text-xs text-slate-600">
-                            {moment(alert.whatsappNotifiedAt).format("DD MMM, HH:mm")}
+                            {moment(alert.whatsappNotifiedAt).format(
+                              "DD MMM, HH:mm",
+                            )}
                           </span>
                         ) : (
                           <span className="text-slate-300">—</span>
@@ -520,7 +618,8 @@ export default function AdminAlertsPage() {
                       <td className="px-6 py-4">
                         <div className="flex flex-col items-start gap-1">
                           {(alert.status === "failed" ||
-                            (alert.status === "pending" && moment().isAfter(moment(alert.chartAt)))) && (
+                            (alert.status === "pending" &&
+                              moment().isAfter(moment(alert.chartAt)))) && (
                             <button
                               onClick={() => triggerAlert(alert.id)}
                               className="rounded bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-600 hover:bg-indigo-100"
@@ -534,7 +633,9 @@ export default function AdminAlertsPage() {
                               disabled={refundingId === alert.id}
                               className="rounded bg-amber-50 px-2 py-1 text-xs font-medium text-amber-700 hover:bg-amber-100 disabled:opacity-50"
                             >
-                              {refundingId === alert.id ? "Refunding..." : "Refund"}
+                              {refundingId === alert.id
+                                ? "Refunding..."
+                                : "Refund"}
                             </button>
                           )}
                         </div>

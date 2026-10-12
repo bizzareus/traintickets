@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Access your LastBerth train monitoring dashboard to track confirmed train tickets and seat availability.",
+  description:
+    "Access your LastBerth train monitoring dashboard to track confirmed train tickets and seat availability.",
   alternates: {
     canonical: "/login",
   },

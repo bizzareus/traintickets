@@ -190,7 +190,7 @@ function AlternatePathProgressFeed({
                 : "Searching for the best seats…"}
             </p>
           </div>
-          <span className="text-xs font-bold text-gray-500 tabular-nums">
+          <span className="text-xs font-bold tabular-nums text-gray-500">
             {progress}%
           </span>
         </div>
@@ -212,7 +212,7 @@ function AlternatePathProgressFeed({
                   "flex items-start gap-2 rounded-lg px-2.5 py-1.5 text-sm",
                   kind === "success" && "bg-emerald-50 text-emerald-900",
                   kind === "warn" && "bg-amber-50 text-amber-900",
-                  kind === "done" && "bg-blue-50 text-blue-900 font-semibold",
+                  kind === "done" && "bg-blue-50 font-semibold text-blue-900",
                   kind === "neutral" && "text-gray-600",
                 )}
               >
@@ -502,7 +502,7 @@ function CompactLegChartCta({
 
   const statusHeader = (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="shrink-0 inline-flex items-center rounded-md bg-amber-50 border border-amber-200/80 px-2 py-0.5 text-xs font-bold text-amber-800 shadow-2xs">
+      <span className="shadow-2xs inline-flex shrink-0 items-center rounded-md border border-amber-200/80 bg-amber-50 px-2 py-0.5 text-xs font-bold text-amber-800">
         Not Available
       </span>
       <span className="text-xs font-medium text-slate-600">
@@ -515,17 +515,17 @@ function CompactLegChartCta({
     return (
       <div className="flex flex-col gap-2.5 px-3 py-2.5 sm:px-4 sm:py-3">
         {statusHeader}
-        <div className="flex items-center justify-between gap-3 rounded-lg border border-emerald-200 bg-emerald-50/70 p-2.5 sm:px-3 sm:py-2 shadow-2xs">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs">
+        <div className="shadow-2xs flex items-center justify-between gap-3 rounded-lg border border-emerald-200 bg-emerald-50/70 p-2.5 sm:px-3 sm:py-2">
+          <div className="flex min-w-0 items-center gap-2.5">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-700">
               ✓
             </span>
             <div className="min-w-0">
-              <p className="text-xs sm:text-sm font-bold text-emerald-900 leading-snug">
+              <p className="text-xs font-bold leading-snug text-emerald-900 sm:text-sm">
                 Alert active for this leg
               </p>
               {chartTimeLabel && (
-                <p className="text-[11px] font-medium text-emerald-700 mt-0.5">
+                <p className="mt-0.5 text-[11px] font-medium text-emerald-700">
                   Will notify at {chartTimeLabel}
                 </p>
               )}
@@ -543,22 +543,22 @@ function CompactLegChartCta({
     return (
       <div className="flex flex-col gap-2.5 px-3 py-2.5 sm:px-4 sm:py-3">
         {statusHeader}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 rounded-lg border border-blue-100 bg-blue-50/50 p-2.5 sm:px-3 sm:py-2 shadow-2xs">
-          <div className="flex items-start sm:items-center gap-2.5 min-w-0">
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-100/80 text-blue-600 mt-0.5 sm:mt-0">
+        <div className="shadow-2xs flex flex-col gap-2.5 rounded-lg border border-blue-100 bg-blue-50/50 p-2.5 sm:flex-row sm:items-center sm:justify-between sm:px-3 sm:py-2">
+          <div className="flex min-w-0 items-start gap-2.5 sm:items-center">
+            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-blue-100/80 text-blue-600 sm:mt-0">
               <BellRing className="h-4 w-4" aria-hidden="true" />
             </span>
             <div className="min-w-0">
               {chartTimeLoading ? (
-                <div className="flex items-center gap-2 text-xs font-medium text-slate-500 italic animate-pulse">
-                  <span className="h-2.5 w-2.5 rounded-full border-2 border-blue-600 border-t-transparent animate-spin" />
+                <div className="flex animate-pulse items-center gap-2 text-xs font-medium italic text-slate-500">
+                  <span className="h-2.5 w-2.5 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
                   <span>Loading chart time...</span>
                 </div>
               ) : chartTimeLabel ? (
                 <div>
-                  <p className="text-xs sm:text-sm font-semibold text-slate-900 leading-snug">
+                  <p className="text-xs font-semibold leading-snug text-slate-900 sm:text-sm">
                     {chartIsPrepared ? (
-                      <span className="text-rose-700 font-bold">
+                      <span className="font-bold text-rose-700">
                         Chart for {legFrom} was released at {chartTimeLabel}
                       </span>
                     ) : (
@@ -570,7 +570,7 @@ function CompactLegChartCta({
                       </>
                     )}
                   </p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">
+                  <p className="mt-0.5 text-[11px] text-slate-500">
                     {chartIsPrepared
                       ? "Vacant berths were released during chart prep"
                       : "Get notified as soon as charts are prepared"}
@@ -578,10 +578,10 @@ function CompactLegChartCta({
                 </div>
               ) : (
                 <div>
-                  <p className="text-xs sm:text-sm font-semibold text-slate-900">
+                  <p className="text-xs font-semibold text-slate-900 sm:text-sm">
                     Get notified when chart prepares
                   </p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">
+                  <p className="mt-0.5 text-[11px] text-slate-500">
                     We&apos;ll alert you when chart preparation releases seats
                   </p>
                 </div>
@@ -613,7 +613,7 @@ function CompactLegChartCta({
                   },
                 });
               }}
-              className="shrink-0 w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-700 active:scale-[0.98] transition-all touch-manipulation"
+              className="inline-flex w-full shrink-0 touch-manipulation items-center justify-center gap-1.5 rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-blue-700 active:scale-[0.98] sm:w-auto sm:px-4 sm:py-2"
             >
               <BellRing className="h-3.5 w-3.5" aria-hidden="true" />
               Get Ticket Alert
@@ -628,12 +628,12 @@ function CompactLegChartCta({
     <>
       <div className="flex flex-col gap-2.5 px-3 py-2.5 sm:px-4 sm:py-3">
         {statusHeader}
-        <div className="w-full rounded-lg border border-blue-200 bg-blue-50/70 p-3 sm:p-3.5 shadow-2xs">
+        <div className="shadow-2xs w-full rounded-lg border border-blue-200 bg-blue-50/70 p-3 sm:p-3.5">
           <div className="mb-2.5 flex items-start gap-2">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700 mt-0.5">
+            <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700">
               <BellRing className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
-            <p className="text-xs font-semibold text-blue-950 leading-snug">
+            <p className="text-xs font-semibold leading-snug text-blue-950">
               {chartTimeLoading ? (
                 <span className="inline-flex items-center gap-1.5 italic text-blue-600/80">
                   <span className="h-2 w-2 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
@@ -672,7 +672,7 @@ function CompactLegChartCta({
               type="button"
               disabled={submitting}
               onClick={() => void subscribe()}
-              className="w-full sm:w-auto rounded-lg bg-blue-600 px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm hover:bg-blue-700 active:scale-[0.99] disabled:opacity-60 transition-all text-center flex items-center justify-center"
+              className="flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-center text-xs font-bold uppercase tracking-wide text-white shadow-sm transition-all hover:bg-blue-700 active:scale-[0.99] disabled:opacity-60 sm:w-auto"
             >
               {getButtonLabel({
                 loading: submitting,
@@ -819,234 +819,402 @@ export function AlternatePathContent({
       className="flex min-h-0 flex-1 flex-col overflow-hidden"
     >
       <div className="min-h-0 flex-1 overflow-y-auto p-3.5 sm:p-6">
-      <div className="mb-3 flex items-start justify-between gap-2">
-        <h3 className="text-base sm:text-lg font-bold leading-snug text-gray-900">
-          {altLoading
-            ? `Finding best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`
-            : `Best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`}
-        </h3>
-        <div
-          className="flex shrink-0 items-center gap-1.5"
-          data-screenshot-exclude=""
-        >
-          {isAdminUser && onShare && (
-            <button
-              type="button"
-              className="rounded-md px-2 py-1 text-sm font-medium text-emerald-700 hover:bg-emerald-50 md:hidden"
-              aria-label="Share journey as image (opens share sheet — choose WhatsApp)"
-              disabled={shareBusy}
-              onClick={() => onShare()}
-            >
-              {shareBusy ? "Sharing…" : "Share"}
-            </button>
-          )}
-          {isAdminUser && onRefresh && (
-            <button
-              type="button"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 shadow-2xs hover:border-blue-300 hover:bg-blue-50/60 hover:text-blue-600 active:scale-95 disabled:opacity-50 transition-all touch-manipulation"
-              aria-label="Refresh tickets from APIs (bypass cache)"
-              title="Admin: Bypass cache & fetch live tickets from APIs"
-              disabled={altLoading || isRefreshing}
-              onClick={() => void onRefresh()}
-            >
-              <RefreshCw
-                className={cn(
-                  "h-3.5 w-3.5 text-slate-500",
-                  (altLoading || isRefreshing) && "animate-spin text-blue-600",
-                )}
-              />
-              <span className="hidden sm:inline">
-                {altLoading || isRefreshing ? "Refreshing…" : "Refresh"}
-              </span>
-            </button>
-          )}
-          <button
-            type="button"
-            className="flex h-9 w-9 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-slate-100 sm:bg-transparent text-slate-500 sm:text-gray-400 hover:bg-slate-200 sm:hover:bg-gray-100 hover:text-gray-600 transition-colors shrink-0"
-            onClick={onClose}
-            aria-label="Close"
+        <div className="mb-3 flex items-start justify-between gap-2">
+          <h3 className="text-base font-bold leading-snug text-gray-900 sm:text-lg">
+            {altLoading
+              ? `Finding best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`
+              : `Best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`}
+          </h3>
+          <div
+            className="flex shrink-0 items-center gap-1.5"
+            data-screenshot-exclude=""
           >
-            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path
-                fillRule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-      {showSearchAllTrains && searchAllTrainsHref && (
-        <div className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5">
-          <span className="text-sm font-semibold text-slate-900">
-            There are no full seats available in this journey
-          </span>
-          <a
-            href={searchAllTrainsHref}
-            rel="nofollow"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-slate-900 px-3.5 py-2 text-sm font-bold text-white transition hover:bg-slate-700"
-          >
-            Find in other trains
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      )}
-      {altLoading && (
-        <AlternatePathProgressFeed
-          events={altProgress}
-          from={fromCode ?? ""}
-          to={toCode ?? ""}
-        />
-      )}
-      {altError && <p className="text-sm text-red-700">{altError}</p>}
-      {altResult && (
-        <div className="space-y-3 text-sm">
-          {/* Live Train Banner */}
-          {(() => {
-            const originTime =
-              altResult.trainOriginDepartureTime && journeyDate
-                ? moment(
-                    `${journeyDate} ${altResult.trainOriginDepartureTime}`,
-                    "YYYY-MM-DD HH:mm",
-                  )
-                : null;
-            if (originTime?.isValid() && moment().isAfter(originTime)) {
-              return (
-                <div className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-emerald-800">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-                  </span>
-                  <span className="text-xs font-bold uppercase tracking-wider">
-                    Live Train in running status
-                  </span>
-                  {altResult.trainOriginCode && (
-                    <span className="text-[10px] opacity-75">
-                      (Started from {altResult.trainOriginCode} at{" "}
-                      {altResult.trainOriginDepartureTime} IST)
-                    </span>
+            {isAdminUser && onShare && (
+              <button
+                type="button"
+                className="rounded-md px-2 py-1 text-sm font-medium text-emerald-700 hover:bg-emerald-50 md:hidden"
+                aria-label="Share journey as image (opens share sheet — choose WhatsApp)"
+                disabled={shareBusy}
+                onClick={() => onShare()}
+              >
+                {shareBusy ? "Sharing…" : "Share"}
+              </button>
+            )}
+            {isAdminUser && onRefresh && (
+              <button
+                type="button"
+                className="shadow-2xs inline-flex touch-manipulation items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 transition-all hover:border-blue-300 hover:bg-blue-50/60 hover:text-blue-600 active:scale-95 disabled:opacity-50"
+                aria-label="Refresh tickets from APIs (bypass cache)"
+                title="Admin: Bypass cache & fetch live tickets from APIs"
+                disabled={altLoading || isRefreshing}
+                onClick={() => void onRefresh()}
+              >
+                <RefreshCw
+                  className={cn(
+                    "h-3.5 w-3.5 text-slate-500",
+                    (altLoading || isRefreshing) &&
+                      "animate-spin text-blue-600",
                   )}
-                </div>
-              );
-            }
-            return null;
-          })()}
-
-          {!altResult.isComplete &&
-            !altResult.legs.some((l) => l.segmentKind === "check_realtime") && (
-              <p className="rounded-md bg-gray-100 px-3 py-2 text-gray-800">
-                Could not build a full path to your destination with the current
-                search.
-              </p>
+                />
+                <span className="hidden sm:inline">
+                  {altLoading || isRefreshing ? "Refreshing…" : "Refresh"}
+                </span>
+              </button>
             )}
-
-          {/* Admin debug trace */}
-          {isAdminUser &&
-            altResult.debugLog &&
-            altResult.debugLog.length > 0 && (
-              <details className="rounded-md border border-gray-200 bg-gray-50 p-3">
-                <summary className="cursor-pointer text-sm font-semibold text-gray-800">
-                  Step-by-step debug trace ({altResult.debugLog.length} lines)
-                </summary>
-                <ol className="mt-2 max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-xs text-gray-700">
-                  {altResult.debugLog.map((line, i) => (
-                    <li key={i} className="whitespace-pre-wrap py-0.5">
-                      {line}
-                    </li>
-                  ))}
-                </ol>
-                <p className="mt-2 text-xs text-gray-500">
-                  Same lines are logged on the API server as{" "}
-                  <code className="rounded bg-gray-200 px-1">
-                    [alternate-paths …]
-                  </code>
-                  .
-                </p>
-              </details>
-            )}
-
-          {/* ── JOURNEY LEGS ── */}
-          <ol
-            className="relative list-none pl-0"
-            role="list"
-            aria-label="Journey segments"
-          >
-            {alternatePathDisplayItems.map((item, i) => {
-              const stepTotal = alternatePathDisplayItems.length;
-              const stepIndex = i + 1;
-              const isLast = i === alternatePathDisplayItems.length - 1;
-
-              /** Count stations between two codes on the route. */
-              const countStationsBetween = (
-                fromStationCode: string,
-                toStationCode: string,
-              ): number | null => {
-                const route = altResult.stationCodesOnRoute;
-                if (!route || route.length === 0) return null;
-                const f = fromStationCode.trim().toUpperCase();
-                const t = toStationCode.trim().toUpperCase();
-                const fi = route.findIndex((c) => c.toUpperCase() === f);
-                const ti = route.findIndex((c) => c.toUpperCase() === t);
-                if (fi < 0 || ti < 0 || ti <= fi) return null;
-                const between = ti - fi - 1;
-                return between > 0 ? between : null;
-              };
-
-              if (item.kind === "single") {
-                const leg = item.leg;
-                const isConfirmed = leg.segmentKind === "confirmed";
-                const dep = formatTimeAmPm(leg.departureTime);
-                const arr = formatTimeAmPm(leg.arrivalTime);
-                const stationsBetween = countStationsBetween(leg.from, leg.to);
-                const timeLine =
-                  dep && arr
-                    ? `${dep} → ${arr}`
-                    : dep
-                      ? `Dep ${dep}`
-                      : arr
-                        ? `Arr ${arr}`
-                        : null;
-
-                const classOptions = getLegClassOptions(leg);
-
+            <button
+              type="button"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-colors hover:bg-slate-200 hover:text-gray-600 sm:h-8 sm:w-8 sm:bg-transparent sm:text-gray-400 sm:hover:bg-gray-100"
+              onClick={onClose}
+              aria-label="Close"
+            >
+              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  fillRule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        {showSearchAllTrains && searchAllTrainsHref && (
+          <div className="mb-4 flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5">
+            <span className="text-sm font-semibold text-slate-900">
+              There are no full seats available in this journey
+            </span>
+            <a
+              href={searchAllTrainsHref}
+              rel="nofollow"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-slate-900 px-3.5 py-2 text-sm font-bold text-white transition hover:bg-slate-700"
+            >
+              Find in other trains
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        )}
+        {altLoading && (
+          <AlternatePathProgressFeed
+            events={altProgress}
+            from={fromCode ?? ""}
+            to={toCode ?? ""}
+          />
+        )}
+        {altError && <p className="text-sm text-red-700">{altError}</p>}
+        {altResult && (
+          <div className="space-y-3 text-sm">
+            {/* Live Train Banner */}
+            {(() => {
+              const originTime =
+                altResult.trainOriginDepartureTime && journeyDate
+                  ? moment(
+                      `${journeyDate} ${altResult.trainOriginDepartureTime}`,
+                      "YYYY-MM-DD HH:mm",
+                    )
+                  : null;
+              if (originTime?.isValid() && moment().isAfter(originTime)) {
                 return (
-                  <li key={i} className="relative flex gap-0">
-                    {/* Timeline connector (desktop only, hidden on mobile to maximize card width) */}
-                    <div className="hidden sm:flex w-8 shrink-0 flex-col items-center sm:w-10">
-                      <span
-                        className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold tabular-nums sm:h-8 sm:w-8 sm:text-xs ${
+                  <div className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-emerald-800">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                    </span>
+                    <span className="text-xs font-bold uppercase tracking-wider">
+                      Live Train in running status
+                    </span>
+                    {altResult.trainOriginCode && (
+                      <span className="text-[10px] opacity-75">
+                        (Started from {altResult.trainOriginCode} at{" "}
+                        {altResult.trainOriginDepartureTime} IST)
+                      </span>
+                    )}
+                  </div>
+                );
+              }
+              return null;
+            })()}
+
+            {!altResult.isComplete &&
+              !altResult.legs.some(
+                (l) => l.segmentKind === "check_realtime",
+              ) && (
+                <p className="rounded-md bg-gray-100 px-3 py-2 text-gray-800">
+                  Could not build a full path to your destination with the
+                  current search.
+                </p>
+              )}
+
+            {/* Admin debug trace */}
+            {isAdminUser &&
+              altResult.debugLog &&
+              altResult.debugLog.length > 0 && (
+                <details className="rounded-md border border-gray-200 bg-gray-50 p-3">
+                  <summary className="cursor-pointer text-sm font-semibold text-gray-800">
+                    Step-by-step debug trace ({altResult.debugLog.length} lines)
+                  </summary>
+                  <ol className="mt-2 max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-xs text-gray-700">
+                    {altResult.debugLog.map((line, i) => (
+                      <li key={i} className="whitespace-pre-wrap py-0.5">
+                        {line}
+                      </li>
+                    ))}
+                  </ol>
+                  <p className="mt-2 text-xs text-gray-500">
+                    Same lines are logged on the API server as{" "}
+                    <code className="rounded bg-gray-200 px-1">
+                      [alternate-paths …]
+                    </code>
+                    .
+                  </p>
+                </details>
+              )}
+
+            {/* ── JOURNEY LEGS ── */}
+            <ol
+              className="relative list-none pl-0"
+              role="list"
+              aria-label="Journey segments"
+            >
+              {alternatePathDisplayItems.map((item, i) => {
+                const stepTotal = alternatePathDisplayItems.length;
+                const stepIndex = i + 1;
+                const isLast = i === alternatePathDisplayItems.length - 1;
+
+                /** Count stations between two codes on the route. */
+                const countStationsBetween = (
+                  fromStationCode: string,
+                  toStationCode: string,
+                ): number | null => {
+                  const route = altResult.stationCodesOnRoute;
+                  if (!route || route.length === 0) return null;
+                  const f = fromStationCode.trim().toUpperCase();
+                  const t = toStationCode.trim().toUpperCase();
+                  const fi = route.findIndex((c) => c.toUpperCase() === f);
+                  const ti = route.findIndex((c) => c.toUpperCase() === t);
+                  if (fi < 0 || ti < 0 || ti <= fi) return null;
+                  const between = ti - fi - 1;
+                  return between > 0 ? between : null;
+                };
+
+                if (item.kind === "single") {
+                  const leg = item.leg;
+                  const isConfirmed = leg.segmentKind === "confirmed";
+                  const dep = formatTimeAmPm(leg.departureTime);
+                  const arr = formatTimeAmPm(leg.arrivalTime);
+                  const stationsBetween = countStationsBetween(
+                    leg.from,
+                    leg.to,
+                  );
+                  const timeLine =
+                    dep && arr
+                      ? `${dep} → ${arr}`
+                      : dep
+                        ? `Dep ${dep}`
+                        : arr
+                          ? `Arr ${arr}`
+                          : null;
+
+                  const classOptions = getLegClassOptions(leg);
+
+                  return (
+                    <li key={i} className="relative flex gap-0">
+                      {/* Timeline connector (desktop only, hidden on mobile to maximize card width) */}
+                      <div className="hidden w-8 shrink-0 flex-col items-center sm:flex sm:w-10">
+                        <span
+                          className={`relative z-10 flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-bold tabular-nums sm:h-8 sm:w-8 sm:text-xs ${
+                            isConfirmed
+                              ? "bg-emerald-600 text-white ring-2 ring-emerald-200"
+                              : "bg-slate-500 text-white ring-2 ring-slate-200"
+                          }`}
+                        >
+                          {stepIndex}
+                        </span>
+                        {!isLast && (
+                          <div className="w-0.5 flex-1 bg-gray-200" />
+                        )}
+                      </div>
+                      {/* Card */}
+                      <div
+                        className={`mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border ${
                           isConfirmed
-                            ? "bg-emerald-600 text-white ring-2 ring-emerald-200"
-                            : "bg-slate-500 text-white ring-2 ring-slate-200"
+                            ? "border-emerald-200 bg-white"
+                            : "border-slate-300 bg-slate-50/50 shadow-sm"
                         }`}
                       >
+                        {/* Leg header */}
+                        <div
+                          className={`flex flex-wrap items-center gap-x-2 gap-y-1.5 px-3 py-2 sm:px-4 ${
+                            isConfirmed
+                              ? "border-b border-emerald-100 bg-emerald-50/80"
+                              : "border-b border-slate-200 bg-slate-100/50"
+                          }`}
+                        >
+                          <span
+                            className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide sm:text-[11px] ${
+                              isConfirmed
+                                ? "bg-emerald-600 text-white"
+                                : "bg-slate-500 text-white"
+                            }`}
+                          >
+                            Leg {stepIndex} of {stepTotal}
+                          </span>
+                          {stationsBetween != null && (
+                            <button
+                              onClick={() => {
+                                onOpenSchedule(
+                                  altResult.trainNumber,
+                                  leg.from,
+                                  leg.to,
+                                );
+                              }}
+                              className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 transition-colors hover:text-blue-800"
+                            >
+                              {stationsBetween}{" "}
+                              {stationsBetween === 1 ? "Station" : "Stations"}
+                            </button>
+                          )}
+                          <span className="text-xs font-bold tabular-nums text-gray-900 sm:text-sm">
+                            {getStationDisplayName(
+                              leg.from,
+                              altResult.stationNameMap,
+                            )}{" "}
+                            →{" "}
+                            {getStationDisplayName(
+                              leg.to,
+                              altResult.stationNameMap,
+                            )}
+                          </span>
+                          {stepIndex === 1 &&
+                            fromCode &&
+                            leg.from.toUpperCase() !==
+                              fromCode.toUpperCase() && (
+                              <span className="shrink-0 rounded-md border border-amber-200/60 bg-amber-50 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm">
+                                💡 Book from earlier station: {leg.from}
+                              </span>
+                            )}
+                          {isLast &&
+                            toCode &&
+                            leg.to.toUpperCase() !== toCode.toUpperCase() && (
+                              <span className="shrink-0 rounded-md border border-amber-200/60 bg-amber-50 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm">
+                                💡 Book to further station: {leg.to}
+                              </span>
+                            )}
+                          {timeLine && (
+                            <span className="text-[11px] tabular-nums text-gray-500 sm:text-xs">
+                              {timeLine}
+                              {leg.durationMinutes != null && (
+                                <span className="text-gray-400">
+                                  {" · "}
+                                  {formatDurationMinutes(leg.durationMinutes)}
+                                </span>
+                              )}
+                            </span>
+                          )}
+                        </div>
+                        {/* Class rows for confirmed */}
+                        {isConfirmed && classOptions.length > 0 && (
+                          <div className="min-w-0 divide-y divide-gray-100">
+                            {classOptions.map((opt) => {
+                              const optHref = irctcBookingRedirect({
+                                from: leg.from,
+                                to: leg.to,
+                                trainNo: altResult.trainNumber,
+                                classCode: opt.travelClass,
+                              });
+                              return (
+                                <div
+                                  key={opt.travelClass}
+                                  className="flex items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4"
+                                >
+                                  <div className="flex min-w-0 items-center gap-x-2.5 gap-y-0.5">
+                                    <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-bold text-gray-700">
+                                      {opt.travelClass}
+                                    </span>
+                                    <span className="text-xs font-semibold text-emerald-800 sm:text-sm">
+                                      {opt.availabilityDisplayName ??
+                                        opt.railDataStatus ??
+                                        "Available"}
+                                    </span>
+                                    {hasClassFare(opt) && (
+                                      <span className="text-xs font-bold tabular-nums text-gray-900 sm:text-sm">
+                                        ₹{opt.fare.toFixed(0)}
+                                      </span>
+                                    )}
+                                  </div>
+                                  {canStartBooking ? (
+                                    <span className="shrink-0 rounded-md border border-emerald-200/80 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-800">
+                                      Available
+                                    </span>
+                                  ) : (
+                                    <a
+                                      href={optHref}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      onClick={() =>
+                                        trackAnalyticsEvent({
+                                          name: "alternate_paths_irctc_clicked",
+                                          properties: {
+                                            train_number: altResult.trainNumber,
+                                            from_code: leg.from,
+                                            to_code: leg.to,
+                                            class_code: opt.travelClass,
+                                            trainStartDate:
+                                              altResult.trainStartDate ??
+                                              undefined,
+                                            ...(source ? { source } : {}),
+                                          },
+                                        })
+                                      }
+                                      className="shrink-0 rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-blue-700 active:scale-[0.98] sm:px-4 sm:py-2"
+                                    >
+                                      Book Now
+                                    </a>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                        {/* No tickets row */}
+                        {!isConfirmed && (
+                          <CompactLegChartCta
+                            trainNumber={altResult.trainNumber}
+                            trainName={altTrainName}
+                            journeyDate={leg.boardingDate || journeyDate || ""}
+                            legFrom={leg.from}
+                            legTo={leg.to}
+                            classCode={
+                              leg.travelClass ?? altAvlClasses?.[0] ?? "SL"
+                            }
+                            stationNameMap={altResult.stationNameMap}
+                            trainStartDate={altResult.trainStartDate}
+                          />
+                        )}
+                      </div>
+                    </li>
+                  );
+                }
+
+                // Collapsed unavailable span (≥2 chained check_realtime legs)
+                const timingSummary = collapsedAlternatePathTimingSummary(
+                  item.legs,
+                );
+                const stationsBetween = countStationsBetween(
+                  item.from,
+                  item.to,
+                );
+                return (
+                  <li key={i} className="relative flex gap-0">
+                    {/* Timeline connector (desktop only) */}
+                    <div className="hidden w-8 shrink-0 flex-col items-center sm:flex sm:w-10">
+                      <span className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-slate-500 text-[11px] font-bold tabular-nums text-white ring-2 ring-slate-200 sm:h-8 sm:w-8 sm:text-xs">
                         {stepIndex}
                       </span>
                       {!isLast && <div className="w-0.5 flex-1 bg-gray-200" />}
                     </div>
                     {/* Card */}
-                    <div
-                      className={`mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border ${
-                        isConfirmed
-                          ? "border-emerald-200 bg-white"
-                          : "border-slate-300 bg-slate-50/50 shadow-sm"
-                      }`}
-                    >
-                      {/* Leg header */}
-                      <div
-                        className={`flex flex-wrap items-center gap-x-2 gap-y-1.5 px-3 py-2 sm:px-4 ${
-                          isConfirmed
-                            ? "border-b border-emerald-100 bg-emerald-50/80"
-                            : "border-b border-slate-200 bg-slate-100/50"
-                        }`}
-                      >
-                        <span
-                          className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wide ${
-                            isConfirmed
-                              ? "bg-emerald-600 text-white"
-                              : "bg-slate-500 text-white"
-                          }`}
-                        >
+                    <div className="mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border border-slate-300 bg-white shadow-sm">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 border-b border-slate-200 bg-slate-50/60 px-3 py-2 sm:px-4">
+                        <span className="shrink-0 rounded-full bg-slate-500 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white sm:text-[11px]">
                           Leg {stepIndex} of {stepTotal}
                         </span>
                         {stationsBetween != null && (
@@ -1054,227 +1222,71 @@ export function AlternatePathContent({
                             onClick={() => {
                               onOpenSchedule(
                                 altResult.trainNumber,
-                                leg.from,
-                                leg.to,
+                                item.from,
+                                item.to,
                               );
                             }}
-                            className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 hover:text-blue-800 transition-colors"
+                            className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 transition-colors hover:text-blue-800"
                           >
                             {stationsBetween}{" "}
                             {stationsBetween === 1 ? "Station" : "Stations"}
                           </button>
                         )}
-                        <span className="font-bold text-gray-900 tabular-nums text-xs sm:text-sm">
+                        <span className="text-xs font-bold tabular-nums text-gray-900 sm:text-sm">
                           {getStationDisplayName(
-                            leg.from,
+                            item.from,
                             altResult.stationNameMap,
                           )}{" "}
                           →{" "}
                           {getStationDisplayName(
-                            leg.to,
+                            item.to,
                             altResult.stationNameMap,
                           )}
                         </span>
-                        {stepIndex === 1 &&
-                          fromCode &&
-                          leg.from.toUpperCase() !== fromCode.toUpperCase() && (
-                            <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm">
-                              💡 Book from earlier station: {leg.from}
-                            </span>
-                          )}
-                        {isLast &&
-                          toCode &&
-                          leg.to.toUpperCase() !== toCode.toUpperCase() && (
-                            <span className="shrink-0 rounded-md bg-amber-50 border border-amber-200/60 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 shadow-sm">
-                              💡 Book to further station: {leg.to}
-                            </span>
-                          )}
-                        {timeLine && (
-                          <span className="text-[11px] sm:text-xs tabular-nums text-gray-500">
-                            {timeLine}
-                            {leg.durationMinutes != null && (
+                        {timingSummary && (
+                          <span className="text-[11px] tabular-nums text-gray-500 sm:text-xs">
+                            {timingSummary.timePart}
+                            {timingSummary.durationLabel && (
                               <span className="text-gray-400">
-                                {" · "}
-                                {formatDurationMinutes(leg.durationMinutes)}
+                                {timingSummary.timePart ? " · " : ""}
+                                {timingSummary.durationLabel}
                               </span>
                             )}
                           </span>
                         )}
                       </div>
-                      {/* Class rows for confirmed */}
-                      {isConfirmed && classOptions.length > 0 && (
-                        <div className="min-w-0 divide-y divide-gray-100">
-                          {classOptions.map((opt) => {
-                            const optHref = irctcBookingRedirect({
-                              from: leg.from,
-                              to: leg.to,
-                              trainNo: altResult.trainNumber,
-                              classCode: opt.travelClass,
-                            });
-                            return (
-                              <div
-                                key={opt.travelClass}
-                                className="flex items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5 sm:px-4"
-                              >
-                                <div className="flex items-center gap-x-2.5 gap-y-0.5 min-w-0">
-                                  <span className="shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs font-bold text-gray-700">
-                                    {opt.travelClass}
-                                  </span>
-                                  <span className="text-xs sm:text-sm font-semibold text-emerald-800">
-                                    {opt.availabilityDisplayName ??
-                                      opt.railDataStatus ??
-                                      "Available"}
-                                  </span>
-                                  {hasClassFare(opt) && (
-                                    <span className="text-xs sm:text-sm font-bold text-gray-900 tabular-nums">
-                                      ₹{opt.fare.toFixed(0)}
-                                    </span>
-                                  )}
-                                </div>
-                                {canStartBooking ? (
-                                  <span className="shrink-0 rounded-md border border-emerald-200/80 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-800">
-                                    Available
-                                  </span>
-                                ) : (
-                                  <a
-                                    href={optHref}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={() =>
-                                      trackAnalyticsEvent({
-                                        name: "alternate_paths_irctc_clicked",
-                                        properties: {
-                                          train_number: altResult.trainNumber,
-                                          from_code: leg.from,
-                                          to_code: leg.to,
-                                          class_code: opt.travelClass,
-                                          trainStartDate:
-                                            altResult.trainStartDate ??
-                                            undefined,
-                                          ...(source ? { source } : {}),
-                                        },
-                                      })
-                                    }
-                                    className="shrink-0 rounded-lg bg-blue-600 px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs font-bold text-white shadow-sm hover:bg-blue-700 active:scale-[0.98] transition-all"
-                                  >
-                                    Book Now
-                                  </a>
-                                )}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                      {/* No tickets row */}
-                      {!isConfirmed && (
-                        <CompactLegChartCta
-                          trainNumber={altResult.trainNumber}
-                          trainName={altTrainName}
-                          journeyDate={leg.boardingDate || journeyDate || ""}
-                          legFrom={leg.from}
-                          legTo={leg.to}
-                          classCode={
-                            leg.travelClass ?? altAvlClasses?.[0] ?? "SL"
-                          }
-                          stationNameMap={altResult.stationNameMap}
-                          trainStartDate={altResult.trainStartDate}
-                        />
-                      )}
+                      <CompactLegChartCta
+                        trainNumber={altResult.trainNumber}
+                        trainName={altTrainName}
+                        journeyDate={
+                          item.legs[0]?.boardingDate || journeyDate || ""
+                        }
+                        legFrom={item.from}
+                        legTo={item.to}
+                        classCode={altAvlClasses?.[0] ?? "SL"}
+                        stationNameMap={altResult.stationNameMap}
+                        trainStartDate={altResult.trainStartDate}
+                      />
                     </div>
                   </li>
                 );
-              }
-
-              // Collapsed unavailable span (≥2 chained check_realtime legs)
-              const timingSummary = collapsedAlternatePathTimingSummary(
-                item.legs,
-              );
-              const stationsBetween = countStationsBetween(item.from, item.to);
-              return (
-                <li key={i} className="relative flex gap-0">
-                  {/* Timeline connector (desktop only) */}
-                  <div className="hidden sm:flex w-8 shrink-0 flex-col items-center sm:w-10">
-                    <span className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-slate-500 text-[11px] font-bold tabular-nums text-white ring-2 ring-slate-200 sm:h-8 sm:w-8 sm:text-xs">
-                      {stepIndex}
-                    </span>
-                    {!isLast && <div className="w-0.5 flex-1 bg-gray-200" />}
-                  </div>
-                  {/* Card */}
-                  <div className="mb-3 min-w-0 flex-1 overflow-hidden rounded-lg border border-slate-300 bg-white shadow-sm">
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 border-b border-slate-200 bg-slate-50/60 px-3 py-2 sm:px-4">
-                      <span className="shrink-0 rounded-full bg-slate-500 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wide text-white">
-                        Leg {stepIndex} of {stepTotal}
-                      </span>
-                      {stationsBetween != null && (
-                        <button
-                          onClick={() => {
-                            onOpenSchedule(
-                              altResult.trainNumber,
-                              item.from,
-                              item.to,
-                            );
-                          }}
-                          className="text-[10px] font-bold uppercase tracking-wider text-blue-600/80 hover:text-blue-800 transition-colors"
-                        >
-                          {stationsBetween}{" "}
-                          {stationsBetween === 1 ? "Station" : "Stations"}
-                        </button>
-                      )}
-                      <span className="font-bold text-gray-900 tabular-nums text-xs sm:text-sm">
-                        {getStationDisplayName(
-                          item.from,
-                          altResult.stationNameMap,
-                        )}{" "}
-                        →{" "}
-                        {getStationDisplayName(
-                          item.to,
-                          altResult.stationNameMap,
-                        )}
-                      </span>
-                      {timingSummary && (
-                        <span className="text-[11px] sm:text-xs tabular-nums text-gray-500">
-                          {timingSummary.timePart}
-                          {timingSummary.durationLabel && (
-                            <span className="text-gray-400">
-                              {timingSummary.timePart ? " · " : ""}
-                              {timingSummary.durationLabel}
-                            </span>
-                          )}
-                        </span>
-                      )}
-                    </div>
-                    <CompactLegChartCta
-                      trainNumber={altResult.trainNumber}
-                      trainName={altTrainName}
-                      journeyDate={
-                        item.legs[0]?.boardingDate || journeyDate || ""
-                      }
-                      legFrom={item.from}
-                      legTo={item.to}
-                      classCode={altAvlClasses?.[0] ?? "SL"}
-                      stationNameMap={altResult.stationNameMap}
-                      trainStartDate={altResult.trainStartDate}
-                    />
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-      )}
+              })}
+            </ol>
+          </div>
+        )}
       </div>
 
       {/* Total fare and booking for journeys with available legs. */}
       {Boolean(altResult) &&
         (canStartBooking || altResult!.totalFare != null) &&
         confirmedLegCount >= 1 && (
-          <div className="shrink-0 border-t border-slate-200 bg-white px-4 py-3 sm:px-6 shadow-[0_-4px_16px_rgba(0,0,0,0.06)] z-20 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <div className="z-20 shrink-0 border-t border-slate-200 bg-white px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_16px_rgba(0,0,0,0.06)] sm:px-6">
             <div className="flex items-center justify-between gap-3">
               <div className="min-w-0 flex-1">
-                <span className="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 truncate">
+                <span className="block truncate text-[10px] font-bold uppercase tracking-wider text-slate-500 sm:text-xs">
                   Total ticket fare
                 </span>
-                <span className="text-lg sm:text-2xl font-black text-slate-900 tabular-nums truncate block">
+                <span className="block truncate text-lg font-black tabular-nums text-slate-900 sm:text-2xl">
                   {altResult!.totalFare === null
                     ? "Select classes at booking"
                     : `From ₹${altResult!.totalFare.toLocaleString("en-IN")}`}
@@ -1304,14 +1316,14 @@ export function AlternatePathContent({
                       stationNameMap: altResult.stationNameMap,
                     });
                   }}
-                  className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-blue-600 px-4 py-2.5 sm:px-6 sm:py-3 text-sm font-bold text-white shadow-md hover:bg-blue-700 active:scale-[0.99] transition cursor-pointer"
+                  className="inline-flex shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-blue-700 active:scale-[0.99] sm:px-6 sm:py-3"
                 >
                   <span>Book Now</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </button>
               )}
             </div>
-            <div className="mt-2 pt-1.5 border-t border-slate-100 flex items-center justify-center gap-1.5 text-center text-[11px] sm:text-xs font-medium text-slate-500">
+            <div className="mt-2 flex items-center justify-center gap-1.5 border-t border-slate-100 pt-1.5 text-center text-[11px] font-medium text-slate-500 sm:text-xs">
               <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-600" />
               <span>LastBerth is an official IRCTC Agent</span>
             </div>

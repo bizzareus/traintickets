@@ -318,7 +318,9 @@ export function useAlternatePaths(
       const toCode =
         args.to?.trim().toUpperCase() ||
         args.result.legs?.[args.result.legs.length - 1]?.to ||
-        args.result.stationCodesOnRoute?.[args.result.stationCodesOnRoute.length - 1];
+        args.result.stationCodesOnRoute?.[
+          args.result.stationCodesOnRoute.length - 1
+        ];
       const targetDate = args.date || args.result.trainStartDate;
       if (fromCode && toCode && targetDate) {
         activeParamsRef.current = {
@@ -353,12 +355,9 @@ export function useAlternatePaths(
       trainStartDate: current.trainStartDate,
       avlClasses: current.avlClasses,
     };
-    await findAlternates(
-      mockTrain,
-      current.focusTravelClass,
-      current.date,
-      { forceRefresh: true },
-    );
+    await findAlternates(mockTrain, current.focusTravelClass, current.date, {
+      forceRefresh: true,
+    });
   }, [findAlternates]);
 
   return {

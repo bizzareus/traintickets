@@ -755,8 +755,7 @@ export class BookingV2Service {
   ): Promise<void> {
     if (!filtered || typeof filtered !== 'object') return;
     const data = (filtered as Record<string, unknown>).data as
-      | Record<string, unknown>
-      | undefined;
+      Record<string, unknown> | undefined;
     if (
       !data ||
       !Array.isArray(data.trainList) ||

@@ -29,7 +29,10 @@ export async function shareDomElementAsPng(
   try {
     const html2canvas = (await import("html2canvas")).default;
     const opts: Partial<Html2CanvasOptions> = {
-      scale: Math.min(2, typeof window !== "undefined" ? window.devicePixelRatio || 2 : 2),
+      scale: Math.min(
+        2,
+        typeof window !== "undefined" ? window.devicePixelRatio || 2 : 2,
+      ),
       useCORS: true,
       logging: false,
       ignoreElements: (node) =>

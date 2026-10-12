@@ -22,7 +22,7 @@ tags:
 
 ---
 
-Every year, thousands of Indian Railways passengers miss their trains due to traffic jams, late connecting flights, or last-minute confusion at the platform. When this happens, a common rumor surfaces: the "Two-Stop Rule," which supposedly guarantees that your seat cannot be given away until the train has crossed two stations or one hour has passed. 
+Every year, thousands of Indian Railways passengers miss their trains due to traffic jams, late connecting flights, or last-minute confusion at the platform. When this happens, a common rumor surfaces: the "Two-Stop Rule," which supposedly guarantees that your seat cannot be given away until the train has crossed two stations or one hour has passed.
 
 But does this rule actually exist in the modern age of digital charts and real-time database syncing? Relying on outdated advice can cost you your seat, your money, and lead to heavy penalties. As a passenger, understanding how ticket collectors allocate missed berths is crucial for saving your journey.
 
@@ -40,7 +40,7 @@ Historically, this was a matter of courtesy. It allowed passengers who missed th
 
 If you miss your train at the boarding station, the TTE will eventually mark your seat as a "No Show" (Not Turned Up) in the database. Once marked vacant, the system or TTE will immediately reallocate the berth to RAC or waitlisted passengers to ensure optimal seat occupancy during the journey.
 
-Unlike a waitlisted ticket—where **WL full form is Waiting List**—a confirmed ticket does not automatically cancel. When you book a ticket and it is waitlisted, it progresses through a strict sequence: 
+Unlike a waitlisted ticket—where **WL full form is Waiting List**—a confirmed ticket does not automatically cancel. When you book a ticket and it is waitlisted, it progresses through a strict sequence:
 
 $$\text{WL (Waiting List)} \rightarrow \text{RAC (Reservation Against Cancellation)} \rightarrow \text{Confirmed}$$
 
@@ -60,9 +60,9 @@ If you manage to overtake the train and board at the next stop, you can occupy y
 
 Handheld Terminals (HHTs) have effectively replaced the physical two-stop courtesy rule with real-time digital charts. TTEs now update passenger attendance instantly. If a passenger is absent at their boarding station, the seat is immediately marked vacant on the server, allowing it to be instantly allocated to waitlisted or RAC travelers.
 
-With the absolute digitisation of Indian Railways, TTEs carry iPad-like Handheld Terminals (HHTs) connected to the central server. The moment the train departs from a station, the TTE checks the berths and updates the status of absent passengers. 
+With the absolute digitisation of Indian Railways, TTEs carry iPad-like Handheld Terminals (HHTs) connected to the central server. The moment the train departs from a station, the TTE checks the berths and updates the status of absent passengers.
 
-Once marked as "Not Turned Up" (NTU) on the HHT, the berth is released back to the central passenger reservation system (PRS). The system then automatically allocates it to waitlisted passengers at the next station or RAC passengers already on the train. Because of this digital speed, the traditional "two-station grace period" is no longer guaranteed. 
+Once marked as "Not Turned Up" (NTU) on the HHT, the berth is released back to the central passenger reservation system (PRS). The system then automatically allocates it to waitlisted passengers at the next station or RAC passengers already on the train. Because of this digital speed, the traditional "two-station grace period" is no longer guaranteed.
 
 ---
 
@@ -89,16 +89,21 @@ If you are looking for a last-minute ticket, always check for a `"current availa
 ## Common Questions About Missed Trains (FAQ)
 
 ### What happens if I miss my train and board from the next station?
+
 If you board from the next station, you can travel on your ticket only if the TTE has not yet reallocated your seat. However, if the TTE has already marked you as a "no-show" on their handheld terminal and assigned the berth to another passenger, you will lose your seat and may have to travel in the general compartment.
 
 ### Can I get a refund if I miss my train?
+
 No, you cannot get a refund if you miss your train. Under official IRCTC cancellation rules, no refund is admissible on confirmed tickets if not cancelled or if a TDR is not filed at least 4 hours before scheduled departure. Once the train departs, the entire fare is forfeited.
 
 ### Can the TTE give my seat to someone else immediately?
+
 Yes, with the introduction of digital Handheld Terminals (HHTs), the TTE can mark you absent and reallocate your seat to RAC or waitlisted passengers immediately after the train leaves your scheduled boarding station. The traditional two-stop grace period is no longer officially protected.
 
 ### Can I travel in another train with a missed train ticket?
+
 No, you cannot travel on another train using a ticket booked for a missed train. A ticket is valid only for the specific train, date, and class for which it was purchased. Boarding another train with it will be treated as traveling without a ticket, and you will be fined.
 
 ### How do I change my boarding station last minute?
+
 You can change your boarding station online through the IRCTC app or website up to the preparation of the second reservation chart, approximately 30 minutes before scheduled train departure. This change is permitted once per booking.

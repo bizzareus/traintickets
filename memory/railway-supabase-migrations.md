@@ -1,7 +1,7 @@
 ---
 name: railway-supabase-migrations
 description: "Why `prisma migrate deploy` can't run from Railway for traintickets, and how prod deploys/migrations actually work now."
-metadata: 
+metadata:
   node_type: memory
   type: project
   originSessionId: 763704c5-3b57-4464-a071-104d97dadd34

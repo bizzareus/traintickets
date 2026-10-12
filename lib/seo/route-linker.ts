@@ -55,13 +55,15 @@ function getRouteRegex(): RegExp {
   if (cachedRouteRegex) return cachedRouteRegex;
 
   // Sort by length descending to match longer specific phrases first
-  const phrases = Object.keys(ROUTE_PHRASE_MAP).sort((a, b) => b.length - a.length);
+  const phrases = Object.keys(ROUTE_PHRASE_MAP).sort(
+    (a, b) => b.length - a.length,
+  );
   const escaped = phrases.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
 
   // Match: code blocks (`...`), markdown links (`[...]`), headers (`#...`), or standalone route phrase
   cachedRouteRegex = new RegExp(
     `\`[^\`]*\`|\\[[^\\]]*\\]\\([^\\)]*\\)|^#{1,6}\\s+.*$|\\b(${escaped.join("|")})\\b`,
-    "gim"
+    "gim",
   );
   return cachedRouteRegex;
 }

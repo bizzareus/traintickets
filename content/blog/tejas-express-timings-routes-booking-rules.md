@@ -35,7 +35,7 @@ Let’s dive into how booking, current availability, and refunds work on the pre
 
 **Tejas Express general tickets can be booked online via the IRCTC app or website starting at 8:00 AM daily up to 60 days in advance (ARP). Unlike standard trains, there is no Tatkal or Premium Tatkal quota for Tejas Express bookings.**
 
-While standard Indian Railways services have a general Advance Reservation Period (ARP) of 60 days (reduced from 120 days in late 2024), the premium Tejas Express operates on the same **60-day booking window**. Booking opens daily at 8:00 AM. 
+While standard Indian Railways services have a general Advance Reservation Period (ARP) of 60 days (reduced from 120 days in late 2024), the premium Tejas Express operates on the same **60-day booking window**. Booking opens daily at 8:00 AM.
 
 However, the most critical difference is that **Tejas Express has no Tatkal or Premium Tatkal quotas**. There are no last-minute 10:00 AM or 11:00 AM Tatkal windows. Every seat on the train is sold under the General Quota or specific regional quotas (like Ladies or Foreign Tourists). If you need to travel on short notice, your best bet is checking general availability or waiting for the current booking window to open.
 
@@ -45,7 +45,7 @@ However, the most critical difference is that **Tejas Express has no Tatkal or P
 
 **Current availability for Tejas Express opens immediately after the first reservation chart preparation, which is about 8 hours before departure, and remains open until 5 minutes before scheduled departure.**
 
-If you missed the general booking window and did not secure a confirmed seat, current availability is your final option. After the first reservation chart is prepared (typically 8 hours before the train departs from its originating station), all unsold berths across different quotas (such as Ladies, Senior Citizens, or Duty Passes) are merged into a single pool. 
+If you missed the general booking window and did not secure a confirmed seat, current availability is your final option. After the first reservation chart is prepared (typically 8 hours before the train departs from its originating station), all unsold berths across different quotas (such as Ladies, Senior Citizens, or Duty Passes) are merged into a single pool.
 
 These seats are offered as **current available tickets** on the IRCTC app or website. Unlike standard trains where current booking closes 30 minutes before departure, Tejas Express allows you to book these seats online up to **5 minutes before the scheduled departure** of the train. If you check current booking and find no seats left, you can use the LastBerth platform to find alternative arrangements before the train departs.
 
@@ -64,7 +64,7 @@ Under Indian Railways' refund rules, confirmed ticket cancellation charges are s
 
 Unlike standard trains, the Tejas Express does not operate with an RAC (Reservation Against Cancellation) system. Tickets are issued as either confirmed or waitlisted (WL). If you hold an e-ticket that remains waitlisted (e.g., in position queues like `WL/1` or `WL/10`) after chart preparation, the system automatically cancels it and refunds the fare (minus the convenience fee) to your bank account within 3–5 working days. You cannot board the train with a waitlisted e-ticket.
 
-*Important Note:* The delay compensation policy (which refunded ₹100 for delays over one hour and ₹250 for delays over two hours) was **discontinued by IRCTC on February 15, 2024**. Automatic financial payouts for delayed journeys are no longer active.
+_Important Note:_ The delay compensation policy (which refunded ₹100 for delays over one hour and ₹250 for delays over two hours) was **discontinued by IRCTC on February 15, 2024**. Automatic financial payouts for delayed journeys are no longer active.
 
 ---
 
@@ -76,10 +76,10 @@ Fares on the Tejas Express are structured around two seating classes: **AC Chair
 
 Below is an overview of the catering and fare details:
 
-| Class | Seating Layout | Food Option | Menu Highlights |
-| :--- | :--- | :--- | :--- |
-| **AC Chair Car (CC)** | 3x2 Seats | Optional (Add-on charge) | Morning tea, packaged breakfast, evening snacks, standard dinner |
-| **Executive Chair Car (EC)** | 2x2 Seats | Optional (Add-on charge) | Premium breakfast/dinner, organic juices, cornflakes, premium sweets |
+| Class                        | Seating Layout | Food Option              | Menu Highlights                                                      |
+| :--------------------------- | :------------- | :----------------------- | :------------------------------------------------------------------- |
+| **AC Chair Car (CC)**        | 3x2 Seats      | Optional (Add-on charge) | Morning tea, packaged breakfast, evening snacks, standard dinner     |
+| **Executive Chair Car (EC)** | 2x2 Seats      | Optional (Add-on charge) | Premium breakfast/dinner, organic juices, cornflakes, premium sweets |
 
 If you select the food option during booking, the catering charges are included in your ticket. For passengers who choose to opt out, the fare is reduced by the catering component. Water bottles and newspaper services are provided to all passengers free of charge.
 

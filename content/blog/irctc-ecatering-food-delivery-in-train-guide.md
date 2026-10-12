@@ -10,7 +10,7 @@ tags:
 ---
 
 > **Need seat info or PNR status before ordering food?** Check your PNR status on [Smart Seats](/), and use [Get Confirmed Tickets](/) to verify your coach position before selecting a station stop for e-Catering food delivery.
-Long train journeys in India have a charm of their own. You watch the countryside roll by, listen to the steady clatter of the tracks, and buy tea from vendors at every station. But let's be honest about the food. Pantry car meals often taste bland, look greasy, and leave you feeling worried about hygiene. Fortunately, you don't have to rely on pantry cars anymore. IRCTC e-Catering lets you order hot, fresh meals from actual restaurants and get them delivered straight to your train seat. Here is how it works, what rules you need to know, and which apps actually deliver.
+> Long train journeys in India have a charm of their own. You watch the countryside roll by, listen to the steady clatter of the tracks, and buy tea from vendors at every station. But let's be honest about the food. Pantry car meals often taste bland, look greasy, and leave you feeling worried about hygiene. Fortunately, you don't have to rely on pantry cars anymore. IRCTC e-Catering lets you order hot, fresh meals from actual restaurants and get them delivered straight to your train seat. Here is how it works, what rules you need to know, and which apps actually deliver.
 
 ## How to Order Food in Train Online Using IRCTC e-Catering?
 
@@ -18,9 +18,9 @@ To get food delivered on a train, go to the IRCTC e-Catering website or open the
 
 Getting your meal delivered to your train seat is actually pretty simple if you follow these steps:
 
-First, grab your ticket and copy your 10-digit PNR. Type that PNR into the search bar on the app or website. The platform immediately grabs your train's live schedule along with your exact coach and seat number. 
+First, grab your ticket and copy your 10-digit PNR. Type that PNR into the search bar on the app or website. The platform immediately grabs your train's live schedule along with your exact coach and seat number.
 
-Next, pick a stop where you'd like to eat. It's smart to pick a major station where the train halts for 10-15 minutes so the delivery guy has time to locate your coach. Once you pick a stop, browse the menus. You'll see local thali setups right next to big brands like Domino's or Subway. 
+Next, pick a stop where you'd like to eat. It's smart to pick a major station where the train halts for 10-15 minutes so the delivery guy has time to locate your coach. Once you pick a stop, browse the menus. You'll see local thali setups right next to big brands like Domino's or Subway.
 
 Throw your choices into the cart, double-check your seat info, and head to the checkout page. You can pay right then using UPI or cards, or just select cash on delivery. When the train pulls in, the delivery guy will step onto your coach and hand you the hot food.
 
@@ -28,16 +28,16 @@ Throw your choices into the cart, double-check your seat info, and head to the c
 
 The best app for food delivery in train is IRCTC’s official Food on Track app, followed by approved aggregators like RailRestro, Zoop, and Yatrabhojan. These platforms are directly integrated with the railway database, allowing real-time tracking of train delays and ensuring your food reaches your seat even if the schedule changes.
 
-While IRCTC's official Food on Track app is the safest bet, other approved aggregators offer excellent features. For instance, some apps specialize in specific regional cuisines, while others give better discount coupons or allow group bookings. 
+While IRCTC's official Food on Track app is the safest bet, other approved aggregators offer excellent features. For instance, some apps specialize in specific regional cuisines, while others give better discount coupons or allow group bookings.
 
 Here is how the top players stack up when you need a good meal on the tracks:
 
-| App Name | Official Partner | Key Strengths | Payment Options |
-| :--- | :--- | :--- | :--- |
-| **Food on Track** | Yes (Official IRCTC App) | Direct database sync, highest reliability, zero delivery markup | UPI, Cards, Netbanking, COD |
-| **RailRestro** | Yes (Aggregator) | Excellent regional thali options, group order discounts, bulk booking | UPI, Cards, Netbanking, COD |
-| **Zoop** | Yes (Aggregator) | WhatsApp ordering assistant, real-time tracking, great variety of cuisines | UPI, Cards, Netbanking, COD |
-| **Yatrabhojan** | Yes (Aggregator) | Dedicated vegetarian and Jain food filters, reliable customer support | UPI, Cards, Netbanking, COD |
+| App Name          | Official Partner         | Key Strengths                                                              | Payment Options             |
+| :---------------- | :----------------------- | :------------------------------------------------------------------------- | :-------------------------- |
+| **Food on Track** | Yes (Official IRCTC App) | Direct database sync, highest reliability, zero delivery markup            | UPI, Cards, Netbanking, COD |
+| **RailRestro**    | Yes (Aggregator)         | Excellent regional thali options, group order discounts, bulk booking      | UPI, Cards, Netbanking, COD |
+| **Zoop**          | Yes (Aggregator)         | WhatsApp ordering assistant, real-time tracking, great variety of cuisines | UPI, Cards, Netbanking, COD |
+| **Yatrabhojan**   | Yes (Aggregator)         | Dedicated vegetarian and Jain food filters, reliable customer support      | UPI, Cards, Netbanking, COD |
 
 If you want a hassle-free experience, stick to these official partners. They sync with railway timetables, so if your train runs late, the kitchen holds your order until you arrive.
 
@@ -150,20 +150,25 @@ Yes, you can order IRCTC eCatering food on RAC or confirmed tickets, as well as 
 Here are the answers to the most common questions passengers ask about ordering food in trains using IRCTC e-Catering. Learn about ordering rules, delivery status tracking, cash payment options, and how to handle train delays to ensure your hot meals are delivered successfully directly to your seat.
 
 ### Can I order food on a train without internet access?
+
 Yes, you can order food without internet access by calling the official IRCTC e-Catering helpline at 1323. A customer service representative will collect your PNR details, take your order, select an available restaurant, and schedule the delivery.
 
 ### What happens to my food order if my train is delayed?
+
 If your train is delayed, the e-catering platform tracks the live status of the train and coordinates with the restaurant to adjust the preparation and delivery time. If the train is delayed past the restaurant's working hours, the order is cancelled, and you receive a full refund. The same protection applies if the delivery agent fails to show up or your train unexpectedly skips the delivery station — raise it on 1323 or the app and claim a full refund, since you never pay for a meal you didn't receive.
 
 ### Do e-catering delivery partners charge extra for delivery to the seat?
+
 No, delivery to your seat is included in the price shown on the app. The delivery agents are authorized by IRCTC to deliver the food directly to your coach and berth without charging any additional delivery fees or service taxes.
 
 ### Can I cancel my train food order and get a refund?
+
 Yes, you can cancel your order up to 2 hours before the scheduled delivery time at the selected station. The refund will be credited back to your original payment mode within 3 to 5 business days, while cancellations within 2 hours are generally non-refundable.
 
-
 ### What is the minimum time needed to order IRCTC eCatering food before a station?
+
 You must place your eCatering food order at least 1 to 2 hours before your train arrives at the selected delivery station to give partner restaurants time to prepare and deliver your meal.
 
 ### Can you order eCatering food if your ticket is RAC or waitlisted?
+
 You can order food on RAC tickets and physical counter waitlisted tickets. Fully waitlisted e-tickets cannot be used because they cancel automatically if not confirmed before chart preparation.

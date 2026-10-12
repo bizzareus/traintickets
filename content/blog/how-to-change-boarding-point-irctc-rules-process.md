@@ -35,14 +35,14 @@ Waitlisted tickets cannot use this feature. Remember, WL full form is Waiting Li
 
 Here is a quick overview of the official guidelines:
 
-| Feature | IRCTC E-Ticket Rules | Paper / Counter Ticket Rules |
-| :--- | :--- | :--- |
-| **Change Deadline** | Up to 2nd chart preparation (~30 mins before departure) | Before chart preparation at PRS counter |
-| **Ticket Eligibility** | Confirmed and RAC tickets (not Waitlisted) | Confirmed and RAC tickets (written application) |
-| **Change Frequency** | Allowed only once per booking | Allowed only once per booking |
-| **Original Boarding Rights** | Permitted if seat vacant (fare difference applies) | Permitted if seat vacant (fare difference applies) |
-| **Refund Policy** | No refund for shorter travel distance | No refund for shorter travel distance |
-| **Platform Channels** | RailOne App, IRCTC Web / App | Computerized PRS Counter |
+| Feature                      | IRCTC E-Ticket Rules                                    | Paper / Counter Ticket Rules                       |
+| :--------------------------- | :------------------------------------------------------ | :------------------------------------------------- |
+| **Change Deadline**          | Up to 2nd chart preparation (~30 mins before departure) | Before chart preparation at PRS counter            |
+| **Ticket Eligibility**       | Confirmed and RAC tickets (not Waitlisted)              | Confirmed and RAC tickets (written application)    |
+| **Change Frequency**         | Allowed only once per booking                           | Allowed only once per booking                      |
+| **Original Boarding Rights** | Permitted if seat vacant (fare difference applies)      | Permitted if seat vacant (fare difference applies) |
+| **Refund Policy**            | No refund for shorter travel distance                   | No refund for shorter travel distance              |
+| **Platform Channels**        | RailOne App, IRCTC Web / App                            | Computerized PRS Counter                           |
 
 ---
 
@@ -127,39 +127,49 @@ The boarding point feature allows passengers to alter where they board the train
 ## Common Booking Questions (FAQ)
 
 ### Can I change my boarding station after the first chart is prepared?
+
 Yes, under current IRCTC regulations, you can change your boarding station online up to the preparation of the second reservation chart (~30 minutes before scheduled departure).
 
 ### Do I get a refund if the new boarding station is closer to my destination?
+
 No, you do not receive any refund of the fare difference. The ticket fare remains the same as originally booked, even if your new boarding station reduces the total travel distance.
 
 ### Can RAC ticket holders change their boarding station?
+
 Yes, both Confirmed and RAC (Reservation Against Cancellation) ticket holders are fully eligible to change their boarding station online or offline. Tickets on the Waiting List (WL) cannot change boarding points.
 
 ### What is the WL full form in Indian Railways?
+
 WL full form is Waiting List. When a ticket is waitlisted, it is not yet confirmed and progresses through the queue: WL (Waiting List) to RAC to Confirmed. You cannot change your boarding point if your ticket remains waitlisted.
 
 ### How late can I change my boarding point on the IRCTC app?
+
 You can change your boarding point online on the IRCTC app or RailOne app up to the generation of the second reservation chart, which occurs approximately 30 minutes before train departure.
 
 ### Can you change your boarding point for counter tickets online?
+
 No. Physical tickets booked at railway reservation counters (PRS) cannot be changed online via the IRCTC app. You must submit a written request along with the original counter ticket at a computerized PRS counter before chart preparation.
 
 ### Is there any fee charged by IRCTC for changing your boarding station?
+
 No. IRCTC does not charge any fee for changing your boarding point. The service is free of cost for both e-tickets and counter tickets.
 
 ### Can I change my boarding point more than once?
+
 No, you can only change your boarding point once per ticket booking. Once the change is submitted, the action is permanent and cannot be modified again online.
 
 ### What happens if I board at my original station after changing the boarding point?
+
 If your berth has not been reassigned to another passenger, you can travel by informing the TTE and paying any fare difference without penalty. If your berth was reassigned, you must travel in general unreserved class.
 
 ### Does changing the boarding point cancel my original ticket?
+
 No, changing the boarding point does not cancel your ticket. It updates your boarding station in the official passenger chart, ensuring the TTE holds your seat until your new boarding stop.
 
 ---
 
 ## Bottom line
 
-Changing your boarding point on IRCTC is now more convenient than ever, giving you the flexibility to update your boarding stop online right up until the second reservation chart is prepared (~30 minutes before departure). 
+Changing your boarding point on IRCTC is now more convenient than ever, giving you the flexibility to update your boarding stop online right up until the second reservation chart is prepared (~30 minutes before departure).
 
 If you are traveling during peak seasons and finding no direct berths, remember to check [Smart Seats](/) for split-ticket options, verify live charting status on [Chart Times](/chart-times), or track last-minute post-charting vacancies on [Get Confirmed Tickets](/).

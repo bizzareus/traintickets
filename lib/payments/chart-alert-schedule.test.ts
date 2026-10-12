@@ -122,11 +122,15 @@ test("free chart alert from shortlink params (e.g. 22439/UMB) resolves schedule 
     return Response.json(umbSnapshot);
   });
   let postedPayload: Record<string, unknown> | null = null;
-  t.mock.method(apiClient, "post", async (url: string, data: Record<string, unknown>) => {
-    assert.equal(url, "/api/availability/journey");
-    postedPayload = data;
-    return { data: { accepted: true, status: "scheduled" } };
-  });
+  t.mock.method(
+    apiClient,
+    "post",
+    async (url: string, data: Record<string, unknown>) => {
+      assert.equal(url, "/api/availability/journey");
+      postedPayload = data;
+      return { data: { accepted: true, status: "scheduled" } };
+    },
+  );
 
   await createFreeChartAlert(shortlinkJourney);
 

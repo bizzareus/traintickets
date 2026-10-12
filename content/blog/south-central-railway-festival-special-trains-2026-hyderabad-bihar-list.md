@@ -13,6 +13,7 @@ tags:
 ---
 
 > **🔔 Planning festival travel from Hyderabad, Secunderabad, or Charlapalli?** Find confirmed seats and smart split routes on high-demand festive corridors:
+
 - [Search Secunderabad to Danapur Special Trains](/?from=SC&to=DNR&fromName=Secunderabad%20Jn&toName=Danapur)
 - [Search Secunderabad to Patna Special Trains](/?from=SC&to=PNBE&fromName=Secunderabad%20Jn&toName=Patna%20Jn)
 - [Search Charlapalli to Sasaram Special Trains](/?from=CHZ&to=SSM&fromName=Charlapalli&toName=Sasaram)
@@ -50,13 +51,13 @@ The Hyderabad–Bihar route is one of the most overcrowded railway sectors in th
 
 The table below outlines the primary festival special trains running between Hyderabad/Secunderabad and Bihar:
 
-| Train Number | Train Name / Route | Origin Station | Destination Station | Trips / Frequency | Coach Composition | Major Routing |
-|---|---|---|---|---|---|---|
-| **07091 / 07092** | Secunderabad – Danapur Special | Secunderabad (SC) | Danapur (DNR) | Bi-Weekly (Oct–Nov) | 2A, 3A, 3E, SL, GS | Kazipet, Balharshah, Nagpur, Itarsi, Jabalpur, Pt. DDU, Ara |
-| **07041 / 07042** | Charlapalli – Sasaram Festive Special | Charlapalli (CHZ) | Sasaram (SSM) | 8 Services (Oct–Nov) | 3A, 3E, SL, GS | Kazipet, Balharshah, Nagpur, Katni, Satna, Manikpur, Pt. DDU |
-| **07193 / 07194** | Secunderabad – Danapur Superfast | Secunderabad (SC) | Danapur (DNR) | Weekly (Sundays) | 2A, 3A, SL, GS | Kazipet, Ramagundam, Nagpur, Jabalpur, Mirzapur, Buxar |
-| **07051 / 07052** | Charlapalli – Raxaul Express Special | Charlapalli (CHZ) | Raxaul Jn (RXL) | Weekly (Thursdays) | 3E, SL, GS | Bilaspur, Rourkela, Ranchi, Bokaro, Barauni, Darbhanga, Sitamarhi |
-| **07255 / 07256** | Hyderabad – Patna Special Express | Hyderabad (HYB) | Patna Jn (PNBE) | Weekly (Fridays) | 2A, 3A, SL, GS | Secunderabad, Kazipet, Balharshah, Nagpur, Pt. DDU, Danapur |
+| Train Number      | Train Name / Route                    | Origin Station    | Destination Station | Trips / Frequency    | Coach Composition  | Major Routing                                                     |
+| ----------------- | ------------------------------------- | ----------------- | ------------------- | -------------------- | ------------------ | ----------------------------------------------------------------- |
+| **07091 / 07092** | Secunderabad – Danapur Special        | Secunderabad (SC) | Danapur (DNR)       | Bi-Weekly (Oct–Nov)  | 2A, 3A, 3E, SL, GS | Kazipet, Balharshah, Nagpur, Itarsi, Jabalpur, Pt. DDU, Ara       |
+| **07041 / 07042** | Charlapalli – Sasaram Festive Special | Charlapalli (CHZ) | Sasaram (SSM)       | 8 Services (Oct–Nov) | 3A, 3E, SL, GS     | Kazipet, Balharshah, Nagpur, Katni, Satna, Manikpur, Pt. DDU      |
+| **07193 / 07194** | Secunderabad – Danapur Superfast      | Secunderabad (SC) | Danapur (DNR)       | Weekly (Sundays)     | 2A, 3A, SL, GS     | Kazipet, Ramagundam, Nagpur, Jabalpur, Mirzapur, Buxar            |
+| **07051 / 07052** | Charlapalli – Raxaul Express Special  | Charlapalli (CHZ) | Raxaul Jn (RXL)     | Weekly (Thursdays)   | 3E, SL, GS         | Bilaspur, Rourkela, Ranchi, Bokaro, Barauni, Darbhanga, Sitamarhi |
+| **07255 / 07256** | Hyderabad – Patna Special Express     | Hyderabad (HYB)   | Patna Jn (PNBE)     | Weekly (Fridays)     | 2A, 3A, SL, GS     | Secunderabad, Kazipet, Balharshah, Nagpur, Pt. DDU, Danapur       |
 
 Passengers travelling to Patna can also book up to Danapur (DNR). Danapur is located just 10 kilometers west of Patna Junction and offers frequent auto-rickshaws, city buses, and local suburban trains into central Patna, helping you bypass the congested main station area.
 
@@ -72,12 +73,12 @@ Northbound trains from Hyderabad routinely experience massive waiting lists in l
 
 The table below lists the major festive special services connecting Hyderabad to Delhi and Uttar Pradesh:
 
-| Train Number | Train Name / Route | Origin Station | Destination Station | Frequency | Coach Composition | Key Halts |
-|---|---|---|---|---|---|---|
-| **07021 / 07022** | Charlapalli – Hazrat Nizamuddin Special | Charlapalli (CHZ) | H. Nizamuddin (NZM) | Multiple Trips (Oct–Dec) | 2A, 3A, 3E, SL, GS | Kazipet, Balharshah, Nagpur, Bhopal, VGL Jhansi, Gwalior, Agra Cantt |
-| **07023 / 07024** | Charlapalli – Hazrat Nizamuddin Superfast | Charlapalli (CHZ) | H. Nizamuddin (NZM) | Bi-Weekly | 3A, 3E, SL, GS | Ramagundam, Balharshah, Itarsi, Bhopal, Jhansi, Mathura |
-| **07003 / 07004** | Secunderabad – Gorakhpur Special Express | Secunderabad (SC) | Gorakhpur Jn (GKP) | Weekly (Wednesdays) | 2A, 3A, SL, GS | Kazipet, Nagpur, Bhopal, VGL Jhansi, Kanpur Central, Lucknow, Basti |
-| **07081 / 07082** | Secunderabad – Subedarganj Special | Secunderabad (SC) | Subedarganj (SFG) | Weekly (Tuesdays) | 3E, SL, GS | Balharshah, Nagpur, Itarsi, Jabalpur, Manikpur, Prayagraj Area |
+| Train Number      | Train Name / Route                        | Origin Station    | Destination Station | Frequency                | Coach Composition  | Key Halts                                                            |
+| ----------------- | ----------------------------------------- | ----------------- | ------------------- | ------------------------ | ------------------ | -------------------------------------------------------------------- |
+| **07021 / 07022** | Charlapalli – Hazrat Nizamuddin Special   | Charlapalli (CHZ) | H. Nizamuddin (NZM) | Multiple Trips (Oct–Dec) | 2A, 3A, 3E, SL, GS | Kazipet, Balharshah, Nagpur, Bhopal, VGL Jhansi, Gwalior, Agra Cantt |
+| **07023 / 07024** | Charlapalli – Hazrat Nizamuddin Superfast | Charlapalli (CHZ) | H. Nizamuddin (NZM) | Bi-Weekly                | 3A, 3E, SL, GS     | Ramagundam, Balharshah, Itarsi, Bhopal, Jhansi, Mathura              |
+| **07003 / 07004** | Secunderabad – Gorakhpur Special Express  | Secunderabad (SC) | Gorakhpur Jn (GKP)  | Weekly (Wednesdays)      | 2A, 3A, SL, GS     | Kazipet, Nagpur, Bhopal, VGL Jhansi, Kanpur Central, Lucknow, Basti  |
+| **07081 / 07082** | Secunderabad – Subedarganj Special        | Secunderabad (SC) | Subedarganj (SFG)   | Weekly (Tuesdays)        | 3E, SL, GS         | Balharshah, Nagpur, Itarsi, Jabalpur, Manikpur, Prayagraj Area       |
 
 For passengers travelling to Prayagraj or Varanasi, the Subedarganj (SFG) special offers an excellent alternative, dropping you directly on the western outskirts of Prayagraj with seamless highway and local transport connections.
 
@@ -126,22 +127,27 @@ Securing a confirmed seat on an SCR festival special requires knowing how Indian
 Festival specials fill up quickly, often moving to WL (Waiting List) within hours of release. If you missed the opening rush, you can still rescue your journey using proven railway strategies:
 
 ### 1. Book Contiguous Berths with Smart Seats
+
 When a direct ticket from Secunderabad to Danapur shows REGRET, the train is rarely 100% full across the entire 1,800-kilometer route. Seats frequently open up along intermediate legs.
 
 Using [Smart Seats](/), you can split your journey into contiguous confirmed segments on the exact same train:
+
 - **Leg 1:** Book Secunderabad to Nagpur in Coach B3.
 - **Leg 2:** Book Nagpur to Danapur in Coach B5 on the same train.
 
 You never step off the train; you simply switch coaches at Nagpur Junction while travelling on two legally confirmed PNRs.
 
 ### 2. Leverage First and Second Charting Windows
+
 South Central Railway prepares reservation charts in two distinct phases:
+
 - **First Chart Preparation:** Finalized roughly **8 hours prior to departure** at the originating station (or at 21:00 hrs the previous evening for morning departures). Unused emergency quotas, VIP quotas, and remote location quotas are released into the general pool.
 - **Second and Final Chart:** Prepared **30 to 45 minutes before departure**. Berths cancelled at the last minute are immediately released under **Current Availability (`CURR_AVBL`)** at a **10% discount** on the basic fare.
 
 Use [Chart Times](/chart-times) to look up historical chart finalization times for your train, and view live coach-by-coach vacant seats on [Chart Vacancy](/chart-vacancy).
 
 ### 3. Check Real-Time Vacancy with Seat Status
+
 If you are boarding with a partially confirmed ticket or need an unreserved upgrade, use [Seat Status](/seat-status) to inspect coach vacancy diagrams. This shows you exactly which berth is booked for which station pair, letting you approach the on-board TTE with precise knowledge of which seat falls empty at upcoming halts.
 
 ---
@@ -149,30 +155,39 @@ If you are boarding with a partially confirmed ticket or need an unreserved upgr
 ## Common Booking Questions (FAQ)
 
 ### What is the full form of SCR in Indian Railways?
+
 **SCR full form is South Central Railway**, one of the 18 railway zones of Indian Railways, headquartered at Rail Nilayam in Secunderabad, Telangana. It manages major divisions including Secunderabad, Hyderabad, Vijayawada, Guntakal, Guntur, and Nanded.
 
 ### What is the station code for Charlapalli Railway Terminal?
+
 The official IRCTC station code for the newly developed Charlapalli Satellite Terminal is **CHZ**. When searching on IRCTC or LastBerth, enter `CHZ` as the origin or destination code to find trains departing from this terminal.
 
 ### Are festival special train fares higher than regular trains?
+
 Yes, South Central Railway 0-series festival special trains operate under Train on Special Fare (TOSF) tariffs, which carry a flat **10% surcharge on Second Sitting (2S)** and a **30% surcharge on Sleeper Class and AC coaches** over regular mail/express fares.
 
 ### What happens if my festival special e-ticket remains on Waiting List (WL)?
+
 If your online IRCTC e-ticket remains on the Waiting List after final chart preparation (~30 to 45 minutes before departure), it is **automatically cancelled and fully refunded** to your original payment method. You cannot legally board reserved coaches on a fully waitlisted e-ticket.
 
 ### Can I book Tatkal tickets on South Central Railway festival special trains?
+
 Most 0-series festival special trains do not offer Tatkal quotas because all available berths are pooled directly into the General Quota under special fare pricing. However, unallocated quotas are released under **Current Availability (`CURR_AVBL`)** post-charting.
 
 ### How do I travel between Secunderabad Station and Charlapalli Terminal?
+
 You can travel between Secunderabad Junction and Charlapalli Terminal via **MMTS local suburban trains**, direct **TSRTC city buses** from Secunderabad Rathifile Bus Station, or via cab through the Nacharam-Mallapur road in approximately 35 to 50 minutes.
 
 ### Does Aadhaar verification increase monthly booking limits on IRCTC?
+
 Yes. Unverified IRCTC accounts are capped at **12 tickets per month**. Linking your Aadhaar card and verifying at least one passenger on your booking upgrades your monthly limit to **24 tickets per month**.
 
 ### How many tickets can be booked per PNR on festival special trains?
+
 On general quota bookings, you can book up to **6 passengers per PNR**. During the initial Tatkal booking window, the limit is 4 passengers per PNR.
 
 ### Can I change my boarding station on an SCR festival special ticket?
+
 Yes, you can change your boarding station online via the IRCTC portal up to the preparation of the **second reservation chart** (approximately 30 to 45 minutes before train departure). Once the final chart is finalized, boarding point modifications cannot be made.
 
 ---

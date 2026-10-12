@@ -11,8 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/refund" },
   openGraph: {
     title: "Request a Refund — LastBerth",
-    description:
-      "Ask for a refund of your LastBerth chart alert payment.",
+    description: "Ask for a refund of your LastBerth chart alert payment.",
     type: "website",
     url: `${siteUrl}/refund`,
   },

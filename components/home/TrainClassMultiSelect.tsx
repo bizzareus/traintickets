@@ -86,9 +86,7 @@ function TrainClassDropdown({
     };
   }, [open]);
 
-  const label = isAllSelected
-    ? "All"
-    : [...selectedSet].join(", ");
+  const label = isAllSelected ? "All" : [...selectedSet].join(", ");
 
   return (
     <div
@@ -103,7 +101,7 @@ function TrainClassDropdown({
         aria-label="Select train travel classes"
         title={label}
         className={cn(
-          "block w-full truncate rounded-md text-left font-semibold touch-manipulation",
+          "block w-full touch-manipulation truncate rounded-md text-left font-semibold",
           compact
             ? "h-6 border-0 bg-transparent py-0 pl-0 pr-6 text-sm text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/25"
             : "border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-8 text-base text-gray-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4",
@@ -147,7 +145,7 @@ function TrainClassDropdown({
                 setOpen(false);
               }}
               className={cn(
-                "flex w-full items-center gap-2 px-3 py-2.5 text-left text-sm hover:bg-gray-100 focus:bg-gray-100 focus:outline-none touch-manipulation",
+                "flex w-full touch-manipulation items-center gap-2 px-3 py-2.5 text-left text-sm hover:bg-gray-100 focus:bg-gray-100 focus:outline-none",
                 isAllSelected
                   ? "font-bold text-blue-700"
                   : "font-medium text-gray-700",
@@ -177,7 +175,7 @@ function TrainClassDropdown({
                   aria-label={cls.name}
                   onClick={() => onToggle(cls.code)}
                   className={cn(
-                    "flex w-full items-center gap-2 px-3 py-2.5 text-left text-sm hover:bg-gray-100 focus:bg-gray-100 focus:outline-none touch-manipulation",
+                    "flex w-full touch-manipulation items-center gap-2 px-3 py-2.5 text-left text-sm hover:bg-gray-100 focus:bg-gray-100 focus:outline-none",
                     active
                       ? "font-bold text-blue-700"
                       : "font-medium text-gray-700",

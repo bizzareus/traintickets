@@ -29,11 +29,13 @@ Set both sites to 1280×800 using resize_page. Identify target train cards from 
 For image generation, installed packages are in `automation/instagram-audit/node_modules`. An artifact script can import modules using:
 
 ```js
-import { createRequire } from 'node:module';
-import { join } from 'node:path';
-const require = createRequire(join(process.cwd(), 'automation/instagram-audit/package.json'));
-const sharp = require('sharp');
-const { chromium } = require('playwright');
+import { createRequire } from "node:module";
+import { join } from "node:path";
+const require = createRequire(
+  join(process.cwd(), "automation/instagram-audit/package.json"),
+);
+const sharp = require("sharp");
+const { chromium } = require("playwright");
 ```
 
 Run generated scripts only with `node <absolute-runDir>/script.mjs`. Use apply_patch to create those scripts using absolute artifact paths; do not try to write application files. To use Playwright, connectOverCDP('http://127.0.0.1:19444'), reuse the existing context, then disconnect. Do not launch or close the user's other browser. On this Retina Mac, use Playwright screenshot option `scale: 'css'` to get exact 1280px evidence and 1080×1350 exports; the physical devicePixelRatio may otherwise double dimensions.

@@ -51,13 +51,13 @@ This consolidated approach means you no longer need to jump between multiple app
 
 Here is a summary comparing the old UTS app and the new RailOne platform:
 
-| Feature / Detail | Old UTS App | New RailOne App |
-| :--- | :--- | :--- |
-| **Status** | Decommissioned (March 1, 2026) | Active & Official Super App |
-| **Services Offered** | Unreserved tickets only | UTS, PNR checks, live tracking, food orders |
-| **Digital Booking Incentive** | None / No standard discounts | **3% discount** on digital payments |
-| **GPS Distance Rule** | Outside station premises (outer limit abolished April 2024) | Outside station premises (outer limit abolished April 2024) |
-| **Account Migration** | Manual registration needed | **Automatic** via mobile number login |
+| Feature / Detail              | Old UTS App                                                 | New RailOne App                                             |
+| :---------------------------- | :---------------------------------------------------------- | :---------------------------------------------------------- |
+| **Status**                    | Decommissioned (March 1, 2026)                              | Active & Official Super App                                 |
+| **Services Offered**          | Unreserved tickets only                                     | UTS, PNR checks, live tracking, food orders                 |
+| **Digital Booking Incentive** | None / No standard discounts                                | **3% discount** on digital payments                         |
+| **GPS Distance Rule**         | Outside station premises (outer limit abolished April 2024) | Outside station premises (outer limit abolished April 2024) |
+| **Account Migration**         | Manual registration needed                                  | **Automatic** via mobile number login                       |
 
 ---
 
@@ -110,6 +110,7 @@ If your reserved seat remains waitlisted, booking an unreserved ticket via RailO
 When booking reserved tickets on IRCTC, your ticket status may show WL, where **WL full form is Waiting List**. A waitlisted ticket follows a strict progression queue: **WL (Waiting List) -> RAC (Reservation Against Cancellation) -> Confirmed**. If your ticket does not confirm, it is automatically cancelled and refunded, making travel on that ticket illegal.
 
 Before resorting to crowded general coaches, you should use LastBerth's key features to secure a better journey:
+
 - [Finding Smart Seats](/) helps you find a confirmed path by splitting the journey into contiguous segments on the same train.
 - [PNR Status Search & Direct Booking](/) checks your confirmation probability and provides alternate booking options immediately.
 - [Get Confirmed Tickets](/) helps you find vacant berths on running trains that you can request the TTE to assign to you.
@@ -133,42 +134,55 @@ Yes, once booked, UTS paperless tickets are saved locally on your device in the 
 ## Common RailOne Booking Questions (FAQ)
 
 ### What is the full form of UTS?
+
 UTS stands for Unreserved Ticketing System. It remains the core framework used by Indian Railways for issuing unreserved, platform, and season tickets, which are now booked via the RailOne app.
 
 ### Can I travel in Sleeper Class with a RailOne UTS ticket?
+
 No, general tickets booked on RailOne are strictly valid only for unreserved (general) coaches. Boarding a reserved Sleeper or AC coach with a general ticket will result in a penalty of ₹250 plus the fare difference.
 
 ### Why does the RailOne app say I am out of range?
+
 The app uses GPS geofencing to ensure you are outside station premises (inner boundary limit). If you are too close (on the platform/tracks) or too far (over 5 km away), the app blocks paperless bookings to prevent misuse.
 
 ### Do I need to print a paperless ticket booked on RailOne?
+
 No, paperless tickets do not need to be printed. You can show the ticket digitally to the TTE using the "Show Ticket" feature in the RailOne app, even when offline.
 
 ### Can I book a ticket after boarding the train on RailOne?
+
 No, the GPS geofencing rules prevent you from booking once you are inside the station or onboard a moving train. You must purchase your ticket before entering the station to avoid ticketless travel fines.
 
 ### What happens to my old UTS account history?
+
 Your old UTS account history, profile settings, and wallet balances are migrated automatically to RailOne. Simply log into the new app using the same registered mobile number to restore your data.
 
 ### What payment methods get the 3% discount on RailOne?
+
 You get a 3% discount on unreserved tickets by paying through any online payment method, such as UPI, debit/credit cards, or net banking. This discount is applied automatically at the checkout screen.
 
 ### Can I order food on the train using RailOne?
+
 Yes, the RailOne app integrates e-catering services directly into its platform. You can enter your PNR number to browse restaurant menus and order food delivered to your berth at upcoming stations.
 
 ### Is RailOne the same as the IRCTC Rail Connect app?
+
 No, they are separate apps, but they share the same account. RailOne is a unified "super app" that bundles reserved booking (the same PRS system IRCTC Rail Connect uses), unreserved/UTS tickets, platform tickets, live tracking and complaints. You log in to RailOne with your existing IRCTC RailConnect or UTS credentials.
 
 ### Can I still use the old UTS app to book tickets?
+
 No. The standalone UTS app has been retired and unreserved, platform and season tickets are now booked through RailOne. Your UTS account, booking history and R-Wallet balance carry over automatically when you sign in with the same registered mobile number.
 
 ### Who developed RailOne and is it an official app?
+
 RailOne is an official Indian Railways app developed by **CRIS (Centre for Railway Information Systems)** and launched on **1 July 2025**. Download only the CRIS-published app from the Google Play Store or Apple App Store — avoid look-alike third-party apps that copy the name.
 
 ### What happens if your phone battery dies while travelling with a UTS paperless ticket?
+
 Travelling with a dead phone is treated as travelling without a ticket under Indian Railways rules, subjecting you to standard unreserved class fines.
 
 ### How do you transfer UTS R-Wallet balance when changing your phone number?
+
 Submit an R-Wallet surrender or mobile number change request at a railway booking counter along with ID proof to transfer your balance to the new registered mobile number.
 
 ---

@@ -115,7 +115,9 @@ function emptyLegSegment(
  * hops (NZM-style — should collapse to a single no-tickets card), then
  * one confirmed leg at the end.
  */
-export function alternatePathMiddleChainUnavailable(trainNumber: string): MockAlternatePathsResponse {
+export function alternatePathMiddleChainUnavailable(
+  trainNumber: string,
+): MockAlternatePathsResponse {
   const legs: MockAlternateLeg[] = [
     emptyLegSegment("ORIG", "A", "confirmed", { fare: 100 }),
     emptyLegSegment("A", "B", "check_realtime"),
@@ -135,7 +137,9 @@ export function alternatePathMiddleChainUnavailable(trainNumber: string): MockAl
   };
 }
 
-export function alternatePathTwoConfirmed(trainNumber: string): MockAlternatePathsResponse {
+export function alternatePathTwoConfirmed(
+  trainNumber: string,
+): MockAlternatePathsResponse {
   const legs: MockAlternateLeg[] = [
     emptyLegSegment("ORIG", "MID", "confirmed", { fare: 200 }),
     emptyLegSegment("MID", "DEST", "confirmed", { fare: 250 }),
@@ -156,10 +160,15 @@ export function alternatePathTwoConfirmed(trainNumber: string): MockAlternatePat
  * The leg carries confirmedClassOptions with both classes so the UI can
  * show two sub-cards.
  */
-export function alternatePathMultiClassConfirmed(trainNumber: string): MockAlternatePathsResponse {
+export function alternatePathMultiClassConfirmed(
+  trainNumber: string,
+): MockAlternatePathsResponse {
   const legs: MockAlternateLeg[] = [
     {
-      ...emptyLegSegment("ORIG", "DEST", "confirmed", { travelClass: "SL", fare: 655 }),
+      ...emptyLegSegment("ORIG", "DEST", "confirmed", {
+        travelClass: "SL",
+        fare: 655,
+      }),
       availabilityDisplayName: "AVAILABLE-0020",
       confirmedClassOptions: [
         {
@@ -193,7 +202,9 @@ export function alternatePathMultiClassConfirmed(trainNumber: string): MockAlter
 }
 
 /** Three confirmed hops: two intermediate stations between origin and destination. */
-export function alternatePathTwoIntermediatesConfirmed(trainNumber: string): MockAlternatePathsResponse {
+export function alternatePathTwoIntermediatesConfirmed(
+  trainNumber: string,
+): MockAlternatePathsResponse {
   const legs: MockAlternateLeg[] = [
     emptyLegSegment("ORIG", "S1", "confirmed", { fare: 100 }),
     emptyLegSegment("S1", "S2", "confirmed", { fare: 150 }),
@@ -214,7 +225,9 @@ export function alternatePathTwoIntermediatesConfirmed(trainNumber: string): Moc
  * One confirmed leg then a realtime tail that collapses in the modal (subscribe UI).
  * Example: ORIG→MID confirmed, then MID→PEN→DEST as check_realtime (collapsed to MID→DEST).
  */
-export function alternatePathWithCollapsedRemainder(trainNumber: string): MockAlternatePathsResponse {
+export function alternatePathWithCollapsedRemainder(
+  trainNumber: string,
+): MockAlternatePathsResponse {
   const legs: MockAlternateLeg[] = [
     emptyLegSegment("ORIG", "MID", "confirmed", { fare: 200 }),
     emptyLegSegment("MID", "PEN", "check_realtime"),
@@ -275,11 +288,16 @@ export function alternatePathLongRealtimeChain(
 export type BookingV2MockConfig = {
   stations: MockStation[];
   trains: MockTrain[];
-  alternatePaths: MockAlternatePathsResponse | ((body: Record<string, unknown>) => MockAlternatePathsResponse);
+  alternatePaths:
+    | MockAlternatePathsResponse
+    | ((body: Record<string, unknown>) => MockAlternatePathsResponse);
   alternatePathsError: { status: number; body: unknown } | null;
   stationsMetaBySource: Record<string, MockStationMeta> | null;
   stationsMetaError: { status: number; body: unknown } | null;
-  journeyValidate: { valid: boolean; errors?: Array<{ code: string; message: string }> };
+  journeyValidate: {
+    valid: boolean;
+    errors?: Array<{ code: string; message: string }>;
+  };
   journeyValidateError: { status: number; body: unknown } | null;
   journeyPostError: { status: number; body: unknown } | null;
   suggestError: { status: number; body: unknown } | null;
@@ -366,7 +384,11 @@ export async function installBookingV2Mocks(
 
     if (path === "/api/booking-v2/stations/suggest" && method === "GET") {
       if (cfg.suggestError) {
-        await jsonFulfill(route, cfg.suggestError.status, cfg.suggestError.body);
+        await jsonFulfill(
+          route,
+          cfg.suggestError.status,
+          cfg.suggestError.body,
+        );
         return;
       }
       await jsonFulfill(route, 200, {
@@ -377,7 +399,11 @@ export async function installBookingV2Mocks(
 
     if (path === "/api/booking-v2/trains/search" && method === "GET") {
       if (cfg.trainSearchError) {
-        await jsonFulfill(route, cfg.trainSearchError.status, cfg.trainSearchError.body);
+        await jsonFulfill(
+          route,
+          cfg.trainSearchError.status,
+          cfg.trainSearchError.body,
+        );
         return;
       }
       await jsonFulfill(route, 200, {
@@ -388,7 +414,11 @@ export async function installBookingV2Mocks(
 
     if (path === "/api/booking-v2/alternate-paths" && method === "POST") {
       if (cfg.alternatePathsError) {
-        await jsonFulfill(route, cfg.alternatePathsError.status, cfg.alternatePathsError.body);
+        await jsonFulfill(
+          route,
+          cfg.alternatePathsError.status,
+          cfg.alternatePathsError.body,
+        );
         return;
       }
       let body: Record<string, unknown> = {};
@@ -398,14 +428,23 @@ export async function installBookingV2Mocks(
         body = {};
       }
       const alt =
-        typeof cfg.alternatePaths === "function" ? cfg.alternatePaths(body) : cfg.alternatePaths;
+        typeof cfg.alternatePaths === "function"
+          ? cfg.alternatePaths(body)
+          : cfg.alternatePaths;
       await jsonFulfill(route, 200, alt);
       return;
     }
 
-    if (path === "/api/booking-v2/alternate-paths/stream" && method === "POST") {
+    if (
+      path === "/api/booking-v2/alternate-paths/stream" &&
+      method === "POST"
+    ) {
       if (cfg.alternatePathsError) {
-        await jsonFulfill(route, cfg.alternatePathsError.status, cfg.alternatePathsError.body);
+        await jsonFulfill(
+          route,
+          cfg.alternatePathsError.status,
+          cfg.alternatePathsError.body,
+        );
         return;
       }
       let body: Record<string, unknown> = {};
@@ -415,14 +454,32 @@ export async function installBookingV2Mocks(
         body = {};
       }
       const alt =
-        typeof cfg.alternatePaths === "function" ? cfg.alternatePaths(body) : cfg.alternatePaths;
+        typeof cfg.alternatePaths === "function"
+          ? cfg.alternatePaths(body)
+          : cfg.alternatePaths;
 
       // Emit a few representative progress lines then the final result as NDJSON
-      const ndjson = [
-        JSON.stringify({ type: "progress", event: { type: "schedule_ok", trainName: "Mock Express", stopCount: 10 } }),
-        JSON.stringify({ type: "progress", event: { type: "route_ok", from: String(body.from ?? "ORIG"), to: String(body.to ?? "DEST"), stopCount: 5 } }),
-        JSON.stringify({ type: "result", data: alt }),
-      ].join("\n") + "\n";
+      const ndjson =
+        [
+          JSON.stringify({
+            type: "progress",
+            event: {
+              type: "schedule_ok",
+              trainName: "Mock Express",
+              stopCount: 10,
+            },
+          }),
+          JSON.stringify({
+            type: "progress",
+            event: {
+              type: "route_ok",
+              from: String(body.from ?? "ORIG"),
+              to: String(body.to ?? "DEST"),
+              stopCount: 5,
+            },
+          }),
+          JSON.stringify({ type: "result", data: alt }),
+        ].join("\n") + "\n";
 
       await route.fulfill({
         status: 200,
@@ -434,7 +491,11 @@ export async function installBookingV2Mocks(
 
     if (path === "/api/train-composition/stations-meta" && method === "POST") {
       if (cfg.stationsMetaError) {
-        await jsonFulfill(route, cfg.stationsMetaError.status, cfg.stationsMetaError.body);
+        await jsonFulfill(
+          route,
+          cfg.stationsMetaError.status,
+          cfg.stationsMetaError.body,
+        );
         return;
       }
       let body: { sourceStation?: string } = {};
@@ -445,15 +506,18 @@ export async function installBookingV2Mocks(
       }
       const code = String(body.sourceStation ?? "").toUpperCase();
       const row =
-        cfg.stationsMetaBySource?.[code] ??
-        defaultMeta(code || "UNK");
+        cfg.stationsMetaBySource?.[code] ?? defaultMeta(code || "UNK");
       await jsonFulfill(route, 200, { stations: [row] });
       return;
     }
 
     if (path === "/api/availability/journey/validate" && method === "POST") {
       if (cfg.journeyValidateError) {
-        await jsonFulfill(route, cfg.journeyValidateError.status, cfg.journeyValidateError.body);
+        await jsonFulfill(
+          route,
+          cfg.journeyValidateError.status,
+          cfg.journeyValidateError.body,
+        );
         return;
       }
       await jsonFulfill(route, 200, cfg.journeyValidate);
@@ -462,7 +526,11 @@ export async function installBookingV2Mocks(
 
     if (path === "/api/availability/journey" && method === "POST") {
       if (cfg.journeyPostError) {
-        await jsonFulfill(route, cfg.journeyPostError.status, cfg.journeyPostError.body);
+        await jsonFulfill(
+          route,
+          cfg.journeyPostError.status,
+          cfg.journeyPostError.body,
+        );
         return;
       }
       await jsonFulfill(route, 202, { ok: true });

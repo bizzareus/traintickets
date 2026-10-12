@@ -9,7 +9,15 @@ export type GlossaryTerm = {
 };
 
 /** Languages the glossary is offered in (English source + translations). */
-export const GLOSSARY_LANGS = ["en", "hi", "mr", "bn", "ta", "te", "ml"] as const;
+export const GLOSSARY_LANGS = [
+  "en",
+  "hi",
+  "mr",
+  "bn",
+  "ta",
+  "te",
+  "ml",
+] as const;
 export type GlossaryLang = (typeof GLOSSARY_LANGS)[number];
 
 // Performance Optimization: Pre-build Set for O(1) language validation lookups instead of O(N) array includes scans.
@@ -21,13 +29,20 @@ export function isGlossaryLang(x: string): x is GlossaryLang {
 
 export function getLanguageName(lang: string): string {
   switch (lang) {
-    case "hi": return "Hindi";
-    case "mr": return "Marathi";
-    case "bn": return "Bengali";
-    case "ta": return "Tamil";
-    case "te": return "Telugu";
-    case "ml": return "Malayalam";
-    default: return "English";
+    case "hi":
+      return "Hindi";
+    case "mr":
+      return "Marathi";
+    case "bn":
+      return "Bengali";
+    case "ta":
+      return "Tamil";
+    case "te":
+      return "Telugu";
+    case "ml":
+      return "Malayalam";
+    default:
+      return "English";
   }
 }
 
@@ -41,8 +56,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   {
     id: "wl",
     term: "WL (Waiting List)",
-    definition:
-      "The full form of WL in railway is Waiting List.",
+    definition: "The full form of WL in railway is Waiting List.",
     relatedTerms: ["rac", "cnf", "gnwl"],
   },
   {

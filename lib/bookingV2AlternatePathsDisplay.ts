@@ -17,7 +17,9 @@ export type AlternatePathLegForPartition = {
 };
 
 /** A single leg shown as one card (confirmed or lone check_realtime). */
-export type AlternatePathDisplayItemSingle<T extends AlternatePathLegForPartition> = {
+export type AlternatePathDisplayItemSingle<
+  T extends AlternatePathLegForPartition,
+> = {
   kind: "single";
   leg: T;
 };
@@ -26,7 +28,9 @@ export type AlternatePathDisplayItemSingle<T extends AlternatePathLegForPartitio
  * A collapsed span of ≥2 chained `check_realtime` legs shown as one merged
  * "no tickets" card spanning `from` → `to`.
  */
-export type AlternatePathDisplayItemCollapsed<T extends AlternatePathLegForPartition> = {
+export type AlternatePathDisplayItemCollapsed<
+  T extends AlternatePathLegForPartition,
+> = {
   kind: "collapsed";
   from: string;
   to: string;
@@ -35,8 +39,7 @@ export type AlternatePathDisplayItemCollapsed<T extends AlternatePathLegForParti
 };
 
 export type AlternatePathDisplayItem<T extends AlternatePathLegForPartition> =
-  | AlternatePathDisplayItemSingle<T>
-  | AlternatePathDisplayItemCollapsed<T>;
+  AlternatePathDisplayItemSingle<T> | AlternatePathDisplayItemCollapsed<T>;
 
 function normCode(s: string): string {
   return s.trim().toUpperCase();
@@ -46,9 +49,9 @@ function normCode(s: string): string {
  * Convert a legs array into a flat sequence of display items, collapsing
  * any contiguous chain of ≥2 `check_realtime` legs into a single item.
  */
-export function buildAlternatePathDisplayItems<T extends AlternatePathLegForPartition>(
-  legs: T[],
-): AlternatePathDisplayItem<T>[] {
+export function buildAlternatePathDisplayItems<
+  T extends AlternatePathLegForPartition,
+>(legs: T[]): AlternatePathDisplayItem<T>[] {
   const items: AlternatePathDisplayItem<T>[] = [];
   let i = 0;
 
@@ -97,7 +100,9 @@ export function buildAlternatePathDisplayItems<T extends AlternatePathLegForPart
 // `buildAlternatePathDisplayItems` instead.
 // ---------------------------------------------------------------------------
 
-export type AlternatePathLegsModalPartition<T extends AlternatePathLegForPartition> =
+export type AlternatePathLegsModalPartition<
+  T extends AlternatePathLegForPartition,
+> =
   | { mode: "flat"; legs: T[] }
   | {
       mode: "collapsed";
@@ -106,10 +111,9 @@ export type AlternatePathLegsModalPartition<T extends AlternatePathLegForPartiti
       fromLastConfirmedStopToDestination: { from: string; to: string };
     };
 
-function findCollapsibleRealtimeSuffixStart<T extends AlternatePathLegForPartition>(
-  legs: T[],
-  dest: string,
-): number | null {
+function findCollapsibleRealtimeSuffixStart<
+  T extends AlternatePathLegForPartition,
+>(legs: T[], dest: string): number | null {
   const n = legs.length;
   if (n === 0) return null;
   const d = normCode(dest);
@@ -126,7 +130,9 @@ function findCollapsibleRealtimeSuffixStart<T extends AlternatePathLegForPartiti
   return start;
 }
 
-export function partitionAlternatePathLegsForModal<T extends AlternatePathLegForPartition>(
+export function partitionAlternatePathLegsForModal<
+  T extends AlternatePathLegForPartition,
+>(
   legs: T[],
   journeyDestinationCode: string,
 ): AlternatePathLegsModalPartition<T> {

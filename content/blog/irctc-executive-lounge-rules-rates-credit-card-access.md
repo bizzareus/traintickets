@@ -25,14 +25,14 @@ IRCTC Executive Lounges offer airport-style waiting facilities at major railway 
 
 Children under 3 feet in height enter free of charge with an accompanying adult, while passengers above 3 feet pay full entry charges. Lounges operate 24x7, and you can pay entry charges through cash, UPI, debit/credit cards, or online booking via IRCTC Tourism.
 
-| Service Item | Typical Rates (Excl. GST) | Duration / Details |
-|---|---|---|
-| **Initial Lounge Entry** | ₹150 – ₹200 | 2 Hours (Includes Wi-Fi & Welcome Drink) |
-| **Additional Hour Extension** | ₹50 – ₹100 | Per extra hour |
-| **Shower & Wash Facility** | ₹150 – ₹200 | Includes bath kit, soap & disposable towel |
-| **Buffet Breakfast** | ₹150 – ₹200 | Unlimited vegetarian hot buffet |
-| **Buffet Lunch / Dinner** | ₹250 – ₹350 | Veg & Non-Veg multi-cuisine buffet |
-| **Recliner / Nap Zone** | ₹100 – ₹150 | Per hour (at select major stations) |
+| Service Item                  | Typical Rates (Excl. GST) | Duration / Details                         |
+| ----------------------------- | ------------------------- | ------------------------------------------ |
+| **Initial Lounge Entry**      | ₹150 – ₹200               | 2 Hours (Includes Wi-Fi & Welcome Drink)   |
+| **Additional Hour Extension** | ₹50 – ₹100                | Per extra hour                             |
+| **Shower & Wash Facility**    | ₹150 – ₹200               | Includes bath kit, soap & disposable towel |
+| **Buffet Breakfast**          | ₹150 – ₹200               | Unlimited vegetarian hot buffet            |
+| **Buffet Lunch / Dinner**     | ₹250 – ₹350               | Veg & Non-Veg multi-cuisine buffet         |
+| **Recliner / Nap Zone**       | ₹100 – ₹150               | Per hour (at select major stations)        |
 
 ---
 
@@ -59,17 +59,17 @@ Not all credit cards with airport lounge access include railway lounge benefits.
 
 New Delhi Railway Station (NDLS) hosts two executive lounges: one on Platform 16 (Ajmeri Gate side) and another on Platform 1 (Paharganj side). Indian Railways is expanding executive lounges to additional Tier-1 and Tier-2 junction stations under the Amrit Bharat Station Scheme.
 
-| Station Name | Station Code | Location on Platform | Key Facilities |
-|---|---|---|---|
-| **New Delhi** | NDLS | Platform 1 & Platform 16 | Recliners, Shower, Multi-cuisine Buffet, Wi-Fi |
-| **Agra Cantt** | AGC | Platform 1 | AC Seating, Shower, Breakfast & Meals |
-| **Ahmedabad Junction** | ADI | Platform 1 | Buffet Dining, Wi-Fi, Luggage Storage |
-| **Varanasi Junction** | BSB | Platform 1 | Modern Seating, Shower Kits, Refreshments |
-| **Jaipur Junction** | JP | Platform 1 | Heritage Decor, AC Lounges, Buffet Meals |
-| **Sealdah (Kolkata)** | SDAH | Platform 1B | AC Seating, Shower, Fast Food & Beverages |
-| **Madurai Junction** | MDU | Platform 1 | Recliners, South Indian Buffet, Wash & Change |
-| **Visakhapatnam** | VSKP | Platform 1 | AC Seating, Showers, Dining & Work Desks |
-| **Gorakhpur Junction** | GKP | Platform 1 | AC Waiting, Food Court, Wi-Fi |
+| Station Name           | Station Code | Location on Platform     | Key Facilities                                 |
+| ---------------------- | ------------ | ------------------------ | ---------------------------------------------- |
+| **New Delhi**          | NDLS         | Platform 1 & Platform 16 | Recliners, Shower, Multi-cuisine Buffet, Wi-Fi |
+| **Agra Cantt**         | AGC          | Platform 1               | AC Seating, Shower, Breakfast & Meals          |
+| **Ahmedabad Junction** | ADI          | Platform 1               | Buffet Dining, Wi-Fi, Luggage Storage          |
+| **Varanasi Junction**  | BSB          | Platform 1               | Modern Seating, Shower Kits, Refreshments      |
+| **Jaipur Junction**    | JP           | Platform 1               | Heritage Decor, AC Lounges, Buffet Meals       |
+| **Sealdah (Kolkata)**  | SDAH         | Platform 1B              | AC Seating, Shower, Fast Food & Beverages      |
+| **Madurai Junction**   | MDU          | Platform 1               | Recliners, South Indian Buffet, Wash & Change  |
+| **Visakhapatnam**      | VSKP         | Platform 1               | AC Seating, Showers, Dining & Work Desks       |
+| **Gorakhpur Junction** | GKP          | Platform 1               | AC Waiting, Food Court, Wi-Fi                  |
 
 ---
 

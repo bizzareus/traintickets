@@ -1,7 +1,7 @@
 ---
 name: dev-server-node-and-localhost
 description: How to run the traintickets Next dev server (Node 22 via nvm) and reach localhost from tooling
-metadata: 
+metadata:
   node_type: memory
   type: reference
   originSessionId: 9c2355a7-56c9-427a-ae44-6ea3e0905eb3

@@ -13,7 +13,9 @@ type UnsubscribeEntry = {
 };
 
 function extractError(err: unknown, fallback: string): string {
-  const ax = err as { response?: { data?: { message?: string; error?: string } } };
+  const ax = err as {
+    response?: { data?: { message?: string; error?: string } };
+  };
   return ax.response?.data?.message ?? ax.response?.data?.error ?? fallback;
 }
 
@@ -119,7 +121,10 @@ export default function AdminUnsubscribesPage() {
       });
       trackAnalyticsEvent({
         name: "admin_unsubscribe_removed",
-        properties: { channel: isEmail(recipient) ? "email" : "whatsapp", recipient },
+        properties: {
+          channel: isEmail(recipient) ? "email" : "whatsapp",
+          recipient,
+        },
       });
       await load();
     } catch (err) {
@@ -142,9 +147,7 @@ export default function AdminUnsubscribesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">
-            Unsubscribes
-          </h1>
+          <h1 className="text-2xl font-bold text-slate-900">Unsubscribes</h1>
           <p className="mt-1 text-sm text-slate-500">
             Users who have opted out of all email and WhatsApp notifications.
             The chart-notification cron JOINs against this list, so contacts
@@ -355,7 +358,9 @@ export default function AdminUnsubscribesPage() {
                       </td>
                       <td className="px-6 py-4">
                         <button
-                          onClick={() => handleRemove(entry.id, entry.recipient)}
+                          onClick={() =>
+                            handleRemove(entry.id, entry.recipient)
+                          }
                           className="rounded bg-rose-50 px-2 py-1 text-xs font-medium text-rose-600 hover:bg-rose-100"
                         >
                           Remove

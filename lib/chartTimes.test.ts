@@ -19,5 +19,9 @@ test("listChartTimesSlugs - returns cached list of chart times slugs", () => {
   const slugs2 = listChartTimesSlugs();
   assert.ok(Array.isArray(slugs1));
   assert.ok(slugs1.length > 0);
-  assert.equal(slugs1, slugs2, "Should return the identical cached array reference");
+  assert.equal(
+    slugs1,
+    slugs2,
+    "Should return the identical cached array reference",
+  );
 });

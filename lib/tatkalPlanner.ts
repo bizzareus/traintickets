@@ -5,7 +5,8 @@
 
 export type ClassCategory = "AC" | "NON_AC";
 
-export type TatkalClassCode = "1A" | "2A" | "3A" | "3E" | "CC" | "EC" | "SL" | "2S";
+export type TatkalClassCode =
+  "1A" | "2A" | "3A" | "3E" | "CC" | "EC" | "SL" | "2S";
 
 export interface TatkalWindowResult {
   /** The date the train departs from its originating station (YYYY-MM-DD) */
@@ -102,13 +103,24 @@ export function calculateTatkalWindow(
   originOffsetDays: number = 0,
 ): TatkalWindowResult {
   const [jYear, jMonth, jDay] = journeyDateStr.split("-").map(Number);
-  
+
   // Calculate Origin Departure Date: journeyDate - originOffsetDays
-  const originDate = new Date(Date.UTC(jYear, jMonth - 1, jDay - originOffsetDays, 12, 0, 0));
+  const originDate = new Date(
+    Date.UTC(jYear, jMonth - 1, jDay - originOffsetDays, 12, 0, 0),
+  );
   const originDepartureDateStr = originDate.toISOString().slice(0, 10);
 
   // Tatkal opens 1 day before Origin Departure Date
-  const tatkalDate = new Date(Date.UTC(originDate.getUTCFullYear(), originDate.getUTCMonth(), originDate.getUTCDate() - 1, 12, 0, 0));
+  const tatkalDate = new Date(
+    Date.UTC(
+      originDate.getUTCFullYear(),
+      originDate.getUTCMonth(),
+      originDate.getUTCDate() - 1,
+      12,
+      0,
+      0,
+    ),
+  );
   const tatkalBookingDateStr = tatkalDate.toISOString().slice(0, 10);
 
   const openHour = category === "AC" ? 10 : 11;
@@ -118,7 +130,14 @@ export function calculateTatkalWindow(
   // Exact target opening timestamp in UTC (which corresponds to 10:00 or 11:00 AM IST)
   // IST is UTC+5:30 -> 10:00 IST is 04:30 UTC, 11:00 IST is 05:30 UTC
   const [tY, tM, tD] = tatkalBookingDateStr.split("-").map(Number);
-  const targetUtcMs = Date.UTC(tY, tM - 1, tD, openHour - 5, openMinute - 30, openSecond);
+  const targetUtcMs = Date.UTC(
+    tY,
+    tM - 1,
+    tD,
+    openHour - 5,
+    openMinute - 30,
+    openSecond,
+  );
 
   const now = new Date();
   const currentUtcMs = now.getTime();
@@ -131,7 +150,8 @@ export function calculateTatkalWindow(
   if (tatkalBookingDateStr === todayYmdIST) {
     if (msUntilOpening > 0) {
       status = "LIVE_TODAY";
-    } else if (msUntilOpening >= -3600000) { // Active in the first 1 hour
+    } else if (msUntilOpening >= -3600000) {
+      // Active in the first 1 hour
       status = "ACTIVE_NOW";
     } else {
       status = "PAST";
@@ -163,16 +183,70 @@ export function calculateTatkalWindow(
  */
 export const TATKAL_TARIFF_TABLE: Record<
   TatkalClassCode,
-  { name: string; category: ClassCategory; ratePct: number; min: number; max: number }
+  {
+    name: string;
+    category: ClassCategory;
+    ratePct: number;
+    min: number;
+    max: number;
+  }
 > = {
-  SL: { name: "Sleeper Class (SL)", category: "NON_AC", ratePct: 10, min: 100, max: 200 },
-  "2S": { name: "Second Sitting (2S)", category: "NON_AC", ratePct: 10, min: 15, max: 15 },
-  "3A": { name: "AC 3 Tier (3A)", category: "AC", ratePct: 30, min: 300, max: 400 },
-  "3E": { name: "AC 3 Economy (3E)", category: "AC", ratePct: 30, min: 300, max: 400 },
-  CC: { name: "AC Chair Car (CC)", category: "AC", ratePct: 30, min: 125, max: 225 },
-  "2A": { name: "AC 2 Tier (2A)", category: "AC", ratePct: 30, min: 400, max: 500 },
-  EC: { name: "Executive Class (EC)", category: "AC", ratePct: 30, min: 400, max: 500 },
-  "1A": { name: "First AC (1A) - No Tatkal", category: "AC", ratePct: 0, min: 0, max: 0 },
+  SL: {
+    name: "Sleeper Class (SL)",
+    category: "NON_AC",
+    ratePct: 10,
+    min: 100,
+    max: 200,
+  },
+  "2S": {
+    name: "Second Sitting (2S)",
+    category: "NON_AC",
+    ratePct: 10,
+    min: 15,
+    max: 15,
+  },
+  "3A": {
+    name: "AC 3 Tier (3A)",
+    category: "AC",
+    ratePct: 30,
+    min: 300,
+    max: 400,
+  },
+  "3E": {
+    name: "AC 3 Economy (3E)",
+    category: "AC",
+    ratePct: 30,
+    min: 300,
+    max: 400,
+  },
+  CC: {
+    name: "AC Chair Car (CC)",
+    category: "AC",
+    ratePct: 30,
+    min: 125,
+    max: 225,
+  },
+  "2A": {
+    name: "AC 2 Tier (2A)",
+    category: "AC",
+    ratePct: 30,
+    min: 400,
+    max: 500,
+  },
+  EC: {
+    name: "Executive Class (EC)",
+    category: "AC",
+    ratePct: 30,
+    min: 400,
+    max: 500,
+  },
+  "1A": {
+    name: "First AC (1A) - No Tatkal",
+    category: "AC",
+    ratePct: 0,
+    min: 0,
+    max: 0,
+  },
 };
 
 /**
@@ -183,7 +257,7 @@ export function getTatkalSurcharge(
   baseFare: number = 0,
 ): TatkalSurchargeInfo {
   const tariff = TATKAL_TARIFF_TABLE[classCode] ?? TATKAL_TARIFF_TABLE.SL;
-  
+
   let calculated = tariff.min;
   if (baseFare > 0 && tariff.ratePct > 0) {
     const rawSurcharge = Math.round((baseFare * tariff.ratePct) / 100);
@@ -257,27 +331,32 @@ export interface TatkalFaqItem {
 export function getTatkalFaqs(): TatkalFaqItem[] {
   return [
     {
-      question: "What is the exact opening time for Tatkal train ticket booking?",
+      question:
+        "What is the exact opening time for Tatkal train ticket booking?",
       answer:
         "Tatkal booking opens at 10:00 AM IST for all AC classes (2A, 3A, 3E, CC, EC) and at 11:00 AM IST for Non-AC classes (Sleeper, 2S), exactly one day in advance of the train's departure from its originating station.",
     },
     {
-      question: "How is the Tatkal booking date calculated for long-distance multi-day trains?",
+      question:
+        "How is the Tatkal booking date calculated for long-distance multi-day trains?",
       answer:
         "Tatkal booking opens 1 day before the train departs from its originating station, NOT your boarding station. For example, if a train leaves Kanyakumari on Monday (Day 1) and reaches your boarding station on Tuesday (Day 2), Tatkal opens on Sunday at 10:00 AM/11:00 AM IST.",
     },
     {
-      question: "Can I book Tatkal tickets in 1st AC (1A) or Executive Anubhuti coaches?",
+      question:
+        "Can I book Tatkal tickets in 1st AC (1A) or Executive Anubhuti coaches?",
       answer:
         "No. Under Indian Railways commercial rules, 1st AC (1A) and Executive Anubhuti coaches do not have Tatkal quota. Tatkal is available only for 2A, 3A, 3E, CC, EC, Sleeper, and 2S classes.",
     },
     {
-      question: "What is the refund rule if I cancel a confirmed Tatkal ticket?",
+      question:
+        "What is the refund rule if I cancel a confirmed Tatkal ticket?",
       answer:
         "Zero refund is granted on cancellation of confirmed Tatkal tickets. However, a 100% full refund is granted if the train is delayed by more than 3 hours, if the train is cancelled, or if the passenger is not accommodated in the booked class.",
     },
     {
-      question: "What is the maximum number of Tatkal tickets a user can book per day?",
+      question:
+        "What is the maximum number of Tatkal tickets a user can book per day?",
       answer:
         "A single user ID can book a maximum of 2 Tatkal tickets per day between 08:00 AM and 12:00 PM, and only 2 Tatkal PNRs can be generated from a single IP address during the opening hour.",
     },
@@ -287,7 +366,8 @@ export function getTatkalFaqs(): TatkalFaqItem[] {
         "If Tatkal sells out, do not panic. Use LastBerth Finding Smart Seats to find guaranteed confirmed seats on the exact same train by splitting your journey into contiguous coach segments, or check vacant berths on Chart Vacancy after final chart preparation.",
     },
     {
-      question: "What is the difference between Tatkal and Premium Tatkal (PT)?",
+      question:
+        "What is the difference between Tatkal and Premium Tatkal (PT)?",
       answer:
         "Tatkal tickets have fixed government surcharges (₹100–₹500 depending on class), whereas Premium Tatkal (PT) uses dynamic surge pricing that rises steeply as seats sell out. Premium Tatkal tickets cannot be booked at station counters (online only) and offer zero refund upon cancellation.",
     },

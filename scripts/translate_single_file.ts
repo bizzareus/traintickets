@@ -1,31 +1,33 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import OpenAI from 'openai';
+import * as fs from "fs";
+import * as path from "path";
+import OpenAI from "openai";
 
 const LANGUAGES: Record<string, string> = {
-  hi: 'Hindi',
-  mr: 'Marathi',
-  bn: 'Bengali',
-  ta: 'Tamil',
-  te: 'Telugu',
-  ml: 'Malayalam'
+  hi: "Hindi",
+  mr: "Marathi",
+  bn: "Bengali",
+  ta: "Tamil",
+  te: "Telugu",
+  ml: "Malayalam",
 };
 
 const filename = process.argv[2];
 const langCode = process.argv[3];
 
 if (!filename || !langCode || !LANGUAGES[langCode]) {
-  console.error(`❌ Usage: npx tsx scripts/translate_single_file.ts <filename.md> <langCode>`);
+  console.error(
+    `❌ Usage: npx tsx scripts/translate_single_file.ts <filename.md> <langCode>`,
+  );
   process.exit(1);
 }
 
 const langName = LANGUAGES[langCode];
-const BLOG_DIR = path.join(__dirname, '../content/blog');
-const ENV_PATH = path.join(__dirname, '../backend/.env');
+const BLOG_DIR = path.join(__dirname, "../content/blog");
+const ENV_PATH = path.join(__dirname, "../backend/.env");
 
 function getApiKey(): string | undefined {
   if (!fs.existsSync(ENV_PATH)) return undefined;
-  const envContent = fs.readFileSync(ENV_PATH, 'utf8');
+  const envContent = fs.readFileSync(ENV_PATH, "utf8");
   const match = envContent.match(/OPENAI_API_KEY=["']?([^"'\n\s]+)["']?/);
   return match ? match[1] : undefined;
 }
@@ -34,7 +36,7 @@ async function translateFile(
   client: OpenAI,
   content: string,
   langName: string,
-  langCode: string
+  langCode: string,
 ): Promise<string> {
   const systemPrompt = `You are a professional translator and content writer specializing in Indian Railways (IRCTC) terminology and ticketing rules.
 Translate the following English blog post into ${langName} (language code: ${langCode}).
@@ -48,22 +50,24 @@ Strict Rules for Low AI Detection (AI Bypass):
 6. Strictly output ONLY the translated markdown content. Do not add any introduction, explanations, notes, or conversational text.`;
 
   const completion = await client.chat.completions.create({
-    model: 'gpt-4o-mini',
+    model: "gpt-4o-mini",
     messages: [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: content }
+      { role: "system", content: systemPrompt },
+      { role: "user", content: content },
     ],
-    temperature: 0.3
+    temperature: 0.3,
   });
 
-  let translated = completion.choices[0].message.content || '';
+  let translated = completion.choices[0].message.content || "";
   translated = translated.trim();
-  if (translated.startsWith('```markdown')) {
-    translated = translated.replace(/^```markdown\r?\n/, '').replace(/\r?\n```$/, '');
-  } else if (translated.startsWith('```md')) {
-    translated = translated.replace(/^```md\r?\n/, '').replace(/\r?\n```$/, '');
-  } else if (translated.startsWith('```') && translated.endsWith('```')) {
-    translated = translated.replace(/^```\r?\n/, '').replace(/\r?\n```$/, '');
+  if (translated.startsWith("```markdown")) {
+    translated = translated
+      .replace(/^```markdown\r?\n/, "")
+      .replace(/\r?\n```$/, "");
+  } else if (translated.startsWith("```md")) {
+    translated = translated.replace(/^```md\r?\n/, "").replace(/\r?\n```$/, "");
+  } else if (translated.startsWith("```") && translated.endsWith("```")) {
+    translated = translated.replace(/^```\r?\n/, "").replace(/\r?\n```$/, "");
   }
 
   return translated.trim();
@@ -72,7 +76,7 @@ Strict Rules for Low AI Detection (AI Bypass):
 async function run() {
   const apiKey = getApiKey();
   if (!apiKey) {
-    console.error('❌ OpenAI API key is missing. Check backend/.env');
+    console.error("❌ OpenAI API key is missing. Check backend/.env");
     process.exit(1);
   }
 
@@ -91,13 +95,18 @@ async function run() {
   }
 
   console.log(`🤖 Translating ${filename} into ${langName} (${langCode})…`);
-  const englishContent = fs.readFileSync(srcPath, 'utf8');
-  const translatedContent = await translateFile(client, englishContent, langName, langCode);
-  fs.writeFileSync(destPath, translatedContent, 'utf8');
+  const englishContent = fs.readFileSync(srcPath, "utf8");
+  const translatedContent = await translateFile(
+    client,
+    englishContent,
+    langName,
+    langCode,
+  );
+  fs.writeFileSync(destPath, translatedContent, "utf8");
   console.log(`✅ Saved successfully to ${destPath}`);
 }
 
 run().catch((err) => {
-  console.error('❌ Critical error:', err);
+  console.error("❌ Critical error:", err);
   process.exit(1);
 });

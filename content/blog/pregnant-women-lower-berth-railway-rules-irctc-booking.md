@@ -138,14 +138,14 @@ If a TTE refuses to help a visibly pregnant passenger despite empty lower berths
 
 To see how pregnancy rules compare with senior citizen and disability quotas, here is how Indian Railways handles lower berth allocation across categories:
 
-| Category | Dedicated IRCTC Online Quota? | Age & Gender Eligibility | Automatic Lower Berth Algorithm? | Proof Required | Offline / Emergency Access |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Pregnant Women** | **No** (Subject to pending 2026 PIL) | Any age; pregnant travelers | **No** (Assigned from general pool unless 45+) | RMO / Doctor fitness & pregnancy certificate | Physical PRS counter booking; Divisional Emergency Quota (EQ); Onboard TTE reassignment |
-| **Senior Citizens (Male)** | **Yes** (SS Quota) | Men aged 60 years and above | **Yes** (If traveling solo or with another senior) | Government photo ID with DOB (Aadhaar, Voter ID) | General quota booking; Station PRS counter; TTE vacant berth priority |
-| **Senior Citizens (Female)** | **Yes** (SS Quota) | Women aged 45 years and above | **Yes** (If traveling solo or with another senior) | Government photo ID with DOB (Aadhaar, Voter ID) | General quota booking; Station PRS counter; TTE vacant berth priority |
-| **Divyangjan (PwD)** | **Yes** (HP Quota) | Disability certificate holders | **Yes** (Mandatory 2 lower berths per Sleeper/3AC coach) | Unique Disability ID (UDID) card pre-registered with IRCTC | Concession counters; Special PRS booking; TTE assistance |
-| **Ladies Quota (LD)** | **Yes** (LD Quota) | Solo females or females with children under 12 | **No** (Allocates lower, middle, or upper in 6-berth bay) | Photo identity proof; self-declaration for minors | PRS counter booking; General quota fallback |
-| **General Travelers** | **No** (Preference only) | Any traveler | **Conditional** (Only if lower berth exists in general pool) | Standard government photo identification | Current Availability (`CURR_AVBL`); Tatkal booking; Smart Seats split ticketing |
+| Category                     | Dedicated IRCTC Online Quota?        | Age & Gender Eligibility                       | Automatic Lower Berth Algorithm?                             | Proof Required                                             | Offline / Emergency Access                                                              |
+| :--------------------------- | :----------------------------------- | :--------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :-------------------------------------------------------------------------------------- |
+| **Pregnant Women**           | **No** (Subject to pending 2026 PIL) | Any age; pregnant travelers                    | **No** (Assigned from general pool unless 45+)               | RMO / Doctor fitness & pregnancy certificate               | Physical PRS counter booking; Divisional Emergency Quota (EQ); Onboard TTE reassignment |
+| **Senior Citizens (Male)**   | **Yes** (SS Quota)                   | Men aged 60 years and above                    | **Yes** (If traveling solo or with another senior)           | Government photo ID with DOB (Aadhaar, Voter ID)           | General quota booking; Station PRS counter; TTE vacant berth priority                   |
+| **Senior Citizens (Female)** | **Yes** (SS Quota)                   | Women aged 45 years and above                  | **Yes** (If traveling solo or with another senior)           | Government photo ID with DOB (Aadhaar, Voter ID)           | General quota booking; Station PRS counter; TTE vacant berth priority                   |
+| **Divyangjan (PwD)**         | **Yes** (HP Quota)                   | Disability certificate holders                 | **Yes** (Mandatory 2 lower berths per Sleeper/3AC coach)     | Unique Disability ID (UDID) card pre-registered with IRCTC | Concession counters; Special PRS booking; TTE assistance                                |
+| **Ladies Quota (LD)**        | **Yes** (LD Quota)                   | Solo females or females with children under 12 | **No** (Allocates lower, middle, or upper in 6-berth bay)    | Photo identity proof; self-declaration for minors          | PRS counter booking; General quota fallback                                             |
+| **General Travelers**        | **No** (Preference only)             | Any traveler                                   | **Conditional** (Only if lower berth exists in general pool) | Standard government photo identification                   | Current Availability (`CURR_AVBL`); Tatkal booking; Smart Seats split ticketing         |
 
 ### How Many Lower Berths Are Earmarked Per Coach?
 
@@ -163,27 +163,35 @@ Knowing these numbers helps you evaluate your chances when applying for an Emerg
 ## Common Booking Questions (FAQ)
 
 ### Can pregnant women book under the Senior Citizen Quota on IRCTC?
+
 No, pregnant women cannot book under the Senior Citizen or Female Quota (SS Quota) on IRCTC unless they are at least 45 years old. The online portal validates passenger age against date of birth during checkout, and selecting the quota under 45 results in an immediate rejection error. Expectant mothers under 45 must book under the General Quota and pursue lower berths through station PRS counters, divisional Emergency Quota, or onboard TTE reassignment.
 
 ### What documents are required to apply for Railway Emergency Quota (EQ) during pregnancy?
+
 To apply for Emergency Quota, submit a formal written letter addressed to the Senior Divisional Commercial Manager (Sr DCM) or Divisional Railway Manager (DRM). Attach a printout of your confirmed or waitlisted PNR ticket, a self-attested photocopy of the passenger's government photo ID (such as Aadhaar), and an original medical certificate issued by a Registered Medical Practitioner (MBBS or MD) stating gestational age and certifying her fit to travel.
 
 ### Can a TTE legally force another passenger to exchange a lower berth?
+
 No, a TTE does not have the legal authority to force another passenger out of their legitimately reserved lower berth. However, railway guidelines authorize TTEs to mediate a friendly exchange with willing co-passengers, or allot an unreserved lower berth that becomes vacant when a passenger fails to show up, updating their Handheld Terminal (HHT) records accordingly.
 
 ### Does the Ladies Quota (LD) guarantee a lower berth for pregnant travelers?
+
 No, the Ladies Quota (LD) does not guarantee a lower berth for pregnant travelers or any other female passenger. The Ladies Quota reserves a dedicated six-berth compartment (usually in Sleeper and second-sitting coaches) exclusively for solo women or women traveling with children under 12. Berths within this quota include upper, middle, and lower positions assigned in standard booking sequence.
 
 ### Can a pregnant woman travel with a waitlisted (WL) e-ticket?
+
 No, a pregnant passenger cannot travel on a train with a fully waitlisted online e-ticket. Any e-ticket remaining on the waiting list after chart preparation is automatically cancelled and refunded to the passenger's account with zero clerkage fee. Boarding a reserved coach with an auto-cancelled ticket is treated as ticketless travel under Section 138 of the Railways Act, attracting a flat ₹500 penalty under the Jan Vishwas Act plus the full fare.
 
 ### What is the medical certificate format needed at railway PRS counters?
+
 The medical certificate must be printed on the official letterhead of a registered clinic or hospital and signed by a Registered Medical Practitioner (MBBS or MD). It must clearly mention the patient's full name, approximate age, current gestational age in weeks, an explicit recommendation for ground-level lower berth accommodation, and a formal statement confirming that she is fit for train travel.
 
 ### What should an expectant mother do if someone occupies her allocated lower berth?
+
 Do not engage in an argument with the passenger. Immediately show your ticket and government photo ID to the coach TTE or coach attendant. If the TTE is not in the coach, submit an alert through the RailMadad mobile app, visit `railmadad.indianrailways.gov.in`, or call the Railway Helpline at 139 for prompt security and commercial assistance.
 
 ### Can a pregnant woman get a lower berth through Current Availability (CURR_AVBL)?
+
 Yes, pregnant women can book confirmed lower berths through Current Availability (`CURR_AVBL`) after the first reservation chart is prepared, roughly eight hours before train departure (or four to eight hours before departure). Berths released from unutilized quotas or cancellations are made available to the public on IRCTC and at PRS counters at base fare without Tatkal charges. You can monitor open lower berths across coaches live using [Get Confirmed Tickets](/).
 
 ---

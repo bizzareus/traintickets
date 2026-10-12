@@ -15,11 +15,11 @@ export type HowToSchema = {
  */
 export function parseHowToFromMarkdown(markdown: string): HowToSchema | null {
   const lines = markdown.split("\n");
-  
+
   let inHowToSection = false;
   let howToName = "";
   const steps: HowToStep[] = [];
-  
+
   for (const line of lines) {
     const trimmed = line.trim();
 
@@ -40,15 +40,16 @@ export function parseHowToFromMarkdown(markdown: string): HowToSchema | null {
     // Detect numbered list item (e.g., "1. Go to IRCTC website")
     const match = trimmed.match(/^\d+\.\s+(.*)/);
     if (match) {
-      const stepText = match[1].trim()
-        .replace(/\*\*([^*]+)\*\*/g, "$1")  // bold
-        .replace(/\*([^*]+)\*/g, "$1")       // italic
-        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")  // links
-        .replace(/`([^`]+)`/g, "$1");        // inline code
-      
+      const stepText = match[1]
+        .trim()
+        .replace(/\*\*([^*]+)\*\*/g, "$1") // bold
+        .replace(/\*([^*]+)\*/g, "$1") // italic
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // links
+        .replace(/`([^`]+)`/g, "$1"); // inline code
+
       steps.push({
         name: `Step ${steps.length + 1}`,
-        text: stepText
+        text: stepText,
       });
     }
   }
@@ -56,7 +57,7 @@ export function parseHowToFromMarkdown(markdown: string): HowToSchema | null {
   if (steps.length > 0 && howToName) {
     return {
       name: howToName,
-      steps
+      steps,
     };
   }
 

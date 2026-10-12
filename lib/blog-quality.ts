@@ -44,7 +44,7 @@ function longestLoopRun(tokens: string[]): number {
   let worst = 0;
 
   // Unigram: run of identical adjacent tokens.
-  for (let i = 0; i < tokens.length; ) {
+  for (let i = 0; i < tokens.length;) {
     let j = i;
     while (j < tokens.length && tokens[j] === tokens[i]) j++;
     worst = Math.max(worst, j - i);
@@ -52,7 +52,7 @@ function longestLoopRun(tokens: string[]): number {
   }
 
   // Bigram: repeats of a two-token pattern (counts as # of pattern repeats).
-  for (let i = 0; i + 1 < tokens.length; ) {
+  for (let i = 0; i + 1 < tokens.length;) {
     let reps = 1;
     let j = i;
     while (

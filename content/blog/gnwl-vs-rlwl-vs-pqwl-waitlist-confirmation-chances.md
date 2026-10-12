@@ -93,13 +93,13 @@ If your ticket shows RSWL, treat it as unlikely to confirm and immediately explo
 
 ## How Do GNWL, RLWL, PQWL, TQWL, and RSWL Compare?
 
-| Waitlist Type | Meaning / Coverage | Quota Pool Size | Confirmation Odds |
-|---|---|---|---|
-| **GNWL** | Booked from train originating station | Large | **Highest** (clears rapidly from general cancellations) |
-| **RLWL** | Assigned for major intermediate stations | Medium / Small | **Moderate** (tied to intermediate station cancellations) |
-| **PQWL** | Shared pool for minor intermediate legs | Small | **Low** (slow movement across pooled stations) |
-| **TQWL** | Waiting list under Tatkal quota | Very Small | **Very Low** (rare cancellations due to Tatkal fees) |
-| **RSWL** | Quota for minor roadside stops | Tiny | **Lowest** (almost never moves) |
+| Waitlist Type | Meaning / Coverage                       | Quota Pool Size | Confirmation Odds                                         |
+| ------------- | ---------------------------------------- | --------------- | --------------------------------------------------------- |
+| **GNWL**      | Booked from train originating station    | Large           | **Highest** (clears rapidly from general cancellations)   |
+| **RLWL**      | Assigned for major intermediate stations | Medium / Small  | **Moderate** (tied to intermediate station cancellations) |
+| **PQWL**      | Shared pool for minor intermediate legs  | Small           | **Low** (slow movement across pooled stations)            |
+| **TQWL**      | Waiting list under Tatkal quota          | Very Small      | **Very Low** (rare cancellations due to Tatkal fees)      |
+| **RSWL**      | Quota for minor roadside stops           | Tiny            | **Lowest** (almost never moves)                           |
 
 ---
 
@@ -117,25 +117,33 @@ If a waitlisted e-ticket does not reach RAC or Confirmed status at chart prepara
 ## Common Booking Questions (FAQ)
 
 ### What does PQWL mean in a train ticket?
+
 PQWL stands for **Pooled Quota Waiting List**. It is a waiting list shared across several intermediate stations on a route, drawing from a single pooled quota of berths.
 
 ### What is the difference between GNWL and RLWL?
+
 GNWL applies to bookings from the train's originating station and has access to the main seat pool. RLWL applies to intermediate stations and relies on cancellations within a smaller intermediate quota.
 
 ### Does GNWL 4 get cleared easily?
+
 Yes, a GNWL 4 position has very high confirmation odds on most trains because GNWL receives the highest priority during cancellations and chart preparation.
 
 ### Can a PQWL ticket convert into RAC status before final chart preparation?
+
 PQWL tickets generally do not convert into RAC; they usually jump directly from WL to Confirmed if berths open, or remain WL.
 
 ### What happens if a waitlisted e-ticket is not confirmed at chart preparation?
+
 Unconfirmed waitlisted e-tickets are automatically cancelled by IRCTC with a full fare refund credited to your bank account or payment source.
 
 ### Is Aadhaar verification required for Tatkal waitlist bookings?
+
 Yes, IRCTC requires Aadhaar OTP verification for user accounts booking Tatkal and TQWL tickets to prevent agent hoarding.
 
 ### Can a PQWL ticket move directly to confirmed status without entering RAC?
+
 Yes, if a confirmed passenger cancels, a PQWL ticket can move directly to confirmed status (CNF) depending on berth availability.
 
 ### How does LastBerth help when all waitlists show low confirmation odds?
+
 LastBerth's **[Smart Seats](/)** searches segment-level seat inventories across intermediate stations, finding confirmed split-berth combinations on the same train when direct tickets are waitlisted.

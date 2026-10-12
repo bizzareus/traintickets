@@ -12,13 +12,20 @@ export function isHomeLang(x: string): x is HomeLang {
 
 export function getLanguageName(lang: string): string {
   switch (lang) {
-    case "hi": return "Hindi";
-    case "mr": return "Marathi";
-    case "bn": return "Bengali";
-    case "ta": return "Tamil";
-    case "te": return "Telugu";
-    case "ml": return "Malayalam";
-    default: return "English";
+    case "hi":
+      return "Hindi";
+    case "mr":
+      return "Marathi";
+    case "bn":
+      return "Bengali";
+    case "ta":
+      return "Tamil";
+    case "te":
+      return "Telugu";
+    case "ml":
+      return "Malayalam";
+    default:
+      return "English";
   }
 }
 

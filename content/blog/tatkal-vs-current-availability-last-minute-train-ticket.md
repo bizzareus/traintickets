@@ -127,12 +127,12 @@ Last-minute booking works better when you decide your fallback before the pressu
 
 Both options are extremely useful for last-minute travelers, but they operate under completely different rules. According to the [official IRCTC Tatkal Booking Rules](https://contents.irctc.co.in/en/tatkalBookingRules.html), here are the key differences:
 
-| Feature | Tatkal Quota | Current Availability |
-| :--- | :--- | :--- |
-| **Booking Window** | Opens at 10:00 AM (AC) and 11:00 AM (Non-AC) exactly one day prior to train's origin departure date | Opens only after chart preparation (typically 8 hours before departure) up to 30 mins before train departure |
-| **Ticket Pricing** | Extra Tatkal charges added (ranges from Rs. 10 to Rs. 500 depending on class/distance) | No extra fee; sometimes booked at a discount (up to 10% off on basic fare for vacant seats) |
-| **Cancellation Refund** | No refund whatsoever on confirmed Tatkal tickets (except for rare delayed/cancelled trains) | Standard confirmed ticket cancellation rules apply (50% fee 12–4h before; no refund <4h / post-chart) |
-| **Berth Source** | A separate dedicated quota of seats set aside specifically for last-minute travelers | Unsold seats from the general and other quotas released to the open pool after charting |
+| Feature                 | Tatkal Quota                                                                                        | Current Availability                                                                                         |
+| :---------------------- | :-------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------- |
+| **Booking Window**      | Opens at 10:00 AM (AC) and 11:00 AM (Non-AC) exactly one day prior to train's origin departure date | Opens only after chart preparation (typically 8 hours before departure) up to 30 mins before train departure |
+| **Ticket Pricing**      | Extra Tatkal charges added (ranges from Rs. 10 to Rs. 500 depending on class/distance)              | No extra fee; sometimes booked at a discount (up to 10% off on basic fare for vacant seats)                  |
+| **Cancellation Refund** | No refund whatsoever on confirmed Tatkal tickets (except for rare delayed/cancelled trains)         | Standard confirmed ticket cancellation rules apply (50% fee 12–4h before; no refund <4h / post-chart)        |
+| **Berth Source**        | A separate dedicated quota of seats set aside specifically for last-minute travelers                | Unsold seats from the general and other quotas released to the open pool after charting                      |
 
 ---
 
@@ -159,9 +159,11 @@ If a train is cancelled by Indian Railways, both Tatkal and Current Availability
 ## Common Booking Questions (FAQ)
 
 ### At what time do Tatkal bookings open daily?
+
 Tatkal bookings open every single day at **10:00 AM** for all AC classes (3AC, 2AC, 3E, Executive Chairs) and at **11:00 AM** for all non-AC classes (Sleeper, Second Sitting). This booking opens exactly one day before the train chugs out from its originating station.
 
 ### Are refunds allowed for cancelled confirmed Tatkal tickets?
+
 No. Indian Railways grants **zero refund** on the cancellation of fully confirmed Tatkal tickets. Refunds are only allowed if the train is cancelled, delayed by more than 3 hours, or if the route is diverted and the passenger decides not to travel.
 
 ---
@@ -179,9 +181,10 @@ No. Indian Railways grants **zero refund** on the cancellation of fully confirme
 
 Tatkal and Current Availability are still worth checking, but they should be part of a wider decision. The goal is not just to find any available seat. The goal is to choose the ticket that gives you the most workable journey before you pay.
 
-
 ### Are Current Availability tickets cheaper than Tatkal tickets?
+
 Yes, Current Availability tickets are significantly cheaper than Tatkal tickets because they do not carry Tatkal surge charges and often include a 10% discount on base fares to fill vacant berths after chart preparation.
 
 ### Do you get a refund if a confirmed Tatkal ticket is cancelled by the passenger?
+
 No, Indian Railways does not grant any refund on confirmed Tatkal tickets cancelled by the passenger. However, if the train itself is cancelled by railways, a 100% full refund is issued automatically.

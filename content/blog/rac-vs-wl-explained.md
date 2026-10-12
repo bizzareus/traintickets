@@ -106,6 +106,7 @@ If cancellations occur during the journey or after first chart preparation, the 
 ## What is the cancellation charge for RAC and waitlisted tickets after chart prep?
 
 Cancellation rules and clerkage fees for RAC and waitlisted tickets differ based on when they are cancelled and whether it is an e-ticket or a counter ticket:
+
 - **RAC Tickets:** If an RAC ticket is cancelled up to 30 minutes before scheduled train departure, a clerkage fee of ₹60 per passenger (plus GST for AC classes) is deducted, and the remaining fare is refunded.
 - **Waitlisted E-Tickets:** If an e-ticket remains fully waitlisted after chart preparation, IRCTC automatically cancels it and refunds the full fare with no cancellation or clerkage fee deducted directly to your bank account.
 - **Waitlisted Counter Tickets:** Must be manually cancelled at a railway station reservation counter at least 30 minutes before train departure to claim a refund.
@@ -116,41 +117,47 @@ Cancellation rules and clerkage fees for RAC and waitlisted tickets differ based
 
 Knowing how these statuses affect your travel rights and cancellations is essential when making last-minute bookings. According to the [official IRCTC refund and cancellation rules](https://contents.irctc.co.in/en/refundRules.html), the rules differ significantly:
 
-| Feature | Confirmed (CNF) | RAC (Reservation Against Cancellation) | Waitlisted (WL) |
-| :--- | :--- | :--- | :--- |
-| **Right to Board** | Yes, full boarding rights | Yes, full boarding rights | No (fully waitlisted e-tickets are invalid for boarding) |
-| **Berth Status** | Full individual berth assigned | Shared sitting berth (two passengers per side-lower berth) | No seat/berth assigned |
-| **Upgrade to Full Berth** | Guaranteed | High chance (if confirmed passengers cancel or quotas release) | Must progress through RAC first |
-| **Cancellation Fee (48 hrs+ prior)** | Standard flat fee per class (e.g. Rs. 180 for 3AC, Rs. 120 for SL) | Flat clerkage fee (Rs. 60 + GST) | Flat clerkage fee (Rs. 60 + GST) |
-| **Cancellation Fee (Within 4 hours/Chart)** | 50% of fare or no refund (depending on exact window) | Flat clerkage fee (Rs. 60 + GST) up to 30 mins before departure | Fully automatic refund (no cancellation or clerkage fee deducted) if waitlisted after charting |
+| Feature                                     | Confirmed (CNF)                                                    | RAC (Reservation Against Cancellation)                          | Waitlisted (WL)                                                                                |
+| :------------------------------------------ | :----------------------------------------------------------------- | :-------------------------------------------------------------- | :--------------------------------------------------------------------------------------------- |
+| **Right to Board**                          | Yes, full boarding rights                                          | Yes, full boarding rights                                       | No (fully waitlisted e-tickets are invalid for boarding)                                       |
+| **Berth Status**                            | Full individual berth assigned                                     | Shared sitting berth (two passengers per side-lower berth)      | No seat/berth assigned                                                                         |
+| **Upgrade to Full Berth**                   | Guaranteed                                                         | High chance (if confirmed passengers cancel or quotas release)  | Must progress through RAC first                                                                |
+| **Cancellation Fee (48 hrs+ prior)**        | Standard flat fee per class (e.g. Rs. 180 for 3AC, Rs. 120 for SL) | Flat clerkage fee (Rs. 60 + GST)                                | Flat clerkage fee (Rs. 60 + GST)                                                               |
+| **Cancellation Fee (Within 4 hours/Chart)** | 50% of fare or no refund (depending on exact window)               | Flat clerkage fee (Rs. 60 + GST) up to 30 mins before departure | Fully automatic refund (no cancellation or clerkage fee deducted) if waitlisted after charting |
 
 ---
 
 ## Common Booking Questions (FAQ)
 
 ### What is the difference between RAC and waitlist?
+
 RAC (Reservation Against Cancellation) means you have a valid ticket to board the train, though you may share a berth initially. Waitlist (WL) means you are still in the queue and do not have boarding rights on an e-ticket. The core difference: RAC lets you travel, WL does not (for e-tickets after chart preparation). Both can eventually become fully confirmed if enough cancellations happen.
 
 ### After how many RAC does waiting list start?
+
 The number of RAC berths varies by class and train. In AC 3-Tier (3A), there are typically 4 to 8 side-lower berths designated for RAC, accommodating 8 to 16 RAC passengers (two per berth). Once all RAC slots are filled, the next bookings go into the Waiting List. In Sleeper class, RAC capacity is usually higher since coaches are larger. The exact cutoff depends on the train's coach composition and how many berths the railway has allocated for RAC on that specific service.
 
 ### Can WL become RAC? How does the WL to RAC progression work?
+
 Yes. When a confirmed passenger cancels their ticket, the first RAC passenger gets upgraded to confirmed. This frees an RAC slot, and the first WL passenger moves into RAC. So the progression is always: WL → RAC → Confirmed. A WL ticket does not jump directly to confirmed unless the entire RAC queue has already cleared. This chain movement is why even high WL numbers can sometimes clear on popular routes with frequent cancellations.
 
 ### How many RAC seats are allocated per coach?
+
 The exact number of RAC seats varies depending on the train class. For instance, in AC 3-Tier (3A), there are usually 4 to 8 side lower berths earmarked for RAC, meaning 8 to 16 passengers will share those side lower seats (two passengers per side-lower berth). In Sleeper class, RAC berths are typically more numerous.
 
 ### Will a waitlisted ticket automatically convert to RAC first before getting confirmed?
+
 Yes. During the booking queue clearance (caused by ticket cancellations and quota releases), a waitlisted ticket progresses into the RAC pool. Only after the RAC queue is fully cleared do subsequent cancellations result in direct confirmed berths.
 
 ### What is the difference between RAC and waiting list for cancellation charges?
+
 RAC and WL tickets both attract only a flat clerkage fee (Rs. 60 + GST) when cancelled, up to 30 minutes before departure. This is significantly cheaper than cancelling a confirmed ticket, which incurs a class-based flat fee (e.g., Rs. 180 for 3AC). After chart preparation, fully waitlisted e-tickets are automatically cancelled and refunded in full with no cancellation or clerkage fee deducted — you do not need to manually cancel them.
 
 ### Can I travel on a RAC ticket? Can I travel on a WL ticket?
+
 Yes, you can travel on an RAC ticket — it is a valid travel document. You will be assigned a shared sitting berth (typically a side-lower). No, you cannot travel on a fully waitlisted e-ticket after chart preparation — it gets auto-cancelled. Counter tickets with partial WL have different rules; check the passenger-wise status on each ticket.
 
 ---
-
 
 ## Can Two Passengers Travel on One RAC Ticket in Indian Railways?
 
@@ -183,7 +190,9 @@ No. Passengers holding fully waitlisted e-tickets or general unreserved tickets 
 - [IRCTC chart preparation for last-minute tickets](/blog/irctc-chart-preparation-guide)
 
 ### Does an RAC passenger get a full berth if someone no-shows after chart prep?
+
 Yes. If a confirmed passenger does not turn up at their boarding station and the TTE marks them absent after two stations, the TTE reallocates that vacant berth to the highest-ranking RAC passenger on board.
 
 ### What happens if an RAC passenger decides not to travel?
+
 If an RAC passenger cancels their ticket before chart preparation, a clerkage fee of ₹60 per passenger is deducted, and the rest is refunded. If canceling after chart prep, a TDR must be filed at least 30 minutes before train departure.

@@ -25,12 +25,12 @@ tags:
 
 Cancellation penalties for confirmed Indian Railways tickets scale based on departure proximity:
 
-| Departure Cancellation Window | Penalty Rate / Deduction | Refund Eligibility |
-| :--- | :--- | :--- |
-| **48+ Hours (2+ Days)** | Flat fee per passenger (Class-based) | Full fare minus flat clerkage fee |
-| **48 Hours to 12 Hours** | **25% deduction** of total fare | 75% fare refund |
-| **12 Hours to 4 Hours** | **50% deduction** of total fare | 50% fare refund |
-| **Less than 4 Hours** | **100% penalty** (Zero refund) | No refund allowed |
+| Departure Cancellation Window | Penalty Rate / Deduction             | Refund Eligibility                |
+| :---------------------------- | :----------------------------------- | :-------------------------------- |
+| **48+ Hours (2+ Days)**       | Flat fee per passenger (Class-based) | Full fare minus flat clerkage fee |
+| **48 Hours to 12 Hours**      | **25% deduction** of total fare      | 75% fare refund                   |
+| **12 Hours to 4 Hours**       | **50% deduction** of total fare      | 50% fare refund                   |
+| **Less than 4 Hours**         | **100% penalty** (Zero refund)       | No refund allowed                 |
 
 ### Flat Cancellation Charges (48+ Hours Prior to Departure)
 
@@ -126,15 +126,15 @@ Filing a Ticket Deposit Receipt (TDR) follows a step-by-step digital process:
 
 Review the complete TDR eligibility matrix and statutory filing cutoffs:
 
-| TDR Claim Reason | Refund Amount / Slab | Statutory Filing Deadline | Key Requirement |
-| :--- | :--- | :--- | :--- |
-| **Train Delayed > 3 Hours** | 100% of ticket fare | Before actual departure of train | Passenger must not have boarded train |
-| **AC Failure in AC Class** | Difference between AC & Sleeper fare | Within 20 hours of train arrival | Requires AC failure certificate from TTE |
-| **Coach Detached** | 100% of ticket fare | Within 3 hours of train departure | Applicable if alternative berth not allocated |
-| **Train Cancelled by Railways** | 100% of ticket fare | Within 72 hours of scheduled departure | Auto-refunded for e-tickets; backup TDR |
-| **Travel in Lower Class** | Fare difference between classes | Within 48 hours of train arrival | Requires lower class certificate from TTE |
-| **Diverted Route Travel** | 100% of ticket fare | Within 72 hours of departure | Passenger declines travel on diverted route |
-| **Partially Confirmed PNR** | Full fare of non-travelling WL passengers | Up to 30 minutes before departure | File online TDR for unconfirmed passengers |
+| TDR Claim Reason                | Refund Amount / Slab                      | Statutory Filing Deadline              | Key Requirement                               |
+| :------------------------------ | :---------------------------------------- | :------------------------------------- | :-------------------------------------------- |
+| **Train Delayed > 3 Hours**     | 100% of ticket fare                       | Before actual departure of train       | Passenger must not have boarded train         |
+| **AC Failure in AC Class**      | Difference between AC & Sleeper fare      | Within 20 hours of train arrival       | Requires AC failure certificate from TTE      |
+| **Coach Detached**              | 100% of ticket fare                       | Within 3 hours of train departure      | Applicable if alternative berth not allocated |
+| **Train Cancelled by Railways** | 100% of ticket fare                       | Within 72 hours of scheduled departure | Auto-refunded for e-tickets; backup TDR       |
+| **Travel in Lower Class**       | Fare difference between classes           | Within 48 hours of train arrival       | Requires lower class certificate from TTE     |
+| **Diverted Route Travel**       | 100% of ticket fare                       | Within 72 hours of departure           | Passenger declines travel on diverted route   |
+| **Partially Confirmed PNR**     | Full fare of non-travelling WL passengers | Up to 30 minutes before departure      | File online TDR for unconfirmed passengers    |
 
 ---
 
@@ -168,27 +168,35 @@ Smart ways to minimize train ticket cancellation losses include:
 **IRCTC cancellation FAQs** clarify essential rules on the **4-hour zero refund policy**, **60-day ARP window**, **waitlisted e-ticket auto-refunds**, and **online TDR filing cutoffs**. Review these quick answers to understand Tatkal cancellation penalties, counter ticket refunds, and turnaround times for your refund credit.
 
 ### What is the 4-hour cancellation rule in IRCTC?
+
 The 4-hour cancellation rule specifies that if a confirmed train ticket is cancelled within 4 hours of scheduled departure (or after chart preparation), IRCTC forfeits 100% of the ticket fare, resulting in zero refund.
 
 ### What is the full form of WL in Indian Railways?
+
 WL stands for Waiting List. It indicates an unconfirmed ticket that will progress through RAC (Reservation Against Cancellation) before reaching confirmed status if earlier bookings are cancelled.
 
 ### Can I cancel a confirmed Tatkal ticket and get a refund?
+
 No. Confirmed Tatkal tickets are 100% non-refundable under voluntary cancellation. You can only get a refund if the train is delayed by more than 3 hours or cancelled by Indian Railways, requiring a TDR filing.
 
 ### What happens if an e-ticket remains waitlisted after chart preparation?
+
 Fully waitlisted e-tickets are automatically cancelled by the IRCTC system after chart preparation. The ticket fare is automatically credited back to the original bank account within 3 to 5 working days.
 
 ### How does counter waitlist cancellation differ from e-ticket waitlist?
+
 Unlike waitlisted e-tickets, physical paper waitlisted tickets bought at PRS railway counters don't auto-cancel. Passengers must visit a station counter up to 30 minutes before train departure to cancel the ticket and claim a cash refund.
 
 ### What is CURR_AVBL in IRCTC and can it be cancelled?
+
 CURR_AVBL (Current Availability) indicates vacant berths available for booking after chart preparation up to 30 minutes before departure. Once booked, standard cancellation charges apply based on departure timing.
 
 ### What is the TDR filing deadline for a train delayed by over 3 hours?
+
 If a train is running late by more than 3 hours and you choose not to travel, you must file an online TDR before the actual departure of the train from your boarding station to claim a 100% refund.
 
 ### How long does IRCTC take to credit a TDR refund into a bank account?
+
 TDR refunds take between 15 and 45 working days to be credited, as your claim must be verified against TTE charts by the Chief Commercial Manager (Refunds) of the respective Zonal Railway.
 
 ---

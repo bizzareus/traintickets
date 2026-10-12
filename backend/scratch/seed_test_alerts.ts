@@ -4,7 +4,8 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import { DateTime } from 'luxon';
 
 async function seedTestAlerts() {
-  const connectionString = process.env.DATABASE_URL ?? 'postgresql://localhost:5432/railchart';
+  const connectionString =
+    process.env.DATABASE_URL ?? 'postgresql://localhost:5432/railchart';
   const adapter = new PrismaPg({ connectionString });
   const prisma = new PrismaClient({ adapter });
 
@@ -50,9 +51,12 @@ async function seedTestAlerts() {
     });
 
     console.log(`✅ Successfully seeded ${created.count} tasks.`);
-    console.log(`⏱️  Trigger Time (IST): ${DateTime.fromJSDate(triggerTime).setZone('Asia/Kolkata').toFormat('HH:mm:ss')}`);
-    console.log('🚀 Next cron run should pick these up 20 at a time (due to LIMIT 20).');
-
+    console.log(
+      `⏱️  Trigger Time (IST): ${DateTime.fromJSDate(triggerTime).setZone('Asia/Kolkata').toFormat('HH:mm:ss')}`,
+    );
+    console.log(
+      '🚀 Next cron run should pick these up 20 at a time (due to LIMIT 20).',
+    );
   } catch (error) {
     console.error('❌ Seeding failed:', error);
   } finally {

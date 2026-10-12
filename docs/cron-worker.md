@@ -2,10 +2,10 @@
 
 The backend image has two entry points:
 
-| Container | Entry point | Responsibility |
-| --- | --- | --- |
-| `backend` | `node dist/main.js` | HTTP API on port 3009; no scheduler |
-| `worker` | `node dist/worker.js` | Nest application context with scheduled jobs; no HTTP listener |
+| Container | Entry point           | Responsibility                                                 |
+| --------- | --------------------- | -------------------------------------------------------------- |
+| `backend` | `node dist/main.js`   | HTTP API on port 3009; no scheduler                            |
+| `worker`  | `node dist/worker.js` | Nest application context with scheduled jobs; no HTTP listener |
 
 Only `WorkerModule` imports `ScheduleModule.forRoot()`. It runs chart alerts,
 alternative searches, notification retries, daily failed-delivery refunds, seat

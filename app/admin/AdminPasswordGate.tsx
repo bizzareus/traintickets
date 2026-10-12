@@ -19,7 +19,10 @@ export default function AdminPasswordGate({
 
   useEffect(() => {
     try {
-      if (typeof window !== "undefined" && sessionStorage.getItem(SESSION_KEY) === "1") {
+      if (
+        typeof window !== "undefined" &&
+        sessionStorage.getItem(SESSION_KEY) === "1"
+      ) {
         setUnlocked(true);
       }
     } finally {
@@ -55,7 +58,7 @@ export default function AdminPasswordGate({
 
   if (!ready) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-slate-50">
         <p className="text-slate-600">Loading…</p>
       </div>
     );
@@ -63,7 +66,7 @@ export default function AdminPasswordGate({
 
   if (!unlocked) {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center px-4">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-slate-50 px-4">
         <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-xl">
           <h1 className="text-2xl font-bold text-slate-900">Admin</h1>
           <p className="mt-1 text-sm text-slate-600">
@@ -76,7 +79,10 @@ export default function AdminPasswordGate({
               </div>
             )}
             <div>
-              <label htmlFor="admin-gate-password" className="block text-sm font-medium text-slate-700">
+              <label
+                htmlFor="admin-gate-password"
+                className="block text-sm font-medium text-slate-700"
+              >
                 Password
               </label>
               <input

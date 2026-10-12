@@ -34,7 +34,9 @@ function reportApiError(error: AxiosError): Promise<never> {
     (typeof responseMessage === "string" &&
       responseMessage.includes(PAYMENT_SYSTEM_UNAVAILABLE_MESSAGE))
   ) {
-    (error as unknown as { __sentry_reported__?: boolean }).__sentry_reported__ = true;
+    (
+      error as unknown as { __sentry_reported__?: boolean }
+    ).__sentry_reported__ = true;
     Sentry.captureException(error, {
       tags: {
         payment_system: "unavailable",
@@ -52,9 +54,14 @@ function reportApiError(error: AxiosError): Promise<never> {
 
 const getInitialApiUrl = () => {
   const url = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3009";
-  
+
   // Mixed-content protection: If the page is HTTPS, the API must be HTTPS (except on localhost)
-  if (typeof window !== "undefined" && window.location.protocol === "https:" && url.startsWith("http://") && !url.includes("localhost")) {
+  if (
+    typeof window !== "undefined" &&
+    window.location.protocol === "https:" &&
+    url.startsWith("http://") &&
+    !url.includes("localhost")
+  ) {
     return url.replace("http://", "https://");
   }
   return url;
@@ -69,9 +76,12 @@ export function getApiUrl(): string {
 }
 
 export function getAuthHeaders(): Record<string, string> {
-  if (typeof window === "undefined") return { "Content-Type": "application/json" };
+  if (typeof window === "undefined")
+    return { "Content-Type": "application/json" };
   const token = localStorage.getItem("accessToken");
-  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
   if (token) headers["Authorization"] = `Bearer ${token}`;
   return headers;
 }
@@ -107,12 +117,17 @@ axiosRetry(apiClient, {
     if (axiosRetry.isNetworkError(error)) return true;
     if (error.code === "ECONNABORTED") return true;
     const status = error.response?.status;
-    return status != null && (status >= 500 || status === 408 || status === 429);
+    return (
+      status != null && (status >= 500 || status === 408 || status === 429)
+    );
   },
 });
 
 apiClient.interceptors.request.use((config) => {
-  config.headers = { ...getAuthHeaders(), ...config.headers } as typeof config.headers;
+  config.headers = {
+    ...getAuthHeaders(),
+    ...config.headers,
+  } as typeof config.headers;
   return config;
 });
 

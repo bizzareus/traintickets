@@ -6,12 +6,12 @@ Understanding waitlist types and confirmation priorities helps passengers decide
 
 ## 📊 Waitlist Types Comparison Matrix
 
-| Quota Code | Full Form | Confirmation Priority | Description |
-|---|---|---|---|
-| **GNWL** | General Waitlist | ⭐⭐⭐⭐⭐ **Highest** | Generated when a passenger books from the train's originating station to the destination station. Clears fastest on cancellations. |
-| **PQWL** | Pooled Quota Waitlist | ⭐⭐⭐ **Medium** | Shared between small intermediate stations along a route. Has a smaller quota allocation. |
-| **RLWL** | Remote Location Waitlist | ⭐⭐ **Lower** | Generated for major intermediate stations between origin and destination. Clears only if someone from that specific route cancels. |
-| **TQWL** | Tatkal Waitlist | ⭐ **Lowest** | Waitlist for Tatkal quota bookings. Directly gets cancelled if not confirmed at 1st chart finalization. |
+| Quota Code | Full Form                | Confirmation Priority  | Description                                                                                                                        |
+| ---------- | ------------------------ | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **GNWL**   | General Waitlist         | ⭐⭐⭐⭐⭐ **Highest** | Generated when a passenger books from the train's originating station to the destination station. Clears fastest on cancellations. |
+| **PQWL**   | Pooled Quota Waitlist    | ⭐⭐⭐ **Medium**      | Shared between small intermediate stations along a route. Has a smaller quota allocation.                                          |
+| **RLWL**   | Remote Location Waitlist | ⭐⭐ **Lower**         | Generated for major intermediate stations between origin and destination. Clears only if someone from that specific route cancels. |
+| **TQWL**   | Tatkal Waitlist          | ⭐ **Lowest**          | Waitlist for Tatkal quota bookings. Directly gets cancelled if not confirmed at 1st chart finalization.                            |
 
 ---
 
@@ -28,5 +28,5 @@ When the 1st reservation chart is prepared 4 hours prior to departure:
 
 ## 💡 Maximize Your Confirmation Chances
 
-* **Monitor Chart Preparation Timelines**: Track the exact minute the 1st chart is prepared using the [LastBerth Chart Predictor](https://lastberth.com/chart-times).
-* **Snag Current Reservation Seats**: If your waitlisted ticket is cancelled, check [LastBerth's Chart Vacancy Map](https://lastberth.com) to grab a confirmed berth immediately under Current Booking.
+- **Monitor Chart Preparation Timelines**: Track the exact minute the 1st chart is prepared using the [LastBerth Chart Predictor](https://lastberth.com/chart-times).
+- **Snag Current Reservation Seats**: If your waitlisted ticket is cancelled, check [LastBerth's Chart Vacancy Map](https://lastberth.com) to grab a confirmed berth immediately under Current Booking.

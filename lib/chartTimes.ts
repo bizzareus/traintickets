@@ -84,7 +84,13 @@ function buildChartTimesSummary(args: {
   destinationStation: string;
   stations: ChartTimeStationRow[];
 }): string {
-  const { trainName, trainNumber, originStation, destinationStation, stations } = args;
+  const {
+    trainName,
+    trainNumber,
+    originStation,
+    destinationStation,
+    stations,
+  } = args;
   const route = `${originStation} to ${destinationStation}`;
   const total = stations.length;
   const withChart = stations.filter((s) => s.chartTimeLocal);
@@ -193,9 +199,11 @@ export function getCachedChartTimeStation(
   trainNumber: string,
   stationCode: string,
 ): ChartTimeStationRow | null {
-  return readCachedFile(trainNumber)?.stations.find(
-    (station) => station.stationCode === stationCode,
-  ) ?? null;
+  return (
+    readCachedFile(trainNumber)?.stations.find(
+      (station) => station.stationCode === stationCode,
+    ) ?? null
+  );
 }
 
 function writeCachedFile(data: ChartTimesPageData): void {
@@ -203,7 +211,10 @@ function writeCachedFile(data: ChartTimesPageData): void {
     if (!fs.existsSync(CHART_TIMES_DIR)) {
       fs.mkdirSync(CHART_TIMES_DIR, { recursive: true });
     }
-    const fp = path.join(/*turbopackIgnore: true*/ CHART_TIMES_DIR, `${data.slug}.json`);
+    const fp = path.join(
+      /*turbopackIgnore: true*/ CHART_TIMES_DIR,
+      `${data.slug}.json`,
+    );
     fs.writeFileSync(fp, JSON.stringify(data, null, 2) + "\n", "utf8");
     if (cachedFilePathMap) {
       cachedFilePathMap.set(data.trainNumber, fp);
@@ -225,11 +236,14 @@ function isStale(data: ChartTimesPageData): boolean {
   if (Number.isNaN(t)) return true;
   // IRCTC only publishes chart times close to departure, so a page generated
   // with no chart data yet should re-attempt soon rather than waiting a full day.
-  const maxAge = data.knownChartCount > 0 ? CACHE_MAX_AGE_MS : CACHE_MAX_AGE_INCOMPLETE_MS;
+  const maxAge =
+    data.knownChartCount > 0 ? CACHE_MAX_AGE_MS : CACHE_MAX_AGE_INCOMPLETE_MS;
   return Date.now() - t > maxAge;
 }
 
-async function fetchTrainData(trainNumber: string): Promise<TrainApiResponse | null> {
+async function fetchTrainData(
+  trainNumber: string,
+): Promise<TrainApiResponse | null> {
   try {
     const res = await fetch(`${apiBaseUrl()}/api/trains/${trainNumber}`, {
       next: { revalidate: 3600 },
@@ -290,9 +304,17 @@ function getCandidateDatesForStation(
 
   const dayOffset = Math.max(
     0,
-    Number(station.day ?? (station as unknown as { dayCount?: unknown }).dayCount ?? 1) - 1,
+    Number(
+      station.day ??
+        (station as unknown as { dayCount?: unknown }).dayCount ??
+        1,
+    ) - 1,
   );
-  const timeStr = (station.departureTime || station.arrivalTime || "12:00").trim();
+  const timeStr = (
+    station.departureTime ||
+    station.arrivalTime ||
+    "12:00"
+  ).trim();
   const [hh, mm] = timeStr.split(":").map((v) => parseInt(v, 10) || 0);
 
   const nowMs = Date.now();
@@ -305,7 +327,8 @@ function getCandidateDatesForStation(
     const boardingTimeMs = d.getTime();
 
     // Chart is typically prepared ~4 hours before boarding (or ~14h before for morning origin)
-    const chartLeadMs = dayOffset === 0 && hh < 12 ? 14 * 3600 * 1000 : 4 * 3600 * 1000;
+    const chartLeadMs =
+      dayOffset === 0 && hh < 12 ? 14 * 3600 * 1000 : 4 * 3600 * 1000;
     const chartPrepTimeMs = boardingTimeMs - chartLeadMs;
 
     const isChartDue = nowMs >= chartPrepTimeMs;
@@ -352,13 +375,21 @@ async function fetchStationChartMeta(
   journeyDate?: string,
 ): Promise<StationMeta | null> {
   try {
-    const res = await fetch(`${apiBaseUrl()}/api/train-composition/stations-meta`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ trainNumber, sourceStation: stationCode, refreshFromIrctc, journeyDate }),
-      signal: AbortSignal.timeout(STATION_FETCH_TIMEOUT_MS),
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${apiBaseUrl()}/api/train-composition/stations-meta`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          trainNumber,
+          sourceStation: stationCode,
+          refreshFromIrctc,
+          journeyDate,
+        }),
+        signal: AbortSignal.timeout(STATION_FETCH_TIMEOUT_MS),
+        cache: "no-store",
+      },
+    );
     if (!res.ok) return null;
     const json = (await res.json()) as {
       stations?: Array<{
@@ -406,33 +437,48 @@ async function mapWithConcurrency<T, R>(
   return results;
 }
 
-async function buildPageData(trainNumber: string): Promise<ChartTimesPageData | null> {
+async function buildPageData(
+  trainNumber: string,
+): Promise<ChartTimesPageData | null> {
   const train = await fetchTrainData(trainNumber);
   const stationList = train?.schedule?.stationList ?? [];
   if (!train || stationList.length === 0) return null;
 
   const trainName = train.trainName || train.schedule?.trainName || "";
   const trainNo = train.trainNumber || trainNumber;
-  const trainRunsOn = (train.schedule as unknown as { trainRunsOn?: TrainRunsOnJson })?.trainRunsOn;
+  const trainRunsOn = (
+    train.schedule as unknown as { trainRunsOn?: TrainRunsOnJson }
+  )?.trainRunsOn;
   const validStartDates = getValidTrainStartDates(trainRunsOn);
 
   // Fetch chart meta per station with station-specific candidate dates.
   // We probe candidate dates (checking DB cache first, then IRCTC if needed).
-  const metas = await mapWithConcurrency(stationList, FETCH_CONCURRENCY, async (stn) => {
-    const code = String(stn.stationCode || "").trim().toUpperCase();
-    const candidateDates = getCandidateDatesForStation(stn, validStartDates);
+  const metas = await mapWithConcurrency(
+    stationList,
+    FETCH_CONCURRENCY,
+    async (stn) => {
+      const code = String(stn.stationCode || "")
+        .trim()
+        .toUpperCase();
+      const candidateDates = getCandidateDatesForStation(stn, validStartDates);
 
-    // 1. Fast check: see if DB already has the chart meta for this station
-    let meta = await fetchStationChartMeta(trainNo, code, false, candidateDates[0]);
-    if (meta?.chartTimeLocal) return meta;
+      // 1. Fast check: see if DB already has the chart meta for this station
+      let meta = await fetchStationChartMeta(
+        trainNo,
+        code,
+        false,
+        candidateDates[0],
+      );
+      if (meta?.chartTimeLocal) return meta;
 
-    // 2. Not in DB: probe candidate running dates in ranked order
-    for (const d of candidateDates) {
-      meta = await fetchStationChartMeta(trainNo, code, true, d);
-      if (meta?.chartTimeLocal) break;
-    }
-    return meta;
-  });
+      // 2. Not in DB: probe candidate running dates in ranked order
+      for (const d of candidateDates) {
+        meta = await fetchStationChartMeta(trainNo, code, true, d);
+        if (meta?.chartTimeLocal) break;
+      }
+      return meta;
+    },
+  );
 
   // Second pass: for stations that got a first chart but no second chart, make a
   // dedicated forced-refresh call using the best candidate date to try to obtain 2nd chart.
@@ -442,15 +488,24 @@ async function buildPageData(trainNumber: string): Promise<ChartTimesPageData | 
   if (secondPassIdx.length > 0) {
     await mapWithConcurrency(secondPassIdx, FETCH_CONCURRENCY, async (i) => {
       const stn = stationList[i];
-      const code = String(stn.stationCode || "").trim().toUpperCase();
+      const code = String(stn.stationCode || "")
+        .trim()
+        .toUpperCase();
       const candidateDates = getCandidateDatesForStation(stn, validStartDates);
-      const refreshed = await fetchStationChartMeta(trainNo, code, true, candidateDates[0]);
+      const refreshed = await fetchStationChartMeta(
+        trainNo,
+        code,
+        true,
+        candidateDates[0],
+      );
       if (refreshed?.chartTwoTimeLocal) metas[i] = refreshed;
     });
   }
 
   const stations: ChartTimeStationRow[] = stationList.map((s, i) => {
-    const code = String(s.stationCode || "").trim().toUpperCase();
+    const code = String(s.stationCode || "")
+      .trim()
+      .toUpperCase();
     const meta = metas[i];
     return {
       stationCode: code,
@@ -467,18 +522,21 @@ async function buildPageData(trainNumber: string): Promise<ChartTimesPageData | 
     };
   });
 
-  const originStation = train.originStation || train.schedule?.stationFrom || "";
+  const originStation =
+    train.originStation || train.schedule?.stationFrom || "";
   const destinationStation =
     train.destinationStation || train.schedule?.stationTo || "";
   const rawClasses =
-    (Array.isArray(train.availableClasses) && train.availableClasses.length > 0
+    Array.isArray(train.availableClasses) && train.availableClasses.length > 0
       ? train.availableClasses
       : Array.isArray(train.schedule?.availableClasses) &&
           train.schedule.availableClasses.length > 0
         ? train.schedule.availableClasses
-        : []);
+        : [];
   const availableClasses = [
-    ...new Set(rawClasses.map((c) => String(c).trim().toUpperCase()).filter(Boolean)),
+    ...new Set(
+      rawClasses.map((c) => String(c).trim().toUpperCase()).filter(Boolean),
+    ),
   ];
 
   return {
@@ -488,7 +546,8 @@ async function buildPageData(trainNumber: string): Promise<ChartTimesPageData | 
     destinationStation,
     slug: buildChartTimesSlug(train.trainNumber || trainNumber, trainName),
     stations,
-    availableClasses: availableClasses.length > 0 ? availableClasses : undefined,
+    availableClasses:
+      availableClasses.length > 0 ? availableClasses : undefined,
     summary: buildChartTimesSummary({
       trainName,
       trainNumber: String(train.trainNumber || trainNumber).trim(),
@@ -546,13 +605,15 @@ export function listChartTimesSlugs(): string[] {
   }
 }
 
-let cachedChartTimesIndex: {
-  slug: string;
-  trainNumber: string;
-  trainName: string;
-  originStation: string;
-  destinationStation: string;
-}[] | null = null;
+let cachedChartTimesIndex:
+  | {
+      slug: string;
+      trainNumber: string;
+      trainName: string;
+      originStation: string;
+      destinationStation: string;
+    }[]
+  | null = null;
 
 /** Lightweight metadata for every committed chart-times page (for the index hub). */
 export function listChartTimesIndex(): {
@@ -576,7 +637,10 @@ export function listChartTimesIndex(): {
   for (const f of files) {
     try {
       const data = JSON.parse(
-        fs.readFileSync(path.join(/*turbopackIgnore: true*/ CHART_TIMES_DIR, f), "utf8"),
+        fs.readFileSync(
+          path.join(/*turbopackIgnore: true*/ CHART_TIMES_DIR, f),
+          "utf8",
+        ),
       ) as ChartTimesPageData;
       out.push({
         slug: data.slug || f.replace(/\.json$/, ""),
@@ -619,7 +683,9 @@ export const CURATED_POPULAR_CHART_TIMES: string[] = [
 ];
 
 /** The curated popular trains that actually have a chart-times page, in order. */
-export function listPopularChartTimes(): ReturnType<typeof listChartTimesIndex> {
+export function listPopularChartTimes(): ReturnType<
+  typeof listChartTimesIndex
+> {
   const byNumber = new Map(
     listChartTimesIndex().map((t) => [t.trainNumber, t]),
   );

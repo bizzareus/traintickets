@@ -29,7 +29,9 @@ function getLastStatusSegment(statusText: string): string {
   return seg.trim();
 }
 
-export function isLegConfirmed(row: AvailabilityRowLike | null | undefined): boolean {
+export function isLegConfirmed(
+  row: AvailabilityRowLike | null | undefined,
+): boolean {
   if (!row) return false;
 
   const type = parseUpstreamAvailablityType(row.availablityType);
@@ -39,14 +41,20 @@ export function isLegConfirmed(row: AvailabilityRowLike | null | undefined): boo
   const vendorStatus = String(row.vendorPredictionStatus ?? "").trim();
   if (vendorStatus === "Confirm" || vendorStatus === "Probable") return true;
 
-  const statusText = row.availabilityDisplayName ?? row.railDataStatus ?? row.availablityStatus ?? "";
+  const statusText =
+    row.availabilityDisplayName ??
+    row.railDataStatus ??
+    row.availablityStatus ??
+    "";
   const currentStatus = getLastStatusSegment(statusText);
 
   return CONFIRMED_STATUS_RE.test(currentStatus);
 }
 
 /** `true` when user should be sent to IRCTC to book (availablityType 1 or equivalent). */
-export function isIrctcDirectBookable(row: AvailabilityRowLike | null | undefined): boolean {
+export function isIrctcDirectBookable(
+  row: AvailabilityRowLike | null | undefined,
+): boolean {
   return isLegConfirmed(row);
 }
 
@@ -68,9 +76,12 @@ export function hasAnyAvailableSeat(
   const avlClasses = train?.avlClasses;
   if (!avlClasses || avlClasses.length === 0) return false;
 
-  const acOnly = typeof filter === "boolean" ? filter : (filter?.acOnly ?? false);
+  const acOnly =
+    typeof filter === "boolean" ? filter : (filter?.acOnly ?? false);
   const selectedClasses =
-    typeof filter === "object" && filter?.selectedClasses && filter.selectedClasses.length > 0
+    typeof filter === "object" &&
+    filter?.selectedClasses &&
+    filter.selectedClasses.length > 0
       ? new Set(filter.selectedClasses.map((c) => c.toUpperCase()))
       : null;
 
@@ -97,4 +108,3 @@ export function formatAvailabilityStatus(status?: string | null): string {
   if (!status) return "—";
   return status.replace(CURR_AVL_RE, "AVL");
 }
-

@@ -8,26 +8,24 @@ const BRAND = "#2563eb";
 
 export default function AppleIcon() {
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: BRAND,
-          color: "#fff",
-          fontSize: 88,
-          fontWeight: 700,
-          fontFamily:
-            'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-          borderRadius: 40,
-        }}
-      >
-        LB
-      </div>
-    ),
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: BRAND,
+        color: "#fff",
+        fontSize: 88,
+        fontWeight: 700,
+        fontFamily:
+          'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+        borderRadius: 40,
+      }}
+    >
+      LB
+    </div>,
     { ...size },
   );
 }

@@ -11,7 +11,7 @@ export function proxy(request: NextRequest) {
     const protocol = request.headers.get("x-forwarded-proto") || "https";
     return NextResponse.redirect(
       `${protocol}://${newHost}${url.pathname}${url.search}`,
-      301
+      301,
     );
   }
 
@@ -21,7 +21,7 @@ export function proxy(request: NextRequest) {
   if (!isDev && proto === "http") {
     return NextResponse.redirect(
       `https://${host}${url.pathname}${url.search}`,
-      301
+      301,
     );
   }
 

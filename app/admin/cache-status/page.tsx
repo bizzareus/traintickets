@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useDeferredValue, useEffect, useMemo, useState } from "react";
+import {
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Calendar, Database, RefreshCw, Search, Train } from "lucide-react";
 import moment from "moment";
 import { apiClient } from "@/lib/api";
@@ -121,7 +127,9 @@ export default function CacheStatusPage() {
     }
 
     // Performance Optimization: Direct string comparison operator (< / >) is ~2x-5x faster than localeCompare in V8 for ISO dates (YYYY-MM-DD)
-    return groups.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+    return groups.sort((a, b) =>
+      a.date < b.date ? -1 : a.date > b.date ? 1 : 0,
+    );
   }, [inventory?.trains]);
 
   // Filtered date groups based on search
@@ -313,7 +321,8 @@ export default function CacheStatusPage() {
                     </td>
                     <td className="whitespace-nowrap px-4 py-3.5 text-right">
                       <span className="inline-flex items-center justify-center rounded-lg bg-indigo-50 px-2.5 py-1 text-sm font-bold text-indigo-700">
-                        {group.trainCount} {group.trainCount === 1 ? "train" : "trains"}
+                        {group.trainCount}{" "}
+                        {group.trainCount === 1 ? "train" : "trains"}
                       </span>
                     </td>
                     <td className="px-4 py-3.5">
@@ -321,7 +330,7 @@ export default function CacheStatusPage() {
                         {group.trains.map((trainNo) => (
                           <span
                             key={trainNo}
-                            className="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 font-mono text-xs font-medium text-slate-700 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 transition"
+                            className="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 font-mono text-xs font-medium text-slate-700 transition hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700"
                           >
                             {trainNo}
                           </span>
@@ -382,7 +391,7 @@ export default function CacheStatusPage() {
                         {train.dates.map((d) => (
                           <span
                             key={d}
-                            className="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-mono text-slate-700"
+                            className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-slate-700"
                           >
                             {d}
                           </span>

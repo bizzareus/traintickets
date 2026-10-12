@@ -571,7 +571,9 @@ function SeatRow({
     <div
       className={`flex w-full items-center gap-3 rounded-xl ${c.bg} px-3.5 py-3 text-left`}
     >
-      <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] ${c.numBg} shadow-sm`}>
+      <div
+        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] ${c.numBg} shadow-sm`}
+      >
         <span className={`text-[17px] font-bold ${c.num}`}>
           {berth.berthNo}
         </span>
@@ -588,7 +590,9 @@ function SeatRow({
                 <div
                   className={`h-2 w-2 shrink-0 rounded-full ${tone === "green" ? "bg-emerald-500" : "bg-amber-500"}`}
                 />
-                {a}{aName} to {z}{zName}
+                {a}
+                {aName} to {z}
+                {zName}
               </div>
             );
           })}
@@ -601,7 +605,7 @@ function SeatRow({
         href={bookUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:bg-blue-700 transition-colors"
+        className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-blue-700"
       >
         Book this seat
       </a>
@@ -741,12 +745,7 @@ export function SeatStatus() {
     return () => {
       cancelled = true;
     };
-  }, [
-    selectedTrain,
-    journeyDate,
-    station,
-    coachReloadKey,
-  ]);
+  }, [selectedTrain, journeyDate, station, coachReloadKey]);
 
   const resetResult = useCallback(() => {
     setResult(null);
@@ -923,7 +922,9 @@ export function SeatStatus() {
             ) : coachesError ? (
               coachesErrorKind === "connection" ? (
                 <div className="flex min-h-[42px] w-full items-center justify-between gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs text-amber-800">
-                  <span className="truncate font-medium">IRCTC connection issue</span>
+                  <span className="truncate font-medium">
+                    IRCTC connection issue
+                  </span>
                   <button
                     type="button"
                     onClick={() => setCoachReloadKey((k) => k + 1)}
@@ -940,7 +941,7 @@ export function SeatStatus() {
             ) : coaches.length === 0 ? (
               <select
                 disabled
-                className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm font-medium text-gray-400 cursor-not-allowed"
+                className="w-full cursor-not-allowed rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm font-medium text-gray-400"
               >
                 <option>
                   {selectedTrain && journeyDate && station
@@ -973,7 +974,7 @@ export function SeatStatus() {
           <div className="px-4 py-3.5">
             <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wide text-gray-500">
               Seat / berth no.{" "}
-              <span className="normal-case font-normal text-gray-400">
+              <span className="font-normal normal-case text-gray-400">
                 (optional)
               </span>
             </label>
@@ -995,7 +996,7 @@ export function SeatStatus() {
             id="seatStatusCheckBtn"
             onClick={() => void handleCheck()}
             disabled={!canSubmit}
-            className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-sm transition-all hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/30 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto touch-manipulation"
+            className="inline-flex w-full touch-manipulation items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-sm transition-all hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/30 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
           >
             {loading ? (
               <span className="inline-flex items-center gap-2">

@@ -144,7 +144,9 @@ export function getTrainRegistryEntry(
   slugOrNumber: string,
 ): TrainRegistryEntry | null {
   const { bySlug, byNumber } = loadRegistry();
-  const normalized = String(slugOrNumber || "").trim().toLowerCase();
+  const normalized = String(slugOrNumber || "")
+    .trim()
+    .toLowerCase();
   if (bySlug.has(normalized)) return bySlug.get(normalized)!;
   if (byNumber.has(normalized)) return byNumber.get(normalized)!;
 
@@ -163,7 +165,9 @@ export function getTrainRegistryEntry(
  */
 export const getTrainFoodMenu = cache(
   (slugOrNumber: string): TrainFoodMenu | null => {
-    const normalized = String(slugOrNumber || "").trim().toLowerCase();
+    const normalized = String(slugOrNumber || "")
+      .trim()
+      .toLowerCase();
 
     // 1. Direct custom file lookup
     const customDirect = readCustomMenuFile(normalized);
@@ -265,11 +269,20 @@ export const listTrainFoodMenuIndex = cache((): TrainFoodMenuIndexRow[] => {
           hasCustomMenu: true,
         };
       });
-    const validRows = rawRows.filter((r): r is TrainFoodMenuIndexRow => r !== null);
+    const validRows = rawRows.filter(
+      (r): r is TrainFoodMenuIndexRow => r !== null,
+    );
     // Performance Optimization: Direct numeric parsing with string fallback is ~150x faster than localeCompare with { numeric: true } in V8
     validRows.sort((a, b) => {
-      const diff = (parseInt(a.trainNumber, 10) || 0) - (parseInt(b.trainNumber, 10) || 0);
-      return diff !== 0 ? diff : (a.trainNumber < b.trainNumber ? -1 : a.trainNumber > b.trainNumber ? 1 : 0);
+      const diff =
+        (parseInt(a.trainNumber, 10) || 0) - (parseInt(b.trainNumber, 10) || 0);
+      return diff !== 0
+        ? diff
+        : a.trainNumber < b.trainNumber
+          ? -1
+          : a.trainNumber > b.trainNumber
+            ? 1
+            : 0;
     });
     return validRows;
   } catch {

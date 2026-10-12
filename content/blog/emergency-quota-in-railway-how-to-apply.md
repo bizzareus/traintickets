@@ -13,6 +13,7 @@ tags:
 > **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
+
 Before getting into the paperwork, let's see how this actually works. Indian Railways reserves a small pool of berths on every single train run. These are held for VIPs and people facing sudden, urgent crises. If you need one of these spots, you cannot book it online. The process is completely manual and offline. You must go to the local DRM office in person. Drop off a request letter, a printout of your ticket, and clear proof of your emergency. Try to submit your packet at least 24 hours before departure. Remember that approval is never a sure thing—the officers make the final call—so always have a backup plan ready.
 
 ---
@@ -116,13 +117,17 @@ Finally, don't forget to check the Vikalp box when booking. If your ticket doesn
 ## Frequently Asked Questions
 
 ### Who actually gets these seats?
+
 The railway sets these berths aside for VIPs, department employees, government officers on official travel, and passengers facing sudden hospitalizations or a death in the family.
 
 ### Can an ordinary passenger get approved?
+
 Yes, normal passengers can get their tickets confirmed if they present solid proof like hospital documents or official transit orders. However, approval is completely discretionary and never guaranteed.
 
 ### Is there any charge for submitting the request?
+
 Not a single paisa. The process is completely free of charge, though you must already hold a valid waitlisted or RAC ticket.
 
 ### Can I travel on the train if my EQ request is rejected?
+
 If you hold an online e-ticket and it remains waitlisted after the chart is prepared, it cancels automatically and the money is refunded. You cannot travel on a cancelled e-ticket. Only physical counter tickets allow you to travel in general coaches when waitlisted.

@@ -1,7 +1,10 @@
 import type { MetadataRoute } from "next";
 import { listBlogPosts } from "@/lib/blog";
 import { indexableTranslations } from "@/lib/blog-quality";
-import { getAllGlossaryTerms, listAvailableGlossaryLangs } from "@/lib/seo/glossary-db";
+import {
+  getAllGlossaryTerms,
+  listAvailableGlossaryLangs,
+} from "@/lib/seo/glossary-db";
 import { getTopRoutes } from "@/lib/seo/routes-db";
 import { listChartTimesIndex } from "@/lib/chartTimes";
 import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
@@ -120,7 +123,8 @@ async function pagesBucket(now: Date): Promise<MetadataRoute.Sitemap> {
     const availableLangs = indexableTranslations(p.slug);
     const alternates: Record<string, string> = {};
     for (const l of availableLangs) {
-      const u = l === "en" ? url(`/blog/${p.slug}`) : url(`/blog/${l}/${p.slug}`);
+      const u =
+        l === "en" ? url(`/blog/${p.slug}`) : url(`/blog/${l}/${p.slug}`);
       alternates[l] = u;
       alternates[`${l}-IN`] = u;
     }
@@ -129,7 +133,9 @@ async function pagesBucket(now: Date): Promise<MetadataRoute.Sitemap> {
     for (const l of availableLangs) {
       postRoutes.push({
         url: l === "en" ? url(`/blog/${p.slug}`) : url(`/blog/${l}/${p.slug}`),
-        lastModified: new Date(`${(p.updated ?? p.date).slice(0, 10)}T00:00:00Z`),
+        lastModified: new Date(
+          `${(p.updated ?? p.date).slice(0, 10)}T00:00:00Z`,
+        ),
         alternates: { languages: alternates },
       });
     }
@@ -157,7 +163,9 @@ async function trainsBucket(now: Date): Promise<MetadataRoute.Sitemap> {
 
 // The "confirmed-tickets" bucket: the top-500 slugged train confirmed tickets pages
 // (/train/confirmed_tickets/12015-ajmer-shatabdi).
-async function confirmedTicketsBucket(now: Date): Promise<MetadataRoute.Sitemap> {
+async function confirmedTicketsBucket(
+  now: Date,
+): Promise<MetadataRoute.Sitemap> {
   const { getTopTrainSlugs } = await import("@/lib/trainSlug");
   return getTopTrainSlugs(500).map((slug) => ({
     url: url(`/train/confirmed_tickets/${slug}`),
@@ -177,7 +185,10 @@ function chartTimesBucket(now: Date): MetadataRoute.Sitemap {
 function foodMenuBucket(now: Date): MetadataRoute.Sitemap {
   return [
     { url: url("/irctc-train-food-menu"), lastModified: now },
-    { url: url("/irctc-train-food-menu/mail-express-humsafar"), lastModified: now },
+    {
+      url: url("/irctc-train-food-menu/mail-express-humsafar"),
+      lastModified: now,
+    },
     ...listStandardMenuSlugs().map((slug) => ({
       url: url(`/irctc-train-food-menu/${slug}`),
       lastModified: now,

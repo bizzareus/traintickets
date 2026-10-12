@@ -122,9 +122,11 @@ Do not let availability bully you into a journey you will regret. A confirmed ti
 ## Common Booking Questions (FAQ)
 
 ### Can the TTE upgrade my seat class onboard if vacant berths are available?
+
 Yes! The Traveling Ticket Examiner (TTE) can upgrade you onboard if there are empty berths after the chart is prepared. You'll just need to pay the difference in fare between your original class and the new one.
 
 ### What if the TTE downgrades me onboard? Do I get money back?
+
 Yes. If the railway puts you in a lower class because of coach changes or track issues, you get the fare difference back. Just make sure you file a Ticket Deposit Receipt (TDR) online through IRCTC. There's a tight deadline for this. To see the exact rules and timelines, check the [official IRCTC refund and TDR guidelines](https://contents.irctc.co.in/en/refundRules.html).
 
 ---

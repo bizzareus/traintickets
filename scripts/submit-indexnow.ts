@@ -52,7 +52,7 @@ Options:
   }
 
   const uniqueUrls = Array.from(new Set(urls.map((u) => u.trim()))).filter(
-    (u) => u.startsWith("http://") || u.startsWith("https://")
+    (u) => u.startsWith("http://") || u.startsWith("https://"),
   );
 
   if (uniqueUrls.length === 0) {
@@ -82,7 +82,7 @@ Options:
   results.forEach((r, idx) => {
     const icon = r.success ? "✅" : "❌";
     console.log(
-      `   Batch #${idx + 1}: ${icon} HTTP ${r.status} — ${r.message} (${r.submittedCount} URLs)`
+      `   Batch #${idx + 1}: ${icon} HTTP ${r.status} — ${r.message} (${r.submittedCount} URLs)`,
     );
   });
 

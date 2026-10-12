@@ -11,6 +11,7 @@ tags:
 ---
 
 ## TL;DR
+
 Indian Railways offers an optional travel insurance scheme on e-tickets for a tiny premium of ₹0.45 per passenger. It covers accidental death and permanent disability up to ₹10,00,000 (10 Lakhs). However, you must fill out the nominee details via the provider's link after booking, or your family will face extreme legal delays trying to claim it.
 
 ---
@@ -32,9 +33,10 @@ The policy applies to the entire journey. This includes time spent on the train 
 When you choose the insurance, the system adds the 45-paise charge to your total fare. Since the cost is negligible, choosing it is a sensible choice.
 
 The pricing rules are straightforward:
-* **Flat Rate:** You pay exactly ₹0.45 whether you travel in third AC, sleeper class, or an executive chair car.
-* **Whole PNR Coverage:** Opting in applies the insurance to every traveler listed under that PNR, except for infants under five who travel without a separate berth.
-* **No Cancellation Refunds:** Canceling your ticket won't return the 45-paise premium, as it goes straight to the insurer.
+
+- **Flat Rate:** You pay exactly ₹0.45 whether you travel in third AC, sleeper class, or an executive chair car.
+- **Whole PNR Coverage:** Opting in applies the insurance to every traveler listed under that PNR, except for infants under five who travel without a separate berth.
+- **No Cancellation Refunds:** Canceling your ticket won't return the 45-paise premium, as it goes straight to the insurer.
 
 ---
 
@@ -45,6 +47,7 @@ The pricing rules are straightforward:
 Many travelers select the insurance checkbox on IRCTC but forget this next step. If you leave the nominee fields blank, the insurer cannot pay out claims easily. Instead, your family would have to secure a Succession Certificate from a civil court, which is a slow and costly legal process.
 
 After booking:
+
 1. Check your inbox or texts for a message from the assigned insurer (like SBI General or Liberty General).
 2. Click the unique portal link provided.
 3. Input your PNR and fill in the nominee details.
@@ -58,13 +61,13 @@ After booking:
 
 The railway board fixes these compensation limits. They aim to provide maximum security to families for less than half a rupee.
 
-| Coverage Category | Maximum Payout (INR) | Primary Recipient |
-| :--- | :--- | :--- |
-| **Accidental Death** | ₹10,00,000 | Nominee or Legal Heir |
-| **Permanent Total Disability** | ₹10,00,000 | Insured Passenger |
-| **Permanent Partial Disability** | ₹7,50,000 | Insured Passenger |
-| **Hospitalization for Injury** | ₹2,00,000 | Hospital or Passenger |
-| **Transportation of Remains** | ₹10,000 | Family Representative |
+| Coverage Category                | Maximum Payout (INR) | Primary Recipient     |
+| :------------------------------- | :------------------- | :-------------------- |
+| **Accidental Death**             | ₹10,00,000           | Nominee or Legal Heir |
+| **Permanent Total Disability**   | ₹10,00,000           | Insured Passenger     |
+| **Permanent Partial Disability** | ₹7,50,000            | Insured Passenger     |
+| **Hospitalization for Injury**   | ₹2,00,000            | Hospital or Passenger |
+| **Transportation of Remains**    | ₹10,000              | Family Representative |
 
 ---
 
@@ -75,6 +78,7 @@ The railway board fixes these compensation limits. They aim to provide maximum s
 Do not reach out to IRCTC or the local station master for payouts. The transaction is strictly between you and the specific insurance firm.
 
 Here is the standard claim workflow:
+
 1. Locate the insurance provider name from your ticket confirmation text or email.
 2. Get the claim form from that insurer's website.
 3. Collect the necessary evidence: a TTE or station master certificate confirming the incident, hospital discharge bills, and a police FIR if applicable.
@@ -97,16 +101,21 @@ If you are dealing with tricky waitlists, digital platforms make finding alterna
 ## Frequently Asked Questions (FAQ)
 
 ### What does WL stand for in Indian Railways?
+
 WL full form is Waiting List. It means you don't have a confirmed seat yet and must wait in a queue for other passengers to cancel.
 
 ### Is IRCTC travel insurance mandatory?
+
 No, it is optional. You can easily opt out by unchecking the insurance box before paying for your ticket on IRCTC.
 
 ### Can a foreign citizen buy IRCTC travel insurance?
+
 No. The travel insurance scheme offered on the IRCTC portal is strictly for Indian citizens. Foreign nationals booking tickets are not eligible for this cover.
 
 ### What happens if I forget to fill in the nominee details?
+
 The insurance stays valid, but claim processing becomes very complex. Your family will have to produce a Succession Certificate from a civil court before the insurer releases the payout.
 
 ### Is the travel insurance premium refunded if the train is cancelled?
+
 If the railways cancel the train, you get a full refund for the ticket, but the ₹0.45 insurance premium is generally non-refundable.

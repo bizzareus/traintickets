@@ -170,7 +170,11 @@ Rules:
 
 type MenuItem = { item: string; description: string };
 type MenuService = { service: string; price: number | null; items: MenuItem[] };
-type MenuClass = { classCode: string; className: string; services: MenuService[] };
+type MenuClass = {
+  classCode: string;
+  className: string;
+  services: MenuService[];
+};
 type ExtractedMenu = {
   trainNumber: string;
   trainNumberPair: string;
@@ -200,9 +204,13 @@ function validate(m: ExtractedMenu, trainNo: string): string | null {
   return null;
 }
 
-async function extractOne(client: OpenAI, trainNo: string): Promise<ExtractedMenu> {
+async function extractOne(
+  client: OpenAI,
+  trainNo: string,
+): Promise<ExtractedMenu> {
   const src = sourceFor(trainNo);
-  const text = src.kind === "html" ? htmlToText(src.url) : downloadPdfText(trainNo);
+  const text =
+    src.kind === "html" ? htmlToText(src.url) : downloadPdfText(trainNo);
   const completion = await client.chat.completions.create({
     model: MODEL,
     temperature: 0,
@@ -238,7 +246,9 @@ async function run() {
   const trains = explicit.length
     ? explicit
     : await fetchVandeBharatTrainNumbers();
-  console.log(`Processing ${trains.length} trains (model=${MODEL}, force=${force}).`);
+  console.log(
+    `Processing ${trains.length} trains (model=${MODEL}, force=${force}).`,
+  );
 
   const ok: string[] = [];
   const failed: { trainNo: string; reason: string }[] = [];

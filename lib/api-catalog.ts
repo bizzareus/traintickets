@@ -18,7 +18,8 @@ export interface ApiCatalogLinkset {
   linkset: ApiCatalogEntry[];
 }
 
-export const RFC9727_MEDIA_TYPE = 'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"';
+export const RFC9727_MEDIA_TYPE =
+  'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"';
 
 /**
  * Builds the RFC 9727 Linkset JSON payload representing the published API catalog.

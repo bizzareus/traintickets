@@ -11,7 +11,9 @@ export default function SubscribeAlertPage() {
     <Suspense
       fallback={
         <div className="flex min-h-[60vh] items-center justify-center">
-          <div className="text-center text-slate-600">Loading alert details...</div>
+          <div className="text-center text-slate-600">
+            Loading alert details...
+          </div>
         </div>
       }
     >

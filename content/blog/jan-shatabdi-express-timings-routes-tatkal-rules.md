@@ -13,6 +13,7 @@ tags:
 > **Chasing a confirmed Jan Shatabdi seat?** Check live availability and your PNR status with [Smart Seats](/), and after chart preparation, spot the actual vacant Chair Car berths on your train with [Get Confirmed Tickets](/).
 
 ## TL;DR
+
 Need a fast, cheap intercity ride? Jan Shatabdi Express is Indian Railways' answer for budget day trips. Before you book, you need to know how the seating classes differ, when Tatkal opens, and how catering works. Here is a quick, practical guide to getting a confirmed seat without the usual booking headache.
 
 ---
@@ -76,28 +77,37 @@ Keep in mind that Jan Shatabdi trains are fully reserved. You cannot travel on a
 ## Common Jan Shatabdi Booking Questions (FAQ)
 
 ### Can I travel on Jan Shatabdi with a general unreserved ticket?
+
 No. Jan Shatabdi Express is a fully reserved train. You must have a confirmed or RAC ticket to board. General unreserved tickets, general coach passes, or platform tickets do not permit travel on these trains, and boarding without a valid reservation will result in heavy fines.
 
 ### What is the difference between CC and 2S classes in Jan Shatabdi?
+
 CC stands for AC Chair Car, which features air-conditioned coaches with reclining seats. 2S stands for Second Sitting, which has non-air-conditioned coaches with cushioned bench-style seating. CC tickets are much more comfortable but cost about three times more than 2S tickets.
 
 ### Does Jan Shatabdi have a pantry car?
+
 Most Jan Shatabdi Express trains do not have a dedicated pantry car coach. However, they do offer on-board catering services where mobile pantry staff take orders and sell tea, coffee, water, and packed snacks throughout the journey.
 
 ### What happens if my Jan Shatabdi e-ticket is waitlisted?
+
 If your e-ticket remains on the Waiting List (WL) after the final chart is prepared, it is automatically cancelled by the system, and your fare is refunded to your bank account. You cannot travel on a fully waitlisted e-ticket, as it is invalid for travel.
 
 ### Can I book Tatkal tickets for Jan Shatabdi Express?
+
 Yes. Tatkal booking is available for Jan Shatabdi trains. The booking window opens daily one day before the train's departure from its originating station. AC Chair Car (CC) Tatkal booking starts at 10:00 AM, and Second Sitting (2S) Tatkal booking starts at 11:00 AM.
 
 ### Are there senior citizen concessions in Jan Shatabdi?
+
 No. Indian Railways has suspended concessions for senior citizens on all regular trains, including Jan Shatabdi Express. All passengers, except for specific quotas like Divyangjan (disabled passengers) or students under strict conditions, must pay the full standard adult fare.
 
 ### Is current booking available for Jan Shatabdi trains?
+
 Yes. If seats remain vacant after the reservation chart is prepared (about 8 hours before the train's departure), they are made available under the current booking quota. You can book these confirmed seats online or at the station ticket counter up to 30 minutes before the train leaves.
 
 ### Can I board Jan Shatabdi with a general UTS ticket?
+
 No. General UTS unreserved tickets are not valid for travel on Jan Shatabdi Express. All coaches require a prior reservation.
 
 ### Is food free on Shatabdi vs Jan Shatabdi?
+
 On Shatabdi Express, meals are included in the ticket fare. On Jan Shatabdi Express, catering is optional and meals must be bought separately from vendors.

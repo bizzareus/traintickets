@@ -104,6 +104,7 @@ from either tool, use those instead of/in addition to the live pages.
   informational/product queries (a new app, a rule change, a scheme, a train).
 
 **C. Google News (Topic Stream)** — breaking news and policy changes:
+
 - Open the Google News Indian Railways topic page at `https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSkwyMHZNRE13TTJkd0VnVmxiaTFIUWlnQVAB?hl=en-GB&gl=GB&ceid=GB%3Aen` to scan current headlines, IRCTC press releases, fare/refund policy changes, new train launches, or passenger advisories.
 - Evaluate whether any new news story is relevant to travellers, figure out the practical takeaway (how it affects bookings, Tatkal, waitlists, or station rules), and convert it into a new post or an update to an existing guide.
 
@@ -174,6 +175,7 @@ keep-iterate-revert per its guardrails.
 
 **D. Automated Intent-Matching & Candidate Queue (Sitemap Cross-Check):**
 Run `python3 scripts/seo-weekly-intent-matcher.py` to cross-check extracted high-impression keywords against the sitemap & existing inventory (`content/blog/*.md`):
+
 - **Intent Match Found (Score ≥ 50%):** Route the keyword directly to the target existing page for **Playbook A (EXPAND)** or **Playbook A-CTR (CTR Fix)** (mobile-first ≤58ch title, H2 fan-out, top CTA).
 - **No Intent Match (Score < 50%):** Append the keyword to **`memory/new-keyword-candidates.md`** for user review and automated generation via **Playbook D (WRITE NEW)**.
 
@@ -281,7 +283,6 @@ reader's intent:
   **Measure it:** record the page's pre-change blog→tool conversion rate (from `query-funnel`) in
   the experiment tracker so a later run can confirm the CTA moved `search_tickets_clicked` /
   PNR / `chart_times_train_selected` / `alert_requested` events for that landing page — not just that the CTA exists.
-
 
 > **Batch loop:** Steps 2–6 apply to EVERY opportunity in the batch. Work through them one at
 > a time (each via its playbook), keeping each piece high-quality — never sacrifice quality to

@@ -154,7 +154,11 @@ async function sourceStationCode(
       `${IRCTC_SCHEDULE_URL}/${encodeURIComponent(trainNo)}`,
       {
         method: 'GET',
-        headers: { ...SCHEDULE_HEADERS, greq: String(Date.now()), Cookie: cookie },
+        headers: {
+          ...SCHEDULE_HEADERS,
+          greq: String(Date.now()),
+          Cookie: cookie,
+        },
       },
     );
     if (status < 200 || status >= 300) return null;
@@ -224,7 +228,8 @@ async function main() {
   });
   const sourceCache = new Map<string, string>();
   for (const r of schedRows) {
-    if (r.stationFrom) sourceCache.set(r.trainNumber, r.stationFrom.toUpperCase());
+    if (r.stationFrom)
+      sourceCache.set(r.trainNumber, r.stationFrom.toUpperCase());
   }
 
   console.log(
@@ -239,7 +244,11 @@ async function main() {
     const { trainNumber, label } = trains[i];
     const prefix = `[${i + 1}/${trains.length}] ${trainNumber}`;
     try {
-      const boarding = await sourceStationCode(trainNumber, cookie, sourceCache);
+      const boarding = await sourceStationCode(
+        trainNumber,
+        cookie,
+        sourceCache,
+      );
       if (!boarding) {
         skipped++;
         console.log(`${prefix} SKIP no source-station code`);

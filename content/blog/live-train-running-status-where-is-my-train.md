@@ -30,14 +30,14 @@ The good news is that you no longer have to guess. Indian Railways and a handful
 
 Live train running status is the real-time position of a train along its route, showing its current or last-crossed station, how many minutes it is running early or late, and the expected arrival and departure time at every upcoming stop. It is updated continuously while the train is in motion.
 
-Unlike a static timetable, which only shows the *scheduled* time, live status reflects what is actually happening on the tracks today. A typical running status screen tells you:
+Unlike a static timetable, which only shows the _scheduled_ time, live status reflects what is actually happening on the tracks today. A typical running status screen tells you:
 
 - The **last station crossed** and the current delay (for example, "45 min late").
 - The **expected arrival/departure** at each remaining station, adjusted for the delay.
 - The **platform number** at major stations, where this data is available.
 - Whether the train has **departed, arrived, or is yet to start**.
 
-This is different from your ticket status. Running status tracks the *train*; PNR status tracks *your seat*. We cover that distinction in detail below.
+This is different from your ticket status. Running status tracks the _train_; PNR status tracks _your seat_. We cover that distinction in detail below.
 
 ---
 
@@ -63,12 +63,12 @@ To check train running status by SMS, send the message **"SPOT <train number>"**
 
 The single helpline number **139** handles most railway enquiries through SMS and IVRS (voice menu). Useful SMS formats include:
 
-| What you want | SMS format | Send to |
-|---|---|---|
-| Live running status | `SPOT <train no.>` | 139 |
-| PNR status | `PNR <10-digit PNR>` | 139 |
-| Seat availability | `AVL <train no.> <date> <class> <quota>` | 139 |
-| Fare enquiry | `FARE <train no.> <from> <to> <class>` | 139 |
+| What you want       | SMS format                               | Send to |
+| ------------------- | ---------------------------------------- | ------- |
+| Live running status | `SPOT <train no.>`                       | 139     |
+| PNR status          | `PNR <10-digit PNR>`                     | 139     |
+| Seat availability   | `AVL <train no.> <date> <class> <quota>` | 139     |
+| Fare enquiry        | `FARE <train no.> <from> <to> <class>`   | 139     |
 
 Standard SMS charges apply, and you can also **call 139** and follow the voice prompts for the same information in multiple languages. The SMS route is a lifesaver when mobile data is patchy on a moving train or at a remote station.
 
@@ -83,7 +83,7 @@ The app, now owned by Google, uses two clever methods:
 - **Cell-tower triangulation:** It senses which mobile towers your phone passes and matches them to the route map to estimate location — this works even with mobile data switched off.
 - **Crowdsourcing:** Position reports from many travellers on the same train are combined to refine the estimate.
 
-This makes it excellent for **onboard use** in tunnels, rural stretches, or zones with no data. The trade-off is that offline estimates are *predictions*, not official records. For the precise, authoritative position — especially platform numbers — cross-check with NTES, which is fed by GPS hardware on the train itself.
+This makes it excellent for **onboard use** in tunnels, rural stretches, or zones with no data. The trade-off is that offline estimates are _predictions_, not official records. For the precise, authoritative position — especially platform numbers — cross-check with NTES, which is fed by GPS hardware on the train itself.
 
 ---
 
@@ -144,19 +144,25 @@ If you are searching last-minute, always look for a `"current available ticket"`
 ## Common Questions About Live Train Status (FAQ)
 
 ### How can I check where my train is right now?
+
 Enter your train number or name on the NTES "Spot Your Train" portal, the Where Is My Train app, or apps like ixigo and RailYatri. You can also send `SPOT <train number>` to 139. Each shows the train's current location, last station crossed, and how many minutes it is running late.
 
 ### Is the Where Is My Train app accurate?
+
 It is fairly accurate, especially on busy routes. The app estimates location using mobile cell-tower signals and crowdsourced reports from other passengers, so it works even without internet. For the most precise, official position and platform numbers, cross-check with the NTES portal, which is fed by GPS devices on the trains.
 
 ### How do I check train running status without internet?
+
 Send an SMS in the format `SPOT <train number>` to 139, the railway enquiry number, from any phone. You will receive the live location and delay by reply. The Where Is My Train app also has an offline mode that estimates position using nearby cell towers, useful while on board.
 
 ### Why does my train's running status show "no GPS feed"?
+
 A few older or minor passenger trains are not yet fitted with RTIS GPS devices, so their status falls back to manual station updates and may freeze between stations. Most mail, express, and premium trains have live GPS tracking, which updates automatically every few seconds.
 
 ### Can live running status tell me if my waitlisted ticket will confirm?
+
 No. Running status only shows the train's location and delay. To know if your seat will confirm, check your PNR status, which shows whether you are Confirmed, on RAC, or still on the Waiting List (WL). A position like WL/1 has a much higher chance of confirming than WL/10.
 
 ### How early should I reach the station if my train is on time?
+
 Arrive at least 30–45 minutes before the scheduled departure. This gives you time to confirm the platform number on the display board, locate where your coach will stop, and absorb any last-minute platform change without having to rush across the station with luggage.

@@ -1792,8 +1792,7 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
         let msg = 'Failed to process refund via payment proxy';
         if (isAxiosError(err)) {
           const payload = err.response?.data as
-            | { message?: unknown; error?: unknown }
-            | undefined;
+            { message?: unknown; error?: unknown } | undefined;
           const fromBody =
             (Array.isArray(payload?.message)
               ? payload?.message.join('; ')

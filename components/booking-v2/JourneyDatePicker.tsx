@@ -20,7 +20,10 @@ const YMD_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 type DatepickerInstance = {
   destroy: () => void;
-  setDate: (d: Date | string | number | null, options?: { autohide?: boolean }) => unknown;
+  setDate: (
+    d: Date | string | number | null,
+    options?: { autohide?: boolean },
+  ) => unknown;
 };
 
 export type JourneyDatePickerProps = {
@@ -68,31 +71,33 @@ export function JourneyDatePicker({
 
     let cancelled = false;
 
-    void import("flowbite-datepicker/Datepicker").then(({ default: Datepicker }) => {
-      if (cancelled || !inputRef.current) return;
-      const el = inputRef.current;
-      const istToday = new Date(
-        new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })
-      );
-      istToday.setHours(0, 0, 0, 0);
-      const minDate = new Date(istToday);
-      minDate.setDate(minDate.getDate() + minOffsetDays);
+    void import("flowbite-datepicker/Datepicker").then(
+      ({ default: Datepicker }) => {
+        if (cancelled || !inputRef.current) return;
+        const el = inputRef.current;
+        const istToday = new Date(
+          new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
+        );
+        istToday.setHours(0, 0, 0, 0);
+        const minDate = new Date(istToday);
+        minDate.setDate(minDate.getDate() + minOffsetDays);
 
-      const dp = new Datepicker(el, {
-        autohide: true,
-        format: "DD, M dd",
-        orientation: "bottom",
-        todayHighlight: true,
-        minDate,
-        container: `#dp-container-${id}`,
-      }) as DatepickerInstance;
-      dpRef.current = dp;
-      el.addEventListener("changeDate", onPick);
-      const v = valueRef.current;
-      if (v && YMD_RE.test(v)) {
-        dp.setDate(ymdToLocalDate(v));
-      }
-    });
+        const dp = new Datepicker(el, {
+          autohide: true,
+          format: "DD, M dd",
+          orientation: "bottom",
+          todayHighlight: true,
+          minDate,
+          container: `#dp-container-${id}`,
+        }) as DatepickerInstance;
+        dpRef.current = dp;
+        el.addEventListener("changeDate", onPick);
+        const v = valueRef.current;
+        if (v && YMD_RE.test(v)) {
+          dp.setDate(ymdToLocalDate(v));
+        }
+      },
+    );
 
     return () => {
       cancelled = true;
@@ -110,15 +115,15 @@ export function JourneyDatePicker({
   }, [value]);
 
   return (
-    <div 
-      id={`dp-container-${id}`} 
+    <div
+      id={`dp-container-${id}`}
       className={cn(
         "relative",
         className,
         // Tailwind arbitrary variants to style the injected datepicker internal cells
-        "[&_.datepicker-cell.disabled]:text-gray-300 [&_.datepicker-cell.disabled]:opacity-50 [&_.datepicker-cell.disabled]:cursor-not-allowed [&_.datepicker-cell.disabled]:pointer-events-none",
+        "[&_.datepicker-cell.disabled]:pointer-events-none [&_.datepicker-cell.disabled]:cursor-not-allowed [&_.datepicker-cell.disabled]:text-gray-300 [&_.datepicker-cell.disabled]:opacity-50",
         "[&_.datepicker-cell.prev]:text-gray-300 [&_.datepicker-cell.prev]:opacity-40",
-        "[&_.datepicker-cell.next]:text-gray-300 [&_.datepicker-cell.next]:opacity-40"
+        "[&_.datepicker-cell.next]:text-gray-300 [&_.datepicker-cell.next]:opacity-40",
       )}
     >
       <input

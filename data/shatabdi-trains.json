@@ -19,10 +19,7 @@
       "duration": "8h 40m",
       "distance": "707 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12001-ndls-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12001-ndls-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -45,10 +42,7 @@
       "duration": "8h 40m",
       "distance": "707 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12002-shatabdi-expres-chart-times",
       "chartTimesUrl": "/chart-times/12002-shatabdi-expres-chart-times",
       "foodMenuSlug": null,
@@ -71,10 +65,7 @@
       "duration": "6h 55m",
       "distance": "512 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12003-swaran-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12003-swaran-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -97,10 +88,7 @@
       "duration": "6h 50m",
       "distance": "512 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12004-shatabdi-express-chart-times",
       "chartTimesUrl": "/chart-times/12004-shatabdi-express-chart-times",
       "foodMenuSlug": null,
@@ -123,10 +111,7 @@
       "duration": "7h 00m",
       "distance": "500 km",
       "halts": 2,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12007-mys-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12007-mys-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -149,10 +134,7 @@
       "duration": "7h 10m",
       "distance": "500 km",
       "halts": 2,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12008-shatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12008-shatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -175,10 +157,7 @@
       "duration": "6h 20m",
       "distance": "491 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12009-adi-shatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12009-adi-shatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -201,10 +180,7 @@
       "duration": "6h 35m",
       "distance": "491 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12010-mmct-shatabdi-ex-chart-times",
       "chartTimesUrl": "/chart-times/12010-mmct-shatabdi-ex-chart-times",
       "foodMenuSlug": null,
@@ -227,10 +203,7 @@
       "duration": "7h 25m",
       "distance": "450 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12015-ajmer-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12015-ajmer-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -253,10 +226,7 @@
       "duration": "7h 10m",
       "distance": "426 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12019-shatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12019-shatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -279,10 +249,7 @@
       "duration": "7h 35m",
       "distance": "426 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12020-shatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12020-shatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -305,10 +272,7 @@
       "duration": "7h 00m",
       "distance": "398 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12021-bbn-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12021-bbn-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -331,10 +295,7 @@
       "duration": "7h 15m",
       "distance": "398 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12022-hwh-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12022-hwh-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -357,10 +318,7 @@
       "duration": "8h 15m",
       "distance": "532 km",
       "halts": 14,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12023-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12023-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -383,10 +341,7 @@
       "duration": "7h 55m",
       "distance": "532 km",
       "halts": 14,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12024-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12024-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -409,10 +364,7 @@
       "duration": "8h 12m",
       "distance": "598 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12025-shatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12025-shatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -435,10 +387,7 @@
       "duration": "8h 30m",
       "distance": "598 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12026-pune-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12026-pune-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -461,10 +410,7 @@
       "duration": "4h 55m",
       "distance": "362 km",
       "halts": 3,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12027-mas-sbc-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12027-mas-sbc-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -487,10 +433,7 @@
       "duration": "5h 00m",
       "distance": "362 km",
       "halts": 3,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12028-shatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12028-shatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -513,10 +456,7 @@
       "duration": "6h 10m",
       "distance": "448 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12029-swarn-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12029-swarn-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -539,10 +479,7 @@
       "duration": "6h 00m",
       "distance": "448 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12030-swarn-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12030-swarn-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -565,10 +502,7 @@
       "duration": "5h 20m",
       "distance": "439 km",
       "halts": 3,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12033-shatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12033-shatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -591,10 +525,7 @@
       "duration": "8h 25m",
       "distance": "561 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12041-shatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12041-shatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -617,10 +548,7 @@
       "duration": "8h 15m",
       "distance": "561 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12042-shatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12042-shatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -643,10 +571,7 @@
       "duration": "7h 05m",
       "distance": "397 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12044-ndls-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12044-ndls-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -669,10 +594,7 @@
       "duration": "3h 20m",
       "distance": "266 km",
       "halts": 2,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12045-cdg-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12045-cdg-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -695,10 +617,7 @@
       "duration": "3h 20m",
       "distance": "266 km",
       "halts": 2,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12046-ndls-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12046-ndls-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -721,10 +640,7 @@
       "duration": "6h 25m",
       "distance": "344 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12047-nlp-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12047-nlp-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -747,10 +663,7 @@
       "duration": "6h 25m",
       "distance": "344 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12048-ghy-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12048-ghy-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -773,10 +686,7 @@
       "duration": "11h 30m",
       "distance": "765 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12051-mao-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12051-mao-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -799,10 +709,7 @@
       "duration": "8h 00m",
       "distance": "407 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12053-asr-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12053-asr-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -825,10 +732,7 @@
       "duration": "7h 00m",
       "distance": "407 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12054-hw-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12054-hw-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -851,10 +755,7 @@
       "duration": "6h 05m",
       "distance": "305 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12056-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12056-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -877,10 +778,7 @@
       "duration": "7h 40m",
       "distance": "454 km",
       "halts": 16,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12057-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12057-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -903,10 +801,7 @@
       "duration": "7h 35m",
       "distance": "454 km",
       "halts": 16,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12058-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12058-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -929,10 +824,7 @@
       "duration": "6h 00m",
       "distance": "458 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12059-nzm-jan-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12059-nzm-jan-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -955,10 +847,7 @@
       "duration": "6h 10m",
       "distance": "458 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12060-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12060-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -981,10 +870,7 @@
       "duration": "4h 53m",
       "distance": "328 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12061-jbp-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12061-jbp-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1007,10 +893,7 @@
       "duration": "6h 05m",
       "distance": "373 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12066-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12066-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1033,10 +916,7 @@
       "duration": "7h 30m",
       "distance": "415 km",
       "halts": 13,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12069-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12069-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1059,10 +939,7 @@
       "duration": "7h 30m",
       "distance": "415 km",
       "halts": 13,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12070-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12070-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1085,10 +962,7 @@
       "duration": "12h 35m",
       "distance": "660 km",
       "halts": 14,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12072-jan-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12072-jan-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1111,10 +985,7 @@
       "duration": "6h 35m",
       "distance": "439 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12073-bbs-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12073-bbs-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1137,10 +1008,7 @@
       "duration": "7h 40m",
       "distance": "399 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12075-tvc-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12075-tvc-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1163,10 +1031,7 @@
       "duration": "7h 05m",
       "distance": "399 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12076-clt-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12076-clt-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1189,10 +1054,7 @@
       "duration": "7h 35m",
       "distance": "454 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12077-bza-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12077-bza-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1215,10 +1077,7 @@
       "duration": "7h 30m",
       "distance": "454 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12078-jan-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12078-jan-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1241,10 +1100,7 @@
       "duration": "6h 50m",
       "distance": "470 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12079-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12079-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1267,10 +1123,7 @@
       "duration": "7h 05m",
       "distance": "470 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12080-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12080-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1293,10 +1146,7 @@
       "duration": "9h 20m",
       "distance": "502 km",
       "halts": 15,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12081-tvc-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12081-tvc-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1319,10 +1169,7 @@
       "duration": "10h 00m",
       "distance": "502 km",
       "halts": 15,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12082-can-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12082-can-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1345,10 +1192,7 @@
       "duration": "6h 20m",
       "distance": "362 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12083-cbe-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12083-cbe-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1371,10 +1215,7 @@
       "duration": "6h 30m",
       "distance": "362 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12084-mv-jan-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12084-mv-jan-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1397,10 +1238,7 @@
       "duration": "9h 05m",
       "distance": "506 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12085-shatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12085-shatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1423,10 +1261,7 @@
       "duration": "8h 50m",
       "distance": "506 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12086-shatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12086-shatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1449,10 +1284,7 @@
       "duration": "4h 25m",
       "distance": "274 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12089-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12089-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1475,10 +1307,7 @@
       "duration": "4h 35m",
       "distance": "274 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12090-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12090-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1501,10 +1330,7 @@
       "duration": "7h 45m",
       "distance": "336 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12091-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12091-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1527,10 +1353,7 @@
       "duration": "7h 15m",
       "distance": "336 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12092-janshatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12092-janshatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1553,10 +1376,7 @@
       "duration": "7h 00m",
       "distance": "497 km",
       "halts": 5,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12243-mas-cbe-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12243-mas-cbe-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1579,10 +1399,7 @@
       "duration": "6h 45m",
       "distance": "497 km",
       "halts": 5,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12244-cbe-mas-shatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12244-cbe-mas-shatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1605,10 +1422,7 @@
       "duration": "7h 45m",
       "distance": "411 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12365-rnc-janshatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12365-rnc-janshatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1631,10 +1445,7 @@
       "duration": "11h 45m",
       "distance": "652 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12913-trishatabdi-exp-chart-times",
       "chartTimesUrl": "/chart-times/12913-trishatabdi-exp-chart-times",
       "foodMenuSlug": null,
@@ -1657,10 +1468,7 @@
       "duration": "11h 20m",
       "distance": "628 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12923-dadn-trishatabdi-chart-times",
       "chartTimesUrl": "/chart-times/12923-dadn-trishatabdi-chart-times",
       "foodMenuSlug": null,
@@ -1683,10 +1491,7 @@
       "duration": "2h 55m",
       "distance": "183 km",
       "halts": 3,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20947-jan-shatabdi-ex-chart-times",
       "chartTimesUrl": "/chart-times/20947-jan-shatabdi-ex-chart-times",
       "foodMenuSlug": null,
@@ -1709,10 +1514,7 @@
       "duration": "2h 55m",
       "distance": "183 km",
       "halts": 3,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20948-jan-shatabdi-ex-chart-times",
       "chartTimesUrl": "/chart-times/20948-jan-shatabdi-ex-chart-times",
       "foodMenuSlug": null,
@@ -1735,10 +1537,7 @@
       "duration": "3h 00m",
       "distance": "183 km",
       "halts": 3,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20949-jan-shatabdi-ex-chart-times",
       "chartTimesUrl": "/chart-times/20949-jan-shatabdi-ex-chart-times",
       "foodMenuSlug": null,
@@ -1761,10 +1560,7 @@
       "duration": "3h 05m",
       "distance": "183 km",
       "halts": 3,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20950-jan-shatabdi-ex-chart-times",
       "chartTimesUrl": "/chart-times/20950-jan-shatabdi-ex-chart-times",
       "foodMenuSlug": null,

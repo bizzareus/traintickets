@@ -25,15 +25,15 @@ This document defines the strict visual design language, layout standards, color
 
 All banner designs must adhere strictly to this restrained, high-contrast palette:
 
-| Role | Color Name | Hex Code | Purpose & Usage |
-|---|---|---|---|
-| **Canvas Background** | Midnight Navy | `#0B1120` / `#0F172A` | Deep dark slate/navy backdrop. Creates high depth and premium contrast. |
-| **Surface Cards** | Dark Glass / Card Slate | `#1E293B` (with `border-white/10`) | Subtle card elevation for data blocks, timing pills, and callout boxes. |
-| **Primary Accent** | Emerald Green | `#10B981` / `#059669` | Represents **Confirmed**, **Available**, **100% Guaranteed**, and positive status. |
-| **Urgency Accent** | Warm Amber / Gold | `#F59E0B` / `#D97706` | Represents **Chart Countdown**, **Alerts**, **Limited Time**, and critical cutoffs. |
-| **Headline Typography** | Pure White | `#FFFFFF` | Maximum legibility for main hooks, numbers, and core question headlines. |
-| **Body & Metadata** | Slate Gray | `#94A3B8` / `#CBD5E1` | Secondary descriptions, timestamps, station codes, and supporting text. |
-| **Destructive / Alert** | Coral Red | `#EF4444` | Used sparingly for `REGRET` / `WL` problem demonstrations. |
+| Role                    | Color Name              | Hex Code                           | Purpose & Usage                                                                     |
+| ----------------------- | ----------------------- | ---------------------------------- | ----------------------------------------------------------------------------------- |
+| **Canvas Background**   | Midnight Navy           | `#0B1120` / `#0F172A`              | Deep dark slate/navy backdrop. Creates high depth and premium contrast.             |
+| **Surface Cards**       | Dark Glass / Card Slate | `#1E293B` (with `border-white/10`) | Subtle card elevation for data blocks, timing pills, and callout boxes.             |
+| **Primary Accent**      | Emerald Green           | `#10B981` / `#059669`              | Represents **Confirmed**, **Available**, **100% Guaranteed**, and positive status.  |
+| **Urgency Accent**      | Warm Amber / Gold       | `#F59E0B` / `#D97706`              | Represents **Chart Countdown**, **Alerts**, **Limited Time**, and critical cutoffs. |
+| **Headline Typography** | Pure White              | `#FFFFFF`                          | Maximum legibility for main hooks, numbers, and core question headlines.            |
+| **Body & Metadata**     | Slate Gray              | `#94A3B8` / `#CBD5E1`              | Secondary descriptions, timestamps, station codes, and supporting text.             |
+| **Destructive / Alert** | Coral Red               | `#EF4444`                          | Used sparingly for `REGRET` / `WL` problem demonstrations.                          |
 
 > **Contrast Rule:** Never place low-contrast text on dark backgrounds. All text must pass WCAG AAA standards for legibility.
 
@@ -48,7 +48,7 @@ All banner designs must adhere strictly to this restrained, high-contrast palett
 2. **Main Headline / Hook (Upper Center):**
    - Size: Bold/Extrabold (`32–48px` equivalent), tight letter tracking (`-0.02em`).
    - Copy: Punchy, question- or outcome-led.
-   - Example: *"CONFIRMED SEATS 30 MINS BEFORE DEPARTURE"*, *"HOW TO BYPASS REGRET ON FESTIVAL SPECIALS"*.
+   - Example: _"CONFIRMED SEATS 30 MINS BEFORE DEPARTURE"_, _"HOW TO BYPASS REGRET ON FESTIVAL SPECIALS"_.
 3. **Focal UI Data Cards (Center):**
    - 2 to 3 structured cards displaying real numbers and operational facts:
      - Card 1: **1st Chart:** `~8 Hours Prior` (or `8:00 PM previous evening`).
@@ -82,7 +82,7 @@ Clean, modern editorial infographic social media banner for Instagram (aspect ra
 Background: Deep midnight navy (#0B1120) and dark slate (#0F172A) with subtle glassmorphic elevation cards (border-white/10).
 Typography: Bold, high-contrast white (#FFFFFF) headline: "<MAIN_HEADLINE_TEXT>".
 Accent colors: Vibrant emerald green (#10B981) for confirmed status and warm amber (#F59E0B) for countdown indicators.
-Visual elements: 
+Visual elements:
 - Sleek modern Vande Bharat / Tejas aerodynamic train vector moving across glowing digital railway tracks.
 - Two high-contrast UI pill cards: "1st Chart: ~8 Hours Prior" and "Final Chart: 30 Mins Before".
 - Highlight badge: "Current Availability (CURR_AVBL) = 100% Confirmed Tickets Released".

@@ -10,7 +10,7 @@ tags:
 ---
 
 > **Need seat info or PNR status before ordering food?** Check your PNR status on [Smart Seats](/), and use [Get Confirmed Tickets](/) to verify your coach position before selecting a station stop for e-Catering food delivery।
-ভারতের দীর্ঘ ট্রেন যাত্রা নিজস্ব একটি আকর্ষণ আছে। আপনি countryside দেখতে পান, ট্র্যাকের ধারাবাহিক আওয়াজ শুনতে পান, এবং প্রতিটি স্টেশনে বিক্রেতাদের কাছ থেকে চা কিনতে পারেন। কিন্তু খাবারের ব্যাপারে সৎ হওয়া যাক। প্যান্ট্রি কারের খাবার প্রায়ই স্বাদহীন, তৈলাক্ত দেখায়, এবং স্বাস্থ্যবিধি নিয়ে চিন্তিত করে। সৌভাগ্যবশত, আপনাকে আর প্যান্ট্রি কারের উপর নির্ভর করতে হবে না। IRCTC e-Catering আপনাকে আসল রেস্তোরাঁ থেকে গরম, তাজা খাবার অর্ডার করতে দেয় এবং সেগুলি আপনার ট্রেনের আসনে সরাসরি পৌঁছে দেয়। এটি কিভাবে কাজ করে, আপনি কোন নিয়মগুলি জানবেন, এবং কোন অ্যাপগুলি আসলে ডেলিভারি করে তা এখানে রয়েছে।
+> ভারতের দীর্ঘ ট্রেন যাত্রা নিজস্ব একটি আকর্ষণ আছে। আপনি countryside দেখতে পান, ট্র্যাকের ধারাবাহিক আওয়াজ শুনতে পান, এবং প্রতিটি স্টেশনে বিক্রেতাদের কাছ থেকে চা কিনতে পারেন। কিন্তু খাবারের ব্যাপারে সৎ হওয়া যাক। প্যান্ট্রি কারের খাবার প্রায়ই স্বাদহীন, তৈলাক্ত দেখায়, এবং স্বাস্থ্যবিধি নিয়ে চিন্তিত করে। সৌভাগ্যবশত, আপনাকে আর প্যান্ট্রি কারের উপর নির্ভর করতে হবে না। IRCTC e-Catering আপনাকে আসল রেস্তোরাঁ থেকে গরম, তাজা খাবার অর্ডার করতে দেয় এবং সেগুলি আপনার ট্রেনের আসনে সরাসরি পৌঁছে দেয়। এটি কিভাবে কাজ করে, আপনি কোন নিয়মগুলি জানবেন, এবং কোন অ্যাপগুলি আসলে ডেলিভারি করে তা এখানে রয়েছে।
 
 ## How to Order Food in Train Online Using IRCTC e-Catering?
 
@@ -32,12 +32,12 @@ tags:
 
 এটি কিভাবে শীর্ষ খেলোয়াড়রা সাজানো হয়েছে যখন আপনাকে ট্রেনে একটি ভাল খাবার প্রয়োজন:
 
-| App Name | Official Partner | Key Strengths | Payment Options |
-| :--- | :--- | :--- | :--- |
-| **Food on Track** | Yes (Official IRCTC App) | Direct database sync, highest reliability, zero delivery markup | UPI, Cards, Netbanking, COD |
-| **RailRestro** | Yes (Aggregator) | Excellent regional thali options, group order discounts, bulk booking | UPI, Cards, Netbanking, COD |
-| **Zoop** | Yes (Aggregator) | WhatsApp ordering assistant, real-time tracking, great variety of cuisines | UPI, Cards, Netbanking, COD |
-| **Yatrabhojan** | Yes (Aggregator) | Dedicated vegetarian and Jain food filters, reliable customer support | UPI, Cards, Netbanking, COD |
+| App Name          | Official Partner         | Key Strengths                                                              | Payment Options             |
+| :---------------- | :----------------------- | :------------------------------------------------------------------------- | :-------------------------- |
+| **Food on Track** | Yes (Official IRCTC App) | Direct database sync, highest reliability, zero delivery markup            | UPI, Cards, Netbanking, COD |
+| **RailRestro**    | Yes (Aggregator)         | Excellent regional thali options, group order discounts, bulk booking      | UPI, Cards, Netbanking, COD |
+| **Zoop**          | Yes (Aggregator)         | WhatsApp ordering assistant, real-time tracking, great variety of cuisines | UPI, Cards, Netbanking, COD |
+| **Yatrabhojan**   | Yes (Aggregator)         | Dedicated vegetarian and Jain food filters, reliable customer support      | UPI, Cards, Netbanking, COD |
 
 যদি আপনি একটি ঝামেলামুক্ত অভিজ্ঞতা চান, তবে এই অফিসিয়াল অংশীদারদের সাথে থাকুন। তারা রেলওয়ে সময়সূচীর সাথে সিঙ্ক করে, তাই যদি আপনার ট্রেন দেরিতে চলে, তবে রান্নাঘর আপনার অর্ডারটি ধরে রাখে যতক্ষণ না আপনি পৌঁছান।
 
@@ -150,19 +150,25 @@ IRCTC eCatering-এর জন্য খাবার অর্ডারগুল�
 এখানে IRCTC e-Catering ব্যবহার করে ট্রেনে খাবার অর্ডার করার বিষয়ে যাত্রীদের সবচেয়ে সাধারণ প্রশ্নগুলির উত্তর রয়েছে। অর্ডারিং নিয়ম, ডেলিভারি স্ট্যাটাস ট্র্যাকিং, নগদ পেমেন্ট অপশন এবং ট্রেনের বিলম্ব মোকাবেলার বিষয়ে জানুন যাতে আপনার গরম খাবারগুলি সফলভাবে সরাসরি আপনার আসনে পৌঁছে যায়।
 
 ### Can I order food on a train without internet access?
+
 হ্যাঁ, আপনি ইন্টারনেট অ্যাক্সেস ছাড়াই খাবার অর্ডার করতে পারেন অফিসিয়াল IRCTC e-Catering হেল্পলাইন 1323-এ কল করে। একজন গ্রাহক সেবা প্রতিনিধি আপনার PNR বিবরণ সংগ্রহ করবে, আপনার অর্ডার নেবে, একটি উপলব্ধ রেস্তোরাঁ নির্বাচন করবে, এবং ডেলিভারি সময় নির্ধারণ করবে।
 
 ### What happens to my food order if my train is delayed?
+
 যদি আপনার ট্রেন দেরিতে চলে, তবে ই-কেটারিং প্ল্যাটফর্মটি ট্রেনের লাইভ স্ট্যাটাস ট্র্যাক করে এবং রেস্তোরাঁর সাথে প্রস্তুতি এবং ডেলিভারি সময় সমন্বয় করে। যদি ট্রেনটি রেস্তোরাঁর কার্যকরী সময়ের পরে দেরিতে চলে, তবে অর্ডারটি বাতিল হয়, এবং আপনি সম্পূর্ণ ফেরত পান। একই সুরক্ষা তখন প্রযোজ্য হয় যদি ডেলিভারি কর্মী উপস্থিত না হয় বা আপনার ট্রেন অপ্রত্যাশিতভাবে ডেলিভারি স্টেশনটি এড়িয়ে যায় — 1323 বা অ্যাপে এটি উত্থাপন করুন এবং সম্পূর্ণ ফেরত দাবি করুন, যেহেতু আপনি কখনও সেই খাবারের জন্য অর্থ প্রদান করেন না যা আপনি পাননি।
 
 ### Do e-catering delivery partners charge extra for delivery to the seat?
+
 না, আপনার আসনে ডেলিভারি অ্যাপে প্রদর্শিত মূল্যে অন্তর্ভুক্ত। ডেলিভারি এজেন্টরা IRCTC দ্বারা অনুমোদিত এবং খাবারটি সরাসরি আপনার কোচ এবং বার্থে ডেলিভারি করতে কোন অতিরিক্ত ডেলিভারি ফি বা পরিষেবা কর চার্জ করেন না।
 
 ### Can I cancel my train food order and get a refund?
+
 হ্যাঁ, আপনি নির্বাচিত স্টেশনে নির্ধারিত ডেলিভারি সময়ের 2 ঘণ্টা আগে পর্যন্ত আপনার অর্ডার বাতিল করতে পারেন। ফেরত আপনার মূল অর্থ প্রদান পদ্ধতিতে 3 থেকে 5 ব্যবসায়িক দিনের মধ্যে ফেরত দেওয়া হবে, যখন 2 ঘণ্টার মধ্যে বাতিলগুলি সাধারণত ফেরতযোগ্য নয়।
 
 ### What is the minimum time needed to order IRCTC eCatering food before a station?
+
 আপনাকে নির্বাচিত ডেলিভারি স্টেশনে ট্রেন পৌঁছানোর 1 থেকে 2 ঘণ্টা আগে আপনার eCatering খাবার অর্ডার দিতে হবে যাতে অংশীদার রেস্তোরাঁগুলি আপনার খাবার প্রস্তুত এবং ডেলিভারি করতে সময় পায়।
 
 ### Can you order eCatering food if your ticket is RAC or waitlisted?
+
 আপনি RAC টিকিট এবং শারীরিক কাউন্টার অপেক্ষমাণ টিকিটে খাবার অর্ডার করতে পারেন। সম্পূর্ণ অপেক্ষমাণ e-tickets ব্যবহার করা যাবে না কারণ তারা চার্ট প্রস্তুতির আগে নিশ্চিত না হলে স্বয়ংক্রিয়ভাবে বাতিল হয়।

@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  STANDARD_MENU_PAGES,
-  getStandardMenuGroup,
-} from "@/lib/standardMenu";
+import { STANDARD_MENU_PAGES, getStandardMenuGroup } from "@/lib/standardMenu";
 import { StandardMenuView } from "@/components/foodmenu/StandardMenuView";
 
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
@@ -32,7 +29,12 @@ export function StandardMenuPage({ slug }: { slug: string }) {
         name: "Train Food Menu",
         item: `${SITE_URL}/irctc-train-food-menu`,
       },
-      { "@type": "ListItem", position: 3, name: cfg.heading, item: canonicalUrl },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: cfg.heading,
+        item: canonicalUrl,
+      },
     ],
   };
   const faqJsonLd = {
@@ -89,13 +91,15 @@ export function StandardMenuPage({ slug }: { slug: string }) {
         <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">
           IRCTC standard catering
         </p>
-        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-slate-900 text-balance sm:text-3xl">
+        <h1 className="mt-1 text-balance text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
           {cfg.heading}
         </h1>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
           Official IRCTC food menu and catering prices for {cfg.classGroupName},
-          the standard menu for {cfg.covers}. {group.zones.length > 1 ? "Pick your zone to see" : "Includes"} morning tea,
-          breakfast, lunch/dinner and evening snack sets with per-meal prices
+          the standard menu for {cfg.covers}.{" "}
+          {group.zones.length > 1 ? "Pick your zone to see" : "Includes"}{" "}
+          morning tea, breakfast, lunch/dinner and evening snack sets with
+          per-meal prices
           {min != null ? `, from ₹${min}` : ""}, inclusive of taxes.
         </p>
       </header>

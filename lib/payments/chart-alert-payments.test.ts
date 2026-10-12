@@ -87,4 +87,3 @@ test("chart alert pricing handles all common PNR travel classes", () => {
   assert.equal(chartAlertPriceForClass(""), 10);
   assert.equal(chartAlertPriceForClass(undefined), 10);
 });
-

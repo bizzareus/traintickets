@@ -21,7 +21,9 @@ import * as fs from 'node:fs';
  */
 async function main() {
   const args = process.argv.slice(2);
-  const isHeadless = args.includes('--headless') || (!args.includes('--headed') && process.env.PLAYWRIGHT_HEADLESS === 'true');
+  const isHeadless =
+    args.includes('--headless') ||
+    (!args.includes('--headed') && process.env.PLAYWRIGHT_HEADLESS === 'true');
   const shouldPause = args.includes('--pause');
 
   const getArg = (flag: string, fallback: string) => {
@@ -38,7 +40,20 @@ async function main() {
   const defaultDate = (() => {
     const target = new Date();
     target.setDate(target.getDate() + 7);
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
     const dd = String(target.getDate()).padStart(2, '0');
     const mon = months[target.getMonth()];
     const yyyy = target.getFullYear();
@@ -49,14 +64,22 @@ async function main() {
   const outDir = path.resolve(process.cwd(), 'storage', 'cli-debug');
   fs.mkdirSync(outDir, { recursive: true });
 
-  console.log('================================================================');
+  console.log(
+    '================================================================',
+  );
   console.log(' TripMgt Local Playwright Automation Tester (No AI)');
-  console.log('================================================================');
-  console.log(` Mode:        ${isHeadless ? 'Headless' : 'Headed (Visual Browser Window)'}`);
+  console.log(
+    '================================================================',
+  );
+  console.log(
+    ` Mode:        ${isHeadless ? 'Headless' : 'Headed (Visual Browser Window)'}`,
+  );
   console.log(` Journey:     ${fromStation} → ${toStation} on ${journeyDate}`);
   console.log(` Target:      Train ${trainNumber}, Class ${travelClass}`);
   console.log(` Artifacts:   ${outDir}`);
-  console.log('================================================================\n');
+  console.log(
+    '================================================================\n',
+  );
 
   const browser = await chromium.launch({
     headless: isHeadless,
@@ -72,8 +95,16 @@ async function main() {
   // Inject TripMgt Cookies if configured in .env
   const customCookies = process.env.TRIPMGT_COOKIES;
   if (customCookies) {
-    const rawPairs = customCookies.split(';').map((c) => c.trim()).filter(Boolean);
-    const cookieObjects: Array<{ name: string; value: string; domain: string; path: string }> = [];
+    const rawPairs = customCookies
+      .split(';')
+      .map((c) => c.trim())
+      .filter(Boolean);
+    const cookieObjects: Array<{
+      name: string;
+      value: string;
+      domain: string;
+      path: string;
+    }> = [];
     for (const pair of rawPairs) {
       const eqIdx = pair.indexOf('=');
       if (eqIdx === -1) continue;
@@ -89,10 +120,14 @@ async function main() {
     }
     if (cookieObjects.length > 0) {
       await context.addCookies(cookieObjects);
-      console.log(`[1/6] Injected ${cookieObjects.length} session cookies into browser context.`);
+      console.log(
+        `[1/6] Injected ${cookieObjects.length} session cookies into browser context.`,
+      );
     }
   } else {
-    console.log('[1/6] Notice: TRIPMGT_COOKIES not set in .env. Attempting navigation without session cookies.');
+    console.log(
+      '[1/6] Notice: TRIPMGT_COOKIES not set in .env. Attempting navigation without session cookies.',
+    );
   }
 
   const page = await context.newPage();
@@ -107,7 +142,9 @@ async function main() {
   });
 
   const currentUrl = page.url();
-  console.log(`      Page loaded: ${currentUrl} (HTTP ${response?.status() ?? 'N/A'})`);
+  console.log(
+    `      Page loaded: ${currentUrl} (HTTP ${response?.status() ?? 'N/A'})`,
+  );
 
   const initialSs = path.join(outDir, '01_initial_page.png');
   await page.screenshot({ path: initialSs, fullPage: true });
@@ -123,7 +160,9 @@ async function main() {
     console.warn('\n⚠️  PORTAL SESSION EXPIRED OR UNAUTHENTICATED!');
     console.warn(`   Portal redirected to: ${currentUrl}`);
     console.warn('   Your TripMgt session cookie in backend/.env has expired.');
-    console.warn('   To fix: Log in to https://tripmgt.in in your desktop browser, copy the cookies,');
+    console.warn(
+      '   To fix: Log in to https://tripmgt.in in your desktop browser, copy the cookies,',
+    );
     console.warn('   and paste them into TRIPMGT_COOKIES in backend/.env.');
     if (!shouldPause) {
       await browser.close();
@@ -132,17 +171,24 @@ async function main() {
   }
 
   // Step 3: Accept Rules & Regulations checkbox if present
-  console.log('[3/6] Checking for Rules & Regulations agreement checkbox (#chkIAgree)...');
+  console.log(
+    '[3/6] Checking for Rules & Regulations agreement checkbox (#chkIAgree)...',
+  );
   const checkbox = page.locator('#chkIAgree, input[type="checkbox"]').first();
   if (await checkbox.count()) {
     await checkbox.check().catch(() => undefined);
     await page.waitForTimeout(1000);
     console.log('      Checked #chkIAgree agreement checkbox.');
-    await page.screenshot({ path: path.join(outDir, '02_after_accept.png'), fullPage: true });
+    await page.screenshot({
+      path: path.join(outDir, '02_after_accept.png'),
+      fullPage: true,
+    });
   }
 
   // Step 4: Fill Train Search Form
-  console.log(`[4/6] Filling search form: ${fromStation} → ${toStation} on ${journeyDate}...`);
+  console.log(
+    `[4/6] Filling search form: ${fromStation} → ${toStation} on ${journeyDate}...`,
+  );
   const fromInput = page.locator('#f1From');
   if (await fromInput.count()) {
     await fromInput.fill(fromStation);
@@ -167,7 +213,9 @@ async function main() {
     await searchBtn.click();
     await page.waitForTimeout(4000);
   } else {
-    console.log('      Search button #btnSearchTrains not found (perhaps already on booking tab).');
+    console.log(
+      '      Search button #btnSearchTrains not found (perhaps already on booking tab).',
+    );
   }
 
   const searchSs = path.join(outDir, '06_search_results.png');
@@ -175,17 +223,26 @@ async function main() {
   console.log(`      Saved search results snapshot to ${searchSs}`);
 
   // Step 5: Select Train & Class
-  console.log(`[5/6] Locating train ${trainNumber} and class ${travelClass}...`);
+  console.log(
+    `[5/6] Locating train ${trainNumber} and class ${travelClass}...`,
+  );
   const classLink = page
-    .locator(`tr:has-text("${trainNumber}") a:has-text("${travelClass}"), a:has-text("${travelClass}")`)
+    .locator(
+      `tr:has-text("${trainNumber}") a:has-text("${travelClass}"), a:has-text("${travelClass}")`,
+    )
     .first();
 
   if (await classLink.count()) {
-    console.log(`      Found class link ${travelClass}. Clicking to fetch availability...`);
+    console.log(
+      `      Found class link ${travelClass}. Clicking to fetch availability...`,
+    );
     await classLink.click();
     await page.waitForTimeout(3000);
 
-    await page.screenshot({ path: path.join(outDir, '07_after_class_click.png'), fullPage: true });
+    await page.screenshot({
+      path: path.join(outDir, '07_after_class_click.png'),
+      fullPage: true,
+    });
 
     // Click green [Book] button
     const bookBtn = page.locator('text="Book"').last();
@@ -197,10 +254,17 @@ async function main() {
       // Handle confirmation modal OK if present
       const dialog = page.locator('ons-alert-dialog, .alert-dialog');
       if (await dialog.count()) {
-        const dialogText = await dialog.first().innerText().catch(() => '');
-        console.log(`      Confirm modal appeared: "${dialogText.replace(/\n+/g, ' ').trim()}"`);
+        const dialogText = await dialog
+          .first()
+          .innerText()
+          .catch(() => '');
+        console.log(
+          `      Confirm modal appeared: "${dialogText.replace(/\n+/g, ' ').trim()}"`,
+        );
         const okBtn = dialog
-          .locator('button:has-text("OK"), .alert-dialog-button:has-text("OK"), button:has-text("Yes")')
+          .locator(
+            'button:has-text("OK"), .alert-dialog-button:has-text("OK"), button:has-text("Yes")',
+          )
           .first();
         const targetBtn = (await okBtn.count())
           ? okBtn
@@ -218,7 +282,9 @@ async function main() {
 
   // Step 6: Fill Passenger Details if form is loaded
   console.log('[6/6] Inspecting Passenger Reservation Form...');
-  const nameInput0 = page.locator('#pName0, input[id*="txtPassName_1"]').first();
+  const nameInput0 = page
+    .locator('#pName0, input[id*="txtPassName_1"]')
+    .first();
 
   if (await nameInput0.count()) {
     console.log('      Passenger form detected! Filling test details...');
@@ -235,14 +301,22 @@ async function main() {
     const ageInput0 = page.locator('#pAge0, input[id*="txtAge_1"]').first();
     if (await ageInput0.count()) await ageInput0.fill('28');
 
-    const genderSelect0 = page.locator('#pGender0, select[id*="ddlSex_1"]').first();
-    if (await genderSelect0.count()) await genderSelect0.selectOption({ value: 'M' }).catch(() => undefined);
+    const genderSelect0 = page
+      .locator('#pGender0, select[id*="ddlSex_1"]')
+      .first();
+    if (await genderSelect0.count())
+      await genderSelect0.selectOption({ value: 'M' }).catch(() => undefined);
 
-    const berthSelect0 = page.locator('#pBerth0, select[id*="ddlBerth_1"]').first();
-    if (await berthSelect0.count()) await berthSelect0.selectOption({ index: 1 }).catch(() => undefined);
+    const berthSelect0 = page
+      .locator('#pBerth0, select[id*="ddlBerth_1"]')
+      .first();
+    if (await berthSelect0.count())
+      await berthSelect0.selectOption({ index: 1 }).catch(() => undefined);
 
     // Auto upgrade
-    const autoUp = page.locator('#chkConsiderAutoUpgrade, #chkAutoUpgrade').first();
+    const autoUp = page
+      .locator('#chkConsiderAutoUpgrade, #chkAutoUpgrade')
+      .first();
     if (await autoUp.count()) await autoUp.check().catch(() => undefined);
 
     const filledSs = path.join(outDir, '04_filled_reservation.png');
@@ -253,7 +327,9 @@ async function main() {
   }
 
   if (shouldPause) {
-    console.log('\n⏸️  Paused for inspection. Press Enter in terminal to close browser...');
+    console.log(
+      '\n⏸️  Paused for inspection. Press Enter in terminal to close browser...',
+    );
     await new Promise((resolve) => process.stdin.once('data', resolve));
   }
 

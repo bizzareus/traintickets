@@ -11,6 +11,7 @@ tags:
 ---
 
 ## TL;DR
+
 Yes, you can leave your bags at any major Indian railway station's cloakroom or automated locker for up to 30 days. But here is the catch: all your bags must be locked with padlocks, and you must present a valid train ticket or platform ticket. Daily fees range from ₹20 to ₹100 per bag.
 
 ---
@@ -19,9 +20,9 @@ Yes, you can leave your bags at any major Indian railway station's cloakroom or 
 
 **To store luggage in an Indian Railways cloakroom, your bags must be securely locked, and you must hold a valid train ticket or platform ticket. Luggage can be stored for up to 30 days. However, do not keep valuables, cash, or food in the deposited bags.**
 
-If you are planning to leave your luggage at a station, there is one golden rule you absolutely cannot ignore: your bags *must* be locked. I have seen travelers get turned away at the cloakroom counter simply because they had a backpack with no lock or a handbag with an open zip. The staff will not accept it. It is a strict security measure to prevent theft and keep things safe, so buy a cheap padlock before you head to the station.
+If you are planning to leave your luggage at a station, there is one golden rule you absolutely cannot ignore: your bags _must_ be locked. I have seen travelers get turned away at the cloakroom counter simply because they had a backpack with no lock or a handbag with an open zip. The staff will not accept it. It is a strict security measure to prevent theft and keep things safe, so buy a cheap padlock before you head to the station.
 
-To deposit your bags, you need to show some proof of travel. A confirmed ticket, an RAC ticket, or even a waitlisted one will do. You might know that WL full form is Waiting List. In the Indian Railways booking system, your reservation status progress follows a specific track: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. 
+To deposit your bags, you need to show some proof of travel. A confirmed ticket, an RAC ticket, or even a waitlisted one will do. You might know that WL full form is Waiting List. In the Indian Railways booking system, your reservation status progress follows a specific track: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**.
 
 Now, if you booked an e-ticket online and it remains waitlisted—for instance, starting at `WL/10` and only clearing to `WL/1` by the time the chart is prepared—the system will trigger an automatic refund and cancel it. In that case, you cannot use it because it is no longer valid. However, physical counter waitlist tickets (which do not get auto-cancelled) or a simple platform ticket are perfectly fine for cloakroom deposits. Just make sure you do not leave any cash, laptops, or expensive jewelry in your bags, as the railways will not take responsibility for lost valuables.
 
@@ -37,12 +38,12 @@ At many upgraded stations, you will find digital smart lockers (often operated b
 
 Here is a quick look at what you can expect to pay:
 
-| Luggage Storage Type | First 24 Hours Cost | Every Next 24 Hours | Key Rules & Features |
-|---|---|---|---|
-| **Traditional Cloakroom** | ₹20 - ₹50 per bag | ₹25 - ₹80 per bag | Run by railways; lock required |
-| **Smart Locker (Small)** | ₹30 - ₹50 (time slot) | ₹40 - ₹60 | OTP/PIN access; fits small backpacks |
-| **Smart Locker (Medium)** | ₹50 - ₹75 (time slot) | ₹60 - ₹80 | Fits standard luggage bags |
-| **Smart Locker (Large)** | ₹80 - ₹120 (time slot) | ₹100 - ₹150 | Fits huge rucksacks or multiple items |
+| Luggage Storage Type      | First 24 Hours Cost    | Every Next 24 Hours | Key Rules & Features                  |
+| ------------------------- | ---------------------- | ------------------- | ------------------------------------- |
+| **Traditional Cloakroom** | ₹20 - ₹50 per bag      | ₹25 - ₹80 per bag   | Run by railways; lock required        |
+| **Smart Locker (Small)**  | ₹30 - ₹50 (time slot)  | ₹40 - ₹60           | OTP/PIN access; fits small backpacks  |
+| **Smart Locker (Medium)** | ₹50 - ₹75 (time slot)  | ₹60 - ₹80           | Fits standard luggage bags            |
+| **Smart Locker (Large)**  | ₹80 - ₹120 (time slot) | ₹100 - ₹150         | Fits huge rucksacks or multiple items |
 
 ---
 
@@ -71,16 +72,21 @@ If you ever need to check your seat confirmation chances or keep tabs on your wa
 ## Common Cloak Room and Luggage Storage Questions (FAQ)
 
 ### Can I store an unlocked bag in the railway cloakroom?
+
 No, the railway staff will reject your bag immediately if it is not locked. Every bag, suitcase, or backpack must have a physical lock on its zippers. This is a strict security requirement to prevent theft.
 
 ### What documents do I need to show at the cloakroom?
+
 You must show a valid travel ticket (which can be a confirmed, RAC, waitlisted, or current available ticket) or a platform ticket. You also need to show a government-issued photo ID like Aadhaar, Passport, Voter ID, or PAN card.
 
 ### What should I do if I lose my cloakroom receipt?
+
 If you lose your receipt, you cannot get your bags back immediately. You will have to write an official application to the Station Master, submit a copy of your ID, verify the contents of the bags to prove they are yours, pay a fine, and sign a legal indemnity bond.
 
 ### How long can I keep my bags in the station cloakroom?
+
 You can store your luggage for a maximum of 30 days. If you do not collect your bags within 30 days, the railways will classify them as unclaimed property and sell them off in a public auction to clear the unpaid storage fees.
 
 ### What is the full form of WL in railway booking?
+
 WL full form is Waiting List. It means your ticket is not confirmed and you are in a queue. If the status does not change to RAC or Confirmed before the train departs, waitlisted e-tickets are automatically cancelled and refunded.

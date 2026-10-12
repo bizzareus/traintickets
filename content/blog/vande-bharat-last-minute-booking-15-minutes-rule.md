@@ -13,6 +13,7 @@ tags:
 > **🔔 Need Confirmed Seats?** Waiting for waitlisted seats to confirm? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
+
 You can now book vacant seats on the Vande Bharat Express and other reserved trains up to 15 minutes before they depart, even after charts are prepared. These last-minute tickets are bookable online via the IRCTC website, mobile app, or at railway counters. If direct tickets are waitlisted, you can also use LastBerth to check for segment booking options.
 
 ---
@@ -42,6 +43,7 @@ These seats are sold as a `"current available ticket"`. They are fully confirmed
 **You can book these last-minute tickets online through the official IRCTC website, the IRCTC Rail Connect mobile app, or physically at station Passenger Reservation System (PRS) counters.**
 
 Securing one of these seats is very straightforward. Here's what you need to do:
+
 1.  **Check Live Availability:** Open the IRCTC website or app within 8 hours of the train's departure.
 2.  **Look for Current Booking:** If seats are vacant, the availability status will display the number of seats under the "Current Booking" or "Current Available" category.
 3.  **Book Instantly:** Complete your payment immediately, as these seats are limited and highly sought after by last-minute travellers.
@@ -83,22 +85,29 @@ Passengers do not need to wait until the last few minutes to secure a seat. As s
 ## Last-Minute Vande Bharat Booking Questions (FAQ)
 
 ### Can we book tickets on the train after it departs?
+
 No, you cannot book tickets once the train departs the station. The booking window closes exactly 15 minutes before the scheduled departure time.
 
 ### Is the 15-minute booking rule available on all trains?
+
 Yes, this facility is available on Vande Bharat Express trains and other reserved passenger services, provided there are vacant seats remaining after the chart is prepared.
 
 ### What is a current available ticket on Vande Bharat?
+
 A `"current available ticket"` is a confirmed seat that becomes available for booking after the reservation chart is prepared. It remains bookable online or at station counters until 15 minutes before the train leaves.
 
 ### What happens if my Vande Bharat ticket stays on the waiting list?
+
 If your e-ticket is still on the waiting list after chart preparation, IRCTC will automatically cancel the ticket and refund your money. WL tickets cannot be used to board Vande Bharat trains.
 
 ### Can I travel on Vande Bharat with a waitlisted counter ticket?
+
 No, waitlisted passengers are not permitted to board Vande Bharat Express trains. Doing so will lead to heavy penalties and you will be asked to deboard at the next station.
 
 ### Are Tatkal and Current Availability fares the same on Vande Bharat?
+
 No, Current Availability tickets are sold at normal base fare without Tatkal premium charges.
 
 ### Can you cancel a Vande Bharat current availability ticket?
+
 No refund is granted for cancelling confirmed Current Availability tickets after chart preparation.

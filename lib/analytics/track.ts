@@ -39,12 +39,11 @@ export function trackAnalyticsEvent(event: AnalyticsEvent): void {
   debugLogAnalytics("capture:", event.name, event.properties);
   scheduleNonBlocking(() => {
     try {
-      posthog.capture(
-        event.name,
-        event.properties as Record<string, unknown>,
-      );
+      posthog.capture(event.name, event.properties as Record<string, unknown>);
       // Also track to Google Analytics if gtag is defined
-      const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+      const gtag = (
+        window as unknown as { gtag?: (...args: unknown[]) => void }
+      ).gtag;
       if (typeof gtag === "function") {
         gtag("event", event.name, event.properties);
       }

@@ -53,7 +53,7 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="my-3 rounded-xl border border-rose-200 bg-rose-50/70 p-4 text-rose-900 shadow-xs">
+        <div className="shadow-xs my-3 rounded-xl border border-rose-200 bg-rose-50/70 p-4 text-rose-900">
           <div className="flex items-start gap-3">
             <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-rose-600" />
             <div className="flex-1">
@@ -67,7 +67,7 @@ export class ErrorBoundary extends Component<Props, State> {
               <button
                 type="button"
                 onClick={this.reset}
-                className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-rose-600 px-3 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-rose-700 transition"
+                className="shadow-xs mt-3 inline-flex items-center gap-1.5 rounded-lg bg-rose-600 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-rose-700"
               >
                 <RefreshCw className="h-3.5 w-3.5" />
                 Try again

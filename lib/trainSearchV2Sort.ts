@@ -38,7 +38,9 @@ function parseHHMM(timeStr: string): number | null {
  * Calculates total confirmed duration in minutes for a list of alternate path legs.
  * Performance Optimization: Uses direct substring parsing (`parseHHMM`) to eliminate intermediate array allocations.
  */
-export function calculateConfirmedDurationMinutes(legs: AlternateLeg[] = []): number {
+export function calculateConfirmedDurationMinutes(
+  legs: AlternateLeg[] = [],
+): number {
   let total = 0;
   for (const leg of legs) {
     const isConfirmed = leg.segmentKind === "confirmed" || isLegConfirmed(leg);
@@ -81,10 +83,16 @@ export function countConfirmedAlternateLegs(
 /**
  * Helper to extract ScanMeta from AlternatePathsResponse.
  */
-export function extractScanMetaFromResult(result: AlternatePathsResponse): TrainScanMeta {
-  const confirmedDurationMinutes = calculateConfirmedDurationMinutes(result.legs);
+export function extractScanMetaFromResult(
+  result: AlternatePathsResponse,
+): TrainScanMeta {
+  const confirmedDurationMinutes = calculateConfirmedDurationMinutes(
+    result.legs,
+  );
   return {
-    isComplete: Boolean(result.isComplete && result.legs && result.legs.length > 0),
+    isComplete: Boolean(
+      result.isComplete && result.legs && result.legs.length > 0,
+    ),
     confirmedDurationMinutes,
     legCount: countConfirmedAlternateLegs(result.legs, result.legCount),
   };
@@ -120,7 +128,10 @@ export function sortTrainSearchV2(
 
   const directAvailable: TrainListItem[] = [];
   const endToEndDiscovered: TrainListItem[] = [];
-  const partialDiscovered: { train: TrainListItem; confirmedDurationMinutes: number }[] = [];
+  const partialDiscovered: {
+    train: TrainListItem;
+    confirmedDurationMinutes: number;
+  }[] = [];
   const waitlisted: TrainListItem[] = [];
 
   for (const t of trains) {
@@ -131,7 +142,8 @@ export function sortTrainSearchV2(
 
     const meta = getMeta(t.trainNumber);
     const isComplete =
-      meta?.isComplete ?? (endToEndTrains ? endToEndTrains.has(t.trainNumber) : false);
+      meta?.isComplete ??
+      (endToEndTrains ? endToEndTrains.has(t.trainNumber) : false);
 
     if (isComplete) {
       endToEndDiscovered.push(t);

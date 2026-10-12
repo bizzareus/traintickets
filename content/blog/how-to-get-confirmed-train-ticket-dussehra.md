@@ -27,12 +27,12 @@ No story, straight facts. Puja travel rush: **Oct 15 (Panchami) to Oct 21 (Vijay
 
 Booking calendar (8 AM):
 
-| Travelling for | Date | Book on |
-|---|---|---|
-| Sasthi rush — my WL 187 lesson in 2022, one day late! | Oct 16, Friday | Aug 17 |
-| Saptami | Oct 17, Saturday | Aug 18 |
-| Ashtami / Navami — pandal peak | Oct 18–19, Sun–Mon | Aug 19–20 |
-| Vijayadashami / Dussehra | Oct 20–21, Tue–Wed | Aug 21–22 |
+| Travelling for                                        | Date               | Book on   |
+| ----------------------------------------------------- | ------------------ | --------- |
+| Sasthi rush — my WL 187 lesson in 2022, one day late! | Oct 16, Friday     | Aug 17    |
+| Saptami                                               | Oct 17, Saturday   | Aug 18    |
+| Ashtami / Navami — pandal peak                        | Oct 18–19, Sun–Mon | Aug 19–20 |
+| Vijayadashami / Dussehra                              | Oct 20–21, Tue–Wed | Aug 21–22 |
 
 My honest tip? Set a 7:50 AM alarm, IRCTC logged in, passenger master list saved, UPI pin ready. One day's delay = WL 150+. Seen it happen to my own cousin.
 
@@ -47,7 +47,7 @@ My honest tip? Set a 7:50 AM alarm, IRCTC logged in, passenger master list saved
 **3. Grab post-chart leftovers.** After first chart, unused VIP/defence/middle-station seats release as CURR_AVBL — fully confirmed, bookable on IRCTC till ~30 mins before departure. Check [Get Confirmed Tickets](/) right after charting; confirm timing on [Chart Times](/chart-times). I once picked 3AC at 11 PM for a next-morning train. Keep IRCTC logged in, UPI ready.
 
 ![Smart Seats Split Booking Example: Dussehra Travel](/images/blog/dussehra-smart-seats-example.png)
-*Split result: two green confirmed legs instead of one red REGRET — same train.*
+_Split result: two green confirmed legs instead of one red REGRET — same train._
 
 ---
 
@@ -68,7 +68,7 @@ Vague advice doesn't help at 8 AM, so here are the three I get asked about most.
 - Lucknow halt gives you time to refill water, shift seats. I reached Patna fresh morning for the mela doing exactly this.
 
 ![Smart Seats Split Booking Example: Delhi to Patna](/images/blog/dussehra-smart-seats-delhi-patna.png)
-*Delhi–Patna splits usually break at Lucknow or DDU — search both.*
+_Delhi–Patna splits usually break at Lucknow or DDU — search both._
 
 ### Mumbai → Ahmedabad (Navratri/Dussehra)
 
@@ -76,7 +76,7 @@ Vague advice doesn't help at 8 AM, so here are the three I get asked about most.
 - Break: **MMCT → Surat (ST)** confirmed + **Surat → ADI** confirmed. Same Vande Bharat, 30-second seat swap at Surat.
 
 ![Smart Seats Split Booking Example: Mumbai to Ahmedabad](/images/blog/dussehra-smart-seats-mumbai-ahmedabad.png)
-*Short route, so Surat splits open up often.*
+_Short route, so Surat splits open up often._
 
 ---
 
@@ -109,4 +109,4 @@ REGRET isn't personal, it's quota maths. For Delhi–Howrah, Delhi–Patna, Mumb
 
 Shubho Pujo in advance — and grab a window seat past Bardhaman, October morning fields are lovely.
 
-*LastBerth is an independent seat-finder I use — not IRCTC or Railways, just reads quotas better.*
+_LastBerth is an independent seat-finder I use — not IRCTC or Railways, just reads quotas better._

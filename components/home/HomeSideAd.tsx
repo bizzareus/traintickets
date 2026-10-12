@@ -17,7 +17,9 @@ export function HomeBannerAd({ zoneId }: { zoneId: string }) {
   const bannerRef = useRef<HTMLDivElement>(null);
   const hasAclib = useSyncExternalStore(
     subscribeNoop,
-    () => typeof window !== "undefined" && typeof window.aclib?.runBanner === "function",
+    () =>
+      typeof window !== "undefined" &&
+      typeof window.aclib?.runBanner === "function",
     () => false,
   );
 

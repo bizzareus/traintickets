@@ -33,14 +33,14 @@ The four ritual days determine the entire passenger rush:
 
 Because families travel together with traditional puja baskets and offerings, arriving at least 24 to 48 hours prior to Nahay Khay avoids last-minute transit delays.
 
-| Chhath Ritual Day | Calendar Date | Target Arrival Date | Booking Window (60-Day ARP) |
-|---|---|---|---|
-| Early Travel / Bhai Dooj | November 10, 2026 | November 9–10, 2026 | September 11, 2026 |
-| Day 1: Nahay Khay | November 12, 2026 | November 10–11, 2026 | September 13, 2026 |
-| Day 2: Kharna | November 13, 2026 | November 11–12, 2026 | September 14, 2026 |
-| Day 3: Sandhya Arghya | November 14, 2026 | November 12–13, 2026 | September 15, 2026 |
-| Day 4: Usha Arghya | November 15, 2026 | November 13–14, 2026 | September 16, 2026 |
-| Return Travel Peak | November 16–22, 2026 | Return to metro cities | September 17–23, 2026 |
+| Chhath Ritual Day        | Calendar Date        | Target Arrival Date    | Booking Window (60-Day ARP) |
+| ------------------------ | -------------------- | ---------------------- | --------------------------- |
+| Early Travel / Bhai Dooj | November 10, 2026    | November 9–10, 2026    | September 11, 2026          |
+| Day 1: Nahay Khay        | November 12, 2026    | November 10–11, 2026   | September 13, 2026          |
+| Day 2: Kharna            | November 13, 2026    | November 11–12, 2026   | September 14, 2026          |
+| Day 3: Sandhya Arghya    | November 14, 2026    | November 12–13, 2026   | September 15, 2026          |
+| Day 4: Usha Arghya       | November 15, 2026    | November 13–14, 2026   | September 16, 2026          |
+| Return Travel Peak       | November 16–22, 2026 | Return to metro cities | September 17–23, 2026       |
 
 ---
 
@@ -66,18 +66,18 @@ To secure a seat when a special train opens, log into IRCTC by 7:55 AM, ensure y
 
 These trains are configured primarily with Sleeper, 3-Tier Economy (3E), AC 3-Tier (3A), and General Second Class (GS) coaches to maximize passenger carrying capacity.
 
-| Origin Station | Destination | Common Special Train Numbers | Operating Frequency | Major Intermediate Halts |
-|---|---|---|---|---|
-| Anand Vihar / New Delhi | Patna Jn | 04078 / 04077 | 4 to 6 days weekly | Kanpur Central, Prayagraj, Pt. Deen Dayal Upadhyaya (DDU), Buxar, Ara |
-| New Delhi | Darbhanga Jn | 04068 / 04067 | 3 to 4 days weekly | Moradabad, Bareilly, Lucknow, Gorakhpur, Narkatiaganj, Sitamarhi |
-| Anand Vihar | Saharsa Jn | 04010 / 04009 | 2 to 3 days weekly | Moradabad, Sitapur, Gorakhpur, Chhapra, Muzaffarpur, Samastipur |
-| Anand Vihar | Muzaffarpur Jn | 04044 / 04043 | 2 to 3 days weekly | Moradabad, Chandausi, Lucknow, Gorakhpur, Chhapra, Hajipur |
-| Mumbai CSMT / LTT | Danapur | 01061 / 01062 | Daily during festive week | Kalyan, Bhusaval, Itarsi, Jabalpur, Prayagraj Chheoki, DDU, Buxar |
-| LTT Mumbai | Samastipur Jn | 01043 / 01044 | Weekly / Bi-weekly | Nashik Road, Bhusaval, Itarsi, Jabalpur, Danapur, Barauni |
-| Pune Jn | Danapur | 01481 / 01482 | 3 days weekly | Daund Chord, Ahmednagar, Manmad, Bhusaval, Itarsi, Jabalpur, DDU |
-| Surat / Udhna | Chhapra / Patna | 09031 / 09032 | 2 to 3 days weekly | Nandurbar, Bhusaval, Itarsi, Jabalpur, Katni, Satna, Prayagraj, Ballia |
-| Ahmedabad | Patna / Danapur | 09417 / 09418 | Weekly | Vadodara, Ratlam, Kota, Agra Fort, Kanpur Central, DDU |
-| Bengaluru (SMVB) | Danapur | 06261 / 06262 | Weekly | Katpadi, Vijayawada, Warangal, Balharshah, Nagpur, Itarsi, Jabalpur |
+| Origin Station          | Destination     | Common Special Train Numbers | Operating Frequency       | Major Intermediate Halts                                               |
+| ----------------------- | --------------- | ---------------------------- | ------------------------- | ---------------------------------------------------------------------- |
+| Anand Vihar / New Delhi | Patna Jn        | 04078 / 04077                | 4 to 6 days weekly        | Kanpur Central, Prayagraj, Pt. Deen Dayal Upadhyaya (DDU), Buxar, Ara  |
+| New Delhi               | Darbhanga Jn    | 04068 / 04067                | 3 to 4 days weekly        | Moradabad, Bareilly, Lucknow, Gorakhpur, Narkatiaganj, Sitamarhi       |
+| Anand Vihar             | Saharsa Jn      | 04010 / 04009                | 2 to 3 days weekly        | Moradabad, Sitapur, Gorakhpur, Chhapra, Muzaffarpur, Samastipur        |
+| Anand Vihar             | Muzaffarpur Jn  | 04044 / 04043                | 2 to 3 days weekly        | Moradabad, Chandausi, Lucknow, Gorakhpur, Chhapra, Hajipur             |
+| Mumbai CSMT / LTT       | Danapur         | 01061 / 01062                | Daily during festive week | Kalyan, Bhusaval, Itarsi, Jabalpur, Prayagraj Chheoki, DDU, Buxar      |
+| LTT Mumbai              | Samastipur Jn   | 01043 / 01044                | Weekly / Bi-weekly        | Nashik Road, Bhusaval, Itarsi, Jabalpur, Danapur, Barauni              |
+| Pune Jn                 | Danapur         | 01481 / 01482                | 3 days weekly             | Daund Chord, Ahmednagar, Manmad, Bhusaval, Itarsi, Jabalpur, DDU       |
+| Surat / Udhna           | Chhapra / Patna | 09031 / 09032                | 2 to 3 days weekly        | Nandurbar, Bhusaval, Itarsi, Jabalpur, Katni, Satna, Prayagraj, Ballia |
+| Ahmedabad               | Patna / Danapur | 09417 / 09418                | Weekly                    | Vadodara, Ratlam, Kota, Agra Fort, Kanpur Central, DDU                 |
+| Bengaluru (SMVB)        | Danapur         | 06261 / 06262                | Weekly                    | Katpadi, Vijayawada, Warangal, Balharshah, Nagpur, Itarsi, Jabalpur    |
 
 > ⚡ **Quick Seat Search by Route:** [Search Delhi ➔ Patna](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn) • [Check Mumbai ➔ Danapur](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur) • [Check Pune ➔ Danapur](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur) • [Check Surat ➔ Patna](/?from=ST&to=PNBE&fromName=Surat&toName=Patna%20Jn) • [Check Bengaluru ➔ Danapur](/?from=SBC&to=DNR&fromName=KSR%20Bengaluru&toName=Danapur)
 
@@ -101,13 +101,13 @@ Key pricing principles for special trains:
 
 Here is an approximate fare comparison for a typical 1,000-kilometer journey (such as New Delhi to Patna Junction):
 
-| Travel Class | Standard Express Fare | Special Train (TOSF) Fare | Approximate Surcharge |
-|---|---|---|---|
-| Second Sitting (2S) | ₹245 | ₹260 | +10% |
-| Sleeper (SL) | ₹475 | ₹620 | +30% |
-| AC 3-Tier Economy (3E) | ₹1,180 | ₹1,520 | +30% |
-| AC 3-Tier (3A) | ₹1,265 | ₹1,650 | +30% |
-| AC 2-Tier (2A) | ₹1,825 | ₹2,350 | +30% |
+| Travel Class           | Standard Express Fare | Special Train (TOSF) Fare | Approximate Surcharge |
+| ---------------------- | --------------------- | ------------------------- | --------------------- |
+| Second Sitting (2S)    | ₹245                  | ₹260                      | +10%                  |
+| Sleeper (SL)           | ₹475                  | ₹620                      | +30%                  |
+| AC 3-Tier Economy (3E) | ₹1,180                | ₹1,520                    | +30%                  |
+| AC 3-Tier (3A)         | ₹1,265                | ₹1,650                    | +30%                  |
+| AC 2-Tier (2A)         | ₹1,825                | ₹2,350                    | +30%                  |
 
 ---
 
@@ -131,14 +131,14 @@ Because special trains already levy a 30% festival surcharge across all bookings
 
 The cancellation penalty depends on when you cancel relative to the train's scheduled departure from its originating station:
 
-| Cancellation Timing | Refund Amount | Deduction Applied |
-|---|---|---|
-| More than 48 hours before departure | Full fare minus flat clerkage fee | ₹240 (1AC), ₹200 (2AC), ₹180 (3A/3E), ₹120 (SL), ₹60 (2S) + GST on AC |
-| Between 48 hours and 12 hours before departure | 75% of total fare | 25% of fare (subject to minimum clerkage) |
-| Between 12 hours and 4 hours (or chart preparation) | 50% of total fare | 50% of fare (subject to minimum clerkage) |
-| Less than 4 hours before departure or after charting | No refund | 100% forfeiture |
-| Unconfirmed online waitlist ticket after final chart | Full refund | ₹0 clerkage (convenience and gateway fees non-refundable) |
-| RAC ticket cancelled up to 30 minutes before departure | Full fare minus clerkage | ₹60 flat clerkage |
+| Cancellation Timing                                    | Refund Amount                     | Deduction Applied                                                     |
+| ------------------------------------------------------ | --------------------------------- | --------------------------------------------------------------------- |
+| More than 48 hours before departure                    | Full fare minus flat clerkage fee | ₹240 (1AC), ₹200 (2AC), ₹180 (3A/3E), ₹120 (SL), ₹60 (2S) + GST on AC |
+| Between 48 hours and 12 hours before departure         | 75% of total fare                 | 25% of fare (subject to minimum clerkage)                             |
+| Between 12 hours and 4 hours (or chart preparation)    | 50% of total fare                 | 50% of fare (subject to minimum clerkage)                             |
+| Less than 4 hours before departure or after charting   | No refund                         | 100% forfeiture                                                       |
+| Unconfirmed online waitlist ticket after final chart   | Full refund                       | ₹0 clerkage (convenience and gateway fees non-refundable)             |
+| RAC ticket cancelled up to 30 minutes before departure | Full fare minus clerkage          | ₹60 flat clerkage                                                     |
 
 For partially confirmed PNRs (where some passengers are confirmed and others are waitlisted), you must file an online Ticket Deposit Receipt (TDR) at least 30 minutes before scheduled train departure to obtain a refund for the waitlisted passengers.
 
@@ -151,15 +151,19 @@ For partially confirmed PNRs (where some passengers are confirmed and others are
 Follow these four proven strategies to secure travel during the peak Chhath rush:
 
 ### 1. Split your journey into contiguous segments on the same train
+
 Direct tickets from New Delhi to Patna Junction frequently show REGRET while intermediate stretches have vacant berths. Using [Smart Seats](/), you can book New Delhi to Kanpur in one coach and Kanpur to Patna in another coach on the exact same train. You travel on the same rake without missing your connection, simply switching seats midway.
 
 ### 2. Book from the originating station and adjust your boarding point
+
 If tickets from intermediate stops (such as Aligarh, Tundla, or Ghaziabad) are waitlisted under restrictive Roadside (RLWL) or Pooled Quota (PQWL), search from the train's originating terminal (such as Anand Vihar or New Delhi). Originating stations carry the largest General Waiting List (GNWL) quota. After booking, change your boarding station on IRCTC up to 24 hours before journey date or before second chart preparation.
 
 ### 3. Check live berths under Current Availability (CURR_AVBL)
+
 Between 4 and 8 hours before departure, zonal chart preparation systems release unutilized VIP quotas, defence quotas, and foreign tourist quotas into the general pool. These berths appear on IRCTC as `CURR_AVBL` at standard ticket prices. You can view all physical vacant berths across coaches using the [Get Confirmed Tickets](/) or check exact chart preparation times on [Chart Times](/chart-times).
 
 ### 4. Monitor unannounced standby specials
+
 During the peak travel window between November 10 and November 14, zonal railways frequently deploy spare rakes with 12 to 24 hours of advance notice. Keep watch on East Central Railway and Northern Railway bulletins or check seat availability daily on LastBerth to catch newly opened trains before their quotas fill.
 
 ---
@@ -167,21 +171,27 @@ During the peak travel window between November 10 and November 14, zonal railway
 ## Common Booking Questions (FAQ)
 
 ### Can I travel in a Chhath special train with an unreserved general ticket?
+
 You can only travel in designated unreserved General Seating (GS) coaches with a valid unreserved railway ticket. You cannot board reserved Sleeper, 3E, 3AC, or 2AC coaches with a general ticket. Boarding reserved compartments without a confirmed ticket violates Section 138 of the Railways Act, resulting in a ₹500 penalty plus the full fare difference to the next available station.
 
 ### Do 0-series Chhath special trains provide bedrolls and linen in AC coaches?
+
 Yes. All passengers travelling in AC classes (1AC, 2AC, 3A, and 3E) on special trains receive standard bedroll kits consisting of two bedsheets, a pillow with cover, a blanket, and a face towel. The cost is included in the ticket fare. Passengers travelling in Sleeper and Second Sitting classes must carry their own blankets and bedding.
 
 ### Are pantry meals available on festival special trains?
+
 Most 0-series special trains do not have an operational pantry car. Meals and refreshments are not included in the ticket fare. Passengers should pre-order food through IRCTC e-catering for station-side delivery, purchase food from authorized station stalls, or carry homemade food and water for the journey.
 
 ### What happens if my Chhath special ticket remains on the waiting list after charting?
+
 If an online e-ticket remains on the waiting list after final chart preparation, IRCTC automatically cancels the reservation and issues a full refund directly to your original payment method within 2 to 4 working days. You cannot board reserved coaches on a waitlisted e-ticket. If you purchased a physical ticket from a railway station counter, it remains valid for travel in general unreserved coaches only.
 
 ### How many hours before departure is the reservation chart prepared for special trains?
+
 The first reservation chart is typically prepared 4 to 8 hours before the train's scheduled departure from its originating station. For trains departing early in the morning (before 8:00 AM), charting is finalized the previous evening. The second and final chart is finalized 30 to 45 minutes before departure, after which current booking closes.
 
 ### Why do special trains take longer to reach Bihar than regular superfast trains?
+
 Special trains operate on provisional timetables without fixed route priority. When tracks experience congestion, regular Rajdhani, Vande Bharat, and superfast express trains receive precedence, causing special trains to be looped for crossings. Plan for an additional 3 to 6 hours of transit time and schedule your arrival at least one full day before your puja ceremonies begin.
 
 ---
@@ -192,4 +202,4 @@ Getting home to Bihar and eastern Uttar Pradesh for Chhath Puja requires early p
 
 ---
 
-*LastBerth is an independent train seat discovery and passenger information tool. We are not affiliated with IRCTC or Indian Railways. All ticket reservations, cancellations, and official transactions must be completed through official IRCTC applications, websites, or railway reservation counters.*
+_LastBerth is an independent train seat discovery and passenger information tool. We are not affiliated with IRCTC or Indian Railways. All ticket reservations, cancellations, and official transactions must be completed through official IRCTC applications, websites, or railway reservation counters._

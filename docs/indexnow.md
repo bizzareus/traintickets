@@ -36,6 +36,7 @@ npx tsx scripts/submit-indexnow.ts --sitemap --dry-run
 The application provides an API route at `POST /api/indexnow`.
 
 ### Submit specific URLs
+
 ```json
 POST /api/indexnow
 Content-Type: application/json
@@ -49,6 +50,7 @@ Content-Type: application/json
 ```
 
 ### Submit all sitemap URLs
+
 ```json
 POST /api/indexnow
 Content-Type: application/json
@@ -59,6 +61,7 @@ Content-Type: application/json
 ```
 
 ### Optional Security Secret
+
 If the environment variable `INDEXNOW_SECRET` is set in your environment, send the secret in header:
 `x-indexnow-secret: <your-secret>` or `Authorization: Bearer <your-secret>`.
 
@@ -66,14 +69,14 @@ If the environment variable `INDEXNOW_SECRET` is set in your environment, send t
 
 ## 4. Response Codes Reference
 
-| HTTP Code | Reason | Meaning |
-|---|---|---|
-| `200` | OK | URL submitted successfully |
-| `202` | Accepted | URL received, key location validated |
-| `400` | Bad Request | Invalid format |
-| `403` | Forbidden | Key not valid or key file missing |
-| `422` | Unprocessable Entity | URLs do not match domain host |
-| `429` | Too Many Requests | Rate limit reached (potential spam) |
+| HTTP Code | Reason               | Meaning                              |
+| --------- | -------------------- | ------------------------------------ |
+| `200`     | OK                   | URL submitted successfully           |
+| `202`     | Accepted             | URL received, key location validated |
+| `400`     | Bad Request          | Invalid format                       |
+| `403`     | Forbidden            | Key not valid or key file missing    |
+| `422`     | Unprocessable Entity | URLs do not match domain host        |
+| `429`     | Too Many Requests    | Rate limit reached (potential spam)  |
 
 ---
 

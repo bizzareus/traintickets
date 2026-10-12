@@ -12,7 +12,7 @@ tags:
   - travel guide
 ---
 
-Searching "IRCTC Lakshadweep" and expecting a train? Here's the honest answer up front: **there is no railway line to Lakshadweep.** It's an archipelago in the Arabian Sea, so the last stretch is always by ship or plane. But the journey for most travellers still *starts* on a train — the one that carries you down to the Kerala coast, where the ships and flights leave from. Get that train leg right (and confirmed) and the rest of the trip falls into place.
+Searching "IRCTC Lakshadweep" and expecting a train? Here's the honest answer up front: **there is no railway line to Lakshadweep.** It's an archipelago in the Arabian Sea, so the last stretch is always by ship or plane. But the journey for most travellers still _starts_ on a train — the one that carries you down to the Kerala coast, where the ships and flights leave from. Get that train leg right (and confirmed) and the rest of the trip falls into place.
 
 This guide breaks the trip into its real parts: the **train to Kochi**, then the **ship or flight** to the islands, plus the permit almost everyone forgets.
 
@@ -46,12 +46,12 @@ Because Kerala is a year-round tourist route, these trains — especially to Ern
 
 Here is how the two legs compare:
 
-| Leg | Ship (from Kochi) | Flight (COK → Agatti) |
-|---|---|---|
-| Duration | ~14–20 hrs, overnight | ~1.5 hrs |
-| Cost | Lower | Higher |
+| Leg        | Ship (from Kochi)               | Flight (COK → Agatti)   |
+| ---------- | ------------------------------- | ----------------------- |
+| Duration   | ~14–20 hrs, overnight           | ~1.5 hrs                |
+| Cost       | Lower                           | Higher                  |
 | Experience | The journey is part of the trip | Fast, weather-dependent |
-| Booking | IRCTC Lakshadweep portal | Airline (via Kochi) |
+| Booking    | IRCTC Lakshadweep portal        | Airline (via Kochi)     |
 
 Ships also sail from **Beypore (Kozhikode)** and **Mangalore** on some schedules, but Kochi is the primary and best-connected port — which is exactly why the train to Ernakulam is the anchor of the whole plan.
 
@@ -89,18 +89,23 @@ The train is the leg most likely to leave you stranded on a waitlist, so treat i
 ## Frequently Asked Questions (FAQ)
 
 ### Is there any direct train to Lakshadweep?
+
 No. Lakshadweep is a union territory of islands in the Arabian Sea with no rail connection whatsoever. The nearest you can get by train is Kochi (Ernakulam) on the Kerala mainland, after which the only options are ship or flight. Any "IRCTC Lakshadweep" booking refers to ships and tour packages, not trains.
 
 ### Which is the nearest railway station to Lakshadweep?
+
 Ernakulam Junction (station code ERS) in Kochi, Kerala, is the nearest and most convenient railhead, because ships to the islands sail from Kochi port. Ernakulam Town (ERN) and Kochuveli (KCVL) are useful alternatives when Ernakulam Junction trains are fully waitlisted.
 
 ### Can I fly directly to Lakshadweep?
+
 Flights to Lakshadweep operate to Agatti Aerodrome (AGX), and the main service is from Cochin International Airport (COK), about 1.5 hours away. So most travellers still route through Kochi — reachable by train — before flying the final leg. From Agatti, onward island transfers are by boat.
 
 ### How long does the ship from Kochi to Lakshadweep take?
+
 The IRCTC-operated passenger ships take roughly 14 to 20 hours from Kochi, usually sailing overnight, with the exact duration depending on the vessel and the destination island. Book the sailing as soon as its date opens on the IRCTC Lakshadweep portal, as berths are limited.
 
 ### Does IRCTC also handle my train ticket to Kochi?
+
 Yes — your train to Ernakulam is a normal IRCTC reservation, separate from the Lakshadweep ship/package booking. Because Kerala trains run heavily waitlisted, check your confirmation odds and post-chart vacant berths on [LastBerth's Smart Seats](/) and [Get Confirmed Tickets](/) before you rely on that seat.
 
 ---

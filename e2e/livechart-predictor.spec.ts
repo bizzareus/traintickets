@@ -1,8 +1,9 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("LiveChart Route Vacancy Predictor & Tatkal-Saver Optimizer", () => {
-  test("successfully displays predictive analytics, updates on node click, and activates monitoring alert", async ({ page }) => {
-    
+  test("successfully displays predictive analytics, updates on node click, and activates monitoring alert", async ({
+    page,
+  }) => {
     const mockTrainId = "12345";
     const journeyDate = "2026-06-15";
 
@@ -54,7 +55,7 @@ test.describe("LiveChart Route Vacancy Predictor & Tatkal-Saver Optimizer", () =
     await page.route("**/api/monitoring-requests", async (route) => {
       expect(route.request().method()).toBe("POST");
       const postData = route.request().postDataJSON();
-      
+
       // Basic request body validation
       expect(postData).toMatchObject({
         trainId: mockTrainId,
@@ -86,21 +87,35 @@ test.describe("LiveChart Route Vacancy Predictor & Tatkal-Saver Optimizer", () =
     await expect(brcNode).toBeVisible();
 
     // Verify percentages are also displayed on the nodes inside the SVG
-    await expect(page.locator("svg text").filter({ hasText: /^88%$/ })).toBeVisible();
-    await expect(page.locator("svg text").filter({ hasText: /^45%$/ })).toBeVisible();
-    await expect(page.locator("svg text").filter({ hasText: /^25%$/ })).toBeVisible();
+    await expect(
+      page.locator("svg text").filter({ hasText: /^88%$/ }),
+    ).toBeVisible();
+    await expect(
+      page.locator("svg text").filter({ hasText: /^45%$/ }),
+    ).toBeVisible();
+    await expect(
+      page.locator("svg text").filter({ hasText: /^25%$/ }),
+    ).toBeVisible();
 
     // 5. Verify the Tatkal-Saver Card loads the default NDLS station prediction
     // (88% success rate, high-chance/Excellent messaging, saving up to ₹405 for 3A)
-    const activeLegText = page.locator("text=Confirmation forecast for journey starting at NDLS");
+    const activeLegText = page.locator(
+      "text=Confirmation forecast for journey starting at NDLS",
+    );
     await expect(activeLegText).toBeVisible();
 
     // Gauge center text containing probability and rating
-    const circularGaugeText = page.locator(".absolute.text-center").locator("p").filter({ hasText: /^88%$/ });
+    const circularGaugeText = page
+      .locator(".absolute.text-center")
+      .locator("p")
+      .filter({ hasText: /^88%$/ });
     await expect(circularGaugeText).toBeVisible();
-    
+
     // NDLS success (88%) is Excellent (high-chance messaging)
-    const chanceRatingText = page.locator(".absolute.text-center").locator("p").filter({ hasText: /^Excellent$/ });
+    const chanceRatingText = page
+      .locator(".absolute.text-center")
+      .locator("p")
+      .filter({ hasText: /^Excellent$/ });
     await expect(chanceRatingText).toBeVisible();
 
     // Verification of historical berths and optimal window
@@ -119,17 +134,30 @@ test.describe("LiveChart Route Vacancy Predictor & Tatkal-Saver Optimizer", () =
 
     // 7. Clicking the KOTA station node in the SVG timeline reactively triggers state updates
     // (circular progress updates to 45% with amber-chance/Moderate messaging, 4.2 berths, 15:20 - 15:40)
-    await page.locator("g").filter({ hasText: "KOTA" }).locator("circle").first().click({ force: true });
+    await page
+      .locator("g")
+      .filter({ hasText: "KOTA" })
+      .locator("circle")
+      .first()
+      .click({ force: true });
 
     // Verify state reactively updated to KOTA
-    const kotaLegText = page.locator("text=Confirmation forecast for journey starting at KOTA");
+    const kotaLegText = page.locator(
+      "text=Confirmation forecast for journey starting at KOTA",
+    );
     await expect(kotaLegText).toBeVisible();
 
-    const kotaGaugeText = page.locator(".absolute.text-center").locator("p").filter({ hasText: /^45%$/ });
+    const kotaGaugeText = page
+      .locator(".absolute.text-center")
+      .locator("p")
+      .filter({ hasText: /^45%$/ });
     await expect(kotaGaugeText).toBeVisible();
 
     // KOTA success (45%) is Moderate (amber-chance messaging)
-    const kotaChanceText = page.locator(".absolute.text-center").locator("p").filter({ hasText: /^Moderate$/ });
+    const kotaChanceText = page
+      .locator(".absolute.text-center")
+      .locator("p")
+      .filter({ hasText: /^Moderate$/ });
     await expect(kotaChanceText).toBeVisible();
 
     await expect(page.locator("text=4.2 berths/chart")).toBeVisible();
@@ -142,7 +170,9 @@ test.describe("LiveChart Route Vacancy Predictor & Tatkal-Saver Optimizer", () =
     await classBtn3A.click();
 
     // Click the submit button: "Activate Vacancy Tracker"
-    const submitBtn = page.getByRole("button", { name: "Activate Vacancy Tracker" });
+    const submitBtn = page.getByRole("button", {
+      name: "Activate Vacancy Tracker",
+    });
     await expect(submitBtn).toBeVisible();
     await submitBtn.click();
 
@@ -150,7 +180,9 @@ test.describe("LiveChart Route Vacancy Predictor & Tatkal-Saver Optimizer", () =
     const successHeader = page.locator("text=Monitoring Request Active");
     await expect(successHeader).toBeVisible();
 
-    const successMessage = page.locator("text=We are now tracking train #12345 for station KOTA (3A)");
+    const successMessage = page.locator(
+      "text=We are now tracking train #12345 for station KOTA (3A)",
+    );
     await expect(successMessage).toBeVisible();
   });
 });

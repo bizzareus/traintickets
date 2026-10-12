@@ -51,7 +51,9 @@ export function Header({
             >
               LastBerth
             </Link>
-            {showLanguage && <HomeLanguageDropdown currentLang={lang ?? "en"} />}
+            {showLanguage && (
+              <HomeLanguageDropdown currentLang={lang ?? "en"} />
+            )}
           </div>
           {/* Desktop inline nav (md+) */}
           <nav className="hidden items-center justify-end gap-x-4 text-sm font-semibold text-slate-700 md:flex">

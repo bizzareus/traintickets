@@ -23,20 +23,20 @@ railway login
 
 **Web service**
 
-| Variable | Description |
-|----------|-------------|
+| Variable              | Description                                                            |
+| --------------------- | ---------------------------------------------------------------------- |
 | `NEXT_PUBLIC_API_URL` | Public URL of the API service (e.g. `https://your-api.up.railway.app`) |
 
 **API service**
 
-| Variable | Description |
-|----------|-------------|
-| `DATABASE_URL` | PostgreSQL connection string (from PostgreSQL plugin; often auto-linked) |
-| `FRONTEND_URL` | Public URL of the web app (e.g. `https://your-web.up.railway.app`) for CORS |
-| `PORT` | Set by Railway; backend listens on this |
-| `OPENAI_API_KEY` | (Optional) For OpenAI features in service2 |
-| `OPENAI_MODEL` | (Optional) e.g. `gpt-4o-mini` |
-| `JWT_SECRET` | Secret for JWT auth (generate a random string) |
+| Variable         | Description                                                                 |
+| ---------------- | --------------------------------------------------------------------------- |
+| `DATABASE_URL`   | PostgreSQL connection string (from PostgreSQL plugin; often auto-linked)    |
+| `FRONTEND_URL`   | Public URL of the web app (e.g. `https://your-web.up.railway.app`) for CORS |
+| `PORT`           | Set by Railway; backend listens on this                                     |
+| `OPENAI_API_KEY` | (Optional) For OpenAI features in service2                                  |
+| `OPENAI_MODEL`   | (Optional) e.g. `gpt-4o-mini`                                               |
+| `JWT_SECRET`     | Secret for JWT auth (generate a random string)                              |
 
 Generate domains for each service in Railway (Settings → Networking → Generate Domain) and set `NEXT_PUBLIC_API_URL` and `FRONTEND_URL` to those URLs.
 

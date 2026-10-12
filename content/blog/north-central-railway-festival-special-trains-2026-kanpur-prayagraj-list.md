@@ -21,6 +21,7 @@ North Central Railway (NCR) has scheduled over 1,000 Trains on Demand (TOD) and 
 ---
 
 > ### 🚆 Traveling Through Kanpur or Prayagraj for Diwali or Chhath 2026?
+>
 > Do not let waiting lists keep you stranded at the station. Discover live seat availability, coach layouts, and guaranteed contiguous split-berth journeys on LastBerth:
 >
 > - [Search Kanpur Central ➔ Howrah Trains](/?from=CNB&to=HWH&fromName=Kanpur%20Central&toName=Howrah%20Jn)
@@ -30,7 +31,7 @@ North Central Railway (NCR) has scheduled over 1,000 Trains on Demand (TOD) and 
 > - [Search VGL Jhansi ➔ Asansol Special Express](/?from=VGLJ&to=ASN&fromName=VGL%20Jhansi&toName=Asansol%20Jn)
 > - [Search New Delhi ➔ Prayagraj Trains](/?from=NDLS&to=PRYJ&fromName=New%20Delhi&toName=Prayagraj%20Jn)
 >
-> *Planning your connection? Review our comprehensive [Delhi to Patna Train Route Guide](/routes/delhi-to-patna) and [Mumbai to Danapur Route Schedule](/routes/mumbai-to-danapur).*
+> _Planning your connection? Review our comprehensive [Delhi to Patna Train Route Guide](/routes/delhi-to-patna) and [Mumbai to Danapur Route Schedule](/routes/mumbai-to-danapur)._
 
 ---
 
@@ -43,6 +44,7 @@ Every autumn, millions of passengers travel through the North Central Railway ne
 To absorb this overflow, North Central Railway (headquartered at Prayagraj) operates an extensive fleet of supplementary 0-series trains. These trains carry special five-digit numbers beginning with zero (such as 04105 or 04157) and operate across the zone's three divisions: Prayagraj, Agra, and Virangana Lakshmibai Jhansi.
 
 To manage severe platform congestion, North Central Railway routes special departures through strategic satellite terminals:
+
 - **Subedarganj (`SFG`):** Located 4 km west of Prayagraj Junction, handling Western Railway specials bound for Surat, Valsad, and Mumbai.
 - **Prayagraj Junction (`PRYJ`):** Primary transit terminal for high-capacity long-distance festival services to Gujarat and Maharashtra.
 - **Prayagraj Chheoki (`PCOI`):** Situated 10 km south across the Yamuna River, managing bypass routes connecting Mumbai and Jabalpur to Patna and Howrah.
@@ -58,19 +60,19 @@ To manage severe platform congestion, North Central Railway routes special depar
 
 The table below details verified festival special services operated or received by North Central Railway for the 2026 festival rush:
 
-| Train Number | Train Name | Route & Key Stops | Frequency & Operating Days | Operating Period | Coach Composition |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **04105 / 04106** | Prayagraj – Udhna Superfast Special | Prayagraj ➔ Manikpur ➔ Jabalpur ➔ Itarsi ➔ Bhusawal ➔ Jalgaon ➔ Udhna | Thu, Sun (ex-PRYJ) / Fri, Mon (ex-UDN) | Oct 1 to Nov 29, 2026 | 2A, 3A, 3E, SL, GS |
-| **04119 / 04120** | Subedarganj – Valsad Weekly Special | Subedarganj ➔ Kanpur Central ➔ Tundla ➔ Bayana ➔ Kota ➔ Vadodara ➔ Surat ➔ Valsad | Sat (ex-SFG) / Sun (ex-BL) | Oct 3 to Nov 28, 2026 | 2A, 3A, SL, GS |
-| **04155 / 04156** | Subedarganj – Udhna Weekly Special | Subedarganj ➔ Fatehpur ➔ Kanpur Central ➔ Etawah ➔ Gwalior ➔ Bina ➔ Bhopal ➔ Udhna | Wed (ex-SFG) / Thu (ex-UDN) | Oct 7 to Nov 26, 2026 | 3A, 3E, SL, GS |
-| **04157 / 04158** | Kanpur Central – Kolkata Weekly Special | Kanpur Central ➔ Prayagraj ➔ Mirzapur ➔ DDU ➔ Sasaram ➔ Gaya ➔ Asansol ➔ Kolkata | Tue (ex-CNB) / Wed (ex-KOAA) | Oct 6 to Nov 25, 2026 | 2A, 3A, 3E, SL, GS |
-| **01911 / 01912** | Agra Cantt – Kolkata Festival Special | Agra Cantt ➔ Tundla ➔ Kanpur Central ➔ Subedarganj ➔ DDU ➔ Gaya ➔ Dhanbad ➔ Kolkata | Thu (ex-AGC) / Fri (ex-KOAA) | Oct 1 to Nov 27, 2026 | 2A, 3A, 3E, SL, GS |
-| **04185 / 04186** | VGL Jhansi – Asansol Festival Special | VGL Jhansi ➔ Orai ➔ Govindpuri ➔ Fatehpur ➔ Prayagraj ➔ DDU ➔ Gaya ➔ Asansol | Wed (ex-VGLJ) / Thu (ex-ASN) | Oct 7 to Nov 26, 2026 | 3A, 3E, SL, GS |
-| **04131 / 04132** | Kanpur Central – SMVT Bengaluru Special | Kanpur Central ➔ Pokhrayan ➔ VGL Jhansi ➔ Bina ➔ Bhopal ➔ Itarsi ➔ Nagpur ➔ SMVT | Sun (ex-CNB) / Tue (ex-SMVT) | Oct 4 to Nov 24, 2026 | 2A, 3A, SL, GS |
-| **01905 / 01906** | Kanpur Central – Asarva Weekly Special | Kanpur Central ➔ Kannauj ➔ Farrukhabad ➔ Kasganj ➔ Mathura ➔ Bharatpur ➔ Asarva | Mon (ex-CNB) / Tue (ex-ASV) | Oct 5 to Nov 24, 2026 | 3A, 3E, SL, GS |
-| **04179 / 04180** | Prayagraj – Sabarmati Weekly Special | Prayagraj ➔ Fatehpur ➔ Kanpur Central ➔ Tundla ➔ Agra Fort ➔ Jaipur ➔ Sabarmati | Fri (ex-PRYJ) / Sat (ex-SBIB) | Oct 2 to Nov 28, 2026 | 2A, 3A, SL, GS |
-| **04139 / 04140** | Prayagraj – Dadar Weekly Festival Special | Prayagraj ➔ Manikpur ➔ Satna ➔ Katni ➔ Jabalpur ➔ Itarsi ➔ Khandwa ➔ Dadar | Wed (ex-PRYJ) / Thu (ex-DR) | Oct 7 to Nov 26, 2026 | 2A, 3A, SL, GS |
-| **04177 / 04178** | Kolkata – Agra Cantt Weekly Special | Kolkata ➔ Barddhaman ➔ Asansol ➔ Gaya ➔ DDU ➔ Prayagraj ➔ Kanpur Central ➔ Agra | Fri (ex-KOAA) / Sat (ex-AGC) | Oct 2 to Nov 28, 2026 | 2A, 3A, 3E, SL, GS |
+| Train Number      | Train Name                                | Route & Key Stops                                                                   | Frequency & Operating Days             | Operating Period      | Coach Composition  |
+| :---------------- | :---------------------------------------- | :---------------------------------------------------------------------------------- | :------------------------------------- | :-------------------- | :----------------- |
+| **04105 / 04106** | Prayagraj – Udhna Superfast Special       | Prayagraj ➔ Manikpur ➔ Jabalpur ➔ Itarsi ➔ Bhusawal ➔ Jalgaon ➔ Udhna               | Thu, Sun (ex-PRYJ) / Fri, Mon (ex-UDN) | Oct 1 to Nov 29, 2026 | 2A, 3A, 3E, SL, GS |
+| **04119 / 04120** | Subedarganj – Valsad Weekly Special       | Subedarganj ➔ Kanpur Central ➔ Tundla ➔ Bayana ➔ Kota ➔ Vadodara ➔ Surat ➔ Valsad   | Sat (ex-SFG) / Sun (ex-BL)             | Oct 3 to Nov 28, 2026 | 2A, 3A, SL, GS     |
+| **04155 / 04156** | Subedarganj – Udhna Weekly Special        | Subedarganj ➔ Fatehpur ➔ Kanpur Central ➔ Etawah ➔ Gwalior ➔ Bina ➔ Bhopal ➔ Udhna  | Wed (ex-SFG) / Thu (ex-UDN)            | Oct 7 to Nov 26, 2026 | 3A, 3E, SL, GS     |
+| **04157 / 04158** | Kanpur Central – Kolkata Weekly Special   | Kanpur Central ➔ Prayagraj ➔ Mirzapur ➔ DDU ➔ Sasaram ➔ Gaya ➔ Asansol ➔ Kolkata    | Tue (ex-CNB) / Wed (ex-KOAA)           | Oct 6 to Nov 25, 2026 | 2A, 3A, 3E, SL, GS |
+| **01911 / 01912** | Agra Cantt – Kolkata Festival Special     | Agra Cantt ➔ Tundla ➔ Kanpur Central ➔ Subedarganj ➔ DDU ➔ Gaya ➔ Dhanbad ➔ Kolkata | Thu (ex-AGC) / Fri (ex-KOAA)           | Oct 1 to Nov 27, 2026 | 2A, 3A, 3E, SL, GS |
+| **04185 / 04186** | VGL Jhansi – Asansol Festival Special     | VGL Jhansi ➔ Orai ➔ Govindpuri ➔ Fatehpur ➔ Prayagraj ➔ DDU ➔ Gaya ➔ Asansol        | Wed (ex-VGLJ) / Thu (ex-ASN)           | Oct 7 to Nov 26, 2026 | 3A, 3E, SL, GS     |
+| **04131 / 04132** | Kanpur Central – SMVT Bengaluru Special   | Kanpur Central ➔ Pokhrayan ➔ VGL Jhansi ➔ Bina ➔ Bhopal ➔ Itarsi ➔ Nagpur ➔ SMVT    | Sun (ex-CNB) / Tue (ex-SMVT)           | Oct 4 to Nov 24, 2026 | 2A, 3A, SL, GS     |
+| **01905 / 01906** | Kanpur Central – Asarva Weekly Special    | Kanpur Central ➔ Kannauj ➔ Farrukhabad ➔ Kasganj ➔ Mathura ➔ Bharatpur ➔ Asarva     | Mon (ex-CNB) / Tue (ex-ASV)            | Oct 5 to Nov 24, 2026 | 3A, 3E, SL, GS     |
+| **04179 / 04180** | Prayagraj – Sabarmati Weekly Special      | Prayagraj ➔ Fatehpur ➔ Kanpur Central ➔ Tundla ➔ Agra Fort ➔ Jaipur ➔ Sabarmati     | Fri (ex-PRYJ) / Sat (ex-SBIB)          | Oct 2 to Nov 28, 2026 | 2A, 3A, SL, GS     |
+| **04139 / 04140** | Prayagraj – Dadar Weekly Festival Special | Prayagraj ➔ Manikpur ➔ Satna ➔ Katni ➔ Jabalpur ➔ Itarsi ➔ Khandwa ➔ Dadar          | Wed (ex-PRYJ) / Thu (ex-DR)            | Oct 7 to Nov 26, 2026 | 2A, 3A, SL, GS     |
+| **04177 / 04178** | Kolkata – Agra Cantt Weekly Special       | Kolkata ➔ Barddhaman ➔ Asansol ➔ Gaya ➔ DDU ➔ Prayagraj ➔ Kanpur Central ➔ Agra     | Fri (ex-KOAA) / Sat (ex-AGC)           | Oct 2 to Nov 28, 2026 | 2A, 3A, 3E, SL, GS |
 
 ---
 
@@ -94,13 +96,13 @@ Always verify your station code on your SMS or electronic reservation slip at le
 
 The table below outlines the exact pricing structure and booking terms applicable to 0-series special trains operated by North Central Railway:
 
-| Class | Base Fare Surcharge | Tatkal Quota Availability | Concession Eligibility | Bedroll Inclusions |
-| :--- | :--- | :--- | :--- | :--- |
-| **Second Seating (2S)** | +10% over regular Mail/Express | Available (Standard Tatkal rules) | ₹0 (No concessions permitted) | Not applicable |
-| **Sleeper Class (SL)** | +30% over regular Mail/Express | Available (Standard Tatkal rules) | ₹0 (No concessions permitted) | No bedroll provided |
+| Class                      | Base Fare Surcharge             | Tatkal Quota Availability         | Concession Eligibility        | Bedroll Inclusions        |
+| :------------------------- | :------------------------------ | :-------------------------------- | :---------------------------- | :------------------------ |
+| **Second Seating (2S)**    | +10% over regular Mail/Express  | Available (Standard Tatkal rules) | ₹0 (No concessions permitted) | Not applicable            |
+| **Sleeper Class (SL)**     | +30% over regular Mail/Express  | Available (Standard Tatkal rules) | ₹0 (No concessions permitted) | No bedroll provided       |
 | **AC 3-Tier Economy (3E)** | +30% over standard 3E base fare | Available (Standard Tatkal rules) | ₹0 (No concessions permitted) | Free bedroll kit included |
-| **AC 3-Tier (3A)** | +30% over standard 3A base fare | Available (Standard Tatkal rules) | ₹0 (No concessions permitted) | Free bedroll kit included |
-| **AC 2-Tier (2A)** | +30% over standard 2A base fare | Available (Standard Tatkal rules) | ₹0 (No concessions permitted) | Free bedroll kit included |
+| **AC 3-Tier (3A)**         | +30% over standard 3A base fare | Available (Standard Tatkal rules) | ₹0 (No concessions permitted) | Free bedroll kit included |
+| **AC 2-Tier (2A)**         | +30% over standard 2A base fare | Available (Standard Tatkal rules) | ₹0 (No concessions permitted) | Free bedroll kit included |
 
 Because festival special services are designated as temporary holiday relief trains, Indian Railways does not extend senior citizen, student, or patient fare concessions to these journeys. However, essential amenities such as sanitized linen, blankets, and pillows are provided in all AC coaches (3A, 3E, 2A) without additional cost.
 
@@ -125,13 +127,13 @@ Because festival trains are announced in phases as passenger demand rises, their
 
 The cancellation slabs and refund mechanisms for 0-series festival special trains operate as follows:
 
-| Cancellation Timing | Refund Deduction Slab | Applicable Deductions / Conditions |
-| :--- | :--- | :--- |
-| **More than 48 hours prior** | Flat clerkage fee per passenger | ₹240 for 2A, ₹180 for 3A/3E, ₹120 for SL, ₹60 for 2S (plus GST on AC) |
-| **48 hours to 12 hours prior** | 25% of total fare deducted | Subject to minimum flat clerkage fee for the booked travel class |
-| **12 hours to 4 hours prior** | 50% of total fare deducted | Permitted online up to first reservation chart preparation |
-| **Less than 4 hours (Post charting)** | Zero refund on confirmed tickets | No refund permitted once the reservation chart is finalized |
-| **Fully Waitlisted Online E-Ticket** | 100% automated refund | Automatically processed to original bank account; passenger cannot board |
+| Cancellation Timing                   | Refund Deduction Slab            | Applicable Deductions / Conditions                                       |
+| :------------------------------------ | :------------------------------- | :----------------------------------------------------------------------- |
+| **More than 48 hours prior**          | Flat clerkage fee per passenger  | ₹240 for 2A, ₹180 for 3A/3E, ₹120 for SL, ₹60 for 2S (plus GST on AC)    |
+| **48 hours to 12 hours prior**        | 25% of total fare deducted       | Subject to minimum flat clerkage fee for the booked travel class         |
+| **12 hours to 4 hours prior**         | 50% of total fare deducted       | Permitted online up to first reservation chart preparation               |
+| **Less than 4 hours (Post charting)** | Zero refund on confirmed tickets | No refund permitted once the reservation chart is finalized              |
+| **Fully Waitlisted Online E-Ticket**  | 100% automated refund            | Automatically processed to original bank account; passenger cannot board |
 
 Waitlisted e-ticket passengers must note that if their status remains in Waiting List (WL) after chart finalization, the ticket is automatically cancelled by the PRS system. Boarding a reserved Sleeper or AC coach on a cancelled waitlist ticket or general ticket attracts a flat **₹500 penalty under Section 138 of the Railways Act (Jan Vishwas Act 2026)** plus the single journey fare.
 
@@ -154,33 +156,43 @@ If you are faced with a high waiting list number for Diwali or Chhath travel, em
 ## Common Booking Questions (FAQ)
 
 ### What is the full form of NCR in Indian Railways?
+
 NCR stands for North Central Railway, one of the 17 operational zones of Indian Railways, headquartered at Subedarganj in Prayagraj, Uttar Pradesh.
 
 ### Why do festival special train numbers start with a zero?
+
 Train numbers starting with zero designate temporary special services operating outside the standard railway timetable to manage holiday rushes, carrying Trains on Special Fare pricing.
 
 ### Are Subedarganj and Prayagraj Junction the same railway station?
+
 No, Subedarganj (station code SFG) is an independent satellite station situated 4 km west of Prayagraj Junction (station code PRYJ) handling western and southern festival trains.
 
 ### Can I travel in a Sleeper coach with a general unreserved ticket during Diwali?
+
 No, boarding a reserved Sleeper coach with a general or platform ticket is illegal and attracts a flat ₹500 fine under Section 138 of the Railways Act plus fare differences.
 
 ### Are concessions for senior citizens valid on NCR festival special trains?
+
 No, Indian Railways does not offer senior citizen or student fare concessions on any 0-series festival special trains operating on special fares.
 
 ### What is the difference between Kanpur Central and Govindpuri?
+
 Kanpur Central (CNB) is the primary junction terminal, whereas Govindpuri (GOY) is a satellite station 3 km west handling bypass routes toward Jhansi and Lucknow.
 
 ### What happens if my festival special e-ticket remains waitlisted after charting?
+
 If an online e-ticket remains waitlisted after final chart preparation, the system cancels it automatically and refunds the full fare to your source bank account within 3 to 5 business days.
 
 ### When does Tatkal booking open for North Central Railway special trains?
+
 Tatkal reservation opens at 10:00 AM IST for AC classes and 11:00 AM IST for Sleeper class one day prior to the train's departure from its originating station.
 
 ### How much extra fare is charged on Trains on Special Fare (TOSF)?
+
 Indian Railways levies a 10% surcharge on Second Seating (2S) and a 30% surcharge on Sleeper and all AC classes over normal mail and express base fares.
 
 ### Can I book Current Availability tickets on NCR special trains?
+
 Yes, vacant berths remaining after chart preparation are released under Current Availability (CURR_AVBL) at a 10% base fare discount until 30 minutes before departure.
 
 ---

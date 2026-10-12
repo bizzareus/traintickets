@@ -4,7 +4,8 @@ import { getBaseUrl } from "@/lib/site-url";
 export const dynamic = "force-static";
 
 function getOrigin(request?: Request): string {
-  const host = request?.headers?.get("x-forwarded-host") || request?.headers?.get("host");
+  const host =
+    request?.headers?.get("x-forwarded-host") || request?.headers?.get("host");
   const proto = request?.headers?.get("x-forwarded-proto") || "https";
   if (host) {
     return `${proto}://${host}`;

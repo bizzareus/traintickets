@@ -8,4 +8,3 @@ export function useTrainSearchV2Experiment() {
     variant: "new-search",
   };
 }
-

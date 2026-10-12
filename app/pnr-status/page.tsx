@@ -6,7 +6,8 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 const canonicalUrl = `${siteUrl}/pnr-status`;
 
 export const metadata: Metadata = {
-  title: "PNR Status Check — Live IRCTC PNR Enquiry & Confirmation Chances | LastBerth",
+  title:
+    "PNR Status Check — Live IRCTC PNR Enquiry & Confirmation Chances | LastBerth",
   description:
     "Check your IRCTC PNR status live with a 10-digit PNR number. See current booking status (CNF, RAC, WL), waiting list confirmation probability, coach/berth, and chart preparation timing.",
   alternates: { canonical: "/pnr-status" },
@@ -62,7 +63,12 @@ export default function PnrStatusPage() {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-        { "@type": "ListItem", position: 2, name: "PNR Status", item: canonicalUrl },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "PNR Status",
+          item: canonicalUrl,
+        },
       ],
     },
   };
@@ -116,26 +122,28 @@ export default function PnrStatusPage() {
         <p>
           Enter the 10-digit PNR number from the top-left of your ticket in the
           box above and select <strong>Check PNR Status</strong>. We pull the
-          live status from Indian Railways and show each passenger&apos;s current
-          status, coach and berth, the full train schedule, and a confirmation
-          probability for any waitlisted passengers.
+          live status from Indian Railways and show each passenger&apos;s
+          current status, coach and berth, the full train schedule, and a
+          confirmation probability for any waitlisted passengers.
         </p>
 
         <h2>What does the PNR status tell you?</h2>
         <p>
-          Your PNR (Passenger Name Record) status shows whether each passenger is
-          Confirmed (CNF), in RAC, or still on the Waiting List (WL), along with
-          the train number, date of journey, class, and boarding and destination
-          stations. For waitlisted tickets it indicates how likely the seat is to
-          confirm before the chart is prepared.
+          Your PNR (Passenger Name Record) status shows whether each passenger
+          is Confirmed (CNF), in RAC, or still on the Waiting List (WL), along
+          with the train number, date of journey, class, and boarding and
+          destination stations. For waitlisted tickets it indicates how likely
+          the seat is to confirm before the chart is prepared.
         </p>
 
         <h2>What do CNF, RAC and WL mean in PNR status?</h2>
         <p>
           The progression of a railway ticket is{" "}
-          <strong>WL (Waiting List) → RAC (Reservation Against Cancellation) →
-          Confirmed (CNF)</strong>. Each status describes how close you are to a
-          guaranteed berth:
+          <strong>
+            WL (Waiting List) → RAC (Reservation Against Cancellation) →
+            Confirmed (CNF)
+          </strong>
+          . Each status describes how close you are to a guaranteed berth:
         </p>
         <div className="overflow-x-auto">
           <table>
@@ -150,17 +158,26 @@ export default function PnrStatusPage() {
               <tr>
                 <td>CNF</td>
                 <td>Confirmed</td>
-                <td>A berth is assigned; coach and berth number are allotted at charting.</td>
+                <td>
+                  A berth is assigned; coach and berth number are allotted at
+                  charting.
+                </td>
               </tr>
               <tr>
                 <td>RAC</td>
                 <td>Reservation Against Cancellation</td>
-                <td>You may board and share a side-lower berth; often upgrades to CNF at the chart.</td>
+                <td>
+                  You may board and share a side-lower berth; often upgrades to
+                  CNF at the chart.
+                </td>
               </tr>
               <tr>
                 <td>WL</td>
                 <td>Waiting List</td>
-                <td>No berth yet. Must reach RAC/CNF before charting or the e-ticket is auto-cancelled.</td>
+                <td>
+                  No berth yet. Must reach RAC/CNF before charting or the
+                  e-ticket is auto-cancelled.
+                </td>
               </tr>
               <tr>
                 <td>GNWL</td>
@@ -170,12 +187,17 @@ export default function PnrStatusPage() {
               <tr>
                 <td>RLWL</td>
                 <td>Remote Location Waiting List</td>
-                <td>For intermediate stations; clears mainly through local cancellations.</td>
+                <td>
+                  For intermediate stations; clears mainly through local
+                  cancellations.
+                </td>
               </tr>
               <tr>
                 <td>PQWL</td>
                 <td>Pooled Quota Waiting List</td>
-                <td>Shared across short-distance stations; confirms the least.</td>
+                <td>
+                  Shared across short-distance stations; confirms the least.
+                </td>
               </tr>
             </tbody>
           </table>
@@ -183,11 +205,11 @@ export default function PnrStatusPage() {
 
         <h2>When does the PNR status become final?</h2>
         <p>
-          The status is finalised when the reservation chart is prepared, usually
-          about <strong>4 hours before departure</strong> from the originating
-          station, with a second chart closer to departure. A still-waitlisted
-          e-ticket is automatically cancelled and refunded after charting. You can
-          look up the exact{" "}
+          The status is finalised when the reservation chart is prepared,
+          usually about <strong>4 hours before departure</strong> from the
+          originating station, with a second chart closer to departure. A
+          still-waitlisted e-ticket is automatically cancelled and refunded
+          after charting. You can look up the exact{" "}
           <Link href="/chart-times" className="text-blue-600 hover:underline">
             chart preparation times for your train
           </Link>{" "}
@@ -218,7 +240,10 @@ export default function PnrStatusPage() {
 
       <p className="mt-8 text-sm text-slate-500">
         Related:{" "}
-        <Link href="/chart-times" className="font-medium text-blue-600 hover:underline">
+        <Link
+          href="/chart-times"
+          className="font-medium text-blue-600 hover:underline"
+        >
           Train chart preparation times
         </Link>{" "}
         ·{" "}

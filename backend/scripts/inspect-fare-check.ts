@@ -3,11 +3,16 @@ import { chromium } from 'playwright';
 
 async function main() {
   const browser = await chromium.launch({ headless: true });
-  const context = await browser.newContext({ viewport: { width: 1280, height: 850 } });
+  const context = await browser.newContext({
+    viewport: { width: 1280, height: 850 },
+  });
 
   const customCookies = process.env.TRIPMGT_COOKIES;
   if (customCookies) {
-    const rawPairs = customCookies.split(';').map((c) => c.trim()).filter(Boolean);
+    const rawPairs = customCookies
+      .split(';')
+      .map((c) => c.trim())
+      .filter(Boolean);
     const cookieObjects = rawPairs.map((pair) => {
       const eqIdx = pair.indexOf('=');
       return {
@@ -51,7 +56,9 @@ async function main() {
     }
   });
 
-  const targetUrl = process.env.TRIPMGT_BOOKING_URL || 'https://tripmgt.in/V1/Train.aspx?ID=6a9ff06a3140a99ed3b57b3e&menu=search';
+  const targetUrl =
+    process.env.TRIPMGT_BOOKING_URL ||
+    'https://tripmgt.in/V1/Train.aspx?ID=6a9ff06a3140a99ed3b57b3e&menu=search';
   await page.goto(targetUrl, { waitUntil: 'domcontentloaded' });
 
   const cb = page.locator('#chkIAgree, input[type="checkbox"]').first();
@@ -63,7 +70,9 @@ async function main() {
   await page.locator('#btnSearchTrains').click();
   await page.waitForTimeout(4000);
 
-  const classLink = page.locator('tr:has-text("12952") a:has-text("3A"), a:has-text("3A")').first();
+  const classLink = page
+    .locator('tr:has-text("12952") a:has-text("3A"), a:has-text("3A")')
+    .first();
   await classLink.click();
   await page.waitForTimeout(3000);
 
@@ -72,8 +81,12 @@ async function main() {
 
   const dialog = page.locator('ons-alert-dialog, .alert-dialog');
   if (await dialog.count()) {
-    const okBtn = dialog.locator('button:has-text("OK"), .alert-dialog-button:has-text("OK")').first();
-    const targetBtn = (await okBtn.count()) ? okBtn : dialog.locator('button, .alert-dialog-button').last();
+    const okBtn = dialog
+      .locator('button:has-text("OK"), .alert-dialog-button:has-text("OK")')
+      .first();
+    const targetBtn = (await okBtn.count())
+      ? okBtn
+      : dialog.locator('button, .alert-dialog-button').last();
     await targetBtn.click();
     await page.waitForTimeout(3000);
   }
@@ -81,12 +94,27 @@ async function main() {
   // Fill passenger details
   await page.locator('#txtCustomerMobile').fill('9999224767');
   await page.locator('#txtCustomerName').fill('Test Passenger');
-  await page.locator('#pName0, input[id*="txtPassName_1"]').first().fill('Test Passenger');
+  await page
+    .locator('#pName0, input[id*="txtPassName_1"]')
+    .first()
+    .fill('Test Passenger');
   await page.locator('#pAge0, input[id*="txtAge_1"]').first().fill('28');
-  await page.locator('#pGender0, select[id*="ddlSex_1"]').first().selectOption({ value: 'M' }).catch(() => {});
-  await page.locator('#pBerth0, select[id*="ddlBerth_1"]').first().selectOption({ index: 1 }).catch(() => {});
+  await page
+    .locator('#pGender0, select[id*="ddlSex_1"]')
+    .first()
+    .selectOption({ value: 'M' })
+    .catch(() => {});
+  await page
+    .locator('#pBerth0, select[id*="ddlBerth_1"]')
+    .first()
+    .selectOption({ index: 1 })
+    .catch(() => {});
 
-  const nextBtn = page.locator('input[value="Next"], button:has-text("Next"), .btn:has-text("Next")').first();
+  const nextBtn = page
+    .locator(
+      'input[value="Next"], button:has-text("Next"), .btn:has-text("Next")',
+    )
+    .first();
   console.log('\nClicking Next button...');
   await nextBtn.click();
   await page.waitForTimeout(5000);

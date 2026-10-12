@@ -28,7 +28,8 @@ export function buildOpenApiSpec(origin?: string) {
       "/api/health": {
         get: {
           summary: "API Health Check",
-          description: "Returns the health and operational status of the service.",
+          description:
+            "Returns the health and operational status of the service.",
           operationId: "getHealth",
           responses: {
             "200": {
@@ -53,14 +54,16 @@ export function buildOpenApiSpec(origin?: string) {
       "/api/booking-v2/stations/suggest": {
         get: {
           summary: "Station Autocomplete",
-          description: "Search Indian Railways stations by name or code for autocomplete.",
+          description:
+            "Search Indian Railways stations by name or code for autocomplete.",
           operationId: "suggestStations",
           parameters: [
             {
               name: "q",
               in: "query",
               required: true,
-              description: "Search query (min 2 characters, e.g., 'NDLS' or 'DELHI')",
+              description:
+                "Search query (min 2 characters, e.g., 'NDLS' or 'DELHI')",
               schema: { type: "string" },
             },
           ],
@@ -92,7 +95,8 @@ export function buildOpenApiSpec(origin?: string) {
       "/api/booking-v2/trains/search": {
         get: {
           summary: "Search Trains",
-          description: "Find all trains running between origin and destination on a given date.",
+          description:
+            "Find all trains running between origin and destination on a given date.",
           operationId: "searchTrains",
           parameters: [
             {
@@ -128,7 +132,10 @@ export function buildOpenApiSpec(origin?: string) {
                       type: "object",
                       properties: {
                         trainNumber: { type: "string", example: "12952" },
-                        trainName: { type: "string", example: "MUMBAI TEJAS RAJ" },
+                        trainName: {
+                          type: "string",
+                          example: "MUMBAI TEJAS RAJ",
+                        },
                         fromStation: { type: "string", example: "NDLS" },
                         toStation: { type: "string", example: "MMCT" },
                         departureTime: { type: "string", example: "16:55" },
@@ -153,7 +160,8 @@ export function buildOpenApiSpec(origin?: string) {
       "/api/booking-v2/alternate-paths": {
         post: {
           summary: "Find Alternate Seat Options",
-          description: "Calculates alternate seat options and split journey booking opportunities.",
+          description:
+            "Calculates alternate seat options and split journey booking opportunities.",
           operationId: "findAlternatePaths",
           requestBody: {
             required: true,
@@ -186,8 +194,14 @@ export function buildOpenApiSpec(origin?: string) {
                   schema: {
                     type: "object",
                     properties: {
-                      directAvailability: { type: "array", items: { type: "object" } },
-                      alternatePaths: { type: "array", items: { type: "object" } },
+                      directAvailability: {
+                        type: "array",
+                        items: { type: "object" },
+                      },
+                      alternatePaths: {
+                        type: "array",
+                        items: { type: "object" },
+                      },
                     },
                   },
                 },
@@ -202,7 +216,8 @@ export function buildOpenApiSpec(origin?: string) {
       "/api/booking-v2/pnr/{pnr}": {
         get: {
           summary: "Live PNR Status",
-          description: "Get real-time PNR booking status, current berth allocation, and confirmation chances.",
+          description:
+            "Get real-time PNR booking status, current berth allocation, and confirmation chances.",
           operationId: "getPnrStatus",
           parameters: [
             {
@@ -210,7 +225,11 @@ export function buildOpenApiSpec(origin?: string) {
               in: "path",
               required: true,
               description: "10-digit Indian Railways PNR number",
-              schema: { type: "string", pattern: "^\\d{10}$", example: "2456789012" },
+              schema: {
+                type: "string",
+                pattern: "^\\d{10}$",
+                example: "2456789012",
+              },
             },
           ],
           responses: {
@@ -251,20 +270,23 @@ export function buildOpenApiSpec(origin?: string) {
       "/api/chart-times-data/{id}": {
         get: {
           summary: "Train Chart Preparation Times",
-          description: "Get station-wise reservation chart preparation schedules and historic timings.",
+          description:
+            "Get station-wise reservation chart preparation schedules and historic timings.",
           operationId: "getChartTimes",
           parameters: [
             {
               name: "id",
               in: "path",
               required: true,
-              description: "Train number or slug (e.g., '12952' or '12952-mumbai-rajdhani')",
+              description:
+                "Train number or slug (e.g., '12952' or '12952-mumbai-rajdhani')",
               schema: { type: "string", example: "12952" },
             },
           ],
           responses: {
             "200": {
-              description: "Chart preparation time metadata and station schedule",
+              description:
+                "Chart preparation time metadata and station schedule",
               content: {
                 "application/json": {
                   schema: {

@@ -196,4 +196,3 @@ export async function submitBookingCancellation(payload: {
   }>("/api/split-booking/cancellation/request", payload);
   return res.data;
 }
-

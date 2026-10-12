@@ -8,7 +8,7 @@ import { PostHogPageView } from "./PostHogPageView";
 
 const POSTHOG_KEY =
   typeof process !== "undefined"
-    ? process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim() ?? ""
+    ? (process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim() ?? "")
     : "";
 
 /**

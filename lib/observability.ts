@@ -5,12 +5,7 @@
  * browser init use these to drop/skip anything originating from localhost.
  */
 
-const LOCALHOST_HOSTS = new Set([
-  "localhost",
-  "127.0.0.1",
-  "0.0.0.0",
-  "::1",
-]);
+const LOCALHOST_HOSTS = new Set(["localhost", "127.0.0.1", "0.0.0.0", "::1"]);
 
 /** Strip brackets/port, leaving a bare hostname (handles IPv6 like [::1]:80). */
 function normalizeHost(hostname: string): string {

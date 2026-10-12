@@ -23,12 +23,12 @@ Okay, so you're thinking of sending your bike on a train. You have two choices: 
 
 Here's a quick rundown to help you choose the best fit for your trip:
 
-| Feature | Luggage Booking | Parcel Booking |
-| :--- | :--- | :--- |
+| Feature           | Luggage Booking                                     | Parcel Booking                          |
+| :---------------- | :-------------------------------------------------- | :-------------------------------------- |
 | **Travel Ticket** | Must travel with the bike (confirmed ticket needed) | No ticket necessary (bike travels solo) |
-| **Transit Time** | Quickest, same train as you | Depends on train availability |
-| **Booking Time** | 2-4 hours before you leave | 1-2 days before shipping |
-| **Charges** | A bit higher | Standard rates, more affordable |
+| **Transit Time**  | Quickest, same train as you                         | Depends on train availability           |
+| **Booking Time**  | 2-4 hours before you leave                          | 1-2 days before shipping                |
+| **Charges**       | A bit higher                                        | Standard rates, more affordable         |
 
 ---
 
@@ -66,13 +66,13 @@ Wondering about the costs? You're looking at ₹500 to ₹3,000 depending on you
 
 Here's a handy table for estimating the cost:
 
-| Distance Range | Approximate Parcel Cost (up to 150cc) | Approximate Luggage Cost (up to 150cc) |
-| :--- | :--- | :--- |
-| **0 to 500 km** | ₹500 – ₹1,000 | ₹700 – ₹1,200 |
-| **500 to 1,000 km** | ₹1,000 – ₹1,800 | ₹1,300 – ₹2,200 |
-| **1,000 to 2,000 km** | ₹1,800 – ₹3,000 | ₹2,200 – ₹3,500 |
+| Distance Range        | Approximate Parcel Cost (up to 150cc) | Approximate Luggage Cost (up to 150cc) |
+| :-------------------- | :------------------------------------ | :------------------------------------- |
+| **0 to 500 km**       | ₹500 – ₹1,000                         | ₹700 – ₹1,200                          |
+| **500 to 1,000 km**   | ₹1,000 – ₹1,800                       | ₹1,300 – ₹2,200                        |
+| **1,000 to 2,000 km** | ₹1,800 – ₹3,000                       | ₹2,200 – ₹3,500                        |
 
-*Note: Packing charges are separate and paid directly to station packagers. Don’t delay pickup—fines kick in after the free 10-hour storage period.*
+_Note: Packing charges are separate and paid directly to station packagers. Don’t delay pickup—fines kick in after the free 10-hour storage period._
 
 ---
 
@@ -101,16 +101,21 @@ If direct tickets aren't available, use our [Finding Smart Seats](/) tool to bre
 ## Common Questions on Bike Transport (FAQ)
 
 ### Can I travel on the train with petrol still in my bike's fuel tank?
+
 No way! It's not allowed. You must empty the tank completely before loading your bike on the train. Carrying fuel is against railway rules and can lead to hefty fines or even jail time.
 
 ### What happens if I don't collect my bike on time at the destination?
+
 If you don't pick up your bike, you'll be fined for every hour it stays in the parcel warehouse after the free 10-hour storage period.
 
 ### Can I book a bike with a waiting list ticket under luggage rules?
+
 Sorry, no can do. You need a confirmed or RAC ticket to book your bike as luggage. If your ticket's waitlisted, you’ll have to send it as a parcel instead.
 
 ### What should I do if my bike is damaged during transit?
+
 Check your bike right when you get it at the parcel office. If there's damage, report it to the supervisor before you take it home. You can file a claim for compensation based on the value declared during booking, but it might take a while.
 
 ### Can I send my bike on a specific train with the parcel service?
+
 You can ask, but the final call is the railway parcel office's. They pack based on space in passing trains. If you need it on a particular train, booking it as luggage is your best shot.

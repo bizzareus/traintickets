@@ -24,7 +24,7 @@ IRCTC OTP delivery fails primarily due to peak-hour SMS gateway congestion (10:0
 
 Few experiences in online train booking are as frustrating as staring at a ticking countdown timer while waiting for a 6-digit one-time password that never arrives. During peak booking hours, a 30-second SMS delay can mean the difference between securing a confirmed lower berth and landing at the bottom of a 60-passenger waitlist.
 
-Whether you are logging in from a desktop browser, verifying your Aadhaar credentials for Tatkal quotas, resetting a forgotten password, or authorizing a bank transaction, OTP failures follow specific technical bottlenecks. 
+Whether you are logging in from a desktop browser, verifying your Aadhaar credentials for Tatkal quotas, resetting a forgotten password, or authorizing a bank transaction, OTP failures follow specific technical bottlenecks.
 
 Understanding why these delivery breakdowns happen and applying the right diagnostic fixes can help you secure your tickets without losing critical seconds.
 
@@ -36,14 +36,14 @@ Understanding why these delivery breakdowns happen and applying the right diagno
 
 When your one-time password fails to arrive, check these core culprits before requesting multiple retries:
 
-| Failure Cause | Primary Symptom | Immediate Fix | Resolution Time |
-| :--- | :--- | :--- | :--- |
-| **Tatkal Peak Traffic** | Timer expires at 10:00 AM or 11:00 AM | Use IRCTC Rail Connect 4-digit PIN/Biometric login | Instant |
-| **TRAI DND Blocking** | Promo/Service filters block shortcodes | Set DND preferences to allow Transactional Service SMS | 5–15 minutes |
-| **UIDAI Gateway Lag** | Aadhaar verification OTP hangs | Verify mobile number link on myAadhaar portal | 2–5 minutes |
-| **Nightly Maintenance** | "Service Unavailable" or blank error | Wait until 12:20 AM IST maintenance completion | 35 minutes |
-| **SIM Network Cache** | General SMS reception frozen | Toggle Airplane mode on for 10 seconds and turn off | 10 seconds |
-| **Third-Party SMS App** | Truecaller / Spam filter auto-archives OTP | Check "Spam & Blocked" folder in SMS app | Instant |
+| Failure Cause           | Primary Symptom                            | Immediate Fix                                          | Resolution Time |
+| :---------------------- | :----------------------------------------- | :----------------------------------------------------- | :-------------- |
+| **Tatkal Peak Traffic** | Timer expires at 10:00 AM or 11:00 AM      | Use IRCTC Rail Connect 4-digit PIN/Biometric login     | Instant         |
+| **TRAI DND Blocking**   | Promo/Service filters block shortcodes     | Set DND preferences to allow Transactional Service SMS | 5–15 minutes    |
+| **UIDAI Gateway Lag**   | Aadhaar verification OTP hangs             | Verify mobile number link on myAadhaar portal          | 2–5 minutes     |
+| **Nightly Maintenance** | "Service Unavailable" or blank error       | Wait until 12:20 AM IST maintenance completion         | 35 minutes      |
+| **SIM Network Cache**   | General SMS reception frozen               | Toggle Airplane mode on for 10 seconds and turn off    | 10 seconds      |
+| **Third-Party SMS App** | Truecaller / Spam filter auto-archives OTP | Check "Spam & Blocked" folder in SMS app               | Instant         |
 
 ---
 
@@ -65,11 +65,11 @@ To resolve Aadhaar OTP bottlenecks during high-stakes booking:
 
 Setting up biometric login takes less than two minutes:
 
-* **Step 1:** Download and open the official **IRCTC Rail Connect** app on Android or iOS.
-* **Step 2:** Log in with your username and password, and complete the one-time device verification.
-* **Step 3:** When prompted, create a personal 4-digit security PIN.
-* **Step 4:** Enable the toggle for **Biometric Authentication** (Fingerprint / Face ID).
-* **Step 5:** On subsequent logins, simply tap your sensor or glance at your camera. You will be placed directly onto the search dashboard in under two seconds.
+- **Step 1:** Download and open the official **IRCTC Rail Connect** app on Android or iOS.
+- **Step 2:** Log in with your username and password, and complete the one-time device verification.
+- **Step 3:** When prompted, create a personal 4-digit security PIN.
+- **Step 4:** Enable the toggle for **Biometric Authentication** (Fingerprint / Face ID).
+- **Step 5:** On subsequent logins, simply tap your sensor or glance at your camera. You will be placed directly onto the search dashboard in under two seconds.
 
 ```
 Desktop Web Portal (SMS Dependent)    vs.    Rail Connect App (Encrypted Local Auth)
@@ -103,10 +103,10 @@ Follow this systematic checklist to restore access:
 
 Here is how to ensure carrier filters never intercept your booking alerts:
 
-* **Reliance Jio:** Open the **MyJio** app → Profile & Settings → Do Not Disturb → Select **Transactional Only** or disable promotional blocks for Banking/Financial/Communication alerts.
-* **Bharti Airtel:** Open the **Airtel Thanks** app → Services → Manage DND → Ensure "Service / Transactional SMS" is set to allowed.
-* **Vodafone Idea (Vi):** Visit the Vi portal DND management page or send an SMS \`START 0\` to \`1909\` to enable full transactional clearance.
-* **Spam Blocker Whitelist:** If you use Truecaller or Google Messages, open Settings → Spam Protection, and ensure IRCTC shortcodes are added to your explicit whitelist.
+- **Reliance Jio:** Open the **MyJio** app → Profile & Settings → Do Not Disturb → Select **Transactional Only** or disable promotional blocks for Banking/Financial/Communication alerts.
+- **Bharti Airtel:** Open the **Airtel Thanks** app → Services → Manage DND → Ensure "Service / Transactional SMS" is set to allowed.
+- **Vodafone Idea (Vi):** Visit the Vi portal DND management page or send an SMS \`START 0\` to \`1909\` to enable full transactional clearance.
+- **Spam Blocker Whitelist:** If you use Truecaller or Google Messages, open Settings → Spam Protection, and ensure IRCTC shortcodes are added to your explicit whitelist.
 
 ---
 
@@ -116,12 +116,12 @@ Here is how to ensure carrier filters never intercept your booking alerts:
 
 Here is how refund turnaround works across different payment modes:
 
-| Payment Mode Used | Typical Refund Timeline | Clerkage / Cancellation Fee | Action Required |
-| :--- | :--- | :--- | :--- |
-| **IRCTC e-Wallet** | Instant to 24 Hours | ₹0 (100% Refund) | None (Auto-credited to wallet balance) |
-| **UPI (GPay / PhonePe / Paytm)** | 1 to 2 Working Days | ₹0 (100% Refund) | Check bank account statement |
-| **Net Banking** | 3 to 5 Working Days | ₹0 (100% Refund) | Check originating bank account |
-| **Credit / Debit Cards** | 3 to 7 Working Days | ₹0 (100% Refund) | Check card statement |
+| Payment Mode Used                | Typical Refund Timeline | Clerkage / Cancellation Fee | Action Required                        |
+| :------------------------------- | :---------------------- | :-------------------------- | :------------------------------------- |
+| **IRCTC e-Wallet**               | Instant to 24 Hours     | ₹0 (100% Refund)            | None (Auto-credited to wallet balance) |
+| **UPI (GPay / PhonePe / Paytm)** | 1 to 2 Working Days     | ₹0 (100% Refund)            | Check bank account statement           |
+| **Net Banking**                  | 3 to 5 Working Days     | ₹0 (100% Refund)            | Check originating bank account         |
+| **Credit / Debit Cards**         | 3 to 7 Working Days     | ₹0 (100% Refund)            | Check card statement                   |
 
 > [!IMPORTANT]
 > When booking under tight time constraints, using the **IRCTC e-Wallet** or **UPI AutoPay** significantly reduces gateway latency compared to 3D-Secure credit card SMS OTP flows.
@@ -131,33 +131,41 @@ Here is how refund turnaround works across different payment modes:
 ## Common Booking Questions (FAQ)
 
 ### Why am I not getting IRCTC OTP on my registered mobile number?
+
 IRCTC OTP delivery failure is caused by telecom SMS gateway congestion during peak hours, carrier DND spam filters blocking shortcodes, exhausted device SMS storage, or attempting transactions during the daily 11:45 PM to 12:20 AM maintenance window.
 
 ### How long is an IRCTC OTP valid for login and Tatkal booking?
+
 An IRCTC login and transaction OTP is valid for **60 seconds to 3 minutes** depending on the specific authentication flow. During peak Tatkal windows, entering the code within 60 seconds is essential before the session times out.
 
 ### Can I book Tatkal tickets without Aadhaar OTP verification?
+
 No, mandatory Aadhaar OTP authentication applies to individual users booking online Tatkal tickets on both the IRCTC website and Rail Connect app. Users must link and pre-verify their Aadhaar profile before attempting Tatkal bookings.
 
 ### Why is IRCTC OTP not coming on Airtel, Jio, or BSNL SIM cards?
+
 Carrier-side DND filters often mistakenly route transactional shortcodes like \`VK-IRCTC\` into promotional spam queues. Toggling Airplane mode or verifying that transactional SMS is permitted under your carrier's 1909 DND preferences resolves this.
 
 ### How do I receive IRCTC OTP on an international mobile number?
+
 NRI and international travellers must register under the specialized IRCTC International User profile by paying the ₹100 + GST registration fee. OTPs for international profiles are dispatched via dedicated international SMS gateways and registered email addresses.
 
 ### What is the IRCTC daily OTP request limit for a single account?
+
 IRCTC restricts users from generating more than **3 to 5 consecutive OTP requests** per session to prevent automated brute-force attempts. If you exceed this threshold, the account authentication is temporarily locked for 15 to 30 minutes.
 
 ### How do I change my registered mobile number if I cannot get OTP?
+
 If you have lost access to your registered number, log into the IRCTC desktop portal using your username and password, navigate to **My Profile → Update Profile**, and verify your identity via email OTP to update your phone number.
 
 ### Why does IRCTC OTP fail between 11:45 PM and 12:20 AM?
+
 IRCTC servers enter a mandatory daily maintenance blackout from **11:45 PM to 12:20 AM IST (23:45 to 00:20)**. During these 35 minutes, all database querying, ticket bookings, cancellations, and OTP generation services are completely offline.
 
 ---
 
 ## Bottom line
 
-OTP delays do not have to ruin your travel plans. For everyday journeys and last-minute Tatkal bookings, transition your primary booking workflow to the IRCTC Rail Connect app with biometric PIN access, pre-verify your passenger Master List with Aadhaar, and use instant payment methods like UPI or IRCTC e-Wallet. 
+OTP delays do not have to ruin your travel plans. For everyday journeys and last-minute Tatkal bookings, transition your primary booking workflow to the IRCTC Rail Connect app with biometric PIN access, pre-verify your passenger Master List with Aadhaar, and use instant payment methods like UPI or IRCTC e-Wallet.
 
 If a missed OTP leaves you stranded with a waitlisted ticket, track live confirmation chances on [Smart Seats](/) or locate available vacant coach segments on [Get Confirmed Tickets](/).

@@ -11,6 +11,7 @@ metadata:
 This queue holds high-intent search queries extracted from weekly Google Search Console / Google Trends signals that do **NOT** match any existing page intent on LastBerth.
 
 These candidates are queued for:
+
 1. **User Review & Approval**
 2. **Automatic Article Generation** via `daily-blog-writing` task (Playbook D - Write New).
 
@@ -19,30 +20,31 @@ These candidates are queued for:
 ## 📋 Queued Candidates for Generator Review
 
 | Date Added | Target Keyword / Query | Impressions | Growth / Pos | Suggested Article Title | Status |
-| 2026-09-21 | `irctc advance reservation period` / `60 days rules calculator` | High (~18.8M/wk entity surge) | Breakout (+5000% 24h spike / 60-day rule) | *IRCTC Advance Reservation Period: 60-Day Rules & Dates (2026)* | ✅ Published |
-| 2026-09-10 | `diwali special train 2026 list` / `booking date` | Very High (~18.8M/wk entity surge) | Breakout (+900% 7D / +999k% 1M) | *Diwali Special Train 2026: List, Booking Dates & Routes* | ✅ Published |
-| 2026-09-08 | `chhath special train 2026 list` / `booking date` | Very High (~18.8M/wk entity surge) | Breakout (+800% 7D / +999k% 1M) | *Chhath Special Train 2026: List, Dates & IRCTC Booking* | ✅ Published |
-| 2026-09-05 | `irctc divyangjan concession udid card booking` | High (~100K/mo across disability queries) | News / Policy Update | *IRCTC Divyangjan Concession: UDID Card & Booking Rules 2026* | ✅ Published |
-| 2026-08-31 | `irctc otp not received` / `tatkal login otp` | High (~70K/mo search volume) | Peak Hour Congestion | *IRCTC OTP Not Received? 6 Fixes for Login & Tatkal* | ✅ Published |
-| 2026-08-26 | `irctc executive lounge access rules` | High (~45K/mo across stations) | Layover / Cards | *IRCTC Executive Lounge: Rates, Stations & Cards (2026)* | ✅ Published |
-| 2026-08-26 | `3e vs 3a difference in train` | High (~25K/mo search volume) | 83 vs 72 Berths | *3E vs 3A in Indian Railways: 83 vs 72 Berths, Fare Difference & Review* | ✅ Published |
-| 2026-08-26 | `train delayed 3 hours refund rules` | High (~30K/mo urgency search) | Free Meals / TDR | *Train Delayed 3+ Hours: 100% Refund & Free Food (2026)* | ✅ Published |
-| 2026-08-26 | `bike transport by train parcel rules` | High (~50K/mo logistics search) | Parcel vs Luggage | *How to Transport Bike by Train: Parcel vs Luggage Rules & Charges (2026)* | ✅ Published |
-| 2026-08-26 | `rail neer water bottle price complaint` | Moderate (~15K/mo consumer rights) | RailMadad 139 | *Rail Neer ₹15 MRP Rule: How to Complain for Food Overcharging on Train* | ✅ Published |
-| 2026-08-26 | `coach position in train platform locator` | High (~60K/mo platform search) | Rake Layout | *Train Coach Position on Platform: How to Find B3, S4 & A1 Location* | ✅ Published |
-| 2026-08-25 | `special train booking rules` | High (Seasonal / Search Demand) | 0-Series Rules | *Special Train Booking Rules: 0-Series Fares & Timings* | ✅ Published |
-| 2026-08-23 | `suvidha train booking rules` | High (Seasonal Surge) | 50% Refund Rule | *Suvidha Train Rules 2026: Fares, Booking & 50% Refund Policy* | ✅ Published |
-| 2026-08-22 | `diwali train ticket booking 2026` | High (Seasonal Surge) | 60-Day ARP | *Diwali & Chhath 2026 Train Booking: Dates & 60-Day Rules* | ✅ Published |
-|---|---|---|---|---|---|
-| 2026-08-03 | `current reservation timing irctc` | 211 | Pos 9.6 (2.37% CTR) | *Current Reservation IRCTC: Booking Timings & Fares (2026)* | ✅ Published |
-| 2026-08-03 | `general quota meaning in irctc` | 240 | Pos 8.2 | *General Quota (GN) in IRCTC: Meaning, Rules & Seat Limits* | ✅ Published |
-| 2026-07-31 | `tatkal token system timing` | High (Breakout) | Aug 1 Rule | *New Tatkal Ticket Booking Rules 2026: Token Timings & Counter Guide* | ✅ Published |
-| 2026-07-31 | `vande bharat sleeper train routes` | High (Breakout) | 160 km/h | *Vande Bharat Sleeper Train 2026: Routes, Fares & Booking* | ✅ Published |
+| 2026-09-21 | `irctc advance reservation period` / `60 days rules calculator` | High (~18.8M/wk entity surge) | Breakout (+5000% 24h spike / 60-day rule) | _IRCTC Advance Reservation Period: 60-Day Rules & Dates (2026)_ | ✅ Published |
+| 2026-09-10 | `diwali special train 2026 list` / `booking date` | Very High (~18.8M/wk entity surge) | Breakout (+900% 7D / +999k% 1M) | _Diwali Special Train 2026: List, Booking Dates & Routes_ | ✅ Published |
+| 2026-09-08 | `chhath special train 2026 list` / `booking date` | Very High (~18.8M/wk entity surge) | Breakout (+800% 7D / +999k% 1M) | _Chhath Special Train 2026: List, Dates & IRCTC Booking_ | ✅ Published |
+| 2026-09-05 | `irctc divyangjan concession udid card booking` | High (~100K/mo across disability queries) | News / Policy Update | _IRCTC Divyangjan Concession: UDID Card & Booking Rules 2026_ | ✅ Published |
+| 2026-08-31 | `irctc otp not received` / `tatkal login otp` | High (~70K/mo search volume) | Peak Hour Congestion | _IRCTC OTP Not Received? 6 Fixes for Login & Tatkal_ | ✅ Published |
+| 2026-08-26 | `irctc executive lounge access rules` | High (~45K/mo across stations) | Layover / Cards | _IRCTC Executive Lounge: Rates, Stations & Cards (2026)_ | ✅ Published |
+| 2026-08-26 | `3e vs 3a difference in train` | High (~25K/mo search volume) | 83 vs 72 Berths | _3E vs 3A in Indian Railways: 83 vs 72 Berths, Fare Difference & Review_ | ✅ Published |
+| 2026-08-26 | `train delayed 3 hours refund rules` | High (~30K/mo urgency search) | Free Meals / TDR | _Train Delayed 3+ Hours: 100% Refund & Free Food (2026)_ | ✅ Published |
+| 2026-08-26 | `bike transport by train parcel rules` | High (~50K/mo logistics search) | Parcel vs Luggage | _How to Transport Bike by Train: Parcel vs Luggage Rules & Charges (2026)_ | ✅ Published |
+| 2026-08-26 | `rail neer water bottle price complaint` | Moderate (~15K/mo consumer rights) | RailMadad 139 | _Rail Neer ₹15 MRP Rule: How to Complain for Food Overcharging on Train_ | ✅ Published |
+| 2026-08-26 | `coach position in train platform locator` | High (~60K/mo platform search) | Rake Layout | _Train Coach Position on Platform: How to Find B3, S4 & A1 Location_ | ✅ Published |
+| 2026-08-25 | `special train booking rules` | High (Seasonal / Search Demand) | 0-Series Rules | _Special Train Booking Rules: 0-Series Fares & Timings_ | ✅ Published |
+| 2026-08-23 | `suvidha train booking rules` | High (Seasonal Surge) | 50% Refund Rule | _Suvidha Train Rules 2026: Fares, Booking & 50% Refund Policy_ | ✅ Published |
+
+| 2026-08-22 | `diwali train ticket booking 2026`  | High (Seasonal Surge) | 60-Day ARP          | _Diwali & Chhath 2026 Train Booking: Dates & 60-Day Rules_            | ✅ Published |
+| ---------- | ----------------------------------- | --------------------- | ------------------- | --------------------------------------------------------------------- | ------------ |
+| 2026-08-03 | `current reservation timing irctc`  | 211                   | Pos 9.6 (2.37% CTR) | _Current Reservation IRCTC: Booking Timings & Fares (2026)_           | ✅ Published |
+| 2026-08-03 | `general quota meaning in irctc`    | 240                   | Pos 8.2             | _General Quota (GN) in IRCTC: Meaning, Rules & Seat Limits_           | ✅ Published |
+| 2026-07-31 | `tatkal token system timing`        | High (Breakout)       | Aug 1 Rule          | _New Tatkal Ticket Booking Rules 2026: Token Timings & Counter Guide_ | ✅ Published |
+| 2026-07-31 | `vande bharat sleeper train routes` | High (Breakout)       | 160 km/h            | _Vande Bharat Sleeper Train 2026: Routes, Fares & Booking_            | ✅ Published |
 
 ---
 
 ## 🛠️ Automated Triage Rules
+
 - **Intent Match Score ≥ 50%:** Route to **Playbook A/A-CTR (Optimize Existing Page)**.
 - **Intent Match Score < 50%:** Add to this table as a **New Candidate (Playbook D)**.
 - **Generator Priority:** Pick the top `⏳ Queued` candidate when executing a NEW post run.
-

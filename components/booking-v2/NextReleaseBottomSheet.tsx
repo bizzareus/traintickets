@@ -3,7 +3,10 @@
 import { useEffect, useState } from "react";
 import { apiClient } from "@/lib/api";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
-import { formatChartMomentIst, parseChartDateTimeIst } from "./alternatePathHelpers";
+import {
+  formatChartMomentIst,
+  parseChartDateTimeIst,
+} from "./alternatePathHelpers";
 
 export function NextReleaseBottomSheet({
   trainNumber,
@@ -42,7 +45,7 @@ export function NextReleaseBottomSheet({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-t-3xl bg-white p-6 pb-12 shadow-2xl animate-in slide-in-from-bottom duration-300"
+        className="animate-in slide-in-from-bottom w-full max-w-md rounded-t-3xl bg-white p-6 pb-12 shadow-2xl duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mx-auto mb-6 h-1.5 w-12 rounded-full bg-gray-200" />
@@ -57,7 +60,7 @@ export function NextReleaseBottomSheet({
           {loading ? (
             <div className="flex flex-col items-center justify-center py-10">
               <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
-              <p className="mt-4 text-xs font-bold text-blue-600 animate-pulse">
+              <p className="mt-4 animate-pulse text-xs font-bold text-blue-600">
                 Fetching next release schedule...
               </p>
             </div>
@@ -93,7 +96,7 @@ export function NextReleaseBottomSheet({
             </div>
           ) : (
             <div className="rounded-2xl border border-gray-100 bg-gray-50 p-8 text-center">
-              <p className="text-sm font-medium text-gray-400 italic">
+              <p className="text-sm font-medium italic text-gray-400">
                 No specific charting metadata was found for {stationCode}. It
                 might follow the same timeline as the previous station.
               </p>
@@ -103,7 +106,7 @@ export function NextReleaseBottomSheet({
 
         <button
           onClick={onClose}
-          className="bg-indigo-600 hover:bg-indigo-700 mt-8 w-full rounded-2xl px-4 py-4 text-sm font-black text-white shadow-lg shadow-indigo-200 transition-all active:scale-[0.98]"
+          className="mt-8 w-full rounded-2xl bg-indigo-600 px-4 py-4 text-sm font-black text-white shadow-lg shadow-indigo-200 transition-all hover:bg-indigo-700 active:scale-[0.98]"
         >
           Got it, Close
         </button>

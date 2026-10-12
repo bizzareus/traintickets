@@ -72,11 +72,11 @@ Compare segment plans by what they actually secure from your real boarding point
 
 Suppose you need to travel from Surat to Jaipur and the direct search is waitlisted. You find three possible segment plans:
 
-| Plan | What it confirms | What is still risky | Better read |
-|---|---|---|---|
-| A | Surat -> Vadodara | Almost the whole trip | Too short to be useful unless you have a strong onward option |
-| B | Surat -> Kota | Kota -> Jaipur | Useful if Kota has realistic onward trains or chart-time availability |
-| C | Vadodara -> Jaipur | Surat -> Vadodara | Not confirmed from origin; you still have to reach Vadodara |
+| Plan | What it confirms   | What is still risky   | Better read                                                           |
+| ---- | ------------------ | --------------------- | --------------------------------------------------------------------- |
+| A    | Surat -> Vadodara  | Almost the whole trip | Too short to be useful unless you have a strong onward option         |
+| B    | Surat -> Kota      | Kota -> Jaipur        | Useful if Kota has realistic onward trains or chart-time availability |
+| C    | Vadodara -> Jaipur | Surat -> Vadodara     | Not confirmed from origin; you still have to reach Vadodara           |
 
 Plan C may look best because it covers the longest train distance, but it fails the origin test. Plan A technically starts from Surat, but the confirmed stretch is so short that it may only move the problem one station down the line. Plan B is not perfect, but it is often the more practical partial plan because it gives you a meaningful confirmed start.
 
@@ -164,9 +164,11 @@ In those cases, a full-journey confirmed or RAC option may be better, even if th
 ## Common Booking Questions (FAQ)
 
 ### Is segment booking legal according to Indian Railways?
+
 Yes, booking different tickets for different parts of the same train journey is fully legal. The system lets you do this, but just keep in mind that you'll have different PNR numbers for each ticket. They are treated as separate bookings.
 
 ### What happens if the first leg of my segment booking is delayed?
+
 Since each part of the trip has its own PNR, Indian Railways won't help you link them or guarantee anything. If your first train is running super late and you miss the next leg, you won't get any automatic compensation or free rebooking. Make sure you check the [official Indian Railways booking information](https://www.indianrail.gov.in/) to understand refund rules, and always keep a good, safe time gap between your segments.
 
 ---

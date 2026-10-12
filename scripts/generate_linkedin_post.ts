@@ -12,7 +12,7 @@ export interface GenerateLinkedInPostOptions {
 
 export function generateLinkedInPost(
   slug: string,
-  options?: GenerateLinkedInPostOptions
+  options?: GenerateLinkedInPostOptions,
 ): string {
   const filePath = path.join(process.cwd(), "content", "blog", `${slug}.md`);
   if (!fs.existsSync(filePath)) {
@@ -62,7 +62,8 @@ export function generateLinkedInPost(
     options?.popularTrainCallout ??
     `🎯 Real seat discovery: Travelling this week to Delhi from Mumbai? Even when direct searches show heavy waitlists or REGRET, I have found you seats in Tejas Express in 3AC, and you can use LastBerth to find that out on your route too!`;
 
-  const postText = `${title}\n\n` +
+  const postText =
+    `${title}\n\n` +
     `Facing high waitlists or REGRET on Indian Railways? Here is what you need to know:\n\n` +
     `${bullets}\n\n` +
     `${routeCallout}\n\n` +
@@ -75,7 +76,8 @@ export function generateLinkedInPost(
 
 // CLI usage: npx tsx scripts/generate_linkedin_post.ts [slug]
 if (process.argv[1]?.endsWith("generate_linkedin_post.ts")) {
-  const slug = process.argv[2] || "chhath-special-train-2026-booking-dates-routes-list";
+  const slug =
+    process.argv[2] || "chhath-special-train-2026-booking-dates-routes-list";
   const post = generateLinkedInPost(slug);
   console.log("=== GENERATED LINKEDIN POST ===");
   console.log(post);

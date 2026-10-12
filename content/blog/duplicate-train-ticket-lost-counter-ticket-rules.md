@@ -32,9 +32,10 @@ To avoid these heavy fines, you must head to a reservation counter and get a dup
 To get a replacement, walk up to any computerized railway reservation counter. You will need to fill out a standard requisition form and attach a written application explaining the loss, along with a valid ID (such as an Aadhaar Card, PAN Card, Voter ID, or Passport).
 
 To help the booking clerk pull up your details quickly, try to provide as much of the following information as possible:
-* **The PNR Number:** (Extremely helpful if you have it written down or saved in a photo).
-* **Journey Details:** Train number, travel date, origin station, and destination.
-* **Passenger Info:** The exact names, ages, and genders listed on the original booking.
+
+- **The PNR Number:** (Extremely helpful if you have it written down or saved in a photo).
+- **Journey Details:** Train number, travel date, origin station, and destination.
+- **Passenger Info:** The exact names, ages, and genders listed on the original booking.
 
 Once the clerk verifies your identity and locates the transaction in the database, they will print a fresh ticket with "DUPLICATE" stamped clearly at the top.
 
@@ -47,14 +48,14 @@ The replacement fee depends on your current booking status and when you apply. I
 > [!NOTE]
 > **Note on Waitlists:** Ticket status generally moves from WL (Waiting List) $\rightarrow$ RAC (Reservation Against Cancellation) $\rightarrow$ Confirmed. While fully waitlisted online e-tickets cancel automatically for a refund if they don't clear, waitlisted counter tickets require a manual refund at the window. If you lose a waitlisted counter ticket, the railway will not issue a duplicate or process a refund under any circumstances.
 
-| Ticket Type & Class | Lost Before Chart Prep | Lost After Chart Prep |
-|---|---|---|
-| **Second Class (2S) - Confirmed** | ₹50 per passenger | 50% of ticket fare |
-| **Sleeper Class (SL) - Confirmed** | ₹50 per passenger | 50% of ticket fare |
-| **AC Classes (3A, 2A, 1A, CC) - Confirmed** | ₹100 per passenger | 50% of ticket fare |
-| **RAC Ticket - Lost After Chart Prep** | ₹50 (2S/SL) or ₹100 (AC) | No duplicate issued |
-| **Waiting List (WL) - All Classes** | No duplicate issued | No duplicate issued |
-| **Torn / Damaged Ticket - Confirmed / RAC** | ₹50 (2S/SL) or ₹100 (AC) | 25% of ticket fare |
+| Ticket Type & Class                         | Lost Before Chart Prep   | Lost After Chart Prep |
+| ------------------------------------------- | ------------------------ | --------------------- |
+| **Second Class (2S) - Confirmed**           | ₹50 per passenger        | 50% of ticket fare    |
+| **Sleeper Class (SL) - Confirmed**          | ₹50 per passenger        | 50% of ticket fare    |
+| **AC Classes (3A, 2A, 1A, CC) - Confirmed** | ₹100 per passenger       | 50% of ticket fare    |
+| **RAC Ticket - Lost After Chart Prep**      | ₹50 (2S/SL) or ₹100 (AC) | No duplicate issued   |
+| **Waiting List (WL) - All Classes**         | No duplicate issued      | No duplicate issued   |
+| **Torn / Damaged Ticket - Confirmed / RAC** | ₹50 (2S/SL) or ₹100 (AC) | 25% of ticket fare    |
 
 ---
 
@@ -81,16 +82,21 @@ For passengers managing uncertain waiting lists or looking for alternative route
 ## Frequently Asked Questions (FAQ)
 
 ### Can I travel with a photocopy of my lost counter ticket?
+
 No. Indian Railways rules strictly forbid traveling with a photocopy. You must present either the original physical ticket or an officially printed duplicate.
 
 ### What should I do if I lose my online e-ticket?
+
 Nothing to worry about here. Online bookings don't require duplicate physical tickets. You can simply show the confirmation SMS from IRCTC or open the PDF on your smartphone alongside a valid identity proof.
 
 ### Can I get a duplicate issued for a waitlisted counter ticket?
+
 No. Indian Railways maintains a strict policy against issuing duplicates or processing refunds for lost waitlisted window tickets.
 
 ### How much do they charge for a duplicate ticket after the chart is prepared?
+
 If the reservation chart is already printed and your ticket is fully confirmed, getting a duplicate will cost you 50% of your original ticket fare. Note that duplicates are not issued for RAC tickets once the chart is prepared.
 
 ### What does WL stand for?
+
 WL stands for "Waiting List." It means your seat is not yet confirmed, and your name is in a virtual queue waiting for other passengers to cancel their reservations.

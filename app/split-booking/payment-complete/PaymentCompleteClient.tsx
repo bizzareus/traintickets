@@ -40,9 +40,11 @@ export function PaymentCompleteClient({ bookingRef }: { bookingRef: string }) {
       <h1 className="text-2xl font-bold text-slate-900">
         {!bookingRef
           ? "Missing booking reference"
-          : paid ? "Payment received"
-          : failed ? "Payment failed"
-          : "Confirming your payment"}
+          : paid
+            ? "Payment received"
+            : failed
+              ? "Payment failed"
+              : "Confirming your payment"}
       </h1>
       {bookingRef && (
         <p className="text-sm text-slate-600">Booking Ref: {bookingRef}</p>
@@ -50,8 +52,8 @@ export function PaymentCompleteClient({ bookingRef }: { bookingRef: string }) {
       {booking && (
         <p className="text-sm text-slate-600">
           ₹{booking.totalFare.toLocaleString("en-IN")} (tickets) + ₹
-          {booking.serviceFee.toLocaleString("en-IN")} (payment service charge) = ₹
-          {booking.amount.toLocaleString("en-IN")}
+          {booking.serviceFee.toLocaleString("en-IN")} (payment service charge)
+          = ₹{booking.amount.toLocaleString("en-IN")}
         </p>
       )}
       <p role="status" className="text-sm text-slate-600">
@@ -59,9 +61,10 @@ export function PaymentCompleteClient({ bookingRef }: { bookingRef: string }) {
           ? "Your payment is confirmed. Check the reservation window for booking progress and PNRs. Payment alone does not confirm a ticket."
           : failed
             ? "Your reservation has not started. Return to LastBerth to try again."
-            : error ?? (bookingRef
+            : (error ??
+              (bookingRef
                 ? "Waiting for confirmation from the payment provider…"
-                : "Open the payment link from your reservation to continue.")}
+                : "Open the payment link from your reservation to continue."))}
       </p>
       <Link
         href="/"

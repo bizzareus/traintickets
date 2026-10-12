@@ -37,7 +37,9 @@ async function selectDefaultRoute(page: import("@playwright/test").Page) {
 async function openAlternateModal(page: import("@playwright/test").Page) {
   await selectDefaultRoute(page);
   await page.getByRole("button", { name: "Search trains" }).click();
-  await expect(page.getByRole("list", { name: "Train results" })).toContainText(DEFAULT_TRAIN.trainNumber);
+  await expect(page.getByRole("list", { name: "Train results" })).toContainText(
+    DEFAULT_TRAIN.trainNumber,
+  );
   await page.getByRole("button", { name: "Search all classes" }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
 }
@@ -55,14 +57,19 @@ test.describe("booking v2 (mocked API)", () => {
 
   test("search shows trains and class availability", async ({ page }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
 
     await selectDefaultRoute(page);
 
     await page.getByRole("button", { name: "Search trains" }).click();
-    await expect(page.getByRole("heading", { name: new RegExp(DEFAULT_TRAIN.trainNumber) })).toBeVisible();
+    await expect(
+      page.getByRole("heading", {
+        name: new RegExp(DEFAULT_TRAIN.trainNumber),
+      }),
+    ).toBeVisible();
     await expect(page.getByText("WL 15")).toBeVisible();
     await expect(page.getByText("AVAILABLE-0001")).toBeVisible();
   });
@@ -70,7 +77,8 @@ test.describe("booking v2 (mocked API)", () => {
   test("empty train list shows friendly status", async ({ page }) => {
     await installBookingV2Mocks(page, {
       trains: [],
-      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
     await selectDefaultRoute(page);
@@ -82,8 +90,12 @@ test.describe("booking v2 (mocked API)", () => {
 
   test("train search API error surfaces in UI", async ({ page }) => {
     await installBookingV2Mocks(page, {
-      trainSearchError: { status: 503, body: { message: "Rail search unavailable" } },
-      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+      trainSearchError: {
+        status: 503,
+        body: { message: "Rail search unavailable" },
+      },
+      alternatePaths: (body) =>
+        alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
     await selectDefaultRoute(page);
@@ -93,7 +105,9 @@ test.describe("booking v2 (mocked API)", () => {
     ).toBeVisible();
   });
 
-  test("alternate path: 4 chained unavailable hops in middle collapse into one card", async ({ page }) => {
+  test("alternate path: 4 chained unavailable hops in middle collapse into one card", async ({
+    page,
+  }) => {
     await installBookingV2Mocks(page, {
       alternatePaths: (body) =>
         alternatePathMiddleChainUnavailable(String(body.trainNumber ?? "")),
@@ -148,9 +162,12 @@ test.describe("booking v2 (mocked API)", () => {
     await expect(bookLinks).toHaveCount(2);
   });
 
-  test("alternate path: two confirmed segments (short positive)", async ({ page }) => {
+  test("alternate path: two confirmed segments (short positive)", async ({
+    page,
+  }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
     await openAlternateModal(page);
@@ -163,9 +180,12 @@ test.describe("booking v2 (mocked API)", () => {
     await expect(page.getByRole("dialog")).toContainText("Book");
   });
 
-  test("alternate path: two intermediate stations (three confirmed segments)", async ({ page }) => {
+  test("alternate path: two intermediate stations (three confirmed segments)", async ({
+    page,
+  }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathTwoIntermediatesConfirmed(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathTwoIntermediatesConfirmed(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
     await openAlternateModal(page);
@@ -176,9 +196,12 @@ test.describe("booking v2 (mocked API)", () => {
     await expect(dialog).toContainText("S2");
   });
 
-  test("alternate path: collapsed remainder after one confirmed leg (2 realtime hops)", async ({ page }) => {
+  test("alternate path: collapsed remainder after one confirmed leg (2 realtime hops)", async ({
+    page,
+  }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
     await openAlternateModal(page);
@@ -186,13 +209,22 @@ test.describe("booking v2 (mocked API)", () => {
     const dialog = page.getByRole("dialog");
     await expect(dialog).toContainText("MID");
     await expect(dialog).toContainText("DEST");
-    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
+    await expect(
+      dialog.getByRole("button", { name: "Get Ticket Alert" }),
+    ).toBeVisible();
   });
 
-  test("alternate path: 20-segment realtime chain collapses to single remainder row", async ({ page }) => {
+  test("alternate path: 20-segment realtime chain collapses to single remainder row", async ({
+    page,
+  }) => {
     await installBookingV2Mocks(page, {
       alternatePaths: (body) =>
-        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 20, "ORIG", "DEST"),
+        alternatePathLongRealtimeChain(
+          String(body.trainNumber ?? ""),
+          20,
+          "ORIG",
+          "DEST",
+        ),
     });
     await page.goto("/");
     await openAlternateModal(page);
@@ -201,7 +233,9 @@ test.describe("booking v2 (mocked API)", () => {
     await expect(dialog).toContainText("ORIG");
     await expect(dialog).toContainText("DEST");
     await expect(dialog).toContainText("Leg 1 of 1");
-    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
+    await expect(
+      dialog.getByRole("button", { name: "Get Ticket Alert" }),
+    ).toBeVisible();
   });
 
   test("alternate path: 50-segment realtime chain still shows collapsed leg and subscribe panel", async ({
@@ -209,7 +243,12 @@ test.describe("booking v2 (mocked API)", () => {
   }) => {
     await installBookingV2Mocks(page, {
       alternatePaths: (body) =>
-        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 50, "ORIG", "DEST"),
+        alternatePathLongRealtimeChain(
+          String(body.trainNumber ?? ""),
+          50,
+          "ORIG",
+          "DEST",
+        ),
     });
     await page.goto("/");
     await openAlternateModal(page);
@@ -217,12 +256,17 @@ test.describe("booking v2 (mocked API)", () => {
     const dialog = page.getByRole("dialog");
     await expect(dialog).toContainText("ORIG");
     await expect(dialog).toContainText("DEST");
-    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
+    await expect(
+      dialog.getByRole("button", { name: "Get Ticket Alert" }),
+    ).toBeVisible();
   });
 
   test("alternate path API error shows in modal", async ({ page }) => {
     await installBookingV2Mocks(page, {
-      alternatePathsError: { status: 502, body: { message: "Upstream timeout" } },
+      alternatePathsError: {
+        status: 502,
+        body: { message: "Upstream timeout" },
+      },
     });
     await page.goto("/");
     await selectDefaultRoute(page);
@@ -233,26 +277,36 @@ test.describe("booking v2 (mocked API)", () => {
 
   test("subscribe workflow: validate + journey succeeds", async ({ page }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
       journeyValidate: { valid: true },
     });
     await page.goto("/");
     await openAlternateModal(page);
 
-    await expect(page.getByRole("dialog")).not.toContainText("Loading IRCTC chart preparation", {
-      timeout: 15_000,
-    });
+    await expect(page.getByRole("dialog")).not.toContainText(
+      "Loading IRCTC chart preparation",
+      {
+        timeout: 15_000,
+      },
+    );
 
-    await page.getByRole("button", { name: "Get Ticket Alert" }).first().click();
+    await page
+      .getByRole("button", { name: "Get Ticket Alert" })
+      .first()
+      .click();
     await page.getByPlaceholder("Email").fill("e2e-mock@example.com");
     await page.getByRole("button", { name: "Set alert" }).click();
 
     await expect(page.getByText("✓ Alert set")).toBeVisible();
   });
 
-  test("subscribe workflow: validation failure shows message", async ({ page }) => {
+  test("subscribe workflow: validation failure shows message", async ({
+    page,
+  }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
       journeyPostError: {
         status: 400,
         body: { message: "Train does not run on this day." },
@@ -260,30 +314,47 @@ test.describe("booking v2 (mocked API)", () => {
     });
     await page.goto("/");
     await openAlternateModal(page);
-    await expect(page.getByRole("dialog")).not.toContainText("Loading IRCTC chart preparation", {
-      timeout: 15_000,
-    });
+    await expect(page.getByRole("dialog")).not.toContainText(
+      "Loading IRCTC chart preparation",
+      {
+        timeout: 15_000,
+      },
+    );
 
-    await page.getByRole("button", { name: "Get Ticket Alert" }).first().click();
+    await page
+      .getByRole("button", { name: "Get Ticket Alert" })
+      .first()
+      .click();
     await page.getByPlaceholder("Email").fill("e2e@example.com");
     await page.getByRole("button", { name: "Set alert" }).click();
 
-    await expect(page.getByRole("dialog")).toContainText("Train does not run on this day.");
+    await expect(page.getByRole("dialog")).toContainText(
+      "Train does not run on this day.",
+    );
     await expect(page.getByText("✓ Alert set")).not.toBeVisible();
   });
 
-  test("subscribe workflow: journey POST error shows message", async ({ page }) => {
+  test("subscribe workflow: journey POST error shows message", async ({
+    page,
+  }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
       journeyPostError: { status: 400, body: { message: "Queue full" } },
     });
     await page.goto("/");
     await openAlternateModal(page);
-    await expect(page.getByRole("dialog")).not.toContainText("Loading IRCTC chart preparation", {
-      timeout: 15_000,
-    });
+    await expect(page.getByRole("dialog")).not.toContainText(
+      "Loading IRCTC chart preparation",
+      {
+        timeout: 15_000,
+      },
+    );
 
-    await page.getByRole("button", { name: "Get Ticket Alert" }).first().click();
+    await page
+      .getByRole("button", { name: "Get Ticket Alert" })
+      .first()
+      .click();
     await page.getByPlaceholder("Email").fill("e2e@example.com");
     await page.getByRole("button", { name: "Set alert" }).click();
 
@@ -293,7 +364,8 @@ test.describe("booking v2 (mocked API)", () => {
   test("station suggest failure shows in dropdown", async ({ page }) => {
     await installBookingV2Mocks(page, {
       suggestError: { status: 500, body: { message: "Suggest down" } },
-      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
 
@@ -308,24 +380,34 @@ test.describe("booking v2 (mocked API)", () => {
 
   test("subscribe requires email or mobile", async ({ page }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathWithCollapsedRemainder(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
     await openAlternateModal(page);
-    await expect(page.getByRole("dialog")).not.toContainText("Loading IRCTC chart preparation", {
-      timeout: 15_000,
-    });
+    await expect(page.getByRole("dialog")).not.toContainText(
+      "Loading IRCTC chart preparation",
+      {
+        timeout: 15_000,
+      },
+    );
 
-    await page.getByRole("button", { name: "Get Ticket Alert" }).first().click();
+    await page
+      .getByRole("button", { name: "Get Ticket Alert" })
+      .first()
+      .click();
     await page.getByRole("button", { name: "Set alert" }).click();
-    await expect(page.getByRole("dialog")).toContainText("Enter an email or mobile number.");
+    await expect(page.getByRole("dialog")).toContainText(
+      "Enter an email or mobile number.",
+    );
   });
 
   test("date picker displays in readable format (e.g. 'Friday, Apr 03') instead of YYYY-MM-DD", async ({
     page,
   }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
 
@@ -340,7 +422,8 @@ test.describe("booking v2 (mocked API)", () => {
 
   test("station field shows train icon (not truck icon)", async ({ page }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
 
@@ -354,7 +437,8 @@ test.describe("booking v2 (mocked API)", () => {
   }) => {
     let suggestCallCount = 0;
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
       // Count suggest calls inside the mock by using a custom stations override
       stations: DEFAULT_STATIONS,
     });
@@ -362,8 +446,10 @@ test.describe("booking v2 (mocked API)", () => {
     await page.goto("/");
 
     // First suggest call
-    const wait1 = page.waitForResponse((r) =>
-      r.url().includes("/api/booking-v2/stations/suggest") && r.request().method() === "GET",
+    const wait1 = page.waitForResponse(
+      (r) =>
+        r.url().includes("/api/booking-v2/stations/suggest") &&
+        r.request().method() === "GET",
     );
     await page.getByLabel("From", { exact: true }).fill("Or");
     await wait1;
@@ -374,8 +460,10 @@ test.describe("booking v2 (mocked API)", () => {
     expect(suggestCallCount).toBe(1);
 
     // Second suggest call on To field
-    const wait2 = page.waitForResponse((r) =>
-      r.url().includes("/api/booking-v2/stations/suggest") && r.request().method() === "GET",
+    const wait2 = page.waitForResponse(
+      (r) =>
+        r.url().includes("/api/booking-v2/stations/suggest") &&
+        r.request().method() === "GET",
     );
     await page.getByRole("option", { name: /ORIG/ }).click();
     await page.getByLabel("To", { exact: true }).fill("De");
@@ -390,7 +478,8 @@ test.describe("booking v2 (mocked API)", () => {
     page,
   }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
     await selectDefaultRoute(page);
@@ -421,65 +510,144 @@ test.describe("booking v2 (mocked API)", () => {
     page,
   }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
     });
     await page.goto("/");
     await selectDefaultRoute(page);
     await page.getByRole("button", { name: "Search trains" }).click();
-    await expect(page.getByRole("list", { name: "Train results" })).toContainText(
-      DEFAULT_TRAIN.trainNumber,
-    );
+    await expect(
+      page.getByRole("list", { name: "Train results" }),
+    ).toContainText(DEFAULT_TRAIN.trainNumber);
 
     // Intercept the stream to inject a deliberate delay so we can see the loading state
-    const { promise: streamReady, resolve: resolveStream } = Promise.withResolvers<void>();
-    await page.route("**/api/booking-v2/alternate-paths/stream", async (route) => {
-      const req = route.request();
-      let body: Record<string, unknown> = {};
-      try { body = req.postDataJSON() as Record<string, unknown>; } catch { /**/ }
-      const alt = alternatePathTwoConfirmed(String(body.trainNumber ?? "12345"));
-      const ndjson = [
-        JSON.stringify({ type: "progress", event: { type: "schedule_ok", trainName: "Mock Express", stopCount: 8 } }),
-        JSON.stringify({ type: "progress", event: { type: "route_ok", from: "ORIG", to: "DEST", stopCount: 3 } }),
-        JSON.stringify({ type: "progress", event: { type: "hop_confirmed", from: "ORIG", to: "MID", travelClass: "SL", fare: 200, hopIndex: 1 } }),
-        JSON.stringify({ type: "result", data: alt }),
-      ].join("\n") + "\n";
-      // Hold the response momentarily so the loading UI is visible
-      await streamReady;
-      await route.fulfill({ status: 200, contentType: "application/x-ndjson", body: ndjson });
-    });
+    const { promise: streamReady, resolve: resolveStream } =
+      Promise.withResolvers<void>();
+    await page.route(
+      "**/api/booking-v2/alternate-paths/stream",
+      async (route) => {
+        const req = route.request();
+        let body: Record<string, unknown> = {};
+        try {
+          body = req.postDataJSON() as Record<string, unknown>;
+        } catch {
+          /**/
+        }
+        const alt = alternatePathTwoConfirmed(
+          String(body.trainNumber ?? "12345"),
+        );
+        const ndjson =
+          [
+            JSON.stringify({
+              type: "progress",
+              event: {
+                type: "schedule_ok",
+                trainName: "Mock Express",
+                stopCount: 8,
+              },
+            }),
+            JSON.stringify({
+              type: "progress",
+              event: {
+                type: "route_ok",
+                from: "ORIG",
+                to: "DEST",
+                stopCount: 3,
+              },
+            }),
+            JSON.stringify({
+              type: "progress",
+              event: {
+                type: "hop_confirmed",
+                from: "ORIG",
+                to: "MID",
+                travelClass: "SL",
+                fare: 200,
+                hopIndex: 1,
+              },
+            }),
+            JSON.stringify({ type: "result", data: alt }),
+          ].join("\n") + "\n";
+        // Hold the response momentarily so the loading UI is visible
+        await streamReady;
+        await route.fulfill({
+          status: 200,
+          contentType: "application/x-ndjson",
+          body: ndjson,
+        });
+      },
+    );
 
     await page.getByRole("button", { name: "Search all classes" }).click();
 
     // Loading state — spinner and initial text should appear
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText("Searching for the best seats…")).toBeVisible({
-      timeout: 5_000,
-    });
+    await expect(dialog.getByText("Searching for the best seats…")).toBeVisible(
+      {
+        timeout: 5_000,
+      },
+    );
 
     resolveStream();
 
     // After stream resolves, results should appear
-    await expect(dialog.getByText("Best seats on")).toBeVisible({ timeout: 10_000 });
+    await expect(dialog.getByText("Best seats on")).toBeVisible({
+      timeout: 10_000,
+    });
   });
 
-  test("streaming progress: progress events rendered as step items", async ({ page }) => {
+  test("streaming progress: progress events rendered as step items", async ({
+    page,
+  }) => {
     await installBookingV2Mocks(page, {
-      alternatePaths: (body) => alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
+      alternatePaths: (body) =>
+        alternatePathTwoConfirmed(String(body.trainNumber ?? "")),
     });
 
     // Override stream to emit known events synchronously
-    await page.route("**/api/booking-v2/alternate-paths/stream", async (route) => {
-      const req = route.request();
-      let body: Record<string, unknown> = {};
-      try { body = req.postDataJSON() as Record<string, unknown>; } catch { /**/ }
-      const alt = alternatePathTwoConfirmed(String(body.trainNumber ?? "12345"));
-      const ndjson = [
-        JSON.stringify({ type: "progress", event: { type: "schedule_ok", trainName: "Mock Express", stopCount: 10 } }),
-        JSON.stringify({ type: "progress", event: { type: "hop_confirmed", from: "ORIG", to: "MID", travelClass: "SL", fare: 200, hopIndex: 1 } }),
-        JSON.stringify({ type: "result", data: alt }),
-      ].join("\n") + "\n";
-      await route.fulfill({ status: 200, contentType: "application/x-ndjson", body: ndjson });
-    });
+    await page.route(
+      "**/api/booking-v2/alternate-paths/stream",
+      async (route) => {
+        const req = route.request();
+        let body: Record<string, unknown> = {};
+        try {
+          body = req.postDataJSON() as Record<string, unknown>;
+        } catch {
+          /**/
+        }
+        const alt = alternatePathTwoConfirmed(
+          String(body.trainNumber ?? "12345"),
+        );
+        const ndjson =
+          [
+            JSON.stringify({
+              type: "progress",
+              event: {
+                type: "schedule_ok",
+                trainName: "Mock Express",
+                stopCount: 10,
+              },
+            }),
+            JSON.stringify({
+              type: "progress",
+              event: {
+                type: "hop_confirmed",
+                from: "ORIG",
+                to: "MID",
+                travelClass: "SL",
+                fare: 200,
+                hopIndex: 1,
+              },
+            }),
+            JSON.stringify({ type: "result", data: alt }),
+          ].join("\n") + "\n";
+        await route.fulfill({
+          status: 200,
+          contentType: "application/x-ndjson",
+          body: ndjson,
+        });
+      },
+    );
 
     await page.goto("/");
     await openAlternateModal(page);
@@ -497,17 +665,28 @@ test.describe("booking v2 (mocked API)", () => {
   // LegChartTimeInsight — chart preparation time + alert CTA
   // ---------------------------------------------------------------------------
 
-  test("chart time: shows spinner while loading station meta", async ({ page }) => {
+  test("chart time: shows spinner while loading station meta", async ({
+    page,
+  }) => {
     await installBookingV2Mocks(page, {
       alternatePaths: (body) =>
-        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+        alternatePathLongRealtimeChain(
+          String(body.trainNumber ?? ""),
+          1,
+          "ORIG",
+          "DEST",
+        ),
     });
 
-    const { promise: metaReady, resolve: resolveMeta } = Promise.withResolvers<void>();
-    await page.route("**/api/train-composition/stations-meta", async (route) => {
-      await metaReady;
-      await route.continue();
-    });
+    const { promise: metaReady, resolve: resolveMeta } =
+      Promise.withResolvers<void>();
+    await page.route(
+      "**/api/train-composition/stations-meta",
+      async (route) => {
+        await metaReady;
+        await route.continue();
+      },
+    );
 
     await page.goto("/");
     await openAlternateModal(page);
@@ -517,7 +696,9 @@ test.describe("booking v2 (mocked API)", () => {
       timeout: 8_000,
     });
     // Alert CTA already visible while still loading
-    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
+    await expect(
+      dialog.getByRole("button", { name: "Get Ticket Alert" }),
+    ).toBeVisible();
 
     resolveMeta();
   });
@@ -528,19 +709,32 @@ test.describe("booking v2 (mocked API)", () => {
     // chartOneTime "23:59" is always in the future today → not prepared yet
     await installBookingV2Mocks(page, {
       alternatePaths: (body) =>
-        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+        alternatePathLongRealtimeChain(
+          String(body.trainNumber ?? ""),
+          1,
+          "ORIG",
+          "DEST",
+        ),
       stationsMetaBySource: {
-        ORIG: { stationCode: "ORIG", chartOneTime: "23:59", chartTwoTime: null },
+        ORIG: {
+          stationCode: "ORIG",
+          chartOneTime: "23:59",
+          chartTwoTime: null,
+        },
       },
     });
     await page.goto("/");
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText("New tickets open at")).toBeVisible({ timeout: 15_000 });
+    await expect(dialog.getByText("New tickets open at")).toBeVisible({
+      timeout: 15_000,
+    });
     await expect(dialog).toContainText("11:59 PM");
 
-    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
+    await expect(
+      dialog.getByRole("button", { name: "Get Ticket Alert" }),
+    ).toBeVisible();
   });
 
   test("chart time: chart ALREADY prepared — shows warning", async ({
@@ -549,19 +743,32 @@ test.describe("booking v2 (mocked API)", () => {
     // chartOneTime "00:01" is always in the past today → already prepared
     await installBookingV2Mocks(page, {
       alternatePaths: (body) =>
-        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+        alternatePathLongRealtimeChain(
+          String(body.trainNumber ?? ""),
+          1,
+          "ORIG",
+          "DEST",
+        ),
       stationsMetaBySource: {
-        ORIG: { stationCode: "ORIG", chartOneTime: "00:01", chartTwoTime: null },
+        ORIG: {
+          stationCode: "ORIG",
+          chartOneTime: "00:01",
+          chartTwoTime: null,
+        },
       },
     });
     await page.goto("/");
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText("Chart for ORIG was released at")).toBeVisible({ timeout: 15_000 });
+    await expect(
+      dialog.getByText("Chart for ORIG was released at"),
+    ).toBeVisible({ timeout: 15_000 });
 
     // Alert CTA must not be visible since chart is already prepared
-    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).not.toBeVisible();
+    await expect(
+      dialog.getByRole("button", { name: "Get Ticket Alert" }),
+    ).not.toBeVisible();
   });
 
   test("chart time: no chart time available — shows fallback alert CTA", async ({
@@ -569,7 +776,12 @@ test.describe("booking v2 (mocked API)", () => {
   }) => {
     await installBookingV2Mocks(page, {
       alternatePaths: (body) =>
-        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+        alternatePathLongRealtimeChain(
+          String(body.trainNumber ?? ""),
+          1,
+          "ORIG",
+          "DEST",
+        ),
       stationsMetaBySource: {
         ORIG: { stationCode: "ORIG", chartOneTime: null, chartTwoTime: null },
       },
@@ -579,13 +791,22 @@ test.describe("booking v2 (mocked API)", () => {
 
     const dialog = page.getByRole("dialog");
     // Alert CTA still present
-    await expect(dialog.getByRole("button", { name: "Get Ticket Alert" })).toBeVisible();
+    await expect(
+      dialog.getByRole("button", { name: "Get Ticket Alert" }),
+    ).toBeVisible();
   });
 
-  test("chart time: alert CTA — requires email or mobile before submitting", async ({ page }) => {
+  test("chart time: alert CTA — requires email or mobile before submitting", async ({
+    page,
+  }) => {
     await installBookingV2Mocks(page, {
       alternatePaths: (body) =>
-        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+        alternatePathLongRealtimeChain(
+          String(body.trainNumber ?? ""),
+          1,
+          "ORIG",
+          "DEST",
+        ),
       stationsMetaBySource: {
         ORIG: { stationCode: "ORIG", chartOneTime: "23:59" },
       },
@@ -594,11 +815,18 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText("New tickets open at")).toBeVisible({ timeout: 15_000 });
+    await expect(dialog.getByText("New tickets open at")).toBeVisible({
+      timeout: 15_000,
+    });
 
-    await dialog.getByRole("button", { name: "Get Ticket Alert" }).first().click();
+    await dialog
+      .getByRole("button", { name: "Get Ticket Alert" })
+      .first()
+      .click();
     await dialog.getByRole("button", { name: "Set alert" }).first().click();
-    await expect(dialog.getByText("Enter an email or mobile number.")).toBeVisible();
+    await expect(
+      dialog.getByText("Enter an email or mobile number."),
+    ).toBeVisible();
   });
 
   test("chart time: alert CTA — successful alert submission shows confirmation", async ({
@@ -606,7 +834,12 @@ test.describe("booking v2 (mocked API)", () => {
   }) => {
     await installBookingV2Mocks(page, {
       alternatePaths: (body) =>
-        alternatePathLongRealtimeChain(String(body.trainNumber ?? ""), 1, "ORIG", "DEST"),
+        alternatePathLongRealtimeChain(
+          String(body.trainNumber ?? ""),
+          1,
+          "ORIG",
+          "DEST",
+        ),
       stationsMetaBySource: {
         ORIG: { stationCode: "ORIG", chartOneTime: "23:59" },
       },
@@ -615,13 +848,20 @@ test.describe("booking v2 (mocked API)", () => {
     await openAlternateModal(page);
 
     const dialog = page.getByRole("dialog");
-    await expect(dialog.getByText("New tickets open at")).toBeVisible({ timeout: 15_000 });
+    await expect(dialog.getByText("New tickets open at")).toBeVisible({
+      timeout: 15_000,
+    });
 
-    await dialog.getByRole("button", { name: "Get Ticket Alert" }).first().click();
+    await dialog
+      .getByRole("button", { name: "Get Ticket Alert" })
+      .first()
+      .click();
     await dialog.getByPlaceholder("Email").first().fill("e2e-leg@example.com");
     await dialog.getByRole("button", { name: "Set alert" }).first().click();
 
-    await expect(dialog.getByText("✓ Alert set")).toBeVisible({ timeout: 8_000 });
+    await expect(dialog.getByText("✓ Alert set")).toBeVisible({
+      timeout: 8_000,
+    });
     await expect(dialog.getByText(/Will notify at .*11:59 PM/)).toBeVisible();
   });
 });

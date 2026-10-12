@@ -55,7 +55,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const routePart = menu.route ? ` on the ${menu.route} route` : "";
   const description = `Official IRCTC food menu and prices for ${menu.trainName} (${menu.trainNumberPair})${routePart}. See every meal — breakfast, lunch/dinner, snacks and tea — by class (${menu.classes
     .map((c) => c.classCode)
-    .join(", ")})${min != null ? `, starting at ₹${min}` : ""}. Catering charges inclusive of taxes.`;
+    .join(
+      ", ",
+    )})${min != null ? `, starting at ₹${min}` : ""}. Catering charges inclusive of taxes.`;
   return {
     title: title(menu),
     description,
@@ -161,11 +163,11 @@ export default async function TrainFoodMenuPage({ params }: Props) {
               ? ` range from ₹${min} to ₹${max} per item/meal (inclusive of taxes)`
               : " are listed per meal (inclusive of taxes)"
           }${
-            breakfast?.price != null
-              ? `. Breakfast is ₹${breakfast.price}`
-              : ""
+            breakfast?.price != null ? `. Breakfast is ₹${breakfast.price}` : ""
           }${
-            lunch?.price != null ? ` and standard meals start from ₹${lunch.price}` : ""
+            lunch?.price != null
+              ? ` and standard meals start from ₹${lunch.price}`
+              : ""
           } in ${menu.classes[0]?.className} (${menu.classes[0]?.classCode}).`,
         },
       },
@@ -252,7 +254,8 @@ export default async function TrainFoodMenuPage({ params }: Props) {
         >
           official IRCTC catering tariff
         </a>
-        . Menus are served on a cyclic basis and tariffs are set by Indian Railways. See also{" "}
+        . Menus are served on a cyclic basis and tariffs are set by Indian
+        Railways. See also{" "}
         <Link
           href="/irctc-train-food-menu"
           className="font-medium text-blue-700 hover:underline"

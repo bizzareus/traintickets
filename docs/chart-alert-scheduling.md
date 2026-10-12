@@ -29,10 +29,10 @@ Dates are calendar dates, not local-midnight timestamps.
 
 For the example above, the backend writes exactly two tasks:
 
-| Chart number | IST | UTC-valued `chart_at` |
-| --- | --- | --- |
-| 1 | 28 September, 19:08 | `2026-09-28 13:38:00` |
-| 2 | 29 September, 05:35 | `2026-09-29 00:05:00` |
+| Chart number | IST                 | UTC-valued `chart_at` |
+| ------------ | ------------------- | --------------------- |
+| 1            | 28 September, 19:08 | `2026-09-28 13:38:00` |
+| 2            | 29 September, 05:35 | `2026-09-29 00:05:00` |
 
 `lib/chart-alert-schedule.ts` is the shared client preparation step. Table buttons
 already supply the displayed values. Other entry points load the same existing

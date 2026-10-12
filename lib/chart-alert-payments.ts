@@ -21,9 +21,7 @@ export function chartAlertPriceForClass(classCode?: string | null): number {
     : CHART_ALERT_STANDARD_PRICE_RUPEES;
 }
 
-export function chartAlertListPriceForClass(
-  classCode?: string | null,
-): number {
+export function chartAlertListPriceForClass(classCode?: string | null): number {
   return chartAlertPriceForClass(classCode) * 2;
 }
 
@@ -99,9 +97,10 @@ export interface ChartAlertPaymentStatus {
 export async function createChartAlertPaymentLink(
   input: ChartAlertPaymentCreateInput,
 ): Promise<ChartAlertPaymentLink> {
-  const res = await apiClient.post<
-    ChartAlertPaymentLink | { error?: string }
-  >("/api/chart-alert-payments/create", await withChartTimeSelection(input));
+  const res = await apiClient.post<ChartAlertPaymentLink | { error?: string }>(
+    "/api/chart-alert-payments/create",
+    await withChartTimeSelection(input),
+  );
   const data = res.data as ChartAlertPaymentLink & { error?: string };
   if (!data?.qrImageUrl || typeof data.qrImageUrl !== "string") {
     throw new Error(

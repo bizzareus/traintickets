@@ -29,13 +29,13 @@ The primary difference is that an e-ticket is booked online via the IRCTC websit
 
 Here is a side-by-side comparison of the two ticket types:
 
-| Feature | E-Ticket (Online Booking) | Counter Ticket (PRS Counter) |
-| :--- | :--- | :--- |
-| **Booking Mode** | Online via IRCTC website or authorized apps | Physically at computerized railway counters |
-| **Auto-Cancellation** | Yes, if fully waitlisted after chart preparation | No, waitlisted tickets never cancel automatically |
-| **Travel on Waitlist** | Illegal. Treated as ticketless travel if you board | Legal. Allowed to board the general unreserved coach |
-| **Refund Method** | Automatic refund to the booking account | Offline in cash at the counter (even if cancelled online) |
-| **Physical Printout** | Not required. SMS or virtual ticket on phone suffices | Mandatory. Must carry the original physical ticket |
+| Feature                | E-Ticket (Online Booking)                             | Counter Ticket (PRS Counter)                              |
+| :--------------------- | :---------------------------------------------------- | :-------------------------------------------------------- |
+| **Booking Mode**       | Online via IRCTC website or authorized apps           | Physically at computerized railway counters               |
+| **Auto-Cancellation**  | Yes, if fully waitlisted after chart preparation      | No, waitlisted tickets never cancel automatically         |
+| **Travel on Waitlist** | Illegal. Treated as ticketless travel if you board    | Legal. Allowed to board the general unreserved coach      |
+| **Refund Method**      | Automatic refund to the booking account               | Offline in cash at the counter (even if cancelled online) |
+| **Physical Printout**  | Not required. SMS or virtual ticket on phone suffices | Mandatory. Must carry the original physical ticket        |
 
 ---
 
@@ -43,9 +43,10 @@ Here is a side-by-side comparison of the two ticket types:
 
 Yes, you can legally travel in the general unreserved coach of a train using a waitlisted counter ticket. Unlike waitlisted e-tickets, which are cancelled automatically by the system, waitlisted counter tickets remain valid and permit you to enter the station premises and seek seat allotment from the ticket examiner.
 
-If your ticket status shows WL, it follows a set progression: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. Your booking chance depends on your queue position (like `WL/1` vs `WL/10`). 
+If your ticket status shows WL, it follows a set progression: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. Your booking chance depends on your queue position (like `WL/1` vs `WL/10`).
 
 If your ticket remains in the waiting list after chart preparation, an e-ticket is deleted from the system, and traveling on it is a punishable offense. However, a waitlisted counter ticket is not deleted. You can board the train's general compartment legally. If you want to check your confirmation chances or find better alternatives, you can use LastBerth's key features:
+
 - **Finding Smart Seats**: Search for seats by breaking your booking into multiple segments across different coaches.
 - **PNR Status Search & Direct Booking**: Check waitlist status and find alternative routes if your ticket is unlikely to confirm.
 - **Get Confirmed Tickets**: Scan the train coach layout to find vacant berths that you can request the TTE to allocate to you.
@@ -57,6 +58,7 @@ If your ticket remains in the waiting list after chart preparation, an e-ticket 
 To cancel a railway counter ticket online, visit the official IRCTC website, enter your PNR number and ticket number, and verify the transaction with the OTP sent to your registered mobile number. You must collect your cash refund from any computerized reservation counter before the train's departure.
 
 Here is the step-by-step process to cancel your counter ticket online:
+
 1. Visit the official IRCTC website and navigate to the **Counter Ticket Cancellation** page.
 2. Enter your **PNR Number**, **Ticket Number**, and the captcha code.
 3. Check the terms and conditions box and click **Submit**.
@@ -80,15 +82,19 @@ For e-tickets, the system handles the refund automatically, so you do not need t
 ## Counter vs E-Ticket Booking (FAQ)
 
 ### What happens if an e-ticket is partially confirmed?
+
 If an e-ticket has some passengers confirmed or in RAC status while others remain waitlisted, the waitlisted passengers can travel. The ticket does not cancel automatically. The passengers can board the train, and the TTE may allocate seats if vacant berths are available.
 
 ### Can I convert a counter ticket into an e-ticket?
+
 No, you cannot convert a physical counter ticket into an e-ticket. Once booked, a counter ticket must be managed as a counter ticket. You can only cancel it online and collect the cash at a station counter, but you cannot manage it via your personal IRCTC online account.
 
 ### Why do counter tickets not cancel automatically?
+
 Counter tickets are paid for in cash or via POS machines at a station, and the railways do not have a direct online bank account link to return the money. Therefore, the system keeps the ticket active so the passenger can physically return the paper ticket to a counter and claim their cash refund.
 
 ### Is an e-ticket cheaper than a counter ticket?
+
 E-tickets are slightly more expensive due to the convenience fee (ranging from ₹15 to ₹30 plus GST depending on the class and payment mode) charged by IRCTC. Counter tickets do not have this convenience fee, but you have to spend time and money traveling to the station to buy them.
 
 ---

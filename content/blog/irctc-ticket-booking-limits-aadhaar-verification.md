@@ -33,20 +33,21 @@ tags:
 
 **You can book up to 12 tickets per calendar month on a standard unverified IRCTC account. Linking your Aadhaar card and verifying at least one passenger in your Master List doubles your monthly limit to 24 tickets per user ID. This booking quota resets automatically at 00:00 hours on the 1st of every month.**
 
-| Booking Type / Limit Category | Limit Value | Key Rule & PRS Requirement |
-| :--- | :--- | :--- |
-| **Monthly Limit (Unverified Account)** | 12 tickets | Standard personal profile without Aadhaar identity verification. |
-| **Monthly Limit (Aadhaar-Verified)** | 24 tickets | Profile linked to Aadhaar + at least 1 verified traveler on bookings 13–24. |
-| **Daily Booking Limit (General)** | 6 tickets | Maximum 6 PNR transactions booked per calendar day across all quotas. |
-| **Daily Tatkal Booking Limit** | 2 tickets | Maximum 2 Tatkal PNRs booked per calendar day per IRCTC user ID. |
-| **Per Login Session Limit** | 2 tickets | Capped at 2 booking transactions between 8:00 AM and 12:00 PM IST. |
-| **Max Passengers Per Ticket (General)** | 6 passengers | Applies to standard ARP bookings across Sleeper, 3A, 2A, 1A, and Chair Car. |
-| **Max Passengers Per Ticket (Tatkal)** | 4 passengers | Strictly enforced across Tatkal and Premium Tatkal quotas. |
-| **Monthly Quota Reset Schedule** | 1st of every month | Resets at 00:00 hrs IST; cancelled tickets do not replenish consumed slots. |
+| Booking Type / Limit Category           | Limit Value        | Key Rule & PRS Requirement                                                  |
+| :-------------------------------------- | :----------------- | :-------------------------------------------------------------------------- |
+| **Monthly Limit (Unverified Account)**  | 12 tickets         | Standard personal profile without Aadhaar identity verification.            |
+| **Monthly Limit (Aadhaar-Verified)**    | 24 tickets         | Profile linked to Aadhaar + at least 1 verified traveler on bookings 13–24. |
+| **Daily Booking Limit (General)**       | 6 tickets          | Maximum 6 PNR transactions booked per calendar day across all quotas.       |
+| **Daily Tatkal Booking Limit**          | 2 tickets          | Maximum 2 Tatkal PNRs booked per calendar day per IRCTC user ID.            |
+| **Per Login Session Limit**             | 2 tickets          | Capped at 2 booking transactions between 8:00 AM and 12:00 PM IST.          |
+| **Max Passengers Per Ticket (General)** | 6 passengers       | Applies to standard ARP bookings across Sleeper, 3A, 2A, 1A, and Chair Car. |
+| **Max Passengers Per Ticket (Tatkal)**  | 4 passengers       | Strictly enforced across Tatkal and Premium Tatkal quotas.                  |
+| **Monthly Quota Reset Schedule**        | 1st of every month | Resets at 00:00 hrs IST; cancelled tickets do not replenish consumed slots. |
 
 Indian Railways enforces these structural caps within the Next Generation e-Ticketing (NGeT) architecture to prevent commercial touts and automated bot networks from cornering reservation inventory. For an occasional holiday traveler, 12 tickets per month is generally sufficient. However, for large joint families, frequent business commuters, and festival travel planners, hitting the 12-ticket barrier is common. Once your monthly quota is exhausted, IRCTC rejects every subsequent booking attempt with an explicit quota error until the start of the next calendar month.
 
 If you are planning journeys along congested routes during peak festival travel, you can check real-time availability across popular corridors directly:
+
 - [Delhi to Patna Trains](/?from=NDLS&to=PNBE)
 - [Mumbai to Danapur Trains](/?from=MMCT&to=DNR)
 - [Bengaluru to Chennai Trains](/?from=SBC&to=MAS)

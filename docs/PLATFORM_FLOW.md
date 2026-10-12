@@ -111,15 +111,15 @@ Deeper job execution ties into **`JourneyTaskService`**, **`AvailabilityService`
 
 ## Other API surfaces (feature planning)
 
-| Area                           | Files                                                              | Notes                                                                                    |
-| ------------------------------ | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| Auth / dashboard               | `backend/src/auth/*`, `app/login`, `app/register`, `app/dashboard` | JWT; `getAuthHeaders()` in `lib/api.ts`.                                                 |
-| Trains CRUD (admin/product)    | `backend/src/trains/*`, `app/admin/trains`                         | Distinct from IRCTC live list.                                                           |
-| Search                         | `backend/src/search/*`, `app/search/page.tsx`                      | Product search UX.                                                                       |
-| Chart rules / cron / ingestion | `chart-cron`, `chart-time-ingestion`, `chart-event`, `app/admin/*` | Scheduling and tooling around chart times and events.                                    |
-| Rail feed proxy                | `backend/src/rail-feed-proxy/*`                                    | `GET /api/rail-feed/availability` → upstream POST proxy (optional integration surface).   |
-| Webhooks                       | `backend/src/webhook/*`                                            | External callbacks.                                                                      |
-| Browser automation             | `backend/src/browser-use/*`                                        | Used in monitoring / execution flows.                                                    |
+| Area                           | Files                                                              | Notes                                                                                   |
+| ------------------------------ | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| Auth / dashboard               | `backend/src/auth/*`, `app/login`, `app/register`, `app/dashboard` | JWT; `getAuthHeaders()` in `lib/api.ts`.                                                |
+| Trains CRUD (admin/product)    | `backend/src/trains/*`, `app/admin/trains`                         | Distinct from IRCTC live list.                                                          |
+| Search                         | `backend/src/search/*`, `app/search/page.tsx`                      | Product search UX.                                                                      |
+| Chart rules / cron / ingestion | `chart-cron`, `chart-time-ingestion`, `chart-event`, `app/admin/*` | Scheduling and tooling around chart times and events.                                   |
+| Rail feed proxy                | `backend/src/rail-feed-proxy/*`                                    | `GET /api/rail-feed/availability` → upstream POST proxy (optional integration surface). |
+| Webhooks                       | `backend/src/webhook/*`                                            | External callbacks.                                                                     |
+| Browser automation             | `backend/src/browser-use/*`                                        | Used in monitoring / execution flows.                                                   |
 
 ---
 
@@ -133,16 +133,16 @@ Deeper job execution ties into **`JourneyTaskService`**, **`AvailabilityService`
 
 ## Quick file index (main flow)
 
-| File                                             | Responsibility                                                                  |
-| ------------------------------------------------ | ------------------------------------------------------------------------------- |
-| `app/(main)/page.tsx`, `app/v1/page.tsx`         | Main landing (v2 train search); legacy v1 flow at `/v1`.                          |
-| `lib/api.ts`                                     | Axios instances, auth headers, IRCTC schedule client + retries.                 |
-| `lib/service2CheckStream.ts`                     | SSE client for Service2 check.                                                  |
-| `backend/src/service2/service2.controller.ts`    | HTTP + SSE for Service2 check.                                                  |
-| `backend/src/service2/service2.service.ts`       | IRCTC + chart time + vacant berth + OpenAI chain.                               |
-| `backend/src/irctc/irctc.service.ts`             | IRCTC HTTP + Prisma schedule cache.                                             |
-| `backend/src/chart-time/chart-time.service.ts`   | Persist / read chart HH:MM per train+station.                                   |
-| `backend/src/common/train-run-day.validation.ts` | Journey date + `trainRunsOn` validation (shared with stream).                   |
+| File                                             | Responsibility                                                  |
+| ------------------------------------------------ | --------------------------------------------------------------- |
+| `app/(main)/page.tsx`, `app/v1/page.tsx`         | Main landing (v2 train search); legacy v1 flow at `/v1`.        |
+| `lib/api.ts`                                     | Axios instances, auth headers, IRCTC schedule client + retries. |
+| `lib/service2CheckStream.ts`                     | SSE client for Service2 check.                                  |
+| `backend/src/service2/service2.controller.ts`    | HTTP + SSE for Service2 check.                                  |
+| `backend/src/service2/service2.service.ts`       | IRCTC + chart time + vacant berth + OpenAI chain.               |
+| `backend/src/irctc/irctc.service.ts`             | IRCTC HTTP + Prisma schedule cache.                             |
+| `backend/src/chart-time/chart-time.service.ts`   | Persist / read chart HH:MM per train+station.                   |
+| `backend/src/common/train-run-day.validation.ts` | Journey date + `trainRunsOn` validation (shared with stream).   |
 
 ---
 
@@ -154,7 +154,7 @@ Deeper job execution ties into **`JourneyTaskService`**, **`AvailabilityService`
 | Show raw vacant segments in UI           | `Service2Service.check` return value currently clears `vbd`; consider returning a summary or redacted list.         |
 | Richer AI prompt / output schema         | `OPENAI_AGENT_PROMPT`, `OPENAI_RESPONSE_JSON_SCHEMA`, `parseOpenAIStructuredResponse` in `service2.service.ts`.     |
 | Fewer / smarter chain rounds             | `maxOpenAiChain`, `furthestTicketDestinationTowardGoal`, `resolveNextVacantBerthBoarding` in `service2.service.ts`. |
-| New third-party rail API                 | New Nest module + controller pattern like `rail-feed-proxy` or extend `irctc.service.ts`.                            |
+| New third-party rail API                 | New Nest module + controller pattern like `rail-feed-proxy` or extend `irctc.service.ts`.                           |
 
 ---
 

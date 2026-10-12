@@ -3,11 +3,17 @@ import assert from "node:assert/strict";
 import { safeCompareStrings } from "./security";
 
 test("safeCompareStrings - matches identical strings", () => {
-  assert.equal(safeCompareStrings("super-secret-key", "super-secret-key"), true);
+  assert.equal(
+    safeCompareStrings("super-secret-key", "super-secret-key"),
+    true,
+  );
 });
 
 test("safeCompareStrings - rejects mismatched strings of same length", () => {
-  assert.equal(safeCompareStrings("super-secret-key", "super-secret-kex"), false);
+  assert.equal(
+    safeCompareStrings("super-secret-key", "super-secret-kex"),
+    false,
+  );
 });
 
 test("safeCompareStrings - rejects mismatched strings of different length", () => {

@@ -20,10 +20,7 @@
       "duration": "6h 00m",
       "distance": "449 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12461-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/12461-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ju-sbib-vande-bharat-express-12461",
@@ -47,10 +44,7 @@
       "duration": "5h 55m",
       "distance": "449 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "12462-ju-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/12462-ju-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -74,10 +68,7 @@
       "duration": "7h 15m",
       "distance": "578 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20101-sc-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20101-sc-vande-bharat-chart-times",
       "foodMenuSlug": "ngp-sc-vande-bharat-express-20101",
@@ -101,10 +92,7 @@
       "duration": "7h 20m",
       "distance": "578 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20102-ngp-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20102-ngp-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -128,10 +116,7 @@
       "duration": "7h 36m",
       "distance": "700 km",
       "halts": 5,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20171-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20171-vande-bharat-exp-chart-times",
       "foodMenuSlug": "rkmp-nzm-vande-bharat-express-20171",
@@ -155,10 +140,7 @@
       "duration": "7h 36m",
       "distance": "700 km",
       "halts": 5,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20172-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20172-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -182,10 +164,7 @@
       "duration": "8h 05m",
       "distance": "569 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20173-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20173-vande-bharat-exp-chart-times",
       "foodMenuSlug": "rkmp-rewa-vande-bharat-express-20173",
@@ -209,10 +188,7 @@
       "duration": "8h 10m",
       "distance": "576 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20174-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20174-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -236,10 +212,7 @@
       "duration": "7h 00m",
       "distance": "577 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20175-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20175-vande-bharat-exp-chart-times",
       "foodMenuSlug": "bsbs-agc-vande-bharat-express-20175",
@@ -263,10 +236,7 @@
       "duration": "7h 00m",
       "distance": "577 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20176-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20176-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -290,10 +260,7 @@
       "duration": "6h 30m",
       "distance": "500 km",
       "halts": 4,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20607-mys-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20607-mys-vandebharat-chart-times",
       "foodMenuSlug": "mas-mys-mas-vande-bharat-express-20607",
@@ -317,10 +284,7 @@
       "duration": "6h 15m",
       "distance": "500 km",
       "halts": 4,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20608-mas-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20608-mas-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -344,10 +308,7 @@
       "duration": "8h 10m",
       "distance": "588 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20633-tvc-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20633-tvc-vandebharat-chart-times",
       "foodMenuSlug": "tvc-kgq-tvc-vande-bharat-express-20633",
@@ -371,10 +332,7 @@
       "duration": "8h 05m",
       "distance": "588 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20634-kgq-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20634-kgq-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -398,10 +356,7 @@
       "duration": "6h 20m",
       "distance": "376 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20641-cbe-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20641-cbe-vande-bharat-chart-times",
       "foodMenuSlug": "cbe-bnc-cbe-vande-bharat-express-20641",
@@ -425,10 +380,7 @@
       "duration": "6h 20m",
       "distance": "377 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20642-bnc-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20642-bnc-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -452,10 +404,7 @@
       "duration": "6h 00m",
       "distance": "497 km",
       "halts": 5,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20643-cbe-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20643-cbe-vandebharat-chart-times",
       "foodMenuSlug": "mas-cbe-mas-vande-bharat-express-20643",
@@ -479,10 +428,7 @@
       "duration": "5h 50m",
       "distance": "497 km",
       "halts": 5,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20644-mas-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20644-mas-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -506,10 +452,7 @@
       "duration": "5h 10m",
       "distance": "437 km",
       "halts": 4,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20645-maq-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20645-maq-vandebharat-chart-times",
       "foodMenuSlug": "maq-mao-vande-bharat-express-20645",
@@ -533,10 +476,7 @@
       "duration": "5h 40m",
       "distance": "437 km",
       "halts": 4,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20646-mao-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20646-mao-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -560,10 +500,7 @@
       "duration": "6h 15m",
       "distance": "490 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20661-dwr-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20661-dwr-vande-bharat-chart-times",
       "foodMenuSlug": "sbc-dwr-vande-bharat-express-20661",
@@ -587,10 +524,7 @@
       "duration": "6h 15m",
       "distance": "490 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20662-sbc-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20662-sbc-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -614,10 +548,7 @@
       "duration": "6h 30m",
       "distance": "500 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20663-mas-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20663-mas-vande-bharat-chart-times",
       "foodMenuSlug": "mys-mas-mys-vande-bharat-express-20663",
@@ -641,10 +572,7 @@
       "duration": "6h 30m",
       "distance": "500 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20664-mys-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20664-mys-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -668,10 +596,7 @@
       "duration": "7h 50m",
       "distance": "653 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20665-ten-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20665-ten-vandebharat-chart-times",
       "foodMenuSlug": "ten-ms-ten-vande-bharat-express-20665",
@@ -695,10 +620,7 @@
       "duration": "8h 00m",
       "distance": "653 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20666-ms-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20666-ms-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -722,10 +644,7 @@
       "duration": "8h 30m",
       "distance": "558 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20670-ubl-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20670-ubl-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -749,10 +668,7 @@
       "duration": "8h 10m",
       "distance": "586 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20672-mdu-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20672-mdu-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -776,10 +692,7 @@
       "duration": "5h 15m",
       "distance": "326 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20673-pune-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20673-pune-vandebharat-chart-times",
       "foodMenuSlug": "mmct-gnc-vande-bharat-express-20673",
@@ -803,10 +716,7 @@
       "duration": "5h 25m",
       "distance": "326 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20674-kop-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20674-kop-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -830,10 +740,7 @@
       "duration": "8h 40m",
       "distance": "655 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20677-ns-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20677-ns-vande-bharat-chart-times",
       "foodMenuSlug": "mas-ns-mas-vande-bharat-express-20677",
@@ -857,10 +764,7 @@
       "duration": "8h 55m",
       "distance": "655 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20678-mas-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20678-mas-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -884,10 +788,7 @@
       "duration": "8h 25m",
       "distance": "661 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20701-tpty-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20701-tpty-vandebharat-chart-times",
       "foodMenuSlug": "sc-tpty-vande-bharat-express-20701",
@@ -911,10 +812,7 @@
       "duration": "8h 27m",
       "distance": "661 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20702-sc-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20702-sc-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -938,10 +836,7 @@
       "duration": "8h 15m",
       "distance": "610 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20703-ypr-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20703-ypr-vandebharat-chart-times",
       "foodMenuSlug": "kcg-ypr-vande-bharat-express-20703",
@@ -965,10 +860,7 @@
       "duration": "8h 15m",
       "distance": "610 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20704-kcg-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20704-kcg-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -992,10 +884,7 @@
       "duration": "8h 55m",
       "distance": "610 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20705-csmt-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20705-csmt-vandebharat-chart-times",
       "foodMenuSlug": "csmt-j-vande-bharat-express-20705",
@@ -1019,10 +908,7 @@
       "duration": "9h 10m",
       "distance": "610 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20706-ned-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20706-ned-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -1046,10 +932,7 @@
       "duration": "8h 50m",
       "distance": "699 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20707-vskp-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20707-vskp-vandebharat-chart-times",
       "foodMenuSlug": "sc-vskp-vande-bharat-express-20707",
@@ -1073,10 +956,7 @@
       "duration": "8h 55m",
       "distance": "699 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20708-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20708-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1100,10 +980,7 @@
       "duration": "5h 30m",
       "distance": "413 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20825-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20825-vande-bharat-exp-chart-times",
       "foodMenuSlug": "bsp-ngp-vande-bharat-express-20825",
@@ -1127,10 +1004,7 @@
       "duration": "5h 20m",
       "distance": "413 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20826-bsp-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20826-bsp-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -1154,10 +1028,7 @@
       "duration": "8h 10m",
       "distance": "565 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20829-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20829-vande-bharat-exp-chart-times",
       "foodMenuSlug": "sc-vskp-vande-bharat-express-20829",
@@ -1181,10 +1052,7 @@
       "duration": "8h 00m",
       "distance": "565 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20830-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20830-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1208,10 +1076,7 @@
       "duration": "8h 35m",
       "distance": "699 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20833-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20833-vande-bharat-exp-chart-times",
       "foodMenuSlug": "vskp-sc-vande-bharat-express-20833",
@@ -1235,10 +1100,7 @@
       "duration": "8h 35m",
       "distance": "699 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20834-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/20834-vande-bharat-ex-chart-times",
       "foodMenuSlug": null,
@@ -1262,10 +1124,7 @@
       "duration": "7h 40m",
       "distance": "505 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20835-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20835-vande-bharat-exp-chart-times",
       "foodMenuSlug": "puri-rou-vande-bharat-express-20835",
@@ -1289,10 +1148,7 @@
       "duration": "7h 45m",
       "distance": "504 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20836-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20836-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1316,10 +1172,7 @@
       "duration": "5h 45m",
       "distance": "443 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20841-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20841-vande-bharat-exp-chart-times",
       "foodMenuSlug": "vskp-sc-vande-bharat-express-20841",
@@ -1343,10 +1196,7 @@
       "duration": "6h 00m",
       "distance": "443 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20842-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20842-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1370,10 +1220,7 @@
       "duration": "6h 05m",
       "distance": "413 km",
       "halts": 5,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20871-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20871-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-rou-vande-bharat-express-20871",
@@ -1397,10 +1244,7 @@
       "duration": "6h 20m",
       "distance": "413 km",
       "halts": 5,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20872-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20872-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1424,10 +1268,7 @@
       "duration": "7h 50m",
       "distance": "536 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20887-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20887-vande-bharat-exp-chart-times",
       "foodMenuSlug": "rnc-bsb-vande-bharat-express-20887",
@@ -1451,10 +1292,7 @@
       "duration": "7h 50m",
       "distance": "536 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20888-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20888-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1478,10 +1316,7 @@
       "duration": "9h 35m",
       "distance": "590 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20891-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20891-vande-bharat-exp-chart-times",
       "foodMenuSlug": "tata-bam-vande-bharat-express-20891",
@@ -1505,10 +1340,7 @@
       "duration": "9h 35m",
       "distance": "587 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20892-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20892-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1532,10 +1364,7 @@
       "duration": "7h 20m",
       "distance": "450 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20893-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20893-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-njp-vande-bharat-express-20893",
@@ -1559,10 +1388,7 @@
       "duration": "7h 35m",
       "distance": "450 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20894-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20894-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1586,10 +1412,7 @@
       "duration": "7h 25m",
       "distance": "462 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20897-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20897-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-rnc-vande-bharat-express-20897",
@@ -1613,10 +1436,7 @@
       "duration": "7h 10m",
       "distance": "462 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20898-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20898-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1640,10 +1460,7 @@
       "duration": "6h 30m",
       "distance": "521 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20901-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20901-vande-bharat-exp-chart-times",
       "foodMenuSlug": "mmct-gnc-vande-bharat-express-20901",
@@ -1667,10 +1484,7 @@
       "duration": "6h 35m",
       "distance": "521 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20902-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20902-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1694,10 +1508,7 @@
       "duration": "8h 25m",
       "distance": "635 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20911-ngp-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20911-ngp-vandebharat-chart-times",
       "foodMenuSlug": "indb-ngp-vande-bharat-express-20911",
@@ -1721,10 +1532,7 @@
       "duration": "8h 30m",
       "distance": "642 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20912-indb-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20912-indb-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -1748,10 +1556,7 @@
       "duration": "8h 35m",
       "distance": "700 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20977-cdg-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20977-cdg-vandebharat-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-20977",
@@ -1775,10 +1580,7 @@
       "duration": "8h 43m",
       "distance": "699 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20978-vandebharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20978-vandebharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1802,10 +1604,7 @@
       "duration": "6h 20m",
       "distance": "435 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20979-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20979-vande-bharat-exp-chart-times",
       "foodMenuSlug": "udz-jp-vande-bharat-express-20979",
@@ -1829,10 +1628,7 @@
       "duration": "6h 30m",
       "distance": "435 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20980-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20980-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1856,10 +1652,7 @@
       "duration": "8h 45m",
       "distance": "613 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20981-agc-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20981-agc-vande-bharat-chart-times",
       "foodMenuSlug": "udz-agc-vande-bharat-express-20981",
@@ -1883,10 +1676,7 @@
       "duration": "8h 45m",
       "distance": "613 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "20982-udz-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20982-udz-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -1910,10 +1700,7 @@
       "duration": "10h 30m",
       "distance": "645 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "21893-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/21893-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-njp-vande-bharat-express-21893",
@@ -1937,10 +1724,7 @@
       "duration": "10h 35m",
       "distance": "645 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "21894-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/21894-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -1964,10 +1748,7 @@
       "duration": "7h 20m",
       "distance": "450 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "21895-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/21895-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-njp-vande-bharat-express-21895",
@@ -1991,10 +1772,7 @@
       "duration": "7h 10m",
       "distance": "450 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "21896-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/21896-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -2018,10 +1796,7 @@
       "duration": "5h 10m",
       "distance": "343 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22223-snsi-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/22223-snsi-vandebharat-chart-times",
       "foodMenuSlug": "csmt-snsi-vande-bharat-express-22223",
@@ -2045,10 +1820,7 @@
       "duration": "5h 05m",
       "distance": "343 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22224-csmt-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/22224-csmt-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -2072,10 +1844,7 @@
       "duration": "6h 35m",
       "distance": "455 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22225-sur-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/22225-sur-vande-bharat-chart-times",
       "foodMenuSlug": "csmt-sur-vande-bharat-express-22225",
@@ -2099,10 +1868,7 @@
       "duration": "6h 30m",
       "distance": "455 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22226-csmt-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/22226-csmt-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -2126,10 +1892,7 @@
       "duration": "5h 30m",
       "distance": "409 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22227-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22227-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ghy-njp-vande-bharat-express-22227",
@@ -2153,10 +1916,7 @@
       "duration": "5h 30m",
       "distance": "409 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22228-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22228-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -2180,10 +1940,7 @@
       "duration": "10h 35m",
       "distance": "765 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22229-mao-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/22229-mao-vande-bharat-chart-times",
       "foodMenuSlug": "csmt-mao-vande-bharat-express-22229",
@@ -2207,10 +1964,7 @@
       "duration": "10h 10m",
       "distance": "765 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22230-csmt-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/22230-csmt-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -2234,10 +1988,7 @@
       "duration": "8h 00m",
       "distance": "558 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22231-smvb-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/22231-smvb-vandebharat-chart-times",
       "foodMenuSlug": "klbg-smvb-vande-bharat-express-22231",
@@ -2261,10 +2012,7 @@
       "duration": "8h 00m",
       "distance": "558 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22232-klbg-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/22232-klbg-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -2288,10 +2036,7 @@
       "duration": "7h 00m",
       "distance": "471 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22233-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22233-vande-bharat-exp-chart-times",
       "foodMenuSlug": "njp-pnbe-vande-bharat-express-22233",
@@ -2315,10 +2060,7 @@
       "duration": "7h 05m",
       "distance": "471 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22234-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22234-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -2342,10 +2084,7 @@
       "duration": "7h 35m",
       "distance": "561 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22301-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22301-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-njp-vande-bharat-express-22301",
@@ -2369,10 +2108,7 @@
       "duration": "7h 35m",
       "distance": "561 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22302-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22302-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -2396,10 +2132,7 @@
       "duration": "5h 45m",
       "distance": "458 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22303-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22303-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-gaya-vande-bharat-express-22303",
@@ -2423,10 +2156,7 @@
       "duration": "5h 55m",
       "distance": "458 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22304-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22304-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -2450,10 +2180,7 @@
       "duration": "6h 30m",
       "distance": "441 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22309-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22309-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-bgp-vande-bharat-express-22309",
@@ -2477,10 +2204,7 @@
       "duration": "6h 35m",
       "distance": "441 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22310-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22310-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -2504,10 +2228,7 @@
       "duration": "8h 30m",
       "distance": "544 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22345-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22345-vande-bharat-exp-chart-times",
       "foodMenuSlug": "pnbe-gtnr-vande-bharat-express-22345",
@@ -2531,10 +2252,7 @@
       "duration": "8h 25m",
       "distance": "544 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22346-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22346-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -2558,10 +2276,7 @@
       "duration": "6h 50m",
       "distance": "532 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22347-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22347-vande-bharat-exp-chart-times",
       "foodMenuSlug": "pnbe-hwh-vande-bharat-express-22347",
@@ -2585,10 +2300,7 @@
       "duration": "6h 35m",
       "distance": "532 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22348-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22348-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -2612,10 +2324,7 @@
       "duration": "6h 05m",
       "distance": "379 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22349-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22349-vande-bharat-exp-chart-times",
       "foodMenuSlug": "pnbe-rnc-vande-bharat-express-22349",
@@ -2639,10 +2348,7 @@
       "duration": "5h 55m",
       "distance": "379 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22350-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22350-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -2666,10 +2372,7 @@
       "duration": "8h 05m",
       "distance": "760 km",
       "halts": 4,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22415-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22415-vande-bharat-exp-chart-times",
       "foodMenuSlug": "bsb-ndls-vande-bharat-express-22415",
@@ -2693,10 +2396,7 @@
       "duration": "8h 05m",
       "distance": "760 km",
       "halts": 4,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22416-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22416-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -2720,10 +2420,7 @@
       "duration": "8h 15m",
       "distance": "629 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22425-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22425-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ay-anvt-vande-bharat-express-22425",
@@ -2747,10 +2444,7 @@
       "duration": "8h 20m",
       "distance": "629 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22426-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22426-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -2774,10 +2468,7 @@
       "duration": "8h 00m",
       "distance": "771 km",
       "halts": 4,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22435-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22435-vande-bharat-ex-chart-times",
       "foodMenuSlug": "ndls-bsb-vande-bharat-express-22435",
@@ -2801,10 +2492,7 @@
       "duration": "8h 00m",
       "distance": "771 km",
       "halts": 4,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22436-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22436-vande-bharat-ex-chart-times",
       "foodMenuSlug": null,
@@ -2828,10 +2516,7 @@
       "duration": "8h 20m",
       "distance": "655 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22439-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22439-vande-bharat-ex-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-22439",
@@ -2855,10 +2540,7 @@
       "duration": "8h 15m",
       "distance": "655 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22440-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22440-vande-bharat-ex-chart-times",
       "foodMenuSlug": null,
@@ -2882,10 +2564,7 @@
       "duration": "5h 20m",
       "distance": "437 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22447-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22447-vande-bharat-ex-chart-times",
       "foodMenuSlug": "aadr-ndls-vande-bharat-express-22447",
@@ -2909,10 +2588,7 @@
       "duration": "5h 25m",
       "distance": "437 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22448-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22448-vande-bharat-ex-chart-times",
       "foodMenuSlug": null,
@@ -2936,10 +2612,7 @@
       "duration": "4h 45m",
       "distance": "302 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22457-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22457-vande-bharat-exp-chart-times",
       "foodMenuSlug": "anvt-ddn-vande-bharat-express-22457",
@@ -2963,10 +2636,7 @@
       "duration": "4h 45m",
       "distance": "302 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22458-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22458-vande-bharat-ex-chart-times",
       "foodMenuSlug": null,
@@ -2990,10 +2660,7 @@
       "duration": "8h 20m",
       "distance": "659 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22469-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22469-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-22469",
@@ -3017,10 +2684,7 @@
       "duration": "8h 20m",
       "distance": "659 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22470-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22470-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3044,10 +2708,7 @@
       "duration": "8h 20m",
       "distance": "655 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22477-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22477-vande-bharat-exp-chart-times",
       "foodMenuSlug": "svdk-ndls-vande-bharat-express-22477",
@@ -3071,10 +2732,7 @@
       "duration": "8h 15m",
       "distance": "655 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22478-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22478-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3098,10 +2756,7 @@
       "duration": "5h 30m",
       "distance": "447 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22487-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22487-vande-bharat-exp-chart-times",
       "foodMenuSlug": "asr-dli-vande-bharat-express-22487",
@@ -3125,10 +2780,7 @@
       "duration": "5h 30m",
       "distance": "447 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22488-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22488-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3152,10 +2804,7 @@
       "duration": "11h 55m",
       "distance": "783 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22489-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22489-vande-bharat-exp-chart-times",
       "foodMenuSlug": "mtc-lko-vande-bharat-express-22489",
@@ -3179,10 +2828,7 @@
       "duration": "11h 50m",
       "distance": "783 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22490-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22490-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3206,10 +2852,7 @@
       "duration": "7h 20m",
       "distance": "454 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22499-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22499-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-22499",
@@ -3233,10 +2876,7 @@
       "duration": "7h 20m",
       "distance": "454 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22500-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22500-vande-bharat-ex-chart-times",
       "foodMenuSlug": null,
@@ -3260,10 +2900,7 @@
       "duration": "8h 25m",
       "distance": "545 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22545-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22545-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3287,10 +2924,7 @@
       "duration": "8h 15m",
       "distance": "545 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22546-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22546-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3314,10 +2948,7 @@
       "duration": "7h 30m",
       "distance": "500 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22549-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22549-vande-bharat-exp-chart-times",
       "foodMenuSlug": "gkp-lko-vande-bharat-express-22549",
@@ -3341,10 +2972,7 @@
       "duration": "7h 25m",
       "distance": "500 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22550-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22550-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3368,10 +2996,7 @@
       "duration": "6h 50m",
       "distance": "502 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22895-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22895-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-puri-vande-bharat-express-22895",
@@ -3395,10 +3020,7 @@
       "duration": "6h 50m",
       "distance": "502 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22896-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22896-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3422,10 +3044,7 @@
       "duration": "6h 30m",
       "distance": "499 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22925-okha-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/22925-okha-vandebharat-chart-times",
       "foodMenuSlug": "adi-okha-vande-bharat-express-22925",
@@ -3449,10 +3068,7 @@
       "duration": "6h 30m",
       "distance": "499 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22926-sbt-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/22926-sbt-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -3476,10 +3092,7 @@
       "duration": "5h 30m",
       "distance": "491 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22961-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22961-vande-bharat-exp-chart-times",
       "foodMenuSlug": "mmct-adi-vande-bharat-express-22961",
@@ -3503,10 +3116,7 @@
       "duration": "5h 40m",
       "distance": "491 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "22962-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22962-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3530,10 +3140,7 @@
       "duration": "12h 00m",
       "distance": "881 km",
       "halts": 12,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26101-ajni-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/26101-ajni-vandebharat-chart-times",
       "foodMenuSlug": "mas-mdu-vande-bharat-express-26101",
@@ -3557,10 +3164,7 @@
       "duration": "12h 00m",
       "distance": "881 km",
       "halts": 12,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26102-pune-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/26102-pune-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -3584,10 +3188,7 @@
       "duration": "8h 10m",
       "distance": "452 km",
       "halts": 14,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26301-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26301-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3611,10 +3212,7 @@
       "duration": "8h 10m",
       "distance": "452 km",
       "halts": 14,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26302-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26302-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3638,10 +3236,7 @@
       "duration": "4h 50m",
       "distance": "269 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26401-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26401-vande-bharat-exp-chart-times",
       "foodMenuSlug": "jat-sina-vande-bharat-express-26401",
@@ -3665,10 +3260,7 @@
       "duration": "4h 50m",
       "distance": "269 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26402-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26402-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3692,10 +3284,7 @@
       "duration": "4h 45m",
       "distance": "269 km",
       "halts": 5,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26403-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26403-vande-bharat-exp-chart-times",
       "foodMenuSlug": "jat-sina-vande-bharat-express-26403",
@@ -3719,10 +3308,7 @@
       "duration": "4h 45m",
       "distance": "269 km",
       "halts": 5,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26404-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26404-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3746,10 +3332,7 @@
       "duration": "5h 05m",
       "distance": "285 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26405-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26405-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3773,10 +3356,7 @@
       "duration": "5h 00m",
       "distance": "285 km",
       "halts": 6,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26406-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26406-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3800,10 +3380,7 @@
       "duration": "6h 35m",
       "distance": "486 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26461-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26461-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-26461",
@@ -3827,10 +3404,7 @@
       "duration": "6h 40m",
       "distance": "486 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26462-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/26462-vande-bharat-ex-chart-times",
       "foodMenuSlug": null,
@@ -3854,10 +3428,7 @@
       "duration": "6h 15m",
       "distance": "448 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26471-dec-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/26471-dec-vande-bharat-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-26471",
@@ -3881,10 +3452,7 @@
       "duration": "6h 20m",
       "distance": "448 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26472-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26472-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3908,10 +3476,7 @@
       "duration": "8h 00m",
       "distance": "606 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26481-dec-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/26481-dec-vandebharat-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-26481",
@@ -3935,10 +3500,7 @@
       "duration": "8h 10m",
       "distance": "606 km",
       "halts": 11,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26482-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26482-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -3962,10 +3524,7 @@
       "duration": "7h 00m",
       "distance": "384 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26501-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26501-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ppta-gkp-ppta-vande-bharat-express-26501",
@@ -3989,10 +3548,7 @@
       "duration": "7h 05m",
       "distance": "384 km",
       "halts": 10,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26502-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26502-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -4016,10 +3572,7 @@
       "duration": "9h 00m",
       "distance": "535 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26503-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26503-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-26503",
@@ -4043,10 +3596,7 @@
       "duration": "8h 40m",
       "distance": "535 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26504-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26504-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -4070,10 +3620,7 @@
       "duration": "7h 50m",
       "distance": "469 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26505-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26505-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-26505",
@@ -4097,10 +3644,7 @@
       "duration": "7h 55m",
       "distance": "469 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26506-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26506-vande-bharat-exp-chart-times",
       "foodMenuSlug": null,
@@ -4124,10 +3668,7 @@
       "duration": "8h 40m",
       "distance": "626 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26651-ers-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/26651-ers-vandebharat-chart-times",
       "foodMenuSlug": "ers-sbc-vande-bharat-express-26651",
@@ -4151,10 +3692,7 @@
       "duration": "8h 40m",
       "distance": "627 km",
       "halts": 9,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26652-sbc-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/26652-sbc-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -4178,10 +3716,7 @@
       "duration": "8h 15m",
       "distance": "611 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26751-sbc-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/26751-sbc-vande-bharat-chart-times",
       "foodMenuSlug": "bgm-sbc-vande-bharat-train-26751",
@@ -4205,10 +3740,7 @@
       "duration": "8h 10m",
       "distance": "611 km",
       "halts": 8,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26752-bgm-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/26752-bgm-vande-bharat-chart-times",
       "foodMenuSlug": null,
@@ -4232,10 +3764,7 @@
       "duration": "7h 00m",
       "distance": "438 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26901-vrl-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/26901-vrl-vandebharat-chart-times",
       "foodMenuSlug": "sbib-vrl-sbib-vande-bharat-express-26901",
@@ -4259,10 +3788,7 @@
       "duration": "6h 50m",
       "distance": "438 km",
       "halts": 7,
-      "classes": [
-        "CC",
-        "EC"
-      ],
+      "classes": ["CC", "EC"],
       "slug": "26902-sbib-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/26902-sbib-vandebharat-chart-times",
       "foodMenuSlug": null,
@@ -4286,11 +3812,7 @@
       "duration": "14h 00m",
       "distance": "966 km",
       "halts": 15,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "27575-vande-bharat-sl-chart-times",
       "chartTimesUrl": "/chart-times/27575-vande-bharat-sl-chart-times",
       "foodMenuSlug": "hwh-kyq-vande-bharat-express-27575",
@@ -4314,11 +3836,7 @@
       "duration": "14h 00m",
       "distance": "966 km",
       "halts": 15,
-      "classes": [
-        "1A",
-        "2A",
-        "3A"
-      ],
+      "classes": ["1A", "2A", "3A"],
       "slug": "27576-vande-bharat-sl-chart-times",
       "chartTimesUrl": "/chart-times/27576-vande-bharat-sl-chart-times",
       "foodMenuSlug": null,

@@ -21,10 +21,12 @@ this committed flow — runtime page generation on the web server is ephemeral.
 ## One-time setup
 
 ### 1. GitHub token (a secret — never commit it)
+
 Create a **fine-grained PAT** scoped to **only `bizzareus/traintickets`** with
 **Repository permissions → Contents: Read and write**. Copy the token.
 
 ### 2. Railway service
+
 Create a new service in the existing project from this repo (a third service
 alongside `web` and `api`), then:
 
@@ -32,18 +34,20 @@ alongside `web` and `api`), then:
 - **Cron schedule:** avoid the blog bot's 00:00 / 08:00 / 16:00 UTC slots, e.g.
   `0 3,9,15,21 * * *` (every 6h, offset).
 - **Variables:**
-  | Variable | Value |
-  |---|---|
-  | `GITHUB_TOKEN` | *(the fine-grained PAT — secret)* |
-  | `SITE_URL` | `https://lastberth.com` |
+
+  | Variable                  | Value                                                                          |
+  | ------------------------- | ------------------------------------------------------------------------------ |
+  | `GITHUB_TOKEN`            | _(the fine-grained PAT — secret)_                                              |
+  | `SITE_URL`                | `https://lastberth.com`                                                        |
   | `CHART_TIMES_SYNC_SECRET` | a random string (also set on the **web** service so the endpoint is protected) |
-  | `SYNC_BATCH` | `200` (trains per run; tune for IRCTC load) |
-  | `GIT_BRANCH` | `main` |
+  | `SYNC_BATCH`              | `200` (trains per run; tune for IRCTC load)                                    |
+  | `GIT_BRANCH`              | `main`                                                                         |
 
   Optional: `SYNC_RETRIES` (default 2), `GIT_AUTHOR_NAME`, `GIT_AUTHOR_EMAIL`,
   `GITHUB_REPO` (default `bizzareus/traintickets`).
 
 ### 3. Protect the endpoint (recommended)
+
 Set the **same** `CHART_TIMES_SYNC_SECRET` on the **web** service. The endpoint
 then requires an `x-sync-secret` header, which the cron script sends automatically.
 Without it set, the endpoint is open (it only exposes public chart data, but it

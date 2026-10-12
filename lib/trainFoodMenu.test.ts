@@ -12,11 +12,24 @@ describe("Fast numeric train number sorting", () => {
     ];
 
     testItems.sort((a, b) => {
-      const diff = (parseInt(a.trainNumber, 10) || 0) - (parseInt(b.trainNumber, 10) || 0);
-      return diff !== 0 ? diff : (a.trainNumber < b.trainNumber ? -1 : a.trainNumber > b.trainNumber ? 1 : 0);
+      const diff =
+        (parseInt(a.trainNumber, 10) || 0) - (parseInt(b.trainNumber, 10) || 0);
+      return diff !== 0
+        ? diff
+        : a.trainNumber < b.trainNumber
+          ? -1
+          : a.trainNumber > b.trainNumber
+            ? 1
+            : 0;
     });
 
     const sortedNumbers = testItems.map((item) => item.trainNumber);
-    assert.deepEqual(sortedNumbers, ["00961", "01001", "1080", "12015", "22439"]);
+    assert.deepEqual(sortedNumbers, [
+      "00961",
+      "01001",
+      "1080",
+      "12015",
+      "22439",
+    ]);
   });
 });

@@ -12,5 +12,7 @@ export default async function PaymentCompletePage({
   searchParams: Promise<{ ref?: string }>;
 }) {
   const { ref } = await searchParams;
-  return <PaymentCompleteClient bookingRef={typeof ref === "string" ? ref : ""} />;
+  return (
+    <PaymentCompleteClient bookingRef={typeof ref === "string" ? ref : ""} />
+  );
 }

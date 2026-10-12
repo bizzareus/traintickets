@@ -181,21 +181,27 @@ IRCTC allows passengers to change their boarding station online up to **24 hours
 ## Common Booking Questions (FAQ)
 
 ### Can I change my boarding station after booking an IRCTC ticket?
+
 Yes! Just log into the IRCTC portal and change it online. You must do this at least 24 hours before the train departs. Be careful though, because you can't board at your original station once the change is done.
 
 ### What is Remote Location Quota (RLWL)?
+
 Remote Location Quota is basically a special pool of seats saved for travelers boarding from major intermediate stations. The railway charts these stations separately from the starting point. This means waitlist movement and clearance rates will behave differently for this specific quota.
 
 ### Is boarding station the same as from station?
+
 Not always. The **from station** is the station used for the booked journey. The **boarding station** is where you are expected to board. In many bookings they are the same, but they can differ when the ticket allows a different boarding point.
 
 ### Does remote location mean a different train?
+
 No. It is the same train. Remote location refers to how availability and charting may be handled around an intermediate station.
 
 ### Can I book from one station and board from another?
+
 Only do this when the booking flow and current railway rules allow the boarding station you intend to use. Do not assume you can quietly board later or earlier without consequences. If the chart expects you at one station and you appear somewhere else, you can run into validation or no-show problems.
 
 ### Why does LastBerth show different results for the same train?
+
 Because the useful answer is often segment-specific. A train can be unavailable for the full route but still have confirmed space for part of your journey.
 
 ## Final check before booking

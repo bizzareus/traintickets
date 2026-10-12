@@ -52,12 +52,12 @@ This feature replaces the costly process of cancelling a confirmed ticket and re
 
 **The cloud-based PRS architecture increases ticket booking capacity from 32,000 to 150,000 bookings per minute (a 5x jump) and search capacity from 4 lakh to 40 lakh enquiries per minute (a 10x jump). This infrastructure handles peak festival surges without crashing.**
 
-| System Metric | Legacy PRS Backend | August 2026 Cloud PRS | Performance Jump |
-| :--- | :--- | :--- | :--- |
-| **Ticket Bookings** | 32,000 bookings/min | 150,000 (1.5 lakh) bookings/min | 5x (500%) Growth |
-| **Search & PNR Enquiries** | 400,000 enquiries/min | 4,000,000 (40 lakh) enquiries/min | 10x (1000%) Growth |
-| **Payment Gateway Latency** | High risk of timeout | Sub-second cloud execution | 90% Latency Reduction |
-| **Chart Preparation Sync** | ~4 hours prior (batch) | Real-time cloud sync (~8 hrs / 30 mins) | Instant vacant berth logging |
+| System Metric               | Legacy PRS Backend     | August 2026 Cloud PRS                   | Performance Jump             |
+| :-------------------------- | :--------------------- | :-------------------------------------- | :--------------------------- |
+| **Ticket Bookings**         | 32,000 bookings/min    | 150,000 (1.5 lakh) bookings/min         | 5x (500%) Growth             |
+| **Search & PNR Enquiries**  | 400,000 enquiries/min  | 4,000,000 (40 lakh) enquiries/min       | 10x (1000%) Growth           |
+| **Payment Gateway Latency** | High risk of timeout   | Sub-second cloud execution              | 90% Latency Reduction        |
+| **Chart Preparation Sync**  | ~4 hours prior (batch) | Real-time cloud sync (~8 hrs / 30 mins) | Instant vacant berth logging |
 
 ---
 
@@ -82,6 +82,7 @@ Accounts are limited to booking a maximum of 6 tickets per day overall, and no u
 **Waitlisted e-tickets that remain unconfirmed after chart preparation are auto-cancelled and refunded to the user's bank account. Conversely, Current Availability (CURR_AVBL) tickets are 100% confirmed berths released post-chart preparation (~8 hours before departure) until 30 minutes before train departure.**
 
 Understanding ticket status codes is critical when booking:
+
 - **WL full form is Waiting List.** Tickets progress through a strict queue:
   $$\text{WL (Waiting List)} \rightarrow \text{RAC (Reservation Against Cancellation)} \rightarrow \text{Confirmed}$$
 - **RAC (Reservation Against Cancellation)** permits travel with a shared side-lower berth and does not auto-cancel.
@@ -100,27 +101,35 @@ Boarding a Sleeper or AC coach with a General/Unreserved or Platform ticket is i
 ## Common Booking Questions (FAQ)
 
 ### Do I need to create a new user account for the August 2026 cloud PRS system?
+
 No. You access the upgraded cloud portal and RailOne app using your existing IRCTC login credentials. All saved profile details, Master List passengers, and past booking records sync automatically across web browsers and mobile apps.
 
 ### How does the new IRCTC ticket rescheduling feature work?
+
 You can change your journey date on a confirmed ticket up to 48 hours before departure without cancelling it. Log into IRCTC, select your confirmed PNR under "Booked Ticket History," choose "Reschedule Journey," select the new date, and pay any fare difference.
 
 ### What is the maximum monthly ticket booking limit on IRCTC?
+
 Standard IRCTC user accounts can book up to 12 tickets per calendar month. If you link your Aadhaar card to your IRCTC profile and verify at least one passenger per transaction, your monthly booking limit increases to 24 tickets.
 
 ### What happens if an online Tatkal ticket remains in WL status after chart preparation?
+
 If a Tatkal or General quota e-ticket remains fully waitlisted after final chart preparation (~30 minutes before departure), it is automatically cancelled by the system. The full fare (with no cancellation or clerkage fee deducted) is refunded to your original payment method. You cannot board the train with a waitlisted e-ticket.
 
 ### When does Current Availability (CURR_AVBL) open for booking?
+
 Current Availability opens immediately after first chart preparation, approximately 8 hours before the train's scheduled departure from its originating station. CURR_AVBL tickets are 100% confirmed berths sold at standard or discounted rates until 30 minutes before departure.
 
 ### When is the daily IRCTC night maintenance downtime window?
+
 The IRCTC website and mobile apps undergo daily scheduled server maintenance from 11:45 PM to 12:20 AM IST (23:45 to 00:20). During these 35 minutes, online ticket bookings, cancellations, PNR status inquiries, and wallet top-ups are unavailable.
 
 ### What is the fine for traveling in Sleeper Class with a General unreserved ticket?
+
 Under the Jan Vishwas Act 2026, traveling in a reserved Sleeper or AC coach with a General unreserved ticket carries a minimum penalty of ₹500 plus the exact fare difference for the distance traveled. If no berth is available, the TTE will alight you at the next scheduled stop.
 
 ### How do I check vacant berths on a running train after chart preparation?
+
 You can view vacant berths by visiting IRCTC's "Charts / Vacancy" tab or by using [Get Confirmed Tickets](/) on LastBerth. Enter your train number and station to see berth-by-berth occupancy across all coaches.
 
 ---

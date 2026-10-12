@@ -1,7 +1,10 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { permanentRedirect } from "next/navigation";
-import TrainConfirmedTicketsClient, { TrainInfo, CachedSeat } from "./TrainConfirmedTicketsClient";
+import TrainConfirmedTicketsClient, {
+  TrainInfo,
+  CachedSeat,
+} from "./TrainConfirmedTicketsClient";
 import {
   buildTrainSlug,
   getTopTrainSlugs,
@@ -15,7 +18,10 @@ import { getTrainCachedSeats } from "@/lib/dynamodb";
 export const dynamicParams = true;
 
 async function fetchTrainData(trainNumber: string): Promise<TrainInfo | null> {
-  const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:3009";
+  const apiUrl =
+    process.env.API_URL ||
+    process.env.NEXT_PUBLIC_API_URL ||
+    "http://localhost:3009";
   try {
     const res = await fetch(`${apiUrl}/api/trains/${trainNumber}`, {
       next: { revalidate: 3600 },
@@ -39,11 +45,17 @@ async function fetchCachedSeats(trainNumber: string): Promise<CachedSeat[]> {
   }
 
   // 2. Fallback to backend API
-  const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:3009";
+  const apiUrl =
+    process.env.API_URL ||
+    process.env.NEXT_PUBLIC_API_URL ||
+    "http://localhost:3009";
   try {
-    const res = await fetch(`${apiUrl}/api/trains/${trainNumber}/cached-seats`, {
-      next: { revalidate: 1800 },
-    });
+    const res = await fetch(
+      `${apiUrl}/api/trains/${trainNumber}/cached-seats`,
+      {
+        next: { revalidate: 1800 },
+      },
+    );
     if (!res.ok) return [];
     const data = await res.json();
     return Array.isArray(data) ? data : data.seats || [];
@@ -108,20 +120,26 @@ export default async function TrainConfirmedTicketsPage({ params }: Props) {
 
   const displayName = trainName || `Train ${trainNumber}`;
   const origin = train?.originStation || local?.originStation || "Origin";
-  const dest = train?.destinationStation || local?.destinationStation || "Destination";
+  const dest =
+    train?.destinationStation || local?.destinationStation || "Destination";
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": canonicalUrl,
-    "name": `Confirmed Tickets for ${displayName} (${trainNumber})`,
-    "description": `Cached seat availability, Smart Seats split-booking options, and post-charting vacant berths for ${displayName} (${trainNumber}).`,
-    "url": canonicalUrl,
-    "breadcrumb": {
+    name: `Confirmed Tickets for ${displayName} (${trainNumber})`,
+    description: `Cached seat availability, Smart Seats split-booking options, and post-charting vacant berths for ${displayName} (${trainNumber}).`,
+    url: canonicalUrl,
+    breadcrumb: {
       "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` },
-        { "@type": "ListItem", "position": 2, "name": "Confirmed Tickets", "item": canonicalUrl },
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Confirmed Tickets",
+          item: canonicalUrl,
+        },
       ],
     },
   };
@@ -140,10 +158,10 @@ export default async function TrainConfirmedTicketsPage({ params }: Props) {
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqEntries.map(({ q, a }) => ({
+    mainEntity: faqEntries.map(({ q, a }) => ({
       "@type": "Question",
-      "name": q,
-      "acceptedAnswer": { "@type": "Answer", "text": a },
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
     })),
   };
 
@@ -190,12 +208,15 @@ export default async function TrainConfirmedTicketsPage({ params }: Props) {
       />
       <Suspense
         fallback={
-          <div className="rounded-xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xs animate-pulse">
-            <div className="h-6 bg-slate-200 rounded w-1/3 mb-4"></div>
-            <div className="h-10 bg-slate-100 rounded w-2/3 mb-8"></div>
+          <div className="shadow-xs animate-pulse rounded-xl border border-slate-200 bg-white p-6 sm:p-8">
+            <div className="mb-4 h-6 w-1/3 rounded bg-slate-200"></div>
+            <div className="mb-8 h-10 w-2/3 rounded bg-slate-100"></div>
             <div className="grid gap-4 sm:grid-cols-3">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="h-28 bg-slate-50 border border-slate-200/60 rounded-xl p-4"></div>
+                <div
+                  key={i}
+                  className="h-28 rounded-xl border border-slate-200/60 bg-slate-50 p-4"
+                ></div>
               ))}
             </div>
           </div>

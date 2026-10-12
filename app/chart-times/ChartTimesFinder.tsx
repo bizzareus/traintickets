@@ -210,7 +210,8 @@ export default function ChartTimesFinder({
                 </li>
               ) : loadError ? (
                 <li className="px-3 py-2 text-sm text-slate-500">
-                  Couldn&apos;t load trains — enter a train number directly to continue.
+                  Couldn&apos;t load trains — enter a train number directly to
+                  continue.
                 </li>
               ) : trains.length === 0 && !isQueryTooShort ? (
                 <li className="px-3 py-2 text-sm text-slate-500">

@@ -25,12 +25,12 @@ tags:
 
 സ്ഥിരീകരിച്ച ഇന്ത്യൻ റെയിൽവേ ടിക്കറ്റുകൾക്കായുള്ള റദ്ദാക്കൽ ശിക്ഷകൾ യാത്ര ആരംഭിക്കുന്നതിന്റെ അടുത്തതിന്റെ അടിസ്ഥാനത്തിൽ വർദ്ധിക്കുന്നു:
 
-| Departure Cancellation Window | Penalty Rate / Deduction | Refund Eligibility |
-| :--- | :--- | :--- |
-| **48+ Hours (2+ Days)** | Flat fee per passenger (Class-based) | Full fare minus flat clerkage fee |
-| **48 Hours to 12 Hours** | **25% deduction** of total fare | 75% fare refund |
-| **12 Hours to 4 Hours** | **50% deduction** of total fare | 50% fare refund |
-| **Less than 4 Hours** | **100% penalty** (Zero refund) | No refund allowed |
+| Departure Cancellation Window | Penalty Rate / Deduction             | Refund Eligibility                |
+| :---------------------------- | :----------------------------------- | :-------------------------------- |
+| **48+ Hours (2+ Days)**       | Flat fee per passenger (Class-based) | Full fare minus flat clerkage fee |
+| **48 Hours to 12 Hours**      | **25% deduction** of total fare      | 75% fare refund                   |
+| **12 Hours to 4 Hours**       | **50% deduction** of total fare      | 50% fare refund                   |
+| **Less than 4 Hours**         | **100% penalty** (Zero refund)       | No refund allowed                 |
 
 ### Departure-നു 48+ മണിക്കൂർ മുമ്പുള്ള സ്ഥിരമായ റദ്ദാക്കൽ ചാർജുകൾ
 
@@ -126,15 +126,15 @@ tags:
 
 തുടർച്ചയായ TDR യോഗ്യത മെട്രിക്‌സും നിയമപരമായ ഫയലിംഗ് കട്ട് ഓഫ് സമയങ്ങളും പരിശോധിക്കുക:
 
-| TDR Claim Reason | Refund Amount / Slab | Statutory Filing Deadline | Key Requirement |
-| :--- | :--- | :--- | :--- |
-| **ട്രെയിൻ 3+ മണിക്കൂർ വൈകിയാൽ** | 100% of ticket fare | Before actual departure of train | Passenger must not have boarded train |
-| **AC ക്ലാസിൽ AC പരാജയം** | Difference between AC & Sleeper fare | Within 20 hours of train arrival | Requires AC failure certificate from TTE |
-| **കോച്ച് ഡിറ്റാച്ച്** | 100% of ticket fare | Within 3 hours of train departure | Applicable if alternative berth not allocated |
-| **റെയിൽവേ റദ്ദാക്കിയ ട്രെയിൻ** | 100% of ticket fare | Within 72 hours of scheduled departure | Auto-refunded for e-tickets; backup TDR |
-| **താഴ്ന്ന ക്ലാസിൽ യാത്ര** | Fare difference between classes | Within 48 hours of train arrival | Requires lower class certificate from TTE |
-| **മാർഗം മാറ്റിയ യാത്ര** | 100% of ticket fare | Within 72 hours of departure | Passenger declines travel on diverted route |
-| **ഭാഗികമായി സ്ഥിരീകരിച്ച PNR** | Full fare of non-travelling WL passengers | Up to 30 minutes before departure | File online TDR for unconfirmed passengers |
+| TDR Claim Reason                | Refund Amount / Slab                      | Statutory Filing Deadline              | Key Requirement                               |
+| :------------------------------ | :---------------------------------------- | :------------------------------------- | :-------------------------------------------- |
+| **ട്രെയിൻ 3+ മണിക്കൂർ വൈകിയാൽ** | 100% of ticket fare                       | Before actual departure of train       | Passenger must not have boarded train         |
+| **AC ക്ലാസിൽ AC പരാജയം**        | Difference between AC & Sleeper fare      | Within 20 hours of train arrival       | Requires AC failure certificate from TTE      |
+| **കോച്ച് ഡിറ്റാച്ച്**           | 100% of ticket fare                       | Within 3 hours of train departure      | Applicable if alternative berth not allocated |
+| **റെയിൽവേ റദ്ദാക്കിയ ട്രെയിൻ**  | 100% of ticket fare                       | Within 72 hours of scheduled departure | Auto-refunded for e-tickets; backup TDR       |
+| **താഴ്ന്ന ക്ലാസിൽ യാത്ര**       | Fare difference between classes           | Within 48 hours of train arrival       | Requires lower class certificate from TTE     |
+| **മാർഗം മാറ്റിയ യാത്ര**         | 100% of ticket fare                       | Within 72 hours of departure           | Passenger declines travel on diverted route   |
+| **ഭാഗികമായി സ്ഥിരീകരിച്ച PNR**  | Full fare of non-travelling WL passengers | Up to 30 minutes before departure      | File online TDR for unconfirmed passengers    |
 
 ---
 
@@ -168,27 +168,35 @@ tags:
 **IRCTC റദ്ദാക്കൽ FAQs** **8-മണിക്കൂർ ശൂന്യ തിരിച്ചടവ് നയം**, **60-ദിവസ ARP വിൻഡോ**, **കാത്തിരിക്കുന്ന ഇ-ടിക്കറ്റുകൾക്ക് സ്വയം തിരിച്ചടവുകൾ**, **ഓൺലൈൻ TDR ഫയലിംഗ് അവസാനതീയതികൾ** എന്നിവയെക്കുറിച്ച് അടിസ്ഥാന നിയമങ്ങൾ വ്യക്തമാക്കുന്നു. താത്കാൽ റദ്ദാക്കൽ ശിക്ഷകൾ, കൗണ്ടർ ടിക്കറ്റ് തിരിച്ചടവുകൾ, നിങ്ങളുടെ തിരിച്ചടവ് ക്രെഡിറ്റ് ലഭിക്കുന്നതിന് തിരികെ നൽകൽ സമയങ്ങൾ എന്നിവയെക്കുറിച്ച് മനസ്സിലാക്കാൻ ഈ വേഗത്തിലും ഉത്തരം പരിശോധിക്കുക.
 
 ### IRCTC-ൽ 4-മണിക്കൂർ റദ്ദാക്കൽ നിയമം എന്താണ്?
+
 4-മണിക്കൂർ റദ്ദാക്കൽ നിയമം, ഒരു സ്ഥിരീകരിച്ച ട്രെയിൻ ടിക്കറ്റ് യാത്ര ആരംഭിക്കുന്നതിന് 8 മണിക്കൂർ മുമ്പ് റദ്ദാക്കുകയാണെങ്കിൽ, IRCTC **100% ടിക്കറ്റ് നിരക്കിന്റെ നഷ്ടം** വരുത്തുന്നു, ശൂന്യ തിരിച്ചടവിൽ എത്തുന്നു.
 
 ### ഇന്ത്യൻ റെയിൽവേയിൽ WL-ന്റെ പൂർണ്ണ രൂപം എന്താണ്?
+
 WL എന്നത് Waiting List-ന്റെ പൂർണ്ണ രൂപമാണ്. ഇത് ഒരു സ്ഥിരീകരിക്കാത്ത ടിക്കറ്റ് ആണ്, ഇത് RAC (Reservation Against Cancellation) വഴി മുന്നോട്ട് പോകും, മുമ്പത്തെ ബുക്കിംഗുകൾ റദ്ദാക്കുമ്പോൾ സ്ഥിരീകരിത നിലയിലേക്ക് എത്തും.
 
 ### ഞാൻ ഒരു സ്ഥിരീകരിച്ച താത്കാൽ ടിക്കറ്റ് റദ്ദാക്കുകയും തിരിച്ചടവ് ലഭിക്കുമോ?
+
 ഇല്ല. സ്ഥിരീകരിച്ച താത്കാൽ ടിക്കറ്റുകൾ സ്വയം റദ്ദാക്കുമ്പോൾ 100% തിരിച്ചടവില്ല. ട്രെയിൻ 3 മണിക്കൂർ വൈകിയാൽ അല്ലെങ്കിൽ റെയിൽവേ റദ്ദാക്കിയാൽ മാത്രമേ നിങ്ങൾക്ക് തിരിച്ചടവ് ലഭിക്കുകയുള്ളൂ, TDR ഫയൽ ചെയ്യേണ്ടതുണ്ട്.
 
 ### ചാർട്ടിംഗ് ശേഷം ഒരു ഇ-ടിക്കറ്റ് കാത്തിരിക്കുന്നു എങ്കിൽ എന്താണ് സംഭവിക്കുന്നത്?
+
 പൂർണ്ണമായും കാത്തിരിക്കുന്ന ഇ-ടിക്കറ്റുകൾ ചാർട്ട് തയ്യാറാക്കലിന് ശേഷം IRCTC സിസ്റ്റം സ്വയം റദ്ദാക്കുന്നു. ടിക്കറ്റ് നിരക്ക് 3 മുതൽ 5 പ്രവർത്തന ദിവസങ്ങൾക്കുള്ളിൽ നിങ്ങളുടെ ആദ്യത്തെ ബാങ്ക് അക്കൗണ്ടിലേക്ക് സ്വയം ക്രെഡിറ്റ് ചെയ്യപ്പെടുന്നു.
 
 ### കൗണ്ടർ വെയിറ്റിംഗ് റദ്ദാക്കൽ ഇ-ടിക്കറ്റ് കാത്തിരിപ്പിൽ നിന്ന് എങ്ങനെ വ്യത്യാസപ്പെടുന്നു?
+
 കാത്തിരിക്കുന്ന ഇ-ടിക്കറ്റുകൾക്കു വ്യത്യാസമായിട്ടുള്ള, PRS റെയിൽവേ കൗണ്ടറുകളിൽ വാങ്ങിയ ശാരീരിക പേപ്പർ കാത്തിരിപ്പുള്ള ടിക്കറ്റുകൾ സ്വയം റദ്ദാക്കുന്നില്ല. യാത്രക്കാർ 30 മിനിറ്റ് മുമ്പ് റെയിൽവേ സ്റ്റേഷൻ കൗണ്ടറിൽ ടിക്കറ്റ് റദ്ദാക്കാൻ പോകണം, പണം തിരിച്ചടവ് ലഭിക്കാൻ.
 
 ### IRCTC-ൽ CURR_AVBL എന്താണ്, ഇത് റദ്ദാക്കാമോ?
+
 CURR_AVBL (Current Availability) ചാർട്ട് തയ്യാറാക്കലിന് ശേഷം ബുക്കിംഗിന് ലഭ്യമായ ഒഴിവുള്ള ബെർത്ത് സൂചിപ്പിക്കുന്നു, യാത്ര ആരംഭിക്കുന്നതിന് 30 മിനിറ്റ് മുമ്പ്. ഒരു CURR_AVBL ടിക്കറ്റ് ബുക്ക് ചെയ്താൽ, യാത്ര ആരംഭിക്കുന്നതിന് മുമ്പ് സമയത്തെ അടിസ്ഥാനമാക്കി സാധാരണ റദ്ദാക്കൽ ചാർജുകൾ ബാധകമാണ്.
 
 ### 3+ മണിക്കൂർ വൈകിയ ട്രെയിനിന് TDR ഫയലിംഗ് അവസാനതീയതി എന്താണ്?
+
 ഒരു ട്രെയിൻ 3+ മണിക്കൂർ വൈകിയാൽ, നിങ്ങൾ യാത്ര ചെയ്യാൻ ആഗ്രഹിക്കുന്നില്ലെങ്കിൽ, നിങ്ങൾക്ക് **100% തിരിച്ചടവ്** ആവശ്യപ്പെടാൻ, നിങ്ങളുടെ ബോർഡിംഗ് സ്റ്റേഷനിൽ നിന്ന് ട്രെയിൻ യാഥാസ്ഥിതികമായി യാത്ര ആരംഭിക്കുന്നതിന് മുമ്പ് ഓൺലൈൻ TDR ഫയൽ ചെയ്യണം.
 
 ### IRCTC TDR തിരിച്ചടവ് ബാങ്ക് അക്കൗണ്ടിലേക്ക് ക്രെഡിറ്റ് ചെയ്യുന്നതിന് എത്ര സമയം എടുക്കും?
+
 TDR തിരിച്ചടവുകൾ **15 മുതൽ 45 പ്രവർത്തന ദിവസങ്ങൾ** എടുക്കുന്നു, കാരണം നിങ്ങളുടെ ക്ലെയിം TTE ചാർട്ടുകൾക്ക് എതിരെ സ്ഥിരീകരിക്കേണ്ടതാണ്, ബന്ധപ്പെട്ട മേഖലാ റെയിൽവേയുടെ ചീഫ് കമേഴ്സ്യൽ മാനേജർ (തിരിച്ചടവുകൾ) വഴി.
 
 ---

@@ -29,7 +29,8 @@ export type TrainEntry = {
 
 type CatalogData = { trains: TrainEntry[] };
 
-export type TrainCatalogType = "vande-bharat" | "shatabdi" | "rajdhani" | "garib-rath";
+export type TrainCatalogType =
+  "vande-bharat" | "shatabdi" | "rajdhani" | "garib-rath";
 
 const DATA_MAP: Record<TrainCatalogType, CatalogData> = {
   "vande-bharat": vandeBharatData as CatalogData,
@@ -41,10 +42,18 @@ const DATA_MAP: Record<TrainCatalogType, CatalogData> = {
 // Performance Optimization: Pre-build Map lookups per catalog type to eliminate O(N) array scans
 // in getTrainByNumber (~10-50x speedup for 160+ train catalog lookups).
 const CATALOG_MAPS: Record<TrainCatalogType, Map<string, TrainEntry>> = {
-  "vande-bharat": new Map((vandeBharatData as CatalogData).trains.map((t) => [t.trainNumber, t])),
-  shatabdi: new Map((shatabdiData as CatalogData).trains.map((t) => [t.trainNumber, t])),
-  rajdhani: new Map((rajdhaniData as CatalogData).trains.map((t) => [t.trainNumber, t])),
-  "garib-rath": new Map((garibRathData as CatalogData).trains.map((t) => [t.trainNumber, t])),
+  "vande-bharat": new Map(
+    (vandeBharatData as CatalogData).trains.map((t) => [t.trainNumber, t]),
+  ),
+  shatabdi: new Map(
+    (shatabdiData as CatalogData).trains.map((t) => [t.trainNumber, t]),
+  ),
+  rajdhani: new Map(
+    (rajdhaniData as CatalogData).trains.map((t) => [t.trainNumber, t]),
+  ),
+  "garib-rath": new Map(
+    (garibRathData as CatalogData).trains.map((t) => [t.trainNumber, t]),
+  ),
 };
 
 export function getTrains(type: TrainCatalogType): TrainEntry[] {
@@ -69,7 +78,9 @@ export function buildSearchUrl(train: {
     from: train.originStation.code.trim().toUpperCase(),
     to: train.destinationStation.code.trim().toUpperCase(),
   });
-  if (train.originStation.name) params.set("fromName", train.originStation.name.trim());
-  if (train.destinationStation.name) params.set("toName", train.destinationStation.name.trim());
+  if (train.originStation.name)
+    params.set("fromName", train.originStation.name.trim());
+  if (train.destinationStation.name)
+    params.set("toName", train.destinationStation.name.trim());
   return `/?${params.toString()}`;
 }

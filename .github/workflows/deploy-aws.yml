@@ -147,7 +147,7 @@ jobs:
           ssh ubuntu@$TARGET_HOST "mkdir -p /home/ubuntu/app/infra"
           scp infra/docker-compose.frontend.yml ubuntu@$TARGET_HOST:/home/ubuntu/app/infra/docker-compose.yml
           scp infra/Caddyfile.frontend ubuntu@$TARGET_HOST:/home/ubuntu/app/infra/Caddyfile.frontend
-          
+
           # Sync public and content directories for volume mounts
           rsync -avz --delete \
             --exclude '.git' \

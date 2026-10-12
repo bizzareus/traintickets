@@ -37,14 +37,14 @@ The concession applies across express, superfast, mail, and premium trains like 
 
 Here is the complete concession breakdown across railway travel classes and train categories:
 
-| Disability Category | Sleeper (SL) & 3E | AC 3-Tier (3AC) & CC | AC 2-Tier (2AC) & 1AC | Rajdhani / Shatabdi (3AC/CC) | Escort Concession Allowed? |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Orthopaedically Impaired / Paraplegic** | **75% discount** | **75% discount** | **50% discount** | **25% discount** | Yes (Same concession rate) |
-| **Visually Impaired (Total Blindness)** | **75% discount** | **75% discount** | **50% discount** | **25% discount** | Yes (Same concession rate) |
-| **Intellectual Disability / Mentally Retarded** | **75% discount** | **75% discount** | **50% discount** | **25% discount** | Yes (Same concession rate) |
-| **Hearing & Speech Impaired (Both Together)** | **50% discount** | **50% discount** | Nil (Full fare) | Nil (Full fare) | No (Solo travel concession only) |
+| Disability Category                             | Sleeper (SL) & 3E | AC 3-Tier (3AC) & CC | AC 2-Tier (2AC) & 1AC | Rajdhani / Shatabdi (3AC/CC) | Escort Concession Allowed?       |
+| :---------------------------------------------- | :---------------- | :------------------- | :-------------------- | :--------------------------- | :------------------------------- |
+| **Orthopaedically Impaired / Paraplegic**       | **75% discount**  | **75% discount**     | **50% discount**      | **25% discount**             | Yes (Same concession rate)       |
+| **Visually Impaired (Total Blindness)**         | **75% discount**  | **75% discount**     | **50% discount**      | **25% discount**             | Yes (Same concession rate)       |
+| **Intellectual Disability / Mentally Retarded** | **75% discount**  | **75% discount**     | **50% discount**      | **25% discount**             | Yes (Same concession rate)       |
+| **Hearing & Speech Impaired (Both Together)**   | **50% discount**  | **50% discount**     | Nil (Full fare)       | Nil (Full fare)              | No (Solo travel concession only) |
 
-*Note: Concession is calculated purely on the base fare. Superfast surcharges, GST on AC classes, and reservation charges are payable in full.*
+_Note: Concession is calculated purely on the base fare. Superfast surcharges, GST on AC classes, and reservation charges are payable in full._
 
 ---
 
@@ -116,27 +116,35 @@ The Travelling Ticket Examiner (TTE) will inspect the following credentials on b
 ## Common Booking Questions (FAQ)
 
 ### Can a Divyangjan passenger travel alone without an escort?
+
 Yes, visually impaired and orthopaedically handicapped passengers whose medical certificate states they can travel independently can book solo tickets and enjoy the full 75% or 50% concession.
 
 ### Is the senior citizen concession available alongside the Divyangjan concession?
+
 No, Indian Railways does not allow combining multiple concessions on a single ticket. However, senior citizen Divyangjan passengers can choose the Divyangjan concession, which offers up to 75% off compared to zero senior citizen discounts.
 
 ### How many lower berths are reserved for disabled passengers per train?
+
 Indian Railways earmarks a minimum of 4 berths (2 lower and 2 middle/upper) in Sleeper class, and 2 lower berths in each 3AC and 3E coach under the Divyangjan (HP) quota.
 
 ### How long is the Railway Divyangjan Photo ID Card valid?
+
 For permanent disabilities, the card is valid for 5 years (or lifetime for senior citizens above 60). For temporary disabilities, the card validity matches the duration specified on the medical certificate.
 
 ### Can Divyangjan concession be claimed on Tatkal tickets?
+
 No, Indian Railways does not offer any fare concessions on Tatkal or Premium Tatkal ticket bookings. Concessions apply exclusively to General and Divyangjan (HP) quota bookings.
 
 ### What happens if the Divyangjan quota is on the waiting list?
+
 If all earmarked HP quota berths are booked, the ticket is placed on the Divyangjan Waiting List. Unused Emergency Quota (EQ) or General berths are often used at first chart preparation (~8 hours before departure) to confirm these tickets.
 
 ### Does Vande Bharat Express offer concessions for Divyangjan passengers?
+
 No fare concessions are currently available on Vande Bharat Express trains for any category except accredited journalists, though Divyangjan passengers can still utilize onboard wheelchair assistance.
 
 ### Can an escort be a minor child?
+
 No, the accompanying escort must be an adult aged 18 years or older who is physically capable of rendering complete care and assistance to the passenger throughout the journey.
 
 ---

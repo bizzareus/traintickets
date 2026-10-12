@@ -34,7 +34,7 @@ Every digital ticket transaction on Indian Railways operates across a triangular
 2. **The Payment Gateway (PG):** An intermediary such as IRCTC iPay, Razorpay, SBI ePay, or Paytm that acts as a secure escrow bridge.
 3. **The Centre for Railway Information Systems (CRIS) Engine:** The central Passenger Reservation System (PRS) server that locks berths and prints the PNR.
 
-During high-traffic windows (particularly the 10:00 AM AC Tatkal and 11:00 AM Non-AC Tatkal rushes), thousands of transactions hit CRIS simultaneously. If your bank takes 45 seconds to authorize the debit, the response packet may arrive at IRCTC after your 3-minute booking session has already timed out. 
+During high-traffic windows (particularly the 10:00 AM AC Tatkal and 11:00 AM Non-AC Tatkal rushes), thousands of transactions hit CRIS simultaneously. If your bank takes 45 seconds to authorize the debit, the response packet may arrive at IRCTC after your 3-minute booking session has already timed out.
 
 Because the session expired, CRIS never receives the signal to allocate the berth, so no PNR is created. The funds remain parked in the payment gateway's escrow ledger. The gateway's automated end-of-day reconciliation script detects that no PNR was paired with the payment and initiates an automatic reverse credit back to your originating account.
 
@@ -46,14 +46,14 @@ Because the session expired, CRIS never receives the signal to allocate the bert
 
 Here is the official refund timeline matrix across all payment modes on IRCTC for 2026:
 
-| Payment Method | Settlement Rail | Typical Refund Reflection | Full Amount Refunded? |
-| :--- | :--- | :--- | :--- |
-| **IRCTC iPay UPI (Single-Block / Mandate)** | NPCI UPI Mandate Revocation | Instant to 2 hours | Yes (100% fare + convenience fee) |
-| **Standard UPI (GPay, PhonePe, Paytm, BHIM)** | NPCI Immediate Settlement Cycle | 1 to 3 working days | Yes (100% fare + convenience fee) |
-| **IRCTC e-Wallet** | Internal IRCTC Core Ledger | Instant to 12 hours | Yes (credited directly to e-Wallet) |
-| **Net Banking (SBI, HDFC, ICICI, etc.)** | Interbank Clearing / RBI NEFT | 3 to 5 working days | Yes (100% fare + convenience fee) |
-| **Debit Cards (RuPay, Visa, Mastercard)** | Card Network Clearing House | 3 to 7 working days | Yes (credited to linked bank account) |
-| **Credit Cards (Domestic & International)** | Card Acquirer Billing Cycle | 3 to 7 working days (reflects on statement) | Yes (credited to card balance) |
+| Payment Method                                | Settlement Rail                 | Typical Refund Reflection                   | Full Amount Refunded?                 |
+| :-------------------------------------------- | :------------------------------ | :------------------------------------------ | :------------------------------------ |
+| **IRCTC iPay UPI (Single-Block / Mandate)**   | NPCI UPI Mandate Revocation     | Instant to 2 hours                          | Yes (100% fare + convenience fee)     |
+| **Standard UPI (GPay, PhonePe, Paytm, BHIM)** | NPCI Immediate Settlement Cycle | 1 to 3 working days                         | Yes (100% fare + convenience fee)     |
+| **IRCTC e-Wallet**                            | Internal IRCTC Core Ledger      | Instant to 12 hours                         | Yes (credited directly to e-Wallet)   |
+| **Net Banking (SBI, HDFC, ICICI, etc.)**      | Interbank Clearing / RBI NEFT   | 3 to 5 working days                         | Yes (100% fare + convenience fee)     |
+| **Debit Cards (RuPay, Visa, Mastercard)**     | Card Network Clearing House     | 3 to 7 working days                         | Yes (credited to linked bank account) |
+| **Credit Cards (Domestic & International)**   | Card Acquirer Billing Cycle     | 3 to 7 working days (reflects on statement) | Yes (credited to card balance)        |
 
 > [!TIP]
 > On failed ticket bookings, Indian Railways refunds **100% of the debited amount**, including the IRCTC convenience fee and GST. Convenience fees are only non-refundable when you voluntarily cancel a confirmed or waitlisted ticket that has an active PNR.
@@ -146,33 +146,43 @@ When a booking fails and your journey date is approaching, you do not have time 
 ## Common Booking Questions (FAQ)
 
 ### Why is my IRCTC ticket booking failed but money deducted?
+
 Your bank authorized the payment and debited the amount, but peak network congestion or session timeout prevented the confirmation from reaching IRCTC servers before the 3-minute booking window expired. Because IRCTC received no payment confirmation, no PNR was generated, and the funds remain safely parked in the payment gateway pool for automated reversal.
 
 ### How many days does IRCTC take to refund a failed transaction?
+
 Automated refunds for failed transactions depend on your payment method. UPI payments reflect in your account within 1 to 3 working days, Net Banking takes 3 to 5 working days, and Credit/Debit cards take 3 to 7 working days. IRCTC iPay UPI and internal e-Wallet refunds are processed within instant turnaround to 24 hours.
 
 ### Do I need to file a TDR for a failed IRCTC ticket?
+
 No, you must never file a TDR for a failed booking. A Ticket Deposit Receipt (TDR) can only be filed for tickets that hold an active 10-digit PNR. Failed transactions have no PNR and are refunded 100% automatically through nightly interbank reconciliation scripts.
 
 ### What does refund status ₹0 mean in IRCTC?
+
 A refund status of ₹0 in your Failed Transaction History is a temporary database placeholder. Because no PNR was created, the database cannot attach a primary key to the refund record immediately. Once the nightly merchant reconciliation runs at 11:30 PM IST, the record updates and the full debited amount is returned to your account.
 
 ### How do I track my IRCTC refund in my bank account?
+
 Log into IRCTC, navigate to My Transactions > Failed Transaction History, and locate the Transaction ID, Bank Reference Number, and Payment Gateway Reference ID. Quote these numbers to your bank's phone banking or grievance desk so they can locate the inbound clearing credit.
 
 ### What is the ARN number in an IRCTC refund?
+
 An Acquirer Reference Number (ARN) is a unique 11 to 23-digit tracking number generated when a refund moves across credit card and debit card clearing networks. If your card refund does not reflect within 7 business days, your bank can use the ARN to immediately release held funds.
 
 ### Does IRCTC refund the convenience fee and GST on failed bookings?
+
 Yes, Indian Railways refunds 100% of the debited amount for failed ticket bookings, including the ticket fare, IRCTC convenience fee, and applicable GST charges. Convenience fees are only non-refundable when a passenger voluntarily cancels a confirmed or waitlisted ticket that has a valid PNR.
 
 ### What is the RBI penalty rule for delayed IRCTC refunds?
+
 Under Reserve Bank of India (RBI) Harmonisation of Turnaround Time (TAT) regulations, failed digital transactions must be reversed within T+1 business days. If the payment gateway or bank delays the reversal beyond this period, they are legally required to pay the customer compensation of ₹100 per calendar day of delay.
 
 ### Can I get an instant refund for failed bookings on IRCTC?
+
 Yes, you can get near-instant refunds by choosing IRCTC iPay with UPI Autopay / Single-Block mandate or by booking via the pre-funded IRCTC e-Wallet. These payment options avoid multi-hop interbank clearing networks, allowing the system to release held funds immediately upon booking failure.
 
 ### What should I do if my bank statement says debited but IRCTC shows no record?
+
 If your bank debited your money but no transaction appears in your IRCTC Booked or Failed history, your connection broke before reaching the payment gateway. The funds are held in your bank's suspense account and will auto-reverse within 24 to 48 hours. If the balance is not restored after 3 business days, raise a chargeback request with your bank using the UPI UTR or bank transaction reference.
 
 ---

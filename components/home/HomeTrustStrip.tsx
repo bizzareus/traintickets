@@ -22,7 +22,7 @@ export function HomeTrustStrip({
   return (
     <div
       className={cn(
-        "mt-3 sm:mt-3.5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-xl border border-slate-200/80 bg-white/70 px-4 py-2.5 text-xs text-slate-600 shadow-2xs backdrop-blur-xs sm:gap-x-6 sm:text-sm",
+        "shadow-2xs backdrop-blur-xs mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-xl border border-slate-200/80 bg-white/70 px-4 py-2.5 text-xs text-slate-600 sm:mt-3.5 sm:gap-x-6 sm:text-sm",
         className,
       )}
       aria-label="Platform trust credentials"
@@ -41,10 +41,7 @@ export function HomeTrustStrip({
         |
       </span>
       <div className="inline-flex items-center gap-1.5 font-medium text-slate-700">
-        <Users
-          className="h-4 w-4 shrink-0 text-blue-600"
-          aria-hidden="true"
-        />
+        <Users className="h-4 w-4 shrink-0 text-blue-600" aria-hidden="true" />
         <span>{trustedByText}</span>
       </div>
       <span

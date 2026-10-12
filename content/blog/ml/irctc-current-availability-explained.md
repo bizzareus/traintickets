@@ -18,12 +18,13 @@ tags:
 
 > **⚡ ഇന്ന് ഒരു സ്ഥിരീകരിച്ച ട്രെയിൻ ബെർത്ത് വേണമോ?**
 > ചാർട്ട് തയ്യാറാക്കുന്നതിന് മുമ്പ് ഉയർന്ന ആവശ്യകതയുള്ള കോറിഡോറുകളിൽ യഥാർത്ഥ സമയ സീറ്റ് ലഭ്യത പരിശോധിക്കുക:
+>
 > - **ഡൽഹി ➔ മുംബൈ**: [ഡൽഹി ➔ മുംബൈ സ്ഥിരീകരിച്ച സീറ്റുകൾ തിരയുക](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central)
 > - **ഡൽഹി ➔ പട്ന**: [ഡൽഹി ➔ പട്ന പ്രത്യേക ട്രെയിനുകൾ തിരയുക](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
 > - **മുംബൈ ➔ ദാനാപൂർ**: [മുംബൈ ➔ ദാനാപൂർ എക്സ്പ്രസ് സീറ്റുകൾ തിരയുക](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
 > - **ബംഗളൂരു ➔ ചെന്നൈ**: [ബംഗളൂരു ➔ ചെന്നൈ ട്രെയിനുകൾ തിരയുക](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central)
 > - **ഹൗറ ➔ പൂരി**: [ഹൗറ ➔ പൂരി അവധിക്കാല ട്രെയിനുകൾ തിരയുക](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri)
-> 
+>
 > നിങ്ങൾക്ക് [Chart Vacancy Map](/chart-vacancy) വഴി ലൈവ് കോച്ച്-ബൈ-കോച്ച് ഒഴിവുകൾ പരിശോധിക്കാനും [Chart Preparation Times & Alerts](/chart-times) ൽ കൃത്യമായ ചാർട്ടിംഗ് ഷെഡ്യൂളുകളും അലർട്ടുകളും പരിശോധിക്കാനും കഴിയും.
 
 ## TL;DR
@@ -39,6 +40,7 @@ Train booking-ൽ curr available (CURR_AVBL) എന്നത് ചാർട്�
 IRCTC Rail Connect ആപ്പിൽ അല്ലെങ്കിൽ ഔദ്യോഗിക വെബ്സൈറ്റിൽ യാത്രയ്ക്ക് കുറച്ച് നേരം മുമ്പ് ട്രെയിൻ ലഭ്യത പരിശോധിക്കുമ്പോൾ, നിങ്ങൾക്ക് സാധാരണയായി `CURR_AVBL-0014`, `CURR_AVBL-0002`, അല്ലെങ്കിൽ `CURR AVL` പോലുള്ള എൻട്രികൾ കാണാം. ഈ നില, സ്ഥിരീകരിച്ച യാത്രക്കാർ, RAC ഉടമകൾ, വെയ്റ്റ്‌ലിസ്റ്റ് യാത്രക്കാർ എന്നിവരെ ഉൾക്കൊള്ളിച്ചതിന് ശേഷം, ട്രെയിനിൽ ഒഴിവായ ബെർത്ത്‌കൾ അനുവദിക്കപ്പെടാത്തതായി സൂചിപ്പിക്കുന്നു.
 
 ഈ ഒഴിവായ ബെർത്ത്‌കൾ ചില പ്രത്യേക റെയിൽവേ പൂളുകളിൽ നിന്നാണ്:
+
 - ഉപയോഗിക്കാത്ത എമർജൻസി ക്വോട്ടകൾ (EQ) കൂടാതെ VIP അലോക്കേഷനുകൾ പൊതുവായ പൂളിലേക്ക് തിരിച്ചുവിടുന്നു.
 - ചാർട്ടിംഗ് തീവ്രതയിൽ വിട്ടുപോകാത്ത ടാറ്റ്കൽ, പ്രീമിയം ടാറ്റ്കൽ ക്വോട്ടകൾ.
 - അവകാശമില്ലാത്ത വിദേശ വിനോദസഞ്ചാരികൾ, പ്രതിരോധം, പാർലമെന്റ് ക്വോട്ടകൾ.
@@ -55,6 +57,7 @@ IRCTC Rail Connect ആപ്പിൽ അല്ലെങ്കിൽ ഔദ്�
 ബഹുഭൂരിപക്ഷം യാത്രക്കാർ `CURR_AVBL` നെ വെയ്റ്റ്‌ലിസ്റ്റ് പുരോഗതിയുമായി കുഴപ്പത്തിലാക്കുന്നു, അല്ലെങ്കിൽ RAC ടിക്കറ്റ് ലഭിക്കേണ്ടതിന്റെ ആശങ്കയിൽ കഴിയുന്നു, അതിനാൽ അവർക്ക് ഒരു സൈഡ് ലോവർ ബെർത്ത് പങ്കിടേണ്ടതുണ്ടെന്ന് ആശങ്കപ്പെടുന്നു. ആ ആശങ്ക അനാവശ്യമാണ്. ഒരു നിലവിലെ ലഭ്യമായ ടിക്കറ്റ്, നിങ്ങളുടെ പേയ്മെന്റ് വിജയകരമായതിന്റെ രണ്ടാം നിമിഷം മുതൽ ഒരു പൂർണ്ണമായ സ്ഥിരീകരിച്ച റിസർവേഷൻ ആണ്.
 
 സാധാരണ വെയ്റ്റ്‌ലിസ്റ്റ് പ്രോസസ്സിംഗും നിലവിലെ ബുക്കിംഗും തമ്മിലുള്ള വ്യത്യാസങ്ങൾ നിർണായകമാണ്:
+
 - **ഉടൻ കോച്ച്, ബെർത്ത് നമ്പറുകൾ:** നിങ്ങളുടെ ഇലക്ട്രോണിക് ടിക്കറ്റ് ഉടൻ നിങ്ങളുടെ സ്ഥിരീകരിച്ച കോച്ച് (B3, M2, അല്ലെങ്കിൽ S4 പോലുള്ള) കൂടാതെ നിങ്ങളുടെ നിശ്ചിത ബെർത്ത് നമ്പർ (21 ലോവർ അല്ലെങ്കിൽ 45 സൈഡ് അപ്പർ പോലുള്ള) പ്രദർശിപ്പിക്കുന്നു.
 - **സ്വയം റദ്ദാക്കലുകൾ ഇല്ല:** ചാർട്ട് തയ്യാറാക്കുമ്പോൾ സ്ഥിരീകരിക്കാത്ത വെയ്റ്റ്‌ലിസ്റ്റ് ഇ-ടിക്കറ്റുകൾ സ്വയം റദ്ദാക്കുകയും IRCTC-ൽ തിരിച്ചടവുചെയ്യപ്പെടുകയും ചെയ്യുന്നു. അതിനാൽ, ഒരു നിലവിലെ ബുക്കിംഗ് ടിക്കറ്റ് ചാർട്ടിംഗ് ശേഷം നിർമ്മിക്കപ്പെടുന്നു, അതിനാൽ അത് ട്രെയിൻ മാനിഫസ്റ്റിൽ നിന്ന് ഒരിക്കലും ഒഴിവാക്കാൻ കഴിയില്ല.
 - **ഉടൻ ബോർഡിംഗ് അവകാശങ്ങൾ:** നിങ്ങൾക്ക് റിസർവുചെയ്ത കോച്ചിൽ ബോർഡ് ചെയ്യാനുള്ള പൂർണ്ണ നിയമപരമായ അവകാശങ്ങൾ ഉണ്ട്, നിങ്ങളുടെ ബാഗേജ് വയ്ക്കാൻ, നിങ്ങളുടെ നിശ്ചിത ബെർത്ത് കൈകാര്യം ചെയ്യാൻ, ട്രെയിൻ ടിക്കറ്റ് എക്സാമിനർ (TTE) ൽ നിന്ന് അനുമതി ചോദിക്കാതെ.
@@ -67,12 +70,12 @@ IRCTC Rail Connect ആപ്പിൽ അല്ലെങ്കിൽ ഔദ്�
 
 നിലവിലെ റിസർവേഷൻ സമയങ്ങൾ, ട്രെയിൻ പുറപ്പെടുന്ന സമയത്തെ അടിസ്ഥാനമാക്കി കർശനമായി നിശ്ചയിക്കപ്പെടുന്നു. ഇന്ത്യൻ റെയിൽവേസ് മാനദണ്ഡമായ ചാർട്ടിംഗ് വിൻഡോകൾക്കു കീഴിൽ പ്രവർത്തിക്കുന്നു:
 
-| Train Departure Window | First Chart Preparation (Booking Opens) | Booking Cutoff Time | Route Example |
-| :--- | :--- | :--- | :--- |
-| **Morning Trains (06:00 to 11:59)** | **Previous evening by 20:00 IST** (giving an overnight booking window) | Exactly 30 minutes before departure | A train departing at 06:30 opens for current booking by 20:00 the prior night. |
-| **Afternoon Trains (12:00 to 17:59)** | **4 to 8 hours before departure** (typically 08:00 to 10:00 IST) | Exactly 30 minutes before departure | A train departing at 16:15 opens for current booking between 08:15 and 12:15. |
-| **Evening Trains (18:00 to 23:59)** | **4 to 8 hours before departure** (typically 12:00 to 14:00 IST) | Exactly 30 minutes before departure | A train departing at 20:45 opens for current booking by 14:45 the same afternoon. |
-| **Night & Early Hours (00:00 to 05:59)** | **Previous evening between 20:00 and 22:00 IST** | Exactly 30 minutes before departure | A train departing at 01:30 opens for current booking around 20:30 the preceding evening. |
+| Train Departure Window                   | First Chart Preparation (Booking Opens)                                | Booking Cutoff Time                 | Route Example                                                                            |
+| :--------------------------------------- | :--------------------------------------------------------------------- | :---------------------------------- | :--------------------------------------------------------------------------------------- |
+| **Morning Trains (06:00 to 11:59)**      | **Previous evening by 20:00 IST** (giving an overnight booking window) | Exactly 30 minutes before departure | A train departing at 06:30 opens for current booking by 20:00 the prior night.           |
+| **Afternoon Trains (12:00 to 17:59)**    | **4 to 8 hours before departure** (typically 08:00 to 10:00 IST)       | Exactly 30 minutes before departure | A train departing at 16:15 opens for current booking between 08:15 and 12:15.            |
+| **Evening Trains (18:00 to 23:59)**      | **4 to 8 hours before departure** (typically 12:00 to 14:00 IST)       | Exactly 30 minutes before departure | A train departing at 20:45 opens for current booking by 14:45 the same afternoon.        |
+| **Night & Early Hours (00:00 to 05:59)** | **Previous evening between 20:00 and 22:00 IST**                       | Exactly 30 minutes before departure | A train departing at 01:30 opens for current booking around 20:30 the preceding evening. |
 
 നിലവിലെ ലഭ്യമായ ടിക്കറ്റ് ബുക്കിംഗ് സമയത്തെ നിയന്ത്രിക്കുന്ന രണ്ട് പ്രവർത്തന നിയമങ്ങൾ ഉണ്ട്:
 
@@ -88,11 +91,13 @@ IRCTC Rail Connect ആപ്പിൽ അല്ലെങ്കിൽ ഔദ്�
 നിലവിലെ ബുക്കിംഗ് പലപ്പോഴും നിങ്ങൾ റെയിൽവേ സ്റ്റേഷനിലേക്ക് യാത്ര ചെയ്യുമ്പോൾ അല്ലെങ്കിൽ പ്ലാറ്റ്ഫോമിൽAlready standing on the platform, you do not need to visit a counter to validate your ticket.
 
 When boarding with an electronic current ticket, keep these essentials ready:
+
 - **Digital ERS or Confirmation SMS:** Keep the IRCTC booking confirmation SMS, email, or downloaded PDF on your smartphone.
 - **Original Photo Identification:** Carry a valid government ID (Aadhaar card, driving licence, passport, voter ID, or PAN card). A digital Aadhaar stored inside the DigiLocker or mAadhaar app is legally recognized.
 - **Direct Coach Entry:** Walk straight to your assigned coach and occupy your seat.
 
 ### Avoid Section 138 Penalties
+
 Never board a reserved Sleeper or AC coach hoping to buy a ticket inside. Under Section 138 of the Railways Act and the Jan Vishwas Act rules, entering a reserved coach with an unreserved/general ticket or a platform ticket attracts a mandatory ₹500 penalty in addition to the single fare to the next station. Similarly, boarding with a waitlisted e-ticket is treated as travelling without a valid ticket. Booking a legitimate `CURR_AVBL` ticket completely protects you from fines and disputes.
 
 ---
@@ -104,6 +109,7 @@ Never board a reserved Sleeper or AC coach hoping to buy a ticket inside. Under 
 You can book current available seats through two official channels.
 
 ### Method 1: IRCTC Rail Connect App & Website
+
 1. **Sign In Early:** Open the IRCTC app or visit the web portal. Log in with your credentials.
 2. **Search Your Station Pair:** Enter your origin, destination, and travel date. Click "Search Trains".
 3. **Identify Green CURR_AVBL Status:** Select your preferred train and travel class (1A, 2A, 3A, 3E, CC, or SL). If the chart has been prepared and berths remain vacant, the status displays green text reading `CURR_AVBL-0008` (or the count of remaining berths).
@@ -111,6 +117,7 @@ You can book current available seats through two official channels.
 5. **Pay with Instant Gateways:** Complete payment swiftly using UPI or net banking before the session timer expires or the 30-minute pre-departure cutoff arrives. Your confirmed coach and berth will appear immediately on the screen.
 
 ### Method 2: Station PRS Counters
+
 1. **Visit the Current Reservation Counter:** Major railway stations operate dedicated "Current Booking" windows alongside regular Passenger Reservation System (PRS) counters.
 2. **Submit a Reservation Slip:** Fill out the standard blue reservation requisition form with your train number, date, class, and passenger details.
 3. **Pay and Collect Physical Ticket:** Pay the counter clerk via cash, UPI, or card. The PRS terminal issues a printed computerised ticket showing your confirmed coach and berth.
@@ -123,15 +130,15 @@ You can book current available seats through two official channels.
 
 Understanding how these three booking avenues differ helps you select the most economical ticketing option:
 
-| Parameter | General Quota (GN) | Tatkal Quota (TQ) | Current Availability (CURR_AVBL) |
-| :--- | :--- | :--- | :--- |
-| **Booking Opening** | 60 days before journey at 08:00 AM IST | 1 day before journey (10:00 AM AC / 11:00 AM Non-AC) | Post-charting (4 to 8 hours before departure) |
-| **Booking Cutoff** | When first reservation chart is prepared | When first reservation chart is prepared | Exactly 30 minutes before scheduled train departure |
-| **Additional Surcharges** | Nil (standard base fare) | ₹125 to ₹500 extra markup per passenger | Nil (standard base fare, often with 10% base discount) |
-| **Ticket Status Outcome** | Confirmed, RAC, or Waiting List (GNWL) | Confirmed or Tatkal Waiting List (TQWL) | Always 100% Confirmed (assigned coach and berth) |
-| **Source of Berths** | Standard master train inventory | Dedicated quota coaches carved out in advance | Unused quotas, unsold Tatkal seats, and cancellations |
-| **Cancellation Refund** | Permitted as per standard cancellation slabs | Zero refund on confirmed Tatkal tickets | Zero refund once booked post-charting |
-| **Best Used For** | Planned vacations and advance travel | Urgent next-day trips when general seats are full | Last-minute travel on departure day without extra fees |
+| Parameter                 | General Quota (GN)                           | Tatkal Quota (TQ)                                    | Current Availability (CURR_AVBL)                       |
+| :------------------------ | :------------------------------------------- | :--------------------------------------------------- | :----------------------------------------------------- |
+| **Booking Opening**       | 60 days before journey at 08:00 AM IST       | 1 day before journey (10:00 AM AC / 11:00 AM Non-AC) | Post-charting (4 to 8 hours before departure)          |
+| **Booking Cutoff**        | When first reservation chart is prepared     | When first reservation chart is prepared             | Exactly 30 minutes before scheduled train departure    |
+| **Additional Surcharges** | Nil (standard base fare)                     | ₹125 to ₹500 extra markup per passenger              | Nil (standard base fare, often with 10% base discount) |
+| **Ticket Status Outcome** | Confirmed, RAC, or Waiting List (GNWL)       | Confirmed or Tatkal Waiting List (TQWL)              | Always 100% Confirmed (assigned coach and berth)       |
+| **Source of Berths**      | Standard master train inventory              | Dedicated quota coaches carved out in advance        | Unused quotas, unsold Tatkal seats, and cancellations  |
+| **Cancellation Refund**   | Permitted as per standard cancellation slabs | Zero refund on confirmed Tatkal tickets              | Zero refund once booked post-charting                  |
+| **Best Used For**         | Planned vacations and advance travel         | Urgent next-day trips when general seats are full    | Last-minute travel on departure day without extra fees |
 
 If you missed the Tatkal window or refuse to pay inflated dynamic pricing, read our detailed comparison on [Tatkal vs Current Availability](/blog/tatkal-vs-current-availability-last-minute-train-ticket).
 

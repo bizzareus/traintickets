@@ -25,7 +25,10 @@ export async function GET(
   const num = parseTrainNumberFromSlug(id) || id.replace(/\D/g, "");
   const data = num ? await getChartTimesPageData(num) : null;
   if (!data) {
-    return Response.json({ error: "not found", trainNumber: num }, { status: 404 });
+    return Response.json(
+      { error: "not found", trainNumber: num },
+      { status: 404 },
+    );
   }
   return Response.json(data);
 }

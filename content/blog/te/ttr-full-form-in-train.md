@@ -15,6 +15,7 @@ tags:
 ---
 
 > **ఈ పండుగ సీజన్‌లో ట్రైన్ ద్వారా ప్రయాణిస్తున్నారా?** నిర్ధారిత సీటు లేకుండా చిక్కుకోకండి. LastBerthలో ప్రత్యక్ష అందుబాటును, మధ్యవర్తి ఖాళీలను మరియు నిర్ధారిత విభజన-బెర్త్ ఎంపికలను తనిఖీ చేయండి:
+>
 > - [Delhi ➔ Mumbai నిర్ధారిత సీట్లు శోధించండి](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central)
 > - [Delhi ➔ Patna ప్రత్యేక ట్రైన్లు శోధించండి](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
 > - [Mumbai ➔ Danapur Express సీట్లు శోధించండి](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
@@ -49,12 +50,12 @@ tags:
 
 ప్రయాణికులు తరచుగా ఈ రైల్వే సంక్షిప్త రూపాలను గందరగోళం చేస్తారు. భారతీయ రైల్వేలు వాణిజ్య తనిఖీ కేడర్ల మధ్య కఠినమైన కార్యాచరణ విభజనను నిర్వహిస్తుంది, తద్వారా ఆదాయ సమగ్రత మరియు ప్రయాణికుల భద్రతను నిర్ధారిస్తుంది:
 
-|Designation Code|Formal Full Form|Official Cadre?|Primary Work Location|Core Operational Responsibilities|
-|:---|:---|:---|:---|:---|
-|**TTE**|Travelling Ticket Examiner|**Yes** (Statutory post)|Onboard running trains (reserved Sleeper, 3A, 2A, 1A)|Verifying reservations, checking original IDs on HHTs, marking absentees, allotting berths to RAC passengers, collecting excess fares.|
-|**TTR**|Travelling Ticket Regulator|**No** (Passenger slang)|Onboard running trains (colloquial usage for TTE)|Used interchangeably with TTE by travelers across India; carries identical legal responsibilities as an official TTE.|
-|**TC**|Ticket Collector|**Yes** (Stationary post)|Railway station platforms, FOBs, concourses & exit barriers|Checking platform tickets, validating unreserved journey tickets at entry and exit gates, penalizing unauthorized station entry.|
-|**TTI**|Travelling Ticket Inspector|**Yes** (Supervisory post)|Flying squads across junctions, divisional zones & express trains|Conducting surprise checks on running trains, auditing TTE duty logs, checking fraud rings, verifying catering overcharging.|
+| Designation Code | Formal Full Form            | Official Cadre?            | Primary Work Location                                             | Core Operational Responsibilities                                                                                                      |
+| :--------------- | :-------------------------- | :------------------------- | :---------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------- |
+| **TTE**          | Travelling Ticket Examiner  | **Yes** (Statutory post)   | Onboard running trains (reserved Sleeper, 3A, 2A, 1A)             | Verifying reservations, checking original IDs on HHTs, marking absentees, allotting berths to RAC passengers, collecting excess fares. |
+| **TTR**          | Travelling Ticket Regulator | **No** (Passenger slang)   | Onboard running trains (colloquial usage for TTE)                 | Used interchangeably with TTE by travelers across India; carries identical legal responsibilities as an official TTE.                  |
+| **TC**           | Ticket Collector            | **Yes** (Stationary post)  | Railway station platforms, FOBs, concourses & exit barriers       | Checking platform tickets, validating unreserved journey tickets at entry and exit gates, penalizing unauthorized station entry.       |
+| **TTI**          | Travelling Ticket Inspector | **Yes** (Supervisory post) | Flying squads across junctions, divisional zones & express trains | Conducting surprise checks on running trains, auditing TTE duty logs, checking fraud rings, verifying catering overcharging.           |
 
 బోర్డింగ్‌కు ముందు, మీరు మా [Coach Composition & Platform Guide](/blog/understanding-coach-composition-find-train-platform)ని ఉపయోగించి మీ కోచ్ స్థానం మరియు ట్రైన్ లేఅవుట్‌ను కనుగొనవచ్చు.
 
@@ -133,14 +134,14 @@ $$\text{Passenger Absent on HHT} \longrightarrow \text{Promoted to RAC 1, RAC 2.
 
 TTEలు సాధారణ టిక్కెట్ ఇన్ఫ్రాక్షన్‌లపై అమలు చేసే వాణిజ్య జరిమానా షెడ్యూల్ క్రింద ఇవ్వబడింది:
 
-|Violation Category|Statutory Section|Mandatory Penalty & Excess Fare|Immediate Operational Action|
-|:---|:---|:---|:---|
-|**టిక్కెట్ లేకుండా ప్రయాణించడం (టిక్కెట్ లేని)**|సెక్షన్ 138|**స్థిర ₹500 జరిమానా** + ట్రైన్ మూలం నుండి తరలింపు ఫేర్|డిజిటల్ Excess Fare Ticket (EFT) జారీ చేయబడింది; ప్రయాణికుడు జనరల్ అన్‌రిజర్వ్డ్ కోచ్‌కు తరలించబడతాడు లేదా డీబోర్డ్ చేయబడతాడు.|
-|**స్లీపర్ కోచ్‌లో సాధారణ టిక్కెట్**|సెక్షన్ 138|**స్థిర ₹500 జరిమానా** + బోర్డింగ్ పాయింట్ నుండి ఫేర్ వ్యత్యాసం|ఫేర్ వ్యత్యాసానికి Excess Fare Ticket జారీ చేయబడింది; ప్రయాణికుడు అన్‌రిజర్వ్డ్ కోచ్‌కు తిరిగి పంపబడతాడు.|
-|**AC కోచ్ (3A/2A/1A)లో సాధారణ టిక్కెట్**|సెక్షన్ 138|**స్థిర ₹500 జరిమానా** + బోర్డింగ్ పాయింట్ నుండి AC ఫేర్ వ్యత్యాసం|Excess Fare Ticket జారీ చేయబడింది; AC బెర్త్‌లు అందుబాటులో లేకపోతే ప్రయాణికుడు తదుపరి స్టేషన్ వద్ద డీబోర్డ్ చేయబడతాడు.|
-|**ఆటో-రద్దు చేసిన WL e-టికెట్‌పై ప్రయాణించడం**|సెక్షన్ 138|**స్థిర ₹500 జరిమానా** + ట్రైన్ ప్రారంభమైన స్టేషన్ నుండి పూర్తి ఫేర్|బుకింగ్ తిరిగి చెల్లించబడినందున పూర్తిగా టిక్కెట్ లేని వ్యక్తిగా పరిగణించబడుతుంది; ప్రయాణికుడు తదుపరి హాల్ట్ వద్ద డీబోర్డ్ చేయబడతాడు.|
-|**అధిక తరగతిలో ప్రయాణించడం (SL in 3AC)**|సెక్షన్ 138|**స్థిర ₹500 జరిమానా** + SL మరియు 3AC ఫేర్ మధ్య వ్యత్యాసం|3AC బెర్త్ ఖాళీగా ఉంటే అప్‌గ్రేడ్ చేయబడుతుంది, లేదా స్లీపర్ కోచ్‌కు తిరిగి పంపబడుతుంది.|
-|**మోసపూరిత ప్రయాణం (ఐడెంటిటీ మార్పిడి / ఫేక్ ID)**|సెక్షన్ 137|**₹1,000** వరకు జరిమానా లేదా 6 నెలల వరకు జైలుకు పంపడం|టిక్కెట్ స్వాధీనం చేయబడింది; ప్రయాణికుడు తదుపరి జంక్షన్ వద్ద ప్రభుత్వ రైల్వే పోలీసులకు (GRP) అప్పగించబడతాడు.|
+| Violation Category                                 | Statutory Section | Mandatory Penalty & Excess Fare                                      | Immediate Operational Action                                                                                                          |
+| :------------------------------------------------- | :---------------- | :------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| **టిక్కెట్ లేకుండా ప్రయాణించడం (టిక్కెట్ లేని)**   | సెక్షన్ 138       | **స్థిర ₹500 జరిమానా** + ట్రైన్ మూలం నుండి తరలింపు ఫేర్              | డిజిటల్ Excess Fare Ticket (EFT) జారీ చేయబడింది; ప్రయాణికుడు జనరల్ అన్‌రిజర్వ్డ్ కోచ్‌కు తరలించబడతాడు లేదా డీబోర్డ్ చేయబడతాడు.        |
+| **స్లీపర్ కోచ్‌లో సాధారణ టిక్కెట్**                | సెక్షన్ 138       | **స్థిర ₹500 జరిమానా** + బోర్డింగ్ పాయింట్ నుండి ఫేర్ వ్యత్యాసం      | ఫేర్ వ్యత్యాసానికి Excess Fare Ticket జారీ చేయబడింది; ప్రయాణికుడు అన్‌రిజర్వ్డ్ కోచ్‌కు తిరిగి పంపబడతాడు.                             |
+| **AC కోచ్ (3A/2A/1A)లో సాధారణ టిక్కెట్**           | సెక్షన్ 138       | **స్థిర ₹500 జరిమానా** + బోర్డింగ్ పాయింట్ నుండి AC ఫేర్ వ్యత్యాసం   | Excess Fare Ticket జారీ చేయబడింది; AC బెర్త్‌లు అందుబాటులో లేకపోతే ప్రయాణికుడు తదుపరి స్టేషన్ వద్ద డీబోర్డ్ చేయబడతాడు.                |
+| **ఆటో-రద్దు చేసిన WL e-టికెట్‌పై ప్రయాణించడం**     | సెక్షన్ 138       | **స్థిర ₹500 జరిమానా** + ట్రైన్ ప్రారంభమైన స్టేషన్ నుండి పూర్తి ఫేర్ | బుకింగ్ తిరిగి చెల్లించబడినందున పూర్తిగా టిక్కెట్ లేని వ్యక్తిగా పరిగణించబడుతుంది; ప్రయాణికుడు తదుపరి హాల్ట్ వద్ద డీబోర్డ్ చేయబడతాడు. |
+| **అధిక తరగతిలో ప్రయాణించడం (SL in 3AC)**           | సెక్షన్ 138       | **స్థిర ₹500 జరిమానా** + SL మరియు 3AC ఫేర్ మధ్య వ్యత్యాసం            | 3AC బెర్త్ ఖాళీగా ఉంటే అప్‌గ్రేడ్ చేయబడుతుంది, లేదా స్లీపర్ కోచ్‌కు తిరిగి పంపబడుతుంది.                                               |
+| **మోసపూరిత ప్రయాణం (ఐడెంటిటీ మార్పిడి / ఫేక్ ID)** | సెక్షన్ 137       | **₹1,000** వరకు జరిమానా లేదా 6 నెలల వరకు జైలుకు పంపడం                | టిక్కెట్ స్వాధీనం చేయబడింది; ప్రయాణికుడు తదుపరి జంక్షన్ వద్ద ప్రభుత్వ రైల్వే పోలీసులకు (GRP) అప్పగించబడతాడు.                          |
 
 అనధికారిక టిక్కెట్లపై ప్రయాణం ప్రణాళిక చేసేముందు, [Can Waiting List Passenger Travel in Train? Rules & Fines](/blog/can-waiting-list-ticket-passenger-travel-in-train-rules-fines)పై మా వివరణాత్మక చట్టపరమైన విశ్లేషణను చదవండి.
 
@@ -153,26 +154,28 @@ TTEలు సాధారణ టిక్కెట్ ఇన్ఫ్రాక�
 TTE నియామకాలు భారతదేశంలో అత్యంత పోటీ రైల్వే పరీక్షలలో ఒకటిగా ఉన్నాయి, ఆకర్షణీయమైన రన్నింగ్ అలవెన్సులు, నివాస సదుపాయాలు మరియు ప్రయాణ అనుకూలతల కారణంగా:
 
 ### అర్హత ప్రమాణాలు
+
 - **విద్యా అర్హత:** గుర్తింపబడిన రాష్ట్ర లేదా కేంద్ర బోర్డులో 50% మార్కులతో 12వ తరగతి (10+2) లేదా 3 సంవత్సరాల పాలిటెక్నిక్ డిప్లొమా లేదా ఏదైనా విభాగంలో బ్యాచిలర్ డిగ్రీ.
 - **వయస్సు పరిమితి:** సాధారణ కేటగిరీ అభ్యర్థుల కోసం 18 నుండి 30 సంవత్సరాలు, OBC (3 సంవత్సరాలు) మరియు SC/ST (5 సంవత్సరాలు) కోసం ప్రమాణ వయస్సు సడలింపులతో.
 - **మెడికల్ ప్రమాణం:** A-2 / B-1 మెడికల్ కేటగిరీతో దూర దృష్టి ప్రమాణాలు (6/9, 6/12 కళ్లద్దాలు ఉన్నా లేకుండా) మరియు సాధారణ రంగు గ్రహణం.
 
 ### ఎంపిక ప్రక్రియ & పరీక్ష నమూనా
+
 1. **CBT-1 (కంప్యూటర్ ఆధారిత పరీక్ష):** సాధారణ అవగాహన (40 మార్కులు), గణిత (30 మార్కులు) మరియు సాధారణ మేధస్సు & యోగ్యత (30 మార్కులు) కలిగిన ప్రాథమిక స్క్రీనింగ్ పరీక్ష.
 2. **CBT-2:** సంఖ్యా వేగం, యోగ్యత మరియు సమగ్ర డొమైన్ యాప్‌టిట్యూడ్‌ను అంచనా వేయడం.
 3. **డాక్యుమెంట్ ధృవీకరణ & మెడికల్ ఫిట్‌నెస్ పరీక్ష:** విద్యా రికార్డుల లోతైన ధృవీకరణ మరియు అధికారిక రైల్వే ఆసుపత్రిలో కఠినమైన శారీరక ఫిట్‌నెస్ పరీక్ష.
 
 ### జీతం & పే స్కేల్ విభజన (7వ CPC స్థాయి 3)
 
-|Salary Component|Compensation / Pay Scale|Operational Details|
-|:---|:---|:---|
-|**Pay Matrix Level**|స్థాయి 3 (గ్రేడ్ పే ₹2,000)|7వ కేంద్ర ప్రభుత్వ కమిషన్|
-|**Basic Pay**|**₹21,700 – ₹69,100**|ప్రారంభ ప్రాథమిక జీతం నెలకు ₹21,700|
-|**Dearness Allowance (DA)**|~50% of Basic Pay|కేంద్ర ప్రభుత్వ ద్వారా వార్షికంగా పునరావృతం|
-|**House Rent Allowance (HRA)**|9% / 18% / 27%|నగర శ్రేణి (X, Y, Z వర్గీకరణ) ఆధారంగా|
-|**Transport Allowance (TA)**|₹1,800 – ₹3,600|పోస్టింగ్ విభాగ స్టేషన్ ఆధారంగా|
-|**Running Allowance (KMA)**|₹400 – ₹800 ప్రతి డ్యూటీ రోజున|డ్యూటీలో 100 కిమీ ప్రయాణించినప్పుడు మైలేజ్ అలవెన్సు|
-|**Total In-Hand Starting Salary**|**₹36,000 – ₹46,000 / నెల**|అన్ని డ్యూటీ అలవెన్సులను కలిగి ఉన్న నెట్ నెలవారీ పరిహారం|
+| Salary Component                  | Compensation / Pay Scale       | Operational Details                                      |
+| :-------------------------------- | :----------------------------- | :------------------------------------------------------- |
+| **Pay Matrix Level**              | స్థాయి 3 (గ్రేడ్ పే ₹2,000)    | 7వ కేంద్ర ప్రభుత్వ కమిషన్                                |
+| **Basic Pay**                     | **₹21,700 – ₹69,100**          | ప్రారంభ ప్రాథమిక జీతం నెలకు ₹21,700                      |
+| **Dearness Allowance (DA)**       | ~50% of Basic Pay              | కేంద్ర ప్రభుత్వ ద్వారా వార్షికంగా పునరావృతం              |
+| **House Rent Allowance (HRA)**    | 9% / 18% / 27%                 | నగర శ్రేణి (X, Y, Z వర్గీకరణ) ఆధారంగా                    |
+| **Transport Allowance (TA)**      | ₹1,800 – ₹3,600                | పోస్టింగ్ విభాగ స్టేషన్ ఆధారంగా                          |
+| **Running Allowance (KMA)**       | ₹400 – ₹800 ప్రతి డ్యూటీ రోజున | డ్యూటీలో 100 కిమీ ప్రయాణించినప్పుడు మైలేజ్ అలవెన్సు      |
+| **Total In-Hand Starting Salary** | **₹36,000 – ₹46,000 / నెల**    | అన్ని డ్యూటీ అలవెన్సులను కలిగి ఉన్న నెట్ నెలవారీ పరిహారం |
 
 ---
 

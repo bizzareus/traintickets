@@ -3,8 +3,18 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { getBlogPost, listBlogPostSlugs, listBlogPosts, parseFaqFromMarkdown, getLanguageName, getAvailableTranslations } from "@/lib/blog";
-import { isLowQualityTranslation, indexableTranslations } from "@/lib/blog-quality";
+import {
+  getBlogPost,
+  listBlogPostSlugs,
+  listBlogPosts,
+  parseFaqFromMarkdown,
+  getLanguageName,
+  getAvailableTranslations,
+} from "@/lib/blog";
+import {
+  isLowQualityTranslation,
+  indexableTranslations,
+} from "@/lib/blog-quality";
 import { getBlogTranslation } from "@/lib/blog-translations";
 import { parseHowToFromMarkdown } from "@/lib/seo/schema-howto";
 import { autoLinkGlossaryTerms } from "@/lib/seo/auto-linker";
@@ -22,12 +32,12 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const params: { slug: string[] }[] = [];
-  
+
   // English posts: /blog/my-post
   for (const slug of listBlogPostSlugs("en")) {
     params.push({ slug: [slug] });
   }
-  
+
   // Regional posts: /blog/hi/my-post
   const langs = ["mr", "hi", "bn", "ta", "te", "ml"];
   for (const lang of langs) {
@@ -35,12 +45,12 @@ export async function generateStaticParams() {
       params.push({ slug: [lang, slug] });
     }
   }
-  
+
   // Regional index pages: /blog/hi
   for (const lang of langs) {
     params.push({ slug: [lang] });
   }
-  
+
   return params;
 }
 
@@ -54,7 +64,10 @@ export async function generateMetadata({
   const { slug: slugArray } = await params;
 
   // Case 1: Regional index page, e.g. /blog/hi
-  if (slugArray.length === 1 && ["mr", "hi", "bn", "ta", "te", "ml"].includes(slugArray[0])) {
+  if (
+    slugArray.length === 1 &&
+    ["mr", "hi", "bn", "ta", "te", "ml"].includes(slugArray[0])
+  ) {
     const lang = slugArray[0];
     const canonicalUrl = `/blog/${lang}`;
     const allLangs = ["en", "mr", "hi", "bn", "ta", "te", "ml"];
@@ -87,8 +100,9 @@ export async function generateMetadata({
 
   const post = getBlogPost(slug, lang);
   if (!post) return {};
-  
-  const canonicalUrl = lang === "en" ? `/blog/${post.slug}` : `/blog/${lang}/${post.slug}`;
+
+  const canonicalUrl =
+    lang === "en" ? `/blog/${post.slug}` : `/blog/${lang}/${post.slug}`;
   // Only advertise indexable languages as hreflang alternates — a broken
   // machine translation is neither listed nor pointed at as an alternate.
   const availableLangs = indexableTranslations(post.slug);
@@ -108,12 +122,10 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
-    ...(lowQuality
-      ? { robots: { index: false, follow: true } }
-      : {}),
+    ...(lowQuality ? { robots: { index: false, follow: true } } : {}),
     alternates: {
       canonical: canonicalUrl,
-      languages
+      languages,
     },
     openGraph: {
       type: "article",
@@ -142,9 +154,12 @@ function formatYmd(ymd: string): string {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug: slugArray } = await params;
-  
+
   // Case 1: Regional index page, e.g. /blog/hi
-  if (slugArray.length === 1 && ["mr", "hi", "bn", "ta", "te", "ml"].includes(slugArray[0])) {
+  if (
+    slugArray.length === 1 &&
+    ["mr", "hi", "bn", "ta", "te", "ml"].includes(slugArray[0])
+  ) {
     const lang = slugArray[0];
     return <BlogIndexContent lang={lang} />;
   }
@@ -172,7 +187,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       ? siteUrl
       : "https://lastberth.com";
 
-  const canonicalUrl = lang === "en" ? `${baseUrl}/blog/${post.slug}` : `${baseUrl}/blog/${lang}/${post.slug}`;
+  const canonicalUrl =
+    lang === "en"
+      ? `${baseUrl}/blog/${post.slug}`
+      : `${baseUrl}/blog/${lang}/${post.slug}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -198,39 +216,42 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         url: `${baseUrl}/favicon.svg`,
       },
     },
-    image: [
-      `${baseUrl}/opengraph-image`,
-    ],
+    image: [`${baseUrl}/opengraph-image`],
   };
 
   const faqEntries = parseFaqFromMarkdown(post.content);
-  const faqJsonLd = faqEntries.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqEntries.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  } : null;
+  const faqJsonLd =
+    faqEntries.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqEntries.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
 
   const allPosts = listBlogPosts(lang);
-  
+
   const howToData = parseHowToFromMarkdown(post.content);
-  const howToJsonLd = howToData ? {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: howToData.name,
-    step: howToData.steps.map((step, index) => ({
-      "@type": "HowToStep",
-      name: step.name,
-      text: step.text,
-      url: `${canonicalUrl}#step-${index + 1}`
-    }))
-  } : null;
+  const howToJsonLd = howToData
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: howToData.name,
+        step: howToData.steps.map((step, index) => ({
+          "@type": "HowToStep",
+          name: step.name,
+          text: step.text,
+          url: `${canonicalUrl}#step-${index + 1}`,
+        })),
+      }
+    : null;
   const otherPosts = allPosts.filter((p) => p.slug !== post.slug);
   // Performance Optimization: Use a Set for post.tags to replace O(N*M) includes array scans
   // and intermediate array allocations with O(1) Set lookups (~2.5x speedup for related posts calculation).
@@ -263,17 +284,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const faqMatch = linkedMarkdown.match(faqRegex);
   const midIndex = faqMatch ? faqMatch.index : -1;
 
-  const prosePart1 = midIndex !== -1 ? linkedMarkdown.slice(0, midIndex) : linkedMarkdown;
+  const prosePart1 =
+    midIndex !== -1 ? linkedMarkdown.slice(0, midIndex) : linkedMarkdown;
   const prosePart2 = midIndex !== -1 ? linkedMarkdown.slice(midIndex) : "";
 
   return (
-    <article itemScope itemType="https://schema.org/BlogPosting" className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <article
+      itemScope
+      itemType="https://schema.org/BlogPosting"
+      className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+    >
       <header className="mb-6">
-        <h1 itemProp="headline" className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+        <h1
+          itemProp="headline"
+          className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl"
+        >
           {post.title}
         </h1>
         {post.description ? (
-          <p itemProp="description" className="mt-3 text-base text-slate-600">{post.description}</p>
+          <p itemProp="description" className="mt-3 text-base text-slate-600">
+            {post.description}
+          </p>
         ) : null}
         <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-600">
           <span className="rounded-md bg-slate-100 px-2 py-1">
@@ -298,19 +329,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
         {availableLangs.length > 1 && (
           <div className="mt-6 border-t border-slate-100 pt-4">
-            <BlogLanguageSelector 
-              availableLangs={availableLangs} 
-              currentLang={lang} 
-              currentSlug={post.slug} 
+            <BlogLanguageSelector
+              availableLangs={availableLangs}
+              currentLang={lang}
+              currentSlug={post.slug}
             />
           </div>
         )}
       </header>
 
       <div className="prose prose-slate max-w-none prose-headings:scroll-mt-24">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {prosePart1}
-        </ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{prosePart1}</ReactMarkdown>
       </div>
 
       {/* Mid-Article Conversion CTA */}
@@ -342,29 +371,31 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {relatedPosts.length > 0 ? (
         <div className="mt-12 border-t border-slate-100 pt-8">
-          <h2 className="text-xl font-bold text-slate-900 mb-6">
+          <h2 className="mb-6 text-xl font-bold text-slate-900">
             {getBlogTranslation("recommended", lang)}
           </h2>
           <div className="grid gap-6 sm:grid-cols-3">
             {relatedPosts.map((p) => (
               <Link
                 key={p.slug}
-                href={lang === "en" ? `/blog/${p.slug}` : `/blog/${lang}/${p.slug}`}
-                className="group flex flex-col justify-between rounded-xl border border-slate-100 bg-slate-50/50 p-4 hover:bg-slate-50 hover:shadow-xs transition-all duration-200"
+                href={
+                  lang === "en" ? `/blog/${p.slug}` : `/blog/${lang}/${p.slug}`
+                }
+                className="hover:shadow-xs group flex flex-col justify-between rounded-xl border border-slate-100 bg-slate-50/50 p-4 transition-all duration-200 hover:bg-slate-50"
               >
                 <div>
-                  <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2 text-sm leading-snug">
+                  <h3 className="line-clamp-2 text-sm font-bold leading-snug text-slate-900 transition-colors group-hover:text-blue-600">
                     {p.title}
                   </h3>
                   {p.description ? (
-                    <p className="mt-2 text-xs text-slate-500 line-clamp-3">
+                    <p className="mt-2 line-clamp-3 text-xs text-slate-500">
                       {p.description}
                     </p>
                   ) : null}
                 </div>
                 <div className="mt-4 flex items-center justify-between text-[10px] font-semibold text-slate-600">
                   <span>{formatYmd(p.date)}</span>
-                  <span className="text-blue-600 font-bold group-hover:underline">
+                  <span className="font-bold text-blue-600 group-hover:underline">
                     {getBlogTranslation("read", lang)}
                   </span>
                 </div>
@@ -390,17 +421,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
         />
       ) : null}
-      
-      <LanguagePromptSheet 
-        currentSlug={post.slug} 
+
+      <LanguagePromptSheet
+        currentSlug={post.slug}
         currentLang={lang}
         availableLangs={availableLangs}
       />
 
-      <BlogStickyMobileCta
-        slug={post.slug}
-        context={routeContext}
-      />
+      <BlogStickyMobileCta slug={post.slug} context={routeContext} />
     </article>
   );
 }

@@ -39,13 +39,13 @@ The fees and limits for IRCTC e-wallet require a minimum account deposit of ₹1
 
 It is important to understand the financial limits and fee structures associated with the e-wallet system before depositing large sums:
 
-| Transaction Type | Limit / Fee Amount | Key Rules & Conditions |
-| :--- | :--- | :--- |
-| **Registration Fee** | ₹50 (plus taxes) | One-time, non-refundable setup fee during registration. |
-| **Minimum Deposit** | ₹100 | The lowest amount you can add in a single top-up. |
-| **Maximum Balance** | ₹10,000 | The maximum funds your e-wallet account can hold. |
-| **Booking Transaction Fee** | ₹10 (plus taxes) | Charged per transaction, regardless of the ticket value. |
-| **Refund Fee** | Free | No extra fees are charged for processing refunds to the e-wallet. |
+| Transaction Type            | Limit / Fee Amount | Key Rules & Conditions                                            |
+| :-------------------------- | :----------------- | :---------------------------------------------------------------- |
+| **Registration Fee**        | ₹50 (plus taxes)   | One-time, non-refundable setup fee during registration.           |
+| **Minimum Deposit**         | ₹100               | The lowest amount you can add in a single top-up.                 |
+| **Maximum Balance**         | ₹10,000            | The maximum funds your e-wallet account can hold.                 |
+| **Booking Transaction Fee** | ₹10 (plus taxes)   | Charged per transaction, regardless of the ticket value.          |
+| **Refund Fee**              | Free               | No extra fees are charged for processing refunds to the e-wallet. |
 
 Note that money deposited in your IRCTC e-wallet cannot be transferred back to your bank account or to another user's account under any circumstances. Therefore, only deposit the amount you plan to spend on train travel.
 
@@ -66,7 +66,7 @@ If your preferred train shows no availability, you can use LastBerth's **Finding
 
 The refund rules for IRCTC e-wallet bookings guarantee that cancellation refunds are credited back to your e-wallet account by the next business day. If you cancel a confirmed ticket or if your waitlisted e-ticket is automatically cancelled by the railway system, the refund is processed without any standard bank processing delays.
 
-When booking tickets, passengers often face waitlists. In the Indian Railways booking ecosystem, the WL full form is Waiting List. If you book an e-ticket, your booking follows a strict progression queue: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. 
+When booking tickets, passengers often face waitlists. In the Indian Railways booking ecosystem, the WL full form is Waiting List. If you book an e-ticket, your booking follows a strict progression queue: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**.
 
 If your ticket is at a waitlist position like `WL/10` (meaning 10th in queue) versus a highly confirmable `WL/1` (1st in queue), and it remains waitlisted after the final chart is prepared, the railways will automatically cancel the e-ticket. With standard payment methods, a refund takes 3 to 7 days to reach your bank account. However, with the e-wallet, the refund is credited back to your prepaid balance almost instantly (usually within 24 hours), allowing you to reuse those funds to check for alternative seats.
 
@@ -77,13 +77,17 @@ To monitor your waitlist status and check the likelihood of your ticket clearing
 Here are the answers to the most common questions passengers ask about registering, depositing money, and using the IRCTC e-Wallet for train bookings. Learn about transaction rules, refund speeds, password recovery, and account policies.
 
 ### Can I withdraw money from my IRCTC e-wallet to my bank account?
+
 No, you cannot withdraw money from my IRCTC e-wallet to my bank account or transfer it to another user. Any money deposited into the e-wallet must be used solely for booking train tickets, transactions, or cancellation fees on the official IRCTC portal.
 
 ### What happens if I forget my IRCTC e-wallet transaction password?
+
 If you forget your transaction password, you can reset it by logging into the IRCTC website, navigating to the IRCTC e-Wallet section under 'IRCTC Exclusive', and clicking on 'Forgot Transaction Password'. You will need to answer your secret security question or verify an OTP sent to your registered mobile number to set a new password.
 
 ### Can I use the IRCTC e-wallet to book Tatkal tickets?
+
 Yes, the IRCTC e-wallet can be used to book both normal and Tatkal tickets. In fact, it is highly recommended for Tatkal bookings because it bypasses standard banking gateway delays, allowing you to complete payments in seconds before the limited quota seats sell out.
 
 ### Does the IRCTC e-wallet balance expire?
+
 No, your IRCTC e-wallet balance does not expire. However, there is an account validity period of 3 years from the date of registration. You can renew your e-wallet account validity online through the IRCTC portal for free to continue using your balance.

@@ -53,14 +53,20 @@ function VegMark({ veg }: { veg: boolean }) {
 
 function PriceChip({ label, value }: { label: string; value: string }) {
   return (
-    <span className="flex-1 rounded-lg bg-slate-50 px-3 py-2 text-center sm:flex-none sm:min-w-[6rem] sm:text-left">
+    <span className="flex-1 rounded-lg bg-slate-50 px-3 py-2 text-center sm:min-w-[6rem] sm:flex-none sm:text-left">
       <span className="block text-xs text-slate-500">{label}</span>
       <span className="text-base font-bold text-slate-900">{value}</span>
     </span>
   );
 }
 
-function ItemRow({ it, mode }: { it: CateringItem; mode: CateringSection["mode"] }) {
+function ItemRow({
+  it,
+  mode,
+}: {
+  it: CateringItem;
+  mode: CateringSection["mode"];
+}) {
   const v = dishVisual(`${it.item} ${it.desc ?? ""}`);
   return (
     <li className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-6">
@@ -77,7 +83,9 @@ function ItemRow({ it, mode }: { it: CateringItem; mode: CateringSection["mode"]
             <span className="font-medium text-slate-800">{it.item}</span>
           </span>
           {it.desc && (
-            <span className="mt-0.5 block text-sm text-slate-500">{it.desc}</span>
+            <span className="mt-0.5 block text-sm text-slate-500">
+              {it.desc}
+            </span>
           )}
         </span>
       </div>

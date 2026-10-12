@@ -167,7 +167,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="preconnect" href="https://us.i.posthog.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" />
+        <link
+          rel="api-catalog"
+          href="/.well-known/api-catalog"
+          type="application/linkset+json"
+        />
         <link rel="service-desc" href="/openapi.json" type="application/json" />
         <link rel="describedby" href="/llms.txt" type="text/plain" />
         <link rel="service-doc" href="/blog" type="text/html" />
@@ -188,85 +192,205 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* Analytics first so PostHog client chunk + eager init run before other interactive scripts */}
         <AnalyticsProvider>
           <div className="flex min-h-screen flex-col">
-            <main className="flex-1 min-h-[75vh]">{children}</main>
-            <footer className="border-t border-slate-200 bg-slate-50 py-12 text-sm text-slate-600 content-visibility-auto">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <main className="min-h-[75vh] flex-1">{children}</main>
+            <footer className="content-visibility-auto border-t border-slate-200 bg-slate-50 py-12 text-sm text-slate-600">
+              <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 sm:px-6 md:grid-cols-3 lg:grid-cols-5 lg:px-8">
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-4">LastBerth</h3>
-                  <p>Find confirmed train tickets and predict waiting list confirmations across Indian Railways.</p>
+                  <h3 className="mb-4 font-bold text-slate-900">LastBerth</h3>
+                  <p>
+                    Find confirmed train tickets and predict waiting list
+                    confirmations across Indian Railways.
+                  </p>
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-4">Resources</h3>
+                  <h3 className="mb-4 font-bold text-slate-900">Resources</h3>
                   <ul className="space-y-2">
-                    <li><Link href="/tatkal-planner" className="hover:text-blue-600">Tatkal Planner & Clock</Link></li>
-                    <li><Link href="/chart-vacancy" className="hover:text-blue-600">Chart Vacancy & Coach Map</Link></li>
-                    <li><Link href="/pnr-status" className="hover:text-blue-600">PNR Status</Link></li>
-                    <li><Link href="/blog" className="hover:text-blue-600">Blog</Link></li>
-                    <li><Link href="/glossary" className="hover:text-blue-600">Railway Glossary</Link></li>
+                    <li>
+                      <Link
+                        href="/tatkal-planner"
+                        className="hover:text-blue-600"
+                      >
+                        Tatkal Planner & Clock
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/chart-vacancy"
+                        className="hover:text-blue-600"
+                      >
+                        Chart Vacancy & Coach Map
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/pnr-status" className="hover:text-blue-600">
+                        PNR Status
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog" className="hover:text-blue-600">
+                        Blog
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/glossary" className="hover:text-blue-600">
+                        Railway Glossary
+                      </Link>
+                    </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-4">Top Routes</h3>
+                  <h3 className="mb-4 font-bold text-slate-900">Top Routes</h3>
                   <ul className="space-y-2">
-                    <li><Link href="/routes/delhi-to-mumbai" className="hover:text-blue-600">Delhi to Mumbai (Rajdhani 12952)</Link></li>
-                    <li><Link href="/routes/delhi-to-patna" className="hover:text-blue-600">Delhi to Patna (Rajdhani 12310)</Link></li>
-                    <li><Link href="/routes/mumbai-to-bengaluru" className="hover:text-blue-600">Mumbai to Bengaluru (Udyan 11301)</Link></li>
-                    <li><Link href="/routes/chennai-to-bengaluru" className="hover:text-blue-600">Chennai to Bengaluru (Shatabdi 12007)</Link></li>
-                    <li><Link href="/routes/kolkata-to-delhi" className="hover:text-blue-600">Kolkata to Delhi (Rajdhani 12301)</Link></li>
-                    <li><Link href="/routes/mumbai-to-ahmedabad" className="hover:text-blue-600">Mumbai to Ahmedabad (Shatabdi 12009)</Link></li>
+                    <li>
+                      <Link
+                        href="/routes/delhi-to-mumbai"
+                        className="hover:text-blue-600"
+                      >
+                        Delhi to Mumbai (Rajdhani 12952)
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/routes/delhi-to-patna"
+                        className="hover:text-blue-600"
+                      >
+                        Delhi to Patna (Rajdhani 12310)
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/routes/mumbai-to-bengaluru"
+                        className="hover:text-blue-600"
+                      >
+                        Mumbai to Bengaluru (Udyan 11301)
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/routes/chennai-to-bengaluru"
+                        className="hover:text-blue-600"
+                      >
+                        Chennai to Bengaluru (Shatabdi 12007)
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/routes/kolkata-to-delhi"
+                        className="hover:text-blue-600"
+                      >
+                        Kolkata to Delhi (Rajdhani 12301)
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/routes/mumbai-to-ahmedabad"
+                        className="hover:text-blue-600"
+                      >
+                        Mumbai to Ahmedabad (Shatabdi 12009)
+                      </Link>
+                    </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-4">
-                    <Link href="/chart-times" className="hover:text-blue-600">Chart Times</Link>
+                  <h3 className="mb-4 font-bold text-slate-900">
+                    <Link href="/chart-times" className="hover:text-blue-600">
+                      Chart Times
+                    </Link>
                   </h3>
                   <ul className="space-y-2">
                     {chartTimesPages.length > 0 ? (
                       chartTimesPages.map((t) => (
                         <li key={t.slug}>
-                          <Link href={`/chart-times/${t.slug}`} className="hover:text-blue-600">
+                          <Link
+                            href={`/chart-times/${t.slug}`}
+                            className="hover:text-blue-600"
+                          >
                             {t.trainName || t.trainNumber} ({t.trainNumber})
                           </Link>
                         </li>
                       ))
                     ) : (
-                      <li><Link href="/chart-times" className="hover:text-blue-600">Browse train chart times</Link></li>
+                      <li>
+                        <Link
+                          href="/chart-times"
+                          className="hover:text-blue-600"
+                        >
+                          Browse train chart times
+                        </Link>
+                      </li>
                     )}
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-4">
-                    <Link href="/irctc-train-food-menu" className="hover:text-blue-600">Food Menu</Link>
+                  <h3 className="mb-4 font-bold text-slate-900">
+                    <Link
+                      href="/irctc-train-food-menu"
+                      className="hover:text-blue-600"
+                    >
+                      Food Menu
+                    </Link>
                   </h3>
                   <ul className="space-y-2">
                     {foodMenuPages.length > 0 ? (
-                      foodMenuPages.map((t: { slug: string; trainName?: string; trainNumber: string }) => (
-                        <li key={t.slug}>
-                          <Link href={`/irctc-train-food-menu/${t.slug}`} className="hover:text-blue-600">
-                            {t.trainName || t.trainNumber} ({t.trainNumber})
-                          </Link>
-                        </li>
-                      ))
+                      foodMenuPages.map(
+                        (t: {
+                          slug: string;
+                          trainName?: string;
+                          trainNumber: string;
+                        }) => (
+                          <li key={t.slug}>
+                            <Link
+                              href={`/irctc-train-food-menu/${t.slug}`}
+                              className="hover:text-blue-600"
+                            >
+                              {t.trainName || t.trainNumber} ({t.trainNumber})
+                            </Link>
+                          </li>
+                        ),
+                      )
                     ) : (
-                      <li><Link href="/irctc-train-food-menu" className="hover:text-blue-600">Browse train food menus</Link></li>
+                      <li>
+                        <Link
+                          href="/irctc-train-food-menu"
+                          className="hover:text-blue-600"
+                        >
+                          Browse train food menus
+                        </Link>
+                      </li>
                     )}
                   </ul>
                 </div>
               </div>
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10 pt-6 border-t border-slate-200 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-slate-500">
-                <p>&copy; {new Date().getFullYear()} LastBerth. All rights reserved.</p>
+              <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-2 border-t border-slate-200 px-4 pt-6 text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+                <p>
+                  &copy; {new Date().getFullYear()} LastBerth. All rights
+                  reserved.
+                </p>
                 <nav className="flex flex-wrap items-center gap-4 text-xs sm:text-sm">
-                  <Link href="/about" className="hover:text-blue-600">About Us</Link>
-                  <Link href="/contact" className="hover:text-blue-600">Contact Us</Link>
-                  <Link href="/refund" className="hover:text-blue-600">Request Refund</Link>
-                  <Link href="/privacy" className="hover:text-blue-600">Privacy Policy</Link>
-                  <Link href="/terms" className="hover:text-blue-600">Terms of Service</Link>
-                  <Link href="/disclaimer" className="hover:text-blue-600">Disclaimer</Link>
+                  <Link href="/about" className="hover:text-blue-600">
+                    About Us
+                  </Link>
+                  <Link href="/contact" className="hover:text-blue-600">
+                    Contact Us
+                  </Link>
+                  <Link href="/refund" className="hover:text-blue-600">
+                    Request Refund
+                  </Link>
+                  <Link href="/privacy" className="hover:text-blue-600">
+                    Privacy Policy
+                  </Link>
+                  <Link href="/terms" className="hover:text-blue-600">
+                    Terms of Service
+                  </Link>
+                  <Link href="/disclaimer" className="hover:text-blue-600">
+                    Disclaimer
+                  </Link>
                 </nav>
               </div>
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-6 text-center text-slate-500">
+              <div className="mx-auto mt-6 max-w-7xl px-4 text-center text-slate-500 sm:px-6 lg:px-8">
                 <p>
-                  Made with <span aria-hidden="true">❤️</span><span className="sr-only">love</span> by{" "}
+                  Made with <span aria-hidden="true">❤️</span>
+                  <span className="sr-only">love</span> by{" "}
                   <a
                     href="https://linkedin.com/in/kartikarora"
                     target="_blank"

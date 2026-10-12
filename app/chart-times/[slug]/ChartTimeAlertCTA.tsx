@@ -422,9 +422,9 @@ export default function ChartTimeAlertCTA({
             Get a chart preparation alert
           </h2>
           <p className="mt-1 text-sm text-slate-600">
-            Select your destination — when the chart is prepared, we scan
-            your {stationCode} &lt;&gt; {toStationCode || "…"} route for any
-            ticket that opens up and notify you instantly. One-time charge: {" "}
+            Select your destination — when the chart is prepared, we scan your{" "}
+            {stationCode} &lt;&gt; {toStationCode || "…"} route for any ticket
+            that opens up and notify you instantly. One-time charge:{" "}
             <ChartAlertDiscountPrice price={alertPrice} />.
           </p>
         </div>
@@ -451,15 +451,15 @@ export default function ChartTimeAlertCTA({
   }
 
   return (
-      <div className="mb-6 rounded-xl border border-blue-200 bg-blue-50/60 p-5 shadow-sm">
+    <div className="mb-6 rounded-xl border border-blue-200 bg-blue-50/60 p-5 shadow-sm">
       <h2 className="flex items-center gap-2 text-base font-semibold text-slate-900">
         <BellRing className="h-4 w-4 text-blue-700" />
         Chart preparation alert for {trainName} ({trainNumber})
       </h2>
       <p className="mt-1 text-sm text-slate-600">
         Get an alert when the chart is prepared at your boarding station, we
-        will alert you the time it was prepared and find you confirmed
-        tickets across the journey.
+        will alert you the time it was prepared and find you confirmed tickets
+        across the journey.
       </p>
 
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -513,10 +513,7 @@ export default function ChartTimeAlertCTA({
           >
             {activeClasses.map((c) => (
               <option key={c} value={c}>
-                {chartAlertClassPriceLabel(
-                  CLASS_LABELS[c] || `${c} Class`,
-                  c,
-                )}
+                {chartAlertClassPriceLabel(CLASS_LABELS[c] || `${c} Class`, c)}
               </option>
             ))}
           </select>
@@ -602,6 +599,6 @@ export default function ChartTimeAlertCTA({
           onPaid={(j) => setSubscribedJourney(j)}
         />
       )}
-      </div>
+    </div>
   );
 }

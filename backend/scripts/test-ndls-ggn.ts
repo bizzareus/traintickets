@@ -15,8 +15,16 @@ async function main() {
 
   const customCookies = process.env.TRIPMGT_COOKIES;
   if (customCookies) {
-    const rawPairs = customCookies.split(';').map((c) => c.trim()).filter(Boolean);
-    const cookieObjects: Array<{ name: string; value: string; domain: string; path: string }> = [];
+    const rawPairs = customCookies
+      .split(';')
+      .map((c) => c.trim())
+      .filter(Boolean);
+    const cookieObjects: Array<{
+      name: string;
+      value: string;
+      domain: string;
+      path: string;
+    }> = [];
     for (const pair of rawPairs) {
       const eqIdx = pair.indexOf('=');
       if (eqIdx === -1) continue;
@@ -43,7 +51,11 @@ async function main() {
 
   page.on('response', async (res) => {
     const url = res.url();
-    if (url.includes('AvailabilityFareCheck') || url.includes('Availability') || url.includes('Payment')) {
+    if (
+      url.includes('AvailabilityFareCheck') ||
+      url.includes('Availability') ||
+      url.includes('Payment')
+    ) {
       console.log(`[API Response] HTTP ${res.status()} from ${url}`);
     }
   });
@@ -66,7 +78,20 @@ async function main() {
   const journeyDate = (() => {
     const d = new Date();
     d.setDate(d.getDate() + 3);
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
     return `${String(d.getDate()).padStart(2, '0')}-${months[d.getMonth()]}-${d.getFullYear()}`;
   })();
 
@@ -88,7 +113,9 @@ async function main() {
 
   // Step 4: Pick the first train with a clickable class
   console.log('[4/7] Selecting first available class in search results...');
-  const classAnchors = page.locator('table a:has-text("CC"), table a:has-text("2S"), table a:has-text("SL"), table a:has-text("3A"), table a:has-text("EC")');
+  const classAnchors = page.locator(
+    'table a:has-text("CC"), table a:has-text("2S"), table a:has-text("SL"), table a:has-text("3A"), table a:has-text("EC")',
+  );
   const classCount = await classAnchors.count();
   console.log(`      Found ${classCount} class options.`);
 
@@ -121,10 +148,19 @@ async function main() {
   // Handle station confirm dialog if present
   const confirmModal = page.locator('ons-alert-dialog, .alert-dialog');
   if (await confirmModal.count()) {
-    const modalText = await confirmModal.first().innerText().catch(() => '');
-    console.log(`      Modal dialog: "${modalText.replace(/\n+/g, ' ').trim()}"`);
-    const okBtn = confirmModal.locator('button:has-text("OK"), .alert-dialog-button:has-text("OK")').first();
-    const targetBtn = (await okBtn.count()) ? okBtn : confirmModal.locator('button, .alert-dialog-button').last();
+    const modalText = await confirmModal
+      .first()
+      .innerText()
+      .catch(() => '');
+    console.log(
+      `      Modal dialog: "${modalText.replace(/\n+/g, ' ').trim()}"`,
+    );
+    const okBtn = confirmModal
+      .locator('button:has-text("OK"), .alert-dialog-button:has-text("OK")')
+      .first();
+    const targetBtn = (await okBtn.count())
+      ? okBtn
+      : confirmModal.locator('button, .alert-dialog-button').last();
     await targetBtn.click();
     await page.waitForTimeout(3000);
   }
@@ -141,12 +177,16 @@ async function main() {
   if (await pAge.count()) await pAge.fill('30');
 
   const pGender = page.locator('#pGender0, select[id*="ddlSex_1"]').first();
-  if (await pGender.count()) await pGender.selectOption({ value: 'M' }).catch(() => {});
+  if (await pGender.count())
+    await pGender.selectOption({ value: 'M' }).catch(() => {});
 
   const pBerth = page.locator('#pBerth0, select[id*="ddlBerth_1"]').first();
-  if (await pBerth.count()) await pBerth.selectOption({ index: 1 }).catch(() => {});
+  if (await pBerth.count())
+    await pBerth.selectOption({ index: 1 }).catch(() => {});
 
-  const autoUp = page.locator('#chkConsiderAutoUpgrade, #chkAutoUpgrade').first();
+  const autoUp = page
+    .locator('#chkConsiderAutoUpgrade, #chkAutoUpgrade')
+    .first();
   if (await autoUp.count()) await autoUp.check().catch(() => {});
 
   const formSs = path.join(outDir, 'ndls_ggn_03_form_filled.png');
@@ -154,8 +194,14 @@ async function main() {
   console.log(`      Saved pre-filled reservation form snapshot to ${formSs}`);
 
   // Step 7: Advance toward review / payment WITHOUT PAYING
-  console.log('[7/7] Clicking Next button to advance toward review / payment (NO PAYMENT)...');
-  const nextBtn = page.locator('input[value="Next"], button:has-text("Next"), .btn:has-text("Next")').first();
+  console.log(
+    '[7/7] Clicking Next button to advance toward review / payment (NO PAYMENT)...',
+  );
+  const nextBtn = page
+    .locator(
+      'input[value="Next"], button:has-text("Next"), .btn:has-text("Next")',
+    )
+    .first();
   await nextBtn.click();
   await page.waitForTimeout(5000);
 
@@ -169,7 +215,9 @@ async function main() {
   console.log(visible.slice(0, 1200));
 
   await browser.close();
-  console.log('\n✅ Completed NDLS → GGN scenario test (stopped before payment).');
+  console.log(
+    '\n✅ Completed NDLS → GGN scenario test (stopped before payment).',
+  );
 }
 
 main().catch((err) => {

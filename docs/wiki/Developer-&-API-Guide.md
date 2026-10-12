@@ -8,9 +8,9 @@ Technical overview of the LastBerth architecture, Prisma data models, and chart 
 
 LastBerth is structured as a high-performance two-service monorepo:
 
-* **Frontend**: Next.js 16 (App Router) + Tailwind CSS + Lucide Icons (Port 3010)
-* **Backend**: NestJS + Prisma ORM + PostgreSQL 16 (Port 3009)
-* **Database**: PostgreSQL (Supabase / Local) storing trains, stations, chart events, and monitoring requests.
+- **Frontend**: Next.js 16 (App Router) + Tailwind CSS + Lucide Icons (Port 3010)
+- **Backend**: NestJS + Prisma ORM + PostgreSQL 16 (Port 3009)
+- **Database**: PostgreSQL (Supabase / Local) storing trains, stations, chart events, and monitoring requests.
 
 ```
 +-------------------+        HTTP / REST        +-------------------+
@@ -33,10 +33,10 @@ LastBerth is structured as a high-performance two-service monorepo:
 
 Key domain models managed by Prisma:
 
-* `Train`: Core train details (number, name, origin, destination).
-* `TrainStationChartTime`: Station-wise chart preparation rules and recorded chart finalization timestamps.
-* `MonitoringRequest`: User seat alert requests for specific routes/dates.
-* `ChartEventInstance`: Scheduled cron instances claiming chart checks via background workers.
+- `Train`: Core train details (number, name, origin, destination).
+- `TrainStationChartTime`: Station-wise chart preparation rules and recorded chart finalization timestamps.
+- `MonitoringRequest`: User seat alert requests for specific routes/dates.
+- `ChartEventInstance`: Scheduled cron instances claiming chart checks via background workers.
 
 ---
 
@@ -67,5 +67,5 @@ Content-Type: application/json
 
 ## 🌐 External Resources & Web App
 
-* **Production Web App**: [https://lastberth.com](https://lastberth.com)
-* **GitHub Repository**: [bizzareus/traintickets](https://github.com/bizzareus/traintickets)
+- **Production Web App**: [https://lastberth.com](https://lastberth.com)
+- **GitHub Repository**: [bizzareus/traintickets](https://github.com/bizzareus/traintickets)

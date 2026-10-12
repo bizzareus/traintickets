@@ -39,12 +39,12 @@ However, Indian Railways caps waitlist queues (ranging from 10 to 150 spots depe
 
 Indian Railways assigns custom waitlist thresholds to prevent excessive queuing:
 
-| Travel Class | Standard Waitlist Limit Before Regret | Why the Limit Exists |
-| :--- | :--- | :--- |
-| **AC First Class (1A / EC)** | 5 – 10 waitlist spots | Small coach capacity (18–24 berths per coach) |
-| **AC 2-Tier (2A)** | 20 – 30 waitlist spots | Moderate coach capacity (46–54 berths) |
-| **AC 3-Tier (3A / 3E)** | 50 – 80 waitlist spots | Higher capacity (64–83 berths per coach) |
-| **Sleeper Class (SL)** | 100 – 150 waitlist spots | Largest passenger volume (72–80 berths per coach) |
+| Travel Class                 | Standard Waitlist Limit Before Regret | Why the Limit Exists                              |
+| :--------------------------- | :------------------------------------ | :------------------------------------------------ |
+| **AC First Class (1A / EC)** | 5 – 10 waitlist spots                 | Small coach capacity (18–24 berths per coach)     |
+| **AC 2-Tier (2A)**           | 20 – 30 waitlist spots                | Moderate coach capacity (46–54 berths)            |
+| **AC 3-Tier (3A / 3E)**      | 50 – 80 waitlist spots                | Higher capacity (64–83 berths per coach)          |
+| **Sleeper Class (SL)**       | 100 – 150 waitlist spots              | Largest passenger volume (72–80 berths per coach) |
 
 During heavy festival rushes (such as Diwali, Chhath Puja, or Puja specials), these caps fill within seconds of the 8:00 AM booking window opening.
 
@@ -60,12 +60,12 @@ Understanding the distinct status codes on IRCTC:
 - **NOT AVAILABLE (or NAVL):** The train has no defined booking quota for that specific boarding or destination station, or the advance reservation period has not commenced.
 - **WAITING LIST (WL):** Berths are full, but the waitlist queue is still open for new purchases.
 
-| Status Code | Meaning | Can You Buy a Ticket? | PNR Issued? |
-| :--- | :--- | :--- | :--- |
-| **AVAILABLE** | Berths are open for direct booking | Yes | Yes (Confirmed) |
-| **WL / RAC** | Berths full, waitlist queue accepting bookings | Yes | Yes (Standby / RAC) |
-| **REGRET** | Waitlist capacity completely full | No | No (Booking blocked) |
-| **NOT AVAILABLE** | Quota not applicable or booking closed | No | No (Unavailable) |
+| Status Code       | Meaning                                        | Can You Buy a Ticket? | PNR Issued?          |
+| :---------------- | :--------------------------------------------- | :-------------------- | :------------------- |
+| **AVAILABLE**     | Berths are open for direct booking             | Yes                   | Yes (Confirmed)      |
+| **WL / RAC**      | Berths full, waitlist queue accepting bookings | Yes                   | Yes (Standby / RAC)  |
+| **REGRET**        | Waitlist capacity completely full              | No                    | No (Booking blocked) |
+| **NOT AVAILABLE** | Quota not applicable or booking closed         | No                    | No (Unavailable)     |
 
 ---
 
@@ -95,33 +95,41 @@ Four proven methods to get a confirmed seat during a REGRET freeze:
 ## Common Booking Questions (FAQ)
 
 ### Can I travel on a train if the search status shows Regret?
+
 No. REGRET means no ticket was issued and no PNR was generated. Boarding a reserved train without a valid confirmed, RAC, or counter ticket is illegal under Section 138 of the Railways Act.
 
 ### What happens if I click Book Now on a Regret status?
+
 The "Book Now" button is disabled or replaced with the red REGRET label on IRCTC. Clicking it prompts an alert notification stating that booking is not permitted as waitlist limits have been reached.
 
 ### Does Regret mean the train is cancelled?
+
 No, REGRET does not mean the train is cancelled. The train will operate as scheduled; the status simply indicates that passenger booking capacity is completely saturated.
 
 ### Can a Regret status change to Current Availability after charting?
+
 Yes. Unused VIP, emergency, and senior citizen quotas released during first chart preparation (~8 hours before departure) frequently open as confirmed Current Availability (`CURR_AVBL`) seats.
 
 ### What should I do if my Tatkal booking shows Regret?
+
 If Tatkal quota shows REGRET, look for confirmed split-leg bookings on LastBerth Smart Seats or check if Premium Tatkal (dynamic pricing) or Current Availability still have open berths.
 
 ### Why do some intermediate stations show Regret while origin shows Available?
+
 Indian Railways divides coach seats into intermediate quotas like Pooled Quota (PQ) and Remote Location Quota (RL). When the intermediate station quota fills up, it shows REGRET even if seats remain in the General Quota from origin.
 
 ### How does LastBerth help when a train shows Regret?
+
 LastBerth analyzes station-to-station inventory to find **Smart Seats** (split confirmed berths on the same train) and identifies open segments you can book directly.
 
 ### Is money deducted if a booking fails on Regret?
+
 No. Because the IRCTC system blocks checkout when REGRET is active, no transaction is initiated and no funds are deducted from your bank account.
 
 ---
 
 ## Bottom line
 
-REGRET is Indian Railways' way of stopping bookings when waitlists grow too long to ever confirm. It protects you from buying dead-end tickets. 
+REGRET is Indian Railways' way of stopping bookings when waitlists grow too long to ever confirm. It protects you from buying dead-end tickets.
 
 When your train shows REGRET, do not panic. Use **[Smart Seats](/)** to find confirmed split-leg journeys on the same train, or check **[Get Confirmed Tickets](/)** and **[Get Confirmed Tickets](/)** for post-charting seats.

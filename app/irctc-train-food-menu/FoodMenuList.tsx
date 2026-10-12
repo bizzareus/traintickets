@@ -144,9 +144,7 @@ export function FoodMenuList({ rows }: { rows: TrainFoodMenuIndexRow[] }) {
           Showing {visibleRows.length} of {filtered.length}{" "}
           {filtered.length === 1 ? "train" : "trains"}
         </span>
-        {filtered.length > visibleCount && (
-          <span>Scroll down to see more</span>
-        )}
+        {filtered.length > visibleCount && <span>Scroll down to see more</span>}
       </div>
 
       {/* Train List Grid */}
@@ -155,11 +153,11 @@ export function FoodMenuList({ rows }: { rows: TrainFoodMenuIndexRow[] }) {
           <li key={r.slug}>
             <Link
               href={`/irctc-train-food-menu/${r.slug}`}
-              className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3 shadow-sm transition-shadow hover:shadow-md hover:border-slate-300"
+              className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3 shadow-sm transition-shadow hover:border-slate-300 hover:shadow-md"
             >
               <span className="min-w-0 flex-1">
-                <span className="flex items-center gap-1.5 flex-wrap">
-                  <span className="truncate font-semibold text-slate-900 text-sm">
+                <span className="flex flex-wrap items-center gap-1.5">
+                  <span className="truncate text-sm font-semibold text-slate-900">
                     {r.route && !r.trainName.includes(" - ")
                       ? `${r.route} ${r.trainName}`
                       : r.trainName}
@@ -175,7 +173,8 @@ export function FoodMenuList({ rows }: { rows: TrainFoodMenuIndexRow[] }) {
         ))}
         {filtered.length === 0 && (
           <li className="col-span-full rounded-lg border border-slate-200 bg-white p-6 text-center text-sm text-slate-500">
-            No trains match your filters. Try a different search term or reset filters.
+            No trains match your filters. Try a different search term or reset
+            filters.
           </li>
         )}
       </ul>
@@ -186,7 +185,7 @@ export function FoodMenuList({ rows }: { rows: TrainFoodMenuIndexRow[] }) {
           <button
             type="button"
             onClick={() => setVisibleCount((prev) => prev + PAGE_SIZE)}
-            className="rounded-xl border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50 hover:border-slate-400 transition-colors"
+            className="rounded-xl border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:border-slate-400 hover:bg-slate-50"
           >
             Load more trains ({filtered.length - visibleCount} remaining)
           </button>

@@ -16,7 +16,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Vande Bharat Express Trains 2026: List, Routes, Timings & Booking | LastBerth",
+  title:
+    "Vande Bharat Express Trains 2026: List, Routes, Timings & Booking | LastBerth",
   description:
     "Complete list of 160+ Vande Bharat Express trains in India. Check routes, timetables, intermediate stops, Chair Car & Executive classes, catering menus, and book confirmed tickets on LastBerth.",
   alternates: { canonical: "/trains/vande-bharat" },
@@ -47,7 +48,8 @@ const FAQS = [
       "Vande Bharat Express is designed to operate at speeds up to 160–180 km/h on reinforced tracks. On standard broad-gauge express routes, it operates at 130 km/h with rapid acceleration that cuts travel time by 20–35% compared to conventional expresses.",
   },
   {
-    question: "What is the difference between Chair Car (CC) and Executive Class (EC)?",
+    question:
+      "What is the difference between Chair Car (CC) and Executive Class (EC)?",
     answer:
       "AC Chair Car (CC) features 3x2 seating with charging ports and pushback recline. Executive Class (EC) offers premium 2x2 seating with 180-degree revolving seats, wider legroom, and complimentary premium meals.",
   },
@@ -89,33 +91,42 @@ export default function VandeBharatTrainsPage() {
   };
 
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-slate-50/50 text-slate-900 antialiased">
+    <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-slate-900 antialiased">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
 
-      <main className="mx-auto max-w-5xl px-4 py-6 sm:py-10 sm:px-6 lg:px-8 space-y-8">
+      <main className="mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center text-xs sm:text-sm text-slate-500 font-medium" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
-          <ChevronRight className="mx-1.5 h-3.5 w-3.5 text-slate-400 shrink-0" />
-          <span className="text-slate-900 font-semibold truncate">Vande Bharat Express</span>
+        <nav
+          className="flex items-center text-xs font-medium text-slate-500 sm:text-sm"
+          aria-label="Breadcrumb"
+        >
+          <Link href="/" className="transition-colors hover:text-blue-600">
+            Home
+          </Link>
+          <ChevronRight className="mx-1.5 h-3.5 w-3.5 shrink-0 text-slate-400" />
+          <span className="truncate font-semibold text-slate-900">
+            Vande Bharat Express
+          </span>
         </nav>
 
         {/* Hero */}
-        <header className="rounded-3xl border border-blue-900/40 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+        <header className="relative overflow-hidden rounded-3xl border border-blue-900/40 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 p-6 text-white shadow-xl sm:p-10">
           <div className="relative z-10 max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/20 px-3 py-1 text-xs font-bold text-blue-300 backdrop-blur-xs border border-blue-400/30">
+            <div className="backdrop-blur-xs inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/20 px-3 py-1 text-xs font-bold text-blue-300">
               <Sparkles className="h-3.5 w-3.5" />
               <span>Flagship Semi-High Speed Network</span>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
               Vande Bharat Express Trains 2026
             </h1>
-            <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
-              India&apos;s indigenous semi-high speed train fleet connects major business, pilgrimage, and state capitals at up to 160 km/h. Browse all {trains.length} operational routes and book confirmed tickets.
+            <p className="text-sm leading-relaxed text-slate-200 sm:text-base">
+              India&apos;s indigenous semi-high speed train fleet connects major
+              business, pilgrimage, and state capitals at up to 160 km/h. Browse
+              all {trains.length} operational routes and book confirmed tickets.
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-2 text-xs font-medium text-slate-300">
               <span className="inline-flex items-center gap-1.5">
@@ -132,18 +143,27 @@ export default function VandeBharatTrainsPage() {
               </span>
             </div>
           </div>
-          <div className="absolute -right-16 -bottom-16 h-64 w-64 rounded-full bg-blue-600/20 blur-3xl pointer-events-none" aria-hidden="true" />
+          <div
+            className="pointer-events-none absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-blue-600/20 blur-3xl"
+            aria-hidden="true"
+          />
         </header>
 
         {/* Top Corridors */}
         <section aria-labelledby="corridors-heading" className="space-y-3">
-          <h2 id="corridors-heading" className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+          <h2
+            id="corridors-heading"
+            className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500"
+          >
             <MapPin className="h-3.5 w-3.5 text-blue-600" />
             Top Vande Bharat Corridors
           </h2>
           <div className="flex flex-wrap gap-2">
             {POPULAR_CORRIDORS.map((c) => (
-              <span key={c} className="rounded-lg bg-white border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-2xs hover:border-blue-400 hover:text-blue-600 transition-colors">
+              <span
+                key={c}
+                className="shadow-2xs rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:border-blue-400 hover:text-blue-600"
+              >
                 {c}
               </span>
             ))}
@@ -151,27 +171,39 @@ export default function VandeBharatTrainsPage() {
         </section>
 
         {/* Feature Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs space-y-1.5">
-            <div className="inline-flex items-center justify-center p-2 rounded-xl bg-blue-50 text-blue-600">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="shadow-xs space-y-1.5 rounded-2xl border border-slate-200 bg-white p-4">
+            <div className="inline-flex items-center justify-center rounded-xl bg-blue-50 p-2 text-blue-600">
               <Timer className="h-5 w-5" />
             </div>
-            <h3 className="text-sm font-bold text-slate-900">Rapid Acceleration</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">0 to 100 km/h in 52 seconds — cuts journey times by up to 35%.</p>
+            <h3 className="text-sm font-bold text-slate-900">
+              Rapid Acceleration
+            </h3>
+            <p className="text-xs leading-relaxed text-slate-500">
+              0 to 100 km/h in 52 seconds — cuts journey times by up to 35%.
+            </p>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs space-y-1.5">
-            <div className="inline-flex items-center justify-center p-2 rounded-xl bg-purple-50 text-purple-600">
+          <div className="shadow-xs space-y-1.5 rounded-2xl border border-slate-200 bg-white p-4">
+            <div className="inline-flex items-center justify-center rounded-xl bg-purple-50 p-2 text-purple-600">
               <Armchair className="h-5 w-5" />
             </div>
-            <h3 className="text-sm font-bold text-slate-900">180° Rotating Seats</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">Executive Class chairs rotate fully to face travel direction.</p>
+            <h3 className="text-sm font-bold text-slate-900">
+              180° Rotating Seats
+            </h3>
+            <p className="text-xs leading-relaxed text-slate-500">
+              Executive Class chairs rotate fully to face travel direction.
+            </p>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs space-y-1.5">
-            <div className="inline-flex items-center justify-center p-2 rounded-xl bg-amber-50 text-amber-600">
+          <div className="shadow-xs space-y-1.5 rounded-2xl border border-slate-200 bg-white p-4">
+            <div className="inline-flex items-center justify-center rounded-xl bg-amber-50 p-2 text-amber-600">
               <Coffee className="h-5 w-5" />
             </div>
-            <h3 className="text-sm font-bold text-slate-900">Curated IRCTC Catering</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">Opt-in hot meals served at your seat with regional menus.</p>
+            <h3 className="text-sm font-bold text-slate-900">
+              Curated IRCTC Catering
+            </h3>
+            <p className="text-xs leading-relaxed text-slate-500">
+              Opt-in hot meals served at your seat with regional menus.
+            </p>
           </div>
         </div>
 
@@ -184,11 +216,11 @@ export default function VandeBharatTrainsPage() {
         />
 
         {/* FAQs */}
-        <section className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 space-y-6">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+        <section className="space-y-6 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
             Frequently Asked Questions about Vande Bharat Express
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600">
+          <div className="grid grid-cols-1 gap-6 text-sm text-slate-600 md:grid-cols-2">
             {FAQS.map((faq) => (
               <div key={faq.question} className="space-y-2">
                 <h3 className="font-semibold text-slate-900">{faq.question}</h3>

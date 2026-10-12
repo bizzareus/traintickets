@@ -6,7 +6,11 @@ import {
   extractScanMetaFromResult,
   type TrainScanMeta,
 } from "./trainSearchV2Sort";
-import type { TrainListItem, AlternateLeg, AlternatePathsResponse } from "@/components/booking-v2/alternatePathsTypes";
+import type {
+  TrainListItem,
+  AlternateLeg,
+  AlternatePathsResponse,
+} from "@/components/booking-v2/alternatePathsTypes";
 
 describe("Train Search V2 - Prioritized Multi-Tier Sorting Logic", () => {
   // Helper to create mock train items
@@ -65,10 +69,22 @@ describe("Train Search V2 - Prioritized Multi-Tier Sorting Logic", () => {
     ];
 
     const scanMetaMap = new Map<string, TrainScanMeta>([
-      ["12011", { isComplete: true, confirmedDurationMinutes: 600, legCount: 2 }],
-      ["12012", { isComplete: true, confirmedDurationMinutes: 580, legCount: 2 }],
-      ["12010", { isComplete: false, confirmedDurationMinutes: 0, legCount: 0 }],
-      ["12013", { isComplete: false, confirmedDurationMinutes: 0, legCount: 0 }],
+      [
+        "12011",
+        { isComplete: true, confirmedDurationMinutes: 600, legCount: 2 },
+      ],
+      [
+        "12012",
+        { isComplete: true, confirmedDurationMinutes: 580, legCount: 2 },
+      ],
+      [
+        "12010",
+        { isComplete: false, confirmedDurationMinutes: 0, legCount: 0 },
+      ],
+      [
+        "12013",
+        { isComplete: false, confirmedDurationMinutes: 0, legCount: 0 },
+      ],
     ]);
 
     const sorted = sortTrainSearchV2(trains, { scanMetaMap });
@@ -126,7 +142,10 @@ describe("Train Search V2 - Prioritized Multi-Tier Sorting Logic", () => {
 
     const scanMetaMap = new Map<string, TrainScanMeta>([
       ["SPLIT-FULL-NIGHT", { isComplete: true, confirmedDurationMinutes: 500 }],
-      ["SPLIT-FULL-MORNING", { isComplete: true, confirmedDurationMinutes: 450 }],
+      [
+        "SPLIT-FULL-MORNING",
+        { isComplete: true, confirmedDurationMinutes: 450 },
+      ],
       ["PARTIAL-10HR", { isComplete: false, confirmedDurationMinutes: 600 }],
       ["PARTIAL-3HR", { isComplete: false, confirmedDurationMinutes: 180 }],
       ["WAITLIST-EARLY", { isComplete: false, confirmedDurationMinutes: 0 }],
@@ -294,18 +313,23 @@ describe("Train Search V2 - Prioritized Multi-Tier Sorting Logic", () => {
     };
 
     // When 3A only is selected, 12566 (has 3A avail) is top, 12565 is waitlisted
-    const sortedFor3A = sortTrainSearchV2([trainWithSlAvail, trainWith3aAvail], {
-      selectedClasses: ["3A"],
-    });
+    const sortedFor3A = sortTrainSearchV2(
+      [trainWithSlAvail, trainWith3aAvail],
+      {
+        selectedClasses: ["3A"],
+      },
+    );
     assert.equal(sortedFor3A[0].trainNumber, "12566");
     assert.equal(sortedFor3A[1].trainNumber, "12565");
 
     // When SL only is selected, 12565 (has SL avail) is top, 12566 is waitlisted
-    const sortedForSL = sortTrainSearchV2([trainWithSlAvail, trainWith3aAvail], {
-      selectedClasses: ["SL"],
-    });
+    const sortedForSL = sortTrainSearchV2(
+      [trainWithSlAvail, trainWith3aAvail],
+      {
+        selectedClasses: ["SL"],
+      },
+    );
     assert.equal(sortedForSL[0].trainNumber, "12565");
     assert.equal(sortedForSL[1].trainNumber, "12566");
   });
 });
-

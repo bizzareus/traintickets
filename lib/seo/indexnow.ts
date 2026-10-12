@@ -44,7 +44,7 @@ export function getHostFromUrl(urlOrHost?: string): string {
  */
 export async function submitToIndexNow(
   urls: string[],
-  options: IndexNowOptions = {}
+  options: IndexNowOptions = {},
 ): Promise<IndexNowResult[]> {
   if (!urls || urls.length === 0) {
     return [
@@ -63,16 +63,15 @@ export async function submitToIndexNow(
   const rawHost = options.host || DEFAULT_SITE_URL;
   const host = getHostFromUrl(rawHost);
   const protocol = rawHost.startsWith("http://") ? "http" : "https";
-  const keyLocation =
-    options.keyLocation || `${protocol}://${host}/${key}.txt`;
+  const keyLocation = options.keyLocation || `${protocol}://${host}/${key}.txt`;
 
   // Filter and clean URLs
   const validUrls = Array.from(
     new Set(
       urls
         .map((u) => u.trim())
-        .filter((u) => u.startsWith("http://") || u.startsWith("https://"))
-    )
+        .filter((u) => u.startsWith("http://") || u.startsWith("https://")),
+    ),
   );
 
   if (validUrls.length === 0) {
@@ -124,10 +123,12 @@ export async function submitToIndexNow(
           message = "Bad request: Invalid format.";
           break;
         case 403:
-          message = "Forbidden: Key not valid (key not found or file mismatch).";
+          message =
+            "Forbidden: Key not valid (key not found or file mismatch).";
           break;
         case 422:
-          message = "Unprocessable Entity: URLs do not belong to host or key schema invalid.";
+          message =
+            "Unprocessable Entity: URLs do not belong to host or key schema invalid.";
           break;
         case 429:
           message = "Too Many Requests: Potential spam rate limit.";
@@ -148,7 +149,10 @@ export async function submitToIndexNow(
       results.push({
         success: false,
         status: 500,
-        message: err instanceof Error ? err.message : "Network error calling IndexNow API.",
+        message:
+          err instanceof Error
+            ? err.message
+            : "Network error calling IndexNow API.",
         submittedCount: 0,
         host,
         keyLocation,

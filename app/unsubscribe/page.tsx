@@ -17,7 +17,9 @@ function UnsubscribePageContent() {
     paramRecipient || stored.email || stored.mobile || "";
 
   const [recipient, setRecipient] = useState(initialRecipient);
-  const [status, setStatus] = useState<Status>(initialRecipient ? "loading" : "subscribed");
+  const [status, setStatus] = useState<Status>(
+    initialRecipient ? "loading" : "subscribed",
+  );
   const [pending, setPending] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -131,8 +133,9 @@ function UnsubscribePageContent() {
                 </>
               ) : (
                 <>
-                  Enter the email address or mobile number you used to subscribe,
-                  and we will stop sending notifications to that address.
+                  Enter the email address or mobile number you used to
+                  subscribe, and we will stop sending notifications to that
+                  address.
                 </>
               )}
             </p>
@@ -182,8 +185,7 @@ function UnsubscribePageContent() {
               </p>
               <p className="mt-1 text-sm text-emerald-800">
                 No further alerts will be sent to{" "}
-                <span className="font-mono">{recipient}</span> (
-                {channelLabel}).
+                <span className="font-mono">{recipient}</span> ({channelLabel}).
               </p>
             </div>
             <div className="mt-6 flex flex-col gap-3">
@@ -214,7 +216,13 @@ function detectChannel(recipient: string): "email" | "whatsapp" {
 
 export default function UnsubscribePage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-slate-50 flex items-center justify-center">Loading…</div>}>
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center bg-slate-50">
+          Loading…
+        </div>
+      }
+    >
       <UnsubscribePageContent />
     </Suspense>
   );

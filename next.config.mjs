@@ -9,168 +9,175 @@ const __dirname = path.dirname(__filename);
 
 /** @param {string} phase */
 export default function configFactory(phase) {
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: process.env.NEXT_EXPORT === "true" ? "export" : undefined,
-  images: {
-    ...(process.env.NEXT_EXPORT === "true" ? { unoptimized: true } : {}),
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "s6.imgcdn.dev",
-      },
-      {
-        protocol: "https",
-        hostname: "**.imgcdn.dev",
-      },
-    ],
-  },
-  compress: true,
-  turbopack: {
-    root: __dirname,
-  },
-  outputFileTracingExcludes: {
-    "*": ["./next.config.mjs", "content/chart-times/**"],
-  },
-  cacheMaxMemorySize: 25 * 1024 * 1024,
-  experimental: {
-    optimizePackageImports: ["lucide-react", "flowbite", "clsx", "tailwind-merge"],
-  },
-  env: {
-    IS_BUILD_PHASE: phase === PHASE_PRODUCTION_BUILD ? "1" : "",
-  },
-  webpack: (config) => {
-    config.module = {
-      ...config.module,
-      exprContextCritical: false,
-    };
-    return config;
-  },
-  async redirects() {
-    return [
-      {
-        // Chart-vacancy tool moved from /seat-status; keep the old URL working (301).
-        source: "/seat-status",
-        destination: "/chart-vacancy",
-        statusCode: 301,
-      },
-      {
-        source: "/irctc-train-food-menu/ac-2a-3a-cc",
-        destination: "/irctc-train-food-menu/ac-coach-food-menu-prices",
-        statusCode: 308,
-      },
-      {
-        source: "/irctc-train-food-menu/duronto-sleeper",
-        destination: "/irctc-train-food-menu/duronto-sleeper-class-food-menu-prices",
-        statusCode: 308,
-      },
-      {
-        source: "/trains/diwali",
-        destination: "/special-trains/diwali",
-        statusCode: 308,
-      },
-      {
-        source: "/special-trains/dussehra",
-        destination: "/special-trains/dusshera",
-        statusCode: 308,
-      },
-      {
-        source: "/trains/vande_bharat",
-        destination: "/trains/vande-bharat",
-        statusCode: 308,
-      },
-    ];
-  },
-  async headers() {
-    return [
-      {
-        source: "/(chart-times|blog|irctc-train-food-menu|glossary|pnr-status|chart-vacancy)/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
-          },
-        ],
-      },
-      {
-        source: "/:path*",
-        headers: [
-          {
-            key: "Strict-Transport-Security",
-            value: "max-age=63072000; includeSubDomains; preload",
-          },
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "DENY",
-          },
-          {
-            key: "X-XSS-Protection",
-            value: "1; mode=block",
-          },
-          {
-            key: "Referrer-Policy",
-            value: "strict-origin-when-cross-origin",
-          },
-          {
-            key: "Link",
-            value:
-              '</.well-known/api-catalog>; rel="api-catalog", </openapi.json>; rel="service-desc"; type="application/json", </blog>; rel="service-doc"; type="text/html", </llms.txt>; rel="describedby"; type="text/plain"',
-          },
-        ],
-      },
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "query",
-            key: "from",
-          },
-        ],
-        headers: [
-          {
-            key: "X-Robots-Tag",
-            value: "noindex, nofollow",
-          },
-        ],
-      },
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "query",
-            key: "to",
-          },
-        ],
-        headers: [
-          {
-            key: "X-Robots-Tag",
-            value: "noindex, nofollow",
-          },
-        ],
-      },
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "query",
-            key: "train",
-          },
-        ],
-        headers: [
-          {
-            key: "X-Robots-Tag",
-            value: "noindex, nofollow",
-          },
-        ],
-      },
-    ];
-  },
-};
+  /** @type {import('next').NextConfig} */
+  const nextConfig = {
+    output: process.env.NEXT_EXPORT === "true" ? "export" : undefined,
+    images: {
+      ...(process.env.NEXT_EXPORT === "true" ? { unoptimized: true } : {}),
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "s6.imgcdn.dev",
+        },
+        {
+          protocol: "https",
+          hostname: "**.imgcdn.dev",
+        },
+      ],
+    },
+    compress: true,
+    turbopack: {
+      root: __dirname,
+    },
+    outputFileTracingExcludes: {
+      "*": ["./next.config.mjs", "content/chart-times/**"],
+    },
+    cacheMaxMemorySize: 25 * 1024 * 1024,
+    experimental: {
+      optimizePackageImports: [
+        "lucide-react",
+        "flowbite",
+        "clsx",
+        "tailwind-merge",
+      ],
+    },
+    env: {
+      IS_BUILD_PHASE: phase === PHASE_PRODUCTION_BUILD ? "1" : "",
+    },
+    webpack: (config) => {
+      config.module = {
+        ...config.module,
+        exprContextCritical: false,
+      };
+      return config;
+    },
+    async redirects() {
+      return [
+        {
+          // Chart-vacancy tool moved from /seat-status; keep the old URL working (301).
+          source: "/seat-status",
+          destination: "/chart-vacancy",
+          statusCode: 301,
+        },
+        {
+          source: "/irctc-train-food-menu/ac-2a-3a-cc",
+          destination: "/irctc-train-food-menu/ac-coach-food-menu-prices",
+          statusCode: 308,
+        },
+        {
+          source: "/irctc-train-food-menu/duronto-sleeper",
+          destination:
+            "/irctc-train-food-menu/duronto-sleeper-class-food-menu-prices",
+          statusCode: 308,
+        },
+        {
+          source: "/trains/diwali",
+          destination: "/special-trains/diwali",
+          statusCode: 308,
+        },
+        {
+          source: "/special-trains/dussehra",
+          destination: "/special-trains/dusshera",
+          statusCode: 308,
+        },
+        {
+          source: "/trains/vande_bharat",
+          destination: "/trains/vande-bharat",
+          statusCode: 308,
+        },
+      ];
+    },
+    async headers() {
+      return [
+        {
+          source:
+            "/(chart-times|blog|irctc-train-food-menu|glossary|pnr-status|chart-vacancy)/:path*",
+          headers: [
+            {
+              key: "Cache-Control",
+              value:
+                "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+            },
+          ],
+        },
+        {
+          source: "/:path*",
+          headers: [
+            {
+              key: "Strict-Transport-Security",
+              value: "max-age=63072000; includeSubDomains; preload",
+            },
+            {
+              key: "X-Content-Type-Options",
+              value: "nosniff",
+            },
+            {
+              key: "X-Frame-Options",
+              value: "DENY",
+            },
+            {
+              key: "X-XSS-Protection",
+              value: "1; mode=block",
+            },
+            {
+              key: "Referrer-Policy",
+              value: "strict-origin-when-cross-origin",
+            },
+            {
+              key: "Link",
+              value:
+                '</.well-known/api-catalog>; rel="api-catalog", </openapi.json>; rel="service-desc"; type="application/json", </blog>; rel="service-doc"; type="text/html", </llms.txt>; rel="describedby"; type="text/plain"',
+            },
+          ],
+        },
+        {
+          source: "/:path*",
+          has: [
+            {
+              type: "query",
+              key: "from",
+            },
+          ],
+          headers: [
+            {
+              key: "X-Robots-Tag",
+              value: "noindex, nofollow",
+            },
+          ],
+        },
+        {
+          source: "/:path*",
+          has: [
+            {
+              type: "query",
+              key: "to",
+            },
+          ],
+          headers: [
+            {
+              key: "X-Robots-Tag",
+              value: "noindex, nofollow",
+            },
+          ],
+        },
+        {
+          source: "/:path*",
+          has: [
+            {
+              type: "query",
+              key: "train",
+            },
+          ],
+          headers: [
+            {
+              key: "X-Robots-Tag",
+              value: "noindex, nofollow",
+            },
+          ],
+        },
+      ];
+    },
+  };
 
   if (phase !== PHASE_PRODUCTION_BUILD) {
     return nextConfig;

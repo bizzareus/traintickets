@@ -20,6 +20,7 @@ East Central Railway (ECR) 2026-ൽ ദുർഗാ പൂജ, ദിവാല�
 ---
 
 > ### 🚆 2026-ൽ ദിവാലി അല്ലെങ്കിൽ ചാത്ത് പൂജയ്ക്കായി ബിഹാറിലേക്ക് യാത്ര ചെയ്യുകയാണോ?
+>
 > കാത്തിരിപ്പു പട്ടികകൾ നിങ്ങളുടെ വീട്ടിലേക്ക് മടങ്ങുന്നതിൽ തടസ്സം വരുത്താൻ അനുവദിക്കരുത്. ലൈവ് ലഭ്യത, കോച്ച് ലേഔട്ടുകൾ, LastBerth-ൽ ഉറപ്പുള്ള തുടർച്ചയായ സ്പ്ലിറ്റ്-ബർത്ത് യാത്രകൾ പരിശോധിക്കുക:
 >
 > - [Search New Delhi ➔ Patna Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
@@ -28,7 +29,7 @@ East Central Railway (ECR) 2026-ൽ ദുർഗാ പൂജ, ദിവാല�
 > - [Search Pune ➔ Danapur Festival Specials](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur)
 > - [Search KSR Bengaluru ➔ Danapur Trains](/?from=SBC&to=DNR&fromName=KSR%20Bengaluru&toName=Danapur)
 >
-> *നിങ്ങളുടെ മാർഗ്ഗം ആസൂത്രണം ചെയ്യുകയാണോ? ഞങ്ങളുടെ വിശദമായ [Delhi to Patna Train Route Guide](/routes/delhi-to-patna)യും [Mumbai to Danapur Route Schedule](/routes/mumbai-to-danapur)യും വായിക്കുക.*
+> _നിങ്ങളുടെ മാർഗ്ഗം ആസൂത്രണം ചെയ്യുകയാണോ? ഞങ്ങളുടെ വിശദമായ [Delhi to Patna Train Route Guide](/routes/delhi-to-patna)യും [Mumbai to Danapur Route Schedule](/routes/mumbai-to-danapur)യും വായിക്കുക._
 
 ---
 
@@ -41,6 +42,7 @@ East Central Railway (ECR) 2026-ൽ ദുർഗാ പൂജ, ദിവാല�
 ഈ ഉത്സവ സേവനങ്ങൾ ട്രെയിൻ നമ്പറുകളിൽ ഒരു മുൻനിര ശൂന്യത്തോടെ (ഉദാഹരണത്തിന് 04512 അല്ലെങ്കിൽ 04616) പ്രവർത്തിക്കുന്നു. ഇവ ECR-ന്റെ അഞ്ചു ഡിവിഷനുകളിൽ നിന്ന് അധിക ട്രാഫിക് കൈകാര്യം ചെയ്യാൻ രൂപകൽപ്പന ചെയ്തതാണ്: ദാനാപുര്, സോൺപൂർ, സമസ്തിപൂർ, പി.ടി. ദീൻ ദയാൽ ഉപാധ്യായ (DDU), ധനബാദ്.
 
 സ്റ്റേഷനിലെ തിരക്കുകൾ കൈകാര്യം ചെയ്യാൻ, സേവനങ്ങൾ പട്ന നഗര പ്രദേശത്തെ നിരവധി ഉപഗ്രഹ ടെർമിനലുകളിൽ തന്ത്രപരമായി വിതരണം ചെയ്യുന്നു:
+
 - **പട്ന ജംഗ്ഷൻ (PNBE):** വടക്കൻ, കിഴക്കൻ ത്രങ്ക് മാർഗങ്ങൾക്കായുള്ള പ്രധാന ഹബ്.
 - **ദാനാപുര് (DNR):** മുംബൈ, പൂനെ, ബംഗളൂരു, ഹൈദരാബാദ് എന്നിവയിൽ നിന്ന് ആരംഭിക്കുന്ന ദൂരദർശന സേവനങ്ങൾക്ക് പ്രധാന ടെർമിനൽ.
 - **പാട്ലിപുത്ര ജംഗ്ഷൻ (PPTA):** ആനന്ദ് വിഹാർ, ന്യൂ ഡൽഹി എന്നിവയിൽ നിന്ന് ഉയർന്ന ശേഷി ദിനശേഷികൾ കൈകാര്യം ചെയ്യുന്ന സമർപ്പിത ടെർമിനൽ.
@@ -54,20 +56,20 @@ East Central Railway (ECR) 2026-ൽ ദുർഗാ പൂജ, ദിവാല�
 
 2026-ലെ ഉത്സവ സീസണിനായി East Central Railway-ന്റെ നിയന്ത്രണത്തിലുള്ള പ്രധാന ഫെസ്റ്റിവൽ സ്പെഷ്യൽ ട്രെയിനുകളുടെ സ്ഥിരീകരിച്ച ടൈംടേബിൾയും പ്രവർത്തന മാട്രിക്സും താഴെ കൊടുത്തിരിക്കുന്നു:
 
-| Train Number | Train Name | Route & Terminals | Frequency & Days | Operating Period | Coach Composition |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **04512 / 04511** | Chandigarh – Patna Weekly Special | Chandigarh ➔ Ambala ➔ DDU ➔ Danapur ➔ Patna | Thu (ex-CDG) / Fri (ex-PNBE) | Oct 1 to Nov 27, 2026 | 2A, 3A, 3E, SL, GS |
-| **04616 / 04615** | Firozpur – Patna Weekly Special | Firozpur Cantt ➔ Moradabad ➔ DDU ➔ Danapur ➔ Patna | Tue (ex-FZR) / Wed (ex-PNBE) | Oct 6 to Nov 25, 2026 | 3A, 3E, SL, GS |
-| **04072 / 04071** | New Delhi – Supaul Daily Special | New Delhi ➔ Moradabad ➔ Gorakhpur ➔ Hajipur ➔ Supaul | Daily | Oct 1 to Nov 30, 2026 | 3E, SL, GS |
-| **04062 / 04061** | Anand Vihar – Bhagalpur Special | Anand Vihar ➔ Kanpur ➔ DDU ➔ Patna ➔ Bhagalpur | Tri-weekly (Mon, Wed, Fri) | Oct 2 to Nov 28, 2026 | 2A, 3A, SL, GS |
-| **01409 / 01410** | Pune – Danapur Festival Special | Pune ➔ Daund Chord ➔ Itarsi ➔ Jabalpur ➔ Danapur | Bi-weekly (Sat, Tue ex-PUNE) | Oct 3 to Nov 28, 2026 | 2A, 3A, SL, GS |
-| **07091 / 07092** | Secunderabad – Danapur Special | Secunderabad ➔ Nagpur ➔ Jabalpur ➔ DDU ➔ Danapur | Weekly (Sun ex-SC / Mon ex-DNR) | Oct 4 to Nov 30, 2026 | 2A, 3A, 3E, SL, GS |
-| **07041 / 07042** | Charlapalli – Sasaram Special | Charlapalli (CHZ) ➔ Kazipet ➔ Jabalpur ➔ Sasaram | Weekly (Sun ex-CHZ) | Oct 11 to Nov 29, 2026 | 3A, SL, GS |
-| **01103 / 01104** | Mumbai LTT – Danapur Special | Lokmanya Tilak Trm ➔ Bhusaval ➔ Jabalpur ➔ Danapur | Bi-weekly (Mon, Thu ex-LTT) | Oct 5 to Nov 26, 2026 | 2A, 3A, SL, GS |
-| **09045 / 09046** | Udhna – Patna Superfast Special | Udhna (Surat) ➔ Khandwa ➔ Jabalpur ➔ Patna Jn | Weekly (Fri ex-UDN / Sat ex-PNBE) | Oct 2 to Nov 28, 2026 | 2A, 3A, SL, GS |
-| **04012 / 04011** | New Delhi – Darbhanga Special | New Delhi ➔ Lucknow ➔ Gorakhpur ➔ Muzaffarpur ➔ Darbhanga | Semi-weekly | Oct 4 to Nov 29, 2026 | 3A, 3E, SL, GS |
+| Train Number      | Train Name                        | Route & Terminals                                         | Frequency & Days                  | Operating Period       | Coach Composition  |
+| :---------------- | :-------------------------------- | :-------------------------------------------------------- | :-------------------------------- | :--------------------- | :----------------- |
+| **04512 / 04511** | Chandigarh – Patna Weekly Special | Chandigarh ➔ Ambala ➔ DDU ➔ Danapur ➔ Patna               | Thu (ex-CDG) / Fri (ex-PNBE)      | Oct 1 to Nov 27, 2026  | 2A, 3A, 3E, SL, GS |
+| **04616 / 04615** | Firozpur – Patna Weekly Special   | Firozpur Cantt ➔ Moradabad ➔ DDU ➔ Danapur ➔ Patna        | Tue (ex-FZR) / Wed (ex-PNBE)      | Oct 6 to Nov 25, 2026  | 3A, 3E, SL, GS     |
+| **04072 / 04071** | New Delhi – Supaul Daily Special  | New Delhi ➔ Moradabad ➔ Gorakhpur ➔ Hajipur ➔ Supaul      | Daily                             | Oct 1 to Nov 30, 2026  | 3E, SL, GS         |
+| **04062 / 04061** | Anand Vihar – Bhagalpur Special   | Anand Vihar ➔ Kanpur ➔ DDU ➔ Patna ➔ Bhagalpur            | Tri-weekly (Mon, Wed, Fri)        | Oct 2 to Nov 28, 2026  | 2A, 3A, SL, GS     |
+| **01409 / 01410** | Pune – Danapur Festival Special   | Pune ➔ Daund Chord ➔ Itarsi ➔ Jabalpur ➔ Danapur          | Bi-weekly (Sat, Tue ex-PUNE)      | Oct 3 to Nov 28, 2026  | 2A, 3A, SL, GS     |
+| **07091 / 07092** | Secunderabad – Danapur Special    | Secunderabad ➔ Nagpur ➔ Jabalpur ➔ DDU ➔ Danapur          | Weekly (Sun ex-SC / Mon ex-DNR)   | Oct 4 to Nov 30, 2026  | 2A, 3A, 3E, SL, GS |
+| **07041 / 07042** | Charlapalli – Sasaram Special     | Charlapalli (CHZ) ➔ Kazipet ➔ Jabalpur ➔ Sasaram          | Weekly (Sun ex-CHZ)               | Oct 11 to Nov 29, 2026 | 3A, SL, GS         |
+| **01103 / 01104** | Mumbai LTT – Danapur Special      | Lokmanya Tilak Trm ➔ Bhusaval ➔ Jabalpur ➔ Danapur        | Bi-weekly (Mon, Thu ex-LTT)       | Oct 5 to Nov 26, 2026  | 2A, 3A, SL, GS     |
+| **09045 / 09046** | Udhna – Patna Superfast Special   | Udhna (Surat) ➔ Khandwa ➔ Jabalpur ➔ Patna Jn             | Weekly (Fri ex-UDN / Sat ex-PNBE) | Oct 2 to Nov 28, 2026  | 2A, 3A, SL, GS     |
+| **04012 / 04011** | New Delhi – Darbhanga Special     | New Delhi ➔ Lucknow ➔ Gorakhpur ➔ Muzaffarpur ➔ Darbhanga | Semi-weekly                       | Oct 4 to Nov 29, 2026  | 3A, 3E, SL, GS     |
 
-*Note: Stoppages and schedules are subject to operational adjustments by East Central Railway based on passenger density.*
+_Note: Stoppages and schedules are subject to operational adjustments by East Central Railway based on passenger density._
 
 ---
 
@@ -78,6 +80,7 @@ East Central Railway (ECR) 2026-ൽ ദുർഗാ പൂജ, ദിവാല�
 ഡൽഹി, പഞ്ചാബ്, ഹരിയാന എന്നിവയിലെ വടക്കൻ കൃഷി മേഖലകളിൽ ലക്ഷക്കണക്കിന് കുടിയേറ്റ തൊഴിലാളികളും വിദ്യാർത്ഥികളും ഉത്സവ സീസണിൽ ബിഹാറിലേക്ക് മടങ്ങുന്നു. ന്യൂ ഡൽഹി റെയിൽവേ സ്റ്റേഷനിൽ (NDLS) കഠിനമായ പ്ലാറ്റ്ഫോം തിരക്കുകൾ കുറയ്ക്കാൻ, നോർത്തൺ റെയിൽവേയും ഈസ്റ്റ് സെൻട്രൽ റെയിൽവേയും പ്രധാന പുറപ്പെടലുകൾ ആനന്ദ് വിഹാർ ടെർമിനലിലേക്ക് (ANVT) മാറ്റിയിട്ടുണ്ട്.
 
 പ്രധാന വടക്കൻ കോറിഡോർ ബന്ധങ്ങൾ:
+
 1. **ചണ്ഡീഗഡ് ➔ പട്ന (04512/04511):** ചണ്ഡീഗഡിൽ എല്ലാ വ്യാഴാഴ്ചയും 23:20-ന് പുറപ്പെടുന്നു, വെള്ളിയാഴ്ച വൈകുന്നേരം ദാനാപുരും പട്ന ജംഗ്ഷനിലും എത്തുന്നു. ഈ സേവനം അംബാല, സഹാരൻപൂർ, മോറദാബാദ് എന്നിവയിൽ നിന്ന് ആര, ബക്സർ, പട്ന എന്നിവയിലേക്ക് പോകുന്ന യാത്രക്കാർക്കായുള്ള പ്രധാന ബന്ധം നൽകുന്നു.
 2. **ഫിറോസ്പൂർ കാന്റ് ➔ പട്ന (04616/04615):** ചൊവ്വാഴ്ച ഫിറോസ്പൂരിൽ നിന്ന് പുറപ്പെടുന്നു, ബത്തിന്ദ, ധുരി, പടിയാല എന്നിവയിലൂടെ കടന്നുപോകുന്നു, പി.ടി. ദീൻ ദയാൽ ഉപാധ്യായ ജംഗ്ഷനിലൂടെ ബിഹാറിലേക്ക് കടക്കുന്നു.
 3. **ആനന്ദ് വിഹാർ ➔ പാട്ലിപുത്ര ജംഗ്ഷൻ:** ഉയർന്ന അനർദ്ദിത കോച്ചുകളുടെ (GS) ഉയർന്ന ശതമാനം ഉൾക്കൊള്ളുന്ന ദിനശേഷി ഉത്സവ സ്പെഷ്യൽ, പട്ന ജംഗ്ഷന്റെ കേന്ദ്ര bottleneck-നെ ഒഴിവാക്കാൻ നഗരത്തിന് വടക്കേ ഭാഗത്ത് പാട്ലിപുത്രയിൽ അവസാനിക്കുന്നു.
@@ -93,6 +96,7 @@ East Central Railway (ECR) 2026-ൽ ദുർഗാ പൂജ, ദിവാല�
 മുംബൈ–പൂനെ വ്യവസായ ബലവും തെക്കൻ സാങ്കേതിക നഗരങ്ങളും ബിഹാറിലേക്ക് പോകുന്ന ട്രെയിനുകൾക്കായി രാജ്യത്തെ ഏറ്റവും ഉയർന്ന കാത്തിരിപ്പുകൾ നേരിടുന്നു. East Central Railway, Central Railway, Western Railway, South Central Railway എന്നിവയുമായി സഹകരിച്ച് ദാനാപുരിലും പട്ന ജംഗ്ഷനിലും ഈ ദൂരം ദൂരമുള്ള സ്പെഷ്യൽ റെയിൽക്കാർ സ്വീകരിക്കുന്നതിന്.
 
 പ്രധാന പടിഞ്ഞാറൻ, തെക്കൻ മാർഗങ്ങൾ:
+
 - **പൂനെ ➔ ദാനാപുര് സ്പെഷ്യൽ (01409/01410):** പൂനെ വഴി ദൗണ്ട് ചോർഡ് ലൈൻ, മന്മദ്, ഭുസവൽ, ഖാൻഡ്വ, ഇറ്റാർസി, ജബൽപൂർ, കാട്ടനി, സാറ്റ്ന, മാനിക്പൂർ, പ്രയാഗ് ച്ഛിയോക്കി, പി.ടി. ദീൻ ദയാൽ ഉപാധ്യായ ജംഗ്ഷൻ എന്നിവയിലൂടെ ദാനാപുരിലേക്ക് ആഴ്ചയിൽ രണ്ടുതവണ പ്രവർത്തിക്കുന്നു.
 - **മുംബൈ LTT ➔ ദാനാപുര് & സമസ്തിപൂർ (01103/01104):** താനെ, കലിയാൻ, നാശിക് എന്നിവയിൽ നിന്ന് കേന്ദ്രവും വടക്കൻ ബിഹാറിലേക്കുള്ള യാത്രക്കാർക്കായി ആശ്വാസം നൽകാൻ ലോക്മന്യ തിലക് ടെർമിനസിൽ നിന്ന് പ്രവർത്തിക്കുന്നു.
 - **ചാർലപ്പള്ളി & സെക്കുണ്ടറാബാദ് ➔ ദാനാപുര് (07091/07092 & 07041/07042):** ഹൈദരാബാദിലെ പുതിയ ചാർലപ്പള്ളി ഉപഗ്രഹ ടെർമിനലിൽ നിന്ന് ദാനാപുരിലേക്ക് ഈ ഉയർന്ന ശേഷി സേവനങ്ങൾ പ്രവർത്തിക്കുന്നു, തിരക്കേറിയ സെക്കുണ്ടറാബാദ് പ്ലാറ്റ്ഫോമുകൾ ഒഴിവാക്കുന്നു.
@@ -107,6 +111,7 @@ East Central Railway (ECR) 2026-ൽ ദുർഗാ പൂജ, ദിവാല�
 60-ദിവസത്തെ മുൻകൂട്ടി റിസർവേഷൻ കാലയളവിൽ കർശനമായി പാലിക്കുന്ന സാധാരണ മെയിൽ, എക്സ്പ്രസ് ട്രെയിനുകളെക്കാൾ വ്യത്യസ്തമായി, ഫെസ്റ്റിവൽ സ്പെഷ്യൽ ട്രെയിനുകൾ ഘട്ടങ്ങളായും തുറക്കുന്നു. യാത്രക്കാരുടെ കാത്തിരിപ്പുകൾ സാധാരണ ട്രെയിനുകളിൽ പ്രവർത്തനപരമായ ത്രെഷോൾഡുകൾക്കു മുകളിലേക്ക് കടന്നുപോകുമ്പോൾ ഇന്ത്യൻ റെയിൽവേ ഈ റെയിൽക്കാർ ഡൈനാമിക് ആയി പുറത്തിറക്കുന്നു.
 
 ഈ വ്യാപാര ബുക്കിംഗ് നിയമങ്ങൾ മനസ്സിലാക്കുക:
+
 1. **റോളിംഗ് അറിയിപ്പ് വിൻഡോ:** ECR ഫെസ്റ്റിവൽ സ്പെഷ്യൽ ട്രെയിനുകളുടെ ഭൂരിഭാഗവും അവരുടെ ആരംഭ തീയതിക്ക് **10 മുതൽ 30 ദിവസം മുമ്പ്** ബുക്കിംഗിന് തുറക്കുന്നു. IRCTC പോർട്ടലിലും ഔദ്യോഗിക ഈസ്റ്റ് സെൻട്രൽ റെയിൽവേ സോഷ്യൽ ഹാൻഡലുകളിലും 24 മുതൽ 48 മണിക്കൂർ മുമ്പ് അറിയിപ്പുകൾ പ്രത്യക്ഷപ്പെടുന്നു.
 2. **8:00 AM തുറക്കൽ സമയം:** എല്ലാ ക്ലാസുകളിലെയും (2AC, 3AC, 3E, സ്ലീപർ) ഓൺലൈൻ റിസർവേഷനുകൾ **08:00 AM IST**-ൽ കൃത്യമായി തുറക്കുന്നു.
 3. **കണ്ടതും ആധാർ OTP സ്ഥിരീകരണം:** ബുക്കിംഗ് തുറക്കുന്ന ദിവസത്തിൽ, IRCTC ഉത്സവ സ്പെഷ്യൽ ബെർത്ത് ബുക്കിംഗ് ചെയ്യുന്ന എല്ലാ ഉപയോക്തൃ അക്കൗണ്ടുകൾക്കായി ആധാർ-ലിങ്ക് ചെയ്ത OTP സ്ഥിരീകരണം നടപ്പാക്കുന്നു.
@@ -145,27 +150,35 @@ East Central Railway (ECR) 2026-ൽ ദുർഗാ പൂജ, ദിവാല�
 ## Common Booking Questions (FAQ)
 
 ### What does ECR stand for in Indian Railways?
+
 ECR stands for East Central Railway, one of the 18 railway zones of Indian Railways. Headquartered in Hajipur, Bihar, it encompasses five operational divisions: Danapur, Sonpur, Samastipur, Pt Deen Dayal Upadhyaya, and Dhanbad.
 
 ### Why do ECR festival special train numbers start with zero?
+
 Train numbers starting with zero designate special trains operating outside the regular timetable on special fares (TOSF). Indian Railways uses the zero prefix to distinguish seasonal holiday and festival specials from regular round-the-year express services.
 
 ### Can unreserved passengers board sleeper coaches on ECR special trains?
+
 No, passengers with unreserved general or platform tickets are strictly prohibited from entering reserved Sleeper or AC coaches. Under the amended Section 138 of the Railways Act, unauthorized entry incurs a flat ₹500 fine in addition to the fare difference, and passengers face deboarding at the next scheduled stop.
 
 ### What is the difference between Patna Junction, Danapur, and Patliputra stations?
+
 All three stations serve the greater Patna urban area but handle different routes. Patna Junction is the central station on the main Howrah–Delhi line, Danapur is a major western junction handling trains from Mumbai, Pune, and South India, and Patliputra Junction primarily handles trains heading toward North Bihar and Assam via the Digha–Sonpur rail bridge.
 
 ### How much extra fare is charged on ECR special trains?
+
 Special trains operate under Train on Special Fare (TOSF) rules, which carry a surcharge of approximately 10% to 30% over basic mail and express fares. Concessions do not apply to festival special bookings.
 
 ### Does a waitlisted festival special e-ticket get auto-cancelled?
+
 Yes. If you book an online e-ticket on IRCTC for an ECR festival special train and your status remains on the Waiting List after second chart preparation, the ticket is automatically cancelled and the fare is refunded to your bank account. You cannot board the train with an unconfirmed e-ticket.
 
 ### When is the first reservation chart prepared for festival specials?
+
 The first reservation chart is finalized approximately 8 hours prior to train departure from the originating station. For trains scheduled to depart between midnight and 14:00 hrs, the first chart is prepared by 20:00 hrs (8:00 PM) on the previous evening.
 
 ### Where can I check vacant berths on ECR trains after charting?
+
 You can view vacant berths released after chart preparation directly on the [Chart Vacancy Map](/chart-vacancy) on LastBerth or via the IRCTC Charts portal. Berth vacancies can be booked online under Current Availability up to 30 minutes before departure.
 
 ---

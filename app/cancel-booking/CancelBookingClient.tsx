@@ -141,20 +141,20 @@ export function CancelBookingClient() {
   }
 
   return (
-    <main className="min-h-[80vh] bg-slate-50 py-10 px-4 sm:px-6">
+    <main className="min-h-[80vh] bg-slate-50 px-4 py-10 sm:px-6">
       <div className="mx-auto max-w-xl">
         {/* Header */}
         <div className="mb-6 text-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800 transition mb-3"
+            className="mb-3 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 transition hover:text-slate-800"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Back to Search
           </Link>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
             Cancel Train Booking
           </h1>
-          <p className="mt-1.5 text-xs sm:text-sm text-slate-600">
+          <p className="mt-1.5 text-xs text-slate-600 sm:text-sm">
             Request cancellation for your LastBerth split-ticket reservation
           </p>
         </div>
@@ -162,19 +162,19 @@ export function CancelBookingClient() {
         {errorMessage && (
           <div
             role="alert"
-            className="mb-5 flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 p-4 text-xs sm:text-sm text-red-800"
+            className="mb-5 flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 p-4 text-xs text-red-800 sm:text-sm"
           >
-            <AlertCircle className="h-4 w-4 shrink-0 text-red-600 mt-0.5" />
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" />
             <p>{errorMessage}</p>
           </div>
         )}
 
         {/* STEP 1: LOOKUP FORM */}
         {step === "lookup" && (
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
             <form onSubmit={handleLookup} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700">
                   Booking Reference *
                 </label>
                 <input
@@ -183,7 +183,7 @@ export function CancelBookingClient() {
                   value={bookingRef}
                   onChange={(e) => setBookingRef(e.target.value.toUpperCase())}
                   placeholder="e.g. LB-DUZAW"
-                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm font-mono uppercase focus:border-blue-600 focus:outline-hidden focus:ring-1 focus:ring-blue-600"
+                  className="focus:outline-hidden w-full rounded-xl border border-slate-300 px-3.5 py-2.5 font-mono text-sm uppercase focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
                 />
                 <span className="mt-1 block text-[11px] text-slate-500">
                   Provided in your booking confirmation popup, email, and
@@ -192,7 +192,7 @@ export function CancelBookingClient() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700">
                   Mobile Number *
                 </label>
                 <div className="flex">
@@ -206,7 +206,7 @@ export function CancelBookingClient() {
                     value={mobile}
                     onChange={(e) => setMobile(e.target.value)}
                     placeholder="10-digit mobile number"
-                    className="w-full rounded-r-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:outline-hidden focus:ring-1 focus:ring-blue-600"
+                    className="focus:outline-hidden w-full rounded-r-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
                   />
                 </div>
                 <span className="mt-1 block text-[11px] text-slate-500">
@@ -218,7 +218,7 @@ export function CancelBookingClient() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-sm font-bold text-white hover:bg-slate-800 disabled:opacity-50 transition"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-sm font-bold text-white transition hover:bg-slate-800 disabled:opacity-50"
                 >
                   {loading ? (
                     <>
@@ -257,7 +257,7 @@ export function CancelBookingClient() {
 
         {/* STEP 2: REVIEW TICKET DETAILS & CONFIRM */}
         {step === "review" && booking && (
-          <div className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+          <div className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
             {/* Booking Header Card */}
             <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
@@ -276,10 +276,10 @@ export function CancelBookingClient() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="rounded-md bg-slate-200 px-2 py-0.5 text-xs font-mono font-bold text-slate-800">
+                  <span className="rounded-md bg-slate-200 px-2 py-0.5 font-mono text-xs font-bold text-slate-800">
                     {booking.bookingRef}
                   </span>
-                  <p className="text-[11px] text-slate-500 mt-0.5">
+                  <p className="mt-0.5 text-[11px] text-slate-500">
                     Date: {booking.journeyDate}
                   </p>
                 </div>
@@ -287,7 +287,7 @@ export function CancelBookingClient() {
 
               {/* Passengers */}
               <div className="pt-3">
-                <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+                <span className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-slate-500">
                   Passengers
                 </span>
                 <ul className="space-y-1 text-xs text-slate-700">
@@ -316,15 +316,11 @@ export function CancelBookingClient() {
                 booking.pnrLeg2 ||
                 booking.pnrs?.length > 0) && (
                 <div className="mt-3 border-t border-slate-200 pt-3">
-                  <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+                  <span className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-slate-500">
                     Issued PNRs
                   </span>
                   <div className="flex flex-wrap gap-2">
-                    {[
-                      booking.pnrLeg1,
-                      booking.pnrLeg2,
-                      ...(booking.pnrs || []),
-                    ]
+                    {[booking.pnrLeg1, booking.pnrLeg2, ...(booking.pnrs || [])]
                       .filter(Boolean)
                       .map((pnr, idx) => (
                         <span
@@ -341,7 +337,7 @@ export function CancelBookingClient() {
               {/* Price Paid */}
               <div className="mt-3 flex items-center justify-between border-t border-slate-200 pt-3 text-xs">
                 <span className="text-slate-600">Total Paid:</span>
-                <span className="font-bold text-slate-900 text-sm">
+                <span className="text-sm font-bold text-slate-900">
                   ₹{booking.amount.toLocaleString("en-IN")}
                 </span>
               </div>
@@ -350,7 +346,7 @@ export function CancelBookingClient() {
             {/* Existing Request Warning if already submitted */}
             {booking.existingCancellation && (
               <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs text-amber-900">
-                <div className="flex items-center gap-2 font-bold mb-1">
+                <div className="mb-1 flex items-center gap-2 font-bold">
                   <ShieldAlert className="h-4 w-4 text-amber-700" />
                   <span>Cancellation Request Already Received</span>
                 </div>
@@ -378,12 +374,12 @@ export function CancelBookingClient() {
             {!booking.existingCancellation && (
               <>
                 {/* Cancellation policy advisory */}
-                <div className="rounded-xl border border-blue-100 bg-blue-50/70 p-4 text-xs text-slate-700 space-y-2">
+                <div className="space-y-2 rounded-xl border border-blue-100 bg-blue-50/70 p-4 text-xs text-slate-700">
                   <div className="flex items-center gap-1.5 font-bold text-blue-900">
                     <HelpCircle className="h-4 w-4 text-blue-600" />
                     <span>Indian Railways Cancellation & Refund Policy</span>
                   </div>
-                  <ul className="list-disc pl-4 space-y-1 text-slate-600">
+                  <ul className="list-disc space-y-1 pl-4 text-slate-600">
                     <li>
                       Ticket cancellations are governed by official Indian
                       Railways / IRCTC cancellation rules.
@@ -402,7 +398,7 @@ export function CancelBookingClient() {
 
                 {/* Reason Input */}
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                  <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700">
                     Reason for Cancellation (Optional)
                   </label>
                   <textarea
@@ -410,19 +406,19 @@ export function CancelBookingClient() {
                     value={reason}
                     onChange={(e) => setReason(e.target.value)}
                     placeholder="e.g. Change in travel plans, emergency, etc."
-                    className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-xs sm:text-sm focus:border-blue-600 focus:outline-hidden focus:ring-1 focus:ring-blue-600"
+                    className="focus:outline-hidden w-full rounded-xl border border-slate-300 px-3.5 py-2 text-xs focus:border-blue-600 focus:ring-1 focus:ring-blue-600 sm:text-sm"
                   />
                 </div>
 
                 {/* Confirmation Checkbox */}
-                <label className="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5 cursor-pointer">
+                <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5">
                   <input
                     type="checkbox"
                     checked={confirmUnderstood}
                     onChange={(e) => setConfirmUnderstood(e.target.checked)}
                     className="mt-0.5 h-4 w-4 rounded border-slate-300 text-red-600 focus:ring-red-500"
                   />
-                  <span className="text-xs text-slate-700 leading-snug">
+                  <span className="text-xs leading-snug text-slate-700">
                     I confirm that I want to cancel booking{" "}
                     <strong>{booking.bookingRef}</strong> and acknowledge that
                     IRCTC cancellation charges and refund deductions apply.
@@ -430,14 +426,14 @@ export function CancelBookingClient() {
                 </label>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <div className="flex flex-col gap-3 pt-2 sm:flex-row">
                   <button
                     type="button"
                     onClick={() => {
                       setStep("lookup");
                       setErrorMessage("");
                     }}
-                    className="w-full sm:w-1/3 rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition"
+                    className="w-full rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100 sm:w-1/3"
                   >
                     Go Back
                   </button>
@@ -445,7 +441,7 @@ export function CancelBookingClient() {
                     type="button"
                     disabled={!confirmUnderstood || submitting}
                     onClick={handleConfirmCancellation}
-                    className="w-full sm:w-2/3 inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 py-2.5 text-xs font-bold text-white hover:bg-red-700 disabled:opacity-50 transition"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 py-2.5 text-xs font-bold text-white transition hover:bg-red-700 disabled:opacity-50 sm:w-2/3"
                   >
                     {submitting ? (
                       <>
@@ -465,7 +461,7 @@ export function CancelBookingClient() {
                 <button
                   type="button"
                   onClick={() => setStep("lookup")}
-                  className="w-full rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition"
+                  className="w-full rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100"
                 >
                   Look Up Another Booking
                 </button>
@@ -476,16 +472,16 @@ export function CancelBookingClient() {
 
         {/* STEP 3: SUCCESS CONFIRMATION */}
         {step === "success" && (
-          <div className="rounded-2xl border border-emerald-200 bg-white p-6 sm:p-8 shadow-sm text-center space-y-4">
+          <div className="space-y-4 rounded-2xl border border-emerald-200 bg-white p-6 text-center shadow-sm sm:p-8">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
               <CheckCircle2 className="h-8 w-8" />
             </div>
 
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">
+            <h2 className="text-xl font-extrabold text-slate-900 sm:text-2xl">
               Cancellation Request Received
             </h2>
 
-            <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
+            <p className="mx-auto max-w-md text-xs text-slate-600 sm:text-sm">
               We have received your cancellation request for booking reference{" "}
               <strong className="font-mono text-slate-800">
                 {booking?.bookingRef}
@@ -493,7 +489,7 @@ export function CancelBookingClient() {
               .
             </p>
 
-            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs text-left max-w-md mx-auto space-y-2">
+            <div className="mx-auto max-w-md space-y-2 rounded-xl border border-slate-200 bg-slate-50 p-4 text-left text-xs">
               <div className="flex justify-between">
                 <span className="text-slate-500">Request ID:</span>
                 <span className="font-mono font-bold text-slate-800">
@@ -515,16 +511,16 @@ export function CancelBookingClient() {
               </div>
             </div>
 
-            <p className="text-xs text-slate-500 max-w-md mx-auto">
+            <p className="mx-auto max-w-md text-xs text-slate-500">
               Our team has been notified and will process the cancellation on
               IRCTC. You will receive confirmation via Email and WhatsApp once
               the refund has been credited.
             </p>
 
-            <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3">
+            <div className="flex flex-col justify-center gap-3 pt-4 sm:flex-row">
               <Link
                 href="/"
-                className="rounded-xl bg-slate-900 px-6 py-2.5 text-xs font-bold text-white hover:bg-slate-800 transition"
+                className="rounded-xl bg-slate-900 px-6 py-2.5 text-xs font-bold text-white transition hover:bg-slate-800"
               >
                 Back to Home
               </Link>

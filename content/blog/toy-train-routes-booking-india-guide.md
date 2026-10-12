@@ -9,10 +9,11 @@ tags:
   - irctc
   - travel guide
 ---
+
 > **Planning a mountain railway trip?** Check live seat status on [Get Confirmed Tickets](/) and track PNR confirmation on [Smart Seats](/) for Darjeeling, Kalka-Shimla, and Nilgiri toy trains.
 
-
 ## TL;DR
+
 India is famous for its historic narrow-gauge mountain railways, affectionately called toy trains. The main routes run in Darjeeling, Shimla, Ooty, and Matheran. You can book tickets online via IRCTC. Because these trains have tiny capacities, secure your seats 60 days in advance.
 
 ---
@@ -24,6 +25,7 @@ India is famous for its historic narrow-gauge mountain railways, affectionately 
 Many of India's iconic hill stations still run vintage narrow-gauge toy trains. Built during the late 19th and early 20th centuries, these railways connected the sweltering plains to cooler mountain retreats. Today, they remain a top tourist draw, winding past pine forests, stone bridges, loops, and tea gardens.
 
 India has three mountain railways classified as UNESCO World Heritage sites:
+
 1.  **Darjeeling Himalayan Railway (West Bengal):** Renowned for its tight loops, steep "Z" reverses, and spectacular views of Mount Kanchenjunga.
 2.  **Kalka-Shimla Railway (Himachal Pradesh):** Wends through over 100 tunnels and historic stone arch bridges.
 3.  **Nilgiri Mountain Railway (Tamil Nadu):** India's only rack-and-pinion track system, pulling coaches up steep climbs from Mettupalayam to Ooty.
@@ -40,9 +42,9 @@ Booking a ticket online is straightforward if you know the details:
 
 1.  **Log in to IRCTC:** Open the official site or the IRCTC Rail Connect app.
 2.  **Use Specific Station Codes:** Do not just type the hill station name. Use these codes:
-    *   **Kalka-Shimla:** From `KLK` (Kalka) to `SML` (Shimla).
-    *   **Darjeeling:** From `NJP` (New Jalpaiguri) or `KGN` (Kurseong) to `DJ` (Darjeeling).
-    *   **Nilgiri (Ooty):** From `MTP` (Mettupalayam) to `UAM` (Ooty).
+    - **Kalka-Shimla:** From `KLK` (Kalka) to `SML` (Shimla).
+    - **Darjeeling:** From `NJP` (New Jalpaiguri) or `KGN` (Kurseong) to `DJ` (Darjeeling).
+    - **Nilgiri (Ooty):** From `MTP` (Mettupalayam) to `UAM` (Ooty).
 3.  **Choose Your Coach Class:** Classes include First Class (FC), AC Chair Car (CC), and Second Seating (2S).
 4.  **Reserve Early:** Since the coaches are tiny and hold very few passengers, bookings fill up months in advance. Seats open exactly **60 days** before departure at 8:00 AM.
 
@@ -56,13 +58,13 @@ Fares depend heavily on the type of coach and traction (diesel vs. historic stea
 
 ### Average Fare Overview
 
-| Toy Train Route | Second Seating (2S) | First Class (FC) | Vistadome / Joyride |
-|---|---|---|---|
-| **Kalka-Shimla** | ₹65 - ₹80 | ₹300 - ₹500 | ₹600 - ₹800 (Shivalik Deluxe) |
-| **Darjeeling Himalayan** | N/A | ₹680 (Diesel) | ₹1,000 - ₹1,500 (Steam Joyride) |
-| **Nilgiri Mountain** | ₹30 - ₹85 | ₹300 - ₹600 | N/A |
+| Toy Train Route          | Second Seating (2S) | First Class (FC) | Vistadome / Joyride             |
+| ------------------------ | ------------------- | ---------------- | ------------------------------- |
+| **Kalka-Shimla**         | ₹65 - ₹80           | ₹300 - ₹500      | ₹600 - ₹800 (Shivalik Deluxe)   |
+| **Darjeeling Himalayan** | N/A                 | ₹680 (Diesel)    | ₹1,000 - ₹1,500 (Steam Joyride) |
+| **Nilgiri Mountain**     | ₹30 - ₹85           | ₹300 - ₹600      | N/A                             |
 
-*Note: Steam joyrides in Darjeeling are highly premium tourist excursions and cost significantly more than regular diesel-run passenger trains on the same route.*
+_Note: Steam joyrides in Darjeeling are highly premium tourist excursions and cost significantly more than regular diesel-run passenger trains on the same route._
 
 ---
 
@@ -82,7 +84,6 @@ You can track your confirmation chances using [PNR Status Search & Direct Bookin
 
 ---
 
-
 ## When Does Booking Open for Heritage Toy Trains in India?
 
 General Advance Reservation Period (ARP) for heritage toy trains like Kalka-Shimla and Nilgiri Mountain Railway opens exactly 60 days before departure at 8:00 AM IST on IRCTC. Because these narrow-gauge mountain coaches have small seating capacities (often only 12 to 30 seats per coach), tickets sell out almost instantly during summer and winter tourist seasons.
@@ -94,22 +95,29 @@ Premium Vistadome coaches with transparent glass roofs and 360-degree swivel sea
 ## Common Toy Train Questions (FAQ)
 
 ### What is the full form of WL in toy train booking?
+
 **WL full form is Waiting List**. It indicates you are in a queue and do not have an assigned seat or coach number yet.
 
 ### Which is the most famous toy train in India?
+
 The **Kalka-Shimla Toy Train** and the **Darjeeling Himalayan Toy Train** are the most famous. Both are UNESCO World Heritage sites and draw tourists from all over the world.
 
 ### Can we book toy train tickets on the spot?
+
 Yes, you can buy general unreserved tickets at the counter on the day of travel, but these coaches are very crowded. For any reserved class, it is highly recommended to book online beforehand.
 
 ### What is the Shivalik Deluxe Express?
+
 The **Shivalik Deluxe Express** is a premium toy train on the Kalka-Shimla route. It features carpeted floors, wide glass windows, comfortable cushioned seats, and serves meals to passengers during the journey.
 
 ### Do waitlisted toy train tickets get confirmed easily?
+
 No, waitlisted toy train tickets rarely get confirmed because the trains are small (carrying only 15–30 passengers per coach) and cancellations are very rare. It is best to secure confirmed seats or look for intermediate options using LastBerth.
 
 ### Can you book Tatkal tickets for heritage toy trains in India?
+
 No. Most narrow-gauge toy trains do not operate Tatkal quota seats due to limited total coach capacity. Advance 60-day reservation or post-charting Current Availability is recommended.
 
 ### Are senior citizen or concession quotas available on toy trains?
+
 Standard lower berth and senior citizen booking options follow general Indian Railways rules, but specific quota seat numbers are extremely limited on heritage narrow-gauge lines.

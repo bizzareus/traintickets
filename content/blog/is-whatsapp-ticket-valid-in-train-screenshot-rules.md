@@ -47,15 +47,15 @@ Here are the legitimate mobile ticket formats recognized by Indian Railways:
 4. **Downloaded PDF Electronic Reservation Slip (ERS):** The complete unedited PDF file downloaded from the IRCTC portal or email attachment.
 5. **DigiLocker / mParivahan App Storage:** Official government digital locker applications displaying verified train ticket documents.
 
-| Ticket Presentation Format | Railway Acceptance Status | Key Requirement | Penalty Risk Level |
-|---|---|---|---|
-| **Original IRCTC SMS / VRM** | 100% Valid | Sender ID must be official IRCTC | Zero risk |
-| **Downloaded ERS PDF File** | 100% Valid | Must be original unedited PDF | Zero risk |
-| **Live IRCTC App Screen** | 100% Valid | Live login or active session view | Zero risk |
-| **DigiLocker Electronic Document** | 100% Valid | Displayed within official app | Zero risk |
-| **WhatsApp / Gallery Screenshot** | Strictly Invalid | Fails anti-fraud verification | High (Section 138 fine) |
-| **Cropped JPEG Image of ERS** | Strictly Invalid | Missing full footer metadata | High (Treated as ticketless) |
-| **Forwarded WhatsApp Plain Text** | Strictly Invalid | Missing official SMS sender header | High (Treated as ticketless) |
+| Ticket Presentation Format         | Railway Acceptance Status | Key Requirement                    | Penalty Risk Level           |
+| ---------------------------------- | ------------------------- | ---------------------------------- | ---------------------------- |
+| **Original IRCTC SMS / VRM**       | 100% Valid                | Sender ID must be official IRCTC   | Zero risk                    |
+| **Downloaded ERS PDF File**        | 100% Valid                | Must be original unedited PDF      | Zero risk                    |
+| **Live IRCTC App Screen**          | 100% Valid                | Live login or active session view  | Zero risk                    |
+| **DigiLocker Electronic Document** | 100% Valid                | Displayed within official app      | Zero risk                    |
+| **WhatsApp / Gallery Screenshot**  | Strictly Invalid          | Fails anti-fraud verification      | High (Section 138 fine)      |
+| **Cropped JPEG Image of ERS**      | Strictly Invalid          | Missing full footer metadata       | High (Treated as ticketless) |
+| **Forwarded WhatsApp Plain Text**  | Strictly Invalid          | Missing official SMS sender header | High (Treated as ticketless) |
 
 ---
 
@@ -63,7 +63,7 @@ Here are the legitimate mobile ticket formats recognized by Indian Railways:
 
 **Showing a screenshot ticket can lead to being treated as a ticketless passenger under Section 138 of the Railways Act. Under the Jan Vishwas (Amendment of Provisions) Act, 2023 (effective July 2026) provisions, the TTE can charge a flat excess penalty of ₹500 plus the full journey fare from the train's originating station.**
 
-When a passenger produces only a screenshot and cannot show the original SMS, app booking, or PDF file, the TTE has legal grounds under Section 138 to classify the journey as irregular or unauthorized. 
+When a passenger produces only a screenshot and cannot show the original SMS, app booking, or PDF file, the TTE has legal grounds under Section 138 to classify the journey as irregular or unauthorized.
 
 Under the updated provisions of the Jan Vishwas (Amendment of Provisions) Act, 2023 (effective July 2026), the standard excess charge across Indian Railways is a flat ₹500 penalty. In addition to this ₹500 fine, the passenger must pay the single fare for the class of travel from the station where the train originated to the passenger's destination station, unless the boarding point is verified on the TTE's Hand-Held Terminal (HHT).
 

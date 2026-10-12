@@ -15,7 +15,9 @@ const MONTHS_SHORT = [
   "Dec",
 ] as const;
 
-function parseYmdParts(ymd: string): { y: number; m: number; d: number } | null {
+function parseYmdParts(
+  ymd: string,
+): { y: number; m: number; d: number } | null {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd)) return null;
   const [y, m, d] = ymd.split("-").map(Number);
   return { y, m, d };
@@ -34,7 +36,9 @@ function formatJourneyDayAndChartTime(
   const parts = parseYmdParts(ymd);
   const t = timeStr.trim();
   if (!parts || !t) return t || ymd;
-  const dt = new Date(Date.UTC(parts.y, parts.m - 1, parts.d + addCalendarDays));
+  const dt = new Date(
+    Date.UTC(parts.y, parts.m - 1, parts.d + addCalendarDays),
+  );
   const day = dt.getUTCDate();
   const mon = MONTHS_SHORT[dt.getUTCMonth()];
   return `${day} ${mon}, ${t}`;
@@ -80,7 +84,9 @@ export function describeChartPreparationForStation(
   trainStartDateYmd?: string | null,
 ): ChartPrepDescription {
   const code = stationCode.trim().toUpperCase();
-  const dateLabel = formatJourneyDateUtcLabel(journeyDateYmd.trim().slice(0, 10));
+  const dateLabel = formatJourneyDateUtcLabel(
+    journeyDateYmd.trim().slice(0, 10),
+  );
   const title = `${code} · ${dateLabel}`;
 
   const ymd = (trainStartDateYmd || journeyDateYmd).trim().slice(0, 10);
@@ -115,7 +121,9 @@ export function describeChartPreparationForStation(
   }
   const fb = meta?.chartTimesFallbackFromStation?.trim();
   if (fb && fb !== code) {
-    lines.push(`Times shown from ${fb} until IRCTC publishes this station’s chart window.`);
+    lines.push(
+      `Times shown from ${fb} until IRCTC publishes this station’s chart window.`,
+    );
   }
   if (lines.length === 0) {
     if (meta?.compositionError?.trim()) {
@@ -147,11 +155,17 @@ export function summarizeStationChartPreparation(
         : 0;
 
   if (c1) {
-    const timeLabel = c1Offset !== 0 ? `${c1} (${c1Offset > 0 ? "+" : ""}${c1Offset} day${Math.abs(c1Offset) !== 1 ? "s" : ""})` : c1;
+    const timeLabel =
+      c1Offset !== 0
+        ? `${c1} (${c1Offset > 0 ? "+" : ""}${c1Offset} day${Math.abs(c1Offset) !== 1 ? "s" : ""})`
+        : c1;
     parts.push(`first chart around ${timeLabel}`);
   }
   if (c2) {
-    const timeLabel = c2Offset !== 0 ? `${c2} (${c2Offset > 0 ? "+" : ""}${c2Offset} day${Math.abs(c2Offset) !== 1 ? "s" : ""})` : c2;
+    const timeLabel =
+      c2Offset !== 0
+        ? `${c2} (${c2Offset > 0 ? "+" : ""}${c2Offset} day${Math.abs(c2Offset) !== 1 ? "s" : ""})`
+        : c2;
     parts.push(`second chart around ${timeLabel}`);
   }
   const remote = meta.chartRemoteStation?.trim();
@@ -189,8 +203,13 @@ export function buildJourneyChartAlertSchedulePhrase(args: {
   if (args.metaLoading || args.metaErr) {
     return dateLabel;
   }
-  const fromSummary = summarizeStationChartPreparation(args.metaFrom, args.legFromCode);
-  const toSummary = args.sameLegEndpoints ? null : summarizeStationChartPreparation(args.metaTo, args.legToCode);
+  const fromSummary = summarizeStationChartPreparation(
+    args.metaFrom,
+    args.legFromCode,
+  );
+  const toSummary = args.sameLegEndpoints
+    ? null
+    : summarizeStationChartPreparation(args.metaTo, args.legToCode);
   const bits = [fromSummary, toSummary].filter((s): s is string => Boolean(s));
   if (bits.length > 0) {
     return `${dateLabel} (${bits.join(" ")})`;

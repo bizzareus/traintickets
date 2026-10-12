@@ -28,11 +28,11 @@ tags:
 
 The IRCTC Vikalp Scheme (Alternate Train Accommodation Scheme) is a free, optional feature that automatically transfers waitlisted passengers to vacant berths on alternative trains traveling the same route. Introduced in 2015, it triggers during chart preparation — if your ticket stays waitlisted, the system searches up to 7 alternate trains you selected and shifts you at no extra cost.
 
-Let's be real. If you've ever tried booking a train in India during Diwali, summer rush, or any weekend, you know the absolute panic of seeing "WL" next to your preferred train. The IRCTC website feels like a battlefield when Tatkal opens. Seats vanish in under thirty seconds. It is a nightmare. 
+Let's be real. If you've ever tried booking a train in India during Diwali, summer rush, or any weekend, you know the absolute panic of seeing "WL" next to your preferred train. The IRCTC website feels like a battlefield when Tatkal opens. Seats vanish in under thirty seconds. It is a nightmare.
 
-But here's the thing most people don't know: the game isn't over when your ticket remains waitlisted. Far from it! 
+But here's the thing most people don't know: the game isn't over when your ticket remains waitlisted. Far from it!
 
-IRCTC introduced the Vikalp Scheme (Alternate Train Accommodation Scheme or ATAS) back in 2015. It is designed specifically for waitlisted passengers. If your ticket does not get confirmed during chart preparation, Vikalp automatically looks for empty seats on other trains traveling to your destination and shifts you there. 
+IRCTC introduced the Vikalp Scheme (Alternate Train Accommodation Scheme or ATAS) back in 2015. It is designed specifically for waitlisted passengers. If your ticket does not get confirmed during chart preparation, Vikalp automatically looks for empty seats on other trains traveling to your destination and shifts you there.
 
 It is a win-win. Indian Railways gets to fill empty berths on less popular trains, and you get a confirmed seat without paying a single extra rupee.
 
@@ -42,15 +42,15 @@ It is a win-win. Indian Railways gets to fill empty berths on less popular train
 
 Vikalp works by scanning your selected alternate trains for vacant berths during chart preparation of your original train. You opt in during or after booking, choose up to 7 alternate trains, and wait. If your ticket remains fully waitlisted at chart time, the system automatically transfers you to an available seat and sends an SMS with your new coach and berth details.
 
-Let's break down how this works in actual practice. You don't need a degree in rocket science, but you do need to follow a few simple steps. 
+Let's break down how this works in actual practice. You don't need a degree in rocket science, but you do need to follow a few simple steps.
 
-First, when you are booking that ticket on IRCTC and realize you are stuck on a waitlist, keep your eyes open for the Vikalp checkbox. Go ahead and opt-in! If you missed it during checkout, don't sweat it. You can easily log back in, go to your booking history, and opt-in after the fact. 
+First, when you are booking that ticket on IRCTC and realize you are stuck on a waitlist, keep your eyes open for the Vikalp checkbox. Go ahead and opt-in! If you missed it during checkout, don't sweat it. You can easily log back in, go to your booking history, and opt-in after the fact.
 
-Next, the system will ask you to choose your alternate options. You can select up to seven different trains that travel on the same route. 
+Next, the system will ask you to choose your alternate options. You can select up to seven different trains that travel on the same route.
 
-Then, you just wait. When chart time rolls around—usually around eight hours before the train chugs out of its originating station—the system checks your status. If you are still fully waitlisted, the backend algorithm immediately goes to work. It scans your chosen alternate trains to see if any of them have empty berths. 
+Then, you just wait. When chart time rolls around—usually around eight hours before the train chugs out of its originating station—the system checks your status. If you are still fully waitlisted, the backend algorithm immediately goes to work. It scans your chosen alternate trains to see if any of them have empty berths.
 
-If it finds a free seat, boom! You get transferred. IRCTC shoots you an SMS with your fresh seat allocation, complete with your coach and berth details. 
+If it finds a free seat, boom! You get transferred. IRCTC shoots you an SMS with your fresh seat allocation, complete with your coach and berth details.
 
 ---
 
@@ -61,15 +61,19 @@ The key Vikalp limitations are: your original ticket becomes permanently invalid
 Vikalp sounds like magic, but it has strict rules. If you do not know these, you could end up stranded or paying hefty cancellation fees.
 
 ### Your original ticket becomes invalid
+
 Once the system transfers you to an alternate train, your original seat is gone. Even if ten passengers cancel their tickets on your original train and seats open up, you cannot go back. If you board the original train, you will be treated as traveling without a ticket and fined.
 
 ### Boarding and destination stations might shift
+
 To give you the best chance of a seat, Vikalp scans alternate trains within a specified radius (usually up to 70–100 km of your original choice). For example, if you book a ticket from New Delhi (NDLS) to Patna Junction (PNBE), Vikalp could shift your journey to a train that starts from Delhi Sarai Rohilla (DEE) or Hazrat Nizamuddin (NZM) and terminates at Danapur (DNR) or Patliputra Junction (PPTA). While a solo traveler with a backpack can easily handle a quick transfer, this "small shift" can be a logistical nightmare if you are traveling with heavy luggage, children, or elderly family members. Always check the allocation SMS carefully to know exactly where to board.
 
 ### No refund for downgrades, no extra charge for upgrades
+
 This is the most interesting part. If you booked a 3AC ticket and Vikalp transfers you to a 2AC or even a Rajdhani 3AC, you pay zero extra fare. However, if you are downgraded (like from 3AC to Sleeper), you will not get a refund for the difference automatically. You will need to file a TDR (Ticket Deposit Receipt) to claim the difference.
 
 ### Waitlisted passengers are treated as fully confirmed upon transfer
+
 Once allocated, you are treated as a confirmed passenger on the new train. Standard cancellation rules for confirmed tickets will apply if you decide not to travel.
 
 ---
@@ -98,13 +102,13 @@ If you find yourself in this situation, you must split the PNR. You can split th
 
 Understanding how standard waitlist bookings, VIKALP's database matching, and active segment booking compare is key to taking control of your journey:
 
-| Feature | Regular (Waitlisted) Booking | VIKALP Scheme Booking | Segment Booking |
-| :--- | :--- | :--- | :--- |
-| **Control over Route/Train** | Full control (you choose the exact train) | Zero control (system selects from your list or nearby stations) | Full control (you choose exactly which legs/trains to combine) |
-| **Upgrade/Downgrade Risk** | No class change | Possible upgrade (free) or downgrade (TDR required for refund) | You select the exact class for each leg |
-| **Boarding Flexibility** | Fixed boarding station | May change boarding station (up to 70–100 km radius) | Fixed boarding station for each leg |
-| **Cancellation Rules** | Flat waitlist refund fee if waitlist stays unconfirmed | Confirmed cancellation fee applies if shifted | Separate cancellation applies per segment PNR |
-| **Complexity** | 1 ticket, auto-cancelled if WL | 1 ticket, wait-and-see after charting | Multiple tickets, requires moving berths/coaches |
+| Feature                      | Regular (Waitlisted) Booking                           | VIKALP Scheme Booking                                           | Segment Booking                                                |
+| :--------------------------- | :----------------------------------------------------- | :-------------------------------------------------------------- | :------------------------------------------------------------- |
+| **Control over Route/Train** | Full control (you choose the exact train)              | Zero control (system selects from your list or nearby stations) | Full control (you choose exactly which legs/trains to combine) |
+| **Upgrade/Downgrade Risk**   | No class change                                        | Possible upgrade (free) or downgrade (TDR required for refund)  | You select the exact class for each leg                        |
+| **Boarding Flexibility**     | Fixed boarding station                                 | May change boarding station (up to 70–100 km radius)            | Fixed boarding station for each leg                            |
+| **Cancellation Rules**       | Flat waitlist refund fee if waitlist stays unconfirmed | Confirmed cancellation fee applies if shifted                   | Separate cancellation applies per segment PNR                  |
+| **Complexity**               | 1 ticket, auto-cancelled if WL                         | 1 ticket, wait-and-see after charting                           | Multiple tickets, requires moving berths/coaches               |
 
 ---
 
@@ -113,12 +117,14 @@ Understanding how standard waitlist bookings, VIKALP's database matching, and ac
 While Vikalp is a free safety net, it isn't suitable for every passenger. Based on the operational rules, here is a practical guide to help you decide whether to opt in:
 
 ### Opt in if:
+
 - **You are a solo traveler:** Navigating different boarding stations or last-minute timing shifts is relatively easy when traveling alone.
 - **Your timings are flexible:** If you do not mind leaving a few hours earlier or arriving later, Vikalp increases your chances of getting a confirmed seat.
 - **The route has high-frequency train options:** Routes like Mumbai–Pune or Delhi–Kanpur, which have dozens of similar trains, have a low risk of a bad transfer.
 - **You have no other travel options:** If flights are too expensive and buses are sold out, checking the Vikalp box is always better than getting an automatic cancellation.
 
 ### Avoid it (or run away) if:
+
 - **You are traveling with family:** Vikalp does not guarantee that family members on the same booking will get berths next to each other. Furthermore, managing family logistics during a station change is very difficult.
 - **You have strict schedules:** If you are traveling for a time-sensitive event, a last-minute shift to a train leaving much later can disrupt your plans.
 - **You have heavy luggage:** Transferring between alternate stations (like NDLS to Delhi Sarai Rohilla) with large bags can be costly and exhausting.
@@ -168,30 +174,39 @@ While Vikalp is a free safety net, it isn't suitable for every passenger. Based 
 ## Common Booking Questions (FAQ)
 
 ### Does opting for VIKALP guarantee a confirmed seat?
+
 No, VIKALP does not guarantee a confirmed seat. It only registers your request to be considered for vacant berths on alternative trains during chart preparation.
 
 ### Will I get a refund of the fare difference if I am downgraded under VIKALP?
+
 If you are allocated an alternate train in a lower class than what you originally booked, you will not receive an automatic refund. To claim the difference in fare, you must file a Ticket Deposit Receipt (TDR) online through the IRCTC portal after charting.
 
 ### Is VIKALP available for Tatkal tickets?
+
 Yes. VIKALP is available for all waitlisted passengers, regardless of whether you booked under the General quota or the Tatkal quota.
 
 ### What if I don't want to travel on the allocated alternate train?
+
 Once you are allocated an alternative seat under VIKALP, you are treated as a confirmed passenger on that train. If you decide not to travel, you must cancel your ticket, and standard confirmed cancellation charges will apply.
 
 ### Can RAC passengers opt for VIKALP?
+
 No. VIKALP is only for fully waitlisted passengers. If your ticket is RAC (Reservation Against Cancellation), you already have a seat (even if it's a shared berth), so you are not eligible for VIKALP.
 
 ### Can you decline a Vikalp alternate train seat after it is allotted?
+
 No, once an alternate train berth is allotted under Vikalp, your original ticket is cancelled and standard cancellation rules apply to the new booking.
 
 ### Does Vikalp scheme guarantee a confirmed berth on alternate trains?
+
 No, Vikalp seat allotment depends entirely on berth availability in the selected alternate trains during their chart preparation.
 
 ### Do you pay extra fare if Vikalp transfers you to a higher-class or higher-category train?
+
 No, no additional fare or difference in fare is charged if you are transferred to a higher train category or class under the Vikalp scheme.
 
 ### Can you select specific seats or berth preferences for Vikalp alternate train bookings?
+
 No, seat and berth allocation under Vikalp is handled automatically by the system based on available vacancies.
 
 ---

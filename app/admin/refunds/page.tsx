@@ -15,7 +15,9 @@ type RefundEntry = {
 };
 
 function extractError(err: unknown, fallback: string): string {
-  const ax = err as { response?: { data?: { message?: string; error?: string } } };
+  const ax = err as {
+    response?: { data?: { message?: string; error?: string } };
+  };
   return ax.response?.data?.message ?? ax.response?.data?.error ?? fallback;
 }
 
@@ -109,9 +111,7 @@ export default function AdminRefundsPage() {
     const q = search.trim().toLowerCase();
     if (
       q &&
-      !`${e.mobile} ${e.trainNumber} ${e.txnId ?? ""}`
-        .toLowerCase()
-        .includes(q)
+      !`${e.mobile} ${e.trainNumber} ${e.txnId ?? ""}`.toLowerCase().includes(q)
     )
       return false;
     return true;

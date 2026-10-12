@@ -19,7 +19,9 @@ function normalizeQuery(query: string): string {
 /**
  * Synchronously retrieve cached station suggestions for an instant 0ms UI render.
  */
-export function getCachedStationSuggestions(query: string): StationRow[] | undefined {
+export function getCachedStationSuggestions(
+  query: string,
+): StationRow[] | undefined {
   const q = normalizeQuery(query);
   if (q.length < 2) return [];
   return stationQueryCache.get(q);
@@ -28,7 +30,9 @@ export function getCachedStationSuggestions(query: string): StationRow[] | undef
 /**
  * Fetch station suggestions with client-side memory caching and inflight deduplication.
  */
-export async function fetchStationSuggestions(query: string): Promise<StationRow[]> {
+export async function fetchStationSuggestions(
+  query: string,
+): Promise<StationRow[]> {
   const q = normalizeQuery(query);
   if (q.length < 2) return [];
 

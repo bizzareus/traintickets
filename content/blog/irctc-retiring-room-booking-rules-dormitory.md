@@ -12,7 +12,6 @@ tags:
 
 > **Resting between journeys?** Check your live PNR status on [Smart Seats](/) to see if your ticket is CNF or RAC (mandatory for retiring room booking), and use [Get Confirmed Tickets](/) to track seat availability across your train journey.
 
-
 ## TL;DR
 
 - **Eligibility:** Available only for passengers with a confirmed (CNF) or RAC ticket. Waitlisted (WL) tickets cannot be used.
@@ -36,6 +35,7 @@ If you have a long layover between trains or need a cheap place to stay in a new
 **You can book an IRCTC retiring room online by visiting the official IRCTC Tourism website and entering your 10-digit PNR number. The system will retrieve your journey details, allowing you to select your preferred station, check room availability, choose room types, and complete the payment.**
 
 Booking a retiring room online is straightforward. Follow these steps:
+
 1. Go to the official [IRCTC Tourism Retiring Rooms website](https://www.rr.irctctourism.com/).
 2. Enter your confirmed or RAC 10-digit PNR number on the homepage and click 'Search'.
 3. Select whether you want to book accommodation at the source station (origin) or destination station.
@@ -50,16 +50,16 @@ Booking a retiring room online is straightforward. Follow these steps:
 
 **Retiring rooms can be booked for a minimum of 3 hours and a maximum of 48 hours. Bookings operate on fixed hourly slots (like 12 or 24 hours) or hourly basis depending on the station. You can book rooms at both your source and destination stations.**
 
-Indian Railways has modernized its booking options to allow flexible stays. Historically, rooms were booked in 12-hour or 24-hour block periods. Today, major stations offer hourly booking increments, which is highly economical for travelers who only need to shower and rest for a few hours. 
+Indian Railways has modernized its booking options to allow flexible stays. Historically, rooms were booked in 12-hour or 24-hour block periods. Today, major stations offer hourly booking increments, which is highly economical for travelers who only need to shower and rest for a few hours.
 
 Here is a comparison of room types and availability:
 
-| Accommodation Type | Average Price Range (per 12/24 hours) | Ideal For | Key Facilities |
-| :--- | :--- | :--- | :--- |
-| **AC Double Room** | ₹800 - ₹2,000 | Families / Couples | Attached bathroom, double bed, AC, clean linen |
-| **Non-AC Double Room** | ₹400 - ₹1,000 | Budget Families | Attached/common bathroom, double bed, fan |
-| **AC Dormitory Bed** | ₹200 - ₹500 | Solo Travelers | Single bunk bed, common bathroom, locker, AC |
-| **Non-AC Dormitory Bed** | ₹100 - ₹250 | Budget Solo Travelers | Single bed, common bathroom, locker, fan |
+| Accommodation Type       | Average Price Range (per 12/24 hours) | Ideal For             | Key Facilities                                 |
+| :----------------------- | :------------------------------------ | :-------------------- | :--------------------------------------------- |
+| **AC Double Room**       | ₹800 - ₹2,000                         | Families / Couples    | Attached bathroom, double bed, AC, clean linen |
+| **Non-AC Double Room**   | ₹400 - ₹1,000                         | Budget Families       | Attached/common bathroom, double bed, fan      |
+| **AC Dormitory Bed**     | ₹200 - ₹500                           | Solo Travelers        | Single bunk bed, common bathroom, locker, AC   |
+| **Non-AC Dormitory Bed** | ₹100 - ₹250                           | Budget Solo Travelers | Single bed, common bathroom, locker, fan       |
 
 > [!IMPORTANT]
 > A single PNR number allows you to book up to two double rooms or up to as many dormitory beds as the number of passengers on the ticket. For example, if your ticket has 4 passengers, you can book up to 4 dormitory beds.
@@ -93,7 +93,7 @@ There is no single fixed list you can memorise, because rooms are added, renovat
 
 **No. A retiring room booking is tied to a valid reserved-ticket PNR that is confirmed (CNF) or RAC. You cannot book online with only a general (unreserved) ticket, a platform ticket, a fully waitlisted ticket, or no ticket at all. The booking engine validates the PNR before it lets you pay.**
 
-This trips up a lot of first-time users. The retiring room is a facility for *travelling passengers*, so the system checks that you hold a genuine journey ticket on Indian Railways. A few practical points:
+This trips up a lot of first-time users. The retiring room is a facility for _travelling passengers_, so the system checks that you hold a genuine journey ticket on Indian Railways. A few practical points:
 
 - **Your PNR is used once per journey.** You can book at the origin station (for the night before departure) or the destination station (to rest after you arrive), within the room's booking window relative to your train.
 - **Arriving passengers count too.** If your train reaches the station late at night, book the destination-station room against the same PNR — you don't need a fresh onward ticket.
@@ -105,13 +105,13 @@ This trips up a lot of first-time users. The retiring room is a facility for *tr
 
 **A retiring room is far cheaper (roughly ₹100–₹2,000) and sits right on the platform, so it wins for short layovers and early-morning trains. A budget hotel near the station costs more but offers more availability, better amenities, room service, and no ticket requirement — better for longer stays or when rooms are sold out.**
 
-| Factor | IRCTC Retiring Room | Budget Hotel Near Station |
-| :--- | :--- | :--- |
-| **Typical cost** | ₹100–₹2,000 (hourly to 48 hrs) | ₹800–₹3,000+ per night |
-| **Location** | Inside/adjacent to the station | 5–20 min away (need transit) |
-| **Eligibility** | Confirmed/RAC PNR only | Anyone, no ticket needed |
-| **Availability** | Limited; sells out at busy stations | Plentiful, book any time |
-| **Best for** | Short layovers, catching an early train | Longer stays, families, no valid PNR |
+| Factor           | IRCTC Retiring Room                     | Budget Hotel Near Station            |
+| :--------------- | :-------------------------------------- | :----------------------------------- |
+| **Typical cost** | ₹100–₹2,000 (hourly to 48 hrs)          | ₹800–₹3,000+ per night               |
+| **Location**     | Inside/adjacent to the station          | 5–20 min away (need transit)         |
+| **Eligibility**  | Confirmed/RAC PNR only                  | Anyone, no ticket needed             |
+| **Availability** | Limited; sells out at busy stations     | Plentiful, book any time             |
+| **Best for**     | Short layovers, catching an early train | Longer stays, families, no valid PNR |
 
 For a 4-to-8-hour halt between connecting trains, a retiring room is almost unbeatable on price and convenience — you can rest, shower, and still hear the announcements. For anything longer, or if you have no reserved ticket, a station hotel is the practical choice.
 
@@ -152,6 +152,7 @@ The IRCTC booking engine validates your 10-digit PNR during entry. If your ticke
 **Check-in and check-out times for IRCTC retiring rooms and dormitories operate on strict hourly slots (3, 6, 12, or 24 hours) calculated from your booked check-in time. If you overstay your booked duration without prior extension approval, an excess penalty charge equivalent to the next full time block is levied.**
 
 To avoid penalty charges during unexpected train delays:
+
 - Present your booking voucher and PNR to the station manager upon arrival.
 - If your train is delayed by more than 3 hours, inform the retiring room manager to adjust your check-in slot.
 
@@ -184,9 +185,11 @@ No, retiring room bookings strictly require a confirmed (CNF) or RAC train ticke
 Yes, retiring rooms operate on 12-hour and 24-hour slots with round-the-clock check-in based on your train schedule.
 
 ### Can RAC ticket holders book IRCTC retiring rooms?
+
 Yes. Both Confirmed (CNF) and RAC ticket holders are eligible. Waitlisted (WL) tickets are not allowed.
 
 ### What happens if I overstay my retiring room booking duration?
+
 Overstaying without extension approval results in an excess fare charge equal to the next full room slot duration.
 
 ### Can I book a retiring room with a waitlisted (WL) ticket?

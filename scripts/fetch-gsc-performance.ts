@@ -31,11 +31,11 @@
  *   --help                  Display help message
  */
 
-import fs from 'fs';
-import path from 'path';
-import dotenv from 'dotenv';
+import fs from "fs";
+import path from "path";
+import dotenv from "dotenv";
 dotenv.config();
-import { google, searchconsole_v1 } from 'googleapis';
+import { google, searchconsole_v1 } from "googleapis";
 
 interface GscRow {
   keys?: string[];
@@ -64,36 +64,37 @@ interface CliArgs {
 function parseArgs(): CliArgs {
   const argv = process.argv.slice(2);
   const args: CliArgs = {
-    siteUrl: process.env.GSC_SITE_URL || 'sc-domain:lastberth.com',
+    siteUrl: process.env.GSC_SITE_URL || "sc-domain:lastberth.com",
     days: 28,
-    searchType: 'web',
+    searchType: "web",
     setupAuth: false,
     dryRun: false,
     help: false,
-    keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS || process.env.GSC_KEY_FILE,
+    keyFile:
+      process.env.GOOGLE_APPLICATION_CREDENTIALS || process.env.GSC_KEY_FILE,
   };
 
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    if (arg === '--help' || arg === '-h') {
+    if (arg === "--help" || arg === "-h") {
       args.help = true;
-    } else if (arg === '--setup-auth') {
+    } else if (arg === "--setup-auth") {
       args.setupAuth = true;
-    } else if (arg === '--dry-run') {
+    } else if (arg === "--dry-run") {
       args.dryRun = true;
-    } else if (arg === '--site' && argv[i + 1]) {
+    } else if (arg === "--site" && argv[i + 1]) {
       args.siteUrl = argv[++i];
-    } else if (arg === '--days' && argv[i + 1]) {
+    } else if (arg === "--days" && argv[i + 1]) {
       args.days = parseInt(argv[++i], 10) || 28;
-    } else if (arg === '--start-date' && argv[i + 1]) {
+    } else if (arg === "--start-date" && argv[i + 1]) {
       args.startDate = argv[++i];
-    } else if (arg === '--end-date' && argv[i + 1]) {
+    } else if (arg === "--end-date" && argv[i + 1]) {
       args.endDate = argv[++i];
-    } else if (arg === '--type' && argv[i + 1]) {
+    } else if (arg === "--type" && argv[i + 1]) {
       args.searchType = argv[++i];
-    } else if (arg === '--key-file' && argv[i + 1]) {
+    } else if (arg === "--key-file" && argv[i + 1]) {
       args.keyFile = argv[++i];
-    } else if (arg === '--out' && argv[i + 1]) {
+    } else if (arg === "--out" && argv[i + 1]) {
       args.outputDir = argv[++i];
     }
   }
@@ -104,7 +105,11 @@ function parseArgs(): CliArgs {
 // -----------------------------------------------------------------------------
 // Helper: Calculate Default Date Range (Accounting for GSC 2-3 Day Lag)
 // -----------------------------------------------------------------------------
-function computeDateRange(days: number, customStart?: string, customEnd?: string) {
+function computeDateRange(
+  days: number,
+  customStart?: string,
+  customEnd?: string,
+) {
   if (customStart && customEnd) {
     return { startDate: customStart, endDate: customEnd };
   }
@@ -117,7 +122,7 @@ function computeDateRange(days: number, customStart?: string, customEnd?: string
   const start = new Date(end);
   start.setDate(start.getDate() - (days - 1));
 
-  const format = (d: Date) => d.toISOString().split('T')[0];
+  const format = (d: Date) => d.toISOString().split("T")[0];
 
   return {
     startDate: customStart || format(start),
@@ -128,8 +133,10 @@ function computeDateRange(days: number, customStart?: string, customEnd?: string
 // -----------------------------------------------------------------------------
 // Authentication Initializer
 // -----------------------------------------------------------------------------
-async function getSearchConsoleClient(keyFilePath?: string): Promise<searchconsole_v1.Searchconsole> {
-  const scopes = ['https://www.googleapis.com/auth/webmasters.readonly'];
+async function getSearchConsoleClient(
+  keyFilePath?: string,
+): Promise<searchconsole_v1.Searchconsole> {
+  const scopes = ["https://www.googleapis.com/auth/webmasters.readonly"];
 
   // 1. Direct Service Account Key File
   if (keyFilePath && fs.existsSync(keyFilePath)) {
@@ -137,7 +144,7 @@ async function getSearchConsoleClient(keyFilePath?: string): Promise<searchconso
       keyFile: keyFilePath,
       scopes,
     });
-    return google.searchconsole({ version: 'v1', auth });
+    return google.searchconsole({ version: "v1", auth });
   }
 
   // 2. Service Account JSON in environment variable (GSC_SERVICE_ACCOUNT_JSON)
@@ -148,30 +155,36 @@ async function getSearchConsoleClient(keyFilePath?: string): Promise<searchconso
         credentials,
         scopes,
       });
-      return google.searchconsole({ version: 'v1', auth });
+      return google.searchconsole({ version: "v1", auth });
     } catch (e) {
-      console.warn('⚠️ Failed to parse GSC_SERVICE_ACCOUNT_JSON as JSON. Trying standard auth...');
+      console.warn(
+        "⚠️ Failed to parse GSC_SERVICE_ACCOUNT_JSON as JSON. Trying standard auth...",
+      );
     }
   }
 
   // 3. OAuth2 Client ID + Secret + Refresh Token
-  if (process.env.GSC_CLIENT_ID && process.env.GSC_CLIENT_SECRET && process.env.GSC_REFRESH_TOKEN) {
+  if (
+    process.env.GSC_CLIENT_ID &&
+    process.env.GSC_CLIENT_SECRET &&
+    process.env.GSC_REFRESH_TOKEN
+  ) {
     const oauth2Client = new google.auth.OAuth2(
       process.env.GSC_CLIENT_ID,
       process.env.GSC_CLIENT_SECRET,
-      'http://localhost:3000/oauth2callback'
+      "http://localhost:3000/oauth2callback",
     );
     oauth2Client.setCredentials({
       refresh_token: process.env.GSC_REFRESH_TOKEN,
     });
-    return google.searchconsole({ version: 'v1', auth: oauth2Client });
+    return google.searchconsole({ version: "v1", auth: oauth2Client });
   }
 
   // 4. Default Application Default Credentials (ADC) or GOOGLE_APPLICATION_CREDENTIALS
   const auth = new google.auth.GoogleAuth({
     scopes,
   });
-  return google.searchconsole({ version: 'v1', auth });
+  return google.searchconsole({ version: "v1", auth });
 }
 
 // -----------------------------------------------------------------------------
@@ -187,7 +200,7 @@ async function fetchFullDataset(
     type?: string;
     aggregationType?: string;
     dimensionFilterGroups?: any[];
-  }
+  },
 ): Promise<GscRow[]> {
   const MAX_ROWS = 25000;
   let startRow = 0;
@@ -216,7 +229,9 @@ async function fetchFullDataset(
 
     startRow += MAX_ROWS;
     // Log progress if dataset is massive (>25k rows)
-    console.log(`  Fetched ${allRows.length} rows so far (startRow=${startRow})...`);
+    console.log(
+      `  Fetched ${allRows.length} rows so far (startRow=${startRow})...`,
+    );
   }
 
   return allRows;
@@ -226,21 +241,21 @@ async function fetchFullDataset(
 // CSV Formatting & Escaping (Strict GSC UI Alignment)
 // -----------------------------------------------------------------------------
 function escapeCsv(val: any): string {
-  if (val === null || val === undefined) return '';
+  if (val === null || val === undefined) return "";
   const str = String(val);
-  if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+  if (str.includes(",") || str.includes('"') || str.includes("\n")) {
     return `"${str.replace(/"/g, '""')}"`;
   }
   return str;
 }
 
 function formatCtr(ctr?: number): string {
-  if (ctr === undefined || ctr === null) return '0%';
-  return `${(ctr * 100).toFixed(2).replace(/\.00$/, '')}%`;
+  if (ctr === undefined || ctr === null) return "0%";
+  return `${(ctr * 100).toFixed(2).replace(/\.00$/, "")}%`;
 }
 
 function formatPosition(pos?: number): string {
-  if (pos === undefined || pos === null) return '0';
+  if (pos === undefined || pos === null) return "0";
   const rounded = Math.round(pos * 100) / 100;
   return rounded.toString();
 }
@@ -248,10 +263,10 @@ function formatPosition(pos?: number): string {
 function convertRowsToCsv(
   headerLabels: string[],
   rows: GscRow[],
-  dimensionCount: number
+  dimensionCount: number,
 ): string {
   const lines: string[] = [];
-  lines.push(headerLabels.map(escapeCsv).join(','));
+  lines.push(headerLabels.map(escapeCsv).join(","));
 
   for (const row of rows) {
     const keys = row.keys || [];
@@ -261,10 +276,10 @@ function convertRowsToCsv(
     const ctr = formatCtr(row.ctr);
     const position = formatPosition(row.position);
 
-    lines.push([...keyCols, clicks, impressions, ctr, position].join(','));
+    lines.push([...keyCols, clicks, impressions, ctr, position].join(","));
   }
 
-  return lines.join('\n') + '\n';
+  return lines.join("\n") + "\n";
 }
 
 // -----------------------------------------------------------------------------
@@ -353,20 +368,31 @@ Options:
     process.exit(0);
   }
 
-  const { startDate, endDate } = computeDateRange(args.days, args.startDate, args.endDate);
-  const siteSlug = args.siteUrl.replace(/^sc-domain:/, '').replace(/https?:\/\//, '').replace(/[^\w.-]/g, '_');
-  
-  const targetDir = args.outputDir || path.join(
-    process.cwd(),
-    'data',
-    'gsc',
-    `${siteSlug}-Performance-on-Search-${startDate}_to_${endDate}`
+  const { startDate, endDate } = computeDateRange(
+    args.days,
+    args.startDate,
+    args.endDate,
   );
+  const siteSlug = args.siteUrl
+    .replace(/^sc-domain:/, "")
+    .replace(/https?:\/\//, "")
+    .replace(/[^\w.-]/g, "_");
+
+  const targetDir =
+    args.outputDir ||
+    path.join(
+      process.cwd(),
+      "data",
+      "gsc",
+      `${siteSlug}-Performance-on-Search-${startDate}_to_${endDate}`,
+    );
 
   console.log(`🚀 LastBerth GSC Performance Extractor`);
   console.log(`--------------------------------------------------`);
   console.log(`  Site Property : ${args.siteUrl}`);
-  console.log(`  Date Range    : ${startDate} to ${endDate} (${args.days} days)`);
+  console.log(
+    `  Date Range    : ${startDate} to ${endDate} (${args.days} days)`,
+  );
   console.log(`  Search Type   : ${args.searchType}`);
   console.log(`  Output Folder : ${targetDir}`);
   console.log(`--------------------------------------------------\n`);
@@ -376,14 +402,48 @@ Options:
   if (args.dryRun) {
     console.log(`🧪 [Dry Run] Simulating queries and writing mock output...`);
     const mockQueries: GscRow[] = [
-      { keys: ['chhath puja special train 2026 time table'], clicks: 346, impressions: 1279, ctr: 0.2705, position: 1.54 },
-      { keys: ['puja special train 2026'], clicks: 279, impressions: 2015, ctr: 0.1385, position: 3.72 },
+      {
+        keys: ["chhath puja special train 2026 time table"],
+        clicks: 346,
+        impressions: 1279,
+        ctr: 0.2705,
+        position: 1.54,
+      },
+      {
+        keys: ["puja special train 2026"],
+        clicks: 279,
+        impressions: 2015,
+        ctr: 0.1385,
+        position: 3.72,
+      },
     ];
     const mockPages: GscRow[] = [
-      { keys: ['https://lastberth.com/blog/diwali-special-train-2026-booking-dates-routes-list'], clicks: 3560, impressions: 59182, ctr: 0.0602, position: 5.2 },
+      {
+        keys: [
+          "https://lastberth.com/blog/diwali-special-train-2026-booking-dates-routes-list",
+        ],
+        clicks: 3560,
+        impressions: 59182,
+        ctr: 0.0602,
+        position: 5.2,
+      },
     ];
-    fs.writeFileSync(path.join(targetDir, 'Queries.csv'), convertRowsToCsv(['Top queries', 'Clicks', 'Impressions', 'CTR', 'Position'], mockQueries, 1));
-    fs.writeFileSync(path.join(targetDir, 'Pages.csv'), convertRowsToCsv(['Top pages', 'Clicks', 'Impressions', 'CTR', 'Position'], mockPages, 1));
+    fs.writeFileSync(
+      path.join(targetDir, "Queries.csv"),
+      convertRowsToCsv(
+        ["Top queries", "Clicks", "Impressions", "CTR", "Position"],
+        mockQueries,
+        1,
+      ),
+    );
+    fs.writeFileSync(
+      path.join(targetDir, "Pages.csv"),
+      convertRowsToCsv(
+        ["Top pages", "Clicks", "Impressions", "CTR", "Position"],
+        mockPages,
+        1,
+      ),
+    );
     console.log(`✅ Dry run complete. Saved sample files to ${targetDir}`);
     return;
   }
@@ -392,61 +452,78 @@ Options:
   try {
     client = await getSearchConsoleClient(args.keyFile);
   } catch (err: any) {
-    console.error(`❌ Authentication Error: Could not initialize Google Search Console client.`);
+    console.error(
+      `❌ Authentication Error: Could not initialize Google Search Console client.`,
+    );
     console.error(err.message || err);
-    console.log(`\nRun 'npx tsx scripts/fetch-gsc-performance.ts --setup-auth' for help setting up credentials.`);
+    console.log(
+      `\nRun 'npx tsx scripts/fetch-gsc-performance.ts --setup-auth' for help setting up credentials.`,
+    );
     process.exit(1);
   }
 
   // Define the extraction jobs to execute
   const jobs = [
     {
-      name: 'Top Queries',
-      filename: 'Queries.csv',
-      headers: ['Top queries', 'Clicks', 'Impressions', 'CTR', 'Position'],
-      dimensions: ['query'],
+      name: "Top Queries",
+      filename: "Queries.csv",
+      headers: ["Top queries", "Clicks", "Impressions", "CTR", "Position"],
+      dimensions: ["query"],
       dimCount: 1,
     },
     {
-      name: 'Top Pages',
-      filename: 'Pages.csv',
-      headers: ['Top pages', 'Clicks', 'Impressions', 'CTR', 'Position'],
-      dimensions: ['page'],
+      name: "Top Pages",
+      filename: "Pages.csv",
+      headers: ["Top pages", "Clicks", "Impressions", "CTR", "Position"],
+      dimensions: ["page"],
       dimCount: 1,
     },
     {
-      name: 'Countries Breakdown',
-      filename: 'Countries.csv',
-      headers: ['Country', 'Clicks', 'Impressions', 'CTR', 'Position'],
-      dimensions: ['country'],
+      name: "Countries Breakdown",
+      filename: "Countries.csv",
+      headers: ["Country", "Clicks", "Impressions", "CTR", "Position"],
+      dimensions: ["country"],
       dimCount: 1,
     },
     {
-      name: 'Devices Breakdown',
-      filename: 'Devices.csv',
-      headers: ['Device', 'Clicks', 'Impressions', 'CTR', 'Position'],
-      dimensions: ['device'],
+      name: "Devices Breakdown",
+      filename: "Devices.csv",
+      headers: ["Device", "Clicks", "Impressions", "CTR", "Position"],
+      dimensions: ["device"],
       dimCount: 1,
     },
     {
-      name: 'Daily Trends (Dates)',
-      filename: 'Dates.csv',
-      headers: ['Date', 'Clicks', 'Impressions', 'CTR', 'Position'],
-      dimensions: ['date'],
+      name: "Daily Trends (Dates)",
+      filename: "Dates.csv",
+      headers: ["Date", "Clicks", "Impressions", "CTR", "Position"],
+      dimensions: ["date"],
       dimCount: 1,
     },
     {
-      name: 'Search Appearance',
-      filename: 'Search_Appearance.csv',
-      headers: ['Search Appearance', 'Clicks', 'Impressions', 'CTR', 'Position'],
-      dimensions: ['searchAppearance'],
+      name: "Search Appearance",
+      filename: "Search_Appearance.csv",
+      headers: [
+        "Search Appearance",
+        "Clicks",
+        "Impressions",
+        "CTR",
+        "Position",
+      ],
+      dimensions: ["searchAppearance"],
       dimCount: 1,
     },
     {
-      name: 'Pages & Queries Mapping',
-      filename: 'Pages_and_Queries.csv',
-      headers: ['Top pages', 'Top queries', 'Clicks', 'Impressions', 'CTR', 'Position'],
-      dimensions: ['page', 'query'],
+      name: "Pages & Queries Mapping",
+      filename: "Pages_and_Queries.csv",
+      headers: [
+        "Top pages",
+        "Top queries",
+        "Clicks",
+        "Impressions",
+        "CTR",
+        "Position",
+      ],
+      dimensions: ["page", "query"],
       dimCount: 2,
     },
   ];
@@ -472,10 +549,13 @@ Options:
 
       const csvContent = convertRowsToCsv(job.headers, rows, job.dimCount);
       const filePath = path.join(targetDir, job.filename);
-      fs.writeFileSync(filePath, csvContent, 'utf-8');
+      fs.writeFileSync(filePath, csvContent, "utf-8");
 
       const totalClicks = rows.reduce((acc, r) => acc + (r.clicks || 0), 0);
-      const totalImpressions = rows.reduce((acc, r) => acc + (r.impressions || 0), 0);
+      const totalImpressions = rows.reduce(
+        (acc, r) => acc + (r.impressions || 0),
+        0,
+      );
 
       resultsSummary.datasets[job.filename] = {
         rows: rows.length,
@@ -483,25 +563,29 @@ Options:
         totalImpressions,
       };
 
-      console.log(`✅ ${rows.length} rows saved to ${job.filename} (${totalClicks.toLocaleString()} clicks, ${totalImpressions.toLocaleString()} imp)`);
+      console.log(
+        `✅ ${rows.length} rows saved to ${job.filename} (${totalClicks.toLocaleString()} clicks, ${totalImpressions.toLocaleString()} imp)`,
+      );
     } catch (err: any) {
       console.log(`⚠️ Failed`);
       console.error(`   Error details:`, err.message || err);
       if (err.code === 403) {
-        console.error(`   👉 Ensure the authenticated account or service account is added as a user to '${args.siteUrl}' in Google Search Console Settings.`);
+        console.error(
+          `   👉 Ensure the authenticated account or service account is added as a user to '${args.siteUrl}' in Google Search Console Settings.`,
+        );
       }
     }
   }
 
   // Write Summary JSON
   fs.writeFileSync(
-    path.join(targetDir, 'summary.json'),
+    path.join(targetDir, "summary.json"),
     JSON.stringify(resultsSummary, null, 2),
-    'utf-8'
+    "utf-8",
   );
 
   // Maintain a 'latest' symlink/copy in data/gsc/latest
-  const latestDir = path.join(process.cwd(), 'data', 'gsc', 'latest');
+  const latestDir = path.join(process.cwd(), "data", "gsc", "latest");
   try {
     fs.mkdirSync(latestDir, { recursive: true });
     for (const job of jobs) {
@@ -511,7 +595,10 @@ Options:
         fs.copyFileSync(srcFile, destFile);
       }
     }
-    fs.copyFileSync(path.join(targetDir, 'summary.json'), path.join(latestDir, 'summary.json'));
+    fs.copyFileSync(
+      path.join(targetDir, "summary.json"),
+      path.join(latestDir, "summary.json"),
+    );
     console.log(`\n📌 Copied latest datasets to: data/gsc/latest/`);
   } catch (e) {
     // Non-critical
@@ -522,6 +609,6 @@ Options:
 }
 
 main().catch((err) => {
-  console.error('Fatal execution error:', err);
+  console.error("Fatal execution error:", err);
   process.exit(1);
 });

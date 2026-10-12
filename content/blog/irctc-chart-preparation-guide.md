@@ -52,15 +52,15 @@ The second chart serves as the definitive legal passenger manifest for the journ
 
 Here is a side-by-side comparison of the two charting stages:
 
-| Feature / Rule | First Reservation Chart | Second (Final) Reservation Chart |
-| :--- | :--- | :--- |
-| **Preparation Timing** | **8 hours before departure** (or 21:00 previous night for trains before 14:00) | **30 to 15 minutes before departure** |
-| **Primary Purpose** | Finalizes initial seat allotments and merges all special quotas | Captures late cancellations and Current Availability bookings |
-| **Quota Berth Release** | Unused VIP, EQ, Defense, and Tourist quotas released to waitlist | Berths vacated by late cancellations assigned to RAC passengers |
-| **Current Availability** | Opens immediately after first charting at base fare or discount | Closes permanently upon second chart preparation |
-| **Waitlist Resolution** | WL passengers may advance to RAC or Confirmed status | Remaining waitlisted e-tickets are auto-cancelled |
-| **Booking & Cancellation** | Current booking opens; confirmed cancellation incurs 50% fee | All online cancellations and bookings strictly closed |
-| **Passenger Notification** | SMS sent with initial coach and berth allocation | Final status updated on IRCTC app, website, and station charts |
+| Feature / Rule             | First Reservation Chart                                                        | Second (Final) Reservation Chart                                |
+| :------------------------- | :----------------------------------------------------------------------------- | :-------------------------------------------------------------- |
+| **Preparation Timing**     | **8 hours before departure** (or 21:00 previous night for trains before 14:00) | **30 to 15 minutes before departure**                           |
+| **Primary Purpose**        | Finalizes initial seat allotments and merges all special quotas                | Captures late cancellations and Current Availability bookings   |
+| **Quota Berth Release**    | Unused VIP, EQ, Defense, and Tourist quotas released to waitlist               | Berths vacated by late cancellations assigned to RAC passengers |
+| **Current Availability**   | Opens immediately after first charting at base fare or discount                | Closes permanently upon second chart preparation                |
+| **Waitlist Resolution**    | WL passengers may advance to RAC or Confirmed status                           | Remaining waitlisted e-tickets are auto-cancelled               |
+| **Booking & Cancellation** | Current booking opens; confirmed cancellation incurs 50% fee                   | All online cancellations and bookings strictly closed           |
+| **Passenger Notification** | SMS sent with initial coach and berth allocation                               | Final status updated on IRCTC app, website, and station charts  |
 
 ---
 
@@ -133,33 +133,41 @@ Rather than manually searching dozens of intermediate stations, LastBerth's [Sma
 ## Common Booking Questions (FAQ)
 
 ### When is chart prepared for trains leaving before 8 AM or 12 PM?
+
 For early morning trains departing between 00:01 and 14:00 (2:00 PM), the first reservation chart is prepared the previous evening at **21:00 (9:00 PM)**. The second and final chart is prepared 30 minutes before scheduled departure on the morning of travel.
 
 ### Can you cancel a confirmed ticket after chart preparation?
+
 No refund is granted if a confirmed ticket is cancelled online less than 4 hours before departure or after first chart preparation (whichever is earlier). However, if your train is delayed by more than 3 hours, you can file a TDR online before the train departs to receive a 100% full refund.
 
 ### Is a waitlisted online e-ticket valid for boarding after chart preparation?
+
 No, fully waitlisted e-tickets are automatically cancelled upon second charting and are completely invalid for travel. Boarding a reserved coach with a waitlisted e-ticket is treated as ticketless travel under Section 138 of the Railways Act, punishable by a minimum fine of ₹500 plus the class fare.
 
 ### What is current availability in IRCTC after charting?
+
 Current Availability (`CURR_AVBL` or `CURR AVL`) refers to unsold berths that go on sale after first chart preparation. Current reservation tickets are 100% confirmed seats with allocated coach and berth numbers, bookable online or at station counters until 15–30 minutes before departure.
 
 ### How much refund do you get if a waitlisted e-ticket is dropped?
+
 When an e-ticket remains waitlisted after final charting, IRCTC automatically cancels it and credits a **100% full refund** to your original payment account. No cancellation charges or clerkage fees are deducted for auto-dropped waitlisted e-tickets.
 
 ### Does chart preparation happen at each intermediate station?
+
 The primary chart is prepared at the train's originating station. For major remote stations that have dedicated booking quotas (Remote Location Waiting List / RLWL), a separate remote chart is finalized at the remote charting hub before the train reaches that junction.
 
 ### Can RAC passengers get full berths after chart preparation?
+
 Yes, RAC passengers frequently get upgraded to full berths during first or second charting when confirmed passengers cancel their tickets or unused quotas are released. Additionally, the TTE can upgrade RAC passengers onboard using the Handheld Terminal (HHT) if confirmed passengers fail to show up.
 
 ### What is the deadline to book current reservation tickets?
+
 Current reservation bookings on the IRCTC website and PRS ticket counters remain open until the second reservation chart is prepared, which is between **30 minutes and 15 minutes before scheduled train departure**.
 
 ---
 
 ## Bottom line
 
-Chart preparation in Indian Railways is not a single event—it is a two-step window. The **first chart at ~8 hours (or 21:00 the prior night)** unlocks quota releases and Current Availability, while the **second chart at 30 minutes** locks in final seat allocations. 
+Chart preparation in Indian Railways is not a single event—it is a two-step window. The **first chart at ~8 hours (or 21:00 the prior night)** unlocks quota releases and Current Availability, while the **second chart at 30 minutes** locks in final seat allocations.
 
 If your train shows WL or Regret, do not rely on uncertain waitlists. Use [Smart Seats](/) to find confirmed split-segment seats, explore live openings on [Get Confirmed Tickets](/), check coach layouts on [Get Confirmed Tickets](/), and track charting times on [Chart Times](/chart-times).

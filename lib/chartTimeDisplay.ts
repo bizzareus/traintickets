@@ -60,7 +60,9 @@ function to12Hour(hhmm: string): string {
   const ampm = h >= 12 ? "PM" : "AM";
   let hr = h % 12;
   if (hr === 0) hr = 12;
-  return min === 0 ? `${hr} ${ampm}` : `${hr}:${String(min).padStart(2, "0")} ${ampm}`;
+  return min === 0
+    ? `${hr} ${ampm}`
+    : `${hr}:${String(min).padStart(2, "0")} ${ampm}`;
 }
 
 function relativeDayLabel(offset: number): string {

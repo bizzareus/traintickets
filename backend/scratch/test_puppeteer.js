@@ -4,14 +4,14 @@ const puppeteer = require('puppeteer');
   console.log('Launching Puppeteer...');
   const browser = await puppeteer.launch({
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   try {
     const page = await browser.newPage();
     console.log('Navigating to IRCTC Online Charts...');
     await page.goto('https://www.irctc.co.in/online-charts/', {
       waitUntil: 'domcontentloaded',
-      timeout: 30000
+      timeout: 30000,
     });
     console.log('Page loaded!');
     const title = await page.title();

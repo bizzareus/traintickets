@@ -13,6 +13,7 @@ tags:
 ---
 
 > **🔔 Planning festival travel from Mumbai or Pune?** Find confirmed seats and smart split routes on high-demand festive corridors:
+>
 > - [Search Mumbai to Danapur Special Trains](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
 > - [Search Pune to Danapur Special Trains](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur)
 > - [Search Mumbai to Gorakhpur Trains](/?from=LTT&to=GKP&fromName=Lokmanya%20Tilak%20Terminus&toName=Gorakhpur%20Jn)
@@ -50,15 +51,15 @@ Corridors between Mumbai and the northern/eastern belt experience the highest pa
 
 The table below outlines the primary Central Railway festival special trains operating from Mumbai to Uttar Pradesh and Bihar:
 
-| Train Number | Train Name / Corridor | Origin Station | Destination Station | Frequency | Coach Composition |
-|---|---|---|---|---|---|
-| **01079 / 01080** | CSMT – Gorakhpur Daily Special | Mumbai CSMT | Gorakhpur Jn (GKP) | Daily | 2A, 3A, 3E, SL, GS |
-| **01045 / 01046** | LTT – Prayagraj Weekly Special | Mumbai LTT | Prayagraj Jn (PRYJ) | Weekly (Tuesdays) | 2A, 3A, SL, GS |
-| **01103 / 01104** | LTT – Danapur Bi-Weekly Special | Mumbai LTT | Danapur (DNR) | Bi-Weekly (Mon, Thu) | 3A, 3E, SL, GS |
-| **01053 / 01054** | LTT – Banaras Weekly Special | Mumbai LTT | Banaras (BSBS) | Weekly (Wednesdays) | 2A, 3A, SL, GS |
-| **01043 / 01044** | LTT – Samastipur Special | Mumbai LTT | Samastipur Jn (SPJ) | Weekly (Sundays) | 3A, SL, GS |
-| **01143 / 01144** | CSMT – Danapur Special | Mumbai CSMT | Danapur (DNR) | Tri-Weekly | 2A, 3A, SL, GS |
-| **01077 / 01078** | LTT – Chhapra Festive Special | Mumbai LTT | Chhapra (CPR) | Weekly (Saturdays) | 3E, SL, GS |
+| Train Number      | Train Name / Corridor           | Origin Station | Destination Station | Frequency            | Coach Composition  |
+| ----------------- | ------------------------------- | -------------- | ------------------- | -------------------- | ------------------ |
+| **01079 / 01080** | CSMT – Gorakhpur Daily Special  | Mumbai CSMT    | Gorakhpur Jn (GKP)  | Daily                | 2A, 3A, 3E, SL, GS |
+| **01045 / 01046** | LTT – Prayagraj Weekly Special  | Mumbai LTT     | Prayagraj Jn (PRYJ) | Weekly (Tuesdays)    | 2A, 3A, SL, GS     |
+| **01103 / 01104** | LTT – Danapur Bi-Weekly Special | Mumbai LTT     | Danapur (DNR)       | Bi-Weekly (Mon, Thu) | 3A, 3E, SL, GS     |
+| **01053 / 01054** | LTT – Banaras Weekly Special    | Mumbai LTT     | Banaras (BSBS)      | Weekly (Wednesdays)  | 2A, 3A, SL, GS     |
+| **01043 / 01044** | LTT – Samastipur Special        | Mumbai LTT     | Samastipur Jn (SPJ) | Weekly (Sundays)     | 3A, SL, GS         |
+| **01143 / 01144** | CSMT – Danapur Special          | Mumbai CSMT    | Danapur (DNR)       | Tri-Weekly           | 2A, 3A, SL, GS     |
+| **01077 / 01078** | LTT – Chhapra Festive Special   | Mumbai LTT     | Chhapra (CPR)       | Weekly (Saturdays)   | 3E, SL, GS         |
 
 Major intermediate commercial halts for these Mumbai departures include Thane, Kalyan, Nashik Road, Manmad, Jalgaon, Bhusaval, Khandwa, Itarsi, Jabalpur, Katni, Satna, Manikpur, and Pt. Deen Dayal Upadhyaya (DDU) Junction.
 
@@ -74,13 +75,13 @@ Pune serves as a major hub for IT professionals, manufacturing workforce, and st
 
 The table below lists the key festival special trains operating from Pune Junction:
 
-| Train Number | Train Name / Corridor | Origin Station | Destination Station | Frequency | Coach Composition |
-|---|---|---|---|---|---|
-| **01409 / 01410** | Pune – Danapur Festive Special | Pune Jn (PUNE) | Danapur (DNR) | Daily during peak rush | 2A, 3A, 3E, SL, GS |
-| **01431 / 01432** | Pune – Gorakhpur Weekly Special | Pune Jn (PUNE) | Gorakhpur Jn (GKP) | Weekly (Fridays) | 2A, 3A, SL, GS |
-| **01201 / 01202** | Pune – Nagpur Superfast Special | Pune Jn (PUNE) | Nagpur Jn (NGP) | Tri-Weekly | 3A, SL, GS |
-| **01425 / 01426** | Pune – Kalaburagi / Latur Special | Pune Jn (PUNE) | Kalaburagi (KLBG) | 4 Days a week | 3A, SL, GS, 2S |
-| **01415 / 01416** | Pune – Gorakhpur AC Special | Pune Jn (PUNE) | Gorakhpur Jn (GKP) | Weekly (Tuesdays) | 2A, 3A, 3E (All AC) |
+| Train Number      | Train Name / Corridor             | Origin Station | Destination Station | Frequency              | Coach Composition   |
+| ----------------- | --------------------------------- | -------------- | ------------------- | ---------------------- | ------------------- |
+| **01409 / 01410** | Pune – Danapur Festive Special    | Pune Jn (PUNE) | Danapur (DNR)       | Daily during peak rush | 2A, 3A, 3E, SL, GS  |
+| **01431 / 01432** | Pune – Gorakhpur Weekly Special   | Pune Jn (PUNE) | Gorakhpur Jn (GKP)  | Weekly (Fridays)       | 2A, 3A, SL, GS      |
+| **01201 / 01202** | Pune – Nagpur Superfast Special   | Pune Jn (PUNE) | Nagpur Jn (NGP)     | Tri-Weekly             | 3A, SL, GS          |
+| **01425 / 01426** | Pune – Kalaburagi / Latur Special | Pune Jn (PUNE) | Kalaburagi (KLBG)   | 4 Days a week          | 3A, SL, GS, 2S      |
+| **01415 / 01416** | Pune – Gorakhpur AC Special       | Pune Jn (PUNE) | Gorakhpur Jn (GKP)  | Weekly (Tuesdays)      | 2A, 3A, 3E (All AC) |
 
 These Pune specials typically run via Daund Chord line, Ahmednagar, Belapur, Kopargaon, Manmad, and Bhusaval, eliminating the need to reverse loco at Daund and reducing total running time by nearly 45 minutes.
 
@@ -96,12 +97,12 @@ In addition to the heavy northern and eastern routes, Central Railway provides c
 
 The table below outlines special services operating to West Bengal and Southern states:
 
-| Train Number | Train Name / Corridor | Origin Station | Destination Station | Frequency | Primary Route & Stoppages |
-|---|---|---|---|---|---|
-| **01015 / 01016** | CSMT – Chennai Weekly AC Special | Mumbai CSMT | Chennai Central (MAS) | Weekly (Thursdays) | Pune, Solapur, Wadi, Guntakal, Renigunta, Arakkonam |
-| **01013 / 01014** | CSMT – Bengaluru Weekly Special | Mumbai CSMT | KSR Bengaluru (SBC) | Weekly (Saturdays) | Kalyan, Pune, Satara, Miraj, Belagavi, Hubballi, Davangere |
-| **01147 / 01148** | CSMT – Howrah Durga Puja Special | Mumbai CSMT | Howrah Jn (HWH) | Bi-Weekly | Bhusaval, Nagpur, Raipur, Bilaspur, Rourkela, Tatanagar |
-| **01435 / 01436** | Pune – Solapur – Kalaburagi Special | Pune Jn | Kalaburagi (KLBG) | Bi-Weekly | Daund, Kurduwadi, Solapur, Gangapur Road |
+| Train Number      | Train Name / Corridor               | Origin Station | Destination Station   | Frequency          | Primary Route & Stoppages                                  |
+| ----------------- | ----------------------------------- | -------------- | --------------------- | ------------------ | ---------------------------------------------------------- |
+| **01015 / 01016** | CSMT – Chennai Weekly AC Special    | Mumbai CSMT    | Chennai Central (MAS) | Weekly (Thursdays) | Pune, Solapur, Wadi, Guntakal, Renigunta, Arakkonam        |
+| **01013 / 01014** | CSMT – Bengaluru Weekly Special     | Mumbai CSMT    | KSR Bengaluru (SBC)   | Weekly (Saturdays) | Kalyan, Pune, Satara, Miraj, Belagavi, Hubballi, Davangere |
+| **01147 / 01148** | CSMT – Howrah Durga Puja Special    | Mumbai CSMT    | Howrah Jn (HWH)       | Bi-Weekly          | Bhusaval, Nagpur, Raipur, Bilaspur, Rourkela, Tatanagar    |
+| **01435 / 01436** | Pune – Solapur – Kalaburagi Special | Pune Jn        | Kalaburagi (KLBG)     | Bi-Weekly          | Daund, Kurduwadi, Solapur, Gangapur Road                   |
 
 Passengers travelling to Kolkata for Durga Puja can utilize 01147/01148 as a reliable alternative to regular trains like the Gitanjali Express and Mumbai Mail, which frequently enter waitlists months ahead.
 
@@ -130,21 +131,25 @@ Understanding booking schedules and ticketing rules ensures you secure confirmed
 Even on special trains, high demand can cause seats to sell out within hours. If your preferred train shows `WL` (Waiting List) or `REGRET`, use these proven booking strategies to secure your journey:
 
 ### 1. Split-Segment Booking via Smart Seats
+
 Indian Railways partitions coach berths into separate intermediate station quotas (`GNWL`, `RLWL`, and `PQWL`). While a direct booking from Mumbai to Danapur may show `REGRET`, berths may remain available from Mumbai to Itarsi, and from Itarsi to Danapur on the exact same train.
 
 Use [Smart Seats](/) to discover contiguous split-segment seats, enabling you to travel on a single train without changing coaches or rakes.
 
 ### 2. Origin Station Booking with Boarding Station Modification
+
 Intermediate stations draw from smaller pooled quotas that exhaust quickly. Booking from the originating terminal station (such as Mumbai CSMT instead of Thane, or Pune instead of Daund) secures access to the larger General Quota (`GNWL`).
 
 Under Indian Railways rules, you can modify your boarding station online on IRCTC up to the preparation of the second reservation chart (around 30 minutes before train departure).
 
 ### 3. Current Availability (CURR_AVBL) Post-Chart Discovery
+
 When the first reservation chart is prepared (at least 4 to 8 hours before departure, or at 21:00 hrs (9:00 PM) the previous evening for morning departures), all unallocated quotas and last-minute cancellations are released as `CURR_AVBL` at a 10% discount.
 
 You can inspect [Chart Vacancy](/chart-vacancy) and track charting timelines on [Chart Times](/chart-times) to claim released berths up to 30 minutes before departure.
 
 ### 4. Standby Festival Clone Trains
+
 During peak festival days (October 16–21 for Durga Puja, November 6–10 for Diwali, and November 12–15 for Chhath Puja), Central Railway deploys unannounced duplicate/clone rakes running 30 to 60 minutes behind major express trains. These appear on IRCTC with 12 to 24 hours notice with fresh, unreserved general quotas.
 
 ---
@@ -189,4 +194,4 @@ No, fare concessions for senior citizens, students, and other general concession
 
 Central Railway's announcement of 418 festival special trains provides crucial relief for passengers travelling from Mumbai and Pune to Bihar, Uttar Pradesh, Bengal, and Southern states during Durga Puja, Diwali, and Chhath Puja 2026. Book your tickets early starting September 27, 2026 at 08:00 AM IST on IRCTC. If your train shows a waiting list, use [Smart Seats](/) to find confirmed split journeys, check [Chart Times](/chart-times) for charting alerts, and secure released berths on [Chart Vacancy](/chart-vacancy).
 
-*LastBerth is an independent train seat discovery and ticket search tool. It is not affiliated with IRCTC, CRIS, or the Ministry of Railways, and does not issue or sell tickets.*
+_LastBerth is an independent train seat discovery and ticket search tool. It is not affiliated with IRCTC, CRIS, or the Ministry of Railways, and does not issue or sell tickets._

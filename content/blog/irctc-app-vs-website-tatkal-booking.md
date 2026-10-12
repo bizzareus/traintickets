@@ -44,6 +44,7 @@ If your browser lags for even thirty seconds, the server thinks your connection 
 To address these bottleneck issues, the Ministry of Railways is launching a fully upgraded **IRCTC website and mobile app** on **July 15, 2026**. This upgrade boosts server capacity to support **1.5 lakh bookings per minute** (a massive concurrency upgrade from previous limits) and introduces smoother CAPTCHAs to stop automated bots from causing artificial congestion.
 
 To prevent getting logged out on the website:
+
 - **Do not refresh the page:** Pressing F5 or clicking the reload button will kill your session immediately.
 - **Move fast:** Have your passenger details ready and click through the pages without pausing.
 - **Use only one tab:** Logging into your account on two different tabs or devices simultaneously will get you logged out instantly.
@@ -73,13 +74,13 @@ The app makes this simple. If you choose the UPI option and have the UPI app on 
 
 Here is a quick summary of the differences:
 
-| Feature | IRCTC Mobile App | IRCTC Website (Desktop) |
-| :--- | :--- | :--- |
-| **Login Time** | 2-3 seconds (Fingerprint or PIN) | 10-15 seconds (Password + Complex Captcha) |
+| Feature                  | IRCTC Mobile App                  | IRCTC Website (Desktop)                     |
+| :----------------------- | :-------------------------------- | :------------------------------------------ |
+| **Login Time**           | 2-3 seconds (Fingerprint or PIN)  | 10-15 seconds (Password + Complex Captcha)  |
 | **Connection Stability** | Very high (uses lightweight APIs) | Medium (frequent timeouts under heavy load) |
-| **Passenger Entry** | Master List (2 taps to add) | Master List (requires search and dropdowns) |
-| **Captchas** | Simple, short codes | Complex, case-sensitive text or images |
-| **Payment Speed** | Fast UPI app switching | Slow bank redirects + SMS OTP wait |
+| **Passenger Entry**      | Master List (2 taps to add)       | Master List (requires search and dropdowns) |
+| **Captchas**             | Simple, short codes               | Complex, case-sensitive text or images      |
+| **Payment Speed**        | Fast UPI app switching            | Slow bank redirects + SMS OTP wait          |
 
 ---
 
@@ -88,6 +89,7 @@ Here is a quick summary of the differences:
 **Google Chrome** and **Brave** are the best browsers for IRCTC Tatkal booking due to their fast **JavaScript engines** and efficient auto-fill systems. Brave has an edge by natively blocking **background trackers and ads**, which reduces page weight, speeds up rendering, and lowers the risk of session timeouts under heavy load.
 
 To get the best performance from your browser during Tatkal hours:
+
 - **Optimize Auto-Fill:** Save your payment details and address in browser settings beforehand.
 - **Extension Safety:** Disable unnecessary browser extensions. While some "Tatkal autofill" extensions exist, they are often blocked by IRCTC's security filters and can trigger account bans. Stick to native browser auto-fill or the official Master List.
 - **Use Incognito Mode:** Running in an Incognito/Private window prevents bloated cache files from slowing down your connection.
@@ -99,6 +101,7 @@ To get the best performance from your browser during Tatkal hours:
 A **mobile phone** running the IRCTC app is much better than a **laptop** for Tatkal booking. The mobile platform enables **biometric fingerprint access**, displays simplified captchas, and supports direct **UPI payment apps**, whereas a laptop forces you to solve complex image verification grids and wait for slow bank OTP SMS messages.
 
 Here is why the choice between laptop and mobile matters:
+
 - **Biometric Login:** The app allows you to log in in under 2 seconds using your fingerprint. A laptop requires typing passwords and solving security captchas.
 - **Network Reliability:** If your home Wi-Fi lags, a mobile phone can quickly switch to high-speed 5G mobile data, providing a more stable connection during the crucial 120-second booking window.
 - **Keyboard Advantage:** The only area where a laptop wins is typing speed. However, since you should pre-save passenger details in the IRCTC Master List, typing is almost completely eliminated on both devices.
@@ -110,6 +113,7 @@ Starting **July 15, 2025**, IRCTC mandates **Aadhaar OTP authentication** for al
 Under this new mandate, when you select a passenger for a Tatkal or Premium Tatkal ticket, the system will trigger a verification OTP to the mobile number registered with Aadhaar. You must complete this OTP verification before proceeding to the payment page.
 
 How this affects booking speed:
+
 - **Immediate slowdown:** Since Tatkal bookings are typically won or lost in seconds, waiting for a government OTP SMS to arrive will add a critical delay of 10 to 30 seconds.
 - **Bot mitigation:** On the positive side, it levels the playing field. Script users and automated booking bots will no longer be able to bypass passenger verification, meaning genuine passengers will have a fairer shot at securing seats.
 - **Preparation advice:** Ensure that the mobile phone linked to the Aadhaar of every passenger in your Master List is switched on, has active network coverage, and is kept nearby during booking. It is also recommended to verify Aadhaar on your IRCTC profile settings in advance, to minimize last-minute delays. For more details on verification limits, check out the guide on [IRCTC monthly ticket booking limits and Aadhaar link](/blog/irctc-ticket-booking-limits-aadhaar-verification).
@@ -135,6 +139,7 @@ With these smart backups, you don't have to worry about missing out during the T
 **The IRCTC Rail Connect mobile app is faster for Master List auto-filling during Tatkal hours. Selecting pre-saved passengers on the mobile app takes just two taps and bypasses dropdown lag, whereas the desktop web portal often experiences heavy database latency when fetching saved passenger names at 10 AM.**
 
 To maximize auto-fill speed on both platforms:
+
 - Add all passenger names, ages, and berth preferences to your Master List at least 30 minutes before booking opens.
 - Verify Aadhaar status in your IRCTC profile ahead of time to streamline mandatory Aadhaar OTP verification.
 
@@ -161,39 +166,51 @@ A stable high-speed 4G/5G mobile data or Wi-Fi connection with latency under 50m
 ## Common Booking Questions (FAQ)
 
 ### Why does the IRCTC app show session timeout error during Tatkal rush?
+
 Session timeouts happen when server traffic peaks at 10 AM or 11 AM. Pre-logging in at 9:58 AM and using Master List auto-fill prevents idle timeout triggers.
 
 ### Can you use multiple phones or devices on the same IRCTC account for Tatkal?
+
 No, logging into the same IRCTC user account on multiple devices simultaneously will trigger an instant security logout on both devices.
 
 ### Is Master List auto-fill faster on the IRCTC app or website?
+
 The mobile app is faster because passenger selection uses lightweight API calls with zero dropdown latency.
 
 ### What if my money is deducted but Tatkal booking fails on the app?
+
 The deducted fare is automatically refunded back to your bank account or UPI source within 3 to 5 working days.
 
 ### What is the best time to log in to IRCTC for Tatkal?
+
 The best time to log in is 9:58 AM for AC classes (booking opens at 10:00 AM) and 10:58 AM for Sleeper class (booking opens at 11:00 AM). Logging in earlier than this often leads to session expiry exactly when the booking window opens.
 
 ### Can I book Tatkal tickets on both app and website simultaneously?
+
 No. Logging into your IRCTC account on both the app and website at the same time will trigger a security violation and log you out of both sessions. Always stick to one device and one active session.
 
 ### Why does the IRCTC website show \"service unavailable\" at 10 AM?
+
 The \"service unavailable\" error occurs because the website servers hit their maximum traffic capacity. The mobile app is usually more resilient because it routes traffic through different, lightweight API gateways. Note that the upcoming **July 15, 2026 IRCTC portal upgrade** plans to eliminate this by boosting concurrency to **1.5 lakh bookings per minute**.
 
 ### How does the e-Wallet help in fast booking?
+
 The IRCTC e-Wallet allows you to pre-deposit money into your account. Paying via the e-Wallet bypasses bank payment gateways entirely, requiring only a transaction password and an internal OTP, saving up to 30 seconds.
 
 ### Is Premium Tatkal available on the mobile app?
+
 Yes, Premium Tatkal (PT) is fully available on the IRCTC Rail Connect app. You can select the PT quota from the dropdown menu just like the regular Tatkal quota.
 
 ### Can I use the UTS app to book Tatkal tickets?
+
 No, the UTS mobile app is strictly for booking unreserved general tickets, platform tickets, and seasonal suburban passes. It cannot be used to book reserved seats or Tatkal tickets.
 
 ### Does the new Aadhaar OTP verification rule apply to both Tatkal and Premium Tatkal?
+
 Yes, the mandatory Aadhaar OTP authentication starting July 15, 2025, applies to both Tatkal and Premium Tatkal quotas. You must complete the mobile verification for all selected passengers before you can proceed to the booking page.
 
 ### Which browser autofill is safest for Tatkal booking without getting banned?
+
 The native Google Chrome or Brave browser autofill is the safest. Third-party Tatkal autofill extensions are often detected by IRCTC's security filters, which can lead to immediate account suspension or transaction failure.
 
 ---

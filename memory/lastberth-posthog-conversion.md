@@ -1,7 +1,7 @@
 ---
 name: lastberth-posthog-conversion
 description: "PostHog MCP is now wired into the daily-blog routine — project id, real conversion event names, and the blog→tool funnel to measure"
-metadata: 
+metadata:
   node_type: memory
   type: reference
   originSessionId: 91fef4b8-ff34-4160-a194-5ae2008a643b
@@ -14,6 +14,7 @@ metadata:
 **Traffic:** `$pageview` broken down by `$pathname`, filtered to `/blog/*`; exclude bots (`$virt_is_bot = false` / `$virt_traffic_type` ≠ Bot/AI Agent) — SEO/AI crawlers inflate blog views. `$referrer`/`$referring_domain` confirm blog-originated tool sessions.
 
 **Conversion / tool events (the funnel step-2 targets):**
+
 - `search_tickets_clicked` — **primary conversion** (core "search for tickets").
 - `best_train_search_clicked`; builder steps `search_from_selected` / `search_to_selected` / `search_date_selected`.
 - `search_pnr_feature_clicked` / `search_pnr_status_checked` — PNR status (**Smart Seats `/`**).

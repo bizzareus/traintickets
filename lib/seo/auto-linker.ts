@@ -15,13 +15,13 @@ function getRegexAndMap() {
   cachedTermMap = new Map(terms.map((t) => [t.id.toLowerCase(), t.id]));
 
   const escapedTermIds = terms.map((t) =>
-    t.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+    t.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
   );
 
   // Match code blocks (`...`), existing markdown links (`[...]`), or standalone terms (\bTERM\b)
   cachedRegex = new RegExp(
     `\`[^\`]*\`|\\[[^\\]]*\\]\\([^\\)]*\\)|\\b(${escapedTermIds.join("|")})\\b`,
-    "gi"
+    "gi",
   );
 
   return { regex: cachedRegex, termMap: cachedTermMap };

@@ -9,7 +9,10 @@ async function main() {
 
   const customCookies = process.env.TRIPMGT_COOKIES;
   if (customCookies) {
-    const rawPairs = customCookies.split(';').map((c) => c.trim()).filter(Boolean);
+    const rawPairs = customCookies
+      .split(';')
+      .map((c) => c.trim())
+      .filter(Boolean);
     const cookieObjects: any[] = [];
     for (const pair of rawPairs) {
       const eqIdx = pair.indexOf('=');
@@ -25,9 +28,12 @@ async function main() {
   }
 
   const page = await context.newPage();
-  await page.goto('https://tripmgt.in/V1/Train.aspx?ID=6a9ff06a3140a99ed3b57b3e&menu=search', {
-    waitUntil: 'domcontentloaded',
-  });
+  await page.goto(
+    'https://tripmgt.in/V1/Train.aspx?ID=6a9ff06a3140a99ed3b57b3e&menu=search',
+    {
+      waitUntil: 'domcontentloaded',
+    },
+  );
 
   // Check "I Accept" rules
   const checkbox = page.locator('#chkIAgree, input[type="checkbox"]').first();
@@ -55,16 +61,24 @@ async function main() {
   await page.locator('#btnSearchTrains').click();
   await page.waitForTimeout(4000);
 
-  await page.screenshot({ path: 'storage/cli-debug/06_search_results.png', fullPage: true });
+  await page.screenshot({
+    path: 'storage/cli-debug/06_search_results.png',
+    fullPage: true,
+  });
   console.log('Captured search results snapshot!');
 
   // Click 3A on train 12952 (or first available 3A)
   console.log('Clicking 3A on 12952 MMCT TEJAS RAJ...');
-  const classLink = page.locator('tr:has-text("12952") a:has-text("3A"), a:has-text("3A")').first();
+  const classLink = page
+    .locator('tr:has-text("12952") a:has-text("3A"), a:has-text("3A")')
+    .first();
   if (await classLink.count()) {
     await classLink.click();
     await page.waitForTimeout(3000);
-    await page.screenshot({ path: 'storage/cli-debug/07_after_class_click.png', fullPage: true });
+    await page.screenshot({
+      path: 'storage/cli-debug/07_after_class_click.png',
+      fullPage: true,
+    });
     console.log('Captured after class click snapshot!');
   }
 
@@ -93,12 +107,17 @@ async function main() {
   }
 
   // Click OK on modal if it appears
-  const okBtn = page.locator('button:has-text("OK"), a:has-text("OK"), input[value="OK"]').first();
+  const okBtn = page
+    .locator('button:has-text("OK"), a:has-text("OK"), input[value="OK"]')
+    .first();
   if (await okBtn.count()) {
     console.log('Clicking OK on confirm popup...');
     await okBtn.click();
     await page.waitForTimeout(3000);
-    await page.screenshot({ path: 'storage/cli-debug/09_book_form_ready.png', fullPage: true });
+    await page.screenshot({
+      path: 'storage/cli-debug/09_book_form_ready.png',
+      fullPage: true,
+    });
     console.log('Captured Book form ready snapshot!');
   }
 

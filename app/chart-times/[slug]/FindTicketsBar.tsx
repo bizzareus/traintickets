@@ -116,12 +116,12 @@ export default function FindTicketsBar({
         onClick={dismiss}
         className="absolute inset-0 cursor-default bg-black/40"
       />
-      <div className="relative w-full bg-gradient-to-r from-blue-700 to-blue-500 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-xl rounded-t-2xl sm:rounded-2xl sm:max-w-md sm:p-6">
+      <div className="relative w-full rounded-t-2xl bg-gradient-to-r from-blue-700 to-blue-500 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-xl sm:max-w-md sm:rounded-2xl sm:p-6">
         <button
           type="button"
           onClick={dismiss}
           aria-label="Close"
-          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full text-blue-100 hover:bg-white/10 touch-manipulation"
+          className="absolute right-3 top-3 flex h-9 w-9 touch-manipulation items-center justify-center rounded-full text-blue-100 hover:bg-white/10"
         >
           <X className="h-5 w-5" />
         </button>
@@ -148,7 +148,7 @@ export default function FindTicketsBar({
             });
             dismiss();
           }}
-          className="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-white px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-blue-700 shadow-sm transition hover:bg-blue-50 touch-manipulation sm:w-auto"
+          className="mt-4 inline-flex w-full touch-manipulation items-center justify-center rounded-lg bg-white px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-blue-700 shadow-sm transition hover:bg-blue-50 sm:w-auto"
         >
           Click to find confirmed tickets
         </Link>

@@ -60,9 +60,9 @@ export function HomePnrSeoContent() {
           Waitlisted PNR? How to confirm your seat & find alternate tickets
         </h2>
         <p className="mt-2 max-w-2xl text-slate-600">
-          Clear, practical answers to what happens when your IRCTC PNR is waitlisted,
-          how our alternate seat engine finds available berths, and your options before
-          chart preparation.
+          Clear, practical answers to what happens when your IRCTC PNR is
+          waitlisted, how our alternate seat engine finds available berths, and
+          your options before chart preparation.
         </p>
 
         <div className="mt-8 space-y-8">

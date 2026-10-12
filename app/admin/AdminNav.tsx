@@ -39,7 +39,7 @@ function AdminNavContent() {
           onClick={() => setDropdownOpen((prev) => !prev)}
           className={`inline-flex items-center gap-1.5 text-sm font-medium transition ${
             isAnalytics
-              ? "text-indigo-600 font-semibold"
+              ? "font-semibold text-indigo-600"
               : "text-slate-600 hover:text-slate-900"
           }`}
         >
@@ -100,7 +100,7 @@ function AdminNavContent() {
         href="/admin/alerts"
         className={`text-sm font-medium transition ${
           pathname === "/admin/alerts"
-            ? "text-indigo-600 font-semibold"
+            ? "font-semibold text-indigo-600"
             : "text-slate-600 hover:text-slate-900"
         }`}
       >
@@ -120,7 +120,7 @@ function AdminNavContent() {
         href="/admin/unsubscribes"
         className={`text-sm font-medium transition ${
           pathname === "/admin/unsubscribes"
-            ? "text-indigo-600 font-semibold"
+            ? "font-semibold text-indigo-600"
             : "text-slate-600 hover:text-slate-900"
         }`}
       >
@@ -130,7 +130,7 @@ function AdminNavContent() {
         href="/admin/refunds"
         className={`text-sm font-medium transition ${
           pathname === "/admin/refunds"
-            ? "text-indigo-600 font-semibold"
+            ? "font-semibold text-indigo-600"
             : "text-slate-600 hover:text-slate-900"
         }`}
       >
@@ -140,7 +140,7 @@ function AdminNavContent() {
         href="/admin/split-bookings"
         className={`text-sm font-medium transition ${
           pathname === "/admin/split-bookings" && currentTab !== "cancellations"
-            ? "text-indigo-600 font-semibold"
+            ? "font-semibold text-indigo-600"
             : "text-slate-600 hover:text-slate-900"
         }`}
       >
@@ -150,7 +150,7 @@ function AdminNavContent() {
         href="/admin/split-bookings?tab=cancellations"
         className={`text-sm font-medium transition ${
           pathname === "/admin/split-bookings" && currentTab === "cancellations"
-            ? "text-indigo-600 font-semibold"
+            ? "font-semibold text-indigo-600"
             : "text-slate-600 hover:text-slate-900"
         }`}
       >

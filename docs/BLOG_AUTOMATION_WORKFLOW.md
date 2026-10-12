@@ -19,8 +19,8 @@ practical, problem-solving.
 
 ## Optimizing for Google generative AI search (AI Overviews & AI Mode)
 
-From Google's official guide, *Optimizing your website for generative AI features on Google
-Search* (last updated 2026-06-15). Core message: **optimizing for AI search is just SEO** —
+From Google's official guide, _Optimizing your website for generative AI features on Google
+Search_ (last updated 2026-06-15). Core message: **optimizing for AI search is just SEO** —
 AI Overviews/AI Mode run on Google's normal ranking and quality systems.
 
 - **RAG / grounding:** AI answers are grounded in indexed pages and link back to them. Only
@@ -43,12 +43,14 @@ Chrome extension — they cannot run headless/cloud). If the user has uploaded C
 from either tool, use those instead of/in addition to the live pages.
 
 **A. Google Search Console** — what you already rank for (the priority signal):
+
 - Open the performance report; read the **Queries** and **Pages** tabs over the last 3
   months, plus a 28-day vs previous-28-day comparison for trend:
   `https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Alastberth.com&hl=en&breakdown=query&metrics=CLICKS%2CIMPRESSIONS%2CCTR%2CPOSITION&time_granularity=DAY&num_of_days=28`
 - Capture: queries by impressions/position/CTR; which page ranks for each; period-over-period movers.
 
 **B. Google Trends** — rising demand and momentum (catches spikes before they hit GSC):
+
 - Open the rail/IRCTC topic explore page (geo IN), and also read its **Related queries →
   Rising** and **Top** lists:
   `https://trends.google.com/explore?date=now%201-d&geo=IN&q=%2Fg%2F1q62dgcv2`
@@ -72,13 +74,14 @@ playbook, then execute a BATCH this run. Rather than relying on guesswork or art
 
 1. **`recover` (Traffic Regression):** Clicks lost vs previous 28-day window $\rightarrow$ **REFRESH** (Playbook B).
 2. **`ctr` (Page-1 CTR Bleeder):** Positions 1–10 where actual CTR < expected CTR curve $\rightarrow$ **CTR REWRITE** (Playbook A / Frontmatter).
-   - *Expected CTR Benchmark:* Pos 1 = 28%, Pos 2 = 15%, Pos 3 = 10%, Pos 4–5 = 6%, Pos 6–7 = 4%, Pos 8–10 = 2.5%, Page 2 = 1.0%.
+   - _Expected CTR Benchmark:_ Pos 1 = 28%, Pos 2 = 15%, Pos 3 = 10%, Pos 4–5 = 6%, Pos 6–7 = 4%, Pos 8–10 = 2.5%, Page 2 = 1.0%.
    - $\text{Opportunity Headroom} = \text{Impressions} \times (\text{Expected CTR} - \text{Actual CTR})$.
 3. **`rank` (Page-2 Near-Miss Push):** Positions 11–20 with high impressions (150+) $\rightarrow$ **EXPAND** (Playbook A).
 
-*The largest headroom estimate wins and determines the prioritized action.*
+_The largest headroom estimate wins and determines the prioritized action._
 
 ### Guardrails:
+
 - **Low Impression Filter:** If impressions < 150, low CTR is dropped from high opportunity ("nobody searches for this").
 - **Cannibalization Check:** Never draft a second competing post for an existing ranking query. Route to EXPAND on the canonical slug.
 
@@ -93,12 +96,14 @@ Classify each opportunity (default priority order):
 State the chosen action and the evidence (query, position, CTR, trend, page) before acting.
 
 ### The 4 Automated Quality Gates (Must pass before publishing):
+
 1. **Strategy Gate:** Maps to user personas, target query cluster, zero banned corporate fluff.
 2. **Structure Gate:** Top TL;DR (2–4 sentences), question H2s, 40–60 word bold direct answers, valid FAQPage schema.
 3. **Provenance Gate:** Every timing/fee/quota traces to official Railway Board/IRCTC sources. No invented figures.
 4. **Cannibalization Gate:** Verify query is unowned; if owned, hand off to Audit as an edit to canonical post.
 
 ### Playbook A — EXPAND an existing page
+
 - Edit the English page that ranks. Add/repoint H2(s) to match the exact query wording; add a
   40–60 word direct answer; add the missing sub-question H2s (fan-out); add a table/edge-case
   detail competitors lack. Improve the title/meta if CTR is the issue.
@@ -106,11 +111,13 @@ State the chosen action and the evidence (query, position, CTR, trend, page) bef
 - Propagate the SAME additions to all 6 translations of that slug; bump their `updated` too.
 
 ### Playbook B — REFRESH a decaying / stale page
+
 - Update facts (verify against NTES/IRCTC via web_fetch), add anything new, tighten weak
   sections, strengthen the direct answers and FAQ. Improve title/meta if CTR is weak.
 - Bump `updated` to today across the English file and all 6 translations.
 
 ### Playbook C — CONSOLIDATE cannibalizing pages
+
 - Pick the strongest URL as canonical for the query. Strengthen it (as in A).
 - From the weaker overlapping posts, add internal links pointing to the canonical page and
   differentiate their angle so they stop competing.
@@ -119,14 +126,16 @@ State the chosen action and the evidence (query, position, CTR, trend, page) bef
 - Apply the same internal-link/differentiation edits across the relevant translations.
 
 ### Playbook D — WRITE a new post
+
 Only when there's a genuine gap. Create `content/blog/<slug>.md` (kebab-case, not a
 duplicate of anything in `memory/blog-topics-written.md` or `content/blog/`):
+
 - Frontmatter: `title` (≤60), `description` (≤160), `date` & `updated` = today, `tags`
   starting with `train booking`, `irctc` + 3–4 topic tags.
 - TL;DR block; question-based H2s mirroring real queries + natural fan-out sub-questions;
   each H2 followed by a direct 40–60 word answer, then bullets/bold/short paragraphs/tables.
 - Keyword injections where relevant: `WL full form is Waiting List`; `WL (Waiting List) →
-  RAC (Reservation Against Cancellation) → Confirmed`; `WL/1` vs `WL/10`; auto
+RAC (Reservation Against Cancellation) → Confirmed`; `WL/1` vs `WL/10`; auto
   refund/cancellation of waitlisted e-tickets; a `"current available ticket"` is a fully
   confirmed seat with coach/berth, opening 4 hrs before departure, closing 30 min before.
 - LastBerth feature links: `[Smart Seats](/)`, PNR Status search & direct booking,
@@ -190,7 +199,7 @@ TREE=$(git write-tree) && C=$(echo "<msg>" | git commit-tree $TREE -p HEAD) && e
 ## Step 6.5 — Social Media Distribution (LinkedIn)
 
 1. **LinkedIn Distribution:** Run `npx tsx scripts/generate_linkedin_post.ts <slug>` and post to the [LastBerth Company Page](https://www.linkedin.com/company/146318972/admin/page-posts/published) via browser/MCP.
-*(Note: Instagram social distribution is decoupled from the blog workflow and managed via its own dedicated daily ticket discovery automation skill).*
+   _(Note: Instagram social distribution is decoupled from the blog workflow and managed via its own dedicated daily ticket discovery automation skill)._
 
 ## Step 7 — Summary
 

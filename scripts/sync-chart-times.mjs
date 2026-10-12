@@ -79,7 +79,15 @@ async function main() {
   const remote = `https://x-access-token:${TOKEN}@github.com/${REPO}.git`;
 
   console.log(`[sync] cloning ${REPO}#${BRANCH} ...`);
-  git(["clone", "--single-branch", "--branch", BRANCH, "--quiet", remote, repoDir]);
+  git([
+    "clone",
+    "--single-branch",
+    "--branch",
+    BRANCH,
+    "--quiet",
+    remote,
+    repoDir,
+  ]);
   git(["config", "user.name", AUTHOR_NAME], repoDir);
   git(["config", "user.email", AUTHOR_EMAIL], repoDir);
 
@@ -91,7 +99,9 @@ async function main() {
   const contentDir = path.join(repoDir, "content", "chart-times");
   fs.mkdirSync(contentDir, { recursive: true });
 
-  const pending = trains.filter((t) => t && t.completed !== true).slice(0, BATCH);
+  const pending = trains
+    .filter((t) => t && t.completed !== true)
+    .slice(0, BATCH);
   console.log(
     `[sync] ${trains.length} trains, ${trains.filter((t) => t?.completed === true).length} done; processing ${pending.length} this run.`,
   );

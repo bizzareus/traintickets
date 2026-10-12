@@ -1,22 +1,22 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import OpenAI from 'openai';
+import * as fs from "fs";
+import * as path from "path";
+import OpenAI from "openai";
 
 const LANGUAGES = [
-  { code: 'hi', name: 'Hindi' },
-  { code: 'mr', name: 'Marathi' },
-  { code: 'bn', name: 'Bengali' },
-  { code: 'ta', name: 'Tamil' },
-  { code: 'te', name: 'Telugu' },
-  { code: 'ml', name: 'Malayalam' }
+  { code: "hi", name: "Hindi" },
+  { code: "mr", name: "Marathi" },
+  { code: "bn", name: "Bengali" },
+  { code: "ta", name: "Tamil" },
+  { code: "te", name: "Telugu" },
+  { code: "ml", name: "Malayalam" },
 ];
 
-const BLOG_DIR = path.join(__dirname, '../content/blog');
-const ENV_PATH = path.join(__dirname, '../backend/.env');
+const BLOG_DIR = path.join(__dirname, "../content/blog");
+const ENV_PATH = path.join(__dirname, "../backend/.env");
 
 function getApiKey(): string | undefined {
   if (!fs.existsSync(ENV_PATH)) return undefined;
-  const envContent = fs.readFileSync(ENV_PATH, 'utf8');
+  const envContent = fs.readFileSync(ENV_PATH, "utf8");
   const match = envContent.match(/OPENAI_API_KEY=["']?([^"'\n\s]+)["']?/);
   return match ? match[1] : undefined;
 }
@@ -25,7 +25,7 @@ async function translateFile(
   client: OpenAI,
   content: string,
   langName: string,
-  langCode: string
+  langCode: string,
 ): Promise<string> {
   const systemPrompt = `You are a professional translator and content writer specializing in Indian Railways (IRCTC) terminology and ticketing rules.
 Translate the following English blog post into ${langName} (language code: ${langCode}).
@@ -39,22 +39,24 @@ Strict Rules for Low AI Detection (AI Bypass):
 6. Strictly output ONLY the translated markdown content. Do not add any introduction, explanations, notes, or conversational text.`;
 
   const completion = await client.chat.completions.create({
-    model: langCode === 'ml' ? 'gpt-4o' : 'gpt-4o-mini',
+    model: langCode === "ml" ? "gpt-4o" : "gpt-4o-mini",
     messages: [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: content }
+      { role: "system", content: systemPrompt },
+      { role: "user", content: content },
     ],
-    temperature: 0.3
+    temperature: 0.3,
   });
 
-  let translated = completion?.choices[0]?.message?.content || '';
+  let translated = completion?.choices[0]?.message?.content || "";
   translated = translated.trim();
-  if (translated.startsWith('```markdown')) {
-    translated = translated.replace(/^```markdown\r?\n/, '').replace(/\r?\n```$/, '');
-  } else if (translated.startsWith('```md')) {
-    translated = translated.replace(/^```md\r?\n/, '').replace(/\r?\n```$/, '');
-  } else if (translated.startsWith('```') && translated.endsWith('```')) {
-    translated = translated.replace(/^```\r?\n/, '').replace(/\r?\n```$/, '');
+  if (translated.startsWith("```markdown")) {
+    translated = translated
+      .replace(/^```markdown\r?\n/, "")
+      .replace(/\r?\n```$/, "");
+  } else if (translated.startsWith("```md")) {
+    translated = translated.replace(/^```md\r?\n/, "").replace(/\r?\n```$/, "");
+  } else if (translated.startsWith("```") && translated.endsWith("```")) {
+    translated = translated.replace(/^```\r?\n/, "").replace(/\r?\n```$/, "");
   }
   return translated.trim();
 }
@@ -62,18 +64,22 @@ Strict Rules for Low AI Detection (AI Bypass):
 async function run() {
   const targetFiles = process.argv.slice(2);
   if (targetFiles.length === 0) {
-    console.error('❌ Usage: npx tsx scripts/translate_updated_blogs.ts <file1.md> <file2.md> ...');
+    console.error(
+      "❌ Usage: npx tsx scripts/translate_updated_blogs.ts <file1.md> <file2.md> ...",
+    );
     process.exit(1);
   }
 
   const apiKey = getApiKey();
   if (!apiKey) {
-    console.error('❌ OpenAI API key is missing. Check backend/.env');
+    console.error("❌ OpenAI API key is missing. Check backend/.env");
     process.exit(1);
   }
 
   const client = new OpenAI({ apiKey });
-  console.log(`🤖 Starting translation for ${targetFiles.length} updated files across ${LANGUAGES.length} languages...`);
+  console.log(
+    `🤖 Starting translation for ${targetFiles.length} updated files across ${LANGUAGES.length} languages...`,
+  );
 
   for (const filename of targetFiles) {
     const srcPath = path.join(BLOG_DIR, filename);
@@ -82,7 +88,7 @@ async function run() {
       continue;
     }
 
-    const englishContent = fs.readFileSync(srcPath, 'utf8');
+    const englishContent = fs.readFileSync(srcPath, "utf8");
 
     for (const lang of LANGUAGES) {
       const destDir = path.join(BLOG_DIR, lang.code);
@@ -91,21 +97,31 @@ async function run() {
       }
       const destPath = path.join(destDir, filename);
 
-      console.log(`🌐 Translating ${filename} → ${lang.name} (${lang.code})...`);
+      console.log(
+        `🌐 Translating ${filename} → ${lang.name} (${lang.code})...`,
+      );
       try {
-        const translatedContent = await translateFile(client, englishContent, lang.name, lang.code);
-        fs.writeFileSync(destPath, translatedContent, 'utf8');
+        const translatedContent = await translateFile(
+          client,
+          englishContent,
+          lang.name,
+          lang.code,
+        );
+        fs.writeFileSync(destPath, translatedContent, "utf8");
         console.log(`  ✅ Saved: content/blog/${lang.code}/${filename}`);
       } catch (err: any) {
-        console.error(`  ❌ Error translating ${filename} to ${lang.code}:`, err?.message || err);
+        console.error(
+          `  ❌ Error translating ${filename} to ${lang.code}:`,
+          err?.message || err,
+        );
       }
     }
   }
 
-  console.log('🎉 Translation of updated blog posts finished successfully!');
+  console.log("🎉 Translation of updated blog posts finished successfully!");
 }
 
 run().catch((err) => {
-  console.error('Critical error:', err);
+  console.error("Critical error:", err);
   process.exit(1);
 });

@@ -18,11 +18,23 @@ import { ChartAlertSuccessBox } from "@/components/payments/ChartAlertSuccessBox
 import { ChartAlertDiscountPrice } from "@/components/payments/ChartAlertDiscountPrice";
 import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFooter";
 import { useChartAlertPayments } from "@/lib/hooks/useChartAlertPayments";
-import { trackAlertRequested, trackAnalyticsEvent } from "@/lib/analytics/track";
+import {
+  trackAlertRequested,
+  trackAnalyticsEvent,
+} from "@/lib/analytics/track";
 import { isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
 
-const DEFAULT_CLASSES = ["3A", "SL", "2A", "1A", "3E", "CC", "2S", "ANY"] as const;
+const DEFAULT_CLASSES = [
+  "3A",
+  "SL",
+  "2A",
+  "1A",
+  "3E",
+  "CC",
+  "2S",
+  "ANY",
+] as const;
 
 const CLASS_LABELS: Record<string, string> = {
   ANY: "ANY (Any Available Class)",
@@ -209,7 +221,7 @@ export function EntireJourneyAlertCTA({
 
   if (!expanded) {
     return (
-      <div className="mt-4 bg-white shadow-sm ring-1 ring-gray-900/5 rounded-xl">
+      <div className="mt-4 rounded-xl bg-white shadow-sm ring-1 ring-gray-900/5">
         <div className="px-4 py-5 sm:p-6">
           <div className="sm:flex sm:items-start sm:justify-between">
             <div>
@@ -235,7 +247,7 @@ export function EntireJourneyAlertCTA({
                     },
                   });
                 }}
-                className="inline-flex items-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                className="inline-flex items-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
                 Get Ticket Alert
               </button>
@@ -247,7 +259,7 @@ export function EntireJourneyAlertCTA({
   }
 
   return (
-    <div className="mt-2 w-full rounded-xl border border-blue-200 bg-blue-50/70 p-3 sm:p-4 shadow-2xs">
+    <div className="shadow-2xs mt-2 w-full rounded-xl border border-blue-200 bg-blue-50/70 p-3 sm:p-4">
       <div className="mb-2 flex items-center justify-between">
         <p className="text-xs font-semibold text-blue-900">
           Get notified when new seats open at {originChartTime}
@@ -271,10 +283,7 @@ export function EntireJourneyAlertCTA({
           >
             {availableClasses.map((c) => (
               <option key={c} value={c}>
-                {chartAlertClassPriceLabel(
-                  CLASS_LABELS[c] || `${c} Class`,
-                  c,
-                )}
+                {chartAlertClassPriceLabel(CLASS_LABELS[c] || `${c} Class`, c)}
               </option>
             ))}
           </select>
@@ -310,7 +319,7 @@ export function EntireJourneyAlertCTA({
             type="button"
             disabled={loading}
             onClick={subscribe}
-            className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25 disabled:cursor-not-allowed disabled:opacity-60 transition touch-manipulation uppercase tracking-wider"
+            className="inline-flex w-full touch-manipulation items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/25 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading ? (
               <>
@@ -329,7 +338,7 @@ export function EntireJourneyAlertCTA({
             )}
           </button>
           {isAdmin && (
-            <p className="mt-1.5 text-[10px] leading-relaxed text-slate-500 text-center">
+            <p className="mt-1.5 text-center text-[10px] leading-relaxed text-slate-500">
               Admin mode — no charge, the alert is created directly.
             </p>
           )}

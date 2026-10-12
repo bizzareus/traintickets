@@ -16,7 +16,10 @@ export function slugifyTrainName(name: string): string {
 }
 
 /** `12952` + `Mumbai Rajdhani` -> `12952-mumbai-rajdhani-chart-times`. */
-export function buildChartTimesSlug(trainNumber: string, trainName: string): string {
+export function buildChartTimesSlug(
+  trainNumber: string,
+  trainName: string,
+): string {
   const num = String(trainNumber || "").trim();
   const namePart = slugifyTrainName(trainName);
   return namePart ? `${num}-${namePart}-chart-times` : `${num}-chart-times`;

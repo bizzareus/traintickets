@@ -24,7 +24,7 @@ tags:
 
 It is 9:59 AM. You are staring at your screen, heart racing, mouse hovering over the search button. You need to get home for a family emergency, and the only hope is the Tatkal quota. You click search at exactly 10:00 AM, select 3AC, and click "Book Now." But by the time you type the passenger details, solve the captcha, and wait for the bank OTP to arrive on your phone, the screen refreshes to a dreaded sight: **WL 45 / Regret**.
 
-If this has happened to you, you aren't alone. Millions of Indian rail passengers lose the Tatkal race every day. 
+If this has happened to you, you aren't alone. Millions of Indian rail passengers lose the Tatkal race every day.
 
 Why? Because they are playing against users who know the technical nuances of the IRCTC engine. Booking a Tatkal ticket is a digital sport. To win, you need to shave off every microsecond from the process.
 
@@ -40,12 +40,12 @@ Before we talk about the speed tricks, you need to understand the playing field.
 
 ### The Key Differences
 
-| Feature | Tatkal Quota (CK) | Premium Tatkal Quota (PT) |
-| :--- | :--- | :--- |
-| **Pricing Structure** | Flat extra charge (10% to 30% of base fare, capped by class). | Dynamic pricing. Starts at Tatkal rate and increases as seats sell out (can go up to 3x). |
-| **Agent Booking** | Permitted after 30 minutes of opening (10:30 AM / 11:30 AM). | Strictly banned. Only retail users can book. |
-| **Waitlist Rules** | Can go into Waitlist (CKWL) after confirmed seats are gone. | No waitlist. Once seats are sold, booking closes completely. |
-| **Refund on Cancellation** | Zero refund on confirmed tickets. | Zero refund on confirmed tickets. |
+| Feature                    | Tatkal Quota (CK)                                             | Premium Tatkal Quota (PT)                                                                 |
+| :------------------------- | :------------------------------------------------------------ | :---------------------------------------------------------------------------------------- |
+| **Pricing Structure**      | Flat extra charge (10% to 30% of base fare, capped by class). | Dynamic pricing. Starts at Tatkal rate and increases as seats sell out (can go up to 3x). |
+| **Agent Booking**          | Permitted after 30 minutes of opening (10:30 AM / 11:30 AM).  | Strictly banned. Only retail users can book.                                              |
+| **Waitlist Rules**         | Can go into Waitlist (CKWL) after confirmed seats are gone.   | No waitlist. Once seats are sold, booking closes completely.                              |
+| **Refund on Cancellation** | Zero refund on confirmed tickets.                             | Zero refund on confirmed tickets.                                                         |
 
 > [!TIP]
 > Because Premium Tatkal prices rise dynamically, many travelers hesitate to book them. This hesitation is your golden opportunity. If you have the budget and absolutely must travel, skip the standard Tatkal screen and search for **Premium Tatkal** directly. The seats remain available longer because of the higher price tag.
@@ -59,6 +59,7 @@ To set up the IRCTC Master List, go to My Account → My Profile → Master List
 If you are typing passenger names, ages, and berth preferences after 10:00 AM, you have already lost. The IRCTC server load spikes dramatically during these minutes, making every keystroke a laggy nightmare.
 
 ### How to set up the Master List:
+
 1. Log in to your IRCTC profile about half an hour before the booking window opens (around 9:30 AM).
 2. Go to **My Account** > **My Profile** > **Master List**.
 3. Put in the names, ages, gender, and preferred seat types for all travelers.
@@ -94,10 +95,13 @@ Don't use cards or net banking. Entering card numbers and waiting for bank redir
 Instead, go with these high-speed options:
 
 ### 1. IRCTC e-Wallet (Fastest Option)
+
 This is the absolute best way. You load money into your IRCTC e-wallet ahead of time using UPI or net banking. When paying, select "IRCTC e-Wallet". You just need your transaction password and a fast SMS OTP. Since IRCTC manages this OTP directly on its own servers, it arrives in a second and rarely fails.
 
 ### 2. BHIM UPI Request on a Second Phone
+
 If you don't want to keep money in the wallet, use UPI. But don't do it on the same phone you are booking on.
+
 1. Enter your UPI ID (like `xyz@okaxis`).
 2. Keep GPay or PhonePe open on a **separate phone**.
 3. As soon as you hit pay on IRCTC, a request will show up on the second phone.
@@ -115,15 +119,19 @@ Confirmed Tatkal and Premium Tatkal tickets have zero refund on cancellation —
 Before you hit book, make sure you understand the stakes. Tatkal tickets are expensive, and their cancellation rules are notoriously strict.
 
 ### Confirmed Tatkal Tickets
-If your ticket gets confirmed under the Tatkal or Premium Tatkal quota, **there is absolutely no refund** upon cancellation. It does not matter if you cancel 2 days before or 2 hours before. Your money is gone. 
+
+If your ticket gets confirmed under the Tatkal or Premium Tatkal quota, **there is absolutely no refund** upon cancellation. It does not matter if you cancel 2 days before or 2 hours before. Your money is gone.
 
 The only exceptions where a full refund is granted are:
+
 1. The train is delayed by more than three hours at your boarding station.
 2. The train's route is diverted, and you do not want to travel on the new route.
 3. The coach in which you booked is not attached, and you are offered a lower class without accepting it.
 
 ### Waitlisted Tatkal Tickets (CKWL)
+
 If you end up on the waitlist and it doesn't clear after charts are prepared:
+
 - **Auto-Refund:** The system automatically cancels your waitlisted online ticket. You'll get a full refund in 3-5 days with no cancellation or clerkage fee deducted.
 - **Don't board the train:** You cannot travel on a waitlisted e-ticket. If a TTE catches you, they'll treat you as ticketless and fine you heavily.
 

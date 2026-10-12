@@ -23,8 +23,14 @@ test("getTrains - returns array for each catalog type", () => {
     const first = trains[0];
     assert.ok(first.trainNumber, "Train number should be present");
     assert.ok(first.trainName, "Train name should be present");
-    assert.ok(first.originStation.code, "Origin station code should be present");
-    assert.ok(first.destinationStation.code, "Destination station code should be present");
+    assert.ok(
+      first.originStation.code,
+      "Origin station code should be present",
+    );
+    assert.ok(
+      first.destinationStation.code,
+      "Destination station code should be present",
+    );
   }
 });
 
@@ -40,7 +46,10 @@ test("getTrainByNumber - returns O(1) map lookup result for existing train numbe
 
     // Test with leading/trailing whitespace
     const foundPadded = getTrainByNumber(type, `  ${sample.trainNumber}  `);
-    assert.ok(foundPadded, `Should find train ${sample.trainNumber} even with whitespace`);
+    assert.ok(
+      foundPadded,
+      `Should find train ${sample.trainNumber} even with whitespace`,
+    );
     assert.equal(foundPadded?.trainNumber, sample.trainNumber);
   }
 });
@@ -49,7 +58,10 @@ test("getTrainByNumber - handles missing and invalid train numbers", () => {
   assert.equal(getTrainByNumber("vande-bharat", "999999"), null);
   assert.equal(getTrainByNumber("shatabdi", ""), null);
   assert.equal(getTrainByNumber("rajdhani", null as unknown as string), null);
-  assert.equal(getTrainByNumber("garib-rath", undefined as unknown as string), null);
+  assert.equal(
+    getTrainByNumber("garib-rath", undefined as unknown as string),
+    null,
+  );
 });
 
 test("buildSearchUrl - formats search parameters correctly", () => {
@@ -58,5 +70,8 @@ test("buildSearchUrl - formats search parameters correctly", () => {
     destinationStation: { code: "sbc", name: "KSR Bengaluru" },
   });
 
-  assert.equal(url, "/?from=NDLS&to=SBC&fromName=New+Delhi&toName=KSR+Bengaluru");
+  assert.equal(
+    url,
+    "/?from=NDLS&to=SBC&fromName=New+Delhi&toName=KSR+Bengaluru",
+  );
 });

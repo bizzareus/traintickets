@@ -28,12 +28,35 @@ try {
     }
   }
 } catch (err) {
-  console.warn("[Producer] Could not load top-500-trains.json, using fallback list:", err);
+  console.warn(
+    "[Producer] Could not load top-500-trains.json, using fallback list:",
+    err,
+  );
   DEFAULT_TRAINS = [
-    "20818", "20817", "12951", "12952", "12301", "12302",
-    "12309", "12310", "12425", "12445", "12001", "12002",
-    "12004", "12015", "22439", "22440", "12261", "12262",
-    "11301", "11302", "11013", "11014", "12615", "12616",
+    "20818",
+    "20817",
+    "12951",
+    "12952",
+    "12301",
+    "12302",
+    "12309",
+    "12310",
+    "12425",
+    "12445",
+    "12001",
+    "12002",
+    "12004",
+    "12015",
+    "22439",
+    "22440",
+    "12261",
+    "12262",
+    "11301",
+    "11302",
+    "11013",
+    "11014",
+    "12615",
+    "12616",
   ];
 }
 
@@ -64,16 +87,22 @@ export async function handler(event) {
   const inputTrains = event?.trains || DEFAULT_TRAINS;
   const dates = event?.dates || getUpcomingDates(3);
 
-  console.log(`[Producer] Preparing queue tasks for ${inputTrains.length} trains across ${dates.length} dates.`);
+  console.log(
+    `[Producer] Preparing queue tasks for ${inputTrains.length} trains across ${dates.length} dates.`,
+  );
 
   const tasks = [];
   for (const item of inputTrains) {
-    const trainNum = typeof item === "object" ? String(item.trainNumber || "").trim() : String(item).trim();
+    const trainNum =
+      typeof item === "object"
+        ? String(item.trainNumber || "").trim()
+        : String(item).trim();
     if (!trainNum) continue;
 
     const mapped = TRAIN_MAP.get(trainNum) || {};
-    const from = (typeof item === "object" && item.from) ? item.from : mapped.from || "";
-    const to = (typeof item === "object" && item.to) ? item.to : mapped.to || "";
+    const from =
+      typeof item === "object" && item.from ? item.from : mapped.from || "";
+    const to = typeof item === "object" && item.to ? item.to : mapped.to || "";
 
     for (const journeyDate of dates) {
       tasks.push({
@@ -101,11 +130,14 @@ export async function handler(event) {
         new SendMessageBatchCommand({
           QueueUrl: QUEUE_URL,
           Entries: entries,
-        })
+        }),
       );
       sentCount += chunk.length;
     } catch (err) {
-      console.error(`[Producer] Failed to send batch starting at index ${i}:`, err);
+      console.error(
+        `[Producer] Failed to send batch starting at index ${i}:`,
+        err,
+      );
     }
   }
 

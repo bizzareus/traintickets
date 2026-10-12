@@ -65,19 +65,25 @@ Messing up on a train ticket is a nightmare, especially when trains are packed. 
 ## Frequent Passenger Detail Questions (FAQ)
 
 ### Can I travel with a minor spelling mistake in my name on the train ticket?
+
 Usually, yes. If it's just a minor typo (like one or two letters off) and your official photo ID matches the ticket name, the Train Ticket Examiner (TTE) will likely let you travel without a hitch. Still, it's wise to get it corrected at a reservation desk before boarding to avoid last-minute issues.
 
 ### Can I correct passenger details online using the IRCTC mobile app?
+
 No, you can't. Once a ticket is booked and the PNR is generated, IRCTC locks editing of passenger names, ages, and genders on both the website and mobile app to stop unauthorized ticket transfers.
 
 ### What's the fee for correcting passenger names on IRCTC tickets?
+
 Good news—there's no fee. Zonal railways handle spelling typos, age corrections, and gender updates for free, as long as you provide valid government ID proof at the reservation window.
 
 ### Can I transfer my ticket to someone else if the name is completely wrong?
+
 No. Indian Railways only lets you transfer a confirmed ticket to a close blood relative (parents, children, spouse, or siblings). You must submit a written request at a main reservation counter at least 24 hours before departure. You can't transfer a ticket to a friend or anyone else.
 
 ### What does WL mean and how does it work?
+
 In Indian Railways, WL stands for Waiting List. When you book a waitlisted ticket, you get placed in a queue. As others cancel, your ticket moves from WL (Waiting List) to RAC (Reservation Against Cancellation) and finally to Confirmed. Unconfirmed waitlisted e-tickets are automatically canceled and refunded after the chart is prepared.
 
 ### What's a current available ticket?
+
 A current available ticket is a confirmed seat that you can book online or offline after the first chart is prepared. It opens 8 hours before the train's departure and closes 30 minutes before departure.
