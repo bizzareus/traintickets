@@ -175,6 +175,7 @@ export function MobileModifySearchSheet({
           <div className="relative">
             <JourneyDatePicker
               id={dateInputId}
+              restrictToBookingWindow
               value={journeyDate}
               onChange={onDateChange}
               className="z-20"

@@ -28,6 +28,7 @@ import {
   type TrainScanMeta,
 } from "@/lib/trainSearchV2Sort";
 import { normalizeClassCodes } from "@/lib/trainClasses";
+import { getJourneyDateError } from "@/lib/advanceReservation";
 import { HomeBannerAd } from "@/components/home/HomeSideAd";
 import { SideAdvert, MobileAdvert } from "@/components/ads/SideAdvert";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
@@ -291,6 +292,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     });
   }, []);
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
+  const [searchError, setSearchError] = useState<string | null>(null);
   const [selectedClasses, setSelectedClasses] = useState<string[]>([]);
   // Inputs are drafts; results and scans only consume the last submission.
   const [submittedSearch, setSubmittedSearch] = useState<{
@@ -303,7 +305,13 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [mobileSheetOpen, setMobileSheetOpen] = useState(false);
 
   const handleJourneyDateChange = useCallback((ymd: string) => {
+    const error = getJourneyDateError(ymd);
+    if (error) {
+      setSearchError(error);
+      return;
+    }
     setJourneyDate(ymd);
+    setSearchError(null);
     trackAnalyticsEvent({
       name: "search_date_selected",
       properties: { journey_date: ymd },
@@ -361,7 +369,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [hasSearched, setHasSearched] = useState(false);
   const [expandSearch, setExpandSearch] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
-  const [searchError, setSearchError] = useState<string | null>(null);
   const [bestTrainLoading, setBestTrainLoading] = useState(false);
   const [bestTrainError, setBestTrainError] = useState<string | null>(null);
   const [bestTrainResult, setBestTrainResult] =
@@ -417,6 +424,10 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [v2CompletedScans, setV2CompletedScans] = useState<Set<string>>(
     new Set(),
   );
+  const [v2InFlightScans, setV2InFlightScans] = useState<Set<string>>(
+    new Set(),
+  );
+  const [showCancelScanConfirm, setShowCancelScanConfirm] = useState(false);
   const [v2ScanMetaMap, setV2ScanMetaMap] = useState<
     Map<string, TrainScanMeta>
   >(new Map());
@@ -555,6 +566,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     [],
   );
 
+  const handleV2ScanStart = useCallback((trainNumber: string) => {
+    setV2InFlightScans((prev) =>
+      prev.has(trainNumber) ? prev : new Set(prev).add(trainNumber),
+    );
+  }, []);
+
   const handleV2ScanComplete = useCallback(
     (
       trainNumber: string,
@@ -562,6 +579,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       isComplete?: boolean,
       confirmedDurationMinutes?: number,
     ) => {
+      setV2InFlightScans((prev) => {
+        if (!prev.has(trainNumber)) return prev;
+        const next = new Set(prev);
+        next.delete(trainNumber);
+        return next;
+      });
       setV2CompletedScans((prev) => new Set(prev).add(trainNumber));
       if (hasTickets) {
         setV2ScanMetaMap((prev) => {
@@ -780,13 +803,18 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     };
   }, [toDeb]);
 
-  const runSearch = useCallback(async () => {
+  const executeSearch = useCallback(async () => {
     if (!fromSt || !toSt) {
       setSearchError("Select both stations.");
       return;
     }
     if (!journeyDate) {
       setSearchError("Pick a journey date.");
+      return;
+    }
+    const dateError = getJourneyDateError(journeyDate);
+    if (dateError) {
+      setSearchError(dateError);
       return;
     }
     setSubmittedSearch({
@@ -828,6 +856,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     setV2DiscoveredEndToEndTrains(new Set());
     setV2DiscoveredPartialTrains(new Set());
     setV2CompletedScans(new Set());
+    setV2InFlightScans(new Set());
     setV2ScanMetaMap(new Map());
     v2TrackedViewKeyRef.current = "";
     v2TrackedAutoScanKeyRef.current = "";
@@ -946,6 +975,28 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     router,
     pathname,
   ]);
+
+  const runSearch = useCallback(async () => {
+    if (!fromSt || !toSt) {
+      setSearchError("Select both stations.");
+      return;
+    }
+    if (!journeyDate) {
+      setSearchError("Pick a journey date.");
+      return;
+    }
+    const dateError = getJourneyDateError(journeyDate);
+    if (dateError) {
+      setSearchError(dateError);
+      return;
+    }
+    if (v2InFlightScans.size > 0) {
+      // Ticket scans stream per train; a new filter search discards them.
+      setShowCancelScanConfirm(true);
+      return;
+    }
+    await executeSearch();
+  }, [fromSt, toSt, journeyDate, v2InFlightScans.size, executeSearch]);
 
   const runBestTrainSearch = useCallback(async () => {
     if (!submittedSearch || trains.length === 0) {
@@ -1220,6 +1271,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               </label>
               <JourneyDatePicker
                 id={`compact-${journeyDateInputId}`}
+                restrictToBookingWindow
                 value={journeyDate}
                 onChange={handleJourneyDateChange}
                 inputClassName="h-6 w-[92px] cursor-pointer border-0 bg-transparent p-0 text-xs font-semibold text-slate-700 focus:ring-0 sm:w-[120px] sm:text-sm"
@@ -1441,6 +1493,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                               </label>
                               <JourneyDatePicker
                                 id={journeyDateInputId}
+                                restrictToBookingWindow
                                 value={journeyDate}
                                 onChange={handleJourneyDateChange}
                                 inputClassName="block w-full cursor-pointer truncate rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-base font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4"
@@ -1580,6 +1633,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                         });
                       }}
                       onSeatsDiscovered={handleV2SeatsDiscovered}
+                      onScanStart={handleV2ScanStart}
                       onScanComplete={handleV2ScanComplete}
                     />
                   ))}
@@ -1664,6 +1718,64 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         highlightFrom={scheduleHighlightFrom}
         highlightTo={scheduleHighlightTo}
       />
+      {showCancelScanConfirm && (
+        <div
+          className="backdrop-blur-xs fixed inset-0 z-50 flex items-end justify-center bg-black/50 sm:items-center sm:p-4"
+          role="presentation"
+          onClick={() => setShowCancelScanConfirm(false)}
+        >
+          <div
+            className="w-full max-w-md rounded-t-2xl bg-white p-5 shadow-2xl sm:rounded-2xl sm:p-6"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cancel-scan-confirm-title"
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setShowCancelScanConfirm(false);
+            }}
+          >
+            <h3
+              id="cancel-scan-confirm-title"
+              className="text-base font-bold text-slate-900 sm:text-lg"
+            >
+              Cancel ongoing ticket search?
+            </h3>
+            <p className="mt-2 text-sm text-slate-600">
+              Tickets are still being searched for {v2InFlightScans.size}{" "}
+              {v2InFlightScans.size === 1 ? "train" : "trains"}. Starting a new
+              search will cancel {v2InFlightScans.size === 1 ? "it" : "them"}.
+              Are you sure you want to continue?
+            </p>
+            <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                autoFocus
+                onClick={() => setShowCancelScanConfirm(false)}
+                className="inline-flex min-h-[44px] touch-manipulation items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50"
+              >
+                Keep searching
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  trackAnalyticsEvent({
+                    name: "train_search_v2_scan_cancel_confirmed",
+                    properties: {
+                      cancelled_scans: v2InFlightScans.size,
+                    },
+                  });
+                  setV2InFlightScans(new Set());
+                  setShowCancelScanConfirm(false);
+                  void executeSearch();
+                }}
+                className="inline-flex min-h-[44px] touch-manipulation items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-bold text-white hover:bg-blue-700"
+              >
+                Yes, start new search
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {mobileSheetOpen && (
         <MobileModifySearchSheet
           onClose={() => setMobileSheetOpen(false)}

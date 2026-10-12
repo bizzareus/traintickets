@@ -119,17 +119,12 @@ logger sees them, preventing telemetry URLs or API keys from entering logs.
    chart tasks and aged unsent paid notifications. A successful empty cron tick is
    not proof that every subscriber received an alert. Filter unsubscribed,
    suppressed, and intentionally deferred tasks before alerting on backlog.
-3. **GitHub chart-time sync:** `.github/workflows/sync-chart-times.yml` is scheduled
-   at `0 */6 * * *` UTC, with a 45-minute job timeout. Use Cronitor's GitHub Actions
-   integration and a GitHub secret to observe the actual workflow result. Suggested
-   grace: 30 minutes; duration limit: 50 minutes. The backend key does not instrument
-   this separate runner automatically.
-4. **AWS seat-cache pipeline:** Terraform declares an EventBridge producer at
+3. **AWS seat-cache pipeline:** Terraform declares an EventBridge producer at
    `21:30 UTC` (03:00 IST) and SQS consumers. Confirm it is deployed and enabled,
    then monitor producer completion, queue age/DLQ messages, and completed cache
    writes. Keep it separate from the NestJS 03:30 IST cache warmer; producer success
    alone cannot establish consumer success.
-5. **Financial and delivery outcomes:** alert on aged `INITIATED` refunds and
+4. **Financial and delivery outcomes:** alert on aged `INITIATED` refunds and
    provider-confirmed message delivery failures. `sent` currently means provider
    acceptance, not delivered/read or bank settlement. Keep Sentry for stack traces
    and PostHog for product analytics; Cronitor RUM would duplicate existing tooling.

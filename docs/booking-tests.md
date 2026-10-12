@@ -3,12 +3,19 @@
 ## Before pushing
 
 ```sh
-npm run test:booking
+npm --prefix backend run test:booking && npm run test:booking:unit
 ```
 
-The pre-push hook runs this command after the existing backend build. It includes
-backend booking and logging tests, the real Nest HTTP contract tests, frontend
-selection/sorting tests, and the Chromium booking E2E suite. Install Chromium once:
+The pre-push hook runs these fast suites after the existing backend build:
+backend booking and logging tests, the real Nest HTTP contract tests, and
+frontend selection/sorting tests. Browser E2E does **not** run locally anymore;
+to run it on demand use:
+
+```sh
+npm run test:booking:e2e
+```
+
+Install Chromium once:
 
 ```sh
 npm run test:e2e:install
@@ -56,9 +63,11 @@ records owned by each test. The harness refuses a non-local or non-test database
 ## CI and deployment
 
 `.github/workflows/booking-tests.yml` runs the checks on pull requests, manual
-runs, and calls from the AWS deployment workflow. CI provisions PostgreSQL 16
-and runs all five browser projects. Docker image builds and AWS deployment wait
-for these checks to pass. Failed browser runs upload screenshots and traces.
+runs, calls from the AWS deployment workflow, and once a day on a schedule
+(`0 3 * * *` UTC) covering all five browser projects. CI provisions
+PostgreSQL 16 and runs all five browser projects. Docker image builds and AWS
+deployment wait for these checks to pass. Failed browser runs upload
+screenshots and traces.
 
 Production and tests share `backend/src/common/validation-pipe.ts`; do not copy
 its options into another test harness. Add browser scenarios under

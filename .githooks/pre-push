@@ -17,13 +17,14 @@ if [ $RESULT -ne 0 ]; then
   exit 1
 fi
 
-echo "🧪 [pre-push] Running booking unit, HTTP contract, and Chromium E2E tests..."
-npm run test:booking
+echo "🧪 [pre-push] Running fast booking checks (unit + HTTP contract, no E2E)..."
+npm --prefix backend run test:booking && npm run test:booking:unit
 RESULT=$?
 if [ $RESULT -ne 0 ]; then
   echo "❌ [pre-push] Booking checks failed. Push aborted."
   exit 1
 fi
+echo "ℹ️ [pre-push] Browser E2E runs daily in CI, not locally. See docs/booking-tests.md."
 
 echo "✅ [pre-push] Checks passed successfully. Proceeding with push..."
 exit 0

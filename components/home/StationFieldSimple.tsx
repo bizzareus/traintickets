@@ -3,15 +3,10 @@
 import { useEffect, useId, useRef } from "react";
 import { cn } from "@/lib/utils";
 import type { StationRow } from "@/lib/stationCacheClient";
+import { getAdvanceReservationWindow } from "@/lib/advanceReservation";
 
 export function todayYmd(): string {
-  const d = new Date(
-    new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
-  );
-  const y = d.getFullYear();
-  const mo = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${mo}-${day}`;
+  return getAdvanceReservationWindow().minDate;
 }
 
 export function StationFieldSimple(props: {

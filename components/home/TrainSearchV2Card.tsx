@@ -50,6 +50,7 @@ interface TrainSearchV2CardProps {
     isComplete?: boolean,
     confirmedDurationMinutes?: number,
   ) => void;
+  onScanStart?: (trainNumber: string) => void;
   onScanComplete?: (
     trainNumber: string,
     hasTickets: boolean,
@@ -82,6 +83,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
   onOpenSchedule,
   onOpenFullResultModal,
   onSeatsDiscovered,
+  onScanStart,
   onScanComplete,
 }: TrainSearchV2CardProps) {
   const cardRef = useRef<HTMLLIElement>(null);
@@ -264,6 +266,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
       return;
     }
     hasInitiatedRef.current = true;
+    onScanStart?.(train.trainNumber);
 
     setLoading(true);
     setError(null);
@@ -431,6 +434,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     acOnly,
     selectedClasses,
     onSeatsDiscovered,
+    onScanStart,
     onScanComplete,
   ]);
 

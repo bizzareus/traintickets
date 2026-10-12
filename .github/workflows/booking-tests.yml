@@ -2,6 +2,9 @@ name: Booking engine checks
 
 on:
   pull_request:
+  # Nightly browser E2E across all projects (E2E no longer runs locally).
+  schedule:
+    - cron: "0 3 * * *"
   workflow_dispatch:
   workflow_call:
 

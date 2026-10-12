@@ -459,6 +459,12 @@ export type AnalyticsEvent =
         has_alternate_result: boolean;
       };
     }
+  | {
+      name: "train_search_v2_scan_cancel_confirmed";
+      properties: {
+        cancelled_scans: number;
+      };
+    }
   // Tatkal Planner & Alert events
   | {
       name: "tatkal_planner_viewed";
