@@ -63,6 +63,13 @@ JSON does not reprice existing bookings. Historical bookings retain their
 previously saved charges. The old percentage-based service-fee environment
 variable no longer controls pricing.
 
+The passenger-details form loads its fare breakdown from
+`POST /api/split-booking/quote` before checkout. Returning from payment keeps
+the form values; submitting identical details checks the existing payment
+status and reopens the pending payment link without creating a new intent.
+Changed details or a failed link require a new checkout. A confirmed payment
+always resumes the reservation rather than creating another charge.
+
 ## Booking notifications
 
 Each paid booking publishes its details as Markdown to

@@ -413,6 +413,29 @@ describe('SplitBookingService', () => {
       });
     });
 
+    it('quotes the same charges as checkout without creating an order', async () => {
+      const quote = service.quoteBooking({
+        totalFare: request.totalFare,
+        legs: request.legs,
+      });
+      expect(quote).toEqual({
+        totalFare: 1110,
+        irctcServiceFee: 106.2,
+        serviceFee: 120,
+        paymentGatewayFee: 40.09,
+        amount: 1376,
+      });
+      expect(prisma.splitTicketBooking.create).not.toHaveBeenCalled();
+      expect(muzobox.post).not.toHaveBeenCalled();
+      expect(await service.createBooking(request)).toMatchObject(quote);
+      expect(() =>
+        service.quoteBooking({
+          totalFare: 1110,
+          legs: [{ travelClass: 'UNKNOWN' }],
+        }),
+      ).toThrow(BadRequestException);
+    });
+
     it.each(['ai', 'manual'])(
       'accepts the reported route in %s mode and charges both services per leg',
       async (mode) => {

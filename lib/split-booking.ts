@@ -56,6 +56,18 @@ export interface SplitBookingPrice {
   amount: number;
 }
 
+/** Get the same server-side breakdown used to create the payment link. */
+export async function fetchSplitBookingQuote(payload: {
+  totalFare: number;
+  legs: Array<Pick<SplitBookingLeg, "travelClass">>;
+}): Promise<SplitBookingPrice> {
+  const res = await apiClient.post<SplitBookingPrice>(
+    "/api/split-booking/quote",
+    payload,
+  );
+  return res.data;
+}
+
 export interface SplitBookingPaymentResponse extends SplitBookingPrice {
   bookingRef: string;
   bookingMode: "AI" | "MANUAL";

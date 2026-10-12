@@ -25,6 +25,7 @@ import {
   CreateCancellationRequestDto,
   CreateSplitBookingDto,
   LookupCancellationDto,
+  SplitBookingQuoteDto,
 } from './split-booking.dto';
 import type { CancellationRequestStatus } from '@prisma/client';
 import { verifyRazorpayWebhookSignature } from '../chart-alert-payments/razorpay.client';
@@ -38,6 +39,12 @@ export class SplitBookingController {
     private readonly splitBookingService: SplitBookingService,
     private readonly razorpay: RazorpayClient,
   ) {}
+
+  @Post('quote')
+  @Throttle({ global: { limit: 20, ttl: 60_000 } })
+  quote(@Body() body: SplitBookingQuoteDto) {
+    return this.splitBookingService.quoteBooking(body);
+  }
 
   @Post('create')
   @Throttle({ global: { limit: 10, ttl: 60_000 } })

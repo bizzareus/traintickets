@@ -32,6 +32,17 @@ export function BookingPriceBreakdown({ price }: { price: SplitBookingPrice }) {
           are 3% of ticket fare and service charges.
         </p>
       )}
+      {Math.abs(
+        price.totalFare +
+          price.irctcServiceFee +
+          price.serviceFee +
+          price.paymentGatewayFee -
+          price.amount,
+      ) > 0.001 && (
+        <p className="mt-1 text-xs text-slate-500">
+          The payable total is rounded to the nearest whole rupee.
+        </p>
+      )}
     </section>
   );
 }

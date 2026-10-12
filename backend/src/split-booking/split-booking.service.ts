@@ -49,6 +49,7 @@ import type {
   CreateSplitBookingDto,
   SplitBookingStatusResponse,
 } from './split-booking.types';
+import type { SplitBookingQuoteDto } from './split-booking.dto';
 
 @Injectable()
 export class SplitBookingService {
@@ -83,6 +84,16 @@ export class SplitBookingService {
       code += chars[bytes[i] % chars.length];
     }
     return `LB-${code}`;
+  }
+
+  quoteBooking({ totalFare, legs }: SplitBookingQuoteDto) {
+    try {
+      return bookingPrice(calculateBookingCharges(totalFare, legs));
+    } catch (error) {
+      throw new BadRequestException(
+        error instanceof Error ? error.message : 'Invalid booking quote',
+      );
+    }
   }
 
   /**

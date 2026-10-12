@@ -77,6 +77,11 @@ export function alternateResult(legs: AlternateLeg[]): AlternatePathsResponse {
 export type TestHttpError = { status: number; message: string | string[] };
 export interface BookingState {
   requests: CreateSplitBookingPayload[];
+  quoteRequests: Array<{
+    totalFare: number;
+    legs: Array<{ travelClass: string }>;
+  }>;
+  quoteError?: TestHttpError;
   checkout: SplitBookingPaymentResponse;
   status: Partial<SplitBookingStatus>;
   statusRequests: string[];
@@ -119,6 +124,7 @@ export const test = base.extend<{ booking: BookingHarness }>({
   booking: async ({ page, request }, provide) => {
     const state: BookingState = {
       requests: [],
+      quoteRequests: [],
       checkout: {
         bookingRef: "LB-TEST",
         bookingMode: "AI",
@@ -244,6 +250,24 @@ export const test = base.extend<{ booking: BookingHarness }>({
         const body = await response.json();
         if (response.ok()) state.checkout = body as SplitBookingPaymentResponse;
         await fulfill({ status: response.status(), json: body });
+        return;
+      }
+      if (pathname === "/api/split-booking/quote") {
+        const payload = route
+          .request()
+          .postDataJSON() as BookingState["quoteRequests"][number];
+        state.quoteRequests.push(payload);
+        if (state.quoteError) {
+          await fail(state.quoteError);
+          return;
+        }
+        const response = await request.post(CONTRACT_URL + pathname, {
+          data: payload,
+        });
+        await fulfill({
+          status: response.status(),
+          json: await response.json(),
+        });
         return;
       }
       if (pathname.startsWith("/api/split-booking/status/")) {

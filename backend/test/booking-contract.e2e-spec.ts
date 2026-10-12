@@ -22,6 +22,36 @@ describe('Booking HTTP contract', () => {
   });
   afterAll(async () => app.close());
 
+  it('quotes mixed classes with per-leg fees and a whole-rupee payment total', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/api/split-booking/quote')
+      .send({
+        totalFare: 1100,
+        legs: [{ travelClass: '3A' }, { travelClass: 'SL' }],
+      })
+      .expect(201);
+    expect(response.body).toEqual({
+      totalFare: 1100,
+      irctcServiceFee: 53.1,
+      serviceFee: 80,
+      paymentGatewayFee: 36.99,
+      amount: 1270,
+    });
+    expect(createBooking).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    { totalFare: 1100, legs: [{ travelClass: 'INVALID' }] },
+    { totalFare: 1100.5, legs: [{ travelClass: 'SL' }] },
+    { totalFare: 1100, legs: [{ travelClass: 'SL', fee: 0 }] },
+  ])('rejects invalid booking quote input %j', async (payload) => {
+    await request(app.getHttpServer())
+      .post('/api/split-booking/quote')
+      .send(payload)
+      .expect(400);
+    expect(createBooking).not.toHaveBeenCalled();
+  });
+
   it('accepts every field sent by the form, including nullable leg metadata', async () => {
     const payload = bookingPayload();
     const response = await request(app.getHttpServer())

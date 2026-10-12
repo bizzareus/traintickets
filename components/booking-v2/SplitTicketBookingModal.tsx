@@ -10,17 +10,20 @@ import {
   ShieldCheck,
   AlertCircle,
   Train,
+  ArrowLeft,
   ArrowRight,
   MessageCircle,
 } from "lucide-react";
 import {
   createSplitBooking,
+  fetchSplitBookingQuote,
   fetchSplitBookingStatus,
   simulateSplitBookingPayment,
   type CreateSplitBookingPayload,
   type SplitBookingLeg,
   type SplitBookingPassenger,
   type SplitBookingPaymentResponse,
+  type SplitBookingPrice,
   type SplitBookingStatus,
 } from "@/lib/split-booking";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
@@ -100,6 +103,46 @@ export function SplitTicketBookingModal({
   // Step 2: Payment state
   const [paymentData, setPaymentData] =
     useState<SplitBookingPaymentResponse | null>(null);
+  const submittedPayloadRef = useRef<string | null>(null);
+  const quoteKey = JSON.stringify({
+    totalFare,
+    legs: legs.map(({ travelClass }) => ({ travelClass })),
+  });
+  const [quote, setQuote] = useState<{
+    key: string;
+    price?: SplitBookingPrice;
+    error?: boolean;
+  } | null>(null);
+  const [quoteRetry, setQuoteRetry] = useState(0);
+  const quoteRequestRef = useRef<{
+    key: string;
+    promise: Promise<SplitBookingPrice>;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    let active = true;
+    const pending =
+      quoteRequestRef.current?.key === quoteKey
+        ? quoteRequestRef.current.promise
+        : fetchSplitBookingQuote(
+            JSON.parse(quoteKey) as {
+              totalFare: number;
+              legs: Array<Pick<SplitBookingLeg, "travelClass">>;
+            },
+          );
+    quoteRequestRef.current = { key: quoteKey, promise: pending };
+    void pending
+      .then((price) => {
+        if (active) setQuote({ key: quoteKey, price });
+      })
+      .catch(() => {
+        if (active) setQuote({ key: quoteKey, error: true });
+      });
+    return () => {
+      active = false;
+    };
+  }, [open, quoteKey, quoteRetry]);
 
   // Step 3: Fulfillment status
   const [bookingStatus, setBookingStatus] = useState<SplitBookingStatus | null>(
@@ -143,6 +186,7 @@ export function SplitTicketBookingModal({
   useEffect(() => {
     if (open) {
       setStep("passenger_details");
+      submittedPayloadRef.current = null;
       setPassengers([createDefaultPassenger()]);
       setPaymentData(null);
       setBookingStatus(null);
@@ -195,7 +239,7 @@ export function SplitTicketBookingModal({
   // Submit passenger details -> create payment
   const handleProceedToPayment = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSubmitting) return;
+    if (isSubmitting || quote?.key !== quoteKey || !quote.price) return;
     setFormError(null);
 
     // Validations
@@ -248,6 +292,25 @@ export function SplitTicketBookingModal({
         contactEmail: email.trim(),
       };
 
+      const payloadKey = JSON.stringify(payload);
+      if (paymentData) {
+        // A link may have been paid while the passenger was reviewing details.
+        const status = await fetchSplitBookingStatus(paymentData.bookingRef);
+        setBookingStatus(status);
+        if (status.paymentStatus === "PAID") {
+          setStep("booking_in_progress");
+          return;
+        }
+        if (
+          status.paymentStatus === "PENDING" &&
+          status.payUrl === paymentData.payUrl &&
+          submittedPayloadRef.current === payloadKey
+        ) {
+          setStep("payment");
+          return;
+        }
+      }
+
       trackAnalyticsEvent({
         name: "split_booking_details_submitted",
         properties: {
@@ -268,6 +331,8 @@ export function SplitTicketBookingModal({
         },
       });
       setPaymentData(payment);
+      submittedPayloadRef.current = payloadKey;
+      setBookingStatus(null);
       setStep("payment");
     } catch (err: unknown) {
       const responseMessage = isAxiosError<{ message?: string | string[] }>(err)
@@ -487,16 +552,19 @@ export function SplitTicketBookingModal({
 
         {/* Steps Progress Bar */}
         <div className="flex border-b border-slate-100 bg-white text-[11px] font-semibold text-slate-500 sm:text-xs">
-          <div
+          <button
+            type="button"
+            disabled={step !== "payment"}
+            onClick={() => setStep("passenger_details")}
             className={`flex-1 border-b-2 px-1 py-2 text-center transition ${
               step === "passenger_details"
                 ? "border-blue-600 bg-blue-50/30 text-blue-600"
                 : "border-transparent"
-            }`}
+            } disabled:cursor-default ${step === "payment" ? "hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600" : ""}`}
           >
             <span className="sm:hidden">1. Details</span>
             <span className="hidden sm:inline">1. Passenger Details</span>
-          </div>
+          </button>
           <div
             className={`flex-1 border-b-2 px-1 py-2 text-center transition ${
               step === "payment"
@@ -571,6 +639,32 @@ export function SplitTicketBookingModal({
                   ))}
                 </div>
               </div>
+
+              {quote?.key === quoteKey && quote.price ? (
+                <BookingPriceBreakdown price={quote.price} />
+              ) : quote?.key === quoteKey && quote.error ? (
+                <div
+                  role="alert"
+                  className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+                >
+                  Could not load the fare breakdown. Please try again.
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setQuote(null);
+                      quoteRequestRef.current = null;
+                      setQuoteRetry((retry) => retry + 1);
+                    }}
+                    className="ml-2 font-semibold underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
+                  >
+                    Retry
+                  </button>
+                </div>
+              ) : (
+                <p role="status" className="text-sm text-slate-500">
+                  Loading fare breakdown…
+                </p>
+              )}
 
               {/* Contact Information */}
               <div className="space-y-2.5 sm:space-y-3">
@@ -924,7 +1018,9 @@ export function SplitTicketBookingModal({
                 </button>
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={
+                    isSubmitting || quote?.key !== quoteKey || !quote.price
+                  }
                   className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-blue-700 active:scale-[0.98] disabled:opacity-50"
                 >
                   {isSubmitting ? (
@@ -945,6 +1041,14 @@ export function SplitTicketBookingModal({
           {/* STEP 2: MUZOBOX CHECKOUT */}
           {step === "payment" && paymentData && (
             <div className="space-y-6 text-center">
+              <button
+                type="button"
+                onClick={() => setStep("passenger_details")}
+                className="inline-flex min-h-11 w-full items-center gap-2 rounded-lg px-2 text-left text-sm font-semibold text-blue-700 hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
+              >
+                <ArrowLeft aria-hidden="true" className="h-4 w-4" />
+                Back to details
+              </button>
               <div>
                 <span className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">
                   <ShieldCheck className="h-3.5 w-3.5 text-blue-600" /> Secure

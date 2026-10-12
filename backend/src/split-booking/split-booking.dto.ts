@@ -109,6 +109,25 @@ class SplitBookingLegDto {
   availability?: string | null;
 }
 
+class SplitBookingQuoteLegDto {
+  @IsString()
+  @MaxLength(5)
+  travelClass!: string;
+}
+
+export class SplitBookingQuoteDto {
+  @IsInt()
+  @Min(1)
+  @Max(200_000)
+  totalFare!: number;
+
+  @IsArray()
+  @ArrayMinSize(1)
+  @ValidateNested({ each: true })
+  @Type(() => SplitBookingQuoteLegDto)
+  legs!: SplitBookingQuoteLegDto[];
+}
+
 export class CreateSplitBookingDto {
   @IsString()
   @Matches(/^\d{4,6}$/)

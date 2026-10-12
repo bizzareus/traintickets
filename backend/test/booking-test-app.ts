@@ -14,6 +14,7 @@ import {
   calculateBookingCharges,
 } from '../src/split-booking/split-booking.pricing';
 import type { CreateSplitBookingDto } from '../src/split-booking/split-booking.types';
+import type { SplitBookingQuoteDto } from '../src/split-booking/split-booking.dto';
 
 /** Real routing, DTO transform, validation and error handling; no external side effects. */
 export async function createBookingTestApp(
@@ -24,7 +25,14 @@ export async function createBookingTestApp(
     providers: [
       {
         provide: SplitBookingService,
-        useValue: service ?? {
+        useValue: {
+          quoteBooking({ totalFare, legs }: SplitBookingQuoteDto) {
+            try {
+              return bookingPrice(calculateBookingCharges(totalFare, legs));
+            } catch (error: unknown) {
+              throw new BadRequestException((error as Error).message);
+            }
+          },
           createBooking(dto: CreateSplitBookingDto) {
             try {
               validateBookingItinerary(dto);
@@ -40,6 +48,7 @@ export async function createBookingTestApp(
               throw new BadRequestException((error as Error).message);
             }
           },
+          ...service,
         },
       },
       { provide: RazorpayClient, useValue: { webhookSecret: 'test-only' } },
