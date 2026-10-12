@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import {
   BadRequestException,
+  Logger,
   NotFoundException,
   ServiceUnavailableException,
 } from '@nestjs/common';
@@ -501,6 +502,44 @@ describe('SplitBookingService', () => {
         ServiceUnavailableException,
       );
       expect(muzobox.post).toHaveBeenCalledTimes(1);
+    });
+
+    it('logs the full request and response body when Muzobox rejects checkout', async () => {
+      const errorSpy = jest
+        .spyOn(Logger.prototype, 'error')
+        .mockImplementation(() => undefined);
+      try {
+        muzobox.post.mockRejectedValue({
+          isAxiosError: true,
+          message: 'Request failed with status code 400',
+          config: {
+            method: 'post',
+            baseURL: 'https://muzobox.example/api',
+            url: 'proxy-payments/create-link',
+            headers: { 'x-api-key': 'secret-key' },
+            data: JSON.stringify({ amount: 1376.29, referenceId: 'LB-TEST' }),
+          },
+          response: {
+            status: 400,
+            data: { message: 'amount mismatch' },
+          },
+        });
+        await expect(service.createBooking(request)).rejects.toThrow(
+          ServiceUnavailableException,
+        );
+        const logged = errorSpy.mock.calls
+          .map((call) => String(call[0]))
+          .find((line) => line.includes('Muzobox checkout failed'));
+        expect(logged).toContain(
+          "curl 'https://muzobox.example/api/proxy-payments/create-link'",
+        );
+        expect(logged).toContain('amount');
+        expect(logged).toContain('status=400');
+        expect(logged).toContain('amount mismatch');
+        expect(logged).not.toContain('secret-key');
+      } finally {
+        errorSpy.mockRestore();
+      }
     });
 
     it('omits an unreachable localhost callback for local checkout', async () => {

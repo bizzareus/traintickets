@@ -25,6 +25,7 @@ import {
   type MuzoboxPaymentLink,
   type MuzoboxPaymentStatus,
 } from '../common/muzobox-client';
+import { buildCurl } from '../common/curl-log';
 import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
 import { validateBookingItinerary } from './split-booking.validation';
@@ -309,9 +310,23 @@ export class SplitBookingService {
         where: { id: booking.id },
         data: { paymentStatus: 'FAILED' },
       });
-      this.logger.error(
-        `Muzobox checkout failed for ${bookingRef}: ${error instanceof Error ? error.message : String(error)}`,
-      );
+      const reason = error instanceof Error ? error.message : String(error);
+      if (isAxiosError(error)) {
+        const requestBody =
+          typeof error.config?.data === 'string'
+            ? error.config.data
+            : JSON.stringify(error.config?.data ?? null);
+        const requestUrl = error.config?.baseURL
+          ? `${error.config.baseURL.replace(/\/$/, '')}/${(error.config.url ?? '').replace(/^\//, '')}`
+          : (error.config?.url ?? 'unknown-url');
+        this.logger.error(
+          `Muzobox checkout failed for ${bookingRef}: ${reason} | request: ${buildCurl({ method: error.config?.method, url: requestUrl, headers: (error.config?.headers ?? {}) as Record<string, string | undefined>, body: requestBody })} | response: status=${error.response?.status ?? 'n/a'} body=${JSON.stringify(error.response?.data ?? null)}`,
+        );
+      } else {
+        this.logger.error(
+          `Muzobox checkout failed for ${bookingRef}: ${reason}`,
+        );
+      }
       throw new ServiceUnavailableException(
         'Payment system is currently unavailable. Please try again later.',
       );

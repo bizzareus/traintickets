@@ -8,6 +8,7 @@
 const SENSITIVE_HEADERS = new Set([
   'cookie',
   'x-rapidapi-key',
+  'x-api-key',
   'authorization',
 ]);
 

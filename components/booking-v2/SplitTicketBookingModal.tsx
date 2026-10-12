@@ -132,6 +132,13 @@ export function SplitTicketBookingModal({
     onClose();
   }, [trainNumber, step, onClose]);
 
+  // Preload the chat widget as soon as the modal opens, so the help strip
+  // opens it instantly instead of waiting for the script on first click.
+  useEffect(() => {
+    if (!open) return;
+    void preloadSupportChat().catch(() => undefined);
+  }, [open]);
+
   // Reset form when modal opens
   useEffect(() => {
     if (open) {
@@ -347,8 +354,6 @@ export function SplitTicketBookingModal({
       bookingFailed
     )
       return;
-    // Warm up the support-chat widget so "Chat with Us" opens instantly.
-    void preloadSupportChat().catch(() => undefined);
     // Use the saved payment time so repeated status polls do not reset the wait.
     const paidAt = moment(bookingStatus?.paidAt ?? undefined);
     const delayMs = paidAt.isValid()
