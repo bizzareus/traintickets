@@ -3,6 +3,75 @@ import type { CreateSplitBookingDto } from './split-booking.types';
 import { bookingPrice } from './split-booking.pricing';
 import { bookingPriceText } from './split-booking.price-summary';
 
+/** Keep passenger/contact values literal inside Markdown notification bullets. */
+function markdownValue(value: string | number): string {
+  return String(value)
+    .replace(/\r?\n/g, ' ')
+    .replace(/[\\`*_[\]()<>]/g, '\\$&');
+}
+
+export function bookingNotificationMarkdown(
+  booking: SplitTicketBooking,
+): string {
+  const details = bookingDetails(booking);
+  const price = bookingPrice(booking);
+  const yesNo = (value: boolean | undefined) => (value ? 'Yes' : 'No');
+  return [
+    '# Paid booking request',
+    `- **Booking reference:** ${markdownValue(booking.bookingRef)}`,
+    `- **Train:** ${markdownValue(`${booking.trainNumber} ${booking.trainName || ''}`.trim())}`,
+    `- **Route:** ${markdownValue(booking.fromStationCode)} → ${markdownValue(booking.toStationCode)}`,
+    `- **Journey date:** ${details.journeyDate}`,
+    `- **Class / Quota:** ${markdownValue(booking.travelClass)} / ${markdownValue(booking.quota)}`,
+    `- **Fulfillment mode:** ${booking.bookingMode}`,
+    `- **Reservation status:** ${booking.bookingStatus}`,
+    '',
+    '## Contact',
+    `- **Mobile:** ${markdownValue(booking.contactMobile)}`,
+    `- **Email:** ${markdownValue(booking.contactEmail)}`,
+    '',
+    '## Payment',
+    ...bookingPriceText(booking)
+      .split('\n')
+      .map((line) => `- ${line}`),
+    `- **Total paid:** INR ${price.amount.toFixed(2)}`,
+    `- **Payment ID:** ${markdownValue(booking.razorpayPaymentId || 'Not supplied')}`,
+    `- **Order ID:** ${markdownValue(booking.razorpayOrderId || 'Not supplied')}`,
+    `- **Paid at:** ${booking.paidAt?.toISOString() || 'Not supplied'}`,
+    '',
+    '## Journey legs',
+    ...details.legs.map((leg, index) =>
+      [
+        `### Leg ${index + 1}: ${markdownValue(leg.from)} → ${markdownValue(leg.to)}`,
+        `- **Class / Fare:** ${markdownValue(leg.travelClass)} / INR ${leg.fare.toFixed(2)}`,
+        `- **Boarding date:** ${leg.boardingDate}`,
+        `- **Departure / Arrival:** ${markdownValue(leg.departureTime || 'Not supplied')} / ${markdownValue(leg.arrivalTime || 'Not supplied')}`,
+        `- **Duration:** ${leg.durationMinutes ?? 'Not supplied'} minutes`,
+        `- **Availability:** ${markdownValue(leg.availability || 'Not supplied')}`,
+      ].join('\n'),
+    ),
+    '',
+    '## Passengers',
+    ...details.passengers.map((p, i) =>
+      [
+        `- **Passenger ${i + 1}:** ${markdownValue(p.name)} (${p.gender}, age ${p.age})`,
+        `  - Berth: ${markdownValue(p.berthPreference || 'No Preference')}; opt berth: ${yesNo(p.optBerth)}`,
+        `  - Food: ${markdownValue(p.foodChoice || 'No preference')}; senior citizen: ${yesNo(p.seniorCitizen)}`,
+      ].join('\n'),
+    ),
+    ...(details.childPassengers?.map(
+      (p) =>
+        `- **Child:** ${markdownValue(p.name)} (${p.gender}, age ${p.age})`,
+    ) || []),
+    '',
+    '## Preferences',
+    `- Auto-upgrade: ${yesNo(booking.autoUpgrade)}`,
+    `- Confirm berths only: ${yesNo(details.confirmBerthsOnly)}`,
+    `- Preferred coach: ${markdownValue(details.preferredCoach || 'No preference')}`,
+    `- Travel insurance: ${yesNo(details.travelInsurance ?? true)}`,
+  ].join('\n');
+}
+
 /** Retain the first two PNR aliases for older clients while storing every leg. */
 export function bookingPnrFields(pnrs: string[]) {
   return {

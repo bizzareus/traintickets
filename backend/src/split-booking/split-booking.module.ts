@@ -10,6 +10,7 @@ import { NotificationModule } from '../notification/notification.module';
 import { ManualBookingService } from './manual-booking.service';
 import { RetellCallService } from './retell-call.service';
 import { S3StorageService } from '../common/s3-storage.service';
+import { BookingNtfyService } from './booking-ntfy.service';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { S3StorageService } from '../common/s3-storage.service';
     ManualBookingService,
     RetellCallService,
     S3StorageService,
+    BookingNtfyService,
   ],
   exports: [
     SplitBookingService,

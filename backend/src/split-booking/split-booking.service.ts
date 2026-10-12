@@ -32,6 +32,7 @@ import { bookingDetails, bookingPnrFields } from './split-booking.helpers';
 import { bookingPriceHtml } from './split-booking.price-summary';
 import { ManualBookingService } from './manual-booking.service';
 import { RetellCallService } from './retell-call.service';
+import { BookingNtfyService } from './booking-ntfy.service';
 import { NotificationService } from '../notification/notification.service';
 import { WasenderProvider } from '../notification/whatsapp-providers/wasender.provider';
 import { WhatsAppProviderFactory } from '../notification/whatsapp-providers/whatsapp.provider-factory';
@@ -66,6 +67,7 @@ export class SplitBookingService {
     @Optional() private readonly s3Storage?: S3StorageService,
     @Optional() private readonly razorpay?: RazorpayClient,
     @Optional() private readonly retellCall?: RetellCallService,
+    @Optional() private readonly bookingNtfy?: BookingNtfyService,
   ) {
     this.muzoboxClient = createMuzoboxClient(config);
   }
@@ -321,6 +323,7 @@ export class SplitBookingService {
    */
   async getStatus(bookingRef: string): Promise<SplitBookingStatusResponse> {
     const booking = await this.findBooking(bookingRef);
+    this.publishBookingNotification(booking);
     if (booking.paymentStatus === 'PENDING' && booking.muzoboxPaymentId) {
       let remote: MuzoboxPaymentStatus;
       try {
@@ -461,6 +464,7 @@ export class SplitBookingService {
     }
 
     if (booking.paymentStatus === 'PAID') {
+      this.publishBookingNotification(booking);
       // A repeated callback can retry a failed manual delivery, but never an AI purchase.
       if (
         booking.bookingMode === 'MANUAL' &&
@@ -540,7 +544,23 @@ export class SplitBookingService {
       }
     }
 
-    return this.toStatusResponse(await this.findBooking(bookingRef));
+    const current = await this.findBooking(bookingRef);
+    this.publishBookingNotification(current);
+    return this.toStatusResponse(current);
+  }
+
+  private publishBookingNotification(booking: SplitTicketBooking): void {
+    if (
+      !this.bookingNtfy ||
+      booking.paymentStatus !== 'PAID' ||
+      booking.ntfyNotifiedAt
+    )
+      return;
+    void this.bookingNtfy.publish(booking).catch((error) => {
+      this.logger.warn(
+        `Could not publish booking notification for ${booking.bookingRef}: ${error instanceof Error ? error.message : String(error)}`,
+      );
+    });
   }
 
   /**
@@ -830,6 +850,7 @@ export class SplitBookingService {
       where: { id },
       data,
     });
+    this.publishBookingNotification(updated);
 
     this.posthog?.capture(
       'split_booking_admin_updated',
@@ -975,6 +996,11 @@ export class SplitBookingService {
       };
     },
   ) {
+    if (options.channel === 'whatsapp') {
+      throw new BadRequestException(
+        'Customer booking WhatsApp notifications are disabled. Use email.',
+      );
+    }
     if (
       options.pnrLeg1 !== undefined ||
       options.pnrLeg2 !== undefined ||
@@ -1007,7 +1033,7 @@ export class SplitBookingService {
       throw new NotFoundException(`Booking "${id}" not found`);
     }
 
-    const channel = options.channel || 'both';
+    const channel = options.channel || 'email';
     const details = bookingDetails(booking);
     const journeyDateStr = booking.journeyDate.toISOString().slice(0, 10);
     const apiUrl =
@@ -1039,7 +1065,7 @@ export class SplitBookingService {
     });
 
     let emailSent = false;
-    let whatsappSent = false;
+    const whatsappSent = false;
 
     // Send customer email if requested
     if (channel === 'email' || channel === 'both') {
@@ -1128,68 +1154,6 @@ export class SplitBookingService {
       }
     }
 
-    // Send customer WhatsApp if requested
-    if (channel === 'whatsapp' || channel === 'both') {
-      if (booking.contactMobile) {
-        const pnrListText = legPnrs
-          .map(
-            (l) => `• *${l.step}* (${l.route} - ${l.travelClass}): *${l.pnr}*`,
-          )
-          .join('\n');
-
-        const passengerListText = details.passengers
-          .map((p) => `• ${p.name} (${p.gender}, Age ${p.age})`)
-          .join('\n');
-
-        const pdfText = pdfUrl ? `\n*Download Ticket PDF:*\n${pdfUrl}\n` : '';
-        const noteText = options.message
-          ? `\n*Note from Booking Team:*\n${options.message}\n`
-          : '';
-
-        const whatsappText = `*Confirmed: Ticket Reservation for Train ${booking.trainNumber}*
-Booking Ref: ${booking.bookingRef}
-Train: ${booking.trainNumber} ${booking.trainName || ''}
-Route: ${booking.fromStationCode} → ${booking.toStationCode}
-Date: ${journeyDateStr}
-
-*Confirmed PNR Details:*
-${pnrListText}
-
-*Passengers:*
-${passengerListText}
-${pdfText}${noteText}
-Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
-
-        // Matches MSG91 `split_booking_confirmed`: {{1}} train no,
-        // {{2}} route, {{3}} date, {{4}} ref, {{5}} PNR block,
-        // {{6}} passenger block, {{7}} PDF/note block.
-        whatsappSent = await this.sendBookingWhatsApp(
-          booking.contactMobile,
-          whatsappText,
-          'split_booking_confirmed',
-          [
-            { name: 'train_number', value: booking.trainNumber },
-            {
-              name: 'route',
-              value: `${booking.fromStationCode} → ${booking.toStationCode}`,
-            },
-            { name: 'journey_date', value: journeyDateStr },
-            { name: 'booking_ref', value: booking.bookingRef },
-            { name: 'pnr_details', value: pnrListText },
-            { name: 'passengers', value: passengerListText },
-            { name: 'ticket_pdf', value: `${pdfText}${noteText}`.trim() },
-          ],
-        );
-
-        if (whatsappSent) {
-          await this.prisma.splitTicketBooking.update({
-            where: { id },
-            data: { customerWhatsappSentAt: new Date() },
-          });
-        }
-      }
-    }
-
     this.posthog?.capture(
       'split_booking_customer_notified',
       {
@@ -1213,7 +1177,7 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
   }
 
   /**
-   * Sends customer notification (Email & WhatsApp) when payment is confirmed.
+   * Emails the customer when payment is confirmed. Customer WhatsApp is paused.
    */
   async sendCustomerPaymentReceivedNotification(
     bookingId: string,
@@ -1227,17 +1191,14 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
 
     const needsEmail =
       !booking.customerPaymentEmailSentAt && Boolean(booking.contactEmail);
-    const needsWhatsapp =
-      !booking.customerPaymentWhatsappSentAt && Boolean(booking.contactMobile);
-
-    if (!needsEmail && !needsWhatsapp) {
+    if (!needsEmail) {
       return { emailSent: false, whatsappSent: false };
     }
 
     const journeyDateStr = booking.journeyDate.toISOString().slice(0, 10);
     const price = bookingPrice(booking);
     let emailSent = false;
-    let whatsappSent = false;
+    const whatsappSent = false;
 
     if (needsEmail && this.notifications && booking.contactEmail) {
       const subject = `Payment Received — Booking Ref: ${booking.bookingRef} (Train ${booking.trainNumber})`;
@@ -1298,45 +1259,8 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
         .catch(() => false);
     }
 
-    if (needsWhatsapp && booking.contactMobile) {
-      const whatsappText = `*Payment Received — LastBerth*
-Booking Ref: *${booking.bookingRef}*
-Train: ${booking.trainNumber} ${booking.trainName || ''}
-Route: ${booking.fromStationCode} → ${booking.toStationCode}
-Date: ${journeyDateStr}
-Amount Paid: ₹${price.amount}
-
-We have received your payment! Your ticket reservation is currently in progress. We will send your confirmed PNR details and ticket PDF as soon as issued.
-
-*For cancellations, please click here:*
-https://v2.lastberth.com/cancel-booking?ref=${encodeURIComponent(booking.bookingRef)}
-
-Need help? Contact us on WhatsApp at +91 99992 24767 or email support@lastberth.com.`;
-
-      // Matches MSG91 `split_booking_payment_received`: {{1}} amount,
-      // {{2}} ref, {{3}} train no, {{4}} route, {{5}} date,
-      // {{6}} ref for the cancel link.
-      whatsappSent = await this.sendBookingWhatsApp(
-        booking.contactMobile,
-        whatsappText,
-        'split_booking_payment_received',
-        [
-          { name: 'amount', value: String(price.amount) },
-          { name: 'booking_ref', value: booking.bookingRef },
-          { name: 'train_number', value: booking.trainNumber },
-          {
-            name: 'route',
-            value: `${booking.fromStationCode} → ${booking.toStationCode}`,
-          },
-          { name: 'journey_date', value: journeyDateStr },
-          { name: 'cancel_ref', value: booking.bookingRef },
-        ],
-      );
-    }
-
     const updates: Prisma.SplitTicketBookingUpdateInput = {};
     if (emailSent) updates.customerPaymentEmailSentAt = new Date();
-    if (whatsappSent) updates.customerPaymentWhatsappSentAt = new Date();
 
     if (Object.keys(updates).length > 0) {
       await this.prisma.splitTicketBooking.update({

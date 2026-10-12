@@ -12,6 +12,7 @@ import { TripmgtBookingService } from './tripmgt-booking.service';
 import { ConfigService } from '@nestjs/config';
 import { ManualBookingService } from './manual-booking.service';
 import { RetellCallService } from './retell-call.service';
+import { BookingNtfyService } from './booking-ntfy.service';
 import { S3StorageService } from '../common/s3-storage.service';
 import { NotificationService } from '../notification/notification.service';
 import { WasenderProvider } from '../notification/whatsapp-providers/wasender.provider';
@@ -28,6 +29,7 @@ describe('SplitBookingService', () => {
   let manualBooking: { notify: jest.Mock };
   let retellCall: { triggerBookingReceivedCall: jest.Mock };
   let notifications: { sendEmail: jest.Mock };
+  let ntfy: { publish: jest.Mock };
   let wasender: { sendWhatsApp: jest.Mock };
   let prisma: {
     splitTicketBooking: {
@@ -72,6 +74,7 @@ describe('SplitBookingService', () => {
     notifications = {
       sendEmail: jest.fn().mockResolvedValue(true),
     };
+    ntfy = { publish: jest.fn().mockResolvedValue(true) };
     wasender = {
       sendWhatsApp: jest.fn().mockResolvedValue(true),
     };
@@ -142,6 +145,7 @@ describe('SplitBookingService', () => {
         { provide: S3StorageService, useValue: s3Storage },
         { provide: NotificationService, useValue: notifications },
         { provide: WasenderProvider, useValue: wasender },
+        { provide: BookingNtfyService, useValue: ntfy },
       ],
     }).compile();
 
@@ -644,6 +648,9 @@ describe('SplitBookingService', () => {
           { headers: { 'x-api-key': 'test-key' } },
         );
         expect(tripmgt.executeBooking).toHaveBeenCalledTimes(1);
+        expect(ntfy.publish).toHaveBeenCalledWith(
+          expect.objectContaining({ paymentStatus: 'PAID' }),
+        );
         expect(await service.getStatus(booking.bookingRef)).toMatchObject({
           paymentStatus: 'PAID',
         });
@@ -1059,13 +1066,15 @@ describe('SplitBookingService', () => {
       });
 
       const res = await service.adminNotifyCustomer('b-123', {
-        channel: 'email',
+        channel: 'both',
         pnrLeg1: '1111111111',
         pnrLeg2: '2222222222',
         pnrs: ['1111111111', '2222222222'],
       });
 
       expect(res.ok).toBe(true);
+      expect(res.whatsappSent).toBe(false);
+      expect(wasender.sendWhatsApp).not.toHaveBeenCalled();
       const confirmationHtml = notifications.sendEmail.mock
         .calls[0][2] as string;
       expect(confirmationHtml).toContain('IRCTC Service Charge');
@@ -1159,7 +1168,15 @@ describe('SplitBookingService', () => {
   });
 
   describe('customer payment notifications', () => {
-    it('sends email and whatsapp when payment is confirmed and marks timestamps', async () => {
+    it('rejects WhatsApp-only customer notifications before contacting a provider', async () => {
+      await expect(
+        service.adminNotifyCustomer('b-100', { channel: 'whatsapp' }),
+      ).rejects.toThrow('disabled');
+      expect(wasender.sendWhatsApp).not.toHaveBeenCalled();
+      expect(notifications.sendEmail).not.toHaveBeenCalled();
+    });
+
+    it('sends only email when payment is confirmed and does not mark WhatsApp delivery', async () => {
       prisma.splitTicketBooking.findUnique.mockResolvedValue({
         id: 'b-100',
         bookingRef: 'LB-PAID1',
@@ -1182,7 +1199,7 @@ describe('SplitBookingService', () => {
         await service.sendCustomerPaymentReceivedNotification('b-100');
 
       expect(res.emailSent).toBe(true);
-      expect(res.whatsappSent).toBe(true);
+      expect(res.whatsappSent).toBe(false);
       const paymentHtml = notifications.sendEmail.mock.calls[0][2] as string;
       expect(paymentHtml).toContain('IRCTC Service Charge');
       expect(paymentHtml).toContain('LastBerth Service Charge');
@@ -1194,15 +1211,11 @@ describe('SplitBookingService', () => {
         expect.stringContaining('LB-PAID1'),
         expect.any(Object),
       );
-      expect(wasender.sendWhatsApp).toHaveBeenCalledWith({
-        mobile: '9876543210',
-        text: expect.stringContaining('LB-PAID1'),
-      });
+      expect(wasender.sendWhatsApp).not.toHaveBeenCalled();
       expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith({
         where: { id: 'b-100' },
         data: {
           customerPaymentEmailSentAt: expect.any(Date),
-          customerPaymentWhatsappSentAt: expect.any(Date),
         },
       });
     });

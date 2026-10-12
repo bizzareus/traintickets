@@ -57,6 +57,20 @@ JSON does not reprice existing bookings. Historical bookings retain their
 previously saved charges. The old percentage-based service-fee environment
 variable no longer controls pricing.
 
+## Booking notifications
+
+Each paid booking publishes its details as Markdown to
+`https://ntfy.sh/lastberth_booking_confirmation`, for both AI and manual
+fulfillment. The message includes journey legs, passengers, contact information,
+reservation preferences, payment references, and the saved fare breakdown.
+Database delivery receipts and a short delivery lease prevent concurrent
+payment callbacks from posting twice; ntfy's sequence ID groups HTTP retries
+into the same notification. Failed deliveries can retry on subsequent payment
+callbacks or status checks.
+
+Customer booking payment/confirmation WhatsApp messages are paused. The admin
+customer-notification form sends email only.
+
 ## PostgreSQL integration
 
 Create a dedicated local PostgreSQL database whose name starts with `booking_test`.

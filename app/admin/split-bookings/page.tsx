@@ -297,9 +297,6 @@ function SplitBookingsAdminContent() {
   // Notify Modal State
   const [notifyBooking, setNotifyBooking] =
     useState<SplitBookingAdminEntry | null>(null);
-  const [notifyChannel, setNotifyChannel] = useState<
-    "both" | "email" | "whatsapp"
-  >("both");
   const [notifyMessage, setNotifyMessage] = useState("");
   const [notifyLegPnrs, setNotifyLegPnrs] = useState<string[]>([]);
   const [notifyPdfFile, setNotifyPdfFile] = useState<File | null>(null);
@@ -322,7 +319,6 @@ function SplitBookingsAdminContent() {
 
   const openNotifyModal = (b: SplitBookingAdminEntry) => {
     setNotifyBooking(b);
-    setNotifyChannel("both");
     setNotifyMessage("");
     setNotifyFeedback(null);
     setNotifyPdfFile(null);
@@ -728,7 +724,7 @@ function SplitBookingsAdminContent() {
       }>(
         `/api/split-booking/admin/${notifyBooking.id}/notify-user`,
         {
-          channel: notifyChannel,
+          channel: "email",
           message: notifyMessage.trim() || undefined,
           pnrLeg1: notifyLegPnrs[0]?.trim() || undefined,
           pnrLeg2: notifyLegPnrs[1]?.trim() || undefined,
@@ -738,25 +734,11 @@ function SplitBookingsAdminContent() {
         { headers: authHeaders() },
       );
 
-      const parts = [];
-      if (res.data.emailSent) parts.push("Email sent");
-      if (res.data.whatsappSent) parts.push("WhatsApp sent");
-      if (
-        !res.data.emailSent &&
-        (notifyChannel === "email" || notifyChannel === "both")
-      ) {
-        parts.push("Email failed or unconfigured");
-      }
-      if (
-        !res.data.whatsappSent &&
-        (notifyChannel === "whatsapp" || notifyChannel === "both")
-      ) {
-        parts.push("WhatsApp failed or unconfigured");
-      }
-
       setNotifyFeedback({
-        type: res.data.emailSent || res.data.whatsappSent ? "success" : "error",
-        message: parts.join("; "),
+        type: res.data.emailSent ? "success" : "error",
+        message: res.data.emailSent
+          ? "Email sent"
+          : "Email failed or unconfigured",
       });
       await load();
     } catch (err) {
@@ -1995,46 +1977,15 @@ function SplitBookingsAdminContent() {
                 )}
               </div>
 
-              {/* Channel Selector */}
+              {/* Customer booking notifications are email-only for now. */}
               <div>
-                <label className="mb-1.5 block text-xs font-semibold text-slate-700">
+                <p className="mb-1.5 block text-xs font-semibold text-slate-700">
                   Notification Channel
-                </label>
-                <div className="grid grid-cols-3 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setNotifyChannel("both")}
-                    className={`cursor-pointer rounded-xl border p-2 text-center text-xs font-semibold transition ${
-                      notifyChannel === "both"
-                        ? "border-blue-600 bg-blue-50 text-blue-700"
-                        : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-                    }`}
-                  >
-                    Email & WhatsApp
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setNotifyChannel("email")}
-                    className={`cursor-pointer rounded-xl border p-2 text-center text-xs font-semibold transition ${
-                      notifyChannel === "email"
-                        ? "border-blue-600 bg-blue-50 text-blue-700"
-                        : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-                    }`}
-                  >
-                    Email Only
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setNotifyChannel("whatsapp")}
-                    className={`cursor-pointer rounded-xl border p-2 text-center text-xs font-semibold transition ${
-                      notifyChannel === "whatsapp"
-                        ? "border-blue-600 bg-blue-50 text-blue-700"
-                        : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-                    }`}
-                  >
-                    WhatsApp Only
-                  </button>
-                </div>
+                </p>
+                <p className="rounded-xl border border-blue-200 bg-blue-50 p-3 text-xs text-blue-800">
+                  Email only. Customer booking WhatsApp notifications are
+                  paused.
+                </p>
               </div>
 
               {/* Custom message */}

@@ -79,17 +79,24 @@ export function JourneyDatePicker({
 
     let cancelled = false;
     let refreshTimer: ReturnType<typeof setTimeout> | undefined;
+    let appliedBounds = "";
     const refreshLimits = () => {
       const now = new Date();
       const range = getAdvanceReservationWindow(now);
-      dpRef.current?.setOptions({
-        minDate: moment(range.minDate, "YYYY-MM-DD", true)
-          .add(minOffsetDays, "days")
-          .toDate(),
-        maxDate: restrictToBookingWindow
-          ? moment(range.maxDate, "YYYY-MM-DD", true).toDate()
-          : null,
-      });
+      const bounds = `${range.minDate}/${restrictToBookingWindow ? range.maxDate : ""}`;
+      // Flowbite refocuses the input before handling day clicks. setOptions resets
+      // the displayed month, so only update it when the booking bounds change.
+      if (dpRef.current && bounds !== appliedBounds) {
+        dpRef.current.setOptions({
+          minDate: moment(range.minDate, "YYYY-MM-DD", true)
+            .add(minOffsetDays, "days")
+            .toDate(),
+          maxDate: restrictToBookingWindow
+            ? moment(range.maxDate, "YYYY-MM-DD", true).toDate()
+            : null,
+        });
+        appliedBounds = bounds;
+      }
       if (dpRef.current)
         syncPickerValue(
           dpRef.current,

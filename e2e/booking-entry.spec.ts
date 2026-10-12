@@ -7,6 +7,60 @@ import {
   BOOKING_DATE,
 } from "./fixtures/booking-engine";
 
+test("November 11 stays selected when the calendar input regains focus", async ({
+  page,
+  booking,
+}) => {
+  await page.goto("/?date=2026-10-12");
+  const input = page.getByRole("textbox", { name: /departure date/i });
+  await expect(input).toHaveValue("Monday, Oct 12");
+  await input.click();
+  const calendar = input.locator("..");
+  await calendar.locator(".next-btn").click();
+  await expect(calendar.locator(".view-switch")).toHaveText("November 2026");
+  const november11 = await page.evaluate(() =>
+    new Date(2026, 10, 11).getTime(),
+  );
+  await calendar.locator(`[data-date="${november11}"]`).click();
+  await expect(input).toHaveValue("Wednesday, Nov 11");
+  await page.getByRole("heading", { level: 1 }).click();
+  await input.click();
+  await expect(input).toHaveValue("Wednesday, Nov 11");
+  await expect(calendar.locator(".view-switch")).toHaveText("November 2026");
+  expect(booking.state.requests).toHaveLength(0);
+});
+
+test("the 60th day unlocks at 8 AM IST after refocusing the calendar", async ({
+  page,
+  booking,
+}) => {
+  await page.clock.setFixedTime(new Date("2026-10-12T02:29:00Z"));
+  await page.goto("/?date=2026-12-10");
+  const input = page.getByRole("textbox", { name: /departure date/i });
+  await expect(input).toHaveValue("Thursday, Dec 10");
+  await input.click();
+  const calendar = input.locator("..");
+  const [december11, december12] = await page.evaluate(() => [
+    new Date(2026, 11, 11).getTime(),
+    new Date(2026, 11, 12).getTime(),
+  ]);
+  await expect(calendar.locator(`[data-date="${december11}"]`)).toHaveClass(
+    /disabled/,
+  );
+  await page.getByRole("heading", { level: 1 }).click();
+  await page.clock.setFixedTime(new Date("2026-10-12T02:30:00Z"));
+  await input.click();
+  await expect(calendar.locator(`[data-date="${december11}"]`)).not.toHaveClass(
+    /disabled/,
+  );
+  await expect(calendar.locator(`[data-date="${december12}"]`)).toHaveClass(
+    /disabled/,
+  );
+  await calendar.locator(`[data-date="${december11}"]`).click();
+  await expect(input).toHaveValue("Friday, Dec 11");
+  expect(booking.state.requests).toHaveLength(0);
+});
+
 const mixed = [
   bookingLeg("CYI", "VGLJ", [classOption("SL", 580), classOption("3A", 700)]),
   bookingLeg("VGLJ", "GOY", [classOption("SL", 400)]),
