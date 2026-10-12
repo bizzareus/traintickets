@@ -1,11 +1,13 @@
 import {
   Controller,
   Get,
+  Headers,
   HttpException,
   HttpStatus,
   Req,
   Res,
 } from '@nestjs/common';
+import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 import type { Request, Response } from 'express';
 import {
   RAIL_FEED_STATIC_HEADERS,
@@ -26,9 +28,12 @@ import {
 export class RailFeedProxyController {
   @Get('availability')
   async proxyAvailability(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
     @Req() req: Request,
     @Res({ passthrough: false }) res: Response,
   ): Promise<void> {
+    assertAdminAuth({ headerPw: pw, req });
+
     const qs = new URLSearchParams();
     const src = req.query as Record<string, string | string[] | undefined>;
     for (const [key, value] of Object.entries(src)) {
