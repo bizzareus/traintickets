@@ -16,7 +16,7 @@ import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { hasAnyAvailableSeat } from "@/lib/bookingV2Availability";
 import { JourneyDatePicker } from "@/components/booking-v2/JourneyDatePicker";
 import dynamic from "next/dynamic";
-import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
+import type { JourneyShareInput } from "@/lib/journeyShareCard";
 import { cn } from "@/lib/utils";
 import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
 import { TrainSearchV2ProgressBar } from "@/components/home/TrainSearchV2ProgressBar";
@@ -379,7 +379,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [searchType, setSearchType] = useState<"route" | "pnr" | "seat">(
     "route",
   );
-  const altAlternatePathCaptureRef = useRef<HTMLDivElement>(null);
   const [altShareBusy, setAltShareBusy] = useState(false);
 
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
@@ -668,12 +667,20 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   }, []);
 
   const shareAlternatePathScreenshot = useCallback(async () => {
-    const el = altAlternatePathCaptureRef.current;
-    if (!el) return;
+    if (!altResult || altResult.legs.length === 0 || !submittedSearch) return;
     setAltShareBusy(true);
     try {
+      const { shareJourneyImage } = await import("@/lib/shareJourneyImage");
+      const input: JourneyShareInput = {
+        trainNumber: altForTrain || altResult.trainNumber,
+        trainName: altTrainName,
+        journeyDate: submittedSearch.date,
+        legs: altResult.legs,
+        stationNameMap: altResult.stationNameMap,
+        totalFare: altResult.totalFare,
+      };
       const trainLabel = altTrainName?.trim() || altForTrain || "train";
-      const result = await shareDomElementAsPng(el, {
+      const result = await shareJourneyImage(input, {
         fileName: "lastberth-journey.png",
         title: `LastBerth — ${trainLabel}`,
         text: `Journey options: ${trainLabel}`,
@@ -682,7 +689,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         if (result.code === "share_rejected") return;
         window.alert(
           result.message ??
-            "Could not capture or share this screen. Try again or take a manual screenshot.",
+            "Could not create the share image. Try again or take a manual screenshot.",
         );
         return;
       }
@@ -694,7 +701,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     } finally {
       setAltShareBusy(false);
     }
-  }, [altForTrain, altTrainName]);
+  }, [altResult, altForTrain, altTrainName, submittedSearch]);
 
   useEffect(() => {
     if (fromDeb.length < 2) {
@@ -1621,7 +1628,6 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                         isAdminUser={isAdminUser}
                         shareBusy={altShareBusy}
                         onShare={() => void shareAlternatePathScreenshot()}
-                        captureRef={altAlternatePathCaptureRef}
                         hideSearchAllTrainsBanner={true}
                         source="skyscanner_search_experiment"
                         onClose={alt.reset}

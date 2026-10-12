@@ -729,8 +729,6 @@ export interface AlternatePathContentProps {
   onRefresh?: () => Promise<void> | void;
   /** Whether a refresh is currently in-flight. */
   isRefreshing?: boolean;
-  /** Ref attached to the scrollable capture container for screenshot sharing. */
-  captureRef?: React.Ref<HTMLDivElement>;
 
   /** Closes/clears the displayed result. */
   onClose: () => void;
@@ -765,7 +763,6 @@ export function AlternatePathContent({
   onShare,
   onRefresh,
   isRefreshing,
-  captureRef,
   onClose,
   onOpenSchedule,
   hideSearchAllTrainsBanner = false,
@@ -814,10 +811,7 @@ export function AlternatePathContent({
     (Boolean(altError) || (Boolean(altResult) && !altResult?.isComplete));
 
   return (
-    <div
-      ref={captureRef}
-      className="flex min-h-0 flex-1 flex-col overflow-hidden"
-    >
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
       <div className="min-h-0 flex-1 overflow-y-auto p-3.5 sm:p-6">
         <div className="mb-3 flex items-start justify-between gap-2">
           <h3 className="text-base font-bold leading-snug text-gray-900 sm:text-lg">
@@ -825,14 +819,11 @@ export function AlternatePathContent({
               ? `Finding best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`
               : `Best seats on ${altTrainName?.trim() || "Train"} ${altForTrain ? `(${altForTrain})` : ""}${journeyDate ? ` on ${moment(journeyDate, "YYYY-MM-DD").format("D MMM YYYY")}` : ""}`}
           </h3>
-          <div
-            className="flex shrink-0 items-center gap-1.5"
-            data-screenshot-exclude=""
-          >
-            {isAdminUser && onShare && (
+          <div className="flex shrink-0 items-center gap-1.5">
+            {onShare && (
               <button
                 type="button"
-                className="rounded-md px-2 py-1 text-sm font-medium text-emerald-700 hover:bg-emerald-50 md:hidden"
+                className="rounded-md px-2 py-1 text-sm font-medium text-emerald-700 hover:bg-emerald-50"
                 aria-label="Share journey as image (opens share sheet — choose WhatsApp)"
                 disabled={shareBusy}
                 onClick={() => onShare()}
