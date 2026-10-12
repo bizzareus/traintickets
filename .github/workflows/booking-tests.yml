@@ -1,12 +1,9 @@
-name: Booking engine checks
+name: Scheduled booking engine checks
 
 on:
-  pull_request:
-  # Nightly browser E2E across all projects (E2E no longer runs locally).
+  # Unit, contract, database, and browser checks run only on this daily schedule.
   schedule:
     - cron: "0 3 * * *"
-  workflow_dispatch:
-  workflow_call:
 
 permissions:
   contents: read

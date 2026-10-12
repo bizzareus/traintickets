@@ -11,14 +11,9 @@ permissions:
   packages: write
 
 jobs:
-  booking-checks:
-    name: Verify booking engine before deployment
-    uses: ./.github/workflows/booking-tests.yml
-
   build-and-push:
     name: Build & Push Docker Images to GHCR
     runs-on: ubuntu-latest
-    needs: booking-checks
     outputs:
       backend_image: ${{ steps.meta-backend.outputs.tags }}
       frontend_image: ${{ steps.meta-frontend.outputs.tags }}

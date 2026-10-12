@@ -62,12 +62,13 @@ records owned by each test. The harness refuses a non-local or non-test database
 
 ## CI and deployment
 
-`.github/workflows/booking-tests.yml` runs the checks on pull requests, manual
-runs, calls from the AWS deployment workflow, and once a day on a schedule
-(`0 3 * * *` UTC) covering all five browser projects. CI provisions
-PostgreSQL 16 and runs all five browser projects. Docker image builds and AWS
-deployment wait for these checks to pass. Failed browser runs upload
-screenshots and traces.
+`.github/workflows/booking-tests.yml` runs unit, HTTP contract, PostgreSQL
+integration, and browser E2E checks **only on the daily schedule**
+(`0 3 * * *` UTC, 08:30 IST). The scheduled job provisions PostgreSQL 16 and
+runs all five browser projects. Failed browser runs upload screenshots and traces.
+
+The AWS deployment workflow builds and deploys directly, with no test-job
+dependency or call to the scheduled checks.
 
 Production and tests share `backend/src/common/validation-pipe.ts`; do not copy
 its options into another test harness. Add browser scenarios under
