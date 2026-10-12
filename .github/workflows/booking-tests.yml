@@ -1,0 +1,63 @@
+name: Booking engine checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  booking-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: booking_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d booking_test"
+          --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      NODE_ENV: test
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/booking_test
+      DIRECT_URL: postgresql://postgres:postgres@localhost:5432/booking_test
+      BOOKING_TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/booking_test
+      SENTRY_DSN: ""
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            backend/package-lock.json
+      - run: npm ci
+      - run: npm ci
+        working-directory: backend
+      - run: npx prisma migrate deploy
+        working-directory: backend
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - name: Booking unit and real HTTP contract tests
+        run: npm --prefix backend run test:booking && npm run test:booking:unit
+      - name: Real PostgreSQL persistence and payment tests
+        run: npm --prefix backend run test:booking:db
+      - name: Frontend and backend type checks
+        run: npx next typegen && npx tsc --noEmit && npm --prefix backend run build
+      - name: Desktop and mobile booking E2E tests
+        run: npm run test:booking:cross-browser
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: booking-playwright-results
+          path: |
+            playwright-report/
+            test-results/booking/
+          retention-days: 7

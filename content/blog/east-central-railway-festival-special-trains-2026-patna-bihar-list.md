@@ -2,7 +2,7 @@
 title: "East Central Railway Festival Specials 2026: Patna Train List"
 description: "ECR festival special trains 2026 for Diwali & Chhath Puja: complete Patna, Danapur, Muzaffarpur & Darbhanga train list, IRCTC booking dates, routes & seat rules."
 date: "2026-10-08"
-updated: "2026-10-08"
+updated: "2026-10-12"
 tags:
   - train booking
   - irctc
@@ -141,7 +141,7 @@ During the 10 days surrounding Diwali and Chhath Puja, Patna Junction and Danapu
 Even with dozens of festival specials running daily, seats on high-demand routes from Delhi and Mumbai to Patna often enter Waiting List (WL) status within minutes. If your ticket is waitlisted or booking shows REGRET, use these rescue strategies:
 
 1. **Split-Journey Contiguous Berths (Smart Seats):** Many long-distance specials show direct waitlists from New Delhi to Patna, yet have confirmed seats available from New Delhi to Kanpur, and separate confirmed berths from Kanpur to Patna on the identical train rake. [Finding Smart Seats](/) discovers these contiguous segments automatically, allowing you to travel confirmed without leaving the train.
-2. **First Chart Vacancy (~8 Hours Prior):** For morning and afternoon trains, reservation charts are prepared roughly **8 hours before departure** (or by **8:00 PM the previous evening** for morning departures). Unused quotas—such as defense, foreign tourist, and emergency quotas—are released to the public. You can view these physical open berths coach-by-coach using [Chart Vacancy](/chart-vacancy).
+2. **First Chart Vacancy (~8 Hours Prior):** For morning and afternoon trains, reservation charts are prepared roughly **8 hours before departure** (or by **9:00 PM (21:00) the previous evening** for morning departures). Unused quotas—such as defense, foreign tourist, and emergency quotas—are released to the public. You can view these physical open berths coach-by-coach using [Chart Vacancy](/chart-vacancy).
 3. **Current Availability (`CURR_AVBL`):** berthing chart finalization releases all unsold berths into the Current Availability pool. These tickets are **100% confirmed**, sold at a **10% discount** on the base fare, and can be booked online on IRCTC or at station PRS counters until **30 minutes before departure**.
 4. **Track Chart Times:** Look up historical charting patterns for your train and receive instant alerts when charts finalize using [Chart Preparation Times](/chart-times).
 
@@ -175,7 +175,7 @@ Yes. If you book an online e-ticket on IRCTC for an ECR festival special train a
 
 ### When is the first reservation chart prepared for festival specials?
 
-The first reservation chart is finalized approximately 8 hours prior to train departure from the originating station. For trains scheduled to depart between midnight and 14:00 hrs, the first chart is prepared by 20:00 hrs (8:00 PM) on the previous evening.
+The first reservation chart is finalized approximately 8 hours prior to train departure from the originating station. For trains scheduled to depart between midnight and 14:00 hrs, the first chart is prepared by 21:00 hrs (9:00 PM) on the previous evening.
 
 ### Where can I check vacant berths on ECR trains after charting?
 

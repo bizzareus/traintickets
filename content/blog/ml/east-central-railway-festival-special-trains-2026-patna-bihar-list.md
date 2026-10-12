@@ -2,7 +2,7 @@
 title: "East Central Railway Festival Specials 2026: Patna Train List"
 description: "ECR festival special trains 2026 for Diwali & Chhath Puja: complete Patna, Danapur, Muzaffarpur & Darbhanga train list, IRCTC booking dates, routes & seat rules."
 date: "2026-10-08"
-updated: "2026-10-08"
+updated: "2026-10-12"
 tags:
   - train booking
   - irctc
@@ -141,7 +141,7 @@ _Note: Stoppages and schedules are subject to operational adjustments by East Ce
 ദിവസേന നിരവധി ഫെസ്റ്റിവൽ സ്പെഷ്യലുകൾ പ്രവർത്തിക്കുന്നതുകൊണ്ടു, ഡൽഹി, മുംബൈ എന്നിവയിൽ നിന്ന് പട്നയിലേക്ക് ഉയർന്ന ആവശ്യത്തിലുള്ള മാർഗങ്ങളിൽ സീറ്റുകൾ മിനിറ്റുകൾക്കുള്ളിൽ വെയ്റ്റിംഗ് ലിസ്റ്റ് (WL) നിലയിൽ പ്രവേശിക്കുന്നു. നിങ്ങളുടെ ടിക്കറ്റ് വെയ്റ്റ്‌ലിസ്റ്റ് ആകുകയോ ബുക്കിംഗ് REGRET കാണുകയോ ചെയ്താൽ, ഈ രക്ഷാ തന്ത്രങ്ങൾ ഉപയോഗിക്കുക:
 
 1. **സ്പ്ലിറ്റ്-ജേർണി തുടർച്ചയായ ബെർത്ത് (Smart Seats):** New Delhi-യിൽ നിന്ന് Patna-യിലേക്ക് നേരിട്ടുള്ള വെയ്റ്റ്‌ലിസ്റ്റുകൾ കാണുമ്പോൾ, New Delhi-യിൽ നിന്ന് Kanpur-ലേക്ക് സ്ഥിരീകരിച്ച സീറ്റുകൾ ലഭ്യമാണ്, അതേസമയം Kanpur-യിൽ നിന്ന് Patna-യിലേക്ക് ഒരേ ട്രെയിൻ റേക്ക് ഉപയോഗിച്ച് വേർതിരിച്ചിട്ടുള്ള സ്ഥിരീകരിച്ച ബെർത്ത് ലഭ്യമാണ്. [Finding Smart Seats](/) ഈ തുടർച്ചയായ സെഗ്മെന്റുകൾ സ്വയമേവ കണ്ടെത്തുന്നു, നിങ്ങൾക്ക് ട്രെയിൻ വിടാതെ ഉറപ്പുള്ള യാത്ര ചെയ്യാൻ അനുവദിക്കുന്നു.
-2. **ആദ്യ ചാർട്ട് ശൂന്യമായ (~8 മണിക്കൂർ മുമ്പ്):** രാവിലെ, വൈകുന്നേരത്തെ ട്രെയിനുകൾക്കായി, റിസർവേഷൻ ചാർട്ടുകൾ ഏകദേശം **8 മണിക്കൂർ മുമ്പ്** തയ്യാറാക്കുന്നു (അല്ലെങ്കിൽ രാവിലെ പുറപ്പെടലുകൾക്കായി **8:00 PM**-ന് മുമ്പ്). ഉപയോഗിക്കാത്ത ക്വോട്ടുകൾ—രക്ഷാ, വിദേശ വിനോദസഞ്ചാരികൾ, അടിയന്തര ക്വോട്ടുകൾ—പൊതു ജനങ്ങൾക്ക് റിലീസ് ചെയ്യുന്നു. നിങ്ങൾക്ക് [Chart Vacancy](/chart-vacancy) ഉപയോഗിച്ച് ഈ ശാരീരികമായി തുറന്ന ബെർത്ത് കോച്ച്-പ്രതി കാണാം.
+2. **ആദ്യ ചാർട്ട് ശൂന്യമായ (~8 മണിക്കൂർ മുമ്പ്):** രാവിലെ, വൈകുന്നേരത്തെ ട്രെയിനുകൾക്കായി, റിസർവേഷൻ ചാർട്ടുകൾ ഏകദേശം **8 മണിക്കൂർ മുമ്പ്** തയ്യാറാക്കുന്നു (അല്ലെങ്കിൽ രാവിലെ പുറപ്പെടലുകൾക്കായി **9:00 PM (21:00)**-ന് മുമ്പ്). ഉപയോഗിക്കാത്ത ക്വോട്ടുകൾ—രക്ഷാ, വിദേശ വിനോദസഞ്ചാരികൾ, അടിയന്തര ക്വോട്ടുകൾ—പൊതു ജനങ്ങൾക്ക് റിലീസ് ചെയ്യുന്നു. നിങ്ങൾക്ക് [Chart Vacancy](/chart-vacancy) ഉപയോഗിച്ച് ഈ ശാരീരികമായി തുറന്ന ബെർത്ത് കോച്ച്-പ്രതി കാണാം.
 3. **Current Availability (`CURR_AVBL`):** ബെർത്ത് ചാർട്ട് അന്തിമീകരണം എല്ലാ വിറ്റുപോകാത്ത ബെർത്ത് Current Availability പൂലിലേക്ക് റിലീസ് ചെയ്യുന്നു. ഈ ടിക്കറ്റുകൾ **100% സ്ഥിരീകരിച്ച** ആണ്, **10% ഇളവിൽ** അടിസ്ഥാന നിരക്കിൽ വിറ്റുവരുന്നു, departure-ന് **30 മിനിറ്റ് മുമ്പ്** IRCTC-ൽ ഓൺലൈൻ ബുക്ക് ചെയ്യാം അല്ലെങ്കിൽ സ്റ്റേഷൻ PRS കൗണ്ടറുകളിൽ.
 4. **ചാർട്ട് സമയങ്ങൾ ട്രാക്ക് ചെയ്യുക:** നിങ്ങളുടെ ട്രെയിനിന്റെ ചരിത്ര ചാർട്ടിംഗ് മാതൃകകൾ പരിശോധിക്കുക, ചാർട്ടുകൾ അന്തിമീകരിക്കുമ്പോൾ ഉടൻ അലർട്ടുകൾ ലഭിക്കുക [Chart Preparation Times](/chart-times) ഉപയോഗിച്ച്.
 
@@ -175,7 +175,7 @@ Yes. If you book an online e-ticket on IRCTC for an ECR festival special train a
 
 ### When is the first reservation chart prepared for festival specials?
 
-The first reservation chart is finalized approximately 8 hours prior to train departure from the originating station. For trains scheduled to depart between midnight and 14:00 hrs, the first chart is prepared by 20:00 hrs (8:00 PM) on the previous evening.
+The first reservation chart is finalized approximately 8 hours prior to train departure from the originating station. For trains scheduled to depart between midnight and 14:00 hrs, the first chart is prepared by 21:00 hrs (9:00 PM) on the previous evening.
 
 ### Where can I check vacant berths on ECR trains after charting?
 

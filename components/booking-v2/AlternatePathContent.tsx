@@ -829,12 +829,12 @@ export function AlternatePathContent({
             className="flex shrink-0 items-center gap-1.5"
             data-screenshot-exclude=""
           >
-            {isAdminUser && onShare && (
+            {onShare && (
               <button
                 type="button"
-                className="rounded-md px-2 py-1 text-sm font-medium text-emerald-700 hover:bg-emerald-50 md:hidden"
+                className="rounded-md px-2 py-1 text-sm font-medium text-emerald-700 hover:bg-emerald-50 disabled:opacity-50"
                 aria-label="Share journey as image (opens share sheet — choose WhatsApp)"
-                disabled={shareBusy}
+                disabled={shareBusy || altLoading || !altResult}
                 onClick={() => onShare()}
               >
                 {shareBusy ? "Sharing…" : "Share"}

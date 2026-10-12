@@ -1,4 +1,4 @@
-import { Module, ValidationPipe } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { APP_FILTER, APP_GUARD, APP_PIPE, HttpAdapterHost } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
@@ -31,6 +31,7 @@ import { MonitoringModule } from './monitoring/monitoring.module';
 import { HealthModule } from './health/health.module';
 import { configModuleOptions } from './config/environment';
 import { ObserveModule } from './observe';
+import { createValidationPipe } from './common/validation-pipe';
 
 @Module({
   imports: [
@@ -77,12 +78,7 @@ import { ObserveModule } from './observe';
     { provide: APP_GUARD, useClass: ThrottlerGuard },
     {
       provide: APP_PIPE,
-      useValue: new ValidationPipe({
-        whitelist: true,
-        forbidNonWhitelisted: true,
-        transform: true,
-        transformOptions: { enableImplicitConversion: false },
-      }),
+      useValue: createValidationPipe(),
     },
     AppService,
   ],

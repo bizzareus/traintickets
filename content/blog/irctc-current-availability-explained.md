@@ -2,7 +2,7 @@
 title: "Curr Available Means in Train: Confirmed Seat Rules (2026)"
 description: "What does curr available mean in train? Discover 100% confirmed seat rules, chart timings, 10% discount, and how to book vacant berths before departure."
 date: "2026-06-11"
-updated: "2026-10-10"
+updated: "2026-10-12"
 tags:
   - train booking
   - irctc
@@ -66,16 +66,16 @@ The differences between regular waiting list processing and current booking are 
 
 ## What Time Does IRCTC Current Ticket Booking Open and Close?
 
-**IRCTC current ticket booking opens immediately after the first reservation chart is prepared, typically 4 to 8 hours before train departure (or by 8:00 PM the previous evening for morning trains). Current booking closes strictly 30 minutes before departure from the originating station, when the second and final chart is finalized.**
+**IRCTC current ticket booking opens immediately after the first reservation chart is prepared, typically 4 to 8 hours before train departure (or by 9:00 PM (21:00 IST) the previous evening for morning trains). Current booking closes strictly 30 minutes before departure from the originating station, when the second and final chart is finalized.**
 
 The current reservation timing depends strictly on the train's scheduled departure time from its originating source station. Indian Railways operates under standardized charting windows:
 
-| Train Departure Window                   | First Chart Preparation (Booking Opens)                                | Booking Cutoff Time                 | Route Example                                                                            |
-| :--------------------------------------- | :--------------------------------------------------------------------- | :---------------------------------- | :--------------------------------------------------------------------------------------- |
-| **Morning Trains (06:00 to 11:59)**      | **Previous evening by 20:00 IST** (giving an overnight booking window) | Exactly 30 minutes before departure | A train departing at 06:30 opens for current booking by 20:00 the prior night.           |
-| **Afternoon Trains (12:00 to 17:59)**    | **4 to 8 hours before departure** (typically 08:00 to 10:00 IST)       | Exactly 30 minutes before departure | A train departing at 16:15 opens for current booking between 08:15 and 12:15.            |
-| **Evening Trains (18:00 to 23:59)**      | **4 to 8 hours before departure** (typically 12:00 to 14:00 IST)       | Exactly 30 minutes before departure | A train departing at 20:45 opens for current booking by 14:45 the same afternoon.        |
-| **Night & Early Hours (00:00 to 05:59)** | **Previous evening between 20:00 and 22:00 IST**                       | Exactly 30 minutes before departure | A train departing at 01:30 opens for current booking around 20:30 the preceding evening. |
+| Train Departure Window                   | First Chart Preparation (Booking Opens)                                          | Booking Cutoff Time                 | Route Example                                                                        |
+| :--------------------------------------- | :------------------------------------------------------------------------------- | :---------------------------------- | :----------------------------------------------------------------------------------- |
+| **Morning Trains (06:00 to 11:59)**      | **Previous evening by 21:00 IST (9:00 PM)** (giving an overnight booking window) | Exactly 30 minutes before departure | A train departing at 06:30 opens for current booking by 21:00 the prior night.       |
+| **Afternoon Trains (12:00 to 17:59)**    | **4 to 8 hours before departure** (typically 08:00 to 10:00 IST)                 | Exactly 30 minutes before departure | A train departing at 16:15 opens for current booking between 08:15 and 12:15.        |
+| **Evening Trains (18:00 to 23:59)**      | **4 to 8 hours before departure** (typically 12:00 to 14:00 IST)                 | Exactly 30 minutes before departure | A train departing at 20:45 opens for current booking by 14:45 the same afternoon.    |
+| **Night & Early Hours (00:00 to 05:59)** | **Previous evening by 21:00 IST (9:00 PM)**                                      | Exactly 30 minutes before departure | A train departing at 01:30 opens for current booking by 21:00 the preceding evening. |
 
 Two operational rules govern how current available ticket booking time works in practice:
 
@@ -126,7 +126,7 @@ You can book current available seats through two official channels.
 
 ## Current Availability vs Tatkal vs General Quota: Fares & Rules Compared
 
-**Current availability offers unbooked vacant berths post-charting at standard fares or with a 10% base fare discount and zero premium surcharges. General quota opens 60 days in advance at standard fares, while Tatkal opens 24 hours prior with mandatory premium markups of ₹125 to ₹500 across Sleeper and AC classes.**
+**Current availability offers unbooked vacant berths post-charting at standard fares or with a 10% base fare discount and zero premium surcharges. General quota opens 60 days in advance at standard fares, while Tatkal opens 24 hours prior with mandatory premium markups of ₹100 to ₹500 across Sleeper and AC classes.**
 
 Understanding how these three booking avenues differ helps you select the most economical ticketing option:
 
@@ -134,7 +134,7 @@ Understanding how these three booking avenues differ helps you select the most e
 | :------------------------ | :------------------------------------------- | :--------------------------------------------------- | :----------------------------------------------------- |
 | **Booking Opening**       | 60 days before journey at 08:00 AM IST       | 1 day before journey (10:00 AM AC / 11:00 AM Non-AC) | Post-charting (4 to 8 hours before departure)          |
 | **Booking Cutoff**        | When first reservation chart is prepared     | When first reservation chart is prepared             | Exactly 30 minutes before scheduled train departure    |
-| **Additional Surcharges** | Nil (standard base fare)                     | ₹125 to ₹500 extra markup per passenger              | Nil (standard base fare, often with 10% base discount) |
+| **Additional Surcharges** | Nil (standard base fare)                     | ₹100 to ₹500 extra markup per passenger              | Nil (standard base fare, often with 10% base discount) |
 | **Ticket Status Outcome** | Confirmed, RAC, or Waiting List (GNWL)       | Confirmed or Tatkal Waiting List (TQWL)              | Always 100% Confirmed (assigned coach and berth)       |
 | **Source of Berths**      | Standard master train inventory              | Dedicated quota coaches carved out in advance        | Unused quotas, unsold Tatkal seats, and cancellations  |
 | **Cancellation Refund**   | Permitted as per standard cancellation slabs | Zero refund on confirmed Tatkal tickets              | Zero refund once booked post-charting                  |
@@ -187,7 +187,7 @@ Yes, a current available ticket is 100% confirmed. The moment your booking trans
 
 ### What time does IRCTC current ticket booking open?
 
-IRCTC current ticket booking opens immediately after the first reservation chart is finalized. For afternoon and evening trains, booking opens 4 to 8 hours before departure. For morning trains departing between 06:00 and 11:59, charting happens by 20:00 IST the previous evening, providing an overnight booking window.
+IRCTC current ticket booking opens immediately after the first reservation chart is finalized. For afternoon and evening trains, booking opens 4 to 8 hours before departure. For morning trains departing between 06:00 and 11:59, charting happens by 21:00 IST (9:00 PM) the previous evening, providing an overnight booking window.
 
 ### What time does current reservation booking close?
 

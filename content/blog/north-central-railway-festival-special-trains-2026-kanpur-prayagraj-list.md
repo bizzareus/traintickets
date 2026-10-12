@@ -2,7 +2,7 @@
 title: "NCR Festival Special Trains 2026: Kanpur & Prayagraj List"
 description: "North Central Railway festival special trains 2026 for Diwali & Chhath: complete Kanpur, Prayagraj, Subedarganj & Jhansi train list, IRCTC routes & fares."
 date: "2026-10-09"
-updated: "2026-10-09"
+updated: "2026-10-12"
 tags:
   - train booking
   - irctc
@@ -146,7 +146,7 @@ Waitlisted e-ticket passengers must note that if their status remains in Waiting
 If you are faced with a high waiting list number for Diwali or Chhath travel, employ these proven strategies:
 
 1. **Split-Ticket Smart Search:** Long-distance special trains allocate berths across distinct station quotas. While an end-to-end seat from Kanpur Central to Kolkata might be waitlisted, berths are often available from Kanpur to Pt Deen Dayal Upadhyaya Junction, and from DDU to Kolkata on the same train. [Finding Smart Seats](/) discovers contiguous split-berth paths automatically so you stay on the same train.
-2. **Current Availability (`CURR_AVBL`):** Unallocated emergency quotas and last-minute cancellations convert into confirmed Current Availability seats after first chart preparation (~4 hours before departure). These seats carry a 10% discount on base fares and can be booked online or at PRS counters until 30 minutes before train departure.
+2. **Current Availability (`CURR_AVBL`):** Unallocated emergency quotas and last-minute cancellations convert into confirmed Current Availability seats after first chart preparation (~8 hours before departure). These seats carry a 10% discount on base fares and can be booked online or at PRS counters until 30 minutes before train departure.
 3. **Live Chart Vacancy Inspection:** Check physical vacant berths released after chart preparation on the [Chart Vacancy Map](/chart-vacancy). The interactive layout displays coach-by-coach berth vacancies across Sleeper and AC coaches.
 4. **Historical Charting Alerts:** Look up exact historical chart finalization schedules and set up departure alerts with [Chart Preparation Times & Alerts](/chart-times).
 5. **En-Route Seat Status Lookup:** Track which berths fall empty between intermediate stops using the [Seat Status Coach Journey Lookup](/seat-status) to request unreserved vacant berths directly from the onboard TTE.

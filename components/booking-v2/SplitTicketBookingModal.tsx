@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, useId } from "react";
 import { isAxiosError } from "axios";
 import moment from "moment";
 import {
@@ -24,6 +24,7 @@ import {
 } from "@/lib/split-booking";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { MuzoboxPaymentFrame } from "@/components/payments/MuzoboxPaymentFrame";
+import { extract10DigitIndianMobile, isValidEmail } from "@/lib/validation";
 
 export interface SplitTicketBookingModalProps {
   open: boolean;
@@ -76,6 +77,7 @@ export function SplitTicketBookingModal({
   totalFare,
   legs,
 }: SplitTicketBookingModalProps) {
+  const formId = useId();
   const [step, setStep] = useState<ModalStep>("passenger_details");
 
   // Step 1: Single passenger details state (booking engine supports 1 passenger)
@@ -190,15 +192,16 @@ export function SplitTicketBookingModal({
   // Submit passenger details -> create payment
   const handleProceedToPayment = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setFormError(null);
 
     // Validations
-    const cleanMobile = mobile.replace(/\D/g, "").slice(-10);
-    if (cleanMobile.length !== 10) {
+    const cleanMobile = extract10DigitIndianMobile(mobile);
+    if (!cleanMobile) {
       setFormError("Please enter a valid 10-digit mobile number");
       return;
     }
-    if (!email.trim() || !email.includes("@")) {
+    if (!isValidEmail(email)) {
       setFormError("Please enter a valid email address");
       return;
     }
@@ -215,8 +218,8 @@ export function SplitTicketBookingModal({
       setFormError("Please enter a valid name for the passenger");
       return;
     }
-    if (!p.age || p.age < 1 || p.age > 125) {
-      setFormError("Please enter a valid age (1-125) for the passenger");
+    if (!Number.isInteger(p.age) || p.age < 5 || p.age > 125) {
+      setFormError("Please enter a valid age (5-125) for the passenger");
       return;
     }
 
@@ -232,11 +235,11 @@ export function SplitTicketBookingModal({
         quota,
         totalFare,
         legs,
-        passengers: [p],
+        passengers: [{ ...p, name: p.name.trim() }],
         childPassengers: [],
         autoUpgrade,
         confirmBerthsOnly,
-        preferredCoach: preferredCoach.trim() || undefined,
+        preferredCoach: preferredCoach.trim().toUpperCase() || undefined,
         travelInsurance,
         contactMobile: cleanMobile,
         contactEmail: email.trim(),
@@ -264,9 +267,13 @@ export function SplitTicketBookingModal({
       setPaymentData(payment);
       setStep("payment");
     } catch (err: unknown) {
-      const msg = isAxiosError<{ message?: string }>(err)
-        ? err.response?.data?.message ||
-          "Unable to prepare checkout. Please try again."
+      const responseMessage = isAxiosError<{ message?: string | string[] }>(err)
+        ? err.response?.data?.message
+        : undefined;
+      const msg = responseMessage
+        ? Array.isArray(responseMessage)
+          ? responseMessage.join("; ")
+          : responseMessage
         : err instanceof Error
           ? err.message
           : "Failed to create booking intent";
@@ -413,7 +420,14 @@ export function SplitTicketBookingModal({
       className="backdrop-blur-xs fixed inset-0 z-50 flex items-end justify-center overflow-hidden bg-slate-900/60 p-0 sm:items-center sm:p-4"
       role="dialog"
       aria-modal="true"
+      aria-labelledby={`${formId}-title`}
       onClick={handleClose}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          event.stopPropagation();
+          handleClose();
+        }
+      }}
     >
       <div
         className="animate-in slide-in-from-bottom sm:zoom-in-95 relative flex h-[92dvh] max-h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-2xl border border-slate-200 bg-white shadow-2xl duration-300 sm:h-auto sm:max-h-[85vh] sm:rounded-2xl"
@@ -431,7 +445,10 @@ export function SplitTicketBookingModal({
               <Train className="h-4 w-4 sm:h-5 sm:w-5" />
             </div>
             <div className="min-w-0">
-              <h3 className="truncate text-sm font-bold text-slate-900 sm:text-base">
+              <h3
+                id={`${formId}-title`}
+                className="truncate text-sm font-bold text-slate-900 sm:text-base"
+              >
                 Ticket Reservation & Booking
               </h3>
               <p className="truncate text-[11px] font-medium text-slate-500 sm:text-xs">
@@ -445,6 +462,8 @@ export function SplitTicketBookingModal({
             </div>
           </div>
           <button
+            type="button"
+            aria-label="Close booking"
             onClick={handleClose}
             className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
           >
@@ -533,10 +552,14 @@ export function SplitTicketBookingModal({
                 </h4>
                 <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
                   <div>
-                    <label className="mb-1 block text-xs font-medium text-slate-600">
+                    <label
+                      htmlFor={`${formId}-mobile`}
+                      className="mb-1 block text-xs font-medium text-slate-600"
+                    >
                       Mobile Number (10 Digits) *
                     </label>
                     <input
+                      id={`${formId}-mobile`}
                       type="tel"
                       inputMode="numeric"
                       required
@@ -547,10 +570,14 @@ export function SplitTicketBookingModal({
                     />
                   </div>
                   <div>
-                    <label className="mb-1 block text-xs font-medium text-slate-600">
+                    <label
+                      htmlFor={`${formId}-email`}
+                      className="mb-1 block text-xs font-medium text-slate-600"
+                    >
                       Email Address *
                     </label>
                     <input
+                      id={`${formId}-email`}
                       type="email"
                       inputMode="email"
                       required
@@ -593,12 +620,17 @@ export function SplitTicketBookingModal({
                       <div className="grid grid-cols-1 gap-2.5 text-xs sm:grid-cols-12">
                         {/* Name */}
                         <div className="sm:col-span-5">
-                          <label className="mb-1 block text-[11px] font-medium text-slate-600">
+                          <label
+                            htmlFor={`${formId}-name`}
+                            className="mb-1 block text-[11px] font-medium text-slate-600"
+                          >
                             Full Name *
                           </label>
                           <input
+                            id={`${formId}-name`}
                             type="text"
                             required
+                            maxLength={100}
                             placeholder="Full Name as per Govt ID"
                             value={p.name}
                             onChange={(e) =>
@@ -610,14 +642,18 @@ export function SplitTicketBookingModal({
 
                         {/* Age */}
                         <div className="sm:col-span-3">
-                          <label className="mb-1 block text-[11px] font-medium text-slate-600">
+                          <label
+                            htmlFor={`${formId}-age`}
+                            className="mb-1 block text-[11px] font-medium text-slate-600"
+                          >
                             Age *
                           </label>
                           <input
+                            id={`${formId}-age`}
                             type="number"
                             inputMode="numeric"
                             required
-                            min={1}
+                            min={5}
                             max={125}
                             value={p.age || ""}
                             onChange={(e) =>
@@ -633,10 +669,14 @@ export function SplitTicketBookingModal({
 
                         {/* Gender */}
                         <div className="sm:col-span-4">
-                          <label className="mb-1 block text-[11px] font-medium text-slate-600">
+                          <label
+                            htmlFor={`${formId}-gender`}
+                            className="mb-1 block text-[11px] font-medium text-slate-600"
+                          >
                             Gender *
                           </label>
                           <select
+                            id={`${formId}-gender`}
                             value={p.gender}
                             onChange={(e) =>
                               updatePassenger(
@@ -656,10 +696,14 @@ export function SplitTicketBookingModal({
 
                         {/* Berth Preference */}
                         <div className="sm:col-span-6">
-                          <label className="mb-1 block text-[11px] font-medium text-slate-600">
+                          <label
+                            htmlFor={`${formId}-berth`}
+                            className="mb-1 block text-[11px] font-medium text-slate-600"
+                          >
                             Berth Preference
                           </label>
                           <select
+                            id={`${formId}-berth`}
                             value={p.berthPreference || "No Preference"}
                             onChange={(e) =>
                               updatePassenger(
@@ -680,10 +724,14 @@ export function SplitTicketBookingModal({
 
                         {/* Food Choice */}
                         <div className="sm:col-span-6">
-                          <label className="mb-1 block text-[11px] font-medium text-slate-600">
+                          <label
+                            htmlFor={`${formId}-food`}
+                            className="mb-1 block text-[11px] font-medium text-slate-600"
+                          >
                             Food Choice
                           </label>
                           <select
+                            id={`${formId}-food`}
                             value={p.foodChoice ?? "Veg"}
                             onChange={(e) =>
                               updatePassenger(
@@ -809,10 +857,14 @@ export function SplitTicketBookingModal({
 
                   {/* Preferred Coach input */}
                   <div>
-                    <label className="mb-1 block text-[11px] font-medium text-slate-600">
+                    <label
+                      htmlFor={`${formId}-coach`}
+                      className="mb-1 block text-[11px] font-medium text-slate-600"
+                    >
                       Preferred Coach (Optional)
                     </label>
                     <input
+                      id={`${formId}-coach`}
                       type="text"
                       maxLength={5}
                       placeholder="e.g. S4, B1"

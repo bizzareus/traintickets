@@ -17,12 +17,11 @@ if [ $RESULT -ne 0 ]; then
   exit 1
 fi
 
-echo "🧪 [pre-push] Running booking regression tests (all booking-form scenarios)..."
-cd backend && npm test -- --runInBand --testPathPatterns='(split-booking|sentry-http-exception)'
+echo "🧪 [pre-push] Running booking unit, HTTP contract, and Chromium E2E tests..."
+npm run test:booking
 RESULT=$?
-cd - >/dev/null
 if [ $RESULT -ne 0 ]; then
-  echo "❌ [pre-push] Booking tests failed. Push aborted. Fix the issue or use --no-verify to skip."
+  echo "❌ [pre-push] Booking checks failed. Push aborted."
   exit 1
 fi
 

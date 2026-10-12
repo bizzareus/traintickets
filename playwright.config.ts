@@ -7,6 +7,8 @@ const baseURL = `http://localhost:${webPort}`;
 
 export default defineConfig({
   testDir: "e2e",
+  testIgnore:
+    /booking-(entry|form|checkout|payment|cancellation|share)\.spec\.ts$/,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,

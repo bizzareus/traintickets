@@ -1,7 +1,8 @@
 import 'reflect-metadata';
-import { BadRequestException, ValidationPipe } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 import { CreateSplitBookingDto } from './split-booking.dto';
 import { validateBookingItinerary } from './split-booking.validation';
+import { createValidationPipe } from '../common/validation-pipe';
 
 /**
  * Regression net for the booking form -> API contract.
@@ -15,17 +16,8 @@ import { validateBookingItinerary } from './split-booking.validation';
  * exact pipe configuration from `app.module.ts` over every booking-form
  * scenario, so DTO/frontend drift fails here instead of in production.
  */
-function appValidationPipe(): ValidationPipe {
-  return new ValidationPipe({
-    whitelist: true,
-    forbidNonWhitelisted: true,
-    transform: true,
-    transformOptions: { enableImplicitConversion: false },
-  });
-}
-
 async function passesPipe(payload: unknown): Promise<CreateSplitBookingDto> {
-  const out: unknown = await appValidationPipe().transform(payload, {
+  const out: unknown = await createValidationPipe().transform(payload, {
     type: 'body',
     metatype: CreateSplitBookingDto,
   });
@@ -263,7 +255,7 @@ describe('split-booking create payload (booking-form scenarios)', () => {
       passengers: [passenger()],
       contactMobile: '8511272626',
       contactEmail: 'barotdhiraj.bd@gmail.com',
-      // @ts-expect-error deliberate unknown field for the negative test
+      // Deliberate unknown field for the negative test.
       injectedField: 'nope',
     }).then(
       () => null,
@@ -290,7 +282,7 @@ describe('split-booking create payload (booking-form scenarios)', () => {
           travelClass: 'SL',
           fare: 980,
           boardingDate: '2026-11-10',
-          // @ts-expect-error deliberate unknown field for the negative test
+          // Deliberate unknown field for the negative test.
           bogus: 'x',
         },
       ],

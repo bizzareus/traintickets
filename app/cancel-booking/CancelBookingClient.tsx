@@ -20,6 +20,7 @@ import {
 import { isValidIndianMobile } from "@/lib/validation";
 import { getStoredContact, saveStoredContact } from "@/lib/contact";
 import { trackAnalyticsEvent } from "@/lib/analytics";
+import { useHydrated } from "@/lib/hooks/useHydrated";
 
 function extractError(err: unknown): string {
   const ax = err as {
@@ -38,6 +39,7 @@ function extractError(err: unknown): string {
 }
 
 export function CancelBookingClient() {
+  const hydrated = useHydrated();
   const searchParams = useSearchParams();
   const initialRef = (searchParams.get("ref") || "").trim().toUpperCase();
   const stored = getStoredContact();
@@ -174,10 +176,14 @@ export function CancelBookingClient() {
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
             <form onSubmit={handleLookup} className="space-y-4">
               <div>
-                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700">
+                <label
+                  htmlFor="cancellation-reference"
+                  className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700"
+                >
                   Booking Reference *
                 </label>
                 <input
+                  id="cancellation-reference"
                   type="text"
                   required
                   value={bookingRef}
@@ -192,7 +198,10 @@ export function CancelBookingClient() {
               </div>
 
               <div>
-                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700">
+                <label
+                  htmlFor="cancellation-mobile"
+                  className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700"
+                >
                   Mobile Number *
                 </label>
                 <div className="flex">
@@ -200,6 +209,7 @@ export function CancelBookingClient() {
                     +91
                   </span>
                   <input
+                    id="cancellation-mobile"
                     type="tel"
                     inputMode="numeric"
                     required
@@ -217,7 +227,7 @@ export function CancelBookingClient() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={!hydrated || loading}
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-sm font-bold text-white transition hover:bg-slate-800 disabled:opacity-50"
                 >
                   {loading ? (
@@ -398,10 +408,14 @@ export function CancelBookingClient() {
 
                 {/* Reason Input */}
                 <div>
-                  <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700">
+                  <label
+                    htmlFor="cancellation-reason"
+                    className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700"
+                  >
                     Reason for Cancellation (Optional)
                   </label>
                   <textarea
+                    id="cancellation-reason"
                     rows={2}
                     value={reason}
                     onChange={(e) => setReason(e.target.value)}
