@@ -7,7 +7,7 @@
 #   scripts/run-seat-cache-cron.sh
 #   scripts/run-seat-cache-cron.sh diwali
 #   scripts/run-seat-cache-cron.sh diwali <api-key>
-#   BASE_URL=https://api-v2.lastberth.com scripts/run-seat-cache-cron.sh diwali
+#   BASE_URL=https://api.lastberth.com scripts/run-seat-cache-cron.sh diwali
 set -euo pipefail
 
 BASE_URL="${BASE_URL:-http://localhost:3009}"

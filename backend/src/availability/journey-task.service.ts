@@ -1901,6 +1901,7 @@ export class JourneyTaskService {
     let runningDelivered = 0;
     let runningWhatsapp = 0;
     let runningEmail = 0;
+    let runningCollected = 0;
     let peakCount = 0;
     let peakDate = '';
 
@@ -1909,6 +1910,7 @@ export class JourneyTaskService {
       const delivered = Number(row.total_delivered);
       const whatsapp = Number(row.whatsapp_delivered);
       const email = Number(row.email_delivered);
+      const collected = Number(row.chart_subscription_amount_collected ?? 0);
 
       const deliveryRate =
         created > 0 ? Number(((delivered / created) * 100).toFixed(2)) : 0;
@@ -1925,6 +1927,7 @@ export class JourneyTaskService {
       runningDelivered += delivered;
       runningWhatsapp += whatsapp;
       runningEmail += email;
+      runningCollected += collected;
 
       if (created > peakCount) {
         peakCount = created;
@@ -1934,9 +1937,7 @@ export class JourneyTaskService {
       return {
         date: row.date,
         totalNotificationsCreated: created,
-        chartSubscriptionAmountCollected: Number(
-          row.chart_subscription_amount_collected,
-        ),
+        chartSubscriptionAmountCollected: collected,
         totalDelivered: delivered,
         whatsappDelivered: whatsapp,
         emailDelivered: email,
@@ -2039,6 +2040,7 @@ export class JourneyTaskService {
         totalWhatsappDelivered: runningWhatsapp,
         totalEmailDelivered: runningEmail,
         overallDeliveryRate,
+        totalChartSubscriptionAmountCollected: runningCollected,
         totalDays: totalPeriods,
         totalPeriods,
         avgPerDay: avgPerPeriod,

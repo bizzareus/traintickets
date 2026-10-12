@@ -15,27 +15,33 @@
 LastBerth brings transparency to Indian Railways train journeys by transforming complex raw IRCTC data into simple, actionable tools for passengers:
 
 ### 1. 📊 Real-Time Chart Vacancy Tracker & Coach Map
-* **Visual Coach Layout**: View exact free berths (Lower, Middle, Upper, Side Lower, Side Upper) coach-by-coach after chart preparation.
-* **Current Reservation Seat Finder**: Spot unallotted quota berths and last-minute cancellations available for instant booking.
+
+- **Visual Coach Layout**: View exact free berths (Lower, Middle, Upper, Side Lower, Side Upper) coach-by-coach after chart preparation.
+- **Current Reservation Seat Finder**: Spot unallotted quota berths and last-minute cancellations available for instant booking.
 
 ### 2. ⏱️ IRCTC Chart Preparation Time Predictor
-* **1st Chart Timeline (4 Hours Prior / 8 PM Rule)**: Calculate exact 1st chart preparation times based on departure schedule (e.g. 8 PM previous evening for morning departures up to 14:00).
-* **2nd Chart Timeline (30 Minutes Prior)**: Track 2nd chart preparation window when final passenger lists are handed to TTEs.
-* **Station-Wise Chart Ingestion**: Real-time station chart status tracking for intermediate stations along train routes.
+
+- **1st Chart Timeline (4 Hours Prior / 8 PM Rule)**: Calculate exact 1st chart preparation times based on departure schedule (e.g. 8 PM previous evening for morning departures up to 14:00).
+- **2nd Chart Timeline (30 Minutes Prior)**: Track 2nd chart preparation window when final passenger lists are handed to TTEs.
+- **Station-Wise Chart Ingestion**: Real-time station chart status tracking for intermediate stations along train routes.
 
 ### 3. 🍱 IRCTC Railway Food Menu & Standard Meal Price Guide
-* **Official Approved Rates**: Detailed price lookup for IRCTC standard meals (Veg Thali, Non-Veg Thali, Breakfast, Standard Tea/Coffee).
-* **Pantry Car & Station Menu Guide**: Price transparency for passengers to avoid overcharging on express & mail trains.
+
+- **Official Approved Rates**: Detailed price lookup for IRCTC standard meals (Veg Thali, Non-Veg Thali, Breakfast, Standard Tea/Coffee).
+- **Pantry Car & Station Menu Guide**: Price transparency for passengers to avoid overcharging on express & mail trains.
 
 ### 4. 🎫 PNR Status & Waitlist Confirmation Analytics
-* **Confirmation Probability**: Data-backed insights for GNWL, PQWL, and RLWL tickets.
-* **Instant Availability Alerts**: Receive push, SMS, or WhatsApp alerts the moment a vacant berth opens up at chart time.
+
+- **Confirmation Probability**: Data-backed insights for GNWL, PQWL, and RLWL tickets.
+- **Instant Availability Alerts**: Receive push, SMS, or WhatsApp alerts the moment a vacant berth opens up at chart time.
 
 ### 5. 🗺️ Interactive Train Routes & Station Timings
-* Complete route schedules, arrival/departure delays, platform numbers, and distance maps for all Indian Railways trains.
+
+- Complete route schedules, arrival/departure delays, platform numbers, and distance maps for all Indian Railways trains.
 
 ### 📖 Passenger Glossary & Educational Guides
-* Comprehensive breakdown of IRCTC quotas (Tatkal, Premium Tatkal, Ladies Quota, Senior Citizen Quota) and refund rules.
+
+- Comprehensive breakdown of IRCTC quotas (Tatkal, Premium Tatkal, Ladies Quota, Senior Citizen Quota) and refund rules.
 
 ---
 
@@ -54,8 +60,8 @@ flowchart TD
     end
 
     subgraph Cloudflare["🛡️ Cloudflare Edge (DNS & SSL Proxy)"]
-        CF_FE["v2.lastberth.com\n(Proxy: 104.21.51.190)"]
-        CF_BE["api-v2.lastberth.com\n(Proxy: 172.67.184.39)"]
+        CF_FE["lastberth.com\n(Proxy: 104.21.51.190)"]
+        CF_BE["api.lastberth.com\n(Proxy: 172.67.184.39)"]
         CF_PROD["lastberth.com\n(Current Live: 69.46.46.30)"]
     end
 
@@ -70,7 +76,7 @@ flowchart TD
         direction TB
         Caddy_BE["Caddy 2 Proxy\nPorts: 80 / 443\n(Auto Let's Encrypt TLS)"]
         NestJS["NestJS API Container\n(backend:3009)\nNode 22-Alpine"]
-        
+
         Caddy_BE -->|"Proxy pass http://backend:3009"| NestJS
     end
 
@@ -125,15 +131,15 @@ flowchart TD
 
 ### 📋 Infrastructure Memory & Topology Reference
 
-| Component | Target Host / IP | Subdomain / Port | Description |
-|---|---|---|---|
-| **Frontend EC2** | `13.202.107.176` (`t3.micro`, `ap-south-1`) | `v2.lastberth.com` (80/443) | Runs Caddy 2 reverse proxy + Next.js 16 SSR container (`frontend:3010`). Localized JSON content & SSR pages. |
-| **Backend EC2** | `13.207.130.42` (`t3.micro`, `ap-south-1`) | `api-v2.lastberth.com` (80/443) | Runs Caddy 2 reverse proxy + NestJS API (`backend:3009`). |
-| **Database** | Supabase Cloud PostgreSQL | `aws-1-ap-northeast-1.pooler.supabase.com:5432` | Managed PostgreSQL with connection pooling, SSL/TLS, and Prisma ORM. |
-| **Old Production** | `69.46.46.30` | `lastberth.com` (Apex) | Current live production instance (preserved during parallel verification). |
-| **Security Groups** | Both AWS EC2s | Port 22 (SSH), 80 (HTTP), 443 (HTTPS) | SSH restricted to authorized IP `143.58.187.80/32`. Ports 80 and 443 open to Cloudflare proxy. |
-| **CORS Policy** | NestJS (`backend/src/main.ts`) | `https://*.lastberth.com`, `localhost` | Dynamic origin validator with credentials support (`access-control-allow-credentials: true`). |
-| **CI/CD** | GitHub Actions | Push to `main` branch | Workflow `.github/workflows/deploy-aws.yml` syncs code and rebuilds containers automatically. |
+| Component           | Target Host / IP                            | Subdomain / Port                                | Description                                                                                                  |
+| ------------------- | ------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Frontend EC2**    | `13.202.107.176` (`t3.micro`, `ap-south-1`) | `lastberth.com` (80/443)                        | Runs Caddy 2 reverse proxy + Next.js 16 SSR container (`frontend:3010`). Localized JSON content & SSR pages. |
+| **Backend EC2**     | `13.207.130.42` (`t3.small`, `ap-south-1`)  | `api.lastberth.com` (80/443)                    | Runs Caddy 2 reverse proxy + NestJS API (`backend:3009`).                                                    |
+| **Database**        | Supabase Cloud PostgreSQL                   | `aws-1-ap-northeast-1.pooler.supabase.com:5432` | Managed PostgreSQL with connection pooling, SSL/TLS, and Prisma ORM.                                         |
+| **Old Production**  | `69.46.46.30`                               | `lastberth.com` (Apex)                          | Current live production instance (preserved during parallel verification).                                   |
+| **Security Groups** | Both AWS EC2s                               | Port 22 (SSH), 80 (HTTP), 443 (HTTPS)           | SSH restricted to authorized IP `143.58.187.80/32`. Ports 80 and 443 open to Cloudflare proxy.               |
+| **CORS Policy**     | NestJS (`backend/src/main.ts`)              | `https://*.lastberth.com`, `localhost`          | Dynamic origin validator with credentials support (`access-control-allow-credentials: true`).                |
+| **CI/CD**           | GitHub Actions                              | Push to `main` branch                           | Workflow `.github/workflows/deploy-aws.yml` syncs code and rebuilds containers automatically.                |
 
 ---
 
@@ -166,8 +172,9 @@ traintickets/
 ## ⚙️ Quick Start Setup
 
 ### Prerequisites
-* Node.js 22.x
-* PostgreSQL 16 local instance (`railchart` database)
+
+- Node.js 22.x
+- PostgreSQL 16 local instance (`railchart` database)
 
 ### 1. Database & Backend Setup
 
@@ -186,7 +193,8 @@ npm run db:seed
 # Start backend dev server
 npm run start:dev
 ```
-*Backend API runs at `http://localhost:3009`.*
+
+_Backend API runs at `http://localhost:3009`._
 
 ### 2. Frontend Setup
 
@@ -197,35 +205,36 @@ npm install
 # Start Next.js frontend dev server
 npm run dev:web
 ```
-*Frontend opens at `http://localhost:3010`.*
+
+_Frontend opens at `http://localhost:3010`._
 
 ---
 
 ## 🔑 Environment Variables
 
-| Variable | Scope | Description |
-|---|---|---|
-| `DATABASE_URL` | Backend | PostgreSQL connection string (`postgresql://postgres:postgres@localhost:5432/railchart`) |
-| `JWT_SECRET` | Backend | Secret for authentication tokens |
-| `CHART_TIME_INGESTION_PASSWORD` | Backend | Password to unlock `/admin/*` chart ingestion tools |
-| `API_URL` | Backend | Backend base origin (`http://localhost:3009`) |
-| `FRONTEND_URL` | Backend | Frontend base origin (`http://localhost:3010`) |
-| `NEXT_PUBLIC_API_URL` | Frontend | Public backend API URL |
-| `NEXT_PUBLIC_APP_URL` | Frontend | Public app URL |
+| Variable                        | Scope    | Description                                                                              |
+| ------------------------------- | -------- | ---------------------------------------------------------------------------------------- |
+| `DATABASE_URL`                  | Backend  | PostgreSQL connection string (`postgresql://postgres:postgres@localhost:5432/railchart`) |
+| `JWT_SECRET`                    | Backend  | Secret for authentication tokens                                                         |
+| `CHART_TIME_INGESTION_PASSWORD` | Backend  | Password to unlock `/admin/*` chart ingestion tools                                      |
+| `API_URL`                       | Backend  | Backend base origin (`http://localhost:3009`)                                            |
+| `FRONTEND_URL`                  | Backend  | Frontend base origin (`http://localhost:3010`)                                           |
+| `NEXT_PUBLIC_API_URL`           | Frontend | Public backend API URL                                                                   |
+| `NEXT_PUBLIC_APP_URL`           | Frontend | Public app URL                                                                           |
 
 ---
 
 ## 📜 Key NPM Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Run both frontend (3010) and backend (3009) concurrently |
-| `npm run dev:web` | Start Next.js web application only |
-| `npm run dev:api` | Start NestJS API server only |
-| `npm run db:migrate` | Apply Prisma database migrations |
-| `npm run db:seed` | Seed initial train database and chart rules |
-| `npm run db:studio` | Open Prisma Studio database UI |
-| `npm run test:e2e` | Run Playwright end-to-end test suite |
+| Command              | Description                                              |
+| -------------------- | -------------------------------------------------------- |
+| `npm run dev`        | Run both frontend (3010) and backend (3009) concurrently |
+| `npm run dev:web`    | Start Next.js web application only                       |
+| `npm run dev:api`    | Start NestJS API server only                             |
+| `npm run db:migrate` | Apply Prisma database migrations                         |
+| `npm run db:seed`    | Seed initial train database and chart rules              |
+| `npm run db:studio`  | Open Prisma Studio database UI                           |
+| `npm run test:e2e`   | Run Playwright end-to-end test suite                     |
 
 ---
 
@@ -238,6 +247,6 @@ npm run dev:web
 
 ## 🌐 Live Product & Communities
 
-* **Official Website**: [lastberth.com](https://lastberth.com)
-* **Medium Blog**: [Medium @kartik.arora1508](https://medium.com/@kartik.arora1508)
-* **License**: Proprietary / All rights reserved.
+- **Official Website**: [lastberth.com](https://lastberth.com)
+- **Medium Blog**: [Medium @kartik.arora1508](https://medium.com/@kartik.arora1508)
+- **License**: Proprietary / All rights reserved.

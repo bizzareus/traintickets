@@ -68,6 +68,7 @@ type AnalyticsSummary = {
   totalWhatsappDelivered: number;
   totalEmailDelivered: number;
   overallDeliveryRate: number;
+  totalChartSubscriptionAmountCollected?: number;
   totalDays: number;
   totalPeriods?: number;
   avgPerDay: number;
@@ -512,16 +513,21 @@ function NotificationsAnalyticsSection() {
 
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
             <span className="text-xs font-medium text-slate-500">
-              Peak {groupBy === "month" ? "Month" : groupBy === "week" ? "Week" : "Day"}
+              Total Payment Collected
             </span>
             <p className="mt-1 text-2xl font-bold text-slate-900">
-              {(summary.peakPeriod || summary.peakDay)?.count ?? 0}
+              ₹
+              {(
+                summary.totalChartSubscriptionAmountCollected ??
+                data.reduce(
+                  (sum, d) => sum + (d.chartSubscriptionAmountCollected ?? 0),
+                  0
+                )
+              ).toLocaleString("en-IN")}
             </p>
-            {(summary.peakPeriod || summary.peakDay) && (
-              <span className="text-[10px] text-slate-400">
-                {formatTableDate((summary.peakPeriod || summary.peakDay)!.date)}
-              </span>
-            )}
+            <span className="text-[10px] text-slate-400">
+              Chart subscriptions • gross, before refunds
+            </span>
           </div>
         </div>
       )}

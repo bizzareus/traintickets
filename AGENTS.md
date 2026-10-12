@@ -10,13 +10,13 @@ Deployments are AWS-only. Do not use Railway for this project.
 
 ### AWS Dual-Instance Infrastructure Reference
 
-| Service | Instance IP | Domain / Ports | Topology |
-|---|---|---|---|
-| **Frontend** | `13.202.107.176` (`t3.micro`) | `v2.lastberth.com` (80/443) | Caddy 2 (Let's Encrypt TLS) ➔ Next.js 16 SSR container (`frontend:3010`) |
-| **Backend** | `13.207.130.42` (`t3.micro`) | `api-v2.lastberth.com` (80/443) | Caddy 2 (Let's Encrypt TLS) ➔ NestJS container (`backend:3009`) ➔ Supabase Cloud DB |
-| **Old Prod** | `69.46.46.30` | `lastberth.com` (Apex) | Existing legacy production instance |
-| **SSH Whitelist** | Authorized IP | Port 22 | Restricted to `143.58.187.80/32` |
-| **CORS Policy** | Backend API | `https://*.lastberth.com` | Handled dynamically in `backend/src/main.ts` (`isAllowedOrigin`) |
+| Service           | Instance IP                   | Domain / Ports               | Topology                                                                            |
+| ----------------- | ----------------------------- | ---------------------------- | ----------------------------------------------------------------------------------- |
+| **Frontend**      | `13.202.107.176` (`t3.micro`) | `lastberth.com` (80/443)     | Caddy 2 (Let's Encrypt TLS) ➔ Next.js 16 SSR container (`frontend:3010`)            |
+| **Backend**       | `13.207.130.42` (`t3.micro`)  | `api.lastberth.com` (80/443) | Caddy 2 (Let's Encrypt TLS) ➔ NestJS container (`backend:3009`) ➔ Supabase Cloud DB |
+| **Old Prod**      | `69.46.46.30`                 | `lastberth.com` (Apex)       | Existing legacy production instance                                                 |
+| **SSH Whitelist** | Authorized IP                 | Port 22                      | Restricted to `143.58.187.80/32`                                                    |
+| **CORS Policy**   | Backend API                   | `https://*.lastberth.com`    | Handled dynamically in `backend/src/main.ts` (`isAllowedOrigin`)                    |
 
 ### Local PostgreSQL requirement
 
@@ -47,16 +47,16 @@ cd /workspace && \
 
 ### Key commands (see `package.json` scripts for full list)
 
-| Task | Command |
-|---|---|
+| Task             | Command                                                |
+| ---------------- | ------------------------------------------------------ |
 | Start both (dev) | `npm run dev` (root) — but see env override note above |
-| Frontend only | `npm run dev:web` |
-| Backend only | `npm run dev:api` |
-| Frontend lint | `npm run lint` (root) |
-| Backend lint | `cd backend && npm run lint` |
-| Backend tests | `cd backend && npm test` |
-| Run migrations | `npm run db:migrate` |
-| Seed database | `npm run db:seed` |
+| Frontend only    | `npm run dev:web`                                      |
+| Backend only     | `npm run dev:api`                                      |
+| Frontend lint    | `npm run lint` (root)                                  |
+| Backend lint     | `cd backend && npm run lint`                           |
+| Backend tests    | `cd backend && npm test`                               |
+| Run migrations   | `npm run db:migrate`                                   |
+| Seed database    | `npm run db:seed`                                      |
 
 ### Notes
 

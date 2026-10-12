@@ -102,6 +102,11 @@ class SplitBookingLegDto {
   @Min(0)
   @Max(10_000)
   durationMinutes?: number;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(60)
+  availability?: string | null;
 }
 
 export class CreateSplitBookingDto {

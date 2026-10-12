@@ -33,6 +33,8 @@
 
 import fs from 'fs';
 import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config();
 import { google, searchconsole_v1 } from 'googleapis';
 
 interface GscRow {

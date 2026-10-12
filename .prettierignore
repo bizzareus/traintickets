@@ -1,0 +1,29 @@
+# dependencies
+node_modules
+
+# build outputs
+.next
+out
+dist
+build
+backend/dist
+infra/terraform/aws/build/
+
+# test / report artifacts
+coverage
+playwright-report
+test-results
+blob-report
+
+# local-only data
+storage
+backend/storage
+
+# misc generated files
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+*.log
+
+# agent tooling
+.claude/

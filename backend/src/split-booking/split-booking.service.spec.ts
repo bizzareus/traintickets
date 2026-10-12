@@ -58,7 +58,7 @@ describe('SplitBookingService', () => {
   beforeEach(async () => {
     config = new ConfigService({
       SPLIT_BOOKING_MODE: 'ai',
-      API_URL: 'https://api-v2.lastberth.com',
+      API_URL: 'https://api.lastberth.com',
       MUZOBOX_PROXY_API_KEY: 'test-key',
     });
     manualBooking = {
@@ -443,7 +443,7 @@ describe('SplitBookingService', () => {
           referenceId: result.bookingRef,
           redirectUri: `split-booking/payment-complete?ref=${result.bookingRef}`,
           callbackUrl:
-            'https://api-v2.lastberth.com/api/split-booking/muzobox-callback',
+            'https://api.lastberth.com/api/split-booking/muzobox-callback',
           customerName: 'Test Passenger',
           customerMobile: '9876543210',
           customerEmail: 'test@example.com',

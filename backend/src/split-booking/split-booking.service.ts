@@ -1011,7 +1011,7 @@ export class SplitBookingService {
     const details = bookingDetails(booking);
     const journeyDateStr = booking.journeyDate.toISOString().slice(0, 10);
     const apiUrl =
-      this.config.get<string>('API_URL') || 'https://api-v2.lastberth.com';
+      this.config.get<string>('API_URL') || 'https://api.lastberth.com';
 
     const hasPdf = Boolean(
       booking.ticketPdfUploadedAt ||
