@@ -131,6 +131,118 @@ describe('split-booking create payload (booking-form scenarios)', () => {
     expect(() => validateBookingItinerary(out)).not.toThrow();
   });
 
+  it('accepts a three-leg class-selection journey with timings and varied prefs', async () => {
+    const payload = {
+      trainNumber: '12215',
+      trainName: 'BDTS GARIB RATH',
+      fromStationCode: 'DEE',
+      toStationCode: 'DEST',
+      journeyDate: '2026-10-01',
+      travelClass: '3A',
+      quota: 'GN',
+      totalFare: 1505,
+      legs: [
+        {
+          from: 'DEE',
+          to: 'S1',
+          travelClass: '3A',
+          fare: 565,
+          boardingDate: '2026-10-01',
+          departureTime: '06:00',
+          arrivalTime: '09:30',
+          durationMinutes: 210,
+          availability: 'AVL 5',
+        },
+        {
+          from: 'S1',
+          to: 'S2',
+          travelClass: '2A',
+          fare: 600,
+          boardingDate: '2026-10-01',
+          departureTime: '10:15',
+          arrivalTime: '14:45',
+          durationMinutes: 270,
+          availability: 'AVL 2',
+        },
+        {
+          from: 'S2',
+          to: 'DEST',
+          travelClass: 'SL',
+          fare: 340,
+          boardingDate: '2026-10-01',
+          departureTime: '16:00',
+          arrivalTime: '21:20',
+          durationMinutes: 320,
+          availability: 'AVL 20',
+        },
+      ],
+      passengers: [
+        {
+          name: 'Test Passenger',
+          age: 45,
+          gender: 'Female' as const,
+          berthPreference: 'Lower',
+          optBerth: true,
+          foodChoice: 'Non-Veg' as const,
+          seniorCitizen: false,
+        },
+      ],
+      childPassengers: [],
+      autoUpgrade: true,
+      confirmBerthsOnly: false,
+      travelInsurance: true,
+      contactMobile: '9876543210',
+      contactEmail: 'test@example.com',
+    };
+
+    const out = await passesPipe(payload);
+    expect(out.legs).toHaveLength(3);
+    expect(out.legs.map((leg) => leg.travelClass)).toEqual(['3A', '2A', 'SL']);
+    expect(() => validateBookingItinerary(out)).not.toThrow();
+  });
+
+  it('accepts a partial journey when the middle leg is skipped', async () => {
+    const payload = {
+      trainNumber: '12066',
+      trainName: 'JANSHATABDI EXP',
+      fromStationCode: 'DEE',
+      toStationCode: 'DEST',
+      journeyDate: '2026-10-03',
+      travelClass: 'CC',
+      quota: 'GN',
+      totalFare: 720,
+      legs: [
+        {
+          from: 'DEE',
+          to: 'S1',
+          travelClass: 'CC',
+          fare: 300,
+          boardingDate: '2026-10-03',
+          availability: 'AVL 12',
+        },
+        {
+          from: 'S2',
+          to: 'DEST',
+          travelClass: 'CC',
+          fare: 420,
+          boardingDate: '2026-10-03',
+          availability: 'AVL 4',
+        },
+      ],
+      passengers: [passenger()],
+      childPassengers: [],
+      autoUpgrade: false,
+      confirmBerthsOnly: true,
+      travelInsurance: true,
+      contactMobile: '9999224767',
+      contactEmail: 'me@example.com',
+    };
+
+    const out = await passesPipe(payload);
+    expect(out.legs).toHaveLength(2);
+    expect(() => validateBookingItinerary(out)).not.toThrow();
+  });
+
   it('still rejects unknown top-level fields (whitelist stays protective)', async () => {
     const err = await passesPipe({
       trainNumber: '09065',
