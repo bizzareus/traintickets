@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { auth0 } from "./lib/auth0";
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();
   const host = request.headers.get("host");
 
@@ -25,7 +26,16 @@ export function proxy(request: NextRequest) {
     );
   }
 
-  return NextResponse.next();
+  // Auth0 session handling (/auth/*) and rolling sessions everywhere else.
+  // Skipped until the AUTH0_* env vars are set so local/devboro setups
+  // without Auth0 keep working; credit checks then treat visitors as guests.
+  const authConfigured =
+    Boolean(process.env.AUTH0_DOMAIN) &&
+    Boolean(process.env.AUTH0_CLIENT_ID) &&
+    Boolean(process.env.AUTH0_CLIENT_SECRET) &&
+    Boolean(process.env.AUTH0_SECRET);
+  if (!authConfigured) return NextResponse.next();
+  return auth0.middleware(request);
 }
 
 export const config = {

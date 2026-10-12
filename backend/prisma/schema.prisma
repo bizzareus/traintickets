@@ -9,11 +9,16 @@ datasource db {
 model User {
   id                 String              @id @default(cuid())
   name               String
-  email              String              @unique
+  email              String?             @unique
   phone              String?
-  passwordHash       String              @map("password_hash")
+  passwordHash       String?             @map("password_hash")
+  auth0Sub           String?             @unique @map("auth0_sub")
+  phoneVerifiedAt    DateTime?           @map("phone_verified_at")
   createdAt          DateTime            @default(now()) @map("created_at")
   monitoringRequests MonitoringRequest[]
+  creditWallet       SearchCreditWallet?
+  creditPurchases    SearchCreditPurchase[]
+  searchUsageLogs    SearchUsageLog[]
 }
 
 model Train {
@@ -638,6 +643,113 @@ enum CancellationRequestStatus {
   PENDING
   PROCESSED
   REJECTED
+}
+
+enum SearchCreditPurchaseStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
+enum SearchUsageSource {
+  FREE
+  PAID
+}
+
+enum SearchUsageOutcome {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+enum SearchUsageDebitStatus {
+  PENDING_DEBIT
+  SETTLED
+  SKIPPED
+  OVER_LIMIT_UNCHARGED
+}
+
+/// Lifetime free ticket-search allowance per client IP (3 free searches).
+/// `ipHash` is the sha256 of the canonical client IP + optional salt.
+model SearchIpQuota {
+  id         String   @id @default(cuid())
+  ipHash     String   @unique @map("ip_hash")
+  ipDisplay  String?  @map("ip_display")
+  freeUsed   Int      @default(0) @map("free_used")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@index([freeUsed])
+  @@map("search_ip_quota")
+}
+
+/// One wallet row per user holding non-expiring purchased search credits.
+model SearchCreditWallet {
+  id             String   @id @default(cuid())
+  userId         String   @unique @map("user_id")
+  totalPurchased Int      @default(0) @map("total_purchased")
+  balance        Int      @default(0)
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("search_credit_wallet")
+}
+
+/// One ₹100 / 100-credit pack purchase. Provider callbacks are hints only;
+/// credits are granted after server-to-server verification, exactly once.
+model SearchCreditPurchase {
+  id               String                      @id @default(cuid())
+  purchaseRef      String                      @unique @map("purchase_ref")
+  userId           String                      @map("user_id")
+  originIpHash     String?                     @map("origin_ip_hash")
+  amount           Int                         @map("amount")
+  creditQuantity   Int                         @map("credit_quantity")
+  currency         String                      @default("INR")
+  status           SearchCreditPurchaseStatus  @default(PENDING)
+  muzoboxPaymentId String?                     @unique @map("muzobox_payment_id")
+  payUrl           String?                     @map("pay_url")
+  razorpayOrderId  String?                     @map("razorpay_order_id")
+  razorpayPaymentId String?                    @map("razorpay_payment_id")
+  contactEmail     String?                     @map("contact_email")
+  contactMobile    String?                     @map("contact_mobile")
+  paidAt           DateTime?                   @map("paid_at")
+  createdAt        DateTime                    @default(now()) @map("created_at")
+  updatedAt        DateTime                    @updatedAt @map("updated_at")
+  user             User                        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, status])
+  @@index([status, createdAt])
+  @@map("search_credit_purchase")
+}
+
+/// Durable log of every admitted ticket search. The row is the worker queue:
+/// `PENDING_DEBIT` rows are settled asynchronously into the wallet/IP counters.
+model SearchUsageLog {
+  id           String                @id @default(cuid())
+  requestId    String                @unique @map("request_id")
+  fingerprint  String                @map("fingerprint")
+  userId       String?               @map("user_id")
+  ipHash       String                @map("ip_hash")
+  trainNumber  String                @map("train_number")
+  fromStation  String                @map("from_station")
+  toStation    String                @map("to_station")
+  journeyDate  String?               @map("journey_date")
+  classes      String[]              @default([])
+  quota        String                @default("GN")
+  source       SearchUsageSource
+  outcome      SearchUsageOutcome    @default(PENDING)
+  debitStatus  SearchUsageDebitStatus @default(PENDING_DEBIT) @map("debit_status")
+  error        String?
+  createdAt    DateTime              @default(now()) @map("created_at")
+  updatedAt    DateTime              @updatedAt @map("updated_at")
+  completedAt  DateTime?             @map("completed_at")
+  user         User?                 @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([ipHash, createdAt])
+  @@index([userId, createdAt])
+  @@index([outcome, debitStatus, createdAt])
+  @@map("search_usage_log")
 }
 
 model BookingCancellationRequest {

@@ -15,6 +15,16 @@ import { calculateConfirmedDurationMinutes, countConfirmedAlternateLegs } from "
 import { useSplitBookingFeatureFlag } from "@/lib/hooks/useSplitBookingFeatureFlag";
 import { buildDirectBookingLegs } from "@/lib/splitBookingSelection";
 import {
+  authHeaders,
+  newSearchRequestId,
+  throwIfExhaustedResponse,
+  fetchCreditBalance,
+  ExhaustedError,
+  type CreditBalance,
+  type ExhaustionInfo,
+} from "@/lib/search-credits";
+import { SearchCreditsPaywall } from "@/components/search-credits/SearchCreditsPaywall";
+import {
   SplitTicketBookingFlow,
   type SplitTicketBookingFlowProps,
 } from "@/components/booking-v2/SplitTicketBookingFlow";
@@ -97,6 +107,17 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
   });
   const [error, setError] = useState<string | null>(null);
   const [currentProgressText, setCurrentProgressText] = useState<string>("");
+  const [paywall, setPaywall] = useState<ExhaustionInfo | null>(null);
+  const [paywallBalance, setPaywallBalance] = useState<CreditBalance | null>(
+    null,
+  );
+
+  const openPaywall = useCallback((info: ExhaustionInfo) => {
+    setPaywall(info);
+    void fetchCreditBalance()
+      .then(setPaywallBalance)
+      .catch(() => setPaywallBalance(null));
+  }, []);
   const [directBookingRequest, setDirectBookingRequest] = useState<Omit<
     SplitTicketBookingFlowProps,
     "onClose"
@@ -291,12 +312,14 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
         return;
       }
 
+      const searchRequestId = newSearchRequestId();
       const body = JSON.stringify({
         trainNumber: train.trainNumber,
         from: fromCode,
         to: toCode,
         date: journeyDate,
         quota: "GN",
+        searchRequestId,
         ...(baseClasses && baseClasses.length > 0
           ? { avlClasses: baseClasses }
           : {}),
@@ -306,11 +329,30 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
         `${process.env.NEXT_PUBLIC_API_URL ?? ""}/api/booking-v2/alternate-paths/stream`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            "X-Search-Request-Id": searchRequestId,
+            ...(await authHeaders()),
+          },
           body,
           signal: controller.signal,
         },
       );
+
+      try {
+        await throwIfExhaustedResponse(resp);
+      } catch (err) {
+        if (err instanceof ExhaustedError) {
+          // Allow retry right after the paywall grants credits.
+          hasInitiatedRef.current = false;
+          setLoading(false);
+          setError(err.message);
+          onScanComplete?.(train.trainNumber, false);
+          openPaywall(err.info);
+          return;
+        }
+        throw err;
+      }
 
       if (!resp.ok || !resp.body) {
         let msg = `Search failed (${resp.status})`;
@@ -422,7 +464,15 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     selectedClasses,
     onSeatsDiscovered,
     onScanComplete,
+    openPaywall,
   ]);
+
+  // Resume the scan right after credits are added in the paywall.
+  const retryScanAfterUnlock = useCallback(() => {
+    setPaywall(null);
+    hasInitiatedRef.current = false;
+    void executeScan();
+  }, [executeScan]);
 
   // Auto-run scan for waitlisted train only when autoScanEnabled is true and result not already loaded
   useEffect(() => {
@@ -928,6 +978,13 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
         onClose={() => setDirectBookingRequest(null)}
       />
     )}
+    <SearchCreditsPaywall
+      open={paywall !== null}
+      balance={paywallBalance}
+      exhaustion={paywall}
+      onClose={() => setPaywall(null)}
+      onUnlocked={retryScanAfterUnlock}
+    />
     </>
   );
 });

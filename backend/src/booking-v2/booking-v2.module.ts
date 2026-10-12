@@ -11,9 +11,10 @@ import { BestTrainsRouteCache } from './best-trains-cache';
 import { AlternatePathsRouteCache } from './alternate-paths-cache';
 
 import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
+import { SearchCreditsModule } from '../search-credits/search-credits.module';
 
 @Module({
-  imports: [IrctcModule, CronLeaderModule],
+  imports: [IrctcModule, CronLeaderModule, SearchCreditsModule],
   controllers: [BookingV2Controller, SeatCacheController],
   providers: [
     BookingV2Service,

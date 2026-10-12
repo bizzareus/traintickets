@@ -55,6 +55,12 @@ export class AlternatePathsDto {
   @IsOptional()
   @IsBoolean()
   cacheOnly?: boolean;
+
+  /** Client-generated idempotency key for credit admission (retries reuse it). */
+  @IsOptional()
+  @IsString()
+  @MaxLength(64)
+  searchRequestId?: string;
 }
 
 export class BestTrainsDto {
@@ -96,4 +102,10 @@ export class BestTrainsDto {
   @ArrayMaxSize(10)
   @IsObject({ each: true })
   trains?: Array<Record<string, unknown>>;
+
+  /** Client-generated idempotency key for credit admission (retries reuse it). */
+  @IsOptional()
+  @IsString()
+  @MaxLength(64)
+  searchRequestId?: string;
 }

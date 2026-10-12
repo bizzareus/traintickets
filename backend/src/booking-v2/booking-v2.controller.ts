@@ -3,6 +3,7 @@ import {
   Body,
   Controller,
   Get,
+  HttpException,
   Param,
   Post,
   Query,
@@ -12,6 +13,7 @@ import {
 import type { Request, Response } from 'express';
 import { Throttle } from '@nestjs/throttler';
 import { BookingV2Service } from './booking-v2.service';
+import { SearchCreditsService } from '../search-credits/search-credits.service';
 import type {
   AlternatePathProgressEvent,
   BookingV2TrainSearchRow,
@@ -36,6 +38,21 @@ function bodyStringArray(v: unknown): string[] {
   return v.map((x) => trimStr(x).toUpperCase()).filter((s) => s.length > 0);
 }
 
+/**
+ * Client-supplied idempotency key for credit admission. Body field or
+ * `X-Search-Request-Id` header; absent on legacy clients (server mints one).
+ */
+function searchRequestIdOf(
+  body: { searchRequestId?: unknown } | undefined,
+  req: Request,
+): string | undefined {
+  const fromBody = trimStr(body?.searchRequestId);
+  if (fromBody) return fromBody;
+  const header = req.headers['x-search-request-id'];
+  const value = Array.isArray(header) ? header[0] : header;
+  return typeof value === 'string' && value.trim() ? value.trim() : undefined;
+}
+
 function streamErrorMessage(err: unknown): string {
   const message = err instanceof Error ? err.message : 'Unexpected error';
   if (
@@ -51,7 +68,10 @@ function streamErrorMessage(err: unknown): string {
 @Controller('api/booking-v2')
 @Throttle({ global: { limit: 20, ttl: 60_000 } })
 export class BookingV2Controller {
-  constructor(private readonly bookingV2: BookingV2Service) {}
+  constructor(
+    private readonly bookingV2: BookingV2Service,
+    private readonly credits: SearchCreditsService,
+  ) {}
 
   @Get('stations/suggest')
   async suggestStations(
@@ -135,6 +155,7 @@ export class BookingV2Controller {
   async alternatePaths(
     @Body()
     body: AlternatePathsDto,
+    @Req() req: Request,
   ) {
     const trainNumber = trimStr(body?.trainNumber);
     const from = trimStr(body?.from);
@@ -153,22 +174,44 @@ export class BookingV2Controller {
     if (this.bookingV2.isPastDate(date)) {
       throw new BadRequestException('Journey date cannot be in the past');
     }
-    const cacheOnly = Boolean(body?.cacheOnly);
-    const forceRefresh = Boolean(body?.forceRefresh);
-    const { result, cached } = await this.bookingV2.findAlternatePathsCached({
+    // Credit gate: sync validation + durable PENDING log; debit settles async.
+    // Throws 402 when the visitor's free searches / wallet are exhausted.
+    const admission = await this.credits.admitSearch({
+      req,
+      requestId: searchRequestIdOf(body, req),
       trainNumber,
       from,
       to,
       date,
-      avlClasses,
+      classes: avlClasses,
       quota,
-      forceRefresh,
-      cacheOnly,
     });
-    if (cacheOnly) {
-      return { cached, result };
+    try {
+      const cacheOnly = Boolean(body?.cacheOnly);
+      const forceRefresh = Boolean(body?.forceRefresh);
+      const { result, cached } = await this.bookingV2.findAlternatePathsCached({
+        trainNumber,
+        from,
+        to,
+        date,
+        avlClasses,
+        quota,
+        forceRefresh,
+        cacheOnly,
+      });
+      await this.credits.completeSearch(admission.requestId, 'SUCCESS');
+      if (cacheOnly) {
+        return { cached, result };
+      }
+      return result;
+    } catch (err) {
+      await this.credits.completeSearch(
+        admission.requestId,
+        'FAILED',
+        err instanceof Error ? err.message : String(err),
+      );
+      throw err;
     }
-    return result;
   }
 
   /**
@@ -211,6 +254,29 @@ export class BookingV2Controller {
       return;
     }
 
+    // Credit gate BEFORE streaming headers: a 402 must stay a JSON denial,
+    // never an NDJSON error line the client would show as "Scan failed".
+    let admissionRequestId: string;
+    try {
+      const admission = await this.credits.admitSearch({
+        req,
+        requestId: searchRequestIdOf(body, req),
+        trainNumber,
+        from,
+        to,
+        date,
+        classes: avlClasses,
+        quota,
+      });
+      admissionRequestId = admission.requestId;
+    } catch (err: unknown) {
+      if (err instanceof HttpException && err.getStatus() === 402) {
+        res.status(402).json(err.getResponse());
+        return;
+      }
+      throw err;
+    }
+
     res.setHeader('Content-Type', 'application/x-ndjson');
     res.setHeader('Transfer-Encoding', 'chunked');
     res.setHeader('Cache-Control', 'no-cache');
@@ -229,6 +295,7 @@ export class BookingV2Controller {
       }
     }, 15_000);
 
+    let delivered = false;
     try {
       const { result, cached } = await this.bookingV2.findAlternatePathsCached(
         {
@@ -246,7 +313,16 @@ export class BookingV2Controller {
           writeLine({ type: 'progress', event }),
       );
       await writeLine({ type: 'result', data: result, cached });
+      delivered = true;
+      await this.credits.completeSearch(admissionRequestId, 'SUCCESS');
     } catch (err: unknown) {
+      if (!delivered) {
+        await this.credits.completeSearch(
+          admissionRequestId,
+          'FAILED',
+          err instanceof Error ? err.message : String(err),
+        );
+      }
       if (!lifecycle.signal.aborted) {
         await writeLine({ type: 'error', message: streamErrorMessage(err) });
       }
@@ -291,6 +367,28 @@ export class BookingV2Controller {
       return;
     }
 
+    // Credit gate BEFORE streaming headers (one admission per fan-out call).
+    let admissionRequestId: string;
+    try {
+      const admission = await this.credits.admitSearch({
+        req,
+        requestId: searchRequestIdOf(body, req),
+        trainNumber: 'BEST',
+        from,
+        to,
+        date,
+        classes,
+        quota,
+      });
+      admissionRequestId = admission.requestId;
+    } catch (err: unknown) {
+      if (err instanceof HttpException && err.getStatus() === 402) {
+        res.status(402).json(err.getResponse());
+        return;
+      }
+      throw err;
+    }
+
     res.setHeader('Content-Type', 'application/x-ndjson');
     res.setHeader('Transfer-Encoding', 'chunked');
     res.setHeader('Cache-Control', 'no-cache');
@@ -306,6 +404,7 @@ export class BookingV2Controller {
       }
     }, 15_000);
 
+    let delivered = false;
     try {
       const result = await this.bookingV2.findBestTrains(
         {
@@ -325,6 +424,8 @@ export class BookingV2Controller {
           writeLine({ type: 'progress', event }),
       );
       await writeLine({ type: 'result', data: result });
+      delivered = true;
+      await this.credits.completeSearch(admissionRequestId, 'SUCCESS');
       // Warm the route cache from a real full scan (skip AC-only — the cache
       // stores the all-class best). Best-effort; never blocks the response.
       if (!acOnly) {
@@ -333,6 +434,13 @@ export class BookingV2Controller {
           .catch(() => undefined);
       }
     } catch (err: unknown) {
+      if (!delivered) {
+        await this.credits.completeSearch(
+          admissionRequestId,
+          'FAILED',
+          err instanceof Error ? err.message : String(err),
+        );
+      }
       if (!lifecycle.signal.aborted) {
         await writeLine({ type: 'error', message: streamErrorMessage(err) });
       }

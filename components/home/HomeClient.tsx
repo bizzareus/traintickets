@@ -19,6 +19,8 @@ import dynamic from "next/dynamic";
 import { shareDomElementAsPng } from "@/lib/shareDomScreenshot";
 import { cn } from "@/lib/utils";
 import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
+import { useSearchCredits } from "@/components/search-credits/useSearchCredits";
+import { SearchCreditsPaywall } from "@/components/search-credits/SearchCreditsPaywall";
 import { TrainSearchV2ProgressBar } from "@/components/home/TrainSearchV2ProgressBar";
 import { TrainSearchV2Card } from "@/components/home/TrainSearchV2Card";
 import { TrainSearchSkeleton } from "@/components/home/TrainSearchSkeleton";
@@ -394,6 +396,13 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   // IRCTC online-charts maintenance window. The gate lives in SeatStatus
   // (Chart Vacancy + Live Seat Tracker), which do hit the online-charts API.
   const alt = useAlternatePaths({ acOnly, selectedClasses: resultClasses });
+  const creditsPaywall = useSearchCredits();
+
+  // Open the credit paywall when a ticket scan is rejected (HTTP 402).
+  const { openPaywall: openCreditsPaywall } = creditsPaywall;
+  useEffect(() => {
+    if (alt.needsPayment) openCreditsPaywall(alt.needsPayment);
+  }, [alt.needsPayment, openCreditsPaywall]);
   const {
     altForTrain,
     altTrainName,
@@ -1587,6 +1596,20 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 </ul>
               )}
 
+              <SearchCreditsPaywall
+                open={creditsPaywall.paywallOpen}
+                balance={creditsPaywall.balance}
+                exhaustion={creditsPaywall.exhaustion}
+                onClose={() => {
+                  creditsPaywall.closePaywall();
+                  alt.clearPayment();
+                }}
+                onUnlocked={() => {
+                  creditsPaywall.handleUnlocked();
+                  alt.clearPayment();
+                  void alt.refresh();
+                }}
+              />
               {searchType === "route" &&
                 (altResult || altError || (altLoading && altForTrain)) && (
                   <div

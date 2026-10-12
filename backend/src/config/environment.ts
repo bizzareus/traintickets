@@ -70,6 +70,9 @@ const environmentSchema = z
     RAZORPAY_KEY_ID: optionalTrimmedString,
     RAZORPAY_KEY_SECRET: optionalSecret,
     RAZORPAY_WEBHOOK_SECRET: optionalSecret,
+    AUTH0_DOMAIN: optionalTrimmedString,
+    AUTH0_AUDIENCE: optionalTrimmedString,
+    SEARCH_CREDITS_IP_SALT: optionalSecret,
     TICKET_PDF_S3_BUCKET: optionalTrimmedString.default(
       'lastberth-ticket-storage',
     ),

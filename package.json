@@ -32,6 +32,7 @@
     "gsc:fetch": "npx tsx scripts/fetch-gsc-performance.ts"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^4.31.1",
     "@aws-sdk/client-dynamodb": "^3.1134.0",
     "@aws-sdk/lib-dynamodb": "^3.1134.0",
     "@formkit/auto-animate": "^0.10.0",

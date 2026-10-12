@@ -2,6 +2,13 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
+import {
+  authHeaders,
+  newSearchRequestId,
+  throwIfExhaustedResponse,
+  ExhaustedError,
+  type ExhaustionInfo,
+} from "@/lib/search-credits";
 import type {
   AlternatePathProgressEvent,
   AlternatePathsResponse,
@@ -43,6 +50,10 @@ export interface UseAlternatePathsResult {
   }) => void;
   /** Force-refresh current train tickets (bypasses cache and updates cache). */
   refresh: () => Promise<void>;
+  /** Set when the server paywalls a scan (HTTP 402); render the paywall. */
+  needsPayment: ExhaustionInfo | null;
+  /** Dismiss the paywall signal (e.g. after credits are added). */
+  clearPayment: () => void;
   /** Imperatively set the result/train (used for headless screenshot injection). */
   setAltResult: (r: AlternatePathsResponse | null) => void;
   setAltForTrain: (n: string | null) => void;
@@ -74,6 +85,9 @@ export function useAlternatePaths(
   const [altProgress, setAltProgress] = useState<AlternatePathProgressEvent[]>(
     [],
   );
+  const [needsPayment, setNeedsPayment] = useState<ExhaustionInfo | null>(null);
+
+  const clearPayment = useCallback(() => setNeedsPayment(null), []);
   const requestRef = useRef<AbortController | null>(null);
   const activeParamsRef = useRef<{
     trainNumber: string;
@@ -150,12 +164,14 @@ export function useAlternatePaths(
         },
       });
 
+      const searchRequestId = newSearchRequestId();
       const body = JSON.stringify({
         trainNumber: t.trainNumber,
         from: fromCode,
         to: toCode,
         date: targetDate,
         quota: "GN",
+        searchRequestId,
         forceRefresh: Boolean(options?.forceRefresh),
         ...(avlClassesForRequest && avlClassesForRequest.length > 0
           ? { avlClasses: avlClassesForRequest }
@@ -167,11 +183,26 @@ export function useAlternatePaths(
           `${process.env.NEXT_PUBLIC_API_URL ?? ""}/api/booking-v2/alternate-paths/stream`,
           {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              "X-Search-Request-Id": searchRequestId,
+              ...(await authHeaders()),
+            },
             body,
             signal: controller.signal,
           },
         );
+
+        try {
+          await throwIfExhaustedResponse(resp);
+        } catch (err) {
+          if (err instanceof ExhaustedError) {
+            setNeedsPayment(err.info);
+            setAltError(err.message);
+            return;
+          }
+          throw err;
+        }
 
         if (!resp.ok || !resp.body) {
           let msg = `Request failed (${resp.status})`;
@@ -297,6 +328,7 @@ export function useAlternatePaths(
     setAltForTrain(null);
     setAltTrainName(null);
     setAltAvlClasses(undefined);
+    setNeedsPayment(null);
   }, []);
 
   const showResult = useCallback(
@@ -376,5 +408,7 @@ export function useAlternatePaths(
     setAltResult,
     setAltForTrain,
     setAltTrainName,
+    needsPayment,
+    clearPayment,
   };
 }
