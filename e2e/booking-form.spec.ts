@@ -12,7 +12,9 @@ test("default form submits the complete browser payload accepted by Nest", async
   await booking.fill();
   await booking.submit();
   await expect(
-    booking.details().getByRole("heading", { name: "Pay ₹1,019", exact: true }),
+    booking
+      .details()
+      .getByRole("heading", { name: "Pay ₹1,128.00", exact: true }),
   ).toBeVisible();
   expect(booking.state.requests[0]).toEqual({
     trainNumber: "09065",

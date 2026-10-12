@@ -1,56 +1,20 @@
-import type { Page } from "@playwright/test";
-import { test, expect, type BookingHarness } from "./fixtures/booking-engine";
-
-async function checkout(booking: BookingHarness, page: Page) {
-  await page.clock.install({ time: new Date("2026-10-12T06:00:00Z") });
-  await page.clock.pauseAt(new Date("2026-10-12T06:00:01Z"));
-  await booking.open();
-  await booking.fill();
-  await booking.submit();
-  await expect(booking.details().locator("iframe")).toBeVisible();
-  await expect(pageCheckoutButton(booking)).toBeVisible();
-}
-
-function pageCheckoutButton(booking: BookingHarness) {
-  return booking
-    .details()
-    .frameLocator('iframe[title="Complete payment via Muzobox"]')
-    .getByRole("button", { name: "Complete test checkout" });
-}
-async function iframePaid(page: Page) {
-  await page
-    .frameLocator('iframe[title="Complete payment via Muzobox"]')
-    .getByRole("button", { name: "Complete test checkout" })
-    .click();
-}
-async function paid(
-  booking: BookingHarness,
-  page: Page,
-  bookingStatus: "IN_PROGRESS" | "MANUAL_PENDING" = "IN_PROGRESS",
-) {
-  booking.state.status = {
-    paymentStatus: "PAID",
-    bookingStatus,
-    paidAt: await page.evaluate(() => new Date().toISOString()),
-  };
-  await iframePaid(page);
-  await expect(
-    booking
-      .details()
-      .getByRole("heading", { name: "Booking in progress", exact: true }),
-  ).toBeVisible();
-}
+import { test, expect } from "./fixtures/booking-engine";
+import {
+  clickTestCheckout,
+  openPaidCheckout,
+  simulatePaidStatus,
+} from "./fixtures/booking-payment";
 
 test("iframe hint cannot confirm a pending payment", async ({
   booking,
   page,
 }) => {
-  await checkout(booking, page);
+  await openPaidCheckout(booking, page);
   const frame = booking.details().locator("iframe");
   await expect(frame).toHaveAttribute("allow", "payment");
   await expect(frame).toHaveAttribute("src", /iframe=1/);
   const before = booking.state.statusRequests.length;
-  await iframePaid(page);
+  await clickTestCheckout(page);
   await expect
     .poll(() => booking.state.statusRequests.length)
     .toBeGreaterThan(before);
@@ -62,9 +26,9 @@ test("verified paid then confirmed status displays every PNR and stops polling",
   booking,
   page,
 }) => {
-  await checkout(booking, page);
-  await paid(booking, page);
-  await expect(booking.details()).toContainText("Payment Received (₹1,019)");
+  await openPaidCheckout(booking, page);
+  await simulatePaidStatus(booking, page);
+  await expect(booking.details()).toContainText("Payment Received (₹1,128.00)");
   booking.state.status = {
     ...booking.state.status,
     bookingStatus: "CONFIRMED",
@@ -89,8 +53,8 @@ test("manual payment remains unconfirmed until operator confirmation", async ({
   booking,
   page,
 }) => {
-  await checkout(booking, page);
-  await paid(booking, page, "MANUAL_PENDING");
+  await openPaidCheckout(booking, page);
+  await simulatePaidStatus(booking, page, "MANUAL_PENDING");
   await expect(
     booking
       .details()
@@ -114,9 +78,9 @@ test("failed payment removes checkout and never enters reservation", async ({
   booking,
   page,
 }) => {
-  await checkout(booking, page);
+  await openPaidCheckout(booking, page);
   booking.state.status = { paymentStatus: "FAILED", bookingStatus: "IDLE" };
-  await iframePaid(page);
+  await clickTestCheckout(page);
   await expect(booking.details().getByRole("alert")).toContainText(
     "Payment failed",
   );
@@ -132,8 +96,8 @@ test("partial booking failure preserves issued PNR and shows the reason", async 
   booking,
   page,
 }) => {
-  await checkout(booking, page);
-  await paid(booking, page);
+  await openPaidCheckout(booking, page);
+  await simulatePaidStatus(booking, page);
   booking.state.status = {
     ...booking.state.status,
     bookingStatus: "FAILED",
@@ -157,13 +121,13 @@ test("transient status errors recover through existing GET retries", async ({
   booking,
   page,
 }) => {
-  await checkout(booking, page);
+  await openPaidCheckout(booking, page);
   booking.state.statusFailures = 2;
   booking.state.status = {
     paymentStatus: "PAID",
     bookingStatus: "IN_PROGRESS",
   };
-  await iframePaid(page);
+  await clickTestCheckout(page);
   await page.clock.runFor(1500);
   await expect(
     booking
@@ -177,7 +141,7 @@ test("wrong-origin and wrong-window payment messages are ignored", async ({
   booking,
   page,
 }) => {
-  await checkout(booking, page);
+  await openPaidCheckout(booking, page);
   await expect
     .poll(() => booking.state.statusRequests.length)
     .toBeGreaterThan(0);
@@ -207,8 +171,8 @@ test("five-minute message respects persisted paidAt and clears after completion"
   booking,
   page,
 }) => {
-  await checkout(booking, page);
-  await paid(booking, page);
+  await openPaidCheckout(booking, page);
+  await simulatePaidStatus(booking, page);
   await page.clock.fastForward(299_000);
   await expect(booking.details().getByRole("status")).toHaveCount(0);
   await page.clock.fastForward(1_000);
@@ -236,7 +200,7 @@ test("closing checkout stops polling and ignores an in-flight late response", as
   booking,
   page,
 }) => {
-  await checkout(booking, page);
+  await openPaidCheckout(booking, page);
   let release!: () => void;
   const gate = new Promise<void>((resolve) => {
     release = resolve;
@@ -251,7 +215,7 @@ test("closing checkout stops polling and ignores an in-flight late response", as
   };
   try {
     const count = booking.state.statusRequests.length;
-    await iframePaid(page);
+    await clickTestCheckout(page);
     await expect
       .poll(() => booking.state.statusRequests.length)
       .toBeGreaterThan(count);
@@ -294,7 +258,7 @@ for (const [paymentStatus, heading] of [
     ).toBeVisible();
     await expect(
       page.getByRole("region", { name: "Fare breakdown" }),
-    ).toContainText("Total Amount₹1,128.26");
+    ).toContainText("Total Amount₹1,128.00");
   });
 }
 

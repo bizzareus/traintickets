@@ -124,7 +124,7 @@ test("checkout displays backend-authoritative prices and no obsolete fee wording
     "IRCTC Service Charge₹35.40",
     "LastBerth Service Charge₹80.00",
     "Payment Gateway Fees (3%)₹32.86",
-    "Total Amount₹1,128.26",
+    "Total Amount₹1,128.00",
   ]) {
     await expect(breakdown).toContainText(row);
   }

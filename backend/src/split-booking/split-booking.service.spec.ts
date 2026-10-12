@@ -302,7 +302,7 @@ describe('SplitBookingService', () => {
         irctcServiceFee: 70.8,
         serviceFee: 80,
         paymentGatewayFee: 28.82,
-        amount: 989.62,
+        amount: 990,
       });
       expect(result.bookingRef).toBeDefined();
       expect(result.payUrl).toBe('https://muzobox.com/pay/mb_test');
@@ -423,11 +423,12 @@ describe('SplitBookingService', () => {
           irctcServiceFee: 106.2,
           serviceFee: 120,
           paymentGatewayFee: 40.09,
-          amount: 1376.29,
+          amount: 1376,
         });
+        expect(Number.isInteger(result.amount)).toBe(true);
         expect(muzobox.post).toHaveBeenCalledWith(
           'proxy-payments/create-link',
-          expect.objectContaining({ amount: 1376.29 }),
+          expect.objectContaining({ amount: 1376 }),
           { headers: { 'x-api-key': 'test-key' } },
         );
         const [created] = prisma.splitTicketBooking.create.mock.calls[0] as [
@@ -450,7 +451,7 @@ describe('SplitBookingService', () => {
       expect(muzobox.post).toHaveBeenCalledWith(
         'proxy-payments/create-link',
         expect.objectContaining({
-          amount: 1376.29,
+          amount: 1376,
           referenceId: result.bookingRef,
           redirectUri: `split-booking/payment-complete?ref=${result.bookingRef}`,
           callbackUrl:
@@ -554,10 +555,12 @@ describe('SplitBookingService', () => {
 
     it('does not accept a client-supplied service fee override', async () => {
       const tampered = { ...request, serviceFee: 0 };
-      expect(await service.createBooking(tampered)).toMatchObject({
+      const untampered = await service.createBooking(tampered);
+      expect(untampered).toMatchObject({
         serviceFee: 120,
-        amount: 1376.29,
+        amount: 1376,
       });
+      expect(Number.isInteger(untampered.amount)).toBe(true);
     });
 
     it('calculates 3% gateway fees on fare plus both service charges', async () => {
@@ -568,7 +571,7 @@ describe('SplitBookingService', () => {
         irctcServiceFee: 106.2,
         serviceFee: 120,
         paymentGatewayFee: 339.79,
-        amount: 11665.99,
+        amount: 11666,
       });
     });
 
@@ -580,7 +583,7 @@ describe('SplitBookingService', () => {
         ).toMatchObject({
           totalFare: 1110,
           serviceFee: 120,
-          amount: 1376.29,
+          amount: 1376,
         });
       } finally {
         config.set('SPLIT_BOOKING_SERVICE_FEE_RATE', undefined);
@@ -905,10 +908,10 @@ describe('SplitBookingService', () => {
         }),
       ).rejects.toThrow('does not match');
       const status = await service.confirmPayment(booking.bookingRef, 'pay1', {
-        amount: 123126,
+        amount: 123100,
         currency: 'INR',
       });
-      expect(status.amount).toBe(1231.26);
+      expect(status.amount).toBe(1231);
       expect(status.paymentGatewayFee).toBe(35.86);
     });
 
@@ -1118,7 +1121,7 @@ describe('SplitBookingService', () => {
         .calls[0][2] as string;
       expect(confirmationHtml).toContain('IRCTC Service Charge');
       expect(confirmationHtml).toContain('Payment Gateway Fees (3%)');
-      expect(confirmationHtml).toContain('₹989.62');
+      expect(confirmationHtml).toContain('₹990.00');
       expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith(
         expect.objectContaining({
           where: { id: 'b-123' },
@@ -1243,7 +1246,7 @@ describe('SplitBookingService', () => {
       expect(paymentHtml).toContain('IRCTC Service Charge');
       expect(paymentHtml).toContain('LastBerth Service Charge');
       expect(paymentHtml).toContain('Payment Gateway Fees (3%)');
-      expect(paymentHtml).toContain('₹1,231.26');
+      expect(paymentHtml).toContain('₹1,231.00');
       expect(notifications.sendEmail).toHaveBeenCalledWith(
         'passenger@example.com',
         expect.stringContaining('Payment Received — Booking Ref: LB-PAID1'),
@@ -1487,7 +1490,7 @@ describe('SplitBookingService', () => {
       muzobox.post.mockResolvedValue({
         data: {
           status: 'refunded',
-          amount: 2215.32,
+          amount: 2215,
           razorpayRefundId: 'rfnd_custom_999',
         },
       });
@@ -1497,7 +1500,7 @@ describe('SplitBookingService', () => {
       });
 
       expect(res.success).toBe(true);
-      expect(res.refundAmount).toBe(2215.32);
+      expect(res.refundAmount).toBe(2215);
       expect(res.refundId).toBe('rfnd_custom_999');
       expect(res.emailSent).toBe(true);
 
@@ -1505,7 +1508,7 @@ describe('SplitBookingService', () => {
       expect(muzobox.post).toHaveBeenCalledWith(
         'proxy-payments/mb_pay_123/refund',
         expect.objectContaining({
-          amount: 2215.32,
+          amount: 2215,
           referenceId: 'LB-REF1',
         }),
         expect.any(Object),
@@ -1524,7 +1527,7 @@ describe('SplitBookingService', () => {
       // Verify notification email sent with refund ID and amount
       const refundHtml = notifications.sendEmail.mock.calls[0][2] as string;
       expect(refundHtml).toContain('Payment Gateway Fees (3%)');
-      expect(refundHtml).toContain('₹2,215.32');
+      expect(refundHtml).toContain('₹2215');
       expect(notifications.sendEmail).toHaveBeenCalledWith(
         'passenger@example.com',
         expect.stringContaining('LB-REF1'),

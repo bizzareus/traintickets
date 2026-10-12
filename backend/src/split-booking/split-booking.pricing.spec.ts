@@ -10,28 +10,29 @@ import {
 
 describe('Itemized booking pricing', () => {
   it.each([
-    [1120, ['2A'], 35.4, 40, 35.86, 1231.26],
-    [1120, ['SL'], 17.7, 40, 35.33, 1213.03],
-    [810, ['3A', '3A'], 70.8, 80, 28.82, 989.62],
-    [810, ['SL', '3A'], 53.1, 80, 28.29, 971.39],
-    [1110, ['3A', '3A', '3A'], 106.2, 120, 40.09, 1376.29],
+    [1120, ['2A'], 35.4, 40, 35.86, 1231],
+    [1120, ['SL'], 17.7, 40, 35.33, 1213],
+    [810, ['3A', '3A'], 70.8, 80, 28.82, 990],
+    [810, ['SL', '3A'], 53.1, 80, 28.29, 971],
+    [1110, ['3A', '3A', '3A'], 106.2, 120, 40.09, 1376],
   ])(
-    'prices fare ₹%s and classes %j in paise',
+    'prices fare ₹%s and classes %j with a whole-rupee total',
     (fare, classes, irctc, service, gateway, total) => {
       const stored = calculateBookingCharges(
-        fare as number,
-        (classes as string[]).map((travelClass) => ({ travelClass })),
+        fare,
+        classes.map((travelClass) => ({ travelClass })),
       );
-      expect(bookingPrice(stored)).toEqual({
+      const price = bookingPrice(stored);
+      expect(price).toEqual({
         totalFare: fare,
         irctcServiceFee: irctc,
         serviceFee: service,
         paymentGatewayFee: gateway,
         amount: total,
       });
-      expect(bookingAmountPaise(stored)).toBe(
-        Math.round((total as number) * 100),
-      );
+      // Muzobox rejects fractional rupee amounts: the chargeable total must
+      // always be an integer even though the components keep paise precision.
+      expect(Number.isInteger(price.amount)).toBe(true);
     },
   );
 
@@ -61,6 +62,18 @@ describe('Itemized booking pricing', () => {
     ]);
     expect(saved.paymentGatewayFeePaise).toBe(361);
     expect(bookingAmountPaise(saved)).toBe(12401);
+  });
+
+  it('rounds half rupees up to the next whole rupee', () => {
+    // 100 + 40 + 17.70 + 6.80 = 164.50 exact.
+    const half = {
+      totalFare: 100,
+      serviceFee: 40,
+      irctcServiceFeePaise: 1770,
+      paymentGatewayFeePaise: 680,
+    };
+    expect(bookingAmountPaise(half)).toBe(16450);
+    expect(bookingPrice(half).amount).toBe(165);
   });
 
   it('preserves legacy bookings and reads saved charges instead of current rates', () => {
@@ -101,7 +114,7 @@ describe('Itemized booking pricing', () => {
       expect(html).toContain(label);
       expect(text).toContain(label);
     }
-    expect(html).toContain('₹1,231.26');
+    expect(html).toContain('₹1,231.00');
     expect(text).toContain('INR 35.86');
   });
 });

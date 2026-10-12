@@ -143,14 +143,18 @@ for (const scenario of [
       payload.legs.reduce((sum, leg) => sum + leg.fare, 0),
     );
     expect(booking.state.checkout.serviceFee).toBe(payload.legs.length * 40);
+    // The chargeable total is the exact paise sum rounded once to whole rupees.
+    expect(Number.isInteger(booking.state.checkout.amount)).toBe(true);
     expect(booking.state.checkout.amount).toBe(
       Math.round(
-        (payload.totalFare +
-          booking.state.checkout.serviceFee +
-          booking.state.checkout.irctcServiceFee) *
-          100 +
-          booking.state.checkout.paymentGatewayFee * 100,
-      ) / 100,
+        Math.round(
+          (payload.totalFare +
+            booking.state.checkout.serviceFee +
+            booking.state.checkout.irctcServiceFee) *
+            100 +
+            booking.state.checkout.paymentGatewayFee * 100,
+        ) / 100,
+      ),
     );
   });
 }
@@ -213,7 +217,7 @@ test("skip all blocks continuation; retaining one ticket is bookable", async ({
   await booking.fill();
   await booking.submit();
   await expect(
-    booking.details().getByRole("heading", { name: /^Pay ₹416/ }),
+    booking.details().getByRole("heading", { name: /^Pay ₹471/ }),
   ).toBeVisible();
   expect(booking.state.requests[0].legs).toHaveLength(1);
 });
@@ -299,7 +303,7 @@ test("direct class filter restricts booking options", async ({ booking }) => {
   await booking.fill();
   await booking.submit();
   await expect(
-    booking.details().getByRole("heading", { name: /^Pay ₹728/ }),
+    booking.details().getByRole("heading", { name: /^Pay ₹799/ }),
   ).toBeVisible();
   expect(booking.state.requests[0].travelClass).toBe("3A");
 });

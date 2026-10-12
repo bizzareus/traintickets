@@ -1037,7 +1037,8 @@ export function SplitTicketBookingModal({
                     ✓
                   </div>
                   <span className="text-xs font-bold text-slate-800">
-                    Payment Received (₹{price?.amount.toLocaleString("en-IN")})
+                    Payment Received (
+                    {price ? formatBookingAmount(price.amount) : "—"})
                   </span>
                 </div>
 

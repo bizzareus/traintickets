@@ -42,7 +42,6 @@ import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import { S3StorageService } from '../common/s3-storage.service';
 import {
   bookingPrice,
-  bookingAmountPaise,
   calculateBookingCharges,
   irctcServiceChargePaise,
 } from './split-booking.pricing';
@@ -184,6 +183,11 @@ export class SplitBookingService {
     const bookingRef = this.generateBookingRef();
     const cleanDate = dto.journeyDate.slice(0, 10);
     const price = bookingPrice(savedPrice);
+    if (!Number.isInteger(price.amount)) {
+      throw new Error(
+        `Refusing checkout for ${bookingRef}: Muzobox requires a whole-rupee amount`,
+      );
+    }
     const bookingMode =
       this.config.get<string>('SPLIT_BOOKING_MODE') === 'manual'
         ? 'MANUAL'
@@ -468,7 +472,8 @@ export class SplitBookingService {
     const price = bookingPrice(booking);
     if (
       capturedPayment &&
-      (capturedPayment.amount !== bookingAmountPaise(booking) ||
+      // Providers settle whole rupees: compare against the rounded total.
+      (capturedPayment.amount !== price.amount * 100 ||
         capturedPayment.currency !== 'INR' ||
         (capturedPayment.orderId &&
           capturedPayment.orderId !== booking.razorpayOrderId))
@@ -1781,7 +1786,7 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
       try {
         const refundRes = await this.razorpay.createRefund({
           paymentId: razorpayPaymentId,
-          amountPaise: bookingAmountPaise(booking),
+          amountPaise: refundAmount * 100,
           notes: {
             bookingRef: booking.bookingRef,
             reason: userReason.slice(0, 200),

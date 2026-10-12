@@ -8,7 +8,7 @@ export default defineConfig({
   ...base,
   testIgnore: [],
   testMatch:
-    /booking-(entry|form|checkout|payment|cancellation|share)\.spec\.ts$/,
+    /booking-(entry|form|checkout|payment|cancellation|share|journey)\.spec\.ts$/,
   timeout: 45_000,
   workers: 2,
   outputDir: "test-results/booking",

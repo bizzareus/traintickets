@@ -59,7 +59,9 @@ export function bookingPrice(booking: StoredBookingPrice) {
     irctcServiceFee: (booking.irctcServiceFeePaise ?? 0) / 100,
     serviceFee: booking.serviceFee,
     paymentGatewayFee: (booking.paymentGatewayFeePaise ?? 0) / 100,
-    amount: bookingAmountPaise(booking) / 100,
+    // Muzobox only accepts whole rupees: the chargeable total is the exact
+    // paise sum rounded once, while the itemized components stay exact.
+    amount: Math.round(bookingAmountPaise(booking) / 100),
   };
 }
 

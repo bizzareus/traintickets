@@ -40,7 +40,11 @@ Coverage includes direct/split/partial/overnight journeys, selective ticket
 booking, class and fare changes, PostHog rollout, every supported form option,
 pairwise preference switches, invalid inputs, checkout recovery, payment states,
 message origin/source validation, polling lifecycle, all issued PNRs, cancellation
-and native-share/download behavior. Native share is stubbed; PNG generation is
+and native-share/download behavior. `e2e/booking-journey.spec.ts` chains the whole
+flow in single sessions: search to paid booking, search to confirmed PNRs,
+journey-wide class upgrades against the itemized fare breakdown, repeat bookings,
+booking into cancellation with the issued reference, and return-page breakdown
+parity. Native share is stubbed; PNG generation is
 real. OS share-sheet behavior still requires a real-device check.
 
 ## Booking charges
@@ -49,7 +53,9 @@ real. OS share-sheet behavior still requires a real-device check.
 service charges by class (₹17.70 non-AC, ₹35.40 AC), the ₹40 LastBerth service
 charge **per leg**, and the 3% gateway charge. Both service charges apply to each
 selected ticket. The gateway fee is calculated once on the combined ticket fare
-and service charges, rounded to the nearest paise.
+and service charges, rounded to the nearest paise. The chargeable total sent to
+Muzobox is that exact sum rounded once to whole rupees (Muzobox rejects
+fractional amounts); the itemized components keep paise precision for display.
 
 The backend saves IRCTC and gateway charges in paise with each booking. Payment
 verification, refunds, receipts, and the modal use that snapshot; changing the
