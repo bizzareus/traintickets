@@ -589,6 +589,8 @@ model SplitTicketBooking {
 
   totalFare         Int                           @map("total_fare") // in rupees
   serviceFee        Int                           @default(0) @map("service_fee") // in rupees; existing bookings remain unchanged
+  irctcServiceFeePaise Int                        @default(0) @map("irctc_service_fee_paise")
+  paymentGatewayFeePaise Int                      @default(0) @map("payment_gateway_fee_paise")
   legsPayload       Json                          @map("legs_payload")
   passengers        Json                          @map("passengers")
   contactMobile     String                        @map("contact_mobile")

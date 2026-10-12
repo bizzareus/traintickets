@@ -48,7 +48,7 @@ export class ManualBookingService {
           // {{3}} route, {{4}} date, {{5}} class/quota, {{6}} amount,
           // {{7}} customer contact.
           const details = bookingDetails(booking);
-          const price = bookingPrice(booking.totalFare, booking.serviceFee);
+          const price = bookingPrice(booking);
           if (this.whatsappFactory) {
             const sent = await this.whatsappFactory
               .sendWhatsApp({

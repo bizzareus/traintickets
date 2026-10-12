@@ -111,6 +111,8 @@ describe('RetellCallService', () => {
         amount: '3120',
         total_fare: '3000',
         service_fee: '120',
+        irctc_service_fee: '0',
+        payment_gateway_fee: '0',
         booking_mode: 'MANUAL',
         contact_mobile: '+919876543210',
         passenger_name: 'Test Passenger',

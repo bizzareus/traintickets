@@ -26,6 +26,8 @@ import {
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { openSupportChat, preloadSupportChat } from "@/lib/supportChat";
 import { MuzoboxPaymentFrame } from "@/components/payments/MuzoboxPaymentFrame";
+import { BookingPriceBreakdown } from "./BookingPriceBreakdown";
+import { formatBookingAmount } from "@/lib/bookingPrice";
 import { extract10DigitIndianMobile, isValidEmail } from "@/lib/validation";
 
 export interface SplitTicketBookingModalProps {
@@ -117,15 +119,7 @@ export function SplitTicketBookingModal({
   const selectedTravelClasses = [
     ...new Set(legs.map((leg) => leg.travelClass)),
   ];
-  const paymentBreakdown = price && (
-    <p className="text-sm text-slate-600">
-      ₹{price.totalFare.toLocaleString("en-IN")} (tickets) + ₹
-      {price.serviceFee.toLocaleString("en-IN")} (payment service charge) ={" "}
-      <strong className="text-slate-900">
-        ₹{price.amount.toLocaleString("en-IN")}
-      </strong>
-    </p>
-  );
+  const paymentBreakdown = price && <BookingPriceBreakdown price={price} />;
 
   const handleClose = useCallback(() => {
     trackAnalyticsEvent({
@@ -952,7 +946,7 @@ export function SplitTicketBookingModal({
                   Instant Checkout
                 </span>
                 <h4 className="text-xl font-extrabold text-slate-900">
-                  Pay ₹{paymentData.amount.toLocaleString("en-IN")}
+                  Pay {formatBookingAmount(paymentData.amount)}
                 </h4>
                 {paymentBreakdown}
                 <p className="mt-0.5 text-xs text-slate-500">

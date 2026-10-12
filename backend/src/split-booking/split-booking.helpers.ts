@@ -1,6 +1,7 @@
 import type { SplitTicketBooking } from '@prisma/client';
 import type { CreateSplitBookingDto } from './split-booking.types';
 import { bookingPrice } from './split-booking.pricing';
+import { bookingPriceText } from './split-booking.price-summary';
 
 /** Retain the first two PNR aliases for older clients while storing every leg. */
 export function bookingPnrFields(pnrs: string[]) {
@@ -50,14 +51,14 @@ export function bookingDetails(
 
 export function manualBookingMessage(booking: SplitTicketBooking): string {
   const details = bookingDetails(booking);
-  const price = bookingPrice(booking.totalFare, booking.serviceFee);
+  const price = bookingPrice(booking);
   return [
     'MANUAL TRAIN BOOKING REQUEST',
     `Booking reference: ${booking.bookingRef}`,
     `Train: ${booking.trainNumber}${booking.trainName ? ` - ${booking.trainName}` : ''}`,
     `Journey: ${booking.fromStationCode} → ${booking.toStationCode} on ${details.journeyDate}`,
     `Requested class: ${booking.travelClass} | Quota: ${booking.quota}`,
-    `Ticket fare: INR ${price.totalFare} + Payment service charge: INR ${price.serviceFee}`,
+    bookingPriceText(booking),
     `Total collected: INR ${price.amount} | Payment status: ${booking.paymentStatus}`,
     `Payment ID: ${booking.razorpayPaymentId ?? 'Not supplied'}`,
     `Order ID: ${booking.razorpayOrderId ?? 'Not supplied'}`,

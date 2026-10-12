@@ -51,7 +51,6 @@ describe('Booking persistence and fulfillment integration', () => {
     config = new ConfigService({
       SPLIT_BOOKING_MODE: 'ai',
       SPLIT_BOOKING_ENABLED: 'true',
-      SPLIT_BOOKING_SERVICE_FEE_RATE: '0.04',
       API_URL: 'http://localhost:3109',
     });
     jest
@@ -172,17 +171,24 @@ describe('Booking persistence and fulfillment integration', () => {
     };
   }
 
-  it('persists every form field and calculates a 4% fee once per booking', async () => {
+  it('persists per-leg service charges and the rounded 3% gateway fee', async () => {
     const { checkout, payload } = await create();
     expect(checkout).toMatchObject({
       totalFare: 980,
-      serviceFee: 39,
-      amount: 1019,
+      irctcServiceFee: 35.4,
+      serviceFee: 80,
+      paymentGatewayFee: 32.86,
+      amount: 1128.26,
     });
     const row = await prisma.splitTicketBooking.findUniqueOrThrow({
       where: { bookingRef: checkout.bookingRef },
     });
-    expect(row.legsPayload).toEqual(payload.legs);
+    expect(row.legsPayload).toEqual(
+      payload.legs.map((leg) => ({ ...leg, irctcServiceFeePaise: 1770 })),
+    );
+    expect(row.irctcServiceFeePaise).toBe(3540);
+    expect(row.paymentGatewayFeePaise).toBe(3286);
+    expect(row.serviceFee).toBe(80);
     expect(row.passengers).toMatchObject({
       adults: payload.passengers,
       children: [],

@@ -3,6 +3,7 @@ import type {
   SplitBookingPaymentStatus,
   SplitBookingFulfillmentStatus,
 } from '@prisma/client';
+import type { SplitBookingPrice } from './split-booking.pricing';
 
 export interface SplitBookingPassenger {
   name: string;
@@ -52,7 +53,7 @@ export interface CreateSplitBookingDto {
   contactEmail: string;
 }
 
-export interface SplitBookingStatusResponse {
+export interface SplitBookingStatusResponse extends SplitBookingPrice {
   bookingRef: string;
   trainNumber: string;
   trainName?: string;
@@ -60,12 +61,9 @@ export interface SplitBookingStatusResponse {
   toStationCode: string;
   journeyDate: string;
   travelClass: string;
-  totalFare: number;
   contactMobile: string;
   contactEmail: string;
   bookingMode: SplitBookingMode;
-  serviceFee: number;
-  amount: number;
   paymentStatus: SplitBookingPaymentStatus;
   payUrl: string | null;
   bookingStatus: SplitBookingFulfillmentStatus;

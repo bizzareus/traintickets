@@ -53,7 +53,7 @@ export class RetellCallService {
     }
 
     const details = bookingDetails(booking);
-    const price = bookingPrice(booking.totalFare, booking.serviceFee);
+    const price = bookingPrice(booking);
     const passengerNames = (details.passengers || [])
       .map((p) => p.name)
       .filter(Boolean)
@@ -79,6 +79,8 @@ export class RetellCallService {
           amount: String(price.amount),
           total_fare: String(price.totalFare),
           service_fee: String(price.serviceFee),
+          irctc_service_fee: String(price.irctcServiceFee),
+          payment_gateway_fee: String(price.paymentGatewayFee),
           booking_mode: booking.bookingMode,
           contact_mobile: booking.contactMobile || '',
           passenger_name: passengerNames || 'Passenger',

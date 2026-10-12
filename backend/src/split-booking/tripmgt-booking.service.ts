@@ -13,8 +13,11 @@ import type {
 } from './split-booking.types';
 import { validateBookingItinerary } from './split-booking.validation';
 
-export type TripmgtBookingParams = CreateSplitBookingDto & {
+export type TripmgtBookingParams = Omit<CreateSplitBookingDto, 'legs'> & {
   bookingRef: string;
+  legs: Array<
+    CreateSplitBookingDto['legs'][number] & { irctcServiceFeePaise?: number }
+  >;
 };
 type BookingLog = SplitBookingStatusResponse['logs'][number];
 
@@ -201,7 +204,9 @@ export class TripmgtBookingService {
               travelClass: leg.travelClass,
             },
             quota: params.quota || 'GN',
-            maxFareRupees: leg.fare,
+            maxFareRupees:
+              (Math.round(leg.fare * 100) + (leg.irctcServiceFeePaise ?? 0)) /
+              100,
             passengers: params.passengers,
             childPassengers: params.childPassengers ?? [],
             autoUpgrade: params.autoUpgrade !== false,

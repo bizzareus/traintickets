@@ -293,8 +293,8 @@ for (const [paymentStatus, heading] of [
       page.getByRole("heading", { name: heading, exact: true }),
     ).toBeVisible();
     await expect(
-      page.getByText("₹980 (tickets) + ₹39 (payment service charge) = ₹1,019"),
-    ).toBeVisible();
+      page.getByRole("region", { name: "Fare breakdown" }),
+    ).toContainText("Total Amount₹1,128.26");
   });
 }
 

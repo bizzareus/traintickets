@@ -36,6 +36,8 @@ describe('Manual booking owner notifications', () => {
       quota: 'GN',
       totalFare: 810,
       serviceFee: 50,
+      irctcServiceFeePaise: 0,
+      paymentGatewayFeePaise: 0,
       legsPayload: [
         {
           from: 'AII',
@@ -121,7 +123,7 @@ describe('Manual booking owner notifications', () => {
       '340',
       '470',
       '810',
-      'Payment service charge: INR 50',
+      'LastBerth Service Charge: INR 50.00',
       'Total collected: INR 860',
       '62',
       'Side Lower',
@@ -202,7 +204,8 @@ describe('Manual booking owner notifications', () => {
       '1. DEE → AWR',
       '2. AWR → JP',
       '3. JP → AII',
-      'Ticket fare: INR 1110 + Payment service charge: INR 50',
+      'Ticket Fare: INR 1,110.00',
+      'LastBerth Service Charge: INR 50.00',
       'Total collected: INR 1160',
     ]) {
       expect(html).toContain(detail);

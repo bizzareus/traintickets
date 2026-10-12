@@ -20,6 +20,9 @@ import {
   X,
 } from "lucide-react";
 import { apiClient } from "@/lib/api";
+import type { SplitBookingPrice } from "@/lib/split-booking";
+import { bookingPriceItems, formatBookingAmount } from "@/lib/bookingPrice";
+import { BookingPriceBreakdown } from "@/components/booking-v2/BookingPriceBreakdown";
 
 interface Passenger {
   name: string;
@@ -43,7 +46,7 @@ interface SplitLeg {
   availability?: string | null;
 }
 
-export interface SplitBookingAdminEntry {
+export interface SplitBookingAdminEntry extends SplitBookingPrice {
   id: string;
   bookingRef: string;
   trainNumber: string;
@@ -53,8 +56,6 @@ export interface SplitBookingAdminEntry {
   journeyDate: string;
   travelClass: string;
   quota: string;
-  totalFare: number;
-  serviceFee: number;
   legsPayload: SplitLeg[];
   passengers: {
     adults: Passenger[];
@@ -165,30 +166,29 @@ export interface CancellationAdminEntry {
   processedAt: string | null;
   createdAt: string;
   updatedAt: string;
-  booking: {
-    id: string;
-    bookingRef: string;
-    trainNumber: string;
-    trainName: string | null;
-    fromStationCode: string;
-    toStationCode: string;
-    journeyDate: string;
-    travelClass: string;
-    totalFare: number;
-    serviceFee: number;
-    amount: number;
-    contactMobile: string;
-    contactEmail: string;
-    bookingStatus: string;
-    paymentStatus: string;
-    pnrs: string[];
-    pnrLeg1: string | null;
-    pnrLeg2: string | null;
-    passengers: {
-      adults: Passenger[];
-      children?: Array<{ name: string; age: number; gender: string }>;
-    };
-  } | null;
+  booking:
+    | (SplitBookingPrice & {
+        id: string;
+        bookingRef: string;
+        trainNumber: string;
+        trainName: string | null;
+        fromStationCode: string;
+        toStationCode: string;
+        journeyDate: string;
+        travelClass: string;
+        contactMobile: string;
+        contactEmail: string;
+        bookingStatus: string;
+        paymentStatus: string;
+        pnrs: string[];
+        pnrLeg1: string | null;
+        pnrLeg2: string | null;
+        passengers: {
+          adults: Passenger[];
+          children?: Array<{ name: string; age: number; gender: string }>;
+        };
+      })
+    | null;
 }
 
 const CANCELLATION_STATUS_STYLES: Record<
@@ -449,7 +449,7 @@ function SplitBookingsAdminContent() {
     const paid = entries.filter((e) => e.paymentStatus === "PAID").length;
     const totalRevenue = entries
       .filter((e) => e.paymentStatus === "PAID")
-      .reduce((sum, e) => sum + (e.totalFare + e.serviceFee), 0);
+      .reduce((sum, e) => sum + e.amount, 0);
 
     return { total, manualPending, confirmed, paid, totalRevenue };
   }, [entries]);
@@ -1465,6 +1465,11 @@ function SplitBookingsAdminContent() {
                                           quota: "GN",
                                           totalFare: booking.totalFare,
                                           serviceFee: booking.serviceFee,
+                                          irctcServiceFee:
+                                            booking.irctcServiceFee,
+                                          paymentGatewayFee:
+                                            booking.paymentGatewayFee,
+                                          amount: booking.amount,
                                           legsPayload: [],
                                           passengers: { adults: [] },
                                           contactMobile: booking.contactMobile,
@@ -2275,10 +2280,7 @@ function SplitBookingsAdminContent() {
                     Total Refund Amount:
                   </span>
                   <span className="text-base font-bold text-purple-700">
-                    ₹
-                    {(
-                      refundBooking.totalFare + refundBooking.serviceFee
-                    ).toLocaleString("en-IN")}{" "}
+                    {formatBookingAmount(refundBooking.amount)}{" "}
                     <span className="text-[11px] font-normal text-purple-600">
                       (Full 100%)
                     </span>
@@ -2322,10 +2324,8 @@ function SplitBookingsAdminContent() {
                 <p className="text-[11px] leading-relaxed text-blue-700">
                   An automated email will be sent immediately to{" "}
                   <strong>{refundBooking.contactEmail}</strong> containing the
-                  cancellation notice, full refund amount (₹
-                  {(
-                    refundBooking.totalFare + refundBooking.serviceFee
-                  ).toLocaleString("en-IN")}
+                  cancellation notice, full refund amount (
+                  {formatBookingAmount(refundBooking.amount)}
                   ), and the generated Refund ID reference.
                 </p>
               </div>
@@ -2426,8 +2426,11 @@ function SplitBookingsAdminContent() {
                       `Train: ${selectedDetailsBooking.trainNumber}${selectedDetailsBooking.trainName ? ` - ${selectedDetailsBooking.trainName}` : ""}`,
                       `Journey: ${selectedDetailsBooking.fromStationCode} → ${selectedDetailsBooking.toStationCode} on ${selectedDetailsBooking.journeyDate}`,
                       `Requested class: ${selectedDetailsBooking.travelClass} | Quota: ${selectedDetailsBooking.quota}`,
-                      `Ticket fare: INR ${selectedDetailsBooking.totalFare} + Payment service charge: INR ${selectedDetailsBooking.serviceFee}`,
-                      `Total collected: INR ${selectedDetailsBooking.totalFare + selectedDetailsBooking.serviceFee} | Payment status: ${selectedDetailsBooking.paymentStatus}`,
+                      ...bookingPriceItems(selectedDetailsBooking).map(
+                        ([label, amount]) =>
+                          `${label}: ${formatBookingAmount(amount)}`,
+                      ),
+                      `Total collected: ${formatBookingAmount(selectedDetailsBooking.amount)} | Payment status: ${selectedDetailsBooking.paymentStatus}`,
                       `Payment ID: ${selectedDetailsBooking.razorpayPaymentId || selectedDetailsBooking.muzoboxPaymentId || "Not supplied"}`,
                       `Order ID: ${selectedDetailsBooking.razorpayOrderId || "Not supplied"}`,
                       `Paid at: ${selectedDetailsBooking.paidAt ? new Date(selectedDetailsBooking.paidAt).toISOString() : "Not supplied"}`,
@@ -2586,24 +2589,14 @@ function SplitBookingsAdminContent() {
                 <span className="block text-[11px] font-semibold uppercase tracking-wider text-slate-500">
                   Fare & Payment
                 </span>
+                <BookingPriceBreakdown price={selectedDetailsBooking} />
                 <div className="grid grid-cols-1 gap-3 pt-1 sm:grid-cols-2">
-                  <div>
-                    <span className="block text-[11px] text-slate-400">
-                      Ticket Fare + Fee
-                    </span>
-                    <span className="font-medium text-slate-800">
-                      INR {selectedDetailsBooking.totalFare} + INR{" "}
-                      {selectedDetailsBooking.serviceFee} fee
-                    </span>
-                  </div>
                   <div>
                     <span className="block text-[11px] text-slate-400">
                       Total Collected
                     </span>
                     <span className="text-sm font-bold tabular-nums text-slate-900">
-                      INR{" "}
-                      {selectedDetailsBooking.totalFare +
-                        selectedDetailsBooking.serviceFee}{" "}
+                      {formatBookingAmount(selectedDetailsBooking.amount)}{" "}
                       <span className="text-xs font-normal text-slate-500">
                         ({selectedDetailsBooking.paymentStatus})
                       </span>

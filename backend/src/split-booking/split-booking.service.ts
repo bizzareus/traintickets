@@ -29,6 +29,7 @@ import { RazorpayClient } from '../chart-alert-payments/razorpay.client';
 import { TripmgtBookingService } from './tripmgt-booking.service';
 import { validateBookingItinerary } from './split-booking.validation';
 import { bookingDetails, bookingPnrFields } from './split-booking.helpers';
+import { bookingPriceHtml } from './split-booking.price-summary';
 import { ManualBookingService } from './manual-booking.service';
 import { RetellCallService } from './retell-call.service';
 import { NotificationService } from '../notification/notification.service';
@@ -39,7 +40,9 @@ import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import { S3StorageService } from '../common/s3-storage.service';
 import {
   bookingPrice,
-  getSplitBookingServiceFeeRate,
+  bookingAmountPaise,
+  calculateBookingCharges,
+  irctcServiceChargePaise,
 } from './split-booking.pricing';
 import type {
   CreateSplitBookingDto,
@@ -114,19 +117,6 @@ export class SplitBookingService {
     return false;
   }
 
-  private getServiceFeeRate(): number {
-    const configured = this.config.get<string | number>(
-      'SPLIT_BOOKING_SERVICE_FEE_RATE',
-    );
-    if (configured !== undefined && configured !== '') {
-      const parsed = Number(configured);
-      if (!Number.isNaN(parsed) && parsed >= 0) {
-        return parsed;
-      }
-    }
-    return getSplitBookingServiceFeeRate();
-  }
-
   /**
    * Create a new split-ticket assisted booking request and prepare payment.
    */
@@ -178,8 +168,10 @@ export class SplitBookingService {
       throw new BadRequestException('A valid email address is required');
     }
 
+    let savedPrice: ReturnType<typeof calculateBookingCharges>;
     try {
       validateBookingItinerary(dto);
+      savedPrice = calculateBookingCharges(dto.totalFare, dto.legs);
     } catch (error: unknown) {
       throw new BadRequestException(
         error instanceof Error ? error.message : 'Invalid split itinerary',
@@ -188,8 +180,7 @@ export class SplitBookingService {
 
     const bookingRef = this.generateBookingRef();
     const cleanDate = dto.journeyDate.slice(0, 10);
-    const rate = this.getServiceFeeRate();
-    const price = bookingPrice(dto.totalFare, undefined, rate);
+    const price = bookingPrice(savedPrice);
     const bookingMode =
       this.config.get<string>('SPLIT_BOOKING_MODE') === 'manual'
         ? 'MANUAL'
@@ -217,9 +208,11 @@ export class SplitBookingService {
         journeyDate: new Date(cleanDate),
         travelClass: dto.travelClass.trim().toUpperCase(),
         quota: dto.quota?.trim() || 'GN',
-        totalFare: price.totalFare,
-        serviceFee: price.serviceFee,
-        legsPayload: dto.legs as unknown as Prisma.InputJsonValue,
+        ...savedPrice,
+        legsPayload: dto.legs.map((leg) => ({
+          ...leg,
+          irctcServiceFeePaise: irctcServiceChargePaise(leg.travelClass),
+        })) as unknown as Prisma.InputJsonValue,
         passengers: {
           adults: dto.passengers,
           children: dto.childPassengers ?? [],
@@ -251,7 +244,7 @@ export class SplitBookingService {
           callbackUrl: isURL(apiUrl ?? '', { require_protocol: true })
             ? `${apiUrl}/api/split-booking/muzobox-callback`
             : undefined,
-          description: `Train ${dto.trainNumber} ${fromStationCode}->${toStationCode} ${cleanDate} (tickets + payment service charge)`,
+          description: `Train ${dto.trainNumber} ${fromStationCode}->${toStationCode} ${cleanDate} (tickets + IRCTC + LastBerth + gateway charges)`,
           customerName: dto.passengers[0].name.trim(),
           customerEmail: dto.contactEmail.trim(),
           customerMobile: dto.contactMobile.trim(),
@@ -291,6 +284,8 @@ export class SplitBookingService {
           travel_class: dto.travelClass.trim().toUpperCase(),
           total_fare: price.totalFare,
           service_fee: price.serviceFee,
+          irctc_service_fee: price.irctcServiceFee,
+          payment_gateway_fee: price.paymentGatewayFee,
           amount: price.amount,
           passenger_count: dto.passengers.length,
           leg_count: dto.legs.length,
@@ -340,7 +335,7 @@ export class SplitBookingService {
         );
         return this.toStatusResponse(booking);
       }
-      const price = bookingPrice(booking.totalFare, booking.serviceFee);
+      const price = bookingPrice(booking);
       if (
         remote?.referenceId !== bookingRef ||
         remote.amount !== price.amount ||
@@ -354,7 +349,7 @@ export class SplitBookingService {
       }
       if (remote.status === 'paid' && remote.razorpayPaymentId) {
         return this.confirmPayment(bookingRef, remote.razorpayPaymentId, {
-          amount: remote.amount * 100,
+          amount: Math.round(remote.amount * 100),
           currency: 'INR',
           orderId: booking.razorpayOrderId ?? undefined,
         });
@@ -425,7 +420,7 @@ export class SplitBookingService {
       toStationCode: booking.toStationCode,
       journeyDate: booking.journeyDate.toISOString().slice(0, 10),
       travelClass: booking.travelClass,
-      ...bookingPrice(booking.totalFare, booking.serviceFee),
+      ...bookingPrice(booking),
       contactMobile: booking.contactMobile,
       contactEmail: booking.contactEmail,
       bookingMode: booking.bookingMode,
@@ -452,10 +447,10 @@ export class SplitBookingService {
   ) {
     const booking = await this.findBooking(bookingRef);
 
-    const price = bookingPrice(booking.totalFare, booking.serviceFee);
+    const price = bookingPrice(booking);
     if (
       capturedPayment &&
-      (capturedPayment.amount !== price.amount * 100 ||
+      (capturedPayment.amount !== bookingAmountPaise(booking) ||
         capturedPayment.currency !== 'INR' ||
         (capturedPayment.orderId &&
           capturedPayment.orderId !== booking.razorpayOrderId))
@@ -490,7 +485,7 @@ export class SplitBookingService {
       {
         timestamp: new Date().toISOString(),
         step: 'PAYMENT_RECEIVED',
-        message: `Payment of ₹${price.amount} confirmed (tickets ₹${price.totalFare} + payment service charge ₹${price.serviceFee}). Starting booking fulfillment.`,
+        message: `Payment of ₹${price.amount} confirmed (tickets ₹${price.totalFare} + IRCTC ₹${price.irctcServiceFee} + LastBerth ₹${price.serviceFee} + gateway ₹${price.paymentGatewayFee}). Starting booking fulfillment.`,
       },
     ];
 
@@ -522,6 +517,8 @@ export class SplitBookingService {
           amount: price.amount,
           total_fare: price.totalFare,
           service_fee: price.serviceFee,
+          irctc_service_fee: price.irctcServiceFee,
+          payment_gateway_fee: price.paymentGatewayFee,
         },
         bookingRef,
       );
@@ -719,6 +716,8 @@ export class SplitBookingService {
         quota: true,
         totalFare: true,
         serviceFee: true,
+        irctcServiceFeePaise: true,
+        paymentGatewayFeePaise: true,
         legsPayload: true,
         passengers: true,
         contactMobile: true,
@@ -754,6 +753,7 @@ export class SplitBookingService {
     return {
       entries: bookings.map((b) => ({
         ...b,
+        ...bookingPrice(b),
         hasTicketPdf: Boolean(b.ticketPdfUploadedAt || b.ticketPdfS3Key),
         journeyDate: b.journeyDate.toISOString().slice(0, 10),
       })),
@@ -852,7 +852,7 @@ export class SplitBookingService {
       );
     }
 
-    return { ok: true, booking: updated };
+    return { ok: true, booking: { ...updated, ...bookingPrice(updated) } };
   }
 
   async adminUploadTicketPdf(
@@ -1102,6 +1102,7 @@ export class SplitBookingService {
                 </ul>
               </div>
 
+              ${bookingPriceHtml(booking)}
               ${pdfDownloadHtml}
               ${customNoteHtml}
 
@@ -1234,7 +1235,7 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
     }
 
     const journeyDateStr = booking.journeyDate.toISOString().slice(0, 10);
-    const price = bookingPrice(booking.totalFare, booking.serviceFee);
+    const price = bookingPrice(booking);
     let emailSent = false;
     let whatsappSent = false;
 
@@ -1274,8 +1275,9 @@ Thank you for choosing LastBerth! Have a safe and pleasant journey.`;
               <p style="margin: 4px 0; font-size: 13px;"><strong>Train:</strong> ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</p>
               <p style="margin: 4px 0; font-size: 13px;"><strong>Route:</strong> ${escapeHtml(booking.fromStationCode)} → ${escapeHtml(booking.toStationCode)}</p>
               <p style="margin: 4px 0; font-size: 13px;"><strong>Journey Date:</strong> ${escapeHtml(journeyDateStr)}</p>
-              <p style="margin: 4px 0; font-size: 13px;"><strong>Amount Paid:</strong> ₹${price.amount} (tickets ₹${price.totalFare} + payment service charge ₹${price.serviceFee})</p>
+              <p style="margin: 4px 0; font-size: 13px;"><strong>Amount Paid:</strong> ₹${price.amount.toFixed(2)}</p>
             </div>
+            ${bookingPriceHtml(booking)}
             ${legsHtml}
             <p style="color: #475569; font-size: 14px; line-height: 1.6;">
               Your ticket reservation is in progress. Once confirmed, you will receive another update with your confirmed PNR details and ticket PDF.
@@ -1398,7 +1400,7 @@ Need help? Contact us on WhatsApp at +91 99992 24767 or email support@lastberth.
         orderBy: { createdAt: 'desc' },
       });
 
-    const price = bookingPrice(booking.totalFare, booking.serviceFee);
+    const price = bookingPrice(booking);
 
     return {
       bookingRef: booking.bookingRef,
@@ -1498,7 +1500,7 @@ Need help? Contact us on WhatsApp at +91 99992 24767 or email support@lastberth.
       '+919999224767';
 
     const journeyDateStr = booking.journeyDate.toISOString().slice(0, 10);
-    const price = bookingPrice(booking.totalFare, booking.serviceFee);
+    const price = bookingPrice(booking);
     const pnrList =
       [booking.pnrLeg1, booking.pnrLeg2, ...booking.pnrs]
         .filter((p): p is string => Boolean(p && p.trim()))
@@ -1527,6 +1529,7 @@ Need help? Contact us on WhatsApp at +91 99992 24767 or email support@lastberth.
               <tr><td style="padding: 6px 0; color: #64748b;">Booking Status:</td><td>${escapeHtml(booking.bookingStatus)}</td></tr>
               <tr><td style="padding: 6px 0; color: #64748b;">Reason for Cancellation:</td><td style="font-style: italic; color: #b91c1c;">${escapeHtml(reason || 'None provided')}</td></tr>
             </table>
+            ${bookingPriceHtml(booking)}
             <div style="margin-top: 20px; text-align: center;">
               <a href="https://v2.lastberth.com/admin/split-bookings?tab=cancellations" style="display: inline-block; background: #0f172a; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px;">Open Admin Cancellation Table</a>
             </div>
@@ -1634,6 +1637,8 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
             travelClass: true,
             totalFare: true,
             serviceFee: true,
+            irctcServiceFeePaise: true,
+            paymentGatewayFeePaise: true,
             contactMobile: true,
             contactEmail: true,
             bookingStatus: true,
@@ -1664,7 +1669,7 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
         ? {
             ...item.booking,
             journeyDate: item.booking.journeyDate.toISOString().slice(0, 10),
-            amount: item.booking.totalFare + item.booking.serviceFee,
+            ...bookingPrice(item.booking),
           }
         : null,
     }));
@@ -1739,7 +1744,7 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
       );
     }
 
-    const price = bookingPrice(booking.totalFare, booking.serviceFee);
+    const price = bookingPrice(booking);
     const refundAmount = price.amount;
     const userReason =
       opts?.reason?.trim() ||
@@ -1837,7 +1842,7 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
       try {
         const refundRes = await this.razorpay.createRefund({
           paymentId: razorpayPaymentId,
-          amountPaise: refundAmount * 100,
+          amountPaise: bookingAmountPaise(booking),
           notes: {
             bookingRef: booking.bookingRef,
             reason: userReason.slice(0, 200),
@@ -1921,6 +1926,7 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
                 The full amount of ₹${refundAmount} has been refunded to the original payment source. Funds typically reflect in your bank account or UPI application within 3 to 7 working days depending on your bank.
               </p>
             </div>
+            ${bookingPriceHtml(booking)}
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 20px;">
               <h4 style="margin: 0 0 8px 0; font-size: 12px; text-transform: uppercase; color: #64748b;">Cancelled Journey</h4>
               <p style="margin: 3px 0; font-size: 13px;"><strong>Train:</strong> ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</p>

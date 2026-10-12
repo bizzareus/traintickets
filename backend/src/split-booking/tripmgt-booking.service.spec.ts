@@ -130,6 +130,18 @@ describe('TripMgt AI reservation fulfillment', () => {
     expect(computer.close).toHaveBeenCalledTimes(1);
   });
 
+  it('includes only the saved IRCTC fee in each leg purchase budget', async () => {
+    params.legs[0].irctcServiceFeePaise = 3540;
+    params.legs[1].irctcServiceFeePaise = 1770;
+    await service.executeBooking(params);
+    expect(JSON.parse(run.mock.calls[0][2].task)).toMatchObject({
+      maxFareRupees: 375.4,
+    });
+    expect(JSON.parse(run.mock.calls[1][2].task)).toMatchObject({
+      maxFareRupees: 487.7,
+    });
+  });
+
   it('does not mistake the contact phone number for a PNR', async () => {
     run.mockResolvedValueOnce(
       JSON.stringify({

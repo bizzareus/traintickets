@@ -1,0 +1,14 @@
+{
+  "irctcServiceChargeByClass": {
+    "SL": 17.7,
+    "2S": 17.7,
+    "1A": 35.4,
+    "2A": 35.4,
+    "3A": 35.4,
+    "3E": 35.4,
+    "CC": 35.4,
+    "EC": 35.4
+  },
+  "lastBerthServiceChargePerLeg": 40,
+  "paymentGatewayPercent": 3
+}

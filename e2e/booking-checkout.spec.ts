@@ -116,9 +116,18 @@ test("checkout displays backend-authoritative prices and no obsolete fee wording
   await booking.open();
   await booking.fill();
   await booking.submit();
-  await expect(booking.details()).toContainText(
-    "₹980 (tickets) + ₹39 (payment service charge) = ₹1,019",
-  );
+  const breakdown = booking
+    .details()
+    .getByRole("region", { name: "Fare breakdown" });
+  for (const row of [
+    "Ticket Fare₹980.00",
+    "IRCTC Service Charge₹35.40",
+    "LastBerth Service Charge₹80.00",
+    "Payment Gateway Fees (3%)₹32.86",
+    "Total Amount₹1,128.26",
+  ]) {
+    await expect(breakdown).toContainText(row);
+  }
   expect(booking.state.requests[0]).not.toHaveProperty("serviceFee");
   await expect(booking.details().getByText(/\(service fee\)/)).toHaveCount(0);
 });

@@ -88,11 +88,15 @@ for (const scenario of [
     expect(payload.totalFare).toBe(
       payload.legs.reduce((sum, leg) => sum + leg.fare, 0),
     );
-    expect(booking.state.checkout.serviceFee).toBe(
-      Math.round(payload.totalFare * 0.04),
-    );
+    expect(booking.state.checkout.serviceFee).toBe(payload.legs.length * 40);
     expect(booking.state.checkout.amount).toBe(
-      payload.totalFare + booking.state.checkout.serviceFee,
+      Math.round(
+        (payload.totalFare +
+          booking.state.checkout.serviceFee +
+          booking.state.checkout.irctcServiceFee) *
+          100 +
+          booking.state.checkout.paymentGatewayFee * 100,
+      ) / 100,
     );
   });
 }

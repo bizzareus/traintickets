@@ -43,6 +43,20 @@ message origin/source validation, polling lifecycle, all issued PNRs, cancellati
 and native-share/download behavior. Native share is stubbed; PNG generation is
 real. OS share-sheet behavior still requires a real-device check.
 
+## Booking charges
+
+`backend/src/split-booking/booking-charges.json` defines GST-inclusive IRCTC
+service charges by class (₹17.70 non-AC, ₹35.40 AC), the ₹40 LastBerth service
+charge **per leg**, and the 3% gateway charge. Both service charges apply to each
+selected ticket. The gateway fee is calculated once on the combined ticket fare
+and service charges, rounded to the nearest paise.
+
+The backend saves IRCTC and gateway charges in paise with each booking. Payment
+verification, refunds, receipts, and the modal use that snapshot; changing the
+JSON does not reprice existing bookings. Historical bookings retain their
+previously saved charges. The old percentage-based service-fee environment
+variable no longer controls pricing.
+
 ## PostgreSQL integration
 
 Create a dedicated local PostgreSQL database whose name starts with `booking_test`.

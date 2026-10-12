@@ -9,7 +9,10 @@ import { RazorpayClient } from '../src/chart-alert-payments/razorpay.client';
 import { createValidationPipe } from '../src/common/validation-pipe';
 import { SentryHttpExceptionFilter } from '../src/common/sentry-http-exception.filter';
 import { validateBookingItinerary } from '../src/split-booking/split-booking.validation';
-import { bookingPrice } from '../src/split-booking/split-booking.pricing';
+import {
+  bookingPrice,
+  calculateBookingCharges,
+} from '../src/split-booking/split-booking.pricing';
 import type { CreateSplitBookingDto } from '../src/split-booking/split-booking.types';
 
 /** Real routing, DTO transform, validation and error handling; no external side effects. */
@@ -25,15 +28,17 @@ export async function createBookingTestApp(
           createBooking(dto: CreateSplitBookingDto) {
             try {
               validateBookingItinerary(dto);
+              return {
+                bookingRef: 'LB-TEST',
+                bookingMode: 'AI',
+                ...bookingPrice(
+                  calculateBookingCharges(dto.totalFare, dto.legs),
+                ),
+                payUrl: 'https://muzobox.com/pay/mb_test?source=reservation',
+              };
             } catch (error: unknown) {
               throw new BadRequestException((error as Error).message);
             }
-            return {
-              bookingRef: 'LB-TEST',
-              bookingMode: 'AI',
-              ...bookingPrice(dto.totalFare, undefined, 0.04),
-              payUrl: 'https://muzobox.com/pay/mb_test?source=reservation',
-            };
           },
         },
       },

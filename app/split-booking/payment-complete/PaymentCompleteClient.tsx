@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { BookingPriceBreakdown } from "@/components/booking-v2/BookingPriceBreakdown";
 import {
   fetchSplitBookingStatus,
   type SplitBookingStatus,
@@ -49,13 +50,7 @@ export function PaymentCompleteClient({ bookingRef }: { bookingRef: string }) {
       {bookingRef && (
         <p className="text-sm text-slate-600">Booking Ref: {bookingRef}</p>
       )}
-      {booking && (
-        <p className="text-sm text-slate-600">
-          ₹{booking.totalFare.toLocaleString("en-IN")} (tickets) + ₹
-          {booking.serviceFee.toLocaleString("en-IN")} (payment service charge)
-          = ₹{booking.amount.toLocaleString("en-IN")}
-        </p>
-      )}
+      {booking && <BookingPriceBreakdown price={booking} />}
       <p role="status" className="text-sm text-slate-600">
         {paid
           ? "Your payment is confirmed. Check the reservation window for booking progress and PNRs. Payment alone does not confirm a ticket."

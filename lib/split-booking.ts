@@ -50,7 +50,9 @@ export interface CreateSplitBookingPayload {
 
 export interface SplitBookingPrice {
   totalFare: number;
+  irctcServiceFee: number;
   serviceFee: number;
+  paymentGatewayFee: number;
   amount: number;
 }
 
@@ -127,7 +129,7 @@ export async function simulateSplitBookingPayment(
   return res.data;
 }
 
-export interface CancellationBookingDetails {
+export interface CancellationBookingDetails extends SplitBookingPrice {
   bookingRef: string;
   trainNumber: string;
   trainName?: string | null;
@@ -136,9 +138,6 @@ export interface CancellationBookingDetails {
   journeyDate: string;
   travelClass: string;
   quota: string;
-  totalFare: number;
-  serviceFee: number;
-  amount: number;
   passengers: {
     adults: Array<{
       name: string;
