@@ -23,6 +23,7 @@ import {
   type SplitBookingStatus,
 } from "@/lib/split-booking";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
+import { openSupportChat, preloadSupportChat } from "@/lib/supportChat";
 import { MuzoboxPaymentFrame } from "@/components/payments/MuzoboxPaymentFrame";
 import { extract10DigitIndianMobile, isValidEmail } from "@/lib/validation";
 
@@ -351,6 +352,8 @@ export function SplitTicketBookingModal({
       bookingFailed
     )
       return;
+    // Warm up the support-chat widget so "Chat with Us" opens instantly.
+    void preloadSupportChat().catch(() => undefined);
     // Use the saved payment time so repeated status polls do not reset the wait.
     const paidAt = moment(bookingStatus?.paidAt ?? undefined);
     const delayMs = paidAt.isValid()
@@ -1050,14 +1053,31 @@ export function SplitTicketBookingModal({
                         className="font-bold underline underline-offset-2 hover:text-amber-700"
                       >
                         +919999224767
-                      </a>{" "}
-                      or email{" "}
+                      </a>
+                      , email{" "}
                       <a
                         href={`mailto:support@lastberth.com?subject=${encodeURIComponent(`Query about booking ${paymentData?.bookingRef}`)}`}
                         className="font-bold underline underline-offset-2 hover:text-amber-700"
                       >
                         support@lastberth.com
                       </a>
+                      , or{" "}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          trackAnalyticsEvent({
+                            name: "split_booking_support_chat_opened",
+                            properties: {
+                              bookingRef: paymentData?.bookingRef ?? undefined,
+                              train_number: trainNumber,
+                            },
+                          });
+                          void openSupportChat().catch(() => undefined);
+                        }}
+                        className="font-bold underline underline-offset-2 hover:text-amber-700"
+                      >
+                        Chat with Us
+                      </button>
                       .
                     </p>
                   </div>

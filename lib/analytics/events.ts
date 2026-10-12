@@ -663,6 +663,13 @@ export type AnalyticsEvent =
         from_code: string;
         to_code: string;
       };
+    }
+  | {
+      name: "split_booking_support_chat_opened";
+      properties: {
+        bookingRef?: string;
+        train_number: string;
+      };
     };
 
 export type AnalyticsEventName = AnalyticsEvent["name"];
