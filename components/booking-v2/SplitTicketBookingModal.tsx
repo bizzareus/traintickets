@@ -11,6 +11,7 @@ import {
   AlertCircle,
   Train,
   ArrowRight,
+  MessageCircle,
 } from "lucide-react";
 import {
   createSplitBooking,
@@ -416,6 +417,17 @@ export function SplitTicketBookingModal({
     }
   };
 
+  const handleSupportChat = () => {
+    trackAnalyticsEvent({
+      name: "split_booking_support_chat_opened",
+      properties: {
+        bookingRef: paymentData?.bookingRef ?? undefined,
+        train_number: trainNumber,
+      },
+    });
+    void openSupportChat().catch(() => undefined);
+  };
+
   if (!open) return null;
 
   return (
@@ -507,6 +519,19 @@ export function SplitTicketBookingModal({
             <span className="hidden sm:inline">3. Reservation</span>
           </div>
         </div>
+
+        <button
+          type="button"
+          onClick={handleSupportChat}
+          className="flex min-h-11 shrink-0 items-center gap-3 border-b border-blue-100 bg-blue-50 px-3.5 py-3 text-left text-xs text-blue-800 transition-colors hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600 active:bg-blue-200 sm:px-6 sm:text-sm"
+        >
+          <MessageCircle aria-hidden="true" className="h-5 w-5 shrink-0" />
+          <span className="min-w-0 flex-1">
+            <strong className="font-semibold">Need help?</strong> Chat with our
+            customer team for your booking
+          </span>
+          <ArrowRight aria-hidden="true" className="h-4 w-4 shrink-0" />
+        </button>
 
         {/* Modal Content */}
         <div className="space-y-4 overflow-y-auto p-3.5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:space-y-6 sm:p-6">
@@ -1064,16 +1089,7 @@ export function SplitTicketBookingModal({
                       , or{" "}
                       <button
                         type="button"
-                        onClick={() => {
-                          trackAnalyticsEvent({
-                            name: "split_booking_support_chat_opened",
-                            properties: {
-                              bookingRef: paymentData?.bookingRef ?? undefined,
-                              train_number: trainNumber,
-                            },
-                          });
-                          void openSupportChat().catch(() => undefined);
-                        }}
+                        onClick={handleSupportChat}
                         className="font-bold underline underline-offset-2 hover:text-amber-700"
                       >
                         Chat with Us
