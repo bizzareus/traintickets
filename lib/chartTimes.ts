@@ -605,24 +605,15 @@ export function listChartTimesSlugs(): string[] {
   }
 }
 
-let cachedChartTimesIndex:
-  | {
-      slug: string;
-      trainNumber: string;
-      trainName: string;
-      originStation: string;
-      destinationStation: string;
-    }[]
-  | null = null;
+type ChartTimesIndexEntry = Pick<
+  ChartTimesPageData,
+  "slug" | "trainNumber" | "trainName" | "originStation" | "destinationStation"
+> & { hasChartTimes: boolean };
+
+let cachedChartTimesIndex: ChartTimesIndexEntry[] | null = null;
 
 /** Lightweight metadata for every committed chart-times page (for the index hub). */
-export function listChartTimesIndex(): {
-  slug: string;
-  trainNumber: string;
-  trainName: string;
-  originStation: string;
-  destinationStation: string;
-}[] {
+export function listChartTimesIndex(): ChartTimesIndexEntry[] {
   if (cachedChartTimesIndex) return cachedChartTimesIndex;
   if (!fs.existsSync(CHART_TIMES_DIR)) return [];
   const out: ReturnType<typeof listChartTimesIndex> = [];
@@ -648,6 +639,7 @@ export function listChartTimesIndex(): {
         trainName: data.trainName,
         originStation: data.originStation,
         destinationStation: data.destinationStation,
+        hasChartTimes: data.knownChartCount > 0,
       });
     } catch {
       // skip malformed file

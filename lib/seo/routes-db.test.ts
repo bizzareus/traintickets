@@ -4,7 +4,7 @@ import {
   getRouteData,
   getTopRoutes,
   getStationByCodeOrName,
-  STATIONS,
+  isPublishedRoute,
 } from "./routes-db";
 
 test("getRouteData - returns valid route data for existing station slugs", async () => {
@@ -12,8 +12,9 @@ test("getRouteData - returns valid route data for existing station slugs", async
   assert.ok(data);
   assert.equal(data?.origin.code, "NDLS");
   assert.equal(data?.destination.code, "MMCT");
-  assert.ok(data?.distanceKm > 0);
-  assert.ok(data?.topTrains.length > 0);
+  assert.deepEqual(data?.trainNumbers, ["12952", "12954"]);
+  assert.equal(data?.originCity, "Delhi");
+  assert.equal(data?.destinationCity, "Mumbai");
 });
 
 test("getRouteData - returns null for same origin and destination", async () => {
@@ -24,6 +25,11 @@ test("getRouteData - returns null for same origin and destination", async () => 
 test("getRouteData - returns null for non-existent station slug", async () => {
   const data = await getRouteData("delhi", "non-existent-city");
   assert.equal(data, null);
+});
+
+test("getRouteData - only publishes curated routes", async () => {
+  assert.equal(isPublishedRoute("goa-to-delhi"), false);
+  assert.equal(await getRouteData("goa", "delhi"), null);
 });
 
 test("getTopRoutes - returns list of top routes", async () => {

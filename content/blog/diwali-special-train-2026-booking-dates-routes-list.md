@@ -211,4 +211,4 @@ During peak days (November 6 to November 8), zonal railways run unannounced clon
 
 Securing confirmed train tickets during Diwali requires proactive planning across both 60-day reservation openings and 10-to-30-day supplementary special announcements. If direct routes show REGRET, use [Smart Seats](/) to find split berths, track chart prep on [Chart Times](/chart-times), and claim released seats on [Get Confirmed Tickets](/).
 
-_LastBerth is an independent train seat discovery and ticket search tool. It is not affiliated with IRCTC, CRIS, or the Ministry of Railways, and does not issue or sell tickets._
+_LastBerth is an independently operated, registered IRCTC booking agent, not the official IRCTC or Indian Railways website. Assisted bookings are confirmed only once all required PNRs are issued._

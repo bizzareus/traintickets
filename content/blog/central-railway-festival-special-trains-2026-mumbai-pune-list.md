@@ -194,4 +194,4 @@ No, fare concessions for senior citizens, students, and other general concession
 
 Central Railway's announcement of 418 festival special trains provides crucial relief for passengers travelling from Mumbai and Pune to Bihar, Uttar Pradesh, Bengal, and Southern states during Durga Puja, Diwali, and Chhath Puja 2026. Book your tickets early starting September 27, 2026 at 08:00 AM IST on IRCTC. If your train shows a waiting list, use [Smart Seats](/) to find confirmed split journeys, check [Chart Times](/chart-times) for charting alerts, and secure released berths on [Chart Vacancy](/chart-vacancy).
 
-_LastBerth is an independent train seat discovery and ticket search tool. It is not affiliated with IRCTC, CRIS, or the Ministry of Railways, and does not issue or sell tickets._
+_LastBerth is an independently operated, registered IRCTC booking agent, not the official IRCTC or Indian Railways website. Assisted bookings are confirmed only once all required PNRs are issued._

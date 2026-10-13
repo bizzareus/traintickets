@@ -60,13 +60,16 @@ export default function ContactPage() {
 
         <div className="mt-8 rounded-lg border border-blue-100 bg-blue-50 p-6">
           <h3 className="text-md mb-2 font-semibold text-blue-900">
-            Notice Regarding Ticket Bookings
+            Booking and Refund Support
           </h3>
           <p className="text-sm text-blue-800">
-            Please note that LastBerth does not sell tickets or process refund
-            requests for Indian Railways. For official ticket booking, refund
-            status, or official customer care, please visit the official IRCTC
-            website at irctc.co.in or call 139.
+            As a registered IRCTC agent, we support assisted bookings made
+            through LastBerth. For help with a LastBerth booking or payment,
+            email support@lastberth.com. For a paid chart alert, you can also{" "}
+            <Link href="/refund" className="font-semibold underline">
+              request a refund
+            </Link>
+            . For tickets bought elsewhere, contact the issuing provider.
           </p>
         </div>
       </div>

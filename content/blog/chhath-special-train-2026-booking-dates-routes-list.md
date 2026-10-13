@@ -202,4 +202,4 @@ Getting home to Bihar and eastern Uttar Pradesh for Chhath Puja requires early p
 
 ---
 
-_LastBerth is an independent train seat discovery and passenger information tool. We are not affiliated with IRCTC or Indian Railways. All ticket reservations, cancellations, and official transactions must be completed through official IRCTC applications, websites, or railway reservation counters._
+_LastBerth is an independently operated, registered IRCTC booking agent, not the official IRCTC or Indian Railways website. Assisted bookings are confirmed only once all required PNRs are issued; for tickets purchased elsewhere, contact the issuing provider._

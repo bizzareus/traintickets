@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Us | LastBerth",
   description:
-    "Learn about LastBerth, our mission to help Indian Railways travelers find chart vacancy and seat availability insights.",
+    "Meet LastBerth, a registered IRCTC booking agent offering assisted train bookings, seat search, and chart vacancy tools.",
 };
 
 export default function AboutPage() {
@@ -27,7 +27,8 @@ export default function AboutPage() {
           <p className="text-lg leading-relaxed text-slate-700">
             Welcome to <strong>LastBerth</strong>, your trusted companion for
             Indian Railways travel, reservation insights, chart vacancy
-            tracking, and seat availability guide.
+            tracking, and assisted ticket bookings. We are a registered IRCTC
+            booking agent.
           </p>
 
           <h2 className="pt-4 text-2xl font-bold text-slate-900">
@@ -48,6 +49,11 @@ export default function AboutPage() {
             <li>
               <strong>Chart Vacancy Tools:</strong> Quickly discover available
               berths after reservation charts are finalized.
+            </li>
+            <li>
+              <strong>Assisted Bookings:</strong> Request train tickets through
+              LastBerth where the service is available. A booking is confirmed
+              only when all required tickets and PNRs are issued.
             </li>
             <li>
               <strong>PNR & Travel Guides:</strong> Clear, actionable advice on
@@ -75,15 +81,12 @@ export default function AboutPage() {
             care to assist train passengers in making informed decisions.
           </p>
 
-          <h2 className="pt-4 text-2xl font-bold text-slate-900">
-            Independent Platform
-          </h2>
+          <h2 className="pt-4 text-2xl font-bold text-slate-900">Our Role</h2>
           <p>
-            LastBerth is an independent informational platform. We are not
-            affiliated with, endorsed by, or connected to Indian Railways,
-            IRCTC, or CRIS. For official ticket booking, cancellations, and
-            official charts, please visit official portals such as irctc.co.in
-            or indianrail.gov.in.
+            LastBerth is independently operated as a registered IRCTC booking
+            agent. We are not the official website of IRCTC, Indian Railways, or
+            CRIS. For railway-operated services and authoritative train
+            information, please visit irctc.co.in or indianrail.gov.in.
           </p>
         </div>
       </div>

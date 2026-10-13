@@ -127,7 +127,7 @@ export function renderTatkalAlertEmailHtml(
           <!-- Footer -->
           <tr>
             <td style="padding:16px 28px; background:#f8fafc; border-top:1px solid #e2e8f0; text-align:center; font-size:11px; color:#94a3b8;">
-              <p style="margin:0;">LastBerth is an independent rail discovery tool and is not affiliated with IRCTC or Indian Railways.</p>
+              <p style="margin:0;">LastBerth is an independently operated, registered IRCTC booking agent, not the official IRCTC or Indian Railways website.</p>
             </td>
           </tr>
         </table>

@@ -179,4 +179,4 @@ Changing your train journey date on Indian Railways is straightforward as long a
 
 If your desired new date shows long waiting lists, do not leave your journey to chance. Use **[Smart Seats](/)** to explore contiguous split routes or check **[Get Confirmed Tickets](/)** for vacancy insights.
 
-_Disclaimer: LastBerth is an independent search and travel discovery tool and is not affiliated with IRCTC or Indian Railways. Please verify real-time seat availability and complete your bookings through official railway channels._
+_LastBerth is an independently operated, registered IRCTC booking agent, not the official IRCTC or Indian Railways website. Verify live availability before making a booking._

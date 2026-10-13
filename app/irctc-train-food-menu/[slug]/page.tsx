@@ -227,6 +227,20 @@ export default async function TrainFoodMenuPage({ params }: Props) {
         <span className="text-slate-700">{menu.trainNumber}</span>
       </nav>
 
+      <p className="mb-6 text-sm text-slate-600">
+        Compare these prices with the{" "}
+        <a
+          href="https://menurates.irctc.co.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-blue-700 hover:underline"
+        >
+          official IRCTC menu and tariff directory
+        </a>
+        . Published tariffs do not guarantee that every item is served on this
+        train.
+      </p>
+
       {/* Food-ordering-style menu: hero (H1 + SEO summary), class toggle,
           dish search, and category sections with dish cards + food tiles. */}
       <FoodOrderingMenu menu={menu} />
@@ -245,14 +259,14 @@ export default async function TrainFoodMenuPage({ params }: Props) {
       )}
 
       <p className="text-sm text-slate-500">
-        Source:{" "}
+        Tariff reference:{" "}
         <a
           href={menu.sourcePdfUrl}
           target="_blank"
           rel="noopener noreferrer nofollow"
           className="font-medium text-blue-700 hover:underline"
         >
-          official IRCTC catering tariff
+          IRCTC menu or rate card
         </a>
         . Menus are served on a cyclic basis and tariffs are set by Indian
         Railways. See also{" "}
