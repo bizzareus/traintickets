@@ -21,7 +21,7 @@ export default function TermsOfServicePage() {
           Terms of Service
         </h1>
         <div className="prose prose-slate max-w-none text-slate-600">
-          <p>Last updated: June 18, 2026</p>
+          <p>Last updated: October 13, 2026</p>
           <p>
             Please read these terms and conditions carefully before using Our
             Service.
@@ -39,6 +39,11 @@ export default function TermsOfServicePage() {
             acceptance of and compliance with these Terms and Conditions. These
             Terms and Conditions apply to all visitors, users and others who
             access or use the Service.
+          </p>
+          <p>
+            LastBerth is independently operated as a registered IRCTC booking
+            agent. An assisted booking request or payment is not a confirmed
+            train ticket until all required tickets and PNRs are issued.
           </p>
 
           <h2>2. User Accounts</h2>
@@ -79,17 +84,17 @@ export default function TermsOfServicePage() {
             liability of the Company and any of its suppliers under any
             provision of this Terms and Your exclusive remedy for all of the
             foregoing shall be limited to the amount actually paid by You
-            through the Service or 100 USD if You haven't purchased anything
-            through the Service.
+            through the Service or 100 USD if You haven&apos;t purchased
+            anything through the Service.
           </p>
 
           <h2>6. Changes to These Terms and Conditions</h2>
           <p>
             We reserve the right, at Our sole discretion, to modify or replace
             these Terms at any time. If a revision is material We will make
-            reasonable efforts to provide at least 30 days' notice prior to any
-            new terms taking effect. What constitutes a material change will be
-            determined at Our sole discretion.
+            reasonable efforts to provide at least 30 days&apos; notice prior to
+            any new terms taking effect. What constitutes a material change will
+            be determined at Our sole discretion.
           </p>
         </div>
       </div>

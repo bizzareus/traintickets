@@ -52,6 +52,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     keywords: buildChartTimesKeywords(data),
+    robots: {
+      index: data.knownChartCount > 0,
+      follow: true,
+    },
     alternates: { canonical: `/chart-times/${data.slug}` },
     openGraph: { title, description, type: "article" },
   };

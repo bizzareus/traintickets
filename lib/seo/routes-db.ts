@@ -7,11 +7,9 @@ export type Station = {
 export type RouteData = {
   origin: Station;
   destination: Station;
-  distanceKm: number;
-  averageTrainsPerDay: number;
-  topTrains: { number: string; name: string }[];
-  waitingListChance: "High" | "Medium" | "Low";
-  popularBookingWindowDays: number;
+  originCity: string;
+  destinationCity: string;
+  trainNumbers: string[];
 };
 
 export const STATIONS: Station[] = [
@@ -35,75 +33,29 @@ export const STATIONS: Station[] = [
   { code: "CDG", name: "Chandigarh", slug: "chandigarh" },
 ];
 
-const ROUTE_TRAINS: Record<string, { number: string; name: string }[]> = {
-  "delhi-to-mumbai": [
-    { number: "12952", name: "Mumbai Rajdhani Express" },
-    { number: "12954", name: "August Kranti Tejas Rajdhani" },
-  ],
-  "mumbai-to-delhi": [
-    { number: "12951", name: "Mumbai Rajdhani Express" },
-    { number: "12953", name: "August Kranti Tejas Rajdhani" },
-  ],
-  "delhi-to-patna": [
-    { number: "12310", name: "Patna Rajdhani Express" },
-    { number: "12394", name: "Sampoorna Kranti Express" },
-  ],
-  "patna-to-delhi": [
-    { number: "12309", name: "Patna Rajdhani Express" },
-    { number: "12393", name: "Sampoorna Kranti Express" },
-  ],
-  "mumbai-to-danapur": [
-    { number: "12141", name: "Mumbai LTT Patliputra Express" },
-    { number: "12336", name: "Bhagalpur Express" },
-  ],
-  "pune-to-danapur": [{ number: "12149", name: "Pune Danapur SF Express" }],
-  "delhi-to-varanasi": [
-    { number: "22436", name: "Vande Bharat Express" },
-    { number: "12560", name: "Shiv Ganga Express" },
-  ],
-  "mumbai-to-bengaluru": [
-    { number: "11301", name: "Udyan Express" },
-    { number: "11013", name: "Mumbai LTT Coimbatore Express" },
-  ],
-  "chennai-to-bengaluru": [
-    { number: "12007", name: "Chennai KSR Bengaluru Shatabdi Express" },
-    { number: "12027", name: "Chennai KSR Bengaluru Shatabdi Express" },
-    { number: "12607", name: "Lalbagh Express" },
-  ],
-  "kolkata-to-delhi": [
-    { number: "12301", name: "Howrah Rajdhani Express" },
-    { number: "12381", name: "Poorva Express" },
-  ],
-  "delhi-to-kolkata": [
-    { number: "12302", name: "Howrah Rajdhani Express" },
-    { number: "12314", name: "Sealdah Rajdhani Express" },
-  ],
-  "bengaluru-to-chennai": [
-    { number: "12008", name: "KSR Bengaluru Chennai Shatabdi Express" },
-    { number: "12028", name: "KSR Bengaluru Chennai Shatabdi Express" },
-    { number: "12608", name: "Lalbagh Express" },
-  ],
-  "delhi-to-jammu": [
-    { number: "12425", name: "New Delhi Jammu Tawi Rajdhani Express" },
-    { number: "12445", name: "Uttar Sampark Kranti Express" },
-  ],
-  "mumbai-to-ahmedabad": [
-    { number: "12009", name: "Mumbai Central Ahmedabad Shatabdi Express" },
-    { number: "12931", name: "Mumbai Central Ahmedabad Double Decker Express" },
-  ],
-  "delhi-to-lucknow": [
-    { number: "12004", name: "Lucknow Swarna Shatabdi Express" },
-    { number: "12230", name: "Lucknow Mail" },
-  ],
-  "mumbai-to-goa": [
-    { number: "22229", name: "Mumbai CSMT Madgaon Vande Bharat Express" },
-    { number: "10103", name: "Mandovi Express" },
-  ],
-  "kolkata-to-puri": [
-    { number: "22895", name: "Howrah Puri Vande Bharat Express" },
-    { number: "12837", name: "Howrah Puri Express" },
-  ],
+const ROUTE_TRAINS: Record<string, string[]> = {
+  "delhi-to-mumbai": ["12952", "12954"],
+  "delhi-to-patna": ["12310", "12394"],
+  "mumbai-to-danapur": ["12141", "12336"],
+  "pune-to-danapur": ["12149"],
+  "delhi-to-varanasi": ["22436", "12560"],
+  "mumbai-to-bengaluru": ["11301", "11013"],
+  "chennai-to-bengaluru": ["12007", "12027", "12607"],
+  "kolkata-to-delhi": ["12301", "12381"],
+  "delhi-to-kolkata": ["12302", "12314"],
+  "bengaluru-to-chennai": ["12008", "12028", "12608"],
+  "delhi-to-jammu": ["12425", "12445"],
+  "mumbai-to-ahmedabad": ["12009", "12931"],
+  "delhi-to-lucknow": ["12004", "12230"],
+  "mumbai-to-goa": ["22229", "10103"],
+  "kolkata-to-puri": ["22895", "12837"],
+  "mumbai-to-delhi": ["12951", "12953"],
+  "patna-to-delhi": ["12309", "12393"],
 };
+
+export function isPublishedRoute(slug: string): boolean {
+  return Object.hasOwn(ROUTE_TRAINS, slug);
+}
 
 // Performance Optimization: Map lookup is O(1) compared to STATIONS.find which is O(N) per station scan.
 const STATION_BY_SLUG = new Map<string, Station>(
@@ -130,55 +82,29 @@ export function getStationByCodeOrName(
   return STATIONS.find((s) => s.name.toLowerCase().includes(lower));
 }
 
-// In a real application, this would query the PostgreSQL database via Prisma
 export async function getRouteData(
   originSlug: string,
   destSlug: string,
 ): Promise<RouteData | null> {
   const origin = STATION_BY_SLUG.get(originSlug);
   const dest = STATION_BY_SLUG.get(destSlug);
-
-  if (!origin || !dest || origin.slug === dest.slug) return null;
-
-  const key = `${origin.slug}-to-${dest.slug}`;
-  const topTrains = ROUTE_TRAINS[key] || [
-    { number: "12958", name: "Swran J Rajdhani Express" },
-    { number: "12001", name: "New Delhi Bhopal Shatabdi Express" },
-  ];
-
-  // Pseudo-random generation based on station codes for demo purposes
-  const distance =
-    ((origin.code.charCodeAt(0) * dest.code.charCodeAt(1)) % 2000) + 500;
+  const trainNumbers = ROUTE_TRAINS[`${originSlug}-to-${destSlug}`];
+  if (!origin || !dest || !trainNumbers) return null;
 
   return {
     origin,
     destination: dest,
-    distanceKm: distance,
-    averageTrainsPerDay: (distance % 10) + 2,
-    topTrains,
-    waitingListChance: distance > 1500 ? "High" : "Medium",
-    popularBookingWindowDays: (distance % 30) + 15,
+    originCity: originSlug[0].toUpperCase() + originSlug.slice(1),
+    destinationCity: destSlug[0].toUpperCase() + destSlug.slice(1),
+    trainNumbers,
   };
 }
 
 export async function getTopRoutes(): Promise<
   { origin: string; dest: string }[]
 > {
-  return [
-    { origin: "delhi", dest: "mumbai" },
-    { origin: "delhi", dest: "patna" },
-    { origin: "mumbai", dest: "danapur" },
-    { origin: "pune", dest: "danapur" },
-    { origin: "delhi", dest: "varanasi" },
-    { origin: "mumbai", dest: "bengaluru" },
-    { origin: "chennai", dest: "bengaluru" },
-    { origin: "kolkata", dest: "delhi" },
-    { origin: "delhi", dest: "kolkata" },
-    { origin: "bengaluru", dest: "chennai" },
-    { origin: "delhi", dest: "jammu" },
-    { origin: "mumbai", dest: "ahmedabad" },
-    { origin: "delhi", dest: "lucknow" },
-    { origin: "mumbai", dest: "goa" },
-    { origin: "kolkata", dest: "puri" },
-  ];
+  return Object.keys(ROUTE_TRAINS).map((slug) => {
+    const [origin, dest] = slug.split("-to-");
+    return { origin, dest };
+  });
 }

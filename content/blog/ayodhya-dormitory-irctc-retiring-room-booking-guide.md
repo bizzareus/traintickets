@@ -107,4 +107,4 @@ You can book as many dormitory beds as there are passengers listed on your confi
 
 ---
 
-_Disclaimer: LastBerth is an independent rail information portal and is not affiliated with IRCTC or Indian Railways. All retiring room bookings must be completed through official IRCTC channels._
+_LastBerth is an independently operated, registered IRCTC booking agent, not the official IRCTC or Indian Railways website. Retiring rooms must be booked through IRCTC's official channels._

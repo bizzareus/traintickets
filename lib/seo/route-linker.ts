@@ -5,6 +5,7 @@
  * Implements a single-pass regex scanner to avoid nested replacements and guarantee
  * zero link corruption or performance degradation.
  */
+import { isPublishedRoute } from "./routes-db";
 
 const ROUTE_PHRASE_MAP: Record<string, string> = {
   "delhi to mumbai": "delhi-to-mumbai",
@@ -83,7 +84,7 @@ export function autoLinkRoutes(markdown: string): string {
 
     const lower = routeMatch.toLowerCase();
     const slug = ROUTE_PHRASE_MAP[lower];
-    if (!slug || linkedRoutes.has(slug)) {
+    if (!slug || !isPublishedRoute(slug) || linkedRoutes.has(slug)) {
       return match;
     }
 

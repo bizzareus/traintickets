@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { apiClient } from "@/lib/api";
-import { getStationByCodeOrName } from "@/lib/seo/routes-db";
+import { getStationByCodeOrName, isPublishedRoute } from "@/lib/seo/routes-db";
 import { parseTrainNumberFromSlug } from "@/lib/chartTimesSlug";
 import {
   Train as TrainIcon,
@@ -284,7 +284,9 @@ export default function TrainDetailClient({
     train?.destinationStation || "",
   )?.slug;
   const routeSlug =
-    originSlug && destSlug ? `${originSlug}-to-${destSlug}` : null;
+    originSlug && destSlug && isPublishedRoute(`${originSlug}-to-${destSlug}`)
+      ? `${originSlug}-to-${destSlug}`
+      : null;
 
   // Train category & classes
   const isShatabdi =
@@ -541,9 +543,7 @@ export default function TrainDetailClient({
                 href={`/routes/${routeSlug}`}
                 className="inline-flex items-center gap-1 font-semibold text-blue-600 transition-colors hover:text-blue-700"
               >
-                <span>
-                  See all {originCode} to {destCode} trains
-                </span>
+                <span>See trains on this corridor</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>

@@ -173,12 +173,14 @@ async function confirmedTicketsBucket(
   }));
 }
 
-// The "chart-times" bucket: every committed content/chart-times/*.json page.
+// The "chart-times" bucket: only pages with published chart times.
 function chartTimesBucket(now: Date): MetadataRoute.Sitemap {
-  return listChartTimesIndex().map((t) => ({
-    url: url(`/chart-times/${t.slug}`),
-    lastModified: now,
-  }));
+  return listChartTimesIndex()
+    .filter((t) => t.hasChartTimes)
+    .map((t) => ({
+      url: url(`/chart-times/${t.slug}`),
+      lastModified: now,
+    }));
 }
 
 // The "food-menu" bucket: index + every committed food-menu page.

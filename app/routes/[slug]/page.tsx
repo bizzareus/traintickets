@@ -2,8 +2,11 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getRouteData, getTopRoutes } from "@/lib/seo/routes-db";
+import { getRouteTrains } from "@/lib/seo/route-content";
+import { buildTrainSlug } from "@/lib/trainSlug";
 
-export const dynamicParams = true;
+export const dynamicParams = false;
+export const dynamic = "force-static";
 
 export async function generateStaticParams() {
   const routes = await getTopRoutes();
@@ -25,8 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await getRouteData(origin, dest);
   if (!data) return {};
 
-  const title = `Trains from ${data.origin.name} to ${data.destination.name} | Seat Availability & Waiting List Chances`;
-  const description = `Find train availability, waiting list chances, and travel insights for trains running from ${data.origin.name} to ${data.destination.name}. Average ${data.averageTrainsPerDay} trains daily.`;
+  const title = `Trains from ${data.originCity} to ${data.destinationCity} | Route & Timetables`;
+  const description = `Compare train schedules and boarding stations from ${data.originCity} to ${data.destinationCity}, then search live seat availability for your travel date.`;
 
   return {
     title,
@@ -45,12 +48,15 @@ export default async function RoutePage({ params }: Props) {
   const [, originSlug, destSlug] = match;
   const data = await getRouteData(originSlug, destSlug);
   if (!data) notFound();
+  const trains = await getRouteTrains(data);
+  if (trains.length === 0) notFound();
+  const firstTrain = trains[0];
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `Trains from ${data.origin.name} to ${data.destination.name}`,
-    description: `Train ticket availability and booking stats between ${data.origin.name} and ${data.destination.name}.`,
+    name: `Trains from ${data.originCity} to ${data.destinationCity}`,
+    description: `Train schedules and boarding stations between ${data.originCity} and ${data.destinationCity}.`,
   };
 
   return (
@@ -61,7 +67,7 @@ export default async function RoutePage({ params }: Props) {
         </Link>
         <span className="mx-2 text-slate-400">/</span>
         <span className="max-w-[250px] truncate font-semibold text-slate-900">
-          {data.origin.name} to {data.destination.name}
+          {data.originCity} to {data.destinationCity}
         </span>
       </nav>
 
@@ -70,72 +76,48 @@ export default async function RoutePage({ params }: Props) {
           ROUTE GUIDE
         </span>
         <h1 className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
-          Trains from {data.origin.name} to {data.destination.name}
+          Trains from {data.originCity} to {data.destinationCity}
         </h1>
         <p className="mb-8 mt-2 text-sm text-slate-600 sm:text-base">
-          Detailed route analysis, waiting list confirmation chances, and Tatkal
-          booking insights.
+          Compare selected train schedules, their actual boarding stations, and
+          intermediate stops. Check availability for your travel date before
+          booking.
         </p>
 
-        <div className="mb-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <div className="rounded-xl border border-slate-200/60 bg-slate-50/50 p-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-              Distance
-            </span>
-            <div className="mt-1 text-2xl font-extrabold text-slate-900">
-              {data.distanceKm} km
-            </div>
-          </div>
-          <div className="rounded-xl border border-slate-200/60 bg-slate-50/50 p-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-              Daily Trains
-            </span>
-            <div className="mt-1 text-2xl font-extrabold text-slate-900">
-              ~{data.averageTrainsPerDay}
-            </div>
-          </div>
-          <div className="rounded-xl border border-slate-200/60 bg-slate-50/50 p-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-              WL Chance
-            </span>
-            <div className="mt-1 text-2xl font-extrabold text-slate-900">
-              {data.waitingListChance}
-            </div>
-          </div>
-          <div className="rounded-xl border border-slate-200/60 bg-slate-50/50 p-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-              Ideal Booking
-            </span>
-            <div className="mt-1 text-2xl font-extrabold text-slate-900">
-              {data.popularBookingWindowDays}d before
-            </div>
-          </div>
-        </div>
-
-        <h2 className="text-slate-955 mb-4 text-xl font-bold">
-          Popular Trains on this Route
+        <h2 className="mb-4 text-xl font-bold text-slate-900">
+          Selected trains on this route
         </h2>
-        <div className="mb-10 grid gap-4 sm:grid-cols-2">
-          {data.topTrains.map((train, idx) => (
-            <Link
-              key={idx}
-              href={`/trains/${train.number}`}
-              className="group flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4 transition duration-200 hover:border-blue-600 hover:shadow-sm"
+        <ul className="mb-10 grid gap-4 sm:grid-cols-2">
+          {trains.map((train) => (
+            <li
+              key={train.number}
+              className="rounded-xl border border-slate-200 bg-white p-5"
             >
-              <div>
-                <span className="rounded border border-blue-100 bg-blue-50 px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
-                  #{train.number}
-                </span>
-                <h3 className="mt-2 font-bold text-slate-900 transition-colors group-hover:text-blue-600">
-                  {train.name}
-                </h3>
-              </div>
-              <span className="text-slate-400 transition duration-200 group-hover:translate-x-1 group-hover:text-blue-600">
-                →
-              </span>
-            </Link>
+              <h3 className="font-bold text-slate-900">
+                {train.name} ({train.number})
+              </h3>
+              <p className="mt-3 text-sm text-slate-700">
+                {train.from.stationName} ({train.from.stationCode})
+                {train.from.departureTime &&
+                  ` · Departs ${train.from.departureTime}`}
+                {" → "}
+                {train.to.stationName} ({train.to.stationCode})
+                {train.to.arrivalTime && ` · Arrives ${train.to.arrivalTime}`}
+              </p>
+              {train.via.length > 0 && (
+                <p className="mt-2 text-sm text-slate-600">
+                  Via {train.via.join(", ")}
+                </p>
+              )}
+              <Link
+                href={`/trains/${buildTrainSlug(train.number, train.name)}`}
+                className="mt-3 inline-block text-sm font-semibold text-blue-700 hover:underline"
+              >
+                View train timetable →
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50/90 via-white to-indigo-50/50 p-6 shadow-sm sm:p-7 md:flex-row md:items-center">
           <div>
@@ -143,17 +125,19 @@ export default async function RoutePage({ params }: Props) {
               ⚡ LIVE SEAT SCANNER
             </span>
             <h3 className="text-xl font-extrabold text-slate-950">
-              Need a Confirmed Ticket from {data.origin.name} to{" "}
-              {data.destination.name}?
+              Need a Confirmed Ticket from {data.originCity} to{" "}
+              {data.destinationCity}?
             </h3>
             <p className="mt-1 text-sm text-slate-600">
-              Search real-time availability, split-journey contiguous bookings
-              on the same train, and vacant berths after charting.
+              Start with {firstTrain.from.stationName} (
+              {firstTrain.from.stationCode}) to {firstTrain.to.stationName} (
+              {firstTrain.to.stationCode}), or change stations in the search
+              form. Availability depends on your journey date and class.
             </p>
           </div>
           <div className="flex w-full shrink-0 flex-col items-stretch gap-3 sm:flex-row sm:items-center md:w-auto">
             <Link
-              href={`/?from=${data.origin.code}&to=${data.destination.code}&fromName=${encodeURIComponent(data.origin.name)}&toName=${encodeURIComponent(data.destination.name)}&utm_source=route_page&utm_medium=primary_cta&utm_campaign=${slug}`}
+              href={`/?from=${firstTrain.from.stationCode}&to=${firstTrain.to.stationCode}&fromName=${encodeURIComponent(firstTrain.from.stationName)}&toName=${encodeURIComponent(firstTrain.to.stationName)}&utm_source=route_page&utm_medium=primary_cta&utm_campaign=${slug}`}
               className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white shadow-md transition duration-200 hover:bg-blue-700 hover:shadow-lg active:scale-[0.98]"
             >
               Search Confirmed Seats Now →
@@ -166,6 +150,19 @@ export default async function RoutePage({ params }: Props) {
             </Link>
           </div>
         </div>
+        <p className="mt-6 text-sm text-slate-600">
+          Train schedules can change. Confirm departure times and complete
+          ticket details with{" "}
+          <a
+            href="https://www.irctc.co.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-blue-700 hover:underline"
+          >
+            IRCTC
+          </a>{" "}
+          before travel.
+        </p>
       </div>
 
       <script

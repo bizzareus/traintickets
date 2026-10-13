@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Disclaimer | LastBerth",
   description:
-    "Official disclaimer regarding non-affiliation, data accuracy, and usage guidelines for LastBerth.",
+    "Learn about LastBerth's IRCTC agent status, assisted bookings, and railway data accuracy.",
 };
 
 export default function DisclaimerPage() {
@@ -24,18 +24,17 @@ export default function DisclaimerPage() {
         </h1>
 
         <div className="prose prose-slate max-w-none space-y-6 text-slate-600">
-          <p className="text-sm text-slate-500">Last updated: July 30, 2026</p>
+          <p className="text-sm text-slate-500">
+            Last updated: October 13, 2026
+          </p>
 
           <h2 className="pt-2 text-xl font-bold text-slate-900">
-            1. Non-Affiliation Notice
+            1. IRCTC Agent Status
           </h2>
           <p>
-            <strong>LastBerth</strong> is an independent web portal and
-            educational informational resource. We are <strong>NOT</strong>{" "}
-            affiliated, associated, authorized, endorsed by, or in any way
-            officially connected with Indian Railways, Indian Railway Catering
-            and Tourism Corporation (IRCTC), Centre for Railway Information
-            Systems (CRIS), or the Ministry of Railways, Government of India.
+            <strong>LastBerth</strong> is a registered IRCTC booking agent and
+            an independently operated service. We are not the official website
+            of IRCTC, Indian Railways, CRIS, or the Ministry of Railways.
           </p>
           <p>
             The official Indian Railways website can be found at{" "}
@@ -72,13 +71,14 @@ export default function DisclaimerPage() {
           </p>
 
           <h2 className="pt-2 text-xl font-bold text-slate-900">
-            3. No Commercial Ticket Transactions
+            3. Assisted Bookings and Payments
           </h2>
           <p>
-            LastBerth does not process ticket bookings, payments, cancellations,
-            or refund requests. Users are advised to double-check reservation
-            details and execute transactions solely on official Indian Railways
-            portals or authorized travel partners.
+            Where available, LastBerth accepts assisted ticket-booking requests
+            and payments for its services. Payment alone does not confirm a
+            ticket; a split journey is confirmed only after all required tickets
+            and PNRs are issued. For tickets bought through another provider,
+            contact that provider about cancellations or refunds.
           </p>
 
           <h2 className="pt-2 text-xl font-bold text-slate-900">

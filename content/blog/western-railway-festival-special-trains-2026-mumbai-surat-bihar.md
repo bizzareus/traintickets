@@ -194,4 +194,4 @@ Festival special trains to Bihar depart primarily from Surat, Udhna Junction, Ah
 
 Western Railway's festival special train services provide vital travel capacity for passengers journeying from Mumbai, Surat, and Ahmedabad to Bihar and Uttar Pradesh for Diwali and Chhath Puja 2026. Book your tickets early starting September 28, 2026 at 08:00 AM IST on IRCTC. If your train enters a waiting list, use [Smart Seats](/) to find confirmed split journeys, check [Chart Times](/chart-times) for charting notifications, and claim released berths on [Chart Vacancy](/chart-vacancy).
 
-_LastBerth is an independent rail seat discovery and ticketing information tool. It is not affiliated with IRCTC, CRIS, or Indian Railways, and does not issue or sell tickets._
+_LastBerth is an independently operated, registered IRCTC booking agent, not the official IRCTC or Indian Railways website. Assisted bookings are confirmed only once all required PNRs are issued._
