@@ -103,6 +103,13 @@ export default async function RoutePage({ params }: Props) {
                 {" → "}
                 {train.to.stationName} ({train.to.stationCode})
                 {train.to.arrivalTime && ` · Arrives ${train.to.arrivalTime}`}
+                {(train.to.day ?? 1) > (train.from.day ?? 1) &&
+                  ` (Day ${train.to.day})`}
+              </p>
+              <p className="mt-2 text-sm text-slate-600">
+                {train.distanceKm != null && `${train.distanceKm} km · `}
+                {train.listedStops} listed intermediate{" "}
+                {train.listedStops === 1 ? "station" : "stations"}
               </p>
               {train.via.length > 0 && (
                 <p className="mt-2 text-sm text-slate-600">
