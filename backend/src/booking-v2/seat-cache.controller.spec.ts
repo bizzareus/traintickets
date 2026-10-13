@@ -4,6 +4,10 @@ import { SeatCacheCronService } from './seat-cache-cron.service';
 import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { UnauthorizedException } from '@nestjs/common';
+import {
+  ADMIN_SESSION_COOKIE,
+  buildAdminSessionCookieValue,
+} from '../common/admin-auth';
 
 describe('SeatCacheController', () => {
   let controller: SeatCacheController;
@@ -95,6 +99,38 @@ describe('SeatCacheController', () => {
       const res = await controller.runCron(
         { category: 'diwali' },
         'secret-test-key',
+      );
+      expect(res.success).toBe(true);
+      expect(mockSeatCacheCron.runNow).toHaveBeenCalledWith({
+        category: 'diwali',
+      });
+    });
+
+    it('executes cron when admin password header is provided without x-api-key', async () => {
+      process.env.SEAT_CACHE_CRON_API_KEY = 'secret-test-key';
+      const res = await controller.runCron(
+        { category: 'diwali' },
+        undefined,
+        'admin-secret',
+      );
+      expect(res.success).toBe(true);
+      expect(mockSeatCacheCron.runNow).toHaveBeenCalledWith({
+        category: 'diwali',
+      });
+    });
+
+    it('executes cron when valid admin_session cookie is provided', async () => {
+      process.env.SEAT_CACHE_CRON_API_KEY = 'secret-test-key';
+      const cookieValue = buildAdminSessionCookieValue()!;
+      const mockReq = {
+        cookies: { [ADMIN_SESSION_COOKIE]: cookieValue },
+      } as never;
+
+      const res = await controller.runCron(
+        { category: 'diwali' },
+        undefined,
+        undefined,
+        mockReq,
       );
       expect(res.success).toBe(true);
       expect(mockSeatCacheCron.runNow).toHaveBeenCalledWith({
