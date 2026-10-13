@@ -19,9 +19,14 @@ export type RouteTrain = {
   name: string;
   from: Pick<
     ChartTimeStationRow,
-    "stationCode" | "stationName" | "departureTime"
+    "stationCode" | "stationName" | "departureTime" | "day"
   >;
-  to: Pick<ChartTimeStationRow, "stationCode" | "stationName" | "arrivalTime">;
+  to: Pick<
+    ChartTimeStationRow,
+    "stationCode" | "stationName" | "arrivalTime" | "day"
+  >;
+  distanceKm: number | null;
+  listedStops: number;
   via: string[];
 };
 
@@ -49,11 +54,23 @@ export async function getRouteTrains(route: RouteData): Promise<RouteTrain[]> {
           .find((index) => index >= 0) ?? -1;
       if (fromIndex < 0 || toIndex < 0) return null;
 
+      const from = data.stations[fromIndex];
+      const to = data.stations[toIndex];
+      const distanceKm = Number(to.distance) - Number(from.distance);
+
       return {
         number,
         name: data.trainName,
-        from: data.stations[fromIndex],
-        to: data.stations[toIndex],
+        from,
+        to,
+        distanceKm:
+          from.distance != null &&
+          to.distance != null &&
+          Number.isFinite(distanceKm) &&
+          distanceKm > 0
+            ? Math.round(distanceKm)
+            : null,
+        listedStops: toIndex - fromIndex - 1,
         via: data.stations
           .slice(fromIndex + 1, Math.min(toIndex, fromIndex + 4))
           .map((s) => s.stationName),
