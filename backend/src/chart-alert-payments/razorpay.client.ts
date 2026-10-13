@@ -87,19 +87,24 @@ export function decodeQrIntent(pngBuffer: Buffer): string | null {
 /**
  * Constant-time HMAC-SHA256 check for Razorpay webhook signatures
  * (`x-razorpay-signature` header over the raw request body).
+ * Enforces non-zero payload length and safe timingSafeEqual comparison.
  */
 export function verifyRazorpayWebhookSignature(
-  rawBody: Buffer | string,
+  rawBody: Buffer | string | undefined,
   signature: string | undefined,
   secret: string | undefined,
 ): boolean {
   if (!rawBody || !signature || !secret) return false;
-  const expected = createHmac('sha256', secret)
-    .update(typeof rawBody === 'string' ? rawBody : rawBody)
-    .digest('hex');
-  if (expected.length !== signature.length) return false;
+  const payload = typeof rawBody === 'string' ? Buffer.from(rawBody) : rawBody;
+  if (!payload.length) return false;
+
+  const expected = createHmac('sha256', secret).update(payload).digest('hex');
+  const actualBuf = Buffer.from(signature);
+  const expectedBuf = Buffer.from(expected);
+
+  if (actualBuf.length !== expectedBuf.length) return false;
   try {
-    return timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
+    return timingSafeEqual(actualBuf, expectedBuf);
   } catch {
     return false;
   }
