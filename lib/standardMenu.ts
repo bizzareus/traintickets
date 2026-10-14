@@ -225,6 +225,14 @@ export const STANDARD_MENU_PAGES: StandardMenuConfig[] = [
   },
 ];
 
+/**
+ * Performance Optimization: Map lookup is O(1) compared to STANDARD_MENU_PAGES.find
+ * which performs an O(N) linear array scan on every menu lookup / metadata call.
+ */
+const STANDARD_MENU_PAGES_BY_SLUG = new Map<string, StandardMenuConfig>(
+  STANDARD_MENU_PAGES.map((p) => [p.slug, p]),
+);
+
 const ZONE_ORDER = [
   "North",
   "East",
@@ -275,7 +283,7 @@ function resolveSlugAlias(slug: string): string {
 export const getStandardMenuGroup = cache(
   (slug: string): StandardMenuGroup | null => {
     const resolvedSlug = resolveSlugAlias(slug);
-    const cfg = STANDARD_MENU_PAGES.find((p) => p.slug === resolvedSlug);
+    const cfg = STANDARD_MENU_PAGES_BY_SLUG.get(resolvedSlug);
     if (!cfg) return null;
 
     let rawMenus = readAll().filter((m) => m.classGroup === cfg.classGroup);
@@ -339,7 +347,7 @@ export function listStandardMenuSlugs(): string[] {
 /** Metadata for a standard-menu page (title deduped: layout adds "| LastBerth"). */
 export function standardMenuMetadata(slug: string): Metadata {
   const resolvedSlug = resolveSlugAlias(slug);
-  const cfg = STANDARD_MENU_PAGES.find((p) => p.slug === resolvedSlug);
+  const cfg = STANDARD_MENU_PAGES_BY_SLUG.get(resolvedSlug);
   const group = getStandardMenuGroup(resolvedSlug);
   if (!cfg || !group) return { title: "Train Food Menu" };
   const prices = group.zones
