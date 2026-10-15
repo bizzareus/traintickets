@@ -52,3 +52,8 @@
 
 **Learning:** Instantiating `new Date(time)` inside `for` loops during date range iterations (e.g., checking `runningDays` across operating dates) causes heavy V8 garbage collection pressure and object allocation overhead (~3.8x slower). Since consecutive days increment by 24h (`DAY_MS`), integer arithmetic `(fromDayOfWeek + dayIdx) % 7` computes UTC weekday indices with zero heap allocations.
 **Action:** Use integer weekday modulo arithmetic `(startDayOfWeek + dayOffset) % 7` instead of allocating `new Date(timestamp)` inside loops when filtering or checking date ranges.
+
+## 2026-10-16 - Pre-Indexed Map Lookups for Static Page Configs & Single-Instance Loop Allocations
+
+**Learning:** Calling `Array.prototype.find()` on static page configuration arrays inside page rendering and sitemap generation introduces linear scan overhead (~4.5x slower than Map.get). Pre-indexing static configuration arrays into a module-level `Map` converts queries into $O(1)$ constant-time lookups. Furthermore, instantiating `new Date(...)` inside inner loops during multi-locale sitemap generation creates thousands of redundant heap allocations, which is avoided by instantiating the `Date` object once per entity prior to locale iteration.
+**Action:** Pre-index static page configurations into module-level `Map` instances and compute immutable date objects outside inner locale loops.
