@@ -1,10 +1,24 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  getStandardMenuConfig,
   getStandardMenuGroup,
   listStandardMenuSlugs,
   standardMenuMetadata,
 } from "./standardMenu";
+
+test("getStandardMenuConfig - resolves config by slug and alias in O(1) time", () => {
+  const cfg = getStandardMenuConfig("ac-coach-food-menu-prices");
+  assert.ok(cfg);
+  assert.equal(cfg?.classGroup, "2A-3A-CC");
+
+  const aliasCfg = getStandardMenuConfig("ac-2a-3a-cc");
+  assert.ok(aliasCfg);
+  assert.equal(aliasCfg?.slug, "ac-coach-food-menu-prices");
+
+  const invalid = getStandardMenuConfig("nonexistent-slug");
+  assert.equal(invalid, undefined);
+});
 
 test("getStandardMenuGroup - returns group for valid slug", () => {
   const group = getStandardMenuGroup("ac-coach-food-menu-prices");

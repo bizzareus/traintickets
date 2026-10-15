@@ -130,12 +130,14 @@ async function pagesBucket(now: Date): Promise<MetadataRoute.Sitemap> {
     }
     alternates["x-default"] = url(`/blog/${p.slug}`);
 
+    const lastModified = new Date(
+      `${(p.updated ?? p.date).slice(0, 10)}T00:00:00Z`,
+    );
+
     for (const l of availableLangs) {
       postRoutes.push({
         url: l === "en" ? url(`/blog/${p.slug}`) : url(`/blog/${l}/${p.slug}`),
-        lastModified: new Date(
-          `${(p.updated ?? p.date).slice(0, 10)}T00:00:00Z`,
-        ),
+        lastModified,
         alternates: { languages: alternates },
       });
     }
