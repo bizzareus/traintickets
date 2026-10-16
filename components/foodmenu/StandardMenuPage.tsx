@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { STANDARD_MENU_PAGES, getStandardMenuGroup } from "@/lib/standardMenu";
+import { getStandardMenuConfig, getStandardMenuGroup } from "@/lib/standardMenu";
 import { StandardMenuView } from "@/components/foodmenu/StandardMenuView";
 
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 
 export function StandardMenuPage({ slug }: { slug: string }) {
-  const cfg = STANDARD_MENU_PAGES.find((p) => p.slug === slug);
+  const cfg = getStandardMenuConfig(slug);
   const group = getStandardMenuGroup(slug);
   if (!cfg || !group) notFound();
 
