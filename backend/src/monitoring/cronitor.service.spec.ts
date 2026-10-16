@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type Cronitor from 'cronitor';
 import { CronitorService } from './cronitor.service';
@@ -104,9 +105,18 @@ describe('Cronitor runtime telemetry', () => {
 
   it('keeps successful work successful when Cronitor rejects both pings', async () => {
     ping.mockRejectedValue(new Error('telemetry is down'));
-    await expect(
-      service().run('seat-cache', () => Promise.resolve('done')),
-    ).resolves.toBe('done');
+    const warn = jest.spyOn(Logger.prototype, 'warn').mockImplementation();
+    try {
+      await expect(
+        service().run('seat-cache', () => Promise.resolve('done')),
+      ).resolves.toBe('done');
+      expect(warn).toHaveBeenCalledTimes(2);
+      expect(warn).toHaveBeenCalledWith(
+        'Cronitor telemetry unavailable for lastberth-seat-cache',
+      );
+    } finally {
+      warn.mockRestore();
+    }
   });
 
   it('does not hold up the business operation while the start ping is pending', async () => {

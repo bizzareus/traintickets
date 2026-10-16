@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { ObserveAgentSharedBuffer } from '../node_modules/@nestjs/observe/dist/agent/observe-agent.shared-buffer.js';
+import { ObserveAgentWorker } from '../node_modules/@nestjs/observe/dist/agent/observe-agent.worker.js';
 
 // Exercise the installed ESM SDK and its serialized payload, without credentials
 // or a live collector. The collector requires t to remain an array.
@@ -88,3 +89,24 @@ for (const { kind, insert, collection, snapshot, failure } of [
     assert.equal(payload.truncatedSpans, 2);
   });
 }
+
+test('quota 429 is a warning; other collector failures remain errors', () => {
+  const warnings = [];
+  const errors = [];
+  const worker = {
+    logger: {
+      warn: (message) => warnings.push(message),
+      error: (message) => errors.push(message),
+    },
+  };
+  const quota =
+    'Error: Telemetry rate-limited (429) - the account has used its included events for this period (600,022 of 300,000 included events used on the free plan)';
+  const other =
+    'Error: Telemetry rate-limited (429) - request rate cap exceeded';
+
+  ObserveAgentWorker.prototype.handleMessage.call(worker, quota);
+  ObserveAgentWorker.prototype.handleMessage.call(worker, other);
+
+  assert.deepEqual(warnings, [quota.slice('Error: '.length)]);
+  assert.deepEqual(errors, [other]);
+});

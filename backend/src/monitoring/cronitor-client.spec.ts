@@ -2,7 +2,7 @@ import { AxiosError, type AxiosResponse } from 'axios';
 import { createCronitorClient, CronitorRequestError } from './cronitor-client';
 
 describe('Cronitor SDK transport', () => {
-  it('strips credentials and request objects before the SDK logs a telemetry failure', async () => {
+  it('keeps failed pings silent and strips credentials from transport errors', async () => {
     const key = 'fake-secret-for-tests';
     const { sdk, http } = createCronitorClient(key, 'test', 1000);
     http.defaults.adapter = (config) =>
@@ -11,16 +11,21 @@ describe('Cronitor SDK transport', () => {
       .spyOn(console, 'error')
       .mockImplementation(() => undefined);
     try {
-      await expect(
-        new sdk.Monitor('test-monitor').ping({ state: 'run' }),
-      ).resolves.toBe(false);
-      const error = logged.mock.calls[0][0] as CronitorRequestError;
-      expect(error).toBeInstanceOf(CronitorRequestError);
+      const failure: unknown = await http
+        .get('https://cronitor.link/ping/test-monitor')
+        .catch((error: unknown) => error);
+      expect(failure).toBeInstanceOf(CronitorRequestError);
+      const error = failure as CronitorRequestError;
       expect(
         `${error.message} ${error.stack} ${JSON.stringify(error)}`,
       ).not.toContain(key);
       expect(error).not.toHaveProperty('config');
       expect(error).not.toHaveProperty('request');
+
+      await expect(
+        new sdk.Monitor('test-monitor').ping({ state: 'run' }),
+      ).resolves.toBe(false);
+      expect(logged).not.toHaveBeenCalled();
     } finally {
       logged.mockRestore();
     }
