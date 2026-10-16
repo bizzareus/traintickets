@@ -27,7 +27,7 @@ import {
   type SplitBookingStatus,
 } from "@/lib/split-booking";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
-import { openSupportChat, preloadSupportChat } from "@/lib/supportChat";
+import { openSupportChat } from "@/lib/supportChat";
 import { MuzoboxPaymentFrame } from "@/components/payments/MuzoboxPaymentFrame";
 import { BookingPriceBreakdown } from "./BookingPriceBreakdown";
 import { formatBookingAmount } from "@/lib/bookingPrice";
@@ -174,13 +174,6 @@ export function SplitTicketBookingModal({
     });
     onClose();
   }, [trainNumber, step, onClose]);
-
-  // Preload the chat widget as soon as the modal opens, so the help strip
-  // opens it instantly instead of waiting for the script on first click.
-  useEffect(() => {
-    if (!open) return;
-    void preloadSupportChat().catch(() => undefined);
-  }, [open]);
 
   // Reset form when modal opens
   useEffect(() => {
