@@ -37,13 +37,32 @@ export class RailFeedProxyController {
     }
 
     const dateOfJourney = qs.get('dateOfJourney');
-    if (dateOfJourney && isPastRailDate(dateOfJourney)) {
-      throw new HttpException(
-        {
-          error: { code: 4002, message: 'Journey date cannot be in the past' },
-        },
-        HttpStatus.BAD_REQUEST,
-      );
+    if (dateOfJourney) {
+      // Validate dateOfJourney format (YYYY-MM-DD or DD-MM-YYYY)
+      const isValidFormat =
+        /^\d{4}-\d{2}-\d{2}$/.test(dateOfJourney) ||
+        /^\d{2}-\d{2}-\d{4}$/.test(dateOfJourney);
+      if (!isValidFormat) {
+        throw new HttpException(
+          {
+            error: {
+              code: 4001,
+              message:
+                'Invalid journey date format (expected YYYY-MM-DD or DD-MM-YYYY)',
+            },
+          },
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+
+      if (isPastRailDate(dateOfJourney)) {
+        throw new HttpException(
+          {
+            error: { code: 4002, message: 'Journey date cannot be in the past' },
+          },
+          HttpStatus.BAD_REQUEST,
+        );
+      }
     }
 
     const url = `${RAIL_FEED_UPSTREAM_BASE}?${qs.toString()}`;
