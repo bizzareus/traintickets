@@ -112,11 +112,14 @@ export class ChartTimeController {
    */
   @Post('fetch')
   async fetch(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Body('trainNumber') trainNumber: string,
     @Body('stationCode') stationCode: string,
     @Body('stationName') stationName: string,
     @Body('journeyDate') journeyDate: string,
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     const tn = String(trainNumber ?? '').trim();
     const sc = String(stationCode ?? '')
       .trim()
