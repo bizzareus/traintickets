@@ -39,3 +39,9 @@
 **Vulnerability:** `IrctcBrowserUseService` instantiated `new BrowserUse({ apiKey: process.env.BROWSER_USE_API_KEY })` directly in its constructor. When `BROWSER_USE_API_KEY` was missing in environment, the SDK threw an unhandled exception during NestJS dependency injection bootstrapping, crashing the entire NestJS application/worker on startup.
 **Learning:** Third-party SDK constructors executed during NestJS provider instantiation must supply fallback initialization strings or lazy-load clients so that missing optional API keys do not cause unhandled startup exceptions during DI container setup.
 **Prevention:** Provide fallback strings in SDK constructors for optional integrations and guard runtime method calls with explicit key checks throwing `ServiceUnavailableException`.
+
+## 2026-10-15 - Unauthenticated Resource-Intensive Browser Automation Endpoint
+
+**Vulnerability:** `ChartTimeController` (`POST /api/chart-time/fetch`) was missing `assertAdminAuth`, allowing unauthenticated public callers to trigger expensive Browser Use headless browser automation runs and exhaust server resources.
+**Learning:** Endpoints that trigger external browser automation or heavy worker tasks must be explicitly protected with `assertAdminAuth` even if the route path does not contain `/admin/`.
+**Prevention:** Ensure any endpoint invoking browser automation services (e.g. `BrowserUseService`) explicitly checks admin authentication via `assertAdminAuth({ headerPw: pw, req })`.
