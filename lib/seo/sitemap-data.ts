@@ -59,21 +59,20 @@ async function pagesBucket(now: Date): Promise<MetadataRoute.Sitemap> {
   ];
 
   // Localized homepage (/ for English, /<lang> for the rest) with hreflang.
-  const homeRoutes: MetadataRoute.Sitemap = HOME_LANGS.map((lang) => {
-    const alternates: Record<string, string> = {};
-    for (const l of HOME_LANGS) {
-      const u = l === "en" ? url("/") : url(`/${l}`);
-      alternates[l] = u;
-      alternates[`${l}-IN`] = u;
-    }
-    alternates["x-default"] = url("/");
+  // Performance Optimization: Pre-compute invariant hreflang alternate map once outside the loop.
+  const homeAlternates: Record<string, string> = {};
+  for (const l of HOME_LANGS) {
+    const u = l === "en" ? url("/") : url(`/${l}`);
+    homeAlternates[l] = u;
+    homeAlternates[`${l}-IN`] = u;
+  }
+  homeAlternates["x-default"] = url("/");
 
-    return {
-      url: lang === "en" ? url("/") : url(`/${lang}`),
-      lastModified: now,
-      alternates: { languages: alternates },
-    };
-  });
+  const homeRoutes: MetadataRoute.Sitemap = HOME_LANGS.map((lang) => ({
+    url: lang === "en" ? url("/") : url(`/${lang}`),
+    lastModified: now,
+    alternates: { languages: homeAlternates },
+  }));
 
   // Glossary: index + term pages, per language that has a translation file.
   const glossaryTerms = getAllGlossaryTerms();
@@ -97,22 +96,21 @@ async function pagesBucket(now: Date): Promise<MetadataRoute.Sitemap> {
   }));
 
   // Localized blog index routes (e.g. /blog, /blog/hi, etc.)
+  // Performance Optimization: Pre-compute invariant hreflang alternate map once outside the loop.
   const langs = ["en", "mr", "hi", "bn", "ta", "te", "ml"];
-  const blogIndexRoutes: MetadataRoute.Sitemap = langs.map((lang) => {
-    const alternates: Record<string, string> = {};
-    for (const l of langs) {
-      const u = l === "en" ? url("/blog") : url(`/blog/${l}`);
-      alternates[l] = u;
-      alternates[`${l}-IN`] = u;
-    }
-    alternates["x-default"] = url("/blog");
+  const blogIndexAlternates: Record<string, string> = {};
+  for (const l of langs) {
+    const u = l === "en" ? url("/blog") : url(`/blog/${l}`);
+    blogIndexAlternates[l] = u;
+    blogIndexAlternates[`${l}-IN`] = u;
+  }
+  blogIndexAlternates["x-default"] = url("/blog");
 
-    return {
-      url: lang === "en" ? url("/blog") : url(`/blog/${lang}`),
-      lastModified: now,
-      alternates: { languages: alternates },
-    };
-  });
+  const blogIndexRoutes: MetadataRoute.Sitemap = langs.map((lang) => ({
+    url: lang === "en" ? url("/blog") : url(`/blog/${lang}`),
+    lastModified: now,
+    alternates: { languages: blogIndexAlternates },
+  }));
 
   // Localized blog post routes.
   const posts = listBlogPosts();
@@ -130,12 +128,15 @@ async function pagesBucket(now: Date): Promise<MetadataRoute.Sitemap> {
     }
     alternates["x-default"] = url(`/blog/${p.slug}`);
 
+    // Performance Optimization: Hoist Date object creation outside inner language loop.
+    const lastModifiedDate = new Date(
+      `${(p.updated ?? p.date).slice(0, 10)}T00:00:00Z`,
+    );
+
     for (const l of availableLangs) {
       postRoutes.push({
         url: l === "en" ? url(`/blog/${p.slug}`) : url(`/blog/${l}/${p.slug}`),
-        lastModified: new Date(
-          `${(p.updated ?? p.date).slice(0, 10)}T00:00:00Z`,
-        ),
+        lastModified: lastModifiedDate,
         alternates: { languages: alternates },
       });
     }
