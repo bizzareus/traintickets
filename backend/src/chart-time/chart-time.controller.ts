@@ -109,14 +109,18 @@ export class ChartTimeController {
    * Fetch chart time from IRCTC via Browser Use (reservation chart page shows
    * "First Chart Creation: DD/MM/YYYY HH:MM Hrs." and "Charting Station: NAME (CODE)").
    * Stores the time in DB so we don't need to fetch again for this train/station.
+   * Gated by admin authentication to prevent unauthorized triggers of expensive Browser Use automation tasks.
    */
   @Post('fetch')
   async fetch(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Body('trainNumber') trainNumber: string,
     @Body('stationCode') stationCode: string,
     @Body('stationName') stationName: string,
     @Body('journeyDate') journeyDate: string,
   ) {
+    assertAdminAuth({ headerPw: pw, req });
     const tn = String(trainNumber ?? '').trim();
     const sc = String(stationCode ?? '')
       .trim()
