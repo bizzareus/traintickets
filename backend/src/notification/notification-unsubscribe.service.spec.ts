@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/unbound-method */
+import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { NotificationUnsubscribeService } from './notification-unsubscribe.service';
 import { PrismaService } from '../prisma/prisma.service';
@@ -54,6 +55,18 @@ describe('NotificationUnsubscribeService', () => {
 
       expect(result).toBe(false);
     });
+
+    it('throws BadRequestException when recipient is empty or invalid', async () => {
+      await expect(service.isUnsubscribed('')).rejects.toThrow(
+        BadRequestException,
+      );
+      await expect(service.isUnsubscribed('   ')).rejects.toThrow(
+        BadRequestException,
+      );
+      await expect(service.isUnsubscribed(null as unknown as string)).rejects.toThrow(
+        BadRequestException,
+      );
+    });
   });
 
   describe('unsubscribe', () => {
@@ -83,6 +96,12 @@ describe('NotificationUnsubscribeService', () => {
         create: { recipient: 'user@example.com', reason: undefined },
         update: { reason: undefined, channel: 'all' },
       });
+    });
+
+    it('throws BadRequestException when recipient is empty or whitespace', async () => {
+      await expect(service.unsubscribe('')).rejects.toThrow(
+        BadRequestException,
+      );
     });
   });
 

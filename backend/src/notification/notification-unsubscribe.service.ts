@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
 export interface UnsubscribeListEntry {
@@ -14,6 +14,9 @@ export class NotificationUnsubscribeService {
   private readonly logger = new Logger(NotificationUnsubscribeService.name);
 
   private normalize(recipient: string): string {
+    if (!recipient || typeof recipient !== 'string' || !recipient.trim()) {
+      throw new BadRequestException('Recipient is required');
+    }
     return recipient.trim().toLowerCase();
   }
 
