@@ -1,6 +1,48 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
 
+import { synthesizeTrainFoodMenu, type TrainRegistryEntry } from "@/lib/trainFoodMapping";
+
+describe("Synthesized Train Food Menu Memoization", () => {
+  test("synthesizeTrainFoodMenu returns identical cached reference for classes and notes across calls", () => {
+    const entry1: TrainRegistryEntry = {
+      trainNumber: "12951",
+      trainNumberPair: "12951-52",
+      trainName: "Mumbai Rajdhani",
+      label: "12951 - Mumbai Rajdhani",
+      route: "NDLS-MMCT",
+      slug: "12951-mumbai-rajdhani-food-menu",
+      trainType: "rajdhani",
+      zone: "West",
+      status: "mapped",
+      hasCustomMenu: false,
+      menuKey: "rajdhani:West",
+    };
+
+    const entry2: TrainRegistryEntry = {
+      trainNumber: "12953",
+      trainNumberPair: "12953-54",
+      trainName: "August Kranti Rajdhani",
+      label: "12953 - August Kranti Rajdhani",
+      route: "NZM-MMCT",
+      slug: "12953-august-kranti-rajdhani-food-menu",
+      trainType: "rajdhani",
+      zone: "West",
+      status: "mapped",
+      hasCustomMenu: false,
+      menuKey: "rajdhani:West",
+    };
+
+    const menu1 = synthesizeTrainFoodMenu(entry1);
+    const menu2 = synthesizeTrainFoodMenu(entry2);
+
+    assert.equal(menu1.classes, menu2.classes, "Classes array reference should be strictly equal (cached)");
+    assert.equal(menu1.notes, menu2.notes, "Notes array reference should be strictly equal (cached)");
+    assert.equal(menu1.classes.length > 0, true);
+    assert.equal(menu1.notes.length > 0, true);
+  });
+});
+
 describe("Fast numeric train number sorting", () => {
   test("numeric sorting helper accurately sorts train numbers", () => {
     const testItems: { trainNumber: string }[] = [
