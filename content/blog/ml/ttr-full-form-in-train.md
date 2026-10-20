@@ -2,7 +2,7 @@
 title: "ട്രെയിനിൽ TTR പൂർണ്ണ രൂപം: അർത്ഥം, രാത്രി നിയമങ്ങൾ & പിഴകൾ (2026)"
 description: "ട്രെയിനിൽ TTR പൂർണ്ണ രൂപം എന്താണ്? ഔദ്യോഗിക നാമം, രാത്രി 10 PM മുതൽ 6 AM വരെ നിയമങ്ങൾ, ₹500 പിഴകൾ, പ്രവർത്തനത്തിലുള്ള ട്രെയിനുകളിൽ എങ്ങനെ ഒഴിവുള്ള ബെർത്ത് പുനഃവിതരണം ചെയ്യുന്നു എന്ന് കണ്ടെത്തുക."
 date: "2026-06-30"
-updated: "2026-10-06"
+updated: "2026-10-20"
 tags:
   - train booking
   - irctc
@@ -120,7 +120,7 @@ Here is the exact step-by-step berth reallocation workflow:
 
 1. **Attendance Check Within 15 Minutes:** After departing a scheduled stop, the TTE walks through the assigned coaches, enters passenger PNRs into the HHT, and marks them as "Turned Up" or "Absent".
 2. **Automated Upgrade for RAC Passengers:** In Sleeper, 3A, 3E, and 2A coaches, RAC passengers share a Side Lower berth. The moment the HHT confirms a No-Show, the terminal algorithm automatically assigns the vacant full berth to the top RAC passenger on the digital list. The TTE cannot bypass this automated sequence to favor unauthorized travelers.
-3. **Auto-Cancellation of Waitlisted E-Tickets:** If an online e-ticket fails to confirm after chart preparation (~8 to 10 hours before departure), IRCTC automatically cancels it and refunds the fare. Because their names are purged from the reservation chart, passengers holding dropped waitlisted e-tickets cannot be accommodated by the TTE.
+3. **Auto-Cancellation of Waitlisted E-Tickets:** If an online e-ticket fails to confirm after chart preparation (~8 hours before departure), IRCTC automatically cancels it and refunds the fare. Because their names are purged from the reservation chart, passengers holding dropped waitlisted e-tickets cannot be accommodated by the TTE.
 4. **Accommodation on Physical Counter Waitlist Tickets:** Passengers holding physical paper waitlist tickets bought at railway station PRS counters may approach the TTE onboard. If berths remain unoccupied after all RAC passengers have been upgraded, the TTE can issue an onboard regularized Excess Fare Ticket (EFT).
 5. **Release to Current Availability (`CURR_AVBL`):** If vacant berths remain unallocated along upcoming stations, the HHT pushes them back to the IRCTC portal as **Current Available tickets** at a 10% discount on the basic fare, bookable up to 30 minutes before departure.
 

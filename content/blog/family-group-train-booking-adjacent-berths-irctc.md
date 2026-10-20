@@ -2,7 +2,7 @@
 title: "Securing Adjacent Berths on IRCTC: The Ultimate Family Booking Survival Guide"
 description: "Why does IRCTC split families across different train coaches? Learn how the seat allocation algorithm works and the specific booking preferences to ensure your group stays together."
 date: "2026-05-31"
-updated: "2026-07-29"
+updated: "2026-10-20"
 tags:
   - family booking
   - adjacent berths
@@ -124,7 +124,7 @@ When a single PNR ticket has some passengers confirmed (CNF/RAC) and others wait
 
 - **Boarding Rights:** All passengers on a partially confirmed counter or e-ticket are permitted to board the train together, but only the confirmed passengers get dedicated seats.
 - **Waitlisted Passengers:** Waitlisted passengers on a partially confirmed PNR must share berths with their confirmed family members or seek assistance from the TTE for unallocated vacant berths.
-- **Cancellation Option:** If you choose not to travel due to partial confirmation, you can cancel the entire PNR online before chart prep or file a TDR up to 30 minutes after chart prep for a full refund on waitlisted passengers.
+- **Cancellation Option:** If you choose not to travel due to partial confirmation, you can cancel the entire PNR online before chart prep or file an online TDR up to 30 minutes before scheduled train departure for a refund (less clerkage) on all passengers.
 
 ---
 

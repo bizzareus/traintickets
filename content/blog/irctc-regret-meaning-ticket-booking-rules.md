@@ -2,7 +2,7 @@
 title: "Regret Meaning in IRCTC: Rules & Booking Hacks (2026)"
 description: "What does Regret mean in IRCTC? Learn after how many waitlist spots Regret occurs, difference between Regret vs Not Available, and confirmed booking hacks."
 date: "2026-06-23"
-updated: "2026-09-04"
+updated: "2026-10-20"
 tags:
   - train booking
   - irctc
@@ -15,7 +15,7 @@ tags:
 
 ## TL;DR
 
-In IRCTC ticket booking, REGRET status means that both confirmed berths and the maximum allowable waiting list capacity have been completely exhausted. The booking system disables the "Book Now" button, preventing new tickets from being booked or joining the waitlist queue. You can bypass a REGRET status by booking split journeys via Smart Seats or checking Current Availability (~4 hours before departure).
+In IRCTC ticket booking, REGRET status means that both confirmed berths and the maximum allowable waiting list capacity have been completely exhausted. The booking system disables the "Book Now" button, preventing new tickets from being booked or joining the waitlist queue. You can bypass a REGRET status by booking split journeys via Smart Seats or checking Current Availability (~8 hours before departure).
 
 ---
 
@@ -81,12 +81,12 @@ However, waiting for manual status reversals relies on luck. A more reliable met
 
 ## How to Book a Confirmed Seat When IRCTC Shows Regret?
 
-**When IRCTC displays REGRET, you can secure a confirmed seat by using LastBerth Smart Seats to split your journey into contiguous confirmed segments, checking Current Availability after chart preparation (~4 hours before departure), or booking alternate trains under VIKALP.**
+**When IRCTC displays REGRET, you can secure a confirmed seat by using LastBerth Smart Seats to split your journey into contiguous confirmed segments, checking Current Availability after chart preparation (~8 hours before departure), or booking alternate trains under VIKALP.**
 
 Four proven methods to get a confirmed seat during a REGRET freeze:
 
 1. **Use LastBerth Smart Seats:** Direct origin-to-destination search may show REGRET, but individual station stretches on the same train often have vacant berths. **[Smart Seats](/)** finds confirmed multi-segment combinations on the exact same train.
-2. **Book Current Availability:** Approximately 4 hours before departure (after 1st Chart Preparation), unallocated quotas are released online as **Current Availability** (`CURR_AVBL`). A current available ticket is a **100% fully confirmed seat** bookable until 30 minutes before departure.
+2. **Book Current Availability:** Approximately 8 hours before departure (after 1st Chart Preparation), unallocated quotas are released online as **Current Availability** (`CURR_AVBL`). A current available ticket is a **100% fully confirmed seat** bookable until 30 minutes before departure.
 3. **Track Live Coach Vacancy:** Open LastBerth's **[Get Confirmed Tickets](/)** to see station-by-station berth occupancy on running trains and request vacant seats from the TTE.
 4. **Select IRCTC VIKALP:** Opt into the VIKALP scheme when booking alternative trains on the same route to get allocated to alternate trains with open quotas.
 
