@@ -3,6 +3,7 @@ import {
   Get,
   HttpException,
   HttpStatus,
+  Logger,
   Req,
   Res,
 } from '@nestjs/common';
@@ -24,6 +25,8 @@ import {
 @Controller('api/rail-feed')
 @Throttle({ global: { limit: 20, ttl: 60_000 } })
 export class RailFeedProxyController {
+  private readonly logger = new Logger(RailFeedProxyController.name);
+
   @Get('availability')
   async proxyAvailability(
     @Req() req: Request,
@@ -67,8 +70,12 @@ export class RailFeedProxyController {
     } catch (err) {
       if (abortController.signal.aborted) return;
       const msg = err instanceof Error ? err.message : String(err);
+      this.logger.error(
+        `Rail availability proxy request failed: ${msg}`,
+        err instanceof Error ? err.stack : undefined,
+      );
       throw new HttpException(
-        { message: 'Rail availability proxy request failed', detail: msg },
+        { message: 'Rail availability proxy request failed' },
         HttpStatus.BAD_GATEWAY,
       );
     } finally {
