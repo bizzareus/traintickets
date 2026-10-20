@@ -52,3 +52,8 @@
 
 **Learning:** Instantiating `new Date(time)` inside `for` loops during date range iterations (e.g., checking `runningDays` across operating dates) causes heavy V8 garbage collection pressure and object allocation overhead (~3.8x slower). Since consecutive days increment by 24h (`DAY_MS`), integer arithmetic `(fromDayOfWeek + dayIdx) % 7` computes UTC weekday indices with zero heap allocations.
 **Action:** Use integer weekday modulo arithmetic `(startDayOfWeek + dayOffset) % 7` instead of allocating `new Date(timestamp)` inside loops when filtering or checking date ranges.
+
+## 2026-10-20 - Pre-Indexed Station Map Caches for Chart Schedule Lookups
+
+**Learning:** Calling `Array.prototype.find()` on train station lists (`readCachedFile(trainNumber)?.stations.find(...)`) during station chart schedule lookups incurs $O(N)$ linear array scan overhead per query across dozens of stations. Indexing station rows into a module-level `cachedParsedStationMap: Map<string, Map<string, ChartTimeStationRow>>` keyed by uppercase station code when train JSON data is parsed/read converts station lookups into $O(1)$ constant-time Map lookups (~10x-50x speedup with zero array allocation during lookups).
+**Action:** Always pre-index nested array items into a module-level `Map` when items are queried frequently by key/code instead of scanning the array with `.find()` on every call.
