@@ -1,7 +1,8 @@
 "use client";
 
 import { useId, useState } from "react";
-import { ArrowRight, ShieldCheck, X } from "lucide-react";
+import moment from "moment";
+import { ArrowRight, Calendar, Clock, ShieldCheck, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import {
@@ -13,7 +14,10 @@ import {
   type LegClassSelections,
 } from "@/lib/splitBookingSelection";
 import type { AlternateLeg } from "./alternatePathsTypes";
-import { getStationDisplayName } from "./alternatePathHelpers";
+import {
+  formatTimeAmPm,
+  getStationDisplayName,
+} from "./alternatePathHelpers";
 import {
   SplitTicketBookingModal,
   type SplitTicketBookingModalProps,
@@ -26,6 +30,15 @@ export interface SplitTicketBookingFlowProps {
   legs: AlternateLeg[];
   stationNameMap?: Record<string, string>;
   onClose: () => void;
+}
+
+function formatLegBoardingDate(dateStr?: string | null): string {
+  if (!dateStr?.trim()) return "";
+  const cleaned = dateStr.trim().slice(0, 10);
+  const m = moment(cleaned, ["YYYY-MM-DD", "YYYY-M-D", "DD-MM-YYYY"], true);
+  if (m.isValid()) return m.format("Do MMMM YYYY");
+  const fallback = moment(dateStr);
+  return fallback.isValid() ? fallback.format("Do MMMM YYYY") : dateStr;
 }
 
 /** Class choices are made after Book Now, before collecting passenger details. */
@@ -43,6 +56,8 @@ export function SplitTicketBookingFlow({
     SplitTicketBookingModalProps,
     "open" | "onClose"
   > | null>(null);
+  const confirmedLegs = legs.filter((leg) => leg.segmentKind === "confirmed");
+  const isSingleLeg = confirmedLegs.length === 1;
   const selection = buildSplitBookingSelection(legs, choices);
   const hasMultipleClasses = legs.some(
     (leg) => getLegClassOptions(leg).length > 1,
@@ -103,7 +118,7 @@ export function SplitTicketBookingFlow({
               Choose classes for your tickets
             </h3>
             <p className="mt-1 text-sm text-slate-600">
-              {trainName || "Train"} ({trainNumber}) · {journeyDate}
+              {trainName || "Train"} ({trainNumber}) · {formatLegBoardingDate(journeyDate) || journeyDate}
             </p>
           </div>
           <button
@@ -123,10 +138,12 @@ export function SplitTicketBookingFlow({
           className="flex min-h-0 flex-1 flex-col"
         >
           <div className="space-y-4 overflow-y-auto p-4 sm:p-6">
-            <p className="text-sm text-slate-600">
-              Select classes for the tickets you wish to book. You can skip any
-              leg — at least 1 ticket is required.
-            </p>
+            {!isSingleLeg && (
+              <p className="text-sm text-slate-600">
+                Select classes for the tickets you wish to book. You can skip any
+                leg — at least 1 ticket is required.
+              </p>
+            )}
             {legs.some((leg) => leg.segmentKind !== "confirmed") && (
               <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-800">
                 Only the available tickets below are included. Unavailable
@@ -140,6 +157,10 @@ export function SplitTicketBookingFlow({
               const selectedOption = legSkipped
                 ? null
                 : getSelectedLegClass(leg, choices[index]);
+              const formattedDate = formatLegBoardingDate(
+                leg.boardingDate || journeyDate,
+              );
+              const formattedTime = formatTimeAmPm(leg.departureTime);
               return (
                 <fieldset
                   key={index}
@@ -160,9 +181,20 @@ export function SplitTicketBookingFlow({
                       </span>
                     )}
                   </legend>
-                  <p className="mb-3 text-xs text-slate-500">
-                    Boarding date: {leg.boardingDate || journeyDate}
-                  </p>
+                  <div className="mb-3 flex flex-wrap items-center gap-2">
+                    <div className="inline-flex items-center gap-1.5 rounded-lg border border-blue-200 bg-blue-50/90 px-2.5 py-1 text-xs text-blue-900 shadow-2xs">
+                      <Calendar className="h-3.5 w-3.5 shrink-0 text-blue-600" />
+                      <span className="font-semibold text-blue-800">Boarding:</span>
+                      <span className="font-bold text-blue-950">{formattedDate}</span>
+                      {formattedTime && (
+                        <>
+                          <span className="text-blue-300">•</span>
+                          <Clock className="h-3.5 w-3.5 shrink-0 text-blue-600" />
+                          <span className="font-bold text-blue-950">{formattedTime}</span>
+                        </>
+                      )}
+                    </div>
+                  </div>
                   <div className="space-y-2">
                     {options.map((option) => {
                       const selected =
@@ -224,40 +256,42 @@ export function SplitTicketBookingFlow({
                         </label>
                       );
                     })}
-                    <label
-                      className={cn(
-                        "flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border p-3 text-sm",
-                        legSkipped
-                          ? "border-slate-400 bg-slate-100/80 font-medium text-slate-700"
-                          : "border-slate-200 text-slate-500 hover:border-slate-300 hover:bg-slate-50",
-                      )}
-                    >
-                      <input
-                        type="radio"
-                        name={`${groupId}-leg-${index}`}
-                        aria-label={`Leg ${index + 1}: Skip this leg`}
-                        checked={legSkipped}
-                        onChange={() => {
-                          trackAnalyticsEvent({
-                            name: "split_booking_leg_skipped",
-                            properties: {
-                              train_number: trainNumber,
-                              leg_index: index,
-                              from_code: leg.from,
-                              to_code: leg.to,
-                            },
-                          });
-                          setChoices((current) => ({
-                            ...current,
-                            [index]: SKIP_LEG,
-                          }));
-                        }}
-                        className="h-4 w-4 shrink-0 text-slate-500 accent-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-500"
-                      />
-                      <span className="min-w-0 flex-1">
-                        Skip this ticket (do not book this leg)
-                      </span>
-                    </label>
+                    {!isSingleLeg && (
+                      <label
+                        className={cn(
+                          "flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border p-3 text-sm",
+                          legSkipped
+                            ? "border-slate-400 bg-slate-100/80 font-medium text-slate-700"
+                            : "border-slate-200 text-slate-500 hover:border-slate-300 hover:bg-slate-50",
+                        )}
+                      >
+                        <input
+                          type="radio"
+                          name={`${groupId}-leg-${index}`}
+                          aria-label={`Leg ${index + 1}: Skip this leg`}
+                          checked={legSkipped}
+                          onChange={() => {
+                            trackAnalyticsEvent({
+                              name: "split_booking_leg_skipped",
+                              properties: {
+                                train_number: trainNumber,
+                                leg_index: index,
+                                from_code: leg.from,
+                                to_code: leg.to,
+                              },
+                            });
+                            setChoices((current) => ({
+                              ...current,
+                              [index]: SKIP_LEG,
+                            }));
+                          }}
+                          className="h-4 w-4 shrink-0 text-slate-500 accent-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-500"
+                        />
+                        <span className="min-w-0 flex-1">
+                          Skip this ticket (do not book this leg)
+                        </span>
+                      </label>
+                    )}
                   </div>
                 </fieldset>
               );

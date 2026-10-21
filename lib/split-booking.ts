@@ -53,6 +53,7 @@ export interface SplitBookingPrice {
   irctcServiceFee: number;
   serviceFee: number;
   paymentGatewayFee: number;
+  travelInsuranceFee?: number;
   amount: number;
 }
 

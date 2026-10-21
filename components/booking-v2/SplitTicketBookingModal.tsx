@@ -16,21 +16,22 @@ import {
 } from "lucide-react";
 import {
   createSplitBooking,
-  fetchSplitBookingQuote,
   fetchSplitBookingStatus,
   simulateSplitBookingPayment,
   type CreateSplitBookingPayload,
   type SplitBookingLeg,
   type SplitBookingPassenger,
   type SplitBookingPaymentResponse,
-  type SplitBookingPrice,
   type SplitBookingStatus,
 } from "@/lib/split-booking";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { openSupportChat } from "@/lib/supportChat";
 import { MuzoboxPaymentFrame } from "@/components/payments/MuzoboxPaymentFrame";
 import { BookingPriceBreakdown } from "./BookingPriceBreakdown";
-import { formatBookingAmount } from "@/lib/bookingPrice";
+import {
+  calculatePayableTotal,
+  formatBookingAmount,
+} from "@/lib/bookingPrice";
 import { extract10DigitIndianMobile, isValidEmail } from "@/lib/validation";
 
 export interface SplitTicketBookingModalProps {
@@ -103,46 +104,8 @@ export function SplitTicketBookingModal({
   // Step 2: Payment state
   const [paymentData, setPaymentData] =
     useState<SplitBookingPaymentResponse | null>(null);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const submittedPayloadRef = useRef<string | null>(null);
-  const quoteKey = JSON.stringify({
-    totalFare,
-    legs: legs.map(({ travelClass }) => ({ travelClass })),
-  });
-  const [quote, setQuote] = useState<{
-    key: string;
-    price?: SplitBookingPrice;
-    error?: boolean;
-  } | null>(null);
-  const [quoteRetry, setQuoteRetry] = useState(0);
-  const quoteRequestRef = useRef<{
-    key: string;
-    promise: Promise<SplitBookingPrice>;
-  } | null>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    let active = true;
-    const pending =
-      quoteRequestRef.current?.key === quoteKey
-        ? quoteRequestRef.current.promise
-        : fetchSplitBookingQuote(
-            JSON.parse(quoteKey) as {
-              totalFare: number;
-              legs: Array<Pick<SplitBookingLeg, "travelClass">>;
-            },
-          );
-    quoteRequestRef.current = { key: quoteKey, promise: pending };
-    void pending
-      .then((price) => {
-        if (active) setQuote({ key: quoteKey, price });
-      })
-      .catch(() => {
-        if (active) setQuote({ key: quoteKey, error: true });
-      });
-    return () => {
-      active = false;
-    };
-  }, [open, quoteKey, quoteRetry]);
 
   // Step 3: Fulfillment status
   const [bookingStatus, setBookingStatus] = useState<SplitBookingStatus | null>(
@@ -162,9 +125,12 @@ export function SplitTicketBookingModal({
   const selectedTravelClasses = [
     ...new Set(legs.map((leg) => leg.travelClass)),
   ];
-  const paymentBreakdown = price && <BookingPriceBreakdown price={price} />;
+  const paymentBreakdown = price && (
+    <BookingPriceBreakdown price={price} travelInsurance={travelInsurance} />
+  );
 
   const handleClose = useCallback(() => {
+    setShowPaymentModal(false);
     trackAnalyticsEvent({
       name: "split_booking_modal_closed",
       properties: {
@@ -179,6 +145,7 @@ export function SplitTicketBookingModal({
   useEffect(() => {
     if (open) {
       setStep("passenger_details");
+      setShowPaymentModal(false);
       submittedPayloadRef.current = null;
       setPassengers([createDefaultPassenger()]);
       setPaymentData(null);
@@ -232,7 +199,7 @@ export function SplitTicketBookingModal({
   // Submit passenger details -> create payment
   const handleProceedToPayment = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSubmitting || quote?.key !== quoteKey || !quote.price) return;
+    if (isSubmitting) return;
     setFormError(null);
 
     // Validations
@@ -374,6 +341,7 @@ export function SplitTicketBookingModal({
       setBookingStatus(st);
 
       if (st.paymentStatus === "PAID" && step === "payment") {
+        setShowPaymentModal(false);
         setStep("booking_in_progress");
         trackAnalyticsEvent({
           name: "split_booking_payment_confirmed",
@@ -497,6 +465,10 @@ export function SplitTicketBookingModal({
       onKeyDown={(event) => {
         if (event.key === "Escape") {
           event.stopPropagation();
+          if (showPaymentModal) {
+            setShowPaymentModal(false);
+            return;
+          }
           handleClose();
         }
       }}
@@ -607,9 +579,6 @@ export function SplitTicketBookingModal({
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 sm:text-xs">
                     Split Journey Route
                   </span>
-                  <span className="text-xs font-extrabold tabular-nums text-blue-900 sm:text-sm">
-                    Ticket Fare: ₹{totalFare}
-                  </span>
                 </div>
                 <div className="grid grid-cols-1 gap-2 text-xs sm:grid-cols-2">
                   {legs.map((leg, idx) => (
@@ -632,32 +601,6 @@ export function SplitTicketBookingModal({
                   ))}
                 </div>
               </div>
-
-              {quote?.key === quoteKey && quote.price ? (
-                <BookingPriceBreakdown price={quote.price} />
-              ) : quote?.key === quoteKey && quote.error ? (
-                <div
-                  role="alert"
-                  className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
-                >
-                  Could not load the fare breakdown. Please try again.
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setQuote(null);
-                      quoteRequestRef.current = null;
-                      setQuoteRetry((retry) => retry + 1);
-                    }}
-                    className="ml-2 font-semibold underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
-                  >
-                    Retry
-                  </button>
-                </div>
-              ) : (
-                <p role="status" className="text-sm text-slate-500">
-                  Loading fare breakdown…
-                </p>
-              )}
 
               {/* Contact Information */}
               <div className="space-y-2.5 sm:space-y-3">
@@ -1011,9 +954,7 @@ export function SplitTicketBookingModal({
                 </button>
                 <button
                   type="submit"
-                  disabled={
-                    isSubmitting || quote?.key !== quoteKey || !quote.price
-                  }
+                  disabled={isSubmitting}
                   className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-blue-700 active:scale-[0.98] disabled:opacity-50"
                 >
                   {isSubmitting ? (
@@ -1031,57 +972,88 @@ export function SplitTicketBookingModal({
             </form>
           )}
 
-          {/* STEP 2: MUZOBOX CHECKOUT */}
+          {/* STEP 2: PAYMENT OVERVIEW & CHECKOUT */}
           {step === "payment" && paymentData && (
-            <div className="space-y-6 text-center">
-              <button
-                type="button"
-                onClick={() => setStep("passenger_details")}
-                className="inline-flex min-h-11 w-full items-center gap-2 rounded-lg px-2 text-left text-sm font-semibold text-blue-700 hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
-              >
-                <ArrowLeft aria-hidden="true" className="h-4 w-4" />
-                Back to details
-              </button>
-              <div>
-                <span className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">
+            <div className="space-y-4 text-left sm:space-y-6">
+              <div className="flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowPaymentModal(false);
+                    setStep("passenger_details");
+                  }}
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-lg px-2 text-left text-sm font-semibold text-blue-700 hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
+                >
+                  <ArrowLeft aria-hidden="true" className="h-4 w-4" />
+                  Back to details
+                </button>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">
                   <ShieldCheck className="h-3.5 w-3.5 text-blue-600" /> Secure
                   Instant Checkout
                 </span>
-                <h4 className="text-xl font-extrabold text-slate-900">
-                  Pay {formatBookingAmount(paymentData.amount)}
-                </h4>
-                {paymentBreakdown}
-                <p className="mt-0.5 text-xs text-slate-500">
-                  Ref: {paymentData.bookingRef}
+              </div>
+
+              {/* Journey Reference Header */}
+              <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 sm:text-xs">
+                    Booking Reference
+                  </span>
+                  <span className="font-mono text-xs font-bold text-slate-900 sm:text-sm">
+                    {paymentData.bookingRef}
+                  </span>
+                </div>
+                <p className="mt-1 text-xs text-slate-600">
+                  {trainName
+                    ? `${trainName} (${trainNumber})`
+                    : `Train ${trainNumber}`}{" "}
+                  • {journeyDate} •{" "}
+                  {selectedTravelClasses.length > 1 ? "Classes" : "Class"}{" "}
+                  {selectedTravelClasses.join(", ")}
                 </p>
               </div>
 
-              {paymentFailed ? (
-                <p
-                  role="alert"
-                  className="rounded-xl bg-red-50 p-4 text-sm text-red-700"
-                >
-                  Payment failed. Your reservation has not started. Please close
-                  this window and try again.
-                </p>
-              ) : (
-                <MuzoboxPaymentFrame
-                  payUrl={paymentData.payUrl}
-                  onPaymentComplete={pollStatus}
-                />
-              )}
+              {/* Fare Details Breakdown Component */}
+              <BookingPriceBreakdown
+                price={price ?? paymentData}
+                travelInsurance={travelInsurance}
+              />
 
-              {/* Polling Indicator */}
-              {!paymentFailed && (
-                <div className="flex items-center justify-center gap-2 text-xs text-slate-500">
-                  <Loader2 className="h-3.5 w-3.5 animate-spin text-blue-600" />
-                  <span>Waiting for payment confirmation...</span>
+              {paymentFailed ? (
+                <div
+                  role="alert"
+                  className="rounded-xl border border-red-200 bg-red-50 p-4 text-center text-sm text-red-700"
+                >
+                  <p className="font-semibold">Payment failed or was cancelled.</p>
+                  <p className="mt-1 text-xs">
+                    Your reservation has not started. Please try again.
+                  </p>
                 </div>
-              )}
+              ) : null}
+
+              {/* Pay Button opening the Muzobox Modal */}
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowPaymentModal(true)}
+                  className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-base font-bold text-white shadow-md transition hover:bg-blue-700 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
+                >
+                  <ShieldCheck className="h-5 w-5" />
+                  <span>
+                    Pay{" "}
+                    {formatBookingAmount(
+                      calculatePayableTotal(price ?? paymentData, {
+                        travelInsurance,
+                      }),
+                    )}
+                  </span>
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
 
               {/* Developer Test Mode Helper */}
               {process.env.NODE_ENV === "development" && (
-                <div className="border-t border-slate-100 pt-2">
+                <div className="border-t border-slate-100 pt-2 text-center">
                   <button
                     type="button"
                     onClick={handleSimulatePayment}
@@ -1090,6 +1062,77 @@ export function SplitTicketBookingModal({
                   >
                     ⚡ Simulate Payment & Start Fulfillment (Dev Mode)
                   </button>
+                </div>
+              )}
+
+              {/* Muzobox Payment Gateway Modal Dialog */}
+              {showPaymentModal && paymentData && (
+                <div
+                  className="backdrop-blur-xs fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/70 p-2 sm:p-4"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="muzobox-modal-title"
+                  onClick={() => setShowPaymentModal(false)}
+                >
+                  <div
+                    className="relative flex h-[90dvh] max-h-[660px] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50 px-4 py-3">
+                      <div className="flex items-center gap-2">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600 text-white">
+                          <ShieldCheck className="h-4 w-4" />
+                        </div>
+                        <div>
+                          <h4
+                            id="muzobox-modal-title"
+                            className="text-sm font-bold text-slate-900"
+                          >
+                            Complete Payment
+                          </h4>
+                          <p className="text-[11px] text-slate-500">
+                            Ref: {paymentData.bookingRef}
+                          </p>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        aria-label="Close payment modal"
+                        onClick={() => setShowPaymentModal(false)}
+                        className="flex h-8 w-8 items-center justify-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
+                      >
+                        <X className="h-5 w-5" />
+                      </button>
+                    </div>
+
+                    <div className="flex-1 overflow-y-auto">
+                      {paymentFailed ? (
+                        <div className="p-6 text-center">
+                          <p
+                            role="alert"
+                            className="rounded-xl bg-red-50 p-4 text-sm text-red-700"
+                          >
+                            Payment failed. Please try again.
+                          </p>
+                        </div>
+                      ) : (
+                        <MuzoboxPaymentFrame
+                          payUrl={paymentData.payUrl}
+                          onPaymentComplete={() => {
+                            setShowPaymentModal(false);
+                            void pollStatus();
+                          }}
+                        />
+                      )}
+                    </div>
+
+                    {!paymentFailed && (
+                      <div className="flex items-center justify-center gap-2 border-t border-slate-100 bg-slate-50 px-4 py-2.5 text-xs text-slate-500">
+                        <Loader2 className="h-3.5 w-3.5 animate-spin text-blue-600" />
+                        <span>Waiting for payment confirmation...</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
