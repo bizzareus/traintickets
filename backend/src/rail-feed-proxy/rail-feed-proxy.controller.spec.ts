@@ -55,5 +55,46 @@ describe('RailFeedProxyController', () => {
         expect(response.detail).toBeUndefined();
       }
     });
+
+    it('should filter out unauthorized query parameters', async () => {
+      const fetchSpy = jest
+        .spyOn(fetchWithTimeoutModule, 'fetchWithTimeout')
+        .mockResolvedValue({
+          status: 200,
+          headers: new Headers({ 'content-type': 'application/json' }),
+        } as any);
+
+      jest
+        .spyOn(fetchWithTimeoutModule, 'readResponseText')
+        .mockResolvedValue('{"status": "ok"}');
+
+      const mockReq = {
+        query: {
+          trainNo: '12345',
+          unauthorizedParam: 'maliciousValue',
+          adminOverride: 'true',
+          dateOfJourney: '2027-10-01',
+        },
+        once: jest.fn(),
+        off: jest.fn(),
+      } as any;
+
+      const mockRes = {
+        once: jest.fn(),
+        off: jest.fn(),
+        status: jest.fn().mockReturnThis(),
+        send: jest.fn(),
+        setHeader: jest.fn(),
+      } as any;
+
+      await controller.proxyAvailability(mockReq, mockRes);
+
+      expect(fetchSpy).toHaveBeenCalledTimes(1);
+      const targetUrl = fetchSpy.mock.calls[0][0] as string;
+      expect(targetUrl).toContain('trainNo=12345');
+      expect(targetUrl).toContain('dateOfJourney=2027-10-01');
+      expect(targetUrl).not.toContain('unauthorizedParam');
+      expect(targetUrl).not.toContain('adminOverride');
+    });
   });
 });
