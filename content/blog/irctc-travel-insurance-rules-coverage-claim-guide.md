@@ -1,121 +1,194 @@
 ---
-title: "IRCTC Travel Insurance: Rules, Coverage & Nominee Guide"
-description: "A complete guide to IRCTC travel insurance. Learn about rules, coverage up to 10 lakhs, ₹0.45 premium, nominee details, and claim process in Indian Railways."
+title: "IRCTC Travel Insurance: Rules, Coverage & Claim Guide (2026)"
+description: "Learn IRCTC travel insurance rules, 45-paise premium, ₹10 lakh coverage, nominee update, claim steps, and the Supreme Court mandate covering counter tickets."
 date: "2026-06-29"
-updated: "2026-07-14"
+updated: "2026-10-21"
 tags:
   - train booking
   - irctc
   - travel insurance
   - nominee details
+  - railway rules
 ---
 
 ## TL;DR
 
-Indian Railways offers an optional travel insurance scheme on e-tickets for a tiny premium of ₹0.45 per passenger. It covers accidental death and permanent disability up to ₹10,00,000 (10 Lakhs). However, you must fill out the nominee details via the provider's link after booking, or your family will face extreme legal delays trying to claim it.
+Indian Railways provides optional train travel insurance for a flat premium of ₹0.45 per passenger, covering accidental death and permanent total disability up to ₹10,00,000 (10 Lakhs). Following a landmark Supreme Court directive with a deadline of October 27, 2026, Indian Railways must extend identical insurance protection to physical station counter tickets. To secure payouts, you must register your nominee details through the assigned insurer's link received post-booking, or your legal heirs face tedious succession court delays during claim settlement.
 
 ---
 
-## What is IRCTC Travel Insurance and How Does It Work?
-
-**IRCTC travel insurance is a voluntary protection plan for train passengers booking tickets online. It guards against accidental injury, disability, or death during a rail journey. Available only to Indian citizens booking e-tickets on the official site or app, the policy covers you from the moment you board until you finalise deboarding at your destination.**
-
-This insurance isn't available for counter tickets bought at stations, and foreign tourists can't opt into it. The system assigns your insurer randomly when you purchase the ticket. Usually, this is a partner firm like SBI General Insurance or Liberty General Insurance.
-
-The policy applies to the entire journey. This includes time spent on the train during scheduled halts at stations along the route. It covers mishaps like collisions or derailments under Section 124 of the Railways Act. It won't cover self-inflicted harm or accidents that happen outside the railway station area.
-
----
-
-## What is the Cost of Indian Railways Travel Insurance?
-
-**The price of IRCTC train travel insurance is nominal, sitting at just ₹0.45 per passenger including taxes. This premium applies uniformly to all travel classes, whether you book a simple Sleeper ticket or a luxury First AC berth. The premium is non-refundable, even if you decide to cancel the ticket later.**
-
-When you choose the insurance, the system adds the 45-paise charge to your total fare. Since the cost is negligible, choosing it is a sensible choice.
-
-The pricing rules are straightforward:
-
-- **Flat Rate:** You pay exactly ₹0.45 whether you travel in third AC, sleeper class, or an executive chair car.
-- **Whole PNR Coverage:** Opting in applies the insurance to every traveler listed under that PNR, except for infants under five who travel without a separate berth.
-- **No Cancellation Refunds:** Canceling your ticket won't return the 45-paise premium, as it goes straight to the insurer.
+> ### Unconfirmed Ticket? Discover Available Seats Before Your Trip
+>
+> When direct train bookings show Waitlist (WL) or Regret, LastBerth searches alternate contiguous segments on the same train to find confirmed seats.
+>
+> **High-Demand Corridor Route Search:**
+>
+> - [New Delhi ➔ Patna Junction Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
+> - [Mumbai Central ➔ New Delhi Rajdhani Route](/?from=MMCT&to=NDLS&fromName=Mumbai%20Central&toName=New%20Delhi)
+> - [KSR Bengaluru ➔ MGR Chennai Central Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central)
+> - [Howrah Junction ➔ Puri Superfast Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri)
+> - [Check Live Vacant Berths on Running Trains](/chart-vacancy)
 
 ---
 
-## How Do You Fill Nominee Details for IRCTC Travel Insurance?
+## What is IRCTC Travel Insurance and What Does It Cover?
 
-**To fill nominee details, open the registration link sent by the insurance provider via SMS or email after your booking is confirmed. Fill in the nominee's name, age, relationship, and contact address on their online portal. Completing this step is vital to prevent frustrating legal delays for your family later.**
+**IRCTC travel insurance is a government-regulated passenger protection scheme offering up to ₹10,00,000 coverage against accidental death and permanent disability during train travel. Costing a uniform ₹0.45 per passenger including taxes, coverage activates upon boarding your train and protects you throughout the journey until you complete deboarding at your destination station.**
 
-Many travelers select the insurance checkbox on IRCTC but forget this next step. If you leave the nominee fields blank, the insurer cannot pay out claims easily. Instead, your family would have to secure a Succession Certificate from a civil court, which is a slow and costly legal process.
+The policy is underwritten by public and private general insurance partners appointed by IRCTC, typically SBI General Insurance, Liberty General Insurance, or ICICI Lombard. The system assigns an insurer automatically at the moment of ticket issuance.
 
-After booking:
+Under Section 123, Section 124, and Section 124A of the Railways Act 1989, coverage extends to train accidents, derailments, collisions, accidental falls from moving trains, terrorist violence, armed robbery, and riots occurring within railway jurisdiction. The policy does not cover self-inflicted injuries, criminal offenses, suicide attempts, intoxication, or injuries sustained outside designated station platform premises.
 
-1. Check your inbox or texts for a message from the assigned insurer (like SBI General or Liberty General).
-2. Click the unique portal link provided.
-3. Input your PNR and fill in the nominee details.
-4. Download the policy certificate for safekeeping.
+Coverage applies uniformly across all travel classes, from unreserved coaches and Sleeper class to 3AC, 2AC, and First AC. The insurance covers all passengers listed under the confirmed or RAC PNR who are Indian citizens, excluding infants under five years of age who travel without a reserved seat.
 
 ---
 
-## What is Covered Under IRCTC Travel Insurance Policies?
+## Does the Supreme Court Mandate Travel Insurance for Counter Tickets?
 
-**The travel insurance policy offers financial compensation up to ₹10,00,000 (10 Lakhs) for death or permanent total disability resulting from train accidents. Insured passengers receive up to ₹7,50,000 (7.5 Lakhs) for permanent partial disability, up to ₹2,00,000 (2 Lakhs) for emergency hospitalization expenses, and ₹10,000 for transporting mortal remains.**
+**The Supreme Court of India mandated that Indian Railways provide offline counter ticket passengers identical travel insurance coverage to online e-ticket holders, establishing a strict compliance deadline of October 27, 2026. A bench of Justices Ahsanuddin Amanullah and R. Mahadevan ruled that denying insurance to counter buyers unjustly penalizes underprivileged commuters.**
 
-The railway board fixes these compensation limits. They aim to provide maximum security to families for less than half a rupee.
+Historically, the 45-paise voluntary insurance facility was restricted entirely to passengers booking electronic tickets on the IRCTC website and mobile app. Millions of daily commuters, daily wage earners, and rural travelers purchasing physical tickets at passenger reservation system (PRS) counter windows were excluded from financial accident protection.
 
-| Coverage Category                | Maximum Payout (INR) | Primary Recipient     |
-| :------------------------------- | :------------------- | :-------------------- |
-| **Accidental Death**             | ₹10,00,000           | Nominee or Legal Heir |
-| **Permanent Total Disability**   | ₹10,00,000           | Insured Passenger     |
-| **Permanent Partial Disability** | ₹7,50,000            | Insured Passenger     |
-| **Hospitalization for Injury**   | ₹2,00,000            | Hospital or Passenger |
-| **Transportation of Remains**    | ₹10,000              | Family Representative |
+The Supreme Court bench warned that the Railway Board carries personal and legal accountability for ensuring implementation by October 27, 2026. Following this directive, Indian Railways is updating PRS counter terminal software to allow ticket clerks to collect the 45-paise premium and print policy tracking numbers directly on physical counter reservation forms.
+
+Passengers booking at station counters should verify that the insurance opt-in indicator appears on their printed ticket slip. The ticket slip displays the assigned insurer name and policy reference number required to file accident compensation claims.
 
 ---
 
-## How Do You Claim IRCTC Train Travel Insurance?
+## What are the IRCTC Travel Insurance Compensation Slabs and Benefits?
 
-**To claim the insurance, submit a completed claim form and supporting documents directly to the assigned insurance company within 4 months (120 days) of the accident. You must provide the train ticket, PNR, a government photo ID, medical records, and a certificate from the railway authorities verifying the accident.**
+**IRCTC travel insurance provides four distinct compensation slabs: ₹10,00,000 for accidental death, ₹10,00,000 for permanent total disability, ₹7,50,000 for permanent partial disability, and up to ₹2,00,000 for emergency medical hospitalization expenses. Insurers also disburse a separate ₹10,00,000 payout for fatal railway collisions, alongside ₹10,000 for transporting mortal remains.**
 
-Do not reach out to IRCTC or the local station master for payouts. The transaction is strictly between you and the specific insurance firm.
+These compensation amounts are statutory entitlements determined by the Ministry of Railways and apply independently of any ex-gratia relief declared by state governments or central railway authorities.
 
-Here is the standard claim workflow:
+| Coverage Category | Maximum Financial Benefit (INR) | Primary Beneficiary | Qualifying Condition |
+| :--- | :--- | :--- | :--- |
+| **Accidental Death** | ₹10,00,000 (10 Lakhs) | Registered Nominee or Legal Heir | Death within 12 calendar months of train accident |
+| **Permanent Total Disability (PTD)** | ₹10,00,000 (10 Lakhs) | Insured Train Passenger | Irrevocable loss of both eyes, two limbs, or paralysis |
+| **Permanent Partial Disability (PPD)** | ₹7,50,000 (7.5 Lakhs) | Insured Train Passenger | Irrevocable loss of one eye, one limb, or partial hearing |
+| **Medical Hospitalization Expenses** | Up to ₹2,00,000 (2 Lakhs) | Hospital or Injured Passenger | Direct in-patient treatment costs following rail mishap |
+| **Transportation of Mortal Remains** | ₹10,000 (Ten Thousand) | Family Representative | Actual funeral carriage expenses to home destination |
 
-1. Locate the insurance provider name from your ticket confirmation text or email.
-2. Get the claim form from that insurer's website.
-3. Collect the necessary evidence: a TTE or station master certificate confirming the incident, hospital discharge bills, and a police FIR if applicable.
-4. Send the paperwork to the insurer's claims department within 120 days.
+Medical hospitalization coverage reimburses in-patient treatment, surgery, intensive care, medications, and medical diagnostic scans incurred within 12 months from the accident date. This payout is payable directly to treating medical centers or as reimbursement to the passenger.
 
----
-
-## Does Travel Insurance Cover Waitlisted (WL) or RAC Tickets?
-
-**Yes, the insurance covers waitlisted and RAC tickets, but the coverage only activates if you travel on a confirmed or RAC seat. WL full form is Waiting List. Fully waitlisted e-tickets get cancelled automatically. If your ticket progresses from WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed, the policy protects you upon boarding.**
-
-For example, starting at a queue position like `WL/10` and moving to `WL/1` by chart preparation means you are still waitlisted. If it never confirms, the ticket is auto-cancelled and refunded. The ₹0.45 premium isn't returned, but the coverage never becomes active.
-
-Conversely, if you buy a **current available ticket**—which is a **fully confirmed seat** with coach and berth numbers that opens 8 hours before departure and closes 30 minutes before—the insurance goes into effect immediately when you board.
-
-If you are dealing with tricky waitlists, digital platforms make finding alternatives simple. You can use [LastBerth](/) to run a [PNR status](/) check to see confirmation probability and find better routes. If everything is full, the [Finding Smart Seats](/) tool helps you book across multiple segments, while the [Get Confirmed Tickets](/) shows vacant berths on running trains.
+Permanent total disability requires clinical certification from a government Chief Medical Officer (CMO) or civil surgeon confirming that the passenger cannot engage in any gainful employment. Permanent partial disability compensates 50% to 75% of the capital sum based on the medical impairment evaluation chart published in the policy schedule.
 
 ---
 
-## Frequently Asked Questions (FAQ)
+## How Do You Add and Update Nominee Details in IRCTC Travel Insurance?
 
-### What does WL stand for in Indian Railways?
+**To add nominee details, open the registration link delivered by your assigned insurance provider via SMS or email immediately following ticket confirmation. Enter your 10-digit PNR number, nominee full name, age, relationship, and residential address into the insurer's portal, then download your policy certificate for your records.**
 
-WL full form is Waiting List. It means you don't have a confirmed seat yet and must wait in a queue for other passengers to cancel.
+Selecting the travel insurance checkbox during IRCTC booking reserves your policy, but your booking is not fully protected until you designate a legal nominee. If you fail to submit nominee details, the insurance remains technically valid, but claim disbursal requires a legal Succession Certificate issued by a civil court under Section 372 of the Indian Succession Act 1925.
 
-### Is IRCTC travel insurance mandatory?
+Follow this standard procedure after booking your ticket:
 
-No, it is optional. You can easily opt out by unchecking the insurance box before paying for your ticket on IRCTC.
+1. **Locate the Confirmation Notification:** Within 15 minutes of booking, check the registered mobile number and email account for an SMS from SBI General, Liberty General, or ICICI Lombard.
+2. **Access the Insurance Verification Portal:** Click the dedicated web link provided in the message. Avoid third-party portals or unofficial search links.
+3. **Verify Your Travel Credentials:** Input your 10-digit IRCTC PNR number and registered contact mobile number to retrieve your travel itinerary.
+4. **Input Beneficiary Data:** Enter the nominee's full name matching their Aadhaar card, their relationship to you (spouse, child, parent, sibling), date of birth, and permanent address.
+5. **Appoint an Appointee for Minors:** If designating a minor child under 18 years of age, input the name and contact details of an adult appointee.
+6. **Save Your Policy Schedule:** Click submit and download the electronic policy document displaying your unique Certificate of Insurance (COI) number.
 
-### Can a foreign citizen buy IRCTC travel insurance?
+If you misplace the SMS link, visit the official website of the insurer assigned to your ticket, navigate to their Railway Insurance Nominee page, and search using your PNR number and journey date.
 
-No. The travel insurance scheme offered on the IRCTC portal is strictly for Indian citizens. Foreign nationals booking tickets are not eligible for this cover.
+---
 
-### What happens if I forget to fill in the nominee details?
+## How Do You File an IRCTC Travel Insurance Claim Step-by-Step?
 
-The insurance stays valid, but claim processing becomes very complex. Your family will have to produce a Succession Certificate from a civil court before the insurer releases the payout.
+**To file an IRCTC travel insurance claim, submit a signed claim form along with hospital records, police incident reports, and railway administrative certificates to the assigned insurer within 120 calendar days of the accident. Claims are processed directly by the insurance underwriter, not local railway station managers or IRCTC.**
 
-### Is the travel insurance premium refunded if the train is cancelled?
+Do not submit medical bills or death compensation applications to station superintendents or ticket counters. Indian Railways merely serves as an intermediary platform; financial claims are evaluated and settled by the underwriter's claims department.
 
-If the railways cancel the train, you get a full refund for the ticket, but the ₹0.45 insurance premium is generally non-refundable.
+### Mandatory Documents Required for Insurance Settlement
+
+| Claim Classification | Mandatory Documentary Proof Required | Submission Deadline |
+| :--- | :--- | :--- |
+| **Accidental Death** | Original death certificate, railway police panchnama or FIR, post-mortem report, photo ID of nominee, certified train ticket with PNR, DRM railway accident certificate | Within 120 days of death |
+| **Disability (PTD / PPD)** | Government hospital disability certificate from CMO, original admission records, X-ray/MRI reports, certified train ticket, station master accident memo | Within 120 days of accident |
+| **Medical Expenses** | Original hospital discharge summary, pharmacy invoices, prescription slips, medical bills, physician fitness report, proof of train travel | Within 120 days of discharge |
+
+### Five-Step Insurance Claim Workflow
+
+1. **Obtain Official Railway Verification:** Secure an accident certificate or written memo from the Divisional Railway Manager (DRM), Station Master, or on-duty Train Superintendent (TTE) confirming your presence aboard the affected service.
+2. **Assemble Medical and Police Documentation:** Collect attested copies of the police First Information Report (FIR), hospital discharge summaries, investigation reports, and doctor attestations.
+3. **Download the Specific Claim Form:** Retrieve the official Indian Railways travel insurance claim form from SBI General, Liberty General, or ICICI Lombard online portals.
+4. **Complete Claim Details:** Fill in passenger details, injury descriptions, hospital admission dates, bank account information, and NEFT details for electronic payout.
+5. **Dispatch Dossier via Registered Post:** Mail the attested dossier to the insurer's designated railway claims management office within 120 days. Retain photocopies and postal tracking slips.
+
+Insurers must acknowledge receipt within 72 hours and finalize eligible claim disbursements within 30 business days following the receipt of complete documentation.
+
+---
+
+## Does Travel Insurance Cover Waitlisted (WL), RAC, and Current Availability Tickets?
+
+**IRCTC travel insurance covers waitlisted and RAC tickets only when the passenger is legally permitted to board the train with confirmed or RAC status. WL full form is Waiting List. Fully waitlisted online e-tickets auto-cancel after chart preparation, rendering the insurance void without refund of the ₹0.45 premium.**
+
+Understanding how your ticket status interacts with travel insurance protects you from unexpected legal penalties and coverage exclusions:
+
+- **Waiting List Progression:** Waitlisted tickets follow a structured confirmation hierarchy: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. If your ticket starts at `WL/42` and only advances to `WL/5` by chart preparation, your e-ticket is cancelled by the PRS system. You cannot travel on this ticket, and insurance coverage never takes effect.
+- **RAC Seat Holders:** Passengers holding confirmed RAC berths share side-lower seating and possess a legal right to travel. The policy covers RAC passengers from initial boarding to destination arrival.
+- **Current Availability Tickets (`CURR_AVBL`):** Tickets booked under **Current Availability** are **100% fully confirmed seats** with allocated coaches and berths. These tickets open for booking after initial chart preparation (~8 hours prior to train departure for daytime trains) and remain available until 30 minutes before departure. Current availability tickets receive instant, full insurance coverage at the standard 45-paise rate.
+- **Section 138 Penalty Warning:** Under the Jan Vishwas Act 2026, boarding a reserved Sleeper or AC coach with a cancelled e-ticket or unreserved ticket attracts a flat **₹500 penalty** plus fare difference under Section 138. Passengers boarding illegally without an active reservation forfeit all travel insurance rights.
+- **Night Maintenance Offline Window:** IRCTC servers undergo mandatory maintenance daily from **11:45 PM to 12:20 AM IST (23:45 to 00:20)**. You cannot buy insurance, update nominee information, or download policy certificates during these 35 minutes.
+
+---
+
+## Discover Confirmed Travel Alternatives with LastBerth
+
+When your preferred train shows high waitlists or Regret status, relying on last-minute RAC confirmation creates unnecessary travel stress. LastBerth provides smart search utilities that uncover alternative booking options across Indian Railways networks:
+
+1. **[Smart Contiguous Segment Seat Finder](/)**: Instead of getting stuck on an end-to-end waitlist, LastBerth evaluates whether seats are available on separate legs of the same train. You stay on the same train while switching seats at an intermediate junction.
+2. **[Live Chart Vacancy Map](/chart-vacancy)**: View graphical, coach-by-coach vacant seat layouts published after chart preparation (~4 hours before departure) to book unreserved berths without Tatkal surcharges.
+3. **[Chart Preparation Times and Schedules](/chart-times)**: Look up verified historical chart finalization timings for specific trains to know exactly when Current Availability seats open.
+4. **[Seat Status Journey Lookup](/seat-status)**: Check running train berth occupancies station-by-station to identify berths vacating mid-route.
+
+---
+
+## Common Booking Questions (FAQ)
+
+### What is the IRCTC travel insurance premium in 2026?
+
+The IRCTC travel insurance premium is ₹0.45 per passenger, which includes all applicable Goods and Services Tax (GST). This flat fee applies uniformly across all train travel classes, including Sleeper, 3AC, 2AC, First AC, and Executive Chair Car.
+
+### Is travel insurance mandatory on Indian Railways train tickets?
+
+No, travel insurance is voluntary. During ticket booking on the IRCTC website or app, you can choose whether to opt in. However, opting in is strongly recommended because 45 paise provides up to ₹10,00,000 in accident protection.
+
+### Can foreign tourists or NRI passengers buy IRCTC travel insurance?
+
+No, the IRCTC 45-paise travel insurance scheme is available exclusively to Indian citizens. Foreign tourists, Overseas Citizens of India (OCI), and Non-Resident Indians (NRIs) travelling on foreign passports cannot opt into this policy and must rely on private international travel insurance.
+
+### What happens if I forget to update nominee details after booking?
+
+If you do not register nominee details, your policy remains valid, but claim settlement becomes complicated. In the event of death, your family must obtain a formal Succession Certificate from a civil court to claim payouts, which takes several months.
+
+### Are passengers holding physical PRS counter tickets covered by insurance?
+
+Under the landmark Supreme Court ruling with an implementation deadline of October 27, 2026, Indian Railways must offer identical 45-paise travel insurance coverage to physical PRS counter ticket buyers. Check your printed counter ticket slip for the insurance opt-in indicator and policy reference number.
+
+### Is the 45-paise travel insurance fee refunded if my train is cancelled?
+
+No, the ₹0.45 travel insurance premium is non-refundable under all circumstances, even if Indian Railways cancels the train or you cancel your ticket voluntarily. The premium transfers immediately to the third-party insurance underwriter upon policy generation.
+
+### Does IRCTC travel insurance cover untoward incidents like stone pelting or terrorist acts?
+
+Yes, the policy covers injuries or death resulting from violent untoward incidents defined under Section 124A of the Railways Act 1989. This includes terrorist attacks, bomb blasts, armed robberies, riots, shootouts, and violent civil disturbances occurring on trains or station platforms.
+
+### What is the time limit to file an IRCTC train accident insurance claim?
+
+All insurance claims, accompanied by complete supporting medical bills, police reports, and railway certificates, must reach the assigned insurance company within 120 calendar days (4 months) from the date of the railway accident.
+
+### Does travel insurance cover luggage theft or lost baggage during the journey?
+
+No, IRCTC travel insurance covers only bodily injury, permanent disability, medical hospitalization, and death resulting from rail accidents. It does not provide coverage for stolen baggage, lost personal property, delayed train schedules, or missed connecting trains.
+
+### Can a waitlisted passenger travel in Sleeper coach with travel insurance?
+
+No, passengers holding waitlisted online e-tickets cannot board reserved Sleeper or AC coaches because their tickets automatically cancel upon chart preparation. Boarding with a waitlisted ticket incurs a ₹500 Section 138 fine, and travel insurance coverage does not activate.
+
+---
+
+## Bottom line
+
+IRCTC travel insurance offers valuable passenger protection for just ₹0.45, providing up to ₹10 lakh in financial support when rail accidents occur. With the Supreme Court mandating equal coverage for counter tickets by October 27, 2026, millions of offline commuters now gain access to identical benefits. Complete your nominee registration immediately after booking, and when facing waitlists, use [LastBerth Smart Seats](/) to find confirmed seats instead of risking unreserved travel.
