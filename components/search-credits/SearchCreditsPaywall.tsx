@@ -117,7 +117,7 @@ export function SearchCreditsPaywall({
 
   const paidBalance = exhaustion?.paidBalance ?? balance?.paidBalance ?? 0;
   const authenticated = balance?.authenticated ?? false;
-  const loginHref = `/auth/login?connection=sms&returnTo=${encodeURIComponent(pathname ?? "/")}`;
+  const loginHref = `/auth/login?returnTo=${encodeURIComponent(pathname ?? "/")}`;
 
   return (
     <div
@@ -150,10 +150,9 @@ export function SearchCreditsPaywall({
           <p className="text-sm text-gray-600">
             Get{" "}
             <span className="font-semibold text-gray-900">
-              {CREDIT_PACK_QUANTITY} search credits for ₹{CREDIT_PACK_PRICE_INR}
+              {CREDIT_PACK_QUANTITY} train searches for ₹{CREDIT_PACK_PRICE_INR}
             </span>{" "}
-            (introductory price). Credits never expire — buy another pack when
-            they run out. No automatic billing.
+            . Credits never expire — buy another pack when they run out.
           </p>
 
           {paidBalance > 0 && (
@@ -170,7 +169,7 @@ export function SearchCreditsPaywall({
                   href={loginHref}
                   className="block w-full rounded-xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-blue-700"
                 >
-                  Continue with mobile number (OTP)
+                  Buy Now
                 </a>
               ) : (
                 <>
@@ -200,10 +199,6 @@ export function SearchCreditsPaywall({
                   </button>
                 </>
               )}
-              <p className="text-xs text-gray-500">
-                Signed in on another device? Sign in with the same mobile
-                number to use your credits there.
-              </p>
             </>
           )}
 
@@ -211,13 +206,14 @@ export function SearchCreditsPaywall({
             <MuzoboxPaymentFrame
               payUrl={payUrl}
               onPaymentComplete={() => {
-                if (purchaseRef) void verifyPurchase(purchaseRef).then((s) => {
-                  if (s.status === "PAID") {
-                    stopPolling();
-                    setPhase("done");
-                    onUnlocked();
-                  }
-                });
+                if (purchaseRef)
+                  void verifyPurchase(purchaseRef).then((s) => {
+                    if (s.status === "PAID") {
+                      stopPolling();
+                      setPhase("done");
+                      onUnlocked();
+                    }
+                  });
               }}
             />
           )}
@@ -243,14 +239,15 @@ export function SearchCreditsPaywall({
           {error && phase !== "error" && (
             <p className="text-sm text-red-600">{error}</p>
           )}
-
-          <button
-            type="button"
-            onClick={handleClose}
-            className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
-            {phase === "done" ? "Start searching" : "Not now"}
-          </button>
+          {phase === "done" && (
+            <button
+              type="button"
+              onClick={handleClose}
+              className="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
+              Start searching
+            </button>
+          )}
         </div>
       </div>
     </div>
