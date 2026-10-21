@@ -19,6 +19,22 @@ import {
   readResponseText,
 } from '../common/fetch-with-timeout';
 
+const ALLOWED_QUERY_PARAMS = new Set([
+  'trainNo',
+  'trainNumber',
+  'dateOfJourney',
+  'sourceStation',
+  'destinationStation',
+  'srcStn',
+  'destStn',
+  'fromStationCode',
+  'toStationCode',
+  'quota',
+  'class',
+  'enquiryType',
+  'concession',
+]);
+
 /**
  * GET proxy: forwards query params to upstream availability POST (empty body).
  */
@@ -35,8 +51,11 @@ export class RailFeedProxyController {
     const qs = new URLSearchParams();
     const src = req.query as Record<string, string | string[] | undefined>;
     for (const [key, value] of Object.entries(src)) {
-      if (value === undefined) continue;
-      qs.set(key, Array.isArray(value) ? value[0] : value);
+      if (value === undefined || !ALLOWED_QUERY_PARAMS.has(key)) continue;
+      const strVal = Array.isArray(value) ? value[0] : value;
+      if (typeof strVal === 'string') {
+        qs.set(key, strVal.trim());
+      }
     }
 
     const dateOfJourney = qs.get('dateOfJourney');
