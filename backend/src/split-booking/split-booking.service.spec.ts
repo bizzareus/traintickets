@@ -301,8 +301,9 @@ describe('SplitBookingService', () => {
         totalFare: 810,
         irctcServiceFee: 70.8,
         serviceFee: 80,
-        paymentGatewayFee: 28.82,
-        amount: 990,
+        paymentGatewayFee: 0,
+        travelInsuranceFee: 0.45,
+        amount: 961,
       });
       expect(result.bookingRef).toBeDefined();
       expect(result.payUrl).toBe('https://muzobox.com/pay/mb_test');
@@ -422,8 +423,9 @@ describe('SplitBookingService', () => {
         totalFare: 1110,
         irctcServiceFee: 106.2,
         serviceFee: 120,
-        paymentGatewayFee: 40.09,
-        amount: 1376,
+        paymentGatewayFee: 0,
+        travelInsuranceFee: 0.45,
+        amount: 1337,
       });
       expect(prisma.splitTicketBooking.create).not.toHaveBeenCalled();
       expect(muzobox.post).not.toHaveBeenCalled();
@@ -445,13 +447,14 @@ describe('SplitBookingService', () => {
           totalFare: 1110,
           irctcServiceFee: 106.2,
           serviceFee: 120,
-          paymentGatewayFee: 40.09,
-          amount: 1376,
+          paymentGatewayFee: 0,
+          travelInsuranceFee: 0.45,
+          amount: 1337,
         });
         expect(Number.isInteger(result.amount)).toBe(true);
         expect(muzobox.post).toHaveBeenCalledWith(
           'proxy-payments/create-link',
-          expect.objectContaining({ amount: 1376 }),
+          expect.objectContaining({ amount: 1337 }),
           { headers: { 'x-api-key': 'test-key' } },
         );
         const [created] = prisma.splitTicketBooking.create.mock.calls[0] as [
@@ -463,7 +466,7 @@ describe('SplitBookingService', () => {
           totalFare: 1110,
           serviceFee: 120,
           irctcServiceFeePaise: 10620,
-          paymentGatewayFeePaise: 4009,
+          paymentGatewayFeePaise: 0,
           legsPayload: request.legs,
         });
       },
@@ -474,7 +477,7 @@ describe('SplitBookingService', () => {
       expect(muzobox.post).toHaveBeenCalledWith(
         'proxy-payments/create-link',
         expect.objectContaining({
-          amount: 1376,
+          amount: 1337,
           referenceId: result.bookingRef,
           redirectUri: `split-booking/payment-complete?ref=${result.bookingRef}`,
           callbackUrl:
@@ -581,20 +584,21 @@ describe('SplitBookingService', () => {
       const untampered = await service.createBooking(tampered);
       expect(untampered).toMatchObject({
         serviceFee: 120,
-        amount: 1376,
+        amount: 1337,
       });
       expect(Number.isInteger(untampered.amount)).toBe(true);
     });
 
-    it('calculates 3% gateway fees on fare plus both service charges', async () => {
+    it('does not calculate gateway fees when paymentGatewayPercent is 0', async () => {
       expect(
         await service.createBooking({ ...request, totalFare: 11100 }),
       ).toMatchObject({
         totalFare: 11100,
         irctcServiceFee: 106.2,
         serviceFee: 120,
-        paymentGatewayFee: 339.79,
-        amount: 11666,
+        paymentGatewayFee: 0,
+        travelInsuranceFee: 0.45,
+        amount: 11327,
       });
     });
 
@@ -606,7 +610,7 @@ describe('SplitBookingService', () => {
         ).toMatchObject({
           totalFare: 1110,
           serviceFee: 120,
-          amount: 1376,
+          amount: 1337,
         });
       } finally {
         config.set('SPLIT_BOOKING_SERVICE_FEE_RATE', undefined);

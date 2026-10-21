@@ -61,6 +61,7 @@ export interface SplitBookingPrice {
 export async function fetchSplitBookingQuote(payload: {
   totalFare: number;
   legs: Array<Pick<SplitBookingLeg, "travelClass">>;
+  travelInsurance?: boolean;
 }): Promise<SplitBookingPrice> {
   const res = await apiClient.post<SplitBookingPrice>(
     "/api/split-booking/quote",

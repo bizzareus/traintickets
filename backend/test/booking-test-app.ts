@@ -20,36 +20,58 @@ import type { SplitBookingQuoteDto } from '../src/split-booking/split-booking.dt
 export async function createBookingTestApp(
   service?: Partial<SplitBookingService>,
 ): Promise<INestApplication<Server>> {
+  const defaultService = {
+    quoteBooking({ totalFare, legs, travelInsurance }: SplitBookingQuoteDto) {
+      try {
+        return bookingPrice(
+          calculateBookingCharges(totalFare, legs, { travelInsurance }),
+        );
+      } catch (error: unknown) {
+        throw new BadRequestException((error as Error).message);
+      }
+    },
+    createBooking(dto: CreateSplitBookingDto) {
+      try {
+        validateBookingItinerary(dto);
+        return {
+          bookingRef: 'LB-TEST',
+          bookingMode: 'AI',
+          ...bookingPrice(
+            calculateBookingCharges(dto.totalFare, dto.legs, {
+              travelInsurance: dto.travelInsurance,
+            }),
+          ),
+          payUrl: 'https://muzobox.com/pay/mb_test?source=reservation',
+        };
+      } catch (error: unknown) {
+        throw new BadRequestException((error as Error).message);
+      }
+    },
+  };
+
+  // If service is provided, delegate to service first; fall back to defaultService
+  const serviceValue = service
+    ? new Proxy(service, {
+        get(target: Record<string | symbol, unknown>, prop, receiver) {
+          const val: unknown = Reflect.get(target, prop, receiver);
+          if (val !== undefined) {
+            return typeof val === 'function'
+              ? ((val as (...args: unknown[]) => unknown).bind(target) as (
+                  ...args: unknown[]
+                ) => unknown)
+              : val;
+          }
+          return Reflect.get(defaultService, prop) as unknown;
+        },
+      })
+    : defaultService;
+
   const module = await Test.createTestingModule({
     controllers: [SplitBookingController],
     providers: [
       {
         provide: SplitBookingService,
-        useValue: {
-          quoteBooking({ totalFare, legs }: SplitBookingQuoteDto) {
-            try {
-              return bookingPrice(calculateBookingCharges(totalFare, legs));
-            } catch (error: unknown) {
-              throw new BadRequestException((error as Error).message);
-            }
-          },
-          createBooking(dto: CreateSplitBookingDto) {
-            try {
-              validateBookingItinerary(dto);
-              return {
-                bookingRef: 'LB-TEST',
-                bookingMode: 'AI',
-                ...bookingPrice(
-                  calculateBookingCharges(dto.totalFare, dto.legs),
-                ),
-                payUrl: 'https://muzobox.com/pay/mb_test?source=reservation',
-              };
-            } catch (error: unknown) {
-              throw new BadRequestException((error as Error).message);
-            }
-          },
-          ...service,
-        },
+        useValue: serviceValue,
       },
       { provide: RazorpayClient, useValue: { webhookSecret: 'test-only' } },
     ],

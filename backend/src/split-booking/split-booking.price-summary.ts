@@ -8,12 +8,18 @@ const currency = new Intl.NumberFormat('en-IN', {
 
 function priceItems(booking: StoredPrice): Array<[string, number]> {
   const price = bookingPrice(booking);
-  return [
+  const items: Array<[string, number]> = [
     ['Ticket Fare', price.totalFare],
     ['IRCTC Service Charge', price.irctcServiceFee],
     ['LastBerth Service Charge', price.serviceFee],
-    ['Payment Gateway Fees (3%)', price.paymentGatewayFee],
   ];
+  if (price.travelInsuranceFee && price.travelInsuranceFee > 0) {
+    items.push(['Travel Insurance', price.travelInsuranceFee]);
+  }
+  if (price.paymentGatewayFee && price.paymentGatewayFee > 0) {
+    items.push(['Payment Gateway Fees (3%)', price.paymentGatewayFee]);
+  }
+  return items;
 }
 
 export function bookingPriceText(booking: StoredPrice): string {

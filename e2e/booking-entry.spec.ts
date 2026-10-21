@@ -150,9 +150,10 @@ for (const scenario of [
         Math.round(
           (payload.totalFare +
             booking.state.checkout.serviceFee +
-            booking.state.checkout.irctcServiceFee) *
+            booking.state.checkout.irctcServiceFee +
+            (booking.state.checkout.travelInsuranceFee ?? 0)) *
             100 +
-            booking.state.checkout.paymentGatewayFee * 100,
+            (booking.state.checkout.paymentGatewayFee ?? 0) * 100,
         ) / 100,
       ),
     );

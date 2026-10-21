@@ -126,6 +126,10 @@ export class SplitBookingQuoteDto {
   @ValidateNested({ each: true })
   @Type(() => SplitBookingQuoteLegDto)
   legs!: SplitBookingQuoteLegDto[];
+
+  @IsOptional()
+  @IsBoolean()
+  travelInsurance?: boolean;
 }
 
 export class CreateSplitBookingDto {

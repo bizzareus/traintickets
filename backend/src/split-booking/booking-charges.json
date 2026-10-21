@@ -10,5 +10,6 @@
     "EC": 35.4
   },
   "lastBerthServiceChargePerLeg": 40,
-  "paymentGatewayPercent": 3
+  "paymentGatewayPercent": 0,
+  "travelInsuranceCharge": 0.45
 }

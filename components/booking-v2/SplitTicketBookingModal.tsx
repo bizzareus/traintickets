@@ -991,6 +991,14 @@ export function SplitTicketBookingModal({
                   <ShieldCheck className="h-3.5 w-3.5 text-blue-600" /> Secure
                   Instant Checkout
                 </span>
+                <h4 className="text-xl font-extrabold text-slate-900">
+                  Pay{" "}
+                  {formatBookingAmount(
+                    calculatePayableTotal(price ?? paymentData, {
+                      travelInsurance,
+                    }),
+                  )}
+                </h4>
               </div>
 
               {/* Journey Reference Header */}

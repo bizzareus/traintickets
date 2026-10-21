@@ -10,14 +10,14 @@ import {
 
 describe('Itemized booking pricing', () => {
   it.each([
-    [1120, ['2A'], 35.4, 40, 35.86, 1231],
-    [1120, ['SL'], 17.7, 40, 35.33, 1213],
-    [810, ['3A', '3A'], 70.8, 80, 28.82, 990],
-    [810, ['SL', '3A'], 53.1, 80, 28.29, 971],
-    [1110, ['3A', '3A', '3A'], 106.2, 120, 40.09, 1376],
+    [1120, ['2A'], 35.4, 40, 0, 0.45, 1196],
+    [1120, ['SL'], 17.7, 40, 0, 0.45, 1178],
+    [810, ['3A', '3A'], 70.8, 80, 0, 0.45, 961],
+    [810, ['SL', '3A'], 53.1, 80, 0, 0.45, 944],
+    [1110, ['3A', '3A', '3A'], 106.2, 120, 0, 0.45, 1337],
   ])(
     'prices fare ₹%s and classes %j with a whole-rupee total',
-    (fare, classes, irctc, service, gateway, total) => {
+    (fare, classes, irctc, service, gateway, insurance, total) => {
       const stored = calculateBookingCharges(
         fare,
         classes.map((travelClass) => ({ travelClass })),
@@ -28,6 +28,7 @@ describe('Itemized booking pricing', () => {
         irctcServiceFee: irctc,
         serviceFee: service,
         paymentGatewayFee: gateway,
+        travelInsuranceFee: insurance,
         amount: total,
       });
       // Muzobox rejects fractional rupee amounts: the chargeable total must
@@ -35,6 +36,21 @@ describe('Itemized booking pricing', () => {
       expect(Number.isInteger(price.amount)).toBe(true);
     },
   );
+
+  it('supports opting out of travel insurance', () => {
+    const stored = calculateBookingCharges(1120, [{ travelClass: '2A' }], {
+      travelInsurance: false,
+    });
+    const price = bookingPrice(stored);
+    expect(price).toEqual({
+      totalFare: 1120,
+      irctcServiceFee: 35.4,
+      serviceFee: 40,
+      paymentGatewayFee: 0,
+      travelInsuranceFee: 0,
+      amount: 1195,
+    });
+  });
 
   it.each(['SL', '2S', '1A', '2A', '3A', '3E', 'CC', 'EC'])(
     'supports the advertised %s class',
@@ -55,13 +71,13 @@ describe('Itemized booking pricing', () => {
     ).toThrow('Unsupported travel class');
   });
 
-  it('rounds the combined gateway fee once rather than rounding each leg', () => {
+  it('does not calculate gateway fee when paymentGatewayPercent is 0', () => {
     const saved = calculateBookingCharges(5, [
       { travelClass: 'SL' },
       { travelClass: 'SL' },
     ]);
-    expect(saved.paymentGatewayFeePaise).toBe(361);
-    expect(bookingAmountPaise(saved)).toBe(12401);
+    expect(saved.paymentGatewayFeePaise).toBe(0);
+    expect(bookingAmountPaise(saved)).toBe(12085);
   });
 
   it('rounds half rupees up to the next whole rupee', () => {
@@ -101,7 +117,7 @@ describe('Itemized booking pricing', () => {
     },
   );
 
-  it('includes the saved four-component breakdown in HTML and plain-text receipts', () => {
+  it('includes the itemized breakdown in HTML and plain-text receipts without gateway fees', () => {
     const saved = calculateBookingCharges(1120, [{ travelClass: '2A' }]);
     const html = bookingPriceHtml(saved);
     const text = bookingPriceText(saved);
@@ -109,11 +125,28 @@ describe('Itemized booking pricing', () => {
       'Ticket Fare',
       'IRCTC Service Charge',
       'LastBerth Service Charge',
-      'Payment Gateway Fees (3%)',
+      'Travel Insurance',
     ]) {
       expect(html).toContain(label);
       expect(text).toContain(label);
     }
+    expect(html).not.toContain('Payment Gateway Fees');
+    expect(text).not.toContain('Payment Gateway Fees');
+    expect(html).toContain('₹1,196.00');
+    expect(text).toContain('INR 35.40');
+  });
+
+  it('includes payment gateway fees for legacy bookings that have it saved', () => {
+    const legacy = {
+      totalFare: 1120,
+      serviceFee: 40,
+      irctcServiceFeePaise: 3540,
+      paymentGatewayFeePaise: 3586,
+    };
+    const html = bookingPriceHtml(legacy);
+    const text = bookingPriceText(legacy);
+    expect(html).toContain('Payment Gateway Fees (3%)');
+    expect(text).toContain('Payment Gateway Fees (3%)');
     expect(html).toContain('₹1,231.00');
     expect(text).toContain('INR 35.86');
   });

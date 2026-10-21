@@ -34,8 +34,9 @@ describe('Booking HTTP contract', () => {
       totalFare: 1100,
       irctcServiceFee: 53.1,
       serviceFee: 80,
-      paymentGatewayFee: 36.99,
-      amount: 1270,
+      paymentGatewayFee: 0,
+      travelInsuranceFee: 0.45,
+      amount: 1234,
     });
     expect(createBooking).not.toHaveBeenCalled();
   });

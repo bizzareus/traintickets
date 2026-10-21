@@ -17,7 +17,7 @@ test("search to paid booking carries the searched route, fares and total", async
   await openPaidCheckout(booking, page);
   await expect(
     booking.details().getByRole("heading", {
-      name: "Pay ₹1,128.00",
+      name: "Pay ₹1,095.85",
       exact: true,
     }),
   ).toBeVisible();
@@ -30,7 +30,7 @@ test("search to paid booking carries the searched route, fares and total", async
     payload.legs.reduce((sum, leg) => sum + leg.fare, 0),
   );
   await simulatePaidStatus(booking, page);
-  await expect(booking.details()).toContainText("Payment Received (₹1,128.00)");
+  await expect(booking.details()).toContainText("Payment Received (₹1,096.00)");
 });
 
 test("search to confirmed PNRs issues one PNR per leg then stops polling", async ({
@@ -83,7 +83,7 @@ test("class upgrade across the whole journey changes the charged total", async (
   await booking.submit();
   await expect(
     booking.details().getByRole("heading", {
-      name: "Pay ₹1,270.00",
+      name: "Pay ₹1,233.55",
       exact: true,
     }),
   ).toBeVisible();
@@ -94,8 +94,8 @@ test("class upgrade across the whole journey changes the charged total", async (
     "Ticket Fare₹1,100.00",
     "IRCTC Service Charge₹53.10",
     "LastBerth Service Charge₹80.00",
-    "Payment Gateway Fees (3%)₹36.99",
-    "Total Amount₹1,270.00",
+    "Travel Insurance₹0.45",
+    "Total Amount₹1,233.55",
   ]) {
     await expect(breakdown).toContainText(row);
   }
@@ -114,7 +114,7 @@ test("a second booking after closing checkout creates a fresh request", async ({
   await booking.submit();
   await expect(
     booking.details().getByRole("heading", {
-      name: "Pay ₹1,128.00",
+      name: "Pay ₹1,095.85",
       exact: true,
     }),
   ).toBeVisible();
@@ -127,7 +127,7 @@ test("a second booking after closing checkout creates a fresh request", async ({
   await booking.submit();
   await expect(
     booking.details().getByRole("heading", {
-      name: "Pay ₹1,128.00",
+      name: "Pay ₹1,095.85",
       exact: true,
     }),
   ).toBeVisible();
@@ -196,8 +196,8 @@ test("payment return page repeats the exact checkout breakdown", async ({
     "Ticket Fare₹980.00",
     "IRCTC Service Charge₹35.40",
     "LastBerth Service Charge₹80.00",
-    "Payment Gateway Fees (3%)₹32.86",
-    "Total Amount₹1,128.00",
+    "Travel Insurance₹0.45",
+    "Total Amount₹1,095.85",
   ]) {
     await expect(breakdown).toContainText(row);
   }

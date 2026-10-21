@@ -86,9 +86,11 @@ export class SplitBookingService {
     return `LB-${code}`;
   }
 
-  quoteBooking({ totalFare, legs }: SplitBookingQuoteDto) {
+  quoteBooking({ totalFare, legs, travelInsurance }: SplitBookingQuoteDto) {
     try {
-      return bookingPrice(calculateBookingCharges(totalFare, legs));
+      return bookingPrice(
+        calculateBookingCharges(totalFare, legs, { travelInsurance }),
+      );
     } catch (error) {
       throw new BadRequestException(
         error instanceof Error ? error.message : 'Invalid booking quote',
@@ -184,7 +186,9 @@ export class SplitBookingService {
     let savedPrice: ReturnType<typeof calculateBookingCharges>;
     try {
       validateBookingItinerary(dto);
-      savedPrice = calculateBookingCharges(dto.totalFare, dto.legs);
+      savedPrice = calculateBookingCharges(dto.totalFare, dto.legs, {
+        travelInsurance: dto.travelInsurance,
+      });
     } catch (error: unknown) {
       throw new BadRequestException(
         error instanceof Error ? error.message : 'Invalid split itinerary',
@@ -226,7 +230,10 @@ export class SplitBookingService {
         journeyDate: new Date(cleanDate),
         travelClass: dto.travelClass.trim().toUpperCase(),
         quota: dto.quota?.trim() || 'GN',
-        ...savedPrice,
+        totalFare: savedPrice.totalFare,
+        serviceFee: savedPrice.serviceFee,
+        irctcServiceFeePaise: savedPrice.irctcServiceFeePaise,
+        paymentGatewayFeePaise: savedPrice.paymentGatewayFeePaise,
         legsPayload: dto.legs.map((leg) => ({
           ...leg,
           irctcServiceFeePaise: irctcServiceChargePaise(leg.travelClass),
@@ -262,7 +269,7 @@ export class SplitBookingService {
           callbackUrl: isURL(apiUrl ?? '', { require_protocol: true })
             ? `${apiUrl}/api/split-booking/muzobox-callback`
             : undefined,
-          description: `Train ${dto.trainNumber} ${fromStationCode}->${toStationCode} ${cleanDate} (tickets + IRCTC + LastBerth + gateway charges)`,
+          description: `Train ${dto.trainNumber} ${fromStationCode}->${toStationCode} ${cleanDate} (tickets + IRCTC + LastBerth charges)`,
           customerName: dto.passengers[0].name.trim(),
           customerEmail: dto.contactEmail.trim(),
           customerMobile: dto.contactMobile.trim(),
@@ -520,7 +527,7 @@ export class SplitBookingService {
       {
         timestamp: new Date().toISOString(),
         step: 'PAYMENT_RECEIVED',
-        message: `Payment of ₹${price.amount} confirmed (tickets ₹${price.totalFare} + IRCTC ₹${price.irctcServiceFee} + LastBerth ₹${price.serviceFee} + gateway ₹${price.paymentGatewayFee}). Starting booking fulfillment.`,
+        message: `Payment of ₹${price.amount} confirmed (tickets ₹${price.totalFare} + IRCTC ₹${price.irctcServiceFee} + LastBerth ₹${price.serviceFee}${price.travelInsuranceFee ? ` + insurance ₹${price.travelInsuranceFee}` : ''}${price.paymentGatewayFee ? ` + gateway ₹${price.paymentGatewayFee}` : ''}). Starting booking fulfillment.`,
       },
     ];
 
@@ -1752,7 +1759,8 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
         let msg = 'Failed to process refund via payment proxy';
         if (isAxiosError(err)) {
           const payload = err.response?.data as
-            { message?: unknown; error?: unknown } | undefined;
+            | { message?: unknown; error?: unknown }
+            | undefined;
           const fromBody =
             (Array.isArray(payload?.message)
               ? payload?.message.join('; ')
