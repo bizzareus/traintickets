@@ -294,7 +294,8 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
           if (Array.isArray(unprocessed) && unprocessed.length > 0) {
             for (const req of unprocessed) {
               const item = req.PutRequest?.Item as
-                Record<string, unknown> | undefined;
+                | Record<string, unknown>
+                | undefined;
               if (item) {
                 const trainNumber = toSafeString(item.trainNumber);
                 const dateClass = toSafeString(item.dateClass);
@@ -682,7 +683,8 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
         if (!trainNo) continue;
 
         const availCache = train.availabilityCache as
-          Record<string, Record<string, unknown>> | undefined;
+          | Record<string, Record<string, unknown>>
+          | undefined;
         if (!availCache || typeof availCache !== 'object') continue;
 
         for (const [cls, row] of Object.entries(availCache)) {

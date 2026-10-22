@@ -177,11 +177,11 @@ describe('Booking persistence and fulfillment integration', () => {
       totalFare: 980,
       irctcServiceFee: 35.4,
       serviceFee: 80,
-      paymentGatewayFee: 0,
-      travelInsuranceFee: 0.45,
-      amount: 1096,
+      paymentGatewayFee: 11.99,
+      travelInsuranceFee: 0.9,
+      amount: 1108.29,
     });
-    expect(Number.isInteger(checkout.amount)).toBe(true);
+    expect(checkout.amount).toBe(1108.29);
     const row = await prisma.splitTicketBooking.findUniqueOrThrow({
       where: { bookingRef: checkout.bookingRef },
     });
@@ -189,7 +189,7 @@ describe('Booking persistence and fulfillment integration', () => {
       payload.legs.map((leg) => ({ ...leg, irctcServiceFeePaise: 1770 })),
     );
     expect(row.irctcServiceFeePaise).toBe(3540);
-    expect(row.paymentGatewayFeePaise).toBe(0);
+    expect(row.paymentGatewayFeePaise).toBe(1199);
     expect(row.serviceFee).toBe(80);
     expect(row.passengers).toMatchObject({
       adults: payload.passengers,

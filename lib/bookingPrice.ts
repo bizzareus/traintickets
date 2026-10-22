@@ -13,20 +13,27 @@ export function formatBookingAmount(amount: number): string {
 
 export function bookingPriceItems(
   price: SplitBookingPrice,
-  options?: { travelInsurance?: boolean },
+  options?: { travelInsurance?: boolean; legCount?: number },
 ): Array<[string, number]> {
   const items: Array<[string, number]> = [
     ["Ticket Fare", price.totalFare],
     ["IRCTC Service Charge", price.irctcServiceFee ?? 0],
-    ["LastBerth Service Charge", price.serviceFee],
   ];
+
+  if (price.paymentGatewayFee !== undefined && price.paymentGatewayFee > 0) {
+    items.push(["IRCTC Payment Gateway Fee", price.paymentGatewayFee]);
+  }
+
+  items.push(["LastBerth Service Charge", price.serviceFee]);
 
   const hasInsurance =
     options?.travelInsurance ??
     (price.travelInsuranceFee !== undefined && price.travelInsuranceFee > 0);
 
   if (hasInsurance) {
-    items.push(["Travel Insurance", price.travelInsuranceFee ?? 0.45]);
+    const legs = options?.legCount ?? 1;
+    const fallbackFee = Number((legs * 0.45).toFixed(2));
+    items.push(["Travel Insurance", price.travelInsuranceFee ?? fallbackFee]);
   }
 
   return items;
@@ -34,18 +41,25 @@ export function bookingPriceItems(
 
 export function calculatePayableTotal(
   price: SplitBookingPrice,
-  options?: { travelInsurance?: boolean },
+  options?: { travelInsurance?: boolean; legCount?: number },
 ): number {
   const hasInsurance =
     options?.travelInsurance ??
     (price.travelInsuranceFee !== undefined && price.travelInsuranceFee > 0);
-  const insuranceFee = hasInsurance ? (price.travelInsuranceFee ?? 0.45) : 0;
+  const legs = options?.legCount ?? 1;
+  const fallbackFee = Number((legs * 0.45).toFixed(2));
+  const insuranceFee = hasInsurance
+    ? (price.travelInsuranceFee ?? fallbackFee)
+    : 0;
 
-  return (
-    price.totalFare +
-    (price.irctcServiceFee ?? 0) +
-    price.serviceFee +
-    insuranceFee
+  return Number(
+    (
+      price.totalFare +
+      (price.irctcServiceFee ?? 0) +
+      (price.paymentGatewayFee ?? 0) +
+      price.serviceFee +
+      insuranceFee
+    ).toFixed(2),
   );
 }
 

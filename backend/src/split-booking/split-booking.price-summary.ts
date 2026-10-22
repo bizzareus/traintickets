@@ -17,7 +17,7 @@ function priceItems(booking: StoredPrice): Array<[string, number]> {
     items.push(['Travel Insurance', price.travelInsuranceFee]);
   }
   if (price.paymentGatewayFee && price.paymentGatewayFee > 0) {
-    items.push(['Payment Gateway Fees (3%)', price.paymentGatewayFee]);
+    items.push(['IRCTC Payment Gateway Fee', price.paymentGatewayFee]);
   }
   return items;
 }

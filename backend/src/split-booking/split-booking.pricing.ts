@@ -9,6 +9,7 @@ type StoredBookingPrice = Pick<
   travelInsurance?: boolean;
   travelInsurancePaise?: number;
   passengers?: unknown;
+  legsPayload?: unknown;
 };
 
 const irctcCharges: Readonly<Record<string, number>> =
@@ -34,7 +35,49 @@ export function hasTravelInsurance(booking: StoredBookingPrice): boolean {
   return false;
 }
 
-/** Both service charges are per leg; gateway fee is 0 unless configured. */
+export function getBookingLegCount(booking: StoredBookingPrice): number {
+  if (Array.isArray(booking.legsPayload)) {
+    return Math.max(1, booking.legsPayload.length);
+  }
+  if (typeof booking.legsPayload === 'string') {
+    try {
+      const parsed: unknown = JSON.parse(booking.legsPayload);
+      if (Array.isArray(parsed)) return Math.max(1, parsed.length);
+    } catch {
+      // Ignore malformed legacy JSON payloads
+    }
+  }
+  const custom = booking as { legs?: unknown };
+  if (Array.isArray(custom.legs)) {
+    return Math.max(1, custom.legs.length);
+  }
+  if (booking.serviceFee && charges.lastBerthServiceChargePerLeg) {
+    const derived = Math.round(
+      booking.serviceFee / charges.lastBerthServiceChargePerLeg,
+    );
+    if (derived >= 1) return derived;
+  }
+  return 1;
+}
+
+export function getTravelInsurancePaise(booking: StoredBookingPrice): number {
+  if (booking.travelInsurancePaise !== undefined) {
+    return booking.travelInsurancePaise;
+  }
+  if (booking.passengers && typeof booking.passengers === 'object') {
+    const p = booking.passengers as Record<string, unknown>;
+    if (typeof p.travelInsurancePaise === 'number') {
+      return p.travelInsurancePaise;
+    }
+  }
+  if (!hasTravelInsurance(booking)) {
+    return 0;
+  }
+  const legs = getBookingLegCount(booking);
+  return Math.round(legs * (charges.travelInsuranceCharge ?? 0.45) * 100);
+}
+
+/** Both service charges and travel insurance are per leg; gateway fee is 0 unless configured. */
 export function calculateBookingCharges(
   totalFare: number,
   legs: ReadonlyArray<Pick<SplitBookingLeg, 'travelClass'>>,
@@ -50,21 +93,26 @@ export function calculateBookingCharges(
   );
   const travelInsurance = options?.travelInsurance ?? true;
   const travelInsurancePaise = travelInsurance
-    ? Math.round((charges.travelInsuranceCharge ?? 0.45) * 100)
+    ? Math.round(legs.length * (charges.travelInsuranceCharge ?? 0.45) * 100)
     : 0;
-  const subtotalPaise =
-    (totalFare + serviceFee) * 100 +
-    irctcServiceFeePaise +
-    travelInsurancePaise;
-  const paymentGatewayPercent = charges.paymentGatewayPercent ?? 0;
+  const irctcSubtotalPaise =
+    totalFare * 100 + irctcServiceFeePaise + travelInsurancePaise;
+  const configuredCharges = charges as {
+    irctcPaymentGatewayPercent?: number;
+    paymentGatewayPercent?: number;
+  };
+  const irctcPgPercent =
+    configuredCharges.irctcPaymentGatewayPercent ??
+    configuredCharges.paymentGatewayPercent ??
+    0;
   if (
-    !Number.isSafeInteger(subtotalPaise) ||
-    !Number.isSafeInteger(subtotalPaise * (paymentGatewayPercent || 1))
+    !Number.isSafeInteger(irctcSubtotalPaise) ||
+    irctcSubtotalPaise * (irctcPgPercent || 1) > Number.MAX_SAFE_INTEGER
   ) {
     throw new Error('Ticket fare exceeds the supported payment amount');
   }
-  const paymentGatewayFeePaise = paymentGatewayPercent
-    ? Math.round((subtotalPaise * paymentGatewayPercent) / 100)
+  const paymentGatewayFeePaise = irctcPgPercent
+    ? Math.round((irctcSubtotalPaise * irctcPgPercent) / 100)
     : 0;
 
   return {
@@ -79,12 +127,7 @@ export function calculateBookingCharges(
 
 /** Never recalculate historical charges using today's configuration. */
 export function bookingAmountPaise(booking: StoredBookingPrice): number {
-  const travelInsurancePaise =
-    booking.travelInsurancePaise !== undefined
-      ? booking.travelInsurancePaise
-      : hasTravelInsurance(booking)
-        ? Math.round((charges.travelInsuranceCharge ?? 0.45) * 100)
-        : 0;
+  const travelInsurancePaise = getTravelInsurancePaise(booking);
 
   return (
     (booking.totalFare + booking.serviceFee) * 100 +
@@ -95,12 +138,7 @@ export function bookingAmountPaise(booking: StoredBookingPrice): number {
 }
 
 export function bookingPrice(booking: StoredBookingPrice) {
-  const travelInsurancePaise =
-    booking.travelInsurancePaise !== undefined
-      ? booking.travelInsurancePaise
-      : hasTravelInsurance(booking)
-        ? Math.round((charges.travelInsuranceCharge ?? 0.45) * 100)
-        : 0;
+  const travelInsurancePaise = getTravelInsurancePaise(booking);
 
   return {
     totalFare: booking.totalFare,
@@ -108,9 +146,7 @@ export function bookingPrice(booking: StoredBookingPrice) {
     serviceFee: booking.serviceFee,
     paymentGatewayFee: (booking.paymentGatewayFeePaise ?? 0) / 100,
     travelInsuranceFee: travelInsurancePaise / 100,
-    // Muzobox only accepts whole rupees: the chargeable total is the exact
-    // paise sum rounded once, while the itemized components stay exact.
-    amount: Math.round(bookingAmountPaise(booking) / 100),
+    amount: Number((bookingAmountPaise(booking) / 100).toFixed(2)),
   };
 }
 

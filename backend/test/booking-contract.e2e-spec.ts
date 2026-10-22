@@ -22,7 +22,7 @@ describe('Booking HTTP contract', () => {
   });
   afterAll(async () => app.close());
 
-  it('quotes mixed classes with per-leg fees and a whole-rupee payment total', async () => {
+  it('quotes mixed classes with per-leg fees and an exact paise payment total', async () => {
     const response = await request(app.getHttpServer())
       .post('/api/split-booking/quote')
       .send({
@@ -34,9 +34,9 @@ describe('Booking HTTP contract', () => {
       totalFare: 1100,
       irctcServiceFee: 53.1,
       serviceFee: 80,
-      paymentGatewayFee: 0,
-      travelInsuranceFee: 0.45,
-      amount: 1234,
+      paymentGatewayFee: 13.62,
+      travelInsuranceFee: 0.9,
+      amount: 1247.62,
     });
     expect(createBooking).not.toHaveBeenCalled();
   });

@@ -33,7 +33,8 @@ export function createCronitorClient(
     retryCondition: (error) => error.response?.status === 429,
     retryDelay: (attempt, error) => {
       const body = error.response?.data as
-        { retry_after_seconds?: unknown } | undefined;
+        | { retry_after_seconds?: unknown }
+        | undefined;
       const seconds = Number(body?.retry_after_seconds);
       return Number.isFinite(seconds) && seconds > 0
         ? seconds * 1000

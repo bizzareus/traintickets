@@ -1104,7 +1104,8 @@ export class Service2Service {
     );
 
     let chartPreparationDetails:
-      Service2CheckResult['chartPreparationDetails'] | undefined;
+      | Service2CheckResult['chartPreparationDetails']
+      | undefined;
     const chartOneDate = composition.chartOneDate ?? null;
     if (chartOneDate) {
       const match = chartOneDate.match(/\d{4}-\d{2}-\d{2}\s+(\d{1,2}):(\d{2})/);
@@ -1725,7 +1726,8 @@ function buildOpenAIUserMessage(ctx: {
   passengerDetails?: string;
   composition: NonNullable<Service2CheckResult['composition']>;
   chartPreparationDetails:
-    Service2CheckResult['chartPreparationDetails'] | null;
+    | Service2CheckResult['chartPreparationDetails']
+    | null;
   vacantBerth: Service2CheckResult['vacantBerth'];
   trainSchedule: TrainScheduleResponse | null;
   /** Boarding stations used for extra IRCTC vacant-berth fetches (chained segments). */

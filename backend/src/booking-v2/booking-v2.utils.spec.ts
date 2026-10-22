@@ -472,8 +472,16 @@ describe('extractAvlDayRow', () => {
     const raw = {
       data: {
         avlDayList: [
-          { availablityDate: '20-09-2026', availablityStatus: 'AVAILABLE 10', availablityType: 1 },
-          { availablityDate: '21-09-2026', availablityStatus: 'WL 5', availablityType: 3 },
+          {
+            availablityDate: '20-09-2026',
+            availablityStatus: 'AVAILABLE 10',
+            availablityType: 1,
+          },
+          {
+            availablityDate: '21-09-2026',
+            availablityStatus: 'WL 5',
+            availablityType: 3,
+          },
         ],
       },
     };
@@ -489,7 +497,11 @@ describe('extractAvlDayRow', () => {
     const raw = {
       data: {
         avlDayList: [
-          { availablityDate: '20-09-2026', availablityStatus: 'AVAILABLE 10', availablityType: 1 },
+          {
+            availablityDate: '20-09-2026',
+            availablityStatus: 'AVAILABLE 10',
+            availablityType: 1,
+          },
         ],
       },
     };

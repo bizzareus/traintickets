@@ -28,7 +28,10 @@ describe('pdf-merge utility', () => {
     doc2.addPage([400, 400]);
     const bytes2 = await doc2.save();
 
-    const merged = await mergePdfBuffers([Buffer.from(bytes1), Buffer.from(bytes2)]);
+    const merged = await mergePdfBuffers([
+      Buffer.from(bytes1),
+      Buffer.from(bytes2),
+    ]);
     const loadedMerged = await PDFDocument.load(merged);
     expect(loadedMerged.getPageCount()).toBe(3);
   });

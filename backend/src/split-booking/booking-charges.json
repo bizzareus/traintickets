@@ -10,6 +10,6 @@
     "EC": 35.4
   },
   "lastBerthServiceChargePerLeg": 40,
-  "paymentGatewayPercent": 0,
+  "irctcPaymentGatewayPercent": 1.18,
   "travelInsuranceCharge": 0.45
 }

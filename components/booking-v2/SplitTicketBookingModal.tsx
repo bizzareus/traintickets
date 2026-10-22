@@ -136,7 +136,11 @@ export function SplitTicketBookingModal({
     ...new Set(legs.map((leg) => leg.travelClass)),
   ];
   const paymentBreakdown = price && (
-    <BookingPriceBreakdown price={price} travelInsurance={travelInsurance} />
+    <BookingPriceBreakdown
+      price={price}
+      travelInsurance={travelInsurance}
+      legCount={legs.length}
+    />
   );
 
   const handleClose = useCallback(() => {
@@ -1025,7 +1029,11 @@ export function SplitTicketBookingModal({
               <div className="space-y-2 rounded-xl border border-amber-200/80 bg-amber-50/70 p-3.5 text-xs text-amber-950">
                 <div className="flex items-center gap-1.5 font-bold text-slate-800">
                   <ShieldCheck className="h-4 w-4 shrink-0 text-amber-600" />
-                  <span>Travel Insurance (₹0.45 per passenger)</span>
+                  <span>
+                    {legs.length > 1
+                      ? `Travel Insurance (₹${(legs.length * 0.45).toFixed(2)} — ₹0.45 × ${legs.length} legs)`
+                      : "Travel Insurance (₹0.45 per passenger)"}
+                  </span>
                 </div>
                 <div className="flex flex-col gap-2.5 pt-0.5 sm:flex-row sm:items-center sm:gap-6">
                   <label className="inline-flex cursor-pointer select-none items-center gap-2 font-medium text-slate-800">
@@ -1207,6 +1215,7 @@ export function SplitTicketBookingModal({
                   {formatBookingAmount(
                     calculatePayableTotal(price ?? paymentData, {
                       travelInsurance,
+                      legCount: legs.length,
                     }),
                   )}
                 </h4>
@@ -1300,6 +1309,7 @@ export function SplitTicketBookingModal({
               <BookingPriceBreakdown
                 price={price ?? paymentData}
                 travelInsurance={travelInsurance}
+                legCount={legs.length}
               />
 
               {paymentFailed ? (
@@ -1327,6 +1337,7 @@ export function SplitTicketBookingModal({
                     {formatBookingAmount(
                       calculatePayableTotal(price ?? paymentData, {
                         travelInsurance,
+                        legCount: legs.length,
                       }),
                     )}
                   </span>

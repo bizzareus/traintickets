@@ -23,7 +23,9 @@ describe('RailFeedProxyController', () => {
       jest
         .spyOn(fetchWithTimeoutModule, 'fetchWithTimeout')
         .mockRejectedValue(
-          new Error('Sensitive upstream error: timeout accessing http://internal:8080'),
+          new Error(
+            'Sensitive upstream error: timeout accessing http://internal:8080',
+          ),
         );
 
       const mockReq = {

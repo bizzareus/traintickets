@@ -316,11 +316,6 @@ export class SplitBookingService {
     const bookingRef = this.generateBookingRef();
     const cleanDate = dto.journeyDate.slice(0, 10);
     const price = bookingPrice(savedPrice);
-    if (!Number.isInteger(price.amount)) {
-      throw new Error(
-        `Refusing checkout for ${bookingRef}: Muzobox requires a whole-rupee amount`,
-      );
-    }
     const bookingMode =
       this.config.get<string>('SPLIT_BOOKING_MODE') === 'manual'
         ? 'MANUAL'
@@ -362,6 +357,7 @@ export class SplitBookingService {
           confirmBerthsOnly: dto.confirmBerthsOnly ?? false,
           preferredCoach: dto.preferredCoach?.trim() || null,
           travelInsurance: dto.travelInsurance ?? true,
+          travelInsurancePaise: savedPrice.travelInsurancePaise,
         } as unknown as Prisma.InputJsonValue,
         contactMobile: dto.contactMobile.trim(),
         contactEmail: dto.contactEmail.trim(),
@@ -618,8 +614,7 @@ export class SplitBookingService {
     const price = bookingPrice(booking);
     if (
       capturedPayment &&
-      // Providers settle whole rupees: compare against the rounded total.
-      (capturedPayment.amount !== price.amount * 100 ||
+      (capturedPayment.amount !== Math.round(price.amount * 100) ||
         capturedPayment.currency !== 'INR' ||
         (capturedPayment.orderId &&
           capturedPayment.orderId !== booking.razorpayOrderId))
@@ -1328,14 +1323,16 @@ export class SplitBookingService {
 
     const channel = options.channel || 'email';
     const details = bookingDetails(updatedBooking);
-    const journeyDateStr = updatedBooking.journeyDate.toISOString().slice(0, 10);
+    const journeyDateStr = updatedBooking.journeyDate
+      .toISOString()
+      .slice(0, 10);
     const apiUrl =
       this.config.get<string>('API_URL') || 'https://api.lastberth.com';
 
     const hasPdf = Boolean(
       updatedBooking.ticketPdfUploadedAt ||
-        updatedBooking.ticketPdfS3Key ||
-        updatedBooking.ticketPdf,
+      updatedBooking.ticketPdfS3Key ||
+      updatedBooking.ticketPdf,
     );
     const pdfUrl = hasPdf
       ? `${apiUrl}/api/split-booking/ticket-pdf/${updatedBooking.bookingRef}`
@@ -1344,7 +1341,11 @@ export class SplitBookingService {
     const legPnrs = details.legs.map((leg, i) => {
       const pnr =
         updatedBooking.pnrs[i] ||
-        (i === 0 ? updatedBooking.pnrLeg1 : i === 1 ? updatedBooking.pnrLeg2 : null) ||
+        (i === 0
+          ? updatedBooking.pnrLeg1
+          : i === 1
+            ? updatedBooking.pnrLeg2
+            : null) ||
         'Confirmed';
       return {
         step: `Leg ${i + 1}`,

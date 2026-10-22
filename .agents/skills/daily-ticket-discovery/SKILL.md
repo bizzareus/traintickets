@@ -37,10 +37,11 @@ Before generating any post, all conditions must be verified:
 - **Fare Arithmetic:** Total fare must equal the sum of the individual split leg fares.
 - *If no train satisfies all conditions on the target corridor, advance to the next corridor or stop. Never fabricate data.*
 
-### Step 3: Graphic Rendering & Template Specs
-The comparison graphic uses the established template in [`designs/split-ticket-comparison-2026/01-comparison.svg`](file:///Users/kartikarora/Documents/personal/traintickets/designs/split-ticket-comparison-2026/01-comparison.svg):
+### Step 3: Graphic Rendering & Template Specs (Single Clean Image Only)
+Generate **only 1 image** (do not create multi-slide carousels). Keep the design clean, uncluttered, spacious, and easily legible on mobile screens. The comparison graphic uses the established template in [`designs/split-ticket-comparison-2026/01-comparison.svg`](file:///Users/kartikarora/Documents/personal/traintickets/designs/split-ticket-comparison-2026/01-comparison.svg):
+- **Single Image Post:** Exactly 1 graphic is generated and published.
 - **Canvas Dimensions:** `1080 × 1350 px` (4:5 vertical portrait aspect ratio for optimal mobile feed real estate).
-- **Top Accent & Brand:** Deep Slate Navy (`#101B2C`) background with Royal Blue (`#355AED`) 10px accent bar at top, `LastBerth` logo (36px, `#FFFFFF`), and `REAL SEARCH. REAL SCREENSHOTS.` (22px, `#B2C0D0`).
+- **Clean Aesthetic & High Contrast:** Deep Slate Navy (`#101B2C`) background with Royal Blue (`#355AED`) 10px accent bar at top, `LastBerth` logo (36px, `#FFFFFF`), and `REAL SEARCH. REAL SCREENSHOTS.` (22px, `#B2C0D0`). Spacious 64px outer padding. No redundant cards or visual clutter.
 - **Kicker:** `SAME TRAIN. A DIFFERENT WAY TO BOOK.` (22px, `#FFBA55`).
 - **Headline Contract (Stacked to prevent horizontal clipping):**
   - Line 1: `CONFIRMED TICKET` (DIN Condensed, 92px bold, Mint `#88E2B6`)

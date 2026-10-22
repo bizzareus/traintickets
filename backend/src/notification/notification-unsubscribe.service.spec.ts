@@ -63,9 +63,9 @@ describe('NotificationUnsubscribeService', () => {
       await expect(service.isUnsubscribed('   ')).rejects.toThrow(
         BadRequestException,
       );
-      await expect(service.isUnsubscribed(null as unknown as string)).rejects.toThrow(
-        BadRequestException,
-      );
+      await expect(
+        service.isUnsubscribed(null as unknown as string),
+      ).rejects.toThrow(BadRequestException);
     });
   });
 
