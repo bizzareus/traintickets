@@ -116,9 +116,11 @@ export class SplitBookingController {
     if (body.event !== 'payment.captured') return { received: true };
     const payload = body?.payload as Record<string, unknown> | undefined;
     const paymentEntity = payload?.payment as
-      Record<string, unknown> | undefined;
+      | Record<string, unknown>
+      | undefined;
     const payment = paymentEntity?.entity as
-      Record<string, unknown> | undefined;
+      | Record<string, unknown>
+      | undefined;
     const notes = (payment?.notes as Record<string, unknown>) || {};
     const bookingRef =
       (notes.bookingRef as string) || (notes.booking_ref as string);
@@ -174,6 +176,22 @@ export class SplitBookingController {
   ) {
     assertAdminAuth({ headerPw: pw, req });
     return this.splitBookingService.adminUpdateBooking(id, body);
+  }
+
+  @Post([
+    'admin/:bookingRef/book-without-pay',
+    'admin/book-without-pay/:bookingRef',
+  ])
+  async adminBookWithoutPay(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+    @Param('bookingRef') bookingRef: string,
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
+    if (!bookingRef?.trim()) {
+      throw new BadRequestException('bookingRef is required');
+    }
+    return this.splitBookingService.adminBookWithoutPay(bookingRef.trim());
   }
 
   @Post('admin/:id/ticket-pdf')

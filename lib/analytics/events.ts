@@ -647,6 +647,13 @@ export type AnalyticsEvent =
       };
     }
   | {
+      name: "split_booking_admin_bypass_triggered";
+      properties: {
+        bookingRef: string;
+        train_number: string;
+      };
+    }
+  | {
       name: "split_booking_cancellation_looked_up";
       properties: {
         booking_ref: string;

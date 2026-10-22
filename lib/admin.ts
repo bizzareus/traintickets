@@ -13,7 +13,11 @@ export function isAdminUser(): boolean {
       window.localStorage.setItem("admin", "true");
       return true;
     }
-    return window.localStorage.getItem("admin") === "true";
+    return (
+      window.localStorage.getItem("admin") === "true" ||
+      window.sessionStorage.getItem("railchart_admin_unlocked") === "1" ||
+      Boolean(window.localStorage.getItem("irctc_keeper_admin_password"))
+    );
   } catch {
     return false;
   }

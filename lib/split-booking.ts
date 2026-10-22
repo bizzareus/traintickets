@@ -88,6 +88,7 @@ export interface SplitBookingStatus extends SplitBookingPrice {
   contactEmail: string;
   bookingMode: "AI" | "MANUAL";
   paymentStatus: "PENDING" | "PAID" | "FAILED";
+  razorpayPaymentId?: string | null;
   payUrl: string | null;
   bookingStatus:
     | "IDLE"
@@ -139,6 +140,29 @@ export async function simulateSplitBookingPayment(
 ): Promise<SplitBookingStatus> {
   const res = await apiClient.post<SplitBookingStatus>(
     `/api/split-booking/simulate-pay/${encodeURIComponent(bookingRef)}`,
+  );
+  return res.data;
+}
+
+/**
+ * Triggers backend booking fulfillment without payment for admin users.
+ */
+export async function adminBookWithoutPayment(
+  bookingRef: string,
+  adminPassword?: string,
+): Promise<SplitBookingStatus> {
+  const pw =
+    adminPassword ||
+    (typeof window !== "undefined"
+      ? window.localStorage.getItem("irctc_keeper_admin_password") || undefined
+      : undefined);
+
+  const res = await apiClient.post<SplitBookingStatus>(
+    `/api/split-booking/admin/${encodeURIComponent(bookingRef)}/book-without-pay`,
+    {},
+    {
+      headers: pw ? { "x-admin-password": pw } : {},
+    },
   );
   return res.data;
 }

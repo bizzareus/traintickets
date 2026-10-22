@@ -18,12 +18,15 @@ import {
   createSplitBooking,
   fetchSplitBookingStatus,
   simulateSplitBookingPayment,
+  adminBookWithoutPayment,
   type CreateSplitBookingPayload,
   type SplitBookingLeg,
   type SplitBookingPassenger,
   type SplitBookingPaymentResponse,
   type SplitBookingStatus,
 } from "@/lib/split-booking";
+import { isAdminUser } from "@/lib/admin";
+import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { openSupportChat } from "@/lib/supportChat";
 import { MuzoboxPaymentFrame } from "@/components/payments/MuzoboxPaymentFrame";
@@ -100,6 +103,10 @@ export function SplitTicketBookingModal({
   const [email, setEmail] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [showAdminPasswordModal, setShowAdminPasswordModal] = useState(false);
+  const [adminPasswordInput, setAdminPasswordInput] = useState("");
+  const [adminAuthError, setAdminAuthError] = useState<string | null>(null);
 
   // Step 2: Payment state
   const [paymentData, setPaymentData] =
@@ -157,6 +164,10 @@ export function SplitTicketBookingModal({
       setConfirmBerthsOnly(false);
       setPreferredCoach("");
       setTravelInsurance(true);
+      setIsAdmin(isAdminUser());
+      setShowAdminPasswordModal(false);
+      setAdminPasswordInput("");
+      setAdminAuthError(null);
       trackAnalyticsEvent({
         name: "split_booking_modal_opened",
         properties: {
@@ -196,62 +207,88 @@ export function SplitTicketBookingModal({
     });
   };
 
-  // Submit passenger details -> create payment
-  const handleProceedToPayment = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isSubmitting) return;
+  const handleBookingApiError = (err: unknown, fallbackMessage: string) => {
+    const responseMessage = isAxiosError<{ message?: string | string[] }>(err)
+      ? err.response?.data?.message
+      : undefined;
+    const msg = responseMessage
+      ? Array.isArray(responseMessage)
+        ? responseMessage.join("; ")
+        : responseMessage
+      : err instanceof Error
+        ? err.message
+        : fallbackMessage;
+    trackAnalyticsEvent({
+      name: "split_booking_intent_failed",
+      properties: {
+        train_number: trainNumber,
+        error: msg,
+      },
+    });
+    setFormError(msg);
+  };
+
+  const validatePassengerForm = (): CreateSplitBookingPayload | null => {
     setFormError(null);
 
-    // Validations
     const cleanMobile = extract10DigitIndianMobile(mobile);
     if (!cleanMobile) {
       setFormError("Please enter a valid 10-digit mobile number");
-      return;
+      return null;
     }
     if (!isValidEmail(email)) {
       setFormError("Please enter a valid email address");
-      return;
+      return null;
     }
 
     if (passengers.length !== 1) {
       setFormError(
         "The booking engine currently supports only 1 passenger per booking.",
       );
-      return;
+      return null;
     }
 
     const p = passengers[0];
     if (!p.name.trim() || p.name.trim().length < 2) {
       setFormError("Please enter a valid name for the passenger");
-      return;
+      return null;
     }
     if (!Number.isInteger(p.age) || p.age < 5 || p.age > 125) {
       setFormError("Please enter a valid age (5-125) for the passenger");
-      return;
+      return null;
     }
+
+    return {
+      trainNumber,
+      trainName,
+      fromStationCode,
+      toStationCode,
+      journeyDate,
+      travelClass,
+      quota,
+      totalFare,
+      legs,
+      passengers: [{ ...p, name: p.name.trim() }],
+      childPassengers: [],
+      autoUpgrade,
+      confirmBerthsOnly,
+      preferredCoach: preferredCoach.trim().toUpperCase() || undefined,
+      travelInsurance,
+      contactMobile: cleanMobile,
+      contactEmail: email.trim(),
+    };
+  };
+
+  // Submit passenger details -> create payment
+  const handleProceedToPayment = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (isSubmitting) return;
+
+    const payload = validatePassengerForm();
+    if (!payload) return;
 
     setIsSubmitting(true);
     try {
-      const payload: CreateSplitBookingPayload = {
-        trainNumber,
-        trainName,
-        fromStationCode,
-        toStationCode,
-        journeyDate,
-        travelClass,
-        quota,
-        totalFare,
-        legs,
-        passengers: [{ ...p, name: p.name.trim() }],
-        childPassengers: [],
-        autoUpgrade,
-        confirmBerthsOnly,
-        preferredCoach: preferredCoach.trim().toUpperCase() || undefined,
-        travelInsurance,
-        contactMobile: cleanMobile,
-        contactEmail: email.trim(),
-      };
-
       const payloadKey = JSON.stringify(payload);
       if (paymentData) {
         // A link may have been paid while the passenger was reviewing details.
@@ -295,24 +332,59 @@ export function SplitTicketBookingModal({
       setBookingStatus(null);
       setStep("payment");
     } catch (err: unknown) {
-      const responseMessage = isAxiosError<{ message?: string | string[] }>(err)
-        ? err.response?.data?.message
-        : undefined;
-      const msg = responseMessage
-        ? Array.isArray(responseMessage)
-          ? responseMessage.join("; ")
-          : responseMessage
-        : err instanceof Error
-          ? err.message
-          : "Failed to create booking intent";
+      handleBookingApiError(err, "Failed to create booking intent");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Admin bypass handler: triggers backend booking directly without payment
+  const handleAdminBookWithoutPay = async (
+    adminPwOverride?: string,
+    explicitBookingRef?: string,
+  ) => {
+    const targetRef = explicitBookingRef || paymentData?.bookingRef;
+    if (!targetRef) return;
+    try {
+      setIsSubmitting(true);
+      setFormError(null);
+      const st = await adminBookWithoutPayment(targetRef, adminPwOverride);
+      setBookingStatus(st);
+      setShowPaymentModal(false);
+      setShowAdminPasswordModal(false);
+      setStep("booking_in_progress");
       trackAnalyticsEvent({
-        name: "split_booking_intent_failed",
+        name: "split_booking_admin_bypass_triggered",
         properties: {
+          bookingRef: targetRef,
           train_number: trainNumber,
-          error: msg,
         },
       });
-      setFormError(msg);
+    } catch (err: unknown) {
+      if (isAxiosError(err) && err.response?.status === 401) {
+        setShowAdminPasswordModal(true);
+        return;
+      }
+      handleBookingApiError(err, "Admin booking failed");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Admin 1-click booking directly from Step 1
+  const handleDirectAdminBookFromStep1 = async () => {
+    if (isSubmitting) return;
+    const payload = validatePassengerForm();
+    if (!payload) return;
+
+    setIsSubmitting(true);
+    try {
+      const payment = await createSplitBooking(payload);
+      setPaymentData(payment);
+      submittedPayloadRef.current = JSON.stringify(payload);
+      await handleAdminBookWithoutPay(undefined, payment.bookingRef);
+    } catch (err: unknown) {
+      handleBookingApiError(err, "Failed to initiate admin booking");
     } finally {
       setIsSubmitting(false);
     }
@@ -952,22 +1024,34 @@ export function SplitTicketBookingModal({
                 >
                   Cancel
                 </button>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-blue-700 active:scale-[0.98] disabled:opacity-50"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin" /> Preparing
-                      Checkout...
-                    </>
-                  ) : (
-                    <>
-                      Proceed to Payment <ArrowRight className="h-4 w-4" />
-                    </>
+                <div className="flex flex-col items-stretch gap-2.5 sm:flex-row sm:items-center">
+                  {(isAdmin || process.env.NODE_ENV === "development") && (
+                    <button
+                      type="button"
+                      onClick={handleDirectAdminBookFromStep1}
+                      disabled={isSubmitting}
+                      className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-indigo-300 bg-indigo-50 px-4 py-2.5 text-xs font-bold text-indigo-700 shadow-xs transition hover:bg-indigo-100 active:scale-[0.98] disabled:opacity-50"
+                    >
+                      ⚡ Book Without Pay (Admin)
+                    </button>
                   )}
-                </button>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-blue-700 active:scale-[0.98] disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" /> Preparing
+                        Checkout...
+                      </>
+                    ) : (
+                      <>
+                        Proceed to Payment <ArrowRight className="h-4 w-4" />
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             </form>
           )}
@@ -1059,6 +1143,53 @@ export function SplitTicketBookingModal({
                 </button>
               </div>
 
+              {/* Admin Book Without Payment Option */}
+              {(isAdmin || process.env.NODE_ENV === "development") && (
+                <div className="rounded-xl border border-indigo-200 bg-indigo-50/70 p-3.5 text-xs text-indigo-950 sm:p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 font-bold text-indigo-950">
+                      <ShieldCheck className="h-4 w-4 text-indigo-600" />
+                      <span>Admin: Book without payment</span>
+                    </div>
+                    <span className="rounded bg-indigo-200/80 px-2 py-0.5 text-[10px] font-bold text-indigo-900">
+                      ADMIN
+                    </span>
+                  </div>
+                  <p className="mt-1 text-slate-600">
+                    Bypass payment gateway and trigger real ticket booking directly in the backend.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => void handleAdminBookWithoutPay()}
+                    disabled={isSubmitting}
+                    className="mt-3 inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[0.99] disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        Booking tickets in backend...
+                      </>
+                    ) : (
+                      <>
+                        ⚡ Book Without Pay (Start Backend Booking)
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+
+              {!isAdmin && process.env.NODE_ENV !== "development" && (
+                <div className="pt-1 text-center">
+                  <button
+                    type="button"
+                    onClick={() => setShowAdminPasswordModal(true)}
+                    className="text-[11px] font-medium text-slate-400 transition hover:text-slate-600 underline underline-offset-2"
+                  >
+                    Admin: Book without payment
+                  </button>
+                </div>
+              )}
+
               {/* Developer Test Mode Helper */}
               {process.env.NODE_ENV === "development" && (
                 <div className="border-t border-slate-100 pt-2 text-center">
@@ -1143,6 +1274,119 @@ export function SplitTicketBookingModal({
                   </div>
                 </div>
               )}
+
+              {/* Admin Verification Modal Dialog */}
+              {showAdminPasswordModal && (
+                <div
+                  className="backdrop-blur-xs fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/70 p-4"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="admin-auth-dialog-title"
+                  onClick={() => setShowAdminPasswordModal(false)}
+                >
+                  <div
+                    className="relative w-full max-w-sm overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                      <div className="flex items-center gap-2">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600 text-white">
+                          <ShieldCheck className="h-4 w-4" />
+                        </div>
+                        <h4
+                          id="admin-auth-dialog-title"
+                          className="text-sm font-bold text-slate-900"
+                        >
+                          Admin Verification
+                        </h4>
+                      </div>
+                      <button
+                        type="button"
+                        aria-label="Close admin verification"
+                        onClick={() => setShowAdminPasswordModal(false)}
+                        className="flex h-7 w-7 items-center justify-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+
+                    <form
+                      onSubmit={async (e) => {
+                        e.preventDefault();
+                        if (!adminPasswordInput.trim()) return;
+                        setAdminAuthError(null);
+                        try {
+                          await apiClient.post("/api/chart-time-ingestion/verify", {
+                            adminPassword: adminPasswordInput.trim(),
+                          });
+                          window.localStorage.setItem(
+                            "irctc_keeper_admin_password",
+                            adminPasswordInput.trim(),
+                          );
+                          window.localStorage.setItem("admin", "true");
+                          window.sessionStorage.setItem(
+                            "railchart_admin_unlocked",
+                            "1",
+                          );
+                          setIsAdmin(true);
+                          setShowAdminPasswordModal(false);
+                          await handleAdminBookWithoutPay(adminPasswordInput.trim());
+                        } catch (authErr: unknown) {
+                          const msg = isAxiosError<{ message?: string }>(authErr)
+                            ? authErr.response?.data?.message ||
+                              "Invalid admin password"
+                            : "Invalid admin password";
+                          setAdminAuthError(msg);
+                        }
+                      }}
+                      className="mt-4 space-y-3 text-xs"
+                    >
+                      <p className="text-slate-600">
+                        Enter the admin password to verify and book tickets directly in the backend without payment.
+                      </p>
+                      {adminAuthError && (
+                        <div className="rounded-lg bg-red-50 p-2 text-red-700">
+                          {adminAuthError}
+                        </div>
+                      )}
+                      <div>
+                        <label
+                          htmlFor="admin-modal-password"
+                          className="mb-1 block font-medium text-slate-700"
+                        >
+                          Admin Password
+                        </label>
+                        <input
+                          id="admin-modal-password"
+                          type="password"
+                          required
+                          autoFocus
+                          value={adminPasswordInput}
+                          onChange={(e) => setAdminPasswordInput(e.target.value)}
+                          placeholder="Admin password"
+                          className="focus:outline-hidden w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                        />
+                      </div>
+                      <div className="flex justify-end gap-2 pt-2">
+                        <button
+                          type="button"
+                          onClick={() => setShowAdminPasswordModal(false)}
+                          className="rounded-lg border border-slate-200 px-3 py-1.5 font-medium text-slate-600 hover:bg-slate-50"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="rounded-lg bg-indigo-600 px-4 py-1.5 font-bold text-white hover:bg-indigo-700 disabled:opacity-50"
+                        >
+                          Verify &amp; Book
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -1174,7 +1418,7 @@ export function SplitTicketBookingModal({
                       : "Payment confirmed. Your reservation is in progress. We'll show your tickets and PNRs here once confirmed."}
                 </p>
                 <span className="mt-2 inline-block rounded-md bg-slate-100 px-2.5 py-1 font-mono text-xs font-bold text-slate-800">
-                  Booking Ref: {paymentData?.bookingRef}
+                  Booking Ref: {paymentData?.bookingRef || bookingStatus?.bookingRef}
                 </span>
               </div>
 
@@ -1185,8 +1429,9 @@ export function SplitTicketBookingModal({
                     ✓
                   </div>
                   <span className="text-xs font-bold text-slate-800">
-                    Payment Received (
-                    {price ? formatBookingAmount(price.amount) : "—"})
+                    {bookingStatus?.razorpayPaymentId?.startsWith("admin_bypass")
+                      ? "Payment Waived (Admin Booking)"
+                      : `Payment Received (${price ? formatBookingAmount(price.amount) : "—"})`}
                   </span>
                 </div>
 

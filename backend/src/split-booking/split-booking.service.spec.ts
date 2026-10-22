@@ -1081,6 +1081,63 @@ describe('SplitBookingService', () => {
     });
   });
 
+  describe('adminBookWithoutPay', () => {
+    it('bypasses payment and starts fulfillment for admin', async () => {
+      const mockBooking = {
+        id: 'b-admin-1',
+        bookingRef: 'LB-ADMIN1',
+        trainNumber: '12066',
+        trainName: 'JANSHATABDI',
+        fromStationCode: 'DEE',
+        toStationCode: 'AII',
+        journeyDate: new Date('2026-10-03'),
+        travelClass: 'CC',
+        quota: 'GN',
+        totalFare: 810,
+        serviceFee: 80,
+        irctcServiceFeePaise: 7080,
+        paymentGatewayFeePaise: 2882,
+        bookingStatus: 'IDLE',
+        paymentStatus: 'PENDING',
+        bookingMode: 'AI',
+        legsPayload: [],
+        passengers: [{ name: 'Admin Passenger', age: 30, gender: 'Male' }],
+        contactMobile: '9999999999',
+        contactEmail: 'admin@test.com',
+        automationLogs: [],
+        pnrs: [],
+        pnrLeg1: null,
+        pnrLeg2: null,
+        bookingError: null,
+      };
+
+      prisma.splitTicketBooking.findUnique.mockImplementation(
+        () => mockBooking,
+      );
+      prisma.splitTicketBooking.update.mockImplementation(({ data }) => {
+        Object.assign(mockBooking, data);
+        return mockBooking;
+      });
+      prisma.splitTicketBooking.updateMany.mockResolvedValue({ count: 1 });
+      tripmgt.executeBooking.mockResolvedValue({
+        success: true,
+        pnrs: ['1234567890'],
+      });
+
+      const res = await service.adminBookWithoutPay('LB-ADMIN1');
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 'b-admin-1' },
+          data: expect.objectContaining({
+            paymentStatus: 'PAID',
+            bookingStatus: 'QUEUED',
+          }),
+        }),
+      );
+      expect(res.paymentStatus).toBe('PAID');
+    });
+  });
+
   describe('adminNotifyCustomer', () => {
     it('updates PNRs and uploads PDF when provided before notifying', async () => {
       const mockBooking = {

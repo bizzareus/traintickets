@@ -89,6 +89,7 @@ describe('Split booking payment trigger', () => {
 describe('Split booking admin controller endpoints', () => {
   const adminListBookings = jest.fn();
   const adminUpdateBooking = jest.fn();
+  const adminBookWithoutPay = jest.fn();
   const adminUploadTicketPdf = jest.fn();
   const getTicketPdf = jest.fn();
   const adminNotifyCustomer = jest.fn();
@@ -100,6 +101,7 @@ describe('Split booking admin controller endpoints', () => {
   const service = {
     adminListBookings,
     adminUpdateBooking,
+    adminBookWithoutPay,
     adminUploadTicketPdf,
     getTicketPdf,
     adminNotifyCustomer,
@@ -151,6 +153,31 @@ describe('Split booking admin controller endpoints', () => {
       bookingStatus: 'CONFIRMED',
       pnrLeg1: '1234567890',
     });
+  });
+
+  it('rejects admin book-without-pay without valid auth', async () => {
+    await expect(
+      controller.adminBookWithoutPay(undefined, {} as Request, 'LB-TEST'),
+    ).rejects.toThrow();
+  });
+
+  it('books without pay when admin password is valid', async () => {
+    adminBookWithoutPay.mockResolvedValue({
+      bookingRef: 'LB-TEST',
+      bookingStatus: 'QUEUED',
+      paymentStatus: 'PAID',
+    });
+    const res = await controller.adminBookWithoutPay(
+      'admin-secret-password',
+      {} as Request,
+      'LB-TEST',
+    );
+    expect(res).toMatchObject({
+      bookingRef: 'LB-TEST',
+      bookingStatus: 'QUEUED',
+      paymentStatus: 'PAID',
+    });
+    expect(adminBookWithoutPay).toHaveBeenCalledWith('LB-TEST');
   });
 
   it('uploads ticket pdf via base64 or file', async () => {

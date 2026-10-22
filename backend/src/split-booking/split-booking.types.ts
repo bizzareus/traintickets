@@ -65,6 +65,7 @@ export interface SplitBookingStatusResponse extends SplitBookingPrice {
   contactEmail: string;
   bookingMode: SplitBookingMode;
   paymentStatus: SplitBookingPaymentStatus;
+  razorpayPaymentId?: string | null;
   payUrl: string | null;
   bookingStatus: SplitBookingFulfillmentStatus;
   pnrs: string[];

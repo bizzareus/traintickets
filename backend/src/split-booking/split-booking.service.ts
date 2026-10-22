@@ -427,14 +427,23 @@ export class SplitBookingService {
     return { received: true };
   }
 
-  private async findBooking(bookingRef: string): Promise<SplitTicketBooking> {
-    const booking = await this.prisma.splitTicketBooking.findUnique({
-      where: { bookingRef },
+  private async findBooking(
+    bookingRefOrId: string,
+  ): Promise<SplitTicketBooking> {
+    let booking = await this.prisma.splitTicketBooking.findUnique({
+      where: { bookingRef: bookingRefOrId },
     });
+    if (!booking) {
+      booking = await this.prisma.splitTicketBooking
+        .findUnique({
+          where: { id: bookingRefOrId },
+        })
+        .catch(() => null);
+    }
 
     if (!booking) {
       throw new NotFoundException(
-        `Booking with reference "${bookingRef}" not found`,
+        `Booking with reference "${bookingRefOrId}" not found`,
       );
     }
 
@@ -465,6 +474,7 @@ export class SplitBookingService {
       contactEmail: booking.contactEmail,
       bookingMode: booking.bookingMode,
       paymentStatus: booking.paymentStatus,
+      razorpayPaymentId: booking.razorpayPaymentId ?? null,
       payUrl: booking.payUrl,
       bookingStatus: booking.bookingStatus,
       pnrs: booking.pnrs,
@@ -585,6 +595,68 @@ export class SplitBookingService {
     const current = await this.findBooking(bookingRef);
     this.publishBookingNotification(current);
     return this.toStatusResponse(current);
+  }
+
+  /**
+   * Admin override: marks the booking as paid without gateway interaction
+   * and dispatches backend booking fulfillment immediately.
+   */
+  async adminBookWithoutPay(bookingRefOrId: string) {
+    const booking = await this.findBooking(bookingRefOrId);
+    const bookingRef = booking.bookingRef;
+    const paymentId = `admin_bypass_${Date.now()}`;
+    const price = bookingPrice(booking);
+
+    const currentLogs = Array.isArray(booking.automationLogs)
+      ? (booking.automationLogs as unknown as Array<{
+          timestamp: string;
+          step: string;
+          message: string;
+        }>)
+      : [];
+
+    const updatedLogs = [
+      ...currentLogs,
+      {
+        timestamp: new Date().toISOString(),
+        step: 'ADMIN_BYPASS',
+        message: `Admin bypassed payment (amount ₹${price.amount} waived). Starting backend booking fulfillment.`,
+      },
+    ];
+
+    await this.prisma.splitTicketBooking.update({
+      where: { id: booking.id },
+      data: {
+        paymentStatus: 'PAID',
+        paidAt: new Date(),
+        razorpayPaymentId: paymentId,
+        bookingStatus: 'QUEUED',
+        bookingError: null,
+        pnrLeg1: null,
+        pnrLeg2: null,
+        pnrs: [],
+        automationLogs: updatedLogs as unknown as Prisma.InputJsonValue,
+      },
+    });
+
+    this.posthog?.capture(
+      'split_booking_admin_bypass',
+      {
+        booking_ref: bookingRef,
+        train_number: booking.trainNumber,
+        from_station: booking.fromStationCode,
+        to_station: booking.toStationCode,
+        amount: price.amount,
+        total_fare: price.totalFare,
+      },
+      bookingRef,
+    );
+
+    this.startFulfillment(bookingRef);
+
+    const updated = await this.findBooking(bookingRef);
+    this.publishBookingNotification(updated);
+    return this.toStatusResponse(updated);
   }
 
   private publishBookingNotification(booking: SplitTicketBooking): void {
