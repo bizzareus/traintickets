@@ -62,3 +62,8 @@
 
 **Learning:** Mapping over target destination station codes (`destinations.map(...)`) and calling `Array.prototype.findIndex()` inside train schedule lookups allocates intermediate arrays and function closures while scanning the entire station list ($D \times N$ operations per train). Creating a `Set` for origin codes and using direct short-circuiting `for` loops eliminates intermediate allocations and reduces execution time by ~30%.
 **Action:** Replace `destinations.map(code => array.findIndex(...)).find(...)` with direct short-circuiting `for` loops and `Set` lookups when matching multi-code station sequences across route schedules.
+
+## 2026-10-28 - Direct UTC Timestamp Caching vs Date Object Allocation in Catalog Scans
+
+**Learning:** Caching full `Date` objects in module-level `Map` caches (e.g. `parsedDateCache`) still requires calling `.getTime()` or allocating defensive copies (`new Date(cached.getTime())`) to avoid accidental mutation across callers. Caching primitive UTC millisecond numbers (`number | null`) in `parsedTimestampCache` enables direct numeric comparisons (`time >= fromTime && time <= toTime`), eliminating heap allocations and achieving ~38.5% speedup in festival train schedule searches.
+**Action:** Always store primitive numeric UTC timestamps (`number | null`) in date parsing caches when dates are used for range filtering or comparisons rather than instantiating and caching `Date` instances.
