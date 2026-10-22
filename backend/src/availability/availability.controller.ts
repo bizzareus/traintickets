@@ -824,6 +824,20 @@ export class AvailabilityController {
       });
     }
 
+    // Defensive input validation: validate originOffsetDays bounds to avoid date logic overflow/corruption
+    if (
+      originOffsetDays !== undefined &&
+      originOffsetDays !== null &&
+      (!Number.isInteger(Number(originOffsetDays)) ||
+        Number(originOffsetDays) < 0 ||
+        Number(originOffsetDays) > 30)
+    ) {
+      throw new BadRequestException({
+        code: 'INVALID_ORIGIN_OFFSET',
+        message: 'originOffsetDays must be an integer between 0 and 30.',
+      });
+    }
+
     const cleanCategory = category === 'NON_AC' ? 'NON_AC' : 'AC';
     const cleanTatkalTime =
       tatkalTime ||
