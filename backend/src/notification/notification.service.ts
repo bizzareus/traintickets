@@ -154,7 +154,10 @@ export class NotificationService {
     to: string,
     subject: string,
     html: string,
-    options?: { skipFailureReport?: boolean },
+    options?: {
+      skipFailureReport?: boolean;
+      attachments?: Array<{ filename: string; content: Buffer }>;
+    },
   ): Promise<boolean> {
     console.info('email service was called');
     const isToAdmin =
@@ -187,6 +190,9 @@ export class NotificationService {
         ...(bcc ? { bcc } : {}),
         subject,
         html,
+        ...(options?.attachments?.length
+          ? { attachments: options.attachments }
+          : {}),
       });
       if (response.error || !response.data?.id) {
         throw new Error(

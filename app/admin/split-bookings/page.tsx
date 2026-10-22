@@ -18,11 +18,16 @@ import {
   Train,
   Upload,
   X,
+  Zap,
 } from "lucide-react";
 import { apiClient } from "@/lib/api";
 import type { SplitBookingPrice } from "@/lib/split-booking";
 import { bookingPriceItems, formatBookingAmount } from "@/lib/bookingPrice";
 import { BookingPriceBreakdown } from "@/components/booking-v2/BookingPriceBreakdown";
+import {
+  formatLegDate,
+  formatTimeAmPm,
+} from "@/components/booking-v2/alternatePathHelpers";
 
 interface Passenger {
   name: string;
@@ -282,6 +287,9 @@ function SplitBookingsAdminContent() {
   // Cancel & Refund Modal State
   const [refundBooking, setRefundBooking] =
     useState<SplitBookingAdminEntry | null>(null);
+  const [cancelRefundOption, setCancelRefundOption] = useState<
+    "refund" | "no_refund"
+  >("refund");
   const [refundReason, setRefundReason] = useState("");
   const [processingRefund, setProcessingRefund] = useState(false);
   const [refundModalError, setRefundModalError] = useState("");
@@ -299,7 +307,9 @@ function SplitBookingsAdminContent() {
     useState<SplitBookingAdminEntry | null>(null);
   const [notifyMessage, setNotifyMessage] = useState("");
   const [notifyLegPnrs, setNotifyLegPnrs] = useState<string[]>([]);
-  const [notifyPdfFile, setNotifyPdfFile] = useState<File | null>(null);
+  const [notifyLegPdfFiles, setNotifyLegPdfFiles] = useState<(File | null)[]>(
+    [],
+  );
   const [notifyMissingWarning, setNotifyMissingWarning] = useState<
     string | null
   >(null);
@@ -321,7 +331,7 @@ function SplitBookingsAdminContent() {
     setNotifyBooking(b);
     setNotifyMessage("");
     setNotifyFeedback(null);
-    setNotifyPdfFile(null);
+    setNotifyLegPdfFiles(new Array(b.legsPayload.length).fill(null));
     setNotifyMissingWarning(null);
     const initialPnrs = b.legsPayload.map((_, idx) => {
       if (b.pnrs && b.pnrs[idx]) return b.pnrs[idx];
@@ -382,6 +392,30 @@ function SplitBookingsAdminContent() {
     void navigator.clipboard.writeText(text);
     setCopiedRef(text);
     setTimeout(() => setCopiedRef(null), 2000);
+  };
+
+  const [actionLoadingRef, setActionLoadingRef] = useState<string | null>(null);
+
+  const handleAdminBookWithoutPay = async (b: SplitBookingAdminEntry) => {
+    const confirmed = window.confirm(
+      `Book ${b.bookingRef} without payment? This will mark payment as PAID (admin bypass) and trigger backend reservation immediately.`,
+    );
+    if (!confirmed) return;
+
+    setActionLoadingRef(b.bookingRef);
+    setError("");
+    try {
+      await apiClient.post(
+        `/api/split-booking/admin/${encodeURIComponent(b.bookingRef)}/book-without-pay`,
+        {},
+        { headers: authHeaders() },
+      );
+      await load();
+    } catch (err) {
+      setError(extractError(err, "Failed to book without payment."));
+    } finally {
+      setActionLoadingRef(null);
+    }
   };
 
   // Filtered entries
@@ -533,7 +567,9 @@ function SplitBookingsAdminContent() {
     setRefundReason("");
     setRefundModalError("");
     setRefundSuccessMsg("");
+    setCancelRefundOption(b.paymentStatus === "PAID" ? "refund" : "no_refund");
   };
+  const openCancelModal = openCancelAndRefundModal;
 
   const handleProcessCancelAndRefund = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -542,24 +578,30 @@ function SplitBookingsAdminContent() {
     setRefundModalError("");
     setRefundSuccessMsg("");
     try {
+      const shouldRefund = cancelRefundOption === "refund";
       const res = await apiClient.post<{
         success: boolean;
-        refundId: string;
-        refundAmount: number;
+        refundInitiated?: boolean;
+        refundId?: string | null;
+        refundAmount?: number;
         emailSent: boolean;
         message: string;
       }>(
         `/api/split-booking/admin/${refundBooking.id}/cancel-and-refund`,
-        { reason: refundReason.trim() || undefined },
+        {
+          reason: refundReason.trim() || undefined,
+          refund: shouldRefund,
+        },
         { headers: authHeaders() },
       );
 
       const emailNote = res.data.emailSent
-        ? " Automated refund email sent to customer."
+        ? " Automated notification email sent to customer."
         : " (Customer email was not configured or skipped).";
-      setRefundSuccessMsg(
-        `Success: Refund of ₹${res.data.refundAmount} initiated (Refund ID: ${res.data.refundId}).${emailNote}`,
-      );
+      const successText = res.data.refundInitiated
+        ? `Success: Refund of ₹${res.data.refundAmount} initiated (Refund ID: ${res.data.refundId}).${emailNote}`
+        : `Success: Booking ${refundBooking.bookingRef} cancelled without refund.${emailNote}`;
+      setRefundSuccessMsg(successText);
       await load();
       setTimeout(() => {
         setRefundBooking(null);
@@ -567,7 +609,7 @@ function SplitBookingsAdminContent() {
       }, 2500);
     } catch (err) {
       setRefundModalError(
-        extractError(err, "Failed to cancel booking and initiate refund."),
+        extractError(err, "Failed to cancel booking."),
       );
     } finally {
       setProcessingRefund(false);
@@ -659,9 +701,12 @@ function SplitBookingsAdminContent() {
     e.preventDefault();
     if (!notifyBooking) return;
 
-    if (notifyPdfFile && notifyPdfFile.size > MAX_PDF_BYTES) {
+    const oversized = notifyLegPdfFiles.find(
+      (f) => f && f.size > MAX_PDF_BYTES,
+    );
+    if (oversized) {
       setNotifyMissingWarning(
-        "The selected PDF exceeds the 25MB limit. Please choose a smaller ticket PDF.",
+        `File "${oversized.name}" exceeds the 25MB limit. Please choose a smaller ticket PDF.`,
       );
       return;
     }
@@ -673,16 +718,29 @@ function SplitBookingsAdminContent() {
         missingLegs.push(idx + 1);
       }
     });
-    const hasPdf = notifyBooking.hasTicketPdf || !!notifyPdfFile;
 
-    if (missingLegs.length > 0 || !hasPdf) {
-      const missingDetails: string[] = [];
-      if (missingLegs.length > 0) {
-        missingDetails.push(`PNR for Leg ${missingLegs.join(", ")}`);
-      }
-      if (!hasPdf) {
-        missingDetails.push("Ticket PDF");
-      }
+    const selectedFilesCount = notifyLegPdfFiles.filter(Boolean).length;
+    const hasExistingPdf = Boolean(notifyBooking.hasTicketPdf);
+    const totalLegs = notifyBooking.legsPayload.length;
+
+    const missingDetails: string[] = [];
+    if (missingLegs.length > 0) {
+      missingDetails.push(`PNR for Leg ${missingLegs.join(", ")}`);
+    }
+    if (!hasExistingPdf && selectedFilesCount === 0) {
+      missingDetails.push(
+        totalLegs > 1
+          ? `Ticket PDFs for all ${totalLegs} legs`
+          : "Ticket PDF",
+      );
+    } else if (!hasExistingPdf && selectedFilesCount < totalLegs) {
+      const missingPdfLegs = notifyBooking.legsPayload
+        .map((_, idx) => (!notifyLegPdfFiles[idx] ? idx + 1 : null))
+        .filter((n): n is number => n !== null);
+      missingDetails.push(`Ticket PDF for Leg ${missingPdfLegs.join(", ")}`);
+    }
+
+    if (missingDetails.length > 0) {
       const confirmSend = window.confirm(
         `Missing details:\n• ${missingDetails.join("\n• ")}\n\nDo you want to proceed and notify the passenger without them?`,
       );
@@ -699,22 +757,32 @@ function SplitBookingsAdminContent() {
     setNotifyMissingWarning(null);
 
     try {
-      let pdfPayload:
-        { base64: string; filename?: string; contentType?: string } | undefined;
+      const pdfFilesWithIdx = notifyLegPdfFiles
+        .map((file, idx) => ({ file, idx }))
+        .filter(
+          (item): item is { file: File; idx: number } => item.file !== null,
+        );
 
-      if (notifyPdfFile) {
-        const reader = new FileReader();
-        const base64Promise = new Promise<string>((resolve, reject) => {
-          reader.onload = () => resolve(reader.result as string);
-          reader.onerror = reject;
+      let pdfsPayload:
+        | Array<{ base64: string; filename?: string; contentType?: string }>
+        | undefined;
+
+      if (pdfFilesWithIdx.length > 0) {
+        const readPromises = pdfFilesWithIdx.map(async ({ file }) => {
+          const reader = new FileReader();
+          const base64Promise = new Promise<string>((resolve, reject) => {
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = reject;
+          });
+          reader.readAsDataURL(file);
+          const base64Data = await base64Promise;
+          return {
+            base64: base64Data,
+            filename: file.name,
+            contentType: file.type || "application/pdf",
+          };
         });
-        reader.readAsDataURL(notifyPdfFile);
-        const base64Data = await base64Promise;
-        pdfPayload = {
-          base64: base64Data,
-          filename: notifyPdfFile.name,
-          contentType: notifyPdfFile.type || "application/pdf",
-        };
+        pdfsPayload = await Promise.all(readPromises);
       }
 
       const res = await apiClient.post<{
@@ -729,7 +797,11 @@ function SplitBookingsAdminContent() {
           pnrLeg1: notifyLegPnrs[0]?.trim() || undefined,
           pnrLeg2: notifyLegPnrs[1]?.trim() || undefined,
           pnrs: notifyLegPnrs.map((p) => p.trim()).filter(Boolean),
-          pdf: pdfPayload,
+          pdf:
+            pdfsPayload && pdfsPayload.length === 1
+              ? pdfsPayload[0]
+              : undefined,
+          pdfs: pdfsPayload && pdfsPayload.length > 0 ? pdfsPayload : undefined,
         },
         { headers: authHeaders() },
       );
@@ -1006,7 +1078,7 @@ function SplitBookingsAdminContent() {
                             )}
                           </td>
 
-                          {/* Train & Date */}
+                          {/* Train & Date / Split Legs */}
                           <td className="px-4 py-3.5 align-top">
                             <div className="font-bold text-slate-900">
                               {b.trainNumber}{" "}
@@ -1014,13 +1086,94 @@ function SplitBookingsAdminContent() {
                                 {b.trainName || ""}
                               </span>
                             </div>
-                            <div className="mt-0.5 font-medium text-slate-600">
-                              {b.journeyDate}
-                            </div>
-                            <div className="mt-0.5 text-[11px] text-slate-400">
-                              Class: <strong>{b.travelClass}</strong> · Quota:{" "}
-                              <strong>{b.quota}</strong>
-                            </div>
+
+                            {b.legsPayload && b.legsPayload.length > 1 ? (
+                              <div className="mt-1.5 min-w-[230px] space-y-1.5">
+                                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                                  {b.legsPayload.length} Journey Legs
+                                </div>
+                                {b.legsPayload.map((leg, lIdx) => {
+                                  const legDate = formatLegDate(
+                                    leg.boardingDate,
+                                    b.journeyDate,
+                                  );
+                                  const depTime = formatTimeAmPm(
+                                    leg.departureTime,
+                                  );
+                                  return (
+                                    <div
+                                      key={lIdx}
+                                      className="rounded-md border border-slate-200/90 bg-slate-50/80 p-1.5 text-[11px]"
+                                    >
+                                      <div className="flex items-center gap-1.5 font-semibold text-slate-900">
+                                        <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-slate-200 text-[9px] font-bold text-slate-700">
+                                          {lIdx + 1}
+                                        </span>
+                                        <span className="truncate">
+                                          {leg.from} → {leg.to}
+                                        </span>
+                                        <span className="rounded bg-blue-100/80 px-1 py-0.2 text-[10px] font-bold text-blue-800">
+                                          {leg.travelClass}
+                                        </span>
+                                      </div>
+                                      <div className="mt-0.5 flex flex-wrap items-center gap-x-2 pl-5 text-[10px] text-slate-500">
+                                        <span>{legDate}</span>
+                                        {depTime && (
+                                          <span>
+                                            • Dep:{" "}
+                                            <strong className="font-semibold text-slate-700">
+                                              {depTime}
+                                            </strong>
+                                          </span>
+                                        )}
+                                      </div>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            ) : b.legsPayload && b.legsPayload.length === 1 ? (
+                              <div className="mt-1">
+                                <div className="text-xs font-semibold text-slate-800">
+                                  {b.legsPayload[0].from} → {b.legsPayload[0].to}
+                                </div>
+                                <div className="mt-0.5 flex flex-wrap items-center gap-x-2 text-[11px] text-slate-500">
+                                  <span>
+                                    {formatLegDate(
+                                      b.legsPayload[0].boardingDate,
+                                      b.journeyDate,
+                                    )}
+                                  </span>
+                                  {b.legsPayload[0].departureTime && (
+                                    <span>
+                                      • Dep:{" "}
+                                      <strong className="font-semibold text-slate-700">
+                                        {formatTimeAmPm(
+                                          b.legsPayload[0].departureTime,
+                                        )}
+                                      </strong>
+                                    </span>
+                                  )}
+                                </div>
+                                <div className="mt-0.5 text-[11px] text-slate-400">
+                                  Class:{" "}
+                                  <strong>
+                                    {b.legsPayload[0].travelClass ||
+                                      b.travelClass}
+                                  </strong>{" "}
+                                  · Quota: <strong>{b.quota}</strong>
+                                </div>
+                              </div>
+                            ) : (
+                              <>
+                                <div className="mt-0.5 font-medium text-slate-600">
+                                  {b.journeyDate}
+                                </div>
+                                <div className="mt-0.5 text-[11px] text-slate-400">
+                                  Class: <strong>{b.travelClass}</strong> ·
+                                  Quota: <strong>{b.quota}</strong>
+                                </div>
+                              </>
+                            )}
                           </td>
 
                           {/* Passenger & Contact */}
@@ -1114,6 +1267,23 @@ function SplitBookingsAdminContent() {
                               className="flex flex-col items-end gap-1.5"
                               onClick={(e) => e.stopPropagation()}
                             >
+                              {b.paymentStatus !== "PAID" &&
+                                b.bookingStatus !== "CONFIRMED" &&
+                                b.bookingStatus !== "CANCELLED" && (
+                                  <button
+                                    type="button"
+                                    onClick={() => handleAdminBookWithoutPay(b)}
+                                    disabled={actionLoadingRef === b.bookingRef}
+                                    className="shadow-xs inline-flex cursor-pointer items-center gap-1 rounded-lg border border-indigo-200 bg-indigo-50 px-2.5 py-1 text-[11px] font-bold text-indigo-700 transition hover:bg-indigo-100 disabled:opacity-50"
+                                    title="Bypass payment and book directly in backend"
+                                  >
+                                    <Zap className="h-3 w-3 text-indigo-600" />
+                                    {actionLoadingRef === b.bookingRef
+                                      ? "Booking..."
+                                      : "Book (No Pay)"}
+                                  </button>
+                                )}
+
                               <button
                                 type="button"
                                 onClick={() => openEditModal(b)}
@@ -1132,17 +1302,17 @@ function SplitBookingsAdminContent() {
                                 Notify
                               </button>
 
-                              {b.paymentStatus === "PAID" &&
-                                b.bookingStatus !== "CANCELLED" && (
-                                  <button
-                                    type="button"
-                                    onClick={() => openCancelAndRefundModal(b)}
-                                    className="shadow-xs inline-flex cursor-pointer items-center gap-1 rounded-lg border border-purple-200 bg-purple-50 px-2.5 py-1 text-[11px] font-semibold text-purple-700 transition hover:bg-purple-100"
-                                  >
-                                    <RotateCcw className="h-3 w-3" />
-                                    Cancel & Refund
-                                  </button>
-                                )}
+                              {b.bookingStatus !== "CANCELLED" && (
+                                <button
+                                  type="button"
+                                  onClick={() => openCancelModal(b)}
+                                  className="shadow-xs inline-flex cursor-pointer items-center gap-1 rounded-lg border border-purple-200 bg-purple-50 px-2.5 py-1 text-[11px] font-semibold text-purple-700 transition hover:bg-purple-100"
+                                  title="Cancel booking"
+                                >
+                                  <RotateCcw className="h-3 w-3" />
+                                  Cancel
+                                </button>
+                              )}
 
                               {(b.customerEmailSentAt ||
                                 b.customerWhatsappSentAt) && (
@@ -1868,113 +2038,139 @@ function SplitBookingsAdminContent() {
               </div>
 
               {/* Ticket PDF Section */}
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <label className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-800">
                     <FileText className="h-3.5 w-3.5 text-blue-600" />
-                    Ticket PDF <span className="text-rose-500">*</span>
+                    Ticket PDF{notifyBooking.legsPayload.length > 1 ? "s" : ""} (
+                    {notifyBooking.legsPayload.length} Leg
+                    {notifyBooking.legsPayload.length > 1 ? "s" : ""}){" "}
+                    <span className="text-rose-500">*</span>
                   </label>
-                  {notifyBooking.hasTicketPdf && !notifyPdfFile && (
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700">
-                      <CheckCircle2 className="h-3 w-3" /> PDF on file
+                  {notifyBooking.legsPayload.length > 1 && (
+                    <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-semibold text-blue-700">
+                      Merged in backend
                     </span>
                   )}
                 </div>
 
-                {notifyBooking.hasTicketPdf && !notifyPdfFile ? (
-                  <div className="flex items-center justify-between rounded-xl border border-emerald-200 bg-emerald-50/40 p-3">
-                    <div className="flex items-center gap-2">
-                      <FileText className="h-4 w-4 text-emerald-600" />
-                      <div className="text-xs">
-                        <span className="font-semibold text-slate-900">
-                          {notifyBooking.ticketPdfFilename ||
-                            `ticket-${notifyBooking.bookingRef}.pdf`}
-                        </span>
-                        <span className="ml-1.5 text-slate-500">
-                          (Uploaded)
-                        </span>
-                      </div>
-                    </div>
-                    <label className="cursor-pointer text-[11px] font-semibold text-blue-600 underline hover:text-blue-800">
-                      Upload New PDF
-                      <input
-                        type="file"
-                        accept="application/pdf"
-                        className="hidden"
-                        onChange={(e) => {
-                          const file = e.target.files?.[0];
-                          if (file) {
-                            if (file.type && file.type !== "application/pdf") {
-                              alert("Please upload a PDF file.");
-                              return;
-                            }
-                            setNotifyPdfFile(file);
-                          }
-                        }}
-                      />
-                    </label>
-                  </div>
-                ) : (
-                  <div
-                    className={`rounded-xl border-2 border-dashed p-3 text-center transition ${
-                      notifyPdfFile
-                        ? "border-emerald-300 bg-emerald-50/30"
-                        : "border-slate-300 bg-slate-50/50 hover:bg-slate-50"
-                    }`}
-                  >
-                    {notifyPdfFile ? (
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-left">
-                          <FileText className="h-5 w-5 text-emerald-600" />
-                          <div>
-                            <p className="text-xs font-semibold text-slate-900">
-                              {notifyPdfFile.name}
-                            </p>
-                            <p className="text-[10px] text-slate-500">
-                              {(notifyPdfFile.size / 1024).toFixed(1)} KB (Will
-                              be attached & linked)
-                            </p>
-                          </div>
+                {notifyBooking.hasTicketPdf &&
+                  notifyLegPdfFiles.every((f) => !f) && (
+                    <div className="flex items-center justify-between rounded-xl border border-emerald-200 bg-emerald-50/40 p-3">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+                        <div className="text-xs">
+                          <span className="font-semibold text-slate-900">
+                            {notifyBooking.ticketPdfFilename ||
+                              `ticket-${notifyBooking.bookingRef}.pdf`}
+                          </span>
+                          <span className="ml-1.5 text-slate-500">
+                            (Already on file)
+                          </span>
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => setNotifyPdfFile(null)}
-                          className="cursor-pointer text-xs font-semibold text-rose-600 hover:text-rose-700"
-                        >
-                          Remove
-                        </button>
                       </div>
-                    ) : (
-                      <label className="flex cursor-pointer flex-col items-center justify-center py-2">
-                        <Upload className="mb-1 h-5 w-5 text-slate-400" />
-                        <span className="text-xs font-semibold text-blue-600 hover:underline">
-                          Select or drop ticket PDF (.pdf)
-                        </span>
-                        <span className="mt-0.5 text-[11px] text-slate-500">
-                          PDF containing confirmed IRCTC e-tickets
-                        </span>
-                        <input
-                          type="file"
-                          accept="application/pdf"
-                          className="hidden"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) {
-                              if (
-                                file.type &&
-                                file.type !== "application/pdf"
-                              ) {
-                                alert("Please upload a PDF file.");
-                                return;
-                              }
-                              setNotifyPdfFile(file);
-                            }
-                          }}
-                        />
-                      </label>
-                    )}
-                  </div>
-                )}
+                      <span className="text-[11px] font-medium text-slate-500">
+                        Upload new leg PDFs below to replace
+                      </span>
+                    </div>
+                  )}
+
+                <div className="space-y-2">
+                  {notifyBooking.legsPayload.map((leg, idx) => {
+                    const file = notifyLegPdfFiles[idx];
+                    return (
+                      <div
+                        key={`leg-pdf-${idx}`}
+                        className={`rounded-xl border p-3 transition ${
+                          file
+                            ? "border-emerald-300 bg-emerald-50/30"
+                            : "border-slate-200 bg-slate-50/50 hover:bg-slate-50"
+                        }`}
+                      >
+                        <div className="mb-2 flex items-center justify-between text-xs">
+                          <div className="flex items-center gap-1.5">
+                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-100 text-[10px] font-bold text-blue-700">
+                              {idx + 1}
+                            </span>
+                            <span className="font-semibold text-slate-900">
+                              Leg {idx + 1}: {leg.from} → {leg.to}
+                            </span>
+                            <span className="rounded-sm bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-600">
+                              {leg.travelClass}
+                            </span>
+                          </div>
+                          {file ? (
+                            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600">
+                              <CheckCircle2 className="h-3 w-3" /> Ready to merge
+                            </span>
+                          ) : (
+                            <span className="text-[10px] text-slate-400">
+                              PDF required
+                            </span>
+                          )}
+                        </div>
+
+                        {file ? (
+                          <div className="flex items-center justify-between rounded-lg border border-emerald-200 bg-white px-3 py-2">
+                            <div className="flex items-center gap-2">
+                              <FileText className="h-4 w-4 shrink-0 text-emerald-600" />
+                              <div className="truncate text-xs">
+                                <p className="truncate font-semibold text-slate-900">
+                                  {file.name}
+                                </p>
+                                <p className="text-[10px] text-slate-500">
+                                  {(file.size / 1024).toFixed(1)} KB
+                                </p>
+                              </div>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setNotifyLegPdfFiles((prev) => {
+                                  const next = [...prev];
+                                  next[idx] = null;
+                                  return next;
+                                });
+                              }}
+                              className="ml-2 cursor-pointer text-xs font-semibold text-rose-600 hover:text-rose-700"
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        ) : (
+                          <label className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-slate-300 bg-white py-2.5 text-center transition hover:border-blue-400 hover:bg-blue-50/30">
+                            <Upload className="h-4 w-4 text-slate-400" />
+                            <span className="text-xs font-medium text-blue-600">
+                              Select Leg {idx + 1} ticket PDF
+                            </span>
+                            <input
+                              type="file"
+                              accept="application/pdf"
+                              className="hidden"
+                              onChange={(e) => {
+                                const selected = e.target.files?.[0];
+                                if (selected) {
+                                  if (
+                                    selected.type &&
+                                    selected.type !== "application/pdf"
+                                  ) {
+                                    alert("Please upload a PDF file.");
+                                    return;
+                                  }
+                                  setNotifyLegPdfFiles((prev) => {
+                                    const next = [...prev];
+                                    next[idx] = selected;
+                                    return next;
+                                  });
+                                }
+                              }}
+                            />
+                          </label>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Customer booking notifications are email-only for now. */}
@@ -2184,7 +2380,7 @@ function SplitBookingsAdminContent() {
         </div>
       )}
 
-      {/* --- 5. Cancel Booking & Full Refund Modal --- */}
+      {/* --- 5. Cancel Booking Modal (Refund vs No Refund) --- */}
       {refundBooking && (
         <div
           className="backdrop-blur-xs fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4"
@@ -2199,7 +2395,7 @@ function SplitBookingsAdminContent() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-slate-900">
-                    Cancel Booking & Issue Full Refund
+                    Cancel Booking
                   </h3>
                   <p className="text-xs text-slate-500">
                     Ref:{" "}
@@ -2224,66 +2420,169 @@ function SplitBookingsAdminContent() {
               onSubmit={handleProcessCancelAndRefund}
               className="mt-4 space-y-4"
             >
-              {/* Summary of refund action */}
-              <div className="space-y-2 rounded-xl border border-purple-200 bg-purple-50/60 p-3.5 text-xs">
-                <div className="flex items-center justify-between border-b border-purple-200/60 pb-2">
-                  <span className="font-medium text-slate-600">
-                    Total Refund Amount:
-                  </span>
-                  <span className="text-base font-bold text-purple-700">
-                    {formatBookingAmount(refundBooking.amount)}{" "}
-                    <span className="text-[11px] font-normal text-purple-600">
-                      (Full 100%)
-                    </span>
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Passenger / Train:</span>
-                  <span className="font-semibold text-slate-800">
-                    Train {refundBooking.trainNumber} (
-                    {refundBooking.fromStationCode} →{" "}
-                    {refundBooking.toStationCode})
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Customer Email:</span>
-                  <span className="font-semibold text-slate-800">
-                    {refundBooking.contactEmail}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Customer Mobile:</span>
-                  <span className="font-semibold text-slate-800">
-                    {refundBooking.contactMobile}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Payment ID:</span>
-                  <span className="font-mono text-slate-700">
-                    {refundBooking.razorpayPaymentId ||
-                      refundBooking.muzoboxPaymentId ||
-                      "Recorded Payment"}
-                  </span>
+              {/* Option to Refund or No Refund */}
+              <div>
+                <label className="mb-1.5 block text-xs font-semibold text-slate-700">
+                  Refund Option
+                </label>
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  <label
+                    className={`relative flex cursor-pointer flex-col rounded-xl border p-3 transition ${
+                      cancelRefundOption === "refund"
+                        ? "border-purple-600 bg-purple-50/70 ring-2 ring-purple-600/20"
+                        : "border-slate-200 bg-white hover:bg-slate-50"
+                    } ${refundBooking.paymentStatus !== "PAID" ? "cursor-not-allowed opacity-50" : ""}`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          name="refundOption"
+                          value="refund"
+                          disabled={refundBooking.paymentStatus !== "PAID"}
+                          checked={cancelRefundOption === "refund"}
+                          onChange={() => setCancelRefundOption("refund")}
+                          className="text-purple-600 focus:ring-purple-500"
+                        />
+                        <span className="text-xs font-bold text-slate-900">
+                          Issue Full Refund
+                        </span>
+                      </div>
+                      <span className="text-xs font-bold text-purple-700">
+                        {formatBookingAmount(refundBooking.amount)}
+                      </span>
+                    </div>
+                    <p className="mt-1 pl-6 text-[11px] text-slate-500">
+                      {refundBooking.paymentStatus === "PAID"
+                        ? "Initiate 100% refund via payment provider (Muzobox) to customer."
+                        : `Not applicable (payment is ${refundBooking.paymentStatus}).`}
+                    </p>
+                  </label>
+
+                  <label
+                    className={`relative flex cursor-pointer flex-col rounded-xl border p-3 transition ${
+                      cancelRefundOption === "no_refund"
+                        ? "border-purple-600 bg-purple-50/70 ring-2 ring-purple-600/20"
+                        : "border-slate-200 bg-white hover:bg-slate-50"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          name="refundOption"
+                          value="no_refund"
+                          checked={cancelRefundOption === "no_refund"}
+                          onChange={() => setCancelRefundOption("no_refund")}
+                          className="text-purple-600 focus:ring-purple-500"
+                        />
+                        <span className="text-xs font-bold text-slate-900">
+                          No Refund
+                        </span>
+                      </div>
+                      <span className="text-xs font-bold text-slate-400">
+                        ₹0
+                      </span>
+                    </div>
+                    <p className="mt-1 pl-6 text-[11px] text-slate-500">
+                      Cancel booking without calling the payment provider refund API.
+                    </p>
+                  </label>
                 </div>
               </div>
 
-              <div className="space-y-1 rounded-xl border border-blue-100 bg-blue-50/50 p-3 text-xs text-blue-900">
-                <div className="flex items-center gap-1.5 font-semibold text-blue-800">
-                  <Mail className="h-3.5 w-3.5" />
-                  Automated Customer Email Notification
+              {/* Summary of cancellation action */}
+              {cancelRefundOption === "refund" ? (
+                <div className="space-y-2 rounded-xl border border-purple-200 bg-purple-50/60 p-3.5 text-xs">
+                  <div className="flex items-center justify-between border-b border-purple-200/60 pb-2">
+                    <span className="font-medium text-slate-600">
+                      Total Refund Amount:
+                    </span>
+                    <span className="text-base font-bold text-purple-700">
+                      {formatBookingAmount(refundBooking.amount)}{" "}
+                      <span className="text-[11px] font-normal text-purple-600">
+                        (Full 100%)
+                      </span>
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Passenger / Train:</span>
+                    <span className="font-semibold text-slate-800">
+                      Train {refundBooking.trainNumber} (
+                      {refundBooking.fromStationCode} →{" "}
+                      {refundBooking.toStationCode})
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Customer Email:</span>
+                    <span className="font-semibold text-slate-800">
+                      {refundBooking.contactEmail}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Customer Mobile:</span>
+                    <span className="font-semibold text-slate-800">
+                      {refundBooking.contactMobile}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Payment ID:</span>
+                    <span className="font-mono text-slate-700">
+                      {refundBooking.razorpayPaymentId ||
+                        refundBooking.muzoboxPaymentId ||
+                        "Recorded Payment"}
+                    </span>
+                  </div>
                 </div>
-                <p className="text-[11px] leading-relaxed text-blue-700">
-                  An automated email will be sent immediately to{" "}
-                  <strong>{refundBooking.contactEmail}</strong> containing the
-                  cancellation notice, full refund amount (
-                  {formatBookingAmount(refundBooking.amount)}
-                  ), and the generated Refund ID reference.
-                </p>
-              </div>
+              ) : (
+                <div className="space-y-2 rounded-xl border border-slate-200 bg-slate-50 p-3.5 text-xs">
+                  <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                    <span className="font-medium text-slate-600">
+                      Cancellation Action:
+                    </span>
+                    <span className="font-bold text-slate-900">
+                      Cancel Only (No Refund)
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Passenger / Train:</span>
+                    <span className="font-semibold text-slate-800">
+                      Train {refundBooking.trainNumber} (
+                      {refundBooking.fromStationCode} →{" "}
+                      {refundBooking.toStationCode})
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Payment Status:</span>
+                    <span className="font-semibold text-slate-800">
+                      {refundBooking.paymentStatus}
+                    </span>
+                  </div>
+                  <p className="rounded-md bg-amber-50 p-2 text-[11px] text-amber-800">
+                    Notice: This marks the booking as CANCELLED. The Muzobox refund API will <strong>not</strong> be called.
+                  </p>
+                </div>
+              )}
+
+              {cancelRefundOption === "refund" && (
+                <div className="space-y-1 rounded-xl border border-blue-100 bg-blue-50/50 p-3 text-xs text-blue-900">
+                  <div className="flex items-center gap-1.5 font-semibold text-blue-800">
+                    <Mail className="h-3.5 w-3.5" />
+                    Automated Customer Email Notification
+                  </div>
+                  <p className="text-[11px] leading-relaxed text-blue-700">
+                    An automated email will be sent immediately to{" "}
+                    <strong>{refundBooking.contactEmail}</strong> containing the
+                    cancellation notice, full refund amount (
+                    {formatBookingAmount(refundBooking.amount)}
+                    ), and the generated Refund ID reference.
+                  </p>
+                </div>
+              )}
 
               <div>
                 <label className="mb-1 block text-xs font-semibold text-slate-700">
-                  Cancellation & Refund Reason (Internal & Audit)
+                  Cancellation Reason (Internal & Audit)
                 </label>
                 <input
                   type="text"
@@ -2323,12 +2622,17 @@ function SplitBookingsAdminContent() {
                   {processingRefund ? (
                     <>
                       <RefreshCw className="h-3 w-3 animate-spin" />
-                      Refunding…
+                      Processing…
+                    </>
+                  ) : cancelRefundOption === "refund" ? (
+                    <>
+                      <RotateCcw className="h-3.5 w-3.5" />
+                      Confirm Full Refund & Cancel
                     </>
                   ) : (
                     <>
                       <RotateCcw className="h-3.5 w-3.5" />
-                      Confirm Full Refund & Cancel
+                      Confirm Cancel (No Refund)
                     </>
                   )}
                 </button>
@@ -2622,7 +2926,10 @@ function SplitBookingsAdminContent() {
                             Boarding Date:{" "}
                           </span>
                           <span className="font-medium text-slate-800">
-                            {leg.boardingDate}
+                            {formatLegDate(
+                              leg.boardingDate,
+                              selectedDetailsBooking.journeyDate,
+                            )}
                           </span>
                         </div>
                         <div>
@@ -2648,13 +2955,17 @@ function SplitBookingsAdminContent() {
                         <div>
                           <span className="text-slate-400">Departure: </span>
                           <span className="font-medium text-slate-800">
-                            {leg.departureTime || "Not supplied"}
+                            {formatTimeAmPm(leg.departureTime) ||
+                              leg.departureTime ||
+                              "Not supplied"}
                           </span>
                         </div>
                         <div>
                           <span className="text-slate-400">Arrival: </span>
                           <span className="font-medium text-slate-800">
-                            {leg.arrivalTime || "Not supplied"}
+                            {formatTimeAmPm(leg.arrivalTime) ||
+                              leg.arrivalTime ||
+                              "Not supplied"}
                           </span>
                         </div>
                       </div>
@@ -2844,6 +3155,27 @@ function SplitBookingsAdminContent() {
                 )}
               </span>
               <div className="flex items-center gap-2">
+                {selectedDetailsBooking.paymentStatus !== "PAID" &&
+                  selectedDetailsBooking.bookingStatus !== "CONFIRMED" &&
+                  selectedDetailsBooking.bookingStatus !== "CANCELLED" && (
+                    <button
+                      type="button"
+                      disabled={
+                        actionLoadingRef === selectedDetailsBooking.bookingRef
+                      }
+                      onClick={async () => {
+                        const b = selectedDetailsBooking;
+                        setSelectedDetailsBooking(null);
+                        await handleAdminBookWithoutPay(b);
+                      }}
+                      className="shadow-xs inline-flex cursor-pointer items-center gap-1 rounded-xl border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-xs font-bold text-indigo-700 transition hover:bg-indigo-100 disabled:opacity-50"
+                    >
+                      <Zap className="h-3.5 w-3.5 text-indigo-600" />
+                      {actionLoadingRef === selectedDetailsBooking.bookingRef
+                        ? "Booking..."
+                        : "Book (No Pay)"}
+                    </button>
+                  )}
                 <button
                   type="button"
                   onClick={() => {

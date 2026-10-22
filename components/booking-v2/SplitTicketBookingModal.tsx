@@ -19,6 +19,7 @@ import {
   fetchSplitBookingStatus,
   simulateSplitBookingPayment,
   adminBookWithoutPayment,
+  checkSplitBookingAvailability,
   type CreateSplitBookingPayload,
   type SplitBookingLeg,
   type SplitBookingPassenger,
@@ -36,6 +37,7 @@ import {
   formatBookingAmount,
 } from "@/lib/bookingPrice";
 import { extract10DigitIndianMobile, isValidEmail } from "@/lib/validation";
+import { formatLegDate, formatTimeAmPm } from "./alternatePathHelpers";
 
 export interface SplitTicketBookingModalProps {
   open: boolean;
@@ -103,6 +105,7 @@ export function SplitTicketBookingModal({
   const [email, setEmail] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isCheckingAvailability, setIsCheckingAvailability] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [showAdminPasswordModal, setShowAdminPasswordModal] = useState(false);
   const [adminPasswordInput, setAdminPasswordInput] = useState("");
@@ -160,6 +163,7 @@ export function SplitTicketBookingModal({
       setBookingDelayed(false);
       setFormError(null);
       setIsSubmitting(false);
+      setIsCheckingAvailability(false);
       setAutoUpgrade(true);
       setConfirmBerthsOnly(false);
       setPreferredCoach("");
@@ -288,7 +292,33 @@ export function SplitTicketBookingModal({
     if (!payload) return;
 
     setIsSubmitting(true);
+    setIsCheckingAvailability(true);
+    setFormError(null);
     try {
+      // Run live ConfirmTkt availability check before proceeding to payment
+      const checkResult = await checkSplitBookingAvailability({
+        trainNumber,
+        quota,
+        legs: payload.legs.map((l) => ({
+          from: l.from,
+          to: l.to,
+          travelClass: l.travelClass,
+          boardingDate: l.boardingDate,
+        })),
+      });
+
+      if (!checkResult.available) {
+        setFormError(
+          checkResult.error ||
+            "One or more legs are no longer confirmed. Please select another route or train.",
+        );
+        setIsCheckingAvailability(false);
+        setIsSubmitting(false);
+        return;
+      }
+
+      setIsCheckingAvailability(false);
+
       const payloadKey = JSON.stringify(payload);
       if (paymentData) {
         // A link may have been paid while the passenger was reviewing details.
@@ -334,6 +364,7 @@ export function SplitTicketBookingModal({
     } catch (err: unknown) {
       handleBookingApiError(err, "Failed to create booking intent");
     } finally {
+      setIsCheckingAvailability(false);
       setIsSubmitting(false);
     }
   };
@@ -378,7 +409,31 @@ export function SplitTicketBookingModal({
     if (!payload) return;
 
     setIsSubmitting(true);
+    setIsCheckingAvailability(true);
+    setFormError(null);
     try {
+      const checkResult = await checkSplitBookingAvailability({
+        trainNumber,
+        quota,
+        legs: payload.legs.map((l) => ({
+          from: l.from,
+          to: l.to,
+          travelClass: l.travelClass,
+          boardingDate: l.boardingDate,
+        })),
+      });
+
+      if (!checkResult.available) {
+        setFormError(
+          checkResult.error ||
+            "One or more legs are no longer confirmed. Admin booking halted.",
+        );
+        setIsCheckingAvailability(false);
+        setIsSubmitting(false);
+        return;
+      }
+
+      setIsCheckingAvailability(false);
       const payment = await createSplitBooking(payload);
       setPaymentData(payment);
       submittedPayloadRef.current = JSON.stringify(payload);
@@ -386,6 +441,7 @@ export function SplitTicketBookingModal({
     } catch (err: unknown) {
       handleBookingApiError(err, "Failed to initiate admin booking");
     } finally {
+      setIsCheckingAvailability(false);
       setIsSubmitting(false);
     }
   };
@@ -651,26 +707,67 @@ export function SplitTicketBookingModal({
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 sm:text-xs">
                     Split Journey Route
                   </span>
+                  <span className="text-[11px] font-semibold text-slate-500">
+                    {legs.length} {legs.length > 1 ? "Legs" : "Leg"}
+                  </span>
                 </div>
-                <div className="grid grid-cols-1 gap-2 text-xs sm:grid-cols-2">
-                  {legs.map((leg, idx) => (
-                    <div
-                      key={idx}
-                      className="shadow-2xs flex items-center justify-between rounded-lg border border-slate-200 bg-white p-2 sm:p-2.5"
-                    >
-                      <div className="min-w-0 pr-2">
-                        <span className="font-bold text-slate-700">
-                          Leg {idx + 1}:{" "}
-                        </span>
-                        <span className="font-semibold text-slate-900">
-                          {leg.from} → {leg.to} · {leg.travelClass}
+                <div className="space-y-2 text-xs">
+                  {legs.map((leg, idx) => {
+                    const formattedDate = formatLegDate(
+                      leg.boardingDate,
+                      journeyDate,
+                    );
+                    const depTime = formatTimeAmPm(leg.departureTime);
+                    const arrTime = formatTimeAmPm(leg.arrivalTime);
+
+                    return (
+                      <div
+                        key={idx}
+                        className="shadow-2xs flex flex-col justify-between gap-1.5 rounded-lg border border-slate-200 bg-white p-2.5 sm:flex-row sm:items-center sm:p-3"
+                      >
+                        <div className="min-w-0 pr-2">
+                          <div className="flex items-center gap-2">
+                            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[10px] font-bold text-slate-700">
+                              {idx + 1}
+                            </span>
+                            <span className="font-bold text-slate-900">
+                              {leg.from} → {leg.to}
+                            </span>
+                            <span className="rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-bold text-blue-700">
+                              Class {leg.travelClass}
+                            </span>
+                          </div>
+                          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 pl-7 text-[11px] text-slate-500">
+                            <span>
+                              <strong className="font-semibold text-slate-700">
+                                Date:
+                              </strong>{" "}
+                              {formattedDate}
+                            </span>
+                            {depTime && (
+                              <span>
+                                <strong className="font-semibold text-slate-700">
+                                  Boarding:
+                                </strong>{" "}
+                                {depTime}
+                              </span>
+                            )}
+                            {arrTime && (
+                              <span>
+                                <strong className="font-semibold text-slate-700">
+                                  Arrival:
+                                </strong>{" "}
+                                {arrTime}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        <span className="shrink-0 pl-7 font-bold text-emerald-700 sm:pl-0">
+                          ₹{leg.fare}
                         </span>
                       </div>
-                      <span className="shrink-0 font-bold text-emerald-700">
-                        ₹{leg.fare}
-                      </span>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
@@ -1007,11 +1104,29 @@ export function SplitTicketBookingModal({
                 </div>
               </div>
 
+              {/* Running availability check notification */}
+              {isCheckingAvailability && (
+                <div className="flex items-center gap-3 rounded-xl border border-blue-200 bg-blue-50/90 p-3.5 text-xs text-blue-900 shadow-xs animate-pulse">
+                  <Loader2 className="h-4 w-4 shrink-0 animate-spin text-blue-600" />
+                  <div className="space-y-0.5">
+                    <p className="font-semibold text-blue-950">
+                      Running final availability check before taking payment...
+                    </p>
+                    <p className="text-[11px] text-blue-700">
+                      Verifying live seat status with ConfirmTkt for all journey legs.
+                    </p>
+                  </div>
+                </div>
+              )}
+
               {/* Error notification */}
               {formError && (
-                <div className="flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 p-3 text-xs text-red-700">
-                  <AlertCircle className="h-4 w-4 shrink-0" />
-                  <span>{formError}</span>
+                <div className="flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 p-3.5 text-xs text-red-800 shadow-xs">
+                  <AlertCircle className="h-4 w-4 shrink-0 text-red-600 mt-0.5" />
+                  <div className="space-y-0.5">
+                    <p className="font-bold text-red-900">Seat Availability Check</p>
+                    <p className="text-red-700">{formError}</p>
+                  </div>
                 </div>
               )}
 
@@ -1032,7 +1147,14 @@ export function SplitTicketBookingModal({
                       disabled={isSubmitting}
                       className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-indigo-300 bg-indigo-50 px-4 py-2.5 text-xs font-bold text-indigo-700 shadow-xs transition hover:bg-indigo-100 active:scale-[0.98] disabled:opacity-50"
                     >
-                      ⚡ Book Without Pay (Admin)
+                      {isCheckingAvailability ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" /> Checking
+                          Seats...
+                        </>
+                      ) : (
+                        <>⚡ Book Without Pay (Admin)</>
+                      )}
                     </button>
                   )}
                   <button
@@ -1040,7 +1162,12 @@ export function SplitTicketBookingModal({
                     disabled={isSubmitting}
                     className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-blue-700 active:scale-[0.98] disabled:opacity-50"
                   >
-                    {isSubmitting ? (
+                    {isCheckingAvailability ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" /> Checking
+                        Availability...
+                      </>
+                    ) : isSubmitting ? (
                       <>
                         <Loader2 className="h-4 w-4 animate-spin" /> Preparing
                         Checkout...
@@ -1085,24 +1212,88 @@ export function SplitTicketBookingModal({
                 </h4>
               </div>
 
-              {/* Journey Reference Header */}
+              {/* Journey Reference Header with Line-by-Line Legs */}
               <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 sm:text-xs">
-                    Booking Reference
-                  </span>
-                  <span className="font-mono text-xs font-bold text-slate-900 sm:text-sm">
-                    {paymentData.bookingRef}
-                  </span>
+                <div className="flex items-center justify-between border-b border-slate-200/80 pb-2.5">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 sm:text-xs">
+                      Booking Reference
+                    </span>
+                    <p className="font-mono text-xs font-extrabold text-slate-900 sm:text-sm">
+                      {paymentData.bookingRef}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs font-bold text-slate-900 sm:text-sm">
+                      {trainName
+                        ? `${trainName} (${trainNumber})`
+                        : `Train ${trainNumber}`}
+                    </span>
+                    <p className="text-[11px] font-medium text-slate-500">
+                      {legs.length} {legs.length > 1 ? "Journey Legs" : "Journey Leg"}
+                    </p>
+                  </div>
                 </div>
-                <p className="mt-1 text-xs text-slate-600">
-                  {trainName
-                    ? `${trainName} (${trainNumber})`
-                    : `Train ${trainNumber}`}{" "}
-                  • {journeyDate} •{" "}
-                  {selectedTravelClasses.length > 1 ? "Classes" : "Class"}{" "}
-                  {selectedTravelClasses.join(", ")}
-                </p>
+
+                {/* Line by line each leg with Class, Date, and Boarding Time */}
+                <div className="mt-3 space-y-2">
+                  {legs.map((leg, idx) => {
+                    const formattedDate = formatLegDate(
+                      leg.boardingDate,
+                      journeyDate,
+                    );
+                    const depTime = formatTimeAmPm(leg.departureTime);
+                    const arrTime = formatTimeAmPm(leg.arrivalTime);
+
+                    return (
+                      <div
+                        key={idx}
+                        className="shadow-2xs flex flex-col justify-between gap-1.5 rounded-lg border border-slate-200 bg-white p-2.5 text-xs sm:flex-row sm:items-center sm:p-3"
+                      >
+                        <div className="min-w-0 pr-2">
+                          <div className="flex items-center gap-2">
+                            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[10px] font-bold text-slate-700">
+                              {idx + 1}
+                            </span>
+                            <span className="font-bold text-slate-900">
+                              {leg.from} → {leg.to}
+                            </span>
+                            <span className="rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-bold text-blue-700">
+                              Class {leg.travelClass}
+                            </span>
+                          </div>
+                          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 pl-7 text-[11px] text-slate-500">
+                            <span>
+                              <strong className="font-semibold text-slate-700">
+                                Date:
+                              </strong>{" "}
+                              {formattedDate}
+                            </span>
+                            {depTime && (
+                              <span>
+                                <strong className="font-semibold text-slate-700">
+                                  Boarding:
+                                </strong>{" "}
+                                {depTime}
+                              </span>
+                            )}
+                            {arrTime && (
+                              <span>
+                                <strong className="font-semibold text-slate-700">
+                                  Arrival:
+                                </strong>{" "}
+                                {arrTime}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        <span className="shrink-0 pl-7 font-bold text-emerald-700 sm:pl-0">
+                          ₹{leg.fare}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Fare Details Breakdown Component */}
@@ -1549,33 +1740,109 @@ export function SplitTicketBookingModal({
                 </div>
               )}
 
-              {recordedPnrs.some(Boolean) && (
-                <div className="space-y-2 text-xs">
-                  {!bookingConfirmed && (
-                    <p className="text-amber-800">
-                      The portal issued the PNRs below. The full booking is not
-                      confirmed; check these reservations before booking again.
-                    </p>
-                  )}
-                  <div className="grid grid-cols-2 gap-2">
-                    {recordedPnrs.map((pnr, index) =>
-                      pnr ? (
-                        <div
-                          key={index}
-                          className="rounded border border-slate-200 bg-white p-2"
-                        >
-                          <span className="block text-[10px] text-slate-500">
-                            Leg {index + 1} PNR:
-                          </span>
-                          <span className="font-mono font-bold text-slate-900">
-                            {pnr}
-                          </span>
-                        </div>
-                      ) : null,
-                    )}
-                  </div>
+              {/* Journey Legs, Schedule & Confirmed PNRs */}
+              <div className="space-y-2.5 rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs sm:p-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 sm:text-xs">
+                    Journey Legs &amp; Status
+                  </span>
+                  <span className="text-[11px] font-semibold text-slate-500">
+                    {legs.length} {legs.length > 1 ? "Legs" : "Leg"}
+                  </span>
                 </div>
-              )}
+
+                {!bookingConfirmed && recordedPnrs.some(Boolean) && (
+                  <p className="rounded-md bg-amber-50 p-2 text-amber-800">
+                    The portal issued PNRs for some legs below. The full booking is not
+                    yet complete; review these reservations before re-booking.
+                  </p>
+                )}
+
+                <div className="space-y-2">
+                  {legs.map((leg, idx) => {
+                    const formattedDate = formatLegDate(
+                      leg.boardingDate,
+                      journeyDate,
+                    );
+                    const depTime = formatTimeAmPm(leg.departureTime);
+                    const arrTime = formatTimeAmPm(leg.arrivalTime);
+                    const legPnr = recordedPnrs[idx];
+
+                    return (
+                      <div
+                        key={idx}
+                        className="shadow-2xs rounded-lg border border-slate-200 bg-white p-2.5 sm:p-3"
+                      >
+                        <div className="flex flex-col justify-between gap-1.5 sm:flex-row sm:items-center">
+                          <div className="flex items-center gap-2">
+                            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[10px] font-bold text-slate-700">
+                              {idx + 1}
+                            </span>
+                            <span className="font-bold text-slate-900">
+                              {leg.from} → {leg.to}
+                            </span>
+                            <span className="rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-bold text-blue-700">
+                              Class {leg.travelClass}
+                            </span>
+                          </div>
+
+                          {legPnr ? (
+                            <div className="flex items-center gap-1.5 pl-7 sm:pl-0">
+                              <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                                PNR:
+                              </span>
+                              <span className="font-mono text-xs font-bold text-slate-900">
+                                {legPnr}
+                              </span>
+                            </div>
+                          ) : (
+                            <div className="flex items-center gap-1 pl-7 sm:pl-0 text-[11px]">
+                              {bookingConfirmed ? (
+                                <span className="font-semibold text-emerald-700">
+                                  Confirmed
+                                </span>
+                              ) : bookingFailed ? (
+                                <span className="font-semibold text-rose-600">
+                                  Failed
+                                </span>
+                              ) : (
+                                <span className="font-medium text-blue-600">
+                                  Reserving ticket...
+                                </span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 pl-7 text-[11px] text-slate-500">
+                          <span>
+                            <strong className="font-semibold text-slate-700">
+                              Date:
+                            </strong>{" "}
+                            {formattedDate}
+                          </span>
+                          {depTime && (
+                            <span>
+                              <strong className="font-semibold text-slate-700">
+                                Boarding:
+                              </strong>{" "}
+                              {depTime}
+                            </span>
+                          )}
+                          {arrTime && (
+                            <span>
+                              <strong className="font-semibold text-slate-700">
+                                Arrival:
+                              </strong>{" "}
+                              {arrTime}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
 
               <div className="pt-2 text-center">
                 <button

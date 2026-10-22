@@ -22,6 +22,7 @@ import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 import { SplitBookingService } from './split-booking.service';
 import {
   AdminUpdateCancellationDto,
+  CheckSplitBookingAvailabilityDto,
   CreateCancellationRequestDto,
   CreateSplitBookingDto,
   LookupCancellationDto,
@@ -44,6 +45,15 @@ export class SplitBookingController {
   @Throttle({ global: { limit: 20, ttl: 60_000 } })
   quote(@Body() body: SplitBookingQuoteDto) {
     return this.splitBookingService.quoteBooking(body);
+  }
+
+  @Post('check-availability')
+  @Throttle({ global: { limit: 30, ttl: 60_000 } })
+  async checkAvailability(@Body() body: CheckSplitBookingAvailabilityDto) {
+    if (!body) {
+      throw new BadRequestException('Request body is required');
+    }
+    return this.splitBookingService.checkAvailability(body);
   }
 
   @Post('create')
@@ -208,7 +218,17 @@ export class SplitBookingController {
       originalname?: string;
       mimetype?: string;
     },
-    @Body() body?: { base64?: string; filename?: string; contentType?: string },
+    @Body()
+    body?: {
+      base64?: string;
+      filename?: string;
+      contentType?: string;
+      pdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+    },
   ) {
     assertAdminAuth({ headerPw: pw, req });
     return this.splitBookingService.adminUploadTicketPdf(id, file, body);
@@ -258,6 +278,11 @@ export class SplitBookingController {
         filename?: string;
         contentType?: string;
       };
+      pdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
     },
   ) {
     assertAdminAuth({ headerPw: pw, req });
@@ -269,7 +294,18 @@ export class SplitBookingController {
     @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
     @Req() req: Request,
     @Param('id') id: string,
-    @Body() body?: { reason?: string },
+    @Body() body?: { reason?: string; refund?: boolean },
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
+    return this.splitBookingService.adminCancelAndRefundBooking(id, body);
+  }
+
+  @Post('admin/:id/cancel')
+  async adminCancel(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+    @Param('id') id: string,
+    @Body() body?: { reason?: string; refund?: boolean },
   ) {
     assertAdminAuth({ headerPw: pw, req });
     return this.splitBookingService.adminCancelAndRefundBooking(id, body);

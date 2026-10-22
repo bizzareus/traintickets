@@ -60,8 +60,8 @@ import {
   BOOKING_V2_MAX_STATIONS_OFFSET,
 } from './booking-v2.constants';
 import {
-  avlDayMatchesJourneyDate,
   collapsibleRealtimeRemainderEndpoints,
+  extractAvlDayRow,
   filterDepartedTrainsFromSearchResponse,
   isLegConfirmed,
   isPastRailDate,
@@ -755,7 +755,8 @@ export class BookingV2Service {
   ): Promise<void> {
     if (!filtered || typeof filtered !== 'object') return;
     const data = (filtered as Record<string, unknown>).data as
-      Record<string, unknown> | undefined;
+      | Record<string, unknown>
+      | undefined;
     if (
       !data ||
       !Array.isArray(data.trainList) ||
@@ -2784,26 +2785,8 @@ export class BookingV2Service {
   }
 
   private extractAvlDay(raw: unknown, dateDdMmYyyy: string): AvlDayRow | null {
-    if (!raw || typeof raw !== 'object') return null;
-    const data = (raw as Record<string, unknown>).data;
-    if (!data || typeof data !== 'object') return null;
-    const list = (data as Record<string, unknown>).avlDayList;
-    if (!Array.isArray(list)) return null;
-    for (const row of list) {
-      if (!row || typeof row !== 'object') continue;
-      const r = row as Record<string, unknown>;
-      const ad = r.availablityDate;
-      if (
-        typeof ad === 'string' &&
-        avlDayMatchesJourneyDate(ad, dateDdMmYyyy)
-      ) {
-        return this.normalizeAvlDayRow(r);
-      }
-    }
-    const first = list[0] as unknown;
-    if (first && typeof first === 'object')
-      return this.normalizeAvlDayRow(first as Record<string, unknown>);
-    return null;
+    const row = extractAvlDayRow(raw, dateDdMmYyyy);
+    return row ? this.normalizeAvlDayRow(row as Record<string, unknown>) : null;
   }
 
   private extractFare(raw: unknown): number | null {

@@ -6,6 +6,7 @@ import {
   ServiceUnavailableException,
 } from '@nestjs/common';
 import type { AxiosInstance } from 'axios';
+import { PDFDocument } from 'pdf-lib';
 import { SplitBookingService } from './split-booking.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { createMuzoboxClient } from '../common/muzobox-client';
@@ -17,6 +18,7 @@ import { BookingNtfyService } from './booking-ntfy.service';
 import { S3StorageService } from '../common/s3-storage.service';
 import { NotificationService } from '../notification/notification.service';
 import { WasenderProvider } from '../notification/whatsapp-providers/wasender.provider';
+import { BookingV2Service } from '../booking-v2/booking-v2.service';
 import type { CreateSplitBookingDto } from './split-booking.types';
 
 jest.mock('../common/muzobox-client', () => ({
@@ -32,6 +34,10 @@ describe('SplitBookingService', () => {
   let notifications: { sendEmail: jest.Mock };
   let ntfy: { publish: jest.Mock };
   let wasender: { sendWhatsApp: jest.Mock };
+  let bookingV2: {
+    checkAvailability: jest.Mock;
+    normalizeToRailApiDate: jest.Mock;
+  };
   let prisma: {
     splitTicketBooking: {
       create: jest.Mock;
@@ -135,6 +141,17 @@ describe('SplitBookingService', () => {
       deleteTicketPdf: jest.fn().mockResolvedValue(undefined),
     };
 
+    bookingV2 = {
+      checkAvailability: jest.fn(),
+      normalizeToRailApiDate: jest.fn((d: string) => {
+        const parts = d.split('-');
+        if (parts.length === 3 && parts[0].length === 4) {
+          return `${parts[2]}-${parts[1]}-${parts[0]}`;
+        }
+        return d;
+      }),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         SplitBookingService,
@@ -147,6 +164,7 @@ describe('SplitBookingService', () => {
         { provide: NotificationService, useValue: notifications },
         { provide: WasenderProvider, useValue: wasender },
         { provide: BookingNtfyService, useValue: ntfy },
+        { provide: BookingV2Service, useValue: bookingV2 },
       ],
     }).compile();
 
@@ -1217,6 +1235,106 @@ describe('SplitBookingService', () => {
         }),
       );
     });
+
+    it('merges multiple leg PDFs and stores the merged PDF before emailing passenger', async () => {
+      const doc1 = await PDFDocument.create();
+      doc1.addPage([100, 100]);
+      const pdfBytes1 = await doc1.save();
+
+      const doc2 = await PDFDocument.create();
+      doc2.addPage([200, 200]);
+      const pdfBytes2 = await doc2.save();
+
+      const mockBooking = {
+        id: 'b-multi-pdf',
+        bookingRef: 'LB-MULTIPDF',
+        trainNumber: '12066',
+        trainName: 'JANSHATABDI',
+        fromStationCode: 'DEE',
+        toStationCode: 'AII',
+        journeyDate: new Date('2026-10-03'),
+        travelClass: 'CC',
+        quota: 'GN',
+        totalFare: 810,
+        serviceFee: 80,
+        irctcServiceFeePaise: 7080,
+        paymentGatewayFeePaise: 2882,
+        bookingStatus: 'MANUAL_PENDING',
+        paymentStatus: 'PAID',
+        legsPayload: [
+          {
+            from: 'DEE',
+            to: 'RE',
+            travelClass: 'CC',
+            boardingDate: '2026-10-03',
+          },
+          {
+            from: 'RE',
+            to: 'AII',
+            travelClass: 'CC',
+            boardingDate: '2026-10-03',
+          },
+        ],
+        passengers: {
+          adults: [{ name: 'Kartik', age: 30, gender: 'Male' }],
+          children: [],
+        },
+        contactMobile: '9999224767',
+        contactEmail: 'kartik@example.com',
+        pnrs: [],
+        pnrLeg1: null,
+        pnrLeg2: null,
+        ticketPdfUploadedAt: null,
+      };
+
+      prisma.splitTicketBooking.findUnique.mockResolvedValue(mockBooking);
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        ...mockBooking,
+        pnrLeg1: '1111111111',
+        pnrLeg2: '2222222222',
+        pnrs: ['1111111111', '2222222222'],
+        bookingStatus: 'CONFIRMED',
+      });
+
+      const res = await service.adminNotifyCustomer('b-multi-pdf', {
+        channel: 'email',
+        pnrs: ['1111111111', '2222222222'],
+        pdfs: [
+          {
+            base64: Buffer.from(pdfBytes1).toString('base64'),
+            filename: 'leg1.pdf',
+            contentType: 'application/pdf',
+          },
+          {
+            base64: Buffer.from(pdfBytes2).toString('base64'),
+            filename: 'leg2.pdf',
+            contentType: 'application/pdf',
+          },
+        ],
+      });
+
+      expect(res.ok).toBe(true);
+      expect(res.emailSent).toBe(true);
+      expect(s3Storage.uploadTicketPdf).toHaveBeenCalledWith(
+        'LB-MULTIPDF',
+        expect.any(Buffer),
+        'ticket-LB-MULTIPDF.pdf',
+        'application/pdf',
+      );
+      expect(notifications.sendEmail).toHaveBeenCalledWith(
+        'kartik@example.com',
+        expect.stringContaining('LB-MULTIPDF'),
+        expect.any(String),
+        expect.objectContaining({
+          attachments: [
+            {
+              filename: 'ticket-LB-MULTIPDF.pdf',
+              content: expect.any(Buffer),
+            },
+          ],
+        }),
+      );
+    });
   });
 
   describe('ticket pdf handling with S3', () => {
@@ -1252,6 +1370,47 @@ describe('SplitBookingService', () => {
           ticketPdf: null,
         }) as unknown,
       });
+    });
+
+    it('merges multiple PDFs in body.pdfs into a single PDF before uploading to S3', async () => {
+      const doc1 = await PDFDocument.create();
+      doc1.addPage([100, 100]);
+      const pdfBytes1 = await doc1.save();
+
+      const doc2 = await PDFDocument.create();
+      doc2.addPage([200, 200]);
+      const pdfBytes2 = await doc2.save();
+
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        id: 'b-merge',
+        bookingRef: 'LB-MERGE',
+      });
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        id: 'b-merge',
+        bookingRef: 'LB-MERGE',
+        ticketPdfS3Key: 'tickets/LB-MERGE/ticket.pdf',
+      });
+
+      const res = await service.adminUploadTicketPdf('b-merge', undefined, {
+        pdfs: [
+          {
+            base64: Buffer.from(pdfBytes1).toString('base64'),
+            filename: 'leg1.pdf',
+          },
+          {
+            base64: Buffer.from(pdfBytes2).toString('base64'),
+            filename: 'leg2.pdf',
+          },
+        ],
+      });
+
+      expect(res.ok).toBe(true);
+      expect(s3Storage.uploadTicketPdf).toHaveBeenCalledWith(
+        'LB-MERGE',
+        expect.any(Buffer),
+        'ticket-LB-MERGE.pdf',
+        'application/pdf',
+      );
     });
 
     it('returns signed redirect URL when ticketPdfS3Key is present', async () => {
@@ -1700,6 +1859,308 @@ describe('SplitBookingService', () => {
         }),
         expect.any(Object),
       );
+    });
+
+    it('cancels booking without calling Muzobox or Razorpay refund API when refund: false', async () => {
+      const mockBooking = {
+        id: 'b-no-refund',
+        bookingRef: 'LB-NOREF1',
+        trainNumber: '12049',
+        trainName: 'Gatimaan Express',
+        fromStationCode: 'NZM',
+        toStationCode: 'GWL',
+        journeyDate: new Date('2026-10-22'),
+        totalFare: 1500,
+        serviceFee: 80,
+        contactMobile: '9876543210',
+        contactEmail: 'passenger@example.com',
+        bookingStatus: 'MANUAL_PENDING',
+        paymentStatus: 'PAID',
+        muzoboxPaymentId: 'mb_pay_999',
+        razorpayPaymentId: null,
+      };
+
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(mockBooking);
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        ...mockBooking,
+        bookingStatus: 'CANCELLED',
+      });
+      prisma.bookingCancellationRequest.findFirst.mockResolvedValue(null);
+      prisma.bookingCancellationRequest.create.mockResolvedValue({
+        id: 'cr-no-ref',
+        bookingId: mockBooking.id,
+        status: 'PROCESSED',
+      });
+
+      const res = await service.adminCancelAndRefundBooking('LB-NOREF1', {
+        reason: 'Cancelled by admin with no refund',
+        refund: false,
+      });
+
+      expect(res.success).toBe(true);
+      expect(res.refundInitiated).toBe(false);
+      expect(res.refundAmount).toBe(0);
+      expect(res.refundId).toBeNull();
+      expect(res.message).toContain('cancelled without refund');
+
+      // CRITICAL: Ensure payment provider refund APIs were NEVER invoked
+      expect(muzobox.post).not.toHaveBeenCalled();
+
+      // Verify DB was updated to CANCELLED
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 'b-no-refund' },
+          data: expect.objectContaining({
+            bookingStatus: 'CANCELLED',
+          }),
+        }),
+      );
+
+      // Verify cancellation request created
+      expect(prisma.bookingCancellationRequest.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            bookingId: 'b-no-refund',
+            status: 'PROCESSED',
+          }),
+        }),
+      );
+
+      // Verify email sent without refund details
+      expect(notifications.sendEmail).toHaveBeenCalledWith(
+        'passenger@example.com',
+        'Booking Cancelled — LB-NOREF1',
+        expect.stringContaining('Cancellation Notice'),
+        expect.any(Object),
+      );
+      const emailHtml = notifications.sendEmail.mock.calls[0][2] as string;
+      expect(emailHtml).not.toContain('Refund ID');
+    });
+
+    it('allows cancelling an unpaid/pending booking without refund when refund: false', async () => {
+      const mockPendingBooking = {
+        id: 'b-unpaid-cancel',
+        bookingRef: 'LB-UNPAID-1',
+        trainNumber: '15014',
+        trainName: 'Ranikhet Exp',
+        fromStationCode: 'DLI',
+        toStationCode: 'JP',
+        journeyDate: new Date('2026-10-25'),
+        totalFare: 800,
+        serviceFee: 80,
+        contactMobile: '9876543210',
+        contactEmail: 'unpaid@example.com',
+        bookingStatus: 'IDLE',
+        paymentStatus: 'PENDING',
+        muzoboxPaymentId: null,
+        razorpayPaymentId: null,
+      };
+
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(mockPendingBooking);
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        ...mockPendingBooking,
+        bookingStatus: 'CANCELLED',
+      });
+      prisma.bookingCancellationRequest.findFirst.mockResolvedValue(null);
+      prisma.bookingCancellationRequest.create.mockResolvedValue({
+        id: 'cr-unpaid',
+        bookingId: mockPendingBooking.id,
+        status: 'PROCESSED',
+      });
+
+      const res = await service.adminCancelAndRefundBooking('LB-UNPAID-1', {
+        reason: 'Customer abandoned checkout',
+        refund: false,
+      });
+
+      expect(res.success).toBe(true);
+      expect(res.refundInitiated).toBe(false);
+      expect(muzobox.post).not.toHaveBeenCalled();
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 'b-unpaid-cancel' },
+          data: expect.objectContaining({
+            bookingStatus: 'CANCELLED',
+          }),
+        }),
+      );
+    });
+  });
+
+  describe('checkAvailability', () => {
+    it('throws BadRequestException if trainNumber or legs is missing', async () => {
+      await expect(
+        service.checkAvailability({ trainNumber: '', legs: [] }),
+      ).rejects.toThrow(BadRequestException);
+
+      await expect(
+        service.checkAvailability({
+          trainNumber: '12002',
+          legs: [],
+        }),
+      ).rejects.toThrow(BadRequestException);
+    });
+
+    it('throws ServiceUnavailableException if bookingV2 is not configured', async () => {
+      const bareService = new SplitBookingService(
+        prisma as any,
+        tripmgt as any,
+        config as any,
+        manualBooking as any,
+      );
+      await expect(
+        bareService.checkAvailability({
+          trainNumber: '12002',
+          legs: [
+            {
+              from: 'NDLS',
+              to: 'AGC',
+              travelClass: 'CC',
+              boardingDate: '2026-09-20',
+            },
+          ],
+        }),
+      ).rejects.toThrow(ServiceUnavailableException);
+    });
+
+    it('returns available: true when all legs have confirmed seats', async () => {
+      bookingV2.checkAvailability
+        .mockResolvedValueOnce({
+          data: {
+            avlDayList: [
+              {
+                availablityDate: '20-09-2026',
+                availablityStatus: 'AVAILABLE 42',
+                availablityType: 1,
+              },
+            ],
+          },
+        })
+        .mockResolvedValueOnce({
+          data: {
+            avlDayList: [
+              {
+                availablityDate: '20-09-2026',
+                availablityStatus: 'CURR_AVBL 10',
+                availablityType: 1,
+              },
+            ],
+          },
+        });
+
+      const res = await service.checkAvailability({
+        trainNumber: '12002',
+        quota: 'GN',
+        legs: [
+          {
+            from: 'ndls',
+            to: 'agc',
+            travelClass: 'cc',
+            boardingDate: '2026-09-20',
+          },
+          {
+            from: 'agc',
+            to: 'gwl',
+            travelClass: 'cc',
+            boardingDate: '2026-09-20',
+          },
+        ],
+      });
+
+      expect(res.available).toBe(true);
+      expect(res.error).toBeUndefined();
+      expect(res.legs).toHaveLength(2);
+      expect(res.legs[0]).toMatchObject({
+        from: 'NDLS',
+        to: 'AGC',
+        travelClass: 'CC',
+        status: 'AVAILABLE 42',
+        isConfirmed: true,
+      });
+      expect(res.legs[1]).toMatchObject({
+        from: 'AGC',
+        to: 'GWL',
+        travelClass: 'CC',
+        status: 'CURR_AVBL 10',
+        isConfirmed: true,
+      });
+    });
+
+    it('returns available: false with descriptive error when any leg is waitlisted/regret', async () => {
+      bookingV2.checkAvailability
+        .mockResolvedValueOnce({
+          data: {
+            avlDayList: [
+              {
+                availablityDate: '20-09-2026',
+                availablityStatus: 'AVAILABLE 12',
+                availablityType: 1,
+              },
+            ],
+          },
+        })
+        .mockResolvedValueOnce({
+          data: {
+            avlDayList: [
+              {
+                availablityDate: '20-09-2026',
+                availablityStatus: 'WL 5',
+                availablityType: 3,
+              },
+            ],
+          },
+        });
+
+      const res = await service.checkAvailability({
+        trainNumber: '12002',
+        legs: [
+          {
+            from: 'NDLS',
+            to: 'AGC',
+            travelClass: 'CC',
+            boardingDate: '2026-09-20',
+          },
+          {
+            from: 'AGC',
+            to: 'GWL',
+            travelClass: 'CC',
+            boardingDate: '2026-09-20',
+          },
+        ],
+      });
+
+      expect(res.available).toBe(false);
+      expect(res.error).toContain('AGC → GWL (CC): WL 5');
+      expect(res.legs[0].isConfirmed).toBe(true);
+      expect(res.legs[1].isConfirmed).toBe(false);
+      expect(res.legs[1].status).toBe('WL 5');
+    });
+
+    it('handles upstream failures defensively and marks leg as CHECK_FAILED', async () => {
+      bookingV2.checkAvailability.mockRejectedValueOnce(
+        new Error('Upstream timeout connecting to ConfirmTkt'),
+      );
+
+      const res = await service.checkAvailability({
+        trainNumber: '12002',
+        legs: [
+          {
+            from: 'NDLS',
+            to: 'AGC',
+            travelClass: 'CC',
+            boardingDate: '2026-09-20',
+          },
+        ],
+      });
+
+      expect(res.available).toBe(false);
+      expect(res.legs[0]).toMatchObject({
+        from: 'NDLS',
+        to: 'AGC',
+        status: 'CHECK_FAILED',
+        isConfirmed: false,
+      });
+      expect(res.error).toContain('CHECK_FAILED');
     });
   });
 });

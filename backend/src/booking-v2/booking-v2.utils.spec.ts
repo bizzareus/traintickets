@@ -1,6 +1,7 @@
 import {
   avlDayMatchesJourneyDate,
   collapsibleRealtimeRemainderEndpoints,
+  extractAvlDayRow,
   filterDepartedTrainsFromSearchResponse,
   getTodayIstYmd,
   isLegConfirmed,
@@ -456,5 +457,47 @@ describe('filterDepartedTrainsFromSearchResponse', () => {
     }) as { data: { trainList: { trainNumber: string }[] } };
     expect(out.data.trainList).toHaveLength(1);
     expect(out.data.trainList[0].trainNumber).toBe('ok');
+  });
+});
+
+describe('extractAvlDayRow', () => {
+  it('returns null for null, empty or invalid raw responses', () => {
+    expect(extractAvlDayRow(null)).toBeNull();
+    expect(extractAvlDayRow({})).toBeNull();
+    expect(extractAvlDayRow({ data: {} })).toBeNull();
+    expect(extractAvlDayRow({ data: { avlDayList: [] } })).toBeNull();
+  });
+
+  it('finds day matching dateDdMmYyyy', () => {
+    const raw = {
+      data: {
+        avlDayList: [
+          { availablityDate: '20-09-2026', availablityStatus: 'AVAILABLE 10', availablityType: 1 },
+          { availablityDate: '21-09-2026', availablityStatus: 'WL 5', availablityType: 3 },
+        ],
+      },
+    };
+    const row = extractAvlDayRow(raw, '21-09-2026');
+    expect(row).toMatchObject({
+      availablityDate: '21-09-2026',
+      availablityStatus: 'WL 5',
+      availablityType: 3,
+    });
+  });
+
+  it('falls back to the first day row when no date or no match is found', () => {
+    const raw = {
+      data: {
+        avlDayList: [
+          { availablityDate: '20-09-2026', availablityStatus: 'AVAILABLE 10', availablityType: 1 },
+        ],
+      },
+    };
+    expect(extractAvlDayRow(raw)).toMatchObject({
+      availablityDate: '20-09-2026',
+    });
+    expect(extractAvlDayRow(raw, '25-09-2026')).toMatchObject({
+      availablityDate: '20-09-2026',
+    });
   });
 });

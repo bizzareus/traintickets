@@ -93,6 +93,7 @@ describe('Split booking admin controller endpoints', () => {
   const adminUploadTicketPdf = jest.fn();
   const getTicketPdf = jest.fn();
   const adminNotifyCustomer = jest.fn();
+  const adminCancelAndRefundBooking = jest.fn();
   const lookupBookingForCancellation = jest.fn();
   const createCancellationRequest = jest.fn();
   const adminListCancellations = jest.fn();
@@ -105,6 +106,7 @@ describe('Split booking admin controller endpoints', () => {
     adminUploadTicketPdf,
     getTicketPdf,
     adminNotifyCustomer,
+    adminCancelAndRefundBooking,
     lookupBookingForCancellation,
     createCancellationRequest,
     adminListCancellations,
@@ -343,5 +345,112 @@ describe('Split booking admin controller endpoints', () => {
       status: 'PROCESSED',
       refundArn: 'ARN123',
     });
+  });
+
+  it('delegates adminCancelAndRefund to service with refund: true by default', async () => {
+    adminCancelAndRefundBooking.mockResolvedValue({
+      success: true,
+      bookingRef: 'LB-123',
+      refundInitiated: true,
+      refundAmount: 1500,
+      refundId: 'rfnd_abc',
+    });
+    const res = await controller.adminCancelAndRefund(
+      'admin-secret-password',
+      {} as Request,
+      'LB-123',
+      { reason: 'Customer requested refund' },
+    );
+    expect(res).toEqual({
+      success: true,
+      bookingRef: 'LB-123',
+      refundInitiated: true,
+      refundAmount: 1500,
+      refundId: 'rfnd_abc',
+    });
+    expect(adminCancelAndRefundBooking).toHaveBeenCalledWith('LB-123', {
+      reason: 'Customer requested refund',
+    });
+  });
+
+  it('delegates adminCancel to service with refund: false', async () => {
+    adminCancelAndRefundBooking.mockResolvedValue({
+      success: true,
+      bookingRef: 'LB-456',
+      refundInitiated: false,
+      refundAmount: 0,
+      refundId: null,
+    });
+    const res = await controller.adminCancel(
+      'admin-secret-password',
+      {} as Request,
+      'LB-456',
+      { reason: 'Cancel only', refund: false },
+    );
+    expect(res).toEqual({
+      success: true,
+      bookingRef: 'LB-456',
+      refundInitiated: false,
+      refundAmount: 0,
+      refundId: null,
+    });
+    expect(adminCancelAndRefundBooking).toHaveBeenCalledWith('LB-456', {
+      reason: 'Cancel only',
+      refund: false,
+    });
+  });
+
+  it('rejects adminCancel without valid auth', async () => {
+    await expect(
+      controller.adminCancel(undefined, {} as Request, 'LB-123', {
+        refund: false,
+      }),
+    ).rejects.toThrow();
+  });
+});
+
+describe('Split booking checkAvailability endpoint', () => {
+  const checkAvailability = jest.fn();
+  const controller = new SplitBookingController(
+    { checkAvailability } as unknown as SplitBookingService,
+    { webhookSecret: 'fixture-secret' } as RazorpayClient,
+  );
+
+  it('delegates valid request to splitBookingService.checkAvailability', async () => {
+    checkAvailability.mockResolvedValueOnce({
+      available: true,
+      legs: [
+        {
+          from: 'NDLS',
+          to: 'AGC',
+          travelClass: 'CC',
+          boardingDate: '2026-09-20',
+          status: 'AVAILABLE 42',
+          isConfirmed: true,
+        },
+      ],
+    });
+
+    const body = {
+      trainNumber: '12002',
+      legs: [
+        {
+          from: 'NDLS',
+          to: 'AGC',
+          travelClass: 'CC',
+          boardingDate: '2026-09-20',
+        },
+      ],
+    };
+
+    const res = await controller.checkAvailability(body as any);
+    expect(res.available).toBe(true);
+    expect(checkAvailability).toHaveBeenCalledWith(body);
+  });
+
+  it('throws BadRequestException if body is null or undefined', async () => {
+    await expect(controller.checkAvailability(null as any)).rejects.toThrow(
+      'Request body is required',
+    );
   });
 });

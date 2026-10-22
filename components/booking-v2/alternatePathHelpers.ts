@@ -88,6 +88,21 @@ export function formatTimeAmPm(time: string | null | undefined): string | null {
   return m.isValid() ? m.format("h:mm A") : time.trim();
 }
 
+/** Formats a date string (YYYY-MM-DD or ISO) to human-readable "D MMM YYYY". */
+export function formatLegDate(
+  dateStr?: string | null,
+  fallbackDate?: string,
+): string {
+  const d = dateStr || fallbackDate;
+  if (!d) return "";
+  const m = moment(d, [
+    "YYYY-MM-DD",
+    "YYYY-MM-DDTHH:mm:ss.SSSZ",
+    moment.ISO_8601,
+  ]);
+  return m.isValid() ? m.format("D MMM YYYY") : d;
+}
+
 export function formatDurationMinutes(mins: number | undefined): string {
   if (mins == null || Number.isNaN(mins)) return "—";
   const h = Math.floor(mins / 60);
@@ -130,35 +145,36 @@ export function collapsedAlternatePathTimingSummary(legs: AlternateLeg[]): {
   return { timePart, durationLabel };
 }
 
-export function formatPassengerStatusDisplay(passenger: Record<string, any>): {
+export function formatPassengerStatusDisplay(passenger: object): {
   bookingDisplay: string;
   currentDisplay: string;
   isConfirmed: boolean;
 } {
+  const p = passenger as Record<string, unknown>;
   const rawCurrent = String(
-    passenger.currentStatusNew ??
-      passenger.CurrentStatusNew ??
-      passenger.CurrentStatus ??
-      passenger.currentStatus ??
-      passenger.ConfirmTktStatus ??
+    p.currentStatusNew ??
+      p.CurrentStatusNew ??
+      p.CurrentStatus ??
+      p.currentStatus ??
+      p.ConfirmTktStatus ??
       "",
   ).trim();
 
   const rawBooking = String(
-    passenger.BookingStatus ?? passenger.bookingStatus ?? "",
+    p.BookingStatus ?? p.bookingStatus ?? "",
   ).trim();
 
   let coach = String(
-    passenger.Coach ??
-      passenger.currentCoachId ??
-      passenger.bookingCoachId ??
+    p.Coach ??
+      p.currentCoachId ??
+      p.bookingCoachId ??
       "",
   ).trim();
   let seat = String(
-    passenger.Berth ??
-      passenger.Seat ??
-      passenger.currentBerthNo ??
-      passenger.bookingBerthNo ??
+    p.Berth ??
+      p.Seat ??
+      p.currentBerthNo ??
+      p.bookingBerthNo ??
       "",
   ).trim();
 

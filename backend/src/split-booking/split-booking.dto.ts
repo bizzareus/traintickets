@@ -249,3 +249,38 @@ export class AdminUpdateCancellationDto {
   @MaxLength(1000)
   adminNotes?: string;
 }
+
+export class CheckSplitBookingAvailabilityLegDto {
+  @IsString()
+  @MaxLength(10)
+  from!: string;
+
+  @IsString()
+  @MaxLength(10)
+  to!: string;
+
+  @IsString()
+  @MaxLength(5)
+  travelClass!: string;
+
+  @IsString()
+  @Matches(/^\d{4}-\d{2}-\d{2}$|^\d{1,2}-\d{1,2}-\d{4}$/)
+  boardingDate!: string;
+}
+
+export class CheckSplitBookingAvailabilityDto {
+  @IsString()
+  @Matches(/^\d{4,5}$/)
+  trainNumber!: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(10)
+  quota?: string;
+
+  @IsArray()
+  @ArrayMinSize(1)
+  @ValidateNested({ each: true })
+  @Type(() => CheckSplitBookingAvailabilityLegDto)
+  legs!: CheckSplitBookingAvailabilityLegDto[];
+}

@@ -220,6 +220,38 @@ export function avlDayMatchesJourneyDate(
   return false;
 }
 
+/**
+ * Extracts matching availability day row from ConfirmTkt's raw response object.
+ * Searches avlDayList for matching date, falling back to the first entry if omitted.
+ */
+export function extractAvlDayRow(
+  raw: unknown,
+  dateDdMmYyyy?: string,
+): AvlDayLike | null {
+  if (!raw || typeof raw !== 'object') return null;
+  const data = (raw as Record<string, unknown>).data;
+  if (!data || typeof data !== 'object') return null;
+  const list = (data as Record<string, unknown>).avlDayList;
+  if (!Array.isArray(list) || list.length === 0) return null;
+
+  if (dateDdMmYyyy) {
+    for (const row of list) {
+      if (!row || typeof row !== 'object') continue;
+      const r = row as Record<string, unknown>;
+      const ad = r.availablityDate;
+      if (
+        typeof ad === 'string' &&
+        avlDayMatchesJourneyDate(ad, dateDdMmYyyy)
+      ) {
+        return r as AvlDayLike;
+      }
+    }
+  }
+
+  const first: unknown = list[0];
+  return first && typeof first === 'object' ? (first as AvlDayLike) : null;
+}
+
 /** True when vendor status text means the train has already left (hide from search). */
 export function availabilityTextsIndicateTrainDeparted(
   parts: readonly unknown[],

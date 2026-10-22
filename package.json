@@ -30,7 +30,7 @@
     "test:e2e:install": "playwright install chromium",
     "irctc:agent:probe": "npx tsx scripts/irctc-agent-probe.ts",
     "test:booking": "npm --prefix backend run test:booking && npm run test:booking:unit && npm run test:booking:e2e",
-    "test:booking:unit": "npx tsx --test lib/bookingPrice.test.ts lib/splitBookingSelection.test.ts lib/trainSearchV2Sort.test.ts",
+    "test:booking:unit": "npx tsx --test lib/bookingPrice.test.ts lib/splitBookingSelection.test.ts lib/trainSearchV2Sort.test.ts lib/splitBookingAvailability.test.ts",
     "test:booking:e2e": "playwright test --config playwright.booking.config.ts --project chromium",
     "test:booking:cross-browser": "playwright test --config playwright.booking.config.ts",
     "proxy:local": "cd backend && npm run proxy:local",

@@ -33,6 +33,21 @@ export interface SplitBookingLeg {
   availability?: string | null;
 }
 
+export interface SplitBookingLegAvailabilityResult {
+  from: string;
+  to: string;
+  travelClass: string;
+  boardingDate: string;
+  status: string;
+  isConfirmed: boolean;
+}
+
+export interface SplitBookingAvailabilityResponse {
+  available: boolean;
+  legs: SplitBookingLegAvailabilityResult[];
+  error?: string;
+}
+
 export interface CreateSplitBookingDto {
   trainNumber: string;
   trainName?: string;

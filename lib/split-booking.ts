@@ -70,6 +70,34 @@ export async function fetchSplitBookingQuote(payload: {
   return res.data;
 }
 
+export interface SplitBookingLegAvailabilityResult {
+  from: string;
+  to: string;
+  travelClass: string;
+  boardingDate: string;
+  status: string;
+  isConfirmed: boolean;
+}
+
+export interface SplitBookingAvailabilityResponse {
+  available: boolean;
+  legs: SplitBookingLegAvailabilityResult[];
+  error?: string;
+}
+
+/** Pre-checkout availability check using ConfirmTkt API before going to payment. */
+export async function checkSplitBookingAvailability(payload: {
+  trainNumber: string;
+  quota?: string;
+  legs: Array<Pick<SplitBookingLeg, "from" | "to" | "travelClass" | "boardingDate">>;
+}): Promise<SplitBookingAvailabilityResponse> {
+  const res = await apiClient.post<SplitBookingAvailabilityResponse>(
+    "/api/split-booking/check-availability",
+    payload,
+  );
+  return res.data;
+}
+
 export interface SplitBookingPaymentResponse extends SplitBookingPrice {
   bookingRef: string;
   bookingMode: "AI" | "MANUAL";
