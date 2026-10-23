@@ -60,6 +60,7 @@ describe('SplitBookingService', () => {
   };
   let s3Storage: {
     uploadTicketPdf: jest.Mock;
+    uploadInsurancePdf: jest.Mock;
     getSignedTicketPdfUrl: jest.Mock;
     deleteTicketPdf: jest.Mock;
   };
@@ -133,6 +134,9 @@ describe('SplitBookingService', () => {
       uploadTicketPdf: jest
         .fn()
         .mockResolvedValue('tickets/LB-TEST/ticket.pdf'),
+      uploadInsurancePdf: jest
+        .fn()
+        .mockResolvedValue('insurance/LB-TEST/insurance.pdf'),
       getSignedTicketPdfUrl: jest
         .fn()
         .mockResolvedValue(
@@ -1199,13 +1203,13 @@ describe('SplitBookingService', () => {
         ticketPdfUploadedAt: null,
       };
 
-      prisma.splitTicketBooking.findUnique.mockResolvedValue(mockBooking);
-      prisma.splitTicketBooking.update.mockResolvedValue({
-        ...mockBooking,
-        pnrLeg1: '1111111111',
-        pnrLeg2: '2222222222',
-        pnrs: ['1111111111', '2222222222'],
-        bookingStatus: 'CONFIRMED',
+      let currentBooking = { ...mockBooking };
+      prisma.splitTicketBooking.findUnique.mockImplementation(() =>
+        Promise.resolve(currentBooking),
+      );
+      prisma.splitTicketBooking.update.mockImplementation(({ data }) => {
+        currentBooking = { ...currentBooking, ...data };
+        return Promise.resolve(currentBooking);
       });
 
       const res = await service.adminNotifyCustomer('b-123', {
@@ -1286,13 +1290,13 @@ describe('SplitBookingService', () => {
         ticketPdfUploadedAt: null,
       };
 
-      prisma.splitTicketBooking.findUnique.mockResolvedValue(mockBooking);
-      prisma.splitTicketBooking.update.mockResolvedValue({
-        ...mockBooking,
-        pnrLeg1: '1111111111',
-        pnrLeg2: '2222222222',
-        pnrs: ['1111111111', '2222222222'],
-        bookingStatus: 'CONFIRMED',
+      let currentBooking = { ...mockBooking };
+      prisma.splitTicketBooking.findUnique.mockImplementation(() =>
+        Promise.resolve(currentBooking),
+      );
+      prisma.splitTicketBooking.update.mockImplementation(({ data }) => {
+        currentBooking = { ...currentBooking, ...data };
+        return Promise.resolve(currentBooking);
       });
 
       const res = await service.adminNotifyCustomer('b-multi-pdf', {
@@ -1328,6 +1332,119 @@ describe('SplitBookingService', () => {
           attachments: [
             {
               filename: 'ticket-LB-MULTIPDF.pdf',
+              content: expect.any(Buffer),
+            },
+          ],
+        }),
+      );
+    });
+
+    it('merges insurance PDFs for legs and attaches both ticket and insurance PDFs to email', async () => {
+      const docTkt = await PDFDocument.create();
+      docTkt.addPage([100, 100]);
+      const tktBytes = await docTkt.save();
+
+      const docIns1 = await PDFDocument.create();
+      docIns1.addPage([100, 100]);
+      const insBytes1 = await docIns1.save();
+
+      const docIns2 = await PDFDocument.create();
+      docIns2.addPage([200, 200]);
+      const insBytes2 = await docIns2.save();
+
+      const mockBooking = {
+        id: 'b-all-pdf',
+        bookingRef: 'LB-ALLPDF',
+        trainNumber: '12066',
+        trainName: 'JANSHATABDI',
+        fromStationCode: 'DEE',
+        toStationCode: 'AII',
+        journeyDate: new Date('2026-10-03'),
+        travelClass: 'CC',
+        quota: 'GN',
+        totalFare: 810,
+        serviceFee: 80,
+        irctcServiceFeePaise: 7080,
+        paymentGatewayFeePaise: 2882,
+        bookingStatus: 'MANUAL_PENDING',
+        paymentStatus: 'PAID',
+        legsPayload: [
+          {
+            from: 'DEE',
+            to: 'RE',
+            travelClass: 'CC',
+            boardingDate: '2026-10-03',
+          },
+          {
+            from: 'RE',
+            to: 'AII',
+            travelClass: 'CC',
+            boardingDate: '2026-10-03',
+          },
+        ],
+        passengers: {
+          adults: [{ name: 'Kartik', age: 30, gender: 'Male' }],
+          children: [],
+        },
+        contactMobile: '9999224767',
+        contactEmail: 'kartik@example.com',
+        pnrs: [],
+        pnrLeg1: null,
+        pnrLeg2: null,
+        ticketPdfUploadedAt: null,
+        insurancePdfUploadedAt: null,
+      };
+
+      let currentBooking = { ...mockBooking };
+      prisma.splitTicketBooking.findUnique.mockImplementation(() =>
+        Promise.resolve(currentBooking),
+      );
+      prisma.splitTicketBooking.update.mockImplementation(({ data }) => {
+        currentBooking = { ...currentBooking, ...data };
+        return Promise.resolve(currentBooking);
+      });
+
+      const res = await service.adminNotifyCustomer('b-all-pdf', {
+        channel: 'email',
+        pnrs: ['1111111111', '2222222222'],
+        pdfs: [
+          {
+            base64: Buffer.from(tktBytes).toString('base64'),
+            filename: 'ticket.pdf',
+          },
+        ],
+        insurancePdfs: [
+          {
+            base64: Buffer.from(insBytes1).toString('base64'),
+            filename: 'ins-leg1.pdf',
+          },
+          {
+            base64: Buffer.from(insBytes2).toString('base64'),
+            filename: 'ins-leg2.pdf',
+          },
+        ],
+      });
+
+      expect(res.ok).toBe(true);
+      expect(res.emailSent).toBe(true);
+      expect(s3Storage.uploadInsurancePdf).toHaveBeenCalledWith(
+        'LB-ALLPDF',
+        expect.any(Buffer),
+        'insurance-LB-ALLPDF.pdf',
+        'application/pdf',
+      );
+      expect(notifications.sendEmail).toHaveBeenCalledWith(
+        'kartik@example.com',
+        expect.stringContaining('LB-ALLPDF'),
+        expect.stringContaining('Download Travel Insurance Policy Certificate'),
+        expect.objectContaining({
+          attachments: [
+            {
+              filename: 'ticket.pdf',
+              content: expect.any(Buffer),
+            },
+            {
+              filename: 'insurance-LB-ALLPDF.pdf',
               content: expect.any(Buffer),
             },
           ],
@@ -1446,6 +1563,125 @@ describe('SplitBookingService', () => {
     it('throws NotFoundException if booking or PDF does not exist', async () => {
       prisma.splitTicketBooking.findFirst.mockResolvedValue(null);
       await expect(service.getTicketPdf('LB-NONE')).rejects.toThrow(
+        NotFoundException,
+      );
+    });
+  });
+
+  describe('insurance pdf handling with S3', () => {
+    it('uploads insurance pdf to S3 and updates database with S3 key', async () => {
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        id: 'b-ins-1',
+        bookingRef: 'LB-INS1',
+      });
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        id: 'b-ins-1',
+        bookingRef: 'LB-INS1',
+        insurancePdfS3Key: 'insurance/LB-INS1/insurance.pdf',
+      });
+
+      const res = await service.adminUploadInsurancePdf('b-ins-1', undefined, {
+        base64: 'JVBERi0xLjQK...',
+        filename: 'my-insurance.pdf',
+        contentType: 'application/pdf',
+      });
+
+      expect(res.ok).toBe(true);
+      expect(res.s3Key).toBe('insurance/LB-TEST/insurance.pdf');
+      expect(s3Storage.uploadInsurancePdf).toHaveBeenCalledWith(
+        'LB-INS1',
+        expect.any(Buffer),
+        'my-insurance.pdf',
+        'application/pdf',
+      );
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith({
+        where: { id: 'b-ins-1' },
+        data: expect.objectContaining({
+          insurancePdfS3Key: 'insurance/LB-TEST/insurance.pdf',
+          insurancePdf: null,
+        }) as unknown,
+      });
+    });
+
+    it('merges multiple insurance PDFs in body.insurancePdfs into a single PDF before uploading to S3', async () => {
+      const doc1 = await PDFDocument.create();
+      doc1.addPage([100, 100]);
+      const pdfBytes1 = await doc1.save();
+
+      const doc2 = await PDFDocument.create();
+      doc2.addPage([200, 200]);
+      const pdfBytes2 = await doc2.save();
+
+      prisma.splitTicketBooking.findUnique.mockResolvedValue({
+        id: 'b-ins-merge',
+        bookingRef: 'LB-INSMERGE',
+      });
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        id: 'b-ins-merge',
+        bookingRef: 'LB-INSMERGE',
+        insurancePdfS3Key: 'insurance/LB-INSMERGE/insurance.pdf',
+      });
+
+      const res = await service.adminUploadInsurancePdf(
+        'b-ins-merge',
+        undefined,
+        {
+          insurancePdfs: [
+            {
+              base64: Buffer.from(pdfBytes1).toString('base64'),
+              filename: 'leg1-ins.pdf',
+            },
+            {
+              base64: Buffer.from(pdfBytes2).toString('base64'),
+              filename: 'leg2-ins.pdf',
+            },
+          ],
+        },
+      );
+
+      expect(res.ok).toBe(true);
+      expect(s3Storage.uploadInsurancePdf).toHaveBeenCalledWith(
+        'LB-INSMERGE',
+        expect.any(Buffer),
+        'insurance-LB-INSMERGE.pdf',
+        'application/pdf',
+      );
+    });
+
+    it('returns signed redirect URL when insurancePdfS3Key is present', async () => {
+      prisma.splitTicketBooking.findFirst.mockResolvedValue({
+        bookingRef: 'LB-INS-TEST',
+        insurancePdfS3Key: 'insurance/LB-INS-TEST/insurance.pdf',
+        insurancePdfFilename: 'insurance.pdf',
+        insurancePdf: null,
+      });
+
+      const res = await service.getInsurancePdf('LB-INS-TEST');
+      expect(res).toEqual(
+        expect.objectContaining({
+          redirectUrl:
+            'https://lastberth-ticket-storage.s3.ap-south-1.amazonaws.com/tickets/LB-TEST/ticket.pdf?signed=1',
+          s3Key: 'insurance/LB-INS-TEST/insurance.pdf',
+        }),
+      );
+    });
+
+    it('falls back to binary buffer for legacy records without S3 key', async () => {
+      prisma.splitTicketBooking.findFirst.mockResolvedValue({
+        bookingRef: 'LB-INS-LEGACY',
+        insurancePdfS3Key: null,
+        insurancePdf: Buffer.from('%PDF-1.4'),
+        insurancePdfFilename: 'legacy-ins.pdf',
+        insurancePdfContentType: 'application/pdf',
+      });
+
+      const res = await service.getInsurancePdf('LB-INS-LEGACY');
+      expect('buffer' in res && res.buffer).toBeTruthy();
+    });
+
+    it('throws NotFoundException if booking or insurance PDF does not exist', async () => {
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(null);
+      await expect(service.getInsurancePdf('LB-NONE')).rejects.toThrow(
         NotFoundException,
       );
     });

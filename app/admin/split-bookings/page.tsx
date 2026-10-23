@@ -15,6 +15,7 @@ import {
   RefreshCw,
   RotateCcw,
   Search,
+  Shield,
   Train,
   Upload,
   X,
@@ -98,6 +99,10 @@ export interface SplitBookingAdminEntry extends SplitBookingPrice {
   ticketPdfContentType: string | null;
   ticketPdfUploadedAt: string | null;
   hasTicketPdf: boolean;
+  insurancePdfFilename?: string | null;
+  insurancePdfContentType?: string | null;
+  insurancePdfUploadedAt?: string | null;
+  hasInsurancePdf?: boolean;
   bookingError: string | null;
   completedAt: string | null;
   createdAt: string;
@@ -310,6 +315,9 @@ function SplitBookingsAdminContent() {
   const [notifyLegPdfFiles, setNotifyLegPdfFiles] = useState<(File | null)[]>(
     [],
   );
+  const [notifyLegInsurancePdfFiles, setNotifyLegInsurancePdfFiles] = useState<
+    (File | null)[]
+  >([]);
   const [notifyMissingWarning, setNotifyMissingWarning] = useState<
     string | null
   >(null);
@@ -332,6 +340,7 @@ function SplitBookingsAdminContent() {
     setNotifyMessage("");
     setNotifyFeedback(null);
     setNotifyLegPdfFiles(new Array(b.legsPayload.length).fill(null));
+    setNotifyLegInsurancePdfFiles(new Array(b.legsPayload.length).fill(null));
     setNotifyMissingWarning(null);
     const initialPnrs = b.legsPayload.map((_, idx) => {
       if (b.pnrs && b.pnrs[idx]) return b.pnrs[idx];
@@ -711,6 +720,16 @@ function SplitBookingsAdminContent() {
       return;
     }
 
+    const oversizedInsurance = notifyLegInsurancePdfFiles.find(
+      (f) => f && f.size > MAX_PDF_BYTES,
+    );
+    if (oversizedInsurance) {
+      setNotifyMissingWarning(
+        `Insurance file "${oversizedInsurance.name}" exceeds the 25MB limit. Please choose a smaller PDF.`,
+      );
+      return;
+    }
+
     // Check for missing PNRs or PDF
     const missingLegs: number[] = [];
     notifyBooking.legsPayload.forEach((_, idx) => {
@@ -785,6 +804,34 @@ function SplitBookingsAdminContent() {
         pdfsPayload = await Promise.all(readPromises);
       }
 
+      const insFilesWithIdx = notifyLegInsurancePdfFiles
+        .map((file, idx) => ({ file, idx }))
+        .filter(
+          (item): item is { file: File; idx: number } => item.file !== null,
+        );
+
+      let insPdfsPayload:
+        | Array<{ base64: string; filename?: string; contentType?: string }>
+        | undefined;
+
+      if (insFilesWithIdx.length > 0) {
+        const readPromises = insFilesWithIdx.map(async ({ file }) => {
+          const reader = new FileReader();
+          const base64Promise = new Promise<string>((resolve, reject) => {
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = reject;
+          });
+          reader.readAsDataURL(file);
+          const base64Data = await base64Promise;
+          return {
+            base64: base64Data,
+            filename: file.name,
+            contentType: file.type || "application/pdf",
+          };
+        });
+        insPdfsPayload = await Promise.all(readPromises);
+      }
+
       const res = await apiClient.post<{
         ok: boolean;
         emailSent: boolean;
@@ -802,6 +849,14 @@ function SplitBookingsAdminContent() {
               ? pdfsPayload[0]
               : undefined,
           pdfs: pdfsPayload && pdfsPayload.length > 0 ? pdfsPayload : undefined,
+          insurancePdf:
+            insPdfsPayload && insPdfsPayload.length === 1
+              ? insPdfsPayload[0]
+              : undefined,
+          insurancePdfs:
+            insPdfsPayload && insPdfsPayload.length > 0
+              ? insPdfsPayload
+              : undefined,
         },
         { headers: authHeaders() },
       );
@@ -826,6 +881,11 @@ function SplitBookingsAdminContent() {
   const pdfUrl = (ref: string) => {
     const base = apiClient.defaults.baseURL || "";
     return `${base}/api/split-booking/ticket-pdf/${encodeURIComponent(ref)}`;
+  };
+
+  const insurancePdfUrl = (ref: string) => {
+    const base = apiClient.defaults.baseURL || "";
+    return `${base}/api/split-booking/insurance-pdf/${encodeURIComponent(ref)}`;
   };
 
   return (
@@ -2173,6 +2233,141 @@ function SplitBookingsAdminContent() {
                 </div>
               </div>
 
+              {/* Insurance PDF Section */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <label className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-800">
+                    <Shield className="h-3.5 w-3.5 text-teal-600" />
+                    Insurance PDF{notifyBooking.legsPayload.length > 1 ? "s" : ""} (
+                    {notifyBooking.legsPayload.length} Leg
+                    {notifyBooking.legsPayload.length > 1 ? "s" : ""}){" "}
+                    <span className="text-xs font-normal lowercase text-slate-400">
+                      (optional)
+                    </span>
+                  </label>
+                  {notifyBooking.legsPayload.length > 1 && (
+                    <span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-semibold text-teal-700">
+                      Merged in backend
+                    </span>
+                  )}
+                </div>
+
+                {notifyBooking.hasInsurancePdf &&
+                  notifyLegInsurancePdfFiles.every((f) => !f) && (
+                    <div className="flex items-center justify-between rounded-xl border border-teal-200 bg-teal-50/40 p-3">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="h-4 w-4 shrink-0 text-teal-600" />
+                        <div className="text-xs">
+                          <span className="font-semibold text-slate-900">
+                            {notifyBooking.insurancePdfFilename ||
+                              `insurance-${notifyBooking.bookingRef}.pdf`}
+                          </span>
+                          <span className="ml-1.5 text-slate-500">
+                            (Already on file)
+                          </span>
+                        </div>
+                      </div>
+                      <span className="text-[11px] font-medium text-slate-500">
+                        Upload new leg insurance PDFs below to replace
+                      </span>
+                    </div>
+                  )}
+
+                <div className="space-y-2">
+                  {notifyBooking.legsPayload.map((leg, idx) => {
+                    const file = notifyLegInsurancePdfFiles[idx];
+                    return (
+                      <div
+                        key={`leg-ins-pdf-${idx}`}
+                        className={`rounded-xl border p-3 transition ${
+                          file
+                            ? "border-teal-300 bg-teal-50/30"
+                            : "border-slate-200 bg-slate-50/50 hover:bg-slate-50"
+                        }`}
+                      >
+                        <div className="mb-2 flex items-center justify-between text-xs">
+                          <div className="flex items-center gap-1.5">
+                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-100 text-[10px] font-bold text-teal-700">
+                              {idx + 1}
+                            </span>
+                            <span className="font-semibold text-slate-900">
+                              Leg {idx + 1}: {leg.from} → {leg.to} Insurance
+                            </span>
+                          </div>
+                          {file ? (
+                            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-teal-600">
+                              <CheckCircle2 className="h-3 w-3" /> Ready to merge
+                            </span>
+                          ) : (
+                            <span className="text-[10px] text-slate-400">
+                              Optional
+                            </span>
+                          )}
+                        </div>
+
+                        {file ? (
+                          <div className="flex items-center justify-between rounded-lg border border-teal-200 bg-white px-3 py-2">
+                            <div className="flex items-center gap-2">
+                              <Shield className="h-4 w-4 shrink-0 text-teal-600" />
+                              <div className="truncate text-xs">
+                                <p className="truncate font-semibold text-slate-900">
+                                  {file.name}
+                                </p>
+                                <p className="text-[10px] text-slate-500">
+                                  {(file.size / 1024).toFixed(1)} KB
+                                </p>
+                              </div>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setNotifyLegInsurancePdfFiles((prev) => {
+                                  const next = [...prev];
+                                  next[idx] = null;
+                                  return next;
+                                });
+                              }}
+                              className="ml-2 cursor-pointer text-xs font-semibold text-rose-600 hover:text-rose-700"
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        ) : (
+                          <label className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-slate-300 bg-white py-2.5 text-center transition hover:border-teal-400 hover:bg-teal-50/30">
+                            <Upload className="h-4 w-4 text-slate-400" />
+                            <span className="text-xs font-medium text-teal-600">
+                              Select Leg {idx + 1} insurance PDF
+                            </span>
+                            <input
+                              type="file"
+                              accept="application/pdf"
+                              className="hidden"
+                              onChange={(e) => {
+                                const selected = e.target.files?.[0];
+                                if (selected) {
+                                  if (
+                                    selected.type &&
+                                    selected.type !== "application/pdf"
+                                  ) {
+                                    alert("Please upload a PDF file.");
+                                    return;
+                                  }
+                                  setNotifyLegInsurancePdfFiles((prev) => {
+                                    const next = [...prev];
+                                    next[idx] = selected;
+                                    return next;
+                                  });
+                                }
+                              }}
+                            />
+                          </label>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
               {/* Customer booking notifications are email-only for now. */}
               <div>
                 <p className="mb-1.5 block text-xs font-semibold text-slate-700">
@@ -3140,6 +3335,27 @@ function SplitBookingsAdminContent() {
                         <Upload className="h-3.5 w-3.5" />
                         Attach Ticket PDF
                       </button>
+                    )}
+                  </div>
+                  <div>
+                    <span className="block text-[11px] text-slate-400">
+                      Insurance PDF
+                    </span>
+                    {selectedDetailsBooking.hasInsurancePdf ? (
+                      <a
+                        href={insurancePdfUrl(selectedDetailsBooking.bookingRef)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-0.5 inline-flex items-center gap-1 rounded-lg border border-teal-200 bg-teal-50 px-2.5 py-1 text-xs font-semibold text-teal-800 transition hover:bg-teal-100"
+                      >
+                        <Shield className="h-3.5 w-3.5 text-teal-600" />
+                        View Insurance PDF
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    ) : (
+                      <span className="mt-0.5 inline-block text-xs text-slate-400">
+                        Not uploaded
+                      </span>
                     )}
                   </div>
                 </div>

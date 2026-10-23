@@ -38,6 +38,7 @@ export default defineConfig({
       timeout: 300_000,
       env: {
         NODE_ENV: "development",
+        NEXT_DIST_DIR: ".next-e2e",
         NEXT_PUBLIC_API_URL: `http://127.0.0.1:${contractPort}`,
         NEXT_PUBLIC_APP_URL: `http://localhost:${webPort}`,
         NEXT_PUBLIC_POSTHOG_KEY: "phc_booking_tests",

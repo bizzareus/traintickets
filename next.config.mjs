@@ -11,6 +11,7 @@ const __dirname = path.dirname(__filename);
 export default function configFactory(phase) {
   /** @type {import('next').NextConfig} */
   const nextConfig = {
+    distDir: process.env.NEXT_DIST_DIR || ".next",
     output: process.env.NEXT_EXPORT === "true" ? "export" : undefined,
     images: {
       ...(process.env.NEXT_EXPORT === "true" ? { unoptimized: true } : {}),

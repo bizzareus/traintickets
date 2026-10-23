@@ -143,18 +143,24 @@ for (const scenario of [
       payload.legs.reduce((sum, leg) => sum + leg.fare, 0),
     );
     expect(booking.state.checkout.serviceFee).toBe(payload.legs.length * 40);
-    // The chargeable total is the exact paise sum rounded once to whole rupees.
-    expect(Number.isInteger(booking.state.checkout.amount)).toBe(true);
+    const irctcSubtotalPaise = Math.round(
+      (payload.totalFare +
+        booking.state.checkout.irctcServiceFee +
+        (booking.state.checkout.travelInsuranceFee ?? 0)) *
+        100,
+    );
+    const expectedPgFeePaise = Math.round(irctcSubtotalPaise * 0.0118);
+    expect(booking.state.checkout.paymentGatewayFee).toBe(
+      expectedPgFeePaise / 100,
+    );
     expect(booking.state.checkout.amount).toBe(
-      Math.round(
-        Math.round(
-          (payload.totalFare +
-            booking.state.checkout.serviceFee +
-            booking.state.checkout.irctcServiceFee +
-            (booking.state.checkout.travelInsuranceFee ?? 0)) *
-            100 +
-            (booking.state.checkout.paymentGatewayFee ?? 0) * 100,
-        ) / 100,
+      Number(
+        (
+          (irctcSubtotalPaise +
+            expectedPgFeePaise +
+            booking.state.checkout.serviceFee * 100) /
+          100
+        ).toFixed(2),
       ),
     );
   });
@@ -218,7 +224,7 @@ test("skip all blocks continuation; retaining one ticket is bookable", async ({
   await booking.fill();
   await booking.submit();
   await expect(
-    booking.details().getByRole("heading", { name: /^Pay ₹471/ }),
+    booking.details().getByRole("heading", { name: /^Pay ₹463/ }),
   ).toBeVisible();
   expect(booking.state.requests[0].legs).toHaveLength(1);
 });
@@ -304,7 +310,7 @@ test("direct class filter restricts booking options", async ({ booking }) => {
   await booking.fill();
   await booking.submit();
   await expect(
-    booking.details().getByRole("heading", { name: /^Pay ₹799/ }),
+    booking.details().getByRole("heading", { name: /^Pay ₹784/ }),
   ).toBeVisible();
   expect(booking.state.requests[0].travelClass).toBe("3A");
 });

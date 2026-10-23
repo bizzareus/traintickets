@@ -95,6 +95,18 @@ export interface BookingState {
   cancellationRequests: unknown[];
   cancellationError?: TestHttpError;
   existingCancellation: boolean;
+  availabilityResult?: Partial<{
+    available: boolean;
+    legs: Array<{
+      from: string;
+      to: string;
+      travelClass: string;
+      boardingDate: string;
+      status: string;
+      isConfirmed: boolean;
+    }>;
+    error?: string;
+  }>;
 }
 
 export interface BookingHarness {
@@ -131,9 +143,9 @@ export const test = base.extend<{ booking: BookingHarness }>({
         totalFare: 980,
         irctcServiceFee: 35.4,
         serviceFee: 80,
-        paymentGatewayFee: 0,
-        travelInsuranceFee: 0.45,
-        amount: 1096,
+        paymentGatewayFee: 11.99,
+        travelInsuranceFee: 0.9,
+        amount: 1108.29,
         payUrl: "https://muzobox.com/pay/mb_test?source=reservation",
       },
       status: {},
@@ -228,6 +240,31 @@ export const test = base.extend<{ booking: BookingHarness }>({
         await fulfill({ json: path });
         return;
       }
+      if (pathname === "/api/split-booking/check-availability") {
+        const body = (route.request().postDataJSON() ?? {}) as {
+          legs?: Array<{
+            from: string;
+            to: string;
+            travelClass: string;
+            boardingDate: string;
+          }>;
+        };
+        await fulfill({
+          json: {
+            available: true,
+            legs: (body.legs || []).map((leg) => ({
+              from: leg.from,
+              to: leg.to,
+              travelClass: leg.travelClass,
+              boardingDate: leg.boardingDate,
+              status: "AVAILABLE-0012",
+              isConfirmed: true,
+            })),
+            ...state.availabilityResult,
+          },
+        });
+        return;
+      }
       if (pathname === "/api/split-booking/create") {
         const payload = route
           .request()
@@ -314,9 +351,9 @@ export const test = base.extend<{ booking: BookingHarness }>({
             totalFare: 980,
             irctcServiceFee: 35.4,
             serviceFee: 80,
-            paymentGatewayFee: 0,
-            travelInsuranceFee: 0.45,
-            amount: 1096,
+            paymentGatewayFee: 11.99,
+            travelInsuranceFee: 0.9,
+            amount: 1108.29,
             passengers: { adults: [PASSENGER] },
             legsPayload: [],
             bookingStatus: "CONFIRMED",

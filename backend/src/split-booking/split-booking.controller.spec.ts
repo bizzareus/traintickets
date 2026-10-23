@@ -92,6 +92,8 @@ describe('Split booking admin controller endpoints', () => {
   const adminBookWithoutPay = jest.fn();
   const adminUploadTicketPdf = jest.fn();
   const getTicketPdf = jest.fn();
+  const adminUploadInsurancePdf = jest.fn();
+  const getInsurancePdf = jest.fn();
   const adminNotifyCustomer = jest.fn();
   const adminCancelAndRefundBooking = jest.fn();
   const lookupBookingForCancellation = jest.fn();
@@ -105,6 +107,8 @@ describe('Split booking admin controller endpoints', () => {
     adminBookWithoutPay,
     adminUploadTicketPdf,
     getTicketPdf,
+    adminUploadInsurancePdf,
+    getInsurancePdf,
     adminNotifyCustomer,
     adminCancelAndRefundBooking,
     lookupBookingForCancellation,
@@ -264,13 +268,55 @@ describe('Split booking admin controller endpoints', () => {
       'admin-secret-password',
       {} as Request,
       'booking-123',
-      { channel: 'both', message: 'Coach B2' },
+      {
+        channel: 'both',
+        message: 'Coach B2',
+        insurancePdfs: [{ base64: 'JVBERi0xLjQK...', filename: 'ins.pdf' }],
+      },
     );
     expect(res).toEqual({ ok: true, emailSent: true, whatsappSent: true });
     expect(adminNotifyCustomer).toHaveBeenCalledWith('booking-123', {
       channel: 'both',
       message: 'Coach B2',
+      insurancePdfs: [{ base64: 'JVBERi0xLjQK...', filename: 'ins.pdf' }],
     });
+  });
+
+  it('uploads insurance pdf via base64 or file', async () => {
+    adminUploadInsurancePdf.mockResolvedValue({ ok: true });
+    const res = await controller.adminUploadInsurancePdf(
+      'admin-secret-password',
+      {} as Request,
+      'booking-123',
+      undefined,
+      { base64: 'JVBERi0xLjQK...', filename: 'insurance.pdf' },
+    );
+    expect(res).toEqual({ ok: true });
+    expect(adminUploadInsurancePdf).toHaveBeenCalledWith(
+      'booking-123',
+      undefined,
+      {
+        base64: 'JVBERi0xLjQK...',
+        filename: 'insurance.pdf',
+      },
+    );
+  });
+
+  it('redirects to signed S3 URL for insurance PDF', async () => {
+    getInsurancePdf.mockResolvedValue({
+      redirectUrl:
+        'https://lastberth-ticket-storage.s3.ap-south-1.amazonaws.com/insurance/LB-123/insurance.pdf?signed=1',
+      filename: 'insurance-LB-123.pdf',
+      s3Key: 'insurance/LB-123/insurance.pdf',
+    });
+    const redirect = jest.fn();
+    await controller.getInsurancePdf('LB-123', undefined, {
+      redirect,
+    } as unknown as Response);
+    expect(redirect).toHaveBeenCalledWith(
+      302,
+      'https://lastberth-ticket-storage.s3.ap-south-1.amazonaws.com/insurance/LB-123/insurance.pdf?signed=1',
+    );
   });
 
   it('delegates cancellation lookup to service', async () => {

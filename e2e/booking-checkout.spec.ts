@@ -122,9 +122,10 @@ test("checkout displays backend-authoritative prices and no obsolete fee wording
   for (const row of [
     "Ticket Fare₹980.00",
     "IRCTC Service Charge₹35.40",
+    "IRCTC Payment Gateway Fee₹11.99",
     "LastBerth Service Charge₹80.00",
-    "Travel Insurance₹0.45",
-    "Total Amount₹1,095.85",
+    "Travel Insurance₹0.90",
+    "Total Amount₹1,108.29",
   ]) {
     await expect(breakdown).toContainText(row);
   }
@@ -142,9 +143,10 @@ test("passenger details show the server quote before any checkout is created", a
   for (const row of [
     "Ticket Fare₹980.00",
     "IRCTC Service Charge₹35.40",
+    "IRCTC Payment Gateway Fee₹11.99",
     "LastBerth Service Charge₹80.00",
-    "Travel Insurance₹0.45",
-    "Total Amount₹1,095.85",
+    "Travel Insurance₹0.90",
+    "Total Amount₹1,108.29",
   ]) {
     await expect(breakdown).toContainText(row);
   }
@@ -183,7 +185,7 @@ for (const back of ["Back to details", "1. Passenger Details"]) {
     );
     await expect(
       booking.details().getByRole("region", { name: "Fare breakdown" }),
-    ).toContainText("Total Amount₹1,095.85");
+    ).toContainText("Total Amount₹1,108.29");
     await booking.submit();
     await expect(booking.details().locator("iframe")).toHaveAttribute(
       "src",
@@ -308,7 +310,7 @@ test("quote errors prevent checkout until the breakdown can be loaded", async ({
   await booking.details().getByRole("button", { name: "Retry" }).click();
   await expect(
     booking.details().getByRole("region", { name: "Fare breakdown" }),
-  ).toContainText("Total Amount₹1,095.85");
+  ).toContainText("Total Amount₹1,108.29");
   await booking.fill();
   await booking.submit();
   await expect(

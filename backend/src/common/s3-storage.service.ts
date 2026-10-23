@@ -94,6 +94,44 @@ export class S3StorageService {
   }
 
   /**
+   * Uploads an insurance PDF (or merged insurance document) for a booking to S3.
+   * Returns the S3 object key (e.g. "insurance/LB-ABC12/insurance.pdf").
+   */
+  async uploadInsurancePdf(
+    bookingRef: string,
+    buffer: Buffer,
+    filename: string,
+    contentType = 'application/pdf',
+  ): Promise<string> {
+    const cleanFilename = sanitizeFilename(filename);
+    const key = `insurance/${bookingRef}/${cleanFilename}`;
+
+    try {
+      const command = new PutObjectCommand({
+        Bucket: this.bucketName,
+        Key: key,
+        Body: buffer,
+        ContentType: contentType,
+        ContentDisposition: `inline; filename="${cleanFilename}"`,
+      });
+
+      await this.s3Client.send(command);
+      this.logger.log(
+        `[S3Storage] Uploaded insurance PDF for ${bookingRef} to s3://${this.bucketName}/${key} (${buffer.length} bytes)`,
+      );
+      return key;
+    } catch (err) {
+      this.logger.error(
+        `[S3Storage] Failed to upload insurance PDF for ${bookingRef}: ${awsErrorLabel(err)}`,
+        err instanceof Error ? err.stack : undefined,
+      );
+      throw new InternalServerErrorException(
+        'Failed to store insurance PDF in cloud storage',
+      );
+    }
+  }
+
+  /**
    * Generates a time-limited pre-signed URL for viewing or downloading a ticket PDF.
    */
   async getSignedTicketPdfUrl(

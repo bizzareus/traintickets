@@ -28,7 +28,7 @@ test("verified paid then confirmed status displays every PNR and stops polling",
 }) => {
   await openPaidCheckout(booking, page);
   await simulatePaidStatus(booking, page);
-  await expect(booking.details()).toContainText("Payment Received (₹1,096.00)");
+  await expect(booking.details()).toContainText("Payment Received (₹1,108.29)");
   booking.state.status = {
     ...booking.state.status,
     bookingStatus: "CONFIRMED",
@@ -258,7 +258,7 @@ for (const [paymentStatus, heading] of [
     ).toBeVisible();
     await expect(
       page.getByRole("region", { name: "Fare breakdown" }),
-    ).toContainText("Total Amount₹1,095.85");
+    ).toContainText("Total Amount₹1,108.29");
   });
 }
 

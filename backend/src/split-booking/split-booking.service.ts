@@ -985,6 +985,10 @@ export class SplitBookingService {
         ticketPdfContentType: true,
         ticketPdfUploadedAt: true,
         ticketPdfS3Key: true,
+        insurancePdfFilename: true,
+        insurancePdfContentType: true,
+        insurancePdfUploadedAt: true,
+        insurancePdfS3Key: true,
         bookingError: true,
         completedAt: true,
         createdAt: true,
@@ -998,6 +1002,9 @@ export class SplitBookingService {
         ...b,
         ...bookingPrice(b),
         hasTicketPdf: Boolean(b.ticketPdfUploadedAt || b.ticketPdfS3Key),
+        hasInsurancePdf: Boolean(
+          b.insurancePdfUploadedAt || b.insurancePdfS3Key,
+        ),
         journeyDate: b.journeyDate.toISOString().slice(0, 10),
       })),
     };
@@ -1234,6 +1241,155 @@ export class SplitBookingService {
     throw new NotFoundException('Ticket PDF not found');
   }
 
+  async adminUploadInsurancePdf(
+    id: string,
+    file?: {
+      buffer: Buffer;
+      originalname?: string;
+      mimetype?: string;
+    },
+    body?: {
+      base64?: string;
+      filename?: string;
+      contentType?: string;
+      insurancePdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+      pdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+    },
+  ) {
+    const booking = await this.prisma.splitTicketBooking.findUnique({
+      where: { id },
+    });
+    if (!booking) {
+      throw new NotFoundException(`Booking "${id}" not found`);
+    }
+
+    let buffer: Buffer;
+    const filename =
+      file?.originalname ||
+      body?.filename ||
+      `insurance-${booking.bookingRef}.pdf`;
+    const contentType =
+      file?.mimetype || body?.contentType || 'application/pdf';
+
+    const candidatePdfs = body?.insurancePdfs || body?.pdfs;
+    if (file?.buffer) {
+      buffer = file.buffer;
+    } else if (candidatePdfs && candidatePdfs.length > 0) {
+      const valid = candidatePdfs.filter(
+        (p) => typeof p?.base64 === 'string' && p.base64.trim().length > 0,
+      );
+      if (valid.length === 0) {
+        throw new BadRequestException(
+          'At least one valid insurance PDF is required',
+        );
+      }
+      if (valid.length === 1) {
+        const clean = valid[0].base64
+          .replace(/^data:application\/pdf;base64,/, '')
+          .trim();
+        buffer = Buffer.from(clean, 'base64');
+      } else {
+        const buffers = valid.map((p) => {
+          const clean = p.base64
+            .replace(/^data:application\/pdf;base64,/, '')
+            .trim();
+          return Buffer.from(clean, 'base64');
+        });
+        buffer = await mergePdfBuffers(buffers);
+      }
+    } else if (body?.base64) {
+      const cleanBase64 = body.base64
+        .replace(/^data:application\/pdf;base64,/, '')
+        .trim();
+      buffer = Buffer.from(cleanBase64, 'base64');
+    } else {
+      throw new BadRequestException(
+        'An insurance PDF file or base64 data is required',
+      );
+    }
+
+    let s3Key: string | null = null;
+    if (this.s3Storage) {
+      s3Key = await this.s3Storage.uploadInsurancePdf(
+        booking.bookingRef,
+        buffer,
+        filename,
+        contentType,
+      );
+    }
+
+    await this.prisma.splitTicketBooking.update({
+      where: { id },
+      data: {
+        insurancePdfS3Key: s3Key,
+        insurancePdfFilename: filename,
+        insurancePdfContentType: contentType,
+        insurancePdfUploadedAt: new Date(),
+        insurancePdf: s3Key ? null : new Uint8Array(buffer),
+      },
+    });
+
+    return {
+      ok: true,
+      filename,
+      s3Key,
+      uploadedAt: new Date().toISOString(),
+    };
+  }
+
+  async getInsurancePdf(
+    bookingRefOrId: string,
+  ): Promise<
+    | { redirectUrl: string; filename?: string; s3Key?: string }
+    | { buffer: Uint8Array; filename: string; contentType: string }
+  > {
+    const booking = await this.prisma.splitTicketBooking.findFirst({
+      where: {
+        OR: [{ bookingRef: bookingRefOrId }, { id: bookingRefOrId }],
+      },
+      select: {
+        bookingRef: true,
+        insurancePdf: true,
+        insurancePdfS3Key: true,
+        insurancePdfFilename: true,
+        insurancePdfContentType: true,
+      },
+    });
+
+    if (!booking || (!booking.insurancePdfS3Key && !booking.insurancePdf)) {
+      throw new NotFoundException('Insurance PDF not found');
+    }
+
+    const filename =
+      booking.insurancePdfFilename || `insurance-${booking.bookingRef}.pdf`;
+
+    if (booking.insurancePdfS3Key && this.s3Storage) {
+      const redirectUrl = await this.s3Storage.getSignedTicketPdfUrl(
+        booking.insurancePdfS3Key,
+        filename,
+      );
+      return { redirectUrl, filename, s3Key: booking.insurancePdfS3Key };
+    }
+
+    if (booking.insurancePdf) {
+      return {
+        buffer: booking.insurancePdf,
+        filename,
+        contentType: booking.insurancePdfContentType || 'application/pdf',
+      };
+    }
+
+    throw new NotFoundException('Insurance PDF not found');
+  }
+
   async adminNotifyCustomer(
     id: string,
     options: {
@@ -1248,6 +1404,16 @@ export class SplitBookingService {
         contentType?: string;
       };
       pdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+      insurancePdf?: {
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      };
+      insurancePdfs?: Array<{
         base64: string;
         filename?: string;
         contentType?: string;
@@ -1316,6 +1482,43 @@ export class SplitBookingService {
       await this.adminUploadTicketPdf(id, undefined, options.pdf);
     }
 
+    // Merge multiple leg insurance PDFs if provided, or handle single insurance PDF upload
+    let mergedInsurancePdfBuffer: Buffer | null = null;
+    const validCandidateInsurancePdfs = (options.insurancePdfs || []).filter(
+      (p) => typeof p?.base64 === 'string' && p.base64.trim().length > 0,
+    );
+
+    if (validCandidateInsurancePdfs.length > 1) {
+      const buffers = validCandidateInsurancePdfs.map((p) => {
+        const clean = p.base64
+          .replace(/^data:application\/pdf;base64,/, '')
+          .trim();
+        return Buffer.from(clean, 'base64');
+      });
+      mergedInsurancePdfBuffer = await mergePdfBuffers(buffers);
+      await this.adminUploadInsurancePdf(id, {
+        buffer: mergedInsurancePdfBuffer,
+        originalname: `insurance-${booking.bookingRef}.pdf`,
+        mimetype: 'application/pdf',
+      });
+    } else if (validCandidateInsurancePdfs.length === 1) {
+      const clean = validCandidateInsurancePdfs[0].base64
+        .replace(/^data:application\/pdf;base64,/, '')
+        .trim();
+      mergedInsurancePdfBuffer = Buffer.from(clean, 'base64');
+      await this.adminUploadInsurancePdf(
+        id,
+        undefined,
+        validCandidateInsurancePdfs[0],
+      );
+    } else if (options.insurancePdf?.base64) {
+      const clean = options.insurancePdf.base64
+        .replace(/^data:application\/pdf;base64,/, '')
+        .trim();
+      mergedInsurancePdfBuffer = Buffer.from(clean, 'base64');
+      await this.adminUploadInsurancePdf(id, undefined, options.insurancePdf);
+    }
+
     const updatedBooking =
       (await this.prisma.splitTicketBooking.findUnique({
         where: { id },
@@ -1336,6 +1539,15 @@ export class SplitBookingService {
     );
     const pdfUrl = hasPdf
       ? `${apiUrl}/api/split-booking/ticket-pdf/${updatedBooking.bookingRef}`
+      : null;
+
+    const hasInsurancePdf = Boolean(
+      updatedBooking.insurancePdfUploadedAt ||
+      updatedBooking.insurancePdfS3Key ||
+      updatedBooking.insurancePdf,
+    );
+    const insurancePdfUrl = hasInsurancePdf
+      ? `${apiUrl}/api/split-booking/insurance-pdf/${updatedBooking.bookingRef}`
       : null;
 
     const legPnrs = details.legs.map((leg, i) => {
@@ -1391,6 +1603,14 @@ export class SplitBookingService {
             </div>`
           : '';
 
+        const insuranceDownloadHtml = insurancePdfUrl
+          ? `<div style="text-align: center; margin: 12px 0;">
+              <a href="${insurancePdfUrl}" target="_blank" style="background-color: #059669; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">
+                Download Travel Insurance Policy Certificate
+              </a>
+            </div>`
+          : '';
+
         const customNoteHtml = options.message
           ? `<div style="background-color: #f8fafc; border-left: 4px solid #3b82f6; padding: 12px; margin: 16px 0; font-size: 13px; color: #334155;">
               <strong>Note from Booking Team:</strong><br/>
@@ -1424,6 +1644,7 @@ export class SplitBookingService {
 
               ${bookingPriceHtml(updatedBooking)}
               ${pdfDownloadHtml}
+              ${insuranceDownloadHtml}
               ${customNoteHtml}
 
               <p style="color: #94a3b8; font-size: 12px; margin-top: 24px; border-top: 1px solid #f1f5f9; padding-top: 16px; line-height: 1.5;">
@@ -1438,21 +1659,34 @@ export class SplitBookingService {
           (updatedBooking.ticketPdf
             ? Buffer.from(updatedBooking.ticketPdf)
             : null);
-        const attachments = attachmentContent
-          ? [
-              {
-                filename:
-                  updatedBooking.ticketPdfFilename ||
-                  `ticket-${updatedBooking.bookingRef}.pdf`,
-                content: attachmentContent,
-              },
-            ]
-          : undefined;
+        const insuranceAttachmentContent =
+          mergedInsurancePdfBuffer ||
+          (updatedBooking.insurancePdf
+            ? Buffer.from(updatedBooking.insurancePdf)
+            : null);
+
+        const attachments: Array<{ filename: string; content: Buffer }> = [];
+        if (attachmentContent) {
+          attachments.push({
+            filename:
+              updatedBooking.ticketPdfFilename ||
+              `ticket-${updatedBooking.bookingRef}.pdf`,
+            content: attachmentContent,
+          });
+        }
+        if (insuranceAttachmentContent) {
+          attachments.push({
+            filename:
+              updatedBooking.insurancePdfFilename ||
+              `insurance-${updatedBooking.bookingRef}.pdf`,
+            content: insuranceAttachmentContent,
+          });
+        }
 
         emailSent = await this.notifications
           .sendEmail(updatedBooking.contactEmail, subject, html, {
             skipFailureReport: true,
-            attachments,
+            attachments: attachments.length > 0 ? attachments : undefined,
           })
           .catch(() => false);
 

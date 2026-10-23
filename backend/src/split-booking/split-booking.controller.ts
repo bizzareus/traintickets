@@ -261,6 +261,68 @@ export class SplitBookingController {
     }
   }
 
+  @Post('admin/:id/insurance-pdf')
+  @UseInterceptors(
+    FileInterceptor('file', { limits: { fileSize: 30 * 1024 * 1024 } }),
+  )
+  async adminUploadInsurancePdf(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+    @Param('id') id: string,
+    @UploadedFile()
+    file?: {
+      buffer: Buffer;
+      originalname?: string;
+      mimetype?: string;
+    },
+    @Body()
+    body?: {
+      base64?: string;
+      filename?: string;
+      contentType?: string;
+      insurancePdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+      pdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+    },
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
+    return this.splitBookingService.adminUploadInsurancePdf(id, file, body);
+  }
+
+  @Get('insurance-pdf/:bookingRef')
+  async getInsurancePdf(
+    @Param('bookingRef') bookingRef: string,
+    @Query('json') json: string | undefined,
+    @Res() res: Response,
+  ) {
+    const result = await this.splitBookingService.getInsurancePdf(bookingRef);
+    if ('redirectUrl' in result && result.redirectUrl) {
+      if (json === 'true' || json === '1') {
+        return res.json({
+          ok: true,
+          signedUrl: result.redirectUrl,
+          filename: result.filename,
+        });
+      }
+      return res.redirect(302, result.redirectUrl);
+    }
+    if ('buffer' in result) {
+      res.setHeader('Content-Type', result.contentType);
+      res.setHeader(
+        'Content-Disposition',
+        `inline; filename="${encodeURIComponent(result.filename)}"`,
+      );
+      return res.send(Buffer.from(result.buffer));
+    }
+  }
+
   @Post('admin/:id/notify-user')
   async adminNotifyCustomer(
     @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
@@ -279,6 +341,16 @@ export class SplitBookingController {
         contentType?: string;
       };
       pdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+      insurancePdf?: {
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      };
+      insurancePdfs?: Array<{
         base64: string;
         filename?: string;
         contentType?: string;
