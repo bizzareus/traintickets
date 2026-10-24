@@ -16,6 +16,7 @@ import { CreateRefundRequestDto } from './refund-request.dto';
 import { Throttle } from '@nestjs/throttler';
 
 @Controller('api/refund-requests')
+@Throttle({ global: { limit: 60, ttl: 60_000 } })
 export class RefundRequestController {
   constructor(private readonly refunds: RefundRequestService) {}
 
