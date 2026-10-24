@@ -1,5 +1,19 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
+import { listTrainFoodMenuIndex } from "./trainFoodMenu";
+
+describe("listTrainFoodMenuIndex caching", () => {
+  test("returns cached reference on consecutive calls", () => {
+    const firstCall = listTrainFoodMenuIndex();
+    const secondCall = listTrainFoodMenuIndex();
+    assert.ok(firstCall.length > 0, "Index should contain rows");
+    assert.strictEqual(
+      firstCall,
+      secondCall,
+      "Second call must return identical cached reference",
+    );
+  });
+});
 
 describe("Fast numeric train number sorting", () => {
   test("numeric sorting helper accurately sorts train numbers", () => {
