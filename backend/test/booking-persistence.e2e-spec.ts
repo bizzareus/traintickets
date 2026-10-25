@@ -179,9 +179,9 @@ describe('Booking persistence and fulfillment integration', () => {
       serviceFee: 80,
       paymentGatewayFee: 11.99,
       travelInsuranceFee: 0.9,
-      amount: 1108.29,
+      amount: 1108,
     });
-    expect(checkout.amount).toBe(1108.29);
+    expect(Number.isInteger(checkout.amount)).toBe(true);
     const row = await prisma.splitTicketBooking.findUniqueOrThrow({
       where: { bookingRef: checkout.bookingRef },
     });

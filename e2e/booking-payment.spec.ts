@@ -18,7 +18,9 @@ test("iframe hint cannot confirm a pending payment", async ({
   await expect
     .poll(() => booking.state.statusRequests.length)
     .toBeGreaterThan(before);
-  await expect(frame).toBeVisible();
+  await expect(
+    booking.details().getByRole("button", { name: /^Pay ₹/ }),
+  ).toBeVisible();
   await expect(booking.details().getByText(/Payment Received/)).toHaveCount(0);
 });
 
@@ -32,7 +34,7 @@ test("verified paid then confirmed status displays every PNR and stops polling",
   booking.state.status = {
     ...booking.state.status,
     bookingStatus: "CONFIRMED",
-    pnrs: ["1234567890", "2345678901", "3456789012"],
+    pnrs: ["1234567890", "2345678901"],
   };
   await page.clock.fastForward(2500);
   await expect(
@@ -113,7 +115,7 @@ test("partial booking failure preserves issued PNR and shows the reason", async 
     booking.details().getByText("1234567890", { exact: true }),
   ).toBeVisible();
   await expect(booking.details()).toContainText(
-    "check these reservations before booking again",
+    "review these reservations before re-booking",
   );
 });
 

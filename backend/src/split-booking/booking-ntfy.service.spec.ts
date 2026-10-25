@@ -112,7 +112,7 @@ describe('Paid booking ntfy notifications', () => {
         'LastBerth Service Charge',
         'Travel Insurance',
         'IRCTC Payment Gateway Fee',
-        '1231.71',
+        '1232.00',
         'pay-test',
         'order-test',
       ]) {

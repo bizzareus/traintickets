@@ -3,11 +3,15 @@ import type { BookingHarness } from "./booking-engine";
 
 /** Search, fill, submit and wait for the Muzobox iframe to be ready. */
 export async function openPaidCheckout(booking: BookingHarness, page: Page) {
+  await booking.open();
   await page.clock.install({ time: new Date("2026-10-12T06:00:00Z") });
   await page.clock.pauseAt(new Date("2026-10-12T06:00:01Z"));
-  await booking.open();
   await booking.fill();
   await booking.submit();
+  await booking
+    .details()
+    .getByRole("button", { name: /^Pay ₹/ })
+    .click();
   await expect(booking.details().locator("iframe")).toBeVisible();
   await expect(checkoutButton(booking)).toBeVisible();
 }

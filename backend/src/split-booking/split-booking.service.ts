@@ -316,6 +316,11 @@ export class SplitBookingService {
     const bookingRef = this.generateBookingRef();
     const cleanDate = dto.journeyDate.slice(0, 10);
     const price = bookingPrice(savedPrice);
+    if (!Number.isInteger(price.amount)) {
+      throw new Error(
+        `Refusing checkout for ${bookingRef}: Muzobox requires a whole-rupee amount`,
+      );
+    }
     const bookingMode =
       this.config.get<string>('SPLIT_BOOKING_MODE') === 'manual'
         ? 'MANUAL'
