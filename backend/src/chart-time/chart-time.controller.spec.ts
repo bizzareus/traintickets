@@ -49,7 +49,7 @@ describe('ChartTimeController', () => {
         controller.set('', mockReq, '12345', 'NDLS', '18:00'),
       ).rejects.toThrow(UnauthorizedException);
 
-      expect(chartTimeService.setChartTime).not.toHaveBeenCalled();
+      expect(chartTimeService.setChartTime.mock.calls.length).toBe(0);
     });
 
     it('successfully calls setChartTime when correct admin password header is provided', async () => {
@@ -71,12 +71,87 @@ describe('ChartTimeController', () => {
         '18:00',
       );
 
-      expect(chartTimeService.setChartTime).toHaveBeenCalledWith(
+      expect(chartTimeService.setChartTime.mock.calls).toEqual([
+        ['12345', 'NDLS', '18:00'],
+      ]);
+      expect(result).toBeDefined();
+    });
+  });
+
+  describe('POST /api/chart-time/fetch', () => {
+    it('throws UnauthorizedException when admin auth is missing', async () => {
+      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
+
+      await expect(
+        controller.fetch(
+          '',
+          mockReq,
+          '12345',
+          'NDLS',
+          'New Delhi',
+          '2026-10-23',
+        ),
+      ).rejects.toThrow(UnauthorizedException);
+    });
+
+    it('succeeds when correct admin password header is provided', async () => {
+      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
+      chartTimeService.getChartTime.mockResolvedValue('18:00');
+
+      const result = await controller.fetch(
+        'test-admin-secret',
+        mockReq,
         '12345',
         'NDLS',
-        '18:00',
+        'New Delhi',
+        '2026-10-23',
       );
-      expect(result).toBeDefined();
+
+      expect(result).toEqual({
+        trainNumber: '12345',
+        stationCode: 'NDLS',
+        chartTimeLocal: '18:00',
+        fromCache: true,
+      });
+    });
+  });
+
+  describe('GET /api/chart-time/train/:trainNumber/station/:stationCode with fetchIfMissing', () => {
+    it('returns cached result without requiring auth', async () => {
+      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
+      chartTimeService.getChartTime.mockResolvedValue('18:00');
+
+      const result = await controller.get(
+        undefined,
+        mockReq,
+        '12345',
+        'NDLS',
+        '',
+        '',
+      );
+
+      expect(result).toEqual({
+        trainNumber: '12345',
+        stationCode: 'NDLS',
+        chartTimeLocal: '18:00',
+        fromCache: true,
+      });
+    });
+
+    it('throws UnauthorizedException when fetchIfMissing=true and admin auth is missing', async () => {
+      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
+      chartTimeService.getChartTime.mockResolvedValue(null);
+
+      await expect(
+        controller.get(
+          undefined,
+          mockReq,
+          '12345',
+          'NDLS',
+          'true',
+          '2026-10-23',
+        ),
+      ).rejects.toThrow(UnauthorizedException);
     });
   });
 });
