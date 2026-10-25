@@ -8,6 +8,7 @@ import { Request } from 'express';
 describe('ChartTimeController', () => {
   let controller: ChartTimeController;
   let chartTimeService: jest.Mocked<ChartTimeService>;
+  let browserUseService: jest.Mocked<BrowserUseService>;
 
   const originalAdminPassword = process.env.CHART_TIME_INGESTION_PASSWORD;
 
@@ -34,6 +35,7 @@ describe('ChartTimeController', () => {
 
     controller = module.get<ChartTimeController>(ChartTimeController);
     chartTimeService = module.get(ChartTimeService);
+    browserUseService = module.get(BrowserUseService);
   });
 
   afterEach(() => {
@@ -77,6 +79,60 @@ describe('ChartTimeController', () => {
         '18:00',
       );
       expect(result).toBeDefined();
+    });
+  });
+
+  describe('POST /api/chart-time/fetch', () => {
+    it('throws UnauthorizedException when admin header and session are missing', async () => {
+      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
+
+      await expect(
+        controller.fetch(
+          undefined,
+          mockReq,
+          '12345',
+          'NDLS',
+          'NEW DELHI',
+          '2026-10-15',
+        ),
+      ).rejects.toThrow(UnauthorizedException);
+
+      expect(browserUseService.executeFetchChartTime).not.toHaveBeenCalled();
+    });
+
+    it('successfully calls executeFetchChartTime when correct admin password header is provided', async () => {
+      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
+      chartTimeService.getChartTime.mockResolvedValue(null);
+      browserUseService.executeFetchChartTime.mockResolvedValue({
+        jobId: 'job-123',
+        status: 'success',
+        output: null,
+        chartTimeLocal: '18:00',
+        chartingStationCode: 'NDLS',
+      });
+
+      const result = await controller.fetch(
+        'test-admin-secret',
+        mockReq,
+        '12345',
+        'NDLS',
+        'NEW DELHI',
+        '2026-10-15',
+      );
+
+      expect(browserUseService.executeFetchChartTime).toHaveBeenCalledWith({
+        trainNumber: '12345',
+        stationCode: 'NDLS',
+        stationName: 'NEW DELHI',
+        journeyDate: '2026-10-15',
+      });
+      expect(result).toEqual({
+        trainNumber: '12345',
+        stationCode: 'NDLS',
+        chartTimeLocal: '18:00',
+        chartingStationCode: 'NDLS',
+        fromCache: false,
+      });
     });
   });
 });
