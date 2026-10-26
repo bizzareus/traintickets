@@ -66,6 +66,13 @@ const STATION_BY_CODE = new Map<string, Station>(
   STATIONS.map((s) => [s.code.toUpperCase(), s]),
 );
 
+// Performance Optimization: Pre-compute lowercased station names once at module initialization
+// to eliminate repeated s.name.toLowerCase() allocations during linear station scans.
+const STATIONS_WITH_LOWER_NAME = STATIONS.map((s) => ({
+  station: s,
+  lowerName: s.name.toLowerCase(),
+}));
+
 /**
  * Performance Optimization: Finds a station by exact code match in O(1) time first,
  * falling back to case-insensitive name inclusion match if code is not found.
@@ -79,7 +86,9 @@ export function getStationByCodeOrName(
   if (byCode) return byCode;
 
   const lower = stationCodeOrName.trim().toLowerCase();
-  return STATIONS.find((s) => s.name.toLowerCase().includes(lower));
+  return STATIONS_WITH_LOWER_NAME.find((item) =>
+    item.lowerName.includes(lower),
+  )?.station;
 }
 
 export async function getRouteData(
