@@ -1,82 +1,101 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { UnauthorizedException } from '@nestjs/common';
+import type { Request } from 'express';
 import { ChartTimeController } from './chart-time.controller';
-import { ChartTimeService } from './chart-time.service';
-import { BrowserUseService } from '../browser-use/browser-use.service';
-import { Request } from 'express';
+import { ADMIN_PASSWORD_ENV, buildAdminSessionCookieValue } from '../common/admin-auth';
 
 describe('ChartTimeController', () => {
   let controller: ChartTimeController;
-  let chartTimeService: jest.Mocked<ChartTimeService>;
+  let mockChartTimeService: any;
+  let mockBrowserUseService: any;
+  let originalEnv: string | undefined;
 
-  const originalAdminPassword = process.env.CHART_TIME_INGESTION_PASSWORD;
+  beforeEach(() => {
+    originalEnv = process.env[ADMIN_PASSWORD_ENV];
+    process.env[ADMIN_PASSWORD_ENV] = 'test-admin-secret';
 
-  beforeEach(async () => {
-    process.env.CHART_TIME_INGESTION_PASSWORD = 'test-admin-secret';
-
-    const mockChartTimeService = {
+    mockChartTimeService = {
       getChartTime: jest.fn(),
       setChartTime: jest.fn(),
       getChartTimesForTrain: jest.fn(),
     };
 
-    const mockBrowserUseService = {
+    mockBrowserUseService = {
       executeFetchChartTime: jest.fn(),
     };
 
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [ChartTimeController],
-      providers: [
-        { provide: ChartTimeService, useValue: mockChartTimeService },
-        { provide: BrowserUseService, useValue: mockBrowserUseService },
-      ],
-    }).compile();
-
-    controller = module.get<ChartTimeController>(ChartTimeController);
-    chartTimeService = module.get(ChartTimeService);
+    controller = new ChartTimeController(
+      mockChartTimeService,
+      mockBrowserUseService,
+    );
   });
 
   afterEach(() => {
-    process.env.CHART_TIME_INGESTION_PASSWORD = originalAdminPassword;
-    jest.clearAllMocks();
+    if (originalEnv !== undefined) {
+      process.env[ADMIN_PASSWORD_ENV] = originalEnv;
+    } else {
+      delete process.env[ADMIN_PASSWORD_ENV];
+    }
   });
 
-  describe('POST /api/chart-time (set)', () => {
-    it('throws UnauthorizedException when admin header and session are missing', async () => {
-      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
-
+  describe('set', () => {
+    it('throws UnauthorizedException when no admin password header or session cookie is provided', async () => {
+      const mockReq = {} as Request;
       await expect(
-        controller.set('', mockReq, '12345', 'NDLS', '18:00'),
+        controller.set(undefined, mockReq, '12345', 'NDLS', '08:00'),
       ).rejects.toThrow(UnauthorizedException);
-
-      expect(chartTimeService.setChartTime).not.toHaveBeenCalled();
     });
 
-    it('successfully calls setChartTime when correct admin password header is provided', async () => {
-      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
-      chartTimeService.setChartTime.mockResolvedValue({
-        id: '1',
-        trainNumber: '12345',
-        stationCode: 'NDLS',
-        chartTimeLocal: '18:00',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
+    it('throws UnauthorizedException when an incorrect admin password header is provided', async () => {
+      const mockReq = {} as Request;
+      await expect(
+        controller.set('wrong-password', mockReq, '12345', 'NDLS', '08:00'),
+      ).rejects.toThrow(UnauthorizedException);
+    });
 
-      const result = await controller.set(
+    it('successfully calls setChartTime when valid admin password header is provided', async () => {
+      const mockReq = {} as Request;
+      mockChartTimeService.setChartTime.mockResolvedValue({ success: true });
+
+      const res = await controller.set(
         'test-admin-secret',
         mockReq,
         '12345',
         'NDLS',
-        '18:00',
+        '08:00',
       );
 
-      expect(chartTimeService.setChartTime).toHaveBeenCalledWith(
+      expect(mockChartTimeService.setChartTime).toHaveBeenCalledWith(
         '12345',
         'NDLS',
-        '18:00',
+        '08:00',
       );
-      expect(result).toBeDefined();
+      expect(res).toEqual({ success: true });
+    });
+
+    it('successfully calls setChartTime when valid admin session cookie is provided without password header', async () => {
+      const cookieVal = buildAdminSessionCookieValue();
+      const mockReq = {
+        cookies: {
+          admin_session: cookieVal,
+        },
+      } as unknown as Request;
+
+      mockChartTimeService.setChartTime.mockResolvedValue({ success: true });
+
+      const res = await controller.set(
+        undefined,
+        mockReq,
+        '12345',
+        'NDLS',
+        '08:00',
+      );
+
+      expect(mockChartTimeService.setChartTime).toHaveBeenCalledWith(
+        '12345',
+        'NDLS',
+        '08:00',
+      );
+      expect(res).toEqual({ success: true });
     });
   });
 });
