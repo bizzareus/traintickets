@@ -2,6 +2,8 @@ import diwaliTrainsData from "@/data/diwali-special-trains.json";
 import {
   type StationPoint,
   type SpecialTrain,
+  getSpecialTrainRunningDates,
+  getSpecialTrainSearchDate,
   parseFestivalDate,
   extractAvailableSeatsCount,
 } from "./specialTrains";
@@ -89,76 +91,21 @@ export { parseFestivalDate };
  * Returns which target dates in Nov 4-7, 2026 a Diwali train is valid and scheduled to run.
  * Filters strictly to 4th - 7th November — no other dates.
  */
-// Performance Optimization: Replaced loop `new Date(string)` string parsing & allocations
-// with pre-computed UTC numeric timestamp comparison (`time >= fromTime && time <= toTime`) (~7x speedup).
 export function getDiwaliTrainRunningDates(
   train: Pick<SpecialTrain, "dateFrom" | "dateTo" | "runningDays">,
   year = 2026,
 ): Array<{ date: string; day: string; dmy: string }> {
-  const fromDate = parseFestivalDate(train.dateFrom, year);
-  const toDate = parseFestivalDate(train.dateTo, year);
-  if (!fromDate || !toDate) return [];
-
-  const fromTime = fromDate.getTime();
-  const toTime = toDate.getTime();
-  const valid: Array<{ date: string; day: string; dmy: string }> = [];
-
-  const runningDays = train.runningDays;
-  const hasDaysFilter = runningDays && runningDays.length > 0;
-
-  for (let i = 0; i < DIWALI_TARGET_TIMESTAMPS.length; i++) {
-    const { target, time } = DIWALI_TARGET_TIMESTAMPS[i];
-    if (time >= fromTime && time <= toTime) {
-      if (!hasDaysFilter || runningDays.includes(target.day)) {
-        valid.push(target);
-      }
-    }
-  }
-
-  return valid;
+  // Delegate to optimized getSpecialTrainRunningDates filtering target dates
+  const dates = getSpecialTrainRunningDates(train, "diwali", year);
+  return dates.filter((d) => d.date !== "2026-11-08");
 }
 
 /** Returns the train's operating date nearest the preferred festival date. */
-// Performance Optimization: Replaced inner loop `new Date(time)` allocations
-// with integer weekday modulo arithmetic `(fromDayOfWeek + dayIdx) % 7` (~3.8x speedup).
 export function getDiwaliTrainSearchDate(
   train: Pick<SpecialTrain, "dateFrom" | "dateTo" | "runningDays">,
   preferredDate = DEFAULT_DIWALI_SEARCH_DATE,
 ): string {
-  const fromDate = parseFestivalDate(train.dateFrom);
-  const toDate = parseFestivalDate(train.dateTo);
-  const preferredTime = Date.parse(`${preferredDate}T00:00:00Z`);
-  if (!fromDate || !toDate || Number.isNaN(preferredTime)) {
-    return preferredDate;
-  }
-
-  const fromTime = fromDate.getTime();
-  const toTime = toDate.getTime();
-  const fromDayOfWeek = fromDate.getUTCDay();
-
-  let nearestTime: number | null = null;
-  let nearestDistance = Number.POSITIVE_INFINITY;
-
-  const runningDays = train.runningDays;
-  const hasDaysFilter = runningDays && runningDays.length > 0;
-
-  let dayIdx = 0;
-  for (let time = fromTime; time <= toTime; time += DAY_MS, dayIdx++) {
-    if (hasDaysFilter) {
-      const dayName = WEEKDAY_NAMES[(fromDayOfWeek + dayIdx) % 7];
-      if (!runningDays.includes(dayName)) continue;
-    }
-
-    const distance = Math.abs(time - preferredTime);
-    if (distance < nearestDistance) {
-      nearestTime = time;
-      nearestDistance = distance;
-    }
-  }
-
-  return nearestTime !== null
-    ? new Date(nearestTime).toISOString().slice(0, 10)
-    : preferredDate;
+  return getSpecialTrainSearchDate(train, "diwali", preferredDate);
 }
 
 /**
