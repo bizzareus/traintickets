@@ -79,4 +79,35 @@ describe('ChartTimeController', () => {
       expect(result).toBeDefined();
     });
   });
+
+  describe('POST /api/chart-time/fetch', () => {
+    it('throws UnauthorizedException when admin credentials are missing', async () => {
+      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
+
+      await expect(
+        controller.fetch('', mockReq, '12345', 'NDLS', 'New Delhi', '2026-05-01'),
+      ).rejects.toThrow(UnauthorizedException);
+    });
+
+    it('returns existing cached chart time when authorized', async () => {
+      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
+      chartTimeService.getChartTime.mockResolvedValue('17:30');
+
+      const result = await controller.fetch(
+        'test-admin-secret',
+        mockReq,
+        '12345',
+        'NDLS',
+        'New Delhi',
+        '2026-05-01',
+      );
+
+      expect(result).toEqual({
+        trainNumber: '12345',
+        stationCode: 'NDLS',
+        chartTimeLocal: '17:30',
+        fromCache: true,
+      });
+    });
+  });
 });
