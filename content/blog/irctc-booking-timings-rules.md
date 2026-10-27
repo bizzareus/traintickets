@@ -1,35 +1,37 @@
 ---
-title: "IRCTC Booking Timings: Maintenance Time, Tatkal & 2026 Rules"
-description: "IRCTC booking runs 12:20 AM to 11:45 PM with night maintenance (11:45 PM–12:20 AM). Check 8 AM ARP, Tatkal 10/11 AM slots, and failed payment refund rules."
+title: "IRCTC Maintenance Time: 11:45 PM to 12:20 AM Rules (2026)"
+description: "IRCTC maintenance time runs daily from 11:45 PM to 12:20 AM IST. Check server downtime rules, morning 8 AM ARP, Tatkal slots, and failed payment refunds."
 date: "2026-06-18"
-updated: "2026-10-11"
+updated: "2026-10-27"
 tags:
   - train booking
   - irctc
-  - irctc timings
   - irctc maintenance time
+  - irctc downtime
+  - irctc server down time
+  - irctc timings
   - irctc booking timings
-  - irctc opening time
-  - railway booking timings
+  - railway maintenance time
 ---
 
-> **Traveling by train this festive season?** Don't get caught without a confirmed seat. Check live availability, intermediate vacancies, and guaranteed split-berth options on LastBerth:
+> **Traveling on Indian Railways?** When IRCTC maintenance shuts down booking or direct trains show REGRET, find guaranteed confirmed seats and post-charting vacancies on LastBerth:
 >
-> - [Search Delhi ➔ Mumbai Confirmed Seats](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central)
-> - [Search Delhi ➔ Patna Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
-> - [Search Mumbai ➔ Danapur Express Seats](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
-> - [Search Bengaluru ➔ Chennai Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central)
-> - [Search Howrah ➔ Puri Holiday Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri)
+> - [Search Delhi ➔ Patna Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn&src=blog_maintenance)
+> - [Search Delhi ➔ Mumbai Confirmed Seats](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central&src=blog_maintenance)
+> - [Search Mumbai ➔ Danapur Express Seats](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur&src=blog_maintenance)
+> - [Search Bengaluru ➔ Chennai Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central&src=blog_maintenance)
+> - [Search Howrah ➔ Puri Holiday Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri&src=blog_maintenance)
+> - Track live released berths on the [Chart Vacancy Map](/chart-vacancy) or check train chart release times on [Chart Times](/chart-times).
 
 ## TL;DR
 
-IRCTC ticketing operates daily from **12:20 AM to 11:45 PM IST**, shutting down for a mandatory 35-minute nightly server maintenance window between **11:45 PM and 12:20 AM IST (23:45 to 00:20)**. Morning 60-day Advance Reservation Period (ARP) bookings open at **8:00 AM IST** (restricted to Aadhaar-authenticated profiles on Day 1), while Tatkal opens at **10:00 AM IST for AC** and **11:00 AM IST for Non-AC** classes. If money is deducted during midnight maintenance without generating a PNR, IRCTC automatically processes a 100% refund within 3 to 5 business days. When trains show REGRET or heavy waitlists, [Finding Smart Seats](/) discovers confirmed contiguous split tickets on the same train without paying Tatkal markups.
+IRCTC ticketing operates daily from **12:20 AM to 11:45 PM IST**, shutting down for a mandatory 35-minute nightly server maintenance window between **11:45 PM and 12:20 AM IST (23:45 to 00:20)**. Morning 60-day Advance Reservation Period (ARP) bookings open at **8:00 AM IST** (restricted to Aadhaar-authenticated profiles on Day 1), while Tatkal opens at **10:00 AM IST for AC** and **11:00 AM IST for Non-AC** classes. If money is debited during midnight maintenance without generating a PNR, IRCTC automatically processes a 100% refund within 3 to 5 business days. When trains show REGRET or heavy waitlists, [Finding Smart Seats](/) discovers confirmed contiguous split tickets on the same train without paying Tatkal markups.
 
 ---
 
 ## What Is the IRCTC Night Maintenance Time Tonight?
 
-**The daily IRCTC night maintenance time runs from 11:45 PM to 12:20 AM IST (23:45 to 00:20). During this 35-minute maintenance blackout, all online ticket bookings, cancellations, PNR status lookups, and payment gateway checkouts are completely suspended across the IRCTC website and Rail Connect mobile application.**
+**The daily IRCTC night maintenance time runs strictly from 11:45 PM to 12:20 AM IST (23:45 to 00:20). During this 35-minute downtime window, all online ticket bookings, cancellations, PNR status inquiries, and payment checkouts are completely suspended across the IRCTC website and Rail Connect app.**
 
 This mandatory midnight pause is an architectural requirement for Indian Railways IT infrastructure managed by the Centre for Railway Information Systems (CRIS). Handling millions of passenger queries, seat searches, and banking settlements each day, the central database pauses user-facing connections to execute critical batch reconciliations and maintain data integrity.
 
@@ -44,24 +46,26 @@ If you attempt to finalize a booking at 11:44 PM and your payment gateway transa
 
 ---
 
-## Master IRCTC Daily Operating Schedule (2026)
+## What Is the Master IRCTC Daily Operating Schedule for 2026?
 
-To avoid getting caught by daily server maintenance cutoffs, keep this official 24-hour operational timetable handy:
+**The master IRCTC schedule operates 23 hours and 25 minutes daily, from 12:20 AM to 11:45 PM IST. General 60-day advance reservations open at 8:00 AM IST, AC Tatkal opens at 10:00 AM IST, Non-AC Tatkal opens at 11:00 AM IST, and servers pause nightly between 11:45 PM and 12:20 AM IST.**
 
-| Service / Booking Window         | Daily Operating Hours (IST) | Advance Window  | Key Rules & System Restrictions                                                       |
-| :------------------------------- | :-------------------------- | :-------------- | :------------------------------------------------------------------------------------ |
-| **Night Server Maintenance**     | 11:45 PM – 12:20 AM         | Daily (35 mins) | All booking, cancellations, PNR lookups and logins completely offline                 |
-| **General Booking Window**       | 12:20 AM – 11:45 PM         | Daily (23h 25m) | Normal reservations across active quotas, classes, and express trains                 |
-| **Opening Day ARP Booking**      | 8:00 AM IST                 | 60 Days prior   | **Aadhaar-authenticated profiles only** on opening day                                |
-| **Subsequent ARP Days**          | 12:20 AM – 11:45 PM         | Days 59 to 1    | Open to both verified and unverified user accounts                                    |
-| **AC Tatkal Booking**            | 10:00 AM IST                | 1 Day prior     | 2A, 3A, 3E, CC, EC (No 1A; agents blocked 10:00–10:30 AM)                             |
-| **Non-AC Tatkal Booking**        | 11:00 AM IST                | 1 Day prior     | Sleeper (SL) and 2S (Agents blocked 11:00–11:30 AM)                                   |
-| **Premium Tatkal (PT)**          | 10:00 AM / 11:00 AM         | 1 Day prior     | Dynamic pricing; opens concurrently with regular Tatkal                               |
-| **Authorized Agent Tatkal**      | 10:30 AM / 11:30 AM         | 1 Day prior     | 30-minute anti-tout embargo applies to all registered ticketing agents                |
-| **First Chart Preparation**      | ~8 Hours prior (or 9 PM)    | Departure day   | Primary waitlists finalized; Current Availability opens                               |
-| **Current Availability Booking** | Post 1st Chart to -30 mins  | Departure day   | Vacant berths sold online and at counters at up to 10% base fare discount             |
-| **Second / Final Chart**         | 30–45 mins prior            | Departure day   | Online bookings close; final passenger lists transfer to TTE Handheld Terminals (HHT) |
-| **Boarding Station Change**      | Up to 2nd Charting          | Departure day   | Permitted online until second chart preparation (~30 mins before train departure)     |
+To avoid getting caught by daily server maintenance cutoffs or missing high-demand opening windows, keep this official 24-hour operational timetable handy:
+
+| Service / Booking Window | Daily Operating Hours (IST) | Advance Window | Key Rules & System Restrictions |
+| :--- | :--- | :--- | :--- |
+| **Night Server Maintenance** | 11:45 PM – 12:20 AM | Daily (35 mins) | All booking, cancellations, PNR lookups and logins completely offline |
+| **General Booking Window** | 12:20 AM – 11:45 PM | Daily (23h 25m) | Normal reservations across active quotas, classes, and express trains |
+| **Opening Day ARP Booking** | 8:00 AM IST | 60 Days prior | **Aadhaar-authenticated profiles only** on opening day |
+| **Subsequent ARP Days** | 12:20 AM – 11:45 PM | Days 59 to 1 | Open to both verified and unverified user accounts |
+| **AC Tatkal Booking** | 10:00 AM IST | 1 Day prior | 2A, 3A, 3E, CC, EC (No 1A; agents blocked 10:00–10:30 AM) |
+| **Non-AC Tatkal Booking** | 11:00 AM IST | 1 Day prior | Sleeper (SL) and 2S (Agents blocked 11:00–11:30 AM) |
+| **Premium Tatkal (PT)** | 10:00 AM / 11:00 AM | 1 Day prior | Dynamic pricing; opens concurrently with regular Tatkal |
+| **Authorized Agent Tatkal** | 10:30 AM / 11:30 AM | 1 Day prior | 30-minute anti-tout embargo applies to all registered ticketing agents |
+| **First Chart Preparation** | ~8 Hours prior (or 9 PM) | Departure day | Primary waitlists finalized; Current Availability opens |
+| **Current Availability Booking** | Post 1st Chart to -30 mins | Departure day | Vacant berths sold online and at counters at up to 10% base fare discount |
+| **Second / Final Chart** | 30–45 mins prior | Departure day | Online bookings close; final passenger lists transfer to TTE Handheld Terminals (HHT) |
+| **Boarding Station Change** | Up to 2nd Charting | Departure day | Permitted online until second chart preparation (~30 mins before train departure) |
 
 For route schedules and coach formations on major trunk routes, check our dedicated [Delhi to Mumbai Train Route](/routes/delhi-to-mumbai) and [Delhi to Patna Train Schedule](/routes/delhi-to-patna).
 
@@ -69,7 +73,7 @@ For route schedules and coach formations on major trunk routes, check our dedica
 
 ## Why Does IRCTC Shut Down Servers Every Night at 11:45 PM?
 
-**IRCTC shuts down its ticketing servers every night at 11:45 PM to allow the Centre for Railway Information Systems (CRIS) to flush database transaction logs, synchronize Passenger Reservation System (PRS) records across all 17 railway zones, reconcile interbank payment gateway settlements, and execute anti-bot security sweeps.**
+**IRCTC shuts down servers every night at 11:45 PM to allow the Centre for Railway Information Systems (CRIS) to flush database transaction logs, synchronize Passenger Reservation System (PRS) records across all 17 railway zones, reconcile interbank payment gateway settlements, purge unauthorized bot sessions, and recalculate waitlists.**
 
 Without this synchronized 35-minute downtime window, the national ticketing grid would face severe transactional risks:
 
@@ -105,12 +109,12 @@ For a comprehensive walkthrough of account verification, read our guide on [IRCT
 
 Tatkal reservation provides last-minute travel access for passengers who need urgent journey tickets. Because popular train quotas exhaust within 60 to 120 seconds, understanding the exact schedule and booking mechanics is essential:
 
-| Quota / Class                      | Opening Time (IST)  | Advance Booking Window      | Refund Policy on Cancellation            |
-| :--------------------------------- | :------------------ | :-------------------------- | :--------------------------------------- |
-| **AC Tatkal (2A, 3A, 3E, CC, EC)** | 10:00 AM IST        | 1 Day Prior to Train Origin | Zero refund on confirmed tickets         |
-| **Non-AC Tatkal (SL, 2S)**         | 11:00 AM IST        | 1 Day Prior to Train Origin | Zero refund on confirmed tickets         |
-| **Premium Tatkal (AC & Non-AC)**   | 10:00 AM / 11:00 AM | 1 Day Prior to Train Origin | Dynamic fare pricing; zero refund        |
-| **Waitlisted Tatkal (TQWL)**       | Same as Tatkal      | 1 Day Prior to Train Origin | Auto-refund if not confirmed at charting |
+| Quota / Class | Opening Time (IST) | Advance Booking Window | Refund Policy on Cancellation |
+| :--- | :--- | :--- | :--- |
+| **AC Tatkal (2A, 3A, 3E, CC, EC)** | 10:00 AM IST | 1 Day Prior to Train Origin | Zero refund on confirmed tickets |
+| **Non-AC Tatkal (SL, 2S)** | 11:00 AM IST | 1 Day Prior to Train Origin | Zero refund on confirmed tickets |
+| **Premium Tatkal (AC & Non-AC)** | 10:00 AM / 11:00 AM | 1 Day Prior to Train Origin | Dynamic fare pricing; zero refund |
+| **Waitlisted Tatkal (TQWL)** | Same as Tatkal | 1 Day Prior to Train Origin | Auto-refund if not confirmed at charting |
 
 To ensure fair public access and curb ticket touts:
 
@@ -135,6 +139,33 @@ When this occurs, you are protected by statutory payment clearing rules:
 - **Banking Turnaround:** UPI transactions typically credit within 24 to 48 hours, while net banking and debit/credit card refunds take 3 to 5 business days depending on your bank's clearing cycle.
 
 If your funds are not restored within 7 business days, lodge an automated grievance on the [RailMadad portal](https://railmadad.indianrailways.gov.in) or call the unified railway helpline at **139** with your bank Transaction ID. For complete refund tracking instructions, see our master guide on [IRCTC Refund Status Tracking](/blog/irctc-refund-status-check-track-ticket-refund).
+
+---
+
+## Why Is IRCTC Login Access Denied or Not Working at Night?
+
+**IRCTC login access is denied or displays connection errors between 11:45 PM and 12:20 AM IST because user authentication services are deliberately disconnected during nightly server maintenance. If you receive an access denied error outside this window, clear your browser cache or disable third-party VPNs.**
+
+Thousands of commuters encounter cryptic error banners such as "Access Denied," "Session Expired," or "Service Unavailable" when attempting to log in near midnight. Understanding the underlying causes prevents panic:
+
+1. **Scheduled Maintenance Blackout:** Every night at 11:45 PM IST, the central authentication gateway severs active sessions. Even if you entered the correct username, password, and captcha, the server refuses verification until 12:20 AM IST.
+2. **VPN and Proxy Blocks:** IRCTC actively blocks traffic originating from known commercial VPNs and international proxy IP addresses to safeguard against automated scalpers. Ensure your VPN is disabled.
+3. **Geo-Location and Overseas Access:** If you are accessing IRCTC from abroad (such as the USA, Canada, or the UK), keep in mind that 11:45 PM to 12:20 AM IST corresponds to daytime in North America (for example, 2:15 PM to 2:50 PM EDT). Always verify Indian Standard Time before attempting a login.
+4. **Stale Session Cookies:** If the error persists after 12:20 AM IST, hard-refresh your browser (`Ctrl + F5` or `Cmd + Shift + R`) or use an incognito window to clear cached session cookies.
+
+---
+
+## What Can You Do While IRCTC Is Down for Maintenance?
+
+**While IRCTC servers are down for maintenance between 11:45 PM and 12:20 AM IST, you can book unreserved tickets on the independent UTS mobile app, check real-time train running status via the 139 railway helpline, view offline station timetables, or explore post-charting seat maps on LastBerth.**
+
+The 35-minute midnight blackout does not mean your travel preparations must come to a halt. You can leverage several active tools and alternative channels during this window:
+
+- **Unreserved Ticket Booking via UTS:** The official UTS mobile application operates on a separate, dedicated server cluster. You can purchase general second-class tickets and suburban platform tickets even while IRCTC is down.
+- **Track Train Running Status:** Live GPS train tracking continues uninterrupted through the unified railway helpline **139**, SMS services, and railway tracking applications.
+- **Explore Chart Vacancies on LastBerth:** While PRS booking is paused, you can use the [Chart Vacancy Map](/chart-vacancy) to study coach layout diagrams and evaluate physical vacant berth trends on popular routes.
+- **Verify Chart Times:** Look up historical chart finalization schedules on [Chart Times](/chart-times) to know exactly when morning charts will be released for your upcoming departure.
+- **Plan Contiguous Split Journeys:** When direct tickets on long-distance trains are completely sold out, prepare your booking strategy with [Smart Seats](/) so you can book immediately once servers reopen at 12:20 AM IST.
 
 ---
 
