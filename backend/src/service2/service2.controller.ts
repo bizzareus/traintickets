@@ -303,7 +303,7 @@ export class Service2Controller {
         err instanceof Error ? err.stack : undefined,
       );
       throw new ServiceUnavailableException(
-        `Service 2 (IRCTC) check failed: ${message}`,
+        'Service 2 (IRCTC) check failed.',
       );
     }
   }
