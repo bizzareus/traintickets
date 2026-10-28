@@ -11,7 +11,7 @@ tags:
   - vacant berths
 ---
 
-> **Looking for confirmed seats?** Search live confirmed split journeys and guaranteed tickets on [Get Confirmed Tickets](/).
+> **Looking for confirmed seats?** Search live confirmed split journeys and guaranteed tickets on [Get Confirmed Tickets](/) or check our complete guide on [Curr Available in Train (CURR_AVBL) Rules & 10% Discount](/blog/irctc-current-availability-explained).
 
 ## TL;DR
 
