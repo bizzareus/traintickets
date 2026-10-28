@@ -1672,7 +1672,7 @@ export function SplitTicketBookingModal({
                         rel="noopener noreferrer"
                         className="font-bold underline underline-offset-2 hover:text-amber-700"
                       >
-                        +919999224767
+                        +919205369633
                       </a>
                       , email{" "}
                       <a

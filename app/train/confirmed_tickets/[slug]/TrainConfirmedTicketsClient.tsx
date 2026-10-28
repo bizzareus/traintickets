@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
   Search,
   Train,
@@ -15,6 +16,30 @@ import {
   ChevronDown,
   MapPin,
 } from "lucide-react";
+import { getApiUrl } from "@/lib/api";
+import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
+import type { AlternatePathsResponse } from "@/components/booking-v2/alternatePathsTypes";
+
+const AlternatePathContent = dynamic(
+  () =>
+    import("@/components/booking-v2/AlternatePathContent").then(
+      (m) => m.AlternatePathContent,
+    ),
+  {
+    loading: () => (
+      <div className="flex h-64 items-center justify-center p-6">
+        <span className="h-6 w-6 animate-spin rounded-full border-2 border-slate-300 border-t-blue-600" />
+      </div>
+    ),
+  },
+);
+
+const TrainScheduleBottomSheet = dynamic(
+  () =>
+    import("@/components/booking-v2/TrainScheduleBottomSheet").then(
+      (m) => m.TrainScheduleBottomSheet,
+    ),
+);
 
 export type CachedSeat = {
   date: string;
@@ -95,7 +120,23 @@ function getUpcomingDates(count = 7): string[] {
 }
 
 function getStatusDetails(status: string) {
-  const upper = status.toUpperCase();
+  const upper = (status || "").toUpperCase();
+  if (
+    upper.includes("CHECK_AVAILABLE") ||
+    upper.includes("CHECK_AVBL") ||
+    upper.includes("CHECK AVAILABLE") ||
+    upper.includes("CHECK LIVE") ||
+    upper.includes("NOT_CHECKED")
+  ) {
+    return {
+      type: "check_available" as const,
+      label: "Check Availability",
+      badgeClass: "bg-blue-50 text-blue-700 border-blue-200",
+      cardBorder: "border-slate-200 hover:border-blue-300 bg-white",
+      statusColor: "text-blue-700",
+      isConfirmed: false,
+    };
+  }
   if (
     upper.includes("AVAILABLE") ||
     upper.includes("CURR_AVBL") ||
@@ -110,7 +151,11 @@ function getStatusDetails(status: string) {
       isConfirmed: true,
     };
   }
-  if (upper.includes("WL") || upper.includes("RAC")) {
+  if (
+    upper.includes("WL") ||
+    upper.includes("RAC") ||
+    upper.includes("WAITING")
+  ) {
     return {
       type: "waitlist" as const,
       label: upper.includes("RAC") ? "RAC" : "Waitlist",
@@ -152,6 +197,27 @@ export default function TrainConfirmedTicketsClient({
 }: Props) {
   const [selectedClass, setSelectedClass] = useState<string>("ALL");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [localSeatsMap, setLocalSeatsMap] = useState<Map<string, CachedSeat>>(
+    new Map(),
+  );
+  const [checkingCardKey, setCheckingCardKey] = useState<string | null>(null);
+  const [checkingProgressText, setCheckingProgressText] = useState<string>("");
+  const [cardErrors, setCardErrors] = useState<Record<string, string>>({});
+  const [activeModalData, setActiveModalData] = useState<{
+    result: AlternatePathsResponse;
+    date: string;
+    travelClass: string;
+  } | null>(null);
+  const [scheduleTrainNumber, setScheduleTrainNumber] = useState<string | null>(
+    null,
+  );
+  const abortControllerRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    return () => {
+      abortControllerRef.current?.abort();
+    };
+  }, []);
 
   const trainNumber = trainInfo.trainNumber;
   const trainName = trainInfo.trainName || `Train ${trainNumber}`;
@@ -168,6 +234,8 @@ export default function TrainConfirmedTicketsClient({
 
   const handleFromChange = (code: string) => {
     setFromStation(code);
+    setLocalSeatsMap(new Map());
+    setCardErrors({});
     const fromIdx = stations.findIndex((s) => s.stationCode === code);
     const toIdx = stations.findIndex((s) => s.stationCode === toStation);
     if (fromIdx >= 0 && toIdx <= fromIdx && fromIdx < stations.length - 1) {
@@ -175,25 +243,42 @@ export default function TrainConfirmedTicketsClient({
     }
   };
 
+  const handleToChange = (code: string) => {
+    setToStation(code);
+    setLocalSeatsMap(new Map());
+    setCardErrors({});
+  };
+
   const classesAvailable = useMemo(() => {
     const fromSeats = cachedSeats.map((s) => s.travelClass);
-    const fromTrain = trainInfo.availableClasses || [];
-    const merged = Array.from(new Set([...fromSeats, ...fromTrain])).filter(
-      Boolean,
+    const fromLocal = Array.from(localSeatsMap.values()).map(
+      (s) => s.travelClass,
     );
+    const fromTrain = trainInfo.availableClasses || [];
+    const merged = Array.from(
+      new Set([...fromSeats, ...fromLocal, ...fromTrain]),
+    ).filter(Boolean);
     return merged.length > 0 ? merged.sort() : ["3A", "2A", "1A"];
-  }, [cachedSeats, trainInfo.availableClasses]);
+  }, [cachedSeats, localSeatsMap, trainInfo.availableClasses]);
 
   const upcomingDates = useMemo(() => {
     const defaultDates = getUpcomingDates(7);
     const seatDates = cachedSeats.map((s) => s.date).filter(Boolean);
-    return Array.from(new Set([...defaultDates, ...seatDates])).sort();
-  }, [cachedSeats]);
+    const localDates = Array.from(localSeatsMap.values())
+      .map((s) => s.date)
+      .filter(Boolean);
+    return Array.from(
+      new Set([...defaultDates, ...seatDates, ...localDates]),
+    ).sort();
+  }, [cachedSeats, localSeatsMap]);
 
   const seatItems = useMemo(() => {
     const cachedMap = new Map<string, CachedSeat>();
     for (const s of cachedSeats) {
       cachedMap.set(`${s.date}#${s.travelClass}`, s);
+    }
+    for (const [k, v] of localSeatsMap.entries()) {
+      cachedMap.set(k, v);
     }
 
     const targetClasses =
@@ -210,20 +295,188 @@ export default function TrainConfirmedTicketsClient({
           items.push({
             date,
             travelClass: cls,
-            status: "Check Live Seats",
+            status: "Check Available",
             isLiveCheck: true,
           });
         }
       }
     }
     return items;
-  }, [cachedSeats, upcomingDates, classesAvailable, selectedClass]);
+  }, [
+    cachedSeats,
+    localSeatsMap,
+    upcomingDates,
+    classesAvailable,
+    selectedClass,
+  ]);
+
+  const handleCheckAvailability = useCallback(
+    async (date: string, travelClass: string) => {
+      const cardKey = `${date}#${travelClass}`;
+      setCheckingCardKey(cardKey);
+      setCheckingProgressText("Connecting to rail systems...");
+      setCardErrors((prev) => {
+        const next = { ...prev };
+        delete next[cardKey];
+        return next;
+      });
+
+      abortControllerRef.current?.abort();
+      const controller = new AbortController();
+      abortControllerRef.current = controller;
+
+      try {
+        const apiUrl = getApiUrl();
+        const resp = await fetch(
+          `${apiUrl}/api/booking-v2/alternate-paths/stream`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              trainNumber,
+              from: fromStation,
+              to: toStation,
+              date,
+              quota: "GN",
+              forceRefresh: true,
+              avlClasses: [travelClass],
+            }),
+            signal: controller.signal,
+          },
+        );
+
+        if (!resp.ok || !resp.body) {
+          let msg = `Search failed (${resp.status})`;
+          try {
+            const j = await resp.json();
+            if (j.message) msg = j.message;
+          } catch {
+            /* ignore */
+          }
+          throw new Error(msg);
+        }
+
+        const reader = resp.body.getReader();
+        const decoder = new TextDecoder();
+        let buf = "";
+        let finalResult: AlternatePathsResponse | null = null;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buf += decoder.decode(value, { stream: true });
+          const lines = buf.split("\n");
+          buf = lines.pop() ?? "";
+
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) continue;
+            try {
+              const chunk = JSON.parse(trimmed);
+              if (chunk.type === "progress" && chunk.event) {
+                const ev = chunk.event;
+                if (ev.type === "check_start") {
+                  setCheckingProgressText(`Checking ${ev.from} → ${ev.to}...`);
+                } else if (ev.type === "route_ok") {
+                  setCheckingProgressText(
+                    `Scanning ${ev.stopCount || ""} route stations...`,
+                  );
+                } else if (ev.type === "check_result" && ev.hasSeat) {
+                  setCheckingProgressText(`Found seat: ${ev.from} → ${ev.to}`);
+                }
+              } else if (chunk.type === "result" && chunk.data) {
+                finalResult = chunk.data;
+              } else if (chunk.type === "error") {
+                throw new Error(chunk.message || "Failed to search availability");
+              }
+            } catch (e) {
+              if (
+                e instanceof Error &&
+                e.message !== "Failed to search availability"
+              ) {
+                // Ignore parse errors on malformed line
+              } else {
+                throw e;
+              }
+            }
+          }
+        }
+
+        if (!finalResult) {
+          throw new Error("No availability data returned");
+        }
+
+        const confirmedLegs = (finalResult.legs || []).filter(
+          (l) => l.segmentKind === "confirmed",
+        );
+        const isDirectConfirmed =
+          finalResult.isComplete &&
+          confirmedLegs.length === 1 &&
+          confirmedLegs[0].from === fromStation &&
+          confirmedLegs[0].to === toStation;
+
+        let updatedStatus = "Waitlist / Sold Out";
+        let updatedFare = finalResult.totalFare ?? null;
+
+        if (isDirectConfirmed) {
+          const leg = confirmedLegs[0];
+          updatedStatus =
+            leg.availabilityDisplayName ||
+            leg.availablityStatus ||
+            "AVAILABLE";
+          updatedFare = leg.fare ?? updatedFare;
+        } else if (confirmedLegs.length > 0) {
+          updatedStatus = finalResult.isComplete
+            ? "Smart Seat Confirmed"
+            : `${confirmedLegs.length} Confirmed Leg${confirmedLegs.length > 1 ? "s" : ""}`;
+          setActiveModalData({
+            result: finalResult,
+            date,
+            travelClass,
+          });
+        } else {
+          const wlMatch = finalResult.debugLog?.find(
+            (l) =>
+              l.includes(`${fromStation} → ${toStation}`) &&
+              l.includes("Waiting"),
+          );
+          if (wlMatch) {
+            const m = wlMatch.match(/\((Waiting \([^)]+\)|WL\s*\d+)\)/i);
+            if (m) {
+              updatedStatus = m[1]
+                .replace(/Waiting\s*\(/i, "WL ")
+                .replace(/\)/g, "");
+            }
+          }
+        }
+
+        setLocalSeatsMap((prev) => {
+          const next = new Map(prev);
+          next.set(cardKey, {
+            date,
+            travelClass,
+            status: updatedStatus,
+            fare: updatedFare,
+            updatedAt: new Date().toISOString(),
+          });
+          return next;
+        });
+      } catch (err: unknown) {
+        if (controller.signal.aborted) return;
+        const msg =
+          err instanceof Error ? err.message : "Failed to check availability";
+        setCardErrors((prev) => ({ ...prev, [cardKey]: msg }));
+      } finally {
+        if (!controller.signal.aborted) {
+          setCheckingCardKey(null);
+          setCheckingProgressText("");
+        }
+      }
+    },
+    [trainNumber, fromStation, toStation],
+  );
 
   const searchUrl = `/?from=${encodeURIComponent(fromStation)}&to=${encodeURIComponent(toStation)}`;
-
-  const dateSearchUrl = (date: string) => {
-    return `/?from=${encodeURIComponent(fromStation)}&to=${encodeURIComponent(toStation)}&date=${encodeURIComponent(date)}`;
-  };
 
   return (
     <div className="space-y-6 sm:space-y-8">
@@ -294,7 +547,7 @@ export default function TrainConfirmedTicketsClient({
                 <ArrowRight className="h-3.5 w-3.5 shrink-0 text-slate-400" />
                 <select
                   value={toStation}
-                  onChange={(e) => setToStation(e.target.value)}
+                  onChange={(e) => handleToChange(e.target.value)}
                   className="shadow-2xs rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-800 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   aria-label="Select destination station"
                 >
@@ -364,13 +617,39 @@ export default function TrainConfirmedTicketsClient({
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {seatItems.map((seat, idx) => {
+              const cardKey = `${seat.date}#${seat.travelClass}`;
+              const isChecking = checkingCardKey === cardKey;
+              const cardError = cardErrors[cardKey];
               const details = getStatusDetails(seat.status);
-              const cardUrl = dateSearchUrl(seat.date);
+              const isCheckAvailable =
+                details.type === "check_available" ||
+                Boolean(seat.isLiveCheck) ||
+                seat.status === "CHECK_AVAILABLE";
+
+              const displayStatus = isCheckAvailable
+                ? "Check Availability"
+                : seat.status;
+              const displayLabel = isCheckAvailable
+                ? "Live check required"
+                : details.label;
+
+              const directBookingUrl = details.isConfirmed
+                ? irctcBookingRedirect({
+                    from: fromStation,
+                    to: toStation,
+                    trainNo: trainNumber,
+                    classCode: seat.travelClass,
+                  })
+                : null;
 
               return (
                 <div
                   key={`${seat.date}-${seat.travelClass}-${idx}`}
-                  className={`rounded-xl border p-4 transition-all duration-150 ${details.cardBorder} shadow-2xs flex flex-col justify-between gap-3`}
+                  className={`rounded-xl border p-4 transition-all duration-150 ${
+                    isChecking
+                      ? "border-blue-400 bg-blue-50/20 shadow-xs"
+                      : details.cardBorder
+                  } shadow-2xs flex flex-col justify-between gap-3`}
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-semibold text-slate-700">
@@ -381,36 +660,91 @@ export default function TrainConfirmedTicketsClient({
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between gap-2 border-t border-slate-100 pt-1">
-                    <div>
-                      <div
-                        className={`text-sm font-extrabold sm:text-base ${details.statusColor}`}
-                      >
-                        {seat.status}
+                  {isChecking ? (
+                    <div className="flex w-full items-center gap-2.5 rounded-lg border border-blue-200 bg-blue-50/80 p-2.5">
+                      <span className="h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+                      <div className="flex min-w-0 flex-1 flex-col">
+                        <span className="truncate text-xs font-bold text-blue-900">
+                          Searching for real time availability of ticket...
+                        </span>
+                        {checkingProgressText && (
+                          <span className="truncate text-[10px] font-medium text-blue-600">
+                            {checkingProgressText}
+                          </span>
+                        )}
                       </div>
-                      <span className="text-[11px] text-slate-500">
-                        {details.label}
-                        {seat.fare != null && seat.fare > 0
-                          ? ` • ₹${seat.fare.toLocaleString("en-IN")}`
-                          : ""}
-                      </span>
                     </div>
+                  ) : (
+                    <>
+                      <div className="flex items-center justify-between gap-2 border-t border-slate-100 pt-1">
+                        <div>
+                          <div
+                            className={`text-sm font-extrabold sm:text-base ${details.statusColor}`}
+                          >
+                            {displayStatus}
+                          </div>
+                          <span className="text-[11px] text-slate-500">
+                            {displayLabel}
+                            {seat.fare != null && seat.fare > 0
+                              ? ` • ₹${seat.fare.toLocaleString("en-IN")}`
+                              : ""}
+                          </span>
+                        </div>
 
-                    {details.isConfirmed ? (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
-                        <CheckCircle2 className="h-3.5 w-3.5" />
-                        Confirmed
-                      </span>
-                    ) : (
-                      <Link
-                        href={cardUrl}
-                        className="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-blue-700 active:scale-[0.99]"
-                      >
-                        Smart Seat
-                        <ArrowRight className="h-3 w-3" />
-                      </Link>
-                    )}
-                  </div>
+                        {details.isConfirmed ? (
+                          directBookingUrl ? (
+                            <a
+                              href={directBookingUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-emerald-700 active:scale-[0.99]"
+                            >
+                              <CheckCircle2 className="h-3.5 w-3.5" />
+                              Book on IRCTC
+                            </a>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
+                              <CheckCircle2 className="h-3.5 w-3.5" />
+                              Confirmed
+                            </span>
+                          )
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              handleCheckAvailability(
+                                seat.date,
+                                seat.travelClass,
+                              )
+                            }
+                            className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white shadow-xs transition hover:bg-blue-700 active:scale-[0.99]"
+                          >
+                            <Zap className="h-3 w-3 text-amber-300" />
+                            {isCheckAvailable ? "Check Available" : "Smart Seat"}
+                            <ArrowRight className="h-3 w-3" />
+                          </button>
+                        )}
+                      </div>
+
+                      {cardError && (
+                        <div className="flex items-center justify-between gap-2 rounded-md bg-rose-50 px-2.5 py-1 text-[11px] text-rose-700">
+                          <span className="truncate">{cardError}</span>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              handleCheckAvailability(
+                                seat.date,
+                                seat.travelClass,
+                              )
+                            }
+                            className="shrink-0 font-bold underline hover:text-rose-900"
+                          >
+                            Retry
+                          </button>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
               );
             })}
@@ -621,6 +955,53 @@ export default function TrainConfirmedTicketsClient({
             })}
           </div>
         </section>
+      )}
+      {/* ── Smart Seats Split-Booking Modal ── */}
+      {activeModalData && (
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-0 backdrop-blur-xs sm:items-center sm:p-4"
+          onClick={() => setActiveModalData(null)}
+        >
+          <div
+            className="animate-in slide-in-from-bottom sm:zoom-in-95 flex h-[92dvh] w-full flex-col overflow-hidden rounded-t-2xl bg-white shadow-2xl duration-300 sm:h-auto sm:max-h-[88vh] sm:max-w-2xl sm:rounded-2xl sm:border sm:border-gray-200"
+            role="dialog"
+            aria-modal="true"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Mobile drag handle */}
+            <div className="flex shrink-0 justify-center pb-1 pt-2.5 sm:hidden">
+              <div className="h-1.5 w-12 rounded-full bg-slate-300" />
+            </div>
+            <AlternatePathContent
+              altForTrain={trainNumber}
+              altTrainName={trainName}
+              altAvlClasses={[activeModalData.travelClass]}
+              altLoading={false}
+              altResult={activeModalData.result}
+              altError={null}
+              altProgress={[]}
+              journeyDate={activeModalData.date}
+              fromCode={fromStation}
+              toCode={toStation}
+              isAdminUser={false}
+              onClose={() => setActiveModalData(null)}
+              onOpenSchedule={(tn) => setScheduleTrainNumber(tn)}
+              hideSearchAllTrainsBanner={true}
+              source="train_confirmed_tickets"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* ── Train Route Halts / Schedule Sheet ── */}
+      {scheduleTrainNumber && (
+        <TrainScheduleBottomSheet
+          open={Boolean(scheduleTrainNumber)}
+          onClose={() => setScheduleTrainNumber(null)}
+          trainNumber={scheduleTrainNumber}
+          highlightFrom={fromStation}
+          highlightTo={toStation}
+        />
       )}
     </div>
   );
