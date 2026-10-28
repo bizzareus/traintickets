@@ -87,19 +87,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!trainName) {
     return {
-      title: `Train ${trainNumber} Schedule, Route & Stops | LastBerth`,
-      description: `Full timetable for train ${trainNumber}: station list, arrival/departure timings, halts, platforms and days of operation, plus Tatkal booking windows.`,
+      title: `Train ${trainNumber} Running Status, Route & Schedule | LastBerth`,
+      description: `Check the live running status of train ${trainNumber} via NTES or SMS 139, plus the full timetable: station list, arrival/departure timings, halts, platforms and days of operation, and chart preparation times.`,
       alternates: { canonical: `/trains/${canonicalSlug}` },
     };
   }
 
   return {
-    title: `${trainName} (${trainNumber}) Schedule, Route & Stops | LastBerth`,
-    description: `${trainName} (${trainNumber}) timetable from ${origin} to ${dest}: full station-by-station timings, halts, expected platforms, Tatkal booking windows, and chart preparation times.`,
+    title: `${trainName} (${trainNumber}) Running Status, Route & Schedule | LastBerth`,
+    description: `Check the live running status of ${trainName} (${trainNumber}) via NTES or SMS 139, plus the full ${origin} to ${dest} timetable: halts, timings, Tatkal windows and chart preparation times.`,
     alternates: { canonical: `/trains/${canonicalSlug}` },
     openGraph: {
-      title: `${trainName} (${trainNumber}) Schedule & Stops`,
-      description: `${trainName} (${trainNumber}) timetable from ${origin} to ${dest}. Check halts, arrival/departure, and vacant berths on LastBerth.`,
+      title: `${trainName} (${trainNumber}) Running Status & Schedule`,
+      description: `Track ${trainName} (${trainNumber}) live via NTES or SMS 139, and check the ${origin} to ${dest} timetable, halts and vacant berths on LastBerth.`,
       url: `/trains/${canonicalSlug}`,
       type: "website",
     },

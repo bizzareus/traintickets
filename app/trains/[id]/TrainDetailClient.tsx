@@ -1311,6 +1311,108 @@ export default function TrainDetailClient({
         </div>
       </section>
 
+      {/* ── 6b. Live Running Status (official channels) ── */}
+      <section
+        aria-labelledby="running-status-heading"
+        className="shadow-xs space-y-4 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8"
+      >
+        <div className="max-w-2xl space-y-1">
+          <span className="rounded-md border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-emerald-600">
+            Live Tracking
+          </span>
+          <h2
+            id="running-status-heading"
+            className="text-2xl font-extrabold tracking-tight text-slate-950"
+          >
+            Live Running Status of {train.trainName} ({train.trainNumber})
+          </h2>
+          <p className="text-sm leading-relaxed text-slate-600">
+            LastBerth shows the published schedule and chart data for{" "}
+            {train.trainNumber}. For the train&apos;s live position, delay, and
+            expected platform, use the official National Train Enquiry System
+            (NTES) channels below, which update in real time from Indian
+            Railways.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <a
+            href="https://enquiry.indianrail.gov.in/mntes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col justify-between space-y-2 rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-colors hover:border-emerald-300 hover:bg-emerald-50/50"
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                Official Website
+              </span>
+              <ExternalLink className="h-3.5 w-3.5 text-slate-400 transition-colors group-hover:text-emerald-600" />
+            </div>
+            <p className="text-sm font-bold text-slate-900">
+              NTES: enquiry.indianrail.gov.in/mntes
+            </p>
+            <p className="text-xs text-slate-500">
+              Search {train.trainNumber} under &quot;Spot Your Train&quot; for
+              live location and delay.
+            </p>
+          </a>
+
+          <div className="flex flex-col justify-between space-y-2 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+              SMS (Any Phone)
+            </span>
+            <p className="text-sm font-bold text-slate-900">
+              Send <span className="font-mono">SPOT {train.trainNumber}</span>{" "}
+              to 139
+            </p>
+            <p className="text-xs text-slate-500">
+              Replies with the current location and delay. Works without
+              internet.
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-between space-y-2 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+              Mobile Apps &amp; IVR
+            </span>
+            <p className="text-sm font-bold text-slate-900">
+              NTES App, Rail Connect, or call 139
+            </p>
+            <p className="text-xs text-slate-500">
+              Enter {train.trainNumber} to hear the live position and expected
+              platform.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2 border-t border-slate-100 pt-4">
+          <span className="mr-1 text-xs font-bold uppercase tracking-wider text-slate-500">
+            Plan around it:
+          </span>
+          <Link
+            href={chartTimesSlug ? `/chart-times/${chartTimesSlug}` : "/chart-times"}
+            className="shadow-xs inline-flex items-center gap-1.5 rounded-lg border border-slate-200/90 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition-all hover:border-amber-500 hover:bg-amber-50 hover:text-amber-700"
+          >
+            <Timer className="h-3.5 w-3.5" />
+            Chart Times
+          </Link>
+          <Link
+            href="/chart-vacancy"
+            className="shadow-xs inline-flex items-center gap-1.5 rounded-lg border border-slate-200/90 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition-all hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700"
+          >
+            <Armchair className="h-3.5 w-3.5" />
+            Vacant Berths
+          </Link>
+          <Link
+            href={primarySearchUrl}
+            className="shadow-xs inline-flex items-center gap-1.5 rounded-lg border border-slate-200/90 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition-all hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700"
+          >
+            <Search className="h-3.5 w-3.5" />
+            Confirmed Seats
+          </Link>
+        </div>
+      </section>
+
       {/* ── 7. Frequently Asked Questions (Accessible Accordion) ── */}
       <section aria-labelledby="faq-heading" className="space-y-4">
         <div>
@@ -1328,6 +1430,10 @@ export default function TrainDetailClient({
 
         <div className="shadow-xs divide-y divide-slate-100 overflow-hidden rounded-3xl border border-slate-200 bg-white">
           {[
+            {
+              q: `How can I check the live running status of ${train.trainName} (${train.trainNumber})?`,
+              a: `Use the official NTES website (enquiry.indianrail.gov.in/mntes), the NTES or IRCTC Rail Connect mobile app, send "SPOT ${train.trainNumber}" by SMS to 139, or call 139. These official channels show the train's live position, delay, and expected platform in real time.`,
+            },
             {
               q: `When does Tatkal booking open for ${train.trainName} (${train.trainNumber})?`,
               a: `Tatkal booking for ${train.trainName} (${train.trainNumber}) opens one day before the train's departure from its originating station at 10:00 AM IST for AC classes (EC, CC, 1A, 2A, 3A) and 11:00 AM IST for Non-AC classes on the official IRCTC portal.`,
