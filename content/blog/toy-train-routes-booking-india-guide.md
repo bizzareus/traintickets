@@ -2,7 +2,7 @@
 title: "Toy Train Booking in India: Routes, Fares & Heritage Guide"
 description: "How to book India's toy trains to Shimla, Darjeeling, Ooty, and Matheran — routes, ticket prices, the best seats, and when to reserve these heritage rides."
 date: "2026-06-30"
-updated: "2026-07-27"
+updated: "2026-10-28"
 tags:
   - toy train
   - toy train booking
@@ -76,7 +76,7 @@ Because toy trains carry very few passengers, waitlists clear slowly. The standa
 
 **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**
 
-If your ticket remains unconfirmed when the final chart is prepared 8 hours before departure, **IRCTC will automatically cancel your e-ticket** and refund your fare. You are not allowed to travel in a reserved coach with a waitlisted e-ticket.
+If your ticket remains unconfirmed when final charts are prepared (~30 to 45 minutes before departure, following first chart preparation ~8 hours prior), **IRCTC will automatically cancel your e-ticket** and refund your fare. You are not allowed to travel in a reserved coach with a waitlisted e-ticket.
 
 To improve your odds, look for vacant seats on intermediate segments rather than booking the entire route. For example, on the Kalka-Shimla line, check seats between intermediate stations like Dharampur (`DMP`), Barog (`BOF`), or Solan (`SOL`).
 

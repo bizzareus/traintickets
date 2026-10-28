@@ -2,7 +2,7 @@
 title: "IRCTC Refund Status Check 2026: Tracking, Days & Failed Fix"
 description: "How many days for IRCTC refund? Track refund status online, decode Refund Status ₹0, trace ARN reference numbers, and fix failed bank credits in 2026."
 date: "2026-06-27"
-updated: "2026-10-04"
+updated: "2026-10-28"
 tags:
   - train booking
   - irctc
@@ -22,7 +22,7 @@ tags:
 
 ## TL;DR
 
-IRCTC ticket refunds take **1 to 3 working days for UPI**, **3 to 5 working days for net banking**, and **3 to 7 working days for credit and debit cards** after cancellation approval. You can track real-time refund status online under **Ticket Refund History** in the IRCTC app or website using your PNR and transaction ID. If a ticket was cancelled because your waitlist dropped at chart preparation (~4 hours before departure), Indian Railways initiates an automated refund to your source account minus a flat ₹60 clerkage fee per passenger. When an urgent journey cannot wait for refund settlements, use [Finding Smart Seats](/) to find confirmed contiguous berths or grab discounted vacant seats on [Chart Vacancy](/chart-vacancy).
+IRCTC ticket refunds take **1 to 3 working days for UPI**, **3 to 5 working days for net banking**, and **3 to 7 working days for credit and debit cards** after cancellation approval. You can track real-time refund status online under **Ticket Refund History** in the IRCTC app or website using your PNR and transaction ID. If a ticket was cancelled because your waitlist dropped at final chart preparation (~30 to 45 minutes before departure, following first chart preparation ~8 hours prior), Indian Railways initiates an automated full refund to your source account with no cancellation or clerkage fee deducted. When an urgent journey cannot wait for refund settlements, use [Finding Smart Seats](/) to find confirmed contiguous berths or grab discounted vacant seats on [Chart Vacancy](/chart-vacancy).
 
 ---
 
@@ -123,7 +123,7 @@ Under Reserve Bank of India (RBI) mandates, banks must process inward refund fil
 
 ## When Does IRCTC Refund Automatically Cancelled Waitlist (WL) Tickets?
 
-**IRCTC automatically cancels fully waitlisted e-tickets upon final chart preparation (~4 hours before train departure) and initiates a refund within 24 hours. The railway refunds the entire fare back to the original payment source after deducting a flat clerkage fee of ₹60 plus GST per passenger.**
+**IRCTC automatically cancels fully waitlisted e-tickets upon final chart preparation (~30 to 45 minutes before train departure, following first chart preparation ~8 hours prior) and initiates a refund within 24 hours. The railway refunds the entire fare back to the original payment source with zero cancellation or clerkage fees deducted.**
 
 In Indian Railways reservation terminology, **WL full form is Waiting List**. The booking queue moves mathematically from **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. When final charts are prepared, any passenger whose online e-ticket remains on the waiting list is automatically dropped from the passenger manifest.
 
@@ -131,7 +131,7 @@ Here are the exact rules governing waitlist cancellations and refunds:
 
 - **Zero Boarding Rights:** A dropped waitlisted e-ticket is completely invalid for travel. Boarding any reserved Sleeper or AC coach on a dropped e-ticket is treated as ticketless travel under Section 138 of the Railways Act, punishable by a minimum ₹500 fine plus single journey fare.
 - **Automated Processing:** You do not need to cancel a fully waitlisted e-ticket manually or file a TDR. The central reservation system triggers the cancellation automatically.
-- **Clerkage Deduction:** For unconfirmed waitlist e-tickets, Indian Railways deducts a flat administrative clerkage fee of **₹60 + GST per passenger** for Sleeper and Second Sitting, and **₹60 + GST** for AC classes. The remaining balance is refunded in full.
+- **Full Refund (Zero Clerkage):** For fully waitlisted e-tickets that remain unconfirmed post-charting, Indian Railways issues a **100% full refund of fare with zero cancellation or clerkage fees deducted** per IRCTC Cancellation Rules §4. (The ₹60 + GST clerkage fee applies only when a passenger manually cancels a waitlisted ticket before chart preparation or cancels a counter waitlisted ticket).
 - **Train Cancellation Exception:** If the train itself is cancelled by Indian Railways due to floods, accidents, or operational issues, **100% of the fare is refunded with zero clerkage fee**.
 - **Partially Confirmed PNR Exception:** If some passengers on your PNR get confirmed or RAC berths while others remain on WL, the ticket does not cancel automatically. To claim a refund for the waitlisted passengers, you must cancel them or file an online TDR at least 30 minutes before scheduled train departure.
 
@@ -184,7 +184,7 @@ Losing a confirmed or waitlisted ticket does not mean your trip is cancelled. In
 
 Use these four proven strategies to secure immediate confirmed travel:
 
-1. **Book Current Availability (`CURR_AVBL`):** After the first reservation chart is prepared (at least 4 hours before departure from origin, or 20:00 hrs the previous evening for morning departures), unallocated VIP, Defence, and Pooled Quotas convert into `CURR_AVBL`. These are **100% confirmed berths with coach and berth numbers**, sold at a **10% discount on base fare**, bookable on IRCTC or counters up to **30 minutes before departure**.
+1. **Book Current Availability (`CURR_AVBL`):** After the first reservation chart is prepared (roughly 8 hours before departure from origin, or 21:00 hrs / 9:00 PM the previous evening for morning departures), unallocated VIP, Defence, and Pooled Quotas convert into `CURR_AVBL`. These are **100% confirmed berths with coach and berth numbers**, sold at a **10% discount on base fare**, bookable on IRCTC or counters up to **30 minutes before departure**.
 2. **Split-Ticket with Smart Seats:** When direct origin-to-destination tickets are sold out, [Finding Smart Seats](/) scans the train's entire station route to find confirmed contiguous berths on the same train (for instance, booking Seat 24 in Coach B2 from Station A to B, and Seat 42 in Coach B4 from Station B to C).
 3. **Inspect Live Vacancies on Chart Vacancy:** Open the [Chart Vacancy Map](/chart-vacancy) to see physical empty berths across every coach on your train after chart preparation. You can spot berths that become vacant midway and request them directly from the onboard TTE.
 4. **Set Preparation Alerts on Chart Times:** Check [Chart Preparation Times](/chart-times) to know the exact historical minute when your train's chart is finalized so you can log into IRCTC the moment `CURR_AVBL` seats drop.
@@ -213,7 +213,7 @@ If IRCTC marks your refund as Refunded but your bank statement does not reflect 
 
 ### How much clerkage fee is deducted on auto-cancelled waitlist e-tickets?
 
-Indian Railways deducts a flat administrative clerkage fee of **₹60 plus GST per passenger** on fully waitlisted e-tickets that fail to confirm and are automatically cancelled at chart preparation. The remaining fare balance is refunded automatically to your original payment source without requiring any manual cancellation.
+**Zero clerkage fee is deducted.** Under official IRCTC Cancellation Rules §4, fully waitlisted e-tickets that fail to confirm and are automatically cancelled upon final chart preparation receive a **100% full refund of fare with no cancellation or clerkage fee deducted**. The ₹60 (+ GST) clerkage fee applies only if you manually cancel a waitlisted ticket prior to chart preparation or surrender a counter PRS ticket.
 
 ### How many days does an IRCTC TDR refund take to get approved?
 

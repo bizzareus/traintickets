@@ -2,7 +2,7 @@
 title: "IRCTC PNR Status Check: Meaning, Codes & How to Read It"
 description: "Check your IRCTC PNR status and learn what every code means (CNF, RAC, WL, GNWL) plus how to read your waitlist confirmation chances before you travel."
 date: "2026-06-26"
-updated: "2026-08-01"
+updated: "2026-10-28"
 tags:
   - train booking
   - irctc
@@ -85,7 +85,7 @@ Here's what the common abbreviations mean:
 | **PQWL**      | Pooled Quota Waiting List        | Shared across several short-distance stations; lower chance.                     |
 | **TQWL**      | Tatkal Waiting List              | Tatkal tickets; clears only if Tatkal-confirmed passengers cancel.               |
 | **CAN / MOD** | Cancelled / Modified             | Ticket was cancelled or changed.                                                 |
-| **RLGN**      | Reservation Cancelled            | A waitlisted ticket that did not clear and was dropped.                          |
+| **RLGN**      | Remote Location General Waiting List | Waitlist issued for intermediate stations under remote quota.                   |
 
 A status like **"GNWL 8/WL 3"** means your ticket started at waitlist 8 (booking status) and is now at waitlist 3 (current status) — it has moved up five places. That movement is the real signal of whether you'll confirm.
 

@@ -2,7 +2,7 @@
 title: "General Ticket in Sleeper Class: Fine Amount & Rules (2026)"
 description: "Can you travel in Sleeper Class with a general or platform ticket? Learn the ₹500 fine under Jan Vishwas Act 2026, October checking drive rules & TTE powers."
 date: "2026-06-12"
-updated: "2026-10-03"
+updated: "2026-10-28"
 tags:
   - general ticket
   - platform ticket
@@ -10,6 +10,8 @@ tags:
   - irctc rules
   - railway fine
   - sleeper class
+  - sleeper class fine
+  - section 138 railways act
   - october 2026 ticket checking drive
 ---
 
