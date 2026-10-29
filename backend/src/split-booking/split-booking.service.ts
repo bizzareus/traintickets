@@ -2191,7 +2191,7 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
    */
   async adminCancelAndRefundBooking(
     bookingIdOrRef: string,
-    opts?: { reason?: string; refund?: boolean },
+    opts?: { reason?: string; refund?: boolean; manualRefundId?: string },
   ) {
     const rawId = bookingIdOrRef?.trim();
     if (!rawId) {
@@ -2208,13 +2208,26 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
       throw new NotFoundException(`Booking "${rawId}" not found`);
     }
 
-    if (booking.bookingStatus === 'CANCELLED') {
-      throw new BadRequestException(
-        `Booking ${booking.bookingRef} is already cancelled`,
-      );
-    }
-
     const shouldRefund = opts?.refund !== false;
+    const isAlreadyCancelled = booking.bookingStatus === 'CANCELLED';
+    const isAlreadyRefunded =
+      typeof booking.bookingError === 'string' &&
+      (booking.bookingError.toLowerCase().includes('refund initiated') ||
+        booking.bookingError.toLowerCase().includes('full refund of'));
+
+    if (isAlreadyCancelled) {
+      if (!shouldRefund) {
+        throw new BadRequestException(
+          `Booking ${booking.bookingRef} is already cancelled`,
+        );
+      }
+      if (isAlreadyRefunded) {
+        throw new BadRequestException(
+          `Booking ${booking.bookingRef} is already cancelled and refunded`,
+        );
+      }
+      // If it was cancelled previously without refund, allowing the admin to issue/record refund now.
+    }
 
     if (shouldRefund && booking.paymentStatus !== 'PAID') {
       throw new BadRequestException(
@@ -2236,8 +2249,9 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
     if (shouldRefund) {
       const muzoboxPaymentId = booking.muzoboxPaymentId?.trim();
       const razorpayPaymentId = booking.razorpayPaymentId?.trim();
+      const manualRefundId = opts?.manualRefundId?.trim();
 
-      if (!muzoboxPaymentId && !razorpayPaymentId) {
+      if (!muzoboxPaymentId && !razorpayPaymentId && !manualRefundId) {
         throw new BadRequestException(
           `No payment ID (Muzobox or Razorpay) recorded for booking ${booking.bookingRef}`,
         );
@@ -2245,101 +2259,125 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
 
       let refundId: string | undefined;
 
-      // 1. Process refund through payment provider.
-      // Try the proxy payment refund endpoint (POST proxy-payments/:id/refund) using muzoboxPaymentId or razorpayPaymentId.
-      const proxyPaymentId = muzoboxPaymentId || razorpayPaymentId;
-      let proxyRefundSuccess = false;
+      if (manualRefundId) {
+        refundId = manualRefundId;
+      } else {
+        // 1. Process refund through payment provider.
+        // Try the proxy payment refund endpoint (POST proxy-payments/:id/refund) using muzoboxPaymentId or razorpayPaymentId.
+        const proxyPaymentId = muzoboxPaymentId || razorpayPaymentId;
+        let proxyRefundSuccess = false;
 
-      if (proxyPaymentId) {
-        try {
-          const res = await this.muzoboxClient.post<{
-            status?: string;
-            amount?: number;
-            referenceId?: string | null;
-            razorpayPaymentId?: string | null;
-            razorpayRefundId?: string;
-          }>(
-            `proxy-payments/${encodeURIComponent(proxyPaymentId)}/refund`,
-            {
-              amount: refundAmount,
-              reason: userReason.slice(0, 500),
-              referenceId: booking.bookingRef,
-            },
-            { headers: muzoboxAuthHeaders(this.config) },
-          );
-          const data = res.data ?? {};
-          const status = String(data.status ?? '').toLowerCase();
-          if (status === 'refunded' || status === 'already_refunded') {
-            refundId = data.razorpayRefundId ?? `rfnd_mb_${booking.bookingRef}`;
-            proxyRefundSuccess = true;
-          } else {
-            throw new Error(
-              `Proxy payment refund returned unexpected status=${String(data.status ?? 'missing')}`,
+        if (proxyPaymentId) {
+          try {
+            const res = await this.muzoboxClient.post<{
+              status?: string;
+              amount?: number;
+              referenceId?: string | null;
+              razorpayPaymentId?: string | null;
+              razorpayRefundId?: string;
+            }>(
+              `proxy-payments/${encodeURIComponent(proxyPaymentId)}/refund`,
+              {
+                amount: refundAmount,
+                reason: userReason.slice(0, 500),
+                referenceId: booking.bookingRef,
+              },
+              { headers: muzoboxAuthHeaders(this.config) },
             );
-          }
-        } catch (err: unknown) {
-          let msg = 'Failed to process refund via payment proxy';
-          if (isAxiosError(err)) {
-            const payload = err.response?.data as
-              | { message?: unknown; error?: unknown }
-              | undefined;
-            const fromBody =
-              (Array.isArray(payload?.message)
-                ? payload?.message.join('; ')
-                : payload?.message) ?? payload?.error;
-            if (typeof fromBody === 'string' && fromBody.trim()) {
-              msg = `Payment proxy refund failed: ${fromBody.trim().slice(0, 500)}`;
-            } else if (err.response?.status) {
-              msg = `Payment proxy refund failed with HTTP ${err.response.status}`;
+            const data = res.data ?? {};
+            const status = String(data.status ?? '').toLowerCase();
+            if (status === 'refunded' || status === 'already_refunded') {
+              refundId =
+                data.razorpayRefundId ?? `rfnd_mb_${booking.bookingRef}`;
+              proxyRefundSuccess = true;
             } else {
-              msg = `Payment proxy refund request failed: ${err.message}`;
+              throw new Error(
+                `Proxy payment refund returned unexpected status=${String(data.status ?? 'missing')}`,
+              );
             }
-          } else if (err instanceof Error) {
-            msg = err.message;
-          }
+          } catch (err: unknown) {
+            let msg = 'Failed to process refund via payment proxy';
+            if (isAxiosError(err)) {
+              const payload = err.response?.data as
+                | { message?: unknown; error?: unknown }
+                | undefined;
+              const fromBody =
+                (Array.isArray(payload?.message)
+                  ? payload?.message.join('; ')
+                  : payload?.message) ?? payload?.error;
+              if (typeof fromBody === 'string' && fromBody.trim()) {
+                msg = `Payment proxy refund failed: ${fromBody.trim().slice(0, 500)}`;
+              } else if (err.response?.status) {
+                msg = `Payment proxy refund failed with HTTP ${err.response.status}`;
+              } else {
+                msg = `Payment proxy refund request failed: ${err.message}`;
+              }
+            } else if (err instanceof Error) {
+              msg = err.message;
+            }
 
-          // If direct Razorpay is configured on this server and we have a razorpayPaymentId,
-          // we can attempt a direct Razorpay fallback. Otherwise re-throw the proxy failure.
-          if (
-            !muzoboxPaymentId &&
-            razorpayPaymentId &&
-            this.razorpay &&
-            this.razorpay.isConfigured
-          ) {
-            this.logger.warn(
-              `Proxy refund failed for ${booking.bookingRef} (${msg}); attempting direct Razorpay refund.`,
-            );
-          } else {
-            this.logger.error(
-              `Refund failed for booking ${booking.bookingRef}: ${msg}`,
-            );
-            throw new BadRequestException(msg);
+            const lowerMsg = msg.toLowerCase();
+            if (
+              lowerMsg.includes('already refunded') ||
+              lowerMsg.includes('fully refunded already') ||
+              lowerMsg.includes('already_refunded')
+            ) {
+              this.logger.warn(
+                `Payment already refunded on gateway for ${booking.bookingRef}: ${msg}`,
+              );
+              refundId = `rfnd_already_refunded_${booking.bookingRef}`;
+              proxyRefundSuccess = true;
+            } else if (
+              razorpayPaymentId &&
+              this.razorpay &&
+              this.razorpay.isConfigured
+            ) {
+              this.logger.warn(
+                `Proxy refund failed for ${booking.bookingRef} (${msg}); attempting direct Razorpay refund.`,
+              );
+            } else {
+              this.logger.error(
+                `Refund failed for booking ${booking.bookingRef}: ${msg}`,
+              );
+              throw new BadRequestException(msg);
+            }
           }
         }
-      }
 
-      if (!proxyRefundSuccess && razorpayPaymentId) {
-        if (!this.razorpay || !this.razorpay.isConfigured) {
-          throw new BadRequestException(
-            'Direct Razorpay refund is not configured on this server and proxy refund was not successful.',
-          );
-        }
-        try {
-          const refundRes = await this.razorpay.createRefund({
-            paymentId: razorpayPaymentId,
-            amountPaise: refundAmount * 100,
-            notes: {
-              bookingRef: booking.bookingRef,
-              reason: userReason.slice(0, 200),
-            },
-          });
-          refundId = refundRes.id;
-        } catch (err: unknown) {
-          const msg = err instanceof Error ? err.message : String(err);
-          this.logger.error(
-            `Razorpay direct refund failed for ${booking.bookingRef}: ${msg}`,
-          );
-          throw new BadRequestException(`Razorpay refund failed: ${msg}`);
+        if (!proxyRefundSuccess && razorpayPaymentId) {
+          if (!this.razorpay || !this.razorpay.isConfigured) {
+            throw new BadRequestException(
+              'Direct Razorpay refund is not configured on this server and proxy refund was not successful.',
+            );
+          }
+          try {
+            const refundRes = await this.razorpay.createRefund({
+              paymentId: razorpayPaymentId,
+              amountPaise: refundAmount * 100,
+              notes: {
+                bookingRef: booking.bookingRef,
+                reason: userReason.slice(0, 200),
+              },
+            });
+            refundId = refundRes.id;
+          } catch (err: unknown) {
+            const msg = err instanceof Error ? err.message : String(err);
+            const lowerMsg = msg.toLowerCase();
+            if (
+              lowerMsg.includes('already refunded') ||
+              lowerMsg.includes('fully refunded already')
+            ) {
+              this.logger.warn(
+                `Razorpay reported payment already refunded for ${booking.bookingRef}: ${msg}`,
+              );
+              refundId = `rfnd_already_refunded_${booking.bookingRef}`;
+            } else {
+              this.logger.error(
+                `Razorpay direct refund failed for ${booking.bookingRef}: ${msg}`,
+              );
+              throw new BadRequestException(`Razorpay refund failed: ${msg}`);
+            }
+          }
         }
       }
 
@@ -2426,14 +2464,14 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
           <div style="padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px; background: white;">
             <p style="font-size: 15px; margin-top: 0; color: #334155;">Dear Passenger,</p>
             <p style="color: #475569; font-size: 14px; line-height: 1.6;">
-              Your split-ticket booking for <strong>Train ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</strong> (${escapeHtml(booking.fromStationCode)} → ${escapeHtml(booking.toStationCode)}) on <strong>${escapeHtml(journeyDateStr)}</strong> has been cancelled.
+              Your split-ticket booking for <strong>Train ${escapeHtml(booking.trainNumber || '')} ${escapeHtml(booking.trainName || '')}</strong> (${escapeHtml(booking.fromStationCode || '')} → ${escapeHtml(booking.toStationCode || '')}) on <strong>${escapeHtml(journeyDateStr)}</strong> has been cancelled.
             </p>
             ${refundBoxHtml}
             ${bookingPriceHtml(booking)}
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 20px;">
               <h4 style="margin: 0 0 8px 0; font-size: 12px; text-transform: uppercase; color: #64748b;">Cancelled Journey</h4>
-              <p style="margin: 3px 0; font-size: 13px;"><strong>Train:</strong> ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</p>
-              <p style="margin: 3px 0; font-size: 13px;"><strong>Route:</strong> ${escapeHtml(booking.fromStationCode)} → ${escapeHtml(booking.toStationCode)}</p>
+              <p style="margin: 3px 0; font-size: 13px;"><strong>Train:</strong> ${escapeHtml(booking.trainNumber || '')} ${escapeHtml(booking.trainName || '')}</p>
+              <p style="margin: 3px 0; font-size: 13px;"><strong>Route:</strong> ${escapeHtml(booking.fromStationCode || '')} → ${escapeHtml(booking.toStationCode || '')}</p>
               <p style="margin: 3px 0; font-size: 13px;"><strong>Date:</strong> ${escapeHtml(journeyDateStr)}</p>
             </div>
             <p style="color: #94a3b8; font-size: 12px; margin-top: 24px; border-top: 1px solid #f1f5f9; padding-top: 16px; line-height: 1.5;">

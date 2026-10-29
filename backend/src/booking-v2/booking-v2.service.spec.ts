@@ -574,6 +574,78 @@ describe('BookingV2Service', () => {
   });
 
   describe('searchTrains (cache integration)', () => {
+    it('bypasses cached data for authenticated warmer calls and labels their telemetry', async () => {
+      const raw = { data: { trainList: [] } };
+      const upstream = jest
+        .spyOn(service, 'fetchTrainsFromUpstream')
+        .mockResolvedValueOnce(raw);
+      await service.searchTrains('R', 'G', '2030-11-05', undefined, undefined, {
+        source: 'warmer',
+        forceRefresh: true,
+      });
+      expect(mockDynamoDbSeatCache.getRouteCachedSearch).not.toHaveBeenCalled();
+      expect(upstream).toHaveBeenCalled();
+      expect(mockDynamoDbSeatCache.saveRouteCachedSearch).toHaveBeenCalledWith(
+        'R',
+        'G',
+        '2030-11-05',
+        raw,
+      );
+      expect(mockPostHogAnalytics.capture).toHaveBeenCalledWith(
+        'seat_cache_search',
+        expect.objectContaining({
+          request_source: 'warmer',
+          miss_reason: 'forced_refresh',
+          success: true,
+        }),
+      );
+    });
+
+    it('includes failed upstream requests in telemetry', async () => {
+      jest
+        .spyOn(service, 'fetchTrainsFromUpstream')
+        .mockRejectedValueOnce(new Error('Upstream unavailable'));
+      await expect(
+        service.searchTrains('R', 'G', '2030-11-05', undefined, undefined, {
+          source: 'user',
+        }),
+      ).rejects.toThrow('Upstream unavailable');
+      expect(mockPostHogAnalytics.capture).toHaveBeenCalledWith(
+        'seat_cache_search',
+        expect.objectContaining({
+          request_source: 'user',
+          success: false,
+          hit: false,
+        }),
+      );
+    });
+
+    it('does not mutate cached snapshots during request-specific enrichment', async () => {
+      const raw = { data: { trainList: [{ trainNumber: '22436' }] } };
+      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce({
+        status: 'hit',
+        value: raw,
+        layer: 'memory',
+        ageMs: 2000,
+      });
+      jest
+        .spyOn(service, 'attachCachedAlternatePaths')
+        .mockImplementationOnce((filtered) => {
+          (filtered as typeof raw).data.trainList[0].trainNumber = 'changed';
+          return Promise.resolve();
+        });
+      await service.searchTrains('R', 'G', '2030-11-05');
+      expect(raw.data.trainList[0].trainNumber).toBe('22436');
+      expect(mockPostHogAnalytics.capture).toHaveBeenCalledWith(
+        'seat_cache_search',
+        expect.objectContaining({
+          request_source: 'internal',
+          cache_layer: 'memory',
+          cache_age_ms: 2000,
+        }),
+      );
+    });
+
     it('returns cached results from DynamoDB when present without calling upstream', async () => {
       const fakeResult = { data: { trainList: [] } };
       mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce({

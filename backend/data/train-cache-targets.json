@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "description": "Global train seat availability cache warming targets. Each target warms explicit dates plus a rolling days window (days: 7 = next 7 days from today IST); past dates are skipped.",
+  "description": "Backend train seat availability cache warming targets. Each target warms explicit dates plus a rolling days window (days: 7 = next 7 days from today IST); past dates are skipped.",
   "targets": [
     {
       "trainNumber": "05047",

@@ -7,6 +7,9 @@ export type CachedSeatItem = {
   status: string;
   fare?: number;
   updatedAt?: string;
+  from: string;
+  to: string;
+  freshUntil: number;
 };
 
 const TABLE_NAME =
@@ -46,26 +49,36 @@ function getDocClient(): DynamoDBDocumentClient | null {
  */
 export async function getTrainCachedSeats(
   trainNumber: string,
+  from: string,
+  to: string,
 ): Promise<CachedSeatItem[]> {
   const ddb = getDocClient();
   if (!ddb) return [];
 
   const cleanNumber = String(trainNumber || "").trim();
-  if (!cleanNumber) return [];
+  const origin = from.trim().toUpperCase();
+  const destination = to.trim().toUpperCase();
+  if (!cleanNumber || !origin || !destination) return [];
 
   try {
     const res = await ddb.send(
       new QueryCommand({
         TableName: TABLE_NAME,
-        KeyConditionExpression: "trainNumber = :tn",
+        KeyConditionExpression:
+          "trainNumber = :tn AND begins_with(dateClass, :route)",
         ExpressionAttributeValues: {
           ":tn": cleanNumber,
+          ":route": `SEAT#${origin}#${destination}#`,
         },
         ConsistentRead: false, // 0.5 RCU per 4KB read (2x throughput for $0)
-        ProjectionExpression: "#d, travelClass, #st, fare, updatedAt",
+        ProjectionExpression:
+          "#d, travelClass, #st, fare, updatedAt, #ttl, freshUntil, #f, #t",
         ExpressionAttributeNames: {
           "#d": "date",
           "#st": "status",
+          "#ttl": "ttl",
+          "#f": "from",
+          "#t": "to",
         },
       }),
     );
@@ -74,12 +87,25 @@ export async function getTrainCachedSeats(
       return [];
     }
 
-    return res.Items.map((item) => ({
+    const now = Date.now() / 1000;
+    // Legacy entries had no route identity/freshness and cannot be trusted here.
+    return res.Items.filter(
+      (item) =>
+        item.from === origin &&
+        item.to === destination &&
+        typeof item.ttl === "number" &&
+        item.ttl > now &&
+        typeof item.freshUntil === "number" &&
+        item.freshUntil > now,
+    ).map((item) => ({
       date: String(item.date || ""),
       travelClass: String(item.travelClass || ""),
-      status: String(item.status || "AVAILABLE"),
+      status: String(item.status || "CHECK_AVAILABLE"),
       fare: typeof item.fare === "number" ? item.fare : undefined,
       updatedAt: item.updatedAt ? String(item.updatedAt) : undefined,
+      from: origin,
+      to: destination,
+      freshUntil: Number(item.freshUntil),
     }));
   } catch (err) {
     // Graceful fallback — don't block SSR on cache miss or DynamoDB network error

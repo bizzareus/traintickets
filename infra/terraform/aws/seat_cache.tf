@@ -144,7 +144,7 @@ resource "aws_iam_role_policy_attachment" "worker_basic_execution" {
 
 resource "aws_iam_policy" "worker_permissions" {
   name        = "${var.project_name}-worker-sqs-dynamo-policy"
-  description = "Allows worker lambda to consume SQS and write to DynamoDB"
+  description = "Allows worker lambda to consume SQS; the backend owns DynamoDB writes"
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -157,15 +157,6 @@ resource "aws_iam_policy" "worker_permissions" {
           "sqs:GetQueueAttributes"
         ]
         Resource = aws_sqs_queue.seat_cache_queue.arn
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "dynamodb:PutItem",
-          "dynamodb:BatchWriteItem",
-          "dynamodb:UpdateItem"
-        ]
-        Resource = aws_dynamodb_table.train_seat_cache.arn
       }
     ]
   })
@@ -210,8 +201,8 @@ resource "aws_lambda_function" "worker" {
 
   environment {
     variables = {
-      TABLE_NAME = aws_dynamodb_table.train_seat_cache.name
-      API_URL    = "https://${var.api_domain_name}"
+      API_URL                 = "https://${var.api_domain_name}"
+      SEAT_CACHE_CRON_API_KEY = var.seat_cache_cron_api_key
     }
   }
 
@@ -222,10 +213,11 @@ resource "aws_lambda_function" "worker" {
 
 # 7. SQS Event Source Mapping for Worker Lambda
 resource "aws_lambda_event_source_mapping" "worker_sqs_trigger" {
-  event_source_arn = aws_sqs_queue.seat_cache_queue.arn
-  function_name    = aws_lambda_function.worker.arn
-  batch_size       = 10
-  enabled          = true
+  event_source_arn        = aws_sqs_queue.seat_cache_queue.arn
+  function_name           = aws_lambda_function.worker.arn
+  batch_size              = 1
+  function_response_types = ["ReportBatchItemFailures"]
+  enabled                 = true
 
   scaling_config {
     maximum_concurrency = 3

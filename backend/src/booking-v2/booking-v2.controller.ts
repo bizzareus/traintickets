@@ -73,6 +73,7 @@ export class BookingV2Controller {
     @Query('to') to: string | undefined,
     @Query('date') date: string | undefined,
     @Query('classes') classesParam: string | string[] | undefined,
+    @Req() req: Request,
   ) {
     const f = trimStr(from).toUpperCase();
     const t = trimStr(to).toUpperCase();
@@ -91,7 +92,14 @@ export class BookingV2Controller {
     const classes = bodyStringArray(
       typeof classesParam === 'string' ? classesParam.split(',') : classesParam,
     );
-    return this.bookingV2.searchTrains(f, t, d, classes);
+    // Legacy Lambda calls are labelled for telemetry only. User-agent never
+    // grants permission to bypass the cache or access admin endpoints.
+    const source = req
+      .get('user-agent')
+      ?.startsWith('LastBerth-SeatCacheWorker/')
+      ? 'warmer'
+      : 'user';
+    return this.bookingV2.searchTrains(f, t, d, classes, undefined, { source });
   }
 
   /**

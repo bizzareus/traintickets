@@ -7,6 +7,12 @@ import {
   BatchWriteCommand,
   paginateScan,
 } from '@aws-sdk/lib-dynamodb';
+import {
+  STATION_CODE_RE,
+  SEAT_CACHE_RETENTION_SECONDS,
+  seatCacheFreshnessSeconds,
+  seatCacheFreshUntil,
+} from './seat-cache-policy';
 
 export interface CachedSeatItem {
   trainNumber: string;
@@ -19,6 +25,7 @@ export interface CachedSeatItem {
   to?: string;
   updatedAt?: string;
   ttl?: number;
+  freshUntil?: number;
 }
 
 export interface RouteSearchRecord {
@@ -30,11 +37,22 @@ export interface RouteSearchRecord {
   rawSearch: Record<string, unknown>;
   updatedAt: string;
   ttl: number;
+  freshUntil: number;
 }
 
 export interface RouteCacheLookupResult {
   status: 'hit' | 'miss' | 'error' | 'disabled';
   value: Record<string, unknown> | null;
+  layer?: 'memory' | 'queue' | 'dynamodb' | 'none';
+  ageMs?: number;
+  missReason?:
+    | 'invalid_station'
+    | 'not_found'
+    | 'expired'
+    | 'stale'
+    | 'invalid_record'
+    | 'disabled'
+    | 'read_error';
 }
 
 export interface CachedTrainInventoryItem {
@@ -66,8 +84,7 @@ const DEFAULT_REGION = 'ap-south-1';
 const ROUTE_PREFIX = 'ROUTE#';
 const ALT_PATH_PREFIX = 'ALTPATH#';
 const BEST_TRAIN_PREFIX = 'BESTTRAIN#';
-const DEFAULT_TTL_SECONDS = 48 * 3600; // 48 hours
-const STATION_CODE_RE = /^[A-Z0-9]{2,6}$/;
+const DEFAULT_TTL_SECONDS = SEAT_CACHE_RETENTION_SECONDS;
 /** Serve a repeated admin inventory view from memory instead of re-scanning. */
 const INVENTORY_CACHE_TTL_MS = 5 * 60 * 1000;
 /** DynamoDB BatchWriteItem maximum chunk size */
@@ -112,7 +129,7 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
   /** In-memory L1 cache for hot route searches (TTL 60s, max 500 entries) */
   private readonly l1RouteCache = new Map<
     string,
-    { expiresAt: number; value: Record<string, unknown> }
+    { expiresAt: number; record: RouteSearchRecord }
   >();
   /** In-memory L1 cache for hot alt path searches (TTL 60s, max 1000 entries) */
   private readonly l1AltPathCache = new Map<
@@ -407,9 +424,9 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
         {
           TableName: this.tableName,
           ProjectionExpression:
-            'trainNumber, dateClass, travelClass, updatedAt, #ttl',
+            'trainNumber, dateClass, #date, travelClass, updatedAt, #ttl',
           FilterExpression: 'attribute_not_exists(#ttl) OR #ttl >= :now',
-          ExpressionAttributeNames: { '#ttl': 'ttl' },
+          ExpressionAttributeNames: { '#ttl': 'ttl', '#date': 'date' },
           ExpressionAttributeValues: { ':now': nowSecs },
         },
       )) {
@@ -471,7 +488,8 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
 
       seatItemCount++;
       const dateClass = toSafeString(item.dateClass);
-      const [date, classFromKey] = dateClass.split('#');
+      const [dateFromKey, classFromKey] = dateClass.split('#');
+      const date = toSafeString(item.date) || dateFromKey;
       const travelClass = toSafeString(item.travelClass) || classFromKey;
       const current = trains.get(trainNumber) ?? {
         itemCount: 0,
@@ -559,7 +577,12 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
     const f = from.trim().toUpperCase();
     const t = to.trim().toUpperCase();
     if (!STATION_CODE_RE.test(f) || !STATION_CODE_RE.test(t)) {
-      return { status: 'miss', value: null };
+      return {
+        status: 'miss',
+        value: null,
+        layer: 'none',
+        missReason: 'invalid_station',
+      };
     }
     const d = journeyDateYmd.trim();
     const routeKey = `${ROUTE_PREFIX}${f}#${t}`;
@@ -569,7 +592,7 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
     const l1Hit = this.l1RouteCache.get(l1Key);
     if (l1Hit) {
       if (l1Hit.expiresAt > now) {
-        return { status: 'hit', value: l1Hit.value };
+        return this.readRouteRecord(l1Hit.record, 'memory', d, now);
       }
       this.l1RouteCache.delete(l1Key);
     }
@@ -577,13 +600,21 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
     // Check pending write queue for instant read-after-write consistency
     const queued = this.writeQueue.get(`${routeKey}#${d}`);
     if (queued?.item.rawSearch && typeof queued.item.rawSearch === 'object') {
-      return {
-        status: 'hit',
-        value: queued.item.rawSearch as Record<string, unknown>,
-      };
+      return this.readRouteRecord(
+        queued.item as unknown as RouteSearchRecord,
+        'queue',
+        d,
+        now,
+      );
     }
 
-    if (!this.docClient) return { status: 'disabled', value: null };
+    if (!this.docClient)
+      return {
+        status: 'disabled',
+        value: null,
+        layer: 'none',
+        missReason: 'disabled',
+      };
 
     try {
       const res = await this.docClient.send(
@@ -596,30 +627,56 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
         }),
       );
 
-      if (!res.Item) return { status: 'miss', value: null };
-
-      const nowSecs = Math.floor(now / 1000);
-      if (res.Item.ttl && res.Item.ttl < nowSecs) {
-        return { status: 'miss', value: null };
-      }
-
-      const raw = res.Item.rawSearch;
-      if (raw && typeof raw === 'object') {
-        const val = raw as Record<string, unknown>;
-        this.trimL1Cache(this.l1RouteCache, 500);
-        this.l1RouteCache.set(l1Key, { expiresAt: now + 60_000, value: val });
+      if (!res.Item)
         return {
-          status: 'hit',
-          value: val,
+          status: 'miss',
+          value: null,
+          layer: 'dynamodb',
+          missReason: 'not_found',
         };
+
+      const record = res.Item as RouteSearchRecord;
+      const lookup = this.readRouteRecord(record, 'dynamodb', d, now);
+      if (lookup.value) {
+        this.trimL1Cache(this.l1RouteCache, 500);
+        this.l1RouteCache.set(l1Key, { expiresAt: now + 60_000, record });
       }
-      return { status: 'miss', value: null };
+      return lookup;
     } catch (err) {
       this.logger.warn(
         `[DynamoDB] getRouteCachedSearch error for ${routeKey} ${d}: ${awsErrorLabel(err)}`,
       );
-      return { status: 'error', value: null };
+      return {
+        status: 'error',
+        value: null,
+        layer: 'dynamodb',
+        missReason: 'read_error',
+      };
     }
+  }
+
+  private readRouteRecord(
+    record: RouteSearchRecord,
+    layer: RouteCacheLookupResult['layer'],
+    date: string,
+    now: number,
+  ): RouteCacheLookupResult {
+    const ageMs = now - Date.parse(record.updatedAt);
+    const missReason =
+      !record.ttl || record.ttl * 1000 <= now
+        ? 'expired'
+        : seatCacheFreshUntil(record, date, now) * 1000 <= now
+          ? 'stale'
+          : !record.rawSearch || typeof record.rawSearch !== 'object'
+            ? 'invalid_record'
+            : undefined;
+    return {
+      status: missReason ? 'miss' : 'hit',
+      value: missReason ? null : record.rawSearch,
+      layer,
+      ...(Number.isFinite(ageMs) ? { ageMs } : {}),
+      ...(missReason ? { missReason } : {}),
+    };
   }
 
   /**
@@ -643,33 +700,37 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
     const routeKey = `${ROUTE_PREFIX}${f}#${t}`;
     const l1Key = `${routeKey}#${d}`;
 
-    // Update in-memory L1 cache immediately
+    const now = Date.now();
+    const nowSecs = Math.floor(now / 1000);
+    const ttl = nowSecs + ttlSeconds;
+    const freshUntil = Math.min(
+      ttl,
+      nowSecs + seatCacheFreshnessSeconds(d, now),
+    );
+    const nowIso = new Date(now).toISOString();
+    const record: RouteSearchRecord = {
+      trainNumber: routeKey,
+      dateClass: d,
+      from: f,
+      to: t,
+      date: d,
+      rawSearch,
+      updatedAt: nowIso,
+      ttl,
+      freshUntil,
+    };
+
+    // Update in-memory L1 cache immediately, retaining the snapshot's actual age.
     this.trimL1Cache(this.l1RouteCache, 500);
     this.l1RouteCache.set(l1Key, {
-      expiresAt: Date.now() + 60_000,
-      value: rawSearch,
+      expiresAt: now + 60_000,
+      record,
     });
 
     if (!this.docClient) return Promise.resolve();
 
-    const nowSecs = Math.floor(Date.now() / 1000);
-    const ttl = nowSecs + ttlSeconds;
-    const nowIso = new Date().toISOString();
-
     // 1. Enqueue the route-level search record (high priority)
-    this.enqueueWriteItem(
-      {
-        trainNumber: routeKey,
-        dateClass: d,
-        from: f,
-        to: t,
-        date: d,
-        rawSearch,
-        updatedAt: nowIso,
-        ttl,
-      },
-      true,
-    );
+    this.enqueueWriteItem({ ...record }, true);
 
     // 2. Extract and enqueue individual train seat items (low priority)
     try {
@@ -681,6 +742,12 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
         const train = item as Record<string, unknown>;
         const trainNo = toSafeString(train.trainNumber).trim();
         if (!trainNo) continue;
+        // Upstream may return trains at nearby stations, not the requested pair.
+        const seatFrom =
+          toSafeString(train.fromStnCode).trim().toUpperCase() || f;
+        const seatTo = toSafeString(train.toStnCode).trim().toUpperCase() || t;
+        if (!STATION_CODE_RE.test(seatFrom) || !STATION_CODE_RE.test(seatTo))
+          continue;
 
         const availCache = train.availabilityCache as
           | Record<string, Record<string, unknown>>
@@ -694,7 +761,7 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
               row.availabilityDisplayName ||
                 row.railDataStatus ||
                 row.availablityStatus,
-            ) || 'AVL';
+            ) || 'CHECK_AVAILABLE';
           let fareNum: number | null = null;
           if (row.fare) {
             const parsed = parseInt(toSafeString(row.fare), 10);
@@ -704,15 +771,16 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
           this.enqueueWriteItem(
             {
               trainNumber: trainNo,
-              dateClass: `${d}#${cls.toUpperCase()}`,
+              dateClass: `SEAT#${seatFrom}#${seatTo}#${d}#${cls.toUpperCase()}`,
               date: d,
               travelClass: cls.toUpperCase(),
               status,
               fare: fareNum,
-              from: f,
-              to: t,
+              from: seatFrom,
+              to: seatTo,
               updatedAt: nowIso,
               ttl,
+              freshUntil,
             },
             false,
           );
@@ -740,7 +808,11 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
   /**
    * Queries cached seats for a trainNumber across dates.
    */
-  async getTrainCachedSeats(trainNumber: string): Promise<CachedSeatItem[]> {
+  async getTrainCachedSeats(
+    trainNumber: string,
+    from: string,
+    to: string,
+  ): Promise<CachedSeatItem[]> {
     if (!this.docClient) return [];
 
     const tn = trainNumber.trim();
@@ -750,9 +822,11 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
       const res = await this.docClient.send(
         new QueryCommand({
           TableName: this.tableName,
-          KeyConditionExpression: 'trainNumber = :tn',
+          KeyConditionExpression:
+            'trainNumber = :tn AND begins_with(dateClass, :route)',
           ExpressionAttributeValues: {
             ':tn': tn,
+            ':route': `SEAT#${from.trim().toUpperCase()}#${to.trim().toUpperCase()}#`,
           },
           ConsistentRead: false,
         }),
@@ -762,20 +836,25 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
         return [];
       }
 
-      const nowSecs = Math.floor(Date.now() / 1000);
-      return res.Items.filter((item) => !item.ttl || item.ttl >= nowSecs).map(
-        (item) => ({
-          trainNumber: String(item.trainNumber || ''),
-          dateClass: String(item.dateClass || ''),
-          date: String(item.date || ''),
-          travelClass: String(item.travelClass || ''),
-          status: String(item.status || 'AVAILABLE'),
-          fare: typeof item.fare === 'number' ? item.fare : null,
-          from: item.from ? String(item.from) : undefined,
-          to: item.to ? String(item.to) : undefined,
-          updatedAt: item.updatedAt ? String(item.updatedAt) : undefined,
-        }),
-      );
+      const now = Date.now();
+      const nowSecs = now / 1000;
+      return res.Items.filter(
+        (item) =>
+          item.from === from.trim().toUpperCase() &&
+          item.to === to.trim().toUpperCase() &&
+          seatCacheFreshUntil(item as CachedSeatItem, String(item.date), now) >
+            nowSecs,
+      ).map((item) => ({
+        trainNumber: String(item.trainNumber || ''),
+        dateClass: String(item.dateClass || ''),
+        date: String(item.date || ''),
+        travelClass: String(item.travelClass || ''),
+        status: String(item.status || 'CHECK_AVAILABLE'),
+        fare: typeof item.fare === 'number' ? item.fare : null,
+        from: item.from ? String(item.from) : undefined,
+        to: item.to ? String(item.to) : undefined,
+        updatedAt: item.updatedAt ? String(item.updatedAt) : undefined,
+      }));
     } catch (err) {
       this.logger.warn(
         `[DynamoDB] getTrainCachedSeats failed for ${tn}: ${awsErrorLabel(err)}`,
@@ -823,7 +902,7 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
 
     const queued = this.writeQueue.get(`${catKey}#LATEST`);
     if (queued?.item.summary && typeof queued.item.summary === 'object') {
-      return queued.item.summary as Record<string, unknown>;
+      return this.freshSummary(queued.item.summary as Record<string, unknown>);
     }
 
     if (!this.docClient) return null;
@@ -844,7 +923,7 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
       if (res.Item.ttl && res.Item.ttl < nowSecs) return null;
 
       if (res.Item.summary && typeof res.Item.summary === 'object') {
-        return res.Item.summary as Record<string, unknown>;
+        return this.freshSummary(res.Item.summary as Record<string, unknown>);
       }
       return null;
     } catch (err) {
@@ -853,6 +932,22 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
       );
       return null;
     }
+  }
+
+  private freshSummary(
+    summary: Record<string, unknown>,
+  ): Record<string, unknown> {
+    const now = Date.now() / 1000;
+    return Object.fromEntries(
+      Object.entries(summary).filter(
+        ([, value]) =>
+          value &&
+          typeof value === 'object' &&
+          'freshUntil' in value &&
+          typeof value.freshUntil === 'number' &&
+          value.freshUntil > now,
+      ),
+    );
   }
 
   /**

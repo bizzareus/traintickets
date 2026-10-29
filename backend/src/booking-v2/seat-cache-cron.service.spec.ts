@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import fs from 'fs';
 import {
   SeatCacheCronService,
   resolveTargetDates,
@@ -100,7 +101,9 @@ describe('SeatCacheCronService', () => {
   const mockTopRoutesService = {
     getTopRoutes: jest
       .fn()
-      .mockResolvedValue([{ from: 'NDLS', to: 'MMCT', searches: 150 }]),
+      .mockResolvedValue([
+        { from: 'R', to: 'G', date: '2030-11-15', searches: 150 },
+      ]),
   };
 
   const mockPrismaService = {
@@ -110,6 +113,8 @@ describe('SeatCacheCronService', () => {
   };
 
   beforeEach(async () => {
+    jest.useFakeTimers({ doNotFake: ['setTimeout'] });
+    jest.setSystemTime(new Date('2026-10-28T06:00:00Z'));
     monitoring.run.mockClear();
     observed.length = 0;
     ddbStore = new Map();
@@ -130,6 +135,11 @@ describe('SeatCacheCronService', () => {
     }).compile();
 
     service = module.get<SeatCacheCronService>(SeatCacheCronService);
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+    jest.restoreAllMocks();
   });
 
   it('should load targets from JSON configuration file', () => {
@@ -182,6 +192,33 @@ describe('SeatCacheCronService', () => {
       else process.env.SEAT_CACHE_ENABLED = enabled;
     }
   });
+
+  it('fails visibly when the targets file was not packaged', () => {
+    jest.spyOn(fs, 'existsSync').mockReturnValue(false);
+    expect(() => service.loadTargets()).toThrow(
+      'no valid train-cache-targets.json',
+    );
+  });
+
+  it('does not report an empty configuration as a successful warming run', async () => {
+    jest.spyOn(service, 'loadTargets').mockReturnValue([]);
+    await expect(service.runNow()).rejects.toThrow('configuration is empty');
+  });
+
+  it('warms the exact user-requested travel date without a Cartesian date expansion', async () => {
+    jest
+      .spyOn(service, 'loadTargets')
+      .mockReturnValue([
+        { trainNumber: '05047', from: 'KOAA', to: 'BNRS', dates: [] },
+      ]);
+    const upstream = mockBookingV2Service.fetchTrainsFromUpstream;
+    upstream.mockClear();
+    await service.runNow();
+    expect(upstream).toHaveBeenCalledWith('R', 'G', '15-11-2030');
+    expect(upstream.mock.calls.filter(([from]) => from === 'R')).toHaveLength(
+      1,
+    );
+  }, 15000);
 
   it('should warm seat cache and persist route searches & category summaries into DynamoDB', async () => {
     const res = await service.runNow({

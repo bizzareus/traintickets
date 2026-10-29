@@ -28,36 +28,9 @@ try {
     }
   }
 } catch (err) {
-  console.warn(
-    "[Producer] Could not load top-500-trains.json, using fallback list:",
-    err,
-  );
-  DEFAULT_TRAINS = [
-    "20818",
-    "20817",
-    "12951",
-    "12952",
-    "12301",
-    "12302",
-    "12309",
-    "12310",
-    "12425",
-    "12445",
-    "12001",
-    "12002",
-    "12004",
-    "12015",
-    "22439",
-    "22440",
-    "12261",
-    "12262",
-    "11301",
-    "11302",
-    "11013",
-    "11014",
-    "12615",
-    "12616",
-  ];
+  throw new Error("Cache producer requires the bundled train route map", {
+    cause: err,
+  });
 }
 
 function getUpcomingDates(daysCount = 4) {
@@ -91,7 +64,7 @@ export async function handler(event) {
     `[Producer] Preparing queue tasks for ${inputTrains.length} trains across ${dates.length} dates.`,
   );
 
-  const tasks = [];
+  const tasks = new Map();
   for (const item of inputTrains) {
     const trainNum =
       typeof item === "object"
@@ -103,10 +76,10 @@ export async function handler(event) {
     const from =
       typeof item === "object" && item.from ? item.from : mapped.from || "";
     const to = typeof item === "object" && item.to ? item.to : mapped.to || "";
+    if (!from || !to) continue;
 
     for (const journeyDate of dates) {
-      tasks.push({
-        trainNumber: trainNum,
+      tasks.set(`${from}#${to}#${journeyDate}`, {
         from,
         to,
         journeyDate,
@@ -114,30 +87,37 @@ export async function handler(event) {
     }
   }
 
+  const routeTasks = [...tasks.values()];
+  if (routeTasks.length === 0)
+    throw new Error("No valid route/date tasks to warm");
+
   // Send to SQS in batches of 10 (SQS limit)
   let sentCount = 0;
   const BATCH_SIZE = 10;
 
-  for (let i = 0; i < tasks.length; i += BATCH_SIZE) {
-    const chunk = tasks.slice(i, i + BATCH_SIZE);
+  for (let i = 0; i < routeTasks.length; i += BATCH_SIZE) {
+    const chunk = routeTasks.slice(i, i + BATCH_SIZE);
     const entries = chunk.map((task, idx) => ({
       Id: `msg_${i + idx}_${Date.now()}`,
       MessageBody: JSON.stringify(task),
     }));
 
     try {
-      await sqs.send(
+      const result = await sqs.send(
         new SendMessageBatchCommand({
           QueueUrl: QUEUE_URL,
           Entries: entries,
         }),
       );
+      if (result.Failed?.length)
+        throw new Error(`${result.Failed.length} SQS messages were rejected`);
       sentCount += chunk.length;
     } catch (err) {
       console.error(
         `[Producer] Failed to send batch starting at index ${i}:`,
         err,
       );
+      throw err;
     }
   }
 
@@ -145,6 +125,6 @@ export async function handler(event) {
   return {
     statusCode: 200,
     queued: sentCount,
-    total: tasks.length,
+    total: routeTasks.length,
   };
 }

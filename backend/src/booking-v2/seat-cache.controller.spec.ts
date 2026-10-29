@@ -3,7 +3,8 @@ import { SeatCacheController } from './seat-cache.controller';
 import { SeatCacheCronService } from './seat-cache-cron.service';
 import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import { PrismaService } from '../prisma/prisma.service';
-import { UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, UnauthorizedException } from '@nestjs/common';
+import { BookingV2Service } from './booking-v2.service';
 import {
   ADMIN_SESSION_COOKIE,
   buildAdminSessionCookieValue,
@@ -47,8 +48,14 @@ describe('SeatCacheController', () => {
       findMany: jest.fn().mockResolvedValue([]),
     },
   };
+  const bookingV2 = {
+    normalizeToRailApiDate: jest.fn().mockReturnValue('05-11-2030'),
+    isPastDate: jest.fn().mockReturnValue(false),
+    searchTrains: jest.fn().mockResolvedValue({ data: { trainList: [] } }),
+  };
 
   beforeEach(async () => {
+    jest.clearAllMocks();
     process.env.CHART_TIME_INGESTION_PASSWORD = 'admin-secret';
     const module: TestingModule = await Test.createTestingModule({
       controllers: [SeatCacheController],
@@ -56,6 +63,7 @@ describe('SeatCacheController', () => {
         { provide: SeatCacheCronService, useValue: mockSeatCacheCron },
         { provide: DynamoDbSeatCacheService, useValue: mockDynamoDbSeatCache },
         { provide: PrismaService, useValue: mockPrismaService },
+        { provide: BookingV2Service, useValue: bookingV2 },
       ],
     }).compile();
 
@@ -156,6 +164,42 @@ describe('SeatCacheController', () => {
       await expect(
         controller.getCacheInventory(undefined, {} as never),
       ).rejects.toThrow(UnauthorizedException);
+    });
+  });
+
+  describe('warmRoute', () => {
+    it('rejects unauthenticated refreshes before contacting upstream', async () => {
+      await expect(
+        controller.warmRoute({ from: 'R', to: 'G', date: '2030-11-05' }),
+      ).rejects.toThrow(UnauthorizedException);
+      expect(bookingV2.searchTrains).not.toHaveBeenCalled();
+    });
+
+    it('forces a refresh for an authenticated single-letter route', async () => {
+      await controller.warmRoute(
+        { from: 'r', to: 'g', date: '2030-11-05' },
+        undefined,
+        'admin-secret',
+      );
+      expect(bookingV2.searchTrains).toHaveBeenCalledWith(
+        'R',
+        'G',
+        '2030-11-05',
+        undefined,
+        undefined,
+        { source: 'warmer', forceRefresh: true },
+      );
+    });
+
+    it('rejects invalid station codes without fetching upstream', async () => {
+      await expect(
+        controller.warmRoute(
+          { from: 'R#G', to: 'G', date: '2030-11-05' },
+          undefined,
+          'admin-secret',
+        ),
+      ).rejects.toThrow(BadRequestException);
+      expect(bookingV2.searchTrains).not.toHaveBeenCalled();
     });
   });
 });

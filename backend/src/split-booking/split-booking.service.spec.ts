@@ -2014,7 +2014,21 @@ describe('SplitBookingService', () => {
       );
     });
 
-    it('rejects refund if booking is already CANCELLED', async () => {
+    it('rejects refund if booking is already CANCELLED and refunded', async () => {
+      prisma.splitTicketBooking.findFirst.mockResolvedValue({
+        id: 'b-cancelled',
+        bookingRef: 'LB-ALREADY',
+        bookingStatus: 'CANCELLED',
+        paymentStatus: 'PAID',
+        bookingError: 'Full refund of ₹500 initiated',
+      });
+
+      await expect(
+        service.adminCancelAndRefundBooking('LB-ALREADY'),
+      ).rejects.toThrow(BadRequestException);
+    });
+
+    it('rejects cancelling an already cancelled booking if refund is false', async () => {
       prisma.splitTicketBooking.findFirst.mockResolvedValue({
         id: 'b-cancelled',
         bookingRef: 'LB-ALREADY',
@@ -2023,8 +2037,79 @@ describe('SplitBookingService', () => {
       });
 
       await expect(
-        service.adminCancelAndRefundBooking('LB-ALREADY'),
+        service.adminCancelAndRefundBooking('LB-ALREADY', { refund: false }),
       ).rejects.toThrow(BadRequestException);
+    });
+
+    it('allows refunding an already CANCELLED booking if previously unrefunded', async () => {
+      const mockBooking = {
+        id: 'b-unrefunded-cancelled',
+        bookingRef: 'LB-CANCELLED-UNREFUNDED',
+        bookingStatus: 'CANCELLED',
+        paymentStatus: 'PAID',
+        bookingError: 'Cancelled without refund by admin',
+        trainNumber: '12270',
+        trainName: 'MAS DURONTO',
+        fromStationCode: 'NZM',
+        toStationCode: 'MAS',
+        totalFare: 1000,
+        serviceFee: 50,
+        irctcServiceFeePaise: 0,
+        paymentGatewayFeePaise: 0,
+        muzoboxPaymentId: 'mb_proxy_unref',
+        contactEmail: 'user@example.com',
+        contactMobile: '9999999999',
+        journeyDate: new Date('2026-11-01'),
+      };
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(mockBooking);
+      muzobox.post.mockResolvedValue({
+        data: {
+          status: 'already_refunded',
+          amount: 1050,
+          razorpayRefundId: 'rfnd_already_999',
+        },
+      });
+
+      const res = await service.adminCancelAndRefundBooking(
+        'LB-CANCELLED-UNREFUNDED',
+        {
+          refund: true,
+        },
+      );
+
+      expect(res.success).toBe(true);
+      expect(res.refundId).toBe('rfnd_already_999');
+    });
+
+    it('processes manual refund when manualRefundId is supplied', async () => {
+      const mockBooking = {
+        id: 'b-manual-ref',
+        bookingRef: 'LB-MANUAL-REF',
+        bookingStatus: 'CONFIRMED',
+        paymentStatus: 'PAID',
+        trainNumber: '12270',
+        trainName: 'MAS DURONTO',
+        fromStationCode: 'NZM',
+        toStationCode: 'MAS',
+        totalFare: 500,
+        serviceFee: 50,
+        irctcServiceFeePaise: 0,
+        paymentGatewayFeePaise: 0,
+        razorpayPaymentId: 'pay_manual_123',
+        contactEmail: 'user@example.com',
+        contactMobile: '9999999999',
+        journeyDate: new Date('2026-11-01'),
+      };
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(mockBooking);
+
+      const res = await service.adminCancelAndRefundBooking('LB-MANUAL-REF', {
+        refund: true,
+        manualRefundId: 'rfnd_manual_dashboard_001',
+      });
+
+      expect(res.success).toBe(true);
+      expect(res.refundId).toBe('rfnd_manual_dashboard_001');
+      expect(muzobox.post).not.toHaveBeenCalled();
     });
 
     it('rejects refund if paymentStatus is not PAID', async () => {

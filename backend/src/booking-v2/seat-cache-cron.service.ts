@@ -14,6 +14,7 @@ import {
 import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { CronitorService, monitorCron } from '../monitoring/cronitor.service';
+import { seatCacheFreshnessSeconds } from './seat-cache-policy';
 
 /** Curated popular routes to keep warm, matching top searched OD corridors. */
 export const POPULAR_ROUTE_PAIRS: ReadonlyArray<{ from: string; to: string }> =
@@ -76,6 +77,7 @@ export interface TrainAvailabilitySummaryItem {
   lowestFare: number | null;
   dates: Record<string, TrainDateAvailability>;
   lastUpdated: string;
+  freshUntil: number;
 }
 
 export type TrainAvailabilitySummaryMap = Record<
@@ -196,10 +198,8 @@ export class SeatCacheCronService {
    */
   loadTargets(): TrainCacheTarget[] {
     const candidates = [
+      path.resolve(__dirname, '../../data/train-cache-targets.json'),
       path.resolve(process.cwd(), 'data/train-cache-targets.json'),
-      path.resolve(process.cwd(), '../data/train-cache-targets.json'),
-      path.resolve(__dirname, '../../../data/train-cache-targets.json'),
-      path.resolve(__dirname, '../../../../data/train-cache-targets.json'),
     ];
 
     for (const filePath of candidates) {
@@ -218,10 +218,9 @@ export class SeatCacheCronService {
       }
     }
 
-    this.logger.warn(
+    throw new Error(
       `[seat-cache-cron] no valid train-cache-targets.json found among candidates: ${candidates.join(', ')}`,
     );
-    return [];
   }
 
   /**
@@ -290,6 +289,8 @@ export class SeatCacheCronService {
 
     // 1. Get targets from JSON
     let targets = this.loadTargets();
+    if (targets.length === 0)
+      throw new Error('Seat-cache targets configuration is empty');
     if (options?.category && options.category !== 'ALL') {
       const cat = options.category.toLowerCase();
       targets = targets.filter((t) => t.category?.toLowerCase() === cat);
@@ -306,58 +307,45 @@ export class SeatCacheCronService {
       { from: string; to: string; dateYmd: string; dateDmy: string }
     >();
 
-    // A. Add target routes from JSON (only if options don't restrict to something outside)
-    for (const target of targets) {
-      for (const d of resolveTargetDates(target)) {
-        const key = `${target.from.toUpperCase()}#${target.to.toUpperCase()}#${d}`;
-        if (!routeTasks.has(key)) {
-          routeTasks.set(key, {
-            from: target.from.toUpperCase(),
-            to: target.to.toUpperCase(),
-            dateYmd: d,
-            dateDmy: ymdToDmy(d),
-          });
-        }
-      }
-    }
+    const addRoute = (from: string, to: string, dateYmd: string) => {
+      const f = from.trim().toUpperCase();
+      const t = to.trim().toUpperCase();
+      const key = `${f}#${t}#${dateYmd}`;
+      if (!f || !t || f === t || routeTasks.has(key)) return;
+      routeTasks.set(key, {
+        from: f,
+        to: t,
+        dateYmd,
+        dateDmy: ymdToDmy(dateYmd),
+      });
+    };
 
-    // B. If not filtering by a specific category/train, include PostHog top routes + popular routes
+    // Actual user demand runs first, before broad curated/premium coverage.
     if (!options?.category && !options?.trainNumber) {
       const topRoutes: TopRoute[] = await this.topRoutes
         .getTopRoutes()
         .catch(() => []);
-      const routePairs: Array<{ from: string; to: string }> = [
-        ...POPULAR_ROUTE_PAIRS,
-        ...topRoutes.map((r) => ({ from: r.from, to: r.to })),
-      ];
+      // Warm the exact dates users searched, not every date for each corridor.
+      for (const route of topRoutes) {
+        addRoute(route.from, route.to, route.date);
+      }
 
       // Generate dates for today + DAYS_AHEAD (IST)
       const baseMoment = moment().utcOffset(IST_UTC_OFFSET);
-      const datesToWarm: Array<{ ymd: string; dmy: string }> = [];
-      for (let i = 0; i <= DAYS_AHEAD; i++) {
-        const day = baseMoment.clone().add(i, 'days');
-        datesToWarm.push({
-          ymd: day.format('YYYY-MM-DD'),
-          dmy: day.format('DD-MM-YYYY'),
-        });
-      }
-
-      for (const pair of routePairs) {
-        const f = pair.from.trim().toUpperCase();
-        const t = pair.to.trim().toUpperCase();
-        if (!f || !t || f === t) continue;
-
-        for (const dateObj of datesToWarm) {
-          const key = `${f}#${t}#${dateObj.ymd}`;
-          if (!routeTasks.has(key)) {
-            routeTasks.set(key, {
-              from: f,
-              to: t,
-              dateYmd: dateObj.ymd,
-              dateDmy: dateObj.dmy,
-            });
-          }
+      for (const pair of POPULAR_ROUTE_PAIRS) {
+        for (let i = 0; i <= DAYS_AHEAD; i++) {
+          addRoute(
+            pair.from,
+            pair.to,
+            baseMoment.clone().add(i, 'days').format('YYYY-MM-DD'),
+          );
         }
+      }
+    }
+
+    for (const target of targets) {
+      for (const date of resolveTargetDates(target)) {
+        addRoute(target.from, target.to, date);
       }
     }
 
@@ -370,7 +358,10 @@ export class SeatCacheCronService {
     const taskList = Array.from(routeTasks.values());
 
     // 3. Process route-date searches with bounded concurrency and rate limit
-    const inMemorySearches = new Map<string, Record<string, unknown>>();
+    const inMemorySearches = new Map<
+      string,
+      { rawSearch: Record<string, unknown>; fetchedAt: number }
+    >();
     const CONCURRENCY = 2;
     const queue = [...taskList];
 
@@ -393,10 +384,10 @@ export class SeatCacheCronService {
             rawSearch,
           );
 
-          inMemorySearches.set(
-            `${task.from}#${task.to}#${task.dateYmd}`,
+          inMemorySearches.set(`${task.from}#${task.to}#${task.dateYmd}`, {
             rawSearch,
-          );
+            fetchedAt: Date.now(),
+          });
           warmedCount++;
           await sleep(250); // 250ms throttle per worker
         } catch (err) {
@@ -430,6 +421,7 @@ export class SeatCacheCronService {
         lowestFare: null,
         dates: {},
         lastUpdated: nowIso,
+        freshUntil: 0,
       };
 
       const classesWithSeats = new Set<string>();
@@ -438,16 +430,9 @@ export class SeatCacheCronService {
 
       for (const d of resolveTargetDates(target)) {
         const memKey = `${target.from.toUpperCase()}#${target.to.toUpperCase()}#${d}`;
-        // Reuse in-memory search from warming pass if available; fallback to DynamoDB
-        const cachedRoute =
-          inMemorySearches.get(memKey) ??
-          (
-            await this.dynamoDbSeatCache.getRouteCachedSearch(
-              target.from,
-              target.to,
-              d,
-            )
-          ).value;
+        // A failed warm must not re-label an older snapshot as freshly checked.
+        const snapshot = inMemorySearches.get(memKey);
+        const cachedRoute = snapshot?.rawSearch;
 
         const data = cachedRoute?.data as Record<string, unknown> | undefined;
         const trainList = Array.isArray(data?.trainList) ? data.trainList : [];
@@ -456,11 +441,25 @@ export class SeatCacheCronService {
             toSafeString((t as Record<string, unknown>).trainNumber).trim() ===
             target.trainNumber,
         ) as Record<string, unknown> | undefined;
+        if (
+          matched &&
+          ((matched.fromStnCode && matched.fromStnCode !== target.from) ||
+            (matched.toStnCode && matched.toStnCode !== target.to))
+        )
+          continue;
 
         if (
+          snapshot &&
           matched?.availabilityCache &&
           typeof matched.availabilityCache === 'object'
         ) {
+          const freshUntil =
+            Math.floor(snapshot.fetchedAt / 1000) +
+            seatCacheFreshnessSeconds(d, snapshot.fetchedAt);
+          summaryItem.freshUntil = summaryItem.freshUntil
+            ? Math.min(summaryItem.freshUntil, freshUntil)
+            : freshUntil;
+          summaryItem.lastUpdated = new Date(snapshot.fetchedAt).toISOString();
           const availCache = matched.availabilityCache as Record<
             string,
             Record<string, unknown>
@@ -588,7 +587,7 @@ export class SeatCacheCronService {
     });
 
     return {
-      success: true,
+      success: failedCount === 0,
       totalRoutesWarmed: warmedCount,
       totalTargetsProcessed: targets.length,
       summaryCount: Object.keys(summaryMap).length,

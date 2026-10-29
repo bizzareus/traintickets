@@ -27,6 +27,13 @@ import {
 } from '../common/fetch-with-timeout';
 import { createRetryingAxiosClient } from '../common/retrying-axios';
 import { SharedWork } from '../common/shared-work';
+import type { RouteCacheLookupResult } from './dynamodb-seat-cache.service';
+
+export interface TrainSearchCacheOptions {
+  source?: 'user' | 'warmer' | 'internal';
+  /** Only authenticated admin callers may request an upstream refresh. */
+  forceRefresh?: boolean;
+}
 
 const availabilityClient = createRetryingAxiosClient({
   retries: 3,
@@ -635,6 +642,7 @@ export class BookingV2Service {
     dateInput: string,
     classes?: string[],
     signal?: AbortSignal,
+    options: TrainSearchCacheOptions = {},
   ): Promise<unknown> {
     const startTime = Date.now();
     const dateDdMmYyyy = this.normalizeToRailApiDate(dateInput);
@@ -648,98 +656,100 @@ export class BookingV2Service {
     const f = from.trim().toUpperCase();
     const t = to.trim().toUpperCase();
 
-    // 1. Check DynamoDB seat cache first
-    let rawSearch: Record<string, unknown>;
-    const cacheLookup = await this.dynamoDbSeatCache.getRouteCachedSearch(
-      f,
-      t,
-      dateYmd,
-    );
-    if (cacheLookup.value) {
-      const durationMs = Date.now() - startTime;
-      this.logger.log(
-        `[booking-v2/trains/search] DynamoDB cache HIT for ${f}-${t} on ${dateYmd} (${durationMs}ms)`,
-      );
-      this.posthogAnalytics.capture('seat_cache_search', {
-        hit: true,
-        status: 'hit',
-        from: f,
-        to: t,
-        route: `${f}-${t}`,
-        journey_date: dateYmd,
-        duration_ms: durationMs,
-        classes: classes ?? [],
-      });
-      rawSearch = cacheLookup.value;
-    } else {
-      // 2. Check if identical upstream request is already in-flight to prevent cache stampedes
-      const flightKey = `${f}#${t}#${dateDdMmYyyy}`;
-      let flightPromise = this.searchInflight.get(flightKey);
-
-      if (flightPromise && !signal) {
-        this.logger.log(
-          `[booking-v2/trains/search] Coalescing duplicate search request for ${flightKey}`,
-        );
-        rawSearch = await flightPromise;
+    const cacheLookup: RouteCacheLookupResult = options.forceRefresh
+      ? { status: 'miss', value: null, layer: 'none' }
+      : await this.dynamoDbSeatCache.getRouteCachedSearch(f, t, dateYmd);
+    let coalesced = false;
+    let succeeded = false;
+    try {
+      let rawSearch: Record<string, unknown>;
+      if (cacheLookup.value) {
+        rawSearch = cacheLookup.value;
       } else {
-        flightPromise = (async () => {
+        // 2. Check if identical upstream request is already in-flight to prevent cache stampedes
+        const flightKey = `${f}#${t}#${dateDdMmYyyy}`;
+        let flightPromise = this.searchInflight.get(flightKey);
+
+        if (flightPromise && !signal) {
+          coalesced = true;
           this.logger.log(
-            `[booking-v2/trains/search] DynamoDB cache ${cacheLookup.status.toUpperCase()} for ${f}-${t} on ${dateYmd}, fetching live upstream`,
+            `[booking-v2/trains/search] Coalescing duplicate search request for ${flightKey}`,
           );
-          const liveResult = (await this.fetchTrainsFromUpstream(
-            f,
-            t,
-            dateDdMmYyyy,
-            signal,
-          )) as Record<string, unknown>;
-
-          // 3. Save to DynamoDB in background
-          void this.dynamoDbSeatCache
-            .saveRouteCachedSearch(f, t, dateYmd, liveResult)
-            .catch((err) => {
-              this.logger.warn(
-                `[booking-v2/trains/search] Failed to cache live search to DynamoDB: ${err instanceof Error ? err.message : String(err)}`,
-              );
-            });
-
-          return liveResult;
-        })();
-
-        if (!signal) {
-          this.searchInflight.set(flightKey, flightPromise);
-        }
-
-        try {
           rawSearch = await flightPromise;
-        } finally {
+        } else {
+          flightPromise = (async () => {
+            this.logger.log(
+              `[booking-v2/trains/search] DynamoDB cache ${cacheLookup.status.toUpperCase()} for ${f}-${t} on ${dateYmd}, fetching live upstream`,
+            );
+            const liveResult = (await this.fetchTrainsFromUpstream(
+              f,
+              t,
+              dateDdMmYyyy,
+              signal,
+            )) as Record<string, unknown>;
+
+            // 3. Save to DynamoDB in background
+            void this.dynamoDbSeatCache
+              .saveRouteCachedSearch(f, t, dateYmd, liveResult)
+              .catch((err) => {
+                this.logger.warn(
+                  `[booking-v2/trains/search] Failed to cache live search to DynamoDB: ${err instanceof Error ? err.message : String(err)}`,
+                );
+              });
+
+            return liveResult;
+          })();
+
           if (!signal) {
-            this.searchInflight.delete(flightKey);
+            this.searchInflight.set(flightKey, flightPromise);
+          }
+
+          try {
+            rawSearch = await flightPromise;
+          } finally {
+            if (!signal) {
+              this.searchInflight.delete(flightKey);
+            }
           }
         }
       }
 
-      const durationMs = Date.now() - startTime;
+      // Enrichment is request-specific; never mutate the stored cache snapshot.
+      const filtered = this.filterTrainSearchByClasses(
+        structuredClone(rawSearch),
+        classes,
+      );
+      if (options.source !== 'warmer') {
+        await this.attachCachedAlternatePaths(
+          filtered,
+          f,
+          t,
+          dateDdMmYyyy,
+          classes,
+        );
+      }
+      succeeded = true;
+      return filtered;
+    } finally {
       this.posthogAnalytics.capture('seat_cache_search', {
-        hit: false,
+        hit: Boolean(cacheLookup.value),
         status: cacheLookup.status,
+        request_source: options.source ?? 'internal',
+        cache_layer: cacheLookup.layer ?? 'none',
+        cache_age_ms: cacheLookup.ageMs ?? null,
+        miss_reason: options.forceRefresh
+          ? 'forced_refresh'
+          : (cacheLookup.missReason ?? null),
+        coalesced,
+        success: succeeded,
         from: f,
         to: t,
         route: `${f}-${t}`,
         journey_date: dateYmd,
-        duration_ms: durationMs,
+        duration_ms: Date.now() - startTime,
         classes: classes ?? [],
       });
     }
-
-    const filtered = this.filterTrainSearchByClasses(rawSearch, classes);
-    await this.attachCachedAlternatePaths(
-      filtered,
-      f,
-      t,
-      dateDdMmYyyy,
-      classes,
-    );
-    return filtered;
   }
 
   /**

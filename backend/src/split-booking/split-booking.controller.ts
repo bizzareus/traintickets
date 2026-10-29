@@ -366,7 +366,8 @@ export class SplitBookingController {
     @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
     @Req() req: Request,
     @Param('id') id: string,
-    @Body() body?: { reason?: string; refund?: boolean },
+    @Body()
+    body?: { reason?: string; refund?: boolean; manualRefundId?: string },
   ) {
     assertAdminAuth({ headerPw: pw, req });
     return this.splitBookingService.adminCancelAndRefundBooking(id, body);
@@ -377,7 +378,8 @@ export class SplitBookingController {
     @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
     @Req() req: Request,
     @Param('id') id: string,
-    @Body() body?: { reason?: string; refund?: boolean },
+    @Body()
+    body?: { reason?: string; refund?: boolean; manualRefundId?: string },
   ) {
     assertAdminAuth({ headerPw: pw, req });
     return this.splitBookingService.adminCancelAndRefundBooking(id, body);

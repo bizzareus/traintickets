@@ -40,6 +40,7 @@ COPY patches ./patches/
 RUN npm ci --omit=dev && npx prisma generate
 
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/data ./data
 
 ENV NODE_OPTIONS="--max-old-space-size=450"
 EXPOSE 3009
