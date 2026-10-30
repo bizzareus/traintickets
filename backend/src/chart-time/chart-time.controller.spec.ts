@@ -85,7 +85,14 @@ describe('ChartTimeController', () => {
       const mockReq = { headers: {}, cookies: {} } as unknown as Request;
 
       await expect(
-        controller.fetch('', mockReq, '12345', 'NDLS', 'New Delhi', '2026-05-01'),
+        controller.fetch(
+          '',
+          mockReq,
+          '12345',
+          'NDLS',
+          'New Delhi',
+          '2026-05-01',
+        ),
       ).rejects.toThrow(UnauthorizedException);
     });
 

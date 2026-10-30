@@ -250,7 +250,7 @@ export class Service2Controller {
       captureSentryException(err, {
         tags: { route: 'POST /api/service2/check/stream' },
       });
-      await writeSse('error', { message });
+      await writeSse('error', { message: 'Service 2 (IRCTC) check failed.' });
       endResponse(res);
     } finally {
       lifecycle.cleanup();
@@ -302,9 +302,7 @@ export class Service2Controller {
         `[service2/check] step=error ${message}`,
         err instanceof Error ? err.stack : undefined,
       );
-      throw new ServiceUnavailableException(
-        'Service 2 (IRCTC) check failed.',
-      );
+      throw new ServiceUnavailableException('Service 2 (IRCTC) check failed.');
     }
   }
 }
