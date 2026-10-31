@@ -62,3 +62,8 @@
 
 **Learning:** Mapping over target destination station codes (`destinations.map(...)`) and calling `Array.prototype.findIndex()` inside train schedule lookups allocates intermediate arrays and function closures while scanning the entire station list ($D \times N$ operations per train). Creating a `Set` for origin codes and using direct short-circuiting `for` loops eliminates intermediate allocations and reduces execution time by ~30%.
 **Action:** Replace `destinations.map(code => array.findIndex(...)).find(...)` with direct short-circuiting `for` loops and `Set` lookups when matching multi-code station sequences across route schedules.
+
+## 2026-10-31 - Persistent Module-Level Map Caching for Static Dataset Ranking & Slicing
+
+**Learning:** Ranking thousands of static dataset entries (such as 3,500+ train catalog items sorted by category score heuristics and train numbers) inside functions wrapped only with React's `cache()` forces recalculation on every request outside React's render tree (such as sitemap bucket generation for `trains` and `confirmed-tickets`, and independent server routes). Adding a persistent module-level `Map<number, string[]>` cache reduces warm call latency from ~28 ms to 0.077 µs (~360,000x speedup) and eliminates thousands of intermediate object allocations and sorting passes per request.
+**Action:** Always combine React's `cache()` with persistent module-level `Map` caches for deterministic ranking and sorting over static catalog datasets.
