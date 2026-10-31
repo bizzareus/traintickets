@@ -367,7 +367,22 @@ export class SplitBookingController {
     @Req() req: Request,
     @Param('id') id: string,
     @Body()
-    body?: { reason?: string; refund?: boolean; manualRefundId?: string },
+    body?: {
+      reason?: string;
+      refund?: boolean;
+      refundAmount?: number;
+      manualRefundId?: string;
+      cancellationPdf?: {
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      };
+      cancellationPdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+    },
   ) {
     assertAdminAuth({ headerPw: pw, req });
     return this.splitBookingService.adminCancelAndRefundBooking(id, body);
@@ -379,10 +394,88 @@ export class SplitBookingController {
     @Req() req: Request,
     @Param('id') id: string,
     @Body()
-    body?: { reason?: string; refund?: boolean; manualRefundId?: string },
+    body?: {
+      reason?: string;
+      refund?: boolean;
+      refundAmount?: number;
+      manualRefundId?: string;
+      cancellationPdf?: {
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      };
+      cancellationPdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+    },
   ) {
     assertAdminAuth({ headerPw: pw, req });
     return this.splitBookingService.adminCancelAndRefundBooking(id, body);
+  }
+
+  @Post('admin/:id/cancellation-pdf')
+  @UseInterceptors(
+    FileInterceptor('file', { limits: { fileSize: 30 * 1024 * 1024 } }),
+  )
+  async adminUploadCancellationPdf(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
+    @Param('id') id: string,
+    @UploadedFile()
+    file?: {
+      buffer: Buffer;
+      originalname?: string;
+      mimetype?: string;
+    },
+    @Body()
+    body?: {
+      base64?: string;
+      filename?: string;
+      contentType?: string;
+      cancellationPdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+      pdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+    },
+  ) {
+    assertAdminAuth({ headerPw: pw, req });
+    return this.splitBookingService.adminUploadCancellationPdf(id, file, body);
+  }
+
+  @Get('cancellation-pdf/:bookingRef')
+  async getCancellationPdf(
+    @Param('bookingRef') bookingRef: string,
+    @Query('json') json: string | undefined,
+    @Res() res: Response,
+  ) {
+    const result =
+      await this.splitBookingService.getCancellationPdf(bookingRef);
+    if ('redirectUrl' in result && result.redirectUrl) {
+      if (json === 'true' || json === '1') {
+        return res.json({
+          ok: true,
+          signedUrl: result.redirectUrl,
+          filename: result.filename,
+        });
+      }
+      return res.redirect(302, result.redirectUrl);
+    }
+    if ('buffer' in result) {
+      res.setHeader('Content-Type', result.contentType);
+      res.setHeader(
+        'Content-Disposition',
+        `inline; filename="${encodeURIComponent(result.filename)}"`,
+      );
+      return res.send(Buffer.from(result.buffer));
+    }
   }
 
   // --- Cancellation flow endpoints -------------------------------------------

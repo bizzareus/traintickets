@@ -61,7 +61,9 @@ describe('SplitBookingService', () => {
   let s3Storage: {
     uploadTicketPdf: jest.Mock;
     uploadInsurancePdf: jest.Mock;
+    uploadCancellationPdf: jest.Mock;
     getSignedTicketPdfUrl: jest.Mock;
+    getSignedCancellationPdfUrl: jest.Mock;
     deleteTicketPdf: jest.Mock;
   };
 
@@ -137,10 +139,18 @@ describe('SplitBookingService', () => {
       uploadInsurancePdf: jest
         .fn()
         .mockResolvedValue('insurance/LB-TEST/insurance.pdf'),
+      uploadCancellationPdf: jest
+        .fn()
+        .mockResolvedValue('cancellations/LB-TEST/cancellation.pdf'),
       getSignedTicketPdfUrl: jest
         .fn()
         .mockResolvedValue(
           'https://lastberth-ticket-storage.s3.ap-south-1.amazonaws.com/tickets/LB-TEST/ticket.pdf?signed=1',
+        ),
+      getSignedCancellationPdfUrl: jest
+        .fn()
+        .mockResolvedValue(
+          'https://lastberth-ticket-storage.s3.ap-south-1.amazonaws.com/cancellations/LB-TEST/cancellation.pdf?signed=1',
         ),
       deleteTicketPdf: jest.fn().mockResolvedValue(undefined),
     };
@@ -2304,6 +2314,213 @@ describe('SplitBookingService', () => {
           }),
         }),
       );
+    });
+
+    it('cancels booking and initiates refund for specified amount and uploads cancellation PDF', async () => {
+      const mockBooking = {
+        id: 'b-refund-partial',
+        bookingRef: 'LB-PARTIAL1',
+        trainNumber: '12951',
+        trainName: 'Rajdhani Express',
+        fromStationCode: 'MMCT',
+        toStationCode: 'NDLS',
+        journeyDate: new Date('2026-10-15'),
+        totalFare: 2000,
+        serviceFee: 80,
+        contactMobile: '9876543210',
+        contactEmail: 'passenger@example.com',
+        bookingStatus: 'CONFIRMED',
+        paymentStatus: 'PAID',
+        muzoboxPaymentId: 'mb_pay_part1',
+        razorpayPaymentId: 'pay_xyz_part1',
+      };
+
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(mockBooking);
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        ...mockBooking,
+        bookingStatus: 'CANCELLED',
+      });
+      prisma.bookingCancellationRequest.findFirst.mockResolvedValue(null);
+      prisma.bookingCancellationRequest.create.mockResolvedValue({
+        id: 'cr-part',
+        bookingId: mockBooking.id,
+        status: 'CANCELLED',
+      });
+
+      muzobox.post.mockResolvedValue({
+        data: {
+          status: 'refunded',
+          amount: 1750,
+          razorpayRefundId: 'rfnd_part_123',
+        },
+      });
+
+      const res = await service.adminCancelAndRefundBooking('LB-PARTIAL1', {
+        reason: 'IRCTC cancellation with deduction',
+        refundAmount: 1750,
+        cancellationPdf: {
+          base64: 'JVBERi0xLjQKJcTl8uXr...',
+          filename: 'irctc_cancellation_receipt.pdf',
+        },
+      });
+
+      expect(res.success).toBe(true);
+      expect(res.refundInitiated).toBe(true);
+      expect(res.refundAmount).toBe(1750);
+      expect(res.refundId).toBe('rfnd_part_123');
+      expect(res.hasCancellationPdf).toBe(true);
+
+      // Verify Muzobox proxy was called with specified amount 1750
+      expect(muzobox.post).toHaveBeenCalledWith(
+        'proxy-payments/mb_pay_part1/refund',
+        expect.objectContaining({
+          amount: 1750,
+          referenceId: 'LB-PARTIAL1',
+        }),
+        expect.any(Object),
+      );
+
+      // Verify S3 storage uploaded cancellation PDF
+      expect(s3Storage.uploadCancellationPdf).toHaveBeenCalledWith(
+        'LB-PARTIAL1',
+        expect.any(Buffer),
+        'irctc_cancellation_receipt.pdf',
+        'application/pdf',
+      );
+
+      // Verify booking was updated to CANCELLED with cancellation PDF key
+      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 'b-refund-partial' },
+          data: expect.objectContaining({
+            bookingStatus: 'CANCELLED',
+            cancellationPdfS3Key: 'cancellations/LB-TEST/cancellation.pdf',
+            cancellationPdfFilename: 'irctc_cancellation_receipt.pdf',
+          }),
+        }),
+      );
+
+      // Verify cancellation request created with status CANCELLED and refundAmount
+      expect(prisma.bookingCancellationRequest.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            bookingId: 'b-refund-partial',
+            status: 'CANCELLED',
+            refundAmount: 1750,
+            refundId: 'rfnd_part_123',
+            cancellationPdfFilename: 'irctc_cancellation_receipt.pdf',
+          }),
+        }),
+      );
+
+      // Verify email was sent with attachment and refund amount
+      expect(notifications.sendEmail).toHaveBeenCalledWith(
+        'passenger@example.com',
+        'Booking Cancelled & Refund Initiated — LB-PARTIAL1 (₹1750)',
+        expect.stringContaining('₹1750'),
+        expect.objectContaining({
+          attachments: [
+            expect.objectContaining({
+              filename: 'irctc_cancellation_receipt.pdf',
+            }),
+          ],
+        }),
+      );
+    });
+
+    it('handles adminUpdateCancellation with status CANCELLED and initiates refund and stores cancellation PDF', async () => {
+      const mockReq = {
+        id: 'cr-update-1',
+        bookingId: 'b-update-1',
+        bookingRef: 'LB-UPD1',
+        mobile: '9876543210',
+        reason: 'Customer requested',
+        status: 'PENDING',
+        booking: {
+          id: 'b-update-1',
+          bookingRef: 'LB-UPD1',
+          trainNumber: '12951',
+          trainName: 'Rajdhani Express',
+          fromStationCode: 'MMCT',
+          toStationCode: 'NDLS',
+          journeyDate: new Date('2026-10-15'),
+          totalFare: 2000,
+          serviceFee: 80,
+          contactMobile: '9876543210',
+          contactEmail: 'passenger@example.com',
+          bookingStatus: 'CONFIRMED',
+          paymentStatus: 'PAID',
+          muzoboxPaymentId: 'mb_pay_upd1',
+          razorpayPaymentId: 'pay_xyz_upd1',
+        },
+      };
+
+      prisma.bookingCancellationRequest.findUnique.mockResolvedValue(mockReq);
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(mockReq.booking);
+      prisma.splitTicketBooking.update.mockResolvedValue({
+        ...mockReq.booking,
+        bookingStatus: 'CANCELLED',
+      });
+      prisma.bookingCancellationRequest.findFirst.mockResolvedValue(mockReq);
+      prisma.bookingCancellationRequest.update.mockResolvedValue({
+        ...mockReq,
+        status: 'CANCELLED',
+        refundAmount: 1500,
+      });
+
+      muzobox.post.mockResolvedValue({
+        data: {
+          status: 'refunded',
+          amount: 1500,
+          razorpayRefundId: 'rfnd_upd_888',
+        },
+      });
+
+      const res = await service.adminUpdateCancellation('cr-update-1', {
+        status: 'CANCELLED',
+        refundAmount: 1500,
+        adminNotes: 'Confirmed cancellation on IRCTC',
+        cancellationPdf: {
+          base64: 'JVBERi0xLjQK...',
+          filename: 'cancellation.pdf',
+        },
+      });
+
+      expect(res.success).toBe(true);
+      expect(res.refundAmount).toBe(1500);
+      expect(res.refundId).toBe('rfnd_upd_888');
+      expect(muzobox.post).toHaveBeenCalledWith(
+        'proxy-payments/mb_pay_upd1/refund',
+        expect.objectContaining({
+          amount: 1500,
+          referenceId: 'LB-UPD1',
+        }),
+        expect.any(Object),
+      );
+    });
+
+    it('rejects refund amount that exceeds booking total', async () => {
+      const mockBooking = {
+        id: 'b-exceed',
+        bookingRef: 'LB-EXCEED',
+        trainNumber: '12951',
+        totalFare: 1000,
+        serviceFee: 80,
+        contactMobile: '9876543210',
+        contactEmail: 'exceed@example.com',
+        bookingStatus: 'CONFIRMED',
+        paymentStatus: 'PAID',
+        muzoboxPaymentId: 'mb_pay_exceed',
+        razorpayPaymentId: null,
+      };
+
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(mockBooking);
+
+      await expect(
+        service.adminCancelAndRefundBooking('LB-EXCEED', {
+          refundAmount: 5000, // exceeds total 1080
+        }),
+      ).rejects.toThrow(BadRequestException);
     });
   });
 
