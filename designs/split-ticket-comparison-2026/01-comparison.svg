@@ -10,18 +10,18 @@
   </g>
   <g font-family="DIN Condensed, Arial Narrow, Arial, sans-serif" font-weight="700">
     <text x="64" y="245" fill="#88E2B6" font-size="92">CONFIRMED TICKET</text>
-    <text x="64" y="318" fill="#FFFFFF" font-size="58">ANAND VIHAR (ANVT) → PATLIPUTRA (PPTA)</text>
-    <text x="64" y="375" fill="#FFBA55" font-size="44">TRAVEL DATE: 30 OCT 2026</text>
+    <text x="64" y="318" fill="#FFFFFF" font-size="58">HOWRAH (HWH) → PURI (PURI)</text>
+    <text x="64" y="375" fill="#FFBA55" font-size="44">TRAVEL DATE: 01 NOV 2026</text>
   </g>
   <g font-family="Arial, Helvetica, sans-serif">
-    <text x="65" y="430" fill="#E4EAF2" font-size="28" font-weight="700">PPTA FESTIVL SPL · 04096 · DEPARTS 12:05 AM</text>
+    <text x="65" y="430" fill="#E4EAF2" font-size="28" font-weight="700">SATABDI EXPRESS · 12277 · DEPARTS 02:15 PM</text>
 
     <rect x="64" y="480" width="310" height="566" rx="20" fill="#FFF4EF"/>
     <rect x="396" y="480" width="620" height="566" rx="20" fill="#F1FCF6"/>
     <rect x="64" y="504" width="5" height="62" fill="#BC5849"/>
     <rect x="396" y="504" width="5" height="62" fill="#247251"/>
     <text x="86" y="531" fill="#101B2C" font-size="33" font-weight="700">ConfirmTkt</text>
-    <text x="86" y="572" fill="#795B54" font-size="23">End-to-end · 3A &amp; 2A</text>
+    <text x="86" y="572" fill="#795B54" font-size="23">End-to-end · CC &amp; EC</text>
     <path d="M86 597H352" stroke="#E3CBC2"/>
     <text x="86" y="640" fill="#795B54" font-size="18" letter-spacing="1">SCREENSHOT EXCERPT</text>
     <rect x="80" y="662" width="278" height="127" rx="8" fill="#FFFFFF"/>
@@ -34,14 +34,14 @@
     <text x="422" y="531" fill="#355AED" font-size="35" font-weight="700" letter-spacing="-1">LastBerth</text>
     <text x="422" y="572" fill="#466A57" font-size="23">Available seats in split legs</text>
     <path d="M422 597H990" stroke="#C5E1D1"/>
-    <text x="422" y="645" fill="#315A43" font-size="24" font-weight="700">01  ANVT → BKLA (3A · AVL 2 · ₹1,655)</text>
+    <text x="422" y="645" fill="#315A43" font-size="24" font-weight="700">01  HWH → BLS (CC · AVL 9 · ₹745)</text>
     <rect x="422" y="662" width="568" height="120" rx="8" fill="#FFFFFF"/>
     <image href="crops/lastberth-leg-1.png" x="432" y="667" width="548" height="110" preserveAspectRatio="xMidYMid meet"/>
-    <text x="422" y="830" fill="#315A43" font-size="24" font-weight="700">02  BKLA → PPTA (SL · AVL 263 · ₹415)</text>
+    <text x="422" y="830" fill="#315A43" font-size="24" font-weight="700">02  BLS → PURI (CC · AVL 13 · ₹990)</text>
     <rect x="422" y="847" width="568" height="120" rx="8" fill="#FFFFFF"/>
     <image href="crops/lastberth-leg-2.png" x="432" y="852" width="548" height="110" preserveAspectRatio="xMidYMid meet"/>
 
-    <text x="64" y="1091" fill="#D6E0EB" font-size="25">2 tickets · 3A + SL · Class / berth change needed</text>
+    <text x="64" y="1091" fill="#D6E0EB" font-size="25">2 tickets · CC + CC · Berth change needed at Balasore (BLS)</text>
     <rect x="64" y="1125" width="952" height="105" rx="14" fill="#FFFFFF"/>
     <image href="crops/lastberth-total.png" x="86" y="1135" width="440" height="85" preserveAspectRatio="xMidYMid meet"/>
     <rect x="548" y="1143" width="447" height="69" rx="9" fill="#355AED"/>

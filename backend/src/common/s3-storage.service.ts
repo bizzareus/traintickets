@@ -167,6 +167,79 @@ export class S3StorageService {
   }
 
   /**
+   * Uploads a cancellation PDF for a booking to S3.
+   * Returns the S3 object key (e.g. "cancellations/LB-ABC12/cancellation.pdf").
+   */
+  async uploadCancellationPdf(
+    bookingRef: string,
+    buffer: Buffer,
+    filename: string,
+    contentType = 'application/pdf',
+  ): Promise<string> {
+    const cleanFilename = sanitizeFilename(filename);
+    const key = `cancellations/${bookingRef}/${cleanFilename}`;
+
+    try {
+      const command = new PutObjectCommand({
+        Bucket: this.bucketName,
+        Key: key,
+        Body: buffer,
+        ContentType: contentType,
+        ContentDisposition: `inline; filename="${cleanFilename}"`,
+      });
+
+      await this.s3Client.send(command);
+      this.logger.log(
+        `[S3Storage] Uploaded cancellation PDF for ${bookingRef} to s3://${this.bucketName}/${key} (${buffer.length} bytes)`,
+      );
+      return key;
+    } catch (err) {
+      this.logger.error(
+        `[S3Storage] Failed to upload cancellation PDF for ${bookingRef}: ${awsErrorLabel(err)}`,
+        err instanceof Error ? err.stack : undefined,
+      );
+      throw new InternalServerErrorException(
+        'Failed to store cancellation PDF in cloud storage',
+      );
+    }
+  }
+
+  /**
+   * Generates a time-limited pre-signed URL for viewing or downloading a cancellation PDF.
+   */
+  async getSignedCancellationPdfUrl(
+    s3Key: string,
+    filename?: string,
+    expiresInSeconds = DEFAULT_URL_EXPIRATION_SECONDS,
+  ): Promise<string> {
+    try {
+      const cleanFilename = filename ? sanitizeFilename(filename) : undefined;
+      const command = new GetObjectCommand({
+        Bucket: this.bucketName,
+        Key: s3Key,
+        ResponseContentType: 'application/pdf',
+        ResponseContentDisposition: cleanFilename
+          ? `inline; filename="${cleanFilename}"`
+          : 'inline',
+      });
+
+      const signedUrl = await getSignedUrl(this.s3Client, command, {
+        expiresIn: expiresInSeconds,
+      });
+
+      return signedUrl;
+    } catch (err) {
+      this.logger.error(
+        `[S3Storage] Failed to generate signed URL for key "${s3Key}": ${awsErrorLabel(err)}`,
+        err instanceof Error ? err.stack : undefined,
+      );
+      throw new InternalServerErrorException(
+        'Failed to generate secure cancellation download link',
+      );
+    }
+  }
+
+  /**
    * Deletes a ticket PDF from AWS S3.
    */
   async deleteTicketPdf(s3Key: string): Promise<void> {

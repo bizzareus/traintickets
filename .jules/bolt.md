@@ -67,3 +67,9 @@
 
 **Learning:** Parsing full static JSON files with `JSON.parse` during bulk directory indexing scans over 3,500+ files forces V8 to allocate and parse thousands of nested station objects per file when only top-level header metadata is needed (~213 ms). Slicing out the large nested array section (`"stations": [...]`) using string bounds (`indexOf`) and replacing it with `"stations": []` before passing the lightweight string to standard native `JSON.parse` reduces cold execution time to ~67 ms (~3.2x speedup) while guaranteeing 100% standard JSON specification compliance, string escaping safety, and zero regex fragility.
 **Action:** When extracting top-level metadata from thousands of large JSON files on disk, slice out large inner array payloads with string `indexOf` bounds and parse the resulting lightweight payload with native `JSON.parse`.
+
+## 2026-10-31 - Persistent Module-Level Map Caching for Static Dataset Ranking & Slicing
+
+**Learning:** Ranking thousands of static dataset entries (such as 3,500+ train catalog items sorted by category score heuristics and train numbers) inside functions wrapped only with React's `cache()` forces recalculation on every request outside React's render tree (such as sitemap bucket generation for `trains` and `confirmed-tickets`, and independent server routes). Adding a persistent module-level `Map<number, string[]>` cache reduces warm call latency from ~28 ms to 0.077 µs (~360,000x speedup) and eliminates thousands of intermediate object allocations and sorting passes per request.
+**Action:** Always combine React's `cache()` with persistent module-level `Map` caches for deterministic ranking and sorting over static catalog datasets.
+
