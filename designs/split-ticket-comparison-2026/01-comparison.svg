@@ -11,7 +11,7 @@
   <g font-family="DIN Condensed, Arial Narrow, Arial, sans-serif" font-weight="700">
     <text x="64" y="245" fill="#88E2B6" font-size="92">CONFIRMED TICKET</text>
     <text x="64" y="318" fill="#FFFFFF" font-size="58">HOWRAH (HWH) → PURI (PURI)</text>
-    <text x="64" y="375" fill="#FFBA55" font-size="44">TRAVEL DATE: 01 NOV 2026</text>
+    <text x="64" y="375" fill="#FFBA55" font-size="44">TRAVEL DATE: 02 NOV 2026</text>
   </g>
   <g font-family="Arial, Helvetica, sans-serif">
     <text x="65" y="430" fill="#E4EAF2" font-size="28" font-weight="700">SATABDI EXPRESS · 12277 · DEPARTS 02:15 PM</text>
@@ -34,10 +34,10 @@
     <text x="422" y="531" fill="#355AED" font-size="35" font-weight="700" letter-spacing="-1">LastBerth</text>
     <text x="422" y="572" fill="#466A57" font-size="23">Available seats in split legs</text>
     <path d="M422 597H990" stroke="#C5E1D1"/>
-    <text x="422" y="645" fill="#315A43" font-size="24" font-weight="700">01  HWH → BLS (CC · AVL 9 · ₹745)</text>
+    <text x="422" y="645" fill="#315A43" font-size="24" font-weight="700">01  HWH → BLS (CC · AVL 44 · ₹745)</text>
     <rect x="422" y="662" width="568" height="120" rx="8" fill="#FFFFFF"/>
     <image href="crops/lastberth-leg-1.png" x="432" y="667" width="548" height="110" preserveAspectRatio="xMidYMid meet"/>
-    <text x="422" y="830" fill="#315A43" font-size="24" font-weight="700">02  BLS → PURI (CC · AVL 13 · ₹990)</text>
+    <text x="422" y="830" fill="#315A43" font-size="24" font-weight="700">02  BLS → PURI (CC · AVL 39 · ₹990)</text>
     <rect x="422" y="847" width="568" height="120" rx="8" fill="#FFFFFF"/>
     <image href="crops/lastberth-leg-2.png" x="432" y="852" width="548" height="110" preserveAspectRatio="xMidYMid meet"/>
 
