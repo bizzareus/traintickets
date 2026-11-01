@@ -1191,7 +1191,7 @@ function SplitBookingsAdminContent() {
                 placeholder="Search by Booking Ref, Train, Passenger, Phone, Email, PNR…"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-9 pr-3 text-xs text-slate-800 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20"
+                className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-9 pr-3 text-xs text-slate-800 placeholder:text-slate-400/70 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20"
               />
             </div>
 
@@ -1626,7 +1626,7 @@ function SplitBookingsAdminContent() {
                 placeholder="Search cancellations by Booking Ref, Mobile, Train, Reason…"
                 value={cancellationSearch}
                 onChange={(e) => setCancellationSearch(e.target.value)}
-                className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-9 pr-3 text-xs text-slate-800 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20"
+                className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-9 pr-3 text-xs text-slate-800 placeholder:text-slate-400/70 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20"
               />
             </div>
 
@@ -1684,7 +1684,8 @@ function SplitBookingsAdminContent() {
                       return (
                         <tr
                           key={c.id}
-                          className="transition hover:bg-slate-50/50"
+                          onClick={() => openCancellationModal(c)}
+                          className="cursor-pointer transition hover:bg-slate-50"
                         >
                           <td className="whitespace-nowrap px-4 py-3.5 align-top">
                             <span className="block font-medium text-slate-800">
@@ -1714,7 +1715,10 @@ function SplitBookingsAdminContent() {
                               </span>
                               <button
                                 type="button"
-                                onClick={() => copyToClipboard(c.bookingRef)}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  copyToClipboard(c.bookingRef);
+                                }}
                                 className="text-slate-400 transition hover:text-slate-600"
                                 title="Copy Booking Ref"
                               >
@@ -1753,6 +1757,7 @@ function SplitBookingsAdminContent() {
                             <div>
                               <a
                                 href={`tel:${c.mobile}`}
+                                onClick={(e) => e.stopPropagation()}
                                 className="block font-bold text-blue-600 hover:underline"
                               >
                                 {c.mobile}
@@ -1760,6 +1765,7 @@ function SplitBookingsAdminContent() {
                               {booking?.contactEmail && (
                                 <a
                                   href={`mailto:${booking.contactEmail}`}
+                                  onClick={(e) => e.stopPropagation()}
                                   className="block max-w-[140px] truncate text-[11px] text-slate-500 hover:underline"
                                 >
                                   {booking.contactEmail}
@@ -1815,6 +1821,7 @@ function SplitBookingsAdminContent() {
                                 href={cancellationPdfUrl(c.bookingRef)}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
                                 className="mt-1 inline-flex items-center gap-1 text-[11px] font-semibold text-purple-700 hover:text-purple-900 hover:underline"
                               >
                                 <FileText className="h-3 w-3" />
@@ -1837,7 +1844,10 @@ function SplitBookingsAdminContent() {
                           </td>
 
                           <td className="whitespace-nowrap px-4 py-3.5 text-right align-top">
-                            <div className="flex flex-col items-end gap-1.5">
+                            <div
+                              className="flex flex-col items-end gap-1.5"
+                              onClick={(e) => e.stopPropagation()}
+                            >
                               {c.status !== "CANCELLED" && (
                                 <button
                                   type="button"
@@ -1850,14 +1860,6 @@ function SplitBookingsAdminContent() {
                                   Cancelled
                                 </button>
                               )}
-
-                              <button
-                                type="button"
-                                onClick={() => openCancellationModal(c)}
-                                className="shadow-xs inline-flex cursor-pointer items-center gap-1 rounded-lg bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-white transition hover:bg-slate-800"
-                              >
-                                Update Status
-                              </button>
 
                               {booking && (
                                 <button
@@ -2843,7 +2845,7 @@ function SplitBookingsAdminContent() {
                           placeholder="Enter net refund amount after IRCTC cancellation deductions"
                           value={actionRefundAmount}
                           onChange={(e) => setActionRefundAmount(e.target.value)}
-                          className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-7 pr-3 text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-purple-600/20"
+                          className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-7 pr-3 text-xs font-semibold text-slate-900 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-purple-600/20"
                         />
                       </div>
                       <p className="mt-1 text-[11px] text-slate-500">
@@ -2906,7 +2908,7 @@ function SplitBookingsAdminContent() {
                         placeholder="e.g. rfnd_xxxxxxxxxxxxxx"
                         value={actionManualRefundId}
                         onChange={(e) => setActionManualRefundId(e.target.value)}
-                        className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 font-mono text-xs text-slate-800 focus:ring-2 focus:ring-purple-600/20"
+                        className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 font-mono text-xs text-slate-800 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-purple-600/20"
                       />
                     </div>
                   </div>
@@ -2926,7 +2928,7 @@ function SplitBookingsAdminContent() {
                   }
                   value={actionNotes}
                   onChange={(e) => setActionNotes(e.target.value)}
-                  className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 focus:ring-2 focus:ring-blue-600/20"
+                  className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-blue-600/20"
                 />
               </div>
 
@@ -3214,7 +3216,7 @@ function SplitBookingsAdminContent() {
                         placeholder="e.g. 1850"
                         value={customRefundAmount}
                         onChange={(e) => setCustomRefundAmount(e.target.value)}
-                        className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-7 pr-3 text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-purple-600/20"
+                        className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-7 pr-3 text-xs font-semibold text-slate-900 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-purple-600/20"
                       />
                     </div>
                     <p className="mt-1 text-[11px] text-slate-500">
@@ -3275,7 +3277,7 @@ function SplitBookingsAdminContent() {
                       placeholder="e.g. rfnd_xxxxxxxxxxxxxx"
                       value={manualRefundId}
                       onChange={(e) => setManualRefundId(e.target.value)}
-                      className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 font-mono text-xs text-slate-800 focus:ring-2 focus:ring-purple-600/20"
+                      className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 font-mono text-xs text-slate-800 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-purple-600/20"
                     />
                   </div>
                 </>
@@ -3290,7 +3292,7 @@ function SplitBookingsAdminContent() {
                   placeholder="e.g. Passenger requested cancellation / Trains unavailable"
                   value={refundReason}
                   onChange={(e) => setRefundReason(e.target.value)}
-                  className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 focus:ring-2 focus:ring-purple-600/20"
+                  className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-purple-600/20"
                 />
               </div>
 
