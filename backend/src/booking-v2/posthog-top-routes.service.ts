@@ -1,14 +1,19 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { fetchWithTimeout } from '../common/fetch-with-timeout';
 import { captureSentryException } from '../common/sentry-report';
+import { STATION_CODE_RE } from './seat-cache-policy';
+import moment from 'moment';
 
-export type TopRoute = { from: string; to: string; searches: number };
+export type TopRoute = {
+  from: string;
+  to: string;
+  date: string;
+  searches: number;
+};
 
 const QUERY_TIMEOUT_MS = 15_000;
-/** In-process cache TTL so the 5-min cron doesn't query PostHog every tick. */
+/** Collapse repeated manual/scheduled lookups of demand signals. */
 const RESULT_TTL_MS = 60 * 60 * 1000;
-/** Station codes are short alphanumerics; reject anything else from the query. */
-const CODE_RE = /^[A-Z0-9]{2,6}$/;
 
 function envInt(
   name: string,
@@ -21,9 +26,8 @@ function envInt(
 }
 
 /**
- * Fetches the most-searched routes from PostHog via its HogQL query API, so the
- * best-seats cron can precompute the routes users actually search for (the
- * "Top Routes Searched" insight). Results are cached in-process for an hour.
+ * Fetches the most-searched future route/date pairs from frontend search clicks.
+ * The cron warms actual demand instead of multiplying corridors by every date.
  *
  * Gated by env — when unconfigured it returns [] and the cron falls back to its
  * curated route list:
@@ -32,8 +36,8 @@ function envInt(
  *   POSTHOG_PROJECT_ID         numeric project id
  *   POSTHOG_PERSONAL_API_KEY   personal API key with query scope (Bearer)
  *   POSTHOG_TOP_ROUTES_EVENT   event to aggregate (default search_tickets_clicked)
- *   POSTHOG_TOP_ROUTES_LIMIT   how many routes to pull (default 20, 1-200)
- *   POSTHOG_TOP_ROUTES_DAYS    look-back window in days (default 30, 1-365)
+ *   POSTHOG_TOP_ROUTES_LIMIT   how many route/date pairs (default 50, 1-200)
+ *   POSTHOG_TOP_ROUTES_DAYS    look-back window in days (default 7, 1-365)
  */
 @Injectable()
 export class PostHogTopRoutesService {
@@ -83,24 +87,27 @@ export class PostHogTopRoutesService {
     ).replace(/\/+$/, '');
     const projectId = process.env.POSTHOG_PROJECT_ID!.trim();
     const apiKey = process.env.POSTHOG_PERSONAL_API_KEY!.trim();
-    const limit = envInt('POSTHOG_TOP_ROUTES_LIMIT', 20, 1, 200);
-    const days = envInt('POSTHOG_TOP_ROUTES_DAYS', 30, 1, 365);
+    const limit = envInt('POSTHOG_TOP_ROUTES_LIMIT', 50, 1, 200);
+    const days = envInt('POSTHOG_TOP_ROUTES_DAYS', 7, 1, 365);
     // Event name is interpolated into HogQL, so hard-restrict its charset.
     const rawEvent =
       process.env.POSTHOG_TOP_ROUTES_EVENT?.trim() || 'search_tickets_clicked';
     const event = rawEvent.replace(/[^a-zA-Z0-9_]/g, '');
     if (!event) throw new Error('invalid POSTHOG_TOP_ROUTES_EVENT');
 
+    const today = moment().utcOffset(330).format('YYYY-MM-DD');
     const hogql = `
       SELECT upper(trim(properties.from_code)) AS frm,
              upper(trim(properties.to_code)) AS dest,
+             substring(toString(properties.journey_date), 1, 10) AS journey_date,
              count() AS searches
       FROM events
       WHERE event = '${event}'
         AND timestamp > now() - INTERVAL ${days} DAY
         AND properties.from_code IS NOT NULL AND trim(properties.from_code) != ''
         AND properties.to_code IS NOT NULL AND trim(properties.to_code) != ''
-      GROUP BY frm, dest
+        AND journey_date >= '${today}'
+      GROUP BY frm, dest, journey_date
       ORDER BY searches DESC
       LIMIT ${limit}
     `.trim();
@@ -135,9 +142,17 @@ export class PostHogTopRoutesService {
       const to = String(row[1] ?? '')
         .trim()
         .toUpperCase();
-      const searches = Number(row[2] ?? 0);
-      if (!CODE_RE.test(from) || !CODE_RE.test(to) || from === to) continue;
-      routes.push({ from, to, searches });
+      const date = String(row[2] ?? '');
+      const searches = Number(row[3] ?? 0);
+      if (
+        !STATION_CODE_RE.test(from) ||
+        !STATION_CODE_RE.test(to) ||
+        from === to ||
+        !moment.utc(date, 'YYYY-MM-DD', true).isValid() ||
+        date < today
+      )
+        continue;
+      routes.push({ from, to, date, searches });
     }
     this.logger.log(
       `[posthog-top-routes] event=${event} days=${days} -> ${routes.length} routes (limit=${limit})`,

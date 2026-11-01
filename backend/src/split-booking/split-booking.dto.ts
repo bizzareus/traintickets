@@ -117,6 +117,10 @@ class SplitBookingLegDto {
   @IsString()
   @MaxLength(60)
   availability?: string | null;
+
+  @IsOptional()
+  @IsInt()
+  irctcServiceFeePaise?: number;
 }
 
 class SplitBookingQuoteLegDto {
@@ -249,15 +253,48 @@ export class CreateCancellationRequestDto {
   reason?: string;
 }
 
+export class AdminCancellationPdfDto {
+  @IsString()
+  base64!: string;
+
+  @IsOptional()
+  @IsString()
+  filename?: string;
+
+  @IsOptional()
+  @IsString()
+  contentType?: string;
+}
+
 export class AdminUpdateCancellationDto {
   @IsOptional()
-  @IsIn(['PENDING', 'PROCESSED', 'REJECTED'])
-  status?: 'PENDING' | 'PROCESSED' | 'REJECTED';
+  @IsIn(['PENDING', 'PROCESSED', 'REJECTED', 'CANCELLED'])
+  status?: 'PENDING' | 'PROCESSED' | 'REJECTED' | 'CANCELLED';
 
   @IsOptional()
   @IsString()
   @MaxLength(1000)
   adminNotes?: string;
+
+  @IsOptional()
+  @IsNumber()
+  @Min(0)
+  refundAmount?: number;
+
+  @IsOptional()
+  @IsString()
+  manualRefundId?: string;
+
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => AdminCancellationPdfDto)
+  cancellationPdf?: AdminCancellationPdfDto;
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => AdminCancellationPdfDto)
+  cancellationPdfs?: AdminCancellationPdfDto[];
 }
 
 export class CheckSplitBookingAvailabilityLegDto {
@@ -281,6 +318,10 @@ export class CheckSplitBookingAvailabilityLegDto {
   @IsString()
   @Matches(/^\d{4}-\d{2}-\d{2}$|^\d{1,2}-\d{1,2}-\d{4}$/)
   boardingDate!: string;
+
+  @IsOptional()
+  @IsInt()
+  irctcServiceFeePaise?: number;
 }
 
 export class CheckSplitBookingAvailabilityDto {

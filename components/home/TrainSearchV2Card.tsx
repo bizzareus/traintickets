@@ -92,11 +92,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
   const [scanProgress, setScanProgress] = useState(0);
   const [foundSeats, setFoundSeats] = useState<FoundSeatNotice[]>([]);
   const [result, setResult] = useState<AlternatePathsResponse | null>(() => {
-    if (
-      train.cachedAlternatePath &&
-      train.cachedAlternatePath.legs &&
-      train.cachedAlternatePath.legs.length > 0
-    ) {
+    if (train.cachedAlternatePath) {
       return train.cachedAlternatePath;
     }
     return null;
@@ -216,11 +212,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     hasInitiatedRef.current = false;
     setLoading(false);
     setFoundSeats([]);
-    if (
-      train.cachedAlternatePath &&
-      train.cachedAlternatePath.legs &&
-      train.cachedAlternatePath.legs.length > 0
-    ) {
+    if (train.cachedAlternatePath) {
       setResult(train.cachedAlternatePath);
       const isComplete = Boolean(train.cachedAlternatePath.isComplete);
       const confirmedDurationMinutes = calculateConfirmedDurationMinutes(
@@ -250,6 +242,83 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     selectedClasses,
     train.cachedAlternatePath,
     train.trainNumber,
+    onSeatsDiscovered,
+    onScanComplete,
+  ]);
+
+  // Proactively check if cache exists for this train and route if not attached to search row
+  useEffect(() => {
+    if (
+      isDirectAvailable ||
+      result ||
+      train.cachedAlternatePath ||
+      !journeyDate ||
+      !fromCode ||
+      !toCode
+    ) {
+      return;
+    }
+
+    let isMounted = true;
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "";
+
+    void fetch(`${apiUrl}/api/booking-v2/alternate-paths`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        trainNumber: train.trainNumber,
+        from: fromCode,
+        to: toCode,
+        date: journeyDate,
+        cacheOnly: true,
+      }),
+    })
+      .then(async (res) => {
+        if (!res.ok) return null;
+        return (await res.json()) as {
+          cached?: boolean;
+          result?: AlternatePathsResponse;
+        };
+      })
+      .then((data) => {
+        if (!isMounted || !data?.cached || !data.result) return;
+        setResult(data.result);
+        const hasSeats = Boolean(
+          data.result.legs && data.result.legs.length > 0,
+        );
+        const isComplete = Boolean(data.result.isComplete);
+        const confirmedDurationMinutes = calculateConfirmedDurationMinutes(
+          data.result.legs || [],
+        );
+        if (hasSeats) {
+          onSeatsDiscovered?.(
+            train.trainNumber,
+            isComplete,
+            confirmedDurationMinutes,
+          );
+        }
+        onScanComplete?.(
+          train.trainNumber,
+          hasSeats,
+          isComplete,
+          confirmedDurationMinutes,
+        );
+      })
+      .catch(() => {
+        /* best-effort non-blocking cache lookup */
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [
+    isDirectAvailable,
+    result,
+    train.cachedAlternatePath,
+    train.trainNumber,
+    journeyDate,
+    fromCode,
+    toCode,
     onSeatsDiscovered,
     onScanComplete,
   ]);
@@ -642,6 +711,11 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     ? countConfirmedAlternateLegs(result.legs, result.legCount)
     : foundSeats.length;
 
+  const confirmedAlternateLegs = useMemo(() => {
+    if (!result?.legs || result.legs.length === 0) return [];
+    return result.legs.filter((leg) => leg.segmentKind === "confirmed");
+  }, [result?.legs]);
+
   return (
     <>
       <li
@@ -773,6 +847,36 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
                     ))}
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* Cached / Discovered Split Journey Legs Banner */}
+            {!isDirectAvailable && !loading && result && confirmedAlternateLegs.length > 0 && (
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-200 bg-emerald-50 px-2.5 py-1.5 text-xs font-semibold text-emerald-800 sm:px-3">
+                  <span className="font-bold text-emerald-700">⚡ Smart Seats:</span>
+                  <span>
+                    {result.isComplete
+                      ? "100% Confirmed split journey"
+                      : `Found ${discoveredCount} confirmed ticket${discoveredCount > 1 ? "s" : ""} across intermediate stations`}
+                  </span>
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {confirmedAlternateLegs.slice(0, 3).map((leg, idx) => (
+                    <span
+                      key={`${leg.from}-${leg.to}-${leg.travelClass}-${idx}`}
+                      className="inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700"
+                    >
+                      <span>
+                        ✓ {leg.from} → {leg.to}
+                      </span>
+                      <span className="font-semibold text-emerald-800">
+                        ({leg.travelClass || "Confirmed"}
+                        {leg.fare ? ` · ₹${leg.fare}` : ""})
+                      </span>
+                    </span>
+                  ))}
+                </div>
               </div>
             )}
           </div>

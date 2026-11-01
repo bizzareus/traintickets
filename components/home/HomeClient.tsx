@@ -928,20 +928,26 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
       const newScanMetaMap = new Map<string, TrainScanMeta>();
       const newEndToEnd = new Set<string>();
       const newPartial = new Set<string>();
+      const cachedTrainNumbers = new Set<string>();
       for (const t of trainList) {
-        if (
-          t.cachedAlternatePath &&
-          t.cachedAlternatePath.legs &&
-          t.cachedAlternatePath.legs.length > 0
-        ) {
-          const meta = extractScanMetaFromResult(t.cachedAlternatePath);
-          newScanMetaMap.set(t.trainNumber, meta);
-          if (meta.isComplete) {
-            newEndToEnd.add(t.trainNumber);
-          } else {
-            newPartial.add(t.trainNumber);
+        if (t.cachedAlternatePath) {
+          cachedTrainNumbers.add(t.trainNumber);
+          if (
+            t.cachedAlternatePath.legs &&
+            t.cachedAlternatePath.legs.length > 0
+          ) {
+            const meta = extractScanMetaFromResult(t.cachedAlternatePath);
+            newScanMetaMap.set(t.trainNumber, meta);
+            if (meta.isComplete) {
+              newEndToEnd.add(t.trainNumber);
+            } else {
+              newPartial.add(t.trainNumber);
+            }
           }
         }
+      }
+      if (cachedTrainNumbers.size > 0) {
+        setV2CompletedScans((prev) => new Set([...prev, ...cachedTrainNumbers]));
       }
       if (newScanMetaMap.size > 0) {
         setV2ScanMetaMap((prev) => new Map([...prev, ...newScanMetaMap]));

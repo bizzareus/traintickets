@@ -550,6 +550,48 @@ export class SplitBookingService {
     return { received: true };
   }
 
+  async getBookingForResume(bookingRef: string) {
+    const booking = await this.findBooking(bookingRef);
+    const rawLegs = Array.isArray(booking.legsPayload)
+      ? (booking.legsPayload as Array<Record<string, unknown>>)
+      : [];
+    const legs = rawLegs.map((leg) => ({
+      from: String(leg.from || ''),
+      to: String(leg.to || ''),
+      travelClass: String(leg.travelClass || ''),
+      boardingDate: String(leg.boardingDate || ''),
+      fare: Number(leg.fare || 0),
+    }));
+
+    return {
+      id: booking.id,
+      bookingRef: booking.bookingRef,
+      trainNumber: booking.trainNumber,
+      trainName: booking.trainName,
+      fromStationCode: booking.fromStationCode,
+      toStationCode: booking.toStationCode,
+      journeyDate: booking.journeyDate.toISOString().slice(0, 10),
+      travelClass: booking.travelClass,
+      quota: booking.quota,
+      totalFare: booking.totalFare,
+      serviceFee: booking.serviceFee,
+      irctcServiceFeePaise: booking.irctcServiceFeePaise,
+      paymentGatewayFeePaise: booking.paymentGatewayFeePaise,
+      legs,
+      passengers: booking.passengers,
+      contactMobile: booking.contactMobile,
+      contactEmail: booking.contactEmail,
+      autoUpgrade: booking.autoUpgrade,
+      paymentStatus: booking.paymentStatus,
+      bookingStatus: booking.bookingStatus,
+      payUrl: booking.payUrl,
+      pnrs: booking.pnrs,
+      pnrLeg1: booking.pnrLeg1,
+      pnrLeg2: booking.pnrLeg2,
+      createdAt: booking.createdAt.toISOString(),
+    };
+  }
+
   private async findBooking(
     bookingRefOrId: string,
   ): Promise<SplitTicketBooking> {
@@ -998,6 +1040,10 @@ export class SplitBookingService {
         insurancePdfContentType: true,
         insurancePdfUploadedAt: true,
         insurancePdfS3Key: true,
+        cancellationPdfFilename: true,
+        cancellationPdfContentType: true,
+        cancellationPdfUploadedAt: true,
+        cancellationPdfS3Key: true,
         bookingError: true,
         completedAt: true,
         createdAt: true,
@@ -1013,6 +1059,9 @@ export class SplitBookingService {
         hasTicketPdf: Boolean(b.ticketPdfUploadedAt || b.ticketPdfS3Key),
         hasInsurancePdf: Boolean(
           b.insurancePdfUploadedAt || b.insurancePdfS3Key,
+        ),
+        hasCancellationPdf: Boolean(
+          b.cancellationPdfUploadedAt || b.cancellationPdfS3Key,
         ),
         journeyDate: b.journeyDate.toISOString().slice(0, 10),
       })),
@@ -1397,6 +1446,211 @@ export class SplitBookingService {
     }
 
     throw new NotFoundException('Insurance PDF not found');
+  }
+
+  async adminUploadCancellationPdf(
+    id: string,
+    file?: { buffer: Buffer; originalname?: string; mimetype?: string },
+    body?: {
+      base64?: string;
+      filename?: string;
+      contentType?: string;
+      cancellationPdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+      pdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+    },
+  ) {
+    const booking = await this.prisma.splitTicketBooking.findFirst({
+      where: {
+        OR: [{ id }, { bookingRef: id.toUpperCase() }],
+      },
+    });
+    if (!booking) {
+      throw new NotFoundException(`Booking "${id}" not found`);
+    }
+
+    let buffer: Buffer;
+    const filename =
+      file?.originalname ||
+      body?.filename ||
+      `cancellation-${booking.bookingRef}.pdf`;
+    const contentType =
+      file?.mimetype || body?.contentType || 'application/pdf';
+
+    const candidatePdfs = body?.cancellationPdfs || body?.pdfs;
+    if (file?.buffer) {
+      buffer = file.buffer;
+    } else if (candidatePdfs && candidatePdfs.length > 0) {
+      const valid = candidatePdfs.filter(
+        (p) => typeof p?.base64 === 'string' && p.base64.trim().length > 0,
+      );
+      if (valid.length === 0) {
+        throw new BadRequestException(
+          'At least one valid cancellation PDF is required',
+        );
+      }
+      if (valid.length === 1) {
+        const clean = valid[0].base64
+          .replace(/^data:application\/pdf;base64,/, '')
+          .trim();
+        buffer = Buffer.from(clean, 'base64');
+      } else {
+        const buffers = valid.map((p) => {
+          const clean = p.base64
+            .replace(/^data:application\/pdf;base64,/, '')
+            .trim();
+          return Buffer.from(clean, 'base64');
+        });
+        buffer = await mergePdfBuffers(buffers);
+      }
+    } else if (body?.base64) {
+      const cleanBase64 = body.base64
+        .replace(/^data:application\/pdf;base64,/, '')
+        .trim();
+      buffer = Buffer.from(cleanBase64, 'base64');
+    } else {
+      throw new BadRequestException(
+        'A cancellation PDF file or base64 data is required',
+      );
+    }
+
+    let s3Key: string | null = null;
+    if (this.s3Storage) {
+      s3Key = await this.s3Storage.uploadCancellationPdf(
+        booking.bookingRef,
+        buffer,
+        filename,
+        contentType,
+      );
+    }
+
+    const uploadedAt = new Date();
+    await this.prisma.splitTicketBooking.update({
+      where: { id: booking.id },
+      data: {
+        cancellationPdfS3Key: s3Key,
+        cancellationPdfFilename: filename,
+        cancellationPdfContentType: contentType,
+        cancellationPdfUploadedAt: uploadedAt,
+        cancellationPdf: s3Key ? null : new Uint8Array(buffer),
+      },
+    });
+
+    // Also update any associated bookingCancellationRequest
+    await this.prisma.bookingCancellationRequest.updateMany({
+      where: { bookingId: booking.id },
+      data: {
+        cancellationPdfS3Key: s3Key,
+        cancellationPdfFilename: filename,
+        cancellationPdfContentType: contentType,
+        cancellationPdfUploadedAt: uploadedAt,
+        cancellationPdf: s3Key ? null : new Uint8Array(buffer),
+      },
+    });
+
+    return {
+      success: true,
+      filename,
+      uploadedAt: uploadedAt.toISOString(),
+      s3Key,
+    };
+  }
+
+  async getCancellationPdf(
+    bookingRef: string,
+  ): Promise<
+    | { redirectUrl: string; filename: string; s3Key?: string }
+    | { buffer: Uint8Array; filename: string; contentType: string }
+  > {
+    const rawRef = bookingRef?.trim();
+    if (!rawRef) {
+      throw new BadRequestException('Booking reference is required');
+    }
+
+    const booking = await this.prisma.splitTicketBooking.findFirst({
+      where: {
+        OR: [{ id: rawRef }, { bookingRef: rawRef.toUpperCase() }],
+      },
+      select: {
+        bookingRef: true,
+        cancellationPdf: true,
+        cancellationPdfS3Key: true,
+        cancellationPdfFilename: true,
+        cancellationPdfContentType: true,
+      },
+    });
+
+    if (
+      !booking ||
+      (!booking.cancellationPdfS3Key && !booking.cancellationPdf)
+    ) {
+      const req = await this.prisma.bookingCancellationRequest.findFirst({
+        where: {
+          OR: [{ bookingRef: rawRef.toUpperCase() }, { id: rawRef }],
+        },
+        select: {
+          bookingRef: true,
+          cancellationPdf: true,
+          cancellationPdfS3Key: true,
+          cancellationPdfFilename: true,
+          cancellationPdfContentType: true,
+        },
+      });
+
+      if (!req || (!req.cancellationPdfS3Key && !req.cancellationPdf)) {
+        throw new NotFoundException('Cancellation PDF not found');
+      }
+
+      const filename =
+        req.cancellationPdfFilename || `cancellation-${req.bookingRef}.pdf`;
+
+      if (req.cancellationPdfS3Key && this.s3Storage) {
+        const redirectUrl = await this.s3Storage.getSignedCancellationPdfUrl(
+          req.cancellationPdfS3Key,
+          filename,
+        );
+        return { redirectUrl, filename, s3Key: req.cancellationPdfS3Key };
+      }
+
+      if (req.cancellationPdf) {
+        return {
+          buffer: req.cancellationPdf,
+          filename,
+          contentType: req.cancellationPdfContentType || 'application/pdf',
+        };
+      }
+
+      throw new NotFoundException('Cancellation PDF not found');
+    }
+
+    const filename =
+      booking.cancellationPdfFilename ||
+      `cancellation-${booking.bookingRef}.pdf`;
+
+    if (booking.cancellationPdfS3Key && this.s3Storage) {
+      const redirectUrl = await this.s3Storage.getSignedCancellationPdfUrl(
+        booking.cancellationPdfS3Key,
+        filename,
+      );
+      return { redirectUrl, filename, s3Key: booking.cancellationPdfS3Key };
+    }
+
+    if (booking.cancellationPdf) {
+      return {
+        buffer: booking.cancellationPdf,
+        filename,
+        contentType: booking.cancellationPdfContentType || 'application/pdf',
+      };
+    }
+
+    throw new NotFoundException('Cancellation PDF not found');
   }
 
   async adminNotifyCustomer(
@@ -1875,7 +2129,7 @@ export class SplitBookingService {
       await this.prisma.bookingCancellationRequest.findFirst({
         where: {
           bookingId: booking.id,
-          status: { in: ['PENDING', 'PROCESSED'] },
+          status: { in: ['PENDING', 'PROCESSED', 'CANCELLED'] },
         },
         orderBy: { createdAt: 'desc' },
       });
@@ -1904,6 +2158,14 @@ export class SplitBookingService {
         ? {
             id: existingCancellation.id,
             status: existingCancellation.status,
+            refundAmount: existingCancellation.refundAmount ?? null,
+            refundId: existingCancellation.refundId ?? null,
+            hasCancellationPdf: Boolean(
+              existingCancellation.cancellationPdfUploadedAt ||
+              existingCancellation.cancellationPdfS3Key ||
+              booking.cancellationPdfUploadedAt ||
+              booking.cancellationPdfS3Key,
+            ),
             createdAt: existingCancellation.createdAt.toISOString(),
           }
         : null,
@@ -2127,6 +2389,11 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
             pnrLeg1: true,
             pnrLeg2: true,
             passengers: true,
+            cancellationPdfFilename: true,
+            cancellationPdfUploadedAt: true,
+            cancellationPdfS3Key: true,
+            muzoboxPaymentId: true,
+            razorpayPaymentId: true,
           },
         },
       },
@@ -2140,6 +2407,23 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
       reason: item.reason,
       status: item.status,
       adminNotes: item.adminNotes,
+      refundAmount: item.refundAmount ?? null,
+      refundId: item.refundId ?? null,
+      hasCancellationPdf: Boolean(
+        item.cancellationPdfUploadedAt ||
+        item.cancellationPdfS3Key ||
+        item.booking?.cancellationPdfUploadedAt ||
+        item.booking?.cancellationPdfS3Key,
+      ),
+      cancellationPdfFilename:
+        item.cancellationPdfFilename ||
+        item.booking?.cancellationPdfFilename ||
+        null,
+      cancellationPdfUploadedAt:
+        (
+          item.cancellationPdfUploadedAt ||
+          item.booking?.cancellationPdfUploadedAt
+        )?.toISOString() ?? null,
       adminEmailSentAt: item.adminEmailSentAt?.toISOString() ?? null,
       adminWhatsappSentAt: item.adminWhatsappSentAt?.toISOString() ?? null,
       processedAt: item.processedAt?.toISOString() ?? null,
@@ -2150,6 +2434,10 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
             ...item.booking,
             journeyDate: item.booking.journeyDate.toISOString().slice(0, 10),
             ...bookingPrice(item.booking),
+            hasCancellationPdf: Boolean(
+              item.booking.cancellationPdfUploadedAt ||
+              item.booking.cancellationPdfS3Key,
+            ),
           }
         : null,
     }));
@@ -2160,13 +2448,42 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
    */
   async adminUpdateCancellation(
     id: string,
-    dto: { status?: CancellationRequestStatus; adminNotes?: string },
+    dto: {
+      status?: CancellationRequestStatus;
+      adminNotes?: string;
+      refundAmount?: number;
+      manualRefundId?: string;
+      cancellationPdf?: {
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      };
+      cancellationPdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+    },
   ) {
     const existing = await this.prisma.bookingCancellationRequest.findUnique({
       where: { id },
+      include: { booking: true },
     });
     if (!existing) {
       throw new NotFoundException(`Cancellation request "${id}" not found`);
+    }
+
+    if (dto.status === 'CANCELLED') {
+      return this.adminCancelAndRefundBooking(existing.bookingRef, {
+        refund:
+          dto.refundAmount === undefined ? true : Number(dto.refundAmount) > 0,
+        refundAmount: dto.refundAmount,
+        reason: dto.adminNotes?.trim() || existing.reason || undefined,
+        manualRefundId: dto.manualRefundId,
+        cancellationPdf: dto.cancellationPdf,
+        cancellationPdfs: dto.cancellationPdfs,
+        cancellationRequestId: existing.id,
+      });
     }
 
     const data: Prisma.BookingCancellationRequestUpdateInput = {};
@@ -2179,6 +2496,66 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
     if (dto.adminNotes !== undefined) {
       data.adminNotes = dto.adminNotes.trim() || null;
     }
+    if (dto.refundAmount !== undefined && dto.refundAmount !== null) {
+      data.refundAmount = Math.max(0, Math.round(Number(dto.refundAmount)));
+    }
+    if (dto.manualRefundId !== undefined) {
+      data.refundId = dto.manualRefundId.trim() || null;
+    }
+
+    const candidatePdfs =
+      dto.cancellationPdfs ||
+      (dto.cancellationPdf ? [dto.cancellationPdf] : []);
+    const valid = candidatePdfs.filter(
+      (p) => typeof p?.base64 === 'string' && p.base64.trim().length > 0,
+    );
+    if (valid.length > 0) {
+      let buffer: Buffer;
+      const filename =
+        valid[0].filename || `cancellation-${existing.bookingRef}.pdf`;
+      const contentType = valid[0].contentType || 'application/pdf';
+      if (valid.length === 1) {
+        const clean = valid[0].base64
+          .replace(/^data:application\/pdf;base64,/, '')
+          .trim();
+        buffer = Buffer.from(clean, 'base64');
+      } else {
+        const buffers = valid.map((p) =>
+          Buffer.from(
+            p.base64.replace(/^data:application\/pdf;base64,/, '').trim(),
+            'base64',
+          ),
+        );
+        buffer = await mergePdfBuffers(buffers);
+      }
+      let s3Key: string | null = null;
+      if (this.s3Storage) {
+        s3Key = await this.s3Storage.uploadCancellationPdf(
+          existing.bookingRef,
+          buffer,
+          filename,
+          contentType,
+        );
+      }
+      const uploadedAt = new Date();
+      data.cancellationPdfS3Key = s3Key;
+      data.cancellationPdfFilename = filename;
+      data.cancellationPdfContentType = contentType;
+      data.cancellationPdfUploadedAt = uploadedAt;
+      data.cancellationPdf = s3Key ? null : new Uint8Array(buffer);
+
+      // Also sync to SplitTicketBooking
+      await this.prisma.splitTicketBooking.update({
+        where: { id: existing.bookingId },
+        data: {
+          cancellationPdfS3Key: s3Key,
+          cancellationPdfFilename: filename,
+          cancellationPdfContentType: contentType,
+          cancellationPdfUploadedAt: uploadedAt,
+          cancellationPdf: s3Key ? null : new Uint8Array(buffer),
+        },
+      });
+    }
 
     const updated = await this.prisma.bookingCancellationRequest.update({
       where: { id },
@@ -2189,13 +2566,30 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
   }
 
   /**
-   * Cancels a split-ticket booking. Optionally initiates a full refund to the user via
-   * Muzobox or Razorpay (if refund=true), updates request records, and sends an automated
-   * cancellation confirmation email to the user (including refund ID if refunded).
+   * Cancels a split-ticket booking. Optionally initiates a refund to the user via
+   * Muzobox or Razorpay (if refund=true), stores optional cancellation PDF, updates records,
+   * and sends an automated cancellation confirmation email to the user (including refund ID if refunded).
    */
   async adminCancelAndRefundBooking(
     bookingIdOrRef: string,
-    opts?: { reason?: string; refund?: boolean },
+    opts?: {
+      reason?: string;
+      refund?: boolean;
+      refundAmount?: number;
+      manualRefundId?: string;
+      status?: CancellationRequestStatus;
+      cancellationPdf?: {
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      };
+      cancellationPdfs?: Array<{
+        base64: string;
+        filename?: string;
+        contentType?: string;
+      }>;
+      cancellationRequestId?: string;
+    },
   ) {
     const rawId = bookingIdOrRef?.trim();
     if (!rawId) {
@@ -2212,13 +2606,27 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
       throw new NotFoundException(`Booking "${rawId}" not found`);
     }
 
-    if (booking.bookingStatus === 'CANCELLED') {
-      throw new BadRequestException(
-        `Booking ${booking.bookingRef} is already cancelled`,
-      );
-    }
-
     const shouldRefund = opts?.refund !== false;
+    const isAlreadyCancelled = booking.bookingStatus === 'CANCELLED';
+    const isAlreadyRefunded =
+      typeof booking.bookingError === 'string' &&
+      (booking.bookingError.toLowerCase().includes('refund initiated') ||
+        booking.bookingError.toLowerCase().includes('refund of') ||
+        booking.bookingError.toLowerCase().includes('full refund of'));
+
+    if (isAlreadyCancelled) {
+      if (!shouldRefund) {
+        throw new BadRequestException(
+          `Booking ${booking.bookingRef} is already cancelled`,
+        );
+      }
+      if (isAlreadyRefunded) {
+        throw new BadRequestException(
+          `Booking ${booking.bookingRef} is already cancelled and refunded`,
+        );
+      }
+      // If it was cancelled previously without refund, allowing the admin to issue/record refund now.
+    }
 
     if (shouldRefund && booking.paymentStatus !== 'PAID') {
       throw new BadRequestException(
@@ -2227,21 +2635,90 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
     }
 
     const price = bookingPrice(booking);
-    const refundAmount = shouldRefund ? price.amount : 0;
+    const totalBookingAmount = price.amount;
+    let refundAmount = totalBookingAmount;
+
+    if (opts?.refundAmount !== undefined && opts?.refundAmount !== null) {
+      const parsed = Number(opts.refundAmount);
+      if (isNaN(parsed) || parsed < 0) {
+        throw new BadRequestException(
+          'Refund amount must be a positive number',
+        );
+      }
+      if (parsed > totalBookingAmount) {
+        throw new BadRequestException(
+          `Refund amount (₹${parsed}) cannot exceed booking total of ₹${totalBookingAmount}`,
+        );
+      }
+      refundAmount = Math.round(parsed);
+    }
+
+    if (!shouldRefund) {
+      refundAmount = 0;
+    }
+
     const userReason =
       opts?.reason?.trim() ||
       (shouldRefund
-        ? `Admin cancelled and initiated full refund for ${booking.bookingRef}`
+        ? refundAmount === totalBookingAmount
+          ? `Admin cancelled and initiated full refund for ${booking.bookingRef}`
+          : `Admin cancelled and initiated refund of ₹${refundAmount} for ${booking.bookingRef}`
         : `Admin cancelled booking ${booking.bookingRef} without refund`);
 
     let finalRefundId: string | null = null;
     let cancelNote: string;
 
-    if (shouldRefund) {
+    // Handle cancellation PDF upload if provided
+    const candidatePdfs =
+      opts?.cancellationPdfs ||
+      (opts?.cancellationPdf ? [opts.cancellationPdf] : []);
+    const validCandidatePdfs = candidatePdfs.filter(
+      (p) => typeof p?.base64 === 'string' && p.base64.trim().length > 0,
+    );
+
+    let cancellationPdfBuffer: Buffer | null = null;
+    let cancellationPdfS3Key: string | null = null;
+    let cancellationPdfFilename: string | null = null;
+    let cancellationPdfContentType: string | null = null;
+
+    if (validCandidatePdfs.length > 0) {
+      cancellationPdfFilename =
+        validCandidatePdfs[0].filename ||
+        `cancellation-${booking.bookingRef}.pdf`;
+      cancellationPdfContentType =
+        validCandidatePdfs[0].contentType || 'application/pdf';
+
+      if (validCandidatePdfs.length === 1) {
+        const clean = validCandidatePdfs[0].base64
+          .replace(/^data:application\/pdf;base64,/, '')
+          .trim();
+        cancellationPdfBuffer = Buffer.from(clean, 'base64');
+      } else {
+        const buffers = validCandidatePdfs.map((p) => {
+          const clean = p.base64
+            .replace(/^data:application\/pdf;base64,/, '')
+            .trim();
+          return Buffer.from(clean, 'base64');
+        });
+        cancellationPdfBuffer = await mergePdfBuffers(buffers);
+      }
+
+      if (this.s3Storage) {
+        cancellationPdfS3Key = await this.s3Storage.uploadCancellationPdf(
+          booking.bookingRef,
+          cancellationPdfBuffer,
+          cancellationPdfFilename,
+          cancellationPdfContentType,
+        );
+      }
+    }
+
+    if (shouldRefund && refundAmount > 0) {
       const muzoboxPaymentId = booking.muzoboxPaymentId?.trim();
       const razorpayPaymentId = booking.razorpayPaymentId?.trim();
+      const manualRefundId = opts?.manualRefundId?.trim();
 
-      if (!muzoboxPaymentId && !razorpayPaymentId) {
+      if (!muzoboxPaymentId && !razorpayPaymentId && !manualRefundId) {
         throw new BadRequestException(
           `No payment ID (Muzobox or Razorpay) recorded for booking ${booking.bookingRef}`,
         );
@@ -2249,134 +2726,204 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
 
       let refundId: string | undefined;
 
-      // 1. Process refund through payment provider.
-      // Try the proxy payment refund endpoint (POST proxy-payments/:id/refund) using muzoboxPaymentId or razorpayPaymentId.
-      const proxyPaymentId = muzoboxPaymentId || razorpayPaymentId;
-      let proxyRefundSuccess = false;
+      if (manualRefundId) {
+        refundId = manualRefundId;
+      } else {
+        // 1. Process refund through payment provider.
+        // Try the proxy payment refund endpoint (POST proxy-payments/:id/refund) using muzoboxPaymentId or razorpayPaymentId.
+        const proxyPaymentId = muzoboxPaymentId || razorpayPaymentId;
+        let proxyRefundSuccess = false;
 
-      if (proxyPaymentId) {
-        try {
-          const res = await this.muzoboxClient.post<{
-            status?: string;
-            amount?: number;
-            referenceId?: string | null;
-            razorpayPaymentId?: string | null;
-            razorpayRefundId?: string;
-          }>(
-            `proxy-payments/${encodeURIComponent(proxyPaymentId)}/refund`,
-            {
-              amount: refundAmount,
-              reason: userReason.slice(0, 500),
-              referenceId: booking.bookingRef,
-            },
-            { headers: muzoboxAuthHeaders(this.config) },
-          );
-          const data = res.data ?? {};
-          const status = String(data.status ?? '').toLowerCase();
-          if (status === 'refunded' || status === 'already_refunded') {
-            refundId = data.razorpayRefundId ?? `rfnd_mb_${booking.bookingRef}`;
-            proxyRefundSuccess = true;
-          } else {
-            throw new Error(
-              `Proxy payment refund returned unexpected status=${String(data.status ?? 'missing')}`,
+        if (proxyPaymentId) {
+          try {
+            const res = await this.muzoboxClient.post<{
+              status?: string;
+              amount?: number;
+              referenceId?: string | null;
+              razorpayPaymentId?: string | null;
+              razorpayRefundId?: string;
+            }>(
+              `proxy-payments/${encodeURIComponent(proxyPaymentId)}/refund`,
+              {
+                amount: refundAmount,
+                reason: userReason.slice(0, 500),
+                referenceId: booking.bookingRef,
+              },
+              { headers: muzoboxAuthHeaders(this.config) },
             );
-          }
-        } catch (err: unknown) {
-          let msg = 'Failed to process refund via payment proxy';
-          if (isAxiosError(err)) {
-            const payload = err.response?.data as
-              | { message?: unknown; error?: unknown }
-              | undefined;
-            const fromBody =
-              (Array.isArray(payload?.message)
-                ? payload?.message.join('; ')
-                : payload?.message) ?? payload?.error;
-            if (typeof fromBody === 'string' && fromBody.trim()) {
-              msg = `Payment proxy refund failed: ${fromBody.trim().slice(0, 500)}`;
-            } else if (err.response?.status) {
-              msg = `Payment proxy refund failed with HTTP ${err.response.status}`;
+            const data = res.data ?? {};
+            const status = String(data.status ?? '').toLowerCase();
+            if (status === 'refunded' || status === 'already_refunded') {
+              refundId =
+                data.razorpayRefundId ?? `rfnd_mb_${booking.bookingRef}`;
+              proxyRefundSuccess = true;
             } else {
-              msg = `Payment proxy refund request failed: ${err.message}`;
+              throw new Error(
+                `Proxy payment refund returned unexpected status=${String(data.status ?? 'missing')}`,
+              );
             }
-          } else if (err instanceof Error) {
-            msg = err.message;
-          }
+          } catch (err: unknown) {
+            let msg = 'Failed to process refund via payment proxy';
+            if (isAxiosError(err)) {
+              const payload = err.response?.data as
+                | { message?: unknown; error?: unknown }
+                | undefined;
+              const fromBody =
+                (Array.isArray(payload?.message)
+                  ? payload?.message.join('; ')
+                  : payload?.message) ?? payload?.error;
+              if (typeof fromBody === 'string' && fromBody.trim()) {
+                msg = `Payment proxy refund failed: ${fromBody.trim().slice(0, 500)}`;
+              } else if (err.response?.status) {
+                msg = `Payment proxy refund failed with HTTP ${err.response.status}`;
+              } else {
+                msg = `Payment proxy refund request failed: ${err.message}`;
+              }
+            } else if (err instanceof Error) {
+              msg = err.message;
+            }
 
-          // If direct Razorpay is configured on this server and we have a razorpayPaymentId,
-          // we can attempt a direct Razorpay fallback. Otherwise re-throw the proxy failure.
-          if (
-            !muzoboxPaymentId &&
-            razorpayPaymentId &&
-            this.razorpay &&
-            this.razorpay.isConfigured
-          ) {
-            this.logger.warn(
-              `Proxy refund failed for ${booking.bookingRef} (${msg}); attempting direct Razorpay refund.`,
-            );
-          } else {
-            this.logger.error(
-              `Refund failed for booking ${booking.bookingRef}: ${msg}`,
-            );
-            throw new BadRequestException(msg);
+            const lowerMsg = msg.toLowerCase();
+            if (
+              lowerMsg.includes('already refunded') ||
+              lowerMsg.includes('fully refunded already') ||
+              lowerMsg.includes('already_refunded')
+            ) {
+              this.logger.warn(
+                `Payment already refunded on gateway for ${booking.bookingRef}: ${msg}`,
+              );
+              refundId = `rfnd_already_refunded_${booking.bookingRef}`;
+              proxyRefundSuccess = true;
+            } else if (
+              razorpayPaymentId &&
+              this.razorpay &&
+              this.razorpay.isConfigured
+            ) {
+              this.logger.warn(
+                `Proxy refund failed for ${booking.bookingRef} (${msg}); attempting direct Razorpay refund.`,
+              );
+            } else {
+              this.logger.error(
+                `Refund failed for booking ${booking.bookingRef}: ${msg}`,
+              );
+              if (lowerMsg.includes('only paid payments can be refunded')) {
+                throw new BadRequestException(
+                  'Payment proxy refund failed: Payment is not marked as PAID on the payment gateway (likely because the payment was confirmed manually). ' +
+                    'Please refund the customer directly via your Razorpay Dashboard (Payment ID: ' +
+                    (razorpayPaymentId || 'on record') +
+                    '), then enter the Refund ID under "Manual Refund ID" or choose "No Refund".',
+                );
+              }
+              throw new BadRequestException(msg);
+            }
           }
         }
-      }
 
-      if (!proxyRefundSuccess && razorpayPaymentId) {
-        if (!this.razorpay || !this.razorpay.isConfigured) {
-          throw new BadRequestException(
-            'Direct Razorpay refund is not configured on this server and proxy refund was not successful.',
-          );
-        }
-        try {
-          const refundRes = await this.razorpay.createRefund({
-            paymentId: razorpayPaymentId,
-            amountPaise: refundAmount * 100,
-            notes: {
-              bookingRef: booking.bookingRef,
-              reason: userReason.slice(0, 200),
-            },
-          });
-          refundId = refundRes.id;
-        } catch (err: unknown) {
-          const msg = err instanceof Error ? err.message : String(err);
-          this.logger.error(
-            `Razorpay direct refund failed for ${booking.bookingRef}: ${msg}`,
-          );
-          throw new BadRequestException(`Razorpay refund failed: ${msg}`);
+        if (!proxyRefundSuccess && razorpayPaymentId) {
+          if (!this.razorpay || !this.razorpay.isConfigured) {
+            throw new BadRequestException(
+              'Direct Razorpay refund is not configured on this server and proxy refund was not successful.',
+            );
+          }
+          try {
+            const refundRes = await this.razorpay.createRefund({
+              paymentId: razorpayPaymentId,
+              amountPaise: refundAmount * 100,
+              notes: {
+                bookingRef: booking.bookingRef,
+                reason: userReason.slice(0, 200),
+              },
+            });
+            refundId = refundRes.id;
+          } catch (err: unknown) {
+            const msg = err instanceof Error ? err.message : String(err);
+            const lowerMsg = msg.toLowerCase();
+            if (
+              lowerMsg.includes('already refunded') ||
+              lowerMsg.includes('fully refunded already')
+            ) {
+              this.logger.warn(
+                `Razorpay reported payment already refunded for ${booking.bookingRef}: ${msg}`,
+              );
+              refundId = `rfnd_already_refunded_${booking.bookingRef}`;
+            } else {
+              this.logger.error(
+                `Razorpay direct refund failed for ${booking.bookingRef}: ${msg}`,
+              );
+              throw new BadRequestException(`Razorpay refund failed: ${msg}`);
+            }
+          }
         }
       }
 
       finalRefundId = refundId || `rfnd_${Date.now()}`;
-      cancelNote = `Full refund of ₹${refundAmount} initiated on ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (Refund ID: ${finalRefundId}). Reason: ${userReason}`;
+      cancelNote = `Refund of ₹${refundAmount} initiated on ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (Refund ID: ${finalRefundId}). Reason: ${userReason}`;
+    } else if (shouldRefund && refundAmount === 0) {
+      cancelNote = `Cancelled with ₹0 refund by admin on ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}. Reason: ${userReason}`;
     } else {
       cancelNote = `Cancelled without refund by admin on ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}. Reason: ${userReason}`;
     }
 
     // 2. Update SplitTicketBooking status to CANCELLED
+    const now = new Date();
     await this.prisma.splitTicketBooking.update({
       where: { id: booking.id },
       data: {
         bookingStatus: 'CANCELLED',
-        completedAt: new Date(),
+        completedAt: now,
         bookingError: cancelNote,
+        ...(cancellationPdfBuffer
+          ? {
+              cancellationPdfS3Key,
+              cancellationPdfFilename,
+              cancellationPdfContentType,
+              cancellationPdfUploadedAt: now,
+              cancellationPdf: cancellationPdfS3Key
+                ? null
+                : new Uint8Array(cancellationPdfBuffer),
+            }
+          : {}),
       },
     });
 
-    // 3. Mark any existing PENDING cancellation request as PROCESSED or create one
-    const existingReq = await this.prisma.bookingCancellationRequest.findFirst({
-      where: { bookingId: booking.id, status: 'PENDING' },
-    });
+    // 3. Mark existing cancellation request as CANCELLED or create one
+    const targetStatus: CancellationRequestStatus =
+      opts?.status || (shouldRefund ? 'CANCELLED' : 'PROCESSED');
+
+    const existingReq = opts?.cancellationRequestId
+      ? await this.prisma.bookingCancellationRequest.findUnique({
+          where: { id: opts.cancellationRequestId },
+        })
+      : await this.prisma.bookingCancellationRequest.findFirst({
+          where: {
+            bookingId: booking.id,
+            status: { in: ['PENDING', 'CANCELLED', 'PROCESSED'] },
+          },
+          orderBy: { createdAt: 'desc' },
+        });
 
     if (existingReq) {
       await this.prisma.bookingCancellationRequest.update({
         where: { id: existingReq.id },
         data: {
-          status: 'PROCESSED',
-          processedAt: new Date(),
+          status: targetStatus,
+          processedAt: now,
+          refundAmount: shouldRefund ? refundAmount : 0,
+          refundId: finalRefundId,
           adminNotes: existingReq.adminNotes
             ? `${existingReq.adminNotes}\n${cancelNote}`
             : cancelNote,
+          ...(cancellationPdfBuffer
+            ? {
+                cancellationPdfS3Key,
+                cancellationPdfFilename,
+                cancellationPdfContentType,
+                cancellationPdfUploadedAt: now,
+                cancellationPdf: cancellationPdfS3Key
+                  ? null
+                  : new Uint8Array(cancellationPdfBuffer),
+              }
+            : {}),
         },
       });
     } else {
@@ -2386,9 +2933,22 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
           bookingRef: booking.bookingRef,
           mobile: booking.contactMobile,
           reason: userReason,
-          status: 'PROCESSED',
-          processedAt: new Date(),
+          status: targetStatus,
+          processedAt: now,
+          refundAmount: shouldRefund ? refundAmount : 0,
+          refundId: finalRefundId,
           adminNotes: cancelNote,
+          ...(cancellationPdfBuffer
+            ? {
+                cancellationPdfS3Key,
+                cancellationPdfFilename,
+                cancellationPdfContentType,
+                cancellationPdfUploadedAt: now,
+                cancellationPdf: cancellationPdfS3Key
+                  ? null
+                  : new Uint8Array(cancellationPdfBuffer),
+              }
+            : {}),
         },
       });
     }
@@ -2397,20 +2957,27 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
     let emailSent = false;
     if (this.notifications && booking.contactEmail) {
       const journeyDateStr = booking.journeyDate.toISOString().slice(0, 10);
-      const subject = shouldRefund
-        ? `Booking Cancelled & Refund Initiated — ${booking.bookingRef} (₹${refundAmount})`
-        : `Booking Cancelled — ${booking.bookingRef}`;
+      const isFull = refundAmount === totalBookingAmount;
+      const subject =
+        shouldRefund && refundAmount > 0
+          ? `Booking Cancelled & Refund Initiated — ${booking.bookingRef} (₹${refundAmount})`
+          : `Booking Cancelled — ${booking.bookingRef}`;
 
       const refundBoxHtml =
-        shouldRefund && finalRefundId
+        shouldRefund && refundAmount > 0 && finalRefundId
           ? `
             <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin: 20px 0;">
               <h3 style="margin: 0 0 10px 0; font-size: 13px; text-transform: uppercase; color: #166534; letter-spacing: 0.5px;">Refund Details</h3>
-              <p style="margin: 4px 0; font-size: 13px;"><strong>Refund Amount:</strong> <span style="font-size: 15px; font-weight: bold; color: #15803d;">₹${refundAmount} (Full Amount)</span></p>
+              <p style="margin: 4px 0; font-size: 13px;"><strong>Refund Amount:</strong> <span style="font-size: 15px; font-weight: bold; color: #15803d;">₹${refundAmount} ${isFull ? '(Full Amount)' : '(Adjusted Refund)'}</span></p>
               <p style="margin: 4px 0; font-size: 13px;"><strong>Refund ID / Reference:</strong> <span style="font-family: monospace; font-size: 13px; font-weight: bold; color: #0f172a;">${escapeHtml(finalRefundId)}</span></p>
               <p style="margin: 4px 0; font-size: 13px;"><strong>Status:</strong> <span style="font-weight: 600; color: #15803d;">Initiated to original payment method</span></p>
+              ${
+                cancellationPdfFilename
+                  ? `<p style="margin: 4px 0; font-size: 13px;"><strong>Cancellation Receipt:</strong> <span style="color: #0f172a;">Attached (${escapeHtml(cancellationPdfFilename)})</span></p>`
+                  : ''
+              }
               <p style="margin: 8px 0 0 0; font-size: 12px; color: #166534;">
-                The full amount of ₹${refundAmount} has been refunded to the original payment source. Funds typically reflect in your bank account or UPI application within 3 to 7 working days depending on your bank.
+                The refund amount of ₹${refundAmount} has been refunded to your original payment source. Funds typically reflect in your bank account or UPI application within 3 to 7 working days depending on your bank.
               </p>
             </div>`
           : `
@@ -2419,25 +2986,30 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
               <p style="margin: 0; font-size: 13px; color: #64748b;">
                 This booking has been cancelled. No refund has been initiated for this request.
               </p>
+              ${
+                cancellationPdfFilename
+                  ? `<p style="margin: 8px 0 0 0; font-size: 13px;"><strong>Cancellation Receipt:</strong> Attached (${escapeHtml(cancellationPdfFilename)})</p>`
+                  : ''
+              }
             </div>`;
 
       const html = `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1e293b;">
           <div style="background: #0f172a; padding: 24px; text-align: center; border-radius: 12px 12px 0 0;">
-            <h1 style="color: white; margin: 0; font-size: 20px;">${shouldRefund ? 'Booking Cancelled & Refund Initiated' : 'Booking Cancelled'}</h1>
+            <h1 style="color: white; margin: 0; font-size: 20px;">${shouldRefund && refundAmount > 0 ? 'Booking Cancelled & Refund Initiated' : 'Booking Cancelled'}</h1>
             <p style="color: #94a3b8; margin: 6px 0 0 0; font-size: 14px;">Booking Ref: <strong style="color: #38bdf8;">${escapeHtml(booking.bookingRef)}</strong></p>
           </div>
           <div style="padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px; background: white;">
             <p style="font-size: 15px; margin-top: 0; color: #334155;">Dear Passenger,</p>
             <p style="color: #475569; font-size: 14px; line-height: 1.6;">
-              Your split-ticket booking for <strong>Train ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</strong> (${escapeHtml(booking.fromStationCode)} → ${escapeHtml(booking.toStationCode)}) on <strong>${escapeHtml(journeyDateStr)}</strong> has been cancelled.
+              Your split-ticket booking for <strong>Train ${escapeHtml(booking.trainNumber || '')} ${escapeHtml(booking.trainName || '')}</strong> (${escapeHtml(booking.fromStationCode || '')} → ${escapeHtml(booking.toStationCode || '')}) on <strong>${escapeHtml(journeyDateStr)}</strong> has been cancelled.
             </p>
             ${refundBoxHtml}
             ${bookingPriceHtml(booking)}
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 20px;">
               <h4 style="margin: 0 0 8px 0; font-size: 12px; text-transform: uppercase; color: #64748b;">Cancelled Journey</h4>
-              <p style="margin: 3px 0; font-size: 13px;"><strong>Train:</strong> ${escapeHtml(booking.trainNumber)} ${escapeHtml(booking.trainName || '')}</p>
-              <p style="margin: 3px 0; font-size: 13px;"><strong>Route:</strong> ${escapeHtml(booking.fromStationCode)} → ${escapeHtml(booking.toStationCode)}</p>
+              <p style="margin: 3px 0; font-size: 13px;"><strong>Train:</strong> ${escapeHtml(booking.trainNumber || '')} ${escapeHtml(booking.trainName || '')}</p>
+              <p style="margin: 3px 0; font-size: 13px;"><strong>Route:</strong> ${escapeHtml(booking.fromStationCode || '')} → ${escapeHtml(booking.toStationCode || '')}</p>
               <p style="margin: 3px 0; font-size: 13px;"><strong>Date:</strong> ${escapeHtml(journeyDateStr)}</p>
             </div>
             <p style="color: #94a3b8; font-size: 12px; margin-top: 24px; border-top: 1px solid #f1f5f9; padding-top: 16px; line-height: 1.5;">
@@ -2446,9 +3018,18 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
           </div>
         </div>`;
 
+      const attachments: Array<{ filename: string; content: Buffer }> = [];
+      if (cancellationPdfBuffer && cancellationPdfFilename) {
+        attachments.push({
+          filename: cancellationPdfFilename,
+          content: cancellationPdfBuffer,
+        });
+      }
+
       emailSent = await this.notifications
         .sendEmail(booking.contactEmail, subject, html, {
           skipFailureReport: true,
+          attachments: attachments.length > 0 ? attachments : undefined,
         })
         .catch(() => false);
     }
@@ -2479,13 +3060,18 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
     return {
       success: true,
       bookingRef: booking.bookingRef,
-      refundInitiated: shouldRefund,
+      refundInitiated: shouldRefund && refundAmount > 0,
       refundAmount: shouldRefund ? refundAmount : 0,
       refundId: finalRefundId,
+      hasCancellationPdf: Boolean(
+        cancellationPdfS3Key || cancellationPdfBuffer,
+      ),
+      cancellationPdfFilename,
       emailSent,
-      message: shouldRefund
-        ? `Booking ${booking.bookingRef} cancelled. Full refund of ₹${refundAmount} initiated (Refund ID: ${finalRefundId}).`
-        : `Booking ${booking.bookingRef} cancelled without refund.`,
+      message:
+        shouldRefund && refundAmount > 0
+          ? `Booking ${booking.bookingRef} cancelled. Refund of ₹${refundAmount} initiated (Refund ID: ${finalRefundId}).`
+          : `Booking ${booking.bookingRef} cancelled without refund.`,
     };
   }
 }

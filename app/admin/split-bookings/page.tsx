@@ -103,6 +103,10 @@ export interface SplitBookingAdminEntry extends SplitBookingPrice {
   insurancePdfContentType?: string | null;
   insurancePdfUploadedAt?: string | null;
   hasInsurancePdf?: boolean;
+  cancellationPdfFilename?: string | null;
+  cancellationPdfContentType?: string | null;
+  cancellationPdfUploadedAt?: string | null;
+  hasCancellationPdf?: boolean;
   bookingError: string | null;
   completedAt: string | null;
   createdAt: string;
@@ -169,8 +173,13 @@ export interface CancellationAdminEntry {
   bookingRef: string;
   mobile: string;
   reason: string | null;
-  status: "PENDING" | "PROCESSED" | "REJECTED";
+  status: "PENDING" | "PROCESSED" | "REJECTED" | "CANCELLED";
   adminNotes: string | null;
+  refundAmount?: number | null;
+  refundId?: string | null;
+  hasCancellationPdf?: boolean;
+  cancellationPdfFilename?: string | null;
+  cancellationPdfUploadedAt?: string | null;
   adminEmailSentAt: string | null;
   adminWhatsappSentAt: string | null;
   processedAt: string | null;
@@ -190,6 +199,10 @@ export interface CancellationAdminEntry {
         contactEmail: string;
         bookingStatus: string;
         paymentStatus: string;
+        muzoboxPaymentId?: string | null;
+        razorpayPaymentId?: string | null;
+        hasCancellationPdf?: boolean;
+        cancellationPdfFilename?: string | null;
         pnrs: string[];
         pnrLeg1: string | null;
         pnrLeg2: string | null;
@@ -209,9 +222,13 @@ const CANCELLATION_STATUS_STYLES: Record<
     badge: "border-amber-300 bg-amber-50 text-amber-800 font-semibold",
     label: "Pending Review",
   },
+  CANCELLED: {
+    badge: "border-purple-200 bg-purple-50 text-purple-700 font-semibold",
+    label: "Cancelled & Refunded",
+  },
   PROCESSED: {
     badge: "border-emerald-200 bg-emerald-50 text-emerald-800 font-semibold",
-    label: "Processed & Refunded",
+    label: "Processed",
   },
   REJECTED: {
     badge: "border-rose-200 bg-rose-50 text-rose-700 font-semibold",
@@ -238,6 +255,15 @@ function extractError(err: unknown, fallback: string): string {
     return "The uploaded PDF is too large (maximum size is 25MB). Please upload a smaller or compressed ticket PDF.";
   }
   return ax.response?.data?.message ?? ax.response?.data?.error ?? fallback;
+}
+
+function readFileAsDataUrl(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
 }
 
 function SplitBookingsAdminContent() {
@@ -283,11 +309,17 @@ function SplitBookingsAdminContent() {
   const [actionCancellation, setActionCancellation] =
     useState<CancellationAdminEntry | null>(null);
   const [actionStatus, setActionStatus] = useState<
-    "PENDING" | "PROCESSED" | "REJECTED"
-  >("PROCESSED");
+    "PENDING" | "PROCESSED" | "REJECTED" | "CANCELLED"
+  >("CANCELLED");
   const [actionNotes, setActionNotes] = useState("");
+  const [actionRefundAmount, setActionRefundAmount] = useState<string>("");
+  const [actionManualRefundId, setActionManualRefundId] = useState<string>("");
+  const [actionCancellationPdfFile, setActionCancellationPdfFile] =
+    useState<File | null>(null);
   const [savingCancellation, setSavingCancellation] = useState(false);
   const [cancellationActionError, setCancellationActionError] = useState("");
+  const [cancellationActionSuccess, setCancellationActionSuccess] =
+    useState("");
 
   // Cancel & Refund Modal State
   const [refundBooking, setRefundBooking] =
@@ -296,6 +328,10 @@ function SplitBookingsAdminContent() {
     "refund" | "no_refund"
   >("refund");
   const [refundReason, setRefundReason] = useState("");
+  const [manualRefundId, setManualRefundId] = useState("");
+  const [customRefundAmount, setCustomRefundAmount] = useState<string>("");
+  const [bookingCancellationPdfFile, setBookingCancellationPdfFile] =
+    useState<File | null>(null);
   const [processingRefund, setProcessingRefund] = useState(false);
   const [refundModalError, setRefundModalError] = useState("");
   const [refundSuccessMsg, setRefundSuccessMsg] = useState("");
@@ -497,13 +533,16 @@ function SplitBookingsAdminContent() {
   const cancellationMetrics = useMemo(() => {
     const total = cancellations.length;
     const pending = cancellations.filter((c) => c.status === "PENDING").length;
+    const cancelled = cancellations.filter(
+      (c) => c.status === "CANCELLED",
+    ).length;
     const processed = cancellations.filter(
       (c) => c.status === "PROCESSED",
     ).length;
     const rejected = cancellations.filter(
       (c) => c.status === "REJECTED",
     ).length;
-    return { total, pending, processed, rejected };
+    return { total, pending, cancelled, processed, rejected };
   }, [cancellations]);
 
   // Filtered Cancellations
@@ -539,11 +578,26 @@ function SplitBookingsAdminContent() {
     });
   }, [cancellations, cancellationStatusFilter, cancellationSearch]);
 
-  const openCancellationModal = (c: CancellationAdminEntry) => {
+  const openCancellationModal = (
+    c: CancellationAdminEntry,
+    initialStatus?: "PENDING" | "PROCESSED" | "REJECTED" | "CANCELLED",
+  ) => {
     setActionCancellation(c);
-    setActionStatus(c.status);
+    setActionStatus(
+      initialStatus || (c.status === "PENDING" ? "CANCELLED" : c.status),
+    );
     setActionNotes(c.adminNotes || "");
+    setActionRefundAmount(
+      c.refundAmount !== null && c.refundAmount !== undefined
+        ? String(c.refundAmount)
+        : c.booking?.amount
+        ? String(c.booking.amount)
+        : "",
+    );
+    setActionManualRefundId(c.refundId || "");
+    setActionCancellationPdfFile(null);
     setCancellationActionError("");
+    setCancellationActionSuccess("");
   };
 
   const handleSaveCancellation = async (e: React.FormEvent) => {
@@ -551,17 +605,86 @@ function SplitBookingsAdminContent() {
     if (!actionCancellation || savingCancellation) return;
     setSavingCancellation(true);
     setCancellationActionError("");
+    setCancellationActionSuccess("");
     try {
-      await apiClient.patch(
+      if (actionStatus === "CANCELLED") {
+        if (
+          actionRefundAmount.trim() === "" ||
+          isNaN(Number(actionRefundAmount)) ||
+          Number(actionRefundAmount) < 0
+        ) {
+          setCancellationActionError(
+            "Please enter a valid refund amount (0 or greater).",
+          );
+          setSavingCancellation(false);
+          return;
+        }
+        if (
+          actionCancellation.booking?.amount !== undefined &&
+          Number(actionRefundAmount) > actionCancellation.booking.amount
+        ) {
+          setCancellationActionError(
+            `Refund amount cannot exceed booking total of ₹${actionCancellation.booking.amount.toLocaleString("en-IN")}.`,
+          );
+          setSavingCancellation(false);
+          return;
+        }
+        if (
+          !actionCancellationPdfFile &&
+          !actionCancellation.hasCancellationPdf
+        ) {
+          setCancellationActionError(
+            "Please upload the IRCTC cancellation receipt PDF.",
+          );
+          setSavingCancellation(false);
+          return;
+        }
+      }
+
+      let cancellationPdfPayload:
+        | { base64: string; filename: string; contentType: string }
+        | undefined;
+      if (actionCancellationPdfFile) {
+        const base64 = await readFileAsDataUrl(actionCancellationPdfFile);
+        cancellationPdfPayload = {
+          base64,
+          filename: actionCancellationPdfFile.name,
+          contentType: actionCancellationPdfFile.type || "application/pdf",
+        };
+      }
+
+      const res = await apiClient.patch<{
+        ok?: boolean;
+        success?: boolean;
+        message?: string;
+        refundId?: string | null;
+        refundAmount?: number;
+      }>(
         `/api/split-booking/admin/cancellations/${actionCancellation.id}`,
         {
           status: actionStatus,
-          adminNotes: actionNotes,
+          adminNotes: actionNotes.trim() || undefined,
+          refundAmount:
+            actionStatus === "CANCELLED" && actionRefundAmount !== ""
+              ? Number(actionRefundAmount)
+              : undefined,
+          manualRefundId: actionManualRefundId.trim() || undefined,
+          cancellationPdf: cancellationPdfPayload,
         },
         { headers: authHeaders() },
       );
-      setActionCancellation(null);
+
+      const msg =
+        res.data?.message ||
+        (actionStatus === "CANCELLED"
+          ? `Success: Cancellation processed and refund of ₹${res.data?.refundAmount ?? actionRefundAmount} initiated (Refund ID: ${res.data?.refundId || "Recorded"}).`
+          : `Success: Cancellation request updated to ${actionStatus}.`);
+      setCancellationActionSuccess(msg);
       await load();
+      setTimeout(() => {
+        setActionCancellation(null);
+        setCancellationActionSuccess("");
+      }, 2000);
     } catch (err) {
       setCancellationActionError(
         extractError(err, "Failed to update cancellation request."),
@@ -574,6 +697,9 @@ function SplitBookingsAdminContent() {
   const openCancelAndRefundModal = (b: SplitBookingAdminEntry) => {
     setRefundBooking(b);
     setRefundReason("");
+    setManualRefundId("");
+    setCustomRefundAmount(String(b.amount));
+    setBookingCancellationPdfFile(null);
     setRefundModalError("");
     setRefundSuccessMsg("");
     setCancelRefundOption(b.paymentStatus === "PAID" ? "refund" : "no_refund");
@@ -588,6 +714,35 @@ function SplitBookingsAdminContent() {
     setRefundSuccessMsg("");
     try {
       const shouldRefund = cancelRefundOption === "refund";
+      if (shouldRefund && customRefundAmount !== "") {
+        const amt = Number(customRefundAmount);
+        if (isNaN(amt) || amt < 0) {
+          setRefundModalError(
+            "Please enter a valid refund amount (0 or greater).",
+          );
+          setProcessingRefund(false);
+          return;
+        }
+        if (amt > refundBooking.amount) {
+          setRefundModalError(
+            `Refund amount cannot exceed booking total of ₹${refundBooking.amount.toLocaleString("en-IN")}.`,
+          );
+          setProcessingRefund(false);
+          return;
+        }
+      }
+      let cancellationPdfPayload:
+        | { base64: string; filename: string; contentType: string }
+        | undefined;
+      if (bookingCancellationPdfFile) {
+        const base64 = await readFileAsDataUrl(bookingCancellationPdfFile);
+        cancellationPdfPayload = {
+          base64,
+          filename: bookingCancellationPdfFile.name,
+          contentType: bookingCancellationPdfFile.type || "application/pdf",
+        };
+      }
+
       const res = await apiClient.post<{
         success: boolean;
         refundInitiated?: boolean;
@@ -600,6 +755,12 @@ function SplitBookingsAdminContent() {
         {
           reason: refundReason.trim() || undefined,
           refund: shouldRefund,
+          refundAmount:
+            shouldRefund && customRefundAmount !== ""
+              ? Number(customRefundAmount)
+              : undefined,
+          manualRefundId: manualRefundId.trim() || undefined,
+          cancellationPdf: cancellationPdfPayload,
         },
         { headers: authHeaders() },
       );
@@ -888,6 +1049,11 @@ function SplitBookingsAdminContent() {
     return `${base}/api/split-booking/insurance-pdf/${encodeURIComponent(ref)}`;
   };
 
+  const cancellationPdfUrl = (ref: string) => {
+    const base = apiClient.defaults.baseURL || "";
+    return `${base}/api/split-booking/cancellation-pdf/${encodeURIComponent(ref)}`;
+  };
+
   return (
     <div className="space-y-6">
       {/* Page Title & Controls */}
@@ -1025,7 +1191,7 @@ function SplitBookingsAdminContent() {
                 placeholder="Search by Booking Ref, Train, Passenger, Phone, Email, PNR…"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-9 pr-3 text-xs text-slate-800 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20"
+                className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-9 pr-3 text-xs text-slate-800 placeholder:text-slate-400/70 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20"
               />
             </div>
 
@@ -1362,7 +1528,7 @@ function SplitBookingsAdminContent() {
                                 Notify
                               </button>
 
-                              {b.bookingStatus !== "CANCELLED" && (
+                              {b.bookingStatus !== "CANCELLED" ? (
                                 <button
                                   type="button"
                                   onClick={() => openCancelModal(b)}
@@ -1372,7 +1538,18 @@ function SplitBookingsAdminContent() {
                                   <RotateCcw className="h-3 w-3" />
                                   Cancel
                                 </button>
-                              )}
+                              ) : b.paymentStatus === "PAID" &&
+                                !b.bookingError?.toLowerCase().includes("refund") ? (
+                                <button
+                                  type="button"
+                                  onClick={() => openCancelModal(b)}
+                                  className="shadow-xs inline-flex cursor-pointer items-center gap-1 rounded-lg border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 transition hover:bg-emerald-100"
+                                  title="Issue refund for this cancelled booking"
+                                >
+                                  <RotateCcw className="h-3 w-3" />
+                                  Refund
+                                </button>
+                              ) : null}
 
                               {(b.customerEmailSentAt ||
                                 b.customerWhatsappSentAt) && (
@@ -1397,7 +1574,7 @@ function SplitBookingsAdminContent() {
       {activeTab === "cancellations" && (
         <div className="space-y-6">
           {/* Cancellation Metrics */}
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
             <div className="shadow-xs rounded-2xl border border-slate-200 bg-white p-4">
               <span className="text-xs font-medium text-slate-500">
                 Total Cancellation Requests
@@ -1414,9 +1591,17 @@ function SplitBookingsAdminContent() {
                 {cancellationMetrics.pending}
               </p>
             </div>
+            <div className="shadow-xs rounded-2xl border border-purple-200 bg-purple-50/70 p-4">
+              <span className="text-xs font-medium text-purple-800">
+                Cancelled & Refunded
+              </span>
+              <p className="mt-1 text-2xl font-bold text-purple-900">
+                {cancellationMetrics.cancelled}
+              </p>
+            </div>
             <div className="shadow-xs rounded-2xl border border-emerald-200 bg-emerald-50/70 p-4">
               <span className="text-xs font-medium text-emerald-800">
-                Processed & Refunded
+                Processed
               </span>
               <p className="mt-1 text-2xl font-bold text-emerald-900">
                 {cancellationMetrics.processed}
@@ -1441,7 +1626,7 @@ function SplitBookingsAdminContent() {
                 placeholder="Search cancellations by Booking Ref, Mobile, Train, Reason…"
                 value={cancellationSearch}
                 onChange={(e) => setCancellationSearch(e.target.value)}
-                className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-9 pr-3 text-xs text-slate-800 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20"
+                className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-9 pr-3 text-xs text-slate-800 placeholder:text-slate-400/70 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20"
               />
             </div>
 
@@ -1453,7 +1638,8 @@ function SplitBookingsAdminContent() {
               >
                 <option value="all">All Request Statuses</option>
                 <option value="PENDING">Pending Review</option>
-                <option value="PROCESSED">Processed & Refunded</option>
+                <option value="CANCELLED">Cancelled & Refunded</option>
+                <option value="PROCESSED">Processed</option>
                 <option value="REJECTED">Rejected</option>
               </select>
             </div>
@@ -1498,7 +1684,8 @@ function SplitBookingsAdminContent() {
                       return (
                         <tr
                           key={c.id}
-                          className="transition hover:bg-slate-50/50"
+                          onClick={() => openCancellationModal(c)}
+                          className="cursor-pointer transition hover:bg-slate-50"
                         >
                           <td className="whitespace-nowrap px-4 py-3.5 align-top">
                             <span className="block font-medium text-slate-800">
@@ -1528,7 +1715,10 @@ function SplitBookingsAdminContent() {
                               </span>
                               <button
                                 type="button"
-                                onClick={() => copyToClipboard(c.bookingRef)}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  copyToClipboard(c.bookingRef);
+                                }}
                                 className="text-slate-400 transition hover:text-slate-600"
                                 title="Copy Booking Ref"
                               >
@@ -1567,6 +1757,7 @@ function SplitBookingsAdminContent() {
                             <div>
                               <a
                                 href={`tel:${c.mobile}`}
+                                onClick={(e) => e.stopPropagation()}
                                 className="block font-bold text-blue-600 hover:underline"
                               >
                                 {c.mobile}
@@ -1574,6 +1765,7 @@ function SplitBookingsAdminContent() {
                               {booking?.contactEmail && (
                                 <a
                                   href={`mailto:${booking.contactEmail}`}
+                                  onClick={(e) => e.stopPropagation()}
                                   className="block max-w-[140px] truncate text-[11px] text-slate-500 hover:underline"
                                 >
                                   {booking.contactEmail}
@@ -1612,6 +1804,30 @@ function SplitBookingsAdminContent() {
                             >
                               {statusStyle.label}
                             </span>
+                            {c.refundAmount !== null &&
+                              c.refundAmount !== undefined && (
+                                <span className="mt-1 block text-xs font-bold text-purple-700">
+                                  ₹{c.refundAmount.toLocaleString("en-IN")}{" "}
+                                  refunded
+                                </span>
+                              )}
+                            {c.refundId && (
+                              <span className="block font-mono text-[10px] text-slate-500">
+                                Ref: {c.refundId}
+                              </span>
+                            )}
+                            {c.hasCancellationPdf && (
+                              <a
+                                href={cancellationPdfUrl(c.bookingRef)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="mt-1 inline-flex items-center gap-1 text-[11px] font-semibold text-purple-700 hover:text-purple-900 hover:underline"
+                              >
+                                <FileText className="h-3 w-3" />
+                                Receipt PDF
+                              </a>
+                            )}
                             {c.processedAt && (
                               <span className="mt-0.5 block text-[10px] text-slate-400">
                                 {new Date(c.processedAt).toLocaleDateString(
@@ -1628,14 +1844,22 @@ function SplitBookingsAdminContent() {
                           </td>
 
                           <td className="whitespace-nowrap px-4 py-3.5 text-right align-top">
-                            <div className="flex flex-col items-end gap-1.5">
-                              <button
-                                type="button"
-                                onClick={() => openCancellationModal(c)}
-                                className="shadow-xs inline-flex cursor-pointer items-center gap-1 rounded-lg bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-white transition hover:bg-slate-800"
-                              >
-                                Update Status
-                              </button>
+                            <div
+                              className="flex flex-col items-end gap-1.5"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              {c.status !== "CANCELLED" && (
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    openCancellationModal(c, "CANCELLED")
+                                  }
+                                  className="shadow-xs inline-flex cursor-pointer items-center gap-1 rounded-lg border border-purple-200 bg-purple-50 px-2.5 py-1 text-[11px] font-semibold text-purple-700 transition hover:bg-purple-100"
+                                >
+                                  <RotateCcw className="h-2.5 w-2.5" />
+                                  Cancelled
+                                </button>
+                              )}
 
                               {booking && (
                                 <button
@@ -2517,33 +2741,206 @@ function SplitBookingsAdminContent() {
                   value={actionStatus}
                   onChange={(e) =>
                     setActionStatus(
-                      e.target.value as "PENDING" | "PROCESSED" | "REJECTED",
+                      e.target.value as "PENDING" | "PROCESSED" | "REJECTED" | "CANCELLED",
                     )
                   }
-                  className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 focus:ring-2 focus:ring-blue-600/20"
+                  className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 focus:ring-2 focus:ring-purple-600/20"
                 >
+                  <option value="CANCELLED">
+                    Cancelled (Initiate Refund & Upload PDF)
+                  </option>
                   <option value="PENDING">Pending Review</option>
-                  <option value="PROCESSED">Processed & Refunded</option>
+                  <option value="PROCESSED">Processed</option>
                   <option value="REJECTED">Rejected</option>
                 </select>
               </div>
+
+              {actionStatus === "CANCELLED" && (() => {
+                const paymentId =
+                  actionCancellation.booking?.muzoboxPaymentId ||
+                  actionCancellation.booking?.razorpayPaymentId ||
+                  entries.find(
+                    (e) =>
+                      e.bookingRef === actionCancellation.bookingRef ||
+                      e.id === actionCancellation.bookingId,
+                  )?.razorpayPaymentId ||
+                  entries.find(
+                    (e) =>
+                      e.bookingRef === actionCancellation.bookingRef ||
+                      e.id === actionCancellation.bookingId,
+                  )?.muzoboxPaymentId ||
+                  null;
+
+                return (
+                  <div className="space-y-3">
+                    <div className="space-y-1.5 rounded-xl border border-purple-200 bg-purple-50/70 p-3 text-xs">
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium text-slate-600">
+                          Cancellation Booking ID:
+                        </span>
+                        <span className="font-mono font-bold text-slate-900">
+                          {actionCancellation.bookingRef}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium text-slate-600">
+                          Payment ID against Booking:
+                        </span>
+                        {paymentId ? (
+                          <span className="rounded bg-purple-100 px-2 py-0.5 font-mono font-bold text-purple-900">
+                            {paymentId}
+                          </span>
+                        ) : (
+                          <span className="font-mono text-xs font-semibold text-amber-700">
+                            Not attached (specify manual refund ID below)
+                          </span>
+                        )}
+                      </div>
+                      {actionCancellation.booking && (
+                        <div className="flex items-center justify-between border-t border-purple-200/50 pt-1.5">
+                          <span className="font-medium text-slate-600">
+                            Booking Total Fare:
+                          </span>
+                          <span className="font-bold text-slate-900">
+                            ₹
+                            {actionCancellation.booking.amount.toLocaleString(
+                              "en-IN",
+                            )}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="mb-1 flex items-center justify-between text-xs font-semibold text-slate-700">
+                        <span>Amount to be Refunded (₹) *</span>
+                        {actionCancellation.booking?.amount && (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setActionRefundAmount(
+                                String(actionCancellation.booking!.amount),
+                              )
+                            }
+                            className="cursor-pointer text-[11px] font-medium text-purple-600 hover:underline"
+                          >
+                            Full Refund (₹
+                            {actionCancellation.booking.amount.toLocaleString(
+                              "en-IN",
+                            )}
+                            )
+                          </button>
+                        )}
+                      </label>
+                      <div className="relative">
+                        <span className="absolute left-3 top-2.5 text-xs font-bold text-slate-500">
+                          ₹
+                        </span>
+                        <input
+                          type="number"
+                          min="0"
+                          max={actionCancellation.booking?.amount || undefined}
+                          step="1"
+                          required
+                          placeholder="Enter net refund amount after IRCTC cancellation deductions"
+                          value={actionRefundAmount}
+                          onChange={(e) => setActionRefundAmount(e.target.value)}
+                          className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-7 pr-3 text-xs font-semibold text-slate-900 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-purple-600/20"
+                        />
+                      </div>
+                      <p className="mt-1 text-[11px] text-slate-500">
+                        This amount will be refunded directly to customer via payment gateway (Muzobox/Razorpay).
+                      </p>
+                    </div>
+
+                    <div>
+                      <label className="mb-1 block text-xs font-semibold text-slate-700">
+                        Cancellation PDF (IRCTC Cancellation Receipt) *
+                      </label>
+                      <input
+                        type="file"
+                        accept=".pdf,application/pdf"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0] || null;
+                          if (file && file.size > MAX_PDF_BYTES) {
+                            setCancellationActionError(
+                              `File "${file.name}" exceeds the 25MB limit.`,
+                            );
+                            setActionCancellationPdfFile(null);
+                            return;
+                          }
+                          setActionCancellationPdfFile(file);
+                          setCancellationActionError("");
+                        }}
+                        className="focus:outline-hidden block w-full rounded-xl border border-slate-200 bg-white p-2 text-xs text-slate-700 file:mr-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-purple-100 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-purple-700 hover:file:bg-purple-200"
+                      />
+                      {actionCancellation.hasCancellationPdf &&
+                        !actionCancellationPdfFile && (
+                          <div className="mt-1 flex items-center gap-1.5 text-[11px] text-emerald-700">
+                            <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+                            <span>Cancellation receipt already on file:</span>
+                            <a
+                              href={cancellationPdfUrl(
+                                actionCancellation.bookingRef,
+                              )}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-bold underline hover:text-emerald-900"
+                            >
+                              View Existing PDF
+                            </a>
+                          </div>
+                        )}
+                      <p className="mt-1 text-[11px] text-slate-500">
+                        Attach the official IRCTC cancellation confirmation or payment refund slip.
+                      </p>
+                    </div>
+
+                    <div>
+                      <label className="mb-1 block text-xs font-semibold text-slate-700">
+                        Manual Refund ID{" "}
+                        <span className="font-normal text-slate-400">
+                          (Optional — if already refunded via Razorpay / payment dashboard)
+                        </span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. rfnd_xxxxxxxxxxxxxx"
+                        value={actionManualRefundId}
+                        onChange={(e) => setActionManualRefundId(e.target.value)}
+                        className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 font-mono text-xs text-slate-800 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-purple-600/20"
+                      />
+                    </div>
+                  </div>
+                );
+              })()}
 
               <div>
                 <label className="mb-1 block text-xs font-semibold text-slate-700">
                   Admin Internal Notes / Refund Details
                 </label>
                 <textarea
-                  rows={3}
-                  placeholder="e.g. Cancelled on IRCTC. Refund amount ₹1,850 credited. Transaction ARN / Razorpay Refund ID: rfc_123456"
+                  rows={2}
+                  placeholder={
+                    actionStatus === "CANCELLED"
+                      ? "e.g. Cancelled on IRCTC. IRCTC deducted ₹120 cancellation charges. Net refund ₹1,850."
+                      : "e.g. Reviewed with customer..."
+                  }
                   value={actionNotes}
                   onChange={(e) => setActionNotes(e.target.value)}
-                  className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 focus:ring-2 focus:ring-blue-600/20"
+                  className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-blue-600/20"
                 />
               </div>
 
               {cancellationActionError && (
                 <div className="rounded-xl border border-rose-200 bg-rose-50 p-2.5 text-xs text-rose-800">
                   {cancellationActionError}
+                </div>
+              )}
+
+              {cancellationActionSuccess && (
+                <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-2.5 text-xs font-semibold text-emerald-800">
+                  {cancellationActionSuccess}
                 </div>
               )}
 
@@ -2558,12 +2955,23 @@ function SplitBookingsAdminContent() {
                 <button
                   type="submit"
                   disabled={savingCancellation}
-                  className="shadow-xs inline-flex cursor-pointer items-center gap-1.5 rounded-xl bg-blue-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-blue-700 disabled:opacity-50"
+                  className={`shadow-xs inline-flex cursor-pointer items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold text-white transition disabled:opacity-50 ${
+                    actionStatus === "CANCELLED"
+                      ? "bg-purple-700 hover:bg-purple-800"
+                      : "bg-blue-600 hover:bg-blue-700"
+                  }`}
                 >
                   {savingCancellation ? (
                     <>
                       <RefreshCw className="h-3 w-3 animate-spin" />
-                      Saving…
+                      {actionStatus === "CANCELLED"
+                        ? "Initiating Refund…"
+                        : "Saving…"}
+                    </>
+                  ) : actionStatus === "CANCELLED" ? (
+                    <>
+                      <RotateCcw className="h-3.5 w-3.5" />
+                      Initiate Refund & Cancel
                     </>
                   ) : (
                     "Save & Update"
@@ -2590,7 +2998,9 @@ function SplitBookingsAdminContent() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-slate-900">
-                    Cancel Booking
+                    {refundBooking.bookingStatus === "CANCELLED"
+                      ? "Issue Refund to Customer"
+                      : "Cancel Booking"}
                   </h3>
                   <p className="text-xs text-slate-500">
                     Ref:{" "}
@@ -2694,10 +3104,10 @@ function SplitBookingsAdminContent() {
                       Total Refund Amount:
                     </span>
                     <span className="text-base font-bold text-purple-700">
-                      {formatBookingAmount(refundBooking.amount)}{" "}
-                      <span className="text-[11px] font-normal text-purple-600">
-                        (Full 100%)
-                      </span>
+                      ₹
+                      {customRefundAmount !== ""
+                        ? Number(customRefundAmount).toLocaleString("en-IN")
+                        : refundBooking.amount.toLocaleString("en-IN")}
                     </span>
                   </div>
                   <div className="flex justify-between">
@@ -2768,11 +3178,109 @@ function SplitBookingsAdminContent() {
                   <p className="text-[11px] leading-relaxed text-blue-700">
                     An automated email will be sent immediately to{" "}
                     <strong>{refundBooking.contactEmail}</strong> containing the
-                    cancellation notice, full refund amount (
-                    {formatBookingAmount(refundBooking.amount)}
+                    cancellation notice, refund amount (₹
+                    {customRefundAmount !== ""
+                      ? Number(customRefundAmount).toLocaleString("en-IN")
+                      : refundBooking.amount.toLocaleString("en-IN")}
                     ), and the generated Refund ID reference.
                   </p>
                 </div>
+              )}
+
+              {cancelRefundOption === "refund" && (
+                <>
+                  <div>
+                    <label className="mb-1 flex items-center justify-between text-xs font-semibold text-slate-700">
+                      <span>Amount to be Refunded (₹) *</span>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setCustomRefundAmount(String(refundBooking.amount))
+                        }
+                        className="cursor-pointer text-[11px] font-medium text-purple-600 hover:underline"
+                      >
+                        Reset to Full (₹
+                        {refundBooking.amount.toLocaleString("en-IN")})
+                      </button>
+                    </label>
+                    <div className="relative">
+                      <span className="absolute left-3 top-2.5 text-xs font-bold text-slate-500">
+                        ₹
+                      </span>
+                      <input
+                        type="number"
+                        min="0"
+                        max={refundBooking.amount}
+                        step="1"
+                        required
+                        placeholder="e.g. 1850"
+                        value={customRefundAmount}
+                        onChange={(e) => setCustomRefundAmount(e.target.value)}
+                        className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-7 pr-3 text-xs font-semibold text-slate-900 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-purple-600/20"
+                      />
+                    </div>
+                    <p className="mt-1 text-[11px] text-slate-500">
+                      Specify the net refund amount after IRCTC cancellation deductions.
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="mb-1 block text-xs font-semibold text-slate-700">
+                      Cancellation PDF (IRCTC Cancellation Receipt)
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf,application/pdf"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0] || null;
+                        if (file && file.size > MAX_PDF_BYTES) {
+                          setRefundModalError(
+                            `File "${file.name}" exceeds the 25MB limit.`,
+                          );
+                          setBookingCancellationPdfFile(null);
+                          return;
+                        }
+                        setBookingCancellationPdfFile(file);
+                        setRefundModalError("");
+                      }}
+                      className="focus:outline-hidden block w-full rounded-xl border border-slate-200 bg-white p-2 text-xs text-slate-700 file:mr-3 file:cursor-pointer file:rounded-lg file:border-0 file:bg-purple-100 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-purple-700 hover:file:bg-purple-200"
+                    />
+                    {refundBooking.hasCancellationPdf &&
+                      !bookingCancellationPdfFile && (
+                        <div className="mt-1 flex items-center gap-1.5 text-[11px] text-emerald-700">
+                          <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+                          <span>Existing cancellation receipt on file:</span>
+                          <a
+                            href={cancellationPdfUrl(refundBooking.bookingRef)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-bold underline hover:text-emerald-900"
+                          >
+                            View Existing PDF
+                          </a>
+                        </div>
+                      )}
+                    <p className="mt-1 text-[11px] text-slate-500">
+                      Attach official IRCTC cancellation confirmation or proof slip.
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="mb-1 block text-xs font-semibold text-slate-700">
+                      Manual Refund ID{" "}
+                      <span className="font-normal text-slate-400">
+                        (Optional — if already refunded via Razorpay Dashboard)
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="e.g. rfnd_xxxxxxxxxxxxxx"
+                      value={manualRefundId}
+                      onChange={(e) => setManualRefundId(e.target.value)}
+                      className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 font-mono text-xs text-slate-800 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-purple-600/20"
+                    />
+                  </div>
+                </>
               )}
 
               <div>
@@ -2784,7 +3292,7 @@ function SplitBookingsAdminContent() {
                   placeholder="e.g. Passenger requested cancellation / Trains unavailable"
                   value={refundReason}
                   onChange={(e) => setRefundReason(e.target.value)}
-                  className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 focus:ring-2 focus:ring-purple-600/20"
+                  className="focus:outline-hidden w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-slate-800 placeholder:text-slate-400/70 placeholder:font-normal focus:ring-2 focus:ring-purple-600/20"
                 />
               </div>
 
@@ -2822,7 +3330,9 @@ function SplitBookingsAdminContent() {
                   ) : cancelRefundOption === "refund" ? (
                     <>
                       <RotateCcw className="h-3.5 w-3.5" />
-                      Confirm Full Refund & Cancel
+                      {refundBooking.bookingStatus === "CANCELLED"
+                        ? "Confirm Full Refund"
+                        : "Confirm Full Refund & Cancel"}
                     </>
                   ) : (
                     <>
@@ -3358,6 +3868,25 @@ function SplitBookingsAdminContent() {
                       </span>
                     )}
                   </div>
+                  {selectedDetailsBooking.hasCancellationPdf && (
+                    <div>
+                      <span className="block text-[11px] text-slate-400">
+                        Cancellation PDF
+                      </span>
+                      <a
+                        href={cancellationPdfUrl(
+                          selectedDetailsBooking.bookingRef,
+                        )}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-0.5 inline-flex items-center gap-1 rounded-lg border border-purple-200 bg-purple-50 px-2.5 py-1 text-xs font-semibold text-purple-800 transition hover:bg-purple-100"
+                      >
+                        <FileText className="h-3.5 w-3.5 text-purple-600" />
+                        View Cancellation Receipt
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

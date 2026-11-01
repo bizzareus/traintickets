@@ -628,10 +628,16 @@ model SplitTicketBooking {
   insurancePdfFilename    String?                       @map("insurance_pdf_filename")
   insurancePdfContentType String?                       @default("application/pdf") @map("insurance_pdf_content_type")
   insurancePdfUploadedAt  DateTime?                     @map("insurance_pdf_uploaded_at")
+  cancellationPdf            Bytes?                        @map("cancellation_pdf")
+  cancellationPdfS3Key       String?                       @map("cancellation_pdf_s3_key")
+  cancellationPdfFilename    String?                       @map("cancellation_pdf_filename")
+  cancellationPdfContentType String?                       @default("application/pdf") @map("cancellation_pdf_content_type")
+  cancellationPdfUploadedAt  DateTime?                     @map("cancellation_pdf_uploaded_at")
   customerPaymentEmailSentAt  DateTime?                     @map("customer_payment_email_sent_at")
   customerPaymentWhatsappSentAt DateTime?                   @map("customer_payment_whatsapp_sent_at")
   customerEmailSentAt  DateTime?                     @map("customer_email_sent_at")
   customerWhatsappSentAt DateTime?                   @map("customer_whatsapp_sent_at")
+  abandonedReminderSentAt DateTime?                  @map("abandoned_reminder_sent_at")
 
   createdAt         DateTime                      @default(now()) @map("created_at")
   updatedAt         DateTime                      @updatedAt @map("updated_at")
@@ -640,13 +646,27 @@ model SplitTicketBooking {
 
   @@index([bookingRef])
   @@index([paymentStatus, bookingStatus])
+  @@index([paymentStatus, abandonedReminderSentAt, createdAt])
   @@map("split_ticket_booking")
+}
+
+/// Configuration for the abandoned booking recovery marketing engine.
+model MarketingEngineConfig {
+  id                  String   @id @default("default")
+  enabled             Boolean  @default(true)
+  minAbandonedMinutes Int      @default(15) @map("min_abandoned_minutes")
+  maxLookbackHours    Int      @default(48) @map("max_lookback_hours")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+  createdAt           DateTime @default(now()) @map("created_at")
+
+  @@map("marketing_engine_config")
 }
 
 enum CancellationRequestStatus {
   PENDING
   PROCESSED
   REJECTED
+  CANCELLED
 }
 
 model BookingCancellationRequest {
@@ -661,6 +681,13 @@ model BookingCancellationRequest {
   adminEmailSentAt    DateTime?                 @map("admin_email_sent_at")
   adminWhatsappSentAt DateTime?                 @map("admin_whatsapp_sent_at")
   processedAt         DateTime?                 @map("processed_at")
+  refundAmount        Int?                      @map("refund_amount")
+  refundId            String?                   @map("refund_id")
+  cancellationPdf            Bytes?             @map("cancellation_pdf")
+  cancellationPdfS3Key       String?            @map("cancellation_pdf_s3_key")
+  cancellationPdfFilename    String?            @map("cancellation_pdf_filename")
+  cancellationPdfContentType String?            @default("application/pdf") @map("cancellation_pdf_content_type")
+  cancellationPdfUploadedAt  DateTime?          @map("cancellation_pdf_uploaded_at")
 
   createdAt           DateTime                  @default(now()) @map("created_at")
   updatedAt           DateTime                  @updatedAt @map("updated_at")

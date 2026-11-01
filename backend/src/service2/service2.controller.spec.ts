@@ -7,6 +7,7 @@ import { IrctcService } from '../irctc/irctc.service';
 describe('Service2Controller', () => {
   let controller: Service2Controller;
   let service2Service: Service2Service;
+  let irctcService: IrctcService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -29,11 +30,75 @@ describe('Service2Controller', () => {
 
     controller = module.get<Service2Controller>(Service2Controller);
     service2Service = module.get<Service2Service>(Service2Service);
+    irctcService = module.get<IrctcService>(IrctcService);
+  });
+
+  describe('checkStream endpoint error handling', () => {
+    it('sends sanitized error SSE without leaking error internals', async () => {
+      const sensitiveErrorMessage =
+        'Database connection string postgresql://user:secret@localhost:5432 failed';
+
+      (irctcService.getTrainSchedule as jest.Mock).mockResolvedValue({
+        ok: true,
+        schedule: {
+          stationList: [{ stationCode: 'NDLS', stationName: 'New Delhi' }],
+          trainRunsOn: {
+            runsOnMon: 'Y',
+            runsOnTue: 'Y',
+            runsOnWed: 'Y',
+            runsOnThu: 'Y',
+            runsOnFri: 'Y',
+            runsOnSat: 'Y',
+            runsOnSun: 'Y',
+          },
+        },
+      });
+
+      (service2Service.check as jest.Mock).mockRejectedValue(
+        new Error(sensitiveErrorMessage),
+      );
+
+      const writtenData: string[] = [];
+      const mockReq = {
+        on: jest.fn(),
+        once: jest.fn(),
+        off: jest.fn(),
+      } as any;
+
+      const mockRes = {
+        setHeader: jest.fn(),
+        write: jest.fn((chunk: string | Buffer) => {
+          writtenData.push(chunk.toString());
+          return true;
+        }),
+        end: jest.fn(),
+        on: jest.fn(),
+        once: jest.fn(),
+        off: jest.fn(),
+        destroyed: false,
+      } as any;
+
+      await controller.checkStream(
+        {
+          trainNumber: '12951',
+          stationCode: 'NDLS',
+          journeyDate: '2026-10-15',
+        },
+        mockReq,
+        mockRes,
+      );
+
+      const fullOutput = writtenData.join('');
+      expect(fullOutput).not.toContain(sensitiveErrorMessage);
+      expect(fullOutput).not.toContain('secret');
+      expect(fullOutput).toContain('Service 2 (IRCTC) check failed.');
+    });
   });
 
   describe('check endpoint error handling', () => {
     it('throws sanitized ServiceUnavailableException without leaking error internals', async () => {
-      const sensitiveErrorMessage = 'Database connection string postgresql://user:secret@localhost:5432 failed';
+      const sensitiveErrorMessage =
+        'Database connection string postgresql://user:secret@localhost:5432 failed';
       (service2Service.check as jest.Mock).mockRejectedValue(
         new Error(sensitiveErrorMessage),
       );
@@ -48,7 +113,10 @@ describe('Service2Controller', () => {
       } catch (err) {
         expect(err).toBeInstanceOf(ServiceUnavailableException);
         const response = (err as ServiceUnavailableException).getResponse();
-        const message = typeof response === 'string' ? response : (response as { message?: string }).message;
+        const message =
+          typeof response === 'string'
+            ? response
+            : (response as { message?: string }).message;
 
         expect(message).not.toContain(sensitiveErrorMessage);
         expect(message).not.toContain('secret');

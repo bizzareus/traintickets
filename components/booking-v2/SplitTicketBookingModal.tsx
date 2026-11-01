@@ -51,6 +51,15 @@ export interface SplitTicketBookingModalProps {
   quota?: string;
   totalFare: number;
   legs: SplitBookingLeg[];
+  initialPassenger?: SplitBookingPassenger;
+  initialMobile?: string;
+  initialEmail?: string;
+  initialAutoUpgrade?: boolean;
+  initialConfirmBerthsOnly?: boolean;
+  initialPreferredCoach?: string;
+  initialTravelInsurance?: boolean;
+  existingBookingRef?: string;
+  existingPayUrl?: string | null;
 }
 
 type ModalStep = "passenger_details" | "payment" | "booking_in_progress";
@@ -89,20 +98,37 @@ export function SplitTicketBookingModal({
   quota = "GN",
   totalFare,
   legs,
+  initialPassenger,
+  initialMobile,
+  initialEmail,
+  initialAutoUpgrade,
+  initialConfirmBerthsOnly,
+  initialPreferredCoach,
+  initialTravelInsurance,
+  existingBookingRef,
+  existingPayUrl,
 }: SplitTicketBookingModalProps) {
   const formId = useId();
   const [step, setStep] = useState<ModalStep>("passenger_details");
 
   // Step 1: Single passenger details state (booking engine supports 1 passenger)
   const [passengers, setPassengers] = useState<SplitBookingPassenger[]>([
-    createDefaultPassenger(),
+    initialPassenger ?? createDefaultPassenger(),
   ]);
-  const [autoUpgrade, setAutoUpgrade] = useState(true);
-  const [confirmBerthsOnly, setConfirmBerthsOnly] = useState(false);
-  const [preferredCoach, setPreferredCoach] = useState("");
-  const [travelInsurance, setTravelInsurance] = useState(true);
-  const [mobile, setMobile] = useState("");
-  const [email, setEmail] = useState("");
+  const [autoUpgrade, setAutoUpgrade] = useState(
+    initialAutoUpgrade !== undefined ? initialAutoUpgrade : true,
+  );
+  const [confirmBerthsOnly, setConfirmBerthsOnly] = useState(
+    Boolean(initialConfirmBerthsOnly),
+  );
+  const [preferredCoach, setPreferredCoach] = useState(
+    initialPreferredCoach ?? "",
+  );
+  const [travelInsurance, setTravelInsurance] = useState(
+    initialTravelInsurance !== undefined ? initialTravelInsurance : true,
+  );
+  const [mobile, setMobile] = useState(initialMobile ?? "");
+  const [email, setEmail] = useState(initialEmail ?? "");
   const [formError, setFormError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isCheckingAvailability, setIsCheckingAvailability] = useState(false);
@@ -161,17 +187,37 @@ export function SplitTicketBookingModal({
       setStep("passenger_details");
       setShowPaymentModal(false);
       submittedPayloadRef.current = null;
-      setPassengers([createDefaultPassenger()]);
-      setPaymentData(null);
+      setPassengers([initialPassenger ?? createDefaultPassenger()]);
+      setMobile(initialMobile ?? "");
+      setEmail(initialEmail ?? "");
+      if (existingBookingRef && existingPayUrl) {
+        setPaymentData({
+          bookingRef: existingBookingRef,
+          bookingMode: "AI",
+          payUrl: existingPayUrl,
+          totalFare,
+          serviceFee: 0,
+          irctcServiceFee: 0,
+          paymentGatewayFee: 0,
+          travelInsuranceFee: 0,
+          amount: totalFare,
+        });
+      } else {
+        setPaymentData(null);
+      }
       setBookingStatus(null);
       setBookingDelayed(false);
       setFormError(null);
       setIsSubmitting(false);
       setIsCheckingAvailability(false);
-      setAutoUpgrade(true);
-      setConfirmBerthsOnly(false);
-      setPreferredCoach("");
-      setTravelInsurance(true);
+      setAutoUpgrade(
+        initialAutoUpgrade !== undefined ? initialAutoUpgrade : true,
+      );
+      setConfirmBerthsOnly(Boolean(initialConfirmBerthsOnly));
+      setPreferredCoach(initialPreferredCoach ?? "");
+      setTravelInsurance(
+        initialTravelInsurance !== undefined ? initialTravelInsurance : true,
+      );
       setIsAdmin(isAdminUser());
       setShowAdminPasswordModal(false);
       setAdminPasswordInput("");
@@ -200,6 +246,15 @@ export function SplitTicketBookingModal({
     travelClass,
     totalFare,
     legs.length,
+    initialPassenger,
+    initialMobile,
+    initialEmail,
+    initialAutoUpgrade,
+    initialConfirmBerthsOnly,
+    initialPreferredCoach,
+    initialTravelInsurance,
+    existingBookingRef,
+    existingPayUrl,
   ]);
 
   // Handle passenger input changes
@@ -275,7 +330,13 @@ export function SplitTicketBookingModal({
       travelClass,
       quota,
       totalFare,
-      legs,
+      legs: legs.map((l) => ({
+        from: l.from,
+        to: l.to,
+        travelClass: l.travelClass,
+        boardingDate: l.boardingDate,
+        fare: l.fare,
+      })),
       passengers: [{ ...p, name: p.name.trim() }],
       childPassengers: [],
       autoUpgrade,
@@ -707,6 +768,20 @@ export function SplitTicketBookingModal({
               onSubmit={handleProceedToPayment}
               className="space-y-4 sm:space-y-6"
             >
+              {existingBookingRef && (
+                <div className="flex items-start gap-2.5 rounded-xl border border-blue-200 bg-blue-50/80 p-3 text-xs text-blue-900">
+                  <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-blue-600" />
+                  <div>
+                    <span className="font-bold">
+                      Welcome back! Your saved details are pre-filled ({existingBookingRef}).
+                    </span>
+                    <p className="mt-0.5 text-blue-800">
+                      Review below and click <strong>Proceed to Payment</strong> to confirm your berth, or edit any details if needed.
+                    </p>
+                  </div>
+                </div>
+              )}
+
               {/* Journey Route & Split Legs Banner */}
               <div className="space-y-2 rounded-xl border border-slate-200 bg-slate-50 p-3 sm:p-4">
                 <div className="flex items-center justify-between">
@@ -1134,7 +1209,7 @@ export function SplitTicketBookingModal({
                       Running final availability check before taking payment...
                     </p>
                     <p className="text-[11px] text-blue-700">
-                      Verifying live seat status with ConfirmTkt for all journey legs.
+                      Verifying live seat status for all journey legs.
                     </p>
                   </div>
                 </div>
@@ -1145,7 +1220,9 @@ export function SplitTicketBookingModal({
                 <div className="flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 p-3.5 text-xs text-red-800 shadow-xs">
                   <AlertCircle className="h-4 w-4 shrink-0 text-red-600 mt-0.5" />
                   <div className="space-y-0.5">
-                    <p className="font-bold text-red-900">Seat Availability Check</p>
+                    <p className="font-bold text-red-900">
+                      {isCheckingAvailability ? "Seat Availability Check" : "Booking Notice"}
+                    </p>
                     <p className="text-red-700">{formError}</p>
                   </div>
                 </div>

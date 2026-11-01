@@ -16,6 +16,16 @@ variable "project_name" {
   default     = "lastberth"
 }
 
+variable "seat_cache_cron_api_key" {
+  description = "Shared secret for Lambda cache refreshes; must match backend SEAT_CACHE_CRON_API_KEY"
+  type        = string
+  sensitive   = true
+  validation {
+    condition     = length(trimspace(var.seat_cache_cron_api_key)) >= 32
+    error_message = "Provide a cache refresh secret of at least 32 characters."
+  }
+}
+
 variable "domain_name" {
   description = "Root domain name for frontend"
   type        = string

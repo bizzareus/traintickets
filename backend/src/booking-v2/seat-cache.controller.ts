@@ -1,5 +1,6 @@
 import {
   Body,
+  BadRequestException,
   Controller,
   Get,
   Headers,
@@ -9,6 +10,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import type { Request } from 'express';
+import { Throttle } from '@nestjs/throttler';
 import { SeatCacheCronService } from './seat-cache-cron.service';
 import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import {
@@ -17,6 +19,8 @@ import {
   safeCompareStrings,
 } from '../common/admin-auth';
 import { PrismaService } from '../prisma/prisma.service';
+import { BookingV2Service } from './booking-v2.service';
+import { STATION_CODE_RE } from './seat-cache-policy';
 
 @Controller()
 export class SeatCacheController {
@@ -24,6 +28,7 @@ export class SeatCacheController {
     private readonly seatCacheCron: SeatCacheCronService,
     private readonly dynamoDbSeatCache: DynamoDbSeatCacheService,
     private readonly prisma: PrismaService,
+    private readonly bookingV2: BookingV2Service,
   ) {}
 
   /**
@@ -93,6 +98,38 @@ export class SeatCacheController {
   ) {
     this.assertAuthorized(apiKey, pw, req);
     return this.seatCacheCron.runNow(body);
+  }
+
+  /** The Lambda warmer must fetch upstream, not renew an old cached snapshot. */
+  @Post('api/admin/seat-cache/warm-route')
+  @Throttle({ global: { limit: 600, ttl: 60_000 } })
+  async warmRoute(
+    @Body() body: { from?: string; to?: string; date?: string },
+    @Headers('x-api-key') apiKey?: string,
+    @Headers(ADMIN_PASSWORD_HEADER) pw?: string,
+    @Req() req?: Request,
+  ) {
+    this.assertAuthorized(apiKey, pw, req);
+    const from =
+      typeof body?.from === 'string' ? body.from.trim().toUpperCase() : '';
+    const to = typeof body?.to === 'string' ? body.to.trim().toUpperCase() : '';
+    const date = typeof body?.date === 'string' ? body.date.trim() : '';
+    if (
+      !STATION_CODE_RE.test(from) ||
+      !STATION_CODE_RE.test(to) ||
+      from === to ||
+      !this.bookingV2.normalizeToRailApiDate(date) ||
+      this.bookingV2.isPastDate(date)
+    ) {
+      throw new BadRequestException(
+        'Valid from, to and future journey date are required',
+      );
+    }
+    await this.bookingV2.searchTrains(from, to, date, undefined, undefined, {
+      source: 'warmer',
+      forceRefresh: true,
+    });
+    return { success: true };
   }
 
   /**

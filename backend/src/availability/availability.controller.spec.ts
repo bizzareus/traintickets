@@ -91,7 +91,12 @@ describe('AvailabilityController Admin Endpoints', () => {
         },
         {
           provide: NotificationService,
-          useValue: {},
+          useValue: {
+            sendTatkalAlertConfirmation: jest.fn().mockResolvedValue({
+              emailSent: true,
+              whatsappSent: false,
+            }),
+          },
         },
         {
           provide: ChartAlertRefundsService,
@@ -417,6 +422,54 @@ describe('AvailabilityController Admin Endpoints', () => {
       expect(
         journeyTaskService.resendFailedWhatsAppNotifications,
       ).toHaveBeenCalledWith(24);
+    });
+  });
+
+  describe('subscribeTatkalAlert input validation', () => {
+    it('rejects invalid originOffsetDays below 0 or above 30', async () => {
+      await expect(
+        controller.subscribeTatkalAlert(
+          'user@example.com',
+          undefined,
+          'AC',
+          '2026-10-15',
+          undefined,
+          undefined,
+          '12345',
+          'Express',
+          -1,
+        ),
+      ).rejects.toThrow(BadRequestException);
+
+      await expect(
+        controller.subscribeTatkalAlert(
+          'user@example.com',
+          undefined,
+          'AC',
+          '2026-10-15',
+          undefined,
+          undefined,
+          '12345',
+          'Express',
+          35,
+        ),
+      ).rejects.toThrow(BadRequestException);
+    });
+
+    it('accepts valid originOffsetDays between 0 and 30', async () => {
+      const result = await controller.subscribeTatkalAlert(
+        'user@example.com',
+        undefined,
+        'AC',
+        '2026-10-15',
+        undefined,
+        undefined,
+        '12345',
+        'Express',
+        2,
+      );
+      expect(result.success).toBe(true);
+      expect(result.alert.journeyDate).toBe('2026-10-15');
     });
   });
 });

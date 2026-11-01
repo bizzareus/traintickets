@@ -10,7 +10,6 @@ import { formatJourneyDateUtcLabel } from "@/lib/stationChartMetaSummary";
 import { buildTrainSlug } from "@/lib/trainSlug";
 import ChartTimesTable from "./ChartTimesTable";
 import ChartTimeAlertCTA from "./ChartTimeAlertCTA";
-import DiwaliSaleArtwork from "./DiwaliSaleArtwork";
 import FindTicketsBar from "./FindTicketsBar";
 
 function normalizeJourneyDate(
@@ -261,7 +260,6 @@ export default async function ChartTimesPage({ params, searchParams }: Props) {
           availableClasses={data.availableClasses}
           initialJourneyDate={journeyDate}
         />
-        <DiwaliSaleArtwork />
       </div>
       <FindTicketsBar
         trainNumber={data.trainNumber}

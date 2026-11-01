@@ -1,5 +1,8 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
+import {
+  BatchWriteCommand,
+  DynamoDBDocumentClient,
+} from '@aws-sdk/lib-dynamodb';
 import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 
 describe('DynamoDbSeatCacheService cache inventory', () => {
@@ -158,7 +161,7 @@ describe('DynamoDbSeatCacheService cache inventory', () => {
     err.name = 'ProvisionedThroughputExceededException';
     const sendSpy = jest
       .spyOn(client, 'send')
-      .mockRejectedValueOnce(err)
+      .mockRejectedValueOnce(err as never)
       .mockResolvedValue({ UnprocessedItems: {} } as never);
     Object.assign(service, { docClient: client });
 
@@ -171,5 +174,154 @@ describe('DynamoDbSeatCacheService cache inventory', () => {
     await service.flushQueue();
 
     expect(sendSpy).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('DynamoDB availability freshness and route identity', () => {
+  let service: DynamoDbSeatCacheService;
+  let client: DynamoDBDocumentClient;
+  const now = Date.parse('2030-11-04T06:00:00Z');
+  const rawSearch = {
+    data: {
+      trainList: [
+        {
+          trainNumber: '22436',
+          availabilityCache: { CC: { availabilityDisplayName: 'AVAILABLE 5' } },
+        },
+      ],
+    },
+  };
+
+  beforeEach(() => {
+    jest.useFakeTimers().setSystemTime(now);
+    process.env.DISABLE_DYNAMODB_CACHE = '1';
+    service = new DynamoDbSeatCacheService();
+    client = DynamoDBDocumentClient.from(
+      new DynamoDBClient({ region: 'ap-south-1' }),
+    );
+    Object.assign(service, { docClient: client });
+  });
+
+  afterEach(() => {
+    delete process.env.DISABLE_DYNAMODB_CACHE;
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it('supports single-letter stations and isolates seat writes by journey segment', async () => {
+    const send = jest.spyOn(client, 'send').mockResolvedValue({} as never);
+    await service.saveRouteCachedSearch('R', 'G', '2030-11-05', rawSearch);
+    await service.saveRouteCachedSearch('R', 'RIG', '2030-11-05', rawSearch);
+    expect(
+      await service.getRouteCachedSearch('R', 'G', '2030-11-05'),
+    ).toMatchObject({ status: 'hit', layer: 'memory', ageMs: 0 });
+    await service.flushQueue();
+    const items = send.mock.calls.flatMap(([command]) =>
+      command instanceof BatchWriteCommand
+        ? (command.input.RequestItems?.['lastberth-train-seat-cache'] ?? [])
+        : [],
+    );
+    expect(items.map((item) => item.PutRequest?.Item?.dateClass)).toEqual(
+      expect.arrayContaining([
+        'SEAT#R#G#2030-11-05#CC',
+        'SEAT#R#RIG#2030-11-05#CC',
+      ]),
+    );
+  });
+
+  it('does not serve stale same-day availability from memory or the pending write queue', async () => {
+    await service.saveRouteCachedSearch('R', 'G', '2030-11-04', rawSearch);
+    jest.setSystemTime(now + 601000);
+    expect(
+      await service.getRouteCachedSearch('R', 'G', '2030-11-04'),
+    ).toMatchObject({ status: 'miss', missReason: 'stale', layer: 'queue' });
+  });
+
+  it('preserves actual nearby-station endpoints instead of inventing full-route availability', async () => {
+    const send = jest.spyOn(client, 'send').mockResolvedValue({} as never);
+    await service.saveRouteCachedSearch('NDLS', 'BSB', '2030-11-05', {
+      data: {
+        trainList: [
+          {
+            ...rawSearch.data.trainList[0],
+            fromStnCode: 'NZM',
+            toStnCode: 'BSB',
+          },
+        ],
+      },
+    });
+    await service.flushQueue();
+    const keys = send.mock.calls.flatMap(([command]) =>
+      command instanceof BatchWriteCommand
+        ? (
+            command.input.RequestItems?.['lastberth-train-seat-cache'] ?? []
+          ).map((entry) => entry.PutRequest?.Item?.dateClass)
+        : [],
+    );
+    expect(keys).toContain('SEAT#NZM#BSB#2030-11-05#CC');
+    expect(keys).not.toContain('SEAT#NDLS#BSB#2030-11-05#CC');
+  });
+
+  it('does not expose stale category-summary seat counts', async () => {
+    await service.saveAvailabilitySummary('premium', {
+      fresh: { freshUntil: now / 1000 + 600, totalAvailableSeats: 5 },
+      expired: { freshUntil: now / 1000 - 1, totalAvailableSeats: 5 },
+      legacy: { totalAvailableSeats: 5 },
+    });
+    expect(await service.getAvailabilitySummary('premium')).toEqual({
+      fresh: { freshUntil: now / 1000 + 600, totalAvailableSeats: 5 },
+    });
+  });
+
+  it('preserves snapshot age across DynamoDB and memory reads', async () => {
+    jest.spyOn(client, 'send').mockResolvedValue({
+      Item: {
+        rawSearch,
+        updatedAt: new Date(now - 590000).toISOString(),
+        ttl: now / 1000 + 86400,
+      },
+    } as never);
+    expect(
+      await service.getRouteCachedSearch('R', 'G', '2030-11-04'),
+    ).toMatchObject({ status: 'hit', layer: 'dynamodb', ageMs: 590000 });
+    jest.setSystemTime(now + 11000);
+    expect(
+      await service.getRouteCachedSearch('R', 'G', '2030-11-04'),
+    ).toMatchObject({ status: 'miss', layer: 'memory', missReason: 'stale' });
+  });
+
+  it('rejects records that DynamoDB TTL has not physically deleted yet', async () => {
+    jest.spyOn(client, 'send').mockResolvedValue({
+      Item: {
+        rawSearch,
+        updatedAt: new Date(now).toISOString(),
+        ttl: now / 1000 - 1,
+      },
+    } as never);
+    expect(
+      await service.getRouteCachedSearch('R', 'G', '2030-11-04'),
+    ).toMatchObject({ status: 'miss', missReason: 'expired' });
+  });
+
+  it('reads only fresh seats for the requested route', async () => {
+    const base = {
+      trainNumber: '22436',
+      date: '2030-11-05',
+      from: 'R',
+      to: 'G',
+      updatedAt: new Date(now).toISOString(),
+      ttl: now / 1000 + 86400,
+      freshUntil: now / 1000 + 3600,
+    };
+    jest.spyOn(client, 'send').mockResolvedValue({
+      Items: [
+        base,
+        { ...base, to: 'RIG' },
+        { ...base, freshUntil: now / 1000 - 1 },
+      ],
+    } as never);
+    expect(await service.getTrainCachedSeats('22436', 'R', 'G')).toHaveLength(
+      1,
+    );
   });
 });

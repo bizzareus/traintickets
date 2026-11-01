@@ -3,11 +3,9 @@ import type { Metadata } from "next";
 import { permanentRedirect } from "next/navigation";
 import TrainConfirmedTicketsClient, {
   TrainInfo,
-  CachedSeat,
 } from "./TrainConfirmedTicketsClient";
 import {
   buildTrainSlug,
-  getTopTrainSlugs,
   getTrainIndex,
   parseTrainNumberFromParam,
 } from "@/lib/trainSlug";
@@ -16,6 +14,8 @@ import { getChartTimesPageData } from "@/lib/chartTimes";
 import { getTrainCachedSeats } from "@/lib/dynamodb";
 
 export const dynamicParams = true;
+// Availability must not be frozen into build-time or hourly ISR HTML.
+export const dynamic = "force-dynamic";
 
 async function fetchTrainData(trainNumber: string): Promise<TrainInfo | null> {
   const apiUrl =
@@ -31,41 +31,6 @@ async function fetchTrainData(trainNumber: string): Promise<TrainInfo | null> {
   } catch {
     return null;
   }
-}
-
-async function fetchCachedSeats(trainNumber: string): Promise<CachedSeat[]> {
-  // 1. Try reading directly from fast DynamoDB serverless cache
-  try {
-    const ddbSeats = await getTrainCachedSeats(trainNumber);
-    if (ddbSeats.length > 0) {
-      return ddbSeats;
-    }
-  } catch {
-    // Ignore and fallback
-  }
-
-  // 2. Fallback to backend API
-  const apiUrl =
-    process.env.API_URL ||
-    process.env.NEXT_PUBLIC_API_URL ||
-    "http://localhost:3009";
-  try {
-    const res = await fetch(
-      `${apiUrl}/api/trains/${trainNumber}/cached-seats`,
-      {
-        next: { revalidate: 1800 },
-      },
-    );
-    if (!res.ok) return [];
-    const data = await res.json();
-    return Array.isArray(data) ? data : data.seats || [];
-  } catch {
-    return [];
-  }
-}
-
-export async function generateStaticParams() {
-  return getTopTrainSlugs(500).map((slug) => ({ slug }));
 }
 
 type Props = {
@@ -114,14 +79,14 @@ export default async function TrainConfirmedTicketsPage({ params }: Props) {
     permanentRedirect(`/train/confirmed_tickets/${canonicalSlug}`);
   }
 
-  const cachedSeats = await fetchCachedSeats(trainNumber);
+  const origin = train?.originStation || local?.originStation || "Origin";
+  const dest =
+    train?.destinationStation || local?.destinationStation || "Destination";
+  const cachedSeats = await getTrainCachedSeats(trainNumber, origin, dest);
   const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
   const canonicalUrl = `${siteUrl}/train/confirmed_tickets/${canonicalSlug}`;
 
   const displayName = trainName || `Train ${trainNumber}`;
-  const origin = train?.originStation || local?.originStation || "Origin";
-  const dest =
-    train?.destinationStation || local?.destinationStation || "Destination";
 
   const jsonLd = {
     "@context": "https://schema.org",
