@@ -330,7 +330,13 @@ export function SplitTicketBookingModal({
       travelClass,
       quota,
       totalFare,
-      legs,
+      legs: legs.map((l) => ({
+        from: l.from,
+        to: l.to,
+        travelClass: l.travelClass,
+        boardingDate: l.boardingDate,
+        fare: l.fare,
+      })),
       passengers: [{ ...p, name: p.name.trim() }],
       childPassengers: [],
       autoUpgrade,
@@ -1201,7 +1207,9 @@ export function SplitTicketBookingModal({
                 <div className="flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 p-3.5 text-xs text-red-800 shadow-xs">
                   <AlertCircle className="h-4 w-4 shrink-0 text-red-600 mt-0.5" />
                   <div className="space-y-0.5">
-                    <p className="font-bold text-red-900">Seat Availability Check</p>
+                    <p className="font-bold text-red-900">
+                      {isCheckingAvailability ? "Seat Availability Check" : "Booking Notice"}
+                    </p>
                     <p className="text-red-700">{formError}</p>
                   </div>
                 </div>
