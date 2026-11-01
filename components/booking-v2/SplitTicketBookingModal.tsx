@@ -1190,7 +1190,7 @@ export function SplitTicketBookingModal({
                       Running final availability check before taking payment...
                     </p>
                     <p className="text-[11px] text-blue-700">
-                      Verifying live seat status with ConfirmTkt for all journey legs.
+                      Verifying live seat status for all journey legs.
                     </p>
                   </div>
                 </div>
