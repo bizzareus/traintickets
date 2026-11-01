@@ -2802,6 +2802,14 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
               this.logger.error(
                 `Refund failed for booking ${booking.bookingRef}: ${msg}`,
               );
+              if (lowerMsg.includes('only paid payments can be refunded')) {
+                throw new BadRequestException(
+                  'Payment proxy refund failed: Payment is not marked as PAID on the payment gateway (likely because the payment was confirmed manually). ' +
+                    'Please refund the customer directly via your Razorpay Dashboard (Payment ID: ' +
+                    (razorpayPaymentId || 'on record') +
+                    '), then enter the Refund ID under "Manual Refund ID" or choose "No Refund".',
+                );
+              }
               throw new BadRequestException(msg);
             }
           }

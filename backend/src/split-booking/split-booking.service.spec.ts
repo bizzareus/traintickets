@@ -2191,6 +2191,40 @@ describe('SplitBookingService', () => {
       );
     });
 
+    it('throws actionable BadRequestException when gateway reports only paid payments can be refunded', async () => {
+      const mockBooking = {
+        id: 'b-manual-paid-refund-fail',
+        bookingRef: 'LB-MANUAL-FAIL',
+        trainNumber: '12951',
+        fromStationCode: 'MMCT',
+        toStationCode: 'NDLS',
+        journeyDate: new Date('2026-10-15'),
+        totalFare: 2000,
+        serviceFee: 80,
+        contactMobile: '9876543210',
+        contactEmail: 'passenger@example.com',
+        bookingStatus: 'MANUAL_PENDING',
+        paymentStatus: 'PAID',
+        muzoboxPaymentId: 'mb_unpaid_gateway',
+        razorpayPaymentId: 'pay_TtjYRNGktHA2Mv',
+      };
+
+      prisma.splitTicketBooking.findFirst.mockResolvedValue(mockBooking);
+      muzobox.post.mockRejectedValue({
+        isAxiosError: true,
+        response: {
+          status: 400,
+          data: { message: 'Only PAID payments can be refunded' },
+        },
+      });
+
+      await expect(
+        service.adminCancelAndRefundBooking('LB-MANUAL-FAIL'),
+      ).rejects.toThrow(
+        /Payment is not marked as PAID on the payment gateway.*Manual Refund ID/,
+      );
+    });
+
     it('cancels booking without calling Muzobox or Razorpay refund API when refund: false', async () => {
       const mockBooking = {
         id: 'b-no-refund',
