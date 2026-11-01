@@ -387,7 +387,7 @@ export default function RowAlertButton({
                 </span>
                 <div>
                   <h3 className="text-base font-bold leading-tight text-slate-900">
-                    Chart Alert — {stationName} ({stationCode})
+                    Seat Alert from {stationName} ({stationCode})
                   </h3>
                   <p className="text-xs font-medium text-slate-500">
                     {trainNumber} · {trainName}
@@ -409,8 +409,8 @@ export default function RowAlertButton({
               <span className="font-semibold text-slate-800">
                 {stationName}
               </span>
-              , we scan your full {stationCode} &lt;&gt; {toStationCode || "…"}{" "}
-              route for any ticket that opens up and notify you instantly.
+              , we find vacant seats from {stationCode} &lt;&gt; {toStationCode || "…"}{" "}
+              and notify you instantly.
             </p>
             {subscribedJourney ? (
               <ChartAlertSuccessBox journey={subscribedJourney} compact />

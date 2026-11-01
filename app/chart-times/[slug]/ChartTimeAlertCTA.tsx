@@ -155,7 +155,7 @@ export default function ChartTimeAlertCTA({
     const initStation = stationMap.get(initCode);
     const initDay = Math.max(1, Math.trunc(Number(initStation?.day) || 1));
     return boardingYmdForStation(trainStartFromUrl, initDay) ?? "";
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [trainStartFromUrl, stationMap, initialStationCode, stations]);
 
   // Downstream destination options based on the chosen boarding station
@@ -424,7 +424,7 @@ export default function ChartTimeAlertCTA({
         <div>
           <h2 className="flex items-center gap-2 text-base font-semibold text-slate-900">
             <BellRing className="h-4 w-4 text-blue-700" />
-            Get a chart preparation alert
+            Get seat availability alert
           </h2>
           <p className="mt-1 text-sm text-slate-600">
             Select your destination — when the chart is prepared, we scan your{" "}

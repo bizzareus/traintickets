@@ -46,7 +46,7 @@ for (const paid of [false, true]) {
       await row.getByRole("button", { name: "Get Alert" }).click();
       const dialog = page
         .getByRole("dialog")
-        .filter({ hasText: "Chart Alert — Rajahmundry" });
+        .filter({ hasText: "Seat Alert from Rajahmundry" });
       await dialog.getByLabel(/Destination station/).selectOption("DG");
       await dialog.getByLabel(/^Class/).selectOption("SL");
       await dialog.getByLabel("Email address").fill("test@example.com");
