@@ -127,15 +127,24 @@ export default function ChartTimeAlertCTA({
     initialStationCode || stations[0]?.stationCode || "",
   );
 
+  // Performance Optimization: Pre-index station list into a Map to convert O(N) array scans into O(1) lookups
+  const stationMap = useMemo(() => {
+    const map = new Map<string, StationOption>();
+    for (let i = 0; i < stations.length; i++) {
+      map.set(stations[i].stationCode, stations[i]);
+    }
+    return map;
+  }, [stations]);
+
   const trainStartFromUrl = useMemo(() => {
     const v = (initialJourneyDate ?? "").trim().slice(0, 10);
     return /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : "";
   }, [initialJourneyDate]);
 
   const boardingDay = useMemo(() => {
-    const s = stations.find((x) => x.stationCode === stationCode);
+    const s = stationMap.get(stationCode);
     return Math.max(1, Math.trunc(Number(s?.day) || 1));
-  }, [stations, stationCode]);
+  }, [stationMap, stationCode]);
 
   // Boarding date for the run in the URL at the *initial* station — used once
   // to seed the input. Later station changes go through `handleStationChange`
@@ -143,11 +152,11 @@ export default function ChartTimeAlertCTA({
   const initialBoardingYmd = useMemo(() => {
     if (!trainStartFromUrl) return "";
     const initCode = initialStationCode || stations[0]?.stationCode || "";
-    const initStation = stations.find((x) => x.stationCode === initCode);
+    const initStation = stationMap.get(initCode);
     const initDay = Math.max(1, Math.trunc(Number(initStation?.day) || 1));
     return boardingYmdForStation(trainStartFromUrl, initDay) ?? "";
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [trainStartFromUrl]);
+  }, [trainStartFromUrl, stationMap, initialStationCode, stations]);
 
   // Downstream destination options based on the chosen boarding station
   const boardingIndex = useMemo(() => {
@@ -264,8 +273,8 @@ export default function ChartTimeAlertCTA({
 
   /** Keep the same physical run when the boarding station changes. */
   const handleStationChange = (nextCode: string) => {
-    const prev = stations.find((x) => x.stationCode === stationCode);
-    const next = stations.find((x) => x.stationCode === nextCode);
+    const prev = stationMap.get(stationCode);
+    const next = stationMap.get(nextCode);
     const prevDay = Math.max(1, Math.trunc(Number(prev?.day) || 1));
     const nextDay = Math.max(1, Math.trunc(Number(next?.day) || 1));
     setStationCode(nextCode);
@@ -329,9 +338,7 @@ export default function ChartTimeAlertCTA({
           stationCodesToMonitor: [stationCode.trim().toUpperCase()],
           email: em || undefined,
           mobile: mob || undefined,
-          ...pinnedChartArgs(
-            stations.find((s) => s.stationCode === stationCode),
-          ),
+          ...pinnedChartArgs(stationMap.get(stationCode)),
         });
         setSubscribedJourney(journey);
         trackAlertRequested({
@@ -355,9 +362,7 @@ export default function ChartTimeAlertCTA({
           stationCodesToMonitor: [stationCode.trim().toUpperCase()],
           email: em || undefined,
           mobile: mob || undefined,
-          ...pinnedChartArgs(
-            stations.find((s) => s.stationCode === stationCode),
-          ),
+          ...pinnedChartArgs(stationMap.get(stationCode)),
         },
         "page",
       );
