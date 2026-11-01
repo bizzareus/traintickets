@@ -27,6 +27,7 @@ import { ShortLinkModule } from './short-link/short-link.module';
 import { ChartAlertPaymentsModule } from './chart-alert-payments/chart-alert-payments.module';
 import { RefundRequestModule } from './refund-request/refund-request.module';
 import { SplitBookingModule } from './split-booking/split-booking.module';
+import { MarketingModule } from './marketing/marketing.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
 import { HealthModule } from './health/health.module';
 import { configModuleOptions } from './config/environment';
@@ -65,6 +66,7 @@ import { createValidationPipe } from './common/validation-pipe';
     ChartAlertPaymentsModule,
     RefundRequestModule,
     SplitBookingModule,
+    MarketingModule,
     HealthModule,
   ],
   controllers: [AppController],

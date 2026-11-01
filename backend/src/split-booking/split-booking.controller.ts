@@ -73,6 +73,14 @@ export class SplitBookingController {
     return this.splitBookingService.getStatus(bookingRef.trim());
   }
 
+  @Get('resume/:bookingRef')
+  async getBookingForResume(@Param('bookingRef') bookingRef: string) {
+    if (!bookingRef?.trim()) {
+      throw new BadRequestException('bookingRef is required');
+    }
+    return this.splitBookingService.getBookingForResume(bookingRef.trim());
+  }
+
   @Post('muzobox-callback')
   @Throttle({ global: { limit: 10, ttl: 60_000 } })
   async handleMuzoboxCallback(
