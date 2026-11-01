@@ -22,6 +22,8 @@ export interface SplitBookingLeg {
   travelClass: string;
   fare: number;
   boardingDate: string;
+  trainNumber?: string | null;
+  trainName?: string | null;
   departureTime?: string | null;
   arrivalTime?: string | null;
   durationMinutes?: number | null;
@@ -75,6 +77,7 @@ export interface SplitBookingLegAvailabilityResult {
   to: string;
   travelClass: string;
   boardingDate: string;
+  trainNumber?: string;
   status: string;
   isConfirmed: boolean;
 }
@@ -89,7 +92,11 @@ export interface SplitBookingAvailabilityResponse {
 export async function checkSplitBookingAvailability(payload: {
   trainNumber: string;
   quota?: string;
-  legs: Array<Pick<SplitBookingLeg, "from" | "to" | "travelClass" | "boardingDate">>;
+  legs: Array<
+    Pick<SplitBookingLeg, "from" | "to" | "travelClass" | "boardingDate"> & {
+      trainNumber?: string | null;
+    }
+  >;
 }): Promise<SplitBookingAvailabilityResponse> {
   const res = await apiClient.post<SplitBookingAvailabilityResponse>(
     "/api/split-booking/check-availability",

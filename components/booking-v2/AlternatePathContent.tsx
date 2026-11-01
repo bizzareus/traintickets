@@ -1057,11 +1057,17 @@ export function AlternatePathContent({
                           >
                             Leg {stepIndex} of {stepTotal}
                           </span>
+                          {leg.trainNumber && (
+                            <span className="shrink-0 rounded-md border border-blue-200 bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-blue-700">
+                              Train {leg.trainNumber}
+                              {leg.trainName ? ` · ${leg.trainName}` : ""}
+                            </span>
+                          )}
                           {stationsBetween != null && (
                             <button
                               onClick={() => {
                                 onOpenSchedule(
-                                  altResult.trainNumber,
+                                  leg.trainNumber || altResult.trainNumber,
                                   leg.from,
                                   leg.to,
                                 );
@@ -1117,7 +1123,7 @@ export function AlternatePathContent({
                               const optHref = irctcBookingRedirect({
                                 from: leg.from,
                                 to: leg.to,
-                                trainNo: altResult.trainNumber,
+                                trainNo: leg.trainNumber || altResult.trainNumber,
                                 classCode: opt.travelClass,
                               });
                               return (

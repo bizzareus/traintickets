@@ -196,7 +196,7 @@ export class TripmgtBookingService {
           instructions: INSTRUCTIONS,
           task: JSON.stringify({
             bookingRef: params.bookingRef,
-            trainNumber: params.trainNumber,
+            trainNumber: leg.trainNumber || params.trainNumber,
             leg: {
               from: leg.from,
               to: leg.to,

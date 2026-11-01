@@ -27,6 +27,8 @@ export interface SplitBookingLeg {
   travelClass: string;
   fare: number;
   boardingDate: string; // YYYY-MM-DD at this leg's boarding station
+  trainNumber?: string;
+  trainName?: string;
   departureTime?: string;
   arrivalTime?: string;
   durationMinutes?: number;
@@ -38,6 +40,7 @@ export interface SplitBookingLegAvailabilityResult {
   to: string;
   travelClass: string;
   boardingDate: string;
+  trainNumber?: string;
   status: string;
   isConfirmed: boolean;
 }

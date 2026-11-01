@@ -306,6 +306,7 @@ export function SplitTicketBookingModal({
         legs: payload.legs.map((l) => ({
           from: l.from,
           to: l.to,
+          trainNumber: l.trainNumber,
           travelClass: l.travelClass,
           boardingDate: l.boardingDate,
         })),
@@ -422,6 +423,7 @@ export function SplitTicketBookingModal({
         legs: payload.legs.map((l) => ({
           from: l.from,
           to: l.to,
+          trainNumber: l.trainNumber,
           travelClass: l.travelClass,
           boardingDate: l.boardingDate,
         })),
@@ -725,51 +727,62 @@ export function SplitTicketBookingModal({
                     const arrTime = formatTimeAmPm(leg.arrivalTime);
 
                     return (
-                      <div
-                        key={idx}
-                        className="shadow-2xs flex flex-col justify-between gap-1.5 rounded-lg border border-slate-200 bg-white p-2.5 sm:flex-row sm:items-center sm:p-3"
-                      >
-                        <div className="min-w-0 pr-2">
-                          <div className="flex items-center gap-2">
-                            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[10px] font-bold text-slate-700">
-                              {idx + 1}
-                            </span>
-                            <span className="font-bold text-slate-900">
-                              {leg.from} → {leg.to}
-                            </span>
-                            <span className="rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-bold text-blue-700">
-                              Class {leg.travelClass}
-                            </span>
+                      <React.Fragment key={idx}>
+                        {idx > 0 && legs[idx - 1].to === leg.from && (
+                          <div className="flex items-center justify-center gap-1.5 rounded-md border border-amber-200/60 bg-amber-50/80 py-1 text-[11px] font-medium text-amber-800">
+                            <span>⏱️ Train Connection / Layover at {leg.from}</span>
                           </div>
-                          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 pl-7 text-[11px] text-slate-500">
-                            <span>
-                              <strong className="font-semibold text-slate-700">
-                                Date:
-                              </strong>{" "}
-                              {formattedDate}
-                            </span>
-                            {depTime && (
+                        )}
+                        <div
+                          className="shadow-2xs flex flex-col justify-between gap-1.5 rounded-lg border border-slate-200 bg-white p-2.5 sm:flex-row sm:items-center sm:p-3"
+                        >
+                          <div className="min-w-0 pr-2">
+                            <div className="flex items-center gap-2">
+                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[10px] font-bold text-slate-700">
+                                {idx + 1}
+                              </span>
+                              <span className="font-bold text-slate-900">
+                                {leg.from} → {leg.to}
+                              </span>
+                              {leg.trainNumber && (
+                                <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] font-bold text-indigo-700">
+                                  Train {leg.trainNumber}
+                                </span>
+                              )}
+                              <span className="rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-bold text-blue-700">
+                                Class {leg.travelClass}
+                              </span>
+                            </div>
+                            <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 pl-7 text-[11px] text-slate-500">
                               <span>
                                 <strong className="font-semibold text-slate-700">
-                                  Boarding:
+                                  Date:
                                 </strong>{" "}
-                                {depTime}
+                                {formattedDate}
                               </span>
-                            )}
-                            {arrTime && (
-                              <span>
-                                <strong className="font-semibold text-slate-700">
-                                  Arrival:
-                                </strong>{" "}
-                                {arrTime}
-                              </span>
-                            )}
+                              {depTime && (
+                                <span>
+                                  <strong className="font-semibold text-slate-700">
+                                    Boarding:
+                                  </strong>{" "}
+                                  {depTime}
+                                </span>
+                              )}
+                              {arrTime && (
+                                <span>
+                                  <strong className="font-semibold text-slate-700">
+                                    Arrival:
+                                  </strong>{" "}
+                                  {arrTime}
+                                </span>
+                              )}
+                            </div>
                           </div>
+                          <span className="shrink-0 pl-7 font-bold text-emerald-700 sm:pl-0">
+                            ₹{leg.fare}
+                          </span>
                         </div>
-                        <span className="shrink-0 pl-7 font-bold text-emerald-700 sm:pl-0">
-                          ₹{leg.fare}
-                        </span>
-                      </div>
+                      </React.Fragment>
                     );
                   })}
                 </div>

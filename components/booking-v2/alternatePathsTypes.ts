@@ -60,6 +60,8 @@ export type AlternateLeg = {
   from: string;
   to: string;
   segmentKind: "confirmed" | "check_realtime";
+  trainNumber?: string | null;
+  trainName?: string | null;
   travelClass: string | null;
   railDataStatus: string | null;
   availablityStatus: string | null;

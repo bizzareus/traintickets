@@ -539,6 +539,27 @@ export type AnalyticsEvent =
     }
   // Split ticket assisted booking events
   | {
+      name: "connecting_train_search_tickets_clicked";
+      properties: {
+        journey_id: string;
+        train1: string;
+        train2: string;
+        hub: string;
+        selected_class: string;
+      };
+    }
+  | {
+      name: "connecting_train_book_now_clicked";
+      properties: {
+        journey_id: string;
+        train1: string;
+        train2: string;
+        total_fare: number;
+        selected_class: string;
+        is_both_confirmed: boolean;
+      };
+    }
+  | {
       name: "split_booking_book_now_clicked";
       properties: {
         train_number: string;

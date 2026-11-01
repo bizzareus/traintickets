@@ -42,7 +42,7 @@ export function bookingNotificationMarkdown(
     '## Journey legs',
     ...details.legs.map((leg, index) =>
       [
-        `### Leg ${index + 1}: ${markdownValue(leg.from)} → ${markdownValue(leg.to)}`,
+        `### Leg ${index + 1}: ${markdownValue(leg.from)} → ${markdownValue(leg.to)}${leg.trainNumber ? ` (Train ${markdownValue(leg.trainNumber)}${leg.trainName ? ` - ${markdownValue(leg.trainName)}` : ''})` : ''}`,
         `- **Class / Fare:** ${markdownValue(leg.travelClass)} / INR ${leg.fare.toFixed(2)}`,
         `- **Boarding date:** ${leg.boardingDate}`,
         `- **Departure / Arrival:** ${markdownValue(leg.departureTime || 'Not supplied')} / ${markdownValue(leg.arrivalTime || 'Not supplied')}`,
@@ -137,7 +137,7 @@ export function manualBookingMessage(booking: SplitTicketBooking): string {
     'JOURNEY LEGS',
     ...details.legs.map((leg, index) =>
       [
-        `${index + 1}. ${leg.from} → ${leg.to} | Boarding date: ${leg.boardingDate}`,
+        `${index + 1}. ${leg.from} → ${leg.to}${leg.trainNumber ? ` (Train ${leg.trainNumber})` : ''} | Boarding date: ${leg.boardingDate}`,
         `Class: ${leg.travelClass} | Fare: INR ${leg.fare}${leg.availability ? ` | Availability: ${leg.availability}` : ''}`,
         `Departure: ${leg.departureTime ?? 'Not supplied'} | Arrival: ${leg.arrivalTime ?? 'Not supplied'} | Duration (minutes): ${leg.durationMinutes ?? 'Not supplied'}`,
       ].join('\n'),

@@ -143,6 +143,8 @@ export function buildSplitBookingSelection(
     selectedLegs.push({
       from: leg.from,
       to: leg.to,
+      trainNumber: leg.trainNumber,
+      trainName: leg.trainName,
       travelClass: option.travelClass,
       fare: option.fare,
       boardingDate: leg.boardingDate ?? "",

@@ -89,6 +89,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
   const cardRef = useRef<HTMLLIElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const [loading, setLoading] = useState(false);
+  const [scanProgress, setScanProgress] = useState(0);
   const [foundSeats, setFoundSeats] = useState<FoundSeatNotice[]>([]);
   const [result, setResult] = useState<AlternatePathsResponse | null>(() => {
     if (
@@ -101,7 +102,6 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     return null;
   });
   const [error, setError] = useState<string | null>(null);
-  const [currentProgressText, setCurrentProgressText] = useState<string>("");
   const [directBookingRequest, setDirectBookingRequest] = useState<Omit<
     SplitTicketBookingFlowProps,
     "onClose"
@@ -241,7 +241,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
       setResult(null);
     }
     setError(null);
-    setCurrentProgressText("");
+    setScanProgress(0);
   }, [
     journeyDate,
     fromCode,
@@ -269,9 +269,9 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     onScanStart?.(train.trainNumber);
 
     setLoading(true);
+    setScanProgress(10);
     setError(null);
     setFoundSeats([]);
-    setCurrentProgressText("Scanning routes and classes...");
 
     abortControllerRef.current?.abort();
     const controller = new AbortController();
@@ -360,15 +360,21 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
 
             if (msg.type === "progress" && msg.event) {
               const ev = msg.event;
-              if (ev.type === "route_ok") {
-                setCurrentProgressText(`Scanning ${ev.from} → ${ev.to}...`);
-              } else if (ev.type === "train_departed") {
-                setCurrentProgressText(
-                  `Train already departed from ${ev.from}`,
-                );
-              } else if (ev.type === "probing_hop") {
-                setCurrentProgressText(`Checking ${ev.from} → ${ev.to}...`);
-              } else if (ev.type === "hop_confirmed") {
+              setScanProgress((prev) => {
+                let delta = 4;
+                if (ev.type === "schedule_ok") delta = 15;
+                else if (ev.type === "route_ok") delta = 15;
+                else if (ev.type === "probing_hop") delta = 8;
+                else if (
+                  ev.type === "hop_confirmed" ||
+                  ev.type === "hop_unavailable"
+                )
+                  delta = 10;
+                else if (ev.type === "done") delta = 20;
+                return Math.min(99, Math.max(prev + 1, prev + delta));
+              });
+
+              if (ev.type === "hop_confirmed") {
                 const newNotice: FoundSeatNotice = {
                   id: `${ev.from}-${ev.to}-${ev.travelClass}-${ev.hopIndex}`,
                   from: ev.from,
@@ -380,12 +386,10 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
                   if (prev.some((p) => p.id === newNotice.id)) return prev;
                   return [...prev, newNotice];
                 });
-                setCurrentProgressText(
-                  `Found ${ev.travelClass} seat: ${ev.from} → ${ev.to}`,
-                );
                 onSeatsDiscovered?.(train.trainNumber);
               }
             } else if (msg.type === "result" && msg.data) {
+              setScanProgress(100);
               setResult(msg.data);
               const hasSeats = Boolean(
                 msg.data.legs && msg.data.legs.length > 0,
@@ -399,6 +403,13 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
                   isComplete,
                   confirmedDurationMinutes,
                 );
+                // Whenever available seats are found show that popup
+                onOpenFullResultModal?.({
+                  trainNumber: train.trainNumber,
+                  trainName: train.trainName,
+                  avlClasses: train.avlClasses,
+                  result: msg.data,
+                });
               }
               onScanComplete?.(
                 train.trainNumber,
@@ -421,6 +432,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
         onScanComplete?.(train.trainNumber, false);
       }
     } finally {
+      setScanProgress(100);
       setLoading(false);
     }
   }, [
@@ -430,10 +442,12 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     toCode,
     isDirectAvailable,
     train.trainNumber,
+    train.trainName,
     train.avlClasses,
     acOnly,
     selectedClasses,
     onSeatsDiscovered,
+    onOpenFullResultModal,
     onScanStart,
     onScanComplete,
   ]);
@@ -723,24 +737,30 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
               </div>
             </div>
 
-            {/* Live scanning progress or discovered summary banner */}
+            {/* Live percentage of completion bar and discovered seat badges */}
             {loading && (
-              <div className="mt-3 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-2.5 py-1.5 text-xs font-semibold text-blue-700 sm:px-3">
-                  <div className="h-3.5 w-3.5 shrink-0 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
-                  <span className="max-w-[200px] truncate sm:max-w-none">
-                    {discoveredCount > 0
-                      ? `Found ${discoveredCount} confirmed ticket${discoveredCount > 1 ? "s" : ""} across intermediate stations`
-                      : currentProgressText ||
-                        "Finding available seats across all classes & quotas..."}
+              <div className="mt-3 w-full max-w-md">
+                <div className="mb-1.5 flex items-center justify-between text-xs font-bold text-slate-700">
+                  <span className="flex items-center gap-1.5 text-blue-700">
+                    <div className="h-3.5 w-3.5 shrink-0 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+                    <span>Searching seats...</span>
                   </span>
-                </span>
+                  <span className="font-mono text-xs font-extrabold text-blue-600">
+                    {scanProgress}%
+                  </span>
+                </div>
+                <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
+                  <div
+                    className="h-full rounded-full bg-blue-600 transition-all duration-300 ease-out"
+                    style={{ width: `${scanProgress}%` }}
+                  />
+                </div>
                 {foundSeats.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="mt-2 flex flex-wrap gap-1.5">
                     {foundSeats.slice(-3).map((seat) => (
                       <span
                         key={seat.id}
-                        className="inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700"
+                        className="inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-emerald-700"
                       >
                         <span>
                           ✓ {seat.from} → {seat.to}
@@ -830,12 +850,9 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
                       Checking fares...
                     </p>
                   )}
-                  <div className="mt-0.5 flex items-center gap-1.5">
-                    <div className="h-3.5 w-3.5 shrink-0 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
-                    <span className="max-w-[140px] truncate text-xs font-bold text-blue-600 sm:max-w-none">
-                      {discoveredCount > 0
-                        ? `Found ${discoveredCount} confirmed ticket${discoveredCount > 1 ? "s" : ""}`
-                        : "Finding seats..."}
+                  <div className="mt-0.5 flex items-center justify-start gap-1 md:justify-end">
+                    <span className="font-mono text-xs font-bold text-blue-600">
+                      {scanProgress}%
                     </span>
                   </div>
                 </div>
@@ -846,7 +863,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
                   className="inline-flex min-h-[38px] shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg border border-blue-200 bg-blue-50 px-3.5 py-2 text-xs font-bold text-blue-600 sm:px-4 sm:text-sm"
                 >
                   <div className="h-3.5 w-3.5 shrink-0 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
-                  <span>Finding seats...</span>
+                  <span>{scanProgress}%</span>
                 </button>
               </>
             )}

@@ -12,6 +12,7 @@ import {
 import type { Request, Response } from 'express';
 import { Throttle } from '@nestjs/throttler';
 import { BookingV2Service } from './booking-v2.service';
+import { ConnectingTrainsService } from './connecting-trains.service';
 import type {
   AlternatePathProgressEvent,
   BookingV2TrainSearchRow,
@@ -51,7 +52,57 @@ function streamErrorMessage(err: unknown): string {
 @Controller('api/booking-v2')
 @Throttle({ global: { limit: 20, ttl: 60_000 } })
 export class BookingV2Controller {
-  constructor(private readonly bookingV2: BookingV2Service) {}
+  constructor(
+    private readonly bookingV2: BookingV2Service,
+    private readonly connectingTrains: ConnectingTrainsService,
+  ) {}
+
+  @Get('connecting-trains')
+  async searchConnectingTrains(
+    @Query('from') from: string | undefined,
+    @Query('to') to: string | undefined,
+    @Query('date') date: string | undefined,
+    @Query('classes') classesParam: string | string[] | undefined,
+    @Query('minLayover') minLayoverParam: string | undefined,
+    @Query('maxLayover') maxLayoverParam: string | undefined,
+  ) {
+    const f = trimStr(from).toUpperCase();
+    const t = trimStr(to).toUpperCase();
+    const d = trimStr(date);
+    if (!f || !t || !d) {
+      throw new BadRequestException(
+        'from, to, and date query params are required',
+      );
+    }
+    if (!this.bookingV2.normalizeToRailApiDate(d)) {
+      throw new BadRequestException('date must be YYYY-MM-DD or DD-MM-YYYY');
+    }
+    if (this.bookingV2.isPastDate(d)) {
+      throw new BadRequestException('Journey date cannot be in the past');
+    }
+    const classes = bodyStringArray(
+      typeof classesParam === 'string' ? classesParam.split(',') : classesParam,
+    );
+    const minLayoverMinutes = minLayoverParam
+      ? parseInt(minLayoverParam, 10)
+      : undefined;
+    const maxLayoverMinutes = maxLayoverParam
+      ? parseInt(maxLayoverParam, 10)
+      : undefined;
+
+    return this.connectingTrains.searchConnectingTrains({
+      from: f,
+      to: t,
+      date: d,
+      classes: classes.length > 0 ? classes : undefined,
+      minLayoverMinutes: Number.isFinite(minLayoverMinutes)
+        ? minLayoverMinutes
+        : undefined,
+      maxLayoverMinutes: Number.isFinite(maxLayoverMinutes)
+        ? maxLayoverMinutes
+        : undefined,
+    });
+  }
 
   @Get('stations/suggest')
   async suggestStations(

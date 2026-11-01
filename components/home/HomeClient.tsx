@@ -21,6 +21,11 @@ import { cn } from "@/lib/utils";
 import { useAlternatePaths } from "@/components/booking-v2/useAlternatePaths";
 import { TrainSearchV2ProgressBar } from "@/components/home/TrainSearchV2ProgressBar";
 import { TrainSearchV2Card } from "@/components/home/TrainSearchV2Card";
+import { ConnectingTrainCard } from "@/components/booking-v2/ConnectingTrainCard";
+import {
+  fetchConnectingTrains,
+  type ConnectingJourneyDto,
+} from "@/lib/connectingTrains";
 import { TrainSearchSkeleton } from "@/components/home/TrainSearchSkeleton";
 import {
   sortTrainSearchV2,
@@ -431,6 +436,13 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [v2ScanMetaMap, setV2ScanMetaMap] = useState<
     Map<string, TrainScanMeta>
   >(new Map());
+
+  const [connectingJourneys, setConnectingJourneys] = useState<
+    ConnectingJourneyDto[]
+  >([]);
+  const [connectingLoading, setConnectingLoading] = useState(false);
+  const [connectingCorridorSupported, setConnectingCorridorSupported] =
+    useState(false);
 
   // Keep search result card's cached alternate path and sorting in sync when refreshed
   useEffect(() => {
@@ -862,6 +874,33 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
     v2TrackedAutoScanKeyRef.current = "";
     setTrains([]);
     resetAlternates();
+    setConnectingJourneys([]);
+    setConnectingCorridorSupported(false);
+    setConnectingLoading(true);
+
+    void fetchConnectingTrains({
+      from: fromSt.stationCode,
+      to: toSt.stationCode,
+      date: journeyDate,
+      classes: selectedClasses.length > 0 ? selectedClasses : undefined,
+    })
+      .then((cRes) => {
+        if (cRes?.isSupportedCorridor) {
+          setConnectingCorridorSupported(true);
+          setConnectingJourneys(cRes.journeys || []);
+        } else {
+          setConnectingCorridorSupported(false);
+          setConnectingJourneys([]);
+        }
+      })
+      .catch(() => {
+        setConnectingCorridorSupported(false);
+        setConnectingJourneys([]);
+      })
+      .finally(() => {
+        setConnectingLoading(false);
+      });
+
     bestTrainRequestRef.current?.abort();
     setBestTrainLoading(false);
     setBestTrainResult(null);
@@ -1562,15 +1601,16 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 />
               )}
 
+              {/* Direct Trains Empty State */}
               {hasSearched &&
                 !searchLoading &&
                 !searchError &&
-                trains.length === 0 && (
+                displayTrains.length === 0 && (
                   <div
                     className="mb-6 rounded-lg border border-gray-200 bg-white p-4 text-sm text-gray-700"
                     role="status"
                   >
-                    No trains found for this route on the selected date.
+                    No direct trains found for this route on the selected date.
                   </div>
                 )}
 
@@ -1589,12 +1629,13 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   />
                 )}
 
+              {/* Direct Trains List */}
               {!searchLoading && displayTrains.length > 0 && (
                 <ul
                   ref={v2TrainListAnimateRef}
                   className="space-y-3.5 sm:space-y-5"
                   role="list"
-                  aria-label="Train results"
+                  aria-label="Direct train results"
                 >
                   {displayTrains.map((t) => (
                     <TrainSearchV2Card
@@ -1639,6 +1680,96 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   ))}
                 </ul>
               )}
+
+              {/* 1-Stop Connecting Trains Section */}
+              {hasSearched &&
+                !searchLoading &&
+                (connectingCorridorSupported ||
+                  connectingLoading ||
+                  connectingJourneys.length > 0) && (
+                  <section
+                    className="mt-8 border-t border-slate-200/80 pt-6"
+                    aria-label="1-Stop Connecting Trains"
+                  >
+                    <div className="mb-4 flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <h3 className="flex items-center gap-2 text-base font-bold text-slate-900 sm:text-lg">
+                          <span>1-Stop Connecting Trains</span>
+                          {connectingJourneys.length > 0 && (
+                            <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-semibold text-blue-800">
+                              {connectingJourneys.length} routes
+                            </span>
+                          )}
+                        </h3>
+                        <p className="text-xs text-slate-500">
+                          Comfortable stopover at intermediate hubs (Kanpur Central, Prayagraj, Pt. Deen Dayal Upadhyaya)
+                        </p>
+                      </div>
+
+                      {connectingJourneys.some((j) => j.isFullyConfirmed) && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700 shadow-2xs">
+                          ⚡ Confirmed options available
+                        </span>
+                      )}
+                    </div>
+
+                    {connectingLoading ? (
+                      <div className="rounded-xl border border-slate-200 bg-white p-6 text-center shadow-xs">
+                        <span className="mb-2 inline-block h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-blue-600" />
+                        <p className="text-sm font-semibold text-slate-800">
+                          Searching connecting trains and layovers...
+                        </p>
+                        <p className="mt-0.5 text-xs text-slate-500">
+                          Analyzing junction transfers at Kanpur Central, Prayagraj, and Pt. Deen Dayal Upadhyaya
+                        </p>
+                      </div>
+                    ) : connectingJourneys.length > 0 ? (
+                      <ul
+                        className="space-y-3.5 sm:space-y-5"
+                        role="list"
+                        aria-label="Connecting train results"
+                      >
+                        {connectingJourneys.map((j, idx) => (
+                          <ConnectingTrainCard
+                            key={j.id}
+                            journey={j}
+                            journeyDate={submittedSearch?.date}
+                            fromCode={submittedSearch?.from.stationCode}
+                            fromName={submittedSearch?.from.stationName}
+                            toCode={submittedSearch?.to.stationCode}
+                            toName={submittedSearch?.to.stationName}
+                            selectedClasses={resultClasses}
+                            acOnly={acOnly}
+                            autoScanEnabled={idx === 0 && !j.isFullyConfirmed}
+                            onOpenFullResultModal={({
+                              trainNumber,
+                              trainName,
+                              avlClasses,
+                              result,
+                            }) => {
+                              alt.showResult({
+                                trainNumber,
+                                trainName,
+                                avlClasses,
+                                result,
+                                from: submittedSearch?.from.stationCode,
+                                to: submittedSearch?.to.stationCode,
+                                date: submittedSearch?.date,
+                              });
+                            }}
+                          />
+                        ))}
+                      </ul>
+                    ) : (
+                      <div
+                        className="rounded-xl border border-slate-200 bg-white p-5 text-center text-xs text-slate-500 shadow-xs"
+                        role="status"
+                      >
+                        No connecting train routes found with comfortable layovers on this date.
+                      </div>
+                    )}
+                  </section>
+                )}
 
               {searchType === "route" &&
                 (altResult || altError || (altLoading && altForTrain)) && (

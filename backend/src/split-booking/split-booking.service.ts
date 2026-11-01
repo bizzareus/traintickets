@@ -136,10 +136,11 @@ export class SplitBookingService {
         const to = leg.to.trim().toUpperCase();
         const travelClass = leg.travelClass.trim().toUpperCase();
         const boardingDate = leg.boardingDate.trim();
+        const legTrainNo = leg.trainNumber?.trim() || trainNo;
 
         try {
           const raw = await this.bookingV2!.checkAvailability(
-            trainNo,
+            legTrainNo,
             from,
             to,
             boardingDate,
@@ -158,6 +159,7 @@ export class SplitBookingService {
               to,
               travelClass,
               boardingDate,
+              trainNumber: legTrainNo,
               status: 'NO_DATA',
               isConfirmed: false,
             };
@@ -177,19 +179,21 @@ export class SplitBookingService {
             to,
             travelClass,
             boardingDate,
+            trainNumber: legTrainNo,
             status: rawStatus,
             isConfirmed: confirmed,
           };
         } catch (err: unknown) {
           const errMsg = err instanceof Error ? err.message : String(err);
           this.logger.warn(
-            `[split-booking/availability] check failed for train ${trainNo} ${from}->${to} on ${boardingDate}: ${errMsg}`,
+            `[split-booking/availability] check failed for train ${legTrainNo} ${from}->${to} on ${boardingDate}: ${errMsg}`,
           );
           return {
             from,
             to,
             travelClass,
             boardingDate,
+            trainNumber: legTrainNo,
             status: 'CHECK_FAILED',
             isConfirmed: false,
           };

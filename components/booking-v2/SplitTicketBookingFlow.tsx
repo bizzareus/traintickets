@@ -173,6 +173,11 @@ export function SplitTicketBookingFlow({
                 >
                   <legend className="max-w-full px-1 text-sm font-bold text-slate-900">
                     Leg {index + 1}:{" "}
+                    {leg.trainNumber && (
+                      <span className="mr-1.5 inline-flex items-center rounded-md border border-blue-200 bg-blue-50 px-1.5 py-0.5 text-xs font-bold text-blue-700">
+                        Train {leg.trainNumber}
+                      </span>
+                    )}
                     {getStationDisplayName(leg.from, stationNameMap)} →{" "}
                     {getStationDisplayName(leg.to, stationNameMap)}
                     {legSkipped && (
