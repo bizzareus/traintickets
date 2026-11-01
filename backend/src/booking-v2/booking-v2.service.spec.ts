@@ -772,6 +772,74 @@ describe('BookingV2Service', () => {
       );
     });
 
+    it('queries distinct route station pairs for trains and attaches cached alternate path', async () => {
+      const trainA = {
+        trainNumber: '12270',
+        trainName: 'DURONTO',
+        fromStnCode: 'NZM',
+        toStnCode: 'MAS',
+      };
+      const fakeResult = { data: { trainList: [trainA] } };
+      mockDynamoDbSeatCache.getRouteCachedSearch.mockResolvedValueOnce({
+        status: 'hit',
+        value: fakeResult,
+      });
+
+      const mockAltResult = {
+        trainNumber: '12270',
+        isComplete: true,
+        legCount: 2,
+        totalFare: 2130,
+        legs: [
+          {
+            from: 'NZM',
+            to: 'BPL',
+            segmentKind: 'confirmed',
+            travelClass: '3A',
+            fare: 950,
+          },
+          {
+            from: 'BPL',
+            to: 'MAS',
+            segmentKind: 'confirmed',
+            travelClass: '3A',
+            fare: 1180,
+          },
+        ],
+      };
+
+      mockAltPathsCache.findByRouteAndDate.mockImplementation(
+        async (from, to) => {
+          if (from === 'NZM' && to === 'MAS') {
+            return [
+              {
+                trainNumber: '12270',
+                classKey: '3A',
+                result: mockAltResult as any,
+              },
+            ];
+          }
+          return [];
+        },
+      );
+
+      const result = (await service.searchTrains(
+        'NDLS',
+        'MAS',
+        '2029-04-05',
+      )) as any;
+
+      expect(mockAltPathsCache.findByRouteAndDate).toHaveBeenCalledWith(
+        'NZM',
+        'MAS',
+        '05-04-2029',
+        'GN',
+      );
+      expect(result.data.trainList[0].cachedAlternatePath).toEqual(
+        mockAltResult,
+      );
+    });
+
     it('throws for an invalid date', async () => {
       await expect(
         service.searchTrains('NDLS', 'CSTM', 'bad-date'),

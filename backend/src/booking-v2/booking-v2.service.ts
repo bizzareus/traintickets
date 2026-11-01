@@ -778,23 +778,38 @@ export class BookingV2Service {
     const trainList = data.trainList as Record<string, unknown>[];
 
     try {
-      // 1. Query all cached alternate paths for this route and date in single DB query
-      const cachedEntries = await this.altPathsCache.findByRouteAndDate(
-        from,
-        to,
-        dateDdMmYyyy,
-        'GN',
+      // 1. Query all cached alternate paths for this route and date across all distinct route pairs
+      const routePairs = new Set<string>();
+      const normFrom = from.trim().toUpperCase();
+      const normTo = to.trim().toUpperCase();
+      routePairs.add(`${normFrom}#${normTo}`);
+      for (const train of trainList) {
+        if (!train || typeof train !== 'object') continue;
+        const tFrom = String(train.fromStnCode ?? '').trim().toUpperCase();
+        const tTo = String(train.toStnCode ?? '').trim().toUpperCase();
+        if (tFrom && tTo && (tFrom !== normFrom || tTo !== normTo)) {
+          routePairs.add(`${tFrom}#${tTo}`);
+        }
+      }
+
+      const cachedBatch = await Promise.all(
+        Array.from(routePairs).map((pair) => {
+          const [pFrom, pTo] = pair.split('#');
+          return this.altPathsCache.findByRouteAndDate(
+            pFrom,
+            pTo,
+            dateDdMmYyyy,
+            'GN',
+          );
+        }),
       );
+      const cachedEntries = cachedBatch.flat();
 
       const cachedByTrain = new Map<string, FindAlternatePathsResult>();
 
       for (const entry of cachedEntries) {
         const { trainNumber, classKey, result } = entry;
-        if (
-          !result ||
-          !Array.isArray(result.legs) ||
-          result.legs.length === 0
-        ) {
+        if (!result || !Array.isArray(result.legs)) {
           continue;
         }
 
@@ -806,7 +821,6 @@ export class BookingV2Service {
         if (hasStale) continue;
 
         const confirmedCount = countConfirmedLegs(result.legs);
-        if (confirmedCount === 0) continue;
 
         const normalizedResult =
           result.legCount !== confirmedCount

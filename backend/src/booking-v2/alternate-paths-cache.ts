@@ -183,7 +183,11 @@ export class AlternatePathsRouteCache extends RouteCachingTableStore<FindAlterna
 
     // 2. Fall back to PostgreSQL
     const prefix = `alt-paths:v3:${f}:${t}:`;
+    const dParts = normalizedDate.split('-');
+    const altDate =
+      dParts.length === 3 ? `${dParts[2]}-${dParts[1]}-${dParts[0]}` : '';
     const suffix = `:${normalizedDate}:${q}`;
+    const altSuffix = altDate ? `:${altDate}:${q}` : '';
 
     try {
       // Use only `startsWith: prefix` so PostgreSQL can use the B-Tree index
@@ -206,7 +210,7 @@ export class AlternatePathsRouteCache extends RouteCachingTableStore<FindAlterna
       }> = [];
 
       for (const row of rows) {
-        if (!row.cacheKey.endsWith(suffix)) continue;
+        if (!row.cacheKey.endsWith(suffix) && (!altSuffix || !row.cacheKey.endsWith(altSuffix))) continue;
         const parts = row.cacheKey.split(':');
         // Format: alt-paths:v3:FROM:TO:TRAINNUM:CLASSKEY:DATE:QUOTA
         if (parts.length < 8) continue;
@@ -215,8 +219,7 @@ export class AlternatePathsRouteCache extends RouteCachingTableStore<FindAlterna
         const result = row.value as FindAlternatePathsResult;
         if (
           !result ||
-          !Array.isArray(result.legs) ||
-          result.legs.length === 0
+          !Array.isArray(result.legs)
         ) {
           continue;
         }

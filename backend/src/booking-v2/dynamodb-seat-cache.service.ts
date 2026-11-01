@@ -1096,7 +1096,41 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
     const d = dateDdMmYyyy.trim();
     const q = (quota || 'GN').trim().toUpperCase();
     const routeKey = `${ALT_PATH_PREFIX}${f}#${t}`;
+    const dParts = d.split('-');
+    const altD =
+      dParts.length === 3 ? `${dParts[2]}-${dParts[1]}-${dParts[0]}` : '';
     const dateSuffix = `#${d}#${q}`;
+    const altDateSuffix = altD ? `#${altD}#${q}` : '';
+
+    const nowSecs = Math.floor(Date.now() / 1000);
+    const seen = new Set<string>();
+    const out: Array<{
+      trainNumber: string;
+      classKey: string;
+      result: Record<string, unknown>;
+    }> = [];
+
+    // 1. Gather any matching queued items that haven't been flushed yet
+    for (const entry of this.writeQueue.values()) {
+      if (entry.trainNumber !== routeKey) continue;
+      const sortKey = toSafeString(entry.dateClass);
+      if (
+        !sortKey.endsWith(dateSuffix) &&
+        (!altDateSuffix || !sortKey.endsWith(altDateSuffix))
+      ) {
+        continue;
+      }
+      const parts = sortKey.split('#');
+      if (parts.length < 4) continue;
+      const trainNumber = parts[0];
+      const classKey = parts[1];
+      const result = entry.item.result as Record<string, unknown>;
+      if (!result || typeof result !== 'object') continue;
+      seen.add(`${trainNumber}#${classKey}`);
+      out.push({ trainNumber, classKey, result });
+    }
+
+    if (!this.docClient) return out;
 
     try {
       const res = await this.docClient.send(
@@ -1110,24 +1144,23 @@ export class DynamoDbSeatCacheService implements OnModuleDestroy {
         }),
       );
 
-      if (!res.Items || res.Items.length === 0) return [];
-
-      const nowSecs = Math.floor(Date.now() / 1000);
-      const out: Array<{
-        trainNumber: string;
-        classKey: string;
-        result: Record<string, unknown>;
-      }> = [];
+      if (!res.Items || res.Items.length === 0) return out;
 
       for (const item of res.Items) {
         if (item.ttl && item.ttl < nowSecs) continue;
         const sortKey = toSafeString(item.dateClass);
-        if (!sortKey.endsWith(dateSuffix)) continue;
+        if (
+          !sortKey.endsWith(dateSuffix) &&
+          (!altDateSuffix || !sortKey.endsWith(altDateSuffix))
+        ) {
+          continue;
+        }
 
         const parts = sortKey.split('#');
         if (parts.length < 4) continue;
         const trainNumber = parts[0];
         const classKey = parts[1];
+        if (seen.has(`${trainNumber}#${classKey}`)) continue;
         const result = item.result as Record<string, unknown>;
         if (!result || typeof result !== 'object') continue;
 
