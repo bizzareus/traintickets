@@ -6,3 +6,4 @@ export * from './system-reports.template';
 export * from './refund-request.template';
 export * from './automatic-refund.template';
 export * from './chart-alert-confirmation.template';
+export * from './abandoned-booking-reminder.template';

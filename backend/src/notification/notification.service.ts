@@ -43,6 +43,8 @@ import {
   renderNoSeatsEmailHtml,
   renderAlternativeTrainsEmailHtml,
   renderChartPreparedNoDestinationEmailHtml,
+  renderAbandonedBookingReminderHtml,
+  type AbandonedBookingReminderTemplateParams,
   renderAlertFailureEmailHtml,
   renderAdminMonitoringEmailHtml,
   renderRefundRequestAdminEmailHtml,
@@ -65,7 +67,8 @@ import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service'
 import { NotificationDeduplicationService } from './notification-deduplication.service';
 import { NotificationUnsubscribeService } from './notification-unsubscribe.service';
 
-const RESEND_FROM = 'LastBerth Notifications <notification@lastberth.com>';
+const RESEND_FROM =
+  process.env.RESEND_FROM || 'LastBerth Notifications <notification@lastberth.com>';
 const DEFAULT_MONITORING_ADMIN_EMAIL = 'me@kartikarora.in';
 
 /** Normalize mobile to E.164 for WaSender (e.g. 919876543210). */
@@ -156,6 +159,7 @@ export class NotificationService {
     html: string,
     options?: {
       skipFailureReport?: boolean;
+      skipBcc?: boolean;
       attachments?: Array<{ filename: string; content: Buffer }>;
     },
   ): Promise<boolean> {
@@ -178,8 +182,9 @@ export class NotificationService {
     }
     try {
       console.info('sending email message', { RESEND_FROM, to, subject });
-      // BCC the owner on every outbound email (skip if they're the recipient).
+      // BCC the owner on every outbound email (skip if they're the recipient or if skipBcc is set).
       const bcc =
+        !options?.skipBcc &&
         this.monitoringAdminEmail &&
         this.monitoringAdminEmail.toLowerCase() !== to.trim().toLowerCase()
           ? [this.monitoringAdminEmail]
@@ -489,6 +494,18 @@ export class NotificationService {
     const subject = `[LastBerth] Refund requested — ${params.trainNumber} (${params.journeyDate})`;
     const html = renderRefundRequestAdminEmailHtml(params);
     return this.sendEmail(to, subject, html);
+  }
+
+  /**
+   * Send an abandoned booking recovery reminder email to a customer who initiated
+   * a booking but has not yet paid.
+   */
+  async sendAbandonedBookingReminder(
+    params: AbandonedBookingReminderTemplateParams & { to: string },
+  ): Promise<boolean> {
+    const html = renderAbandonedBookingReminderHtml(params);
+    const subject = `Complete your booking for Train ${params.trainNumber} (${params.fromStationCode} → ${params.toStationCode}) — LastBerth`;
+    return this.sendEmail(params.to, subject, html, { skipBcc: true });
   }
 
   private async getStationChartOpenTimeLabel(params: {

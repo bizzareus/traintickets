@@ -546,6 +546,37 @@ export class SplitBookingService {
     return { received: true };
   }
 
+  async getBookingForResume(bookingRef: string) {
+    const booking = await this.findBooking(bookingRef);
+    return {
+      id: booking.id,
+      bookingRef: booking.bookingRef,
+      trainNumber: booking.trainNumber,
+      trainName: booking.trainName,
+      fromStationCode: booking.fromStationCode,
+      toStationCode: booking.toStationCode,
+      journeyDate: booking.journeyDate.toISOString().slice(0, 10),
+      travelClass: booking.travelClass,
+      quota: booking.quota,
+      totalFare: booking.totalFare,
+      serviceFee: booking.serviceFee,
+      irctcServiceFeePaise: booking.irctcServiceFeePaise,
+      paymentGatewayFeePaise: booking.paymentGatewayFeePaise,
+      legs: booking.legsPayload,
+      passengers: booking.passengers,
+      contactMobile: booking.contactMobile,
+      contactEmail: booking.contactEmail,
+      autoUpgrade: booking.autoUpgrade,
+      paymentStatus: booking.paymentStatus,
+      bookingStatus: booking.bookingStatus,
+      payUrl: booking.payUrl,
+      pnrs: booking.pnrs,
+      pnrLeg1: booking.pnrLeg1,
+      pnrLeg2: booking.pnrLeg2,
+      createdAt: booking.createdAt.toISOString(),
+    };
+  }
+
   private async findBooking(
     bookingRefOrId: string,
   ): Promise<SplitTicketBooking> {

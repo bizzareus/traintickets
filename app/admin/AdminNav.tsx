@@ -156,6 +156,16 @@ function AdminNavContent() {
       >
         Cancellations
       </Link>
+      <Link
+        href="/admin/marketing"
+        className={`text-sm font-medium transition ${
+          pathname?.startsWith("/admin/marketing")
+            ? "font-semibold text-indigo-600"
+            : "text-slate-600 hover:text-slate-900"
+        }`}
+      >
+        Marketing
+      </Link>
       <AdminLockButton />
     </nav>
   );
