@@ -15,7 +15,6 @@ import {
   trainStartYmdForBoarding,
 } from "@/lib/chartTimeDisplay";
 import {
-  chartAlertClassPriceLabel,
   chartAlertPriceForClass,
   createFreeChartAlert,
   getChartAlertErrorMessage,
@@ -28,7 +27,6 @@ import {
 } from "@/components/payments/ChartAlertPaymentModal";
 import { ChartAlertSuccessBox } from "@/components/payments/ChartAlertSuccessBox";
 import { ChartAlertTrustFooter } from "@/components/payments/ChartAlertTrustFooter";
-import { ChartAlertDiscountPrice } from "@/components/payments/ChartAlertDiscountPrice";
 
 const FALLBACK_CLASSES = ["SL", "3E", "3A", "2A", "1A", "CC", "2S"] as const;
 
@@ -57,7 +55,7 @@ function ymdPlusDays(days: number): string {
 }
 
 /**
- * Per-station "Get Alert" button. Opens a dialog that asks for the destination
+ * Per-station "Set Alert" button. Opens a dialog that asks for the destination
  * station, travel class, journey date, and contact details — with the boarding
  * station pre-selected from the table row. Subscribes via the journey
  * monitoring engine so the user is notified at this station's chart-preparation time.
@@ -365,7 +363,7 @@ export default function RowAlertButton({
           className="inline-flex touch-manipulation items-center gap-1 whitespace-nowrap rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700 transition hover:bg-blue-100"
         >
           <BellRing className="h-3.5 w-3.5" />
-          Get Alert
+          Set Alert
         </button>
       )}
 
@@ -409,8 +407,8 @@ export default function RowAlertButton({
               <span className="font-semibold text-slate-800">
                 {stationName}
               </span>
-              , we find vacant seats from {stationCode} &lt;&gt; {toStationCode || "…"}{" "}
-              and notify you instantly.
+              , we find vacant seats from {stationCode} &lt;&gt;{" "}
+              {toStationCode || "…"} and notify you instantly.
             </p>
             {subscribedJourney ? (
               <ChartAlertSuccessBox journey={subscribedJourney} compact />
@@ -447,7 +445,6 @@ export default function RowAlertButton({
                   <label className="text-xs font-semibold text-slate-700">
                     <span className="mb-1 flex items-center justify-between gap-2">
                       Class
-                      <ChartAlertDiscountPrice price={alertPrice} />
                     </span>
                     <select
                       value={classCode}
@@ -456,10 +453,7 @@ export default function RowAlertButton({
                     >
                       {activeClasses.map((c) => (
                         <option key={c} value={c}>
-                          {chartAlertClassPriceLabel(
-                            CLASS_LABELS[c] || `${c} Class`,
-                            c,
-                          )}
+                          {CLASS_LABELS[c] || `${c} Class`}
                         </option>
                       ))}
                     </select>
@@ -521,6 +515,7 @@ export default function RowAlertButton({
                     loading,
                     price: alertPrice,
                     verb: "set",
+                    showPrice: false,
                   })}
                 </button>
                 {isAdmin && (

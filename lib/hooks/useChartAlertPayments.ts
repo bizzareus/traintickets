@@ -34,6 +34,7 @@ export interface UseChartAlertPaymentsResult {
     loading: boolean;
     price: number;
     verb?: "set" | "subscribe";
+    showPrice?: boolean;
   }) => string;
 }
 
@@ -137,13 +138,19 @@ export function useChartAlertPayments(): UseChartAlertPaymentsResult {
     loading,
     price,
     verb = "set",
+    showPrice = true,
   }: {
     loading: boolean;
     price: number;
     verb?: "set" | "subscribe";
+    showPrice?: boolean;
   }): string => {
     if (loading) {
       return isFreeAlerts ? "Setting up…" : "Opening payment…";
+    }
+
+    if (!showPrice) {
+      return verb === "subscribe" ? "Subscribe" : "Set Alert";
     }
 
     if (admin) {
