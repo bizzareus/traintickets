@@ -324,7 +324,13 @@ export function ResumeBookingClient({ bookingRef }: { bookingRef: string }) {
           travelClass={booking.travelClass}
           quota={booking.quota}
           totalFare={booking.totalFare}
-          legs={booking.legs}
+          legs={(booking.legs || []).map((l) => ({
+            from: l.from,
+            to: l.to,
+            travelClass: l.travelClass,
+            boardingDate: l.boardingDate,
+            fare: l.fare,
+          }))}
           initialPassenger={primaryPassenger}
           initialMobile={booking.contactMobile}
           initialEmail={booking.contactEmail}

@@ -548,6 +548,17 @@ export class SplitBookingService {
 
   async getBookingForResume(bookingRef: string) {
     const booking = await this.findBooking(bookingRef);
+    const rawLegs = Array.isArray(booking.legsPayload)
+      ? (booking.legsPayload as Array<Record<string, unknown>>)
+      : [];
+    const legs = rawLegs.map((leg) => ({
+      from: String(leg.from || ''),
+      to: String(leg.to || ''),
+      travelClass: String(leg.travelClass || ''),
+      boardingDate: String(leg.boardingDate || ''),
+      fare: Number(leg.fare || 0),
+    }));
+
     return {
       id: booking.id,
       bookingRef: booking.bookingRef,
@@ -562,7 +573,7 @@ export class SplitBookingService {
       serviceFee: booking.serviceFee,
       irctcServiceFeePaise: booking.irctcServiceFeePaise,
       paymentGatewayFeePaise: booking.paymentGatewayFeePaise,
-      legs: booking.legsPayload,
+      legs,
       passengers: booking.passengers,
       contactMobile: booking.contactMobile,
       contactEmail: booking.contactEmail,

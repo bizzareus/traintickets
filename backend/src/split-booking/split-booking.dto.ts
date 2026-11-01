@@ -107,6 +107,10 @@ class SplitBookingLegDto {
   @IsString()
   @MaxLength(60)
   availability?: string | null;
+
+  @IsOptional()
+  @IsInt()
+  irctcServiceFeePaise?: number;
 }
 
 class SplitBookingQuoteLegDto {
@@ -266,6 +270,10 @@ export class CheckSplitBookingAvailabilityLegDto {
   @IsString()
   @Matches(/^\d{4}-\d{2}-\d{2}$|^\d{1,2}-\d{1,2}-\d{4}$/)
   boardingDate!: string;
+
+  @IsOptional()
+  @IsInt()
+  irctcServiceFeePaise?: number;
 }
 
 export class CheckSplitBookingAvailabilityDto {
