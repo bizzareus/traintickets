@@ -20,6 +20,7 @@ These candidates are queued for:
 ## 📋 Queued Candidates for Generator Review
 
 | Date Added | Target Keyword / Query | Impressions | Growth / Pos | Suggested Article Title | Status |
+| 2026-11-01 | `3rd ac cancellation charges` / `cancellation charges for 3ac` | High (~4,000/mo cluster demand) | Pos 9.7 (0.0% CTR / GSC Uncovered) | _3A / 3rd AC Cancellation Charges: IRCTC Rules & Refund (2026)_ | ✅ Published |
 | 2026-09-21 | `irctc advance reservation period` / `60 days rules calculator` | High (~18.8M/wk entity surge) | Breakout (+5000% 24h spike / 60-day rule) | _IRCTC Advance Reservation Period: 60-Day Rules & Dates (2026)_ | ✅ Published |
 | 2026-09-10 | `diwali special train 2026 list` / `booking date` | Very High (~18.8M/wk entity surge) | Breakout (+900% 7D / +999k% 1M) | _Diwali Special Train 2026: List, Booking Dates & Routes_ | ✅ Published |
 | 2026-09-08 | `chhath special train 2026 list` / `booking date` | Very High (~18.8M/wk entity surge) | Breakout (+800% 7D / +999k% 1M) | _Chhath Special Train 2026: List, Dates & IRCTC Booking_ | ✅ Published |
