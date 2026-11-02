@@ -9,6 +9,11 @@ import { Msg91Provider } from './msg91.provider';
 
 @Injectable()
 export class WhatsAppProviderFactory implements WhatsAppProvider {
+  private static readonly NONE: WhatsAppProvider = {
+    providerName: 'none',
+    sendWhatsApp: () => Promise.resolve(false),
+  };
+
   private readonly logger = new Logger(WhatsAppProviderFactory.name);
   private readonly provider: WhatsAppProvider;
 
@@ -25,6 +30,11 @@ export class WhatsAppProviderFactory implements WhatsAppProvider {
     if (activeProviderName === 'wasender') {
       this.provider = this.wasenderProvider;
       this.logger.log('Active WhatsApp Provider Strategy: WASender');
+    } else if (activeProviderName === 'none') {
+      this.provider = WhatsAppProviderFactory.NONE;
+      this.logger.log(
+        'Active WhatsApp Provider Strategy: none (WhatsApp sending disabled)',
+      );
     } else {
       this.provider = this.msg91Provider;
       this.logger.log('Active WhatsApp Provider Strategy: MSG91');

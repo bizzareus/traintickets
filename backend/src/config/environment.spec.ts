@@ -47,6 +47,33 @@ describe('validateEnvironment', () => {
     });
   });
 
+  it.each(['msg91', 'wasender', 'none'])(
+    'allows WHATSAPP_PROVIDER=%s in production',
+    (provider) => {
+      expect(
+        validateEnvironment({
+          NODE_ENV: 'production',
+          DATABASE_URL:
+            'postgresql://postgres:postgres@localhost:5432/railchart',
+          JWT_SECRET: 'a-secure-production-secret-at-least-32-characters',
+          WHATSAPP_PROVIDER: provider,
+        }),
+      ).toMatchObject({ WHATSAPP_PROVIDER: provider });
+    },
+  );
+
+  it('rejects unknown WHATSAPP_PROVIDER values in production', () => {
+    const validate = () =>
+      validateEnvironment({
+        NODE_ENV: 'production',
+        DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/railchart',
+        JWT_SECRET: 'a-secure-production-secret-at-least-32-characters',
+        WHATSAPP_PROVIDER: 'twilio',
+      });
+
+    expect(validate).toThrow(/WHATSAPP_PROVIDER/);
+  });
+
   it('rejects partial Razorpay credentials and whitespace-only secrets', () => {
     const validate = () =>
       validateEnvironment({

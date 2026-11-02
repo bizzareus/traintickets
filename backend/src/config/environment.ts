@@ -84,12 +84,13 @@ const environmentSchema = z
     }
     if (
       env.WHATSAPP_PROVIDER &&
-      !['msg91', 'wasender'].includes(env.WHATSAPP_PROVIDER)
+      !['msg91', 'wasender', 'none'].includes(env.WHATSAPP_PROVIDER)
     ) {
       context.addIssue({
         code: 'custom',
         path: ['WHATSAPP_PROVIDER'],
-        message: 'WHATSAPP_PROVIDER must be msg91 or wasender in production',
+        message:
+          'WHATSAPP_PROVIDER must be msg91, wasender, or none in production',
       });
     }
     if (Boolean(env.RAZORPAY_KEY_ID) !== Boolean(env.RAZORPAY_KEY_SECRET)) {

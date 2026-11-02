@@ -485,5 +485,29 @@ describe('WhatsApp Providers & Factory (Strategy Pattern)', () => {
       expect(msg91Spy).toHaveBeenCalledTimes(1);
       expect(wasenderSpy).not.toHaveBeenCalled();
     });
+
+    it('selects the none strategy (no sends) when WHATSAPP_PROVIDER=none', async () => {
+      const config = mockConfig({ WHATSAPP_PROVIDER: 'none' });
+      const wasender = new WasenderProvider(config);
+      const msg91 = new Msg91Provider(config);
+
+      const wasenderSpy = jest
+        .spyOn(wasender, 'sendWhatsApp')
+        .mockResolvedValue(true);
+      const msg91Spy = jest
+        .spyOn(msg91, 'sendWhatsApp')
+        .mockResolvedValue(true);
+
+      const factory = new WhatsAppProviderFactory(config, wasender, msg91);
+
+      expect(factory.providerName).toBe('none');
+
+      await expect(
+        factory.sendWhatsApp({ mobile: '9876543210', text: 'Test' }),
+      ).resolves.toBe(false);
+
+      expect(msg91Spy).not.toHaveBeenCalled();
+      expect(wasenderSpy).not.toHaveBeenCalled();
+    });
   });
 });
