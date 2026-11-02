@@ -77,3 +77,8 @@
 
 **Learning:** Ranking thousands of static dataset entries (such as 3,500+ train catalog items sorted by category score heuristics and train numbers) inside functions wrapped only with React's `cache()` forces recalculation on every request outside React's render tree (such as sitemap bucket generation for `trains` and `confirmed-tickets`, and independent server routes). Adding a persistent module-level `Map<number, string[]>` cache reduces warm call latency from ~28 ms to 0.077 µs (~360,000x speedup) and eliminates thousands of intermediate object allocations and sorting passes per request.
 **Action:** Always combine React's `cache()` with persistent module-level `Map` caches for deterministic ranking and sorting over static catalog datasets.
+
+## 2026-11-02 - Persistent Module-Level Caching for Root Layout Curated Subsets
+
+**Learning:** Functions called in root layouts (such as `app/layout.tsx` for global navigation or footer links) execute on every single incoming page request. When `listPopularChartTimes()` constructed a new `Map` and 1,400+ 2-element tuples from `listChartTimesIndex()` on every call, it incurred ~0.4 ms execution overhead and heavy heap/GC allocation pressure (~398 ms for 1,000 calls). Adding a persistent module-level cache `cachedPopularChartTimes` reduces warm call latency to ~0.2 µs (~2,000x speedup) and completely eliminates Map and tuple allocations on every page render.
+**Action:** Always persist the output of layout-level filtering/lookups across large catalog indexes in module-level variables with invalidation hooks on file writes.

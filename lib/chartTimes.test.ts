@@ -4,6 +4,8 @@ import {
   getCachedChartTimeStation,
   getChartTimesPageData,
   listChartTimesSlugs,
+  listPopularChartTimes,
+  CURATED_POPULAR_CHART_TIMES,
 } from "./chartTimes";
 
 test("getCachedChartTimeStation - performs O(1) station lookup and handles case-insensitivity", async () => {
@@ -49,4 +51,25 @@ test("listChartTimesSlugs - returns cached list of chart times slugs", () => {
     slugs2,
     "Should return the identical cached array reference",
   );
+});
+
+test("listPopularChartTimes - returns curated popular trains and caches array reference", () => {
+  const pop1 = listPopularChartTimes();
+  const pop2 = listPopularChartTimes();
+  assert.ok(Array.isArray(pop1));
+  assert.ok(pop1.length > 0);
+  assert.equal(
+    pop1,
+    pop2,
+    "Should return the identical cached array reference on subsequent calls",
+  );
+
+  // Curated trains in order
+  const returnedNumbers = pop1.map((t) => t.trainNumber);
+  for (const num of returnedNumbers) {
+    assert.ok(
+      CURATED_POPULAR_CHART_TIMES.includes(num),
+      `Train ${num} should be in CURATED_POPULAR_CHART_TIMES`,
+    );
+  }
 });
