@@ -107,7 +107,7 @@ describe('Manual booking owner notifications', () => {
     ];
     expect(to).toBe('me@kartikarora.in');
     expect(subject).toContain('LB-SB-MANUAL');
-    expect(whatsapp.mobile).toBe('+919999224767');
+    expect(whatsapp.mobile).toBe('+919205369633');
     for (const detail of [
       '12216',
       'DEE GARIBRATH',
