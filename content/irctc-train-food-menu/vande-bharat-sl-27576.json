@@ -1,0 +1,46 @@
+{
+  "trainNumber": "27576",
+  "trainNumberPair": "27575-76",
+  "trainName": "Kamakhya - Howrah Vande Bharat Sleeper Express",
+  "route": "KYQ-HWH",
+  "originCode": "KYQ",
+  "destinationCode": "HWH",
+  "classes": [
+    {
+      "classCode": "1A/2A/3A",
+      "className": "AC Sleeper (common published menu)",
+      "services": [
+        {
+          "service": "Morning Tea (06:30-08:00)",
+          "price": null,
+          "items": [
+            { "item": "Tea", "description": "Tea" },
+            { "item": "Biscuit & Muffin", "description": "Biscuit & Muffin" }
+          ]
+        },
+        {
+          "service": "Dinner - 27576 KYQ to HWH (20:00-22:00)",
+          "price": null,
+          "items": [
+            { "item": "Rice dish", "description": "Jeera Rice/Jeera Corn Pulao/Kismish Pulao" },
+            { "item": "Indian Bread", "description": "Tehdar Paratha" },
+            { "item": "Dal", "description": "Mixed Dali (Arhar, Moong)" },
+            { "item": "Vegetable Dish", "description": "Lesera Aloo Bhaji/Bhendi Aloo Bhaji/Beans Aloo Bhaji" },
+            { "item": "Special Dish (Main Course)", "description": "Paneer Masala/Kadai Paneer (Assamese Style) OR Chicken Masala/Chicken Curry (Assamese Style)" },
+            { "item": "Dessert", "description": "Narikal Burfi/Rasagulla/Lalmohan" }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "For train 27576 Kamakhya to Howrah, this menu shows the Assamese-style dinner printed specifically for KYQ-HWH in the shared 27575-76 PDF.",
+    "The source does not divide the menu by class. It is grouped here for the train's AC sleeper classes (1A, 2A and 3A), not non-AC Sleeper (SL).",
+    "The PDF prints morning tea at 06:30-08:00 and dinner at 20:00-22:00. It does not specify a separate breakfast service.",
+    "Slash-separated dishes are alternatives; the source does not specify a weekly rotation schedule.",
+    "The PDF publishes no individual meal prices; unspecified prices do not mean free retail meals. Check the applicable catering arrangement and fare breakdown on IRCTC."
+  ],
+  "slug": "vande-bharat-sl-27576",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/27575.pdf",
+  "generatedAt": "2026-11-02T23:28:42.000Z"
+}

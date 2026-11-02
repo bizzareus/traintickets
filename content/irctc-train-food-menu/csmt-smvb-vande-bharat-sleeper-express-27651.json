@@ -1,0 +1,57 @@
+{
+  "trainNumber": "27651",
+  "trainNumberPair": "27651-52",
+  "trainName": "Mumbai CSMT - SMVT Bengaluru Vande Bharat Sleeper Express",
+  "route": "CSMT-SMVB",
+  "originCode": "CSMT",
+  "destinationCode": "SMVB",
+  "classes": [
+    {
+      "classCode": "1A/2A/3A",
+      "className": "AC Sleeper (common published menu)",
+      "services": [
+        {
+          "service": "Morning Tea",
+          "price": null,
+          "items": [
+            { "item": "Hot Beverage", "description": "Premix based Tea/Coffee/Green Tea; sugar-free options on demand" },
+            { "item": "Biscuits", "description": "Branded Digestive Biscuit/Cookies (2 pieces)" },
+            { "item": "Service Kit", "description": "Disposable hard ribbed paper cup, stirrer and good quality napkin tissue" }
+          ]
+        },
+        {
+          "service": "Breakfast",
+          "price": null,
+          "items": [
+            { "item": "Breakfast Alternatives", "description": "(1) Idly 2 nos + Vada 1 no + Sambhar; OR (2) Masala Poha/Veg Upma/Vermicelli Upma + Kesari Bhath; OR (3) 2 Veg Cutlets + 2 slices Bread + Butter Chiplet + Tomato Sauce Sachet; OR (4) 2 Eggs Omelette + 2 slices Bread + Butter Chiplet + Tomato Sauce Sachet" },
+            { "item": "Beverage", "description": "Premix based Tea/Coffee/Green Tea, sugar-free options on demand; OR Fruit Drink" },
+            { "item": "Service Kit", "description": "Disposable hard ribbed paper cup, stirrer, spoon and good quality napkin tissue; salt/pepper sachet on demand" }
+          ]
+        },
+        {
+          "service": "Dinner",
+          "price": null,
+          "items": [
+            { "item": "Rice", "description": "Lemon Rice/Steamed Rice" },
+            { "item": "Indian Bread", "description": "Chapati 03 nos/Paratha 02 nos" },
+            { "item": "Dal or Sambhar", "description": "Sambhar (Karnataka style)/Yellow Dal Tadka" },
+            { "item": "Main Course", "description": "Paneer/Regional Veg/Chicken Dish" },
+            { "item": "Curd or Buttermilk", "description": "Packed Curd in cup/Buttermilk in Tetra-pack" },
+            { "item": "Pickle", "description": "Pickle sachet" },
+            { "item": "Dessert", "description": "Branded Packed Indian Sweets" },
+            { "item": "Service Kit", "description": "Spoon and good quality napkin tissue; salt/pepper sachet on demand" }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "The source heading prints SMVB-CSMT and covers train pair 27651-52. The operating directions are 27651 Mumbai CSMT to SMVT Bengaluru and 27652 SMVT Bengaluru to Mumbai CSMT; the menu itself does not separate directions.",
+    "The source does not divide the menu by class. It is grouped here for the train's AC sleeper classes (1A, 2A and 3A), not non-AC Sleeper (SL).",
+    "Breakfast choices and slash-separated dishes are alternatives, not a promise that every listed dish is served together. Meal entitlement depends on the booked journey segment.",
+    "The PDF publishes no individual meal prices or clock-time service windows. Unspecified prices do not mean free retail meals; check the applicable catering arrangement and fare breakdown on IRCTC."
+  ],
+  "slug": "csmt-smvb-vande-bharat-sleeper-express-27651",
+  "sourcePdfUrl": "https://menurates.irctc.co.in/PDFFiles/VandeBharat/27651.pdf",
+  "generatedAt": "2026-11-02T23:28:42.000Z"
+}

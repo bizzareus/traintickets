@@ -82121,6 +82121,32 @@
     "menuKey": "vande-bharat-south-central"
   },
   {
+    "trainNumber": "27421",
+    "trainNumberPair": "27421-22",
+    "trainName": "Varanasi - New Delhi Vande Bharat Sleeper Express",
+    "label": "27421 - Varanasi - New Delhi Vande Bharat Sleeper Express",
+    "route": "BSB-NDLS",
+    "slug": "bsb-ndls-vande-bharat-sleeper-express-27421",
+    "trainType": "vande-bharat",
+    "zone": "North",
+    "status": "done",
+    "hasCustomMenu": true,
+    "menuKey": "custom"
+  },
+  {
+    "trainNumber": "27422",
+    "trainNumberPair": "27421-22",
+    "trainName": "New Delhi - Varanasi Vande Bharat Sleeper Express",
+    "label": "27422 - New Delhi - Varanasi Vande Bharat Sleeper Express",
+    "route": "NDLS-BSB",
+    "slug": "ndls-bsb-vande-bharat-sleeper-express-27422",
+    "trainType": "vande-bharat",
+    "zone": "North",
+    "status": "done",
+    "hasCustomMenu": true,
+    "menuKey": "custom"
+  },
+  {
     "trainNumber": "27575",
     "trainNumberPair": "27575-76",
     "trainName": "Howrah - Kamakhya Vande Bharat Sleeper Express",
@@ -82135,16 +82161,42 @@
   },
   {
     "trainNumber": "27576",
-    "trainNumberPair": "27576",
-    "trainName": "Vande Bharat Sl",
-    "label": "27576 - VANDE BHARAT SL",
-    "route": "",
+    "trainNumberPair": "27575-76",
+    "trainName": "Kamakhya - Howrah Vande Bharat Sleeper Express",
+    "label": "27576 - Kamakhya - Howrah Vande Bharat Sleeper Express",
+    "route": "KYQ-HWH",
     "slug": "vande-bharat-sl-27576",
     "trainType": "vande-bharat",
     "zone": "East",
-    "status": "mapped",
-    "hasCustomMenu": false,
-    "menuKey": "vande-bharat-east"
+    "status": "done",
+    "hasCustomMenu": true,
+    "menuKey": "custom"
+  },
+  {
+    "trainNumber": "27651",
+    "trainNumberPair": "27651-52",
+    "trainName": "Mumbai CSMT - SMVT Bengaluru Vande Bharat Sleeper Express",
+    "label": "27651 - Mumbai CSMT - SMVT Bengaluru Vande Bharat Sleeper Express",
+    "route": "CSMT-SMVB",
+    "slug": "csmt-smvb-vande-bharat-sleeper-express-27651",
+    "trainType": "vande-bharat",
+    "zone": "South",
+    "status": "done",
+    "hasCustomMenu": true,
+    "menuKey": "custom"
+  },
+  {
+    "trainNumber": "27652",
+    "trainNumberPair": "27651-52",
+    "trainName": "SMVT Bengaluru - Mumbai CSMT Vande Bharat Sleeper Express",
+    "label": "27652 - SMVT Bengaluru - Mumbai CSMT Vande Bharat Sleeper Express",
+    "route": "SMVB-CSMT",
+    "slug": "smvb-csmt-vande-bharat-sleeper-express-27652",
+    "trainType": "vande-bharat",
+    "zone": "South",
+    "status": "done",
+    "hasCustomMenu": true,
+    "menuKey": "custom"
   },
   {
     "trainNumber": "28181",

@@ -1859,7 +1859,7 @@ describe('SplitBookingService', () => {
         expect.any(Object),
       );
       expect(wasender.sendWhatsApp).toHaveBeenCalledWith({
-        mobile: '+919999224767',
+        mobile: '+919205369633',
         text: expect.stringContaining('LB-CANCEL'),
       });
     });

@@ -1,8 +1,8 @@
 ---
-title: "Vande Bharat Sleeper Train: Routes, Fares & List (2026)"
-description: "Complete Vande Bharat Sleeper guide: 2026 routes list, 1AC/2AC/3AC fares vs Rajdhani, 160 km/h BEML specs, coach layouts, food refund rules & booking hacks."
+title: "Vande Bharat Sleeper: Running Routes, Fares & Menus 2026"
+description: "Latest Vande Bharat Sleeper trains: Delhi–Varanasi, Mumbai–Bengaluru and Howrah–Kamakhya. Check train numbers, timings, launch fares and IRCTC menus."
 date: "2026-07-31"
-updated: "2026-09-22"
+updated: "2026-11-03"
 tags:
   - train booking
   - irctc
@@ -12,283 +12,185 @@ tags:
   - railway news
 ---
 
-> **🔔 Looking for Confirmed Train Berths?** When direct high-speed trains show `REGRET` or heavy waitlists, use [Smart Seats](/) to find confirmed split-ticket combinations on the same train. You can also check station charting countdowns on [Chart Times](/chart-times) and discover vacant berths 4 hours before departure on [Get Confirmed Tickets](/).
-
-The Vande Bharat Sleeper represents Indian Railways' most significant passenger transit upgrade since the introduction of the Rajdhani Express in 1969. Engineered as a self-propelled, semi-high-speed Electric Multiple Unit (EMU) trainset, the Vande Bharat Sleeper eliminates the traditional locomotive engine, enabling rapid acceleration, regenerative braking, and commercial speeds up to 160 km/h. Designed specifically for long-distance overnight journeys between 800 km and 2,000 km, these trains cut transit times by 2 to 3 hours across India's busiest trunk corridors.
-
-Manufactured jointly by Bharat Earth Movers Limited (BEML) in Bengaluru and Kinet Railway Solutions (an RVNL consortium), the Vande Bharat Sleeper introduces world-class passenger amenities. These include soundproofed passenger cabins, automated sensor-driven plug doors, bio-vacuum toilets with touchless fittings, hot-water shower cubicles in First AC (1A), and an integrated Kavach 4.0 Automatic Train Protection (ATP) system.
-
----
-
 ## TL;DR
 
-- **160 km/h EMU Architecture:** Self-propelled distributed traction cuts overnight journey times by 2 to 3 hours compared to conventional locomotive-hauled Rajdhani Express trains.
-- **16-Coach Luxury Composition:** Each trainset features 823 total passenger berths across 11 AC 3-Tier (611 berths), 4 AC 2-Tier (188 berths), and 1 AC First Class (24 berths) coaches.
-- **Top 2026 Corridors:** Flagship routes include Delhi to Mumbai (12h 30m), Delhi to Howrah (11h 45m), Bengaluru to Mumbai (13h 15m), and the high-altitude Delhi to Srinagar USBRL corridor.
-- **Strict Zero-WL / Zero-RAC Policy:** To eliminate unreserved overcrowding, Vande Bharat Sleeper trains issue only 100% confirmed berths; once capacity is reached, IRCTC immediately displays `REGRET`.
-- **Catering Flexibility:** Premium multi-course meals are included by default, but passengers can opt out during booking to receive an instant fare deduction of ₹210 to ₹850.
-- **Booking Rules:** Tickets open 60 days in advance at 08:00 AM IST on IRCTC; Tatkal booking opens at 10:00 AM IST for 2A and 3A classes with mandatory Aadhaar authentication.
+**Vande Bharat Sleeper now serves three corridors:** Howrah–Kamakhya, Varanasi–New Delhi and Mumbai CSMT–SMVT Bengaluru. The two newest routes began regular operations on November 2, 2026, with Bengaluru-origin departures starting November 3. IRCTC has published route-specific menus for all three; don't apply daytime chair-car food opt-out rules to these overnight trains.
 
----
+> **Check your actual stations:** [Search Delhi–Varanasi trains](/?from=NDLS&to=BSB&fromName=New%20Delhi&toName=Varanasi%20Jn&src=blog_vande_sleeper) · [Search Mumbai CSMT–SMVT Bengaluru trains](/?from=CSMT&to=SMVB&fromName=Mumbai%20CSMT&toName=SMVT%20Bengaluru&src=blog_vande_sleeper) · [Search Howrah–Kamakhya trains](/?from=HWH&to=KYQ&fromName=Howrah%20Jn&toName=Kamakhya%20Jn&src=blog_vande_sleeper).
 
-## What Is the Vande Bharat Sleeper Train and How Does It Operate?
+**Checked November 3, 2026.** This is a dated service guide, not a live running-status feed. LastBerth is an independent search and discovery tool, **not IRCTC or Indian Railways**, and does not issue tickets; complete reservations through official or authorised IRCTC channels.
 
-**The Vande Bharat Sleeper is Indian Railways' next-generation electric multiple-unit (EMU) train designed for long-distance overnight travel at commercial speeds up to 160 km/h. Built with distributed traction motors underneath passenger coaches rather than a separate front locomotive, it delivers rapid acceleration, smoother braking, and superior acoustic noise insulation.**
+## Which Vande Bharat Sleeper trains are running in November 2026?
 
-Unlike traditional locomotive-hauled LHB (Linke Hofmann Busch) rakes where a single engine pulls the entire rake, the Vande Bharat Sleeper distributes power across 50% of its bogies. This configuration provides several operational advantages:
+**Three Vande Bharat Sleeper route pairs are in the passenger-service rollout as of November 3, 2026:** Howrah–Kamakhya (27575/27576), Varanasi–New Delhi (27421/27422) and Mumbai CSMT–SMVT Bengaluru (27651/27652). The latest additions are the Varanasi and Mumbai–Bengaluru services; their regular-service start dates differ from their ceremonial flag-off dates.
 
-1. **Elimination of Locomotive Shunting:** At terminal stations like Mumbai Central (MMCT), New Delhi (NDLS), or Howrah (HWH), the train does not require locomotive reversal or shunting, enabling 30-minute turnarounds.
-2. **Superior Acceleration:** The trainset accelerates from 0 to 100 km/h in 54 seconds—faster than standard Rajdhani or Tejas Express rakes (which take 80 to 90 seconds).
-3. **Regenerative Braking:** Energy recovered during electric braking is fed back into the overhead 25 kV AC traction grid, reducing energy consumption by up to 30%.
-4. **Enhanced Safety Shell:** Built with crash-resistant austenitic stainless steel car bodies conforming to European crashworthiness standards (EN 15227), with anti-climbing features that prevent coach telescoping during collisions.
-5. **Kavach 4.0 Integration:** Built-in onboard collision avoidance system that continuously monitors signals, enforces speed limits, and automatically applies emergency brakes if another train or obstruction is detected on the track.
+| Corridor | Train numbers | Service status at this update | Published IRCTC menu |
+| --- | --- | --- | --- |
+| Howrah Jn (HWH) ↔ Kamakhya Jn (KYQ) | 27575 / 27576 | First sleeper corridor, launched in January 2026 | [Howrah–Kamakhya food menu](/irctc-train-food-menu/hwh-kyq-vande-bharat-express-27575) |
+| Varanasi Jn (BSB) ↔ New Delhi (NDLS) | 27421 / 27422 | Flagged off October 31; regular service from November 2 | [Varanasi–Delhi food menu](/irctc-train-food-menu/bsb-ndls-vande-bharat-sleeper-express-27421) |
+| Mumbai CSMT (CSMT) ↔ SMVT Bengaluru (SMVB) | 27651 / 27652 | Flagged off November 1; Mumbai-origin service from November 2 and Bengaluru-origin service from November 3 | [Mumbai–Bengaluru food menu](/irctc-train-food-menu/csmt-smvb-vande-bharat-sleeper-express-27651) |
 
-```
-+---------------------------------------------------------------------------------------+
-|                       VANDE BHARAT SLEEPER 16-COACH ARCHITECTURE                      |
-|                                                                                       |
-|  [Driving Cab]  [ 11x AC 3-Tier (3A) ]  [ 4x AC 2-Tier (2A) ]  [ 1x First AC (1A) ]   |
-|   Aerodynamic        611 Berths               188 Berths             24 Berths        |
-|    Nose Cone     (55 berths / coach)      (47 berths / coach)    (Coupes & Cabins)    |
-|                                                                                       |
-|  Total Capacity: 823 Confirmed Passenger Berths | Distributed Traction (No Engine)   |
-+---------------------------------------------------------------------------------------+
-```
+The November launches and commercial start dates are covered in [The Indian Express's November 2 service report](https://indianexpress.com/article/india/vande-bharat-sleeper-trains-varanasi-delhi-bengaluru-mumbai-10946342/), which attributes the operating details to the Ministry of Railways. The earlier [Howrah–Kamakhya launch report](https://indianexpress.com/article/business/vande-bharat-sleeper-pm-modi-flags-first-train-howrah-to-guwahati-10479315/) identifies the first corridor.
 
----
+**Correction to older route lists:** Delhi–Mumbai, Delhi–Howrah, Delhi–Srinagar and Delhi–Patna are not listed here as operating sleeper services because this update has not verified commercial introductions on those corridors. A trial run, production target or proposed route is not a bookable passenger service.
 
-## Vande Bharat Sleeper Trains List: Confirmed Routes & Schedules (2026)
+## What are the Delhi–Varanasi Vande Bharat Sleeper timings and stops?
 
-**In 2026, Indian Railways is rolling out Vande Bharat Sleeper trainsets across high-density overnight trunk routes connecting national economic hubs. Flagship corridors include New Delhi to Mumbai Central, New Delhi to Howrah, Bengaluru to Mumbai, and the strategic Udhampur-Srinagar-Baramulla Rail Link (USBRL) connecting New Delhi to Srinagar.**
+**Train 27421 leaves Varanasi at 20:50 and reaches New Delhi at 06:10 the next day; train 27422 leaves New Delhi at 21:40 and reaches Varanasi at 07:10.** Both run six days weekly, but 27421 skips Friday departures and 27422 skips Saturday departures from their respective origins.
 
-The table below provides the operational blueprint, distance, expected travel time, and time saved compared to existing Rajdhani / Express services for the 2026 Vande Bharat Sleeper rollout:
+| Train | Direction | Departure, IST | Arrival, IST | Journey time | No departure on |
+| --- | --- | --- | --- | --- | --- |
+| 27421 | Varanasi → New Delhi | 20:50 | 06:10, next day | 9h 20m | Friday |
+| 27422 | New Delhi → Varanasi | 21:40 | 07:10, next day | 9h 30m | Saturday |
 
-| Corridor / Route        | Origin & Destination Stations                | Distance (km) | Vande Bharat Sleeper Duration | Conventional Rajdhani Duration | Journey Time Saved |
-| :---------------------- | :------------------------------------------- | :-----------: | :---------------------------: | :----------------------------: | :----------------: |
-| **Delhi ➔ Mumbai**      | New Delhi (NDLS) ➔ Mumbai Central (MMCT)     |   1,386 km    |      **12 hrs 30 mins**       |         15 hrs 35 mins         | **3 hrs 05 mins**  |
-| **Delhi ➔ Howrah**      | New Delhi (NDLS) ➔ Howrah Jn (HWH)           |   1,450 km    |      **11 hrs 45 mins**       |         17 hrs 05 mins         | **5 hrs 20 mins**  |
-| **Bengaluru ➔ Mumbai**  | KSR Bengaluru (SBC) ➔ Mumbai Central (MMCT)  |   1,130 km    |      **13 hrs 15 mins**       |         21 hrs 10 mins         | **7 hrs 55 mins**  |
-| **Delhi ➔ Srinagar**    | New Delhi (NDLS) ➔ Srinagar (SINA via USBRL) |    820 km     |      **13 hrs 00 mins**       |      18+ hrs (Train+Road)      | **5 hrs 00 mins**  |
-| **Delhi ➔ Patna**       | Anand Vihar (ANVT) ➔ Patna Jn (PNBE)         |    998 km     |      **09 hrs 45 mins**       |         12 hrs 30 mins         | **2 hrs 45 mins**  |
-| **Mumbai ➔ Ahmedabad**  | Mumbai Central (MMCT) ➔ Ahmedabad (ADI)      |    491 km     |      **05 hrs 15 mins**       |         06 hrs 45 mins         |  **1 hr 30 mins**  |
-| **Howrah ➔ Guwahati**   | Howrah (HWH) ➔ Guwahati (GHY via NJP)        |    992 km     |      **12 hrs 15 mins**       |         18 hrs 00 mins         | **5 hrs 45 mins**  |
-| **Chennai ➔ Bengaluru** | Chennai Central (MAS) ➔ KSR Bengaluru (SBC)  |    359 km     |      **04 hrs 15 mins**       |         05 hrs 30 mins         |  **1 hr 15 mins**  |
+The intermediate stops are **Prayagraj, Kanpur Central, Aligarh and Ghaziabad**. These are the overnight sleeper services, not the existing daytime Vande Bharat chair-car trains on the same corridor.
 
----
+Source: [regular-service announcement and terminal timetable](https://indianexpress.com/article/india/varanasi-new-delhi-vande-bharat-sleeper-regular-service-ticket-booking-10945126/). Check the National Train Enquiry System (NTES) or IRCTC for date-specific changes before leaving home.
 
-## Coach Composition & Berth Layout: 1AC, 2AC & 3AC Specifications
+## What are the Mumbai–Bengaluru Vande Bharat Sleeper timings and stops?
 
-**The standard Vande Bharat Sleeper trainset consists of 16 coaches accommodating exactly 823 passengers. It includes 1 First AC (1A) coach, 4 AC 2-Tier (2A) coaches, and 11 AC 3-Tier (3A) coaches, featuring extra-wide berths, ergonomic cushioned ladders, soundproof gangways, and ambient reading lights.**
+**Train 27651 leaves Mumbai CSMT at 20:10 and reaches SMVT Bengaluru at 12:00 the following day; train 27652 leaves SMVT Bengaluru at 19:45 and reaches Mumbai CSMT at 11:55.** The Mumbai-origin train skips Tuesdays, while the Bengaluru-origin train skips Mondays, so check the departure direction before choosing your date.
 
-```
-+---------------------------------------------------------------------------------------+
-|                     VANDE BHARAT SLEEPER VS LHB COACH BERTH MATRIX                    |
-+----------------------+-----------------------------+----------------------------------+
-| Feature              | Vande Bharat Sleeper (2026) | Conventional LHB Rajdhani        |
-+----------------------+-----------------------------+----------------------------------+
-| Total Berths / Rake  | 823 berths (16 coaches)     | 750–800 berths (loco hauled)     |
-| 3AC Berth Count      | 55 berths per coach         | 64–72 berths per coach           |
-| 2AC Berth Count      | 47 berths per coach         | 46–52 berths per coach           |
-| 1AC Berth Count      | 24 berths per coach         | 18–24 berths per coach           |
-| Berth Cushioning     | Multi-density bonded foam   | Standard PU foam padding         |
-| Upper Berth Ladder   | Angled ergonomic wide steps | Vertical narrow metal rungs      |
-| Washroom Features    | Bio-vacuum + 1A Hot Shower  | Gravity flush modular bio-toilets|
-| Door Operations      | Automatic centralized plug  | Manual hinged swing doors        |
-| Intermediate Doors   | Sensor-based touchless      | Manual push-pull doors           |
-| Power & Charging     | USB-A, USB-C & 230V socket  | Shared 230V 2-pin socket         |
-+----------------------+-----------------------------+----------------------------------+
-```
+| Train | Direction | Departure, IST | Arrival, IST | Journey time | No departure on |
+| --- | --- | --- | --- | --- | --- |
+| 27651 | Mumbai CSMT → SMVT Bengaluru | 20:10 | 12:00, next day | 15h 50m | Tuesday |
+| 27652 | SMVT Bengaluru → Mumbai CSMT | 19:45 | 11:55, next day | 16h 10m | Monday |
 
-### 1. AC First Class (1A) — 24 Berths
+From Bengaluru towards Mumbai, the stops are **Anantapur, Guntakal, Raichur, Yadgir, Kalaburagi, Solapur, Pune and Kalyan**. The reverse service calls at these stations in reverse order.
 
-- **Coupes and Cabins:** Configured with 2-berth private coupes and 4-berth shared cabins featuring electronic keypad locks and touchless sliding doors.
-- **Hot Water Shower Facility:** Includes an exclusive onboard hot water shower cubicle with temperature regulation and a personal grooming station.
-- **Berth Comfort:** Premium cushioned leatherette berths that convert smoothly into flat sleeping surfaces, accompanied by dedicated attendants and on-demand dining service.
+**Station gotcha:** SMVT Bengaluru uses code **SMVB**, not SBC (KSR Bengaluru) or YPR (Yesvantpur). Mumbai CSMT uses **CSMT**, not MMCT (Mumbai Central); selecting the wrong terminal can hide the train from your search.
 
-### 2. AC 2-Tier (2A) — 188 Berths (4 Coaches)
+Source: [Railway Board approval, timetable and stops reported October 30](https://indianexpress.com/article/india/bengaluru-mumbai-vande-bharat-sleeper-train-route-stops-timings-10942430/). The approximately 16-hour published timetable replaces unsupported earlier estimates of a 13-hour journey.
 
-- **Spacious 2x2 Bay Layout:** Features 4 berths per bay (Lower, Upper) and 2 side berths (Side Lower, Side Upper) with heavy acoustic fabric privacy curtains.
-- **Enhanced Headroom:** Generous vertical clearance allowing tall passengers to sit upright comfortably on both lower and upper bunks without hunching.
-- **Storage Amenities:** Concealed under-berth luggage clamps, integrated bottle holders, and magnetic coat hooks.
+## How much do tickets cost on the newest Vande Bharat Sleeper routes?
 
-### 3. AC 3-Tier (3A) — 611 Berths (11 Coaches)
+**Reported launch fares are ₹1,915 in 3A, ₹2,470 in 2A and ₹3,030 in 1A for Varanasi–New Delhi, and ₹2,810, ₹3,630 and ₹4,450 respectively for Bengaluru–Mumbai.** Treat these as dated reference figures, not live all-inclusive quotations; verify the fare components and final payable amount for your exact journey on IRCTC.
 
-- **Spacious 3x2 Bay Layout:** 6 berths per bay (Lower, Middle, Upper) and 2 side berths (Side Lower, Side Upper).
-- **Middle Berth Mechanism:** Redesigned single-motion folding middle berth with hydraulic damping to prevent sudden drops or midnight rattling.
-- **Individual Air Vents:** Dedicated diffused AC louvers for each passenger berth, eliminating cold air blasts directly onto the face.
+| Full-route launch fare reported | AC 3-Tier, 3A | AC 2-Tier, 2A | First AC, 1A |
+| --- | --- | --- | --- |
+| Varanasi → New Delhi | ₹1,915 | ₹2,470 | ₹3,030 |
+| SMVT Bengaluru → Mumbai CSMT | ₹2,810 | ₹3,630 | ₹4,450 |
 
----
+Sources: [Varanasi–Delhi station-wise fares](https://indianexpress.com/article/india/varanasi-new-delhi-vande-bharat-sleeper-ticket-booking-begins-check-station-wise-fare-10945246/) and [Bengaluru–Mumbai booking and fare report](https://indianexpress.com/article/india/bengaluru-mumbai-vande-bharat-sleeper-ticket-booking-waiting-list-10944710/). Intermediate-station fares differ; do not divide an end-to-end fare by distance to estimate a short journey.
 
-## Vande Bharat Sleeper Fares vs Rajdhani Express (Fare Comparison Matrix)
+## What food is served on the Mumbai–Bengaluru Vande Bharat Sleeper?
 
-**Vande Bharat Sleeper ticket fares are priced at an approximate 15% to 20% premium over Rajdhani Express dynamic fares. The ticket price includes high-speed track access surcharges, advanced amenities, and full catering services (which can be opted out during booking).**
+**IRCTC's menu for 27651/27652 lists morning tea, breakfast and dinner, with southern Indian breakfast options and a rice, bread, dal and main-course dinner.** The PDF offers alternatives rather than promising every dish on every trip, gives no individual meal prices, and does not publish separate menus for 1A, 2A and 3A.
 
-The table below illustrates the base fare comparison across major distance slabs and sample routes:
+| Service | Items or alternatives in the official PDF |
+| --- | --- |
+| Morning tea | Premix tea, coffee or green tea; sugar-free options on demand; two digestive biscuits or cookies |
+| Breakfast option 1 | Two idlis, one vada and sambhar |
+| Breakfast option 2 | Masala poha, veg upma or vermicelli upma, with kesari bhath |
+| Breakfast option 3 | Two vegetable cutlets, two bread slices, butter and tomato sauce |
+| Breakfast option 4 | Two-egg omelette, two bread slices, butter and tomato sauce |
+| Breakfast beverage | Tea, coffee or green tea, or a fruit drink |
+| Dinner | Lemon or steamed rice; three chapatis or two parathas; Karnataka-style sambhar or yellow dal tadka; paneer, regional vegetable or chicken dish |
+| Dinner accompaniments | Packed curd or buttermilk, pickle and branded packed Indian sweets |
 
-| Journey Distance / Sector                                     |        Travel Class        | Vande Bharat Sleeper Fare (With Food) | Rajdhani Express Base Fare |          Dynamic Tatkal Fare           | Food Opt-Out Deduction |
-| :------------------------------------------------------------ | :------------------------: | :-----------------------------------: | :------------------------: | :------------------------------------: | :--------------------: |
-| **Short Distance (~400 km)**<br>_e.g. Chennai ➔ Bengaluru_    | **3A**<br>**2A**<br>**1A** |      ₹1,080<br>₹1,620<br>₹2,550       |  ₹890<br>₹1,380<br>₹2,180  | ₹1,430<br>₹2,120<br>N/A (No 1A Tatkal) |  ₹210<br>₹270<br>₹320  |
-| **Medium Distance (~1,000 km)**<br>_e.g. Delhi ➔ Patna_       | **3A**<br>**2A**<br>**1A** |      ₹2,150<br>₹3,200<br>₹4,850       | ₹1,820<br>₹2,750<br>₹4,200 | ₹2,800<br>₹4,100<br>N/A (No 1A Tatkal) |  ₹380<br>₹440<br>₹510  |
-| **Long Distance (~1,400 km)**<br>_e.g. Delhi ➔ Mumbai_        | **3A**<br>**2A**<br>**1A** |      ₹2,850<br>₹4,250<br>₹6,400       | ₹2,420<br>₹3,650<br>₹5,550 | ₹3,650<br>₹5,400<br>N/A (No 1A Tatkal) |  ₹490<br>₹580<br>₹680  |
-| **Extended Distance (~2,000 km)**<br>_e.g. Delhi ➔ Bengaluru_ | **3A**<br>**2A**<br>**1A** |      ₹3,950<br>₹5,900<br>₹8,850       | ₹3,350<br>₹5,100<br>₹7,800 | ₹4,950<br>₹7,450<br>N/A (No 1A Tatkal) |  ₹650<br>₹760<br>₹850  |
+Read the [27651/27652 menu page](/irctc-train-food-menu/csmt-smvb-vande-bharat-sleeper-express-27651) or the [official IRCTC PDF](https://menurates.irctc.co.in/PDFFiles/VandeBharat/27651.pdf). The PDF heading prints SMVB–CSMT for the pair; use the operating timetable, not that heading's order, to distinguish train 27651 from 27652.
 
-_Note: Fares include GST (5% on AC classes) and reservation fees. Superfast and dynamic surge pricing may apply on peak festival dates._
+## What food is served on the Varanasi–New Delhi Vande Bharat Sleeper?
 
----
+**IRCTC's published menu for 27421/27422 lists dinner: jeera or plain rice, chapati or paratha, dal, a paneer, regional vegetable or chicken dish, curd or buttermilk, pickle and packaged Indian sweets.** It does not list breakfast, individual meal prices or separate class-specific dishes, so those should not be advertised as guaranteed inclusions.
 
-## Onboard Catering Charges & Food Opt-Out Refund Rules
+| Dinner component | Published choices |
+| --- | --- |
+| Rice | Jeera rice or plain rice |
+| Bread | Three chapatis or two parathas |
+| Dal | Yellow dal tadka or another variety of dal |
+| Main course | Paneer, regional vegetable or chicken dish |
+| Dairy | Packed curd in a cup or buttermilk in a tetra-pack |
+| Accompaniments | Pickle sachet and branded packed Indian sweets |
+| Service kit | Spoon and napkin; salt and pepper on demand |
 
-**Onboard catering on Vande Bharat Sleeper trains is managed directly by IRCTC with a standardized regional gourmet menu. Catering is selected by default during reservation, but passengers can choose 'Opt-out of Food' on the IRCTC booking screen to save between ₹210 and ₹850 per ticket.**
+Read the [27421/27422 menu page](/irctc-train-food-menu/bsb-ndls-vande-bharat-sleeper-express-27421) or the [official IRCTC PDF](https://menurates.irctc.co.in/PDFFiles/VandeBharat/27421.pdf). A shorter overnight schedule does not automatically entitle every passenger to the breakfast published for a different train.
 
-```
-+---------------------------------------------------------------------------------------+
-|                    VANDE BHARAT SLEEPER ONBOARD MEAL TIMINGS & MENU                   |
-+--------------------+---------------------+--------------------------------------------+
-| Meal Service       | Service Timing      | Typical Menu Offerings                     |
-+--------------------+---------------------+--------------------------------------------+
-| **Welcome Drink**  | Departure + 15 min  | Packaged branded juice / coconut water     |
-| **Evening Tea**    | 16:30 – 17:30 IST   | Roasted nut mix, cookies, tea/coffee kit   |
-| **Dinner**         | 19:45 – 21:00 IST   | Paneer / Chicken curry, Dal, Jeera Rice,   |
-|                    |                     | Parathas, curd, salad, and regional sweet  |
-| **Morning Tea**    | 06:00 – 06:45 IST   | Digestive biscuits, green/masala tea kit   |
-| **Breakfast**      | 07:00 – 08:15 IST   | Idli-Vada / Upma / Omelette, fruit cutlet, |
-|                    |                     | juice, bread-butter-jam, tea/coffee        |
-+--------------------+---------------------+--------------------------------------------+
-```
+## What is different about the Howrah–Kamakhya sleeper food menu?
 
-### How the Food Opt-Out Works
+**The Howrah–Kamakhya menu is direction-specific:** train 27575 lists Bengali-style dinner alternatives, while 27576 lists Assamese-style alternatives, with morning tea, biscuits and a muffin also published. IRCTC prints dinner at 20:00–22:00 and morning tea at 06:30–08:00 for this pair; those windows should not be copied onto the other sleeper routes.
 
-1. When booking your ticket on the IRCTC Rail Connect app or website, locate the **Catering Preference** dropdown for each passenger.
-2. Select **No Food / Opt-Out**.
-3. The booking system automatically deducts the full catering fee from the total payable amount in real time.
-4. If you opt out online, you cannot purchase the standard meal onboard from the pantry manager, though packaged water and packaged snacks remain available for direct retail purchase.
+| Direction | Selected dinner alternatives from IRCTC |
+| --- | --- |
+| 27575, Howrah → Kamakhya | Ghee rice, basanti pulao or green peas pulao; paratha; cholar dal, bhaja moong dal or mixed dal; vegetable bhaja; matar paneer, chanar dalna or dhoker dalna, alternatively Bengali chicken curry, murgh rogini or murgir jhol; kala jamun, sandesh or kheer kadam |
+| 27576, Kamakhya → Howrah | Jeera rice, jeera corn pulao or kismish pulao; tehdar paratha; mixed dal; vegetable bhaji; paneer masala or Assamese-style kadai paneer, alternatively chicken masala or Assamese-style chicken curry; narikal burfi, rasagulla or lalmohan |
 
----
+The slash-separated dishes are **alternatives**, not a promise that a passenger receives every rice, curry and dessert listed. See the [Howrah–Kamakhya menu page](/irctc-train-food-menu/hwh-kyq-vande-bharat-express-27575) and [original IRCTC menu](https://menurates.irctc.co.in/PDFFiles/VandeBharat/27575.pdf).
 
-## Zero-WL & Zero-RAC Policy: How Seat Allocation Works on Vande Bharat Sleeper
+## Is food optional on Vande Bharat Sleeper like on chair-car trains?
 
-**Unlike conventional Mail/Express trains that issue hundreds of Waiting List (GNWL/RLWL/PQWL) and RAC (Reservation Against Cancellation) tickets, Vande Bharat Sleeper trains operate on a strict Zero-WL / Zero-RAC model. Once all physical berths are booked, the booking engine immediately displays `REGRET`.**
+**Do not assume the daytime Vande Bharat “No Food” option applies to Vande Bharat Sleeper.** The November launch report describes catering as an integral part of sleeper services, with meals based on the passenger's origin–destination journey and one litre of Rail Neer supplied without an additional charge; it does not establish a universal opt-out deduction.
 
-This policy was instituted by the Railway Board to ensure:
+The [November 2 passenger-rules report](https://indianexpress.com/article/india/vande-bharat-sleeper-trains-varanasi-delhi-bengaluru-mumbai-10946342/) attributes these arrangements to the Railway Board. Check the food preference and fare breakdown shown for your actual booking rather than relying on older ₹210–₹850 sleeper opt-out estimates.
 
-- **No Overcrowding:** Eliminates unauthorized passenger movement, standing passengers, or RAC passengers sharing side-lower berths in air-conditioned coaches.
-- **Acoustic and Climate Integrity:** Automatic plug doors and vestibules remain closed, maintaining cabin air pressure and acoustic insulation throughout the night.
-- **Guaranteed Berths:** Every passenger who holds an issued ticket is guaranteed a dedicated flat berth with complete linen and pillow sets.
+The three official sleeper menu PDFs specify **no per-meal rupee tariffs**. A missing price is not ₹0, and a bundled meal is not necessarily available as a separately purchasable item; our menu pages leave unpublished prices unspecified.
 
-```
-+---------------------------------------------------------------------------------------+
-|                 WHAT HAPPENS WHEN VANDE BHARAT SLEEPER SEATS FILL UP?                 |
-|                                                                                       |
-|   [ Available Seats ]  --->  Bookings Reach Capacity  --->  [ IRCTC Displays REGRET ] |
-|      (823 Berths)            (Zero WL / Zero RAC)             (No Tickets Issued)     |
-|                                                                                       |
-|   Alternative 1: Search contiguous legs on LastBerth Smart Seats (/)                  |
-|   Alternative 2: Search Get Confirmed Tickets (/) 4 hours before departure        |
-|   Alternative 3: Book parallel Rajdhani / Superfast Express with GNWL / RAC           |
-+---------------------------------------------------------------------------------------+
-```
+For the daytime train distinction, use the [Vande Bharat food rules guide](/blog/vande-bharat-food-booking-opt-out-refund-rules) and the [train food menu directory](/irctc-train-food-menu).
 
----
+## How do you book tickets, and can a waitlisted passenger board?
 
-## How to Book Vande Bharat Sleeper Tickets on IRCTC (Step-by-Step)
+**Book the exact sleeper train number and AC class through IRCTC or a railway reservation counter, then check every passenger's final status before boarding.** November booking reports show waiting lists on the Bengaluru–Mumbai service, so “no waiting-list tickets are ever issued” is inaccurate; a waitlisted booking is not permission to travel.
 
-**Vande Bharat Sleeper tickets are bookable up to 60 days in advance starting at 08:00 AM IST daily on the IRCTC website (`irctc.co.in`), IRCTC Rail Connect mobile app, and physical station PRS counters. Due to extreme demand, using pre-saved Master List profiles is essential for securing confirmed berths.**
+1. Search **BSB–NDLS**, **CSMT–SMVB** or **HWH–KYQ** for your departure date.
+2. Confirm the train number, origin departure day and next-day arrival before paying.
+3. Choose **3A, 2A or 1A**. “Sleeper” is the train format, not the non-AC **SL** class.
+4. Review the food preference, total price and applicable cancellation rules.
+5. Check each traveller's Passenger Name Record (**PNR**) status before departure; the reported sleeper boarding rule permits confirmed passengers only.
 
-Follow this step-by-step procedure to book within the opening minutes:
+The [Bengaluru booking report](https://indianexpress.com/article/india/bengaluru-mumbai-vande-bharat-sleeper-ticket-booking-waiting-list-10944710/) records actual waiting-list sales, while the [passenger-rules report](https://indianexpress.com/article/india/vande-bharat-sleeper-trains-varanasi-delhi-bengaluru-mumbai-10946342/) says RAC (Reservation Against Cancellation), waitlisted and partially confirmed tickets do not qualify for boarding. Don't assume ordinary Tatkal quota or timing rules apply; verify which quotas IRCTC actually offers for your train and date.
 
-1. **Complete Aadhaar Authentication:** Ensure your IRCTC user profile is Aadhaar-verified under `My Account > Authenticate User` to avoid security verification timeouts during high-traffic morning windows.
-2. **Add Passengers to Master List:** Pre-add passenger names, ages, gender, berth preferences (Lower, Upper, Side Lower), and food preferences under `My Profile > Master List` at least 24 hours prior to booking.
-3. **Log in at 07:58 AM IST:** Open the IRCTC website or app two minutes before the 08:00 AM opening window.
-4. **Search Your Corridor:** Enter origin and destination station codes (e.g., `NDLS` to `MMCT` or `SBC` to `MMCT`) and select date of journey (exactly 60 days in advance).
-5. **Quick-Select Master List:** When the train appears, click your desired class (**1A**, **2A**, or **3A**), select your pre-saved passengers from the Master List with one click, and enter the Captcha.
-6. **Pay via IRCTC iPay UPI / Net Banking:** Complete payment instantly using UPI Single-Block or Net Banking to secure confirmed PNR generation before seats switch to `REGRET`.
+If sold out, compare another departure or another train using [Smart Seats](/). Where split-leg options are available, check every segment before booking; a berth or coach change may be required, and results are not guaranteed.
 
----
+> **Before a last-minute trip:** Use [Chart Times](/chart-times) to check charting information and [Chart Vacancy](/chart-vacancy) to inspect displayed vacancies. A vacancy display is not a ticket or permission to board.
 
-## What to Do When Vande Bharat Sleeper Shows REGRET or Sold Out
+## What cancellation rules apply to the new sleeper trains?
 
-When your direct Vande Bharat Sleeper search displays `REGRET`, conventional booking methods will fail. Use these proven passenger tactics to secure your journey:
+**The November launch report gives sleeper-specific voluntary cancellation slabs: 25% of fare more than 72 hours before departure, 50% from 72 hours down to eight hours, and no fare refund less than eight hours before departure.** These differ from familiar ordinary-train cancellation tables; verify the applicable IRCTC conditions before payment or cancellation.
 
-### 1. Discover Split-Leg Contiguous Berths on Smart Seats
+| Time before scheduled departure | Cancellation deduction reported |
+| --- | --- |
+| More than 72 hours | 25% of fare |
+| 72 hours to eight hours | 50% of fare |
+| Less than eight hours | No fare refund |
 
-If the direct route from Delhi to Mumbai is sold out, vacant berths often exist across consecutive segments on the same train (e.g., Delhi to Kota, and Kota to Mumbai). Use [Smart Seats](/) to search your entire route. Smart Seats automatically analyzes intermediate station quotas and identifies contiguous berths, allowing you to travel on the same train with two confirmed segment tickets.
-
-### 2. Check Vacant Berths on Chart Vacancy (4 Hours Before Departure)
-
-When Indian Railways prepares the first reservation chart 4 hours before departure, unutilized VIP/Emergency Quotas (EQ), foreign tourist berths, and railway operational quotas are released to the public as **Current Availability (CURR_AVBL)**. Visit [Get Confirmed Tickets](/) 4 hours before departure to see coach-by-coach vacant berths bookable at a 10% discount on base fare.
-
-### 3. Track Charting Countdown on Chart Times
-
-Different originating stations prepare charts at different milestones. Use [Chart Times](/chart-times) to look up the exact chart preparation schedule for your train number and set automated alerts so you are logged in the moment remaining berths go live.
-
-### Search Popular Vande Bharat Express Corridors
-
-Planning your trip? Use these direct search links with pre-filled parameters to check live seat availability and split-ticket options:
-
-- 🚄 [Search Delhi to Varanasi (`NDLS ➔ BSB`)](https://lastberth.com/?from=NDLS&to=BSB)
-- 🚄 [Search Delhi to Katra / Jammu (`NDLS ➔ SVDK`)](https://lastberth.com/?from=NDLS&to=SVDK)
-- 🚄 [Search Mumbai to Goa (`MMCT ➔ MAO`)](https://lastberth.com/?from=MMCT&to=MAO)
-- 🚄 [Search Chennai to Bengaluru (`MAS ➔ SBC`)](https://lastberth.com/?from=MAS&to=SBC)
-- 🚄 [Search Howrah to Puri (`HWH ➔ PURI`)](https://lastberth.com/?from=HWH&to=PURI)
-
----
+Source: [November 2 report quoting Railway Board cancellation conditions](https://indianexpress.com/article/india/vande-bharat-sleeper-trains-varanasi-delhi-bengaluru-mumbai-10946342/). This table concerns passenger-requested cancellations, not every railway cancellation, disruption or exceptional refund case; use the refund amount and conditions IRCTC shows for your ticket.
 
 ## Common Booking Questions (FAQ)
 
-### What is the difference between Vande Bharat Sleeper and Vande Bharat Chair Car?
+**The main checks are the sleeper train number, correct terminal, departure day, passenger confirmation and route-specific menu.** These answers distinguish the November 2026 launches from daytime Vande Bharat trains; they are dated guidance rather than live availability, and IRCTC's current booking conditions remain the reference for any purchase.
 
-Vande Bharat Chair Car (CC/EC) is designed for short-to-medium day journeys up to 8 hours featuring reclining seating, whereas Vande Bharat Sleeper is an overnight semi-high-speed train equipped with 1AC, 2AC, and 3AC flat berths, bio-vacuum washrooms, and shower facilities for journeys spanning 800 to 2,000 km.
+### How many Vande Bharat Sleeper routes are running now?
 
-### How many coaches and berths are on the Vande Bharat Sleeper train?
+As of November 3, 2026, this guide verifies three passenger-service corridors: Howrah–Kamakhya, Varanasi–New Delhi and Mumbai CSMT–SMVT Bengaluru. Bengaluru-origin regular departures on the newest corridor start November 3; not every direction operates every day.
 
-Each 16-coach Vande Bharat Sleeper trainset contains exactly 823 passenger berths, divided into 11 AC 3-Tier coaches (611 berths), 4 AC 2-Tier coaches (188 berths), and 1 AC First Class coach (24 berths).
+### What are the new Delhi–Varanasi sleeper train numbers?
 
-### What is the Advance Reservation Period (ARP) for Vande Bharat Sleeper trains?
+27421 runs from Varanasi to New Delhi and 27422 runs from New Delhi to Varanasi. Their terminal departure times are 20:50 and 21:40 respectively, with arrival the next morning.
 
-The Advance Reservation Period for Vande Bharat Sleeper trains follows the standard Indian Railways 60-day rule opening at 08:00 AM IST daily across IRCTC online portals and station PRS counters.
+### Does the Mumbai–Bengaluru sleeper leave from KSR Bengaluru?
 
-### Can you book Tatkal tickets on Vande Bharat Sleeper trains?
+No. The Bengaluru terminal is SMVT Bengaluru, code SMVB, and the Mumbai terminal is CSMT. Searching SBC or MMCT instead can return different trains or omit this service.
 
-Yes, Tatkal booking opens at 10:00 AM IST for 2A and 3A classes one day prior to train departure from the originating station. Standard Tatkal premium surge pricing applies, while First AC (1A) remains excluded from the Tatkal quota.
+### Is Vande Bharat Sleeper a non-AC SL train?
 
-### Why does Vande Bharat Sleeper show REGRET instead of Waiting List (WL)?
+No. The published configuration has First AC (1A), AC 2-Tier (2A) and AC 3-Tier (3A), across 16 coaches with a reported capacity of 823 passengers. SL is the booking code for ordinary non-AC Sleeper class, not this premium sleeper service.
 
-Vande Bharat Sleeper operates under a strict Zero-WL and Zero-RAC policy to maintain cabin air pressure, security, and quiet sleeping conditions. Once all 823 confirmed berths are booked, the system automatically displays `REGRET` and stops issuing tickets.
+### Does the Varanasi–Delhi sleeper menu include breakfast?
 
-### How much money do you save by opting out of food on Vande Bharat Sleeper?
+The current IRCTC 27421/27422 PDF lists dinner only. It does not publish breakfast, so do not assume the Mumbai–Bengaluru breakfast menu applies to this train.
 
-Depending on your travel class and journey distance, opting out of catering on the IRCTC booking screen reduces your ticket price by ₹210 to ₹320 on short routes (~400 km) and ₹490 to ₹850 on long trunk routes (~1,400 to 2,000 km).
+### Can I opt out of food on Vande Bharat Sleeper?
 
-### Is there a hot water shower facility on Vande Bharat Sleeper trains?
+The November launch rules describe catering as integral to the sleeper service. Check your actual IRCTC booking screen; a universal sleeper “No Food” saving of ₹210–₹850 is not established by the verified sources.
 
-Yes, AC First Class (1A) on the Vande Bharat Sleeper features an exclusive, temperature-controlled hot water shower cubicle and personal dressing area available for passenger use during overnight journeys.
+### Does Vande Bharat Sleeper issue waiting-list tickets?
 
-### What is the top operating speed of Vande Bharat Sleeper trains?
+November 2026 reports document waiting-list bookings on Bengaluru–Mumbai. Booking a waiting-list ticket does not authorise boarding; the reported sleeper boarding rule requires confirmed status and excludes RAC, waitlisted and partially confirmed tickets.
 
-The Vande Bharat Sleeper is tested for speeds up to 180 km/h and operates commercially at up to 160 km/h on upgraded, fenced trunk routes including the Delhi-Mumbai and Delhi-Howrah mainlines.
+### Where can I find the official sleeper food menu and prices?
 
-### Can senior citizens get lower berth quota on Vande Bharat Sleeper trains?
+Use the train-specific links in the [IRCTC food menu directory](/irctc-train-food-menu), which link to the original IRCTC PDFs. The three verified sleeper PDFs do not publish per-meal prices; check the booking fare breakdown instead of treating an unspecified price as free food.
 
-Yes, the automated Lower Berth Quota (SS Quota) is available for male senior citizens aged 60 and above and female passengers aged 45 and above travelling alone or in pairs, subject to berth availability at the time of booking.
+### Can I get a refund if I cancel a sleeper ticket at the last minute?
 
-### What happens if you miss your Vande Bharat Sleeper train?
-
-If you miss your train, your ticket cannot be transferred to another service or refunded after chart preparation. However, if the train is delayed by more than 3 hours at your boarding station, you can file an online TDR before actual train departure for a 100% refund.
-
----
-
-## Bottom line
-
-The Vande Bharat Sleeper sets a new benchmark for Indian rail travel by combining 160 km/h distributed-traction speed with 1AC/2AC/3AC luxury sleeping comfort. Because trains operate under a strict Zero-WL policy, confirmed berths sell out rapidly within the 60-day opening window.
-
-If direct searches show `REGRET`, use [Smart Seats](/) to find confirmed split-leg bookings on the same train, track final charting schedules on [Chart Times](/chart-times), and check available berths 4 hours before departure on [Get Confirmed Tickets](/).
-
----
-
-## Related Guides
-
-- [Train Classes Explained: 1A, 2A, 3A, 3E, Sleeper & Chair Car](/blog/train-classes-explained-1a-2a-3a-3e-sleeper-chair-car)
-- [3E vs 3A in Indian Railways: Berth Layout, Extra Seats & Fare Differences](/blog/3e-vs-3a-in-train-difference-berth-layout-fares)
-- [IRCTC 60-Day Advance Reservation Period: Rules & Booking Calculator](/blog/irctc-advance-reservation-period-rules-booking-calculator)
-- [IRCTC Current Availability (CURR_AVBL) Explained: 100% Confirmed Berths](/blog/irctc-current-availability-explained)
-- [IRCTC Ticket Booking Limits: Per Month, Day & Tatkal (2026)](/blog/irctc-ticket-booking-limits-aadhaar-verification)
+The November launch report says voluntary cancellation less than eight hours before scheduled departure receives no fare refund. Check the current IRCTC terms for your ticket, especially for railway cancellations or other exceptional cases.

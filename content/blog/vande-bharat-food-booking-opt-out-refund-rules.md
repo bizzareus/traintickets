@@ -1,8 +1,8 @@
 ---
-title: "Vande Bharat Food Rules: Opt-Out Savings & Prices (2026)"
-description: "Is food free on Vande Bharat? Save ₹150–₹350 by opting out, see 2026 meal menus & ₹50 onboard fee rules. Check confirmed seats & Vande Bharat routes."
+title: "Vande Bharat Food Menu: Sleeper vs Chair-Car Rules 2026"
+description: "Check IRCTC Vande Bharat menus for Delhi–Varanasi, Mumbai–Bengaluru and Howrah–Kamakhya sleeper trains, plus chair-car food opt-out and price rules."
 date: "2026-07-04"
-updated: "2026-09-25"
+updated: "2026-11-03"
 tags:
   - train booking
   - irctc
@@ -11,210 +11,148 @@ tags:
   - food refund
 ---
 
-> **Travelling on Vande Bharat Express?** Check confirmed seats across high-demand corridors on LastBerth:
->
-> - [Search New Delhi ➔ Varanasi Vande Bharat Trains](/?from=NDLS&to=BSB&fromName=New%20Delhi&toName=Varanasi%20Jn)
-> - [Search Mumbai ➔ Goa (Madgaon) Vande Bharat Trains](/?from=CSMT&to=MAO&fromName=Mumbai%20CSMT&toName=Madgaon%20Jn)
-> - [Search KSR Bengaluru ➔ MGR Chennai Vande Bharat Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central)
-> - [Search New Delhi ➔ Shri Mata Vaishno Devi Katra Vande Bharat Trains](/?from=NDLS&to=SVDK&fromName=New%20Delhi&toName=Shri%20Mata%20Vaishno%20Devi%20Katra)
-> - [Search Howrah ➔ Puri Vande Bharat Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri)
-> - [Search Ahmedabad ➔ Mumbai Central Vande Bharat Trains](/?from=ADI&to=MMCT&fromName=Ahmedabad%20Jn&toName=Mumbai%20Central)
-> - [Search New Delhi ➔ Dehradun Vande Bharat Trains](/?from=NDLS&to=DDN&fromName=New%20Delhi&toName=Dehradun)
-
 ## TL;DR
 
-Catering is completely optional on all Indian Railways Vande Bharat Express and Vande Bharat Sleeper trains. Passengers can choose to opt out of onboard meals during IRCTC booking to reduce their ticket fare by ₹150 to ₹350 in Chair Car and Executive Class, or by ₹210 to ₹850 in Sleeper coaches. If you opt out at booking but later request meals from the pantry staff onboard, food is subject to availability and incurs a flat ₹50 convenience penalty fee per meal. If your Vande Bharat train is delayed by two hours or more, Indian Railways is legally required to serve complimentary meals and bottled water to every passenger on board regardless of their catering opt-out choice. When Vande Bharat tickets show `REGRET` or long waitlists, [Finding Smart Seats](/) discovers confirmed contiguous berths on the same train without changing coaches.
+**Vande Bharat food rules depend on the service:** daytime Chair Car and Executive Class trains offer catering choices, while the November 2026 sleeper launch rules describe catering as integral to the journey. IRCTC now publishes sleeper menus for Varanasi–Delhi, Mumbai–Bengaluru and Howrah–Kamakhya. Their PDFs list dishes but no separate per-meal prices; don't substitute chair-car tariffs or invented sleeper opt-out savings.
 
----
+> **Find your train's dishes:** Browse the [IRCTC train food menu directory](/irctc-train-food-menu), or check the [latest Vande Bharat Sleeper routes, train numbers and timings](/blog/vande-bharat-sleeper-train-routes-fare-booking-guide).
 
-## Is Food Free on Vande Bharat Express Trains?
+**Verified November 3, 2026.** LastBerth is an independent search and discovery tool, not IRCTC or Indian Railways, and does not issue tickets. Complete reservations through official or authorised IRCTC channels.
 
-**Food is not free on Vande Bharat Express trains; catering charges are automatically bundled into the base fare unless you manually opt out during ticket reservation on IRCTC. Selecting the 'No Food' option removes all catering levies, reducing your payable ticket price while allowing you to carry your own meals or order e-catering.**
+## Is food free or mandatory on Vande Bharat trains?
 
-When Indian Railways originally rolled out the semi-high-speed Vande Bharat trains, catering was mandatory and bundled directly into ticket fares, identical to Rajdhani and Shatabdi operations. Following passenger demand and representation regarding dietary choices, the Railway Board revised this policy across all zones. Catering is now 100% voluntary across both AC Chair Car (CC) and Executive Chair Car (EC) coaches, as well as the new overnight Vande Bharat Sleeper trains.
+**Food is not universally free, and the same catering rule does not apply to every Vande Bharat.** On daytime Chair Car and Executive Class services, check the food or “No Food” choice and itemised catering charge during booking; the new sleeper launch arrangements describe catering as an integral service based on the passenger's journey.
 
-During ticket reservation on the IRCTC web portal or the Rail Connect mobile app, passengers reach the "Passenger Details" review step. Under the "Catering Option" dropdown next to each passenger's name, you are prompted to select from three distinct choices: Veg, Non-Veg, or "No Food". Selecting "No Food" immediately deducts the official catering portion from your ticket invoice before payment.
+| Service type | Classes | Booking and food check |
+| --- | --- | --- |
+| Daytime Vande Bharat | AC Chair Car (CC), Executive Class (EC) | Review the available food preference and how selecting “No Food” changes the total |
+| Vande Bharat Sleeper | First AC (1A), AC 2-Tier (2A), AC 3-Tier (3A) | Do not assume chair-car opt-out rules apply; review the sleeper-specific fare and food conditions |
 
-Choosing the opt-out route makes sense for early morning business commuters who prefer light snacks, passengers travelling with infants or toddlers who require homemade food, or travellers with strict medical dietary requirements. You are free to bring your own personal food boxes, sandwiches, or thermoses onboard without any railway restriction.
+“Included” means supplied under the ticket's service arrangement, not necessarily a separately priced meal costing ₹0. The [November 2 sleeper passenger-rules report](https://indianexpress.com/article/india/vande-bharat-sleeper-trains-varanasi-delhi-bengaluru-mumbai-10946342/) describes catering as integral and says one litre of Rail Neer is provided without an additional charge.
 
----
+**Correction:** Earlier versions of this guide applied optional catering and ₹210–₹850 opt-out estimates to all sleeper trains. Those claims are not supported by the verified sleeper sources and have been removed.
 
-## How Much Do You Save by Opting Out of Vande Bharat Catering?
+## What is the latest IRCTC Vande Bharat Sleeper food menu?
 
-**Opting out of catering saves between ₹150 and ₹350 per passenger on Vande Bharat Chair Car (CC) and Executive Class (EC) services, and up to ₹210 to ₹850 on Vande Bharat Sleeper services depending on route distance and scheduled meal slots. Longer intercity journeys with multiple meals offer the highest savings.**
+**IRCTC publishes a different menu for each of the three verified sleeper route pairs.** Mumbai–Bengaluru lists morning tea, breakfast and dinner; Varanasi–New Delhi lists dinner only; Howrah–Kamakhya lists morning tea and direction-specific dinners, so use the train number rather than the Vande Bharat name alone to find your food.
 
-The exact amount deducted when selecting "No Food" depends directly on the scheduled arrival and departure timings of the train, the total kilometres travelled, and how many catering cycles (morning tea, breakfast, lunch, high tea, or dinner) fall within the journey window. Executive Class tickets feature larger deductions because their catering includes premium beverage selections and multi-course culinary platters.
+| Train pair | Route | Published services | Full menu |
+| --- | --- | --- | --- |
+| 27421 / 27422 | Varanasi ↔ New Delhi | Dinner | [27421/27422 food menu](/irctc-train-food-menu/bsb-ndls-vande-bharat-sleeper-express-27421) |
+| 27651 / 27652 | Mumbai CSMT ↔ SMVT Bengaluru | Morning tea, breakfast, dinner | [27651/27652 food menu](/irctc-train-food-menu/csmt-smvb-vande-bharat-sleeper-express-27651) |
+| 27575 / 27576 | Howrah ↔ Kamakhya | Morning tea, dinner differing by direction | [27575/27576 food menu](/irctc-train-food-menu/hwh-kyq-vande-bharat-express-27575) |
 
-The table below breaks down the typical catering deduction slabs across Vande Bharat travel classes and journey meal configurations:
+The source PDFs do not divide their menus by AC class or quote individual meal prices. Meal entitlement depends on your booked origin–destination segment; a menu for the full train journey is not a guarantee that every passenger receives every listed service.
 
-| Vande Bharat Travel Class                              | Typical Meals Scheduled in Window                        | Opt-Out Fare Deduction (Per Passenger) | What You Save vs Pre-Booked Ticket |
-| ------------------------------------------------------ | -------------------------------------------------------- | -------------------------------------- | ---------------------------------- |
-| **AC Chair Car (CC) — Short Route (<350 km)**          | Morning Tea + Light Breakfast OR Evening Tea             | ₹125 – ₹175                            | Standard tea and snack tariff      |
-| **AC Chair Car (CC) — Standard Route (350–750 km)**    | Breakfast + Full Lunch OR Evening High Tea + Dinner      | ₹220 – ₹310                            | Complete two-meal catering cycle   |
-| **Executive Class (EC) — Short Route (<350 km)**       | Welcome Drink + Premium Breakfast OR High Tea            | ₹200 – ₹260                            | Premium beverage and snack tariff  |
-| **Executive Class (EC) — Standard Route (350–750 km)** | Welcome Drink + Full Executive Lunch / Dinner + High Tea | ₹320 – ₹390                            | Comprehensive multi-course service |
-| **Vande Bharat Sleeper (3AC)**                         | Evening Dinner + Morning Tea & Breakfast                 | ₹260 – ₹340                            | Full overnight catering package    |
-| **Vande Bharat Sleeper (2AC)**                         | Evening Dinner + Morning Tea & Breakfast                 | ₹320 – ₹420                            | Enhanced overnight menu bundle     |
-| **Vande Bharat Sleeper (1AC)**                         | Gourmet Welcome Platter + Deluxe Dinner + Full Breakfast | ₹450 – ₹850                            | Multi-course hot gourmet dining    |
+## What food does the Mumbai–Bengaluru Vande Bharat Sleeper serve?
 
-For example, on the popular New Delhi to Varanasi Vande Bharat Express (Train 22436), an AC Chair Car passenger who opts out of food saves approximately ₹244 per seat, while an Executive Class passenger saves ₹344 per seat. For a family of four travelling round-trip, choosing the "No Food" option and packing personal meals saves upwards of ₹2,500 on ticket costs.
+**The 27651/27652 sleeper menu includes tea, coffee or green tea, biscuits, breakfast alternatives such as idli–vada, poha, upma, cutlets or omelette, and a rice-and-bread dinner with dal and a main course.** These are alternatives in IRCTC's PDF, not a buffet containing every listed dish or a guaranteed class-specific selection.
 
-Itemized tariffs for individual dishes, bottled Rail Neer, and special regional meal platters are catalogued in the dedicated [IRCTC Train Food Menu](/irctc-train-food-menu) reference guide.
+| Service | Official published items and alternatives |
+| --- | --- |
+| Morning tea | Premix tea, coffee or green tea, sugar-free options on demand, two digestive biscuits or cookies |
+| Breakfast | Two idlis and one vada with sambhar; or poha/upma with kesari bhath; or two veg cutlets with bread, butter and sauce; or a two-egg omelette with bread, butter and sauce |
+| Breakfast drink | Tea, coffee or green tea, or fruit drink |
+| Dinner | Lemon/steamed rice; three chapatis or two parathas; Karnataka-style sambhar/yellow dal tadka; paneer/regional vegetable/chicken dish |
+| Dinner accompaniments | Curd or buttermilk, pickle, branded packed Indian sweets |
 
----
+Source: [IRCTC's 27651/27652 menu PDF](https://menurates.irctc.co.in/PDFFiles/VandeBharat/27651.pdf). It publishes no clock-time meal windows or per-meal prices, so don't attach the Howrah service times or a generic breakfast tariff to this train.
 
-## Can You Order Food Onboard Vande Bharat if You Opted Out During Booking?
+## What food does the Varanasi–New Delhi Vande Bharat Sleeper serve?
 
-**Yes, you can order food onboard a Vande Bharat train even after selecting 'No Food' during booking, provided extra meals are available with the onboard pantry staff. However, IRCTC levies a flat ₹50 convenience fee per meal on top of the base catering tariff for any post-booking onboard requests.**
+**The official 27421/27422 PDF lists dinner with jeera or plain rice, three chapatis or two parathas, dal, a paneer, regional vegetable or chicken dish, and curd or buttermilk.** Pickle and packed Indian sweets accompany the meal; breakfast, welcome drinks and different First AC platters are not specified in this published menu.
 
-Choosing "No Food" at booking does not permanently bar you from eating onboard. If you get delayed in transit, forget your packed meal, or change your mind halfway through the run, you can approach the coach attendant or Train Captain to request meal service. The catering supervisor will check the Handheld Terminal (HHT) inventory to verify whether extra prepared meal boxes remain unallocated.
+| Dinner component | Published menu |
+| --- | --- |
+| Rice | Jeera rice or plain rice |
+| Bread | Three chapatis or two parathas |
+| Dal | Yellow dal tadka or another variety |
+| Main course | Paneer, regional vegetable or chicken dish |
+| Dairy | Packed curd or buttermilk |
+| Accompaniments | Pickle sachet and branded packed Indian sweets |
 
-When food is ordered onboard after opting out, Indian Railways applies an official **₹50 surcharge per meal**. This convenience levy covers additional logistics, administrative processing, and pantry restocking costs. For instance, if a standard breakfast box costs ₹155 when pre-booked online, ordering that same breakfast box onboard from the attendant will cost ₹205 (₹155 base fare + ₹50 onboard fee).
+Source: [IRCTC's 27421/27422 dinner menu](https://menurates.irctc.co.in/PDFFiles/VandeBharat/27421.pdf). A dinner-only PDF should not be expanded into an invented breakfast or “gourmet” meal promise.
 
-To protect yourself against overcharging by unauthorized vendors:
+## What food does the Howrah–Kamakhya Vande Bharat Sleeper serve?
 
-1. **Always demand a printed or digital POS receipt:** Onboard catering supervisors carry portable billing machines. Under Railway Board mandates, "No Bill, No Payment" applies strictly.
-2. **Pay via official digital QR code or UPI:** All authorized Vande Bharat pantry managers accept UPI payments directly into official IRCTC collection accounts.
-3. **Know the meal availability limitation:** Pantry cars on Chair Car Vande Bharat trains carry only 10% to 15% buffer stock above pre-booked passenger tallies. During peak festival runs, onboard food availability is not guaranteed.
+**IRCTC distinguishes Bengali-style dinner on 27575 from Assamese-style dinner on 27576, with rice, bread, dal, vegetables, a vegetarian or chicken main course and dessert alternatives.** The same document lists tea, biscuits and a muffin in the morning, and prints service windows specifically for this route pair, not every sleeper train.
 
----
+| Service | Published details |
+| --- | --- |
+| Morning tea, 06:30–08:00 | Tea, biscuit and muffin |
+| 27575 dinner, 20:00–22:00 | Rice/pulao, paratha, dal, vegetable bhaja, paneer/chanar dalna/dhoker dalna or chicken curry alternatives, Bengali sweets |
+| 27576 dinner, 20:00–22:00 | Rice/pulao, tehdar paratha, mixed dal, vegetable bhaji, paneer or chicken alternatives in Assamese style, dessert alternatives |
 
-## What Are the Food Rules on Vande Bharat Sleeper Trains?
+Source: [IRCTC's 27575/27576 menu PDF](https://menurates.irctc.co.in/PDFFiles/VandeBharat/27575.pdf). The menu does not state a weekly rotation schedule, so the alternative dishes should not be assigned to invented weekdays.
 
-**Vande Bharat Sleeper trains follow the same optional catering policy as daytime chair cars, allowing travelers in 3AC, 2AC, and 1AC to opt out of evening dinner and morning breakfast for fare savings between ₹210 and ₹850. Meals include multi-course regional dinners, hot beverage service, and bottled Rail Neer.**
+## How much do Vande Bharat meals cost, and can you opt out?
 
-The introduction of overnight Vande Bharat Sleeper trains (such as the Howrah–Kamakhya and New Delhi–Varanasi corridors) brings airline-style sleeper hospitality to long-distance rail travel. Designed with 16-coach configurations accommodating 823 passengers across 11 AC 3-Tier coaches, 4 AC 2-Tier coaches, and 1 AC First Class coach, catering operations operate on a pre-scheduled night-and-morning cycle.
+**Use the price shown for your exact train, class and journey rather than one universal Vande Bharat meal rate.** Daytime opt-out savings depend on the services charged in your booking, while the three sleeper PDFs publish no per-meal tariffs and do not establish a standard rupee saving for declining sleeper catering.
 
-Key catering parameters specific to Vande Bharat Sleeper services include:
+For a daytime booking, compare the payable total before and after choosing **“No Food”**, where that option is offered. Keep a copy of the final fare breakdown; it is more useful than a generic claim that every passenger saves the same amount.
 
-- **Night Dinner Service:** Dinner service begins promptly at 20:00 hrs and concludes by 22:00 hrs IST, aligning with Indian Railways official sleeping hours (22:00 to 06:00).
-- **Morning Refreshment Window:** Morning tea, coffee, biscuits, and hot breakfast are served between 06:30 and 08:00 hrs prior to destination arrival.
-- **AC First Class Gourmet Dining:** First AC passengers receive custom menu cards allowing selection between Continental, North Indian, and regional breakfast platters, served with real cutlery and linen.
-- **Opt-Out Slabs:** Because Vande Bharat Sleeper trains operate long overnight stretches, opting out removes both the major dinner meal and next morning's breakfast, producing deductions between ₹300 and ₹850 depending on coach class.
+For sleeper services, check the specific booking conditions. Do not interpret an unspecified menu price as a free retail meal or apply old chair-car breakfast and dinner prices to these new trains.
 
-When planning long-distance sleeper trips, you can review train preparation schedules using [Chart Times](/chart-times) or check physical berth availability on [Chart Vacancy](/chart-vacancy).
+The [official IRCTC menu index](https://menurates.irctc.co.in/) is the source for train-specific PDFs and the separately published onboard-charge rules.
 
----
+## Can you buy food onboard after choosing No Food on a daytime train?
 
-## What Food Is Served in Executive Class vs AC Chair Car on Vande Bharat?
+**Passengers who decline prepaid catering on a daytime Vande Bharat can request onboard food subject to availability and the published onboard tariff.** IRCTC's prepaid-train circular distinguishes morning tea from major meal and snack services, so “a ₹50 penalty on everything” is too broad; check the applicable service rate and ask for a bill.
 
-**Executive Class passengers receive premium dining featuring branded welcome drinks, multi-course gourmet platters served in high-grade bone china, packaged snacks, and premium confectionery, whereas AC Chair Car passengers receive standard vegetarian or non-vegetarian pre-packaged meal boxes with a single tea or coffee kit and bottled mineral water.**
+IRCTC links the [Railway Board onboard-charge circular](https://menurates.irctc.co.in/source/Onboard_charges_Catering_Services_prepaid_trains.pdf) from its menu portal. Compare the **prepaid** and **onboard** columns for your class and service instead of treating a surcharge as a ticket fine.
 
-While both classes receive hygienic meals prepared in IRCTC base kitchens and reheated in coach mini-pantries, the culinary presentation, portion varieties, and ingredient grades differ significantly between the two classes.
+Ready-to-eat options have a [separate published menu](https://menurates.irctc.co.in/source/RTE-Menu-for-current-booking-and-opt-out-passengers-of-Vande%20Bharat%20Trains.pdf). Availability is not guaranteed; if you have a food allergy or medical diet, ask catering staff about ingredients rather than assuming a “veg” label meets your needs.
 
-The comparison table below details the exact dining differences across both travel classes:
+## How do you handle a missing meal, overcharging or a catering refund?
 
-| Dining Component               | AC Chair Car (CC) Service                                                                  | Executive Class (EC) Service                                                                           |
-| ------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| **Welcome Drink**              | Generally not provided, or small packaged tetra-pack juice                                 | Branded cold-pressed fruit juice or nimbu paani served upon boarding                                   |
-| **Morning Tea / Coffee Kit**   | Single tea bag / instant coffee sachet, creamer pouch, sugar, two Marie biscuits           | Dip tea bags, branded roasted almonds/cashews, premium cookies, and hot water kettle                   |
-| **Breakfast Menu (Veg)**       | Upma with vada, two vegetable cutlets with bread slices, or stuffed parathas with pickle   | Paneer cutlets, idli-vada platter with fresh chutney, seasonal cut fruits, muffins, and curd           |
-| **Breakfast Menu (Non-Veg)**   | Two-egg cheese omelette with two bread slices, butter chiplet, and tomato ketchup          | Fluffy masala omelette or boiled eggs with hash browns, grilled tomatoes, and bakery roll              |
-| **Main Meal (Lunch / Dinner)** | Paneer dish (or boneless chicken curry), dal tadka, jeera rice, two rotis, curd cup, sweet | Premium shahi paneer / murg makhani, dal makhani, pulao, butter naans, spiced raita, premium ice cream |
-| **Evening High Tea**           | Samosa or kachori, roasted chana/peanuts, and sweet tea cake                               | Assorted finger sandwiches, dry-fruit confectionery, kachori, and roasted nuts                         |
-| **Crockery & Tableware**       | Disposable aluminum foil trays with standard plastic cutlery                               | Bone china plates, ceramic bowls, cloth napkins, and stainless steel cutlery                           |
+**Keep your ticket, catering selection and any payment receipt, then raise a specific complaint through railway staff or RailMadad if food is missing or you are overcharged.** Ticket cancellation refunds and onboard food payments are different transactions; review IRCTC's applicable conditions instead of assuming every catering charge is automatically refundable in full.
 
-Regardless of class, all passengers receive one complimentary 1-litre bottle of packaged Rail Neer drinking water at the start of the journey. If you consume the initial bottle, extra 1-litre Rail Neer bottles are available for purchase at the statutory MRP of flat ₹15 under national consumer protection guidelines.
+Give the train number, coach, berth, date, service and amount involved. Escalate through the [official RailMadad portal](https://railmadad.indianrailways.gov.in/) or helpline **139**; a food complaint does not itself cancel your ticket or submit a refund claim.
 
----
-
-## Are Meals Free on Vande Bharat if the Train Is Delayed by 2 Hours or More?
-
-**Yes, Indian Railways catering rules mandate that whenever a Vande Bharat, Rajdhani, Shatabdi, or Duronto train is delayed by two hours or more, the railway administration must provide complimentary meals, refreshments, and packaged drinking water to all passengers onboard, including those who opted out of food during booking.**
-
-Under the official Railway Board Catering Policy, passengers travelling on premium superfast services are protected against prolonged travel delays caused by signal failures, track maintenance, fog, or adverse weather conditions. The delay threshold is measured against the train's scheduled timetable at major divisional junctions and operating stations.
-
-Critical conditions governing emergency delay food on Vande Bharat:
-
-- **Two-Hour Threshold:** The running delay must cross **2 hours or more** beyond scheduled arrival times for catering staff to initiate free emergency meal distributions.
-- **Meal Alignment with Clock Hours:** The complimentary food provided corresponds to the time of day when the delay occurs. If delayed between 07:00 and 10:00 hrs, breakfast is served; between 12:00 and 14:00 hrs, lunch is served; between 16:00 and 18:00 hrs, evening tea and snacks are distributed; after 20:00 hrs, full dinner thalis are issued.
-- **Zero Opt-Out Penalty:** Even if your ticket clearly states "No Food" and you paid zero catering charges at booking, onboard attendants must serve you the complimentary delay meal without demanding any payment or fee.
-- **Distinction from Ticket Cancellation Threshold:** While free emergency meals trigger at a **2-hour delay**, securing a 100% full refund on ticket cancellation without clerkage requires a delay of **3 hours or more**, filed via an online Ticket Deposit Receipt (TDR) prior to train departure from your boarding point.
-
-If onboard attendants refuse to supply mandatory delay meals, passengers can register an immediate digital grievance via the official RailMadad portal or by calling railway helpline **139**.
-
----
-
-## What Is the IRCTC Refund Policy for Vande Bharat Food Charges on Cancelled Tickets?
-
-**When you cancel a confirmed Vande Bharat ticket before chart preparation, your catering fees are refunded in full without any percentage cancellation deduction, while standard cancellation clerkage applies only to the travel fare portion. Dropped waitlisted e-tickets receive an automatic 100% refund of both travel and food charges within 3 to 5 days.**
-
-A common misunderstanding among railway passengers is that cancellation penalties eat into catering payments. Under official IRCTC accounting rules, catering charges are held in a separate escrow component until services are rendered onboard. As a result, cancellation fee percentages (25% or 50%) apply exclusively to the base travel fare and reservation levies, never to meal costs.
-
-The refund matrix below explains how catering refunds are settled across different booking scenarios:
-
-| Booking & Cancellation Scenario                         | Base Fare Refund Treatment                                     | Catering Charge Refund Treatment                   | Net Passenger Refund Outcome                          |
-| ------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------- |
-| **Cancelled > 48 Hours Before Departure**               | Base fare minus flat clerkage (₹240 for 1A/EC, ₹180 for CC/3E) | **100% Full Refund** (Zero deduction)              | Full ticket amount refunded minus standard flat fee   |
-| **Cancelled 48 to 12 Hours Before Departure**           | 25% deduction applied to base fare                             | **100% Full Refund** (Zero deduction)              | 75% of travel fare returned plus 100% of meal charges |
-| **Cancelled 12 to 4 Hours Before Departure**            | 50% deduction applied to base fare                             | **100% Full Refund** (Zero deduction)              | 50% of travel fare returned plus 100% of meal charges |
-| **Cancelled < 4 Hours / After Charting**                | 0% Refund (Entire travel fare forfeited)                       | **0% Refund** (Pantry supplies already dispatched) | Zero refund credited to passenger                     |
-| **Fully Waitlisted E-Ticket Dropped Post-Chart**        | 100% Automatic Refund (Zero clerkage)                          | **100% Automatic Refund** (Zero clerkage)          | 100% complete refund credited in 3–5 working days     |
-| **Train Cancelled by Railways Due to Floods/Rerouting** | 100% Full Refund via PRS / Online                              | **100% Full Refund** via PRS / Online              | Complete fare credited back to source account         |
-
-Note that if you opted out of catering during initial reservation and subsequently purchased an onboard meal with the ₹50 surcharge, that onboard payment is non-refundable once the pantry supervisor issues the POS slip.
-
----
-
-## How to Book Confirmed Vande Bharat Seats When IRCTC Shows REGRET or WL?
-
-**When direct origin-to-destination Vande Bharat quotas show REGRET or deep waiting lists, you can secure confirmed travel by searching intermediate segment availability using LastBerth's [Finding Smart Seats](/) tool, booking contiguous vacant legs on the same train, or tracking post-charting vacancies on [Chart Vacancy](/chart-vacancy) without paying premium agency markups.**
-
-Because Vande Bharat trainsets feature high operating speeds and convenient same-day return schedules, high-density intercity routes frequently sell out within minutes of the 60-day Advance Reservation Period (ARP) opening. When direct tickets display `REGRET` (maximum waiting list cap reached) or triple-digit waitlists, traditional booking methods fail.
-
-Proven tactics to unlock confirmed Vande Bharat seats:
-
-1. **Leverage Smart Split-Ticketing on the Same Train:** Indian Railways partitions seat quotas across intermediate halts. A direct seat from Delhi to Varanasi might show REGRET, while a seat from Delhi to Kanpur and another from Kanpur to Varanasi on the exact same rake has vacant berths. LastBerth's [Smart Seats](/) automatically analyzes contiguous station combinations so you remain on the same train without shifting coaches.
-2. **Book from Origin and Modify Boarding Station:** If intermediate quotas are exhausted, check seat availability originating from the train's starting terminus. You can book from the origin station and modify your boarding station online up to the preparation of the second reservation chart (~30 minutes before departure).
-3. **Monitor Current Availability Post-Charting:** After first reservation charts finalize (~8 hours before departure under current railway standards), all unutilized quotas (tatkal buffers, parliamentary quotas, VIP allocations) are released into public booking as Current Availability (`CURR_AVBL`). These berths carry a 10% discount on base fares and can be booked online until 30 minutes before train departure. You can inspect coach layout vacancy on [Chart Vacancy](/chart-vacancy) or set a charting alert on [Chart Times](/chart-times).
-4. **Inspect Route Schedules on Dedicated Guides:** Review frequency, timings, and platform allocations for popular corridors such as [Delhi to Patna Trains](/routes/delhi-to-patna) or [Mumbai to Danapur Trains](/routes/mumbai-to-danapur) to pick optimal departure dates.
-
----
+For sleeper tickets, the [November passenger-rules report](https://indianexpress.com/article/india/vande-bharat-sleeper-trains-varanasi-delhi-bengaluru-mumbai-10946342/) describes different voluntary cancellation slabs from ordinary trains. Check the refund quoted for your ticket before confirming cancellation, and ask the catering supervisor about arrangements during a delay rather than assuming a universal free-menu entitlement.
 
 ## Common Booking Questions (FAQ)
 
-### Is food free on Vande Bharat Express?
+**Check the exact train number before applying any menu, tariff or food preference rule.** The distinction between a daytime chair-car service and an overnight sleeper matters even when both share the Vande Bharat name; the published PDF identifies dishes, while the IRCTC booking screen identifies your journey's payable charges and conditions.
 
-No, food is not free on Vande Bharat Express. Catering charges are automatically added to the ticket price unless you choose the "No Food" option during booking on IRCTC to receive a discount.
+### Is food free on Vande Bharat?
 
-### How much money do I save by opting out of food in Vande Bharat?
+Not as a universal rule. Check whether catering is charged in your ticket; daytime trains offer food preferences, while the November sleeper launch rules describe catering as integral to the service.
 
-You save between ₹150 and ₹350 per ticket on Chair Car and Executive Class services, and up to ₹210 to ₹850 on Vande Bharat Sleeper trains depending on class, distance, and scheduled meal slots.
+### Can I opt out of food on Vande Bharat Sleeper?
 
-### Can I order food onboard Vande Bharat if I chose the No Food option?
+Do not assume the daytime “No Food” option applies. The verified November launch report describes integral sleeper catering; check the actual IRCTC booking conditions rather than relying on generic ₹210–₹850 savings claims.
 
-Yes, you can order food onboard from the pantry attendant subject to food availability, but IRCTC adds a flat ₹50 convenience penalty fee per meal on top of standard menu prices.
+### Does the Mumbai–Bengaluru sleeper provide breakfast?
 
-### Where can I check official Vande Bharat meal prices online?
+IRCTC's 27651/27652 PDF lists breakfast alternatives, morning tea and dinner. The services you receive depend on the part of the journey you book.
 
-You can view official breakfast, lunch, and dinner tariffs for Vande Bharat and other express trains on LastBerth's [IRCTC Train Food Menu](/irctc-train-food-menu) directory.
+### Does the Varanasi–Delhi sleeper provide breakfast?
 
-### Can I change my food choice online after booking the ticket?
+The current 27421/27422 PDF publishes dinner only. Breakfast is not specified in that menu and should not be promised on the basis of another route's PDF.
 
-No, once your ticket is confirmed on IRCTC, you cannot change your catering selection online. You can only request meals onboard by paying the catering supervisor directly with the ₹50 surcharge.
+### Are sleeper menu prices the same in 1A, 2A and 3A?
 
-### Is catering optional on Vande Bharat Sleeper trains?
+The three verified PDFs do not publish class-wise meal prices. They also do not provide separate class-wise menus, so neither a shared retail tariff nor premium First AC additions should be invented.
 
-Yes, catering is completely optional on all Vande Bharat Sleeper trains across 3AC, 2AC, and 1AC coaches, with fare deductions ranging from ₹210 to ₹850.
+### Is a ₹50 surcharge charged for every onboard drink?
 
-### Are meals served free on Vande Bharat if the train is delayed?
+No universal surcharge should be assumed. The published prepaid-train circular distinguishes morning tea from meal and snack services; check the relevant onboard-rate column and request a receipt.
 
-Yes, if a Vande Bharat train is delayed by two hours or more, Indian Railways is legally required to provide free meals and bottled water to all passengers, including those who opted out of food.
+### Where can I check my train's official food menu?
 
-### Do children get free meals on Vande Bharat trains?
+Use the [train food menu directory](/irctc-train-food-menu) or [IRCTC's own menu portal](https://menurates.irctc.co.in/). Check the train-number pair on the PDF, especially where the two directions have different dishes.
 
-Children under 5 years travel free without a seat and do not receive meals unless purchased separately. Children aged 5 to 11 booked with a separate seat pay applicable fares with catering included.
+### Where can I complain about a missing meal or overcharging?
 
-### What happens to my food charges if I cancel my Vande Bharat ticket?
+Contact the catering supervisor and retain your receipt. You can also report the train, coach, berth and incident through [RailMadad](https://railmadad.indianrailways.gov.in/) or call 139.
 
-Your catering charges are refunded in full without any percentage cancellation deduction, provided the ticket is cancelled before chart preparation. Standard cancellation clerkage applies only to the base travel fare.
+## How can you compare trains before choosing a meal plan?
 
-### How can I check if my waitlisted Vande Bharat ticket will confirm?
+**Compare the correct terminals, departure dates, accommodation and final payable fare before making a food decision.** A cheaper quote may reflect a different train, class or catering arrangement rather than a genuine discount; LastBerth can help discover journey options, but availability and ticket conditions must be checked through authorised booking channels.
 
-You can enter your 10-digit PNR on LastBerth's [PNR Status Search](/) to view real-time confirmation probabilities and explore alternative split-ticket seats on the same train.
+- [Compare New Delhi–Varanasi trains](/?from=NDLS&to=BSB&fromName=New%20Delhi&toName=Varanasi%20Jn&src=blog_vande_food).
+- [Compare Mumbai CSMT–SMVT Bengaluru trains](/?from=CSMT&to=SMVB&fromName=Mumbai%20CSMT&toName=SMVT%20Bengaluru&src=blog_vande_food).
+- [Compare Howrah–Kamakhya trains](/?from=HWH&to=KYQ&fromName=Howrah%20Jn&toName=Kamakhya%20Jn&src=blog_vande_food).
 
----
-
-## Bottom line
-
-Catering on Vande Bharat Express and Vande Bharat Sleeper trains is completely optional, offering significant ticket fare savings of ₹150 to ₹850 per passenger when you select "No Food" during IRCTC reservation. If you change your mind during the journey, onboard meals are accessible for a flat ₹50 convenience fee, while delays exceeding two hours guarantee complimentary railway catering for everyone on board. For travelers facing waitlists or sold-out Vande Bharat coaches, explore confirmed contiguous segments on [Finding Smart Seats](/) or look up live post-charting vacant berths on [Chart Vacancy](/chart-vacancy) to travel without stress.
+For last-minute planning, use [Chart Times](/chart-times) and [Chart Vacancy](/chart-vacancy) as discovery tools, not as a substitute for a valid ticket.
