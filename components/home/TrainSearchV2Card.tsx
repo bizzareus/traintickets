@@ -711,11 +711,6 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     ? countConfirmedAlternateLegs(result.legs, result.legCount)
     : foundSeats.length;
 
-  const confirmedAlternateLegs = useMemo(() => {
-    if (!result?.legs || result.legs.length === 0) return [];
-    return result.legs.filter((leg) => leg.segmentKind === "confirmed");
-  }, [result?.legs]);
-
   return (
     <>
       <li
@@ -811,7 +806,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
               </div>
             </div>
 
-            {/* Live percentage of completion bar and discovered seat badges */}
+            {/* Live percentage of completion bar */}
             {loading && (
               <div className="mt-3 w-full max-w-md">
                 <div className="mb-1.5 flex items-center justify-between text-xs font-bold text-slate-700">
@@ -828,54 +823,6 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
                     className="h-full rounded-full bg-blue-600 transition-all duration-300 ease-out"
                     style={{ width: `${scanProgress}%` }}
                   />
-                </div>
-                {foundSeats.length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {foundSeats.slice(-3).map((seat) => (
-                      <span
-                        key={seat.id}
-                        className="inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-emerald-700"
-                      >
-                        <span>
-                          ✓ {seat.from} → {seat.to}
-                        </span>
-                        <span className="font-semibold text-emerald-800">
-                          ({seat.travelClass}
-                          {seat.fare ? ` · ₹${seat.fare}` : ""})
-                        </span>
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Cached / Discovered Split Journey Legs Banner */}
-            {!isDirectAvailable && !loading && result && confirmedAlternateLegs.length > 0 && (
-              <div className="mt-3 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-200 bg-emerald-50 px-2.5 py-1.5 text-xs font-semibold text-emerald-800 sm:px-3">
-                  <span className="font-bold text-emerald-700">⚡ Smart Seats:</span>
-                  <span>
-                    {result.isComplete
-                      ? "100% Confirmed split journey"
-                      : `Found ${discoveredCount} confirmed ticket${discoveredCount > 1 ? "s" : ""} across intermediate stations`}
-                  </span>
-                </span>
-                <div className="flex flex-wrap gap-1.5">
-                  {confirmedAlternateLegs.slice(0, 3).map((leg, idx) => (
-                    <span
-                      key={`${leg.from}-${leg.to}-${leg.travelClass}-${idx}`}
-                      className="inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700"
-                    >
-                      <span>
-                        ✓ {leg.from} → {leg.to}
-                      </span>
-                      <span className="font-semibold text-emerald-800">
-                        ({leg.travelClass || "Confirmed"}
-                        {leg.fare ? ` · ₹${leg.fare}` : ""})
-                      </span>
-                    </span>
-                  ))}
                 </div>
               </div>
             )}
@@ -954,20 +901,14 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
                       Checking fares...
                     </p>
                   )}
-                  <div className="mt-0.5 flex items-center justify-start gap-1 md:justify-end">
-                    <span className="font-mono text-xs font-bold text-blue-600">
-                      {scanProgress}%
-                    </span>
-                  </div>
                 </div>
 
                 <button
                   type="button"
                   disabled
-                  className="inline-flex min-h-[38px] shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg border border-blue-200 bg-blue-50 px-3.5 py-2 text-xs font-bold text-blue-600 sm:px-4 sm:text-sm"
+                  className="inline-flex min-h-[38px] shrink-0 touch-manipulation items-center justify-center whitespace-nowrap rounded-lg border border-blue-200 bg-blue-50 px-3.5 py-2 text-xs font-bold text-blue-600 sm:px-4 sm:text-sm"
                 >
-                  <div className="h-3.5 w-3.5 shrink-0 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
-                  <span>{scanProgress}%</span>
+                  Select →
                 </button>
               </>
             )}
