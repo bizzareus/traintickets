@@ -2,7 +2,7 @@
 title: "Sealdah to Sitamarhi Special Train 2026: 03143/03144 Dates"
 description: "Special trains 03143/03144 connect Sealdah and Sitamarhi on November 11, 12, 18 and 19 for Chhath Puja 2026. Timings, halts, coaches and confirmed seat tips."
 date: "2026-10-28"
-updated: "2026-10-28"
+updated: "2026-11-02"
 tags:
   - train booking
   - irctc
@@ -76,7 +76,7 @@ Fares for this special follow the fare structure notified on IRCTC when booking 
 These four strategies cover every sold-out scenario on this route:
 
 1. **Split-ticket on the same train:** If Sealdah to Sitamarhi shows Waitlist, the segments Sealdah to Jasidih and Jasidih to Sitamarhi on 03143 may both be open. [Smart Seats](/) scans these contiguous gaps automatically, so you board the same train and simply change berths mid-journey. Check the corridor now: [Sealdah ➔ Sitamarhi confirmed seats](/?from=SDAH&to=SMI&fromName=Sealdah&toName=Sitamarhi&src=blog_sealdah_sitamarhi).
-2. **Catch Current Availability (CURR_AVBL):** After the first chart is prepared roughly **8 to 10 hours before departure**, unallocated VIP, defence, and foreign tourist quotas release as fully confirmed berths at a **10% base fare discount**, bookable until about 30 minutes before departure. Set a [chart preparation alert](/chart-times) for 03143 so you are notified the moment the chart drops.
+2. **Catch Current Availability (CURR_AVBL):** After the first chart is prepared roughly **8 hours before departure**, unallocated VIP, defence, and foreign tourist quotas release as fully confirmed berths at a **10% base fare discount**, bookable until about 15 minutes before departure. Set a [chart preparation alert](/chart-times) for 03143 so you are notified the moment the chart drops.
 3. **Watch the vacancy map post-charting:** The [Chart Vacancy Map](/chart-vacancy) shows live, coach-by-coach empty berths after charting, which is the fastest way to grab a released Sleeper or AC berth on the evening of November 10 or 17.
 4. **Keep the waitlist math honest:** On peak festival dates, WL 40+ on any train is statistically unlikely to clear. A fresh special with its own quota, or a split journey, beats hoping for mass cancellations on a packed regular express.
 
@@ -104,7 +104,7 @@ Plan your fallback before the chart drops rather than after:
 
 - **Track the refund:** If your e-ticket auto-cancels, the refund initiates in the nightly reconciliation cycle. Track it with our [refund status guide](/blog/irctc-refund-status-check-track-ticket-refund); card refunds typically land in 3 to 5 business days.
 - **Re-book Current Availability instead:** A cancelled WL e-ticket frees your budget for a CURR_AVBL berth at a 10% discount on the same special, which is a better outcome than boarding unreserved for a 15-hour journey.
-- **Do not risk ticketless travel:** Traveling reserved classes without a valid ticket draws a minimum **₹250 penalty** up to the full fare plus fine under Section 138. During Chhath week, TTEs check every reserved coach with handheld terminals.
+- **Do not risk ticketless travel:** Traveling reserved classes without a valid ticket draws a flat **₹500 penalty** under the Jan Vishwas Act plus the fare difference under Section 138. During Chhath week, TTEs check every reserved coach with handheld terminals.
 
 ---
 

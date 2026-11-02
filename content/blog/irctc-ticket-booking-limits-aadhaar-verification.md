@@ -2,7 +2,7 @@
 title: "How Many Tickets Can Be Booked in IRCTC in a Month? (2026)"
 description: "Book up to 12 tickets/month unverified, or 24 with Aadhaar. Learn exact daily limits (6 PNRs), Tatkal rules (2 PNRs), and per-session booking caps for 2026."
 date: "2026-06-22"
-updated: "2026-10-26"
+updated: "2026-11-02"
 tags:
   - train booking
   - irctc
@@ -98,7 +98,7 @@ If regular direct coaches show waiting lists when booking, avoid wasting multipl
 Indian Railways enforces rigorous restrictions on the Tatkal scheme because emergency berths are limited:
 
 1. **Class-Wise Opening Windows:**
-   - **AC Classes (1A, 2A, 3A, 3E, CC):** Booking opens at **10:00 AM IST** one day prior to train origin departure.
+   - **AC Classes (2A, 3A, 3E, CC, EC):** Booking opens at **10:00 AM IST** one day prior to train origin departure (First AC / 1A is strictly excluded from Tatkal).
    - **Non-AC Classes (Sleeper, 2S):** Booking opens at **11:00 AM IST** one day prior to train origin departure.
 2. **Passenger Thresholds:** While standard General Quota allows 6 travelers, Tatkal limits every PNR to **4 passengers**. If your traveling party consists of 5 members, you must split them across two separate bookings, which exhausts your entire 2-ticket daily Tatkal quota.
 3. **Session Restrictions:** Between 10:00 AM and 12:00 PM, an individual user cannot book more than 2 Tatkal PNRs. Even if you book 1 ticket at 10:02 AM and a 2nd ticket at 10:15 AM, attempting a 3rd Tatkal transaction before midnight is blocked by the reservation engine.
@@ -203,19 +203,19 @@ Once your monthly allocation is exhausted:
 2. **Alternative Action Plans:**
    - **Use a Family Member's Account:** Have an adult family member sign into their own independent Aadhaar-verified IRCTC profile.
    - **Visit a Physical PRS Counter:** Bookings made across physical railway reservation counters at stations do not link to your online IRCTC ID and are unaffected by personal account quotas.
-   - **Check Vacant Berths After Charting:** If your desired train has waitlists, check final vacancy directly via [Chart Vacancy](/chart-vacancy) 4 hours before train departure.
+   - **Check Vacant Berths After Charting:** If your desired train has waitlists, check final vacancy directly via [Chart Vacancy](/chart-vacancy) ~8 hours before train departure.
    - **Verify Chart Preparation Times:** Know when your train's chart is finalized using [Chart Times](/chart-times).
 
 ---
 
 ## How Can You Book Confirmed Seats When IRCTC Limits or Waitlists Block You?
 
-**When IRCTC account limits or waiting lists block your travel, you can book confirmed split-ticket journeys via Smart Seats, reserve 10% discounted Current Availability post-charting berths up to 30 minutes before departure, track live vacancies on Chart Vacancy, or book offline tickets directly at physical railway station PRS reservation counters.**
+**When IRCTC account limits or waiting lists block your travel, you can book confirmed split-ticket journeys via Smart Seats, reserve 10% discounted Current Availability post-charting berths up to 15 minutes before departure, track live vacancies on Chart Vacancy, or book offline tickets directly at physical railway station PRS reservation counters.**
 
 When standard single-ticket direct booking hits barriers, travelers can deploy these proven options:
 
 1. **Smart Seats Split Booking:** When a direct route from your boarding station to your destination is fully booked or shows high waitlist numbers (WL/40+), LastBerth finds confirmed contiguous segments on the same train (such as Coach B2 from Station A to B, and Coach B5 from Station B to C). Search your route on [Get Confirmed Tickets](/) to find available options.
-2. **Post-Charting Current Availability (`CURR_AVBL`):** After the first reservation chart is finalized (~8 to 10 hours before departure for morning trains, and around 4 hours for others), unallocated berths from VIP, emergency, and foreign tourist quotas are released to the public at an automatic 10% base fare discount. These tickets remain bookable online and at counters until 30 minutes prior to train departure.
+2. **Post-Charting Current Availability (`CURR_AVBL`):** After the first reservation chart is finalized (~8 hours before departure, or 21:00 hrs the previous evening for morning departures before 14:00 hrs), unallocated berths from VIP, emergency, and foreign tourist quotas are released to the public at an automatic 10% base fare discount. These tickets remain bookable online and at counters until 15 minutes prior to train departure.
 3. **Live Coach Vacancy Mapping:** Use the [Chart Vacancy Map](/chart-vacancy) to inspect vacant physical berths coach by coach across Sleeper, 3A, 2A, and 1A, avoiding high Tatkal surge markups.
 4. **Historical Chart Preparation Schedules:** Look up exact charting finalization patterns for any train on [Chart Preparation Times & Alerts](/chart-times) to know the moment vacant berths become available.
 

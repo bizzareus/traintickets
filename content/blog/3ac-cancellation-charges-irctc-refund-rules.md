@@ -2,7 +2,7 @@
 title: "3A / 3rd AC Cancellation Charges: IRCTC Rules & Refund (2026)"
 description: "Exact 3AC cancellation charges and refund rules: flat ₹180+GST fee 48h prior, 25% for 48h-12h, 50% for 12h-4h, RAC/WL ₹60 fee, and chart cutoff rules."
 date: "2026-11-01"
-updated: "2026-11-01"
+updated: "2026-11-02"
 tags:
   - 3ac cancellation charges
   - irctc refund rules
@@ -62,7 +62,7 @@ If your train departs at 6:00 PM on Friday, cancelling anytime before 6:00 PM on
 Between 48 hours and 12 hours before departure, Indian Railways switches from a flat fee to a percentage deduction. On a 3AC ticket costing ₹1,600 (such as Delhi to Patna or Mumbai to Danapur), a 25% deduction equals ₹400 per passenger. You receive ₹1,200 back.
 
 ### 3. The 12 to 4-Hour Window (50% Deduction)
-Between 12 hours and 4 hours prior to scheduled departure, the penalty jumps to 50% of the total fare. On that same ₹1,600 ticket, IRCTC keeps ₹800 and refunds ₹800. This window also marks the preparation of the first reservation chart (~8 to 10 hours prior for daytime trains).
+Between 12 hours and 4 hours prior to scheduled departure, the penalty jumps to 50% of the total fare. On that same ₹1,600 ticket, IRCTC keeps ₹800 and refunds ₹800. This window also marks the preparation of the first reservation chart (~8 hours prior for daytime trains).
 
 ### 4. The 4-Hour Point of No Return (100% Forfeiture)
 Once the clock ticks inside 4 hours before departure (or once chart preparation is completed, whichever occurs earlier), online cancellation is completely disabled for confirmed e-tickets. You receive zero refund.
@@ -122,7 +122,7 @@ For tactics on last-minute travel without Tatkal penalties, consult our guide on
 
 **Voluntary cancellation of a confirmed 3AC ticket after chart preparation yields zero refund (₹0). Online cancellation is blocked once reservation charts are printed. To claim a refund after charting, you must file an online Ticket Deposit Receipt (TDR) under valid railway exceptions, such as a train delay exceeding 3 hours.**
 
-First reservation charts are finalized approximately 8 to 10 hours prior to departure (or 8:00 PM to 9:00 PM the previous evening for morning departures before 2:00 PM). Once the charting engine completes berth allotments:
+First reservation charts are finalized approximately 8 hours prior to departure (or 9:00 PM / 21:00 hrs the previous evening for morning departures before 14:00 hrs). Once the charting engine completes berth allotments:
 
 1. **Online Cancellation Button Disabled:** On the IRCTC website and Rail Connect app, the "Cancel Ticket" button becomes inactive for confirmed passengers on that train.
 2. **Vacant Berths Transferred to Current Availability:** Your berth cannot be casually surrendered online because CRIS immediately places unallocated seats into the `CURR_AVBL` pool for last-minute passengers at a 10% base fare discount.
