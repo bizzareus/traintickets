@@ -1757,7 +1757,7 @@ export function SplitTicketBookingModal({
                     <p className="mt-1">
                       For any query, contact us on WhatsApp at{" "}
                       <a
-                        href={`https://wa.me/919999224767?text=${encodeURIComponent(`Hi, I have a query about booking ${paymentData?.bookingRef}.`)}`}
+                        href={`https://wa.me/919205369633?text=${encodeURIComponent(`Hi, I have a query about booking ${paymentData?.bookingRef}.`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-bold underline underline-offset-2 hover:text-amber-700"

@@ -12,7 +12,7 @@ Set this in `backend/.env` and restart the backend:
 ```dotenv
 SPLIT_BOOKING_MODE=manual
 SPLIT_BOOKING_ADMIN_EMAIL=me@kartikarora.in
-SPLIT_BOOKING_ADMIN_WHATSAPP=+919999224767
+SPLIT_BOOKING_ADMIN_WHATSAPP=+919205369633
 ```
 
 Use `SPLIT_BOOKING_MODE=ai` for computer-use reservations. The default is `ai`;

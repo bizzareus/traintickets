@@ -43,7 +43,7 @@ export class ManualBookingService {
         send: async () => {
           const mobile =
             this.config.get<string>('SPLIT_BOOKING_ADMIN_WHATSAPP') ||
-            '+919999224767';
+            '+919205369633';
           // Matches MSG91 `manual_booking_admin`: {{1}} ref, {{2}} train,
           // {{3}} route, {{4}} date, {{5}} class/quota, {{6}} amount,
           // {{7}} customer contact.

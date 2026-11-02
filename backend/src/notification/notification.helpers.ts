@@ -94,7 +94,7 @@ export function buildRefundWhatsappLine(refund?: RefundInfo | null): string {
 }
 
 /**
- * Normalize mobile numbers to Indian E.164 format (e.g. 919999224767).
+ * Normalize mobile numbers to Indian E.164 format (e.g. +91 92053 69633).
  * Handles:
  * - 10 digits: "9712640278" -> "919712640278"
  * - Leading zeroes: "09712640278" or "009712640278" -> "919712640278"

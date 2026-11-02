@@ -2239,7 +2239,7 @@ export class SplitBookingService {
 
     const adminMobile =
       this.config.get<string>('SPLIT_BOOKING_ADMIN_WHATSAPP') ||
-      '+919999224767';
+      '+919205369633';
 
     const journeyDateStr = booking.journeyDate.toISOString().slice(0, 10);
     const price = bookingPrice(booking);
