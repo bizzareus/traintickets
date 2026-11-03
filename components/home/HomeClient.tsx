@@ -299,6 +299,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [selectedClasses, setSelectedClasses] = useState<string[]>([]);
+  const [stopFilters, setStopFilters] = useState({ direct: true, oneStop: true });
   // Inputs are drafts; results and scans only consume the last submission.
   const [submittedSearch, setSubmittedSearch] = useState<{
     from: StationRow;
@@ -1598,6 +1599,59 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   <span>{searchError}</span>
                 </div>
               )}
+              {hasSearched && searchType === "route" && (
+                <fieldset className="mb-4 flex flex-wrap items-center gap-2">
+                  <legend className="sr-only">Stops</legend>
+                  <span
+                    aria-hidden="true"
+                    className="mr-1 text-xs font-semibold text-slate-500"
+                  >
+                    Stops
+                  </span>
+                  {([
+                    ["direct", "Direct"],
+                    ["oneStop", "1 Stop"],
+                  ] as const).map(([key, label]) => (
+                    <label
+                      key={key}
+                      className={cn(
+                        "inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-lg border px-3 text-sm font-semibold transition-colors",
+                        stopFilters[key]
+                          ? "border-blue-200 bg-blue-50 text-blue-700"
+                          : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50",
+                      )}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={stopFilters[key]}
+                        onChange={(event) => {
+                          const checked = event.target.checked;
+                          setStopFilters((current) => ({
+                            ...current,
+                            [key]: checked,
+                          }));
+                        }}
+                        className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                      />
+                      {label}
+                    </label>
+                  ))}
+                </fieldset>
+              )}
+              {hasSearched &&
+                !searchLoading &&
+                !searchError &&
+                !stopFilters.direct &&
+                (!stopFilters.oneStop ? (
+                  <p role="status" className="mb-4 text-sm text-slate-600">
+                    Select Direct or 1 Stop to see journeys.
+                  </p>
+                ) : !connectingLoading && !connectingCorridorSupported ? (
+                  <p role="status" className="mb-4 text-sm text-slate-600">
+                    No 1-stop connections found for this route on the selected
+                    date.
+                  </p>
+                ) : null)}
               {searchLoading && (
                 <TrainSearchSkeleton
                   fromCode={submittedSearch?.from.stationCode}
@@ -1613,6 +1667,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                 !searchError &&
                 displayTrains.length === 0 && (
                   <div
+                    hidden={!stopFilters.direct}
                     className="mb-6 rounded-lg border border-gray-200 bg-white p-4 text-sm text-gray-700"
                     role="status"
                   >
@@ -1622,6 +1677,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
 
               {/* Train Search V2 (Skyscanner Experience) Top Progress Bar */}
               {hasSearched &&
+                stopFilters.direct &&
                 !searchLoading &&
                 !searchError &&
                 displayTrains.length > 0 && (
@@ -1638,6 +1694,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               {/* Direct Trains List */}
               {!searchLoading && displayTrains.length > 0 && (
                 <ul
+                  hidden={!stopFilters.direct}
                   ref={v2TrainListAnimateRef}
                   className="space-y-3.5 sm:space-y-5"
                   role="list"
@@ -1694,7 +1751,11 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   connectingLoading ||
                   connectingJourneys.length > 0) && (
                   <section
-                    className="mt-8 border-t border-slate-200/80 pt-6"
+                    hidden={!stopFilters.oneStop}
+                    className={cn(
+                      stopFilters.direct &&
+                        "mt-8 border-t border-slate-200/80 pt-6",
+                    )}
                     aria-label="1-Stop Connecting Trains"
                   >
                     <div className="mb-4 flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between">

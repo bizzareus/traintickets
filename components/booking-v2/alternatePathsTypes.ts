@@ -47,6 +47,22 @@ export type TrainListItem = {
   cachedAlternatePath?: AlternatePathsResponse | null;
 };
 
+export type TrainScheduleStation = {
+  stationCode: string;
+  stationName: string;
+  arrivalTime?: string | null;
+  departureTime?: string | null;
+  dayCount?: number | string;
+};
+
+export type TrainScheduleResponse = {
+  trainNumber: string;
+  trainName: string;
+  stationFrom: string;
+  stationTo: string;
+  stationList: TrainScheduleStation[];
+};
+
 export type AlternateClassOption = {
   travelClass: string;
   railDataStatus: string | null;

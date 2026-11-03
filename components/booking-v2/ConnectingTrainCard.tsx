@@ -189,9 +189,7 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
   const [bookingRequest, setBookingRequest] =
     useState<SplitTicketBookingFlowProps | null>(null);
 
-  const [selectedClass, setSelectedClass] = useState<string>(
-    journey.preferredClass,
-  );
+  const selectedClass = journey.preferredClass;
   const [isExpanded, setIsExpanded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
@@ -922,19 +920,11 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
                         {leg1.arrivalTime})
                       </span>
                     </div>
-                    <div className="text-right text-xs">
-                      <span
-                        className={`font-bold ${isBothConfirmed ? "text-emerald-700" : "text-slate-600"}`}
-                      >
-                        {leg1ChosenOpt?.availabilityDisplayName ??
-                          leg1.availabilityDisplayName}
+                    {baseFare1 > 0 && (
+                      <span className="text-right text-xs text-slate-500">
+                        ₹{baseFare1}
                       </span>
-                      {baseFare1 > 0 && (
-                        <span className="ml-1 text-slate-500">
-                          ₹{baseFare1}
-                        </span>
-                      )}
-                    </div>
+                    )}
                   </div>
 
                   {/* Transfer Layover Indicator */}
@@ -959,46 +949,12 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
                         {leg2.arrivalTime})
                       </span>
                     </div>
-                    <div className="text-right text-xs">
-                      <span
-                        className={`font-bold ${isBothConfirmed ? "text-emerald-700" : "text-slate-600"}`}
-                      >
-                        {leg2ChosenOpt?.availabilityDisplayName ??
-                          leg2.availabilityDisplayName}
+                    {baseFare2 > 0 && (
+                      <span className="text-right text-xs text-slate-500">
+                        ₹{baseFare2}
                       </span>
-                      {baseFare2 > 0 && (
-                        <span className="ml-1 text-slate-500">
-                          ₹{baseFare2}
-                        </span>
-                      )}
-                    </div>
+                    )}
                   </div>
-
-                  {/* Class Selection Buttons */}
-                  {commonClasses.length > 1 && (
-                    <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-200/60">
-                      <span className="text-[11px] font-semibold text-slate-500 mr-1">
-                        Select Class:
-                      </span>
-                      {commonClasses.map((cls) => (
-                        <button
-                          key={cls}
-                          type="button"
-                          onClick={() => {
-                            setSelectedClass(cls);
-                            setCombinedResult(null);
-                          }}
-                          className={`rounded-md border px-2.5 py-1 text-xs font-bold transition-all ${
-                            selectedClass === cls
-                              ? "border-blue-600 bg-blue-50 text-blue-700 ring-2 ring-blue-500/20"
-                              : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
-                          }`}
-                        >
-                          {cls}
-                        </button>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </div>
             )}
