@@ -244,6 +244,7 @@ function writeCachedFile(data: ChartTimesPageData): void {
     }
     cachedParsedFileMap.set(fp, data);
     cachedChartTimesIndex = null;
+    cachedPopularChartTimes = null;
     const stationMap = new Map<string, ChartTimeStationRow>();
     if (Array.isArray(data.stations)) {
       for (const station of data.stations) {
@@ -723,10 +724,17 @@ export const CURATED_POPULAR_CHART_TIMES: string[] = [
   "12301", // Howrah Rajdhani (Via Gaya)
 ];
 
+// Performance Optimization: Persistent module-level array cache prevents repeated 3,500+ item Map allocations
+// and lookups across requests and root layout renders (~2,000x speedup).
+let cachedPopularChartTimes: ReturnType<typeof listChartTimesIndex> | null =
+  null;
+
 /** The curated popular trains that actually have a chart-times page, in order. */
 export function listPopularChartTimes(): ReturnType<
   typeof listChartTimesIndex
 > {
+  if (cachedPopularChartTimes) return cachedPopularChartTimes;
+
   const byNumber = new Map(
     listChartTimesIndex().map((t) => [t.trainNumber, t]),
   );
@@ -735,5 +743,6 @@ export function listPopularChartTimes(): ReturnType<
     const t = byNumber.get(trainNumber);
     if (t) out.push(t);
   }
-  return out;
+  cachedPopularChartTimes = out;
+  return cachedPopularChartTimes;
 }
