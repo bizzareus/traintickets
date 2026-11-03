@@ -2,8 +2,16 @@ import { SchedulerRegistry } from '@nestjs/schedule';
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppModule } from './app.module';
 import { ChartCronService } from './chart-cron/chart-cron.service';
+import { MarketingCronService } from './marketing/marketing.cron';
 import { PrismaService } from './prisma/prisma.service';
 import { WorkerModule } from './worker.module';
+
+// The ESM-only telemetry SDK is covered separately by test:observe.
+jest.mock('./observe', () => ({
+  ObserveModule: {
+    forRoot: () => ({ module: class ObserveTestModule {} }),
+  },
+}));
 
 describe('API / worker isolation', () => {
   let app: TestingModule | undefined;
@@ -40,7 +48,8 @@ describe('API / worker isolation', () => {
     const scheduler = app.get(SchedulerRegistry);
 
     expect(app.get(ChartCronService)).toBeInstanceOf(ChartCronService);
-    expect(scheduler.getCronJobs().size).toBe(5);
+    expect(app.get(MarketingCronService)).toBeInstanceOf(MarketingCronService);
+    expect(scheduler.getCronJobs().size).toBe(6);
     expect(scheduler.getTimeouts()).toEqual([]);
 
     await app.close();

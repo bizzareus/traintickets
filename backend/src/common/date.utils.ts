@@ -12,3 +12,11 @@ export function toIstYmd(date: Date | string | null | undefined): string {
     ? dt.toFormat('yyyy-MM-dd')
     : date.toISOString().slice(0, 10);
 }
+
+/** Compare a Prisma @db.Date journey date with today's calendar date in IST. */
+export function isPastJourneyDate(
+  journeyDate: Date,
+  now = new Date(),
+): boolean {
+  return journeyDate < new Date(toIstYmd(now));
+}

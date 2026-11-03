@@ -11,6 +11,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { NotificationService } from '../notification/notification.service';
 import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import { ChartCronLeaderService } from '../chart-cron/chart-cron-leader.service';
+import { isPastJourneyDate, toIstYmd } from '../common/date.utils';
 import type {
   MarketingEngineConfigDto,
   MarketingStatsResponse,
@@ -312,8 +313,8 @@ export class MarketingService {
       const cutoffAfter = new Date(
         now.getTime() - cfg.maxLookbackHours * 3600 * 1000,
       );
-      // Safe cutoff for departure date: include journeys on or after yesterday in case of timezone offset
-      const journeyDateCutoff = new Date(now.getTime() - 24 * 3600 * 1000);
+      // @db.Date values represent calendar dates at UTC midnight, not instants in IST.
+      const journeyDateCutoff = new Date(toIstYmd(now));
 
       const candidates = await this.prisma.splitTicketBooking.findMany({
         where: {
@@ -423,6 +424,11 @@ export class MarketingService {
         }
 
         try {
+          // Recheck at send time in case processing crosses midnight in IST.
+          if (isPastJourneyDate(booking.journeyDate)) {
+            skippedCount++;
+            continue;
+          }
           const sent = await this.notifications.sendAbandonedBookingReminder({
             to: email,
             bookingRef: booking.bookingRef,
@@ -518,6 +524,9 @@ export class MarketingService {
     });
     if (!booking) {
       throw new NotFoundException(`Booking "${bookingRef}" not found`);
+    }
+    if (isPastJourneyDate(booking.journeyDate)) {
+      throw new BadRequestException('Cannot send reminders for past journeys');
     }
     if (!booking.contactEmail?.includes('@')) {
       throw new BadRequestException('Booking has no valid contact email');

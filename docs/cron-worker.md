@@ -9,8 +9,9 @@ The backend image has two entry points:
 
 Only `WorkerModule` imports `ScheduleModule.forRoot()`. It runs chart alerts,
 alternative searches, notification retries, daily failed-delivery refunds, seat
-cache warming, and the Wasender healthcheck. Existing enable/disable switches
-still apply. IRCTC cookies are managed manually in the API process.
+cache warming, abandoned-booking marketing reminders, and the Wasender healthcheck.
+Existing enable/disable switches still apply. IRCTC cookies are managed manually
+in the API process.
 
 Both containers use `backend/.env`. PostgreSQL task rows, claims, retry state,
 cron leases and IRCTC cookies, plus the DynamoDB seat cache, remain shared. No
@@ -75,10 +76,25 @@ docker compose -f infra/docker-compose.yml logs --tail=100 worker
 docker compose -f infra/docker-compose.yml stats --no-stream backend worker
 ```
 
-Worker startup logs `Cron worker ready: 6 scheduled jobs; no HTTP listener`.
+Worker startup logs `Cron worker ready: <count> scheduled jobs; no HTTP listener`
+(the count depends on enabled jobs).
 Verify subsequent cron runs in `cron_run_log` / Cronitor. API logs should no longer
 contain automatic `initiated cron` messages. Deploy both entry points together;
 deploying only the new API leaves scheduled work stopped.
+
+### Marketing reminders
+
+The worker checks abandoned bookings every 15 minutes by default
+(`MARKETING_CRON_SCHEDULE=*/15 * * * *`). No host crontab is needed. To override
+the schedule, set `MARKETING_CRON_SCHEDULE` in `backend/.env` and recreate the
+worker with `docker compose -f infra/docker-compose.yml up -d --no-build --force-recreate worker`.
+The marketing engine must also be enabled in `/admin/marketing`. Automatic runs
+respect the configured minimum abandonment age, unsubscribe preferences, and
+existing reminder timestamps. Check worker logs or `marketing-abandoned-recovery`
+entries in `cron_run_log` to verify execution.
+Journey dates before today in IST are excluded, including forced runs and manual
+reminders. Today's trips remain eligible because bookings store a date, not a
+departure time.
 
 To run the worker on another host, provide the same image and application env,
 start only the `worker` Compose service there, and keep exactly one scheduled

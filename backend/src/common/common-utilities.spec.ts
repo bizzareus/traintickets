@@ -1,4 +1,4 @@
-import { toIstYmd } from './date.utils';
+import { isPastJourneyDate, toIstYmd } from './date.utils';
 import { isPrismaUniqueViolation } from './prisma-errors';
 
 describe('Common Utilities', () => {
@@ -11,6 +11,20 @@ describe('Common Utilities', () => {
 
     it('handles string dates cleanly', () => {
       expect(toIstYmd('2026-08-13T00:00:00.000Z')).toBe('2026-08-13');
+    });
+  });
+
+  describe('isPastJourneyDate', () => {
+    it.each([
+      ['2026-11-02', '2026-11-03T12:00:00Z', true],
+      ['2026-11-03', '2026-11-03T18:29:59Z', false],
+      ['2026-11-03', '2026-11-03T18:30:00Z', true],
+      ['2026-11-04', '2026-11-03T18:30:00Z', false],
+      ['2026-11-05', '2026-11-03T18:30:00Z', false],
+    ])('compares %s at %s using IST', (journeyDate, now, expected) => {
+      expect(isPastJourneyDate(new Date(journeyDate), new Date(now))).toBe(
+        expected,
+      );
     });
   });
 

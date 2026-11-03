@@ -6,6 +6,7 @@ import { BookingV2Module } from './booking-v2/booking-v2.module';
 import { CacheModule } from './cache/cache.module';
 import { ChartCronModule } from './chart-cron/chart-cron.module';
 import { IrctcModule } from './irctc/irctc.module';
+import { MarketingModule } from './marketing/marketing.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { WhatsappModule } from './whatsapp/whatsapp.module';
@@ -29,6 +30,7 @@ import { ObserveModule } from './observe';
     ChartCronModule,
     BookingV2Module,
     IrctcModule,
+    MarketingModule,
     WhatsappModule,
   ],
 })

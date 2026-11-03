@@ -156,46 +156,73 @@ export function renderAlternativeTrainsEmailHtml(params: {
     stationNameMap,
   } = params;
 
-  const cardsHtml = alternativeTrains
-    .slice(0, 5)
-    .map((alt, idx) => {
-      const train = alt.train;
-      const trainLabel = [train.trainNumber, train.trainName]
+  const trains = new Map<string, BestTrainCandidateResult[]>();
+  for (const alt of alternativeTrains.slice(0, 5)) {
+    if (
+      !alt.alternatePath.legs.some((leg) => leg.segmentKind === 'confirmed')
+    ) {
+      continue;
+    }
+    const trainNumber = alt.train.trainNumber.trim();
+    const options = trains.get(trainNumber);
+    if (options) options.push(alt);
+    else trains.set(trainNumber, [alt]);
+  }
+
+  const cardsHtml = [...trains.values()]
+    .map((options) => {
+      const train = options[0].train;
+      const trainLabel = [train.trainNumber.trim(), train.trainName]
         .filter(Boolean)
         .join(' ');
-      const confirmedLegs = alt.alternatePath.legs.filter(
-        (l) => l.segmentKind === 'confirmed',
-      );
+      const optionsHtml = options
+        .map((alt, optionIndex) => {
+          const confirmedLegs = alt.alternatePath.legs.filter(
+            (leg) => leg.segmentKind === 'confirmed',
+          );
+          const legsHtml = confirmedLegs
+            .map((leg, legIndex) => {
+              const fromName =
+                stationNameMap.get(leg.from.toUpperCase()) ?? leg.from;
+              const toName = stationNameMap.get(leg.to.toUpperCase()) ?? leg.to;
+              const legRoute = `${leg.from} - ${fromName} → ${leg.to} - ${toName}`;
+              const classTag = leg.travelClass ?? '3A';
+              const availTag =
+                leg.availabilityDisplayName ||
+                leg.railDataStatus ||
+                'Available';
+              const priceStr = leg.fare != null ? `₹${leg.fare}` : '';
+              const segBookUrl = buildIrctcUrl({
+                fromStationCode: leg.from,
+                toStationCode: leg.to,
+                trainNumber: train.trainNumber,
+                classCode: classTag,
+              });
 
-      const legsHtml = confirmedLegs
-        .map((leg) => {
-          const segFrom = leg.from;
-          const segTo = leg.to;
-          const fromName = stationNameMap.get(segFrom.toUpperCase()) ?? segFrom;
-          const toName = stationNameMap.get(segTo.toUpperCase()) ?? segTo;
-          const legRoute = `${segFrom} - ${fromName} → ${leg.to} - ${toName}`;
-          const classTag = leg.travelClass ?? '3A';
-          const availTag =
-            leg.availabilityDisplayName || leg.railDataStatus || 'Available';
-          const priceStr = leg.fare != null ? `₹${leg.fare}` : '';
-          const segBookUrl = buildIrctcUrl({
-            fromStationCode: segFrom,
-            toStationCode: segTo,
-            trainNumber: train.trainNumber,
-            classCode: classTag,
-          });
+              return `
+          <div style="padding:12px 0;${legIndex > 0 ? 'border-top:1px solid #e2e8f0;' : ''}">
+            <p style="margin:0 0 4px 0;font-size:12px;font-weight:600;color:#64748b;">Ticket ${legIndex + 1}</p>
+            <p style="margin:0;font-size:13px;font-weight:600;color:#1e293b;">${escapeHtml(legRoute)}</p>
+            <p style="margin:4px 0 0 0;font-size:13px;font-weight:600;color:#059669;">Class ${escapeHtml(classTag)} | ${escapeHtml(availTag)} ${priceStr ? `(${escapeHtml(priceStr)})` : ''}</p>
+            <a href="${escapeHtml(segBookUrl)}" style="display:inline-block;margin-top:8px;padding:6px 14px;border-radius:6px;background:#16a34a;color:#fff;font-size:12px;font-weight:600;text-decoration:none;">Book on IRCTC</a>
+          </div>`;
+            })
+            .join('');
 
           return `
-        <div style="margin-top:8px; padding:12px; border-radius:8px; border:1px solid #86efac; background:#e6ffe6;">
-          <p style="margin:0; font-size:14px; font-weight:600; color:#166534;">Option ${idx + 1}: ${escapeHtml(trainLabel)}</p>
-          <p style="margin:4px 0 0 0; font-size:13px; color:#1e293b;">${escapeHtml(legRoute)}</p>
-          <p style="margin:4px 0 0 0; font-size:13px; font-weight:600; color:#059669;">Class ${classTag} | ${escapeHtml(availTag)} ${priceStr ? `(${priceStr})` : ''}</p>
-          <a href="${segBookUrl}" style="display:inline-block; margin-top:8px; padding:6px 14px; border-radius:6px; background:#16a34a; color:#fff; font-size:12px; font-weight:600; text-decoration:none;">Book on IRCTC</a>
+        <div style="padding:12px 16px;border-top:1px solid #e2e8f0;">
+          <h4 style="margin:0;font-size:14px;font-weight:600;color:#0f172a;">Option ${optionIndex + 1}</h4>
+          ${confirmedLegs.length > 1 ? `<p style="margin:4px 0 0 0;font-size:12px;color:#64748b;">Book all ${confirmedLegs.length} tickets below to travel this option.</p>` : ''}
+          ${legsHtml}
         </div>`;
         })
         .join('');
 
-      return legsHtml;
+      return `
+      <div style="margin-top:12px;border:1px solid #bbf7d0;border-radius:12px;overflow:hidden;background:#ffffff;">
+        <h3 style="margin:0;padding:12px 16px;background:#f0fdf4;font-size:15px;font-weight:700;color:#166534;">${escapeHtml(trainLabel)}</h3>
+        ${optionsHtml}
+      </div>`;
     })
     .join('');
 
@@ -205,7 +232,7 @@ export function renderAlternativeTrainsEmailHtml(params: {
 <body style="font-family:system-ui,sans-serif;line-height:1.5;color:#0f172a;background:#f1f5f9;margin:0;padding:32px 16px;">
   <div style="max-width:560px;margin:0 auto;background:#fff;border-radius:16px;padding:24px;border:1px solid #e2e8f0;box-shadow:0 4px 6px -1px rgba(0,0,0,0.08);">
     <h2 style="margin:0 0 16px 0;font-size:20px;color:#0f172a;">Alternative Trains Available 🔔</h2>
-    <p style="margin:0 0 12px 0;">We found full-journey confirmed seats on another train for your route:</p>
+    <p style="margin:0 0 12px 0;">We found confirmed ticket options on alternative trains for your route:</p>
     <div style="background:#f8fafc;padding:12px;border-radius:8px;margin-bottom:16px;">
       <p style="margin:0;font-weight:600;">Requested: ${escapeHtml(originalTrainLabel)}</p>
       <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(routeDisplay)}</p>

@@ -15,6 +15,7 @@ describe('MarketingService', () => {
   let posthog: Partial<PostHogAnalyticsService>;
 
   beforeEach(() => {
+    jest.useFakeTimers({ now: new Date('2026-11-03T12:00:00Z') });
     prisma = {
       marketingEngineConfig: {
         findUnique: jest.fn().mockResolvedValue({
@@ -76,6 +77,10 @@ describe('MarketingService', () => {
     );
   });
 
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   describe('getConfig & updateConfig', () => {
     it('returns existing config or creates default', async () => {
       const cfg = await service.getConfig();
@@ -113,6 +118,78 @@ describe('MarketingService', () => {
   });
 
   describe('processAbandonedBookingsCron', () => {
+    it.each([false, true])(
+      'filters out past journey dates in IST even when force=%s',
+      async (force) => {
+        jest.setSystemTime(new Date('2026-11-03T18:30:00Z'));
+
+        await service.processAbandonedBookingsCron({ force });
+
+        expect(prisma.splitTicketBooking?.findMany).toHaveBeenCalledWith(
+          expect.objectContaining({
+            where: expect.objectContaining({
+              journeyDate: { gte: new Date('2026-11-04') },
+            }),
+          }),
+        );
+      },
+    );
+
+    it.each([
+      ['PENDING', false],
+      ['FAILED', false],
+      ['PENDING', true],
+      ['FAILED', true],
+    ])(
+      'never sends a past-trip reminder for %s with force=%s',
+      async (paymentStatus, force) => {
+        (prisma.splitTicketBooking?.findMany as jest.Mock).mockResolvedValue([
+          {
+            id: 'past-booking',
+            bookingRef: 'LB-PAST',
+            journeyDate: new Date('2026-11-02'),
+            contactEmail: 'past@example.com',
+            paymentStatus,
+            bookingStatus: 'IDLE',
+          },
+        ]);
+
+        const result = await service.processAbandonedBookingsCron({ force });
+
+        expect(result.sent).toBe(0);
+        expect(result.skipped).toBe(1);
+        expect(
+          notifications.sendAbandonedBookingReminder,
+        ).not.toHaveBeenCalled();
+        expect(prisma.splitTicketBooking?.update).not.toHaveBeenCalled();
+        expect(prisma.sentNotificationLog?.create).not.toHaveBeenCalled();
+      },
+    );
+
+    it('rechecks the journey date when a cron batch crosses midnight in IST', async () => {
+      jest.setSystemTime(new Date('2026-11-03T18:29:59Z'));
+      (prisma.splitTicketBooking?.findMany as jest.Mock).mockResolvedValue([
+        {
+          id: 'midnight-booking',
+          bookingRef: 'LB-MIDNIGHT',
+          journeyDate: new Date('2026-11-03'),
+          contactEmail: 'midnight@example.com',
+        },
+      ]);
+      (
+        prisma.notificationUnsubscribe?.findFirst as jest.Mock
+      ).mockImplementation(() => {
+        jest.setSystemTime(new Date('2026-11-03T18:30:00Z'));
+        return Promise.resolve(null);
+      });
+
+      const result = await service.processAbandonedBookingsCron();
+
+      expect(result.skipped).toBe(1);
+      expect(notifications.sendAbandonedBookingReminder).not.toHaveBeenCalled();
+      expect(prisma.splitTicketBooking?.update).not.toHaveBeenCalled();
+    });
+
     it('skips processing if not the leader', async () => {
       (leader.isLeader as jest.Mock).mockResolvedValue(false);
       const res = await service.processAbandonedBookingsCron();
@@ -251,14 +328,16 @@ describe('MarketingService', () => {
         trainName: 'AJMER SHATABDI',
         fromStationCode: 'NDLS',
         toStationCode: 'AII',
-        journeyDate: new Date('2026-11-01'),
+        journeyDate: new Date('2026-11-15'),
         travelClass: 'CC',
         quota: 'GN',
         totalFare: 1100,
         paymentStatus: 'FAILED',
         bookingStatus: 'IDLE',
         contactEmail: 'me@kartikarora.in',
-        passengers: { adults: [{ name: 'Kartik Arora', age: 30, gender: 'Male' }] },
+        passengers: {
+          adults: [{ name: 'Kartik Arora', age: 30, gender: 'Male' }],
+        },
         createdAt: new Date(Date.now() - 30 * 60 * 1000),
       };
 
@@ -279,13 +358,36 @@ describe('MarketingService', () => {
       expect(prisma.splitTicketBooking?.update).toHaveBeenCalledWith(
         expect.objectContaining({
           where: { id: 'bk-failed-1' },
-          data: expect.objectContaining({ abandonedReminderSentAt: expect.any(Date) }),
+          data: expect.objectContaining({
+            abandonedReminderSentAt: expect.any(Date),
+          }),
         }),
       );
     });
   });
 
   describe('sendManualReminder', () => {
+    it.each(['PENDING', 'FAILED'])(
+      'rejects manual reminders for past journeys with %s payments',
+      async (paymentStatus) => {
+        (prisma.splitTicketBooking?.findUnique as jest.Mock).mockResolvedValue({
+          id: 'past-booking',
+          journeyDate: new Date('2026-11-02'),
+          contactEmail: 'past@example.com',
+          paymentStatus,
+        });
+
+        await expect(service.sendManualReminder('LB-PAST')).rejects.toThrow(
+          'Cannot send reminders for past journeys',
+        );
+        expect(
+          notifications.sendAbandonedBookingReminder,
+        ).not.toHaveBeenCalled();
+        expect(prisma.splitTicketBooking?.update).not.toHaveBeenCalled();
+        expect(prisma.sentNotificationLog?.create).not.toHaveBeenCalled();
+      },
+    );
+
     it('sends manual reminder and updates database timestamp', async () => {
       const booking = {
         id: 'bk-manual',
