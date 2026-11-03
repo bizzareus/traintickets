@@ -67,3 +67,38 @@
 - Refresh icons may spin only while loading.
 - Search large lists with deferred input so typing remains responsive.
 - Keep transitions short and limited to color, opacity, and transform.
+
+## Customer Train Timetable Pattern
+
+This pattern applies to customer-facing train schedules, not the admin-specific indigo palette above.
+
+### Direction And Surfaces
+
+- Feel: calm, compact railway timetable for quickly checking boarding, alighting, and overnight stops.
+- Reference: `components/booking-v2/TrainScheduleBottomSheet.tsx`.
+- Use Geist Sans with white surfaces, slate text, subtle slate dividers, and restrained blue journey accents.
+- Use one continuous station timeline, not separate rounded cards for every station.
+- Keep intermediate rows neutral. Highlight only boarding and alighting rows with `bg-blue-50/60`, blue station names, and explicit text badges.
+- Use a blue line and markers for the selected segment; use slate for the rest of the train route. Do not rely on color alone.
+
+### Layout And Typography
+
+- Base spacing: 4px. Horizontal padding: 16px mobile, 24px desktop. Station-row vertical padding: 16px.
+- Desktop: centered dialog, maximum width 672px (`max-w-2xl`), maximum height `85dvh`, 16px corners, subtle border and modal shadow.
+- Mobile: full-width bottom sheet, maximum height `90dvh`, rounded top corners, and safe-area bottom padding.
+- Keep the title, selected-route summary, and footer outside the scrolling timetable. Keep column headings sticky inside it.
+- Title: 18px bold on mobile, 20px desktop. Train identity: 12px mobile, 14px desktop, muted slate with a semibold train number.
+- Selected-route strip: neutral slate background, small “Your journey” label, and 14px semibold station codes separated by an arrow.
+- Use a semantic table with Station, Arrival, and Departure columns. Align times right and apply `tabular-nums`; departure times use stronger weight than arrival times.
+- Station names: 13px semibold mobile, 14px desktop. Allow long names to wrap instead of truncating them.
+- Metadata: 11px slate text for station code and journey day. Boarding/Alighting badges use a light-blue fill and blue text.
+- Footer: station count, IST timezone, and clarification that journey days are counted from the train’s origin.
+
+### Behavior And States
+
+- Use native `<dialog>.showModal()` for modal semantics, focus containment, and an inert background. Give it an accessible title.
+- Close with Escape, the backdrop, or a labeled 44×44px close button. Restore focus to the trigger and release background scroll locking.
+- Scroll the boarding station into view without forced animation; leave clearance for the sticky column header.
+- Provide loading, empty, and error states. Errors offer an explicit “Try again” action; do not expose raw API errors.
+- Cancel obsolete schedule requests when the dialog closes or the train changes. Reuse `apiClient` and existing time-formatting helpers.
+- Regression coverage: `e2e/train-schedule.spec.ts`, including desktop/mobile layouts, 320px screens, closing/focus restoration, loading, empty results, and retry.

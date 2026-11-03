@@ -66,6 +66,119 @@ const mixed = [
   bookingLeg("VGLJ", "GOY", [classOption("SL", 400)]),
 ];
 
+test("refreshes leg counts concurrently, renders partial responses and waits before continuing", async ({ booking }, testInfo) => {
+  let releaseFirst!: () => void;
+  let releaseSecond!: () => void;
+  const firstReady = new Promise<void>((resolve) => { releaseFirst = resolve; });
+  const secondReady = new Promise<void>((resolve) => { releaseSecond = resolve; });
+  booking.state.availabilityHandler = async (payload) => {
+    const first = payload.legs[0].from === "CYI";
+    await (first ? firstReady : secondReady);
+    return {
+      available: true,
+      legs: payload.legs.map((leg) => ({ ...leg, trainNumber: leg.trainNumber ?? payload.trainNumber, status: first ? "AVL 7" : "AVL 3", isConfirmed: true })),
+    };
+  };
+  try {
+    await booking.open({ legs: [
+      { ...mixed[0], trainNumber: "12302" },
+      { ...mixed[1], trainNumber: "12318", boardingDate: "2026-11-11" },
+    ] });
+    const selector = booking.classes();
+    await expect(selector.getByText("Refreshing seat count", { exact: true })).toHaveCount(2);
+    await selector.screenshot({ path: testInfo.outputPath("refreshing-seat-count.png") });
+    await expect.poll(() => new Set(booking.state.availabilityRequests.map((request) => request.trainNumber)).size).toBe(2);
+    const second = booking.state.availabilityRequests.find((request) => request.trainNumber === "12318")!;
+    expect(second.legs[0].boardingDate).toBe("2026-11-11");
+    expect(second.legs[0].trainNumber).toBe("12318");
+    await selector.getByRole("radio", { name: /^Leg 1: SL/ }).check();
+    await expect(selector.getByRole("button", { name: "Continue to passenger details" })).toBeDisabled();
+    releaseFirst();
+    await expect(selector.locator("fieldset").first().getByText("AVL 7")).toHaveCount(2);
+    await expect(selector.getByText("Refreshing seat count", { exact: true })).toHaveCount(1);
+    releaseSecond();
+    await expect(selector.getByText("Refreshing seat count", { exact: true })).toHaveCount(0);
+    await expect(selector.locator("fieldset").last()).toContainText("AVL 3");
+    await expect(selector.getByRole("button", { name: "Continue to passenger details" })).toBeEnabled();
+  } finally {
+    releaseFirst();
+    releaseSecond();
+  }
+});
+
+test("a live waitlist invalidates a cached class selection without discarding its fare", async ({ booking }) => {
+  let release!: () => void;
+  const ready = new Promise<void>((resolve) => { release = resolve; });
+  booking.state.availabilityHandler = async (payload) => {
+    await ready;
+    return {
+      available: false,
+      legs: payload.legs.map((leg) => ({ ...leg, trainNumber: leg.trainNumber ?? payload.trainNumber, status: leg.travelClass === "3A" ? "WL 22" : "AVL 7", isConfirmed: leg.travelClass !== "3A" })),
+    };
+  };
+  try {
+    await booking.open({ legs: mixed });
+    const selector = booking.classes();
+    const staleClass = selector.getByRole("radio", { name: /^Leg 1: 3A/ });
+    await staleClass.check();
+    release();
+    await expect(staleClass).toBeDisabled();
+    await expect(staleClass).not.toBeChecked();
+    await expect(selector.locator("fieldset").first()).toContainText("WL 22");
+    await expect(selector.getByRole("button", { name: "Continue to passenger details" })).toBeDisabled();
+    await selector.getByRole("radio", { name: /^Leg 1: SL/ }).check();
+    await expect(selector.getByRole("button", { name: "Continue to passenger details" })).toBeEnabled();
+    await expect(selector.getByRole("status", { name: "Selected ticket fare" })).toContainText("₹980");
+  } finally { release(); }
+});
+
+test("failed refresh retains cached counts, does not hide other responses, and can be retried", async ({ booking }) => {
+  let fail = true;
+  booking.state.availabilityHandler = async (payload) => ({
+    available: !fail,
+    legs: payload.legs.map((leg) => ({ ...leg, trainNumber: leg.trainNumber ?? payload.trainNumber, status: fail && leg.from === "CYI" ? "CHECK_FAILED" : "AVL 4", isConfirmed: !(fail && leg.from === "CYI") })),
+  });
+  await booking.open({ legs: mixed });
+  const selector = booking.classes();
+  await expect(selector.getByText(/Couldn’t refresh seat count/)).toBeVisible();
+  await expect(selector.locator("fieldset").first()).toContainText("AVL 12");
+  await expect(selector.locator("fieldset").last()).toContainText("AVL 4");
+  fail = false;
+  await selector.getByRole("button", { name: "Retry", exact: true }).click();
+  await expect(selector.getByText(/Couldn’t refresh seat count/)).toHaveCount(0);
+  await expect(selector.locator("fieldset").first().getByText("AVL 4")).toHaveCount(2);
+});
+
+test("closing the chooser cancels refresh requests and reopening ignores stale responses", async ({ booking, page }) => {
+  let release!: () => void;
+  const ready = new Promise<void>((resolve) => { release = resolve; });
+  let aborted = 0;
+  page.on("requestfailed", (request) => {
+    if (request.url().endsWith("/api/split-booking/check-availability")) aborted++;
+  });
+  booking.state.availabilityHandler = async (payload) => {
+    await ready;
+    return {
+      available: true,
+      legs: payload.legs.map((leg) => ({ ...leg, trainNumber: leg.trainNumber ?? payload.trainNumber, status: "AVL 99", isConfirmed: true })),
+    };
+  };
+  try {
+    await booking.open({ legs: mixed });
+    await expect.poll(() => booking.state.availabilityRequests.length).toBeGreaterThanOrEqual(2);
+    await booking.classes().getByRole("button", { name: "Close class selection" }).click();
+    await expect.poll(() => aborted).toBeGreaterThanOrEqual(2);
+    release();
+    booking.state.availabilityHandler = async (payload) => ({
+      available: true,
+      legs: payload.legs.map((leg) => ({ ...leg, trainNumber: leg.trainNumber ?? payload.trainNumber, status: "AVL 6", isConfirmed: true })),
+    });
+    await page.getByRole("button", { name: "Book Now", exact: true }).click();
+    await expect(booking.classes().getByText("AVL 6", { exact: true })).toHaveCount(3);
+    await expect(booking.classes().getByText("AVL 99", { exact: true })).toHaveCount(0);
+  } finally { release(); }
+});
+
 for (const scenario of [
   { name: "direct ticket, one class", direct: true, legs: [bookingLeg()] },
   {

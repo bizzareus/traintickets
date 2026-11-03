@@ -30,6 +30,14 @@ import { isAdminUser } from "@/lib/admin";
 import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import { openSupportChat } from "@/lib/supportChat";
+import { getStoredContact, saveStoredContact } from "@/lib/contact";
+import {
+  BERTH_OPTIONS,
+  FOOD_OPTIONS,
+  createDefaultPassenger,
+  getStoredBookingPassenger,
+  saveStoredBookingPassenger,
+} from "@/lib/bookingPassenger";
 import { MuzoboxPaymentFrame } from "@/components/payments/MuzoboxPaymentFrame";
 import { BookingPriceBreakdown } from "./BookingPriceBreakdown";
 import {
@@ -64,28 +72,6 @@ export interface SplitTicketBookingModalProps {
 
 type ModalStep = "passenger_details" | "payment" | "booking_in_progress";
 
-const BERTH_OPTIONS = [
-  "No Preference",
-  "Lower",
-  "Middle",
-  "Upper",
-  "Side Lower",
-  "Side Upper",
-  "Window Side",
-];
-
-const FOOD_OPTIONS = ["Veg", "Non-Veg", "No Food"] as const;
-
-const createDefaultPassenger = (): SplitBookingPassenger => ({
-  name: "",
-  age: 30,
-  gender: "Male",
-  berthPreference: "No Preference",
-  optBerth: true,
-  foodChoice: "Veg",
-  seniorCitizen: false,
-});
-
 export function SplitTicketBookingModal({
   open,
   onClose,
@@ -109,6 +95,7 @@ export function SplitTicketBookingModal({
   existingPayUrl,
 }: SplitTicketBookingModalProps) {
   const formId = useId();
+  const detailsEditedRef = useRef(false);
   const [step, setStep] = useState<ModalStep>("passenger_details");
 
   // Step 1: Single passenger details state (booking engine supports 1 passenger)
@@ -185,11 +172,15 @@ export function SplitTicketBookingModal({
   useEffect(() => {
     if (open) {
       setStep("passenger_details");
+      detailsEditedRef.current = false;
       setShowPaymentModal(false);
       submittedPayloadRef.current = null;
-      setPassengers([initialPassenger ?? createDefaultPassenger()]);
-      setMobile(initialMobile ?? "");
-      setEmail(initialEmail ?? "");
+      setPassengers([
+        initialPassenger ?? getStoredBookingPassenger() ?? createDefaultPassenger(),
+      ]);
+      const contact = getStoredContact();
+      setMobile(initialMobile ?? contact.mobile);
+      setEmail(initialEmail ?? contact.email);
       if (existingBookingRef && existingPayUrl) {
         setPaymentData({
           bookingRef: existingBookingRef,
@@ -257,12 +248,21 @@ export function SplitTicketBookingModal({
     existingPayUrl,
   ]);
 
+  useEffect(() => {
+    if (!open || step !== "passenger_details" || !detailsEditedRef.current) {
+      return;
+    }
+    saveStoredBookingPassenger(passengers[0]);
+    saveStoredContact({ email, mobile });
+  }, [open, step, passengers, email, mobile]);
+
   // Handle passenger input changes
   const updatePassenger = (
     index: number,
     field: keyof SplitBookingPassenger,
     value: unknown,
   ) => {
+    detailsEditedRef.current = true;
     setPassengers((prev) => {
       const next = [...prev];
       next[index] = { ...next[index], [field]: value };
@@ -336,6 +336,11 @@ export function SplitTicketBookingModal({
         travelClass: l.travelClass,
         boardingDate: l.boardingDate,
         fare: l.fare,
+        ...(l.trainNumber ? { trainNumber: l.trainNumber } : {}),
+        departureTime: l.departureTime,
+        arrivalTime: l.arrivalTime,
+        durationMinutes: l.durationMinutes,
+        availability: l.availability,
       })),
       passengers: [{ ...p, name: p.name.trim() }],
       childPassengers: [],
@@ -882,7 +887,10 @@ export function SplitTicketBookingModal({
                       inputMode="numeric"
                       required
                       value={mobile}
-                      onChange={(e) => setMobile(e.target.value)}
+                      onChange={(e) => {
+                        detailsEditedRef.current = true;
+                        setMobile(e.target.value);
+                      }}
                       placeholder="e.g. 9876543210"
                       className="focus:outline-hidden min-h-[42px] w-full rounded-lg border border-slate-300 px-3 py-2 text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:min-h-[38px] sm:text-sm"
                     />
@@ -900,7 +908,10 @@ export function SplitTicketBookingModal({
                       inputMode="email"
                       required
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => {
+                        detailsEditedRef.current = true;
+                        setEmail(e.target.value);
+                      }}
                       placeholder="e.g. yourname@example.com"
                       className="focus:outline-hidden min-h-[42px] w-full rounded-lg border border-slate-300 px-3 py-2 text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:min-h-[38px] sm:text-sm"
                     />
@@ -910,6 +921,10 @@ export function SplitTicketBookingModal({
 
               {/* Passenger Details */}
               <div className="space-y-3">
+                <p className="text-xs text-slate-500">
+                  Passenger and contact details are saved on this device for
+                  your next booking.
+                </p>
                 <div className="flex items-center justify-between">
                   <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-700 sm:text-xs">
                     Passenger Details

@@ -59,6 +59,41 @@ test("default form submits the complete browser payload accepted by Nest", async
   });
 });
 
+test("passenger and contact JSON prefill the next booking without a payment", async ({ booking, page }) => {
+  await booking.open();
+  await booking.fill({ name: "Returning Passenger", age: "42", email: "returning@example.com", mobile: "9876543210" });
+  await booking.details().getByLabel("Gender", { exact: false }).selectOption("Female");
+  await booking.details().getByLabel("Berth Preference", { exact: true }).selectOption("Lower");
+  await booking.details().getByLabel("Food Choice", { exact: true }).selectOption("Non-Veg");
+  await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem("lastBerth_booking_passenger") || "null")?.name)).toBe("Returning Passenger");
+  await booking.details().getByRole("button", { name: "Close booking", exact: true }).click();
+  await page.getByRole("button", { name: "Book Now", exact: true }).click();
+  await expect(booking.details().getByLabel("Full Name")).toHaveValue("Returning Passenger");
+  await expect(booking.details().getByLabel("Age", { exact: false })).toHaveValue("42");
+  await expect(booking.details().getByLabel("Gender", { exact: false })).toHaveValue("Female");
+  await expect(booking.details().getByLabel("Berth Preference", { exact: true })).toHaveValue("Lower");
+  await expect(booking.details().getByLabel("Food Choice", { exact: true })).toHaveValue("Non-Veg");
+  await expect(booking.details().getByLabel("Email Address")).toHaveValue("returning@example.com");
+  await expect(booking.details().getByLabel("Mobile Number (10 Digits)")).toHaveValue("9876543210");
+  expect(booking.state.requests).toHaveLength(0);
+  await booking.details().getByLabel("Full Name").fill("Updated Passenger");
+  await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem("lastBerth_booking_passenger") || "null")?.name)).toBe("Updated Passenger");
+});
+
+test("malformed saved passenger JSON is ignored without clearing stored contact", async ({ booking, page }) => {
+  await booking.open();
+  await booking.details().getByRole("button", { name: "Close booking", exact: true }).click();
+  await page.evaluate(() => {
+    localStorage.setItem("lastBerth_booking_passenger", "{broken");
+    localStorage.setItem("lastBerth_monitor_contact", JSON.stringify({ email: "saved@example.com", mobile: "9876543210" }));
+  });
+  await page.getByRole("button", { name: "Book Now", exact: true }).click();
+  await expect(booking.details().getByLabel("Full Name")).toHaveValue("");
+  await expect(booking.details().getByLabel("Email Address")).toHaveValue("saved@example.com");
+  await expect(booking.details().getByLabel("Mobile Number (10 Digits)")).toHaveValue("9876543210");
+  expect(await page.evaluate(() => localStorage.getItem("lastBerth_booking_passenger"))).toBe("{broken");
+});
+
 const berths = [
   "No Preference",
   "Lower",

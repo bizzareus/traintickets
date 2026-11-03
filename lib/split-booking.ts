@@ -97,10 +97,11 @@ export async function checkSplitBookingAvailability(payload: {
       trainNumber?: string | null;
     }
   >;
-}): Promise<SplitBookingAvailabilityResponse> {
+}, signal?: AbortSignal): Promise<SplitBookingAvailabilityResponse> {
   const res = await apiClient.post<SplitBookingAvailabilityResponse>(
     "/api/split-booking/check-availability",
     payload,
+    { signal },
   );
   return res.data;
 }

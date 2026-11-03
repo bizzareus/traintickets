@@ -10,6 +10,8 @@ import type {
   SplitBookingPaymentResponse,
   SplitBookingStatus,
   CancellationBookingDetails,
+  checkSplitBookingAvailability,
+  SplitBookingAvailabilityResponse,
 } from "../../lib/split-booking";
 
 export const BOOKING_DATE = "2026-11-10";
@@ -95,6 +97,8 @@ export interface BookingState {
   cancellationRequests: unknown[];
   cancellationError?: TestHttpError;
   existingCancellation: boolean;
+  availabilityRequests: Array<Parameters<typeof checkSplitBookingAvailability>[0]>;
+  availabilityHandler?: (payload: Parameters<typeof checkSplitBookingAvailability>[0]) => Promise<SplitBookingAvailabilityResponse>;
   availabilityResult?: Partial<{
     available: boolean;
     legs: Array<{
@@ -154,6 +158,7 @@ export const test = base.extend<{ booking: BookingHarness }>({
       abortCreate: false,
       cancellationRequests: [],
       existingCancellation: false,
+      availabilityRequests: [],
     };
     let path = alternateResult(TWO_LEGS);
     let train: TrainListItem = {
@@ -225,6 +230,10 @@ export const test = base.extend<{ booking: BookingHarness }>({
         await fulfill({ json: { cached: false } });
         return;
       }
+      if (pathname === "/api/booking-v2/connecting-trains") {
+        await fulfill({ json: { isSupportedCorridor: false, journeys: [] } });
+        return;
+      }
       if (pathname.endsWith("/stations-meta")) {
         await fulfill({ json: { stations: [] } });
         return;
@@ -241,14 +250,12 @@ export const test = base.extend<{ booking: BookingHarness }>({
         return;
       }
       if (pathname === "/api/split-booking/check-availability") {
-        const body = (route.request().postDataJSON() ?? {}) as {
-          legs?: Array<{
-            from: string;
-            to: string;
-            travelClass: string;
-            boardingDate: string;
-          }>;
-        };
+        const body = route.request().postDataJSON() as Parameters<typeof checkSplitBookingAvailability>[0];
+        state.availabilityRequests.push(body);
+        if (state.availabilityHandler) {
+          await fulfill({ json: await state.availabilityHandler(body) });
+          return;
+        }
         await fulfill({
           json: {
             available: true,
@@ -257,7 +264,7 @@ export const test = base.extend<{ booking: BookingHarness }>({
               to: leg.to,
               travelClass: leg.travelClass,
               boardingDate: leg.boardingDate,
-              status: "AVAILABLE-0012",
+              status: "AVL 12",
               isConfirmed: true,
             })),
             ...state.availabilityResult,

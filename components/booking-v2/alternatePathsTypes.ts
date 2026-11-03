@@ -65,6 +65,8 @@ export type TrainScheduleResponse = {
 
 export type AlternateClassOption = {
   travelClass: string;
+  /** Authoritative result of the class chooser's most recent live check. */
+  isConfirmed?: boolean;
   railDataStatus: string | null;
   availablityStatus: string | null;
   predictionPercentage: string | null;

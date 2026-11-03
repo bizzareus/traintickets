@@ -2,7 +2,10 @@ import type {
   AlternateClassOption,
   AlternateLeg,
 } from "@/components/booking-v2/alternatePathsTypes";
-import type { SplitBookingLeg } from "@/lib/split-booking";
+import type {
+  SplitBookingLeg,
+  SplitBookingLegAvailabilityResult,
+} from "@/lib/split-booking";
 
 export type LegClassSelections = Partial<Record<number, string>>;
 
@@ -44,7 +47,41 @@ export function getSelectedLegClass(leg: AlternateLeg, selectedClass?: string) {
     : options.length === 1
       ? options[0]
       : undefined;
-  return option && hasClassFare(option) ? option : null;
+  return option && option.isConfirmed !== false && hasClassFare(option)
+    ? option
+    : null;
+}
+
+/** Apply matching live statuses without discarding quoted fares or cached data on errors. */
+export function applyLegAvailability(
+  leg: AlternateLeg,
+  trainNumber: string,
+  boardingDate: string,
+  results: SplitBookingLegAvailabilityResult[],
+): { leg: AlternateLeg; failed: boolean } {
+  let failed = false;
+  const confirmedClassOptions = getLegClassOptions(leg).map((option) => {
+    const live = results.find(
+      (row) =>
+        row.from.toUpperCase() === leg.from.toUpperCase() &&
+        row.to.toUpperCase() === leg.to.toUpperCase() &&
+        row.travelClass.toUpperCase() === option.travelClass.toUpperCase() &&
+        row.boardingDate === boardingDate &&
+        (!row.trainNumber || row.trainNumber === trainNumber),
+    );
+    if (!live?.status?.trim() || ["CHECK_FAILED", "NO_DATA"].includes(live.status)) {
+      failed = true;
+      return option;
+    }
+    return {
+      ...option,
+      isConfirmed: live.isConfirmed,
+      availabilityDisplayName: live.status,
+      availablityStatus: live.status,
+      railDataStatus: live.status,
+    };
+  });
+  return { leg: { ...leg, confirmedClassOptions }, failed };
 }
 
 export function getLegAvailabilityText(

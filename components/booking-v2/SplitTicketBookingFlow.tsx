@@ -2,9 +2,10 @@
 
 import { useId, useState } from "react";
 import moment from "moment";
-import { ArrowRight, Calendar, Clock, ShieldCheck, X } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Loader2, ShieldCheck, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
+import { useSplitBookingAvailability } from "@/lib/hooks/useSplitBookingAvailability";
 import {
   buildSplitBookingSelection,
   getLegClassOptions,
@@ -58,13 +59,22 @@ export function SplitTicketBookingFlow({
   > | null>(null);
   const confirmedLegs = legs.filter((leg) => leg.segmentKind === "confirmed");
   const isSingleLeg = confirmedLegs.length === 1;
-  const selection = buildSplitBookingSelection(legs, choices);
   const hasMultipleClasses = legs.some(
     (leg) => getLegClassOptions(leg).length > 1,
   );
+  const availability = useSplitBookingAvailability({
+    trainNumber,
+    journeyDate,
+    legs,
+    enabled: hasMultipleClasses && !details,
+  });
+  const selection = buildSplitBookingSelection(availability.legs, choices);
   const isSkipped = (index: number) => choices[index] === SKIP_LEG;
+  const refreshing = [...availability.refreshingLegs].some(
+    (index) => !isSkipped(index),
+  );
   const canContinue =
-    selection.totalFare !== null && selection.legs.length >= 1;
+    !refreshing && selection.totalFare !== null && selection.legs.length >= 1;
   const toBookingDetails = (): Omit<
     SplitTicketBookingModalProps,
     "open" | "onClose"
@@ -150,7 +160,7 @@ export function SplitTicketBookingFlow({
                 journey segments are not reserved.
               </p>
             )}
-            {legs.map((leg, index) => {
+            {availability.legs.map((leg, index) => {
               if (leg.segmentKind !== "confirmed") return null;
               const options = getLegClassOptions(leg);
               const legSkipped = isSkipped(index);
@@ -199,6 +209,31 @@ export function SplitTicketBookingFlow({
                         </>
                       )}
                     </div>
+                    {availability.refreshingLegs.has(index) && (
+                      <span
+                        role="status"
+                        className="inline-flex items-center gap-1.5 text-xs text-slate-500"
+                      >
+                        <Loader2
+                          aria-hidden="true"
+                          className="h-3.5 w-3.5 animate-spin motion-reduce:animate-none"
+                        />
+                        Refreshing seat count
+                      </span>
+                    )}
+                    {availability.failedLegs.has(index) && (
+                      <span className="text-xs text-amber-700">
+                        Couldn’t refresh seat count; showing last known
+                        availability.{" "}
+                        <button
+                          type="button"
+                          onClick={availability.retry}
+                          className="underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
+                        >
+                          Retry
+                        </button>
+                      </span>
+                    )}
                   </div>
                   <div className="space-y-2">
                     {options.map((option) => {
@@ -206,12 +241,13 @@ export function SplitTicketBookingFlow({
                         !legSkipped &&
                         selectedOption?.travelClass === option.travelClass;
                       const priced = hasClassFare(option);
+                      const available = option.isConfirmed !== false;
                       return (
                         <label
                           key={option.travelClass}
                           className={cn(
                             "flex min-h-11 items-center gap-3 rounded-lg border p-3 text-sm",
-                            !priced
+                            !priced || !available
                               ? "cursor-not-allowed border-slate-200 text-slate-400"
                               : selected
                                 ? "cursor-pointer border-blue-600 bg-blue-50 text-slate-900"
@@ -223,7 +259,7 @@ export function SplitTicketBookingFlow({
                             name={`${groupId}-leg-${index}`}
                             aria-label={`Leg ${index + 1}: ${option.travelClass}, ${priced ? `₹${option.fare}` : "fare unavailable"}`}
                             checked={selected}
-                            disabled={!priced}
+                            disabled={!priced || !available}
                             onChange={() => {
                               trackAnalyticsEvent({
                                 name: "split_booking_class_selected",
@@ -247,7 +283,12 @@ export function SplitTicketBookingFlow({
                             <span className="font-bold">
                               {option.travelClass}
                             </span>
-                            <span className="ml-2 text-xs text-emerald-700">
+                            <span
+                              className={cn(
+                                "ml-2 text-xs",
+                                available ? "text-emerald-700" : "text-amber-700",
+                              )}
+                            >
                               {option.availabilityDisplayName ||
                                 option.railDataStatus ||
                                 "Available"}
@@ -308,7 +349,9 @@ export function SplitTicketBookingFlow({
               aria-label="Selected ticket fare"
               className="text-sm text-slate-600"
             >
-              {selection.legs.length === 0 ? (
+              {refreshing ? (
+                "Refreshing seat count for selected tickets…"
+              ) : selection.legs.length === 0 ? (
                 "Select at least 1 ticket to continue."
               ) : selection.totalFare === null ? (
                 "Choose a priced class for selected tickets to continue."

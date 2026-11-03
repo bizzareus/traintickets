@@ -8,6 +8,7 @@ import {
   buildSplitBookingSelection,
   getLegClassOptions,
   getSelectedLegClass,
+  applyLegAvailability,
 } from "./splitBookingSelection";
 
 const option = (
@@ -173,5 +174,37 @@ describe("per-leg booking class choices", () => {
     ]);
     const customSelection = buildSplitBookingSelection([customLeg], {});
     assert.equal(customSelection.legs[0].availability, "AVAILABLE-0024");
+  });
+
+  test("live counts replace cached counts without changing fares; unavailable choices are blocked", () => {
+    const result = applyLegAvailability(legs[0], "12345", "2026-10-01", [
+      { from: "DEC", to: "GGN", travelClass: "SL", boardingDate: "2026-10-01", status: "AVL 7", isConfirmed: true },
+      { from: "DEC", to: "GGN", travelClass: "3A", boardingDate: "2026-10-01", status: "WL 22", isConfirmed: false },
+      { from: "DEC", to: "GGN", travelClass: "2A", boardingDate: "2026-10-01", status: "AVL 2", isConfirmed: true },
+    ]);
+    assert.equal(result.failed, false);
+    assert.equal(getSelectedLegClass(result.leg, "SL")?.fare, 180);
+    assert.equal(getSelectedLegClass(result.leg, "3A"), null);
+    assert.equal(buildSplitBookingSelection([result.leg], { 0: "3A" }).totalFare, null);
+    assert.equal(buildSplitBookingSelection([result.leg], { 0: "SL" }).legs[0].availability, "AVL 7");
+    assert.equal(getLegClassOptions(legs[0])[0].availabilityDisplayName, "AVL 10");
+  });
+
+  test("failed, missing or mismatched checks preserve the last known class data", () => {
+    const original = legs[1];
+    const base = { from: "GGN", to: "AII", travelClass: "3A", boardingDate: "2026-10-01", trainNumber: "12345", status: "AVL 5", isConfirmed: true };
+    for (const row of [
+      { ...base, status: "CHECK_FAILED", isConfirmed: false },
+      { ...base, status: "NO_DATA", isConfirmed: false },
+      { ...base, trainNumber: "12346" },
+      { ...base, boardingDate: "2026-10-02" },
+      { ...base, from: "DEC" },
+      { ...base, travelClass: "2A" },
+    ]) {
+      const result = applyLegAvailability(original, "12345", "2026-10-01", [row]);
+      assert.equal(result.failed, true);
+      assert.deepEqual(result.leg.confirmedClassOptions, original.confirmedClassOptions);
+    }
+    assert.equal(applyLegAvailability(original, "12345", "2026-10-01", []).failed, true);
   });
 });
