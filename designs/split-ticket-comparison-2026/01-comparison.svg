@@ -10,18 +10,19 @@
   </g>
   <g font-family="DIN Condensed, Arial Narrow, Arial, sans-serif" font-weight="700">
     <text x="64" y="245" fill="#88E2B6" font-size="92">CONFIRMED TICKET</text>
-    <text x="64" y="318" fill="#FFFFFF" font-size="58">DELHI (NZM) → MUMBAI (MMCT)</text>
-    <text x="64" y="375" fill="#FFBA55" font-size="44">TRAVEL DATE: 05 NOV 2026</text>
+    <text x="64" y="318" fill="#FFFFFF" font-size="58">HOWRAH (HWH) → PURI (PURI)</text>
+    <text x="64" y="375" fill="#FFBA55" font-size="44">TRAVEL DATE: 06 NOV 2026</text>
   </g>
   <g font-family="Arial, Helvetica, sans-serif">
-    <text x="65" y="430" fill="#E4EAF2" font-size="28" font-weight="700">AK TEJAS RAJ EX · 12954 · DEPARTS 05:15 PM</text>
+    <text x="65" y="430" fill="#E4EAF2" font-size="28" font-weight="700">VANDE BHARAT EXP · 22895 · DEPARTS 06:10 AM</text>
 
+    <!-- Left Card: ConfirmTkt Direct Baseline -->
     <rect x="64" y="480" width="310" height="566" rx="20" fill="#FFF4EF"/>
     <rect x="396" y="480" width="620" height="566" rx="20" fill="#F1FCF6"/>
     <rect x="64" y="504" width="5" height="62" fill="#BC5849"/>
     <rect x="396" y="504" width="5" height="62" fill="#247251"/>
     <text x="86" y="531" fill="#101B2C" font-size="33" font-weight="700">ConfirmTkt</text>
-    <text x="86" y="572" fill="#795B54" font-size="23">End-to-end · 3A, 2A, 1A</text>
+    <text x="86" y="572" fill="#795B54" font-size="23">End-to-end · CC &amp; EC</text>
     <path d="M86 597H352" stroke="#E3CBC2"/>
     <text x="86" y="640" fill="#795B54" font-size="18" letter-spacing="1">SCREENSHOT EXCERPT</text>
     <rect x="80" y="662" width="278" height="127" rx="8" fill="#FFFFFF"/>
@@ -31,23 +32,41 @@
     <text x="86" y="916" fill="#574B48" font-size="24">One ticket for</text>
     <text x="86" y="952" fill="#574B48" font-size="24">the full route.</text>
 
-    <text x="422" y="531" fill="#355AED" font-size="35" font-weight="700" letter-spacing="-1">LastBerth</text>
-    <text x="422" y="568" fill="#466A57" font-size="22">Available seats in split legs</text>
-    <path d="M422 590H990" stroke="#C5E1D1"/>
-    
-    <text x="422" y="630" fill="#315A43" font-size="22" font-weight="700">01  NZM → MTJ (3A · AVL 91 · ₹990)</text>
-    <rect x="422" y="645" width="568" height="150" rx="8" fill="#FFFFFF"/>
-    <image href="crops/lastberth-leg-1.png" x="432" y="650" width="548" height="140" preserveAspectRatio="xMidYMid meet"/>
-    
-    <text x="422" y="830" fill="#315A43" font-size="22" font-weight="700">02  MTJ → MMCT (1A · Confirmed · ₹4,995)</text>
-    <rect x="422" y="845" width="568" height="150" rx="8" fill="#FFFFFF"/>
-    <image href="crops/lastberth-leg-2.png" x="432" y="850" width="548" height="140" preserveAspectRatio="xMidYMid meet"/>
+    <!-- Right Card: LastBerth Split Legs -->
+    <text x="422" y="525" fill="#355AED" font-size="33" font-weight="700" letter-spacing="-1">LastBerth</text>
+    <text x="422" y="555" fill="#466A57" font-size="20">Available seats in split legs</text>
+    <path d="M422 575H990" stroke="#C5E1D1"/>
 
-    <text x="64" y="1091" fill="#D6E0EB" font-size="24">2 tickets · 3A + 1A · Class / berth change at Mathura (MTJ)</text>
+    <!-- Leg 1 -->
+    <text x="422" y="605" fill="#315A43" font-size="20" font-weight="700">01  HWH → KGP (CC · AVL 70 · ₹585)</text>
+    <rect x="422" y="615" width="568" height="74" rx="8" fill="#FFFFFF"/>
+    <image href="crops/lastberth-leg-1.png" x="432" y="618" width="548" height="68" preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Leg 2 -->
+    <text x="422" y="715" fill="#315A43" font-size="20" font-weight="700">02  KGP → BLS (CC · AVL 1 · ₹585)</text>
+    <rect x="422" y="725" width="568" height="74" rx="8" fill="#FFFFFF"/>
+    <image href="crops/lastberth-leg-2.png" x="432" y="728" width="548" height="68" preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Leg 3 -->
+    <text x="422" y="825" fill="#315A43" font-size="20" font-weight="700">03  BLS → JJKR (CC · AVL 2 · ₹580)</text>
+    <rect x="422" y="835" width="568" height="74" rx="8" fill="#FFFFFF"/>
+    <image href="crops/lastberth-leg-3.png" x="432" y="838" width="548" height="68" preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Leg 4 -->
+    <text x="422" y="935" fill="#315A43" font-size="20" font-weight="700">04  JJKR → PURI (CC · AVL 19 · ₹890)</text>
+    <rect x="422" y="945" width="568" height="74" rx="8" fill="#FFFFFF"/>
+    <image href="crops/lastberth-leg-4.png" x="432" y="948" width="548" height="68" preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Summary Row -->
+    <text x="64" y="1091" fill="#D6E0EB" font-size="24">4 tickets · CC across all legs · Seat changes needed</text>
+
+    <!-- Total Fare & CTA -->
     <rect x="64" y="1125" width="952" height="105" rx="14" fill="#FFFFFF"/>
     <image href="crops/lastberth-total.png" x="86" y="1135" width="440" height="85" preserveAspectRatio="xMidYMid meet"/>
     <rect x="548" y="1143" width="447" height="69" rx="9" fill="#355AED"/>
     <text x="772" y="1186" fill="#FFFFFF" font-size="28" text-anchor="middle" font-weight="700">Book on LastBerth.com →</text>
+
+    <!-- Disclaimers -->
     <text x="64" y="1276" fill="#A9B8CA" font-size="22">Availability and fares shown in screenshots. Recheck before booking.</text>
     <text x="64" y="1311" fill="#A9B8CA" font-size="20">Screenshot excerpts enlarged for readability.</text>
   </g>

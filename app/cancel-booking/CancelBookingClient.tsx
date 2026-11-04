@@ -246,12 +246,12 @@ export function CancelBookingClient() {
               <p className="text-xs text-slate-500">
                 Need urgent help? WhatsApp us directly at{" "}
                 <a
-                  href="https://wa.me/919999224767?text=Hi%2C%20I%20need%20help%20with%20booking%20cancellation."
+                  href="https://wa.me/919205369633?text=Hi%2C%20I%20need%20help%20with%20booking%20cancellation."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-semibold text-blue-600 underline hover:text-blue-800"
                 >
-                  +91 99992 24767
+                  +91 9205369633
                 </a>{" "}
                 or email{" "}
                 <a

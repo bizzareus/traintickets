@@ -48,11 +48,11 @@ export function renderChartAlertConfirmationEmailHtml(
   const trainLabel = trainName
     ? `${trainName} (${trainNumber})`
     : `Train ${trainNumber}`;
-  const routeLabel = toStationCode
-    ? `${fromStationCode} ➔ ${toStationCode}`
-    : `${fromStationCode} (Boarding Station)`;
   const readableDate = formatJourneyDateReadable(journeyDate);
   const normalizedClass = (classCode || 'All Classes').trim().toUpperCase();
+  const notificationChannels = params.mobile?.trim()
+    ? 'email and WhatsApp'
+    : 'email';
 
   const formattedSchedule = (chartTimes || [])
     .map((item, idx) => {
@@ -66,85 +66,104 @@ export function renderChartAlertConfirmationEmailHtml(
     })
     .filter((s) => Boolean(s.timeStr));
 
-  let scheduleHtml = '';
-  if (formattedSchedule.length >= 2) {
-    scheduleHtml = `
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin:20px 0 0 0;">
-                <p style="margin:0 0 6px 0; font-size:13px; font-weight:700; color:#0f172a;">⏰ Chart Preparation Schedule (2 Times):</p>
-                <p style="margin:0 0 8px 0; font-size:13px; color:#475569; line-height:1.4;">The reservation chart for this train is prepared <strong>2 times</strong> before departure:</p>
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:13px; color:#1e293b;">
-                  ${formattedSchedule
-                    .map(
-                      (s) =>
-                        `<tr>
-                          <td style="padding:3px 0; width:80px; font-weight:700; color:#2563eb;">${escapeHtml(s.label)}:</td>
-                          <td style="padding:3px 0; font-weight:600; color:#0f172a;">${escapeHtml(s.timeStr)}</td>
-                        </tr>`,
-                    )
-                    .join('')}
-                </table>
-              </div>`;
-  } else if (formattedSchedule.length === 1) {
-    scheduleHtml = `
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin:20px 0 0 0;">
-                <p style="margin:0 0 6px 0; font-size:13px; font-weight:700; color:#0f172a;">⏰ Chart Preparation Schedule:</p>
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:13px; color:#1e293b;">
-                  <tr>
-                    <td style="padding:3px 0; width:80px; font-weight:700; color:#2563eb;">${escapeHtml(formattedSchedule[0].label)}:</td>
-                    <td style="padding:3px 0; font-weight:600; color:#0f172a;">${escapeHtml(formattedSchedule[0].timeStr)}</td>
-                  </tr>
-                </table>
-              </div>`;
-  } else {
-    scheduleHtml = `
-              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin:20px 0 0 0;">
-                <p style="margin:0 0 4px 0; font-size:13px; font-weight:700; color:#0f172a;">⏰ Chart Preparation:</p>
-                <p style="margin:0; font-size:13px; color:#475569; line-height:1.4;">IRCTC usually finalizes the chart <strong>4 to 8 hours before departure</strong>.</p>
-              </div>`;
-  }
+  const scheduleHtml = formattedSchedule.length
+    ? `<p style="margin:4px 0 12px; font-size:12px; color:#64748b;">All times in IST (India Standard Time).</p>
+       <table aria-label="Chart preparation schedule" width="100%" cellpadding="0" cellspacing="0" style="table-layout:fixed; border-collapse:collapse; font-size:14px; line-height:1.5;">
+         ${formattedSchedule
+           .map(
+             (s) => `<tr>
+               <th scope="row" width="36%" style="padding:12px 8px 12px 0; border-top:1px solid #e2e8f0; text-align:left; vertical-align:top; font-weight:600; color:#2563eb; overflow-wrap:anywhere;">${escapeHtml(s.label)}</th>
+               <td style="padding:12px 0; border-top:1px solid #e2e8f0; vertical-align:top; font-weight:600; color:#0f172a; overflow-wrap:anywhere;">${escapeHtml(s.timeStr)}</td>
+             </tr>`,
+           )
+           .join('')}
+       </table>`
+    : `<p style="margin:8px 0 0; font-size:14px; line-height:1.6; color:#475569;">Exact chart times are not available yet. We’ll monitor chart preparation for your train.</p>`;
 
   return `<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chart Alert Active - LastBerth</title>
 </head>
-<body style="margin:0; padding:0; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background:#f1f5f9; color:#334155;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f9;">
+<body style="margin:0; padding:0; font-family:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background:#f8fafc; color:#0f172a; -webkit-text-size-adjust:100%;">
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">Your chart alert for ${escapeHtml(trainLabel)} is active. We’ll notify you if vacant seats are found.</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;">
     <tr>
-      <td style="padding:32px 16px;">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px; margin:0 auto; border-radius:16px; border:1px solid #e2e8f0; background:#ffffff; box-shadow:0 4px 6px -1px rgba(0,0,0,0.08); overflow:hidden;">
+      <td align="center" style="padding:32px 12px;">
+        <table role="presentation" align="center" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px; margin:0 auto; table-layout:fixed; border-radius:16px; border:1px solid #e2e8f0; background:#ffffff;">
           <tr>
-            <td style="padding:24px 24px 20px;">
-              <p style="margin:0; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#2563eb;">LastBerth Chart Alert</p>
-              <h1 style="margin:8px 0 0 0; font-size:20px; font-weight:700; color:#0f172a;">Your Chart Alert Is Active!</h1>
-              <p style="margin:12px 0 0 0; font-size:16px; font-weight:700; color:#0f172a;">${escapeHtml(trainLabel)}</p>
-              <p style="margin:4px 0 0 0; font-size:14px; color:#64748b;">${escapeHtml(routeLabel)}</p>
-              <p style="margin:4px 0 0 0; font-size:14px; color:#334155;">Journey Date: <strong>${escapeHtml(readableDate)}</strong></p>
-              <p style="margin:4px 0 0 0; font-size:14px; color:#334155;">Class: <strong>${escapeHtml(normalizedClass)}</strong>${amount ? ` &bull; Paid: <strong style="color:#16a34a;">₹${amount}</strong>` : ''}</p>
-              ${paymentRef ? `<p style="margin:4px 0 0 0; font-size:11px; color:#94a3b8;">Ref ID: ${escapeHtml(paymentRef)}</p>` : ''}
-              ${scheduleHtml}
-              <p style="margin:20px 0 8px 0; font-size:14px; font-weight:700; color:#0f172a;">⚡ What Happens Next?</p>
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:13px; color:#475569; line-height:1.5;">
+            <td style="padding:20px 24px; border-bottom:1px solid #f1f5f9;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="padding:4px 0; vertical-align:top; width:20px; font-weight:700; color:#2563eb;">1.</td>
-                  <td style="padding:4px 0;"><strong>We will find you tickets at chart prepare:</strong> Our system will automatically monitor chart preparation and scan for unallocated quota seats and cancellations.</td>
-                </tr>
-                <tr>
-                  <td style="padding:4px 0; vertical-align:top; width:20px; font-weight:700; color:#2563eb;">2.</td>
-                  <td style="padding:4px 0;"><strong>Instant Notification:</strong> The moment vacant seats are discovered, you will receive an immediate alert via email / WhatsApp with direct booking links.</td>
+                  <td><a href="https://lastberth.com" style="color:#2563eb; font-size:20px; font-weight:600; letter-spacing:-0.5px; text-decoration:none;">LastBerth</a></td>
+                  <td align="right" style="color:#64748b; font-size:12px;">Chart alert</td>
                 </tr>
               </table>
             </td>
           </tr>
           <tr>
-            <td style="padding:0 24px 24px;">
-              <a href="https://lastberth.com" style="display:inline-block; padding:12px 24px; border-radius:12px; background:#2563eb; color:#ffffff; font-size:14px; font-weight:600; text-decoration:none;">Visit LastBerth</a>
+            <td style="padding:24px;">
+              <p style="margin:0 0 12px;"><span style="display:inline-block; padding:4px 8px; border-radius:6px; background:#ecfdf5; color:#047857; font-size:12px; font-weight:600; line-height:1.5;">&#10003; Monitoring active</span></p>
+              <h1 style="margin:0; font-size:26px; line-height:1.25; letter-spacing:-0.5px; font-weight:700; color:#0f172a;">Your chart alert is active</h1>
+              <p style="margin:8px 0 24px; font-size:14px; line-height:1.6; color:#475569;">You’re all set. We’ll watch for vacant seats when your train’s chart is prepared.</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="table-layout:fixed; border:1px solid #e2e8f0; border-radius:12px; background:#f8fafc;">
+                <tr>
+                  <td style="padding:16px;">
+                    <p style="margin:0 0 16px; font-size:16px; line-height:1.5; font-weight:700; color:#0f172a; overflow-wrap:anywhere;">${escapeHtml(trainLabel)}</p>
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
+                      <tr>
+                        <td style="color:#64748b; font-size:11px;">Boarding</td>
+                        ${toStationCode ? '<td width="32" rowspan="2" align="center" style="color:#94a3b8; font-size:20px;">&rarr;</td><td align="right" style="color:#64748b; font-size:11px;">Destination</td>' : ''}
+                      </tr>
+                      <tr>
+                        <td style="padding-top:4px; color:#2563eb; font-size:24px; font-weight:700; letter-spacing:-0.5px; overflow-wrap:anywhere;">${escapeHtml(fromStationCode)}</td>
+                        ${toStationCode ? `<td align="right" style="padding-top:4px; color:#2563eb; font-size:24px; font-weight:700; letter-spacing:-0.5px; overflow-wrap:anywhere;">${escapeHtml(toStationCode)}</td>` : ''}
+                      </tr>
+                    </table>
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:16px; border-top:1px solid #e2e8f0; table-layout:fixed;">
+                      <tr>
+                        <td width="68%" style="padding:12px 12px 0 0; color:#64748b; font-size:11px;">Journey date</td>
+                        <td style="padding-top:12px; color:#64748b; font-size:11px;">Class</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:4px 12px 0 0; color:#0f172a; font-size:13px; line-height:1.5; font-weight:600; overflow-wrap:anywhere;">${escapeHtml(readableDate)}</td>
+                        <td style="padding-top:4px; vertical-align:top; color:#0f172a; font-size:13px; line-height:1.5; font-weight:600; overflow-wrap:anywhere;">${escapeHtml(normalizedClass)}</td>
+                      </tr>
+                    </table>
+                    ${amount ? `<p style="margin:12px 0 0; padding-top:12px; border-top:1px solid #e2e8f0; font-size:12px; line-height:1.5; color:#475569;">Alert subscription <strong style="color:#047857;">&middot; ₹${escapeHtml(String(amount))} paid</strong></p>` : ''}
+                    ${paymentRef ? `<p style="margin:8px 0 0; font-size:11px; line-height:1.5; color:#64748b; overflow-wrap:anywhere; word-break:break-all;">Payment reference:<br>${escapeHtml(paymentRef)}</p>` : ''}
+                  </td>
+                </tr>
+              </table>
+              <h2 style="margin:24px 0 0; font-size:16px; line-height:1.5; font-weight:700; color:#0f172a;">Chart preparation schedule</h2>
+              ${scheduleHtml}
+              <h2 style="margin:24px 0 12px; font-size:16px; line-height:1.5; font-weight:700; color:#0f172a;">What happens next?</h2>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px; line-height:1.6; color:#475569;">
+                <tr>
+                  <td width="28" style="padding:0 0 12px; vertical-align:top; font-weight:600; color:#2563eb;">01</td>
+                  <td style="padding:0 0 12px;"><strong style="color:#0f172a;">We check for seats</strong><br>We’ll scan for vacant seats and cancellations at chart preparation.</td>
+                </tr>
+                <tr>
+                  <td width="28" style="vertical-align:top; font-weight:600; color:#2563eb;">02</td>
+                  <td><strong style="color:#0f172a;">You get notified</strong><br>If seats are found, we’ll send you booking links by ${notificationChannels}.</td>
+                </tr>
+              </table>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;">
+                <tr>
+                  <td align="center" bgcolor="#2563eb" style="border-radius:8px; mso-padding-alt:14px 24px;">
+                    <a href="https://lastberth.com" style="display:block; padding:14px 24px; border-radius:8px; color:#ffffff; font-size:14px; line-height:20px; font-weight:600; text-decoration:none;">Visit LastBerth &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:12px 0 0; font-size:12px; line-height:1.5; color:#64748b; text-align:center;">This is an alert subscription, not a confirmed ticket.<br>Seats are subject to availability at the time of booking.</p>
             </td>
           </tr>
         </table>
-        <p style="margin:24px 0 0 0; font-size:11px; color:#94a3b8; text-align:center;">You received this because you asked LastBerth to monitor chart preparation.</p>
+        <table role="presentation" align="center" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px; margin:0 auto;">
+          <tr><td style="padding:20px 12px 0; font-size:11px; line-height:1.6; color:#64748b; text-align:center;">You received this because you asked LastBerth to monitor chart preparation.</td></tr>
+        </table>
       </td>
     </tr>
   </table>

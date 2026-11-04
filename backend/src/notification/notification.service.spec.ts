@@ -1211,13 +1211,14 @@ describe('NotificationService', () => {
       expect(sendEmailSpy).toHaveBeenCalledWith(
         'passenger@example.com',
         expect.stringContaining('12951'),
-        expect.stringContaining('Your Chart Alert Is Active!'),
+        expect.stringContaining('Your chart alert is active'),
       );
       const emailHtml = sendEmailSpy.mock.calls[0][2];
-      expect(emailHtml).toContain('Chart Preparation Schedule (2 Times)');
+      expect(emailHtml).toContain('Chart preparation schedule');
       expect(emailHtml).toContain('Chart 1');
       expect(emailHtml).toContain('Chart 2');
-      expect(emailHtml).toContain('We will find you tickets at chart prepare');
+      expect(emailHtml).toContain('We check for seats');
+      expect(emailHtml).toContain('email and WhatsApp');
 
       expect(sendWhatsAppSpy).toHaveBeenCalledTimes(1);
       expect(sendWhatsAppSpy).toHaveBeenCalledWith(
