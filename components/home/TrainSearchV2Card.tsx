@@ -17,6 +17,7 @@ import {
 } from "@/lib/trainSearchV2Sort";
 import { useSplitBookingFeatureFlag } from "@/lib/hooks/useSplitBookingFeatureFlag";
 import { buildDirectBookingLegs } from "@/lib/splitBookingSelection";
+import { isAcClass } from "@/lib/trainClasses";
 import {
   SplitTicketBookingFlow,
   type SplitTicketBookingFlowProps,
@@ -618,10 +619,16 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
     toCode,
   ]);
 
+  const hasAcDirectClass = useMemo(
+    () => directAvailableClasses.some((c) => isAcClass(c.cls)),
+    [directAvailableClasses],
+  );
+
   const canBookDirect =
     isSplitBookingEnabled &&
     directBookingLegs !== null &&
-    lowestAvailableDirectFare != null;
+    lowestAvailableDirectFare != null &&
+    hasAcDirectClass;
 
   const openDirectBooking = () => {
     if (!directBookingLegs || !journeyDate) return;
@@ -1009,7 +1016,7 @@ export const TrainSearchV2Card = memo(function TrainSearchV2Card({
           </div>
         </div>
       </li>
-      {isSplitBookingEnabled && directBookingRequest && (
+      {canBookDirect && directBookingRequest && (
         <SplitTicketBookingFlow
           {...directBookingRequest}
           onClose={() => setDirectBookingRequest(null)}

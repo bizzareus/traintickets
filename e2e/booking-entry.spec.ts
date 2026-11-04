@@ -471,3 +471,39 @@ test("direct flag-off uses the external IRCTC fallback", async ({
   );
   expect(booking.state.requests).toHaveLength(0);
 });
+
+test("all non-AC legs prevent internal checkout even when PostHog flag is on", async ({
+  booking,
+  page,
+}) => {
+  await booking.open({
+    actualFlag: true,
+    legs: [
+      bookingLeg("CYI", "VGLJ", [classOption("SL", 300)]),
+      bookingLeg("VGLJ", "GOY", [classOption("2S", 120)]),
+    ],
+  });
+  await expect(
+    page.getByRole("button", { name: "Book Now", exact: true }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByRole("link", { name: "Book Now", exact: true }).first(),
+  ).toBeVisible();
+  expect(booking.state.requests).toHaveLength(0);
+});
+
+test("direct non-AC train falls back to external IRCTC booking even when PostHog flag is on", async ({
+  booking,
+  page,
+}) => {
+  await booking.open({
+    direct: true,
+    legs: [bookingLeg("CYI", "GOY", [classOption("SL", 300)])],
+    actualFlag: true,
+  });
+  await expect(page.getByRole("link", { name: /Book IRCTC/ })).toHaveAttribute(
+    "href",
+    /irctc\.co\.in/,
+  );
+  expect(booking.state.requests).toHaveLength(0);
+});

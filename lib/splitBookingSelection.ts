@@ -6,6 +6,7 @@ import type {
   SplitBookingLeg,
   SplitBookingLegAvailabilityResult,
 } from "@/lib/split-booking";
+import { isAcClass } from "@/lib/trainClasses";
 
 export type LegClassSelections = Partial<Record<number, string>>;
 
@@ -202,4 +203,19 @@ export function buildSplitBookingSelection(
             0,
           ) / 100,
   };
+}
+
+/** Checks if an alternate leg has at least one confirmed AC class option. */
+export function legHasAcOption(leg: AlternateLeg): boolean {
+  return getLegClassOptions(leg).some((opt) => isAcClass(opt.travelClass));
+}
+
+/** Checks if an itinerary of alternate legs has at least one confirmed leg with an AC class. */
+export function hasAtLeastOneAcLeg(
+  legs?: readonly AlternateLeg[] | null,
+): boolean {
+  if (!legs || legs.length === 0) return false;
+  return legs.some(
+    (leg) => leg.segmentKind === "confirmed" && legHasAcOption(leg),
+  );
 }

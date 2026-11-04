@@ -27,7 +27,7 @@ export const PASSENGER = {
 } as const;
 
 export function classOption(
-  travelClass = "SL",
+  travelClass = "3A",
   fare: number | null = 580,
 ): AlternateClassOption {
   return {

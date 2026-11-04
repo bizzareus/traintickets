@@ -9,6 +9,8 @@ import {
   getLegClassOptions,
   getSelectedLegClass,
   applyLegAvailability,
+  hasAtLeastOneAcLeg,
+  legHasAcOption,
 } from "./splitBookingSelection";
 
 const option = (
@@ -206,5 +208,37 @@ describe("per-leg booking class choices", () => {
       assert.deepEqual(result.leg.confirmedClassOptions, original.confirmedClassOptions);
     }
     assert.equal(applyLegAvailability(original, "12345", "2026-10-01", []).failed, true);
+  });
+
+  test("identifies whether legs contain at least one confirmed AC class", () => {
+    const allNonAc = [
+      leg("DEC", "GGN", [option("SL", 180), option("2S", 90)]),
+      leg("GGN", "AII", [option("SL", 200)]),
+    ];
+    assert.equal(hasAtLeastOneAcLeg(allNonAc), false);
+    assert.equal(legHasAcOption(allNonAc[0]), false);
+    assert.equal(legHasAcOption(allNonAc[1]), false);
+
+    const withAcOption = [
+      leg("DEC", "GGN", [option("SL", 180), option("3A", 565)]),
+      leg("GGN", "AII", [option("SL", 200)]),
+    ];
+    assert.equal(hasAtLeastOneAcLeg(withAcOption), true);
+    assert.equal(legHasAcOption(withAcOption[0]), true);
+
+    const singleAcLeg = [leg("GGN", "AII", [option("2A", 800)])];
+    assert.equal(hasAtLeastOneAcLeg(singleAcLeg), true);
+
+    const realtimeHop = [
+      {
+        ...leg("DEC", "GGN", [option("3A", 565)]),
+        segmentKind: "check_realtime" as const,
+      },
+    ];
+    assert.equal(hasAtLeastOneAcLeg(realtimeHop), false);
+
+    assert.equal(hasAtLeastOneAcLeg([]), false);
+    assert.equal(hasAtLeastOneAcLeg(null), false);
+    assert.equal(hasAtLeastOneAcLeg(undefined), false);
   });
 });

@@ -9,11 +9,15 @@ import {
 } from "@/lib/analytics/track";
 import { cn } from "@/lib/utils";
 import { buildAlternatePathDisplayItems } from "@/lib/bookingV2AlternatePathsDisplay";
-import { getLegClassOptions, hasClassFare } from "@/lib/splitBookingSelection";
+import {
+  getLegClassOptions,
+  hasClassFare,
+  hasAtLeastOneAcLeg,
+} from "@/lib/splitBookingSelection";
 import { countConfirmedAlternateLegs } from "@/lib/trainSearchV2Sort";
 import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
 import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
-import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
+import { isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
 import { useChartAlertPayments } from "@/lib/hooks/useChartAlertPayments";
 import { useSplitBookingFeatureFlag } from "@/lib/hooks/useSplitBookingFeatureFlag";
@@ -791,8 +795,16 @@ export function AlternatePathContent({
     () => countConfirmedAlternateLegs(altResult?.legs, altResult?.legCount),
     [altResult],
   );
-  /** Booking is controlled solely by the `split-ticket-assisted-booking` flag. */
-  const canStartBooking = isSplitBookingEnabled && confirmedLegCount >= 1;
+
+  /** Has at least 1 confirmed AC leg. */
+  const hasAcLeg = useMemo(
+    () => hasAtLeastOneAcLeg(altResult?.legs),
+    [altResult?.legs],
+  );
+
+  /** Booking is enabled only if enabled in PostHog flag AND has at least 1 AC leg. */
+  const canStartBooking =
+    isSplitBookingEnabled && confirmedLegCount >= 1 && hasAcLeg;
 
   // One-click "search all other trains" for the same route/date — shown once the
   // search is done and this train can't fully confirm the journey (no complete
@@ -1336,7 +1348,7 @@ export function AlternatePathContent({
           </div>
         )}
 
-      {isSplitBookingEnabled && bookingRequest && (
+      {canStartBooking && bookingRequest && (
         <SplitTicketBookingFlow
           {...bookingRequest}
           onClose={() => setBookingRequest(null)}

@@ -25,8 +25,16 @@ export const ALL_TRAIN_CLASS_CODES = AVAILABLE_TRAIN_CLASSES.map((c) => c.code);
 export const NON_AC_CLASSES = new Set(["SL", "2S", "GN", "FC"]);
 
 /** Checks if a class code is an AC class. */
-export function isAcClass(code: string): boolean {
-  return !NON_AC_CLASSES.has(code.toUpperCase());
+export function isAcClass(code?: string | null): boolean {
+  if (!code) return false;
+  return !NON_AC_CLASSES.has(code.trim().toUpperCase());
+}
+
+/** Checks if a list of class codes has at least one AC class. */
+export function hasAtLeastOneAcClass(
+  classes?: readonly (string | null | undefined)[] | null,
+): boolean {
+  return Boolean(classes?.some((c) => isAcClass(c)));
 }
 
 /** Normalizes and deduplicates class strings. */

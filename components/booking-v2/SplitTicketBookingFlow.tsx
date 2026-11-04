@@ -14,6 +14,7 @@ import {
   SKIP_LEG,
   type LegClassSelections,
 } from "@/lib/splitBookingSelection";
+import { isAcClass } from "@/lib/trainClasses";
 import type { AlternateLeg } from "./alternatePathsTypes";
 import {
   formatTimeAmPm,
@@ -73,8 +74,14 @@ export function SplitTicketBookingFlow({
   const refreshing = [...availability.refreshingLegs].some(
     (index) => !isSkipped(index),
   );
+  const hasSelectedAcLeg = selection.legs.some((leg) =>
+    isAcClass(leg.travelClass),
+  );
   const canContinue =
-    !refreshing && selection.totalFare !== null && selection.legs.length >= 1;
+    !refreshing &&
+    selection.totalFare !== null &&
+    selection.legs.length >= 1 &&
+    hasSelectedAcLeg;
   const toBookingDetails = (): Omit<
     SplitTicketBookingModalProps,
     "open" | "onClose"
@@ -355,6 +362,10 @@ export function SplitTicketBookingFlow({
                 "Select at least 1 ticket to continue."
               ) : selection.totalFare === null ? (
                 "Choose a priced class for selected tickets to continue."
+              ) : !hasSelectedAcLeg ? (
+                <span className="font-semibold text-amber-700">
+                  Online booking requires at least 1 AC ticket. Please select an AC class or book on IRCTC.
+                </span>
               ) : (
                 <>
                   Ticket fare ({selection.legs.length}{" "}

@@ -21,6 +21,7 @@ import {
   type SplitTicketBookingFlowProps,
 } from "./SplitTicketBookingFlow";
 import { useSplitBookingFeatureFlag } from "@/lib/hooks/useSplitBookingFeatureFlag";
+import { hasAtLeastOneAcLeg } from "@/lib/splitBookingSelection";
 import { trackAnalyticsEvent } from "@/lib/analytics/track";
 import type {
   AlternateLeg,
@@ -1097,12 +1098,14 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
         </div>
       </li>
 
-      {isSplitBookingEnabled && bookingRequest && (
-        <SplitTicketBookingFlow
-          {...bookingRequest}
-          onClose={() => setBookingRequest(null)}
-        />
-      )}
+      {isSplitBookingEnabled &&
+        bookingRequest &&
+        hasAtLeastOneAcLeg(bookingRequest.legs) && (
+          <SplitTicketBookingFlow
+            {...bookingRequest}
+            onClose={() => setBookingRequest(null)}
+          />
+        )}
     </>
   );
 });
