@@ -50,8 +50,8 @@ real. OS share-sheet behavior still requires a real-device check.
 ## Booking charges
 
 `backend/src/split-booking/booking-charges.json` defines GST-inclusive IRCTC
-service charges by class (₹17.70 non-AC, ₹35.40 AC), the ₹40 LastBerth service
-charge **per leg**, and the 3% gateway charge. Both service charges apply to each
+service charges by class (₹17.70 non-AC, ₹35.40 AC), LastBerth service charges
+per leg (₹20 non-AC, ₹40 AC), and the gateway charge percentage. Both service charges apply to each
 selected ticket. The gateway fee is calculated once on the combined ticket fare
 and service charges, rounded to the nearest paise. The chargeable total sent to
 Muzobox is that exact sum rounded once to whole rupees (Muzobox rejects

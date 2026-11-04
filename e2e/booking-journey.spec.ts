@@ -83,7 +83,7 @@ test("class upgrade across the whole journey changes the charged total", async (
   await booking.submit();
   await expect(
     booking.details().getByRole("heading", {
-      name: "Pay ₹1,247.62",
+      name: "Pay ₹1,227.62",
       exact: true,
     }),
   ).toBeVisible();
@@ -94,9 +94,9 @@ test("class upgrade across the whole journey changes the charged total", async (
     "Ticket Fare₹1,100.00",
     "IRCTC Service Charge₹53.10",
     "IRCTC Payment Gateway Fee₹13.62",
-    "LastBerth Service Charge₹80.00",
+    "LastBerth Service Charge₹60.00",
     "Travel Insurance₹0.90",
-    "Total Amount₹1,247.62",
+    "Total Amount₹1,227.62",
   ]) {
     await expect(breakdown).toContainText(row);
   }

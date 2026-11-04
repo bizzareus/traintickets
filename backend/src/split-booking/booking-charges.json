@@ -9,6 +9,16 @@
     "CC": 35.4,
     "EC": 35.4
   },
+  "lastBerthServiceChargeByClass": {
+    "SL": 20,
+    "2S": 20,
+    "1A": 40,
+    "2A": 40,
+    "3A": 40,
+    "3E": 40,
+    "CC": 40,
+    "EC": 40
+  },
   "lastBerthServiceChargePerLeg": 40,
   "irctcPaymentGatewayPercent": 1.18,
   "travelInsuranceCharge": 0.45

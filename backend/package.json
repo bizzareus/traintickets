@@ -26,7 +26,7 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "pretest": "npm run test:observe",
     "test": "jest",
-    "test:observe": "node --test test/observe-wire.test.mjs",
+    "test:observe": "node --preserve-symlinks --test test/observe-wire.test.mjs",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",

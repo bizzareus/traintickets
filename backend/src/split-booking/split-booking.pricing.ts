@@ -15,11 +15,27 @@ type StoredBookingPrice = Pick<
 const irctcCharges: Readonly<Record<string, number>> =
   charges.irctcServiceChargeByClass;
 
+const lastBerthCharges: Readonly<Record<string, number>> =
+  (charges as { lastBerthServiceChargeByClass?: Record<string, number> })
+    .lastBerthServiceChargeByClass ?? {};
+
+const NON_AC_CLASSES = new Set(['SL', '2S', 'GN', 'FC']);
+
 export function irctcServiceChargePaise(travelClass: string): number {
   const code = travelClass.trim().toUpperCase();
   const fee = irctcCharges[code];
   if (fee === undefined) throw new Error(`Unsupported travel class: ${code}`);
   return Math.round(fee * 100);
+}
+
+export function lastBerthServiceCharge(travelClass: string): number {
+  const code = travelClass.trim().toUpperCase();
+  const fee = lastBerthCharges[code];
+  if (fee !== undefined) return fee;
+  if (irctcCharges[code] === undefined) {
+    throw new Error(`Unsupported travel class: ${code}`);
+  }
+  return NON_AC_CLASSES.has(code) ? 20 : 40;
 }
 
 export function hasTravelInsurance(booking: StoredBookingPrice): boolean {
@@ -86,7 +102,10 @@ export function calculateBookingCharges(
   if (!Number.isSafeInteger(totalFare) || totalFare <= 0 || !legs.length) {
     throw new Error('A positive ticket fare and at least one leg are required');
   }
-  const serviceFee = legs.length * charges.lastBerthServiceChargePerLeg;
+  const serviceFee = legs.reduce(
+    (sum, leg) => sum + lastBerthServiceCharge(leg.travelClass),
+    0,
+  );
   const irctcServiceFeePaise = legs.reduce(
     (sum, leg) => sum + irctcServiceChargePaise(leg.travelClass),
     0,

@@ -33,10 +33,10 @@ describe('Booking HTTP contract', () => {
     expect(response.body).toEqual({
       totalFare: 1100,
       irctcServiceFee: 53.1,
-      serviceFee: 80,
+      serviceFee: 60,
       paymentGatewayFee: 13.62,
       travelInsuranceFee: 0.9,
-      amount: 1248,
+      amount: 1228,
     });
     expect(createBooking).not.toHaveBeenCalled();
   });

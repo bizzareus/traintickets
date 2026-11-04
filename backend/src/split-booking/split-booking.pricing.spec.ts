@@ -2,6 +2,7 @@ import {
   bookingAmountPaise,
   bookingPrice,
   calculateBookingCharges,
+  lastBerthServiceCharge,
 } from './split-booking.pricing';
 import {
   bookingPriceHtml,
@@ -11,12 +12,13 @@ import {
 describe('Itemized booking pricing', () => {
   it.each([
     [1120, ['2A'], 35.4, 40, 13.64, 0.45, 1209],
-    [1120, ['SL'], 17.7, 40, 13.43, 0.45, 1192],
+    [1120, ['SL'], 17.7, 20, 13.43, 0.45, 1172],
     [810, ['3A', '3A'], 70.8, 80, 10.4, 0.9, 972],
-    [810, ['SL', '3A'], 53.1, 80, 10.2, 0.9, 954],
+    [810, ['SL', '3A'], 53.1, 60, 10.2, 0.9, 934],
     [1110, ['3A', '3A', '3A'], 106.2, 120, 14.37, 1.35, 1352],
     [2500, ['3A', '3A', '3A', '3A', '3A'], 177, 200, 31.62, 2.25, 2911],
-    [265, ['SL'], 17.7, 40, 3.34, 0.45, 326],
+    [265, ['SL'], 17.7, 20, 3.34, 0.45, 306],
+    [150, ['2S'], 17.7, 20, 1.98, 0.45, 190],
   ])(
     'prices fare ₹%s and classes %j with a whole-rupee total',
     (fare, classes, irctc, service, gateway, insurance, total) => {
@@ -90,13 +92,29 @@ describe('Itemized booking pricing', () => {
     ).toThrow('Unsupported travel class');
   });
 
+  it('charges ₹20 for non-AC classes and ₹40 for AC classes', () => {
+    expect(lastBerthServiceCharge('SL')).toBe(20);
+    expect(lastBerthServiceCharge('2S')).toBe(20);
+    expect(lastBerthServiceCharge('3A')).toBe(40);
+    expect(lastBerthServiceCharge('2A')).toBe(40);
+    expect(lastBerthServiceCharge('1A')).toBe(40);
+    expect(lastBerthServiceCharge('3E')).toBe(40);
+    expect(lastBerthServiceCharge('CC')).toBe(40);
+    expect(lastBerthServiceCharge('EC')).toBe(40);
+    expect(lastBerthServiceCharge(' sl ')).toBe(20);
+    expect(lastBerthServiceCharge('3a')).toBe(40);
+    expect(() => lastBerthServiceCharge('INVALID')).toThrow(
+      'Unsupported travel class',
+    );
+  });
+
   it('calculates gateway fee on IRCTC ticket charges', () => {
     const saved = calculateBookingCharges(5, [
       { travelClass: 'SL' },
       { travelClass: 'SL' },
     ]);
     expect(saved.paymentGatewayFeePaise).toBe(49);
-    expect(bookingAmountPaise(saved)).toBe(12179);
+    expect(bookingAmountPaise(saved)).toBe(8179);
   });
 
   it('rounds half rupees up to the next whole rupee', () => {

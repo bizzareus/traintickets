@@ -255,7 +255,12 @@ for (const scenario of [
     expect(payload.totalFare).toBe(
       payload.legs.reduce((sum, leg) => sum + leg.fare, 0),
     );
-    expect(booking.state.checkout.serviceFee).toBe(payload.legs.length * 40);
+    const nonAcClasses = new Set(["SL", "2S", "GN", "FC"]);
+    const expectedServiceFee = payload.legs.reduce(
+      (sum, leg) => sum + (nonAcClasses.has(leg.travelClass) ? 20 : 40),
+      0,
+    );
+    expect(booking.state.checkout.serviceFee).toBe(expectedServiceFee);
     const irctcSubtotalPaise = Math.round(
       (payload.totalFare +
         booking.state.checkout.irctcServiceFee +
