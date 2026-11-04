@@ -2,7 +2,7 @@
 title: "General Ticket in Sleeper Class: Fine Amount & Rules (2026)"
 description: "Can you travel in Sleeper Class with a general or platform ticket? Learn the ₹500 fine under Jan Vishwas Act 2026, October checking drive rules & TTE powers."
 date: "2026-06-12"
-updated: "2026-10-28"
+updated: "2026-11-02"
 tags:
   - general ticket
   - platform ticket
@@ -169,28 +169,28 @@ Every TTE on duty must wear an official uniform with a navy-blue blazer or coat,
 
 ## How to Travel Legally Without a Reservation in an Emergency?
 
-**If you must travel immediately without a confirmed reservation, you have four legal options: purchase an unreserved general ticket for designated General coaches (GS), book a Current Availability ticket up to 30 minutes before departure at a 10% discount, use Finding Smart Seats to find split berths, or check live vacancies on Chart Vacancy.**
+**If you must travel immediately without a confirmed reservation, you have four legal options: purchase an unreserved general ticket for designated General coaches (GS), book a Current Availability ticket up to 15 minutes before departure at a 10% discount, use Finding Smart Seats to find split berths, or check live vacancies on Chart Vacancy.**
 
 When direct train seats show `REGRET` or high waitlists, you do not need to risk illegal boarding and ₹500 penalties. Instead, use these four proven, 100% legal alternatives:
 
 | Legal Travel Option                      | Booking Window                       | Pricing & Surcharges              | Confirmation Guarantee                       | Best Use Case                               |
 | ---------------------------------------- | ------------------------------------ | --------------------------------- | -------------------------------------------- | ------------------------------------------- |
 | **Unreserved General Coach (GS/UR)**     | Up to departure time                 | Standard base unreserved fare     | No seat guarantee (Open seating)             | Short daylight journeys, budget travel      |
-| **Current Availability (`CURR_AVBL`)**   | ~4 hours to 30 mins before departure | **10% discount** on base fare     | **100% confirmed** berth with coach & seat   | Last-minute travel post chart prep          |
+| **Current Availability (`CURR_AVBL`)**   | ~8 hours to 15 mins before departure | **10% discount** on base fare     | **100% confirmed** berth with coach & seat   | Last-minute travel post chart prep          |
 | **Smart Seats Contiguous Split Booking** | Standard booking window              | Normal telescopic / segment fares | **100% confirmed** split seats on same train | Bypassing waitlists on long-distance routes |
 | **Onboard TTE Regularization (EFT)**     | After train departs                  | Fare difference + ₹500 fine       | Contingent on onboard vacancy                | Genuine medical / unavoidable rush          |
 
 ### 1. Purchase General Tickets via the UTS Mobile App
 
-You can bypass counter lines by buying unreserved paperless tickets on the official UTS mobile application. Ensure you book while positioned between 20 meters and 20 kilometers from the departure station (geofenced to prevent fraud from moving trains).
+You can bypass counter lines by buying unreserved paperless tickets on the official UTS mobile application. Ensure you book while positioned outside station premises (the outer distance limit was abolished by Indian Railways in April 2024, but the inner geofence prevents booking from within platforms or moving trains).
 
 ### 2. Book Current Availability (`CURR_AVBL`) Tickets
 
-After the first reservation chart is finalized (prepared at least 4 hours before departure from the originating station, or at 8:00 PM the previous evening for morning trains departing before 2:00 PM), unallocated VIP, emergency, and foreign tourist quotas are released to the general public.
+After the first reservation chart is finalized (prepared approximately 8 hours before departure from the originating station, or at 9:00 PM / 21:00 hrs the previous evening for morning trains departing before 14:00 hrs), unallocated VIP, emergency, and foreign tourist quotas are released to the general public.
 
 - Status displays as `CURR_AVBL` or `CURR AVL`.
 - Berths are sold at an automatic **10% discount** on basic fare.
-- Bookable on the IRCTC website, mobile app, or PRS counters until **30 minutes before departure**.
+- Bookable on the IRCTC website, mobile app, or PRS counters until **15 minutes before departure**.
 - Learn more in our detailed guide to [how IRCTC current availability works](/blog/irctc-current-availability-explained).
 
 ### 3. Use Smart Seats on LastBerth
@@ -243,7 +243,7 @@ An unreserved general ticket permits travel in designated unreserved general coa
 
 ### How can I find confirmed seats on a fully booked train without risking fines?
 
-Instead of boarding illegally and paying fines, use [Finding Smart Seats](/) to search split-ticket options on the same train, track post-charting vacant berths on [Chart Vacancy](/chart-vacancy), or check [Chart Times](/chart-times) to book Current Availability (`CURR_AVBL`) tickets at a 10% discount up to 30 minutes before departure.
+Instead of boarding illegally and paying fines, use [Finding Smart Seats](/) to search split-ticket options on the same train, track post-charting vacant berths on [Chart Vacancy](/chart-vacancy), or check [Chart Times](/chart-times) to book Current Availability (`CURR_AVBL`) tickets at a 10% discount up to 15 minutes before departure.
 
 ---
 

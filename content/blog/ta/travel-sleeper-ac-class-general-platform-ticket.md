@@ -2,7 +2,7 @@
 title: "General Ticket in Sleeper Class: Fine Amount & Rules (2026)"
 description: "Can you travel in Sleeper Class with a general or platform ticket? Learn the ₹500 fine under Jan Vishwas Act 2026, October checking drive rules & TTE powers."
 date: "2026-06-12"
-updated: "2026-10-03"
+updated: "2026-11-02"
 tags:
   - general ticket
   - platform ticket
@@ -167,28 +167,28 @@ TTEகள் 10:00 PM மற்றும் 6:00 AM இடையிலான ந
 
 ## How to Travel Legally Without a Reservation in an Emergency?
 
-**நீங்கள் உறுதி செய்யப்பட்ட பதிவு இல்லாமல் உடனடியாக பயணம் செய்ய வேண்டுமானால், நீங்கள் நான்கு சட்ட விருப்பங்களை கொண்டுள்ளீர்கள்: குறிப்பிட்ட பொதுத்தொகுப்புகளுக்கான பதிவு செய்யாத பொதுத்தொகுப்பை வாங்கவும் (GS), புறப்படுவதற்கு 30 நிமிடங்களுக்கு முன்பு 10% தள்ளுபடியுடன் Current Availability டிக்கெட் முன்பதிவு செய்யவும், Finding Smart Seats ஐப் பயன்படுத்தி பிளவுபட்ட இடங்களை கண்டுபிடிக்கவும், அல்லது Chart Vacancy இல் நேரடி காலியிடங்களை சரிபார்க்கவும்.**
+**நீங்கள் உறுதி செய்யப்பட்ட பதிவு இல்லாமல் உடனடியாக பயணம் செய்ய வேண்டுமானால், நீங்கள் நான்கு சட்ட விருப்பங்களை கொண்டுள்ளீர்கள்: குறிப்பிட்ட பொதுத்தொகுப்புகளுக்கான பதிவு செய்யாத பொதுத்தொகுப்பை வாங்கவும் (GS), புறப்படுவதற்கு 15 நிமிடங்களுக்கு முன்பு 10% தள்ளுபடியுடன் Current Availability டிக்கெட் முன்பதிவு செய்யவும், Finding Smart Seats ஐப் பயன்படுத்தி பிளவுபட்ட இடங்களை கண்டுபிடிக்கவும், அல்லது Chart Vacancy இல் நேரடி காலியிடங்களை சரிபார்க்கவும்.**
 
 நேரடி ரயில் இருக்கைகள் `REGRET` அல்லது உயர்ந்த காத்திருப்புகள் காட்டும் போது, நீங்கள் சட்டவிரோதமாக ஏறுவதையும் ₹500 அபராதங்களைச் சந்திக்க வேண்டிய அவசியமில்லை. பதிலாக, இந்த நான்கு சோதிக்கப்பட்ட, 100% சட்ட விருப்பங்களைப் பயன்படுத்தவும்:
 
 | Legal Travel Option                      | Booking Window                       | Pricing & Surcharges              | Confirmation Guarantee                       | Best Use Case                               |
 | ---------------------------------------- | ------------------------------------ | --------------------------------- | -------------------------------------------- | ------------------------------------------- |
 | **Unreserved General Coach (GS/UR)**     | Up to departure time                 | Standard base unreserved fare     | No seat guarantee (Open seating)             | Short daylight journeys, budget travel      |
-| **Current Availability (`CURR_AVBL`)**   | ~4 hours to 30 mins before departure | **10% discount** on base fare     | **100% confirmed** berth with coach & seat   | Last-minute travel post chart prep          |
+| **Current Availability (`CURR_AVBL`)**   | ~8 hours to 15 mins before departure | **10% discount** on base fare     | **100% confirmed** berth with coach & seat   | Last-minute travel post chart prep          |
 | **Smart Seats Contiguous Split Booking** | Standard booking window              | Normal telescopic / segment fares | **100% confirmed** split seats on same train | Bypassing waitlists on long-distance routes |
 | **Onboard TTE Regularization (EFT)**     | After train departs                  | Fare difference + ₹500 fine       | Contingent on onboard vacancy                | Genuine medical / unavoidable rush          |
 
 ### 1. Purchase General Tickets via the UTS Mobile App
 
-நீங்கள் அதிகாரப்பூர்வ UTS மொபைல் பயன்பாட்டில் பதிவு செய்யாத காகிதம் இல்லாத டிக்கெட்டுகளை வாங்குவதன் மூலம் கவுண்டர் வரிசைகளை தவிர்க்கலாம். நீங்கள் புறப்படுவதற்கான நிலையத்திற்குள் 20 மீட்டர் மற்றும் 20 கிலோமீட்டர் இடையே உள்ள போது பதிவு செய்ய வேண்டும் (மோசடியைத் தடுக்கும் வகையில்).
+நீங்கள் அதிகாரப்பூர்வ UTS மொபைல் பயன்பாட்டில் பதிவு செய்யாத காகிதம் இல்லாத டிக்கெட்டுகளை வாங்குவதன் மூலம் கவுண்டர் வரிசைகளை தவிர்க்கலாம். நீங்கள் நிலைய வளாகத்திற்கு வெளியே இருப்பதை உறுதிப்படுத்திக் கொள்ளுங்கள் (இந்திய இரயில்வே ஏப்ரல் 2024 இல் வெளிப்புற தூர வரம்பை நீக்கியது, ஆனால் உள் ஜியோஃபென்ஸ் நகரும் ரயில் அல்லது டிராக்குகளில் இருந்து முன்பதிவு செய்வதைத் தடுக்கிறது).
 
 ### 2. Book Current Availability (`CURR_AVBL`) Tickets
 
-முதல் பதிவு அட்டவணை முடிந்த பிறகு (ஆரம்ப நிலையத்திலிருந்து புறப்படுவதற்கு 4 மணி நேரத்திற்கு முன்பு தயாரிக்கப்படும், அல்லது 2:00 PM க்கு முன்பு புறப்படும் காலை ரயிலுக்கு முந்தைய இரவு 8:00 PMக்கு), ஒதுக்கப்படாத VIP, அவசர மற்றும் வெளிநாட்டு சுற்றுலா குவோட்டாக்கள் பொதுமக்களுக்கு வெளியிடப்படுகின்றன.
+முதல் பதிவு அட்டவணை முடிந்த பிறகு (ஆரம்ப நிலையத்திலிருந்து புறப்படுவதற்கு சுமார் 8 மணி நேரத்திற்கு முன்பு தயாரிக்கப்படும், அல்லது காலை 14:00 மணிக்கு முன்பு புறப்படும் ரயில்களுக்கு முந்தைய மாலை 21:00 / 9:00 PM மணி வரை), ஒதுக்கப்படாத VIP, அவசர மற்றும் வெளிநாட்டு சுற்றுலா குவோட்டாக்கள் பொதுமக்களுக்கு வெளியிடப்படுகின்றன.
 
 - நிலை `CURR_AVBL` அல்லது `CURR AVL` எனக் காட்டப்படுகிறது.
 - இடங்கள் அடிப்படைக் கட்டணத்தில் **10% தள்ளுபடியுடன்** விற்கப்படுகின்றன.
-- IRCTC இணையதளம், மொபைல் செயலி, அல்லது PRS கவுண்டர்களில் **30 நிமிடங்களுக்கு முன்பு** முன்பதிவு செய்யலாம்.
+- IRCTC இணையதளம், மொபைல் செயலி, அல்லது PRS கவுண்டர்களில் **15 நிமிடங்களுக்கு முன்பு** முன்பதிவு செய்யலாம்.
 - [IRCTC current availability works](/blog/irctc-current-availability-explained) என்ற எங்கள் விரிவான வழிகாட்டியில் மேலும் அறியவும்.
 
 ### 3. Use Smart Seats on LastBerth
@@ -241,7 +241,7 @@ TTEக்கு அருகிலுள்ள இடத்திற்கு �
 
 ### How can I find confirmed seats on a fully booked train without risking fines?
 
-அழுத்தமாக ஏறுவதற்குப் பதிலாக, [Finding Smart Seats](/) ஐப் பயன்படுத்தி ஒரே ரயிலில் பிளவுபட்ட டிக்கெட் விருப்பங்களை தேடவும், [Chart Vacancy](/chart-vacancy) இல் அட்டவணை முடிவுக்குப் பிறகு காலியான இடங்களைப் பார்க்கவும், அல்லது புறப்படுவதற்கு 30 நிமிடங்களுக்கு முன்பு Current Availability (`CURR_AVBL`) டிக்கெட்டுகளை 10% தள்ளுபடியுடன் முன்பதிவு செய்யவும்.
+அழுத்தமாக ஏறுவதற்குப் பதிலாக, [Finding Smart Seats](/) ஐப் பயன்படுத்தி ஒரே ரயிலில் பிளவுபட்ட டிக்கெட் விருப்பங்களை தேடவும், [Chart Vacancy](/chart-vacancy) இல் அட்டவணை முடிவுக்குப் பிறகு காலியான இடங்களைப் பார்க்கவும், அல்லது புறப்படுவதற்கு 15 நிமிடங்களுக்கு முன்பு Current Availability (`CURR_AVBL`) டிக்கெட்டுகளை 10% தள்ளுபடியுடன் முன்பதிவு செய்யவும்.
 
 ---
 
