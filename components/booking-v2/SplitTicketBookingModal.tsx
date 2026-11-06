@@ -1770,16 +1770,7 @@ export function SplitTicketBookingModal({
                       It&apos;s taking longer than usual.
                     </p>
                     <p className="mt-1">
-                      For any query, contact us on WhatsApp at{" "}
-                      <a
-                        href={`https://wa.me/919205369633?text=${encodeURIComponent(`Hi, I have a query about booking ${paymentData?.bookingRef}.`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-bold underline underline-offset-2 hover:text-amber-700"
-                      >
-                        +919205369633
-                      </a>
-                      , email{" "}
+                      For any query, email{" "}
                       <a
                         href={`mailto:support@lastberth.com?subject=${encodeURIComponent(`Query about booking ${paymentData?.bookingRef}`)}`}
                         className="font-bold underline underline-offset-2 hover:text-amber-700"
