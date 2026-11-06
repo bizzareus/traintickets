@@ -20,6 +20,11 @@ These candidates are queued for:
 ## 📋 Queued Candidates for Generator Review
 
 | Date Added | Target Keyword / Query | Impressions | Growth / Pos | Suggested Article Title | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-11-06 | `bandhan express` | High (10,736 imp) | Pos 8.6 (Uncovered GSC) | _Bandhan Express: Route, Timings, Booking & Passport Rules (2026)_ | ⏳ Queued |
+| 2026-11-06 | `jhelum express` | High (2,785 imp) | Pos 6.1 (Uncovered GSC) | _Jhelum Express (11077/11078): Route, Timings & Booking Rules (2026)_ | ⏳ Queued |
+| 2026-11-06 | `irctc downtime` / `irctc server down time` | High (3,303 imp) | Pos 6.3 (Uncovered GSC) | _IRCTC Downtime Today: Server Maintenance & Error Fixes (2026)_ | ⏳ Queued |
+| 2026-11-06 | `poorva express` | High (1,516 imp) | Pos 6.8 (Uncovered GSC) | _Poorva Express (12303/12381): Route, Timings & Chart Schedule (2026)_ | ⏳ Queued |
 | 2026-11-01 | `3rd ac cancellation charges` / `cancellation charges for 3ac` | High (~4,000/mo cluster demand) | Pos 9.7 (0.0% CTR / GSC Uncovered) | _3A / 3rd AC Cancellation Charges: IRCTC Rules & Refund (2026)_ | ✅ Published |
 | 2026-09-21 | `irctc advance reservation period` / `60 days rules calculator` | High (~18.8M/wk entity surge) | Breakout (+5000% 24h spike / 60-day rule) | _IRCTC Advance Reservation Period: 60-Day Rules & Dates (2026)_ | ✅ Published |
 | 2026-09-10 | `diwali special train 2026 list` / `booking date` | Very High (~18.8M/wk entity surge) | Breakout (+900% 7D / +999k% 1M) | _Diwali Special Train 2026: List, Booking Dates & Routes_ | ✅ Published |
@@ -36,7 +41,6 @@ These candidates are queued for:
 | 2026-08-23 | `suvidha train booking rules` | High (Seasonal Surge) | 50% Refund Rule | _Suvidha Train Rules 2026: Fares, Booking & 50% Refund Policy_ | ✅ Published |
 
 | 2026-08-22 | `diwali train ticket booking 2026`  | High (Seasonal Surge) | 60-Day ARP          | _Diwali & Chhath 2026 Train Booking: Dates & 60-Day Rules_            | ✅ Published |
-| ---------- | ----------------------------------- | --------------------- | ------------------- | --------------------------------------------------------------------- | ------------ |
 | 2026-08-03 | `current reservation timing irctc`  | 211                   | Pos 9.6 (2.37% CTR) | _Current Reservation IRCTC: Booking Timings & Fares (2026)_           | ✅ Published |
 | 2026-08-03 | `general quota meaning in irctc`    | 240                   | Pos 8.2             | _General Quota (GN) in IRCTC: Meaning, Rules & Seat Limits_           | ✅ Published |
 | 2026-07-31 | `tatkal token system timing`        | High (Breakout)       | Aug 1 Rule          | _New Tatkal Ticket Booking Rules 2026: Token Timings & Counter Guide_ | ✅ Published |
