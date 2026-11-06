@@ -182,7 +182,7 @@ test("five-minute message respects persisted paidAt and clears after completion"
     "It's taking longer than usual.",
   );
   await expect(
-    booking.details().getByRole("link", { name: "+919999224767" }),
+    booking.details().getByRole("link", { name: "support@lastberth.com" }),
   ).toHaveAttribute("href", /booking%20LB-TEST/);
   booking.state.status = {
     ...booking.state.status,

@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Us | LastBerth",
   description:
-    "Meet LastBerth, a registered IRCTC booking agent offering assisted train bookings, seat search, and chart vacancy tools.",
+    "Meet LastBerth, an independent platform offering assisted train bookings, seat search, and chart vacancy tools.",
 };
 
 export default function AboutPage() {
@@ -27,8 +27,7 @@ export default function AboutPage() {
           <p className="text-lg leading-relaxed text-slate-700">
             Welcome to <strong>LastBerth</strong>, your trusted companion for
             Indian Railways travel, reservation insights, chart vacancy
-            tracking, and assisted ticket bookings. We are a registered IRCTC
-            booking agent.
+            tracking, and assisted ticket bookings.
           </p>
 
           <h2 className="pt-4 text-2xl font-bold text-slate-900">
@@ -83,9 +82,9 @@ export default function AboutPage() {
 
           <h2 className="pt-4 text-2xl font-bold text-slate-900">Our Role</h2>
           <p>
-            LastBerth is independently operated as a registered IRCTC booking
-            agent. We are not the official website of IRCTC, Indian Railways, or
-            CRIS. For railway-operated services and authoritative train
+            LastBerth is an independently operated service. We are not the
+            official website of IRCTC, Indian Railways, or CRIS. For
+            railway-operated services and authoritative train
             information, please visit irctc.co.in or indianrail.gov.in.
           </p>
         </div>

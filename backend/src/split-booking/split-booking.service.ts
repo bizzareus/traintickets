@@ -1911,7 +1911,7 @@ export class SplitBookingService {
               ${customNoteHtml}
 
               <p style="color: #94a3b8; font-size: 12px; margin-top: 24px; border-top: 1px solid #f1f5f9; padding-top: 16px; line-height: 1.5;">
-                Need assistance? Contact LastBerth support at <a href="mailto:support@lastberth.com" style="color: #2563eb;">support@lastberth.com</a> or WhatsApp +91 99992 24767.<br/>
+                Need assistance? Contact LastBerth support at <a href="mailto:support@lastberth.com" style="color: #2563eb;">support@lastberth.com</a>.<br/>
                 Have a safe and comfortable journey!
               </p>
             </div>
@@ -2057,7 +2057,7 @@ export class SplitBookingService {
               <strong>Need to cancel?</strong> For cancellations, please visit <a href="https://v2.lastberth.com/cancel-booking?ref=${encodeURIComponent(booking.bookingRef)}" style="color: #2563eb; text-decoration: underline; font-weight: 600;">Cancel Booking</a> anytime using your booking reference and mobile number.
             </div>
             <p style="color: #94a3b8; font-size: 12px; margin-top: 24px; border-top: 1px solid #f1f5f9; padding-top: 16px; line-height: 1.5;">
-              Need assistance? Contact LastBerth support at <a href="mailto:support@lastberth.com" style="color: #2563eb;">support@lastberth.com</a> or WhatsApp +91 99992 24767.
+              Need assistance? Contact LastBerth support at <a href="mailto:support@lastberth.com" style="color: #2563eb;">support@lastberth.com</a>.
             </p>
           </div>
         </div>`;
@@ -3013,7 +3013,7 @@ Open Admin: https://v2.lastberth.com/admin/split-bookings?tab=cancellations`;
               <p style="margin: 3px 0; font-size: 13px;"><strong>Date:</strong> ${escapeHtml(journeyDateStr)}</p>
             </div>
             <p style="color: #94a3b8; font-size: 12px; margin-top: 24px; border-top: 1px solid #f1f5f9; padding-top: 16px; line-height: 1.5;">
-              If you have any questions or need further assistance, please contact LastBerth support at <a href="mailto:support@lastberth.com" style="color: #2563eb;">support@lastberth.com</a> or WhatsApp +91 99992 24767.
+              If you have any questions or need further assistance, please contact LastBerth support at <a href="mailto:support@lastberth.com" style="color: #2563eb;">support@lastberth.com</a>.
             </p>
           </div>
         </div>`;

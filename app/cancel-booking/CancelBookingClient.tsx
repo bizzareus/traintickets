@@ -244,16 +244,7 @@ export function CancelBookingClient() {
 
             <div className="mt-6 border-t border-slate-100 pt-4 text-center">
               <p className="text-xs text-slate-500">
-                Need urgent help? WhatsApp us directly at{" "}
-                <a
-                  href="https://wa.me/919205369633?text=Hi%2C%20I%20need%20help%20with%20booking%20cancellation."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-blue-600 underline hover:text-blue-800"
-                >
-                  +91 9205369633
-                </a>{" "}
-                or email{" "}
+                Need urgent help? Email us at{" "}
                 <a
                   href="mailto:support@lastberth.com?subject=Help%20with%20booking%20cancellation"
                   className="font-semibold text-blue-600 underline hover:text-blue-800"
@@ -375,8 +366,7 @@ export function CancelBookingClient() {
                 </p>
                 <p className="mt-1">
                   Our support team is processing it. If you need urgent status,
-                  please contact WhatsApp support at +91 99992 24767 or email{" "}
-                  support@lastberth.com.
+                  please email support@lastberth.com.
                 </p>
               </div>
             )}

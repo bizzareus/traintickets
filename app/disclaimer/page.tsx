@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Disclaimer | LastBerth",
   description:
-    "Learn about LastBerth's IRCTC agent status, assisted bookings, and railway data accuracy.",
+    "Learn about LastBerth's independent service status, assisted bookings, and railway data accuracy.",
 };
 
 export default function DisclaimerPage() {
@@ -29,11 +29,11 @@ export default function DisclaimerPage() {
           </p>
 
           <h2 className="pt-2 text-xl font-bold text-slate-900">
-            1. IRCTC Agent Status
+            1. Independent Service
           </h2>
           <p>
-            <strong>LastBerth</strong> is a registered IRCTC booking agent and
-            an independently operated service. We are not the official website
+            <strong>LastBerth</strong> is an independently operated service. We
+            are not the official website
             of IRCTC, Indian Railways, CRIS, or the Ministry of Railways.
           </p>
           <p>

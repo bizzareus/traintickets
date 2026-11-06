@@ -63,8 +63,7 @@ export default function ContactPage() {
             Booking and Refund Support
           </h3>
           <p className="text-sm text-blue-800">
-            As a registered IRCTC agent, we support assisted bookings made
-            through LastBerth. For help with a LastBerth booking or payment,
+            We support assisted bookings made through LastBerth. For help with a LastBerth booking or payment,
             email support@lastberth.com. For a paid chart alert, you can also{" "}
             <Link href="/refund" className="font-semibold underline">
               request a refund

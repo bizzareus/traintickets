@@ -41,9 +41,9 @@ export default function TermsOfServicePage() {
             access or use the Service.
           </p>
           <p>
-            LastBerth is independently operated as a registered IRCTC booking
-            agent. An assisted booking request or payment is not a confirmed
-            train ticket until all required tickets and PNRs are issued.
+            LastBerth is an independently operated service. An assisted booking
+            request or payment is not a confirmed train ticket until all
+            required tickets and PNRs are issued.
           </p>
 
           <h2>2. User Accounts</h2>

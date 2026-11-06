@@ -109,4 +109,4 @@ Nov 14 sunset at the pond — mohalla gathered, folk songs, your mother holding 
 
 Reach safe — and save me a thekua. Happy Chhath!
 
-_LastBerth is an independently operated, registered IRCTC booking agent, not the official IRCTC or Indian Railways website. Assisted bookings are confirmed only once all required PNRs are issued._
+_LastBerth is an independently operated service, not the official IRCTC or Indian Railways website. Assisted bookings are confirmed only once all required PNRs are issued._
