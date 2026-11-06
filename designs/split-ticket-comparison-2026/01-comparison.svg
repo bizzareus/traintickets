@@ -11,10 +11,10 @@
   <g font-family="DIN Condensed, Arial Narrow, Arial, sans-serif" font-weight="700">
     <text x="64" y="245" fill="#88E2B6" font-size="92">CONFIRMED TICKET</text>
     <text x="64" y="318" fill="#FFFFFF" font-size="58">HOWRAH (HWH) → PURI (PURI)</text>
-    <text x="64" y="375" fill="#FFBA55" font-size="44">TRAVEL DATE: 07 NOV 2026</text>
+    <text x="64" y="375" fill="#FFBA55" font-size="44">TRAVEL DATE: 08 NOV 2026</text>
   </g>
   <g font-family="Arial, Helvetica, sans-serif">
-    <text x="65" y="430" fill="#E4EAF2" font-size="28" font-weight="700">SHATABDI EXP · 12277 · DEPARTS 02:15 PM</text>
+    <text x="65" y="430" fill="#E4EAF2" font-size="28" font-weight="700">DHAULI EXP · 12821 · DEPARTS 09:10 AM</text>
 
     <!-- Left Card: ConfirmTkt Direct Baseline -->
     <rect x="64" y="480" width="310" height="566" rx="20" fill="#FFF4EF"/>
@@ -22,7 +22,7 @@
     <rect x="64" y="504" width="5" height="62" fill="#BC5849"/>
     <rect x="396" y="504" width="5" height="62" fill="#247251"/>
     <text x="86" y="531" fill="#101B2C" font-size="33" font-weight="700">ConfirmTkt</text>
-    <text x="86" y="572" fill="#795B54" font-size="23">End-to-end · CC &amp; EC</text>
+    <text x="86" y="572" fill="#795B54" font-size="23">End-to-end · 2S, CC &amp; 3E</text>
     <path d="M86 597H352" stroke="#E3CBC2"/>
     <text x="86" y="640" fill="#795B54" font-size="18" letter-spacing="1">SCREENSHOT EXCERPT</text>
     <rect x="80" y="662" width="278" height="127" rx="8" fill="#FFFFFF"/>
@@ -33,22 +33,32 @@
     <text x="86" y="952" fill="#574B48" font-size="24">the full route.</text>
 
     <!-- Right Card: LastBerth Split Legs -->
-    <text x="422" y="528" fill="#355AED" font-size="33" font-weight="700" letter-spacing="-1">LastBerth</text>
-    <text x="422" y="558" fill="#466A57" font-size="20">Available seats in split legs</text>
-    <path d="M422 578H990" stroke="#C5E1D1"/>
+    <text x="422" y="525" fill="#355AED" font-size="33" font-weight="700" letter-spacing="-1">LastBerth</text>
+    <text x="422" y="555" fill="#466A57" font-size="20">Available seats in split legs</text>
+    <path d="M422 575H990" stroke="#C5E1D1"/>
 
     <!-- Leg 1 -->
-    <text x="422" y="616" fill="#315A43" font-size="20" font-weight="700">01  HWH → BLS (CC · AVL 18 · ₹745)</text>
-    <rect x="422" y="628" width="568" height="120" rx="8" fill="#FFFFFF"/>
-    <image href="crops/lastberth-leg-1.png" x="432" y="636" width="548" height="104" preserveAspectRatio="xMidYMid meet"/>
+    <text x="422" y="605" fill="#315A43" font-size="20" font-weight="700">01  HWH → KGP (3E · AVL 7 · ₹565)</text>
+    <rect x="422" y="615" width="568" height="74" rx="8" fill="#FFFFFF"/>
+    <image href="crops/lastberth-leg-1.png" x="432" y="618" width="548" height="68" preserveAspectRatio="xMidYMid meet"/>
 
     <!-- Leg 2 -->
-    <text x="422" y="792" fill="#315A43" font-size="20" font-weight="700">02  BLS → PURI (CC · AVL 41 · ₹945)</text>
-    <rect x="422" y="804" width="568" height="175" rx="8" fill="#FFFFFF"/>
-    <image href="crops/lastberth-leg-2.png" x="432" y="812" width="548" height="160" preserveAspectRatio="xMidYMid meet"/>
+    <text x="422" y="715" fill="#315A43" font-size="20" font-weight="700">02  KGP → JER (2S · AVL 4 · ₹75)</text>
+    <rect x="422" y="725" width="568" height="74" rx="8" fill="#FFFFFF"/>
+    <image href="crops/lastberth-leg-2.png" x="432" y="728" width="548" height="68" preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Leg 3 -->
+    <text x="422" y="825" fill="#315A43" font-size="20" font-weight="700">03  JER → SORO (2S · AVL 2 · ₹80)</text>
+    <rect x="422" y="835" width="568" height="74" rx="8" fill="#FFFFFF"/>
+    <image href="crops/lastberth-leg-3.png" x="432" y="838" width="548" height="68" preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Leg 4 -->
+    <text x="422" y="935" fill="#315A43" font-size="20" font-weight="700">04  SORO → PURI (2S · AVL 90 · ₹125)</text>
+    <rect x="422" y="945" width="568" height="74" rx="8" fill="#FFFFFF"/>
+    <image href="crops/lastberth-leg-4.png" x="432" y="948" width="548" height="68" preserveAspectRatio="xMidYMid meet"/>
 
     <!-- Summary Row -->
-    <text x="64" y="1091" fill="#D6E0EB" font-size="24">2 tickets · CC across both legs · Seat change at Balasore (BLS)</text>
+    <text x="64" y="1091" fill="#D6E0EB" font-size="24">4 tickets · 3E &amp; 2S · Class / berth changes needed</text>
 
     <!-- Total Fare & CTA -->
     <rect x="64" y="1125" width="952" height="105" rx="14" fill="#FFFFFF"/>
