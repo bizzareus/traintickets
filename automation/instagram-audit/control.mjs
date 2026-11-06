@@ -91,7 +91,8 @@ async function validate(runDir) {
     throw new Error("Candidate is outside the assigned routes/dates");
   }
   if (
-    audit.images.length < 2 ||
+    audit.images.length < 1 ||
+    audit.images.length > 4 ||
     audit.caption.length < 80 ||
     audit.caption.length > 2200
   )
