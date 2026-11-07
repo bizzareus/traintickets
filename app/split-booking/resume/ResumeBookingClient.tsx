@@ -304,7 +304,7 @@ export function ResumeBookingClient({ bookingRef }: { bookingRef: string }) {
               {/* Trust Badge */}
               <div className="flex items-center justify-center gap-1.5 text-xs text-slate-500">
                 <ShieldCheck className="h-4 w-4 text-emerald-600" />
-                <span>LastBerth is an official IRCTC Authorized Agent</span>
+                <span>Genuine IRCTC tickets with verified PNRs</span>
               </div>
             </div>
           )}

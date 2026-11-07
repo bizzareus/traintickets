@@ -147,7 +147,7 @@ export function renderAbandonedBookingReminderHtml(
                       <span style="font-size:22px; font-weight:900; color:#2563eb; letter-spacing:-0.5px;">LastBerth</span>
                     </a>
                     <span style="display:inline-block; margin-left:8px; padding:2px 8px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:999px; font-size:10px; font-weight:700; color:#15803d; vertical-align:middle;">
-                      ✓ IRCTC Agent
+                      ✓ Secured Booking
                     </span>
                   </td>
                   <td align="right" style="vertical-align:middle;">
@@ -275,7 +275,7 @@ export function renderAbandonedBookingReminderHtml(
                         <td align="right" style="font-weight:600; color:#0f172a; padding:3px 0;">₹${totalFare.toLocaleString('en-IN')}</td>
                       </tr>
                       <tr>
-                        <td style="color:#64748b; padding:3px 0;">IRCTC Agent Convenience:</td>
+                        <td style="color:#64748b; padding:3px 0;">LastBerth Service Charge:</td>
                         <td align="right" style="font-weight:700; color:#15803d; padding:3px 0;">Included</td>
                       </tr>
                       <tr>
@@ -301,8 +301,8 @@ export function renderAbandonedBookingReminderHtml(
                 <tr>
                   <td style="vertical-align:top; width:33.33%; padding:0 8px 0 0; text-align:center;">
                     <div style="font-size:16px;">🛡️</div>
-                    <div style="font-size:11px; font-weight:800; color:#0f172a; margin-top:4px;">100% Authorized</div>
-                    <div style="font-size:10px; color:#64748b; line-height:1.3; margin-top:2px;">Official IRCTC Agent partner</div>
+                    <div style="font-size:11px; font-weight:800; color:#0f172a; margin-top:4px;">100% Genuine Tickets</div>
+                    <div style="font-size:10px; color:#64748b; line-height:1.3; margin-top:2px;">Real IRCTC e-tickets with verified PNRs</div>
                   </td>
                   <td style="vertical-align:top; width:33.33%; padding:0 4px; text-align:center; border-left:1px solid #e2e8f0; border-right:1px solid #e2e8f0;">
                     <div style="font-size:16px;">⚡</div>
@@ -335,7 +335,7 @@ export function renderAbandonedBookingReminderHtml(
                 Need assistance with your booking? Reply directly to this email or reach us at <a href="mailto:support@lastberth.com" style="color:#2563eb; text-decoration:none; font-weight:700;">support@lastberth.com</a>
               </p>
               <p style="margin:0; font-size:11px; color:#94a3b8; line-height:1.5;">
-                &copy; ${currentYear} LastBerth (<a href="https://lastberth.com" target="_blank" style="color:#94a3b8; text-decoration:underline;">lastberth.com</a>). Official IRCTC Authorized Agent.
+                &copy; ${currentYear} LastBerth (<a href="https://lastberth.com" target="_blank" style="color:#94a3b8; text-decoration:underline;">lastberth.com</a>). We are not affiliated with IRCTC or Indian Railways.
                 ${
                   unsubscribeUrl
                     ? ` &middot; <a href="${escapeHtml(unsubscribeUrl)}" style="color:#94a3b8; text-decoration:underline;">Unsubscribe</a>`

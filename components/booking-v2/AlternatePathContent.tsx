@@ -1343,7 +1343,7 @@ export function AlternatePathContent({
             </div>
             <div className="mt-2 flex items-center justify-center gap-1.5 border-t border-slate-100 pt-1.5 text-center text-[11px] font-medium text-slate-500 sm:text-xs">
               <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-emerald-600" />
-              <span>LastBerth is an official IRCTC Agent</span>
+              <span>Genuine IRCTC tickets with verified PNRs</span>
             </div>
           </div>
         )}

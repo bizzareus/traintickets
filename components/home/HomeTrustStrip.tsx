@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 interface HomeTrustStripProps {
   className?: string;
-  irctcAgentText?: string;
+  trustBadgeText?: string;
   trustedByText?: string;
   jugaadText?: string;
 }
@@ -15,7 +15,7 @@ interface HomeTrustStripProps {
  */
 export function HomeTrustStrip({
   className,
-  irctcAgentText = "Registered IRCTC Agent",
+  trustBadgeText = "Confirmed Ticket Booking",
   trustedByText = "Trusted by 50K+ Travellers",
   jugaadText = "Train travel jugaad",
 }: HomeTrustStripProps) {
@@ -32,7 +32,7 @@ export function HomeTrustStrip({
           className="h-4 w-4 shrink-0 text-emerald-600"
           aria-hidden="true"
         />
-        <span>{irctcAgentText}</span>
+        <span>{trustBadgeText}</span>
       </div>
       <span
         className="hidden select-none text-slate-300 sm:inline"
