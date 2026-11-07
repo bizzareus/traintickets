@@ -73,7 +73,9 @@ cmd_frontend() {
 
   # Build & run on remote instance
   color_info "Building & starting Frontend Next.js container on ${FRONTEND_IP}..."
-  ssh -o StrictHostKeyChecking=no "ubuntu@${FRONTEND_IP}" "cd /home/ubuntu/app/infra && docker compose up -d --build"
+  # Clear stale build cache first so repeated manual builds can never
+  # exhaust the VM disk, and prune re-replaced images after rollout.
+  ssh -o StrictHostKeyChecking=no "ubuntu@${FRONTEND_IP}" "cd /home/ubuntu/app/infra && (docker builder prune -af || true) && docker compose up -d --build && (docker image prune -af || true)"
   color_success "Frontend deployed and running on ${c_name} (IP: ${FRONTEND_IP})."
 }
 
@@ -104,7 +106,9 @@ cmd_backend() {
     "${ROOT_DIR}/backend/" "ubuntu@${BACKEND_IP}:/home/ubuntu/app/backend/"
 
   # Replace the old scheduler/API before starting the worker to avoid overlap on rollout.
-  ssh -o StrictHostKeyChecking=no "ubuntu@${BACKEND_IP}" "cd /home/ubuntu/app/infra && docker compose build backend && docker compose run --rm --no-deps backend npx prisma migrate deploy && docker compose up -d --no-build backend && docker compose up -d --no-build worker caddy"
+  # Clear stale build cache from the previous on-host build first, so repeated
+  # manual builds can never exhaust the VM disk mid-deploy.
+  ssh -o StrictHostKeyChecking=no "ubuntu@${BACKEND_IP}" "cd /home/ubuntu/app/infra && (docker builder prune -af || true) && docker compose build backend && docker compose run --rm --no-deps backend npx prisma migrate deploy && docker compose up -d --no-build backend && docker compose up -d --no-build worker caddy"
   color_success "Backend deployed and running on ${c_name} (IP: ${BACKEND_IP})."
 }
 

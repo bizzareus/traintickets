@@ -158,8 +158,8 @@ jobs:
 
           # GHCR from EC2 intermittently times out awaiting headers
           # (Client.Timeout). Retry login/pull with backoff instead of failing
-          # the deploy. Prune AFTER a successful rollout so a failed pull never
-          # leaves the host without a runnable image.
+          # the deploy. Images pinned by running containers are never pruned,
+          # so a failed pull still leaves the host runnable.
           ssh ubuntu@$TARGET_HOST "set -e
             export DOCKER_CLIENT_TIMEOUT=300 COMPOSE_HTTP_TIMEOUT=300
             for i in 1 2 3 4 5; do
@@ -168,7 +168,13 @@ jobs:
               echo \"GHCR login attempt \$i failed, retrying in \$((\$i*10))s...\"
               sleep \$((\$i*10))
             done
-            docker image prune -f || true
+            # Full sweep BEFORE pulling: build cache from any historic on-host
+            # build is pure waste on a pull-only host and previously filled
+            # the disk mid-pull. Images pinned by running containers are
+            # kept, so a failed pull still leaves the host runnable.
+            docker builder prune -af || true
+            docker container prune -f || true
+            docker image prune -af || true
             for i in 1 2 3 4 5; do
               if docker pull '$FRONTEND_IMAGE'; then break; fi
               if [ \$i -eq 5 ]; then echo 'docker pull failed after 5 attempts'; exit 1; fi
@@ -282,8 +288,8 @@ jobs:
 
           # GHCR from EC2 intermittently times out awaiting headers
           # (Client.Timeout). Retry login/pull with backoff instead of failing
-          # the deploy. Prune AFTER a successful rollout so a failed pull never
-          # leaves the host without a runnable image.
+          # the deploy. Images pinned by running containers are never pruned,
+          # so a failed pull still leaves the host runnable.
           ssh ubuntu@$TARGET_HOST "set -e
             export DOCKER_CLIENT_TIMEOUT=300 COMPOSE_HTTP_TIMEOUT=300
             for i in 1 2 3 4 5; do
@@ -292,7 +298,13 @@ jobs:
               echo \"GHCR login attempt \$i failed, retrying in \$((\$i*10))s...\"
               sleep \$((\$i*10))
             done
-            docker image prune -f || true
+            # Full sweep BEFORE pulling: build cache from any historic on-host
+            # build is pure waste on a pull-only host and previously filled
+            # the disk mid-pull. Images pinned by running containers are
+            # kept, so a failed pull still leaves the host runnable.
+            docker builder prune -af || true
+            docker container prune -f || true
+            docker image prune -af || true
             for i in 1 2 3 4 5; do
               if docker pull '$BACKEND_IMAGE'; then break; fi
               if [ \$i -eq 5 ]; then echo 'docker pull failed after 5 attempts'; exit 1; fi
