@@ -35,11 +35,9 @@ export default function DisclaimerPage() {
             <strong>LastBerth</strong> is a meta search engine for Indian
             Railways. We do not sell or book train tickets — when you pick a
             route, you are taken to IRCTC, where your booking is made and paid
-            for under IRCTC's own terms. LastBerth is not the official
+            for under IRCTC&apos;s own terms. LastBerth is not the official
             website of IRCTC, Indian Railways, CRIS, or the Ministry of
             Railways.
-          </p>
-            of IRCTC, Indian Railways, CRIS, or the Ministry of Railways.
           </p>
           <p>
             The official Indian Railways website can be found at{" "}
@@ -82,7 +80,7 @@ export default function DisclaimerPage() {
             LastBerth does not book train tickets or accept ticket-booking
             requests. Bookings are completed by you directly on IRCTC after
             LastBerth shows you available options. Payments you make to
-            LastBerth are only for LastBerth's own services (such as seat-alert
+            LastBerth are only for LastBerth&apos;s own services (such as seat-alert
             subscriptions), and never for a train ticket. For tickets bought
             through another provider, contact that provider about
             cancellations or refunds.
