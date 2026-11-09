@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  getTrainIndex,
   getTopTrainSlugs,
   buildTrainSlug,
   parseTrainNumberFromParam,
@@ -43,4 +44,15 @@ test("getTopTrainSlugs returns cached results on subsequent calls", () => {
   const second = getTopTrainSlugs(500);
   assert.equal(first, second);
   assert.equal(first.length, 500);
+});
+
+test("getTrainIndex returns cached Map instance reference on subsequent calls", () => {
+  const first = getTrainIndex();
+  const second = getTrainIndex();
+  assert.equal(first, second);
+  assert.ok(first.size > 0);
+  assert.ok(first.has("12015"));
+  const entry = first.get("12015");
+  assert.equal(entry?.trainNumber, "12015");
+  assert.equal(entry?.trainName, "Ajmer Shatabdi");
 });
