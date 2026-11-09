@@ -138,7 +138,7 @@ duplicate of anything in `memory/blog-topics-written.md` or `content/blog/`):
 RAC (Reservation Against Cancellation) → Confirmed`; `WL/1` vs `WL/10`; auto
   refund/cancellation of waitlisted e-tickets; a `"current available ticket"` is a fully
   confirmed seat with coach/berth, opening 4 hrs before departure, closing 30 min before.
-- LastBerth feature links: `[Smart Seats](/)`, PNR Status search & direct booking,
+- LastBerth feature links: `[Smart Seats](/)`, PNR Status search,
   `[Coach Journey Lookup](/seat-status)`.
 - FAQ section (header contains `FAQ`; `###` questions + paragraph answers → FAQPage JSON-LD).
 - Original, first-hand, non-commodity E-E-A-T content. Then translate into all 6 languages

@@ -86,7 +86,7 @@ To avoid this risk:
 
 1.  **Opt for Vikalp:** Opt-in to the Vikalp scheme at booking to get automatically shifted to alternative trains if yours doesn't confirm.
 2.  **Use Segment Bookings:** Search for seat availability between intermediate stations (e.g., Delhi to Vadodara and Vadodara to Madgaon) on the same train. Often, seats are available in segments even when the end-to-end journey is waitlisted.
-3.  **Track with LastBerth:** Use [PNR Status Search & Direct Booking](/) to check confirmation probability and explore alternative routes.
+3.  **Track with LastBerth:** Use [PNR Status Search](/) to check confirmation probability and explore alternative routes.
 
 ---
 

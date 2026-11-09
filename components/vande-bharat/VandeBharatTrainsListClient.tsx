@@ -310,7 +310,7 @@ export function VandeBharatTrainsListClient({ trains }: Props) {
                       onClick={(e) => e.stopPropagation()}
                       className="shadow-xs inline-flex min-h-[38px] shrink-0 touch-manipulation items-center justify-center whitespace-nowrap rounded-lg bg-blue-600 px-4 py-2.5 text-xs font-bold text-white transition-colors hover:bg-blue-700 sm:text-sm"
                     >
-                      Book Confirm Tickets →
+                      Find Confirmed Seats →
                     </Link>
                   </div>
                 </div>

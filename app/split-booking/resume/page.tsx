@@ -5,7 +5,7 @@ import { ResumeBookingClient } from "./ResumeBookingClient";
 
 export const metadata: Metadata = {
   title: "Complete Your Train Booking — LastBerth",
-  description: "Resume and complete your saved train reservation on LastBerth.",
+  description: "Resume your saved train seat plan on LastBerth.",
   robots: { index: false, follow: false },
 };
 

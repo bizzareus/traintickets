@@ -238,11 +238,11 @@ If you are choosing between standard 3A and high-density 3E economy coaches, con
 
 ## How to Secure Confirmed Berths When Your Preferred Class Shows Waitlist
 
-**When your preferred berth or class is waitlisted or shows REGRET, you can find confirmed seating by booking contiguous split-route legs via LastBerth Smart Seats, purchasing 10% discounted Current Availability (CURR_AVBL) tickets after chart preparation, setting chart preparation alerts, or inspecting live vacant berths on Chart Vacancy.**
+**When your preferred berth or class is waitlisted or shows REGRET, you can find confirmed seating by searching contiguous split-route legs via LastBerth Smart Seats, purchasing 10% discounted Current Availability (CURR_AVBL) tickets after chart preparation, setting chart preparation alerts, or inspecting live vacant berths on Chart Vacancy.**
 
 When direct origin-to-destination searches show waitlist (WL) or REGRET on IRCTC, experienced rail travellers deploy four proven rescue strategies:
 
-### 1. Book Contiguous Leg Splits with LastBerth Smart Seats
+### 1. Find Contiguous Leg Splits with LastBerth Smart Seats
 
 On busy long-distance routes, end-to-end quota berths sell out weeks in advance. However, intermediate station segments frequently run with vacant berths.
 For example, on a New Delhi to Patna train, berth B2-14 may be vacant from New Delhi to Kanpur, while berth B4-32 is vacant from Kanpur to Patna. Instead of being stuck on an unconfirmable waitlist, **[LastBerth Smart Seats](/)** automatically detects contiguous leg splits on the identical train, enabling you to travel confirmed without deboarding.

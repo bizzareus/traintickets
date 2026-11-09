@@ -109,4 +109,4 @@ REGRET isn't personal, it's quota maths. For Delhi–Howrah, Delhi–Patna, Mumb
 
 Shubho Pujo in advance — and grab a window seat past Bardhaman, October morning fields are lovely.
 
-_LastBerth is an independently operated service, not the official IRCTC or Indian Railways website. Assisted bookings are confirmed only once all required PNRs are issued._
+_LastBerth is an independently operated train meta search engine, not the official IRCTC or Indian Railways website. We help you find seats — tickets are booked directly on IRCTC._

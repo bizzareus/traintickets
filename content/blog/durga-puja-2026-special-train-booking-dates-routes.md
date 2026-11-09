@@ -148,7 +148,7 @@ Under the commercial **Two-Stop Rule**, if a passenger fails to board at their d
 
 ## How Can You Book Confirmed Seats When Puja Trains Show Regret or Waiting List?
 
-**When regular festival trains display Regret status or high waiting lists (WL/100+), you can secure confirmed travel by booking split-segment journeys on LastBerth, using origin station booking with boarding modification, or monitoring post-charting Current Availability.**
+**When regular festival trains display Regret status or high waiting lists (WL/100+), you can secure confirmed travel by finding split-segment seat journeys on LastBerth (booked directly on IRCTC), using origin station booking with boarding modification, or monitoring post-charting Current Availability.**
 
 Waiting lists follow a strict mathematical progression: **WL (Waiting List) → RAC (Reservation Against Cancellation) → CNF (Confirmed)**. General Waiting List (`GNWL`) carries the highest confirmation probability, while Remote Location (`RLWL`) and Pooled Quota (`PQWL`) confirm much slower. Once quota thresholds are exhausted, IRCTC marks the train as `REGRET`, blocking further bookings.
 

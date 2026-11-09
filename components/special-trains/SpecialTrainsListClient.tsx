@@ -364,7 +364,7 @@ export function SpecialTrainsListClient({
                           onClick={(e) => e.stopPropagation()}
                           className="shadow-xs inline-flex min-h-[38px] shrink-0 touch-manipulation items-center justify-center whitespace-nowrap rounded-lg bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white transition-colors hover:bg-emerald-700 sm:px-4 sm:text-sm"
                         >
-                          Book Confirm Tickets →
+                          Find Confirmed Seats →
                         </Link>
                       </>
                     ) : (
@@ -374,7 +374,7 @@ export function SpecialTrainsListClient({
                           onClick={(e) => e.stopPropagation()}
                           className="shadow-xs inline-flex min-h-[38px] shrink-0 touch-manipulation items-center justify-center whitespace-nowrap rounded-lg bg-blue-600 px-3.5 py-2 text-xs font-bold text-white transition-colors hover:bg-blue-700 sm:px-4 sm:text-sm"
                         >
-                          Book Confirm Tickets →
+                          Find Confirmed Seats →
                         </Link>
                       </>
                     )}

@@ -79,7 +79,7 @@ Many passengers mistakenly believe they can file a Ticket Deposit Receipt (TDR) 
 If you miss your train, or if your ticket is stuck in a waitlist queue, you need fast, reliable ways to find alternative travel. LastBerth provides smart features designed to help passengers navigate these booking hurdles easily:
 
 - **Finding Smart Seats:** If a direct ticket is unavailable, our **[Smart Seats](/)** feature searches for split availability. It breaks your journey into available legs across different coaches on the same train, securing a confirmed trip.
-- **PNR Status Search & Direct Booking:** If you are holding a waitlisted ticket, check its status on LastBerth. We calculate the exact confirmation probability and suggest alternative trains immediately if your ticket is unlikely to confirm.
+- **PNR Status Search:** If you are holding a waitlisted ticket, check its status on LastBerth. We calculate the exact confirmation probability and suggest alternative trains immediately if your ticket is unlikely to confirm.
 - **Get Confirmed Tickets:** If you board a train and want to find an empty berth, use our **[Get Confirmed Tickets](/)** to see exactly from which station to which station specific seats are booked. This allows you to locate vacant berths and request the TTE to allocate them to you.
 
 If you are looking for a last-minute ticket, always check for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** with coach/berth numbers, which opens 8 hours before departure and closes 30 minutes before. It is the cheapest and fastest way to secure a confirmed train ticket post-chart preparation.

@@ -126,11 +126,11 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
     tagline: "Diwali & Deepavali Festival Season 2026",
     heroBadge: "Diwali Rush 2026",
     description:
-      "Indian Railways has deployed 100+ dedicated 0-series festival special trains across major trunk routes (Delhi, Mumbai, Kolkata, Patna, Gorakhpur, Banaras, Ayodhya, and Bengaluru) to ease the holiday rush. Check schedules, running days, and book confirmed tickets on LastBerth.",
+      "Indian Railways has deployed 100+ dedicated 0-series festival special trains across major trunk routes (Delhi, Mumbai, Kolkata, Patna, Gorakhpur, Banaras, Ayodhya, and Bengaluru) to ease the holiday rush. Check schedules, running days, and find confirmed seats to book on IRCTC.",
     metaTitle:
-      "Diwali Special Trains 2026: List, Routes & Book Confirm Tickets | LastBerth",
+      "Diwali Special Trains 2026: List, Routes & Find Seats | LastBerth",
     metaDescription:
-      "Complete list of 100+ Diwali festival special trains launched by Indian Railways. Explore routes, schedules, stops, running days, and book confirmed tickets on LastBerth.",
+      "Complete list of 100+ Diwali festival special trains launched by Indian Railways. Explore routes, schedules, stops, running days, and find confirmed seats to book on IRCTC.",
     canonicalPath: "/special-trains/diwali",
     iconEmoji: "🪔",
     targetDates: DIWALI_TARGET_DATES,
@@ -276,7 +276,7 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
         question:
           "How do I monitor seat availability on Dusshera special trains?",
         answer:
-          "LastBerth tracks live seat vacancies and charting status across all festival trains. Click 'Book Confirm Tickets' on any train to see real-time seat counts and smart split-journey routes.",
+          "LastBerth tracks live seat vacancies and charting status across all festival trains. Click 'Find Confirmed Seats' on any train to see real-time seat counts and smart split-journey routes.",
       },
     ],
   },

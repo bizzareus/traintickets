@@ -56,7 +56,7 @@ As a consequence of this rake architecture, the waitlist clearing sequence on Va
 
 $$\text{WL (Waiting List)} \longrightarrow \text{CNF (Confirmed Seat)}$$
 
-When a confirmed ticket holder cancels their journey, the system automatically promotes the top waitlisted passenger directly into an assigned coach and seat number. If your booking shows WL 1 or WL 2 on normal weekday departures, your odds of direct confirmation remain reasonable as business travelers adjust travel plans. However, if your status sits at WL 25 or higher on holiday weekends, booking contiguous segmented seats on [Smart Seats](/) provides a far more reliable alternative.
+When a confirmed ticket holder cancels their journey, the system automatically promotes the top waitlisted passenger directly into an assigned coach and seat number. If your booking shows WL 1 or WL 2 on normal weekday departures, your odds of direct confirmation remain reasonable as business travelers adjust travel plans. However, if your status sits at WL 25 or higher on holiday weekends, finding contiguous segmented seats on [Smart Seats](/) provides a far more reliable alternative.
 
 ---
 

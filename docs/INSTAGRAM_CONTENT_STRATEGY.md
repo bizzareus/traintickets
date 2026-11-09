@@ -46,7 +46,7 @@ All daily Instagram posts must follow the battle-tested layout exemplified in th
 |                                                                         |
 | 3 tickets · 3A + 3A + 2A · Class / berth change needed                  |
 | +------------------------------------+ +------------------------------+ |
-| | TOTAL FARE  ₹2370                  | | Book on LastBerth.com →      | |
+| | TOTAL FARE  ₹2370                  | | Find Confirmed Seats on LastBerth.com →      | |
 | +------------------------------------+ +------------------------------+ |
 | Availability and fares shown in screenshots. Recheck before booking.    |
 +-------------------------------------------------------------------------+
@@ -63,7 +63,7 @@ All daily Instagram posts must follow the battle-tested layout exemplified in th
 - **Cards Hierarchy:**
   - **Left Card (Competitor / IRCTC Direct Booking):** Muted warm background (`#FFF4EF`), dark text, red accent strip (`#BC5849`), displaying real status pill `WAITLISTED` (`#8E3F32` on `#F6DDD4`) or `REGRET`.
   - **Right Card (LastBerth Split Legs):** Fresh mint background (`#F1FCF6`), dark green text (`#315A43`), green accent strip (`#247251`), displaying ordered contiguous legs with seat count (`AVL X`) and leg fare (`₹XXX`).
-- **Footer Bar:** Clean white banner with bold `TOTAL FARE ₹XXXX` and vibrant blue action button **`Book on LastBerth.com →`** (`#355AED`).
+- **Footer Bar:** Clean white banner with bold `TOTAL FARE ₹XXXX` and vibrant blue action button **`Find Confirmed Seats on LastBerth.com →`** (`#355AED`).
 - **Disclaimers:** Mandatory legible note at base: _"Availability and fares shown in screenshots. Recheck before booking."_ and _"Class / berth change needed"_.
 
 ---

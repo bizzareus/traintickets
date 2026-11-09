@@ -42,7 +42,7 @@ Because Jan Shatabdi trains connect key cities, Tatkal tickets vanish in seconds
 
 If you miss out and get stuck on the waitlist, you need to understand your chances. The WL full form is Waiting List. When you book a waitlisted e-ticket, your booking status starts as WL. If someone cancels, you move up: WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed. Just keep in mind that if your e-ticket is still waitlisted after chart preparation, IRCTC cancels it automatically and refunds your money. You cannot board the train with a waitlisted e-ticket.
 
-If the direct route shows waitlists, try LastBerth's [Finding Smart Seats](/) tool. It splits your journey into vacant segments across different coaches to get you a confirmed ticket. If you already have a ticket, use our [PNR Status Search & Direct Booking](/) to check the confirmation probability.
+If the direct route shows waitlists, try LastBerth's [Finding Smart Seats](/) tool. It splits your journey into vacant segments across different coaches to get you a confirmed ticket. If you already have a ticket, use our [PNR Status Search](/) to check the confirmation probability.
 
 ## Can You Travel in Jan Shatabdi Express with a General Unreserved Ticket?
 

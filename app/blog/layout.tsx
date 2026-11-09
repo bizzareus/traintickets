@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     absolute: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
   },
   description:
-    "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and booking smarter railway journeys on LastBerth.",
+    "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and planning smarter railway journeys with LastBerth.",
   alternates: {
     types: {
       "application/rss+xml": [
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     url: "/blog",
     title: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
     description:
-      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and booking smarter railway journeys on LastBerth.",
+      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and planning smarter railway journeys with LastBerth.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
     description:
-      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and booking smarter railway journeys on LastBerth.",
+      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and planning smarter railway journeys with LastBerth.",
   },
 };
 

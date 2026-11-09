@@ -203,7 +203,7 @@ You can check live vacant berths released after chart preparation on [Chart Vaca
 
 ## How to Find Confirmed Seats When Online Booking Closes or Shows REGRET?
 
-**When a direct train shows REGRET or deep waitlist, you can secure confirmed accommodation through LastBerth Smart Seats by booking contiguous confirmed segments on the same train, tracking vacant berths on live chart maps, or reserving unallocated current availability seats up to 30 minutes before departure.**
+**When a direct train shows REGRET or deep waitlist, you can secure confirmed accommodation through LastBerth Smart Seats by finding contiguous confirmed segments on the same train, tracking vacant berths on live chart maps, or reserving unallocated current availability seats up to 30 minutes before departure.**
 
 Indian Railways standby bookings follow a strict queue progression:
 

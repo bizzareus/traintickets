@@ -62,7 +62,7 @@ Because Vande Bharat trains only consist of sitting coaches (CC and EC) and have
 
 If your ticket remains waitlisted after the final chart preparation, IRCTC will automatically cancel your e-ticket and process a refund to your account. You cannot travel on a Vande Bharat train with a waitlisted e-ticket.
 
-To beat the waitlist, try using LastBerth's [Finding Smart Seats](/) tool. It splits the journey into shorter segments on the same train (e.g., booking seat 12 for leg A-B and seat 15 for leg B-C) to get you a confirmed path. You can also run a [PNR Status Search & Direct Booking](/) to check confirmation odds or check seat layouts via the [Get Confirmed Tickets](/) to find vacant spots.
+To beat the waitlist, try using LastBerth's [Finding Smart Seats](/) tool. It splits the journey into shorter segments on the same train (e.g., booking seat 12 for leg A-B and seat 15 for leg B-C) to get you a confirmed path. You can also run a [PNR Status Search](/) to check confirmation odds or check seat layouts via the [Get Confirmed Tickets](/) to find vacant spots.
 
 ---
 

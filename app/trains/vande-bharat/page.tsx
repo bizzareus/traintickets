@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title:
     "Vande Bharat Express Trains 2026: List, Routes, Timings & Booking | LastBerth",
   description:
-    "Complete list of 160+ Vande Bharat Express trains in India. Check routes, timetables, intermediate stops, Chair Car & Executive classes, catering menus, and book confirmed tickets on LastBerth.",
+    "Complete list of 160+ Vande Bharat Express trains in India. Check routes, timetables, intermediate stops, Chair Car & Executive classes, catering menus, and find confirmed seats to book on IRCTC.",
   alternates: { canonical: "/trains/vande-bharat" },
   openGraph: {
     title: "Vande Bharat Express Trains 2026: Routes, Timings & Booking",

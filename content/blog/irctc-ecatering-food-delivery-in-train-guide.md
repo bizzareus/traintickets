@@ -71,7 +71,7 @@ Understanding the waitlist system is crucial before ordering meals. In Indian Ra
 
 Waitlist positions matter. A low position like `WL/1` has a strong chance of clearing, while `WL/10` or higher might not. If you have an online e-ticket that remains waitlisted after the final chart is prepared, the system automatically cancels it and refunds your money. Because you won't be on the train, any food order associated with that PNR is cancelled, and you get a full refund.
 
-To order food, you need a confirmed seat. You can check for a 'current available ticket'—which is a **fully confirmed seat** with coach/berth numbers that opens 8 hours before departure and closes 30 minutes before. If you're struggling to secure a seat, use LastBerth's **Finding Smart Seats** feature to split your booking across segments. You can track your ticket's progress using **PNR Status Search & Direct Booking** to see confirmation odds, and look up vacant berths on board using the **Get Confirmed Tickets** to keep your journey comfortable.
+To order food, you need a confirmed seat. You can check for a 'current available ticket'—which is a **fully confirmed seat** with coach/berth numbers that opens 8 hours before departure and closes 30 minutes before. If you're struggling to secure a seat, use LastBerth's **Finding Smart Seats** feature to split your booking across segments. You can track your ticket's progress using **PNR Status Search** to see confirmation odds, and look up vacant berths on board using the **Get Confirmed Tickets** to keep your journey comfortable.
 
 ## How Much Does IRCTC e-Catering Cost? (Delivery & Extra Charges)
 

@@ -106,7 +106,7 @@ If berths from your local station are waitlisted under Remote Location Waiting L
 
 ### 3. Track Waitlist Progression with PNR Status
 
-If you hold an existing waitlisted e-ticket, monitor its confirmation odds with [PNR Status Search & Direct Booking](/). Fully waitlisted online e-tickets that remain unconfirmed after chart preparation are automatically cancelled with a full refund.
+If you hold an existing waitlisted e-ticket, monitor its confirmation odds with [PNR Status Search](/). Fully waitlisted online e-tickets that remain unconfirmed after chart preparation are automatically cancelled with a full refund.
 
 ---
 
@@ -186,4 +186,4 @@ Indian Railways typically notifies festival special trains starting in late Sept
 
 ## Bottom line
 
-Securing confirmed train tickets for Diwali and Chhath Puja 2026 requires preparation and precision. Set a reminder for 7:50 AM on your specific September booking date, pre-verify your Aadhaar on IRCTC, and save your passenger list in advance. If direct bookings show waitlists or Regret status, use [Finding Smart Seats](/) on LastBerth to discover split-journey seats on the same train, check your confirmation probability with [PNR Status Search & Direct Booking](/) or find guaranteed split-journey seats on [Get Confirmed Tickets](/). Always verify live schedules and book through authorized IRCTC channels.
+Securing confirmed train tickets for Diwali and Chhath Puja 2026 requires preparation and precision. Set a reminder for 7:50 AM on your specific September booking date, pre-verify your Aadhaar on IRCTC, and save your passenger list in advance. If direct bookings show waitlists or Regret status, use [Finding Smart Seats](/) on LastBerth to discover split-journey seats on the same train, check your confirmation probability with [PNR Status Search](/) or find guaranteed split-journey seats on [Get Confirmed Tickets](/). Always verify live schedules and book through authorized IRCTC channels.

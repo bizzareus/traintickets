@@ -112,7 +112,7 @@ When booking reserved tickets on IRCTC, your ticket status may show WL, where **
 Before resorting to crowded general coaches, you should use LastBerth's key features to secure a better journey:
 
 - [Finding Smart Seats](/) helps you find a confirmed path by splitting the journey into contiguous segments on the same train.
-- [PNR Status Search & Direct Booking](/) checks your confirmation probability and provides alternate booking options immediately.
+- [PNR Status Search](/) checks your confirmation probability and provides alternate booking options immediately.
 - [Get Confirmed Tickets](/) helps you find vacant berths on running trains that you can request the TTE to assign to you.
 
 Remember that a **current available ticket** is a **fully confirmed seat** with an assigned coach and berth. This becomes available for booking online or at counters after chart preparation (~8 hours before departure) until 30 minutes before train departure. If all confirmed seats are gone, a RailOne unreserved ticket is your safest legal fallback.

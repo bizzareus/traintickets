@@ -27,7 +27,7 @@ You can check the platform number instantly by looking at the giant LED screens 
 
 Walk into the station and look straight up. There's always a massive, bright display board near the entrance. It shows every upcoming train, when it's supposed to arrive, and which platform it's heading to. Never assume your ticket printout has the right platform number. Things change fast when trains are late or tracks get congested.
 
-Before running to a platform, check your ticket status. In Indian Railways, the **WL full form is Waiting List**. When you book, your status goes through a queue: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. If you're at `WL/1` or `WL/10`, keep tracking it. E-tickets that stay on the waiting list after chart preparation are subject to system automatic refunds/cancellations. You can't travel with them. Use LastBerth's **PNR Status Search & Direct Booking** tool to check your exact status before you head to the platform.
+Before running to a platform, check your ticket status. In Indian Railways, the **WL full form is Waiting List**. When you book, your status goes through a queue: **WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed**. If you're at `WL/1` or `WL/10`, keep tracking it. E-tickets that stay on the waiting list after chart preparation are subject to system automatic refunds/cancellations. You can't travel with them. Use LastBerth's **PNR Status Search** tool to check your exact status before you head to the platform.
 
 ## How to Read Coach Position Indicators on the Platform?
 

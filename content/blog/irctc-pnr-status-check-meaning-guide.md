@@ -130,7 +130,7 @@ LastBerth helps by turning a confusing PNR status into a clear decision. It show
 
 If your PNR isn't looking good, these features get you to a confirmed seat:
 
-- **PNR Status Search & Direct Booking:** Enter your PNR on **[LastBerth](/)** to see the status with a confirmation probability, plus alternative trains and seats if it's unlikely to confirm.
+- **PNR Status Search:** Enter your PNR on **[LastBerth](/)** to see the status with a confirmation probability, plus alternative trains and seats if it's unlikely to confirm.
 - **Finding Smart Seats:** When no single direct berth is free, our **[Smart Seats](/)** feature finds split availability across coaches/segments on the same train to stitch together a confirmed journey.
 - **Get Confirmed Tickets:** Use **[Get Confirmed Tickets](/)** to see exactly from which station to which station a berth is booked, so you can find open berths on a running train.
 

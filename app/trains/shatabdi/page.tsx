@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title:
     "Shatabdi Express Trains 2026: List, Routes, Timings & Booking | LastBerth",
   description:
-    "Complete list of Shatabdi & Jan Shatabdi Express trains in India. Check routes, timetables, Chair Car & Executive classes, and book confirmed tickets on LastBerth.",
+    "Complete list of Shatabdi & Jan Shatabdi Express trains in India. Check routes, timetables, Chair Car & Executive classes, and find confirmed seats to book on IRCTC.",
   alternates: { canonical: "/trains/shatabdi" },
   openGraph: {
     title: "Shatabdi Express Trains 2026: Routes, Timings & Booking",

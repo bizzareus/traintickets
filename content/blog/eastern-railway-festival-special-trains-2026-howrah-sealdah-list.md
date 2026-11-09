@@ -151,7 +151,7 @@ Under Section 138 of the Railways Act (as amended by the Jan Vishwas Act), passe
 
 ## How Can You Get Confirmed Tickets When Howrah and Sealdah Trains Show Regret or Waiting List?
 
-**When Eastern Railway trains show Regret or deep waitlists, passengers can secure confirmed berths by booking split-segment journeys on LastBerth, using originating station booking with online boarding modification, or monitoring post-charting Current Availability.**
+**When Eastern Railway trains show Regret or deep waitlists, passengers can secure confirmed berths by finding split-segment seat journeys on LastBerth (booked directly on IRCTC), using originating station booking with online boarding modification, or monitoring post-charting Current Availability.**
 
 Waiting lists follow a structured progression: **WL (Waiting List full form) → RAC (Reservation Against Cancellation) → Confirmed**. General Waiting List (`GNWL`) carries higher confirmation chances than Pooled Quota (`PQWL`) or Remote Location (`RLWL`). When quotas fill completely, the train enters `REGRET` status, locking further reservations.
 

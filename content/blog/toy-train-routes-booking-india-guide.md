@@ -80,7 +80,7 @@ If your ticket remains unconfirmed when final charts are prepared (~30 to 45 min
 
 To improve your odds, look for vacant seats on intermediate segments rather than booking the entire route. For example, on the Kalka-Shimla line, check seats between intermediate stations like Dharampur (`DMP`), Barog (`BOF`), or Solan (`SOL`).
 
-You can track your confirmation chances using [PNR Status Search & Direct Booking](/) on LastBerth. If direct booking is full, check [Finding Smart Seats](/) for split options, or look for a `"current available ticket"` which releases vacant berths 8 hours before departure. Seat maps can also be viewed via the [Get Confirmed Tickets](/).
+You can track your confirmation chances using [PNR Status Search](/) on LastBerth. If the direct route is full, check [Finding Smart Seats](/) for split options, or look for a `"current available ticket"` which releases vacant berths 8 hours before departure. Seat maps can also be viewed via the [Get Confirmed Tickets](/).
 
 ---
 

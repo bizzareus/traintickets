@@ -120,7 +120,7 @@ export const metadata: Metadata = {
     "msvalidate.01": "A5FB463C1706FB1DE5F75D9D754846D4",
   },
   category: "travel",
-  classification: "Train ticket booking and seat availability",
+  classification: "Train meta search and seat availability",
 };
 
 const websiteJsonLd = {

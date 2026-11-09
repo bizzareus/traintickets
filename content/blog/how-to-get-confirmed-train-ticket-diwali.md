@@ -115,4 +115,4 @@ Don't sit on a Diwali WL 150 and pray. Try splits on [Smart Seats](/), origin-st
 
 Light one extra diya for me if you reach. Happy Diwali!
 
-_LastBerth is an independently operated service, not the official IRCTC or Indian Railways website. Assisted bookings are confirmed only once all required PNRs are issued._
+_LastBerth is an independently operated train meta search engine, not the official IRCTC or Indian Railways website. We help you find seats — tickets are booked directly on IRCTC._

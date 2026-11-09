@@ -683,7 +683,7 @@ export default function TrainDetailClient({
 
       {/* ── 3. LastBerth Problem-Solving Action Hub ── */}
       <section
-        aria-label="LastBerth Booking Tools"
+        aria-label="LastBerth Seat Tools"
         className="space-y-5 rounded-3xl border border-blue-200/80 bg-gradient-to-br from-blue-50/70 via-indigo-50/40 to-slate-50 p-6 sm:p-8"
       >
         <div className="max-w-2xl space-y-1.5">

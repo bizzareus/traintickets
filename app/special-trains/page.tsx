@@ -20,16 +20,16 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Special Trains 2026: List, Routes & Book Confirm Tickets | LastBerth",
+  title: "Special Trains 2026: List, Routes & Find Seats | LastBerth",
   description:
-    "Explore the complete directory of official festival special trains (Diwali, Chhath Puja, Dusshera, Durga Puja) launched by Indian Railways. Check schedules, stops, seat availability, and book confirmed tickets on LastBerth.",
+    "Explore the complete directory of official festival special trains (Diwali, Chhath Puja, Dusshera, Durga Puja) launched by Indian Railways. Check schedules, stops, seat availability, and find confirmed seats to book on IRCTC.",
   alternates: {
     canonical: "/special-trains",
   },
   openGraph: {
     title: "Special Trains 2026: Festival Routes & Confirm Tickets",
     description:
-      "Explore 100+ festival special trains announced by Indian Railways for Diwali, Chhath Puja, Dusshera, and Durga Puja 2026. Real-time availability and smart split booking on LastBerth.",
+      "Explore 100+ festival special trains announced by Indian Railways for Diwali, Chhath Puja, Dusshera, and Durga Puja 2026. Real-time availability and smart split-seat search, booking completed on IRCTC.",
     url: "/special-trains",
     type: "website",
   },
@@ -235,7 +235,7 @@ export default function SpecialTrainsHubPage() {
             <p className="text-xs leading-relaxed text-blue-800 sm:text-sm">
               Festival specials typically use <strong>0-series numbers</strong>{" "}
               (such as 01079 or 05047). Click on{" "}
-              <strong>“Book Confirm Tickets”</strong> for any train to instantly
+              <strong>“Find Confirmed Seats”</strong> for any train to instantly
               check real-time availability, split-journey options, and
               reservation charts on LastBerth.
             </p>

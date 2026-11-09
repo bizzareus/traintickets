@@ -11,7 +11,7 @@ tags:
   - railway fines
 ---
 
-> **Avoid boarding confusion with real-time seat alerts:** Check your live confirmation probability and alternative travel options on [PNR Status Search & Direct Booking](/), or look up vacant berths along your route using [Get Confirmed Tickets](/).
+> **Avoid boarding confusion with real-time seat alerts:** Check your live confirmation probability and alternative travel options on [PNR Status Search](/), or look up vacant berths along your route using [Get Confirmed Tickets](/).
 
 ## TL;DR
 

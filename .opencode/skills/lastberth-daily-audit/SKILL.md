@@ -42,15 +42,15 @@ Run generated scripts only with `node <absolute-runDir>/script.mjs`. Use apply_p
 
 Render a static SVG/HTML image with a Node script. NEVER build or photograph an interactive renderer with file inputs, upload controls or slide-switch buttons. Do not take screenshots of a screenshot-preview tool. Show only the target train card, not surrounding trains, and never crop off a train number or status. Do not duplicate the same modal merely to fill space. Headings may use DIN Condensed; body text Arial. Read every exported PNG and explicitly check for editor controls, incorrect crops, low contrast, missing class-change text, and wrong dimensions before accepting it. An approved layout reference is available at `/Users/kartikarora/.gstack/projects/bizzareus-traintickets/designs/split-ticket-comparison-2026/`; reuse its editorial design, never its historical numbers/screenshots.
 
-## Mandatory final comparison and booking slide
+## Mandatory final comparison and CTA slide
 
 Every carousel must include an additional closing slide showing BOTH original screenshots together: **ConfirmTkt — end-to-end waitlisted** and **LastBerth — available split-ticket options**. This is required in addition to the detailed proof slides, even when the opening slide already compares the results. Keep the complete carousel to 3–4 slides.
 
 - Use readable crops of the actual target train card and the LastBerth breakdown. Place them side by side, or stack them if that makes the statuses easier to read. Preserve the train number, route, journey date, selected classes and availability; never recreate the screenshot UI.
 - Headline: **“End-to-end waitlisted?”**
-- Prominent booking CTA: **“Find & book confirmed tickets with LastBerth”**, followed by **lastberth.com · Link in bio**.
+- Prominent CTA: **“Find confirmed seats with LastBerth — book directly on IRCTC”**, followed by **lastberth.com · Link in bio**.
 - Keep a readable qualification on this same slide: **“Split tickets · Subject to live availability”**. Explicitly disclose the class/berth changes required by the demonstrated path. Present the verified example, not a guarantee for every search.
-- Open the final exported PNG and verify both screenshots, their platform labels and the booking CTA are visible and legible at phone size. Record its position in report.md and include it last in audit.json's images array.
+- Open the final exported PNG and verify both screenshots, their platform labels and the CTA are visible and legible at phone size. Record its position in report.md and include it last in audit.json's images array.
 
 ## Required output
 

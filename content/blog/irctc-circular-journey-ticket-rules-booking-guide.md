@@ -69,7 +69,7 @@ Here is the breakdown of how waitlists behave on circular tickets:
 - **The standard progression:** Your ticket moves through three states: **WL → RAC → Confirmed**.
 - **Confirmation chances:** A low waitlist number has a solid shot of clearing before the final chart is prepared, while double-digit waitlists will need a lot of cancellations.
 - **Watch out for refunds:** This is crucial. If you book an online e-ticket and it stays waitlisted, the system cancels it automatically and refunds your money. But circular tickets are paper counter tickets. They _never_ cancel automatically. If your ticket is still waitlisted after chart preparation, you must physically walk up to a station counter to cancel it and claim your refund.
-- **Keep tabs on your status:** Use the **PNR Status Search & Direct Booking** tool on LastBerth to keep an eye on your queue position and see realistic confirmation probabilities. If a specific leg looks hopeless, LastBerth can suggest alternative train routes to save your trip.
+- **Keep tabs on your status:** Use the **PNR Status Search** tool on LastBerth to keep an eye on your queue position and see realistic confirmation probabilities. If a specific leg looks hopeless, LastBerth can suggest alternative train routes to save your trip.
 
 If your waitlisted seat doesn't clear, don't panic. You can check for a **current available ticket**. These are confirmed berths that open up right after chart preparation (8 hours before the train starts) and remain bookable until 30 minutes before departure. Another trick is to use the **Get Confirmed Tickets** on LastBerth to locate empty berths on the running train for specific sections of your travel.
 

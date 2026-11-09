@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title:
     "Garib Rath Express Trains 2026: List, Routes, Timings & Booking | LastBerth",
   description:
-    "Complete list of Garib Rath Express trains in India. Check routes, timetables, affordable AC 3-Tier classes, and book confirmed tickets on LastBerth.",
+    "Complete list of Garib Rath Express trains in India. Check routes, timetables, affordable AC 3-Tier classes, and find confirmed seats to book on IRCTC.",
   alternates: { canonical: "/trains/garib-rath" },
   openGraph: {
     title: "Garib Rath Express Trains 2026: Routes, Timings & Booking",

@@ -13,7 +13,7 @@ tags:
   - irctc convenience fee
 ---
 
-> **Tired of paying agent markups and extra platform fees?** Uncover confirmed split-ticket journeys for free with [Finding Smart Seats](/), verify your confirmation odds without paying agent fees on [PNR Status Search & Direct Booking](/), or find open berths on running trains with [Get Confirmed Tickets](/).
+> **Tired of paying agent markups and extra platform fees?** Uncover confirmed split-ticket journeys for free with [Finding Smart Seats](/), verify your confirmation odds without paying agent fees on [PNR Status Search](/), or find open berths on running trains with [Get Confirmed Tickets](/).
 
 ## TL;DR
 

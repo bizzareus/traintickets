@@ -86,7 +86,7 @@ If your online ticket stays fully waitlisted (e.g., `WL/5`) after the final char
 To bypass the endless waitlists, use these LastBerth hacks:
 
 - **[Finding Smart Seats](/)**: When direct tickets are sold out, our algorithm splits your journey into contiguous segments on the same train. You might sit in Coach B3 for the first half, and B4 for the second, but you get a confirmed ride.
-- **[PNR Status Search & Direct Booking](/)**: Paste your PNR number to get real-time confirmation probabilities. If they look low, our engine suggests alternate routes instantly.
+- **[PNR Status Search](/)**: Paste your PNR number to get real-time confirmation probabilities. If they look low, our engine suggests alternate routes instantly.
 - **[Get Confirmed Tickets](/)**: View vacant berths on running trains after the chart is ready. If you spot a free seat, walk up to the TTE and get it allotted on the spot.
 - **Snag a Current Ticket:** Look for a `"current available ticket"`. A current available ticket is a **fully confirmed seat** that goes on sale right after chart preparation. It opens online and at counters about 8 hours before the train starts and stays open until 30 minutes before departure.
 

@@ -202,4 +202,4 @@ Booking limits for special trains count toward your standard IRCTC account limit
 
 ## Bottom line
 
-Special trains are a lifesaver during peak festival rushes, but their 10% to 30% higher fares and lower track priority require informed planning. When direct bookings show heavy waitlists, use **[Finding Smart Seats](/)** to stitch together confirmed split berths on the same rake, or search **[PNR Status Search & Direct Booking](/)** to calculate your confirmation odds before heading to the platform.
+Special trains are a lifesaver during peak festival rushes, but their 10% to 30% higher fares and lower track priority require informed planning. When direct bookings show heavy waitlists, use **[Finding Smart Seats](/)** to stitch together confirmed split berths on the same rake, or search **[PNR Status Search](/)** to calculate your confirmation odds before heading to the platform.

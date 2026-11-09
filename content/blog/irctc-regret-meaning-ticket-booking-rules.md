@@ -17,7 +17,7 @@ tags:
 
 ## TL;DR
 
-In IRCTC ticket booking, REGRET means both confirmed berths and the maximum permissible waiting list queue have been completely exhausted. The booking engine locks transactions and disables the "Book Now" button to prevent locking passenger funds into tickets that have zero realistic mathematical chance of confirming. You cannot travel on a train showing REGRET without incurring a flat ₹500 penalty under Section 138 of the Railways Act. However, you can bypass a REGRET block immediately by booking contiguous split segments on the same train via Smart Seats, reserving from the originating terminal with a modified boarding point, or checking 10% discounted Current Availability after chart preparation.
+In IRCTC ticket booking, REGRET means both confirmed berths and the maximum permissible waiting list queue have been completely exhausted. The booking engine locks transactions and disables the "Book Now" button to prevent locking passenger funds into tickets that have zero realistic mathematical chance of confirming. You cannot travel on a train showing REGRET without incurring a flat ₹500 penalty under Section 138 of the Railways Act. However, you can bypass a REGRET block immediately by finding contiguous split segments on the same train via Smart Seats, reserving from the originating terminal with a modified boarding point, or checking 10% discounted Current Availability after chart preparation.
 
 ---
 

@@ -142,7 +142,7 @@ The current availability window closes 15 minutes before the train leaves the st
 
 ## Bottom line
 
-Amrit Bharat Express offers an excellent balance between speed, comfort, and affordability for non-AC travelers across India. Navigating its unique ticketing rules—such as the complete absence of RAC tickets—is crucial for a hassle-free journey. If your direct search results show waitlists, you can use [Finding Smart Seats](/) on LastBerth to search for split-segment seat options. If you already hold a ticket, check its status using the [PNR Status Search & Direct Booking](/) tool to estimate your confirmation probability or search guaranteed contiguous bookings via [Get Confirmed Tickets](/). Always verify the latest schedules and book your final tickets through authorized IRCTC channels.
+Amrit Bharat Express offers an excellent balance between speed, comfort, and affordability for non-AC travelers across India. Navigating its unique ticketing rules—such as the complete absence of RAC tickets—is crucial for a hassle-free journey. If your direct search results show waitlists, you can use [Finding Smart Seats](/) on LastBerth to search for split-segment seat options. If you already hold a ticket, check its status using the [PNR Status Search](/) tool to estimate your confirmation probability or search guaranteed contiguous bookings via [Get Confirmed Tickets](/). Always verify the latest schedules and book your final tickets through authorized IRCTC channels.
 
 ### Does Amrit Bharat Express have any AC coaches?
 

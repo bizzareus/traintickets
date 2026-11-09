@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Disclaimer | LastBerth",
   description:
-    "Learn about LastBerth's independent service status, assisted bookings, and railway data accuracy.",
+    "Learn about LastBerth's role as a train meta search engine and the accuracy of its railway data.",
 };
 
 export default function DisclaimerPage() {
@@ -32,8 +32,13 @@ export default function DisclaimerPage() {
             1. Independent Service
           </h2>
           <p>
-            <strong>LastBerth</strong> is an independently operated service. We
-            are not the official website
+            <strong>LastBerth</strong> is a meta search engine for Indian
+            Railways. We do not sell or book train tickets — when you pick a
+            route, you are taken to IRCTC, where your booking is made and paid
+            for under IRCTC's own terms. LastBerth is not the official
+            website of IRCTC, Indian Railways, CRIS, or the Ministry of
+            Railways.
+          </p>
             of IRCTC, Indian Railways, CRIS, or the Ministry of Railways.
           </p>
           <p>
@@ -71,14 +76,16 @@ export default function DisclaimerPage() {
           </p>
 
           <h2 className="pt-2 text-xl font-bold text-slate-900">
-            3. Assisted Bookings and Payments
+            3. Bookings and Payments
           </h2>
           <p>
-            Where available, LastBerth accepts assisted ticket-booking requests
-            and payments for its services. Payment alone does not confirm a
-            ticket; a split journey is confirmed only after all required tickets
-            and PNRs are issued. For tickets bought through another provider,
-            contact that provider about cancellations or refunds.
+            LastBerth does not book train tickets or accept ticket-booking
+            requests. Bookings are completed by you directly on IRCTC after
+            LastBerth shows you available options. Payments you make to
+            LastBerth are only for LastBerth's own services (such as seat-alert
+            subscriptions), and never for a train ticket. For tickets bought
+            through another provider, contact that provider about
+            cancellations or refunds.
           </p>
 
           <h2 className="pt-2 text-xl font-bold text-slate-900">

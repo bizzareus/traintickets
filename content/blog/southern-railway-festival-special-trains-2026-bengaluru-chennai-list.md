@@ -150,7 +150,7 @@ Under Section 138 of the Railways Act (as amended by the Jan Vishwas Act), passe
 
 ## How Can You Get Confirmed Tickets When Bengaluru and Chennai Trains Show Regret?
 
-**When southern festival trains show Regret or heavy waitlists, passengers can secure confirmed berths by booking split-segment journeys on LastBerth, booking from originating stations with boarding point changes, or booking post-charting Current Availability.**
+**When southern festival trains show Regret or heavy waitlists, passengers can secure confirmed berths by finding split-segment seat journeys on LastBerth (booked directly on IRCTC), booking from originating stations with boarding point changes, or booking post-charting Current Availability.**
 
 Waiting lists progress through a defined order: **WL (Waiting List full form) → RAC (Reservation Against Cancellation) → Confirmed**. General Waiting List (`GNWL`) tickets have higher confirmation chances than Pooled Quota (`PQWL`) or Remote Location (`RLWL`). When all quotas fill, trains enter `REGRET` status, closing further reservations.
 

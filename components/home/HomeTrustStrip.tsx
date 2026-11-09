@@ -15,7 +15,7 @@ interface HomeTrustStripProps {
  */
 export function HomeTrustStrip({
   className,
-  trustBadgeText = "Confirmed Ticket Booking",
+  trustBadgeText = "Live IRCTC Availability",
   trustedByText = "Trusted by 50K+ Travellers",
   jugaadText = "Train travel jugaad",
 }: HomeTrustStripProps) {

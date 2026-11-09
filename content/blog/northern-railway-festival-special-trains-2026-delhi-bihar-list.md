@@ -194,4 +194,4 @@ Festival special trains to Bihar depart primarily from New Delhi (NDLS), Anand V
 
 Northern Railway's festival special train services provide critical extra seat capacity for passengers travelling from Delhi NCR and Punjab to Bihar and Uttar Pradesh for Diwali and Chhath Puja 2026. Book your tickets as early as possible on IRCTC. If your target train is waitlisted, use [Smart Seats](/) to find confirmed split journeys, check [Chart Times](/chart-times) for charting notifications, and claim released berths on [Chart Vacancy](/chart-vacancy).
 
-_LastBerth is an independently operated service, not the official IRCTC or Indian Railways website. Assisted bookings are confirmed only once all required PNRs are issued._
+_LastBerth is an independently operated train meta search engine, not the official IRCTC or Indian Railways website. We help you find seats — tickets are booked directly on IRCTC._

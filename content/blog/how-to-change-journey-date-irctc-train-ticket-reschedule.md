@@ -262,4 +262,4 @@ Rescheduling a train ticket on Indian Railways saves your hard-earned money from
 
 When alternative travel dates show high waitlists or Regret, never leave your journey to chance. Explore confirmed split-berth options on [Finding Smart Seats](/) or track released berths on the [Live Chart Vacancy Map](/chart-vacancy).
 
-*LastBerth is an independent train seat discovery and charting analysis platform, not affiliated with IRCTC, CRIS, or Indian Railways. We do not issue tickets or process railway booking transactions directly. Please verify live schedules and book official tickets via the official IRCTC portal.*
+*LastBerth is an independent train meta search engine and charting analysis platform, not affiliated with IRCTC, CRIS, or Indian Railways. We do not issue tickets or process railway booking transactions directly. Please verify live schedules and book official tickets via the official IRCTC portal.*
