@@ -2,7 +2,7 @@
 title: "How to Reschedule Train Ticket in IRCTC: Rules & Dates (2026)"
 description: "Learn how to reschedule IRCTC train tickets, prepone or postpone travel dates, online e-ticket vs counter rules, fee slabs, and confirmed alternatives."
 date: "2026-08-24"
-updated: "2026-11-07"
+updated: "2026-11-09"
 tags:
   - train booking
   - irctc
@@ -104,7 +104,7 @@ Under commercial regulations, if you subsequently decide to cancel a rescheduled
 
 ## Can You Change the Boarding Station Instead of Rescheduling the Entire Ticket?
 
-**Yes, you can change your boarding station online on the IRCTC website or Rail Connect app up to 4 hours before train departure or first chart preparation without paying any fee.** Modifying your boarding point allows you to board from another scheduled halt on the booked route without losing your confirmed berth or incurring unauthorized travel penalties.
+**Yes, you can change your boarding station online on the IRCTC website or Rail Connect app up to second reservation chart preparation (~30 to 45 minutes before departure) without paying any fee.** Modifying your boarding point allows you to board from another scheduled halt on the booked route without losing your confirmed berth or incurring unauthorized travel penalties.
 
 Many passengers mistakenly believe they need to cancel or reschedule their entire ticket when they only need to board at a different stop along the train route. For example, if you booked from New Delhi to Patna but need to board at Ghaziabad or Kanpur instead, you do not need to cancel your booking.
 
@@ -121,7 +121,7 @@ Important conditions governing boarding point changes:
 - **Free of Charge:** Indian Railways levies zero administrative fees for modifying your boarding point.
 - **Single Modification:** You can change your boarding station only once per PNR.
 - **Irreversible Action:** Once your boarding point changes, you lose all rights to occupy the berth from the original boarding station. If you board at the original station after changing your boarding point, the Travelling Ticket Examiner (TTE) can treat you as traveling without a valid ticket and re-allocate your berth.
-- **Timing Deadline:** You must complete the boarding station change before the first reservation chart prepares (typically 4 to 8 hours prior to train departure).
+- **Timing Deadline:** You must complete the boarding station change before the second reservation chart prepares (~30 to 45 minutes prior to train departure).
 
 ---
 
@@ -190,7 +190,7 @@ For instance, on an overnight journey from New Delhi to Patna, you might sit in 
 
 ### 2. 10% Discounted Current Availability (`CURR_AVBL`) Berths Post-Charting
 
-When the first reservation chart prepares (~8 to 10 hours prior to departure, or the previous evening for morning departures), unutilized emergency, defense, and VIP quotas automatically release into the general public pool as **Current Availability (`CURR_AVBL`)**.
+When the first reservation chart prepares (~8 hours prior to departure, or the previous evening for morning departures), unutilized emergency, defense, and VIP quotas automatically release into the general public pool as **Current Availability (`CURR_AVBL`)**.
 
 Current Availability tickets offer two tremendous advantages:
 
@@ -206,7 +206,7 @@ If you board with an RAC or unreserved ticket, the chart vacancy map shows you p
 
 ### 4. Intermediate Station Quotas & Chart Preparation Timing
 
-Indian Railways distributes train seats across different quota pools: General Waitlist (GNWL), Remote Location Waitlist (RLWL), and Pooled Quota Waitlist (PQWL). If booking from your originating station shows `REGRET`, searching from an earlier major junction or changing your destination to the next major division station often unlocks available berths in a different quota pool. You can easily modify your boarding station online up to 4 hours before departure to match your actual travel plan.
+Indian Railways distributes train seats across different quota pools: General Waitlist (GNWL), Remote Location Waitlist (RLWL), and Pooled Quota Waitlist (PQWL). If booking from your originating station shows `REGRET`, searching from an earlier major junction or changing your destination to the next major division station often unlocks available berths in a different quota pool. You can easily modify your boarding station online up to second chart preparation (~30 to 45 minutes before departure) to match your actual travel plan.
 
 To know the exact moment when berths release, check your train's scheduled charting window on [Chart Times](/chart-times).
 
@@ -232,7 +232,7 @@ No, Indian Railways commercial rules explicitly state that if a rescheduled tick
 
 ### Can I change my boarding station online if I cannot reschedule my train ticket date?
 
-Yes, you can change your boarding station online on the IRCTC website or Rail Connect app free of charge up to 4 hours before train departure or first chart preparation. Modifying your boarding point allows you to board from any other scheduled commercial halt on your route without losing your confirmed seat.
+Yes, you can change your boarding station online on the IRCTC website or Rail Connect app free of charge up to second reservation chart preparation (~30 to 45 minutes before departure). Modifying your boarding point allows you to board from any other scheduled commercial halt on your route without losing your confirmed seat.
 
 ### Can I transfer my confirmed train ticket to a friend or colleague?
 

@@ -2,7 +2,7 @@
 title: "Tatkal Token System: Counter Booking Rules & Timings"
 description: "Learn how the PRS counter Tatkal token system works at railway stations. Discover morning queue rules, token timings, Aadhaar OTP, and booking limits."
 date: "2026-07-31"
-updated: "2026-08-24"
+updated: "2026-11-09"
 tags:
   - train booking
   - irctc
@@ -81,7 +81,7 @@ Accepted identification documents:
 Important cancellation rules:
 
 - **Confirmed Tatkal:** Zero refund upon cancellation.
-- **Waitlisted Tatkal (WL full form is Waiting List):** Automatic full refund minus ₹60 clerkage fee if ticket remains waitlisted after final chart preparation.
+- **Waitlisted Tatkal (WL full form is Waiting List):** Automatic 100% full refund with zero cancellation or clerkage fee deducted if an unconfirmed e-ticket remains waitlisted after final chart preparation.
 - **WL Progression Queue:** WL (Waiting List) → RAC (Reservation Against Cancellation) → Confirmed.
 
 ---

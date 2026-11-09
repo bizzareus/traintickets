@@ -2,7 +2,7 @@
 title: "Bandhan Express: Route, Timings, Booking & Fares (2026)"
 description: "Bandhan Express (13129/13130) connects Kolkata to Khulna. Check 2026 timetable, Fairlie Place counter booking, passport rules, and 1AC vs CC fares."
 date: "2026-11-08"
-updated: "2026-11-08"
+updated: "2026-11-09"
 tags:
   - train booking
   - irctc
@@ -94,7 +94,7 @@ Both Indian citizens traveling to Bangladesh and Bangladeshi citizens traveling 
 * **Valid Passport:** Your passport must have at least two blank pages for immigration entry and exit stamps, with a minimum validity of 6 months from the date of travel.
 * **Destination Visa:** Indian travelers must obtain an approved Bangladesh visa (tourist, business, medical, or student visa) from Bangladesh diplomatic missions in Kolkata, New Delhi, or Mumbai before booking.
 * **Return Visa Check:** Bangladeshi travelers must possess an active Indian visa with sufficient validity.
-* **Advance Reservation Period (ARP):** Tickets open up to **30 days in advance** of the journey date at designated railway counters.
+* **Advance Reservation Period (ARP):** Tickets open up to **30 days in advance** of the journey date at designated railway counters for regular passengers, and up to **365 days in advance** for foreign tourists under official Ministry of Railways guidelines.
 * **Third-Country Foreign Nationals:** Non-Indian and non-Bangladeshi travelers holding valid visas for both nations are permitted to travel on Bandhan Express, provided their visa allows travel via rail and the Petrapole-Benapole international land border.
 
 Ensure you carry original physical passports on travel day. Digital soft copies or mobile screenshots are strictly rejected at immigration checkpoints.
@@ -135,11 +135,11 @@ For the return journey on Train 13130, departure immigration is conducted at Ben
 
 ## What Are the Baggage Rules and Prohibited Items on Bandhan Express?
 
-**Adult passengers traveling in AC First Class (1A) are permitted up to 35 kilograms of free personal luggage, while AC Chair Car (CC) passengers are entitled to 20 kilograms. Excess luggage beyond these thresholds is charged at standard parcel excess baggage rates at the station booking counter.**
+**Adult passengers traveling on Bandhan Express across all classes (both 1AC and CC) are permitted up to 35 kilograms of free personal luggage, while children traveling on child tickets are entitled to 20 kilograms (in up to two pieces). Excess luggage beyond these thresholds is charged at standard parcel excess baggage rates at the station booking counter.**
 
 Because the train traverses an international frontier, customs authorities enforce strict cross-border baggage restrictions:
 
-* **Free Allowance for Children:** Children between 5 and 11 years are entitled to 50% of the adult luggage allowance (17.5 kg in 1A, 10 kg in CC).
+* **Free Allowance for Children:** Children traveling on child tickets (ages 5 to 11) are entitled to a 20 kg free luggage allowance across all classes.
 * **Currency Regulations:** Indian travelers can carry up to ₹25,000 INR in cash or foreign currency notes within Reserve Bank of India (RBI) customs limits. Bangladeshi passengers must adhere to Bangladesh Bank foreign currency declaration thresholds.
 * **Prohibited Items:** Narcotics, firearms, ammunition, commercial quantities of gold bullion, unprocessed agricultural seeds, and duty-exceeding tobacco or alcohol are strictly prohibited.
 * **Commercial Goods Restriction:** Bandhan Express is exclusively a passenger service. Carrying commercial consignments or wholesale trade goods in passenger luggage is treated as smuggling and results in seizure under the Customs Act.
@@ -178,7 +178,7 @@ The Bandhan Express departs exclusively from Kolkata Terminal (station code `KOA
 The Bandhan Express runs twice a week on Thursdays and Sundays in both directions (13129 from Kolkata to Khulna in the morning, and 13130 from Khulna to Kolkata in the afternoon).
 
 ### How far in advance can I book tickets for Bandhan Express?
-The Advance Reservation Period (ARP) for Bandhan Express is generally 30 days prior to the journey date, allowing adequate time for visa verification and passenger manifest preparation.
+The Advance Reservation Period (ARP) for Bandhan Express is up to 30 days prior to the journey date for regular passengers at railway counters, and up to 365 days in advance for foreign tourists under Ministry of Railways guidelines.
 
 ### Can foreign tourists of other nationalities travel on Bandhan Express?
 Yes, foreign nationals holding valid passports and active visas for both India and Bangladesh are permitted to book and travel on Bandhan Express via the Petrapole-Benapole border.
