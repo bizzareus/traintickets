@@ -476,7 +476,7 @@ export class NotificationService {
    */
   async sendRefundRequestAdminEmail(params: {
     id: string;
-    mobile: string;
+    email: string;
     trainNumber: string;
     journeyDate: string;
     txnId?: string | null;

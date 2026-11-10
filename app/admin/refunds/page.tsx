@@ -6,7 +6,7 @@ import { trackAnalyticsEvent } from "@/lib/analytics";
 
 type RefundEntry = {
   id: string;
-  mobile: string;
+  email: string;
   trainNumber: string;
   journeyDate: string;
   txnId: string | null;
@@ -111,7 +111,7 @@ export default function AdminRefundsPage() {
     const q = search.trim().toLowerCase();
     if (
       q &&
-      !`${e.mobile} ${e.trainNumber} ${e.txnId ?? ""}`.toLowerCase().includes(q)
+      !`${e.email} ${e.trainNumber} ${e.txnId ?? ""}`.toLowerCase().includes(q)
     )
       return false;
     return true;
@@ -189,7 +189,7 @@ export default function AdminRefundsPage() {
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search mobile, train, txn…"
+            placeholder="Search email, train, txn…"
             className="w-64 rounded-lg border border-slate-300 px-3 py-1.5 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
           />
         </div>
@@ -232,7 +232,7 @@ export default function AdminRefundsPage() {
               <thead className="border-b border-slate-100 bg-slate-50/50">
                 <tr>
                   <th className="px-6 py-4 font-semibold text-slate-900">
-                    Mobile
+                    Email
                   </th>
                   <th className="px-6 py-4 font-semibold text-slate-900">
                     Train
@@ -261,7 +261,7 @@ export default function AdminRefundsPage() {
                     className="transition hover:bg-slate-50/50"
                   >
                     <td className="whitespace-nowrap px-6 py-4 font-mono text-xs text-slate-900">
-                      {entry.mobile}
+                      {entry.email}
                     </td>
                     <td className="whitespace-nowrap px-6 py-4 font-mono text-xs text-slate-900">
                       {entry.trainNumber}

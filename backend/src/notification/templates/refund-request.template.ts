@@ -3,7 +3,7 @@ import { escapeHtml } from '../notification.helpers';
 /** Admin email body for a manual refund request submitted via /refund. */
 export function renderRefundRequestAdminEmailHtml(params: {
   id: string;
-  mobile: string;
+  email: string;
   trainNumber: string;
   journeyDate: string;
   txnId?: string | null;
@@ -11,7 +11,7 @@ export function renderRefundRequestAdminEmailHtml(params: {
   duplicate: boolean;
 }): string {
   const rows: Array<[string, string]> = [
-    ['Mobile', params.mobile],
+    ['Email', params.email],
     ['Train number', params.trainNumber],
     ['Journey date', params.journeyDate],
     ['Transaction ID', params.txnId?.trim() || '—'],

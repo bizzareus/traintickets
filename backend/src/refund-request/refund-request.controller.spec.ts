@@ -50,10 +50,7 @@ describe('RefundRequestController', () => {
 
     it('delegates to service.create and returns result', async () => {
       const dto: CreateRefundRequestDto = {
-        name: 'John Doe',
-        mobile: '+919876543210',
-        pnr: '1234567890',
-        reason: 'Train cancelled',
+        email: 'passenger@example.com',
       };
       const res = await controller.create(dto);
       expect(createSpy).toHaveBeenLastCalledWith(dto);

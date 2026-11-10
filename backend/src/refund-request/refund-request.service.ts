@@ -6,12 +6,11 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { NotificationService } from '../notification/notification.service';
-import { isValidIndianMobile } from '../common/validation.utils';
-import { normalizeE164Mobile } from '../notification/notification.helpers';
+import { isValidEmail } from '../common/validation.utils';
 import { to5DigitTrainNo } from '../irctc/irctc.service';
 
 export type CreateRefundRequestInput = {
-  mobile?: string;
+  email?: string;
   trainNumber?: string;
   journeyDate?: string;
   txnId?: string;
@@ -32,20 +31,19 @@ export class RefundRequestService {
 
   /**
    * Validate + store a manual refund request, then email the admin.
-   * A PENDING request for the same mobile/train/date within 24h is treated
+   * A PENDING request for the same email/train/date within 24h is treated
    * as a duplicate (no new row, admin still gets a heads-up).
    */
   async create(
     input: CreateRefundRequestInput,
   ): Promise<{ id: string; duplicate: boolean }> {
-    const rawMobile = String(input.mobile ?? '');
-    if (!isValidIndianMobile(rawMobile)) {
+    const email = String(input.email ?? '').trim().toLowerCase();
+    if (!isValidEmail(email)) {
       throw new BadRequestException({
-        code: 'INVALID_MOBILE',
-        message: 'Mobile must be a valid 10-digit Indian number.',
+        code: 'INVALID_EMAIL',
+        message: 'Email must be a valid email address.',
       });
     }
-    const mobile = normalizeE164Mobile(rawMobile);
 
     const trainNumber = to5DigitTrainNo(input.trainNumber);
     if (!TRAIN_NUMBER_RE.test(trainNumber)) {
@@ -73,7 +71,7 @@ export class RefundRequestService {
 
     const existing = await this.prisma.refundRequest.findFirst({
       where: {
-        mobile,
+        email,
         trainNumber,
         journeyDate: journeyDateObj,
         status: 'PENDING',
@@ -90,7 +88,7 @@ export class RefundRequestService {
     }
 
     const created = await this.prisma.refundRequest.create({
-      data: { mobile, trainNumber, journeyDate: journeyDateObj, txnId },
+      data: { email, trainNumber, journeyDate: journeyDateObj, txnId },
     });
     void this.sendAdminEmail({ ...created, duplicate: false }).catch((err) =>
       this.logger.error(
@@ -131,7 +129,7 @@ export class RefundRequestService {
 
   private sendAdminEmail(entry: {
     id: string;
-    mobile: string;
+    email: string;
     trainNumber: string;
     journeyDate: Date;
     txnId: string | null;
@@ -140,7 +138,7 @@ export class RefundRequestService {
   }): Promise<boolean> {
     return this.notifications.sendRefundRequestAdminEmail({
       id: entry.id,
-      mobile: entry.mobile,
+      email: entry.email,
       trainNumber: entry.trainNumber,
       journeyDate: entry.journeyDate.toISOString().slice(0, 10),
       txnId: entry.txnId,

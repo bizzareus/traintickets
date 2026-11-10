@@ -1,10 +1,8 @@
-import { IsOptional, IsString, Matches, MaxLength } from 'class-validator';
+import { IsEmail, IsOptional, IsString, Matches, MaxLength } from 'class-validator';
 
 export class CreateRefundRequestDto {
-  @IsOptional()
-  @IsString()
-  @Matches(/^\+?\d{10,15}$/)
-  mobile?: string;
+  @IsEmail()
+  email: string;
 
   @IsOptional()
   @IsString()

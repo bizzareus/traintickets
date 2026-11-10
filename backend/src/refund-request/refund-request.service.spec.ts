@@ -32,17 +32,17 @@ describe('RefundRequestService', () => {
   });
 
   const validInput = {
-    mobile: '9876543210',
+    email: 'Passenger@Example.com',
     trainNumber: '12951',
     journeyDate: '2026-10-01',
     txnId: 'pay_abc123',
   };
 
-  it('stores normalized E.164 mobile + padded train number and emails admin', async () => {
+  it('stores trimmed lowercase email + padded train number and emails admin', async () => {
     prisma.refundRequest.findFirst.mockResolvedValue(null);
     prisma.refundRequest.create.mockResolvedValue({
       id: 'rr-1',
-      mobile: '919876543210',
+      email: 'passenger@example.com',
       trainNumber: '12951',
       journeyDate: new Date('2026-10-01'),
       txnId: 'pay_abc123',
@@ -55,7 +55,7 @@ describe('RefundRequestService', () => {
     expect(out).toEqual({ id: 'rr-1', duplicate: false });
     expect(prisma.refundRequest.create).toHaveBeenCalledWith({
       data: {
-        mobile: '919876543210',
+        email: 'passenger@example.com',
         trainNumber: '12951',
         journeyDate: new Date('2026-10-01'),
         txnId: 'pay_abc123',
@@ -70,7 +70,7 @@ describe('RefundRequestService', () => {
   it('returns the existing id without creating when a pending duplicate exists', async () => {
     prisma.refundRequest.findFirst.mockResolvedValue({
       id: 'rr-old',
-      mobile: '919876543210',
+      email: 'passenger@example.com',
       trainNumber: '12951',
       journeyDate: new Date('2026-10-01'),
       txnId: null,
@@ -84,9 +84,9 @@ describe('RefundRequestService', () => {
     expect(prisma.refundRequest.create).not.toHaveBeenCalled();
   });
 
-  it('rejects invalid mobile, train number, and journey date', async () => {
+  it('rejects invalid email, train number, and journey date', async () => {
     await expect(
-      service.create({ ...validInput, mobile: '123' }),
+      service.create({ ...validInput, email: 'not-an-email' }),
     ).rejects.toThrow(BadRequestException);
     await expect(
       service.create({ ...validInput, trainNumber: 'abc' }),

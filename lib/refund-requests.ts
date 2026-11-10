@@ -1,7 +1,7 @@
 import { apiClient } from "@/lib/api";
 
 export interface RefundRequestInput {
-  mobile: string;
+  email: string;
   trainNumber: string;
   journeyDate: string;
   txnId?: string;
@@ -14,7 +14,7 @@ export interface RefundRequestResult {
 }
 
 /**
- * Submit a manual refund request (mobile + train + journey date, optional
+ * Submit a manual refund request (email + train + journey date, optional
  * transaction id). Resolves with the stored request id.
  */
 export async function createRefundRequest(

@@ -104,6 +104,26 @@ describe('chart alert confirmation email', () => {
     expect(html).toContain(expected);
   });
 
+  it('links a bold, prefilled refund request near the end', () => {
+    const html = renderChartAlertConfirmationEmailHtml(params);
+
+    expect(html).toContain(
+      '<strong>If you have had any issues, please raise a refund request using <a href="https://lastberth.com/refund?train=11061&amp;date=2026-11-05&amp;email=passenger%40example.com&amp;txn=payment_123" style="color:#2563eb;">https://lastberth.com/refund</a>.</strong>',
+    );
+  });
+
+  it('omits email and txn from the refund link when absent', () => {
+    const html = renderChartAlertConfirmationEmailHtml({
+      ...params,
+      email: undefined,
+      paymentRef: undefined,
+    });
+
+    expect(html).toContain(
+      'href="https://lastberth.com/refund?train=11061&amp;date=2026-11-05"',
+    );
+  });
+
   it('escapes dynamic content in the preview, journey, payment, and schedule', () => {
     const html = renderChartAlertConfirmationEmailHtml({
       ...params,

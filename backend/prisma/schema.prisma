@@ -541,7 +541,7 @@ enum RefundRequestStatus {
 /// every submission; fulfilment is manual via the admin dashboard.
 model RefundRequest {
   id          String              @id @default(cuid())
-  mobile      String              @map("mobile")
+  email       String              @map("email")
   trainNumber String              @map("train_number")
   journeyDate DateTime            @map("journey_date") @db.Date
   txnId       String?             @map("txn_id")
@@ -550,7 +550,7 @@ model RefundRequest {
   updatedAt   DateTime            @updatedAt @map("updated_at")
 
   @@index([status, createdAt])
-  @@index([mobile])
+  @@index([email])
   @@map("refund_request")
 }
 

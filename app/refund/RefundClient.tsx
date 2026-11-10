@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { createRefundRequest } from "@/lib/refund-requests";
-import { isValidIndianMobile } from "@/lib/validation";
+import { isValidEmail } from "@/lib/validation";
 import { getStoredContact, saveStoredContact } from "@/lib/contact";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 
@@ -12,6 +13,7 @@ type Status = "idle" | "done" | "error";
 const inputClass =
   "mt-1 w-full rounded-lg border border-slate-300 px-4 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20";
 const labelClass = "block text-sm font-medium text-slate-700";
+const YMD_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 function extractError(err: unknown): string {
   const ax = err as {
@@ -28,11 +30,21 @@ function extractError(err: unknown): string {
 }
 
 export function RefundClient() {
+  const searchParams = useSearchParams();
   const stored = getStoredContact();
-  const [mobile, setMobile] = useState(stored.mobile ?? "");
-  const [trainNumber, setTrainNumber] = useState("");
-  const [journeyDate, setJourneyDate] = useState("");
-  const [txnId, setTxnId] = useState("");
+  const queryDate = searchParams.get("date") ?? "";
+  const [email, setEmail] = useState(
+    searchParams.get("email")?.trim().toLowerCase() ||
+      stored.email ||
+      "",
+  );
+  const [trainNumber, setTrainNumber] = useState(
+    searchParams.get("train")?.replace(/\D/g, "") ?? "",
+  );
+  const [journeyDate, setJourneyDate] = useState(
+    YMD_RE.test(queryDate) ? queryDate : "",
+  );
+  const [txnId, setTxnId] = useState(searchParams.get("txn") ?? "");
   const [pending, setPending] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [referenceId, setReferenceId] = useState("");
@@ -42,19 +54,19 @@ export function RefundClient() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (pending) return;
-    const cleanMobile = mobile.trim();
-    const cleanTrain = trainNumber.replace(/\D/g, "");
-    if (!isValidIndianMobile(cleanMobile)) {
-      setErrorMessage("Please enter a valid 10-digit Indian mobile number.");
+    const cleanEmail = email.trim().toLowerCase();
+    if (!isValidEmail(cleanEmail)) {
+      setErrorMessage("Please enter a valid email address.");
       setStatus("error");
       return;
     }
+    const cleanTrain = trainNumber.replace(/\D/g, "");
     if (!/^\d{4,5}$/.test(cleanTrain)) {
       setErrorMessage("Please enter a valid 4–5 digit train number.");
       setStatus("error");
       return;
     }
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(journeyDate)) {
+    if (!YMD_RE.test(journeyDate)) {
       setErrorMessage("Please pick your date of journey.");
       setStatus("error");
       return;
@@ -63,12 +75,12 @@ export function RefundClient() {
     setErrorMessage("");
     try {
       const res = await createRefundRequest({
-        mobile: cleanMobile,
+        email: cleanEmail,
         trainNumber: cleanTrain,
         journeyDate,
         txnId: txnId.trim() || undefined,
       });
-      saveStoredContact({ mobile: cleanMobile });
+      saveStoredContact({ email: cleanEmail });
       setReferenceId(res.id);
       setWasDuplicate(res.duplicate);
       setStatus("done");
@@ -112,7 +124,7 @@ export function RefundClient() {
             <p className="mt-1 text-sm text-emerald-800">
               {wasDuplicate
                 ? "We already have a pending request for this journey — our team will review it."
-                : "Our team will review it and update you on your mobile number."}{" "}
+                : "Our team will review it and update you on your email."}{" "}
               Reference: <span className="font-mono">{referenceId}</span>
             </p>
             <Link
@@ -130,17 +142,16 @@ export function RefundClient() {
             </p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="refund-mobile" className={labelClass}>
-                  Mobile number
+                <label htmlFor="refund-email" className={labelClass}>
+                  Email
                 </label>
                 <input
-                  id="refund-mobile"
-                  type="tel"
-                  inputMode="numeric"
-                  autoComplete="tel"
-                  value={mobile}
-                  onChange={(e) => setMobile(e.target.value)}
-                  placeholder="98765 43210"
+                  id="refund-email"
+                  type="email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
                   className={inputClass}
                   required
                 />
