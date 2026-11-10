@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
-import { SideAdvert } from "@/components/ads/SideAdvert";
+import { VignetteAdvert } from "@/components/ads/VignetteAdvert";
 
 export const metadata: Metadata = {
   title: {
@@ -40,15 +40,11 @@ export default function BlogLayout({
     <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-gray-900 antialiased">
       <Header />
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="flex items-start justify-center gap-8">
-          <main className="w-full min-w-0 max-w-3xl lg:max-w-4xl">
-            {children}
-          </main>
-          <div className="sticky top-20 hidden shrink-0 xl:block">
-            <SideAdvert utmMedium="external_website_blog" />
-          </div>
-        </div>
+        <main className="mx-auto w-full min-w-0 max-w-3xl lg:max-w-4xl">
+          {children}
+        </main>
       </div>
+      <VignetteAdvert />
     </div>
   );
 }
