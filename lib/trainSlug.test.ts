@@ -4,6 +4,7 @@ import {
   getTopTrainSlugs,
   buildTrainSlug,
   parseTrainNumberFromParam,
+  getTrainIndex,
   CORE_TRAIN_NUMBERS,
 } from "./trainSlug";
 
@@ -43,4 +44,15 @@ test("getTopTrainSlugs returns cached results on subsequent calls", () => {
   const second = getTopTrainSlugs(500);
   assert.equal(first, second);
   assert.equal(first.length, 500);
+});
+
+test("getTrainIndex caches and returns the exact same Map instance across invocations", () => {
+  const index1 = getTrainIndex();
+  const index2 = getTrainIndex();
+  assert.equal(index1, index2);
+  assert.ok(index1.size > 0);
+  assert.ok(index1.has("12015"));
+  const ajmer = index1.get("12015");
+  assert.equal(ajmer?.trainNumber, "12015");
+  assert.ok(ajmer?.trainName.includes("Shatabdi"));
 });
