@@ -21,6 +21,7 @@ These candidates are queued for:
 
 | Date Added | Target Keyword / Query | Impressions | Growth / Pos | Suggested Article Title | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-28 | `wl ka matlab kya hota hai` | High (917 imp) | Pos 6.1 (Uncovered GSC) | _Wl Ka Matlab Kya Hota Hai: Meaning, Rules & Guide (2026)_ | ⏳ Queued |
 | 2026-10-28 | `curr_avbl in irctc` | High (924 imp) | Pos 3.2 (Uncovered GSC) | _Curr_Avbl In Irctc: Meaning, Rules & Guide (2026)_ | ⏳ Queued |
 | 2026-10-28 | `राजधानी एक्सप्रेस` | High (976 imp) | Pos 8.2 (Uncovered GSC) | _राजधानी एक्सप्रेस: Meaning, Rules & Guide (2026)_ | ⏳ Queued |
 | 2026-10-28 | `yes` | High (1,747 imp) | Pos 4.7 (Uncovered GSC) | _Yes: Meaning, Rules & Guide (2026)_ | ⏳ Queued |
@@ -31,7 +32,7 @@ These candidates are queued for:
 | 2026-11-06 | `bandhan express` | High (10,736 imp) | Pos 8.6 (Uncovered GSC) | _Bandhan Express: Route, Timings, Booking & Passport Rules (2026)_ | ✅ Published |
 | 2026-11-06 | `jhelum express` | High (2,785 imp) | Pos 6.1 (Uncovered GSC) | _Jhelum Express (11077/11078): Route, Timings & Rules (2026)_ | ✅ Published |
 | 2026-11-06 | `irctc downtime` / `irctc server down time` | High (3,303 imp) | Pos 6.3 (Uncovered GSC) | _IRCTC Downtime Today: Server Maintenance & Error Fixes (2026)_ | ⏳ Queued |
-| 2026-11-06 | `poorva express` | High (1,516 imp) | Pos 6.8 (Uncovered GSC) | _Poorva Express (12303/12381): Route, Timings & Chart Schedule (2026)_ | ⏳ Queued |
+| 2026-11-06 | `poorva express` | High (1,516 imp) | Pos 6.8 (Uncovered GSC) | _Poorva Express (12303/12381): Route, Timings & Chart Schedule (2026)_ | ✅ Published |
 | 2026-11-01 | `3rd ac cancellation charges` / `cancellation charges for 3ac` | High (~4,000/mo cluster demand) | Pos 9.7 (0.0% CTR / GSC Uncovered) | _3A / 3rd AC Cancellation Charges: IRCTC Rules & Refund (2026)_ | ✅ Published |
 | 2026-09-21 | `irctc advance reservation period` / `60 days rules calculator` | High (~18.8M/wk entity surge) | Breakout (+5000% 24h spike / 60-day rule) | _IRCTC Advance Reservation Period: 60-Day Rules & Dates (2026)_ | ✅ Published |
 | 2026-09-10 | `diwali special train 2026 list` / `booking date` | Very High (~18.8M/wk entity surge) | Breakout (+900% 7D / +999k% 1M) | _Diwali Special Train 2026: List, Booking Dates & Routes_ | ✅ Published |
