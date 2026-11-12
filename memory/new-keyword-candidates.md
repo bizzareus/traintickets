@@ -21,6 +21,7 @@ These candidates are queued for:
 
 | Date Added | Target Keyword / Query | Impressions | Growth / Pos | Suggested Article Title | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-28 | `agli train 3 ghante baad hai. iss beech aas-paas jaane ka plan bana do.` | High (1,510 imp) | Pos 5.8 (Uncovered GSC) | _Agli Train 3 Ghante Baad Hai. Iss Beech Aas-Paas Jaane Ka Plan Bana Do.: Meaning, Rules & Guide (2026)_ | ⏳ Queued |
 | 2026-10-28 | `wl ka matlab kya hota hai` | High (917 imp) | Pos 6.1 (Uncovered GSC) | _Wl Ka Matlab Kya Hota Hai: Meaning, Rules & Guide (2026)_ | ⏳ Queued |
 | 2026-10-28 | `curr_avbl in irctc` | High (924 imp) | Pos 3.2 (Uncovered GSC) | _Curr_Avbl In Irctc: Meaning, Rules & Guide (2026)_ | ⏳ Queued |
 | 2026-10-28 | `राजधानी एक्सप्रेस` | High (976 imp) | Pos 8.2 (Uncovered GSC) | _राजधानी एक्सप्रेस: Meaning, Rules & Guide (2026)_ | ⏳ Queued |

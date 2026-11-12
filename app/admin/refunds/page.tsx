@@ -11,6 +11,11 @@ type RefundEntry = {
   journeyDate: string;
   txnId: string | null;
   status: "PENDING" | "RESOLVED" | "REJECTED";
+  refundId?: string | null;
+  razorpayPaymentId?: string | null;
+  refundAmount?: number | null;
+  refundedAt?: string | null;
+  refundError?: string | null;
   createdAt: string;
 };
 
@@ -81,15 +86,24 @@ export default function AdminRefundsPage() {
   };
 
   async function handleSetStatus(id: string, status: "RESOLVED" | "REJECTED") {
-    if (
-      !confirm(
-        `Mark this refund request as ${status.toLowerCase()}? This only updates the dashboard record.`,
-      )
-    )
-      return;
+    const isResolve = status === "RESOLVED";
+    const confirmMsg = isResolve
+      ? "Issue refund for this request via Muzobox and email the customer?"
+      : "Mark this refund request as rejected?";
+    if (!confirm(confirmMsg)) return;
+
     setActingId(id);
     try {
-      await apiClient.patch(
+      const { data } = await apiClient.patch<{
+        ok: true;
+        status: string;
+        refund?: {
+          refundId?: string | null;
+          razorpayPaymentId?: string | null;
+          amount?: number;
+          emailSent?: boolean;
+        };
+      }>(
         `/api/refund-requests/admin/${id}`,
         { status },
         { headers: authHeaders() },
@@ -98,6 +112,11 @@ export default function AdminRefundsPage() {
         name: "admin_refund_status_changed",
         properties: { status },
       });
+      if (isResolve && data?.refund?.refundId) {
+        alert(
+          `Refund processed successfully via Muzobox!\nAmount: ₹${data.refund.amount ?? 5}\nRefund ID: ${data.refund.refundId}\nPayment ID: ${data.refund.razorpayPaymentId || "on record"}\nCustomer email: ${data.refund.emailSent ? "Sent" : "Failed to send"}`,
+        );
+      }
       await load();
     } catch (err) {
       alert(extractError(err, "Failed to update status."));
@@ -111,7 +130,9 @@ export default function AdminRefundsPage() {
     const q = search.trim().toLowerCase();
     if (
       q &&
-      !`${e.email} ${e.trainNumber} ${e.txnId ?? ""}`.toLowerCase().includes(q)
+      !`${e.email} ${e.trainNumber} ${e.txnId ?? ""} ${e.refundId ?? ""} ${e.razorpayPaymentId ?? ""}`
+        .toLowerCase()
+        .includes(q)
     )
       return false;
     return true;
@@ -269,9 +290,19 @@ export default function AdminRefundsPage() {
                     <td className="whitespace-nowrap px-6 py-4 text-xs text-slate-600">
                       {entry.journeyDate.slice(0, 10)}
                     </td>
-                    <td className="max-w-40 truncate px-6 py-4 font-mono text-xs text-slate-600">
-                      {entry.txnId || (
-                        <span className="italic text-slate-400">—</span>
+                    <td className="max-w-44 px-6 py-4 font-mono text-xs text-slate-600">
+                      <div className="truncate" title={entry.txnId ?? undefined}>
+                        {entry.txnId || (
+                          <span className="italic text-slate-400">—</span>
+                        )}
+                      </div>
+                      {entry.refundId && (
+                        <div
+                          className="mt-0.5 truncate text-[11px] font-semibold text-emerald-700"
+                          title={`Razorpay Refund ID: ${entry.refundId}`}
+                        >
+                          Ref: {entry.refundId}
+                        </div>
                       )}
                     </td>
                     <td className="px-6 py-4">
@@ -294,9 +325,9 @@ export default function AdminRefundsPage() {
                               handleSetStatus(entry.id, "RESOLVED")
                             }
                             disabled={actingId === entry.id}
-                            className="rounded bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-50"
+                            className="rounded bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 hover:bg-emerald-100 disabled:opacity-50"
                           >
-                            Resolve
+                            {actingId === entry.id ? "Resolving…" : "Resolve"}
                           </button>
                           <button
                             onClick={() =>
@@ -308,6 +339,25 @@ export default function AdminRefundsPage() {
                             Reject
                           </button>
                         </span>
+                      ) : entry.status === "RESOLVED" ? (
+                        <div className="flex items-center gap-2">
+                          {entry.refundId ? (
+                            <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700">
+                              ✓ Refunded {entry.refundAmount ? `(₹${entry.refundAmount})` : ""}
+                            </span>
+                          ) : (
+                            <button
+                              onClick={() =>
+                                handleSetStatus(entry.id, "RESOLVED")
+                              }
+                              disabled={actingId === entry.id}
+                              title="Initiate refund via Muzobox and email customer"
+                              className="rounded bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 hover:bg-emerald-100 disabled:opacity-50"
+                            >
+                              {actingId === entry.id ? "Processing…" : "Process Refund"}
+                            </button>
+                          )}
+                        </div>
                       ) : (
                         <span className="text-xs italic text-slate-400">—</span>
                       )}

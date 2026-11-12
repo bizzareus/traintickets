@@ -60,6 +60,8 @@ import {
   buildNoSeatsWhatsAppText,
   buildAlternativeTrainsWhatsAppText,
   renderAutomaticDeliveryFailureRefundEmailHtml,
+  renderManualRefundProcessedEmailHtml,
+  type ManualRefundProcessedEmailParams,
   type AdminMonitoringPaymentDetails,
 } from './templates';
 import type { BestTrainCandidateResult } from '../booking-v2/booking-v2.service';
@@ -68,7 +70,8 @@ import { NotificationDeduplicationService } from './notification-deduplication.s
 import { NotificationUnsubscribeService } from './notification-unsubscribe.service';
 
 const RESEND_FROM =
-  process.env.RESEND_FROM || 'LastBerth Notifications <notification@lastberth.com>';
+  process.env.RESEND_FROM ||
+  'LastBerth Notifications <notification@lastberth.com>';
 const DEFAULT_MONITORING_ADMIN_EMAIL = 'me@kartikarora.in';
 
 /** Normalize mobile to E.164 for WaSender (e.g. 919876543210). */
@@ -384,6 +387,20 @@ export class NotificationService {
       params.email,
       `Automatic refund issued - Train ${params.trainNumber}`,
       renderAutomaticDeliveryFailureRefundEmailHtml(params),
+    );
+  }
+
+  async sendManualRefundProcessedEmail(
+    params: ManualRefundProcessedEmailParams,
+  ): Promise<boolean> {
+    const trainLabel = params.trainName?.trim()
+      ? `Train ${params.trainNumber} (${params.trainName.trim()})`
+      : `Train ${params.trainNumber}`;
+    const subject = `Refund processed: ₹${params.amount} for ${trainLabel} - LastBerth`;
+    return this.sendEmail(
+      params.email,
+      subject,
+      renderManualRefundProcessedEmailHtml(params),
     );
   }
 

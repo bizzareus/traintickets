@@ -19,6 +19,15 @@ describe('RefundRequestController', () => {
 
     const mockService = {
       create: jest.fn().mockResolvedValue({ id: 'ref-123', duplicate: false }),
+      getQuote: jest.fn().mockResolvedValue({
+        ok: true,
+        found: true,
+        amount: 25,
+        currency: 'INR',
+        autoRefundEligible: true,
+        trainNumber: '12951',
+        journeyDate: '2026-10-01',
+      }),
       list: jest.fn().mockResolvedValue([]),
       setStatus: jest.fn().mockResolvedValue({ ok: true }),
     };
@@ -40,6 +49,32 @@ describe('RefundRequestController', () => {
   });
 
   const mockReq = {} as Request;
+
+  describe('quote', () => {
+    it('throws BadRequestException if body is invalid', async () => {
+      await expect(
+        controller.quote(null as unknown as CreateRefundRequestDto),
+      ).rejects.toThrow(BadRequestException);
+    });
+
+    it('delegates to service.getQuote and returns quote details', async () => {
+      const dto: CreateRefundRequestDto = {
+        email: 'passenger@example.com',
+        trainNumber: '12951',
+        journeyDate: '2026-10-01',
+      };
+      const res = await controller.quote(dto);
+      expect(res).toEqual({
+        ok: true,
+        found: true,
+        amount: 25,
+        currency: 'INR',
+        autoRefundEligible: true,
+        trainNumber: '12951',
+        journeyDate: '2026-10-01',
+      });
+    });
+  });
 
   describe('create', () => {
     it('throws BadRequestException if body is invalid', async () => {

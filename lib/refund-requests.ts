@@ -11,6 +11,32 @@ export interface RefundRequestResult {
   ok: boolean;
   id: string;
   duplicate: boolean;
+  autoRefunded?: boolean;
+  amount?: number;
+  refundId?: string | null;
+}
+
+export interface RefundQuoteResult {
+  ok: boolean;
+  found: boolean;
+  amount: number;
+  currency: string;
+  autoRefundEligible: boolean;
+  trainNumber?: string;
+  journeyDate?: string;
+}
+
+/**
+ * Fetch the quoted refund amount for a transaction before submitting.
+ */
+export async function getRefundQuote(
+  input: RefundRequestInput,
+): Promise<RefundQuoteResult> {
+  const res = await apiClient.post<RefundQuoteResult>(
+    "/api/refund-requests/quote",
+    input,
+  );
+  return res.data;
 }
 
 /**

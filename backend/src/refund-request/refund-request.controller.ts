@@ -23,17 +23,43 @@ export class RefundRequestController {
   /** Public: submit a manual refund request from the /refund form. */
   @Post()
   @Throttle({ global: { limit: 5, ttl: 60_000 } })
-  async create(
-    @Body() body: CreateRefundRequestDto,
-  ): Promise<{ ok: true; id: string; duplicate: boolean }> {
+  async create(@Body() body: CreateRefundRequestDto): Promise<{
+    ok: true;
+    id: string;
+    duplicate: boolean;
+    autoRefunded?: boolean;
+    amount?: number;
+    refundId?: string | null;
+  }> {
     if (!body || typeof body !== 'object') {
       throw new BadRequestException({
         code: 'INVALID_BODY',
         message: 'Request body is required.',
       });
     }
-    const { id, duplicate } = await this.refunds.create(body);
-    return { ok: true, id, duplicate };
+    const result = await this.refunds.create(body);
+    return { ok: true, ...result };
+  }
+
+  /** Public: get quoted refund amount and eligibility before submission. */
+  @Post('quote')
+  @Throttle({ global: { limit: 30, ttl: 60_000 } })
+  async quote(@Body() body: CreateRefundRequestDto): Promise<{
+    ok: true;
+    found: boolean;
+    amount: number;
+    currency: string;
+    autoRefundEligible: boolean;
+    trainNumber: string;
+    journeyDate: string;
+  }> {
+    if (!body || typeof body !== 'object') {
+      throw new BadRequestException({
+        code: 'INVALID_BODY',
+        message: 'Request body is required.',
+      });
+    }
+    return this.refunds.getQuote(body);
   }
 
   // --- Admin endpoints (gated by x-admin-password) -------------------------
@@ -53,7 +79,7 @@ export class RefundRequestController {
     @Req() req: Request,
     @Param('id') id: string,
     @Body() body: { status?: string },
-  ): Promise<{ ok: true }> {
+  ): Promise<Awaited<ReturnType<RefundRequestService['setStatus']>>> {
     assertAdminAuth({ headerPw: pw, req });
     return this.refunds.setStatus(id, body?.status ?? '');
   }

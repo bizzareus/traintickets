@@ -540,14 +540,19 @@ enum RefundRequestStatus {
 /// journey date + optional txn id). An email goes to the monitoring admin on
 /// every submission; fulfilment is manual via the admin dashboard.
 model RefundRequest {
-  id          String              @id @default(cuid())
-  email       String              @map("email")
-  trainNumber String              @map("train_number")
-  journeyDate DateTime            @map("journey_date") @db.Date
-  txnId       String?             @map("txn_id")
-  status      RefundRequestStatus @default(PENDING)
-  createdAt   DateTime            @default(now()) @map("created_at")
-  updatedAt   DateTime            @updatedAt @map("updated_at")
+  id                String              @id @default(cuid())
+  email             String              @map("email")
+  trainNumber       String              @map("train_number")
+  journeyDate       DateTime            @map("journey_date") @db.Date
+  txnId             String?             @map("txn_id")
+  status            RefundRequestStatus @default(PENDING)
+  refundId          String?             @map("refund_id")
+  razorpayPaymentId String?             @map("razorpay_payment_id")
+  refundAmount      Int?                @map("refund_amount")
+  refundedAt        DateTime?           @map("refunded_at")
+  refundError       String?             @map("refund_error")
+  createdAt         DateTime            @default(now()) @map("created_at")
+  updatedAt         DateTime            @updatedAt @map("updated_at")
 
   @@index([status, createdAt])
   @@index([email])

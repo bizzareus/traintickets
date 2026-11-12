@@ -7,3 +7,4 @@ export * from './refund-request.template';
 export * from './automatic-refund.template';
 export * from './chart-alert-confirmation.template';
 export * from './abandoned-booking-reminder.template';
+export * from './manual-refund-processed.template';
