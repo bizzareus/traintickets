@@ -526,6 +526,8 @@ export type AnalyticsEvent =
         journey_date: string;
         has_txn_id: boolean;
         duplicate: boolean;
+        auto_refunded: boolean;
+        amount: number;
       };
     }
   // Public unsubscribe page events

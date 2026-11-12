@@ -196,7 +196,7 @@ function readCachedFile(trainNumber: string): ChartTimesPageData | null {
     return cachedParsedFileMap.get(fp) || null;
   }
   try {
-    const raw = fs.readFileSync(fp, "utf8");
+    const raw = fs.readFileSync(/*turbopackIgnore: true*/ fp, "utf8");
     const data = JSON.parse(raw) as ChartTimesPageData;
     if (data && Array.isArray(data.stations) && data.trainNumber) {
       cachedParsedFileMap.set(fp, data);
