@@ -7,6 +7,8 @@ import { AnalyticsProvider } from "./providers/AnalyticsProvider";
 import { listPopularChartTimes } from "@/lib/chartTimes";
 import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
 import { AdSenseScriptLoader } from "@/components/AdSenseScriptLoader";
+import { VignetteAdvert } from "@/components/ads/VignetteAdvert";
+import { InPagePush } from "@/components/ads/InPagePush";
 import { getBaseUrl } from "@/lib/site-url";
 import "./globals.css";
 
@@ -405,6 +407,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
         </AnalyticsProvider>
         <GoogleAnalytics />
+        <VignetteAdvert />
+        <InPagePush />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

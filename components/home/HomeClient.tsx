@@ -35,7 +35,8 @@ import {
 import { normalizeClassCodes } from "@/lib/trainClasses";
 import { getJourneyDateError } from "@/lib/advanceReservation";
 import { HomeBannerAd } from "@/components/home/HomeSideAd";
-import { SideAdvert, MobileAdvert } from "@/components/ads/SideAdvert";
+// Nari advert temporarily disabled in favour of Monetag In-Page Push
+// import { SideAdvert, MobileAdvert } from "@/components/ads/SideAdvert";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const SearchPnrPanel = dynamic(
@@ -1574,7 +1575,8 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                         </div>
                       </form>
                       <HomeTrustStrip />
-                      <MobileAdvert utmMedium="external_website_homepage" />
+                      {/* Nari advert temporarily disabled in favour of Monetag In-Page Push */}
+                      {/* <MobileAdvert utmMedium="external_website_homepage" /> */}
                     </>
                   )
                 ) : (
@@ -1904,9 +1906,10 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
             )}
           </div>
 
-          <aside className="sticky top-20 hidden shrink-0 pt-8 xl:block">
+          {/* Nari advert temporarily disabled in favour of Monetag In-Page Push */}
+          {/* <aside className="sticky top-20 hidden shrink-0 pt-8 xl:block">
             <SideAdvert utmMedium="external_website_homepage" />
-          </aside>
+          </aside> */}
         </div>
       </div>
       <TrainScheduleBottomSheet

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
-import { VignetteAdvert } from "@/components/ads/VignetteAdvert";
 
 export const metadata: Metadata = {
   title: {
@@ -44,7 +43,6 @@ export default function BlogLayout({
           {children}
         </main>
       </div>
-      <VignetteAdvert />
     </div>
   );
 }
