@@ -1,8 +1,8 @@
 ---
-title: "IRCTC Maintenance Time: 11:45 PM to 12:20 AM Rules (2026)"
-description: "IRCTC maintenance time runs daily from 11:45 PM to 12:20 AM IST. Check server downtime rules, morning 8 AM ARP, Tatkal slots, and failed payment refunds."
+title: "IRCTC Maintenance Time & Downtime Today: Hours & Fixes (2026)"
+description: "IRCTC maintenance time runs daily from 11:45 PM to 12:20 AM IST. Check live server downtime status, Tatkal crash fixes, and debited payment refund rules."
 date: "2026-06-18"
-updated: "2026-10-27"
+updated: "2026-11-13"
 tags:
   - train booking
   - irctc
@@ -14,6 +14,10 @@ tags:
   - railway maintenance time
 ---
 
+## TL;DR
+
+IRCTC ticketing operates daily from **12:20 AM to 11:45 PM IST**, pausing for a mandatory 35-minute nightly maintenance window between **11:45 PM and 12:20 AM IST (23:45 to 00:20)**. Morning 60-day Advance Reservation Period (ARP) bookings open at **8:00 AM IST** (Aadhaar-authenticated only on Day 1), while Tatkal opens at **10:00 AM IST for AC** and **11:00 AM IST for Non-AC**. If IRCTC servers crash during morning Tatkal or money is debited during midnight maintenance without generating a PNR, IRCTC initiates a 100% automatic refund within 3 to 5 business days. When direct booking shows REGRET or downtime blocks the portal, [Finding Smart Seats](/) discovers confirmed contiguous split tickets on the same train without paying Tatkal surcharges.
+
 > **Traveling on Indian Railways?** When IRCTC maintenance shuts down booking or direct trains show REGRET, find guaranteed confirmed seats and post-charting vacancies on LastBerth:
 >
 > - [Search Delhi ➔ Patna Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn&src=blog_maintenance)
@@ -22,10 +26,6 @@ tags:
 > - [Search Bengaluru ➔ Chennai Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central&src=blog_maintenance)
 > - [Search Howrah ➔ Puri Holiday Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri&src=blog_maintenance)
 > - Track live released berths on the [Chart Vacancy Map](/chart-vacancy) or check train chart release times on [Chart Times](/chart-times).
-
-## TL;DR
-
-IRCTC ticketing operates daily from **12:20 AM to 11:45 PM IST**, shutting down for a mandatory 35-minute nightly server maintenance window between **11:45 PM and 12:20 AM IST (23:45 to 00:20)**. Morning 60-day Advance Reservation Period (ARP) bookings open at **8:00 AM IST** (restricted to Aadhaar-authenticated profiles on Day 1), while Tatkal opens at **10:00 AM IST for AC** and **11:00 AM IST for Non-AC** classes. If money is debited during midnight maintenance without generating a PNR, IRCTC automatically processes a 100% refund within 3 to 5 business days. When trains show REGRET or heavy waitlists, [Finding Smart Seats](/) discovers confirmed contiguous split tickets on the same train without paying Tatkal markups.
 
 ---
 
@@ -43,6 +43,28 @@ During the nightly maintenance window:
 - **No PNR Status Updates:** Passenger Reservation System (PRS) servers do not accept status polling during maintenance.
 
 If you attempt to finalize a booking at 11:44 PM and your payment gateway transaction settles at 11:45 PM, the system rejects the booking. Your money is completely safe: IRCTC flags the transaction as an unassigned debit and automatically credits a full refund to your source payment account.
+
+---
+
+## Is IRCTC Server Down Today? How to Check Live Downtime and Outages
+
+**To check if the IRCTC server is down today, test the official IRCTC Rail Connect mobile app on cellular data, verify CRIS database connectivity, or check RailMadad helpline 139. If downtime strikes during 10:00 AM or 11:00 AM Tatkal rush, servers typically recover within 15 minutes as peak concurrency drops.**
+
+Millions of rail travelers encounter connectivity issues outside the scheduled 11:45 PM maintenance slot. Differentiating between a nationwide server crash, a localized network glitch, and an anti-bot IP block ensures you take the right corrective action immediately:
+
+| Outage Type | Peak Occurrence Window | Root Cause | Best Working Solution |
+| :--- | :--- | :--- | :--- |
+| **Scheduled Night Maintenance** | 11:45 PM – 12:20 AM IST | Mandatory CRIS database reconciliation batch | Wait until 12:20 AM; use UTS app for unreserved tickets |
+| **Tatkal Server Concurrency Surge** | 09:58 AM – 10:15 AM (AC) & 10:58 AM – 11:15 AM (Non-AC) | Millions of simultaneous login attempts overwhelm authentication gateways | Switch to Rail Connect mobile app; retry at 10:05 AM or 11:05 AM |
+| **Akamai WAF IP Block (Access Denied)** | Any time (especially overseas or on VPN) | Commercial VPN, browser autofill extension, or flagged Wi-Fi IP | Disable VPN; switch to mobile phone cellular hotspot |
+| **Payment Gateway Timeout** | During peak Tatkal or near 11:44 PM | Bank switch disconnects before PNR confirmation | Check Ticket Refund History; use UPI QR or IRCTC e-Wallet |
+
+If the IRCTC website (`irctc.co.in`) throws a "503 Service Unavailable", "Transaction Timed Out", or infinite loading spinner, execute this 4-step diagnostic checklist:
+
+1. **Launch the IRCTC Rail Connect App:** The mobile application routes requests through dedicated API microservices separate from the desktop web portal. When the desktop site crashes under web traffic, mobile app logins frequently succeed.
+2. **Disconnect Commercial VPNs and Proxies:** IRCTC actively blocks data center IP subnets utilized by NordVPN, ExpressVPN, Surfshark, and Cloudflare WARP. Turn off all VPN relays to avoid instant 403 Forbidden errors.
+3. **Switch from Broadband Wi-Fi to Mobile Hotspot:** Shared residential Wi-Fi IP addresses occasionally get rate-limited by Akamai firewalls during high-demand hours. Connecting your laptop to cellular data (Jio, Airtel, or Vi) assigns a fresh carrier-grade NAT IP.
+4. **Inspect RailMadad Twitter / Helpline 139:** For major nationwide data center outages, Indian Railways issues prompt alerts via their official social channels and the 139 customer helpline.
 
 ---
 
@@ -127,16 +149,19 @@ For speed tactics and booking workflows, review our in-depth guides on [Tatkal v
 
 ---
 
-## What Happens If Money Is Deducted During IRCTC Maintenance?
+## What Happens If Money Is Deducted During IRCTC Maintenance or Outage?
 
-**If money is debited from your bank account near 11:45 PM without generating a PNR, your funds are completely safe. The payment is flagged as an unassigned settlement and IRCTC automatically initiates a 100% full refund to your original payment method within 3 to 5 business days.**
+**If money is debited from your bank account near 11:45 PM or during a server outage without generating a PNR, your funds are completely safe. The payment is flagged as an unassigned settlement and IRCTC automatically initiates a 100% full refund to your original payment method within 3 to 5 business days.**
 
 When this occurs, you are protected by statutory payment clearing rules:
 
 - **Zero Cancellation Fee Deducted:** Because no ticket or PNR was generated, Indian Railways does not deduct clerkage charges, GST, or convenience fees.
-- **Automatic Reconciliation:** Once servers resume operations at 12:20 AM IST, the CRIS financial engine reconciles pending payment gateway logs against generated PNR databases. Unmatched debits trigger instant reversal commands.
-- **Checking Refund Status:** Log into your IRCTC account dashboard and navigate to _My Transactions ➔ Ticket Refund History_. The transaction appears with an official Refund Reference Number and payment gateway trace ID.
-- **Banking Turnaround:** UPI transactions typically credit within 24 to 48 hours, while net banking and debit/credit card refunds take 3 to 5 business days depending on your bank's clearing cycle.
+- **Automatic Reconciliation:** Once servers resume operations at 12:20 AM IST or peak traffic subsides, the CRIS financial engine reconciles pending payment gateway logs against generated PNR databases. Unmatched debits trigger instant reversal commands.
+- **Checking Refund Status:** Log into your IRCTC account dashboard and navigate to _My Transactions ➔ Ticket Refund History_ or _Failed Transaction History_. The transaction appears with an official Refund Reference Number and payment gateway trace ID.
+- **Banking Turnaround by Channel:**
+  - **UPI (GPay, PhonePe, Paytm):** Typically credited within 24 to 48 hours.
+  - **Net Banking & Debit/Credit Cards:** 3 to 5 business days depending on your bank's clearing cycle.
+  - **IRCTC e-Wallet:** Restored instantly or within 24 hours.
 
 If your funds are not restored within 7 business days, lodge an automated grievance on the [RailMadad portal](https://railmadad.indianrailways.gov.in) or call the unified railway helpline at **139** with your bank Transaction ID. For complete refund tracking instructions, see our master guide on [IRCTC Refund Status Tracking](/blog/irctc-refund-status-check-track-ticket-refund).
 
@@ -151,11 +176,11 @@ Thousands of commuters encounter cryptic error banners such as "Access Denied," 
 1. **Scheduled Maintenance Blackout:** Every night at 11:45 PM IST, the central authentication gateway severs active sessions. Even if you entered the correct username, password, and captcha, the server refuses verification until 12:20 AM IST.
 2. **VPN and Proxy Blocks:** IRCTC actively blocks traffic originating from known commercial VPNs and international proxy IP addresses to safeguard against automated scalpers. Ensure your VPN is disabled.
 3. **Geo-Location and Overseas Access:** If you are accessing IRCTC from abroad (such as the USA, Canada, or the UK), keep in mind that 11:45 PM to 12:20 AM IST corresponds to daytime in North America (for example, 2:15 PM to 2:50 PM EDT). Always verify Indian Standard Time before attempting a login.
-4. **Stale Session Cookies:** If the error persists after 12:20 AM IST, hard-refresh your browser (`Ctrl + F5` or `Cmd + Shift + R`) or use an incognito window to clear cached session cookies.
+4. **Stale Session Cookies:** If the error persists after 12:20 AM IST, hard-refresh your browser (`Ctrl + F5` or `Cmd + Shift + R`) or use an incognito window to clear cached session cookies. For a dedicated technical walkthrough on Akamai Reference # blocks, read our [IRCTC Login Access Denied Guide](/blog/irctc-login-from-usa-nri-booking-guide).
 
 ---
 
-## What Can You Do While IRCTC Is Down for Maintenance?
+## What Can You Do While IRCTC Is Down for Maintenance or Outage?
 
 **While IRCTC servers are down for maintenance between 11:45 PM and 12:20 AM IST, you can book unreserved tickets on the independent UTS mobile app, check real-time train running status via the 139 railway helpline, view offline station timetables, or explore post-charting seat maps on LastBerth.**
 
@@ -230,13 +255,13 @@ IRCTC night maintenance starts every night at 11:45 PM IST (23:45) and concludes
 
 The nightly 35-minute maintenance allows CRIS to synchronize passenger reservation databases across all 17 railway zones, reconcile daily payment gateway settlements, purge unauthorized bot sessions, and prepare fresh inventory for the morning 8:00 AM booking opening.
 
-### Can I check PNR status or cancel a ticket during night maintenance?
+### How do I know if IRCTC server is down right now or just slow?
 
-No, online ticket cancellations, PNR status lookups, and account logins are completely offline from 11:45 PM to 12:20 AM IST because central PRS database connections are temporarily suspended.
+If the desktop portal fails to load or throws 503 errors, test the IRCTC Rail Connect mobile app on 4G/5G mobile data. If both platforms fail and payment gateways disconnect, CRIS is experiencing an unscheduled outage that typically resolves within 15 to 30 minutes.
 
-### What should I do if money was debited from my account during IRCTC maintenance?
+### What should I do if money was debited from my account during IRCTC downtime?
 
-Do not worry. The failed transaction is automatically logged by CRIS reconciliation systems, and IRCTC initiates a 100% full refund to your original payment account within 3 to 5 business days without deducting any clerkage or cancellation charges.
+Do not panic. Failed transactions are automatically flagged by CRIS reconciliation engines, and IRCTC initiates a 100% full refund to your original payment account within 3 to 5 business days without deducting any clerkage or cancellation charges.
 
 ### What time does normal 60-day train ticket booking open every morning?
 
@@ -246,19 +271,19 @@ General 60-day Advance Reservation Period (ARP) ticket booking opens daily at 8:
 
 AC Tatkal (2A, 3A, 3E, CC, EC) opens at 10:00 AM IST, and Non-AC Tatkal (Sleeper and 2S) opens at 11:00 AM IST, exactly one day prior to the train's scheduled departure from its originating station.
 
+### Why does IRCTC crash or slow down during 10 AM and 11 AM Tatkal booking?
+
+Millions of concurrent users attempt to log in and lock seats simultaneously during the first 10 minutes of Tatkal opening. This massive traffic surge saturates authentication gateways and triggers temporary request queues until quota allocations settle.
+
 ### Can I book unreserved train tickets on the UTS app during IRCTC maintenance?
 
 Yes, the UTS mobile application functions on an independent server cluster and allows unreserved ticket and suburban platform ticket booking during the midnight maintenance window.
-
-### Can I change my boarding station online during night maintenance?
-
-No, boarding point modifications require active PRS connectivity and cannot be executed during maintenance. However, outside maintenance hours, you can change your boarding station online up until second chart preparation (~30 minutes before departure).
 
 ### What time does Current Availability booking open on IRCTC?
 
 Current availability booking opens immediately following first chart preparation, roughly 8 hours before train departure (or 9:00 PM the previous evening for morning departures before 14:00), and stays open until 30 minutes before train departure.
 
-### What is the penalty for boarding a reserved train coach during maintenance blackout?
+### What is the penalty for boarding a reserved train coach without a confirmed ticket?
 
 Boarding a reserved coach with an unconfirmed waiting list e-ticket or general ticket incurs a flat ₹500 fine under Section 138 of the Railways Act (as amended by the Jan Vishwas Act 2026), plus the fare difference to the boarded class.
 
