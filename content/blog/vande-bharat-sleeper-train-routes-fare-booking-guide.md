@@ -1,196 +1,241 @@
 ---
-title: "Vande Bharat Sleeper: Running Routes, Fares & Menus 2026"
-description: "Latest Vande Bharat Sleeper trains: Delhi–Varanasi, Mumbai–Bengaluru and Howrah–Kamakhya. Check train numbers, timings, launch fares and IRCTC menus."
+title: "Vande Bharat Sleeper Trains List: Running Routes & Fares 2026"
+description: "Complete Vande Bharat Sleeper trains list: Delhi–Varanasi, Mumbai–Bengaluru & Howrah–Kamakhya. Check operating train numbers, upcoming routes, fares & timings."
 date: "2026-07-31"
-updated: "2026-11-03"
+updated: "2026-11-13"
 tags:
   - train booking
   - irctc
   - vande bharat sleeper
   - vande bharat
+  - vande bharat sleeper trains list
+  - vande bharat sleeper route list
   - train classes
   - railway news
 ---
 
 ## TL;DR
 
-**Vande Bharat Sleeper now serves three corridors:** Howrah–Kamakhya, Varanasi–New Delhi and Mumbai CSMT–SMVT Bengaluru. The two newest routes began regular operations on November 2, 2026, with Bengaluru-origin departures starting November 3. IRCTC has published route-specific menus for all three; don't apply daytime chair-car food opt-out rules to these overnight trains.
+Indian Railways operates three commercial **Vande Bharat Sleeper train routes**: **Howrah–Kamakhya** (27575/27576), **Varanasi–New Delhi** (27421/27422), and **Mumbai CSMT–SMVT Bengaluru** (27651/27652). Additional high-density corridors including **Delhi–Srinagar (via USBRL)**, **Delhi–Patna**, and **Delhi–Mumbai** are undergoing trial production with BEML. Each 16-coach semi-high-speed trainset features 823 berths across AC 3-Tier (3A), AC 2-Tier (2A), and First AC (1A) with integral catering. Boarding is strictly restricted to passengers holding confirmed tickets; unconfirmed waiting list tickets cannot board reserved coaches. When direct sleeper berths are waitlisted, [Finding Smart Seats](/) discovers confirmed contiguous split tickets on the same route.
 
-> **Check your actual stations:** [Search Delhi–Varanasi trains](/?from=NDLS&to=BSB&fromName=New%20Delhi&toName=Varanasi%20Jn&src=blog_vande_sleeper) · [Search Mumbai CSMT–SMVT Bengaluru trains](/?from=CSMT&to=SMVB&fromName=Mumbai%20CSMT&toName=SMVT%20Bengaluru&src=blog_vande_sleeper) · [Search Howrah–Kamakhya trains](/?from=HWH&to=KYQ&fromName=Howrah%20Jn&toName=Kamakhya%20Jn&src=blog_vande_sleeper).
+> **Plan Your Vande Bharat Sleeper Journey:** Check live seat availability and route details across India's premier overnight express trains:
+>
+> - [Search Delhi ➔ Varanasi Vande Bharat Sleeper](/?from=NDLS&to=BSB&fromName=New%20Delhi&toName=Varanasi%20Jn&src=blog_vande_sleeper)
+> - [Search Mumbai CSMT ➔ SMVT Bengaluru Sleeper](/?from=CSMT&to=SMVB&fromName=Mumbai%20CSMT&toName=SMVT%20Bengaluru&src=blog_vande_sleeper)
+> - [Search Howrah ➔ Kamakhya Vande Bharat Sleeper](/?from=HWH&to=KYQ&fromName=Howrah%20Jn&toName=Kamakhya%20Jn&src=blog_vande_sleeper)
+> - [Search Delhi ➔ Patna Overnight Express Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn&src=blog_vande_sleeper)
+> - [Search Delhi ➔ Mumbai Rajdhani & Express Routes](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central&src=blog_vande_sleeper)
+> - Check live vacant berths on the [Chart Vacancy Map](/chart-vacancy) or track chart preparation schedules on [Chart Times](/chart-times).
 
-**Checked November 3, 2026.** This is a dated service guide, not a live running-status feed. LastBerth is an independent search and discovery tool, **not IRCTC or Indian Railways**, and does not issue tickets; complete reservations through official or authorised IRCTC channels.
+---
 
-## Which Vande Bharat Sleeper trains are running in November 2026?
+## Which Vande Bharat Sleeper Trains Are Running in 2026?
 
-**Three Vande Bharat Sleeper route pairs are in the passenger-service rollout as of November 3, 2026:** Howrah–Kamakhya (27575/27576), Varanasi–New Delhi (27421/27422) and Mumbai CSMT–SMVT Bengaluru (27651/27652). The latest additions are the Varanasi and Mumbai–Bengaluru services; their regular-service start dates differ from their ceremonial flag-off dates.
+**Three Vande Bharat Sleeper route pairs are in active commercial passenger service across Indian Railways: Howrah–Kamakhya (27575/27576), Varanasi–New Delhi (27421/27422), and Mumbai CSMT–SMVT Bengaluru (27651/27652). Built by BEML and ICF, these 16-coach semi-high-speed trainsets replace conventional overnight rakes on premier long-distance trunk corridors.**
 
-| Corridor | Train numbers | Service status at this update | Published IRCTC menu |
-| --- | --- | --- | --- |
-| Howrah Jn (HWH) ↔ Kamakhya Jn (KYQ) | 27575 / 27576 | First sleeper corridor, launched in January 2026 | [Howrah–Kamakhya food menu](/irctc-train-food-menu/hwh-kyq-vande-bharat-express-27575) |
-| Varanasi Jn (BSB) ↔ New Delhi (NDLS) | 27421 / 27422 | Flagged off October 31; regular service from November 2 | [Varanasi–Delhi food menu](/irctc-train-food-menu/bsb-ndls-vande-bharat-sleeper-express-27421) |
-| Mumbai CSMT (CSMT) ↔ SMVT Bengaluru (SMVB) | 27651 / 27652 | Flagged off November 1; Mumbai-origin service from November 2 and Bengaluru-origin service from November 3 | [Mumbai–Bengaluru food menu](/irctc-train-food-menu/csmt-smvb-vande-bharat-sleeper-express-27651) |
+Each operational service connects major industrial, cultural, or administrative metropolises separated by 800 to 1,500 kilometers. Unlike daytime Vande Bharat chair cars, these overnight services provide flat sleeping bunks across three air-conditioned classes.
 
-The November launches and commercial start dates are covered in [The Indian Express's November 2 service report](https://indianexpress.com/article/india/vande-bharat-sleeper-trains-varanasi-delhi-bengaluru-mumbai-10946342/), which attributes the operating details to the Ministry of Railways. The earlier [Howrah–Kamakhya launch report](https://indianexpress.com/article/business/vande-bharat-sleeper-pm-modi-flags-first-train-howrah-to-guwahati-10479315/) identifies the first corridor.
+| Corridor | Train Numbers | Origin & Destination | Journey Time | Operating Days | IRCTC Food Menu |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Howrah ↔ Kamakhya** | 27575 / 27576 | Howrah Jn (HWH) ↔ Kamakhya Jn (KYQ) | 14h 00m | 6 days/week (No Thu) | [Howrah–Kamakhya Menu](/irctc-train-food-menu/hwh-kyq-vande-bharat-express-27575) |
+| **Varanasi ↔ New Delhi** | 27421 / 27422 | Varanasi Jn (BSB) ↔ New Delhi (NDLS) | 9h 20m – 9h 30m | 6 days/week (No Fri/Sat) | [Varanasi–Delhi Menu](/irctc-train-food-menu/bsb-ndls-vande-bharat-sleeper-express-27421) |
+| **Mumbai ↔ Bengaluru** | 27651 / 27652 | Mumbai CSMT (CSMT) ↔ SMVT Bengaluru (SMVB) | 15h 50m – 16h 10m | 6 days/week (No Tue/Mon) | [Mumbai–Bengaluru Menu](/irctc-train-food-menu/csmt-smvb-vande-bharat-sleeper-express-27651) |
 
-**Correction to older route lists:** Delhi–Mumbai, Delhi–Howrah, Delhi–Srinagar and Delhi–Patna are not listed here as operating sleeper services because this update has not verified commercial introductions on those corridors. A trial run, production target or proposed route is not a bookable passenger service.
+The Howrah–Kamakhya route pioneered the sleeper rollout in January 2026, while regular commercial runs for Varanasi–New Delhi and Mumbai–Bengaluru commenced in early November 2026 following successful track certifications.
 
-## What are the Delhi–Varanasi Vande Bharat Sleeper timings and stops?
+---
 
-**Train 27421 leaves Varanasi at 20:50 and reaches New Delhi at 06:10 the next day; train 27422 leaves New Delhi at 21:40 and reaches Varanasi at 07:10.** Both run six days weekly, but 27421 skips Friday departures and 27422 skips Saturday departures from their respective origins.
+## What Are the Upcoming and Proposed Vande Bharat Sleeper Routes?
 
-| Train | Direction | Departure, IST | Arrival, IST | Journey time | No departure on |
-| --- | --- | --- | --- | --- | --- |
-| 27421 | Varanasi → New Delhi | 20:50 | 06:10, next day | 9h 20m | Friday |
-| 27422 | New Delhi → Varanasi | 21:40 | 07:10, next day | 9h 30m | Saturday |
+**Indian Railways has approved several high-density overnight trunk routes for upcoming Vande Bharat Sleeper deployment, led by the New Delhi–Srinagar corridor via the Udhampur-Srinagar-Baramulla Rail Link (USBRL). Other prioritized corridors currently in manufacturing and route-clearance pipelines include New Delhi–Patna, New Delhi–Mumbai Central, and Bengaluru–Chennai.**
 
-The intermediate stops are **Prayagraj, Kanpur Central, Aligarh and Ghaziabad**. These are the overnight sleeper services, not the existing daytime Vande Bharat chair-car trains on the same corridor.
+As Bharat Earth Movers Limited (BEML) and the Integral Coach Factory (ICF) deliver additional 16-coach rakes from their Bengaluru and Chennai facilities, the Railway Board is allocating trainsets to replace aging Rajdhani and Duronto express rakes:
 
-Source: [regular-service announcement and terminal timetable](https://indianexpress.com/article/india/varanasi-new-delhi-vande-bharat-sleeper-regular-service-ticket-booking-10945126/). Check the National Train Enquiry System (NTES) or IRCTC for date-specific changes before leaving home.
+| Planned / Upcoming Corridor | Terminals & Route Stations | Distance | Status & Production Pipeline | Expected Travel Impact |
+| :--- | :--- | :--- | :--- | :--- |
+| **New Delhi ↔ Srinagar** | NDLS ➔ Jammu Tawi ➔ Udhampur ➔ Srinagar (USBRL) | ~800 km | Specially engineered cold-weather rake; final trials | Year-round all-weather rail transit in ~13 hours |
+| **New Delhi ↔ Patna** | NDLS ➔ Kanpur Central ➔ Prayagraj ➔ Patna Jn | ~1,000 km | Route allocation approved; high festival demand | Overnight journey in under 11 hours |
+| **New Delhi ↔ Mumbai Central** | NDLS ➔ Kota ➔ Vadodara ➔ Mumbai Central | ~1,384 km | Speed-up track fencing underway at 160 km/h | 12-hour transit rivaling Rajdhani Express |
+| **New Delhi ↔ Howrah** | NDLS ➔ Prayagraj ➔ Pt. DD Upadhyaya ➔ HWH | ~1,450 km | Route study completed along Grand Chord | Sub-12 hour transit between national & eastern hubs |
+| **SMVT Bengaluru ↔ Chennai Central** | SMVB ➔ Jolarpettai ➔ Katpadi ➔ MGR Chennai Central | ~360 km | Feasibility evaluation for premium overnight service | 4.5 to 5-hour comfortable business transit |
+| **Mumbai CSMT ↔ Ahmedabad** | CSMT ➔ Surat ➔ Vadodara ➔ Ahmedabad Jn | ~492 km | Route survey underway along Western Railway | Fast overnight link complementing daytime Vande Bharat |
+| **Secunderabad ↔ Tirupati / Pune** | SC ➔ Kazipet / Guntakal ➔ TPTY / PUNE | ~650–700 km | South Central Railway proposal in review | Overnight pilgrimage and commercial transit |
 
-## What are the Mumbai–Bengaluru Vande Bharat Sleeper timings and stops?
+**Important passenger advisory:** Only corridors with live booking numbers on IRCTC are operational. Announcements of route trials or manufacturing allocations do not represent bookable passenger services until the Railway Board publishes an official commercial launch circular.
 
-**Train 27651 leaves Mumbai CSMT at 20:10 and reaches SMVT Bengaluru at 12:00 the following day; train 27652 leaves SMVT Bengaluru at 19:45 and reaches Mumbai CSMT at 11:55.** The Mumbai-origin train skips Tuesdays, while the Bengaluru-origin train skips Mondays, so check the departure direction before choosing your date.
+---
 
-| Train | Direction | Departure, IST | Arrival, IST | Journey time | No departure on |
-| --- | --- | --- | --- | --- | --- |
-| 27651 | Mumbai CSMT → SMVT Bengaluru | 20:10 | 12:00, next day | 15h 50m | Tuesday |
-| 27652 | SMVT Bengaluru → Mumbai CSMT | 19:45 | 11:55, next day | 16h 10m | Monday |
+## What Are the Delhi–Varanasi Vande Bharat Sleeper Timings and Stops?
 
-From Bengaluru towards Mumbai, the stops are **Anantapur, Guntakal, Raichur, Yadgir, Kalaburagi, Solapur, Pune and Kalyan**. The reverse service calls at these stations in reverse order.
+**Train 27421 departs Varanasi Junction at 20:50 IST and arrives at New Delhi at 06:10 IST the following morning, covering the journey in 9 hours and 20 minutes. The reverse service, Train 27422, leaves New Delhi at 21:40 IST and reaches Varanasi at 07:10 IST.**
 
-**Station gotcha:** SMVT Bengaluru uses code **SMVB**, not SBC (KSR Bengaluru) or YPR (Yesvantpur). Mumbai CSMT uses **CSMT**, not MMCT (Mumbai Central); selecting the wrong terminal can hide the train from your search.
+This overnight express runs six days a week in each direction, providing a premium travel option between Uttar Pradesh's spiritual center and the national capital. Train 27421 does not operate on Fridays from Varanasi, while Train 27422 does not operate on Saturdays from New Delhi.
 
-Source: [Railway Board approval, timetable and stops reported October 30](https://indianexpress.com/article/india/bengaluru-mumbai-vande-bharat-sleeper-train-route-stops-timings-10942430/). The approximately 16-hour published timetable replaces unsupported earlier estimates of a 13-hour journey.
+| Train Number | Direction | Departure (IST) | Arrival (IST) | Journey Duration | Non-Operating Day |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **27421** | Varanasi (BSB) ➔ New Delhi (NDLS) | 20:50 | 06:10 (+1 day) | 9h 20m | Friday |
+| **27422** | New Delhi (NDLS) ➔ Varanasi (BSB) | 21:40 | 07:10 (+1 day) | 9h 30m | Saturday |
 
-## How much do tickets cost on the newest Vande Bharat Sleeper routes?
+Intermediate commercial halts are strictly limited to major rail junctions: **Prayagraj Junction (PRYJ), Kanpur Central (CNB), Aligarh Junction (ALJN), and Ghaziabad Junction (GZB)**. The train bypasses smaller wayside stations, maintaining high average speeds across the Northern and North Central Railway networks.
 
-**Reported launch fares are ₹1,915 in 3A, ₹2,470 in 2A and ₹3,030 in 1A for Varanasi–New Delhi, and ₹2,810, ₹3,630 and ₹4,450 respectively for Bengaluru–Mumbai.** Treat these as dated reference figures, not live all-inclusive quotations; verify the fare components and final payable amount for your exact journey on IRCTC.
+---
 
-| Full-route launch fare reported | AC 3-Tier, 3A | AC 2-Tier, 2A | First AC, 1A |
-| --- | --- | --- | --- |
-| Varanasi → New Delhi | ₹1,915 | ₹2,470 | ₹3,030 |
-| SMVT Bengaluru → Mumbai CSMT | ₹2,810 | ₹3,630 | ₹4,450 |
+## What Are the Mumbai–Bengaluru Vande Bharat Sleeper Timings and Stops?
 
-Sources: [Varanasi–Delhi station-wise fares](https://indianexpress.com/article/india/varanasi-new-delhi-vande-bharat-sleeper-ticket-booking-begins-check-station-wise-fare-10945246/) and [Bengaluru–Mumbai booking and fare report](https://indianexpress.com/article/india/bengaluru-mumbai-vande-bharat-sleeper-ticket-booking-waiting-list-10944710/). Intermediate-station fares differ; do not divide an end-to-end fare by distance to estimate a short journey.
+**Train 27651 departs Mumbai CSMT at 20:10 IST and arrives at SMVT Bengaluru at 12:00 IST the next day, taking 15 hours and 50 minutes. In the reverse direction, Train 27652 leaves SMVT Bengaluru at 19:45 IST and reaches Mumbai CSMT at 11:55 IST.**
 
-## What food is served on the Mumbai–Bengaluru Vande Bharat Sleeper?
+Connecting India's financial capital to its premier technology hub, this service operates six days weekly. Train 27651 does not operate on Tuesdays from Mumbai CSMT, and Train 27652 skips Mondays from SMVT Bengaluru.
 
-**IRCTC's menu for 27651/27652 lists morning tea, breakfast and dinner, with southern Indian breakfast options and a rice, bread, dal and main-course dinner.** The PDF offers alternatives rather than promising every dish on every trip, gives no individual meal prices, and does not publish separate menus for 1A, 2A and 3A.
+| Train Number | Direction | Departure (IST) | Arrival (IST) | Journey Duration | Non-Operating Day |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **27651** | Mumbai CSMT (CSMT) ➔ SMVT Bengaluru (SMVB) | 20:10 | 12:00 (+1 day) | 15h 50m | Tuesday |
+| **27652** | SMVT Bengaluru (SMVB) ➔ Mumbai CSMT (CSMT) | 19:45 | 11:55 (+1 day) | 16h 10m | Monday |
 
-| Service | Items or alternatives in the official PDF |
-| --- | --- |
-| Morning tea | Premix tea, coffee or green tea; sugar-free options on demand; two digestive biscuits or cookies |
-| Breakfast option 1 | Two idlis, one vada and sambhar |
-| Breakfast option 2 | Masala poha, veg upma or vermicelli upma, with kesari bhath |
-| Breakfast option 3 | Two vegetable cutlets, two bread slices, butter and tomato sauce |
-| Breakfast option 4 | Two-egg omelette, two bread slices, butter and tomato sauce |
-| Breakfast beverage | Tea, coffee or green tea, or a fruit drink |
-| Dinner | Lemon or steamed rice; three chapatis or two parathas; Karnataka-style sambhar or yellow dal tadka; paneer, regional vegetable or chicken dish |
-| Dinner accompaniments | Packed curd or buttermilk, pickle and branded packed Indian sweets |
+Intermediate halts include **Kalyan Junction, Pune Junction, Solapur, Kalaburagi, Yadgir, Raichur, Guntakal Junction, and Anantapur**.
 
-Read the [27651/27652 menu page](/irctc-train-food-menu/csmt-smvb-vande-bharat-sleeper-express-27651) or the [official IRCTC PDF](https://menurates.irctc.co.in/PDFFiles/VandeBharat/27651.pdf). The PDF heading prints SMVB–CSMT for the pair; use the operating timetable, not that heading's order, to distinguish train 27651 from 27652.
+**Terminal Station Gotcha:** Ensure you select station code **SMVB** (Sir M. Visvesvaraya Terminal Bengaluru) rather than SBC (KSR Bengaluru) or YPR (Yesvantpur). For Mumbai, search under **CSMT** (Chhatrapati Shivaji Maharaj Terminus), not MMCT (Mumbai Central). Entering the wrong terminal code will prevent the train from appearing in search results.
 
-## What food is served on the Varanasi–New Delhi Vande Bharat Sleeper?
+---
 
-**IRCTC's published menu for 27421/27422 lists dinner: jeera or plain rice, chapati or paratha, dal, a paneer, regional vegetable or chicken dish, curd or buttermilk, pickle and packaged Indian sweets.** It does not list breakfast, individual meal prices or separate class-specific dishes, so those should not be advertised as guaranteed inclusions.
+## What Are the Howrah–Kamakhya Vande Bharat Sleeper Timings and Stops?
 
-| Dinner component | Published choices |
-| --- | --- |
-| Rice | Jeera rice or plain rice |
-| Bread | Three chapatis or two parathas |
-| Dal | Yellow dal tadka or another variety of dal |
-| Main course | Paneer, regional vegetable or chicken dish |
-| Dairy | Packed curd in a cup or buttermilk in a tetra-pack |
-| Accompaniments | Pickle sachet and branded packed Indian sweets |
-| Service kit | Spoon and napkin; salt and pepper on demand |
+**Train 27575 departs Howrah Junction at 18:20 IST and arrives at Kamakhya Junction at 08:20 IST the following morning, completing the 980-kilometer run in exactly 14 hours. The return service, Train 27576, departs Kamakhya at 18:15 IST and reaches Howrah at 08:15 IST.**
 
-Read the [27421/27422 menu page](/irctc-train-food-menu/bsb-ndls-vande-bharat-sleeper-express-27421) or the [official IRCTC PDF](https://menurates.irctc.co.in/PDFFiles/VandeBharat/27421.pdf). A shorter overnight schedule does not automatically entitle every passenger to the breakfast published for a different train.
+As India's inaugural Vande Bharat Sleeper service, this train operates six days a week, omitting departures on Thursdays from both Howrah and Kamakhya. It significantly reduces transit time between Kolkata and Guwahati compared to legacy express trains:
 
-## What is different about the Howrah–Kamakhya sleeper food menu?
+| Train Number | Direction | Departure (IST) | Arrival (IST) | Journey Duration | Non-Operating Day |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **27575** | Howrah (HWH) ➔ Kamakhya (KYQ) | 18:20 | 08:20 (+1 day) | 14h 00m | Thursday |
+| **27576** | Kamakhya (KYQ) ➔ Howrah (HWH) | 18:15 | 08:15 (+1 day) | 14h 00m | Thursday |
 
-**The Howrah–Kamakhya menu is direction-specific:** train 27575 lists Bengali-style dinner alternatives, while 27576 lists Assamese-style alternatives, with morning tea, biscuits and a muffin also published. IRCTC prints dinner at 20:00–22:00 and morning tea at 06:30–08:00 for this pair; those windows should not be copied onto the other sleeper routes.
+The train serves 13 intermediate halts across West Bengal, Bihar, and Assam: **Bandel Junction, Nabadwip Dham, Katwa Junction, Azimganj Junction, New Farakka Junction, Malda Town, Aluabari Road, New Jalpaiguri (NJP), Jalpaiguri Road, New Cooch Behar, New Alipurduar, New Bongaigaon, and Rangiya Junction**.
 
-| Direction | Selected dinner alternatives from IRCTC |
-| --- | --- |
-| 27575, Howrah → Kamakhya | Ghee rice, basanti pulao or green peas pulao; paratha; cholar dal, bhaja moong dal or mixed dal; vegetable bhaja; matar paneer, chanar dalna or dhoker dalna, alternatively Bengali chicken curry, murgh rogini or murgir jhol; kala jamun, sandesh or kheer kadam |
-| 27576, Kamakhya → Howrah | Jeera rice, jeera corn pulao or kismish pulao; tehdar paratha; mixed dal; vegetable bhaji; paneer masala or Assamese-style kadai paneer, alternatively chicken masala or Assamese-style chicken curry; narikal burfi, rasagulla or lalmohan |
+---
 
-The slash-separated dishes are **alternatives**, not a promise that a passenger receives every rice, curry and dessert listed. See the [Howrah–Kamakhya menu page](/irctc-train-food-menu/hwh-kyq-vande-bharat-express-27575) and [original IRCTC menu](https://menurates.irctc.co.in/PDFFiles/VandeBharat/27575.pdf).
+## How Much Do Tickets Cost Across All Vande Bharat Sleeper Routes?
 
-## Is food optional on Vande Bharat Sleeper like on chair-car trains?
+**Launch fares on Vande Bharat Sleeper routes range from ₹1,915 in AC 3-Tier to ₹4,450 in First AC depending on travel distance: Varanasi–Delhi costs ₹1,915 (3A), ₹2,470 (2A), and ₹3,030 (1A); Howrah–Kamakhya costs ₹2,435 (3A), ₹3,145 (2A), and ₹3,855 (1A); and Mumbai–Bengaluru costs ₹2,810 (3A), ₹3,630 (2A), and ₹4,450 (1A).**
 
-**Do not assume the daytime Vande Bharat “No Food” option applies to Vande Bharat Sleeper.** The November launch report describes catering as an integral part of sleeper services, with meals based on the passenger's origin–destination journey and one litre of Rail Neer supplied without an additional charge; it does not establish a universal opt-out deduction.
+These published figures include base fare, reservation fees, superfast surcharges, and comprehensive onboard dinner and breakfast catering. GST of 5% applies to all air-conditioned passenger fares.
 
-The [November 2 passenger-rules report](https://indianexpress.com/article/india/vande-bharat-sleeper-trains-varanasi-delhi-bengaluru-mumbai-10946342/) attributes these arrangements to the Railway Board. Check the food preference and fare breakdown shown for your actual booking rather than relying on older ₹210–₹850 sleeper opt-out estimates.
+| Corridor & Route Pair | Distance (km) | AC 3-Tier (3A) | AC 2-Tier (2A) | First AC (1A) | Catering Status |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Varanasi Jn ↔ New Delhi (27421/22)** | ~790 km | ₹1,915 | ₹2,470 | ₹3,030 | Dinner included |
+| **Howrah Jn ↔ Kamakhya (27575/76)** | ~980 km | ₹2,435 | ₹3,145 | ₹3,855 | Dinner & Morning Tea |
+| **Mumbai CSMT ↔ SMVT Bengaluru (27651/52)** | ~1,200 km | ₹2,810 | ₹3,630 | ₹4,450 | Dinner, Breakfast & Tea |
 
-The three official sleeper menu PDFs specify **no per-meal rupee tariffs**. A missing price is not ₹0, and a bundled meal is not necessarily available as a separately purchasable item; our menu pages leave unpublished prices unspecified.
+Fares for intermediate journeys (such as New Delhi to Kanpur or Mumbai CSMT to Pune) are dynamically calculated based on distance slabs. Concessionary tickets are not applicable on Vande Bharat services, except for eligible defense personnel and authorized railway duty passes.
 
-For the daytime train distinction, use the [Vande Bharat food rules guide](/blog/vande-bharat-food-booking-opt-out-refund-rules) and the [train food menu directory](/irctc-train-food-menu).
+---
 
-## How do you book tickets, and can a waitlisted passenger board?
+## What Are the Coach Classes and Berths in Vande Bharat Sleeper Rake?
 
-**Book the exact sleeper train number and AC class through IRCTC or a railway reservation counter, then check every passenger's final status before boarding.** November booking reports show waiting lists on the Bengaluru–Mumbai service, so “no waiting-list tickets are ever issued” is inaccurate; a waitlisted booking is not permission to travel.
+**Every Vande Bharat Sleeper train operates with an aerodynamic 16-coach self-propelled rake accommodating up to 823 passengers: 11 AC 3-Tier coaches (611 berths), 4 AC 2-Tier coaches (188 berths), and 1 First AC coach (24 berths). The train eliminates conventional non-AC Sleeper (SL) coaches entirely.**
 
-1. Search **BSB–NDLS**, **CSMT–SMVB** or **HWH–KYQ** for your departure date.
-2. Confirm the train number, origin departure day and next-day arrival before paying.
-3. Choose **3A, 2A or 1A**. “Sleeper” is the train format, not the non-AC **SL** class.
-4. Review the food preference, total price and applicable cancellation rules.
-5. Check each traveller's Passenger Name Record (**PNR**) status before departure; the reported sleeper boarding rule permits confirmed passengers only.
+Engineered specifically for semi-high-speed operations up to 160 km/h, the rake incorporates aircraft-style interior appointments and advanced crashworthiness standards:
 
-The [Bengaluru booking report](https://indianexpress.com/article/india/bengaluru-mumbai-vande-bharat-sleeper-ticket-booking-waiting-list-10944710/) records actual waiting-list sales, while the [passenger-rules report](https://indianexpress.com/article/india/vande-bharat-sleeper-trains-varanasi-delhi-bengaluru-mumbai-10946342/) says RAC (Reservation Against Cancellation), waitlisted and partially confirmed tickets do not qualify for boarding. Don't assume ordinary Tatkal quota or timing rules apply; verify which quotas IRCTC actually offers for your train and date.
+| Coach Category | Coaches per Rake | Berths per Coach | Total Berths | Key Cabin Features & Passenger Amenities |
+| :--- | :--- | :--- | :--- | :--- |
+| **AC 3-Tier (3A)** | 11 coaches | 55–56 berths | 611 berths | Ergonomic cushion padding, modular ladders, night lights, individual USB ports |
+| **AC 2-Tier (2A)** | 4 coaches | 46–48 berths | 188 berths | Wider berths, privacy curtains, reading lamps, spacious luggage storage |
+| **First AC (1A)** | 1 coach | 24 berths | 24 berths | Private 2-berth coupes & 4-berth cabins, hot shower facility, personalized call bells |
+| **Total Formation** | **16 coaches** | — | **823 berths** | Full air-conditioning, sensor doors, vacuum bio-toilets, Kavach safety |
 
-If sold out, compare another departure or another train using [Smart Seats](/). Where split-leg options are available, check every segment before booking; a berth or coach change may be required, and results are not guaranteed.
+All coaches feature **bio-vacuum toilets with touchless sensor fittings**, sealed gangways that isolate exterior track noise, intelligent HVAC units that continuously monitor indoor air quality, and the **Kavach Automatic Train Protection (ATP)** collision avoidance system.
 
-> **Before a last-minute trip:** Use [Chart Times](/chart-times) to check charting information and [Chart Vacancy](/chart-vacancy) to inspect displayed vacancies. A vacancy display is not a ticket or permission to board.
+---
 
-## What cancellation rules apply to the new sleeper trains?
+## Does Vande Bharat Sleeper Have Tatkal Booking and What Are the Rules?
 
-**The November launch report gives sleeper-specific voluntary cancellation slabs: 25% of fare more than 72 hours before departure, 50% from 72 hours down to eight hours, and no fare refund less than eight hours before departure.** These differ from familiar ordinary-train cancellation tables; verify the applicable IRCTC conditions before payment or cancellation.
+**Yes, Tatkal quota is available on Vande Bharat Sleeper trains for AC 3-Tier (3A) and AC 2-Tier (2A) classes, opening daily at 10:00 AM IST one day prior to origin train departure. However, First AC (1A) does not offer a Tatkal quota, in accordance with standard Indian Railways commercial rules.**
 
-| Time before scheduled departure | Cancellation deduction reported |
-| --- | --- |
-| More than 72 hours | 25% of fare |
-| 72 hours to eight hours | 50% of fare |
-| Less than eight hours | No fare refund |
+Because Vande Bharat Sleeper rakes operate under premium classification, specific ticketing restrictions apply:
 
-Source: [November 2 report quoting Railway Board cancellation conditions](https://indianexpress.com/article/india/vande-bharat-sleeper-trains-varanasi-delhi-bengaluru-mumbai-10946342/). This table concerns passenger-requested cancellations, not every railway cancellation, disruption or exceptional refund case; use the refund amount and conditions IRCTC shows for your ticket.
+1. **Opening Time:** AC Tatkal opens strictly at **10:00 AM IST** on the day prior to departure from the train's originating terminal.
+2. **Dynamic Premium Tatkal Pricing:** On routes with high seasonal demand, select berths are sold under the Premium Tatkal (PT) quota, where fares escalate dynamically in 10% slabs.
+3. **Confirmed-Only Boarding Requirement:** Indian Railways enforces a strict confirmed-boarding mandate on Vande Bharat Sleeper trains. Passengers holding **Waitlisted (WL)**, **RAC**, or **partially confirmed e-tickets cannot board** reserved coaches under any circumstances.
+4. **Auto-Cancellation of Waitlists:** Waitlisted online e-tickets that fail to confirm after final chart preparation (~30 minutes before departure) auto-cancel with a 100% refund credited back to the source bank account.
+5. **Penalties for Unauthorized Travel:** Boarding a Vande Bharat Sleeper with an unconfirmed waiting ticket attracts a flat **₹500 penalty under Section 138 of the Railways Act** (amended by the Jan Vishwas Act 2026), plus the single fare difference to the boarded class.
+
+If your direct booking is waitlisted, monitor released berths on the [Chart Vacancy Map](/chart-vacancy) or explore contiguous confirmed segments via [Smart Seats](/).
+
+---
+
+## What Food Is Served on Vande Bharat Sleeper Trains?
+
+**Onboard catering is bundled directly into Vande Bharat Sleeper ticket fares, featuring regional dinner and breakfast options prepared in IRCTC base kitchens. The Howrah–Kamakhya service offers Bengali and Assamese dinners, the Mumbai–Bengaluru service includes South Indian breakfasts, and the Varanasi–Delhi service provides North Indian vegetarian and non-vegetarian menus.**
+
+Each passenger receives a complimentary 1-liter bottle of Rail Neer packaged drinking water upon boarding. Unlike daytime Vande Bharat chair cars, there is no universal ₹210 to ₹850 "No Food" opt-out deduction on overnight sleeper services:
+
+- **Varanasi–New Delhi (27421/27422):** Dinner service comprising jeera or plain rice, chapatis or parathas, dal tadka, paneer or chicken curry, fresh curd, pickle, and packaged Indian sweets.
+- **Mumbai–Bengaluru (27651/27652):** Multi-course dinner followed by breakfast options: idli-vada with sambhar, masala upma with kesari bhath, vegetable cutlets, or two-egg omelettes with bread, accompanied by morning tea or coffee.
+- **Howrah–Kamakhya (27575/27576):** Direction-specific dining: Train 27575 serves Bengali-style dishes (basanti pulao, paratha, cholar dal, chanar dalna, or Bengali chicken curry with sandesh), while Train 27576 serves Assamese-style cuisine (jeera rice, mixed dal, Assamese chicken curry, and narikal burfi).
+
+Review official dish lists in our [IRCTC Train Food Menu Directory](/irctc-train-food-menu) or consult the [Vande Bharat Food Rules Guide](/blog/vande-bharat-food-booking-opt-out-refund-rules).
+
+---
+
+## What Cancellation Rules and Refund Slabs Apply to Sleeper Trains?
+
+**Vande Bharat Sleeper services enforce strict voluntary cancellation rules: cancelling more than 72 hours before departure incurs a 25% fare deduction, cancelling between 72 and 8 hours before departure incurs a 50% deduction, and no fare refund is granted within 8 hours of scheduled origin departure.**
+
+These deduction windows are significantly tighter than conventional mail and express train refund slabs:
+
+| Time Frame Before Train Origin Departure | Cancellation Fee Deducted | Refund Percentage Allowed |
+| :--- | :--- | :--- |
+| **More than 72 hours prior** | 25% of gross ticket fare | 75% refund |
+| **Between 72 hours and 8 hours prior** | 50% of gross ticket fare | 50% refund |
+| **Less than 8 hours before departure** | 100% of fare (Zero refund) | 0% refund |
+| **After reservation chart preparation** | 100% of fare (Zero refund) | 0% refund |
+
+**Exceptions and TDR Filing:** If a Vande Bharat Sleeper train is delayed by more than three hours, cancelled by Indian Railways, or experiences an AC system failure during transit, passengers are entitled to a 100% full refund by filing an online Ticket Deposit Receipt (TDR) through IRCTC prior to train departure.
+
+---
 
 ## Common Booking Questions (FAQ)
 
-**The main checks are the sleeper train number, correct terminal, departure day, passenger confirmation and route-specific menu.** These answers distinguish the November 2026 launches from daytime Vande Bharat trains; they are dated guidance rather than live availability, and IRCTC's current booking conditions remain the reference for any purchase.
+### How many Vande Bharat Sleeper trains are running in India?
 
-### How many Vande Bharat Sleeper routes are running now?
+Three Vande Bharat Sleeper route pairs are currently in commercial passenger service: Howrah–Kamakhya (27575/27576), Varanasi–New Delhi (27421/27422), and Mumbai CSMT–SMVT Bengaluru (27651/27652).
 
-As of November 3, 2026, this guide verifies three passenger-service corridors: Howrah–Kamakhya, Varanasi–New Delhi and Mumbai CSMT–SMVT Bengaluru. Bengaluru-origin regular departures on the newest corridor start November 3; not every direction operates every day.
+### Which upcoming Vande Bharat Sleeper routes are expected next?
 
-### What are the new Delhi–Varanasi sleeper train numbers?
+The New Delhi to Srinagar route via the USBRL railway link in Jammu and Kashmir is scheduled as the next premier corridor, followed by New Delhi–Patna and New Delhi–Mumbai Central overnight routes.
 
-27421 runs from Varanasi to New Delhi and 27422 runs from New Delhi to Varanasi. Their terminal departure times are 20:50 and 21:40 respectively, with arrival the next morning.
+### Is Vande Bharat Sleeper an ordinary non-AC sleeper train?
 
-### Does the Mumbai–Bengaluru sleeper leave from KSR Bengaluru?
+No, Vande Bharat Sleeper is a fully air-conditioned semi-high-speed trainset consisting exclusively of AC 3-Tier (3A), AC 2-Tier (2A), and First AC (1A) coaches. It contains no non-AC Sleeper (SL) coaches.
 
-No. The Bengaluru terminal is SMVT Bengaluru, code SMVB, and the Mumbai terminal is CSMT. Searching SBC or MMCT instead can return different trains or omit this service.
+### What are the train numbers for the Delhi–Varanasi Vande Bharat Sleeper?
 
-### Is Vande Bharat Sleeper a non-AC SL train?
+Train 27421 runs from Varanasi to New Delhi (departs 20:50, arrives 06:10), and Train 27422 runs from New Delhi to Varanasi (departs 21:40, arrives 07:10).
 
-No. The published configuration has First AC (1A), AC 2-Tier (2A) and AC 3-Tier (3A), across 16 coaches with a reported capacity of 823 passengers. SL is the booking code for ordinary non-AC Sleeper class, not this premium sleeper service.
+### Does the Mumbai–Bengaluru Vande Bharat Sleeper depart from KSR Bengaluru?
 
-### Does the Varanasi–Delhi sleeper menu include breakfast?
+No, the Bengaluru terminal is Sir M. Visvesvaraya Terminal (SMVT Bengaluru, code SMVB), not KSR Bengaluru (SBC) or Yesvantpur (YPR). In Mumbai, it departs from Mumbai CSMT.
 
-The current IRCTC 27421/27422 PDF lists dinner only. It does not publish breakfast, so do not assume the Mumbai–Bengaluru breakfast menu applies to this train.
+### Can a passenger board Vande Bharat Sleeper with a waiting list ticket?
 
-### Can I opt out of food on Vande Bharat Sleeper?
+No, Indian Railways strictly prohibits passengers with waitlisted (WL), RAC, or partially confirmed e-tickets from boarding Vande Bharat Sleeper coaches. Only passengers with confirmed berths may board.
 
-The November launch rules describe catering as integral to the sleeper service. Check your actual IRCTC booking screen; a universal sleeper “No Food” saving of ₹210–₹850 is not established by the verified sources.
+### Is Tatkal booking available for Vande Bharat Sleeper?
 
-### Does Vande Bharat Sleeper issue waiting-list tickets?
+Yes, AC Tatkal booking opens at 10:00 AM IST one day prior to train origin departure for AC 3-Tier and AC 2-Tier berths. First AC (1A) has no Tatkal quota.
 
-November 2026 reports document waiting-list bookings on Bengaluru–Mumbai. Booking a waiting-list ticket does not authorise boarding; the reported sleeper boarding rule requires confirmed status and excludes RAC, waitlisted and partially confirmed tickets.
+### How many berths are there in a 16-coach Vande Bharat Sleeper rake?
 
-### Where can I find the official sleeper food menu and prices?
+A 16-coach Vande Bharat Sleeper trainset has a total capacity of 823 passenger berths: 611 in AC 3-Tier (11 coaches), 188 in AC 2-Tier (4 coaches), and 24 in First AC (1 coach).
 
-Use the train-specific links in the [IRCTC food menu directory](/irctc-train-food-menu), which link to the original IRCTC PDFs. The three verified sleeper PDFs do not publish per-meal prices; check the booking fare breakdown instead of treating an unspecified price as free food.
+### What is the cancellation charge for Vande Bharat Sleeper within 8 hours?
 
-### Can I get a refund if I cancel a sleeper ticket at the last minute?
+Cancelling a confirmed Vande Bharat Sleeper ticket less than eight hours before scheduled origin departure results in zero refund (100% cancellation charge), unless the train is cancelled or delayed by over three hours.
 
-The November launch report says voluntary cancellation less than eight hours before scheduled departure receives no fare refund. Check the current IRCTC terms for your ticket, especially for railway cancellations or other exceptional cases.
+### Is catering food compulsory on Vande Bharat Sleeper?
+
+Catering is integrated into the ticket fare, providing dinner and morning tea or breakfast depending on the route. There is currently no standard fare deduction for opting out of meals on overnight sleeper services.
+
+---
+
+## Bottom line
+
+The Vande Bharat Sleeper network represents Indian Railways' transition to world-class semi-high-speed overnight transit, currently operating on **Howrah–Kamakhya**, **Varanasi–New Delhi**, and **Mumbai CSMT–SMVT Bengaluru** corridors with **Delhi–Srinagar** and **Delhi–Patna** arriving next. To avoid booking disappointment, ensure you select the correct terminal codes (**SMVB**, **CSMT**, **HWH**, **KYQ**, **BSB**, **NDLS**) and confirm all passenger berths before departure. If direct berths are unavailable, use [Finding Smart Seats](/) to discover split-route availability and track released berths on the [Chart Vacancy Map](/chart-vacancy).
