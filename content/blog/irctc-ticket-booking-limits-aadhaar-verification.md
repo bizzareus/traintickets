@@ -1,8 +1,8 @@
 ---
-title: "How Many Tickets Can Be Booked in IRCTC in a Month? (2026)"
-description: "Book up to 12 tickets/month unverified, or 24 with Aadhaar. Learn exact daily limits (6 PNRs), Tatkal rules (2 PNRs), and per-session booking caps for 2026."
+title: "How Many Tickets Can Be Booked in IRCTC: Day & Month (2026)"
+description: "Discover exact IRCTC ticket booking limits for 2026: monthly caps (12 vs 24 with Aadhaar), daily 6-ticket rules, Tatkal ceilings, and Master List steps."
 date: "2026-06-22"
-updated: "2026-11-02"
+updated: "2026-11-14"
 tags:
   - train booking
   - irctc
@@ -10,30 +10,36 @@ tags:
   - how many tickets can be booked in irctc in a month
   - how many tickets can be booked in irctc in a day
   - how many tickets can be booked in irctc at a time
+  - how many tickets can be booked from one irctc account
   - how many tatkal tickets can be booked in a day
-  - how many tatkal tickets can be booked in irctc
-  - irctc tatkal booking limits
+  - how many tatkal tickets can be booked in a month
+  - how many passengers can be added in irctc master list
   - irctc monthly booking limit
 ---
 
 ## TL;DR
 
-Unverified IRCTC accounts can book up to 12 tickets per calendar month, while linking Aadhaar and verifying at least one passenger in your Master List doubles this cap to 24 tickets. Daily bookings are strictly capped at 6 tickets across all quotas, with a maximum of 2 Tatkal PNRs per user ID per day. Cancelling a booked ticket never replenishes consumed monthly quota slots, which reset automatically at 00:00 midnight on the 1st of every month.
+Unverified IRCTC accounts can book up to 12 tickets per calendar month, while linking Aadhaar and authenticating at least one traveler in your Master List doubles this cap to 24 tickets. Daily bookings are strictly capped at 6 tickets across all quotas, with a maximum of 2 Tatkal PNRs per user ID per day. Cancelling a booked ticket never replenishes consumed monthly quota slots, which reset automatically at 00:00 midnight on the 1st of every month.
 
 ---
 
-> ## Can You Find Confirmed Seats When Direct Tickets Are Waitlisted?
+> **Important Information Tool Disclaimer:** LastBerth is an independent rail discovery and seat finding tool. It is **not IRCTC, not Indian Railways, and not affiliated with the Ministry of Railways**. All official train tickets must be booked directly through official IRCTC portals or computerized railway reservation counters.
+
+---
+
+> ## Facing High Waitlists or Booking Quota Errors?
 >
 > When direct train bookings show Waitlist (WL) or Regret, LastBerth searches alternate contiguous segments on the same train to find confirmed seats.
 >
-> **High-Demand Corridor Route Search:**
+> **1-Click High-Demand Corridor Route Search:**
 >
-> - [New Delhi ➔ Patna Junction Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
-> - [Mumbai Central ➔ Danapur Express Route](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
-> - [KSR Bengaluru ➔ MGR Chennai Central Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central)
-> - [New Delhi ➔ Mumbai Central Rajdhani Route](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central)
-> - [Howrah Junction ➔ Puri Superfast Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri)
-> - [Explore Popular Route Guides](/routes/delhi-to-patna) | [Check Live Vacant Berths on Running Trains](/chart-vacancy)
+> - [New Delhi ➔ Patna Junction Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn&src=blog_booking_limits)
+> - [Mumbai Central ➔ Danapur Express Route](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur&src=blog_booking_limits)
+> - [KSR Bengaluru ➔ MGR Chennai Central Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central&src=blog_booking_limits)
+> - [New Delhi ➔ Mumbai Central Rajdhani Route](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central&src=blog_booking_limits)
+> - [Howrah Junction ➔ Puri Superfast Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri&src=blog_booking_limits)
+> - [Pune Junction ➔ Danapur Express Route](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur&src=blog_booking_limits)
+> - [Explore Popular Route Guides](/routes/delhi-to-patna) | [Check Live Vacant Berths on Running Trains](/chart-vacancy) | [Track Chart Finalization Times](/chart-times)
 
 ---
 
@@ -46,20 +52,23 @@ Indian Railways enforces these structural caps within the Next Generation e-Tick
 | Booking Type / Limit Category | Limit Value | Key Rule & PRS Requirement |
 | :--- | :--- | :--- |
 | **Monthly Limit (Unverified Account)** | 12 tickets | Standard personal profile without Aadhaar identity verification. |
-| **Monthly Limit (Aadhaar-Verified)** | 24 tickets | Profile linked to Aadhaar + at least 1 verified traveler on bookings 13–24. |
+| **Monthly Limit (Aadhaar-Verified)** | 24 tickets | Profile linked to Aadhaar + at least 1 verified traveler on bookings 13 to 24. |
 | **Daily Booking Limit (General)** | 6 tickets | Maximum 6 PNR transactions booked per calendar day across all quotas. |
 | **Daily Tatkal Booking Limit** | 2 tickets | Maximum 2 Tatkal PNRs booked per calendar day per IRCTC user ID. |
+| **Monthly Tatkal Booking Limit** | No separate cap | Governed by your monthly overall cap (12 or 24 tickets) and daily 2-Tatkal limit. |
 | **Per Login Session Limit** | 2 tickets | Capped at 2 booking transactions between 8:00 AM and 12:00 PM IST. |
+| **Concurrent Booking Tabs** | Strictly 1 tab | Multiple browser tabs or simultaneous sessions trigger automatic session logout. |
 | **Max Passengers Per Ticket (General)** | 6 passengers | Applies to standard ARP bookings across Sleeper, 3A, 2A, 1A, and Chair Car. |
 | **Max Passengers Per Ticket (Tatkal)** | 4 passengers | Strictly enforced across Tatkal and Premium Tatkal quotas. |
+| **IRCTC Master List Capacity** | 20 passengers | Maximum saved profiles per account; helps autofill details during Tatkal rush. |
 | **Monthly Quota Reset Schedule** | 1st of every month | Resets at 00:00 hrs IST; cancelled tickets do not replenish consumed slots. |
 
 If you are planning journeys along congested routes during peak festival travel, you can check real-time availability across popular corridors directly:
 
-- [Delhi to Patna Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
-- [Mumbai to Danapur Trains](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
-- [Bengaluru to Chennai Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central)
-- [Howrah to Puri Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri)
+- [Delhi to Patna Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn&src=blog_booking_limits)
+- [Mumbai to Danapur Trains](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur&src=blog_booking_limits)
+- [Bengaluru to Chennai Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central&src=blog_booking_limits)
+- [Howrah to Puri Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri&src=blog_booking_limits)
 
 ---
 
@@ -79,7 +88,7 @@ Indian Railways enforces three operational constraints throughout the morning bo
 
 ## How Many Tickets Can Be Booked in IRCTC at a Time?
 
-**You can book only one ticket transaction at a time on IRCTC, accommodating up to 6 passengers on General Quota or 4 passengers on Tatkal. Opening multiple browser tabs or attempting concurrent checkout transactions from the same user account triggers a session invalidation error that logs you out of the portal immediately.**
+**You can book only one ticket transaction at a time on IRCTC, accommodating up to 6 passengers on General Quota or 4 passengers on Tatkal. Opening multiple browser tabs or attempting concurrent checkout transactions from the same user account triggers an automatic session invalidation error that logs you out of the portal immediately.**
 
 Many passengers attempt to bypass high booking traffic by opening multiple browser tabs or using multiple browser profiles simultaneously. IRCTC's anti-bot system tracks active session tokens and client cookies:
 
@@ -87,13 +96,26 @@ Many passengers attempt to bypass high booking traffic by opening multiple brows
 - **Transaction Isolation:** Each booking journey must be executed sequentially: search train, select class, pick passengers from Master List, review itinerary, complete payment gateway authorization, and obtain PNR confirmation before initiating the next ticket.
 - **Passenger Allocation Per Transaction:** While you can book only 1 PNR at a time, that single transaction covers up to 6 passengers for General Quota and 4 passengers for Tatkal, making family travel efficient without requiring separate transactions.
 
-If regular direct coaches show waiting lists when booking, avoid wasting multiple booking slots on uncertain waitlists. Use [Smart Seats](/) to find split-berth options across consecutive legs on the same train.
+If regular direct coaches show waiting lists when booking, avoid wasting multiple booking slots on uncertain waitlists. Use [LastBerth Smart Seats](/) to find split-berth options across consecutive legs on the same train.
 
 ---
 
-## How Many Tatkal Tickets Can Be Booked in a Day?
+## How Many Tickets Can Be Booked from One IRCTC Account?
 
-**You can book a maximum of 2 Tatkal tickets per day per IRCTC user ID, regardless of whether your account is Aadhaar-verified. Each Tatkal ticket accommodates up to 4 passengers, and booking is restricted to a single active login session during the opening morning window from 10:00 AM to 12:00 PM.**
+**From one personal IRCTC account, you can book a lifetime total of unlimited tickets, but you are strictly governed by rolling monthly caps of 12 tickets for unverified profiles and 24 tickets for Aadhaar-linked profiles. Daily bookings from a single account cannot exceed 6 tickets across all travel quotas.**
+
+A common point of confusion is whether the account limit applies per person, per household, or per credit card. The restriction is tied entirely to the digital login ID registered on IRCTC:
+
+1. **Individual Identity Binding:** Each adult Indian citizen with a valid mobile number, email address, and Aadhaar card can maintain their own personal IRCTC user account.
+2. **Household Capacity Strategy:** If a household consists of three adult family members, each individual can verify their own profile with Aadhaar. This expands the household booking capacity to 72 tickets per month (24 tickets multiplied by 3 accounts).
+3. **Payment Independence:** The reservation engine does not limit how many different debit cards, credit cards, or UPI IDs are used across a single account, provided transaction OTPs complete successfully.
+4. **Device Restrictions:** While multiple family members can use the same home computer or Wi-Fi router, they must log in sequentially rather than concurrently on the same user profile.
+
+---
+
+## How Many Tatkal Tickets Can Be Booked in a Day and Month?
+
+**You can book a maximum of 2 Tatkal tickets per day per IRCTC user account, regardless of whether your account is Aadhaar-verified. There is no separate monthly Tatkal ceiling; your Tatkal bookings are simply bounded by your overall monthly quota of 12 or 24 tickets and the daily 2-ticket limit.**
 
 Indian Railways enforces rigorous restrictions on the Tatkal scheme because emergency berths are limited:
 
@@ -104,6 +126,18 @@ Indian Railways enforces rigorous restrictions on the Tatkal scheme because emer
 3. **Session Restrictions:** Between 10:00 AM and 12:00 PM, an individual user cannot book more than 2 Tatkal PNRs. Even if you book 1 ticket at 10:02 AM and a 2nd ticket at 10:15 AM, attempting a 3rd Tatkal transaction before midnight is blocked by the reservation engine.
 
 For comprehensive strategies on maximizing your Tatkal booking speed, consult our guide on [Tatkal vs Current Availability](/blog/tatkal-vs-current-availability-last-minute-train-ticket).
+
+---
+
+## How Many Passengers Can Be Added in IRCTC Master List?
+
+**You can add and store up to 20 passenger profiles in your IRCTC Master List at any given time. Pre-saving passenger names, birthdates, gender, berth preferences, and senior citizen or Aadhaar details eliminates manual typing during high-speed Tatkal and Advance Reservation Period (ARP) booking windows.**
+
+Maintaining a pre-populated Master List is the single most effective preparation strategy for beating high booking traffic:
+
+- **Instant Selection:** During morning Tatkal rush, manually entering names and birthdates costs 30 to 45 seconds, which often pushes you from confirmed status into waitlist. With a Master List, checking a single checkbox populates the passenger table in 2 seconds.
+- **Aadhaar Status Integration:** The Master List interface allows you to initiate UIDAI Aadhaar verification directly for each stored traveler.
+- **Editing and Deletion:** If you reach the 20-passenger cap, you can delete obsolete entries or edit existing profiles under **My Account** ➔ **My Master List** without incurring fees or penalties.
 
 ---
 
@@ -119,18 +153,6 @@ Understanding PNR-based accounting is crucial for managing your monthly allowanc
 - **Children Aged 5 to 11:** If you opt for a separate berth for a child between 5 and 11 years, full adult fare applies, and they count as 1 of your 6 allotted passengers on the PNR.
 
 If you are coordinating a large group and cannot secure adjacent seats, check our breakdown on [Train Berth Types & Reservation Guide](/blog/train-berth-types-availability-reservation-guide).
-
----
-
-## Is the IRCTC Booking Limit Per Account, Per User, or Per ID?
-
-**The IRCTC booking limit is enforced strictly per individual user ID login, not per traveling passenger, bank account, or hardware device. If multiple family members share one login ID, everyone draws from that single 12 or 24 monthly ticket allowance. Each adult should register their own personal Aadhaar-verified IRCTC account.**
-
-Many travelers mistakenly believe that using different payment cards, varying mobile handsets, or booking for different passengers resets the monthly counter. The reservation system checks limits against the primary user credential:
-
-- **Shared Account Pitfall:** If a parent books 12 business and personal trips using their account, other family members cannot book holiday tickets on that same profile until the monthly reset on the 1st.
-- **Independent Accounts:** Indian Railways allows every Indian citizen with a valid mobile number, email address, and Aadhaar card to create their own personal IRCTC account. A family of four adults can hold four independent Aadhaar-verified accounts, providing a combined capacity of up to **96 tickets per month**.
-- **Device & IP Independence:** Having separate user IDs allows family members to book independently without triggering rate-limiting errors, provided they do not attempt simultaneous logins on the same profile.
 
 ---
 
@@ -155,7 +177,7 @@ Before beginning verification, verify that your mobile number is active on UIDAI
 
 A common stumbling block occurs when travelers verify their primary account but fail to authenticate individual traveling passengers:
 
-- **The Rule for Tickets 13–24:** From ticket #13 onwards, the NGeT system scans the passenger manifest on checkout. If none of the travelers listed hold an Aadhaar-verified status in your Master List, the transaction is rejected with an error.
+- **The Rule for Tickets 13 to 24:** From ticket #13 onwards, the NGeT system scans the passenger manifest on checkout. If none of the travelers listed hold an Aadhaar-verified status in your Master List, the transaction is rejected with an error.
 - **Character-for-Character Matching:** The passenger's name, gender, and date of birth in your Master List must match UIDAI records character-for-character. If an Aadhaar card lists `"Suresh Kumar Sharma"` and you enter `"Suresh Sharma"`, verification will fail.
 - **Verification Steps:**
   1. Open **My Account** ➔ **My Master List**.
@@ -164,6 +186,18 @@ A common stumbling block occurs when travelers verify their primary account but 
   4. The status displays `Pending` initially. Refresh after 60 seconds to verify that the badge turns green (`Verified`).
 
 You can save up to **20 pre-verified passengers** in your Master List. Having them ready eliminates manual typing during morning Tatkal rushes.
+
+---
+
+## Do Station PRS Counter Tickets Count Toward Your IRCTC Online Limit?
+
+**Tickets purchased physically at computerized railway station Passenger Reservation System (PRS) counters do not count toward your monthly online IRCTC booking quota. Physical counter transactions operate on separate PRS allocation terminals and are completely detached from your personal online IRCTC account credentials.**
+
+If you have exhausted your 12 or 24 online monthly quota slots and need to book emergency travel, station PRS counters offer an immediate legal solution:
+
+- **Zero Online Quota Consumption:** When booking at a counter, you fill out a physical paper reservation form with passenger names and train details. The ticketing clerk issues a printed PRS ticket without asking for an IRCTC user ID.
+- **Payment Flexibility:** Station reservation counters accept cash, UPI QR scan, and debit or credit cards.
+- **Cancellation Rules:** Physical counter tickets must be cancelled at a physical PRS counter, or cancelled online via the IRCTC counter ticket cancellation portal (`operations.irctc.co.in`) followed by cash refund collection at the station counter within statutory timeframes.
 
 ---
 
@@ -188,7 +222,7 @@ For rules regarding booking opening schedules, see our detailed guide on [IRCTC 
 Indian Railways strictly distinguishes between genuine personal booking and commercial travel agency operations:
 
 - **Personal Use Exemption:** You may book tickets for yourself, your immediate family members, relatives, and close friends using your personal ID, provided you do not charge any commission, service markup, or commercial fee.
-- **Authorized Agent Requirements:** Anyone booking tickets professionally for clients must register as an authorized IRCTC Principal Service Provider (PSP) agent. Commercial agents operate under distinct rules: they cannot book Tatkal tickets during the opening 30 minutes (10:00–10:30 AM for AC, 11:00–11:30 AM for Non-AC) and must pay mandatory commercial licensing fees.
+- **Authorized Agent Requirements:** Anyone booking tickets professionally for clients must register as an authorized IRCTC Principal Service Provider (PSP) agent. Commercial agents operate under distinct rules: they cannot book Tatkal tickets during the opening 30 minutes (10:00 to 10:30 AM for AC, 11:00 to 11:30 AM for Non-AC) and must pay mandatory commercial licensing fees.
 - **Railway Protection Force (RPF) Enforcement:** The RPF and Railway Vigilance continuously monitor high-volume personal accounts booking under multiple unrelated passenger names. Accounts flagged for commercial touting face instantaneous blacklisting, confiscation of journey tickets, and prosecution under Section 143.
 
 ---
@@ -235,9 +269,21 @@ You can book a maximum of 6 tickets per calendar day from an individual IRCTC us
 
 You can execute only one booking transaction at a time on IRCTC. Opening concurrent checkout tabs or multiple browser sessions from the same login triggers an automatic session invalidation error. However, a single booking transaction can include up to 6 passengers for General Quota and up to 4 passengers for Tatkal.
 
+### How many tickets can be booked from one IRCTC account?
+
+From one personal IRCTC account, you can book up to 12 tickets per month without Aadhaar, or up to 24 tickets per month with Aadhaar linking. Daily bookings cannot exceed 6 tickets across all quotas combined.
+
 ### How many Tatkal tickets can be booked in a day on IRCTC?
 
 IRCTC permits a maximum of 2 Tatkal PNR tickets per user ID per calendar day. Each Tatkal ticket can accommodate up to 4 passengers, and booking is subject to single-session login restrictions between 10:00 AM and 12:00 PM.
+
+### How many Tatkal tickets can be booked in a month?
+
+There is no separate monthly limit for Tatkal tickets. Your Tatkal bookings count toward your overall monthly account allowance of 12 tickets (or 24 with Aadhaar), subject to the strict cap of 2 Tatkal PNRs per day.
+
+### How many passengers can be added in IRCTC Master List?
+
+You can add up to 20 passenger profiles in your IRCTC Master List. Pre-saving travelers allows you to select them with one click during fast-paced Tatkal and general morning booking windows.
 
 ### How many passengers can be booked on one Tatkal ticket?
 
@@ -247,21 +293,9 @@ A maximum of 4 passengers can be booked on a single Tatkal or Premium Tatkal PNR
 
 No. Cancelling a booked ticket does not restore your monthly booking quota under any circumstances. Once a PNR is generated, that slot is counted as consumed and only resets at 00:00 hours midnight IST on the 1st of the subsequent calendar month.
 
-### Is the IRCTC booking limit per user account or per person?
+### Do railway station PRS counter tickets count toward your IRCTC monthly limit?
 
-The booking limit is enforced per IRCTC user account login ID, not per passenger name, device, or bank payment card. Multiple family members can each maintain independent personal Aadhaar-verified IRCTC accounts to book up to 24 tickets per month each.
-
-### Is Aadhaar OTP verification mandatory for morning Tatkal bookings?
-
-Yes. IRCTC enforces dynamic Aadhaar OTP authentication during morning Tatkal booking windows (10:00 AM for AC classes and 11:00 AM for Non-AC classes) to block automated bot software and prioritize authentic human travelers.
-
-### What happens if the passenger name does not match Aadhaar in the Master List?
-
-The verification status in your Master List will show "Failed" or "Pending." The traveler's name, gender, and date of birth in your IRCTC profile must match official UIDAI records character-for-character, including spacing and initials, to be approved.
-
-### Can I book train tickets for friends and relatives from my personal IRCTC account?
-
-Yes. You can legally book train tickets for friends, relatives, and family members from your personal IRCTC account, provided you do not charge any commission, service fee, or markup. Commercial resale of tickets from personal IDs violates Section 143 of the Railways Act.
+No. Tickets booked at physical railway station computerized reservation counters do not count toward your online IRCTC monthly quota. Station PRS counters operate independently without requiring personal online login IDs.
 
 ---
 
