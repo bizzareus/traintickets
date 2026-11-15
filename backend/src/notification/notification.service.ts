@@ -72,7 +72,7 @@ import { NotificationUnsubscribeService } from './notification-unsubscribe.servi
 const RESEND_FROM =
   process.env.RESEND_FROM ||
   'LastBerth Notifications <notification@lastberth.com>';
-const DEFAULT_MONITORING_ADMIN_EMAIL = 'me@kartikarora.in';
+export const DEFAULT_MONITORING_ADMIN_EMAIL = 'me@kartikarora.in';
 
 /** Normalize mobile to E.164 for WaSender (e.g. 919876543210). */
 export function toE164(mobile: string): string {
