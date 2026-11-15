@@ -1,5 +1,5 @@
 import { Header } from "@/components/Header";
-// Nari advert temporarily disabled in favour of Monetag In-Page Push
+// Nari advert temporarily disabled
 // import { SideAdvert } from "@/components/ads/SideAdvert";
 
 export default function ChartTimesLayout({
