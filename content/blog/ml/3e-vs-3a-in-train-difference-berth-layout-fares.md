@@ -1,208 +1,322 @@
 ---
-title: "3E vs 3A in Train: 83 vs 72 Berths, Fare & Comfort (2026)"
-description: "What is the difference between 3E and 3A in IRCTC? Compare 83 vs 72 berths, Side Middle layout, fare savings, free bedding rules, and coach comfort in 2026."
+title: "ട്രെയിനിലെ 3E, 3A വ്യത്യാസം: നിരക്കും നിയമങ്ങളും (2026)"
+description: "ട്രെയിനിലെ 3E ഉം 3A ഉം തമ്മിലുള്ള വ്യത്യാസം എന്താണ്? 83 vs 72 ബെർത്തുകൾ, Side Middle ഘടന, നിരക്കിലെ ലാഭം, സൗജന്യ ബെഡ്‌റോൾ നിയമങ്ങൾ എന്നിവയുടെ താരതമ്യം."
 date: "2026-08-29"
-updated: "2026-08-29"
+updated: "2026-11-15"
 tags:
-  - train booking
-  - irctc
-  - 3e vs 3a
+  - difference between 3e and 3a in train
+  - difference between 3e and 3a
+  - 3e in train means
+  - 3e vs 3a in train
+  - 3a in train
   - 3e class in train
   - ac 3 tier economy
-  - train coach types
+  - train booking
+  - irctc
 ---
-
-> **🔔 Need Confirmed Seats?** Trying to secure confirmed AC berths? Find guaranteed split-ticket options and search confirmed berths on [Get Confirmed Tickets](/).
 
 ## TL;DR
 
-- **3A (AC 3-Tier)** has **72 berths** per LHB coach in a roomier layout, while **3E (AC 3-Tier Economy)** packs **83 berths** by adding a third side berth (**Side Middle**).
-- **Fare Difference:** 3E base fare is roughly **6% to 8% cheaper** than standard 3A, offering the most affordable air-conditioned sleeping berth on Indian Railways.
-- **Coach Codes:** 3A coaches are marked **B1, B2, B3...** on platforms, whereas 3E economy coaches are marked **M1, M2, M3...**.
-- **Bedding & Linen:** Both 3A and 3E include **complimentary bedrolls** (two bedsheets, pillow, blanket, face towel) bundled directly into your ticket fare.
-- **Verdict:** Choose 3A if you are over 5'8" or want extra headroom; choose 3E to save money or grab confirmed berths when 3A is waitlisted.
+**3E (AC 3-Tier Economy)** ഉം **3A (സ്റ്റാൻഡേർഡ് AC 3-Tier)** ഉം തമ്മിലുള്ള പ്രധാന വ്യത്യാസം യാത്രാ ശേഷി, ബെർത്തുകളുടെ ഘടന, ടിക്കറ്റ് നിരക്ക് എന്നിവയിലാണ്: 3E കോച്ചിൽ നടപ്പാതയുടെ വശത്ത് മൂന്നാമതൊരു ബെർത്ത് (**Side Middle**) ചേർത്തുകൊണ്ട് ആകെ **83 ബെർത്തുകൾ** ഉണ്ട്, അതിനാൽ അടിസ്ഥാന നിരക്ക് **6% മുതൽ 8% വരെ കുറവാണ്**, എന്നാൽ സ്റ്റാൻഡേർഡ് 3A കോച്ചിൽ വീതിയേറിയ ബെർത്തുകളും കൂടുതൽ ഹെഡ്‌റൂമുമുള്ള **72 ബെർത്തുകൾ** ഉണ്ട്. രണ്ട് ക്ലാസുകളിലും ടിക്കറ്റിനൊപ്പം **സൗജന്യ സീൽ ചെയ്ത ബെഡ്‌റോൾ ലിനൻ** ലഭ്യമാണ്, കൂടാതെ 21°C മുതൽ 24°C വരെ എയർ കണ്ടീഷനിംഗ് നിയന്ത്രിക്കപ്പെടുന്നു. 3E കോച്ചുകളെ **M-സീരീസ് (M1, M2...)** എന്നും 3A കോച്ചുകളെ **B-സീരീസ് (B1, B2...)** എന്നും അടയാളപ്പെടുത്തുന്നു. നേരിട്ടുള്ള 3A ടിക്കറ്റുകളിൽ Waitlist (WL) അല്ലെങ്കിൽ Regret കാണുമ്പോൾ, [Finding Smart Seats](/) അധിക Tatkal ചാർജുകളില്ലാതെ അതേ ട്രെയിനിൽ കൺഫേം ചെയ്ത സ്പ്ലിറ്റ് ടിക്കറ്റുകൾ കണ്ടെത്താൻ സഹായിക്കുന്നു.
 
 ---
 
-## What is the Difference Between 3E and 3A in Indian Railways?
-
-**The primary difference between 3E and 3A is passenger capacity, coach layout, and ticket price. Standard 3A (AC 3-Tier) coaches accommodate 72 berths in spacious bays, whereas 3E (AC 3-Tier Economy) coaches pack 83 berths by adding a Side Middle bunk, resulting in 6% to 8% lower fares but tighter personal space.**
-
-Introduced to make air-conditioned rail travel accessible to Sleeper passengers, 3E bridges the gap between budget non-AC travel and premium AC coaches.
-
-Here is how both classes compare at a glance:
-
-| Feature                     | 3A (AC 3-Tier)                    | 3E (AC 3 Economy)                              |
-| :-------------------------- | :-------------------------------- | :--------------------------------------------- |
-| **Total Berths per Coach**  | 72 berths (LHB) / 64 (ICF)        | 83 berths (LHB)                                |
-| **Coach Designation Code**  | B1, B2, B3, B4...                 | M1, M2, M3, M4...                              |
-| **Side Bay Configuration**  | 2 berths (Side Lower, Side Upper) | 3 berths (Side Lower, Side Middle, Side Upper) |
-| **Base Fare Comparison**    | Standard AC 3-Tier tariff         | ~6% to 8% cheaper than 3A                      |
-| **Free Bedroll / Linen**    | Yes (included in ticket)          | Yes (included in ticket)                       |
-| **Headroom Between Berths** | ~24 inches (more spacious)        | ~18 inches (tighter clearance)                 |
-| **Individual AC Vents**     | Central duct airflow              | Individual adjustable aircraft-style louvers   |
-| **Charging Points**         | Shared per bay + side berths      | Dedicated socket + USB port per berth          |
-| **Best For**                | Taller travellers & long journeys | Budget AC travel & quick confirmation          |
+> ### ഇന്ത്യൻ റെയിൽവേയിൽ യാത്ര ചെയ്യുന്നുണ്ടോ? കൺഫേം ചെയ്ത AC ബെർത്ത് വേണമെന്നുണ്ടോ?
+>
+> 3A, 3E ക്വാട്ടകളിൽ നേരിട്ടുള്ള ബുക്കിംഗ് Waitlist (WL) അല്ലെങ്കിൽ Regret കാണിക്കുമ്പോൾ, ട്രെയിനിൽ നിന്ന് ഇറങ്ങാതെ തന്നെ അതേ ട്രെയിനിൽ കൺഫേം ചെയ്ത സീറ്റുകൾ കണ്ടെത്താൻ LastBerth ഇതര റൂട്ടുകൾ പരിശോധിക്കുന്നു.
+>
+> **ജനപ്രിയ ഉയർന്ന ഡിമാൻഡുള്ള യാത്രാ റൂട്ടുകൾ:**
+>
+> - [ന്യൂഡൽഹി ➔ പട്‌ന ജംഗ്ഷൻ (പ്രത്യേക എക്‌സ്‌പ്രസ് തിരയുക)](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn&src=blog_3e_3a)
+> - [ന്യൂഡൽഹി ➔ മുംബൈ സെൻട്രൽ (രാജധാനിയും തേജസും തിരയുക)](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central&src=blog_3e_3a)
+> - [മുംബൈ സെൻട്രൽ ➔ ദാനാപ്പൂർ (ഉത്സവ പ്രത്യേക എക്സ്പ്രസ് തിരയുക)](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur&src=blog_3e_3a)
+> - [KSR ബെംഗളൂരു ➔ MGR ചെന്നൈ സെൻട്രൽ (ശതാബ്ദിയും മെയിലും തിരയുക)](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central&src=blog_3e_3a)
+> - [ഹൗറ ജംഗ്ഷൻ ➔ പുരി (ധൗലിയും എക്സ്പ്രസും തിരയുക)](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri&src=blog_3e_3a)
+> - [പൂനെ ജംഗ്ഷൻ ➔ ദാനാപ്പൂർ (പ്രത്യേക ട്രെയിനുകൾ തിരയുക)](/?from=PUNE&to=DNR&fromName=Pune%20Jn&toName=Danapur&src=blog_3e_3a)
+> - [Chart Vacancy Map](/chart-vacancy) ൽ തത്സമയ കോച്ച് ഘടന കാണുക അല്ലെങ്കിൽ [Chart Times](/chart-times) ൽ ചാർട്ട് തയ്യാറാക്കുന്ന സമയം ട്രാക്ക് ചെയ്യുക.
 
 ---
 
-## How Many Berths Are in 3E vs 3A Coaches? (83 vs 72 Explained)
+## What is the Difference Between 3E and 3A in Train?
 
-**A standard LHB 3A coach contains exactly 72 berths arranged in nine bays of eight berths each. In contrast, a 3E economy coach accommodates 83 berths by reducing vertical berth spacing and modifying the aisle design to fit 11 longitudinal bays plus 15 side berths.**
+**3E യും 3A യും തമ്മിലുള്ള പ്രധാന വ്യത്യാസം, സ്റ്റാൻഡേർഡ് 3A കോച്ചിൽ സൗകര്യപ്രദമായ 72 ബെർത്തുകൾ ഉള്ളപ്പോൾ, 3E ഇക്കോണമിയിൽ നടപ്പാതയുടെ വശത്ത് Side Middle ബെർത്ത് ചേർത്ത് 83 ബെർത്തുകൾ സജ്ജീകരിച്ചിരിക്കുന്നു എന്നതാണ്. അതിനാൽ 3E നിരക്ക് 3A യേക്കാൾ 6% മുതൽ 8% വരെ കുറവാണ്, എന്നാൽ ഹെഡ്‌റൂം കുറവും കിടക്കാനുള്ള സ്ഥലം ഇടുങ്ങിയതുമാണ്.**
 
-To fit 11 extra passengers inside the same coach shell, railway engineers made three structural modifications in 3E rakes:
+ഇന്ത്യൻ റെയിൽവേ രണ്ട് ക്ലാസുകളും ആധുനിക ജർമ്മൻ Linke Hofmann Busch (LHB) കോച്ചുകളിലാണ് പ്രവർത്തിപ്പിക്കുന്നത്, എന്നാൽ അവ വ്യത്യസ്ത യാത്രക്കാരുടെ ആവശ്യങ്ങൾ നിറവേറ്റുന്നു. സ്റ്റാൻഡേർഡ് 3A (AC 3-Tier) ദീർഘദൂര ട്രെയിനുകളുടെ പ്രധാന ആകർഷണമാണ്, ഇത് വ്യക്തിഗത സ്ഥലം, ആവശ്യത്തിന് തലയ്ക്കുമുകളിലുള്ള ഉയരം, വീതിയേറിയ നടപ്പാത എന്നിവ നൽകുന്നു. അതേസമയം നോൺ-എസി സ്ലീപ്പറിൽ നിന്ന് കുറഞ്ഞ ചെലവിൽ എസി സൗകര്യത്തിലേക്ക് മാറാൻ ആഗ്രഹിക്കുന്നവർക്കായി റെയിൽ കോച്ച് ഫാക്ടറി (RCF) കപൂർത്തല രൂപകൽപ്പന ചെയ്തതാണ് 3E (AC 3-Tier Economy).
 
-1. **Side Middle (SM) Bunk:** The side aisle section features three tiers instead of two.
-2. **Narrower Main Bays:** Cushion thickness and bay dividers were redesigned to reduce pitch between opposing seats.
-3. **Optimized Electrical Ducts:** AC vents and wiring were relocated beneath the floor and into individual side panels to maximize vertical room.
+രണ്ട് ക്ലാസുകളിലും അടിസ്ഥാന സൗകര്യങ്ങൾ സമാനമാണ്: കോച്ചുകൾ പൂർണ്ണമായും അടച്ചിരിക്കുന്നു, താപനില 21°C മുതൽ 24°C വരെ നിലനിർത്തുന്നു, കൂടാതെ സൗജന്യ ബെഡ്‌റോൾ കിറ്റും നൽകുന്നു. എന്നിരുന്നാലും, യാത്ര ചെയ്യുമ്പോഴുള്ള അനുഭവം തികച്ചും വ്യത്യസ്തമാണ്.
 
-Because 3E has 83 berths, booking queues and chart allocations are handled under a distinct booking pool on IRCTC. You can inspect live coach layouts before boarding using [Get Confirmed Tickets](/).
+താഴെ പറയുന്ന പട്ടികയിൽ 3E ഉം 3A ഉം തമ്മിലുള്ള എല്ലാ വ്യത്യാസങ്ങളും വിവരിച്ചിരിക്കുന്നു:
+
+| സവിശേഷത / വിശദാംശം | 3A (സ്റ്റാൻഡേർഡ് AC 3-Tier) | 3E (AC 3-Tier Economy) | യാത്രക്കാരെ ബാധിക്കുന്നത് |
+| :--- | :--- | :--- | :--- |
+| **ഒരു കോച്ചിലെ ആകെ ബെർത്തുകൾ** | 72 ബെർത്തുകൾ (LHB) / 64 (ICF) | 83 ബെർത്തുകൾ (LHB) | 3E കോച്ചിൽ 11 അധിക യാത്രക്കാർക്ക് യാത്ര ചെയ്യാം |
+| **കോച്ച് കോഡ്** | **B-സീരീസ്** (B1, B2, B3 മുതൽ B12 വരെ) | **M-സീരീസ്** (M1, M2, M3 മുതൽ M6 വരെ) | പ്ലാറ്റ്‌ഫോം ബോർഡുകളിലും ടിക്കറ്റിലും കാണാം |
+| **സൈഡ് ബെർത്ത് ഘടന** | 2 തട്ടുകൾ (Side Lower + Side Upper) | 3 തട്ടുകൾ (Side Lower + Middle + Upper) | 3E യിൽ Side Middle (SM) ബെർത്ത് വരുന്നു |
+| **ഹെഡ്‌റൂം ഉയരം** | ബെർത്തുകൾക്കിടയിൽ ഏകദേശം 24 ഇഞ്ച് | ബെർത്തുകൾക്കിടയിൽ ഏകദേശം 18 ഇഞ്ച് | 3E യിൽ നടുവിലെ ബെർത്തിൽ നിവർന്നിരിക്കാൻ ബുദ്ധിമുട്ടാണ് |
+| **അടിസ്ഥാന നിരക്ക് താരതമ്യം** | സാധാരണ AC 3-Tier നിരക്ക് | 3A യേക്കാൾ **6% മുതൽ 8% വരെ കുറഞ്ഞ നിരക്ക്** | കുടുംബങ്ങൾക്കും വിദ്യാർത്ഥികൾക്കും ബഡ്ജറ്റ് സൗഹൃദം |
+| **സൗജന്യ ബെഡ്‌റോൾ ലിനൻ** | ഉണ്ട് (2 ഷീറ്റ്, തലയിണ, പുതപ്പ്, ടവ്വൽ) | ഉണ്ട് (2023 മുതൽ ടിക്കറ്റിൽ ഉൾപ്പെടുത്തിയിട്ടുണ്ട്) | ഒരു ക്ലാസിലും അധിക പണം നൽകേണ്ടതില്ല |
+| **AC വെന്റുകൾ** | മേൽക്കൂരയുടെ നടുവിലെ ഡക്റ്റ് വെന്റുകൾ | വ്യക്തിഗതമായി തിരിക്കാവുന്ന എയർക്രാഫ്റ്റ് വെന്റുകൾ | 3E യിൽ യാത്രക്കാർക്ക് കാറ്റിന്റെ ദിശ മാറ്റാം |
+| **ചാർജിംഗ് സോക്കറ്റുകൾ** | 6 ബെർത്ത് ക്യാബിന് 2 സോക്കറ്റുകൾ | **ഓരോ ബെർത്തിലും** പ്രത്യേക 3-പിൻ പ്ലഗ് + USB | 3E യിൽ ചാർജിംഗിനായി മത്സരമില്ല |
+| **ബെർത്തിന്റെ വീതി** | സാധാരണ വീതി (~600 mm) | അല്പം വീതി കുറഞ്ഞ ബെർത്ത് (~550 mm) | 3A മുതിർന്നവർക്ക് കൂടുതൽ സൗകര്യപ്രദമായി തോന്നും |
+| **ഓട്ടോ-അപ്‌ഗ്രേഡേഷൻ മുൻഗണന** | AC 2-Tier (2A) ലേക്ക് മാറും | 3A അല്ലെങ്കിൽ 2A ലേക്ക് മാറും | സ്ലീപ്പർ യാത്രക്കാർക്ക് 3A ക്ക് മുൻപ് 3E ലഭിക്കും |
+| **പ്ലാറ്റ്‌ഫോമിലെ സ്ഥാനം** | AC 2-Tier ബ്ലോക്കിന് സമീപം | സ്ലീപ്പറിനും 3A കോച്ചുകൾക്കും ഇടയിൽ | ട്രെയിനിൽ കയറുമ്പോൾ എളുപ്പത്തിൽ കണ്ടെത്താം |
 
 ---
 
-## Is 3E Cheaper Than 3A? (Fare Difference Explained)
+## What Does 3E in Train Mean? (AC 3-Tier Economy Explained)
 
-**Yes, 3E ticket fares are approximately 6% to 8% cheaper than standard 3A tickets on the exact same train and route. For example, on a 1,000 km journey where a 3A ticket costs ₹1,450, a 3E economy ticket typically costs around ₹1,340 to ₹1,365.**
+**ട്രെയിനിൽ 3E എന്നാൽ AC 3-Tier Economy എന്നാണ് അർത്ഥമാക്കുന്നത്, ഇത് ഒരു കോച്ചിൽ 83 യാത്രക്കാർക്ക് സഞ്ചരിക്കാവുന്ന ഇന്ത്യൻ റെയിൽവേയുടെ ബഡ്ജറ്റ് എസി സ്ലീപ്പർ ക്ലാസാണ്. പ്രധാന ക്യാബിനിൽ 3 ഉം നടപ്പാതയിൽ 3 ഉം ബെർത്തുകൾ, വ്യക്തിഗത എസി വെന്റുകൾ, 3A യേക്കാൾ 6% മുതൽ 8% വരെ കുറഞ്ഞ നിരക്ക് എന്നിവ ഇതിന്റെ പ്രത്യേകതകളാണ്.**
 
-The fare reduction applies across base fare, reservation charges, and Tatkal premiums:
+IRCTC പോർട്ടലിലോ കൗണ്ടറുകളിലോ **3E** എന്നത് AC 3-Tier Economy യെ സൂചിപ്പിക്കുന്നു. 2021 സെപ്റ്റംബറിൽ പ്രയാഗ്‌രാജ്-ജയ്പൂർ എക്‌സ്‌പ്രസിലാണ് ഇത് ആദ്യമായി അവതരിപ്പിച്ചത്. സാധാരണ സ്ലീപ്പറും 3A യും തമ്മിലുള്ള വലിയ നിരക്ക് വ്യത്യാസം കുറയ്ക്കുക എന്നതായിരുന്നു ഇതിന്റെ ലക്ഷ്യം.
 
-- **Base Fare:** Priced slightly above Sleeper class and below standard AC 3-Tier.
-- **Superfast Surcharge & GST:** Standard 5% GST and applicable superfast surcharges apply equally to both classes.
-- **Tatkal Charges:** Minimum and maximum Tatkal charges for 3E are scaled proportionally lower than 3A.
-- **Dynamic Pricing:** On trains with dynamic pricing, 3E fares surge at a lower rate than 3A.
+സാധാരണ 23.54 മീറ്റർ LHB കോച്ചിൽ 83 സീറ്റുകൾ ഉൾക്കൊള്ളിക്കാൻ റെയിൽവേ എൻജിനീയർമാർ ഇന്റീരിയർ പുനർരൂപകൽപ്പന ചെയ്തു:
 
-When booking multi-leg journeys where direct AC seats are full, using [Smart Seats](/) helps you combine available 3E and 3A segments on the same train to guarantee a confirmed berth.
+1. **പുതിയ എയർ ഡക്റ്റ് ഡിസൈൻ:** മേൽക്കൂരയിലെ വലിയ എസി ഡക്റ്റ് മാറ്റി പകരം വശങ്ങളിലൂടെ നേർത്ത വെന്റിലേഷൻ സംവിധാനം നൽകി.
+2. **വ്യക്തിഗത എയർ വെന്റുകൾ:** വിമാനങ്ങളിലേതുപോലെ ഓരോ യാത്രക്കാരന്റെയും തലയ്ക്കരികിൽ തിരിക്കാവുന്ന എസി വെന്റുകൾ സ്ഥാപിച്ചു.
+3. **കനം കുറഞ്ഞ പാർട്ടീഷനുകൾ:** സുരക്ഷിതത്വം കുറയാതെ സ്ഥലം ലാഭിക്കാൻ ഭാരം കുറഞ്ഞ വസ്തുക്കൾ കൊണ്ടുള്ള പാർട്ടീഷനുകൾ നൽകി.
+4. **സൗകര്യങ്ങൾ:** സീറ്റിന് പിന്നിൽ മടക്കിവെക്കാവുന്ന ടേബിൾ, മൊബൈൽ ഹോൾഡർ, വാട്ടർ ബോട്ടിൽ വെക്കാനുള്ള സ്ഥലം എന്നിവ നൽകി.
+
+ട്രെയിനിന് പുറത്തും പ്ലാറ്റ്‌ഫോമിലും 3E കോച്ചുകളെ **M** എന്ന അക്ഷരം കൊണ്ടാണ് സൂചിപ്പിക്കുന്നത്, ഉദാഹരണത്തിന് **M1, M2, M3, M4, M5, അല്ലെങ്കിൽ M6**.
+
+---
+
+## What Does 3A in Train Mean? (Standard AC 3-Tier Explained)
+
+**ട്രെയിനിൽ 3A എന്നത് സ്റ്റാൻഡേർഡ് AC 3-Tier സ്ലീപ്പർ ക്ലാസിനെ സൂചിപ്പിക്കുന്നു, ഇത് ഇന്ത്യൻ റെയിൽവേയിലെ ഏറ്റവും ജനപ്രിയമായ എസി യാത്രാ ക്ലാസാണ്. ഇതിന്റെ ഓരോ LHB കോച്ചിലും 72 ബെർത്തുകൾ ഉണ്ട്, അവ 6 ബെർത്തുകൾ വീതമുള്ള 9 പ്രധാന ക്യാബിനുകളായും നടപ്പാതയിലെ 2 സൈഡ് ബെർത്തുകളായും വിഭജിച്ച് B-സീരീസ് കോഡ് നൽകിയിരിക്കുന്നു.**
+
+സ്റ്റാൻഡേർഡ് AC 3-Tier (3A) ദീർഘദൂര ട്രെയിനുകളുടെ നട്ടെല്ലാണ്. സ്വകാര്യത, ആവശ്യത്തിന് സ്ഥലം, മികച്ച എയർകണ്ടീഷണർ എന്നിവയുടെ സന്തുലിതാവസ്ഥ ഇത് നൽകുന്നു. പ്ലാറ്റ്‌ഫോം ബോർഡുകളിലും ടിക്കറ്റുകളിലും 3A കോച്ചുകളെ **B** എന്ന അക്ഷരം കൊണ്ടാണ് കാണിക്കുന്നത്, ഉദാഹരണത്തിന് **B1, B2, B3 മുതൽ B12 വരെ**.
+
+സാധാരണ 3A കോച്ചിന്റെ പ്രധാന ക്യാബിനിൽ ആറ് ബെർത്തുകളുണ്ട്:
+
+- **Lower Berth (LB):** പകൽ ഇരിക്കാനുള്ള ബെഞ്ചും രാത്രിയിൽ ഉറങ്ങാനുള്ള ബെർത്തുമായി മാറുന്നു.
+- **Middle Berth (MB):** ചങ്ങലയിൽ തൂങ്ങിനിൽക്കുന്നതും പകൽ മടക്കിവെക്കാവുന്നതുമായ നടുവിലെ ബെർത്ത്.
+- **Upper Berth (UB):** ഗോവണി വഴി കയറുന്ന മുകളിലെ സ്ഥിരമായ ബെർത്ത്.
+
+നടപ്പാതയുടെ വശത്ത് രണ്ട് ബെർത്തുകൾ മാത്രമാണുള്ളത്:
+
+- **Side Lower (SL):** പകൽ രണ്ട് സീറ്റുകളായും രാത്രിയിൽ ചേർത്തുവെച്ച് ബെർത്തായും ഉപയോഗിക്കുന്നു.
+- **Side Upper (SU):** നടപ്പാതയ്ക്ക് സമാന്തരമായി മുകളിലുള്ള സ്ഥിരമായ ബെർത്ത്.
+
+3A യിൽ 72 ബെർത്തുകൾ ഉള്ളതിനാൽ ബെർത്തുകൾക്കിടയിൽ 24 ഇഞ്ച് ഉയരം ലഭിക്കുന്നു, അതിനാൽ തല മുട്ടാതെ പകൽ സുഖമായി നിവർന്നിരുന്ന് യാത്ര ചെയ്യാം.
+
+---
+
+## How Many Berths Are in 3E vs 3A Coaches? (83 vs 72 Breakdown)
+
+**ഒരു സാധാരണ LHB 3A കോച്ചിൽ കൃത്യം 72 ബെർത്തുകൾ ഉണ്ട്, എന്നാൽ 3E ഇക്കോണമി കോച്ചിൽ 83 ബെർത്തുകൾ ഉണ്ട്. 3E യിലെ 11 അധിക ബെർത്തുകൾ നടപ്പാതയുടെ വശത്ത് രണ്ട് തട്ടുകൾക്ക് പകരം മൂന്ന് തട്ടുകൾ (Side Middle ചേർത്ത്) നൽകിയാണ് നിർമ്മിച്ചിരിക്കുന്നത്.**
+
+72 ൽ നിന്ന് 83 സീറ്റുകളിലേക്കുള്ള മാറ്റം യാത്രാ ശേഷി 15.2% വർദ്ധിപ്പിക്കുന്നു, ഇത് ഉത്സവ സീസണുകളിൽ കൂടുതൽ കൺഫേം ടിക്കറ്റുകൾ ലഭ്യമാക്കാൻ സഹായിക്കുന്നു. എന്നാൽ അതേ നീളമുള്ള കോച്ചിൽ 11 ബെർത്തുകൾ ചേർത്തപ്പോൾ ചില മാറ്റങ്ങൾ വരുത്തേണ്ടി വന്നു.
+
+താഴെ പറയുന്ന പട്ടികയിൽ ഇവയുടെ ഘടന താരതമ്യം ചെയ്തിരിക്കുന്നു:
+
+| ഘടകം | 3A കോച്ച് (72 ബെർത്തുകൾ) | 3E കോച്ച് (83 ബെർത്തുകൾ) | എൻജിനീയറിങ് മാറ്റങ്ങൾ |
+| :--- | :--- | :--- | :--- |
+| **പ്രധാന ക്യാബിനുകൾ** | 9 ക്യാബിനുകൾ (ആകെ 54 ബെർത്തുകൾ) | 11 ക്യാബിനുകൾ (ആകെ 66 ബെർത്തുകൾ) | ക്യാബിനുകൾ തമ്മിലുള്ള അകലം കുറച്ചു |
+| **ക്യാബിൻ ബെർത്തുകൾ** | Lower (LB), Middle (MB), Upper (UB) | Lower (LB), Middle (MB), Upper (UB) | മെത്തയുടെ കനം 75 mm ആയി നിജപ്പെടുത്തി |
+| **സൈഡ് നടപ്പാത** | 2 തട്ടുകൾ (Side Lower + Upper) | 3 തട്ടുകൾ (Side Lower + Middle + Upper) | Side Middle (SM) ബെർത്ത് കൂട്ടിച്ചേർത്തു |
+| **ആകെ സൈഡ് ബെർത്തുകൾ** | 18 ബെർത്തുകൾ (9 ക്യാബിൻ × 2) | 17 ബെർത്തുകൾ (ഭിന്നശേഷി ഭാഗത്ത് 1 കുറവ്) | ആകെ 11 അധിക ബെർത്തുകൾ ലഭിച്ചു |
+| **ലെഗ്‌റൂം** | ക്യാബിനുകൾക്കിടയിൽ ~1,900 mm | ക്യാബിനുകൾക്കിടയിൽ ~1,750 mm | കാൽ നീട്ടാനുള്ള സ്ഥലം ~150 mm കുറഞ്ഞു |
+| **നടപ്പാതയുടെ വീതി** | ~600 mm വീതി | ~550 mm വീതി | സൈഡ് ബെർത്ത് വീതി കൂട്ടാൻ നടപ്പാത ചെറുതാക്കി |
+| **ടോയ്‌ലറ്റുകൾ** | 4 സാധാരണ ടോയ്‌ലറ്റുകൾ | 4 പുതിയ വാക്വം ടോയ്‌ലറ്റുകൾ | ഇലക്ട്രിക്കൽ പാനലുകൾ മാറ്റി സ്ഥലം ലാഭിച്ചു |
+
+വലിയ ലഗേജുകളുമായി യാത്ര ചെയ്യുമ്പോൾ 3E യിൽ താഴത്തെ ബെർത്തിന് അടിയിൽ സ്ഥലം കുറവായിരിക്കുമെന്ന് ഓർക്കുക. 40 സെ.മീറ്ററിൽ കൂടുതൽ ഉയരമുള്ള പെട്ടികൾ 3E സീറ്റുകൾക്കടിയിൽ വെക്കാൻ ബുദ്ധിമുട്ടാണ്.
 
 ---
 
 ## What is a Side Middle (SM) Berth in 3E Class?
 
-**A Side Middle (SM) berth is an exclusive third bunk located between the Side Lower and Side Upper berths in 3E economy coaches. It folds flat against the aisle wall during daytime hours and pulls down at night (10:00 PM to 6:00 AM) to provide a sleeping bunk.**
+**Side Middle (SM) ബെർത്ത് എന്നത് 3E ഇക്കോണമി കോച്ചിൽ നടപ്പാതയുടെ വശത്ത് Side Lower നും Side Upper നും ഇടയിൽ ഘടിപ്പിച്ചിട്ടുള്ള അധിക മൂന്നാമത്തെ ബെർത്താണ്. ഇത് പകൽ സമയത്ത് ഭിത്തിയോട് ചേർത്ത് മടക്കിവെക്കുകയും രാത്രി 10:00 മണിക്കും രാവിലെ 6:00 മണിക്കും ഇടയിൽ കിടക്കാൻ താഴ്ത്തുകയും ചെയ്യുന്നു.**
 
-While the Side Middle berth allows railways to carry more passengers, it comes with specific travel realities:
+Side Middle ബെർത്ത് 3E കോച്ചിലെ പ്രധാന സവിശേഷതയാണ്. സാധാരണ 3A യിൽ സൈഡിൽ രണ്ട് പേർ മാത്രമേ ഉണ്ടാകൂ. 3E യിൽ മൂന്നാമതൊരു ബെർത്ത് ഉള്ളതുകൊണ്ട് ഈ നിയമങ്ങൾ ബാധകമാണ്:
 
-- **Length & Width:** It is slightly shorter than main bay berths, making it uncomfortable for passengers taller than 5'7".
-- **Headroom:** Sitting upright is impossible when all three side bunks are unfolded; passengers must lie flat or coordinate daytime sitting.
-- **Daytime Seating:** The passenger with the Side Middle ticket sits on the Side Lower seat alongside the Side Lower passenger during daytime hours.
+1. **പകൽ മടക്കിവെക്കൽ നിർബന്ധം:** റെയിൽവേ നിയമപ്രകാരം **രാവിലെ 6:00 മുതൽ രാത്രി 10:00 വരെ** ഈ ബെർത്ത് തുറന്നുവെക്കാൻ പാടില്ല. പകൽ സമയത്ത് SM യാത്രക്കാരൻ Side Lower യാത്രക്കാരനൊപ്പം താഴെ ഇരിക്കണം.
+2. **കുറഞ്ഞ ഉയരം:** തറ മുതൽ മേൽക്കൂര വരെയുള്ള 2.1 മീറ്റർ ഉയരത്തിൽ മൂന്ന് ബെർത്തുകൾ ഉള്ളതിനാൽ ഓരോ ബെർത്തിലും **18 ഇഞ്ച് (45 സെ.മീ)** ഉയരം മാത്രമേ ലഭിക്കൂ. ഇതിൽ നിവർന്നിരിക്കാൻ കഴിയില്ല; കിടക്കാൻ മാത്രമേ സാധിക്കൂ.
+3. **നീളം അല്പം കുറവാണ്:** 3E സൈഡ് ബെർത്തിന് ഏകദേശം 170 സെ.മീ (5 അടി 7 ഇഞ്ച്) നീളമുണ്ട്. 5'8" ന് മുകളിൽ ഉയരമുള്ളവരുടെ കാലുകൾ നടപ്പാതയിലേക്ക് നീണ്ടുനിൽക്കാം.
 
-If your PNR assigns you an **SM** berth and you prefer more space, check live vacant berths after chart preparation on [Get Confirmed Tickets](/) to request an unoccupied berth from the TTE.
-
----
-
-## Is Free Bedding Provided in 3E AC Economy Coaches?
-
-**Yes, Indian Railways provides free bedroll kits to all 3E passengers, bundled directly into the ticket fare under Railway Board Circular No. 13 of 2023. Each passenger receives two freshly laundered bedsheets, one pillow with cover, one blanket, and a face towel.**
-
-When 3E coaches were first piloted in 2021, bedding was initially unbundled as an optional paid add-on. However, this caused operational delays and passenger dissatisfaction.
-
-Today, bedroll rules for 3E are identical to standard 3A:
-
-- The coach attendant distributes linen packets shortly after the train departs from its originating station.
-- You do not need to pay extra cash to the attendant or select an optional checkbox during IRCTC checkout.
-- Blankets and sanitized linen are collected back roughly 45 minutes before your destination station.
+> **പ്രധാനപ്പെട്ട ടിപ്പ്:** നിങ്ങൾക്ക് 3E യിൽ **Side Middle (SM)** ലഭിക്കുകയും നിങ്ങളുടെ ഉയരം 5'8" ൽ കൂടുതലുമാണെങ്കിൽ, ആദ്യ ചാർട്ട് വന്ന ശേഷം (~8 മണിക്കൂർ മുൻപ്) [Chart Vacancy Map](/chart-vacancy) ൽ ഒഴിഞ്ഞ ബെർത്തുകൾ കണ്ട് ട്രെയിനിലെ TTE യോട് മെയിൻ ക്യാബിനിലെ സീറ്റ് മാറ്റാൻ അഭ്യർത്ഥിക്കുക.
 
 ---
 
-## How to Identify 3E vs 3A Coach Numbers on the Platform (M vs B Coaches)
+## Is 3E Cheaper Than 3A? (Fare Difference & Tatkal Slabs)
 
-**You can identify 3E coaches on train indicators and coach exteriors by the letter 'M' (such as M1, M2, M3), whereas standard 3A coaches are marked with the letter 'B' (such as B1, B2, B3, B4). Both coaches display blue or metallic LHB livery.**
+**അതെ, ഒരേ ട്രെയിനിലും റൂട്ടിലും സാധാരണ 3A യേക്കാൾ 6% മുതൽ 8% വരെ കുറഞ്ഞ നിരക്കാണ് 3E ടിക്കറ്റിന്. ഉദാഹരണത്തിന്, 1,000 കിലോമീറ്റർ യാത്രയിൽ 3A നിരക്ക് ₹1,450 ആണെങ്കിൽ, 3E നിരക്ക് ഏകദേശം ₹1,340 മുതൽ ₹1,365 വരെയായിരിക്കും.**
 
-Knowing the coach coding prevents last-minute confusion on crowded platforms:
+ഈ കിഴിവ് അടിസ്ഥാന നിരക്കിലാണ് നൽകുന്നത്. സൂപ്പർഫാസ്റ്റ് ചാർജ് (₹45), റിസർവേഷൻ ഫീസ് (₹40), 5% GST എന്നിവ രണ്ട് ക്ലാസുകൾക്കും ഒരുപോലെ ബാധകമാണ്.
 
-- **M-Series (M1 to M6):** 3-Tier AC Economy class (83 berths).
-- **B-Series (B1 to B12):** Standard AC 3-Tier class (72 berths).
-- **A-Series (A1 to A4):** AC 2-Tier class (54 berths).
-- **H-Series (H1):** AC First Class (1A).
+5 പ്രധാന റൂട്ടുകളിലെ നിരക്ക് താരതമ്യം:
 
-Station display boards and electronic coach guidance indicators list these codes in train rake order. You can verify your train's live charting and platform composition in advance using [Chart Times](/chart-times).
+| യാത്രാ റൂട്ട് | ദൂരം | സാധാരണ 3A നിരക്ക് | 3E ഇക്കോണമി നിരക്ക് | ഒരാൾക്ക് ലഭിക്കുന്ന ലാഭം |
+| :--- | :--- | :--- | :--- | :--- |
+| **ന്യൂഡൽഹി (NDLS) ➔ പട്‌ന (PNBE)** | 998 km | ₹1,425 | ₹1,320 | ₹105 (7.4% ലാഭം) |
+| **ന്യൂഡൽഹി (NDLS) ➔ മുംബൈ സെൻട്രൽ (MMCT)** | 1,384 km | ₹1,780 | ₹1,650 | ₹130 (7.3% ലാഭം) |
+| **ഹൗറ (HWH) ➔ ന്യൂഡൽഹി (NDLS)** | 1,447 km | ₹1,850 | ₹1,710 | ₹140 (7.6% ലാഭം) |
+| **KSR ബെംഗളൂരു (SBC) ➔ ചെന്നൈ സെൻട്രൽ (MAS)** | 359 km | ₹640 | ₹595 | ₹45 (7.0% ലാഭം) |
+| **പൂനെ ജംഗ്ഷൻ (PUNE) ➔ ദാനാപ്പൂർ (DNR)** | 1,748 km | ₹2,160 | ₹2,005 | ₹155 (7.2% ലാഭം) |
 
----
+### തത്ക്കാൽ, ഡൈനാമിക് ഫെയർ നിയമങ്ങൾ:
 
-## What Amenities Are Different in 3E vs 3A?
-
-**3E coaches offer upgraded modern amenities including personalized aircraft-style AC louvers, dedicated USB charging sockets for every single berth, and illuminated night floor strips. However, 3A coaches provide wider berths, wider aisle space, and significantly more vertical headroom between bunks.**
-
-Here is how specific interior amenities compare:
-
-- **Air Conditioning:** Standard 3A relies on overhead ceiling ducts that can blow cold air unevenly. 3E features individual toggleable vents above each passenger's head.
-- **Charging Sockets:** In 3A, middle berth passengers often share charging points with lower berths. In 3E, every single berth (including middle and upper) has its own dedicated 3-pin plug and 5V USB charging port.
-- **Reading Lights:** Both classes offer individual reading lights, but 3E lights are integrated LED lamps with touch switches.
-- **Bottle Holders & Snack Tables:** 3E seats have foldable tray tables and modular bottle holders built into the back of each seat.
+- **തത്ക്കാൽ സമയം:** രണ്ടും AC ക്ലാസുകളായതിനാൽ തത്ക്കാൽ ബുക്കിംഗ് പുറപ്പെടുന്നതിന് 1 ദിവസം മുൻപ് **രാവിലെ 10:00 AM IST** ന് ആരംഭിക്കുന്നു.
+- **തത്ക്കാൽ ചാർജുകൾ:** 3A യുടെ ഉയർന്ന പരിധി ₹400 ആയിരിക്കുമ്പോൾ 3E യിൽ ഇത് ₹280 മുതൽ ₹375 വരെ കുറവാണ്.
+- **ഡൈനാമിക് പ്രൈസിംഗ്:** ഫ്ലെക്‌സി ഫെയർ ഉള്ള ട്രെയിനുകളിൽ 3A യേക്കാൾ പതുക്കെയേ 3E നിരക്ക് വർദ്ധിക്കുകയുള്ളൂ.
 
 ---
 
-## Can You Get Auto Upgraded from Sleeper to 3E or 3A?
+## Is Free Bedding and Linen Provided in 3E AC Economy Coaches?
 
-**Yes, if you opt into the free IRCTC auto-upgradation scheme during booking, Indian Railways can automatically upgrade your confirmed Sleeper (SL) ticket to 3E or 3A at chart preparation if higher AC berths remain unsold, with zero extra fare.**
+**അതെ, റെയിൽവേ ബോർഡ് സർക്കുലർ 13/2023 പ്രകാരം 3E യാത്രക്കാർക്കെല്ലാം സൗജന്യ ബെഡ്‌റോൾ കിറ്റ് നൽകുന്നുണ്ട്, ഇതിന്റെ ചെലവ് ടിക്കറ്റിൽ ഉൾപ്പെടുത്തിയിട്ടുണ്ട്. ഓരോ കിറ്റിലും രണ്ട് ഷീറ്റുകൾ, ഒരു തലയിണ, ഒരു പുതപ്പ്, ഒരു ചെറിയ ടവ്വൽ എന്നിവ അടങ്ങിയിരിക്കുന്നു.**
 
-The auto-upgradation ladder works as follows:
+2021 ൽ 3E തുടങ്ങിയപ്പോൾ ബെഡ്‌റോൾ ആവശ്യമെങ്കിൽ മാത്രം പണം നൽകി (₹45) വാങ്ങേണ്ട ഒന്നായിരുന്നു. എന്നാൽ ഇത് ആശയക്കുഴപ്പമുണ്ടാക്കിയതിനാൽ 2023 മാർച്ച് മുതൽ റെയിൽവേ ഇത് 3A പോലെ പൂർണ്ണമായും ടിക്കറ്റിന്റെ ഭാഗമാക്കി മാറ്റി:
 
-- **Sleeper (SL) passengers** are upgraded to available **3E** or **3A** berths.
-- **3E passengers** can be upgraded to **3A** or **2A**.
-- **3A passengers** can be upgraded to **2A** or **1A**.
+- **ടിക്കറ്റിൽ ഉൾപ്പെടുത്തിയിട്ടുണ്ട്:** ബുക്ക് ചെയ്യുമ്പോൾ പ്രത്യേക ഓപ്ഷൻ തെരഞ്ഞെടുക്കേണ്ടതില്ല.
+- **സീറ്റിൽ വിതരണം:** വണ്ടി പുറപ്പെട്ട ഉടൻ തന്നെ കോച്ച് അറ്റൻഡന്റ് പാക്കറ്റ് സീറ്റിലെത്തിക്കും.
+- **തണുപ്പുകാല സൗകര്യം:** ഉത്തരേന്ത്യൻ റൂട്ടുകളിൽ തണുപ്പ് കൂടുതലാണെങ്കിൽ അധിക പുതപ്പ് ആവശ്യപ്പെടാം.
+- **തിരികെ വാങ്ങൽ:** ലക്ഷ്യസ്ഥാനത്ത് എത്തുന്നതിന് 30 മുതൽ 45 മിനിറ്റ് മുൻപ് ബെഡ്‌റോൾ ശേഖരിക്കും.
 
-Upgrades occur strictly based on berth availability after first charting (~8 hours before departure). If you are waitlisted on a standard class, track your confirmation likelihood and [PNR status](/) to prepare backup travel options.
+---
+
+## How to Identify 3E vs 3A Coach Numbers on the Platform (M vs B Series)
+
+**പ്ലാറ്റ്‌ഫോം ബോർഡുകളിലും കോച്ചിന് പുറത്തും 'M' എന്ന അക്ഷരം (ഉദാ. M1, M2, M3) കണ്ടാൽ അത് 3E കോച്ചാണെന്ന് മനസ്സിലാക്കാം, എന്നാൽ സാധാരണ 3A കോച്ചുകളിൽ 'B' എന്നായിരിക്കും (ഉദാ. B1, B2, B3). രണ്ട് കോച്ചുകളും സിൽവറും ചുവപ്പും കലർന്ന LHB നിറത്തിലാണ് വരുന്നത്.**
+
+കോച്ച് കോഡ് ഓർത്തുവെച്ചാൽ സ്റ്റേഷനിലെ തിരക്കിൽ എളുപ്പത്തിൽ ട്രെയിനിൽ കയറാം:
+
+- **M-സീരീസ് (M1 മുതൽ M6 വരെ):** AC 3-Tier Economy (83 ബെർത്തുകൾ).
+- **B-സീരീസ് (B1 മുതൽ B12 വരെ):** സാധാരണ AC 3-Tier (72 ബെർത്തുകൾ).
+- **A-സീരീസ് (A1 മുതൽ A4 വരെ):** AC 2-Tier (54 ബെർത്തുകൾ).
+- **H-സീരീസ് (H1):** AC ഫസ്റ്റ് ക്ലാസ് (1A).
+- **S-സീരീസ് (S1 മുതൽ S8 വരെ):** നോൺ-എസി സ്ലീപ്പർ കോച്ച് (72 മുതൽ 80 ബെർത്തുകൾ).
+
+സാധാരണയായി 22 കോച്ചുകളുള്ള ട്രെയിനിൽ സ്ലീപ്പർ കോച്ചുകൾക്കും 3A കോച്ചുകൾക്കും ഇടയിലാണ് 3E കോച്ചുകൾ ഘടിപ്പിക്കുന്നത്.
+
+---
+
+## What Interior Amenities Differ Between 3E and 3A Coaches?
+
+**3E കോച്ചിൽ വ്യക്തിഗത എസി വെന്റുകൾ, ഓരോ സീറ്റിലും പ്രത്യേക USB ചാർജിംഗ് സോക്കറ്റുകൾ, രാത്രിയിൽ പ്രകാശിക്കുന്ന ഫ്ലോർ സ്ട്രിപ്പുകൾ തുടങ്ങിയ പുതിയ സൗകര്യങ്ങളുണ്ട്. എന്നാൽ 3A യിൽ കൂടുതൽ വീതിയുള്ള ബെർത്തുകൾ, വിശാലമായ നടപ്പാത, കൂടുതൽ ഹെഡ്‌റൂം എന്നിവ ലഭിക്കുന്നു.**
+
+3E കോച്ചുകളിൽ വരുത്തിയ പ്രധാന മാറ്റങ്ങൾ:
+
+### 1. വ്യക്തിഗത താപനില നിയന്ത്രണം
+3A യിൽ മുകൾത്തട്ടിലൂടെയാണ് തണുപ്പ് വരുന്നത്. 3E യിൽ ഓരോരുത്തരുടെയും തലയ്ക്കരികിൽ വിമാനങ്ങളിലേതുപോലെ തിരിക്കാവുന്ന എസി വെന്റുകളുണ്ട്, കാറ്റ് ആവശ്യമുള്ള രീതിയിൽ തിരിക്കുകയോ അടയ്ക്കുകയോ ചെയ്യാം.
+
+### 2. ഓരോ സീറ്റിലും ചാർജിംഗ് പോയിന്റുകൾ
+3A യിൽ 6 പേർക്ക് 2 സോക്കറ്റുകൾ മാത്രമാണുള്ളത്. 3E യിൽ നടുവിലും മുകളിലുമുള്ള ബെർത്തുകളടക്കം ഓരോ ബെർത്തിലും പ്രത്യേക 3-പിൻ പ്ലഗ്ഗും USB പോർട്ടും നൽകിയിട്ടുണ്ട്.
+
+### 3. വായനയ്ക്കുള്ള ലൈറ്റുകൾ
+3E യിൽ ആധുനിക എൽഇഡി ടച്ച് ലൈറ്റുകളാണ് നൽകിയിരിക്കുന്നത്, ഇത് സഹയാത്രികന്റെ ഉറക്കത്തെ ബാധിക്കില്ല.
+
+### 4. സുരക്ഷിതമായ ഗോവണി
+3E യിലെ ഗോവണിക്ക് വീതിയുള്ള പടികളും റബ്ബർ ഗ്രിപ്പുമുണ്ട്, ഇത് മുകളിലേക്ക് കയറുന്നത് എളുപ്പമാക്കുന്നു.
+
+---
+
+## How Does Free Auto-Upgradation Work Between Sleeper, 3E, and 3A?
+
+**ടിക്കറ്റ് ബുക്ക് ചെയ്യുമ്പോൾ ഓട്ടോ-അപ്‌ഗ്രേഡേഷൻ തെരഞ്ഞെടുത്തിട്ടുണ്ടെങ്കിൽ, ചാർട്ടിംഗ് സമയത്ത് സീറ്റുകൾ ഒഴിഞ്ഞുകിടക്കുകയാണെങ്കിൽ റെയിൽവേ നിങ്ങളുടെ സ്ലീപ്പർ (SL) ടിക്കറ്റ് യാതൊരു അധിക ചാർജുമില്ലാതെ 3E യിലേക്കോ 3A യിലേക്കോ സൗജന്യമായി അപ്‌ഗ്രേഡ് ചെയ്തേക്കാം.**
+
+ട്രെയിൻ പുറപ്പെടുന്നതിന് ഏകദേശം 8 മണിക്കൂർ മുൻപ് ആദ്യ ചാർട്ട് തയ്യാറാക്കുമ്പോഴാണ് ഈ പ്രക്രിയ നടക്കുന്നത്:
+
+```
+[ സ്ലീപ്പർ ക്ലാസ് (SL) ] ──► അപ്‌ഗ്രേഡ് ആയി ──► [ 3E Economy ] (അല്ലെങ്കിൽ 3A)
+[ 3E Economy (M) ]     ──► അപ്‌ഗ്രേഡ് ആയി ──► [ സാധാരണ 3A ] (അല്ലെങ്കിൽ 2A)
+[ സാധാരണ 3A (B) ]    ──► അപ്‌ഗ്രേഡ് ആയി ──► [ AC 2-Tier (2A) ]
+[ AC 2-Tier (A) ]      ──► അപ്‌ഗ്രേഡ് ആയി ──► [ AC ഫസ്റ്റ് ക്ലാസ് (1A) ]
+```
+
+- **തികച്ചും സൗജന്യം:** ₹450 ന്റെ സ്ലീപ്പർ ടിക്കറ്റ് ₹1,350 വിലയുള്ള 3E ലേക്ക് മാറിയാലും ഒരു രൂപ പോലും അധികം നൽകേണ്ടതില്ല.
+- **കൺഫേം ടിക്കറ്റുകൾക്ക് മാത്രം:** കൺഫേം ടിക്കറ്റുള്ള യാത്രക്കാർക്ക് മാത്രമേ ഈ സൗകര്യം ലഭിക്കൂ.
+- **കുടുംബം മുഴുവൻ ഒരുമിച്ച്:** ഒരു PNR ലെ യാത്രക്കാരെയെല്ലാം ഒരുമിച്ചേ അപ്‌ഗ്രേഡ് ചെയ്യുകയുള്ളൂ.
+- **റദ്ദാക്കൽ നിയമങ്ങൾ:** ടിക്കറ്റ് റദ്ദാക്കിയാൽ അടിസ്ഥാന സ്ലീപ്പർ ക്ലാസ് നിരക്കിന്റെ അടിസ്ഥാനത്തിലാണ് ക്ലർക്കേജ് ചാർജ് ഈടാക്കുന്നത്.
+
+---
+
+## What Are the Rules and Penalties for Traveling in 3E or 3A with Other Tickets?
+
+**സ്ലീപ്പർ അല്ലെങ്കിൽ ജനറൽ ടിക്കറ്റുമായി 3E അല്ലെങ്കിൽ 3A യിൽ യാത്ര ചെയ്യുന്നത് റെയിൽവേ ആക്ട് സെക്ഷൻ 138 പ്രകാരം കുറ്റകരമാണ്. ജൻ വിശ്വാസ് ആക്ട് 2026 പ്രകാരം അനധികൃത യാത്രക്കാരിൽ നിന്ന് ₹500 പിഴയും ട്രെയിൻ തുടങ്ങിയ സ്റ്റേഷൻ മുതലുള്ള നിരക്ക് വ്യത്യാസവും ഈടാക്കും.**
+
+- **സ്ലീപ്പർ ടിക്കറ്റിൽ എസിയിൽ കയറുന്നത്:** TTE യുടെ മുൻകൂർ അനുമതിയില്ലാതെ 3E യിലോ 3A യിലോ ഇരിക്കുന്നത് ടിക്കറ്റില്ലാത്ത യാത്രയായി കണക്കാക്കും.
+- **റദ്ദായ വെയ്റ്റ്‌ലിസ്റ്റ് ഇ-ടിക്കറ്റ്:** ചാർട്ടിംഗിന് ശേഷവും വെയ്റ്റ്‌ലിസ്റ്റിലുള്ള ഇ-ടിക്കറ്റുകൾ അസാധുവാകും. അതിൽ യാത്ര ചെയ്താൽ ₹500 പിഴ ചുമത്തുകയും അടുത്ത സ്റ്റേഷനിൽ ഇറക്കിവിടുകയും ചെയ്യും.
+- **കൗണ്ടർ വെയ്റ്റ്‌ലിസ്റ്റ് ടിക്കറ്റ്:** ഇത് റദ്ദാകില്ല, എന്നാൽ സീറ്റില്ലെങ്കിൽ ജനറൽ കോച്ചിലേക്ക് മാറാൻ TTE നിർദ്ദേശിക്കും.
+- **യഥാർത്ഥ തിരിച്ചറിയൽ കാർഡ്:** യാത്രയിൽ അസ്സൽ തിരിച്ചറിയൽ രേഖ (Aadhaar, വോട്ടർ ഐഡി, ഡ്രൈവിംഗ് ലൈസൻസ് അല്ലെങ്കിൽ DigiLocker) നിർബന്ധമാണ്.
+
+---
+
+## How to Find Confirmed Seats When 3A and 3E Are Waitlisted?
+
+**നേരിട്ടുള്ള 3A അല്ലെങ്കിൽ 3E ടിക്കറ്റുകൾ വെയ്റ്റ്‌ലിസ്റ്റിലാകുമ്പോൾ, അതേ ട്രെയിനിലെ സ്പ്ലിറ്റ് ടിക്കറ്റുകൾ കണ്ടെത്തുകയോ, ചാർട്ടിംഗിന് ശേഷം 10% വിലക്കുറവുള്ള Current Availability സീറ്റുകൾ ബുക്ക് ചെയ്യുകയോ വഴി ഉറപ്പായ സീറ്റുകൾ നേടാം.**
+
+നേരിട്ട് ടിക്കറ്റ് ലഭിക്കാത്തപ്പോൾ ഈ നിയമപരമായ വഴികൾ ഉപയോഗിക്കാം:
+
+### 1. Smart Seats സ്പ്ലിറ്റ് ബുക്കിംഗ്
+തുടക്കം മുതൽ അവസാനം വരെ സീറ്റില്ലെങ്കിലും ഇടയ്ക്കുള്ള സ്റ്റേഷനുകളിൽ സീറ്റുകൾ ഒഴിവുണ്ടാകും. LastBerth ഒരേ ട്രെയിനിൽ പല കോച്ചുകളിലായി ചേരുന്ന സീറ്റുകൾ കണ്ടെത്തി നൽകുന്നു, അതിനാൽ ട്രെയിൻ മാറാതെ തന്നെ യാത്ര ചെയ്യാം.
+
+### 2. 10% കിഴിവിൽ Current Availability (`CURR_AVBL`)
+ആദ്യ ചാർട്ട് വന്ന ശേഷം (~8 മണിക്കൂർ മുൻപ്) ബാക്കിവന്ന വിഐപി ക്വാട്ടകൾ 10% അടിസ്ഥാന നിരക്ക് കുറച്ച് സാധാരണക്കാർക്കായി തുറന്നുകൊടുക്കുന്നു.
+
+### 3. Chart Vacancy മാപ്പ്
+ആദ്യ ചാർട്ടിന് ശേഷം [Chart Vacancy Map](/chart-vacancy) ൽ പോയി കോച്ചുകളിലെ ഒഴിഞ്ഞ സീറ്റുകൾ നോക്കി നേരിട്ട് ബുക്ക് ചെയ്യാം.
+
+### 4. ആരംഭ സ്റ്റേഷനിൽ നിന്നുള്ള ബുക്കിംഗ്
+റിമോട്ട് ക്വാട്ട (RLWL) വളരെ പതുക്കെയേ കൺഫേം ആകൂ. ട്രെയിൻ തുടങ്ങുന്ന സ്റ്റേഷനിൽ നിന്ന് ജനറൽ ക്വാട്ടയിൽ (GNWL) ടിക്കറ്റെടുത്ത് ബോർഡിംഗ് പോയിന്റ് ഓൺലൈനായി മാറ്റാവുന്നതാണ്.
 
 ---
 
 ## 3E vs 3A: Which Class Should You Choose for Your Journey?
 
-**Choose 3A if you are travelling with family, are taller than 5'8", or have an overnight journey longer than 12 hours where extra headroom and wider berths matter. Choose 3E if you want air-conditioned comfort at budget prices or need confirmed seats when 3A is fully booked.**
+**കുടുംബത്തോടൊപ്പമോ പ്രായമായവരുമായോ യാത്ര ചെയ്യുമ്പോൾ, നിങ്ങളുടെ ഉയരം 5'8" ൽ കൂടുതലാണെങ്കിൽ, അല്ലെങ്കിൽ യാത്ര 12 മണിക്കൂറിൽ കൂടുതലാണെങ്കിൽ 3A തെരഞ്ഞെടുക്കുക. ബഡ്ജറ്റ് കുറവാണെങ്കിൽ, ഒറ്റയ്ക്ക് യാത്ര ചെയ്യുമ്പോൾ, അല്ലെങ്കിൽ 3A യിൽ വലിയ വെയ്റ്റ്‌ലിസ്റ്റ് ഉണ്ടെങ്കിൽ 3E തെരഞ്ഞെടുക്കുക.**
 
-Follow these practical guidelines when making your reservation:
+ബുക്കിംഗിന് മുൻപ് ഈ കാര്യങ്ങൾ ശ്രദ്ധിക്കുക:
 
-- **Book 3E when:** You want AC comfort for under ₹1,000–₹1,500, you are a solo traveller or student, or the 3A waitlist is over WL/20 while 3E still shows confirmed or RAC seats.
-- **Book 3A when:** You are travelling with elderly parents (easier lower berth access), carrying bulky luggage, or prefer more space between yourself and co-passengers.
-- **Avoid Side Middle (SM) in 3E if:** You experience claustrophobia or are over 5'8" tall; opt for lower or upper berths in the main cabin instead.
+### 3E (AC 3 Economy) എപ്പോൾ തെരഞ്ഞെടുക്കണം:
+- **കുറഞ്ഞ ബഡ്ജറ്റ്:** സ്ലീപ്പറിന് അടുത്തുള്ള ചെലവിൽ എസിയും സൗജന്യ പുതപ്പും വേണമെന്നുണ്ടെങ്കിൽ.
+- **ഒറ്റയ്ക്ക് യാത്ര ചെയ്യുമ്പോൾ:** രാത്രിയിൽ ഉറങ്ങാനും മൊബൈൽ ചാർജ് ചെയ്യാനും മാത്രം ആവശ്യമുള്ളപ്പോൾ.
+- **3A യിൽ വലിയ വെയ്റ്റ്‌ലിസ്റ്റ്:** 3A യിൽ WL 40 ഉള്ളപ്പോൾ 3E യിൽ RAC യോ ഒഴിഞ്ഞ സീറ്റുകളോ ഉണ്ടെങ്കിൽ.
+- **കുറഞ്ഞ ദൂര യാത്രകൾ:** 8 മുതൽ 10 മണിക്കൂർ യാത്രയിൽ കുറഞ്ഞ സ്ഥലം വലിയ ബുദ്ധിമുട്ടായി തോന്നില്ല.
+
+### 3A (സ്റ്റാൻഡേർഡ് AC 3-Tier) എപ്പോൾ തെരഞ്ഞെടുക്കണം:
+- **കുടുംബത്തോടൊപ്പം യാത്ര ചെയ്യുമ്പോൾ:** വീതിയുള്ള ബെർത്തും തുറന്ന സ്ഥലവും യാത്ര സുഖകരമാക്കുന്നു.
+- **ഉയരം 5'8" ൽ കൂടുതൽ:** കാലുകൾ സുഖമായി നീട്ടിയിടാനും തല തട്ടാതിരിക്കാനും.
+- **വലിയ ലഗേജുകൾ ഉണ്ടെങ്കിൽ:** താഴത്തെ ബെർത്തിനടിയിൽ പെട്ടികൾ വെക്കാൻ ആവശ്യത്തിന് സ്ഥലം ലഭിക്കും.
+- **ശാന്തമായ യാത്ര:** സൈഡിൽ രണ്ട് പേർ മാത്രം ഉള്ളതിനാൽ ശബ്ദകോലാഹലങ്ങൾ കുറവായിരിക്കും.
 
 ---
 
 ## Common Booking Questions (FAQ)
 
 ### What does 3E mean in IRCTC train booking?
-
-3E stands for AC 3-Tier Economy, a budget air-conditioned class with 83 berths per coach, modern individual AC vents, and fares 6% to 8% lower than standard 3A.
+3E എന്നാൽ AC 3-Tier Economy ആണ്. 83 ബെർത്തുകളുള്ള ഇന്ത്യൻ റെയിൽവേയുടെ ബഡ്ജറ്റ് എസി കോച്ചാണിത്, ഇതിൽ ഓരോ ബെർത്തിലും പ്രത്യേക എസി വെന്റും ചാർജിംഗ് പോയിന്റും ഉണ്ട്, നിരക്ക് 3A യേക്കാൾ 6% മുതൽ 8% വരെ കുറവാണ്.
 
 ### Is 3E better than 3A in trains?
+ശാരീരിക സൗകര്യം, തുറന്ന സ്ഥലം, ഹെഡ്‌റൂം എന്നിവയിൽ 3A ആണ് മികച്ചത്. പണം ലാഭിക്കുന്നതിനും കൺഫേം ടിക്കറ്റ് ലഭിക്കുന്നതിനും 3E മികച്ച തെരഞ്ഞെടുപ്പാണ്.
 
-3A is better for overall physical comfort and spaciousness, while 3E is better for cost savings and getting confirmed seats when regular AC classes are waitlisted.
+### How many berths are in a 3E coach compared to 3A?
+3E കോച്ചിൽ 83 ബെർത്തുകളും LHB 3A കോച്ചിൽ 72 ബെർത്തുകളും ഉണ്ട്. 3E യിൽ നടപ്പാതയുടെ വശത്ത് Side Middle ചേർത്ത് 11 ബെർത്തുകൾ വർദ്ധിപ്പിച്ചു.
 
-### How many berths are there in a 3E coach?
+### Does 3E have a Side Middle berth?
+ഉണ്ട്, 3E യിൽ Side Lower നും Side Upper നും ഇടയിൽ Side Middle (SM) ബെർത്ത് ഉണ്ട്. ഇത് പകൽ മടക്കിവെക്കണം, രാത്രി 10:00 മുതൽ രാവിലെ 6:00 വരെ മാത്രമേ തുറക്കാൻ പാടുള്ളൂ.
 
-A 3E coach has 83 berths, compared to 72 berths in a standard LHB 3A coach and 64 berths in an older ICF 3A coach.
-
-### Does 3E have a middle berth?
-
-Yes, 3E has middle berths in both the main 6-berth cabin (Middle Berth - MB) and along the side aisle (Side Middle - SM).
-
-### Is bedding provided in 3E AC economy?
-
-Yes, Indian Railways provides complimentary bedrolls (two bedsheets, pillow, blanket, and towel) in 3E, included in the ticket price.
+### Is free bedding provided in 3E AC economy?
+ഉണ്ട്, റെയിൽവേ സർക്കുലർ 13/2023 പ്രകാരം 3E യാത്രക്കാർക്കെല്ലാം സൗജന്യ ബെഡ്‌റോൾ കിറ്റ് (2 ഷീറ്റുകൾ, 1 തലയിണ, 1 പുതപ്പ്, 1 ടവ്വൽ) നൽകുന്നുണ്ട്.
 
 ### What is the coach code for 3E in Indian Railways?
-
-3E coaches are designated with the letter 'M' (such as M1, M2, M3), whereas standard 3A coaches use 'B' (such as B1, B2, B3).
+3E കോച്ചുകളെ 'M' എന്ന അക്ഷരം കൊണ്ട് സൂചിപ്പിക്കുന്നു (ഉദാ. M1, M2, M3 മുതൽ M6 വരെ). സാധാരണ 3A കോച്ചുകളിൽ 'B' എന്ന് അടയാളപ്പെടുത്തുന്നു (ഉദാ. B1, B2 മുതൽ B12 വരെ).
 
 ### What is the difference in fare between 3A and 3E?
+3E യുടെ അടിസ്ഥാന നിരക്ക് 3A യേക്കാൾ 6% മുതൽ 8% വരെ കുറവാണ്. 1,000 കി.മീ യാത്രയിൽ ഒരു ടിക്കറ്റിൽ ₹105 മുതൽ ₹155 വരെ ലാഭിക്കാം.
 
-3E base fares are approximately 6% to 8% cheaper than 3A fares on the same train route.
+### Can Sleeper class passengers get auto-upgraded to 3E?
+ഉണ്ട്, ബുക്കിംഗ് സമയത്ത് ഓട്ടോ-അപ്‌ഗ്രേഡേഷൻ തെരഞ്ഞെടുത്തിട്ടുണ്ടെങ്കിൽ ചാർട്ടിംഗ് സമയത്ത് സീറ്റുകൾ ഒഴിഞ്ഞുകിടന്നാൽ സ്ലീപ്പർ യാത്രക്കാരെ സൗജന്യമായി 3E യിലേക്ക് മാറ്റും.
 
-### Can Sleeper class passengers get upgraded to 3E?
+### What is the penalty for traveling in 3E or 3A with a Sleeper ticket?
+സ്ലീപ്പർ ടിക്കറ്റുമായി 3E യിലോ 3A യിലോ യാത്ര ചെയ്താൽ സെക്ഷൻ 138 പ്രകാരം ₹500 പിഴയും നിരക്ക് വ്യത്യാസവും നൽകേണ്ടി വരും.
 
-Yes, Sleeper passengers who tick the auto-upgradation box on IRCTC can be upgraded to 3E for free if seats are vacant at chart preparation.
-
-### Is food free in 3E class?
-
-Food is not free in regular mail/express 3E coaches. On premium trains like Garib Rath or dynamic expresses, catering is available for optional online pre-booking or onboard purchase.
-
-### Are charging points available on every berth in 3E?
-
-Yes, 3E coaches feature individual 3-pin charging sockets and dedicated USB ports for every berth, including upper and middle bunks.
+### Are individual charging sockets available for all berths in 3E?
+ഉണ്ട്, 3E യിൽ നടുവിലും മുകളിലുമുള്ള ബെർത്തുകളടക്കം ഓരോ ബെർത്തിലും പ്രത്യേക 3-പിൻ സോക്കറ്റും USB പോർട്ടും നൽകിയിട്ടുണ്ട്.
 
 ---
 
 ## Bottom line
 
-3E (AC 3 Economy) is Indian Railways' most economical air-conditioned sleeper class, delivering modern perks like individual AC louvers and dedicated charging points for a 6% to 8% discount. While taller passengers and families may find standard 3A worth the slight premium for extra headroom, 3E is an outstanding budget choice.
+3E യും 3A യും തമ്മിലുള്ള തെരഞ്ഞെടുപ്പ് നിങ്ങളുടെ വ്യക്തിപരമായ സൗകര്യത്തെയും ബഡ്ജറ്റിനെയും ആശ്രയിച്ചിരിക്കുന്നു: സ്റ്റാൻഡേർഡ് 3A അല്പം കൂടുതൽ നിരക്കിൽ കൂടുതൽ ഹെഡ്‌റൂമും വീതിയുള്ള ബെർത്തുകളും നൽകുമ്പോൾ, 3E വ്യക്തിഗത എസി വെന്റുകളോടെ 6% മുതൽ 8% കുറഞ്ഞ നിരക്കിൽ ആധുനിക യാത്ര വാഗ്ദാനം ചെയ്യുന്നു. 5'8" ന് മുകളിൽ ഉയരമുള്ളവർക്ക് 3A കൂടുതൽ സൗകര്യപ്രദമാണ്, എന്നാൽ ബഡ്ജറ്റ് യാത്രക്കാർക്കും വെയ്റ്റ്‌ലിസ്റ്റ് ഒഴിവാക്കാനും 3E മികച്ചൊരു തിരഞ്ഞെടുപ്പാണ്.
 
-Whenever direct AC berths are waitlisted across your route, use [Smart Seats](/) to find split-ticket confirmed berths, and monitor post-charting vacancies in real time on [Get Confirmed Tickets](/).
+നേരിട്ടുള്ള 3A അല്ലെങ്കിൽ 3E സീറ്റുകൾ വെയ്റ്റ്‌ലിസ്റ്റിലാണെങ്കിൽ, [Chart Vacancy Map](/chart-vacancy) ൽ 10% വിലക്കുറവുള്ള Current Availability സീറ്റുകൾ പരിശോധിക്കുക അല്ലെങ്കിൽ [LastBerth Smart Seats](/) വഴി അതേ ട്രെയിനിൽ കൺഫേം ചെയ്ത സ്പ്ലിറ്റ് ടിക്കറ്റുകൾ തിരയുക.

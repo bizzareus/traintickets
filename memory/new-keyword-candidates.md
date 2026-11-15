@@ -21,6 +21,7 @@ These candidates are queued for:
 
 | Date Added | Target Keyword / Query | Impressions | Growth / Pos | Suggested Article Title | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-28 | `cnf means in railway` | High (914 imp) | Pos 8.1 (Uncovered GSC) | _Cnf Means In Railway: Meaning, Rules & Guide (2026)_ | ⏳ Queued |
 | 2026-10-28 | `regret meaning in hindi railway` | High (938 imp) | Pos 8.2 (Uncovered GSC) | _Regret Meaning In Hindi Railway: Meaning, Rules & Guide (2026)_ | ⏳ Queued |
 | 2026-10-28 | `agli train 3 ghante baad hai. iss beech aas-paas jaane ka plan bana do.` | High (1,510 imp) | Pos 5.8 (Uncovered GSC) | _Agli Train 3 Ghante Baad Hai. Iss Beech Aas-Paas Jaane Ka Plan Bana Do.: Meaning, Rules & Guide (2026)_ | ⏳ Queued |
 | 2026-10-28 | `wl ka matlab kya hota hai` | High (917 imp) | Pos 6.1 (Uncovered GSC) | _Wl Ka Matlab Kya Hota Hai: Meaning, Rules & Guide (2026)_ | ⏳ Queued |
