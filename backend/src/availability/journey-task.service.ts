@@ -790,32 +790,34 @@ export class JourneyTaskService {
         journeyRequestId,
       });
 
-      const payment = await this.findAdminPaymentDetails(
-        params.paymentRef,
-        result.journeyRequestId,
-      );
-
-      void this.notificationService
-        .sendAdminMonitoringRequestEmail({
-          journeyRequestId: result.journeyRequestId,
-          taskCount: result.tasks.length,
-          trainNumber: params.trainNumber,
-          trainName: params.trainName,
-          fromStationCode: params.fromStationCode,
-          toStationCode: params.toStationCode,
-          journeyDate: params.journeyDate,
-          classCode: params.classCode,
-          stationCodesToMonitor: [validation.context.fromCode],
-          userEmail: params.email,
-          userMobile: params.mobile,
-          payment,
-        })
-        .catch((err) =>
-          this.logger.error(
-            'Admin monitoring request notification failed',
-            err instanceof Error ? err.stack || err.message : String(err),
-          ),
-        );
+      // PAUSED: admin "Monitoring requested" email disabled for now.
+      // Re-enable by uncommenting (findAdminPaymentDetails feeds only this email).
+      // const payment = await this.findAdminPaymentDetails(
+      //   params.paymentRef,
+      //   result.journeyRequestId,
+      // );
+      //
+      // void this.notificationService
+      //   .sendAdminMonitoringRequestEmail({
+      //     journeyRequestId: result.journeyRequestId,
+      //     taskCount: result.tasks.length,
+      //     trainNumber: params.trainNumber,
+      //     trainName: params.trainName,
+      //     fromStationCode: params.fromStationCode,
+      //     toStationCode: params.toStationCode,
+      //     journeyDate: params.journeyDate,
+      //     classCode: params.classCode,
+      //     stationCodesToMonitor: [validation.context.fromCode],
+      //     userEmail: params.email,
+      //     userMobile: params.mobile,
+      //     payment,
+      //   })
+      //   .catch((err) =>
+      //     this.logger.error(
+      //       'Admin monitoring request notification failed',
+      //       err instanceof Error ? err.stack || err.message : String(err),
+      //     ),
+      //   );
       return true;
     } catch (err) {
       this.logger.error(
@@ -1026,27 +1028,28 @@ export class JourneyTaskService {
       }),
     ]);
 
-    void this.notificationService
-      .sendAdminMonitoringRequestEmail({
-        journeyRequestId: jid,
-        taskCount: createdTasks.length,
-        trainNumber,
-        trainName,
-        fromStationCode: fromCode,
-        toStationCode: '',
-        journeyDate: resolvedBoardingDate,
-        classCode,
-        stationCodesToMonitor: [fromCode],
-        userEmail: email,
-        userMobile: mobile,
-        payment: await this.findAdminPaymentDetails(params.paymentRef, jid),
-      })
-      .catch((err) =>
-        this.logger.error(
-          'Admin chart-prepared monitoring request notification failed',
-          err instanceof Error ? err.stack || err.message : String(err),
-        ),
-      );
+    // PAUSED: admin "Monitoring requested" email disabled for now.
+    // void this.notificationService
+    //   .sendAdminMonitoringRequestEmail({
+    //     journeyRequestId: jid,
+    //     taskCount: createdTasks.length,
+    //     trainNumber,
+    //     trainName,
+    //     fromStationCode: fromCode,
+    //     toStationCode: '',
+    //     journeyDate: resolvedBoardingDate,
+    //     classCode,
+    //     stationCodesToMonitor: [fromCode],
+    //     userEmail: email,
+    //     userMobile: mobile,
+    //     payment: await this.findAdminPaymentDetails(params.paymentRef, jid),
+    //   })
+    //   .catch((err) =>
+    //     this.logger.error(
+    //       'Admin chart-prepared monitoring request notification failed',
+    //       err instanceof Error ? err.stack || err.message : String(err),
+    //     ),
+    //   );
     return true;
   }
 

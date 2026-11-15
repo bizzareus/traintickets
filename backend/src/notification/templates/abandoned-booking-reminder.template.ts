@@ -96,7 +96,9 @@ export function renderAbandonedBookingReminderHtml(
                   </div>
                   <div style="font-size:11px; color:#64748b; margin-top:2px;">
                     Class: <strong>${escapeHtml(leg.travelClass)}</strong>${
-                      leg.boardingDate ? ` · Date: ${escapeHtml(leg.boardingDate)}` : ''
+                      leg.boardingDate
+                        ? ` · Date: ${escapeHtml(leg.boardingDate)}`
+                        : ''
                     }
                   </div>
                 </td>

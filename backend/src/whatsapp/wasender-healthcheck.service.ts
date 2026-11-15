@@ -9,7 +9,8 @@ import { renderWasenderQrEmailHtml } from './templates/wasender-qr-email.templat
 
 const WASENDER_BASE = 'https://www.wasenderapi.com';
 const RESEND_FROM =
-  process.env.RESEND_FROM || 'LastBerth Notifications <notification@lastberth.com>';
+  process.env.RESEND_FROM ||
+  'LastBerth Notifications <notification@lastberth.com>';
 const DEFAULT_MONITORING_ADMIN_EMAIL = 'me@kartikarora.in';
 const ALERT_COOLDOWN_MS = 2 * 60 * 60 * 1000; // 2 hours
 

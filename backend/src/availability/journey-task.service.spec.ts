@@ -952,7 +952,7 @@ describe('JourneyTaskService', () => {
   });
 
   describe('queueJourneyMonitoring', () => {
-    it('should validate, create tasks and send admin email notification when valid', async () => {
+    it('should validate and create tasks when valid (admin email paused)', async () => {
       const validateSpy = jest
         .spyOn(service, 'validateJourneyForMonitoring')
         .mockResolvedValue({
@@ -1005,19 +1005,13 @@ describe('JourneyTaskService', () => {
           journeyRequestId: 'jid-test-123',
         }),
       );
+      // PAUSED: admin "Monitoring requested" email is disabled for now.
       expect(
         mockNotification.sendAdminMonitoringRequestEmail,
-      ).toHaveBeenCalledWith(
-        expect.objectContaining({
-          journeyRequestId: 'jid-test-123',
-          taskCount: 1,
-          trainNumber: '12128',
-          payment: null,
-        }),
-      );
+      ).not.toHaveBeenCalled();
     });
 
-    it('includes payment details in the admin email when the journey was paid', async () => {
+    it('skips the admin email and payment lookup for paid journeys (paused)', async () => {
       jest.spyOn(service, 'validateJourneyForMonitoring').mockResolvedValue({
         valid: true,
         context: {
@@ -1063,30 +1057,16 @@ describe('JourneyTaskService', () => {
         'jid-paid-1',
       );
 
-      expect(mockPrisma.chartAlertPayment.findFirst).toHaveBeenCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            OR: expect.arrayContaining([{ journeyRequestId: 'jid-paid-1' }]),
-          }),
-        }),
-      );
+      // PAUSED: admin email (and its payment lookup) disabled for now.
+      expect(
+        mockPrisma.chartAlertPayment.findFirst,
+      ).not.toHaveBeenCalled();
       expect(
         mockNotification.sendAdminMonitoringRequestEmail,
-      ).toHaveBeenCalledWith(
-        expect.objectContaining({
-          journeyRequestId: 'jid-paid-1',
-          payment: expect.objectContaining({
-            ref: 'pay-ref-1',
-            status: 'PAID',
-            amount: 5,
-            currency: 'INR',
-            razorpayPaymentId: 'pay_RZP123',
-          }),
-        }),
-      );
+      ).not.toHaveBeenCalled();
     });
 
-    it('looks up payment by explicit paymentRef when supplied', async () => {
+    it('skips the payment lookup and admin email while paused', async () => {
       jest.spyOn(service, 'validateJourneyForMonitoring').mockResolvedValue({
         valid: true,
         context: {
@@ -1132,23 +1112,13 @@ describe('JourneyTaskService', () => {
         'jid-fresh',
       );
 
-      expect(mockPrisma.chartAlertPayment.findFirst).toHaveBeenCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            OR: expect.arrayContaining([
-              { id: 'pay-ref-2' },
-              { journeyRequestId: 'jid-fresh' },
-            ]),
-          }),
-        }),
-      );
+      // PAUSED: admin email (and its payment lookup) disabled for now.
+      expect(
+        mockPrisma.chartAlertPayment.findFirst,
+      ).not.toHaveBeenCalled();
       expect(
         mockNotification.sendAdminMonitoringRequestEmail,
-      ).toHaveBeenCalledWith(
-        expect.objectContaining({
-          payment: expect.objectContaining({ ref: 'pay-ref-2' }),
-        }),
-      );
+      ).not.toHaveBeenCalled();
     });
 
     it('skips queueing journey monitoring when duplicate alert exists', async () => {

@@ -210,17 +210,18 @@ export class AlternatePathsRouteCache extends RouteCachingTableStore<FindAlterna
       }> = [];
 
       for (const row of rows) {
-        if (!row.cacheKey.endsWith(suffix) && (!altSuffix || !row.cacheKey.endsWith(altSuffix))) continue;
+        if (
+          !row.cacheKey.endsWith(suffix) &&
+          (!altSuffix || !row.cacheKey.endsWith(altSuffix))
+        )
+          continue;
         const parts = row.cacheKey.split(':');
         // Format: alt-paths:v3:FROM:TO:TRAINNUM:CLASSKEY:DATE:QUOTA
         if (parts.length < 8) continue;
         const trainNumber = parts[4];
         const classKey = parts[5];
         const result = row.value as FindAlternatePathsResult;
-        if (
-          !result ||
-          !Array.isArray(result.legs)
-        ) {
+        if (!result || !Array.isArray(result.legs)) {
           continue;
         }
         out.push({ trainNumber, classKey, result });

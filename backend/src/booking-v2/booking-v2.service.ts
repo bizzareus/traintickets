@@ -785,8 +785,12 @@ export class BookingV2Service {
       routePairs.add(`${normFrom}#${normTo}`);
       for (const train of trainList) {
         if (!train || typeof train !== 'object') continue;
-        const tFrom = String(train.fromStnCode ?? '').trim().toUpperCase();
-        const tTo = String(train.toStnCode ?? '').trim().toUpperCase();
+        const tFrom = String(train.fromStnCode ?? '')
+          .trim()
+          .toUpperCase();
+        const tTo = String(train.toStnCode ?? '')
+          .trim()
+          .toUpperCase();
         if (tFrom && tTo && (tFrom !== normFrom || tTo !== normTo)) {
           routePairs.add(`${tFrom}#${tTo}`);
         }
