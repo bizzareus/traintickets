@@ -15,12 +15,12 @@ import {
   trainStartYmdForBoarding,
 } from "@/lib/chartTimeDisplay";
 import {
-  chartAlertPriceForClass,
   createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
   type ChartAlertPaymentLink,
 } from "@/lib/chart-alert-payments";
+import { useChartAlertPrice } from "@/lib/hooks/useChartAlertPrice";
 import {
   ChartAlertPaymentModal,
   type ChartAlertPaymentModalJourney,
@@ -162,7 +162,7 @@ export default function RowAlertButton({
   }, [classesList]);
 
   const [classCode, setClassCode] = useState<string>("ANY");
-  const alertPrice = chartAlertPriceForClass(classCode);
+  const alertPrice = useChartAlertPrice(classCode);
 
   useEffect(() => {
     if (activeClasses.length > 0 && !activeClasses.includes(classCode)) {
@@ -302,6 +302,7 @@ export default function RowAlertButton({
               : chartTwoDayOffset,
         },
         "row",
+        alertPrice,
       );
       setOpen(false);
       setPayment({ link, ref: link.ref, journey });

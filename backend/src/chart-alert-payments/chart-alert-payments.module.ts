@@ -5,6 +5,7 @@ import { RazorpayModule } from './razorpay.module';
 import { PrismaModule } from '../prisma/prisma.module';
 import { AvailabilityModule } from '../availability/availability.module';
 import { NotificationModule } from '../notification/notification.module';
+import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { NotificationModule } from '../notification/notification.module';
     NotificationModule,
   ],
   controllers: [ChartAlertPaymentsController],
-  providers: [ChartAlertPaymentsService],
+  providers: [ChartAlertPaymentsService, PostHogAnalyticsService],
   exports: [ChartAlertPaymentsService],
 })
 export class ChartAlertPaymentsModule {}

@@ -5,31 +5,76 @@ import { withChartTimeSelection } from "@/lib/chart-alert-schedule";
 
 /**
  * Class-based chart-alert pricing (display only; backend enforces).
- * ANY covers every available class, 1A/2A/3A pay the premium tier, and
- * every other class pays standard. Keep in sync with the backend pricing rule.
+ * Defaults to ₹100 for every class. Per-class overrides come from the
+ * PostHog `chart-alert-prices` flag payload: { "ANY": 100, "3A": 50 } —
+ * class codes (matched case/space-insensitively) map to a positive rupee
+ * price and "ANY" is the catch-all for classes not listed. Keep in sync
+ * with the backend pricing rule.
  */
-const PREMIUM_ALERT_CLASSES = new Set(["1A", "2A", "3A"]);
-export const CHART_ALERT_ANY_PRICE_RUPEES = 50;
-export const CHART_ALERT_PREMIUM_PRICE_RUPEES = 25;
-export const CHART_ALERT_STANDARD_PRICE_RUPEES = 10;
+export const CHART_ALERT_PRICES_FLAG_KEY = "chart-alert-prices";
+export type ChartAlertPriceOverrides = Readonly<Record<string, number>>;
 
-export function chartAlertPriceForClass(classCode?: string | null): number {
-  const normalized = (classCode ?? "").trim().toUpperCase();
-  if (normalized === "ANY") return CHART_ALERT_ANY_PRICE_RUPEES;
-  return PREMIUM_ALERT_CLASSES.has(normalized)
-    ? CHART_ALERT_PREMIUM_PRICE_RUPEES
-    : CHART_ALERT_STANDARD_PRICE_RUPEES;
+/** Default price for every chart alert, in rupees. */
+export const CHART_ALERT_DEFAULT_PRICE_RUPEES = 100;
+
+/**
+ * Parse a feature-flag payload into per-class prices in rupees. Any invalid
+ * entry rejects the whole payload; returns null when absent/malformed/empty
+ * so callers fall back to CHART_ALERT_DEFAULT_PRICE_RUPEES.
+ */
+export function parseChartAlertPriceOverrides(
+  payload: unknown,
+): ChartAlertPriceOverrides | null {
+  let raw: unknown = payload;
+  if (typeof raw === "string") {
+    try {
+      raw = JSON.parse(raw);
+    } catch {
+      return null;
+    }
+  }
+  if (typeof raw !== "object" || raw === null || Array.isArray(raw)) {
+    return null;
+  }
+  const overrides: Record<string, number> = {};
+  for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
+    const price =
+      typeof value === "number"
+        ? value
+        : typeof value === "string"
+          ? Number(value)
+          : NaN;
+    if (!Number.isFinite(price) || price <= 0) return null;
+    overrides[key.trim().toUpperCase()] = price;
+  }
+  return Object.keys(overrides).length > 0 ? overrides : null;
 }
 
-export function chartAlertListPriceForClass(classCode?: string | null): number {
-  return chartAlertPriceForClass(classCode) * 2;
+export function chartAlertPriceForClass(
+  classCode?: string | null,
+  overrides?: ChartAlertPriceOverrides | null,
+): number {
+  const normalized = (classCode ?? "").trim().toUpperCase();
+  return (
+    overrides?.[normalized] ??
+    overrides?.ANY ??
+    CHART_ALERT_DEFAULT_PRICE_RUPEES
+  );
+}
+
+export function chartAlertListPriceForClass(
+  classCode?: string | null,
+  overrides?: ChartAlertPriceOverrides | null,
+): number {
+  return chartAlertPriceForClass(classCode, overrides) * 2;
 }
 
 export function chartAlertClassPriceLabel(
   classLabel: string,
   classCode: string,
+  overrides?: ChartAlertPriceOverrides | null,
 ): string {
-  const price = chartAlertPriceForClass(classCode);
+  const price = chartAlertPriceForClass(classCode, overrides);
   return `${classLabel} — ₹${price * 2} → ₹${price} (50% off)`;
 }
 
@@ -121,6 +166,7 @@ export async function createChartAlertPaymentLink(
 export async function startChartAlertPayment(
   input: ChartAlertPaymentCreateInput,
   source: "page" | "row" | "search_panel",
+  displayPrice?: number,
 ): Promise<ChartAlertPaymentLink> {
   const link = await createChartAlertPaymentLink(input);
   trackAnalyticsEvent({
@@ -132,7 +178,7 @@ export async function startChartAlertPayment(
       to_code: (input.toStationCode ?? "").trim().toUpperCase(),
       journey_date: input.journeyDate.trim().slice(0, 10),
       class_code: input.classCode.trim().toUpperCase(),
-      price: chartAlertPriceForClass(input.classCode),
+      price: displayPrice ?? chartAlertPriceForClass(input.classCode),
       has_email: Boolean(input.email?.trim()),
       has_mobile: Boolean(input.mobile?.trim()),
     },

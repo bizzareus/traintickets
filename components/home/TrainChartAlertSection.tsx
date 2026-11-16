@@ -10,12 +10,12 @@ import { isValidIndianMobile, isValidEmail } from "@/lib/validation";
 import { useContactFields } from "@/lib/contact";
 import { useChartAlertPayments } from "@/lib/hooks/useChartAlertPayments";
 import {
-  chartAlertPriceForClass,
   createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
   type ChartAlertPaymentLink,
 } from "@/lib/chart-alert-payments";
+import { useChartAlertPrice } from "@/lib/hooks/useChartAlertPrice";
 import {
   ChartAlertPaymentModal,
   type ChartAlertPaymentModalJourney,
@@ -45,7 +45,7 @@ export function TrainChartAlertSection({
 }: TrainChartAlertSectionProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedClass, setSelectedClass] = useState<string>("3A");
-  const alertPrice = chartAlertPriceForClass(selectedClass);
+  const alertPrice = useChartAlertPrice(selectedClass);
   const { email, setEmail, mobile, persistContact } = useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -140,6 +140,7 @@ export function TrainChartAlertSection({
           mobile: mob || undefined,
         },
         "search_panel",
+        alertPrice,
       );
       setModalOpen(false);
       setPayment({ link, ref: link.ref, journey });

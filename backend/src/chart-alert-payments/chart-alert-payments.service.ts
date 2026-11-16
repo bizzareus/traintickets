@@ -3,6 +3,8 @@ import {
   Injectable,
   Logger,
   NotFoundException,
+  OnModuleInit,
+  Optional,
   ServiceUnavailableException,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -14,6 +16,7 @@ import { JourneyTaskService } from '../availability/journey-task.service';
 import { requirePinnedChartTime } from '../availability/chart-task-schedule';
 import { parseJourneyYmdForValidation } from '../common/train-run-day.validation';
 import { NotificationService } from '../notification/notification.service';
+import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import {
   createMuzoboxClient,
   muzoboxAuthHeaders,
@@ -26,23 +29,70 @@ import {
   type RazorpayPaymentItem,
 } from './razorpay.client';
 
-/** ANY covers every class; AC classes use premium; everything else is standard. */
-const PREMIUM_ALERT_CLASSES = new Set(['1A', '2A', '3A']);
-const ANY_ALERT_PRICE_RUPEES = 50;
-const PREMIUM_ALERT_PRICE_RUPEES = 25;
-const STANDARD_ALERT_PRICE_RUPEES = 10;
+/**
+ * PostHog feature flag whose JSON payload overrides per-class chart-alert
+ * prices. Payload shape: { "ANY": 100, "3A": 50 } — class codes (matched
+ * case/space-insensitively) map to a positive rupee price, and "ANY" is the
+ * catch-all for classes not listed.
+ */
+export const CHART_ALERT_PRICES_FLAG_KEY = 'chart-alert-prices';
+
+export type ChartAlertPriceOverrides = Readonly<Record<string, number>>;
+
+/** Default price for every chart alert, in rupees. */
+export const CHART_ALERT_DEFAULT_PRICE_RUPEES = 100;
 
 /**
- * Class-based alert price in rupees: ANY covers every class, 1A/2A/3A pay
- * the premium tier, and every other class pays standard. This is the enforced
- * amount; the frontend only displays it.
+ * Parse a feature-flag payload into per-class prices in rupees. Keys are
+ * normalized to uppercase class codes and values must be positive numbers
+ * (numeric strings are coerced). Any invalid entry rejects the whole payload
+ * so a typo can never produce a partial surprise price. Returns null when
+ * absent/malformed/empty — callers fall back to CHART_ALERT_DEFAULT_PRICE_RUPEES.
  */
-export function chartAlertPriceForClass(classCode?: string | null): number {
+export function parseChartAlertPriceOverrides(
+  payload: unknown,
+): ChartAlertPriceOverrides | null {
+  let raw: unknown = payload;
+  if (typeof raw === 'string') {
+    try {
+      raw = JSON.parse(raw);
+    } catch {
+      return null;
+    }
+  }
+  if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) {
+    return null;
+  }
+  const overrides: Record<string, number> = {};
+  for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
+    const price =
+      typeof value === 'number'
+        ? value
+        : typeof value === 'string'
+          ? Number(value)
+          : NaN;
+    if (!Number.isFinite(price) || price <= 0) return null;
+    overrides[key.trim().toUpperCase()] = price;
+  }
+  return Object.keys(overrides).length > 0 ? overrides : null;
+}
+
+/**
+ * Class-based alert price in rupees: optional per-class `overrides` (parsed
+ * from the PostHog `chart-alert-prices` flag payload) price specific classes
+ * with "ANY" as the catch-all; otherwise every class pays the default. This
+ * is the enforced amount; the frontend only displays it.
+ */
+export function chartAlertPriceForClass(
+  classCode?: string | null,
+  overrides?: ChartAlertPriceOverrides | null,
+): number {
   const normalized = (classCode ?? '').trim().toUpperCase();
-  if (normalized === 'ANY') return ANY_ALERT_PRICE_RUPEES;
-  return PREMIUM_ALERT_CLASSES.has(normalized)
-    ? PREMIUM_ALERT_PRICE_RUPEES
-    : STANDARD_ALERT_PRICE_RUPEES;
+  return (
+    overrides?.[normalized] ??
+    overrides?.ANY ??
+    CHART_ALERT_DEFAULT_PRICE_RUPEES
+  );
 }
 
 export type ChartAlertJourneyInput = {
@@ -143,7 +193,7 @@ type RazorpayWebhookEvent = {
 };
 
 @Injectable()
-export class ChartAlertPaymentsService {
+export class ChartAlertPaymentsService implements OnModuleInit {
   private readonly logger = new Logger(ChartAlertPaymentsService.name);
   private readonly muzoboxClient: AxiosInstance;
 
@@ -153,8 +203,29 @@ export class ChartAlertPaymentsService {
     private journeyTask: JourneyTaskService,
     private razorpay: RazorpayClient,
     private notificationService: NotificationService,
+    @Optional() private readonly posthog?: PostHogAnalyticsService,
   ) {
     this.muzoboxClient = createMuzoboxClient(this.configService);
+  }
+
+  /**
+   * Warm the PostHog flag-payload cache at boot so the first payment link
+   * doesn't pay the `/flags` fetch latency.
+   */
+  onModuleInit(): void {
+    void this.posthog?.getFeatureFlagPayload(CHART_ALERT_PRICES_FLAG_KEY);
+  }
+
+  /**
+   * Per-class price overrides parsed from the PostHog `chart-alert-prices`
+   * flag payload, or null when PostHog is unconfigured/unreachable, the flag
+   * is off, or the payload is malformed (hardcoded defaults apply).
+   */
+  private async chartAlertPriceOverrides(): Promise<ChartAlertPriceOverrides | null> {
+    const payload = await this.posthog?.getFeatureFlagPayload(
+      CHART_ALERT_PRICES_FLAG_KEY,
+    );
+    return parseChartAlertPriceOverrides(payload);
   }
 
   /**
@@ -191,7 +262,10 @@ export class ChartAlertPaymentsService {
       }
     }
 
-    const amount = chartAlertPriceForClass(input.classCode);
+    const amount = chartAlertPriceForClass(
+      input.classCode,
+      await this.chartAlertPriceOverrides(),
+    );
     const record = await this.prisma.chartAlertPayment.create({
       data: {
         amount,

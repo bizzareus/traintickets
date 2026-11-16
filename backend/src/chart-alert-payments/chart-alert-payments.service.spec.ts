@@ -6,13 +6,16 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
+  CHART_ALERT_PRICES_FLAG_KEY,
   ChartAlertPaymentsService,
   chartAlertPriceForClass,
+  parseChartAlertPriceOverrides,
 } from './chart-alert-payments.service';
 import { RazorpayClient } from './razorpay.client';
 import { PrismaService } from '../prisma/prisma.service';
 import { JourneyTaskService } from '../availability/journey-task.service';
 import { NotificationService } from '../notification/notification.service';
+import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
 import * as sentryReport from '../common/sentry-report';
 
 describe('ChartAlertPaymentsService', () => {
@@ -29,6 +32,7 @@ describe('ChartAlertPaymentsService', () => {
     jest.Mock
   > & { isConfigured: boolean; webhookSecret: string };
   let notificationService: Record<string, jest.Mock>;
+  let posthog: Record<string, jest.Mock>;
 
   const baseInput = {
     trainNumber: '12639',
@@ -84,6 +88,9 @@ describe('ChartAlertPaymentsService', () => {
         .fn()
         .mockResolvedValue({ emailSent: true, whatsappSent: true }),
     };
+    posthog = {
+      getFeatureFlagPayload: jest.fn().mockResolvedValue(null),
+    };
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -102,6 +109,7 @@ describe('ChartAlertPaymentsService', () => {
         { provide: JourneyTaskService, useValue: journeyTask },
         { provide: RazorpayClient, useValue: razorpay },
         { provide: NotificationService, useValue: notificationService },
+        { provide: PostHogAnalyticsService, useValue: posthog },
       ],
     }).compile();
 
@@ -137,7 +145,7 @@ describe('ChartAlertPaymentsService', () => {
 
     it('creates a Razorpay order + QR and returns own-checkout data', async () => {
       prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-1' });
-      razorpay.createOrder.mockResolvedValue({ id: 'order-1', amount: 2500 });
+      razorpay.createOrder.mockResolvedValue({ id: 'order-1', amount: 10000 });
       razorpay.createUpiQr.mockResolvedValue({
         id: 'qr-1',
         imageUrl: 'https://rzp.test/qr-1.png',
@@ -157,19 +165,19 @@ describe('ChartAlertPaymentsService', () => {
       });
 
       expect(razorpay.createOrder).toHaveBeenCalledWith({
-        amountPaise: 2500,
+        amountPaise: 10000,
         receipt: 'ref-1',
         notes: { chart_alert_ref: 'ref-1' },
       });
       expect(razorpay.createUpiQr).toHaveBeenCalledWith(
         expect.objectContaining({
-          amountPaise: 2500,
+          amountPaise: 10000,
           notes: { chart_alert_ref: 'ref-1' },
         }),
       );
       expect(out).toEqual({
         ref: 'ref-1',
-        amount: 25,
+        amount: 100,
         orderId: 'order-1',
         qrImageUrl: 'https://rzp.test/qr-1.png',
         ...appsFor('ref-1'),
@@ -182,7 +190,7 @@ describe('ChartAlertPaymentsService', () => {
 
     it('degrades to QR-image-only when intent decode fails', async () => {
       prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-2' });
-      razorpay.createOrder.mockResolvedValue({ id: 'order-2', amount: 2500 });
+      razorpay.createOrder.mockResolvedValue({ id: 'order-2', amount: 10000 });
       razorpay.createUpiQr.mockResolvedValue({
         id: 'qr-2',
         imageUrl: 'https://rzp.test/qr-2.png',
@@ -233,7 +241,7 @@ describe('ChartAlertPaymentsService', () => {
       (service as any).muzoboxClient.post = jest.fn().mockResolvedValue({
         data: {
           id: 'mb_123',
-          amount: 25,
+          amount: 100,
           payUrl: 'https://muzobox.com/pay/mb_123',
           razorpayOrderId: 'order_mb_123',
         },
@@ -244,7 +252,7 @@ describe('ChartAlertPaymentsService', () => {
       expect((service as any).muzoboxClient.post).toHaveBeenCalledWith(
         'proxy-payments/create-link',
         expect.objectContaining({
-          amount: 25,
+          amount: 100,
           referenceId: 'ref-mb-1',
         }),
         expect.any(Object),
@@ -542,53 +550,101 @@ describe('ChartAlertPaymentsService', () => {
   });
 
   describe('chartAlertPriceForClass', () => {
-    it.each(['ANY', ' any '])('charges ₹50 for %s', (classCode) => {
-      expect(chartAlertPriceForClass(classCode)).toBe(50);
+    it.each([
+      'ANY',
+      '1A',
+      '2A',
+      '3A',
+      ' 3a ',
+      'SL',
+      '3E',
+      '2S',
+      'CC',
+      'EC',
+      'FC',
+      '',
+      undefined,
+      null,
+    ])('charges the default ₹100 for %s', (classCode) => {
+      expect(chartAlertPriceForClass(classCode as string | undefined)).toBe(
+        100,
+      );
     });
 
-    it.each(['1A', '2A', '3A', ' 3a ', '2a'])(
-      'charges the premium tier (₹25) for %s',
-      (classCode) => {
-        expect(chartAlertPriceForClass(classCode)).toBe(25);
-      },
-    );
+    it('prices specific classes via overrides with ANY as catch-all', () => {
+      const overrides = parseChartAlertPriceOverrides({
+        ANY: 100,
+        '3A': 50,
+      });
+      expect(chartAlertPriceForClass('3A', overrides)).toBe(50);
+      expect(chartAlertPriceForClass('SL', overrides)).toBe(100);
+      expect(chartAlertPriceForClass(undefined, overrides)).toBe(100);
+    });
 
-    it.each(['SL', '3E', '2S', 'CC', 'EC', 'FC', '', undefined, null])(
-      'charges the standard tier (₹10) for %s',
-      (classCode) => {
-        expect(chartAlertPriceForClass(classCode as string | undefined)).toBe(
-          10,
-        );
-      },
-    );
+    it('matches override keys case/space-insensitively', () => {
+      const overrides = parseChartAlertPriceOverrides({ ' sl ': 30 });
+      expect(chartAlertPriceForClass('sl', overrides)).toBe(30);
+      expect(chartAlertPriceForClass('SL', overrides)).toBe(30);
+    });
+  });
 
-    it('stores the class-based amount on the payment record', async () => {
-      prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-price' });
-      razorpay.createOrder.mockResolvedValue({ id: 'order-p', amount: 1000 });
+  describe('parseChartAlertPriceOverrides', () => {
+    it('accepts numbers and numeric strings, rejecting bad payloads', () => {
+      expect(parseChartAlertPriceOverrides({ '3A': 50, SL: '10.5' })).toEqual({
+        '3A': 50,
+        SL: 10.5,
+      });
+      expect(parseChartAlertPriceOverrides({ '3A': 0 })).toBeNull();
+      expect(parseChartAlertPriceOverrides({ '3A': -5 })).toBeNull();
+      expect(parseChartAlertPriceOverrides({ '3A': 'fifty' })).toBeNull();
+      expect(parseChartAlertPriceOverrides({})).toBeNull();
+      expect(parseChartAlertPriceOverrides([50])).toBeNull();
+      expect(parseChartAlertPriceOverrides('not json')).toBeNull();
+      expect(parseChartAlertPriceOverrides('{"3A": 50}')).toEqual({ '3A': 50 });
+      expect(parseChartAlertPriceOverrides(null)).toBeNull();
+      expect(parseChartAlertPriceOverrides(undefined)).toBeNull();
+    });
+  });
+
+  describe('PostHog price overrides in createPaymentLink', () => {
+    it('charges the flag payload price for the requested class', async () => {
+      posthog.getFeatureFlagPayload.mockResolvedValue({ '3A': 75 });
+      prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-flag' });
+      razorpay.createOrder.mockResolvedValue({ id: 'order-f', amount: 7500 });
       razorpay.createUpiQr.mockResolvedValue({
-        id: 'qr-p',
-        imageUrl: 'https://rzp.test/qr-p.png',
+        id: 'qr-f',
+        imageUrl: 'https://rzp.test/qr-f.png',
       });
-      razorpay.resolveQrIntents.mockResolvedValue({
-        intent: null,
-        apps: null,
-      });
+      razorpay.resolveQrIntents.mockResolvedValue({ intent: null, apps: null });
       prisma.chartAlertPayment.update.mockResolvedValue({});
 
-      const out = await service.createPaymentLink({
-        ...baseInput,
-        classCode: 'SL',
-      });
+      const out = await service.createPaymentLink({ ...baseInput });
 
-      expect(out.amount).toBe(10);
+      expect(posthog.getFeatureFlagPayload).toHaveBeenCalledWith(
+        CHART_ALERT_PRICES_FLAG_KEY,
+      );
+      expect(out.amount).toBe(75);
       expect(razorpay.createOrder).toHaveBeenCalledWith(
-        expect.objectContaining({ amountPaise: 1000 }),
+        expect.objectContaining({ amountPaise: 7500 }),
       );
-      expect(prisma.chartAlertPayment.create).toHaveBeenCalledWith(
-        expect.objectContaining({
-          data: expect.objectContaining({ amount: 10 }),
-        }),
-      );
+    });
+
+    it('falls back to the default when the flag is off or malformed', async () => {
+      prisma.chartAlertPayment.create.mockResolvedValue({ id: 'ref-plain' });
+      razorpay.createOrder.mockResolvedValue({ id: 'order-x', amount: 10000 });
+      razorpay.createUpiQr.mockResolvedValue({
+        id: 'qr-x',
+        imageUrl: 'https://rzp.test/qr-x.png',
+      });
+      razorpay.resolveQrIntents.mockResolvedValue({ intent: null, apps: null });
+      prisma.chartAlertPayment.update.mockResolvedValue({});
+
+      const out = await service.createPaymentLink({ ...baseInput });
+      expect(out.amount).toBe(100);
+
+      posthog.getFeatureFlagPayload.mockResolvedValue({ '3A': 'free' });
+      const out2 = await service.createPaymentLink({ ...baseInput });
+      expect(out2.amount).toBe(100);
     });
   });
 });

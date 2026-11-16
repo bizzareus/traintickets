@@ -22,12 +22,12 @@ import { useContactFields } from "@/lib/contact";
 import { useChartAlertPayments } from "@/lib/hooks/useChartAlertPayments";
 import { useSplitBookingFeatureFlag } from "@/lib/hooks/useSplitBookingFeatureFlag";
 import {
-  chartAlertPriceForClass,
   createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
   type ChartAlertPaymentLink,
 } from "@/lib/chart-alert-payments";
+import { useChartAlertPrice } from "@/lib/hooks/useChartAlertPrice";
 import {
   ChartAlertPaymentModal,
   type ChartAlertPaymentModalJourney,
@@ -280,7 +280,7 @@ function CompactLegChartCta({
   >(null);
   const [meta, setMeta] = useState<StationChartMetaItem | null>(null);
   const [showNextReleaseSheet, setShowNextReleaseSheet] = useState(false);
-  const alertPrice = chartAlertPriceForClass(classCode);
+  const alertPrice = useChartAlertPrice(classCode);
 
   useEffect(() => {
     if (isLegAlertSet(trainNumber, legFrom, legTo, journeyDate)) {
@@ -467,6 +467,7 @@ function CompactLegChartCta({
           ...pinnedChartArgs,
         },
         "search_panel",
+        alertPrice,
       );
       setPayment({ link, ref: link.ref, journey });
     } catch (err: unknown) {
@@ -1135,7 +1136,8 @@ export function AlternatePathContent({
                               const optHref = irctcBookingRedirect({
                                 from: leg.from,
                                 to: leg.to,
-                                trainNo: leg.trainNumber || altResult.trainNumber,
+                                trainNo:
+                                  leg.trainNumber || altResult.trainNumber,
                                 classCode: opt.travelClass,
                               });
                               return (

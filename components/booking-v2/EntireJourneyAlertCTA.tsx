@@ -4,12 +4,15 @@ import { useEffect, useMemo, useState } from "react";
 import { BellRing } from "lucide-react";
 import {
   chartAlertClassPriceLabel,
-  chartAlertPriceForClass,
   createFreeChartAlert,
   getChartAlertErrorMessage,
   startChartAlertPayment,
   type ChartAlertPaymentLink,
 } from "@/lib/chart-alert-payments";
+import {
+  useChartAlertPrice,
+  useChartAlertPriceOverrides,
+} from "@/lib/hooks/useChartAlertPrice";
 import {
   ChartAlertPaymentModal,
   type ChartAlertPaymentModalJourney,
@@ -85,7 +88,8 @@ export function EntireJourneyAlertCTA({
   const [selectedClass, setSelectedClass] = useState<string>(() =>
     (classCode || "SL").trim().toUpperCase(),
   );
-  const alertPrice = chartAlertPriceForClass(selectedClass);
+  const priceOverrides = useChartAlertPriceOverrides();
+  const alertPrice = useChartAlertPrice(selectedClass);
   const { email, setEmail, mobile, persistContact } = useContactFields();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -172,6 +176,7 @@ export function EntireJourneyAlertCTA({
           mobile: mob,
         },
         "search_panel",
+        alertPrice,
       );
 
       if (onPaymentCreated) {
@@ -283,7 +288,11 @@ export function EntireJourneyAlertCTA({
           >
             {availableClasses.map((c) => (
               <option key={c} value={c}>
-                {chartAlertClassPriceLabel(CLASS_LABELS[c] || `${c} Class`, c)}
+                {chartAlertClassPriceLabel(
+                  CLASS_LABELS[c] || `${c} Class`,
+                  c,
+                  priceOverrides,
+                )}
               </option>
             ))}
           </select>

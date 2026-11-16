@@ -73,7 +73,6 @@ jobs:
           build-args: |
             NEXT_PUBLIC_API_URL=https://api.lastberth.com
             NEXT_PUBLIC_APP_URL=https://lastberth.com
-            NEXT_PUBLIC_CHART_ALERT_PRICE_RUPEES=5
           cache-from: type=gha,scope=frontend
           cache-to: type=gha,mode=max,scope=frontend
 
