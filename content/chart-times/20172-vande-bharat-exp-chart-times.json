@@ -1,6 +1,6 @@
 {
   "trainNumber": "20172",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "H Nizamuddin - Rani Kamalapati Vande Bharat Express",
   "originStation": "NZM",
   "destinationStation": "RKMP",
   "slug": "20172-vande-bharat-exp-chart-times",
@@ -71,7 +71,7 @@
       "chartRemoteStation": "VGLJ"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20172) is prepared at H Nizamuddin (NZM) around 6:40 AM, with a second (vacancy) chart around 2:25 PM. 5 of 5 stations on the NZM to RKMP route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for H Nizamuddin - Rani Kamalapati Vande Bharat Express (20172) is prepared at H Nizamuddin (NZM) around 6:40 AM, with a second (vacancy) chart around 2:25 PM. 5 of 5 stations on the NZM to RKMP route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:29:39.583Z",
   "knownChartCount": 5
 }

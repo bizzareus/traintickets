@@ -1,6 +1,6 @@
 {
   "trainNumber": "20645",
-  "trainName": "Maq Vandebharat",
+  "trainName": "Madgaon - Mangaluru Cntl Vande Bharat Express",
   "originStation": "MAO",
   "destinationStation": "MAQ",
   "slug": "20645-maq-vandebharat-chart-times",
@@ -58,7 +58,7 @@
       "chartRemoteStation": "MAO"
     }
   ],
-  "summary": "The first reservation chart for Maq Vandebharat (20645) is prepared at Madgaon (MAO) around 8:10 AM, with a second (vacancy) chart around 8:59 PM. 4 of 4 stations on the MAO to MAQ route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Madgaon - Mangaluru Cntl Vande Bharat Express (20645) is prepared at Madgaon (MAO) around 8:10 AM, with a second (vacancy) chart around 8:59 PM. 4 of 4 stations on the MAO to MAQ route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:39:08.114Z",
   "knownChartCount": 4
 }

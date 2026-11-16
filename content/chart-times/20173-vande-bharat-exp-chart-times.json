@@ -1,6 +1,6 @@
 {
   "trainNumber": "20173",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Rani Kamalapati - Rewa Vande Bharat Express",
   "originStation": "RKMP",
   "destinationStation": "REWA",
   "slug": "20173-vande-bharat-exp-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "RKMP"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20173) is prepared at Rani Kamalapati (RKMP) around 9:05 PM. 10 of 10 stations on the RKMP to REWA route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Rani Kamalapati - Rewa Vande Bharat Express (20173) is prepared at Rani Kamalapati (RKMP) around 9:05 PM. 10 of 10 stations on the RKMP to REWA route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:29:43.169Z",
   "knownChartCount": 10
 }

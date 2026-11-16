@@ -1,6 +1,6 @@
 {
   "trainNumber": "22346",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Gomati Nagar - Patna Vande Bharat Express",
   "originStation": "GTNR",
   "destinationStation": "PNBE",
   "slug": "22346-vande-bharat-exp-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "GTNR"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22346) is prepared at Gomati Nagar (GTNR) around 9:17 PM. 7 of 7 stations on the GTNR to PNBE route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Gomati Nagar - Patna Vande Bharat Express (22346) is prepared at Gomati Nagar (GTNR) around 9:17 PM. 7 of 7 stations on the GTNR to PNBE route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:33:03.961Z",
   "knownChartCount": 7
 }

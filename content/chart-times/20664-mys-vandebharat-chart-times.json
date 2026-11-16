@@ -1,6 +1,6 @@
 {
   "trainNumber": "20664",
-  "trainName": "Mys Vandebharat",
+  "trainName": "Mgr Chennai Ctl - Mysuru Vande Bharat Express",
   "originStation": "MAS",
   "destinationStation": "MYS",
   "slug": "20664-mys-vandebharat-chart-times",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "MAS"
     }
   ],
-  "summary": "The first reservation chart for Mys Vandebharat (20664) is prepared at Mgr Chennai Ctl (MAS) around 7:01 AM, with a second (vacancy) chart around 10:25 PM. 6 of 6 stations on the MAS to MYS route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Mgr Chennai Ctl - Mysuru Vande Bharat Express (20664) is prepared at Mgr Chennai Ctl (MAS) around 7:01 AM, with a second (vacancy) chart around 10:25 PM. 6 of 6 stations on the MAS to MYS route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:40:21.636Z",
   "knownChartCount": 6
 }

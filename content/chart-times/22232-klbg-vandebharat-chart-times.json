@@ -1,6 +1,6 @@
 {
   "trainNumber": "22232",
-  "trainName": "Klbg Vandebharat",
+  "trainName": "Smvt Bengaluru - Kalaburagi Vande Bharat Express",
   "originStation": "SMVB",
   "destinationStation": "KLBG",
   "slug": "22232-klbg-vandebharat-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "SMVB"
     }
   ],
-  "summary": "The first reservation chart for Klbg Vandebharat (22232) is prepared at Smvt Bengaluru (SMVB) around 5:08 AM, with a second (vacancy) chart around 7:35 PM. 9 of 9 stations on the SMVB to KLBG route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Smvt Bengaluru - Kalaburagi Vande Bharat Express (22232) is prepared at Smvt Bengaluru (SMVB) around 5:08 AM, with a second (vacancy) chart around 7:35 PM. 9 of 9 stations on the SMVB to KLBG route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:15:02.763Z",
   "knownChartCount": 9
 }

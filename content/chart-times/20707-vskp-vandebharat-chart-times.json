@@ -1,6 +1,6 @@
 {
   "trainNumber": "20707",
-  "trainName": "Vskp Vandebharat",
+  "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
   "originStation": "SC",
   "destinationStation": "VSKP",
   "slug": "20707-vskp-vandebharat-chart-times",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "BZA"
     }
   ],
-  "summary": "The first reservation chart for Vskp Vandebharat (20707) is prepared at Secunderabad Jn (SC) around 8:46 PM, with a second (vacancy) chart around 4:45 AM. 8 of 8 stations on the SC to VSKP route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Secunderabad - Visakhapatnam Vande Bharat Express (20707) is prepared at Secunderabad Jn (SC) around 8:46 PM, with a second (vacancy) chart around 4:45 AM. 8 of 8 stations on the SC to VSKP route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:43:38.379Z",
   "knownChartCount": 8
 }

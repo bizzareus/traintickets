@@ -1,6 +1,6 @@
 {
   "trainNumber": "20175",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Banaras - Agra Vande Bharat Express",
   "originStation": "BNRS",
   "destinationStation": "AGC",
   "slug": "20175-vande-bharat-exp-chart-times",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "BNRS"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20175) is prepared at BANARAS (BNRS) around 9:07 PM. 6 of 6 stations on the BNRS to AGC route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Banaras - Agra Vande Bharat Express (20175) is prepared at BANARAS (BNRS) around 9:07 PM. 6 of 6 stations on the BNRS to AGC route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:29:48.533Z",
   "knownChartCount": 6
 }

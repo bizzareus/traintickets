@@ -1,6 +1,6 @@
 {
   "trainNumber": "22229",
-  "trainName": "Mao Vande Bharat",
+  "trainName": "C Shivaji Mah T - Madgaon Vande Bharat Express",
   "originStation": "CSMT",
   "destinationStation": "MAO",
   "slug": "22229-mao-vande-bharat-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "CSMT"
     }
   ],
-  "summary": "The first reservation chart for Mao Vande Bharat (22229) is prepared at C Shivaji Mah T (CSMT) around 8:12 PM, with a second (vacancy) chart around 12:37 PM. 9 of 9 stations on the CSMT to MAO route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for C Shivaji Mah T - Madgaon Vande Bharat Express (22229) is prepared at C Shivaji Mah T (CSMT) around 8:12 PM, with a second (vacancy) chart around 12:37 PM. 9 of 9 stations on the CSMT to MAO route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:14:49.757Z",
   "knownChartCount": 9
 }

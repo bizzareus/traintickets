@@ -1,6 +1,6 @@
 {
   "trainNumber": "22228",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Guwahati - New Jalpaiguri Vande Bharat Express",
   "originStation": "GHY",
   "destinationStation": "NJP",
   "slug": "22228-vande-bharat-exp-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "GHY"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22228) is prepared at Guwahati (GHY) around 8:14 AM, with a second (vacancy) chart around 7:46 PM. 10 of 10 stations on the GHY to NJP route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Guwahati - New Jalpaiguri Vande Bharat Express (22228) is prepared at Guwahati (GHY) around 8:14 AM, with a second (vacancy) chart around 7:46 PM. 10 of 10 stations on the GHY to NJP route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:14:44.790Z",
   "knownChartCount": 10
 }

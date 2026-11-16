@@ -9,6 +9,7 @@ import {
   parseTrainNumberFromParam,
 } from "@/lib/trainSlug";
 import { getChartTimesPageData } from "@/lib/chartTimes";
+import { getTrainByNumber } from "@/lib/trainCatalog";
 
 export const dynamicParams = true;
 
@@ -240,6 +241,16 @@ export default async function TrainDetailPage({ params }: Props) {
     chartTimesData?.destinationStation ||
     local?.destinationStation;
 
+  const categoryHub = getTrainByNumber("vande-bharat", trainNumber)
+    ? { name: "Vande Bharat Express", path: "/trains/vande-bharat" }
+    : getTrainByNumber("shatabdi", trainNumber)
+      ? { name: "Shatabdi Express", path: "/trains/shatabdi" }
+      : getTrainByNumber("rajdhani", trainNumber)
+        ? { name: "Rajdhani Express", path: "/trains/rajdhani" }
+        : getTrainByNumber("garib-rath", trainNumber)
+          ? { name: "Garib Rath Express", path: "/trains/garib-rath" }
+          : { name: "Trains", path: "/chart-times" };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -254,8 +265,8 @@ export default async function TrainDetailPage({ params }: Props) {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Trains",
-          item: `${siteUrl}/search`,
+          name: categoryHub.name,
+          item: `${siteUrl}${categoryHub.path}`,
         },
         {
           "@type": "ListItem",
@@ -308,6 +319,12 @@ export default async function TrainDetailPage({ params }: Props) {
 
   const canonicalChartTimesSlug =
     local?.chartTimesSlug ?? chartTimesData?.slug ?? null;
+
+  const catalogTrain =
+    getTrainByNumber("vande-bharat", trainNumber) ||
+    getTrainByNumber("shatabdi", trainNumber) ||
+    getTrainByNumber("rajdhani", trainNumber) ||
+    getTrainByNumber("garib-rath", trainNumber);
 
   return (
     <>
@@ -365,6 +382,7 @@ export default async function TrainDetailPage({ params }: Props) {
           initialTrainData={effectiveTrain}
           chartTimesSlug={canonicalChartTimesSlug}
           stationChartTimes={stationChartTimes}
+          foodMenuUrl={catalogTrain?.foodMenuUrl ?? null}
           localTrain={
             local
               ? {

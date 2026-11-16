@@ -1,6 +1,6 @@
 {
   "trainNumber": "20663",
-  "trainName": "Mas Vande Bharat",
+  "trainName": "Mysuru - Mgr Chennai Ctl Vande Bharat Express",
   "originStation": "MYS",
   "destinationStation": "MAS",
   "slug": "20663-mas-vande-bharat-chart-times",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "SBC"
     }
   ],
-  "summary": "The first reservation chart for Mas Vande Bharat (20663) is prepared at Mysuru Jn (MYS) around 8:02 PM, with a second (vacancy) chart around 10:25 AM. 6 of 6 stations on the MYS to MAS route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Mysuru - Mgr Chennai Ctl Vande Bharat Express (20663) is prepared at Mysuru Jn (MYS) around 8:02 PM, with a second (vacancy) chart around 10:25 AM. 6 of 6 stations on the MYS to MAS route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:40:17.496Z",
   "knownChartCount": 6
 }

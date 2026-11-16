@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "count": 160,
-  "updatedAt": "2026-09-30",
+  "count": 172,
+  "updatedAt": "2026-11-17",
   "trains": [
     {
       "trainNumber": "12461",
@@ -25,7 +25,7 @@
       "chartTimesUrl": "/chart-times/12461-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ju-sbib-vande-bharat-express-12461",
       "foodMenuUrl": "/irctc-train-food-menu/ju-sbib-vande-bharat-express-12461",
-      "trainDetailUrl": "/trains/12461"
+      "trainDetailUrl": "/trains/12461-jodhpur-sabarmati-vande-bharat-express"
     },
     {
       "trainNumber": "12462",
@@ -47,9 +47,9 @@
       "classes": ["CC", "EC"],
       "slug": "12462-ju-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/12462-ju-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/12462"
+      "foodMenuSlug": "ju-vande-bharat-12462",
+      "foodMenuUrl": "/irctc-train-food-menu/ju-vande-bharat-12462",
+      "trainDetailUrl": "/trains/12462-sabarmati-jodhpur-vande-bharat-express"
     },
     {
       "trainNumber": "20101",
@@ -73,7 +73,7 @@
       "chartTimesUrl": "/chart-times/20101-sc-vande-bharat-chart-times",
       "foodMenuSlug": "ngp-sc-vande-bharat-express-20101",
       "foodMenuUrl": "/irctc-train-food-menu/ngp-sc-vande-bharat-express-20101",
-      "trainDetailUrl": "/trains/20101"
+      "trainDetailUrl": "/trains/20101-nagpur-secunderabad-vande-bharat-express"
     },
     {
       "trainNumber": "20102",
@@ -95,9 +95,9 @@
       "classes": ["CC", "EC"],
       "slug": "20102-ngp-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20102-ngp-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20102"
+      "foodMenuSlug": "ngp-vande-bharat-20102",
+      "foodMenuUrl": "/irctc-train-food-menu/ngp-vande-bharat-20102",
+      "trainDetailUrl": "/trains/20102-secunderabad-nagpur-vande-bharat-express"
     },
     {
       "trainNumber": "20171",
@@ -121,7 +121,7 @@
       "chartTimesUrl": "/chart-times/20171-vande-bharat-exp-chart-times",
       "foodMenuSlug": "rkmp-nzm-vande-bharat-express-20171",
       "foodMenuUrl": "/irctc-train-food-menu/rkmp-nzm-vande-bharat-express-20171",
-      "trainDetailUrl": "/trains/20171"
+      "trainDetailUrl": "/trains/20171-rani-kamalapati-h-nizamuddin-vande-bharat-express"
     },
     {
       "trainNumber": "20172",
@@ -143,9 +143,9 @@
       "classes": ["CC", "EC"],
       "slug": "20172-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20172-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20172"
+      "foodMenuSlug": "vande-bharat-express-20172",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20172",
+      "trainDetailUrl": "/trains/20172-h-nizamuddin-rani-kamalapati-vande-bharat-express"
     },
     {
       "trainNumber": "20173",
@@ -169,7 +169,7 @@
       "chartTimesUrl": "/chart-times/20173-vande-bharat-exp-chart-times",
       "foodMenuSlug": "rkmp-rewa-vande-bharat-express-20173",
       "foodMenuUrl": "/irctc-train-food-menu/rkmp-rewa-vande-bharat-express-20173",
-      "trainDetailUrl": "/trains/20173"
+      "trainDetailUrl": "/trains/20173-rani-kamalapati-rewa-vande-bharat-express"
     },
     {
       "trainNumber": "20174",
@@ -191,9 +191,9 @@
       "classes": ["CC", "EC"],
       "slug": "20174-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20174-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20174"
+      "foodMenuSlug": "vande-bharat-express-20174",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20174",
+      "trainDetailUrl": "/trains/20174-rewa-rani-kamalapati-vande-bharat-express"
     },
     {
       "trainNumber": "20175",
@@ -217,7 +217,7 @@
       "chartTimesUrl": "/chart-times/20175-vande-bharat-exp-chart-times",
       "foodMenuSlug": "bsbs-agc-vande-bharat-express-20175",
       "foodMenuUrl": "/irctc-train-food-menu/bsbs-agc-vande-bharat-express-20175",
-      "trainDetailUrl": "/trains/20175"
+      "trainDetailUrl": "/trains/20175-banaras-agra-vande-bharat-express"
     },
     {
       "trainNumber": "20176",
@@ -239,9 +239,9 @@
       "classes": ["CC", "EC"],
       "slug": "20176-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20176-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20176"
+      "foodMenuSlug": "vande-bharat-express-20176",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20176",
+      "trainDetailUrl": "/trains/20176-agra-banaras-vande-bharat-express"
     },
     {
       "trainNumber": "20607",
@@ -265,7 +265,7 @@
       "chartTimesUrl": "/chart-times/20607-mys-vandebharat-chart-times",
       "foodMenuSlug": "mas-mys-mas-vande-bharat-express-20607",
       "foodMenuUrl": "/irctc-train-food-menu/mas-mys-mas-vande-bharat-express-20607",
-      "trainDetailUrl": "/trains/20607"
+      "trainDetailUrl": "/trains/20607-mgr-chennai-ctl-mysuru-vande-bharat-express"
     },
     {
       "trainNumber": "20608",
@@ -287,9 +287,105 @@
       "classes": ["CC", "EC"],
       "slug": "20608-mas-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20608-mas-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20608"
+      "foodMenuSlug": "mas-vandebharat-20608",
+      "foodMenuUrl": "/irctc-train-food-menu/mas-vandebharat-20608",
+      "trainDetailUrl": "/trains/20608-mysuru-mgr-chennai-ctl-vande-bharat-express"
+    },
+    {
+      "trainNumber": "20627",
+      "trainName": "Chennai Egmore - Nagercoil Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MS",
+        "name": "Chennai Egmore"
+      },
+      "departureTime": "05:00",
+      "destinationStation": {
+        "code": "NCJ",
+        "name": "Nagercoil Jn"
+      },
+      "arrivalTime": "13:50",
+      "duration": "8h 50m",
+      "distance": "727 km",
+      "halts": 9,
+      "classes": ["CC", "EC"],
+      "slug": "20627-ms-ncj-vb-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20627-ms-ncj-vb-exp-chart-times",
+      "foodMenuSlug": "mas-mys-vande-bharat-express-20627",
+      "foodMenuUrl": "/irctc-train-food-menu/mas-mys-vande-bharat-express-20627",
+      "trainDetailUrl": "/trains/20627-chennai-egmore-nagercoil-vande-bharat-express"
+    },
+    {
+      "trainNumber": "20628",
+      "trainName": "Nagercoil - Chennai Egmore Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "NCJ",
+        "name": "Nagercoil Jn"
+      },
+      "departureTime": "14:20",
+      "destinationStation": {
+        "code": "MS",
+        "name": "Chennai Egmore"
+      },
+      "arrivalTime": "23:05",
+      "duration": "8h 45m",
+      "distance": "727 km",
+      "halts": 9,
+      "classes": ["CC", "EC"],
+      "slug": "20628-ncj-ms-vb-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20628-ncj-ms-vb-exp-chart-times",
+      "foodMenuSlug": "ncj-ms-vande-bharat-express-20628",
+      "foodMenuUrl": "/irctc-train-food-menu/ncj-ms-vande-bharat-express-20628",
+      "trainDetailUrl": "/trains/20628-nagercoil-chennai-egmore-vande-bharat-express"
+    },
+    {
+      "trainNumber": "20631",
+      "trainName": "Mangaluru Central - Thiruvananthapuram Central Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MAQ",
+        "name": "Mangaluru Cntl"
+      },
+      "departureTime": "06:25",
+      "destinationStation": {
+        "code": "TVC",
+        "name": "Trivandrum Cntl"
+      },
+      "arrivalTime": "15:05",
+      "duration": "8h 40m",
+      "distance": "619 km",
+      "halts": 11,
+      "classes": ["CC", "EC"],
+      "slug": "20631-maq-tvc-vb-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20631-maq-tvc-vb-exp-chart-times",
+      "foodMenuSlug": "maq-tvc-maq-vande-bharat-express-20631",
+      "foodMenuUrl": "/irctc-train-food-menu/maq-tvc-maq-vande-bharat-express-20631",
+      "trainDetailUrl": "/trains/20631-mangaluru-central-thiruvananthapuram-central-vande-bharat-express"
+    },
+    {
+      "trainNumber": "20632",
+      "trainName": "Thiruvananthapuram Central - Mangaluru Central Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "TVC",
+        "name": "Trivandrum Cntl"
+      },
+      "departureTime": "16:05",
+      "destinationStation": {
+        "code": "MAQ",
+        "name": "Mangaluru Cntl"
+      },
+      "arrivalTime": "00:45",
+      "duration": "8h 40m",
+      "distance": "619 km",
+      "halts": 11,
+      "classes": ["CC", "EC"],
+      "slug": "20632-tvc-maq-vb-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20632-tvc-maq-vb-exp-chart-times",
+      "foodMenuSlug": "tvc-maq-vande-bharat-express-20632",
+      "foodMenuUrl": "/irctc-train-food-menu/tvc-maq-vande-bharat-express-20632",
+      "trainDetailUrl": "/trains/20632-thiruvananthapuram-central-mangaluru-central-vande-bharat-express"
     },
     {
       "trainNumber": "20633",
@@ -313,7 +409,7 @@
       "chartTimesUrl": "/chart-times/20633-tvc-vandebharat-chart-times",
       "foodMenuSlug": "tvc-kgq-tvc-vande-bharat-express-20633",
       "foodMenuUrl": "/irctc-train-food-menu/tvc-kgq-tvc-vande-bharat-express-20633",
-      "trainDetailUrl": "/trains/20633"
+      "trainDetailUrl": "/trains/20633-kasaragod-trivandrum-cntl-vande-bharat-express"
     },
     {
       "trainNumber": "20634",
@@ -335,9 +431,9 @@
       "classes": ["CC", "EC"],
       "slug": "20634-kgq-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20634-kgq-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20634"
+      "foodMenuSlug": "kgq-vandebharat-20634",
+      "foodMenuUrl": "/irctc-train-food-menu/kgq-vandebharat-20634",
+      "trainDetailUrl": "/trains/20634-trivandrum-cntl-kasaragod-vande-bharat-express"
     },
     {
       "trainNumber": "20641",
@@ -361,7 +457,7 @@
       "chartTimesUrl": "/chart-times/20641-cbe-vande-bharat-chart-times",
       "foodMenuSlug": "cbe-bnc-cbe-vande-bharat-express-20641",
       "foodMenuUrl": "/irctc-train-food-menu/cbe-bnc-cbe-vande-bharat-express-20641",
-      "trainDetailUrl": "/trains/20641"
+      "trainDetailUrl": "/trains/20641-bengaluru-cant-coimbatore-vande-bharat-express"
     },
     {
       "trainNumber": "20642",
@@ -383,9 +479,9 @@
       "classes": ["CC", "EC"],
       "slug": "20642-bnc-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20642-bnc-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20642"
+      "foodMenuSlug": "bnc-vandebharat-20642",
+      "foodMenuUrl": "/irctc-train-food-menu/bnc-vandebharat-20642",
+      "trainDetailUrl": "/trains/20642-coimbatore-bengaluru-cant-vande-bharat-express"
     },
     {
       "trainNumber": "20643",
@@ -409,7 +505,7 @@
       "chartTimesUrl": "/chart-times/20643-cbe-vandebharat-chart-times",
       "foodMenuSlug": "mas-cbe-mas-vande-bharat-express-20643",
       "foodMenuUrl": "/irctc-train-food-menu/mas-cbe-mas-vande-bharat-express-20643",
-      "trainDetailUrl": "/trains/20643"
+      "trainDetailUrl": "/trains/20643-mgr-chennai-ctl-coimbatore-vande-bharat-express"
     },
     {
       "trainNumber": "20644",
@@ -431,9 +527,9 @@
       "classes": ["CC", "EC"],
       "slug": "20644-mas-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20644-mas-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20644"
+      "foodMenuSlug": "mas-vandebharat-20644",
+      "foodMenuUrl": "/irctc-train-food-menu/mas-vandebharat-20644",
+      "trainDetailUrl": "/trains/20644-coimbatore-mgr-chennai-ctl-vande-bharat-express"
     },
     {
       "trainNumber": "20645",
@@ -457,7 +553,7 @@
       "chartTimesUrl": "/chart-times/20645-maq-vandebharat-chart-times",
       "foodMenuSlug": "maq-mao-vande-bharat-express-20645",
       "foodMenuUrl": "/irctc-train-food-menu/maq-mao-vande-bharat-express-20645",
-      "trainDetailUrl": "/trains/20645"
+      "trainDetailUrl": "/trains/20645-madgaon-mangaluru-cntl-vande-bharat-express"
     },
     {
       "trainNumber": "20646",
@@ -479,9 +575,9 @@
       "classes": ["CC", "EC"],
       "slug": "20646-mao-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20646-mao-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20646"
+      "foodMenuSlug": "mao-vandebharat-20646",
+      "foodMenuUrl": "/irctc-train-food-menu/mao-vandebharat-20646",
+      "trainDetailUrl": "/trains/20646-mangaluru-cntl-madgaon-vande-bharat-express"
     },
     {
       "trainNumber": "20661",
@@ -505,7 +601,7 @@
       "chartTimesUrl": "/chart-times/20661-dwr-vande-bharat-chart-times",
       "foodMenuSlug": "sbc-dwr-vande-bharat-express-20661",
       "foodMenuUrl": "/irctc-train-food-menu/sbc-dwr-vande-bharat-express-20661",
-      "trainDetailUrl": "/trains/20661"
+      "trainDetailUrl": "/trains/20661-ksr-bengaluru-dharwar-vande-bharat-express"
     },
     {
       "trainNumber": "20662",
@@ -527,9 +623,9 @@
       "classes": ["CC", "EC"],
       "slug": "20662-sbc-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20662-sbc-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20662"
+      "foodMenuSlug": "sbc-vande-bharat-20662",
+      "foodMenuUrl": "/irctc-train-food-menu/sbc-vande-bharat-20662",
+      "trainDetailUrl": "/trains/20662-dharwar-ksr-bengaluru-vande-bharat-express"
     },
     {
       "trainNumber": "20663",
@@ -553,7 +649,7 @@
       "chartTimesUrl": "/chart-times/20663-mas-vande-bharat-chart-times",
       "foodMenuSlug": "mys-mas-mys-vande-bharat-express-20663",
       "foodMenuUrl": "/irctc-train-food-menu/mys-mas-mys-vande-bharat-express-20663",
-      "trainDetailUrl": "/trains/20663"
+      "trainDetailUrl": "/trains/20663-mysuru-mgr-chennai-ctl-vande-bharat-express"
     },
     {
       "trainNumber": "20664",
@@ -575,9 +671,9 @@
       "classes": ["CC", "EC"],
       "slug": "20664-mys-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20664-mys-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20664"
+      "foodMenuSlug": "mys-vandebharat-20664",
+      "foodMenuUrl": "/irctc-train-food-menu/mys-vandebharat-20664",
+      "trainDetailUrl": "/trains/20664-mgr-chennai-ctl-mysuru-vande-bharat-express"
     },
     {
       "trainNumber": "20665",
@@ -601,7 +697,7 @@
       "chartTimesUrl": "/chart-times/20665-ten-vandebharat-chart-times",
       "foodMenuSlug": "ten-ms-ten-vande-bharat-express-20665",
       "foodMenuUrl": "/irctc-train-food-menu/ten-ms-ten-vande-bharat-express-20665",
-      "trainDetailUrl": "/trains/20665"
+      "trainDetailUrl": "/trains/20665-chennai-egmore-tirunelveli-vande-bharat-express"
     },
     {
       "trainNumber": "20666",
@@ -623,13 +719,37 @@
       "classes": ["CC", "EC"],
       "slug": "20666-ms-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20666-ms-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20666"
+      "foodMenuSlug": "ms-vande-bharat-20666",
+      "foodMenuUrl": "/irctc-train-food-menu/ms-vande-bharat-20666",
+      "trainDetailUrl": "/trains/20666-tirunelveli-chennai-egmore-vande-bharat-express"
+    },
+    {
+      "trainNumber": "20669",
+      "trainName": "SSS Hubballi - Pune Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "UBL",
+        "name": "Sss Hubballi Jn"
+      },
+      "departureTime": "05:00",
+      "destinationStation": {
+        "code": "PUNE",
+        "name": "Pune Jn"
+      },
+      "arrivalTime": "13:30",
+      "duration": "8h 30m",
+      "distance": "558 km",
+      "halts": 9,
+      "classes": ["CC", "EC"],
+      "slug": "20669-ubl-pune-vb-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20669-ubl-pune-vb-exp-chart-times",
+      "foodMenuSlug": "ubl-pune-vande-bharat-express-20669",
+      "foodMenuUrl": "/irctc-train-food-menu/ubl-pune-vande-bharat-express-20669",
+      "trainDetailUrl": "/trains/20669-sss-hubballi-pune-vande-bharat-express"
     },
     {
       "trainNumber": "20670",
-      "trainName": "Pune - Sss Hubballi Vande Bharat Express",
+      "trainName": "Pune - SSS Hubballi Vande Bharat Express",
       "trainType": "ChairCar",
       "originStation": {
         "code": "PUNE",
@@ -647,9 +767,33 @@
       "classes": ["CC", "EC"],
       "slug": "20670-ubl-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20670-ubl-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20670"
+      "foodMenuSlug": "ubl-vandebharat-20670",
+      "foodMenuUrl": "/irctc-train-food-menu/ubl-vandebharat-20670",
+      "trainDetailUrl": "/trains/20670-pune-sss-hubballi-vande-bharat-express"
+    },
+    {
+      "trainNumber": "20671",
+      "trainName": "Madurai - Bengaluru Cant Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "MDU",
+        "name": "Madurai Jn"
+      },
+      "departureTime": "05:15",
+      "destinationStation": {
+        "code": "BNC",
+        "name": "Bengaluru Cant"
+      },
+      "arrivalTime": "13:00",
+      "duration": "7h 45m",
+      "distance": "581 km",
+      "halts": 8,
+      "classes": ["CC", "EC"],
+      "slug": "20671-mdu-bnc-vb-exp-chart-times",
+      "chartTimesUrl": "/chart-times/20671-mdu-bnc-vb-exp-chart-times",
+      "foodMenuSlug": "mas-mys-vande-bharat-express-20671",
+      "foodMenuUrl": "/irctc-train-food-menu/mas-mys-vande-bharat-express-20671",
+      "trainDetailUrl": "/trains/20671-madurai-bengaluru-cant-vande-bharat-express"
     },
     {
       "trainNumber": "20672",
@@ -671,9 +815,9 @@
       "classes": ["CC", "EC"],
       "slug": "20672-mdu-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20672-mdu-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20672"
+      "foodMenuSlug": "mdu-vande-bharat-20672",
+      "foodMenuUrl": "/irctc-train-food-menu/mdu-vande-bharat-20672",
+      "trainDetailUrl": "/trains/20672-bengaluru-cant-madurai-vande-bharat-express"
     },
     {
       "trainNumber": "20673",
@@ -697,7 +841,7 @@
       "chartTimesUrl": "/chart-times/20673-pune-vandebharat-chart-times",
       "foodMenuSlug": "mmct-gnc-vande-bharat-express-20673",
       "foodMenuUrl": "/irctc-train-food-menu/mmct-gnc-vande-bharat-express-20673",
-      "trainDetailUrl": "/trains/20673"
+      "trainDetailUrl": "/trains/20673-c-shahumharaj-t-pune-vande-bharat-express"
     },
     {
       "trainNumber": "20674",
@@ -719,9 +863,9 @@
       "classes": ["CC", "EC"],
       "slug": "20674-kop-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20674-kop-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20674"
+      "foodMenuSlug": "kop-vandebharat-20674",
+      "foodMenuUrl": "/irctc-train-food-menu/kop-vandebharat-20674",
+      "trainDetailUrl": "/trains/20674-pune-c-shahumharaj-t-vande-bharat-express"
     },
     {
       "trainNumber": "20677",
@@ -745,7 +889,7 @@
       "chartTimesUrl": "/chart-times/20677-ns-vande-bharat-chart-times",
       "foodMenuSlug": "mas-ns-mas-vande-bharat-express-20677",
       "foodMenuUrl": "/irctc-train-food-menu/mas-ns-mas-vande-bharat-express-20677",
-      "trainDetailUrl": "/trains/20677"
+      "trainDetailUrl": "/trains/20677-mgr-chennai-ctl-narasapur-vande-bharat-express"
     },
     {
       "trainNumber": "20678",
@@ -767,9 +911,9 @@
       "classes": ["CC", "EC"],
       "slug": "20678-mas-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20678-mas-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20678"
+      "foodMenuSlug": "mas-vandebharat-20678",
+      "foodMenuUrl": "/irctc-train-food-menu/mas-vandebharat-20678",
+      "trainDetailUrl": "/trains/20678-narasapur-mgr-chennai-ctl-vande-bharat-express"
     },
     {
       "trainNumber": "20701",
@@ -793,7 +937,7 @@
       "chartTimesUrl": "/chart-times/20701-tpty-vandebharat-chart-times",
       "foodMenuSlug": "sc-tpty-vande-bharat-express-20701",
       "foodMenuUrl": "/irctc-train-food-menu/sc-tpty-vande-bharat-express-20701",
-      "trainDetailUrl": "/trains/20701"
+      "trainDetailUrl": "/trains/20701-secunderabad-tirupati-vande-bharat-express"
     },
     {
       "trainNumber": "20702",
@@ -815,9 +959,9 @@
       "classes": ["CC", "EC"],
       "slug": "20702-sc-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20702-sc-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20702"
+      "foodMenuSlug": "sc-vande-bharat-20702",
+      "foodMenuUrl": "/irctc-train-food-menu/sc-vande-bharat-20702",
+      "trainDetailUrl": "/trains/20702-tirupati-secunderabad-vande-bharat-express"
     },
     {
       "trainNumber": "20703",
@@ -841,7 +985,7 @@
       "chartTimesUrl": "/chart-times/20703-ypr-vandebharat-chart-times",
       "foodMenuSlug": "kcg-ypr-vande-bharat-express-20703",
       "foodMenuUrl": "/irctc-train-food-menu/kcg-ypr-vande-bharat-express-20703",
-      "trainDetailUrl": "/trains/20703"
+      "trainDetailUrl": "/trains/20703-kacheguda-yesvantpur-vande-bharat-express"
     },
     {
       "trainNumber": "20704",
@@ -863,9 +1007,9 @@
       "classes": ["CC", "EC"],
       "slug": "20704-kcg-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20704-kcg-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20704"
+      "foodMenuSlug": "kcg-vande-bharat-20704",
+      "foodMenuUrl": "/irctc-train-food-menu/kcg-vande-bharat-20704",
+      "trainDetailUrl": "/trains/20704-yesvantpur-kacheguda-vande-bharat-express"
     },
     {
       "trainNumber": "20705",
@@ -889,7 +1033,7 @@
       "chartTimesUrl": "/chart-times/20705-csmt-vandebharat-chart-times",
       "foodMenuSlug": "csmt-j-vande-bharat-express-20705",
       "foodMenuUrl": "/irctc-train-food-menu/csmt-j-vande-bharat-express-20705",
-      "trainDetailUrl": "/trains/20705"
+      "trainDetailUrl": "/trains/20705-h-sahib-nanded-c-shivaji-mah-t-vande-bharat-express"
     },
     {
       "trainNumber": "20706",
@@ -911,9 +1055,9 @@
       "classes": ["CC", "EC"],
       "slug": "20706-ned-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20706-ned-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20706"
+      "foodMenuSlug": "ned-vandebharat-20706",
+      "foodMenuUrl": "/irctc-train-food-menu/ned-vandebharat-20706",
+      "trainDetailUrl": "/trains/20706-c-shivaji-mah-t-h-sahib-nanded-vande-bharat-express"
     },
     {
       "trainNumber": "20707",
@@ -937,7 +1081,7 @@
       "chartTimesUrl": "/chart-times/20707-vskp-vandebharat-chart-times",
       "foodMenuSlug": "sc-vskp-vande-bharat-express-20707",
       "foodMenuUrl": "/irctc-train-food-menu/sc-vskp-vande-bharat-express-20707",
-      "trainDetailUrl": "/trains/20707"
+      "trainDetailUrl": "/trains/20707-secunderabad-visakhapatnam-vande-bharat-express"
     },
     {
       "trainNumber": "20708",
@@ -959,9 +1103,9 @@
       "classes": ["CC", "EC"],
       "slug": "20708-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20708-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20708"
+      "foodMenuSlug": "vande-bharat-express-20708",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20708",
+      "trainDetailUrl": "/trains/20708-visakhapatnam-secunderabad-vande-bharat-express"
     },
     {
       "trainNumber": "20825",
@@ -985,7 +1129,7 @@
       "chartTimesUrl": "/chart-times/20825-vande-bharat-exp-chart-times",
       "foodMenuSlug": "bsp-ngp-vande-bharat-express-20825",
       "foodMenuUrl": "/irctc-train-food-menu/bsp-ngp-vande-bharat-express-20825",
-      "trainDetailUrl": "/trains/20825"
+      "trainDetailUrl": "/trains/20825-bilaspur-nagpur-vande-bharat-express"
     },
     {
       "trainNumber": "20826",
@@ -1007,9 +1151,9 @@
       "classes": ["CC", "EC"],
       "slug": "20826-bsp-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20826-bsp-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20826"
+      "foodMenuSlug": "bsp-vande-bharat-20826",
+      "foodMenuUrl": "/irctc-train-food-menu/bsp-vande-bharat-20826",
+      "trainDetailUrl": "/trains/20826-nagpur-bilaspur-vande-bharat-express"
     },
     {
       "trainNumber": "20829",
@@ -1033,7 +1177,7 @@
       "chartTimesUrl": "/chart-times/20829-vande-bharat-exp-chart-times",
       "foodMenuSlug": "sc-vskp-vande-bharat-express-20829",
       "foodMenuUrl": "/irctc-train-food-menu/sc-vskp-vande-bharat-express-20829",
-      "trainDetailUrl": "/trains/20829"
+      "trainDetailUrl": "/trains/20829-durg-visakhapatnam-vande-bharat-express"
     },
     {
       "trainNumber": "20830",
@@ -1055,9 +1199,9 @@
       "classes": ["CC", "EC"],
       "slug": "20830-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20830-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20830"
+      "foodMenuSlug": "vande-bharat-express-20830",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20830",
+      "trainDetailUrl": "/trains/20830-visakhapatnam-durg-vande-bharat-express"
     },
     {
       "trainNumber": "20833",
@@ -1081,7 +1225,7 @@
       "chartTimesUrl": "/chart-times/20833-vande-bharat-exp-chart-times",
       "foodMenuSlug": "vskp-sc-vande-bharat-express-20833",
       "foodMenuUrl": "/irctc-train-food-menu/vskp-sc-vande-bharat-express-20833",
-      "trainDetailUrl": "/trains/20833"
+      "trainDetailUrl": "/trains/20833-visakhapatnam-secunderabad-vande-bharat-express"
     },
     {
       "trainNumber": "20834",
@@ -1103,9 +1247,9 @@
       "classes": ["CC", "EC"],
       "slug": "20834-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/20834-vande-bharat-ex-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20834"
+      "foodMenuSlug": "vande-bharat-express-20834",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20834",
+      "trainDetailUrl": "/trains/20834-secunderabad-visakhapatnam-vande-bharat-express"
     },
     {
       "trainNumber": "20835",
@@ -1129,7 +1273,7 @@
       "chartTimesUrl": "/chart-times/20835-vande-bharat-exp-chart-times",
       "foodMenuSlug": "puri-rou-vande-bharat-express-20835",
       "foodMenuUrl": "/irctc-train-food-menu/puri-rou-vande-bharat-express-20835",
-      "trainDetailUrl": "/trains/20835"
+      "trainDetailUrl": "/trains/20835-rourkela-puri-vande-bharat-express"
     },
     {
       "trainNumber": "20836",
@@ -1151,9 +1295,9 @@
       "classes": ["CC", "EC"],
       "slug": "20836-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20836-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20836"
+      "foodMenuSlug": "vande-bharat-express-20836",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20836",
+      "trainDetailUrl": "/trains/20836-puri-rourkela-vande-bharat-express"
     },
     {
       "trainNumber": "20841",
@@ -1177,7 +1321,7 @@
       "chartTimesUrl": "/chart-times/20841-vande-bharat-exp-chart-times",
       "foodMenuSlug": "vskp-sc-vande-bharat-express-20841",
       "foodMenuUrl": "/irctc-train-food-menu/vskp-sc-vande-bharat-express-20841",
-      "trainDetailUrl": "/trains/20841"
+      "trainDetailUrl": "/trains/20841-bhubaneswar-visakhapatnam-vande-bharat-express"
     },
     {
       "trainNumber": "20842",
@@ -1199,9 +1343,9 @@
       "classes": ["CC", "EC"],
       "slug": "20842-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20842-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20842"
+      "foodMenuSlug": "vande-bharat-express-20842",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20842",
+      "trainDetailUrl": "/trains/20842-visakhapatnam-bhubaneswar-vande-bharat-express"
     },
     {
       "trainNumber": "20871",
@@ -1225,7 +1369,7 @@
       "chartTimesUrl": "/chart-times/20871-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-rou-vande-bharat-express-20871",
       "foodMenuUrl": "/irctc-train-food-menu/hwh-rou-vande-bharat-express-20871",
-      "trainDetailUrl": "/trains/20871"
+      "trainDetailUrl": "/trains/20871-howrah-rourkela-vande-bharat-express"
     },
     {
       "trainNumber": "20872",
@@ -1247,9 +1391,9 @@
       "classes": ["CC", "EC"],
       "slug": "20872-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20872-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20872"
+      "foodMenuSlug": "vande-bharat-express-20872",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20872",
+      "trainDetailUrl": "/trains/20872-rourkela-howrah-vande-bharat-express"
     },
     {
       "trainNumber": "20887",
@@ -1273,7 +1417,7 @@
       "chartTimesUrl": "/chart-times/20887-vande-bharat-exp-chart-times",
       "foodMenuSlug": "rnc-bsb-vande-bharat-express-20887",
       "foodMenuUrl": "/irctc-train-food-menu/rnc-bsb-vande-bharat-express-20887",
-      "trainDetailUrl": "/trains/20887"
+      "trainDetailUrl": "/trains/20887-ranchi-varanasi-vande-bharat-express"
     },
     {
       "trainNumber": "20888",
@@ -1295,9 +1439,9 @@
       "classes": ["CC", "EC"],
       "slug": "20888-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20888-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20888"
+      "foodMenuSlug": "vande-bharat-express-20888",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20888",
+      "trainDetailUrl": "/trains/20888-varanasi-ranchi-vande-bharat-express"
     },
     {
       "trainNumber": "20891",
@@ -1321,7 +1465,7 @@
       "chartTimesUrl": "/chart-times/20891-vande-bharat-exp-chart-times",
       "foodMenuSlug": "tata-bam-vande-bharat-express-20891",
       "foodMenuUrl": "/irctc-train-food-menu/tata-bam-vande-bharat-express-20891",
-      "trainDetailUrl": "/trains/20891"
+      "trainDetailUrl": "/trains/20891-tatanagar-brahmapur-vande-bharat-express"
     },
     {
       "trainNumber": "20892",
@@ -1343,9 +1487,9 @@
       "classes": ["CC", "EC"],
       "slug": "20892-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20892-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20892"
+      "foodMenuSlug": "vande-bharat-express-20892",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20892",
+      "trainDetailUrl": "/trains/20892-brahmapur-tatanagar-vande-bharat-express"
     },
     {
       "trainNumber": "20893",
@@ -1369,7 +1513,7 @@
       "chartTimesUrl": "/chart-times/20893-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-njp-vande-bharat-express-20893",
       "foodMenuUrl": "/irctc-train-food-menu/hwh-njp-vande-bharat-express-20893",
-      "trainDetailUrl": "/trains/20893"
+      "trainDetailUrl": "/trains/20893-tatanagar-patna-vande-bharat-express"
     },
     {
       "trainNumber": "20894",
@@ -1391,9 +1535,9 @@
       "classes": ["CC", "EC"],
       "slug": "20894-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20894-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20894"
+      "foodMenuSlug": "vande-bharat-express-20894",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20894",
+      "trainDetailUrl": "/trains/20894-patna-tatanagar-vande-bharat-express"
     },
     {
       "trainNumber": "20897",
@@ -1417,7 +1561,7 @@
       "chartTimesUrl": "/chart-times/20897-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-rnc-vande-bharat-express-20897",
       "foodMenuUrl": "/irctc-train-food-menu/hwh-rnc-vande-bharat-express-20897",
-      "trainDetailUrl": "/trains/20897"
+      "trainDetailUrl": "/trains/20897-howrah-ranchi-vande-bharat-express"
     },
     {
       "trainNumber": "20898",
@@ -1439,9 +1583,9 @@
       "classes": ["CC", "EC"],
       "slug": "20898-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20898-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20898"
+      "foodMenuSlug": "vande-bharat-express-20898",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20898",
+      "trainDetailUrl": "/trains/20898-ranchi-howrah-vande-bharat-express"
     },
     {
       "trainNumber": "20901",
@@ -1465,7 +1609,7 @@
       "chartTimesUrl": "/chart-times/20901-vande-bharat-exp-chart-times",
       "foodMenuSlug": "mmct-gnc-vande-bharat-express-20901",
       "foodMenuUrl": "/irctc-train-food-menu/mmct-gnc-vande-bharat-express-20901",
-      "trainDetailUrl": "/trains/20901"
+      "trainDetailUrl": "/trains/20901-mumbai-gandhinagar-cap-vande-bharat-express"
     },
     {
       "trainNumber": "20902",
@@ -1487,9 +1631,9 @@
       "classes": ["CC", "EC"],
       "slug": "20902-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20902-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20902"
+      "foodMenuSlug": "vande-bharat-express-20902",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20902",
+      "trainDetailUrl": "/trains/20902-gandhinagar-cap-mumbai-vande-bharat-express"
     },
     {
       "trainNumber": "20911",
@@ -1513,7 +1657,7 @@
       "chartTimesUrl": "/chart-times/20911-ngp-vandebharat-chart-times",
       "foodMenuSlug": "indb-ngp-vande-bharat-express-20911",
       "foodMenuUrl": "/irctc-train-food-menu/indb-ngp-vande-bharat-express-20911",
-      "trainDetailUrl": "/trains/20911"
+      "trainDetailUrl": "/trains/20911-indore-nagpur-vande-bharat-express"
     },
     {
       "trainNumber": "20912",
@@ -1535,9 +1679,9 @@
       "classes": ["CC", "EC"],
       "slug": "20912-indb-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/20912-indb-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20912"
+      "foodMenuSlug": "indb-vandebharat-20912",
+      "foodMenuUrl": "/irctc-train-food-menu/indb-vandebharat-20912",
+      "trainDetailUrl": "/trains/20912-nagpur-indore-vande-bharat-express"
     },
     {
       "trainNumber": "20977",
@@ -1561,7 +1705,7 @@
       "chartTimesUrl": "/chart-times/20977-cdg-vandebharat-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-20977",
       "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-20977",
-      "trainDetailUrl": "/trains/20977"
+      "trainDetailUrl": "/trains/20977-ajmer-chandigarh-vande-bharat-express"
     },
     {
       "trainNumber": "20978",
@@ -1583,9 +1727,9 @@
       "classes": ["CC", "EC"],
       "slug": "20978-vandebharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20978-vandebharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20978"
+      "foodMenuSlug": "vandebharat-express-20978",
+      "foodMenuUrl": "/irctc-train-food-menu/vandebharat-express-20978",
+      "trainDetailUrl": "/trains/20978-chandigarh-ajmer-vande-bharat-express"
     },
     {
       "trainNumber": "20979",
@@ -1609,7 +1753,7 @@
       "chartTimesUrl": "/chart-times/20979-vande-bharat-exp-chart-times",
       "foodMenuSlug": "udz-jp-vande-bharat-express-20979",
       "foodMenuUrl": "/irctc-train-food-menu/udz-jp-vande-bharat-express-20979",
-      "trainDetailUrl": "/trains/20979"
+      "trainDetailUrl": "/trains/20979-udaipur-jaipur-vande-bharat-express"
     },
     {
       "trainNumber": "20980",
@@ -1631,9 +1775,9 @@
       "classes": ["CC", "EC"],
       "slug": "20980-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/20980-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20980"
+      "foodMenuSlug": "vande-bharat-express-20980",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-20980",
+      "trainDetailUrl": "/trains/20980-jaipur-udaipur-vande-bharat-express"
     },
     {
       "trainNumber": "20981",
@@ -1657,7 +1801,7 @@
       "chartTimesUrl": "/chart-times/20981-agc-vande-bharat-chart-times",
       "foodMenuSlug": "udz-agc-vande-bharat-express-20981",
       "foodMenuUrl": "/irctc-train-food-menu/udz-agc-vande-bharat-express-20981",
-      "trainDetailUrl": "/trains/20981"
+      "trainDetailUrl": "/trains/20981-udaipur-agra-vande-bharat-express"
     },
     {
       "trainNumber": "20982",
@@ -1679,9 +1823,9 @@
       "classes": ["CC", "EC"],
       "slug": "20982-udz-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/20982-udz-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/20982"
+      "foodMenuSlug": "udz-vande-bharat-20982",
+      "foodMenuUrl": "/irctc-train-food-menu/udz-vande-bharat-20982",
+      "trainDetailUrl": "/trains/20982-agra-udaipur-vande-bharat-express"
     },
     {
       "trainNumber": "21893",
@@ -1705,7 +1849,7 @@
       "chartTimesUrl": "/chart-times/21893-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-njp-vande-bharat-express-21893",
       "foodMenuUrl": "/irctc-train-food-menu/hwh-njp-vande-bharat-express-21893",
-      "trainDetailUrl": "/trains/21893"
+      "trainDetailUrl": "/trains/21893-tatanagar-patna-vande-bharat-express"
     },
     {
       "trainNumber": "21894",
@@ -1727,9 +1871,9 @@
       "classes": ["CC", "EC"],
       "slug": "21894-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/21894-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/21894"
+      "foodMenuSlug": "vande-bharat-express-21894",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-21894",
+      "trainDetailUrl": "/trains/21894-patna-tatanagar-vande-bharat-express"
     },
     {
       "trainNumber": "21895",
@@ -1753,7 +1897,7 @@
       "chartTimesUrl": "/chart-times/21895-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-njp-vande-bharat-express-21895",
       "foodMenuUrl": "/irctc-train-food-menu/hwh-njp-vande-bharat-express-21895",
-      "trainDetailUrl": "/trains/21895"
+      "trainDetailUrl": "/trains/21895-tatanagar-patna-vande-bharat-express"
     },
     {
       "trainNumber": "21896",
@@ -1775,9 +1919,9 @@
       "classes": ["CC", "EC"],
       "slug": "21896-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/21896-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/21896"
+      "foodMenuSlug": "vande-bharat-express-21896",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-21896",
+      "trainDetailUrl": "/trains/21896-patna-tatanagar-vande-bharat-express"
     },
     {
       "trainNumber": "22223",
@@ -1801,7 +1945,7 @@
       "chartTimesUrl": "/chart-times/22223-snsi-vandebharat-chart-times",
       "foodMenuSlug": "csmt-snsi-vande-bharat-express-22223",
       "foodMenuUrl": "/irctc-train-food-menu/csmt-snsi-vande-bharat-express-22223",
-      "trainDetailUrl": "/trains/22223"
+      "trainDetailUrl": "/trains/22223-c-shivaji-mah-t-sainagar-shirdi-vande-bharat-express"
     },
     {
       "trainNumber": "22224",
@@ -1823,9 +1967,9 @@
       "classes": ["CC", "EC"],
       "slug": "22224-csmt-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/22224-csmt-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22224"
+      "foodMenuSlug": "csmt-vandebharat-22224",
+      "foodMenuUrl": "/irctc-train-food-menu/csmt-vandebharat-22224",
+      "trainDetailUrl": "/trains/22224-sainagar-shirdi-c-shivaji-mah-t-vande-bharat-express"
     },
     {
       "trainNumber": "22225",
@@ -1849,7 +1993,7 @@
       "chartTimesUrl": "/chart-times/22225-sur-vande-bharat-chart-times",
       "foodMenuSlug": "csmt-sur-vande-bharat-express-22225",
       "foodMenuUrl": "/irctc-train-food-menu/csmt-sur-vande-bharat-express-22225",
-      "trainDetailUrl": "/trains/22225"
+      "trainDetailUrl": "/trains/22225-c-shivaji-mah-t-solapur-vande-bharat-express"
     },
     {
       "trainNumber": "22226",
@@ -1871,9 +2015,9 @@
       "classes": ["CC", "EC"],
       "slug": "22226-csmt-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/22226-csmt-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22226"
+      "foodMenuSlug": "csmt-vandebharat-22226",
+      "foodMenuUrl": "/irctc-train-food-menu/csmt-vandebharat-22226",
+      "trainDetailUrl": "/trains/22226-solapur-c-shivaji-mah-t-vande-bharat-express"
     },
     {
       "trainNumber": "22227",
@@ -1897,7 +2041,7 @@
       "chartTimesUrl": "/chart-times/22227-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ghy-njp-vande-bharat-express-22227",
       "foodMenuUrl": "/irctc-train-food-menu/ghy-njp-vande-bharat-express-22227",
-      "trainDetailUrl": "/trains/22227"
+      "trainDetailUrl": "/trains/22227-new-jalpaiguri-guwahati-vande-bharat-express"
     },
     {
       "trainNumber": "22228",
@@ -1919,9 +2063,9 @@
       "classes": ["CC", "EC"],
       "slug": "22228-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22228-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22228"
+      "foodMenuSlug": "vande-bharat-express-22228",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22228",
+      "trainDetailUrl": "/trains/22228-guwahati-new-jalpaiguri-vande-bharat-express"
     },
     {
       "trainNumber": "22229",
@@ -1945,7 +2089,7 @@
       "chartTimesUrl": "/chart-times/22229-mao-vande-bharat-chart-times",
       "foodMenuSlug": "csmt-mao-vande-bharat-express-22229",
       "foodMenuUrl": "/irctc-train-food-menu/csmt-mao-vande-bharat-express-22229",
-      "trainDetailUrl": "/trains/22229"
+      "trainDetailUrl": "/trains/22229-c-shivaji-mah-t-madgaon-vande-bharat-express"
     },
     {
       "trainNumber": "22230",
@@ -1967,9 +2111,9 @@
       "classes": ["CC", "EC"],
       "slug": "22230-csmt-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/22230-csmt-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22230"
+      "foodMenuSlug": "csmt-vandebharat-22230",
+      "foodMenuUrl": "/irctc-train-food-menu/csmt-vandebharat-22230",
+      "trainDetailUrl": "/trains/22230-madgaon-c-shivaji-mah-t-vande-bharat-express"
     },
     {
       "trainNumber": "22231",
@@ -1993,7 +2137,7 @@
       "chartTimesUrl": "/chart-times/22231-smvb-vandebharat-chart-times",
       "foodMenuSlug": "klbg-smvb-vande-bharat-express-22231",
       "foodMenuUrl": "/irctc-train-food-menu/klbg-smvb-vande-bharat-express-22231",
-      "trainDetailUrl": "/trains/22231"
+      "trainDetailUrl": "/trains/22231-kalaburagi-smvt-bengaluru-vande-bharat-express"
     },
     {
       "trainNumber": "22232",
@@ -2015,9 +2159,9 @@
       "classes": ["CC", "EC"],
       "slug": "22232-klbg-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/22232-klbg-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22232"
+      "foodMenuSlug": "klbg-vandebharat-22232",
+      "foodMenuUrl": "/irctc-train-food-menu/klbg-vandebharat-22232",
+      "trainDetailUrl": "/trains/22232-smvt-bengaluru-kalaburagi-vande-bharat-express"
     },
     {
       "trainNumber": "22233",
@@ -2041,7 +2185,7 @@
       "chartTimesUrl": "/chart-times/22233-vande-bharat-exp-chart-times",
       "foodMenuSlug": "njp-pnbe-vande-bharat-express-22233",
       "foodMenuUrl": "/irctc-train-food-menu/njp-pnbe-vande-bharat-express-22233",
-      "trainDetailUrl": "/trains/22233"
+      "trainDetailUrl": "/trains/22233-new-jalpaiguri-patna-vande-bharat-express"
     },
     {
       "trainNumber": "22234",
@@ -2063,9 +2207,9 @@
       "classes": ["CC", "EC"],
       "slug": "22234-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22234-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22234"
+      "foodMenuSlug": "vande-bharat-express-22234",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22234",
+      "trainDetailUrl": "/trains/22234-patna-new-jalpaiguri-vande-bharat-express"
     },
     {
       "trainNumber": "22301",
@@ -2089,7 +2233,7 @@
       "chartTimesUrl": "/chart-times/22301-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-njp-vande-bharat-express-22301",
       "foodMenuUrl": "/irctc-train-food-menu/hwh-njp-vande-bharat-express-22301",
-      "trainDetailUrl": "/trains/22301"
+      "trainDetailUrl": "/trains/22301-howrah-new-jalpaiguri-vande-bharat-express"
     },
     {
       "trainNumber": "22302",
@@ -2111,9 +2255,9 @@
       "classes": ["CC", "EC"],
       "slug": "22302-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22302-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22302"
+      "foodMenuSlug": "vande-bharat-express-22302",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22302",
+      "trainDetailUrl": "/trains/22302-new-jalpaiguri-howrah-vande-bharat-express"
     },
     {
       "trainNumber": "22303",
@@ -2137,7 +2281,7 @@
       "chartTimesUrl": "/chart-times/22303-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-gaya-vande-bharat-express-22303",
       "foodMenuUrl": "/irctc-train-food-menu/hwh-gaya-vande-bharat-express-22303",
-      "trainDetailUrl": "/trains/22303"
+      "trainDetailUrl": "/trains/22303-howrah-gaya-vande-bharat-express"
     },
     {
       "trainNumber": "22304",
@@ -2159,9 +2303,9 @@
       "classes": ["CC", "EC"],
       "slug": "22304-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22304-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22304"
+      "foodMenuSlug": "vande-bharat-express-22304",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22304",
+      "trainDetailUrl": "/trains/22304-gaya-howrah-vande-bharat-express"
     },
     {
       "trainNumber": "22309",
@@ -2185,7 +2329,7 @@
       "chartTimesUrl": "/chart-times/22309-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-bgp-vande-bharat-express-22309",
       "foodMenuUrl": "/irctc-train-food-menu/hwh-bgp-vande-bharat-express-22309",
-      "trainDetailUrl": "/trains/22309"
+      "trainDetailUrl": "/trains/22309-howrah-jamalpur-vande-bharat-express"
     },
     {
       "trainNumber": "22310",
@@ -2207,9 +2351,9 @@
       "classes": ["CC", "EC"],
       "slug": "22310-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22310-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22310"
+      "foodMenuSlug": "vande-bharat-express-22310",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22310",
+      "trainDetailUrl": "/trains/22310-jamalpur-howrah-vande-bharat-express"
     },
     {
       "trainNumber": "22345",
@@ -2233,7 +2377,7 @@
       "chartTimesUrl": "/chart-times/22345-vande-bharat-exp-chart-times",
       "foodMenuSlug": "pnbe-gtnr-vande-bharat-express-22345",
       "foodMenuUrl": "/irctc-train-food-menu/pnbe-gtnr-vande-bharat-express-22345",
-      "trainDetailUrl": "/trains/22345"
+      "trainDetailUrl": "/trains/22345-patna-gomati-nagar-vande-bharat-express"
     },
     {
       "trainNumber": "22346",
@@ -2255,9 +2399,9 @@
       "classes": ["CC", "EC"],
       "slug": "22346-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22346-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22346"
+      "foodMenuSlug": "vande-bharat-express-22346",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22346",
+      "trainDetailUrl": "/trains/22346-gomati-nagar-patna-vande-bharat-express"
     },
     {
       "trainNumber": "22347",
@@ -2281,7 +2425,7 @@
       "chartTimesUrl": "/chart-times/22347-vande-bharat-exp-chart-times",
       "foodMenuSlug": "pnbe-hwh-vande-bharat-express-22347",
       "foodMenuUrl": "/irctc-train-food-menu/pnbe-hwh-vande-bharat-express-22347",
-      "trainDetailUrl": "/trains/22347"
+      "trainDetailUrl": "/trains/22347-howrah-patna-vande-bharat-express"
     },
     {
       "trainNumber": "22348",
@@ -2303,9 +2447,9 @@
       "classes": ["CC", "EC"],
       "slug": "22348-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22348-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22348"
+      "foodMenuSlug": "vande-bharat-express-22348",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22348",
+      "trainDetailUrl": "/trains/22348-patna-howrah-vande-bharat-express"
     },
     {
       "trainNumber": "22349",
@@ -2329,7 +2473,7 @@
       "chartTimesUrl": "/chart-times/22349-vande-bharat-exp-chart-times",
       "foodMenuSlug": "pnbe-rnc-vande-bharat-express-22349",
       "foodMenuUrl": "/irctc-train-food-menu/pnbe-rnc-vande-bharat-express-22349",
-      "trainDetailUrl": "/trains/22349"
+      "trainDetailUrl": "/trains/22349-patna-ranchi-vande-bharat-express"
     },
     {
       "trainNumber": "22350",
@@ -2351,9 +2495,9 @@
       "classes": ["CC", "EC"],
       "slug": "22350-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22350-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22350"
+      "foodMenuSlug": "vande-bharat-express-22350",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22350",
+      "trainDetailUrl": "/trains/22350-ranchi-patna-vande-bharat-express"
     },
     {
       "trainNumber": "22415",
@@ -2377,7 +2521,7 @@
       "chartTimesUrl": "/chart-times/22415-vande-bharat-exp-chart-times",
       "foodMenuSlug": "bsb-ndls-vande-bharat-express-22415",
       "foodMenuUrl": "/irctc-train-food-menu/bsb-ndls-vande-bharat-express-22415",
-      "trainDetailUrl": "/trains/22415"
+      "trainDetailUrl": "/trains/22415-varanasi-new-delhi-vande-bharat-express"
     },
     {
       "trainNumber": "22416",
@@ -2399,9 +2543,9 @@
       "classes": ["CC", "EC"],
       "slug": "22416-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22416-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22416"
+      "foodMenuSlug": "vande-bharat-express-22416",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22416",
+      "trainDetailUrl": "/trains/22416-new-delhi-varanasi-vande-bharat-express"
     },
     {
       "trainNumber": "22425",
@@ -2425,7 +2569,7 @@
       "chartTimesUrl": "/chart-times/22425-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ay-anvt-vande-bharat-express-22425",
       "foodMenuUrl": "/irctc-train-food-menu/ay-anvt-vande-bharat-express-22425",
-      "trainDetailUrl": "/trains/22425"
+      "trainDetailUrl": "/trains/22425-ayodhaya-cant-anand-vihar-trm-vande-bharat-express"
     },
     {
       "trainNumber": "22426",
@@ -2447,9 +2591,9 @@
       "classes": ["CC", "EC"],
       "slug": "22426-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22426-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22426"
+      "foodMenuSlug": "vande-bharat-express-22426",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22426",
+      "trainDetailUrl": "/trains/22426-anand-vihar-trm-ayodhaya-cant-vande-bharat-express"
     },
     {
       "trainNumber": "22435",
@@ -2473,7 +2617,7 @@
       "chartTimesUrl": "/chart-times/22435-vande-bharat-ex-chart-times",
       "foodMenuSlug": "ndls-bsb-vande-bharat-express-22435",
       "foodMenuUrl": "/irctc-train-food-menu/ndls-bsb-vande-bharat-express-22435",
-      "trainDetailUrl": "/trains/22435"
+      "trainDetailUrl": "/trains/22435-varanasi-new-delhi-vande-bharat-express"
     },
     {
       "trainNumber": "22436",
@@ -2495,9 +2639,9 @@
       "classes": ["CC", "EC"],
       "slug": "22436-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22436-vande-bharat-ex-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22436"
+      "foodMenuSlug": "vande-bharat-express-22436",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22436",
+      "trainDetailUrl": "/trains/22436-new-delhi-varanasi-vande-bharat-express"
     },
     {
       "trainNumber": "22439",
@@ -2521,7 +2665,7 @@
       "chartTimesUrl": "/chart-times/22439-vande-bharat-ex-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-22439",
       "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-22439",
-      "trainDetailUrl": "/trains/22439"
+      "trainDetailUrl": "/trains/22439-new-delhi-shri-mata-vaishno-devi-katra-vande-bharat-express"
     },
     {
       "trainNumber": "22440",
@@ -2543,9 +2687,9 @@
       "classes": ["CC", "EC"],
       "slug": "22440-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22440-vande-bharat-ex-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22440"
+      "foodMenuSlug": "vande-bharat-express-22440",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22440",
+      "trainDetailUrl": "/trains/22440-shri-mata-vaishno-devi-katra-new-delhi-vande-bharat-express"
     },
     {
       "trainNumber": "22447",
@@ -2569,7 +2713,7 @@
       "chartTimesUrl": "/chart-times/22447-vande-bharat-ex-chart-times",
       "foodMenuSlug": "aadr-ndls-vande-bharat-express-22447",
       "foodMenuUrl": "/irctc-train-food-menu/aadr-ndls-vande-bharat-express-22447",
-      "trainDetailUrl": "/trains/22447"
+      "trainDetailUrl": "/trains/22447-new-delhi-amb-andaura-vande-bharat-express"
     },
     {
       "trainNumber": "22448",
@@ -2591,9 +2735,9 @@
       "classes": ["CC", "EC"],
       "slug": "22448-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22448-vande-bharat-ex-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22448"
+      "foodMenuSlug": "vande-bharat-express-22448",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22448",
+      "trainDetailUrl": "/trains/22448-amb-andaura-new-delhi-vande-bharat-express"
     },
     {
       "trainNumber": "22457",
@@ -2617,7 +2761,7 @@
       "chartTimesUrl": "/chart-times/22457-vande-bharat-exp-chart-times",
       "foodMenuSlug": "anvt-ddn-vande-bharat-express-22457",
       "foodMenuUrl": "/irctc-train-food-menu/anvt-ddn-vande-bharat-express-22457",
-      "trainDetailUrl": "/trains/22457"
+      "trainDetailUrl": "/trains/22457-anand-vihar-trm-dehradun-vande-bharat-express"
     },
     {
       "trainNumber": "22458",
@@ -2639,9 +2783,9 @@
       "classes": ["CC", "EC"],
       "slug": "22458-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22458-vande-bharat-ex-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22458"
+      "foodMenuSlug": "vande-bharat-express-22458",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22458",
+      "trainDetailUrl": "/trains/22458-dehradun-anand-vihar-trm-vande-bharat-express"
     },
     {
       "trainNumber": "22469",
@@ -2665,7 +2809,7 @@
       "chartTimesUrl": "/chart-times/22469-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-22469",
       "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-22469",
-      "trainDetailUrl": "/trains/22469"
+      "trainDetailUrl": "/trains/22469-khajuraho-h-nizamuddin-vande-bharat-express"
     },
     {
       "trainNumber": "22470",
@@ -2687,9 +2831,9 @@
       "classes": ["CC", "EC"],
       "slug": "22470-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22470-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22470"
+      "foodMenuSlug": "vande-bharat-express-22470",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22470",
+      "trainDetailUrl": "/trains/22470-h-nizamuddin-khajuraho-vande-bharat-express"
     },
     {
       "trainNumber": "22477",
@@ -2713,7 +2857,7 @@
       "chartTimesUrl": "/chart-times/22477-vande-bharat-exp-chart-times",
       "foodMenuSlug": "svdk-ndls-vande-bharat-express-22477",
       "foodMenuUrl": "/irctc-train-food-menu/svdk-ndls-vande-bharat-express-22477",
-      "trainDetailUrl": "/trains/22477"
+      "trainDetailUrl": "/trains/22477-new-delhi-shri-mata-vaishno-devi-katra-vande-bharat-express"
     },
     {
       "trainNumber": "22478",
@@ -2735,9 +2879,9 @@
       "classes": ["CC", "EC"],
       "slug": "22478-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22478-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22478"
+      "foodMenuSlug": "vande-bharat-express-22478",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22478",
+      "trainDetailUrl": "/trains/22478-shri-mata-vaishno-devi-katra-new-delhi-vande-bharat-express"
     },
     {
       "trainNumber": "22487",
@@ -2761,7 +2905,7 @@
       "chartTimesUrl": "/chart-times/22487-vande-bharat-exp-chart-times",
       "foodMenuSlug": "asr-dli-vande-bharat-express-22487",
       "foodMenuUrl": "/irctc-train-food-menu/asr-dli-vande-bharat-express-22487",
-      "trainDetailUrl": "/trains/22487"
+      "trainDetailUrl": "/trains/22487-old-delhi-amritsar-vande-bharat-express"
     },
     {
       "trainNumber": "22488",
@@ -2783,9 +2927,9 @@
       "classes": ["CC", "EC"],
       "slug": "22488-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22488-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22488"
+      "foodMenuSlug": "vande-bharat-express-22488",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22488",
+      "trainDetailUrl": "/trains/22488-amritsar-old-delhi-vande-bharat-express"
     },
     {
       "trainNumber": "22489",
@@ -2809,7 +2953,7 @@
       "chartTimesUrl": "/chart-times/22489-vande-bharat-exp-chart-times",
       "foodMenuSlug": "mtc-lko-vande-bharat-express-22489",
       "foodMenuUrl": "/irctc-train-food-menu/mtc-lko-vande-bharat-express-22489",
-      "trainDetailUrl": "/trains/22489"
+      "trainDetailUrl": "/trains/22489-varanasi-meerut-vande-bharat-express"
     },
     {
       "trainNumber": "22490",
@@ -2831,9 +2975,9 @@
       "classes": ["CC", "EC"],
       "slug": "22490-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22490-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22490"
+      "foodMenuSlug": "vande-bharat-express-22490",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22490",
+      "trainDetailUrl": "/trains/22490-meerut-varanasi-vande-bharat-express"
     },
     {
       "trainNumber": "22499",
@@ -2857,7 +3001,7 @@
       "chartTimesUrl": "/chart-times/22499-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-22499",
       "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-22499",
-      "trainDetailUrl": "/trains/22499"
+      "trainDetailUrl": "/trains/22499-deoghar-varanasi-vande-bharat-express"
     },
     {
       "trainNumber": "22500",
@@ -2879,9 +3023,9 @@
       "classes": ["CC", "EC"],
       "slug": "22500-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/22500-vande-bharat-ex-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22500"
+      "foodMenuSlug": "vande-bharat-express-22500",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22500",
+      "trainDetailUrl": "/trains/22500-varanasi-deoghar-vande-bharat-express"
     },
     {
       "trainNumber": "22545",
@@ -2903,9 +3047,9 @@
       "classes": ["CC", "EC"],
       "slug": "22545-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22545-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22545"
+      "foodMenuSlug": "vande-bharat-express-22545",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22545",
+      "trainDetailUrl": "/trains/22545-lucknow-ne-dehradun-vande-bharat-express"
     },
     {
       "trainNumber": "22546",
@@ -2927,9 +3071,9 @@
       "classes": ["CC", "EC"],
       "slug": "22546-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22546-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22546"
+      "foodMenuSlug": "vande-bharat-express-22546",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22546",
+      "trainDetailUrl": "/trains/22546-dehradun-lucknow-ne-vande-bharat-express"
     },
     {
       "trainNumber": "22549",
@@ -2953,7 +3097,7 @@
       "chartTimesUrl": "/chart-times/22549-vande-bharat-exp-chart-times",
       "foodMenuSlug": "gkp-lko-vande-bharat-express-22549",
       "foodMenuUrl": "/irctc-train-food-menu/gkp-lko-vande-bharat-express-22549",
-      "trainDetailUrl": "/trains/22549"
+      "trainDetailUrl": "/trains/22549-gorakhpur-prayagraj-vande-bharat-express"
     },
     {
       "trainNumber": "22550",
@@ -2975,9 +3119,9 @@
       "classes": ["CC", "EC"],
       "slug": "22550-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22550-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22550"
+      "foodMenuSlug": "vande-bharat-express-22550",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22550",
+      "trainDetailUrl": "/trains/22550-prayagraj-gorakhpur-vande-bharat-express"
     },
     {
       "trainNumber": "22895",
@@ -3001,7 +3145,7 @@
       "chartTimesUrl": "/chart-times/22895-vande-bharat-exp-chart-times",
       "foodMenuSlug": "hwh-puri-vande-bharat-express-22895",
       "foodMenuUrl": "/irctc-train-food-menu/hwh-puri-vande-bharat-express-22895",
-      "trainDetailUrl": "/trains/22895"
+      "trainDetailUrl": "/trains/22895-howrah-puri-vande-bharat-express"
     },
     {
       "trainNumber": "22896",
@@ -3023,9 +3167,9 @@
       "classes": ["CC", "EC"],
       "slug": "22896-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22896-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22896"
+      "foodMenuSlug": "vande-bharat-express-22896",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22896",
+      "trainDetailUrl": "/trains/22896-puri-howrah-vande-bharat-express"
     },
     {
       "trainNumber": "22925",
@@ -3049,7 +3193,7 @@
       "chartTimesUrl": "/chart-times/22925-okha-vandebharat-chart-times",
       "foodMenuSlug": "adi-okha-vande-bharat-express-22925",
       "foodMenuUrl": "/irctc-train-food-menu/adi-okha-vande-bharat-express-22925",
-      "trainDetailUrl": "/trains/22925"
+      "trainDetailUrl": "/trains/22925-ahmedabad-okha-vande-bharat-express"
     },
     {
       "trainNumber": "22926",
@@ -3071,9 +3215,9 @@
       "classes": ["CC", "EC"],
       "slug": "22926-sbt-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/22926-sbt-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22926"
+      "foodMenuSlug": "adi-vande-bharat-22926",
+      "foodMenuUrl": "/irctc-train-food-menu/adi-vande-bharat-22926",
+      "trainDetailUrl": "/trains/22926-okha-ahmedabad-vande-bharat-express"
     },
     {
       "trainNumber": "22961",
@@ -3097,7 +3241,7 @@
       "chartTimesUrl": "/chart-times/22961-vande-bharat-exp-chart-times",
       "foodMenuSlug": "mmct-adi-vande-bharat-express-22961",
       "foodMenuUrl": "/irctc-train-food-menu/mmct-adi-vande-bharat-express-22961",
-      "trainDetailUrl": "/trains/22961"
+      "trainDetailUrl": "/trains/22961-mumbai-ahmedabad-vande-bharat-express"
     },
     {
       "trainNumber": "22962",
@@ -3119,9 +3263,9 @@
       "classes": ["CC", "EC"],
       "slug": "22962-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/22962-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/22962"
+      "foodMenuSlug": "vande-bharat-express-22962",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-22962",
+      "trainDetailUrl": "/trains/22962-ahmedabad-mumbai-vande-bharat-express"
     },
     {
       "trainNumber": "26101",
@@ -3145,7 +3289,7 @@
       "chartTimesUrl": "/chart-times/26101-ajni-vandebharat-chart-times",
       "foodMenuSlug": "mas-mdu-vande-bharat-express-26101",
       "foodMenuUrl": "/irctc-train-food-menu/mas-mdu-vande-bharat-express-26101",
-      "trainDetailUrl": "/trains/26101"
+      "trainDetailUrl": "/trains/26101-pune-ajni-vande-bharat-express"
     },
     {
       "trainNumber": "26102",
@@ -3167,9 +3311,9 @@
       "classes": ["CC", "EC"],
       "slug": "26102-pune-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/26102-pune-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26102"
+      "foodMenuSlug": "pune-vandebharat-26102",
+      "foodMenuUrl": "/irctc-train-food-menu/pune-vandebharat-26102",
+      "trainDetailUrl": "/trains/26102-ajni-pune-vande-bharat-express"
     },
     {
       "trainNumber": "26301",
@@ -3191,9 +3335,9 @@
       "classes": ["CC", "EC"],
       "slug": "26301-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26301-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26301"
+      "foodMenuSlug": "vande-bharat-express-26301",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26301",
+      "trainDetailUrl": "/trains/26301-jogbani-danapur-vande-bharat-express"
     },
     {
       "trainNumber": "26302",
@@ -3215,9 +3359,9 @@
       "classes": ["CC", "EC"],
       "slug": "26302-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26302-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26302"
+      "foodMenuSlug": "vande-bharat-express-26302",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26302",
+      "trainDetailUrl": "/trains/26302-danapur-jogbani-vande-bharat-express"
     },
     {
       "trainNumber": "26401",
@@ -3241,7 +3385,7 @@
       "chartTimesUrl": "/chart-times/26401-vande-bharat-exp-chart-times",
       "foodMenuSlug": "jat-sina-vande-bharat-express-26401",
       "foodMenuUrl": "/irctc-train-food-menu/jat-sina-vande-bharat-express-26401",
-      "trainDetailUrl": "/trains/26401"
+      "trainDetailUrl": "/trains/26401-jammu-tawi-srinagar-vande-bharat-express"
     },
     {
       "trainNumber": "26402",
@@ -3263,9 +3407,9 @@
       "classes": ["CC", "EC"],
       "slug": "26402-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26402-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26402"
+      "foodMenuSlug": "vande-bharat-express-26402",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26402",
+      "trainDetailUrl": "/trains/26402-srinagar-jammu-tawi-vande-bharat-express"
     },
     {
       "trainNumber": "26403",
@@ -3289,7 +3433,7 @@
       "chartTimesUrl": "/chart-times/26403-vande-bharat-exp-chart-times",
       "foodMenuSlug": "jat-sina-vande-bharat-express-26403",
       "foodMenuUrl": "/irctc-train-food-menu/jat-sina-vande-bharat-express-26403",
-      "trainDetailUrl": "/trains/26403"
+      "trainDetailUrl": "/trains/26403-jammu-tawi-srinagar-vande-bharat-express"
     },
     {
       "trainNumber": "26404",
@@ -3311,9 +3455,9 @@
       "classes": ["CC", "EC"],
       "slug": "26404-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26404-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26404"
+      "foodMenuSlug": "vande-bharat-express-26404",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26404",
+      "trainDetailUrl": "/trains/26404-srinagar-jammu-tawi-vande-bharat-express"
     },
     {
       "trainNumber": "26405",
@@ -3335,9 +3479,9 @@
       "classes": ["CC", "EC"],
       "slug": "26405-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26405-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26405"
+      "foodMenuSlug": "vande-bharat-express-26405",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26405",
+      "trainDetailUrl": "/trains/26405-amritsar-shri-mata-vaishno-devi-katra-vande-bharat-express"
     },
     {
       "trainNumber": "26406",
@@ -3359,9 +3503,9 @@
       "classes": ["CC", "EC"],
       "slug": "26406-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26406-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26406"
+      "foodMenuSlug": "vande-bharat-express-26406",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26406",
+      "trainDetailUrl": "/trains/26406-shri-mata-vaishno-devi-katra-amritsar-vande-bharat-express"
     },
     {
       "trainNumber": "26461",
@@ -3385,7 +3529,7 @@
       "chartTimesUrl": "/chart-times/26461-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-26461",
       "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-26461",
-      "trainDetailUrl": "/trains/26461"
+      "trainDetailUrl": "/trains/26461-old-delhi-firozpur-cant-vande-bharat-express"
     },
     {
       "trainNumber": "26462",
@@ -3407,9 +3551,9 @@
       "classes": ["CC", "EC"],
       "slug": "26462-vande-bharat-ex-chart-times",
       "chartTimesUrl": "/chart-times/26462-vande-bharat-ex-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26462"
+      "foodMenuSlug": "vande-bharat-express-26462",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26462",
+      "trainDetailUrl": "/trains/26462-firozpur-cant-old-delhi-vande-bharat-express"
     },
     {
       "trainNumber": "26471",
@@ -3433,7 +3577,7 @@
       "chartTimesUrl": "/chart-times/26471-dec-vande-bharat-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-26471",
       "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-26471",
-      "trainDetailUrl": "/trains/26471"
+      "trainDetailUrl": "/trains/26471-bikaner-delhi-vande-bharat-express"
     },
     {
       "trainNumber": "26472",
@@ -3455,9 +3599,9 @@
       "classes": ["CC", "EC"],
       "slug": "26472-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26472-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26472"
+      "foodMenuSlug": "vande-bharat-express-26472",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26472",
+      "trainDetailUrl": "/trains/26472-delhi-bikaner-vande-bharat-express"
     },
     {
       "trainNumber": "26481",
@@ -3481,7 +3625,7 @@
       "chartTimesUrl": "/chart-times/26481-dec-vandebharat-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-26481",
       "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-26481",
-      "trainDetailUrl": "/trains/26481"
+      "trainDetailUrl": "/trains/26481-jodhpur-delhi-vande-bharat-express"
     },
     {
       "trainNumber": "26482",
@@ -3503,9 +3647,9 @@
       "classes": ["CC", "EC"],
       "slug": "26482-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26482-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26482"
+      "foodMenuSlug": "vande-bharat-express-26482",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26482",
+      "trainDetailUrl": "/trains/26482-delhi-jodhpur-vande-bharat-express"
     },
     {
       "trainNumber": "26501",
@@ -3529,7 +3673,7 @@
       "chartTimesUrl": "/chart-times/26501-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ppta-gkp-ppta-vande-bharat-express-26501",
       "foodMenuUrl": "/irctc-train-food-menu/ppta-gkp-ppta-vande-bharat-express-26501",
-      "trainDetailUrl": "/trains/26501"
+      "trainDetailUrl": "/trains/26501-patliputra-gorakhpur-vande-bharat-express"
     },
     {
       "trainNumber": "26502",
@@ -3551,9 +3695,9 @@
       "classes": ["CC", "EC"],
       "slug": "26502-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26502-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26502"
+      "foodMenuSlug": "vande-bharat-express-26502",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26502",
+      "trainDetailUrl": "/trains/26502-gorakhpur-patliputra-vande-bharat-express"
     },
     {
       "trainNumber": "26503",
@@ -3577,7 +3721,7 @@
       "chartTimesUrl": "/chart-times/26503-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-26503",
       "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-26503",
-      "trainDetailUrl": "/trains/26503"
+      "trainDetailUrl": "/trains/26503-saharanpur-gomati-nagar-vande-bharat-express"
     },
     {
       "trainNumber": "26504",
@@ -3599,9 +3743,9 @@
       "classes": ["CC", "EC"],
       "slug": "26504-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26504-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26504"
+      "foodMenuSlug": "vande-bharat-express-26504",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26504",
+      "trainDetailUrl": "/trains/26504-gomati-nagar-saharanpur-vande-bharat-express"
     },
     {
       "trainNumber": "26505",
@@ -3625,7 +3769,7 @@
       "chartTimesUrl": "/chart-times/26505-vande-bharat-exp-chart-times",
       "foodMenuSlug": "ndls-svdk-vande-bharat-express-26505",
       "foodMenuUrl": "/irctc-train-food-menu/ndls-svdk-vande-bharat-express-26505",
-      "trainDetailUrl": "/trains/26505"
+      "trainDetailUrl": "/trains/26505-khajuraho-banaras-vande-bharat-express"
     },
     {
       "trainNumber": "26506",
@@ -3647,9 +3791,9 @@
       "classes": ["CC", "EC"],
       "slug": "26506-vande-bharat-exp-chart-times",
       "chartTimesUrl": "/chart-times/26506-vande-bharat-exp-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26506"
+      "foodMenuSlug": "vande-bharat-express-26506",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-express-26506",
+      "trainDetailUrl": "/trains/26506-banaras-khajuraho-vande-bharat-express"
     },
     {
       "trainNumber": "26651",
@@ -3673,7 +3817,7 @@
       "chartTimesUrl": "/chart-times/26651-ers-vandebharat-chart-times",
       "foodMenuSlug": "ers-sbc-vande-bharat-express-26651",
       "foodMenuUrl": "/irctc-train-food-menu/ers-sbc-vande-bharat-express-26651",
-      "trainDetailUrl": "/trains/26651"
+      "trainDetailUrl": "/trains/26651-ksr-bengaluru-ernakulam-vande-bharat-express"
     },
     {
       "trainNumber": "26652",
@@ -3695,9 +3839,9 @@
       "classes": ["CC", "EC"],
       "slug": "26652-sbc-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/26652-sbc-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26652"
+      "foodMenuSlug": "sbc-vande-bharat-26652",
+      "foodMenuUrl": "/irctc-train-food-menu/sbc-vande-bharat-26652",
+      "trainDetailUrl": "/trains/26652-ernakulam-ksr-bengaluru-vande-bharat-express"
     },
     {
       "trainNumber": "26751",
@@ -3721,7 +3865,7 @@
       "chartTimesUrl": "/chart-times/26751-sbc-vande-bharat-chart-times",
       "foodMenuSlug": "bgm-sbc-vande-bharat-train-26751",
       "foodMenuUrl": "/irctc-train-food-menu/bgm-sbc-vande-bharat-train-26751",
-      "trainDetailUrl": "/trains/26751"
+      "trainDetailUrl": "/trains/26751-belagavi-ksr-bengaluru-vande-bharat-express"
     },
     {
       "trainNumber": "26752",
@@ -3743,9 +3887,9 @@
       "classes": ["CC", "EC"],
       "slug": "26752-bgm-vande-bharat-chart-times",
       "chartTimesUrl": "/chart-times/26752-bgm-vande-bharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26752"
+      "foodMenuSlug": "bgm-vande-bharat-26752",
+      "foodMenuUrl": "/irctc-train-food-menu/bgm-vande-bharat-26752",
+      "trainDetailUrl": "/trains/26752-ksr-bengaluru-belagavi-vande-bharat-express"
     },
     {
       "trainNumber": "26901",
@@ -3769,7 +3913,7 @@
       "chartTimesUrl": "/chart-times/26901-vrl-vandebharat-chart-times",
       "foodMenuSlug": "sbib-vrl-sbib-vande-bharat-express-26901",
       "foodMenuUrl": "/irctc-train-food-menu/sbib-vrl-sbib-vande-bharat-express-26901",
-      "trainDetailUrl": "/trains/26901"
+      "trainDetailUrl": "/trains/26901-sabarmati-veraval-vande-bharat-express"
     },
     {
       "trainNumber": "26902",
@@ -3791,9 +3935,105 @@
       "classes": ["CC", "EC"],
       "slug": "26902-sbib-vandebharat-chart-times",
       "chartTimesUrl": "/chart-times/26902-sbib-vandebharat-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/26902"
+      "foodMenuSlug": "sbib-vandebharat-26902",
+      "foodMenuUrl": "/irctc-train-food-menu/sbib-vandebharat-26902",
+      "trainDetailUrl": "/trains/26902-veraval-sabarmati-vande-bharat-express"
+    },
+    {
+      "trainNumber": "26963",
+      "trainName": "Udaipur City - Asarva Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "UDZ",
+        "name": "Udaipur City"
+      },
+      "departureTime": "06:10",
+      "destinationStation": {
+        "code": "ASV",
+        "name": "Asarva Jn"
+      },
+      "arrivalTime": "10:25",
+      "duration": "4h 15m",
+      "distance": "296 km",
+      "halts": 6,
+      "classes": ["CC", "EC"],
+      "slug": "26963-udz-asv-vb-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26963-udz-asv-vb-exp-chart-times",
+      "foodMenuSlug": "udz-asvadi-udz-vande-bharat-express-26963",
+      "foodMenuUrl": "/irctc-train-food-menu/udz-asvadi-udz-vande-bharat-express-26963",
+      "trainDetailUrl": "/trains/26963-udaipur-city-asarva-vande-bharat-express"
+    },
+    {
+      "trainNumber": "26964",
+      "trainName": "Asarva - Udaipur City Vande Bharat Express",
+      "trainType": "ChairCar",
+      "originStation": {
+        "code": "ASV",
+        "name": "Asarva Jn"
+      },
+      "departureTime": "17:45",
+      "destinationStation": {
+        "code": "UDZ",
+        "name": "Udaipur City"
+      },
+      "arrivalTime": "22:00",
+      "duration": "4h 15m",
+      "distance": "296 km",
+      "halts": 6,
+      "classes": ["CC", "EC"],
+      "slug": "26964-asv-udz-vb-exp-chart-times",
+      "chartTimesUrl": "/chart-times/26964-asv-udz-vb-exp-chart-times",
+      "foodMenuSlug": "asv-udz-vande-bharat-express-26964",
+      "foodMenuUrl": "/irctc-train-food-menu/asv-udz-vande-bharat-express-26964",
+      "trainDetailUrl": "/trains/26964-asarva-udaipur-city-vande-bharat-express"
+    },
+    {
+      "trainNumber": "27421",
+      "trainName": "Varanasi - New Delhi Vande Bharat Sleeper Express",
+      "trainType": "Sleeper",
+      "originStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "departureTime": "20:50",
+      "destinationStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "arrivalTime": "06:10",
+      "duration": "9h 20m",
+      "distance": "759 km",
+      "halts": 4,
+      "classes": ["3A", "2A", "1A", "Sleeper"],
+      "slug": "27421-varanasi-new-delhi-vande-bharat-sleeper-express-chart-times",
+      "chartTimesUrl": "/chart-times/27421-varanasi-new-delhi-vande-bharat-sleeper-express-chart-times",
+      "foodMenuSlug": "bsb-ndls-vande-bharat-sleeper-express-27421",
+      "foodMenuUrl": "/irctc-train-food-menu/bsb-ndls-vande-bharat-sleeper-express-27421",
+      "trainDetailUrl": "/trains/27421-varanasi-new-delhi-vande-bharat-sleeper-express"
+    },
+    {
+      "trainNumber": "27422",
+      "trainName": "New Delhi - Varanasi Vande Bharat Sleeper Express",
+      "trainType": "Sleeper",
+      "originStation": {
+        "code": "NDLS",
+        "name": "New Delhi"
+      },
+      "departureTime": "21:40",
+      "destinationStation": {
+        "code": "BSB",
+        "name": "Varanasi Jn"
+      },
+      "arrivalTime": "07:10",
+      "duration": "9h 30m",
+      "distance": "759 km",
+      "halts": 4,
+      "classes": ["3A", "2A", "1A", "Sleeper"],
+      "slug": "27422-new-delhi-varanasi-vande-bharat-sleeper-express-chart-times",
+      "chartTimesUrl": "/chart-times/27422-new-delhi-varanasi-vande-bharat-sleeper-express-chart-times",
+      "foodMenuSlug": "ndls-bsb-vande-bharat-sleeper-express-27422",
+      "foodMenuUrl": "/irctc-train-food-menu/ndls-bsb-vande-bharat-sleeper-express-27422",
+      "trainDetailUrl": "/trains/27422-new-delhi-varanasi-vande-bharat-sleeper-express"
     },
     {
       "trainNumber": "27575",
@@ -3812,12 +4052,12 @@
       "duration": "14h 00m",
       "distance": "966 km",
       "halts": 15,
-      "classes": ["1A", "2A", "3A"],
+      "classes": ["3A", "2A", "1A", "Sleeper"],
       "slug": "27575-vande-bharat-sl-chart-times",
       "chartTimesUrl": "/chart-times/27575-vande-bharat-sl-chart-times",
       "foodMenuSlug": "hwh-kyq-vande-bharat-express-27575",
       "foodMenuUrl": "/irctc-train-food-menu/hwh-kyq-vande-bharat-express-27575",
-      "trainDetailUrl": "/trains/27575"
+      "trainDetailUrl": "/trains/27575-howrah-kamakhya-vande-bharat-sleeper-express"
     },
     {
       "trainNumber": "27576",
@@ -3836,12 +4076,60 @@
       "duration": "14h 00m",
       "distance": "966 km",
       "halts": 15,
-      "classes": ["1A", "2A", "3A"],
+      "classes": ["3A", "2A", "1A", "Sleeper"],
       "slug": "27576-vande-bharat-sl-chart-times",
       "chartTimesUrl": "/chart-times/27576-vande-bharat-sl-chart-times",
-      "foodMenuSlug": null,
-      "foodMenuUrl": null,
-      "trainDetailUrl": "/trains/27576"
+      "foodMenuSlug": "vande-bharat-sl-27576",
+      "foodMenuUrl": "/irctc-train-food-menu/vande-bharat-sl-27576",
+      "trainDetailUrl": "/trains/27576-kamakhya-howrah-vande-bharat-sleeper-express"
+    },
+    {
+      "trainNumber": "27651",
+      "trainName": "Mumbai CSMT - SMVT Bengaluru Vande Bharat Sleeper Express",
+      "trainType": "Sleeper",
+      "originStation": {
+        "code": "CSMT",
+        "name": "Mumbai CSMT"
+      },
+      "departureTime": "20:10",
+      "destinationStation": {
+        "code": "SMVB",
+        "name": "SMVT Bengaluru"
+      },
+      "arrivalTime": "12:00",
+      "duration": "15h 50m",
+      "distance": "1200 km",
+      "halts": 10,
+      "classes": ["3A", "2A", "1A", "Sleeper"],
+      "slug": "27651-mumbai-csmt-smvt-bengaluru-vande-bharat-sleeper-express-chart-times",
+      "chartTimesUrl": "/chart-times/27651-mumbai-csmt-smvt-bengaluru-vande-bharat-sleeper-express-chart-times",
+      "foodMenuSlug": "csmt-smvb-vande-bharat-sleeper-express-27651",
+      "foodMenuUrl": "/irctc-train-food-menu/csmt-smvb-vande-bharat-sleeper-express-27651",
+      "trainDetailUrl": "/trains/27651-mumbai-csmt-smvt-bengaluru-vande-bharat-sleeper-express"
+    },
+    {
+      "trainNumber": "27652",
+      "trainName": "SMVT Bengaluru - Mumbai CSMT Vande Bharat Sleeper Express",
+      "trainType": "Sleeper",
+      "originStation": {
+        "code": "SMVB",
+        "name": "SMVT Bengaluru"
+      },
+      "departureTime": "19:45",
+      "destinationStation": {
+        "code": "CSMT",
+        "name": "Mumbai CSMT"
+      },
+      "arrivalTime": "11:55",
+      "duration": "16h 10m",
+      "distance": "1200 km",
+      "halts": 10,
+      "classes": ["3A", "2A", "1A", "Sleeper"],
+      "slug": "27652-smvt-bengaluru-mumbai-csmt-vande-bharat-sleeper-express-chart-times",
+      "chartTimesUrl": "/chart-times/27652-smvt-bengaluru-mumbai-csmt-vande-bharat-sleeper-express-chart-times",
+      "foodMenuSlug": "smvb-csmt-vande-bharat-sleeper-express-27652",
+      "foodMenuUrl": "/irctc-train-food-menu/smvb-csmt-vande-bharat-sleeper-express-27652",
+      "trainDetailUrl": "/trains/27652-smvt-bengaluru-mumbai-csmt-vande-bharat-sleeper-express"
     }
   ]
 }

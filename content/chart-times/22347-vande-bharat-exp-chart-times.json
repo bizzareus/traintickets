@@ -1,6 +1,6 @@
 {
   "trainNumber": "22347",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Howrah - Patna Vande Bharat Express",
   "originStation": "HWH",
   "destinationStation": "PNBE",
   "slug": "22347-vande-bharat-exp-chart-times",
@@ -149,7 +149,7 @@
       "chartRemoteStation": "JSME"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22347) is prepared at Howrah Jn (HWH) around 8:14 PM. 11 of 11 stations on the HWH to PNBE route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Howrah - Patna Vande Bharat Express (22347) is prepared at Howrah Jn (HWH) around 8:14 PM. 11 of 11 stations on the HWH to PNBE route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-22T20:31:04.518Z",
   "knownChartCount": 11
 }

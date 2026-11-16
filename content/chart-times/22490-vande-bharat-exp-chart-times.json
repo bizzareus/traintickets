@@ -1,6 +1,6 @@
 {
   "trainNumber": "22490",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Meerut - Varanasi Vande Bharat Express",
   "originStation": "MTC",
   "destinationStation": "BSB",
   "slug": "22490-vande-bharat-exp-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "MTC"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22490) is prepared at Meerut City (MTC) around 8 PM, with a second (vacancy) chart around 6:20 AM. 7 of 7 stations on the MTC to BSB route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Meerut - Varanasi Vande Bharat Express (22490) is prepared at Meerut City (MTC) around 8 PM, with a second (vacancy) chart around 6:20 AM. 7 of 7 stations on the MTC to BSB route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T02:06:57.005Z",
   "knownChartCount": 7
 }

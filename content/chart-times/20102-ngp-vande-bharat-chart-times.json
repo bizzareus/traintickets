@@ -1,6 +1,6 @@
 {
   "trainNumber": "20102",
-  "trainName": "Ngp Vande Bharat",
+  "trainName": "Secunderabad - Nagpur Vande Bharat Express",
   "originStation": "SC",
   "destinationStation": "NGP",
   "slug": "20102-ngp-vande-bharat-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "SC"
     }
   ],
-  "summary": "The first reservation chart for Ngp Vande Bharat (20102) is prepared at Secunderabad Jn (SC) around 7:30 PM. 9 of 9 stations on the SC to NGP route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Secunderabad - Nagpur Vande Bharat Express (20102) is prepared at Secunderabad Jn (SC) around 7:30 PM. 9 of 9 stations on the SC to NGP route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:28:43.251Z",
   "knownChartCount": 9
 }

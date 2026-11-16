@@ -1,6 +1,6 @@
 {
   "trainNumber": "22225",
-  "trainName": "Sur Vande Bharat",
+  "trainName": "C Shivaji Mah T - Solapur Vande Bharat Express",
   "originStation": "CSMT",
   "destinationStation": "SUR",
   "slug": "22225-sur-vande-bharat-chart-times",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "CSMT"
     }
   ],
-  "summary": "The first reservation chart for Sur Vande Bharat (22225) is prepared at C Shivaji Mah T (CSMT) around 7:08 AM, with a second (vacancy) chart around 9:15 PM. 8 of 8 stations on the CSMT to SUR route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for C Shivaji Mah T - Solapur Vande Bharat Express (22225) is prepared at C Shivaji Mah T (CSMT) around 7:08 AM, with a second (vacancy) chart around 9:15 PM. 8 of 8 stations on the CSMT to SUR route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-22T20:30:22.180Z",
   "knownChartCount": 8
 }

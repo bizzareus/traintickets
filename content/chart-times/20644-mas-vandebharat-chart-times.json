@@ -1,6 +1,6 @@
 {
   "trainNumber": "20644",
-  "trainName": "Mas Vandebharat",
+  "trainName": "Coimbatore - Mgr Chennai Ctl Vande Bharat Express",
   "originStation": "CBE",
   "destinationStation": "MAS",
   "slug": "20644-mas-vandebharat-chart-times",
@@ -71,7 +71,7 @@
       "chartRemoteStation": "CBE"
     }
   ],
-  "summary": "The first reservation chart for Mas Vandebharat (20644) is prepared at Coimbatore Jn (CBE) around 8:12 PM, with a second (vacancy) chart around 5:45 AM. 5 of 5 stations on the CBE to MAS route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Coimbatore - Mgr Chennai Ctl Vande Bharat Express (20644) is prepared at Coimbatore Jn (CBE) around 8:12 PM, with a second (vacancy) chart around 5:45 AM. 5 of 5 stations on the CBE to MAS route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:38:53.260Z",
   "knownChartCount": 5
 }

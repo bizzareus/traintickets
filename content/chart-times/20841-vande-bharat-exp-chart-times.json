@@ -1,6 +1,6 @@
 {
   "trainNumber": "20841",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Bhubaneswar - Visakhapatnam Vande Bharat Express",
   "originStation": "BBS",
   "destinationStation": "VSKP",
   "slug": "20841-vande-bharat-exp-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "BBS"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20841) is prepared at Bhubaneswar (BBS) around 6:50 PM, with a second (vacancy) chart around 6 AM. 9 of 9 stations on the BBS to VSKP route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Bhubaneswar - Visakhapatnam Vande Bharat Express (20841) is prepared at Bhubaneswar (BBS) around 6:50 PM, with a second (vacancy) chart around 6 AM. 9 of 9 stations on the BBS to VSKP route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:48:31.892Z",
   "knownChartCount": 9
 }

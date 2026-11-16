@@ -1,6 +1,6 @@
 {
   "trainNumber": "20628",
-  "trainName": "Ncj Ms Vb Exp",
+  "trainName": "Nagercoil - Chennai Egmore Vande Bharat Express",
   "originStation": "NCJ",
   "destinationStation": "MS",
   "slug": "20628-ncj-ms-vb-exp-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "NCJ"
     }
   ],
-  "summary": "The first reservation chart for Ncj Ms Vb Exp (20628) is prepared at Nagercoil Jn (NCJ) around 4:19 AM. 9 of 9 stations on the NCJ to MS route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Nagercoil - Chennai Egmore Vande Bharat Express (20628) is prepared at Nagercoil Jn (NCJ) around 4:19 AM. 9 of 9 stations on the NCJ to MS route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:37:40.191Z",
   "knownChartCount": 9
 }

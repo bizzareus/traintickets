@@ -1,6 +1,6 @@
 {
   "trainNumber": "26505",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Khajuraho - Banaras Vande Bharat Express",
   "originStation": "KURJ",
   "destinationStation": "BNRS",
   "slug": "26505-vande-bharat-exp-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "KURJ"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (26505) is prepared at KHAJURAHO (KURJ) around 9:37 PM, with a second (vacancy) chart around 8 PM. 7 of 7 stations on the KURJ to BNRS route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Khajuraho - Banaras Vande Bharat Express (26505) is prepared at KHAJURAHO (KURJ) around 9:37 PM, with a second (vacancy) chart around 8 PM. 7 of 7 stations on the KURJ to BNRS route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T06:11:52.128Z",
   "knownChartCount": 7
 }

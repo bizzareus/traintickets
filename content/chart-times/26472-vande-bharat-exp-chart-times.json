@@ -1,6 +1,6 @@
 {
   "trainNumber": "26472",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Delhi - Bikaner Vande Bharat Express",
   "originStation": "DEC",
   "destinationStation": "BKN",
   "slug": "26472-vande-bharat-exp-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "DEC"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (26472) is prepared at Delhi Cantt (DEC) around 8:45 AM. 9 of 9 stations on the DEC to BKN route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Delhi - Bikaner Vande Bharat Express (26472) is prepared at Delhi Cantt (DEC) around 8:45 AM. 9 of 9 stations on the DEC to BKN route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T06:11:21.927Z",
   "knownChartCount": 9
 }

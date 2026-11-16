@@ -1,6 +1,6 @@
 {
   "trainNumber": "22546",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Dehradun - Lucknow Ne Vande Bharat Express",
   "originStation": "DDN",
   "destinationStation": "LJN",
   "slug": "22546-vande-bharat-exp-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "DDN"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22546) is prepared at Dehradun (DDN) around 6:25 AM, with a second (vacancy) chart around 6:44 PM. 7 of 7 stations on the DDN to LJN route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Dehradun - Lucknow Ne Vande Bharat Express (22546) is prepared at Dehradun (DDN) around 6:25 AM, with a second (vacancy) chart around 6:44 PM. 7 of 7 stations on the DDN to LJN route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-22T20:35:15.043Z",
   "knownChartCount": 7
 }

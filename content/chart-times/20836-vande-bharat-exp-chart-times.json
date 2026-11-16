@@ -1,6 +1,6 @@
 {
   "trainNumber": "20836",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Puri - Rourkela Vande Bharat Express",
   "originStation": "PURI",
   "destinationStation": "ROU",
   "slug": "20836-vande-bharat-exp-chart-times",
@@ -149,7 +149,7 @@
       "chartRemoteStation": "PURI"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20836) is prepared at Puri (PURI) around 6:39 PM, with a second (vacancy) chart around 6:17 AM. 11 of 11 stations on the PURI to ROU route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Puri - Rourkela Vande Bharat Express (20836) is prepared at Puri (PURI) around 6:39 PM, with a second (vacancy) chart around 6:17 AM. 11 of 11 stations on the PURI to ROU route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:48:06.858Z",
   "knownChartCount": 11
 }

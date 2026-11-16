@@ -1,6 +1,6 @@
 {
   "trainNumber": "22302",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
   "originStation": "NJP",
   "destinationStation": "HWH",
   "slug": "22302-vande-bharat-exp-chart-times",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "MLDT"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22302) is prepared at New Jalpaiguri (NJP) around 9:27 PM. 6 of 6 stations on the NJP to HWH route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for New Jalpaiguri - Howrah Vande Bharat Express (22302) is prepared at New Jalpaiguri (NJP) around 9:27 PM. 6 of 6 stations on the NJP to HWH route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-22T20:30:24.304Z",
   "knownChartCount": 6
 }

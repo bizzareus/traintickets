@@ -1,6 +1,6 @@
 {
   "trainNumber": "20706",
-  "trainName": "Ned Vandebharat",
+  "trainName": "C Shivaji Mah T - H Sahib Nanded Vande Bharat Express",
   "originStation": "CSMT",
   "destinationStation": "NED",
   "slug": "20706-ned-vandebharat-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "CSMT"
     }
   ],
-  "summary": "The first reservation chart for Ned Vandebharat (20706) is prepared at C Shivaji Mah T (CSMT) around 8:29 PM, with a second (vacancy) chart around 6:30 PM. 10 of 10 stations on the CSMT to NED route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for C Shivaji Mah T - H Sahib Nanded Vande Bharat Express (20706) is prepared at C Shivaji Mah T (CSMT) around 8:29 PM, with a second (vacancy) chart around 6:30 PM. 10 of 10 stations on the CSMT to NED route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:43:35.060Z",
   "knownChartCount": 10
 }

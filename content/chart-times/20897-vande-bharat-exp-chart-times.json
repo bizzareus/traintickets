@@ -1,6 +1,6 @@
 {
   "trainNumber": "20897",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Howrah - Ranchi Vande Bharat Express",
   "originStation": "HWH",
   "destinationStation": "RNC",
   "slug": "20897-vande-bharat-exp-chart-times",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "HWH"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20897) is prepared at Howrah Jn (HWH) around 6:27 PM. 8 of 8 stations on the HWH to RNC route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Howrah - Ranchi Vande Bharat Express (20897) is prepared at Howrah Jn (HWH) around 6:27 PM. 8 of 8 stations on the HWH to RNC route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:51:28.831Z",
   "knownChartCount": 8
 }

@@ -1,6 +1,6 @@
 {
   "trainNumber": "20901",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Mumbai - Gandhinagar Cap Vande Bharat Express",
   "originStation": "MMCT",
   "destinationStation": "GNC",
   "slug": "20901-vande-bharat-exp-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "BRC"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20901) is prepared at Mumbai Central (MMCT) around 8:08 PM, with a second (vacancy) chart around 5:45 AM. 10 of 10 stations on the MMCT to GNC route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Mumbai - Gandhinagar Cap Vande Bharat Express (20901) is prepared at Mumbai Central (MMCT) around 8:08 PM, with a second (vacancy) chart around 5:45 AM. 10 of 10 stations on the MMCT to GNC route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-28T00:46:49.669Z",
   "knownChartCount": 10
 }

@@ -1,6 +1,6 @@
 {
   "trainNumber": "22309",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Howrah - Jamalpur Vande Bharat Express",
   "originStation": "HWH",
   "destinationStation": "JMP",
   "slug": "22309-vande-bharat-exp-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "RPH"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22309) is prepared at Howrah Jn (HWH) around 8:05 PM. 10 of 10 stations on the HWH to JMP route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Howrah - Jamalpur Vande Bharat Express (22309) is prepared at Howrah Jn (HWH) around 8:05 PM. 10 of 10 stations on the HWH to JMP route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:16:04.455Z",
   "knownChartCount": 10
 }

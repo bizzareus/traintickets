@@ -1,6 +1,6 @@
 {
   "trainNumber": "26461",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Old Delhi - Firozpur Cant Vande Bharat Express",
   "originStation": "DLI",
   "destinationStation": "FZR",
   "slug": "26461-vande-bharat-exp-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "DLI"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (26461) is prepared at Old Delhi (DLI) around 8 AM. 10 of 10 stations on the DLI to FZR route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Old Delhi - Firozpur Cant Vande Bharat Express (26461) is prepared at Old Delhi (DLI) around 8 AM. 10 of 10 stations on the DLI to FZR route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T05:53:53.604Z",
   "knownChartCount": 10
 }

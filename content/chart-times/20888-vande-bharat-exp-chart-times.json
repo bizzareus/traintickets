@@ -1,6 +1,6 @@
 {
   "trainNumber": "20888",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Varanasi - Ranchi Vande Bharat Express",
   "originStation": "BSB",
   "destinationStation": "RNC",
   "slug": "20888-vande-bharat-exp-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "BSB"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20888) is prepared at Varanasi Jn (BSB) around 10:37 PM. 10 of 10 stations on the BSB to RNC route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Varanasi - Ranchi Vande Bharat Express (20888) is prepared at Varanasi Jn (BSB) around 10:37 PM. 10 of 10 stations on the BSB to RNC route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:51:00.146Z",
   "knownChartCount": 10
 }

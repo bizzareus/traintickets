@@ -1,6 +1,6 @@
 {
   "trainNumber": "27576",
-  "trainName": "Vande Bharat Sl",
+  "trainName": "Kamakhya - Howrah Vande Bharat Sleeper Express",
   "originStation": "KYQ",
   "destinationStation": "HWH",
   "slug": "27576-vande-bharat-sl-chart-times",
@@ -201,7 +201,7 @@
       "chartRemoteStation": "NJP"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Sl (27576) is prepared at Kamakhya (KYQ) around 8:39 AM. 15 of 15 stations on the KYQ to HWH route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Kamakhya - Howrah Vande Bharat Sleeper Express (27576) is prepared at Kamakhya (KYQ) around 8:39 AM. 15 of 15 stations on the KYQ to HWH route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-22T20:48:57.551Z",
   "knownChartCount": 15
 }

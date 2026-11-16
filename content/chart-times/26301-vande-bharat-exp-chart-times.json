@@ -1,6 +1,6 @@
 {
   "trainNumber": "26301",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Jogbani - Danapur Vande Bharat Express",
   "originStation": "JBN",
   "destinationStation": "DNR",
   "slug": "26301-vande-bharat-exp-chart-times",
@@ -188,7 +188,7 @@
       "chartRemoteStation": "JBN"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (26301) is prepared at JOGBANI (JBN) around 5:34 PM, with a second (vacancy) chart around 10:18 AM. 14 of 14 stations on the JBN to DNR route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Jogbani - Danapur Vande Bharat Express (26301) is prepared at JOGBANI (JBN) around 5:34 PM, with a second (vacancy) chart around 10:18 AM. 14 of 14 stations on the JBN to DNR route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T05:53:24.082Z",
   "knownChartCount": 14
 }

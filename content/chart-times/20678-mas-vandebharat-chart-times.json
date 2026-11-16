@@ -1,6 +1,6 @@
 {
   "trainNumber": "20678",
-  "trainName": "Mas Vandebharat",
+  "trainName": "Narasapur - Mgr Chennai Ctl Vande Bharat Express",
   "originStation": "NS",
   "destinationStation": "MAS",
   "slug": "20678-mas-vandebharat-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "NS"
     }
   ],
-  "summary": "The first reservation chart for Mas Vandebharat (20678) is prepared at Narasapur (NS) around 4:41 AM. 9 of 9 stations on the NS to MAS route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Narasapur - Mgr Chennai Ctl Vande Bharat Express (20678) is prepared at Narasapur (NS) around 4:41 AM. 9 of 9 stations on the NS to MAS route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:41:35.599Z",
   "knownChartCount": 9
 }

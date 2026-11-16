@@ -1,6 +1,6 @@
 {
   "trainNumber": "20703",
-  "trainName": "Ypr Vandebharat",
+  "trainName": "Kacheguda - Yesvantpur Vande Bharat Express",
   "originStation": "KCG",
   "destinationStation": "YPR",
   "slug": "20703-ypr-vandebharat-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "KCG"
     }
   ],
-  "summary": "The first reservation chart for Ypr Vandebharat (20703) is prepared at Kacheguda (KCG) around 7:41 PM, with a second (vacancy) chart around 5:30 AM. 7 of 7 stations on the KCG to YPR route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Kacheguda - Yesvantpur Vande Bharat Express (20703) is prepared at Kacheguda (KCG) around 7:41 PM, with a second (vacancy) chart around 5:30 AM. 7 of 7 stations on the KCG to YPR route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:43:22.220Z",
   "knownChartCount": 7
 }

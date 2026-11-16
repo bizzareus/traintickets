@@ -1,6 +1,6 @@
 {
   "trainNumber": "20672",
-  "trainName": "Mdu Vande Bharat",
+  "trainName": "Bengaluru Cant - Madurai Vande Bharat Express",
   "originStation": "BNC",
   "destinationStation": "MDU",
   "slug": "20672-mdu-vande-bharat-chart-times",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "BNC"
     }
   ],
-  "summary": "The first reservation chart for Mdu Vande Bharat (20672) is prepared at Bengaluru Cant (BNC) around 9:09 PM. 8 of 8 stations on the BNC to MDU route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Bengaluru Cant - Madurai Vande Bharat Express (20672) is prepared at Bengaluru Cant (BNC) around 9:09 PM. 8 of 8 stations on the BNC to MDU route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:41:00.297Z",
   "knownChartCount": 8
 }

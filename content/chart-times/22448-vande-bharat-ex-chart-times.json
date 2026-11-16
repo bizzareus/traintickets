@@ -1,6 +1,6 @@
 {
   "trainNumber": "22448",
-  "trainName": "Vande Bharat Ex",
+  "trainName": "Amb  Andaura - New Delhi Vande Bharat Express",
   "originStation": "AADR",
   "destinationStation": "NDLS",
   "slug": "22448-vande-bharat-ex-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "UMB"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Ex (22448) is prepared at Amb  Andaura (AADR) around 8:54 PM. 7 of 7 stations on the AADR to NDLS route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Amb  Andaura - New Delhi Vande Bharat Express (22448) is prepared at Amb  Andaura (AADR) around 8:54 PM. 7 of 7 stations on the AADR to NDLS route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-22T20:32:52.694Z",
   "knownChartCount": 7
 }

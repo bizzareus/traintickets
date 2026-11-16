@@ -1,6 +1,6 @@
 {
   "trainNumber": "20892",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Brahmapur - Tatanagar Vande Bharat Express",
   "originStation": "BAM",
   "destinationStation": "TATA",
   "slug": "20892-vande-bharat-exp-chart-times",
@@ -149,7 +149,7 @@
       "chartRemoteStation": "BAM"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20892) is prepared at Brahmapur (BAM) around 7:03 PM, with a second (vacancy) chart around 5:30 AM. 11 of 11 stations on the BAM to TATA route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Brahmapur - Tatanagar Vande Bharat Express (20892) is prepared at Brahmapur (BAM) around 7:03 PM, with a second (vacancy) chart around 5:30 AM. 11 of 11 stations on the BAM to TATA route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:51:19.929Z",
   "knownChartCount": 11
 }

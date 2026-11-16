@@ -1,6 +1,6 @@
 {
   "trainNumber": "12461",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Jodhpur - Sabarmati Vande Bharat Express",
   "originStation": "JU",
   "destinationStation": "SBIB",
   "slug": "12461-vande-bharat-exp-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "JU"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (12461) is prepared at Jodhpur Jn (JU) around 9:22 PM, with a second (vacancy) chart around 5:50 AM. 7 of 7 stations on the JU to SBIB route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Jodhpur - Sabarmati Vande Bharat Express (12461) is prepared at Jodhpur Jn (JU) around 9:22 PM, with a second (vacancy) chart around 5:50 AM. 7 of 7 stations on the JU to SBIB route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-01T01:13:10.458Z",
   "knownChartCount": 7
 }

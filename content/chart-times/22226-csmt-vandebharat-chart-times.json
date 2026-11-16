@@ -1,6 +1,6 @@
 {
   "trainNumber": "22226",
-  "trainName": "Csmt Vandebharat",
+  "trainName": "Solapur - C Shivaji Mah T Vande Bharat Express",
   "originStation": "SUR",
   "destinationStation": "CSMT",
   "slug": "22226-csmt-vandebharat-chart-times",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "SUR"
     }
   ],
-  "summary": "The first reservation chart for Csmt Vandebharat (22226) is prepared at Solapur Jn (SUR) around 7:56 PM, with a second (vacancy) chart around 9:05 AM. 8 of 8 stations on the SUR to CSMT route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Solapur - C Shivaji Mah T Vande Bharat Express (22226) is prepared at Solapur Jn (SUR) around 7:56 PM, with a second (vacancy) chart around 9:05 AM. 8 of 8 stations on the SUR to CSMT route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:14:35.538Z",
   "knownChartCount": 8
 }

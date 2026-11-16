@@ -1,6 +1,6 @@
 {
   "trainNumber": "20912",
-  "trainName": "Indb Vandebharat",
+  "trainName": "Nagpur - Indore Vande Bharat Express",
   "originStation": "NGP",
   "destinationStation": "INDB",
   "slug": "20912-indb-vandebharat-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "NGP"
     }
   ],
-  "summary": "The first reservation chart for Indb Vandebharat (20912) is prepared at Nagpur (NGP) around 8:47 PM. 7 of 7 stations on the NGP to INDB route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Nagpur - Indore Vande Bharat Express (20912) is prepared at Nagpur (NGP) around 8:47 PM. 7 of 7 stations on the NGP to INDB route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:52:40.092Z",
   "knownChartCount": 7
 }

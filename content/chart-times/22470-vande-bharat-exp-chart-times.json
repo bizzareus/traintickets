@@ -1,6 +1,6 @@
 {
   "trainNumber": "22470",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "H Nizamuddin - Khajuraho Vande Bharat Express",
   "originStation": "NZM",
   "destinationStation": "KURJ",
   "slug": "22470-vande-bharat-exp-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "NZM"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22470) is prepared at H Nizamuddin (NZM) around 9:19 PM, with a second (vacancy) chart around 7:30 AM. 9 of 9 stations on the NZM to KURJ route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for H Nizamuddin - Khajuraho Vande Bharat Express (22470) is prepared at H Nizamuddin (NZM) around 9:19 PM, with a second (vacancy) chart around 7:30 AM. 9 of 9 stations on the NZM to KURJ route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T02:05:02.874Z",
   "knownChartCount": 9
 }

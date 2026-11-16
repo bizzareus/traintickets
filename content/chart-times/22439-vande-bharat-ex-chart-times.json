@@ -1,6 +1,6 @@
 {
   "trainNumber": "22439",
-  "trainName": "Vande Bharat Ex",
+  "trainName": "New Delhi - Shri Mata Vaishno Devi Katra Vande Bharat Express",
   "originStation": "NDLS",
   "destinationStation": "SVDK",
   "slug": "22439-vande-bharat-ex-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "NDLS"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Ex (22439) is prepared at New Delhi (NDLS) around 9:19 PM, with a second (vacancy) chart around 5:45 AM. 7 of 7 stations on the NDLS to SVDK route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for New Delhi - Shri Mata Vaishno Devi Katra Vande Bharat Express (22439) is prepared at New Delhi (NDLS) around 9:19 PM, with a second (vacancy) chart around 5:45 AM. 7 of 7 stations on the NDLS to SVDK route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:53:25.329Z",
   "knownChartCount": 7
 }

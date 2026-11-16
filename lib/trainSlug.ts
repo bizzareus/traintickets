@@ -1,6 +1,7 @@
 import { cache as reactCache } from "react";
 const cache = (reactCache as <T>(fn: T) => T) || ((fn) => fn);
 import { listChartTimesIndex, slugifyTrainName } from "./chartTimes";
+import vandeBharatData from "@/data/vande-bharat-trains.json";
 
 /**
  * Server-only helpers for SEO-friendly train detail URLs
@@ -40,6 +41,32 @@ export const getTrainIndex = cache((): Map<string, TrainIndexEntry> => {
       chartTimesSlug: t.slug,
     });
   }
+
+  // Authoritative full names and routes from the curated Vande Bharat catalog
+  for (const t of (
+    vandeBharatData as {
+      trains: Array<{
+        trainNumber: string;
+        trainName: string;
+        originStation: { code: string };
+        destinationStation: { code: string };
+        slug?: string;
+      }>;
+    }
+  ).trains) {
+    if (!t.trainNumber) continue;
+    const existing = map.get(String(t.trainNumber));
+    map.set(String(t.trainNumber), {
+      trainNumber: String(t.trainNumber),
+      trainName: t.trainName,
+      originStation: t.originStation?.code || existing?.originStation || "",
+      destinationStation:
+        t.destinationStation?.code || existing?.destinationStation || "",
+      chartTimesSlug:
+        existing?.chartTimesSlug || t.slug || `${t.trainNumber}-chart-times`,
+    });
+  }
+
   cachedTrainIndex = map;
   return map;
 });

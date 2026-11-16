@@ -1,6 +1,6 @@
 {
   "trainNumber": "20632",
-  "trainName": "Tvc Maq Vb Exp",
+  "trainName": "Thiruvananthapuram Central - Mangaluru Central Vande Bharat Express",
   "originStation": "TVC",
   "destinationStation": "MAQ",
   "slug": "20632-tvc-maq-vb-exp-chart-times",
@@ -149,7 +149,7 @@
       "chartRemoteStation": "TVC"
     }
   ],
-  "summary": "The first reservation chart for Tvc Maq Vb Exp (20632) is prepared at Trivandrum Cntl (TVC) around 6:04 AM, with a second (vacancy) chart around 11:33 PM. 11 of 11 stations on the TVC to MAQ route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Thiruvananthapuram Central - Mangaluru Central Vande Bharat Express (20632) is prepared at Trivandrum Cntl (TVC) around 6:04 AM, with a second (vacancy) chart around 11:33 PM. 11 of 11 stations on the TVC to MAQ route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-22T20:19:26.245Z",
   "knownChartCount": 11
 }

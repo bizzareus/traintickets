@@ -1,6 +1,6 @@
 {
   "trainNumber": "22487",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Old Delhi - Amritsar Vande Bharat Express",
   "originStation": "DLI",
   "destinationStation": "ASR",
   "slug": "22487-vande-bharat-exp-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "DLI"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22487) is prepared at Old Delhi (DLI) around 7:15 AM. 7 of 7 stations on the DLI to ASR route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Old Delhi - Amritsar Vande Bharat Express (22487) is prepared at Old Delhi (DLI) around 7:15 AM. 7 of 7 stations on the DLI to ASR route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T02:06:46.933Z",
   "knownChartCount": 7
 }

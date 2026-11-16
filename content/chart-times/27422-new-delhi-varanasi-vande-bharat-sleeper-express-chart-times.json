@@ -1,0 +1,65 @@
+{
+  "trainNumber": "27422",
+  "trainName": "New Delhi - Varanasi Vande Bharat Sleeper Express",
+  "originStation": "NDLS",
+  "destinationStation": "BSB",
+  "slug": "27422-new-delhi-varanasi-vande-bharat-sleeper-express-chart-times",
+  "stations": [
+    {
+      "stationCode": "NDLS",
+      "stationName": "New Delhi",
+      "arrivalTime": "",
+      "departureTime": "21:40",
+      "day": 1,
+      "distance": "0.0",
+      "chartTimeLocal": "17:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "CNB",
+      "stationName": "Kanpur Central",
+      "arrivalTime": "02:45",
+      "departureTime": "02:50",
+      "day": 2,
+      "distance": "440.0",
+      "chartTimeLocal": "17:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "PRYJ",
+      "stationName": "Prayagraj Jn",
+      "arrivalTime": "04:55",
+      "departureTime": "05:00",
+      "day": 2,
+      "distance": "635.0",
+      "chartTimeLocal": "17:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    },
+    {
+      "stationCode": "BSB",
+      "stationName": "Varanasi Jn",
+      "arrivalTime": "07:10",
+      "departureTime": "",
+      "day": 2,
+      "distance": "759.0",
+      "chartTimeLocal": "17:40",
+      "chartOneDayOffset": 0,
+      "chartTwoTimeLocal": "21:10",
+      "chartTwoDayOffset": 0,
+      "chartRemoteStation": "NDLS"
+    }
+  ],
+  "availableClasses": ["3A", "2A", "1A"],
+  "summary": "The first reservation chart for New Delhi - Varanasi Vande Bharat Sleeper Express (27422) is prepared at New Delhi (NDLS) around 5:40 PM, with a second (vacancy) chart around 9:10 PM. 4 of 4 stations on the NDLS to BSB route have published chart preparation times, listed station-by-station below.",
+  "generatedAt": "2026-11-17T00:00:00.000Z",
+  "knownChartCount": 4
+}

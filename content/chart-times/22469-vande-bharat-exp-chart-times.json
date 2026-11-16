@@ -1,6 +1,6 @@
 {
   "trainNumber": "22469",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Khajuraho - H Nizamuddin Vande Bharat Express",
   "originStation": "KURJ",
   "destinationStation": "NZM",
   "slug": "22469-vande-bharat-exp-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "KURJ"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22469) is prepared at KHAJURAHO (KURJ) around 9:44 PM. 9 of 9 stations on the KURJ to NZM route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Khajuraho - H Nizamuddin Vande Bharat Express (22469) is prepared at KHAJURAHO (KURJ) around 9:44 PM. 9 of 9 stations on the KURJ to NZM route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T02:05:00.069Z",
   "knownChartCount": 9
 }

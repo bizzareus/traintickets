@@ -1,6 +1,6 @@
 {
   "trainNumber": "26652",
-  "trainName": "Sbc Vande Bharat",
+  "trainName": "Ernakulam - KSR Bengaluru Vande Bharat Express",
   "originStation": "ERS",
   "destinationStation": "SBC",
   "slug": "26652-sbc-vande-bharat-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "ERS"
     }
   ],
-  "summary": "The first reservation chart for Sbc Vande Bharat (26652) is prepared at Ernakulam Jn (ERS) around 4:25 AM. 9 of 9 stations on the ERS to SBC route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Ernakulam - KSR Bengaluru Vande Bharat Express (26652) is prepared at Ernakulam Jn (ERS) around 4:25 AM. 9 of 9 stations on the ERS to SBC route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T06:20:36.894Z",
   "knownChartCount": 9
 }

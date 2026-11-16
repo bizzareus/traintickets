@@ -1,8 +1,8 @@
 {
   "trainNumber": "20671",
-  "trainName": "Mdu Bnc Vb Exp",
+  "trainName": "Madurai - Bengaluru Cant Vande Bharat Express",
   "originStation": "MDU",
-  "destinationStation": "SMVB",
+  "destinationStation": "BNC",
   "slug": "20671-mdu-bnc-vb-exp-chart-times",
   "stations": [
     {
@@ -97,12 +97,12 @@
       "chartRemoteStation": "MDU"
     },
     {
-      "stationCode": "SMVB",
-      "stationName": "Smvt Bengaluru",
+      "stationCode": "BNC",
+      "stationName": "Bengaluru Cant",
       "arrivalTime": "13:00",
       "departureTime": "",
       "day": 1,
-      "distance": "581.0",
+      "distance": "586.0",
       "chartTimeLocal": null,
       "chartOneDayOffset": null,
       "chartTwoTimeLocal": null,
@@ -110,7 +110,7 @@
       "chartRemoteStation": null
     }
   ],
-  "summary": "The first reservation chart for Mdu Bnc Vb Exp (20671) is prepared at Madurai Jn (MDU) around 7:16 PM, with a second (vacancy) chart around 5:45 AM. 7 of 8 stations on the MDU to SMVB route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
+  "summary": "The first reservation chart for Madurai - Bengaluru Cant Vande Bharat Express (20671) is prepared at Madurai Jn (MDU) around 7:16 PM, with a second (vacancy) chart around 5:45 AM. 7 of 8 stations on the MDU to BNC route have published chart preparation times, listed station-by-station below; the remaining stations update closer to departure.",
   "generatedAt": "2026-08-24T22:47:17.828Z",
   "knownChartCount": 7
 }

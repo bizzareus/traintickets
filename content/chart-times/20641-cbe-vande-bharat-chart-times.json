@@ -1,6 +1,6 @@
 {
   "trainNumber": "20641",
-  "trainName": "Cbe Vande Bharat",
+  "trainName": "Bengaluru Cant - Coimbatore Vande Bharat Express",
   "originStation": "BNC",
   "destinationStation": "CBE",
   "slug": "20641-cbe-vande-bharat-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "BNC"
     }
   ],
-  "summary": "The first reservation chart for Cbe Vande Bharat (20641) is prepared at Bengaluru Cant (BNC) around 5:01 AM, with a second (vacancy) chart around 7:15 PM. 7 of 7 stations on the BNC to CBE route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Bengaluru Cant - Coimbatore Vande Bharat Express (20641) is prepared at Bengaluru Cant (BNC) around 5:01 AM, with a second (vacancy) chart around 7:15 PM. 7 of 7 stations on the BNC to CBE route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:38:35.966Z",
   "knownChartCount": 7
 }

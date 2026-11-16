@@ -1,6 +1,6 @@
 {
   "trainNumber": "22962",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Ahmedabad - Mumbai Vande Bharat Express",
   "originStation": "ADI",
   "destinationStation": "MMCT",
   "slug": "22962-vande-bharat-exp-chart-times",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "VAPI"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22962) is prepared at Ahmedabad Jn (ADI) around 8:27 PM, with a second (vacancy) chart around 5:50 AM. 6 of 6 stations on the ADI to MMCT route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Ahmedabad - Mumbai Vande Bharat Express (22962) is prepared at Ahmedabad Jn (ADI) around 8:27 PM, with a second (vacancy) chart around 5:50 AM. 6 of 6 stations on the ADI to MMCT route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-22T20:46:19.481Z",
   "knownChartCount": 6
 }

@@ -1,6 +1,6 @@
 {
   "trainNumber": "22436",
-  "trainName": "Vande Bharat Ex",
+  "trainName": "New Delhi - Varanasi Vande Bharat Express",
   "originStation": "NDLS",
   "destinationStation": "BSB",
   "slug": "22436-vande-bharat-ex-chart-times",
@@ -58,7 +58,7 @@
       "chartRemoteStation": "NDLS"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Ex (22436) is prepared at New Delhi (NDLS) around 9:19 PM, with a second (vacancy) chart around 11:55 AM. 4 of 4 stations on the NDLS to BSB route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for New Delhi - Varanasi Vande Bharat Express (22436) is prepared at New Delhi (NDLS) around 9:19 PM, with a second (vacancy) chart around 11:55 AM. 4 of 4 stations on the NDLS to BSB route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:53:12.783Z",
   "knownChartCount": 4
 }

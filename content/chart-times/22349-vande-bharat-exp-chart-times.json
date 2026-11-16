@@ -1,6 +1,6 @@
 {
   "trainNumber": "22349",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Patna - Ranchi Vande Bharat Express",
   "originStation": "PNBE",
   "destinationStation": "RNC",
   "slug": "22349-vande-bharat-exp-chart-times",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "PNBE"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22349) is prepared at Patna Jn (PNBE) around 9:33 PM, with a second (vacancy) chart around 6:45 AM. 8 of 8 stations on the PNBE to RNC route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Patna - Ranchi Vande Bharat Express (22349) is prepared at Patna Jn (PNBE) around 9:33 PM, with a second (vacancy) chart around 6:45 AM. 8 of 8 stations on the PNBE to RNC route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:33:17.458Z",
   "knownChartCount": 8
 }

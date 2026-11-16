@@ -1,6 +1,6 @@
 {
   "trainNumber": "20825",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Bilaspur - Nagpur Vande Bharat Express",
   "originStation": "BSP",
   "destinationStation": "NGP",
   "slug": "20825-vande-bharat-exp-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "BSP"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20825) is prepared at Bilaspur Jn (BSP) around 7:37 PM. 7 of 7 stations on the BSP to NGP route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Bilaspur - Nagpur Vande Bharat Express (20825) is prepared at Bilaspur Jn (BSP) around 7:37 PM. 7 of 7 stations on the BSP to NGP route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:47:15.670Z",
   "knownChartCount": 7
 }

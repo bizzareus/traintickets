@@ -134,11 +134,13 @@ export default function TrainDetailClient({
   chartTimesSlug = null,
   localTrain = null,
   stationChartTimes = null,
+  foodMenuUrl = null,
 }: {
   initialTrainData: Train | null;
   chartTimesSlug?: string | null;
   localTrain?: LocalTrainMeta | null;
   stationChartTimes?: StationChartMap | null;
+  foodMenuUrl?: string | null;
 }) {
   const params = useParams();
   const [clientTrain, setClientTrain] = useState<Train | null>(null);
@@ -295,9 +297,31 @@ export default function TrainDetailClient({
     train?.trainName?.toLowerCase().includes("rajdhani") ?? false;
   const isVandeBharat =
     train?.trainName?.toLowerCase().includes("vande bharat") ?? false;
+  const isVandeBharatSleeper =
+    isVandeBharat &&
+    (train?.trainName?.toLowerCase().includes("sleeper") ||
+      train?.trainName?.toLowerCase().includes(" sl") ||
+      train?.trainNumber?.startsWith("27"));
 
-  const classes =
-    isShatabdi || isVandeBharat
+  const classes = isVandeBharatSleeper
+    ? [
+        {
+          code: "1A",
+          name: "First AC Sleeper",
+          desc: "Lockable 2-berth coupes & 4-berth cabins, onboard shower facility, attendant call bell, bundled gourmet meals",
+        },
+        {
+          code: "2A",
+          name: "AC 2-Tier Sleeper",
+          desc: "2-tier berths with magnetic privacy curtains, reading lights, USB-C ports, hot meals served",
+        },
+        {
+          code: "3A",
+          name: "AC 3-Tier Sleeper",
+          desc: "3-tier semi-high-speed berths with extra head clearance, individual charging points and packaged catering",
+        },
+      ]
+    : isShatabdi || isVandeBharat
       ? [
           {
             code: "EC",
@@ -346,6 +370,14 @@ export default function TrainDetailClient({
             },
           ];
 
+  const categoryHub = isVandeBharat
+    ? { name: "Vande Bharat Express", href: "/trains/vande-bharat" }
+    : isShatabdi
+      ? { name: "Shatabdi Express", href: "/trains/shatabdi" }
+      : isRajdhani
+        ? { name: "Rajdhani Express", href: "/trains/rajdhani" }
+        : { name: "Trains", href: "/chart-times" };
+
   const handleShare = async () => {
     if (typeof window === "undefined") return;
     const url = window.location.href;
@@ -378,7 +410,7 @@ export default function TrainDetailClient({
           train number or try again in a moment.
         </p>
         <Link
-          href="/search"
+          href="/trains/vande-bharat"
           className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
         >
           Browse All Trains
@@ -402,10 +434,10 @@ export default function TrainDetailClient({
           </Link>
           <span className="mx-2 text-slate-300">/</span>
           <Link
-            href="/search"
+            href={categoryHub.href}
             className="transition-colors hover:text-emerald-600"
           >
-            Trains
+            {categoryHub.name}
           </Link>
           <span className="mx-2 text-slate-300">/</span>
           <span className="max-w-[200px] truncate font-semibold text-slate-900 sm:max-w-xs">
@@ -1241,7 +1273,7 @@ export default function TrainDetailClient({
             </div>
           </div>
           <Link
-            href="/irctc-train-food-menu"
+            href={foodMenuUrl || "/irctc-train-food-menu"}
             className="shadow-2xs inline-flex shrink-0 items-center gap-1.5 self-start rounded-xl border border-amber-300 bg-white px-3.5 py-2 text-xs font-bold text-amber-800 transition-colors hover:bg-amber-50 sm:self-auto"
           >
             <span>View IRCTC Food Menu</span>
@@ -1390,7 +1422,9 @@ export default function TrainDetailClient({
             Plan around it:
           </span>
           <Link
-            href={chartTimesSlug ? `/chart-times/${chartTimesSlug}` : "/chart-times"}
+            href={
+              chartTimesSlug ? `/chart-times/${chartTimesSlug}` : "/chart-times"
+            }
             className="shadow-xs inline-flex items-center gap-1.5 rounded-lg border border-slate-200/90 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition-all hover:border-amber-500 hover:bg-amber-50 hover:text-amber-700"
           >
             <Timer className="h-3.5 w-3.5" />

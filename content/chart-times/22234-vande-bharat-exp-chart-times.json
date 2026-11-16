@@ -1,6 +1,6 @@
 {
   "trainNumber": "22234",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Patna - New Jalpaiguri Vande Bharat Express",
   "originStation": "PNBE",
   "destinationStation": "NJP",
   "slug": "22234-vande-bharat-exp-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "PNBE"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22234) is prepared at Patna Jn (PNBE) around 9:33 PM. 9 of 9 stations on the PNBE to NJP route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Patna - New Jalpaiguri Vande Bharat Express (22234) is prepared at Patna Jn (PNBE) around 9:33 PM. 9 of 9 stations on the PNBE to NJP route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:15:10.076Z",
   "knownChartCount": 9
 }

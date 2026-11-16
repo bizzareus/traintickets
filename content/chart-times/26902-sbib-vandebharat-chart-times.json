@@ -1,6 +1,6 @@
 {
   "trainNumber": "26902",
-  "trainName": "Sbib Vandebharat",
+  "trainName": "Veraval - Sabarmati Vande Bharat Express",
   "originStation": "VRL",
   "destinationStation": "SBIB",
   "slug": "26902-sbib-vandebharat-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "VRL"
     }
   ],
-  "summary": "The first reservation chart for Sbib Vandebharat (26902) is prepared at Veraval (VRL) around 9:23 PM, with a second (vacancy) chart around 7:43 PM. 7 of 7 stations on the VRL to SBIB route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Veraval - Sabarmati Vande Bharat Express (26902) is prepared at Veraval (VRL) around 9:23 PM, with a second (vacancy) chart around 7:43 PM. 7 of 7 stations on the VRL to SBIB route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T06:20:54.632Z",
   "knownChartCount": 7
 }

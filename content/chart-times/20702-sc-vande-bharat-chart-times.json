@@ -1,6 +1,6 @@
 {
   "trainNumber": "20702",
-  "trainName": "Sc Vande Bharat",
+  "trainName": "Tirupati - Secunderabad Vande Bharat Express",
   "originStation": "TPTY",
   "destinationStation": "SC",
   "slug": "20702-sc-vande-bharat-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "GNT"
     }
   ],
-  "summary": "The first reservation chart for Sc Vande Bharat (20702) is prepared at Tirupati (TPTY) around 5:16 AM. 7 of 7 stations on the TPTY to SC route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Tirupati - Secunderabad Vande Bharat Express (20702) is prepared at Tirupati (TPTY) around 5:16 AM. 7 of 7 stations on the TPTY to SC route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-22T20:20:24.523Z",
   "knownChartCount": 7
 }

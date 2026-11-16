@@ -1,6 +1,6 @@
 {
   "trainNumber": "22457",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Anand Vihar TRM - Dehradun Vande Bharat Express",
   "originStation": "ANVT",
   "destinationStation": "DDN",
   "slug": "22457-vande-bharat-exp-chart-times",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "ANVT"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22457) is prepared at Anand Vihar TRM (ANVT) around 9:50 AM, with a second (vacancy) chart around 9 PM. 8 of 8 stations on the ANVT to DDN route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Anand Vihar TRM - Dehradun Vande Bharat Express (22457) is prepared at Anand Vihar TRM (ANVT) around 9:50 AM, with a second (vacancy) chart around 9 PM. 8 of 8 stations on the ANVT to DDN route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T02:03:47.792Z",
   "knownChartCount": 8
 }

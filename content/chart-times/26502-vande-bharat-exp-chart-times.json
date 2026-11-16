@@ -1,6 +1,6 @@
 {
   "trainNumber": "26502",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Gorakhpur - Patliputra Vande Bharat Express",
   "originStation": "GKP",
   "destinationStation": "PPTA",
   "slug": "26502-vande-bharat-exp-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "GKP"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (26502) is prepared at Gorakhpur Jn (GKP) around 8:09 PM, with a second (vacancy) chart around 10:35 AM. 10 of 10 stations on the GKP to PPTA route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Gorakhpur - Patliputra Vande Bharat Express (26502) is prepared at Gorakhpur Jn (GKP) around 8:09 PM, with a second (vacancy) chart around 10:35 AM. 10 of 10 stations on the GKP to PPTA route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T06:11:38.644Z",
   "knownChartCount": 10
 }

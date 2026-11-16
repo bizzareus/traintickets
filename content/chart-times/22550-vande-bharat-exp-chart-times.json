@@ -1,6 +1,6 @@
 {
   "trainNumber": "22550",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Prayagraj. - Gorakhpur Vande Bharat Express",
   "originStation": "PRYJ",
   "destinationStation": "GKP",
   "slug": "22550-vande-bharat-exp-chart-times",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "PRYJ"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22550) is prepared at Prayagraj Jn. (PRYJ) around 10:01 PM. 6 of 6 stations on the PRYJ to GKP route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Prayagraj. - Gorakhpur Vande Bharat Express (22550) is prepared at Prayagraj Jn. (PRYJ) around 10:01 PM. 6 of 6 stations on the PRYJ to GKP route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-22T20:35:26.788Z",
   "knownChartCount": 6
 }

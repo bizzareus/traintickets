@@ -1,6 +1,6 @@
 {
   "trainNumber": "22426",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Anand Vihar TRM - Ayodhaya Cant Vande Bharat Express",
   "originStation": "ANVT",
   "destinationStation": "AYC",
   "slug": "22426-vande-bharat-exp-chart-times",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "ANVT"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22426) is prepared at Anand Vihar TRM (ANVT) around 9:26 PM, with a second (vacancy) chart around 5:55 AM. 6 of 6 stations on the ANVT to AYC route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Anand Vihar TRM - Ayodhaya Cant Vande Bharat Express (22426) is prepared at Anand Vihar TRM (ANVT) around 9:26 PM, with a second (vacancy) chart around 5:55 AM. 6 of 6 stations on the ANVT to AYC route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:52:11.735Z",
   "knownChartCount": 6
 }

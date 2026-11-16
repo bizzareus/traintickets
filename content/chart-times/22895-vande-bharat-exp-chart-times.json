@@ -1,6 +1,6 @@
 {
   "trainNumber": "22895",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Howrah - Puri Vande Bharat Express",
   "originStation": "HWH",
   "destinationStation": "PURI",
   "slug": "22895-vande-bharat-exp-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "HWH"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22895) is prepared at Howrah Jn (HWH) around 6:02 PM, with a second (vacancy) chart around 11:17 AM. 9 of 9 stations on the HWH to PURI route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Howrah - Puri Vande Bharat Express (22895) is prepared at Howrah Jn (HWH) around 6:02 PM, with a second (vacancy) chart around 11:17 AM. 9 of 9 stations on the HWH to PURI route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T03:09:11.545Z",
   "knownChartCount": 9
 }

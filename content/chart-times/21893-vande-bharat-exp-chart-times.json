@@ -1,6 +1,6 @@
 {
   "trainNumber": "21893",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Tatanagar - Patna Vande Bharat Express",
   "originStation": "TATA",
   "destinationStation": "PNBE",
   "slug": "21893-vande-bharat-exp-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "TATA"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (21893) is prepared at Tatanagar Jn (TATA) around 7:18 PM. 9 of 9 stations on the TATA to PNBE route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Tatanagar - Patna Vande Bharat Express (21893) is prepared at Tatanagar Jn (TATA) around 7:18 PM. 9 of 9 stations on the TATA to PNBE route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-22T20:26:39.859Z",
   "knownChartCount": 9
 }

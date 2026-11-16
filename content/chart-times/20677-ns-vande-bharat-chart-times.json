@@ -1,6 +1,6 @@
 {
   "trainNumber": "20677",
-  "trainName": "Ns Vande Bharat",
+  "trainName": "Mgr Chennai Ctl - Narasapur Vande Bharat Express",
   "originStation": "MAS",
   "destinationStation": "NS",
   "slug": "20677-ns-vande-bharat-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "MAS"
     }
   ],
-  "summary": "The first reservation chart for Ns Vande Bharat (20677) is prepared at Mgr Chennai Ctl (MAS) around 8:14 PM, with a second (vacancy) chart around 5:15 AM. 9 of 9 stations on the MAS to NS route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Mgr Chennai Ctl - Narasapur Vande Bharat Express (20677) is prepared at Mgr Chennai Ctl (MAS) around 8:14 PM, with a second (vacancy) chart around 5:15 AM. 9 of 9 stations on the MAS to NS route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:41:31.747Z",
   "knownChartCount": 9
 }

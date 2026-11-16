@@ -1,6 +1,6 @@
 {
   "trainNumber": "22925",
-  "trainName": "Okha Vandebharat",
+  "trainName": "Ahmedabad - Okha Vande Bharat Express",
   "originStation": "ADI",
   "destinationStation": "OKHA",
   "slug": "22925-okha-vandebharat-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "ADI"
     }
   ],
-  "summary": "The first reservation chart for Okha Vandebharat (22925) is prepared at Ahmedabad Jn (ADI) around 8:11 AM. 10 of 10 stations on the ADI to OKHA route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Ahmedabad - Okha Vande Bharat Express (22925) is prepared at Ahmedabad Jn (ADI) around 8:11 AM. 10 of 10 stations on the ADI to OKHA route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T03:52:45.613Z",
   "knownChartCount": 10
 }

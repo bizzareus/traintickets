@@ -1,6 +1,6 @@
 {
   "trainNumber": "22500",
-  "trainName": "Vande Bharat Ex",
+  "trainName": "Varanasi - Deoghar Vande Bharat Express",
   "originStation": "BSB",
   "destinationStation": "DGHR",
   "slug": "22500-vande-bharat-ex-chart-times",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "BSB"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Ex (22500) is prepared at Varanasi Jn (BSB) around 9:05 PM, with a second (vacancy) chart around 6:45 AM. 8 of 8 stations on the BSB to DGHR route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Varanasi - Deoghar Vande Bharat Express (22500) is prepared at Varanasi Jn (BSB) around 9:05 PM, with a second (vacancy) chart around 6:45 AM. 8 of 8 stations on the BSB to DGHR route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T02:07:38.860Z",
   "knownChartCount": 8
 }

@@ -1,6 +1,6 @@
 {
   "trainNumber": "20977",
-  "trainName": "Cdg Vandebharat",
+  "trainName": "Ajmer - Chandigarh Vande Bharat Express",
   "originStation": "AII",
   "destinationStation": "CDG",
   "slug": "20977-cdg-vandebharat-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "AII"
     }
   ],
-  "summary": "The first reservation chart for Cdg Vandebharat (20977) is prepared at Ajmer Jn (AII) around 9:26 PM, with a second (vacancy) chart around 6:17 AM. 10 of 10 stations on the AII to CDG route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Ajmer - Chandigarh Vande Bharat Express (20977) is prepared at Ajmer Jn (AII) around 9:26 PM, with a second (vacancy) chart around 6:17 AM. 10 of 10 stations on the AII to CDG route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:59:13.392Z",
   "knownChartCount": 10
 }

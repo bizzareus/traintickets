@@ -1,6 +1,6 @@
 {
   "trainNumber": "20634",
-  "trainName": "Kgq Vandebharat",
+  "trainName": "Trivandrum Cntl - Kasaragod Vande Bharat Express",
   "originStation": "TVC",
   "destinationStation": "KGQ",
   "slug": "20634-kgq-vandebharat-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "TVC"
     }
   ],
-  "summary": "The first reservation chart for Kgq Vandebharat (20634) is prepared at Trivandrum Cntl (TVC) around 7:34 PM, with a second (vacancy) chart around 11:50 AM. 10 of 10 stations on the TVC to KGQ route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Trivandrum Cntl - Kasaragod Vande Bharat Express (20634) is prepared at Trivandrum Cntl (TVC) around 7:34 PM, with a second (vacancy) chart around 11:50 AM. 10 of 10 stations on the TVC to KGQ route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:38:18.555Z",
   "knownChartCount": 10
 }

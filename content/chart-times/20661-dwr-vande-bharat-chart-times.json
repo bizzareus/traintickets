@@ -1,6 +1,6 @@
 {
   "trainNumber": "20661",
-  "trainName": "Dwr Vande Bharat",
+  "trainName": "KSR Bengaluru - Dharwar Vande Bharat Express",
   "originStation": "SBC",
   "destinationStation": "DWR",
   "slug": "20661-dwr-vande-bharat-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "SBC"
     }
   ],
-  "summary": "The first reservation chart for Dwr Vande Bharat (20661) is prepared at KSR Bengaluru (SBC) around 8:22 PM, with a second (vacancy) chart around 5:30 AM. 7 of 7 stations on the SBC to DWR route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for KSR Bengaluru - Dharwar Vande Bharat Express (20661) is prepared at KSR Bengaluru (SBC) around 8:22 PM, with a second (vacancy) chart around 5:30 AM. 7 of 7 stations on the SBC to DWR route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:40:10.252Z",
   "knownChartCount": 7
 }

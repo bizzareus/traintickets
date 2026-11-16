@@ -1,6 +1,6 @@
 {
   "trainNumber": "20666",
-  "trainName": "Ms Vande Bharat",
+  "trainName": "Tirunelveli - Chennai Egmore Vande Bharat Express",
   "originStation": "TEN",
   "destinationStation": "MS",
   "slug": "20666-ms-vande-bharat-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "TEN"
     }
   ],
-  "summary": "The first reservation chart for Ms Vande Bharat (20666) is prepared at Tirunelveli (TEN) around 8:36 PM, with a second (vacancy) chart around 5:45 AM. 10 of 10 stations on the TEN to MS route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Tirunelveli - Chennai Egmore Vande Bharat Express (20666) is prepared at Tirunelveli (TEN) around 8:36 PM, with a second (vacancy) chart around 5:45 AM. 10 of 10 stations on the TEN to MS route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:40:28.567Z",
   "knownChartCount": 10
 }

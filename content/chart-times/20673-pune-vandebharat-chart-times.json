@@ -1,6 +1,6 @@
 {
   "trainNumber": "20673",
-  "trainName": "Pune Vandebharat",
+  "trainName": "C Shahumharaj T - Pune Vande Bharat Express",
   "originStation": "KOP",
   "destinationStation": "PUNE",
   "slug": "20673-pune-vandebharat-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "KOP"
     }
   ],
-  "summary": "The first reservation chart for Pune Vandebharat (20673) is prepared at C SHAHUMHARAJ T (KOP) around 7:52 PM. 7 of 7 stations on the KOP to PUNE route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for C Shahumharaj T - Pune Vande Bharat Express (20673) is prepared at C SHAHUMHARAJ T (KOP) around 7:52 PM. 7 of 7 stations on the KOP to PUNE route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:41:03.915Z",
   "knownChartCount": 7
 }

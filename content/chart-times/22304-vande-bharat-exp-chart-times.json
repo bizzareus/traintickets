@@ -1,6 +1,6 @@
 {
   "trainNumber": "22304",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Gaya - Howrah Vande Bharat Express",
   "originStation": "GAYA",
   "destinationStation": "HWH",
   "slug": "22304-vande-bharat-exp-chart-times",
@@ -97,7 +97,7 @@
       "chartRemoteStation": "GAYA"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (22304) is prepared at Gaya Jn (GAYA) around 9:42 PM, with a second (vacancy) chart around 6:48 PM. 7 of 7 stations on the GAYA to HWH route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Gaya - Howrah Vande Bharat Express (22304) is prepared at Gaya Jn (GAYA) around 9:42 PM, with a second (vacancy) chart around 6:48 PM. 7 of 7 stations on the GAYA to HWH route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:15:26.994Z",
   "knownChartCount": 7
 }

@@ -1,6 +1,6 @@
 {
   "trainNumber": "22223",
-  "trainName": "Snsi Vandebharat",
+  "trainName": "C Shivaji Mah T - Sainagar Shirdi Vande Bharat Express",
   "originStation": "CSMT",
   "destinationStation": "SNSI",
   "slug": "22223-snsi-vandebharat-chart-times",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "CSMT"
     }
   ],
-  "summary": "The first reservation chart for Snsi Vandebharat (22223) is prepared at C Shivaji Mah T (CSMT) around 8:07 PM, with a second (vacancy) chart around 5:50 AM. 6 of 6 stations on the CSMT to SNSI route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for C Shivaji Mah T - Sainagar Shirdi Vande Bharat Express (22223) is prepared at C Shivaji Mah T (CSMT) around 8:07 PM, with a second (vacancy) chart around 5:50 AM. 6 of 6 stations on the CSMT to SNSI route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T01:14:17.895Z",
   "knownChartCount": 6
 }

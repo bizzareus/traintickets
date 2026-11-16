@@ -1,6 +1,6 @@
 {
   "trainNumber": "20665",
-  "trainName": "Ten Vandebharat",
+  "trainName": "Chennai Egmore - Tirunelveli Vande Bharat Express",
   "originStation": "MS",
   "destinationStation": "TEN",
   "slug": "20665-ten-vandebharat-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "MS"
     }
   ],
-  "summary": "The first reservation chart for Ten Vandebharat (20665) is prepared at Chennai Egmore (MS) around 5:11 AM. 10 of 10 stations on the MS to TEN route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Chennai Egmore - Tirunelveli Vande Bharat Express (20665) is prepared at Chennai Egmore (MS) around 5:11 AM. 10 of 10 stations on the MS to TEN route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:40:25.865Z",
   "knownChartCount": 10
 }

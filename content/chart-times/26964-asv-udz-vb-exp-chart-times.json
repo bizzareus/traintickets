@@ -1,6 +1,6 @@
 {
   "trainNumber": "26964",
-  "trainName": "Asv Udz Vb Exp",
+  "trainName": "Asarva - Udaipur City Vande Bharat Express",
   "originStation": "ASV",
   "destinationStation": "UDZ",
   "slug": "26964-asv-udz-vb-exp-chart-times",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "ASV"
     }
   ],
-  "summary": "The first reservation chart for Asv Udz Vb Exp (26964) is prepared at Asarva Jn (ASV) around 7:46 AM. 6 of 6 stations on the ASV to UDZ route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Asarva - Udaipur City Vande Bharat Express (26964) is prepared at Asarva Jn (ASV) around 7:46 AM. 6 of 6 stations on the ASV to UDZ route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T06:21:01.463Z",
   "knownChartCount": 6
 }

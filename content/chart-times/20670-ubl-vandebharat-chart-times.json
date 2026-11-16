@@ -1,6 +1,6 @@
 {
   "trainNumber": "20670",
-  "trainName": "Ubl Vandebharat",
+  "trainName": "Pune - SSS Hubballi Vande Bharat Express",
   "originStation": "PUNE",
   "destinationStation": "UBL",
   "slug": "20670-ubl-vandebharat-chart-times",
@@ -123,7 +123,7 @@
       "chartRemoteStation": "PUNE"
     }
   ],
-  "summary": "The first reservation chart for Ubl Vandebharat (20670) is prepared at Pune Jn (PUNE) around 8:29 PM. 9 of 9 stations on the PUNE to UBL route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Pune - SSS Hubballi Vande Bharat Express (20670) is prepared at Pune Jn (PUNE) around 8:29 PM. 9 of 9 stations on the PUNE to UBL route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:40:54.007Z",
   "knownChartCount": 9
 }

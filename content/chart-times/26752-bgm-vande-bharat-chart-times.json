@@ -1,6 +1,6 @@
 {
   "trainNumber": "26752",
-  "trainName": "Bgm Vande Bharat",
+  "trainName": "KSR Bengaluru - Belagavi Vande Bharat Express",
   "originStation": "SBC",
   "destinationStation": "BGM",
   "slug": "26752-bgm-vande-bharat-chart-times",
@@ -110,7 +110,7 @@
       "chartRemoteStation": "SBC"
     }
   ],
-  "summary": "The first reservation chart for Bgm Vande Bharat (26752) is prepared at KSR Bengaluru (SBC) around 5:51 AM. 8 of 8 stations on the SBC to BGM route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for KSR Bengaluru - Belagavi Vande Bharat Express (26752) is prepared at KSR Bengaluru (SBC) around 5:51 AM. 8 of 8 stations on the SBC to BGM route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T06:20:43.919Z",
   "knownChartCount": 8
 }

@@ -1,6 +1,6 @@
 {
   "trainNumber": "20830",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Visakhapatnam - Durg Vande Bharat Express",
   "originStation": "VSKP",
   "destinationStation": "DURG",
   "slug": "20830-vande-bharat-exp-chart-times",
@@ -149,7 +149,7 @@
       "chartRemoteStation": "VSKP"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20830) is prepared at Visakhapatnam (VSKP) around 8:18 PM, with a second (vacancy) chart around 8:07 PM. 11 of 11 stations on the VSKP to DURG route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Visakhapatnam - Durg Vande Bharat Express (20830) is prepared at Visakhapatnam (VSKP) around 8:18 PM, with a second (vacancy) chart around 8:07 PM. 11 of 11 stations on the VSKP to DURG route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:47:42.754Z",
   "knownChartCount": 11
 }

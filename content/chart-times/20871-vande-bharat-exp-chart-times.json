@@ -1,6 +1,6 @@
 {
   "trainNumber": "20871",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Howrah - Rourkela Vande Bharat Express",
   "originStation": "HWH",
   "destinationStation": "ROU",
   "slug": "20871-vande-bharat-exp-chart-times",
@@ -71,7 +71,7 @@
       "chartRemoteStation": "HWH"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (20871) is prepared at Howrah Jn (HWH) around 5:04 PM, with a second (vacancy) chart around 5:44 AM. 5 of 5 stations on the HWH to ROU route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Howrah - Rourkela Vande Bharat Express (20871) is prepared at Howrah Jn (HWH) around 5:04 PM, with a second (vacancy) chart around 5:44 AM. 5 of 5 stations on the HWH to ROU route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T00:50:50.693Z",
   "knownChartCount": 5
 }

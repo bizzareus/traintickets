@@ -1,6 +1,6 @@
 {
   "trainNumber": "26101",
-  "trainName": "Ajni Vandebharat",
+  "trainName": "Pune - Ajni Vande Bharat Express",
   "originStation": "PUNE",
   "destinationStation": "AJNI",
   "slug": "26101-ajni-vandebharat-chart-times",
@@ -162,7 +162,7 @@
       "chartRemoteStation": "PUNE"
     }
   ],
-  "summary": "The first reservation chart for Ajni Vandebharat (26101) is prepared at Pune Jn (PUNE) around 8:02 PM, with a second (vacancy) chart around 10:20 AM. 12 of 12 stations on the PUNE to AJNI route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Pune - Ajni Vande Bharat Express (26101) is prepared at Pune Jn (PUNE) around 8:02 PM, with a second (vacancy) chart around 10:20 AM. 12 of 12 stations on the PUNE to AJNI route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T05:53:15.931Z",
   "knownChartCount": 12
 }

@@ -1,6 +1,6 @@
 {
   "trainNumber": "26482",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Delhi - Jodhpur Vande Bharat Express",
   "originStation": "DEC",
   "destinationStation": "JU",
   "slug": "26482-vande-bharat-exp-chart-times",
@@ -149,7 +149,7 @@
       "chartRemoteStation": "DEC"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (26482) is prepared at Delhi Cantt (DEC) around 7:10 AM. 11 of 11 stations on the DEC to JU route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Delhi - Jodhpur Vande Bharat Express (26482) is prepared at Delhi Cantt (DEC) around 7:10 AM. 11 of 11 stations on the DEC to JU route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T06:11:30.257Z",
   "knownChartCount": 11
 }

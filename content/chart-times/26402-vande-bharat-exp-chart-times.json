@@ -1,6 +1,6 @@
 {
   "trainNumber": "26402",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Srinagar - Jammu Tawi Vande Bharat Express",
   "originStation": "SINA",
   "destinationStation": "JAT",
   "slug": "26402-vande-bharat-exp-chart-times",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "SINA"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (26402) is prepared at Srinagar (SINA) around 9:06 PM. 6 of 6 stations on the SINA to JAT route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Srinagar - Jammu Tawi Vande Bharat Express (26402) is prepared at Srinagar (SINA) around 9:06 PM. 6 of 6 stations on the SINA to JAT route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T05:53:35.731Z",
   "knownChartCount": 6
 }

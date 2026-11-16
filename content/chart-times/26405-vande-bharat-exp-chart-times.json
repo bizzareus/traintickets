@@ -1,6 +1,6 @@
 {
   "trainNumber": "26405",
-  "trainName": "Vande Bharat Exp",
+  "trainName": "Amritsar - Shri Mata Vaishno Devi Katra Vande Bharat Express",
   "originStation": "ASR",
   "destinationStation": "SVDK",
   "slug": "26405-vande-bharat-exp-chart-times",
@@ -84,7 +84,7 @@
       "chartRemoteStation": "ASR"
     }
   ],
-  "summary": "The first reservation chart for Vande Bharat Exp (26405) is prepared at Amritsar Jn (ASR) around 8:40 AM. 6 of 6 stations on the ASR to SVDK route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Amritsar - Shri Mata Vaishno Devi Katra Vande Bharat Express (26405) is prepared at Amritsar Jn (ASR) around 8:40 AM. 6 of 6 stations on the ASR to SVDK route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T05:53:45.884Z",
   "knownChartCount": 6
 }

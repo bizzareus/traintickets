@@ -1,6 +1,6 @@
 {
   "trainNumber": "22926",
-  "trainName": "Sbt Vande Bharat",
+  "trainName": "Okha - Ahmedabad Vande Bharat Express",
   "originStation": "OKHA",
   "destinationStation": "ADI",
   "slug": "22926-sbt-vande-bharat-chart-times",
@@ -136,7 +136,7 @@
       "chartRemoteStation": "OKHA"
     }
   ],
-  "summary": "The first reservation chart for Sbt Vande Bharat (22926) is prepared at Okha (OKHA) around 5:59 PM, with a second (vacancy) chart around 8:37 AM. 10 of 10 stations on the OKHA to ADI route have published chart preparation times, listed station-by-station below.",
+  "summary": "The first reservation chart for Okha - Ahmedabad Vande Bharat Express (22926) is prepared at Okha (OKHA) around 5:59 PM, with a second (vacancy) chart around 8:37 AM. 10 of 10 stations on the OKHA to ADI route have published chart preparation times, listed station-by-station below.",
   "generatedAt": "2026-08-06T03:52:48.659Z",
   "knownChartCount": 10
 }

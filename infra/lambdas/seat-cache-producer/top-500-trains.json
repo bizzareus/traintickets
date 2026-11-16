@@ -665,16 +665,16 @@
   },
   {
     "trainNumber": "20977",
-    "trainName": "Cdg Vandebharat",
-    "slug": "20977-cdg-vandebharat",
+    "trainName": "Ajmer - Chandigarh Vande Bharat Express",
+    "slug": "20977-ajmer-chandigarh-vande-bharat-express",
     "originStation": "AII",
     "destinationStation": "CDG",
     "chartTimesSlug": "20977-cdg-vandebharat-chart-times"
   },
   {
     "trainNumber": "20978",
-    "trainName": "Vandebharat Exp",
-    "slug": "20978-vandebharat-exp",
+    "trainName": "Chandigarh - Ajmer Vande Bharat Express",
+    "slug": "20978-chandigarh-ajmer-vande-bharat-express",
     "originStation": "CDG",
     "destinationStation": "AII",
     "chartTimesSlug": "20978-vandebharat-exp-chart-times"
@@ -697,8 +697,8 @@
   },
   {
     "trainNumber": "22439",
-    "trainName": "Vande Bharat Ex",
-    "slug": "22439-vande-bharat-ex",
+    "trainName": "New Delhi - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+    "slug": "22439-new-delhi-shri-mata-vaishno-devi-katra-vande-bharat-express",
     "originStation": "NDLS",
     "destinationStation": "SVDK",
     "chartTimesSlug": "22439-vande-bharat-ex-chart-times"
@@ -713,979 +713,1355 @@
   },
   {
     "trainNumber": "12461",
-    "trainName": "Vande Bharat Exp",
-    "slug": "12461-vande-bharat-exp",
+    "trainName": "Jodhpur - Sabarmati Vande Bharat Express",
+    "slug": "12461-jodhpur-sabarmati-vande-bharat-express",
     "originStation": "JU",
     "destinationStation": "SBIB",
     "chartTimesSlug": "12461-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "12462",
-    "trainName": "Ju Vande Bharat",
-    "slug": "12462-ju-vande-bharat",
+    "trainName": "Sabarmati - Jodhpur Vande Bharat Express",
+    "slug": "12462-sabarmati-jodhpur-vande-bharat-express",
     "originStation": "SBIB",
     "destinationStation": "JU",
     "chartTimesSlug": "12462-ju-vande-bharat-chart-times"
   },
   {
+    "trainNumber": "22223",
+    "trainName": "C Shivaji Mah T - Sainagar Shirdi Vande Bharat Express",
+    "slug": "22223-c-shivaji-mah-t-sainagar-shirdi-vande-bharat-express",
+    "originStation": "CSMT",
+    "destinationStation": "SNSI",
+    "chartTimesSlug": "22223-snsi-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "22224",
+    "trainName": "Sainagar Shirdi - C Shivaji Mah T Vande Bharat Express",
+    "slug": "22224-sainagar-shirdi-c-shivaji-mah-t-vande-bharat-express",
+    "originStation": "SNSI",
+    "destinationStation": "CSMT",
+    "chartTimesSlug": "22224-csmt-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "22225",
-    "trainName": "Sur Vande Bharat",
-    "slug": "22225-sur-vande-bharat",
+    "trainName": "C Shivaji Mah T - Solapur Vande Bharat Express",
+    "slug": "22225-c-shivaji-mah-t-solapur-vande-bharat-express",
     "originStation": "CSMT",
     "destinationStation": "SUR",
     "chartTimesSlug": "22225-sur-vande-bharat-chart-times"
   },
   {
+    "trainNumber": "22226",
+    "trainName": "Solapur - C Shivaji Mah T Vande Bharat Express",
+    "slug": "22226-solapur-c-shivaji-mah-t-vande-bharat-express",
+    "originStation": "SUR",
+    "destinationStation": "CSMT",
+    "chartTimesSlug": "22226-csmt-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "22227",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22227-vande-bharat-exp",
+    "trainName": "New Jalpaiguri - Guwahati Vande Bharat Express",
+    "slug": "22227-new-jalpaiguri-guwahati-vande-bharat-express",
     "originStation": "NJP",
     "destinationStation": "GHY",
     "chartTimesSlug": "22227-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22228",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22228-vande-bharat-exp",
+    "trainName": "Guwahati - New Jalpaiguri Vande Bharat Express",
+    "slug": "22228-guwahati-new-jalpaiguri-vande-bharat-express",
     "originStation": "GHY",
     "destinationStation": "NJP",
     "chartTimesSlug": "22228-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22229",
-    "trainName": "Mao Vande Bharat",
-    "slug": "22229-mao-vande-bharat",
+    "trainName": "C Shivaji Mah T - Madgaon Vande Bharat Express",
+    "slug": "22229-c-shivaji-mah-t-madgaon-vande-bharat-express",
     "originStation": "CSMT",
     "destinationStation": "MAO",
     "chartTimesSlug": "22229-mao-vande-bharat-chart-times"
   },
   {
+    "trainNumber": "22230",
+    "trainName": "Madgaon - C Shivaji Mah T Vande Bharat Express",
+    "slug": "22230-madgaon-c-shivaji-mah-t-vande-bharat-express",
+    "originStation": "MAO",
+    "destinationStation": "CSMT",
+    "chartTimesSlug": "22230-csmt-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "22231",
+    "trainName": "Kalaburagi - Smvt Bengaluru Vande Bharat Express",
+    "slug": "22231-kalaburagi-smvt-bengaluru-vande-bharat-express",
+    "originStation": "KLBG",
+    "destinationStation": "SMVB",
+    "chartTimesSlug": "22231-smvb-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "22232",
+    "trainName": "Smvt Bengaluru - Kalaburagi Vande Bharat Express",
+    "slug": "22232-smvt-bengaluru-kalaburagi-vande-bharat-express",
+    "originStation": "SMVB",
+    "destinationStation": "KLBG",
+    "chartTimesSlug": "22232-klbg-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "22233",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22233-vande-bharat-exp",
+    "trainName": "New Jalpaiguri - Patna Vande Bharat Express",
+    "slug": "22233-new-jalpaiguri-patna-vande-bharat-express",
     "originStation": "NJP",
     "destinationStation": "PNBE",
     "chartTimesSlug": "22233-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22234",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22234-vande-bharat-exp",
+    "trainName": "Patna - New Jalpaiguri Vande Bharat Express",
+    "slug": "22234-patna-new-jalpaiguri-vande-bharat-express",
     "originStation": "PNBE",
     "destinationStation": "NJP",
     "chartTimesSlug": "22234-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22301",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22301-vande-bharat-exp",
+    "trainName": "Howrah - New Jalpaiguri Vande Bharat Express",
+    "slug": "22301-howrah-new-jalpaiguri-vande-bharat-express",
     "originStation": "HWH",
     "destinationStation": "NJP",
     "chartTimesSlug": "22301-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22302",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22302-vande-bharat-exp",
+    "trainName": "New Jalpaiguri - Howrah Vande Bharat Express",
+    "slug": "22302-new-jalpaiguri-howrah-vande-bharat-express",
     "originStation": "NJP",
     "destinationStation": "HWH",
     "chartTimesSlug": "22302-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22303",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22303-vande-bharat-exp",
+    "trainName": "Howrah - Gaya Vande Bharat Express",
+    "slug": "22303-howrah-gaya-vande-bharat-express",
     "originStation": "HWH",
     "destinationStation": "GAYA",
     "chartTimesSlug": "22303-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22304",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22304-vande-bharat-exp",
+    "trainName": "Gaya - Howrah Vande Bharat Express",
+    "slug": "22304-gaya-howrah-vande-bharat-express",
     "originStation": "GAYA",
     "destinationStation": "HWH",
     "chartTimesSlug": "22304-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22309",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22309-vande-bharat-exp",
+    "trainName": "Howrah - Jamalpur Vande Bharat Express",
+    "slug": "22309-howrah-jamalpur-vande-bharat-express",
     "originStation": "HWH",
     "destinationStation": "JMP",
     "chartTimesSlug": "22309-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22310",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22310-vande-bharat-exp",
+    "trainName": "Jamalpur - Howrah Vande Bharat Express",
+    "slug": "22310-jamalpur-howrah-vande-bharat-express",
     "originStation": "JMP",
     "destinationStation": "HWH",
     "chartTimesSlug": "22310-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22345",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22345-vande-bharat-exp",
+    "trainName": "Patna - Gomati Nagar Vande Bharat Express",
+    "slug": "22345-patna-gomati-nagar-vande-bharat-express",
     "originStation": "PNBE",
     "destinationStation": "GTNR",
     "chartTimesSlug": "22345-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22346",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22346-vande-bharat-exp",
+    "trainName": "Gomati Nagar - Patna Vande Bharat Express",
+    "slug": "22346-gomati-nagar-patna-vande-bharat-express",
     "originStation": "GTNR",
     "destinationStation": "PNBE",
     "chartTimesSlug": "22346-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22347",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22347-vande-bharat-exp",
+    "trainName": "Howrah - Patna Vande Bharat Express",
+    "slug": "22347-howrah-patna-vande-bharat-express",
     "originStation": "HWH",
     "destinationStation": "PNBE",
     "chartTimesSlug": "22347-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22348",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22348-vande-bharat-exp",
+    "trainName": "Patna - Howrah Vande Bharat Express",
+    "slug": "22348-patna-howrah-vande-bharat-express",
     "originStation": "PNBE",
     "destinationStation": "HWH",
     "chartTimesSlug": "22348-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22349",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22349-vande-bharat-exp",
+    "trainName": "Patna - Ranchi Vande Bharat Express",
+    "slug": "22349-patna-ranchi-vande-bharat-express",
     "originStation": "PNBE",
     "destinationStation": "RNC",
     "chartTimesSlug": "22349-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22350",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22350-vande-bharat-exp",
+    "trainName": "Ranchi - Patna Vande Bharat Express",
+    "slug": "22350-ranchi-patna-vande-bharat-express",
     "originStation": "RNC",
     "destinationStation": "PNBE",
     "chartTimesSlug": "22350-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22415",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22415-vande-bharat-exp",
+    "trainName": "Varanasi - New Delhi Vande Bharat Express",
+    "slug": "22415-varanasi-new-delhi-vande-bharat-express",
     "originStation": "BSB",
     "destinationStation": "NDLS",
     "chartTimesSlug": "22415-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22416",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22416-vande-bharat-exp",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "slug": "22416-new-delhi-varanasi-vande-bharat-express",
     "originStation": "NDLS",
     "destinationStation": "BSB",
     "chartTimesSlug": "22416-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22425",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22425-vande-bharat-exp",
+    "trainName": "Ayodhaya Cant - Anand Vihar TRM Vande Bharat Express",
+    "slug": "22425-ayodhaya-cant-anand-vihar-trm-vande-bharat-express",
     "originStation": "AYC",
     "destinationStation": "ANVT",
     "chartTimesSlug": "22425-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22426",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22426-vande-bharat-exp",
+    "trainName": "Anand Vihar TRM - Ayodhaya Cant Vande Bharat Express",
+    "slug": "22426-anand-vihar-trm-ayodhaya-cant-vande-bharat-express",
     "originStation": "ANVT",
     "destinationStation": "AYC",
     "chartTimesSlug": "22426-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22435",
-    "trainName": "Vande Bharat Ex",
-    "slug": "22435-vande-bharat-ex",
+    "trainName": "Varanasi - New Delhi Vande Bharat Express",
+    "slug": "22435-varanasi-new-delhi-vande-bharat-express",
     "originStation": "BSB",
     "destinationStation": "NDLS",
     "chartTimesSlug": "22435-vande-bharat-ex-chart-times"
   },
   {
     "trainNumber": "22436",
-    "trainName": "Vande Bharat Ex",
-    "slug": "22436-vande-bharat-ex",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "slug": "22436-new-delhi-varanasi-vande-bharat-express",
     "originStation": "NDLS",
     "destinationStation": "BSB",
     "chartTimesSlug": "22436-vande-bharat-ex-chart-times"
   },
   {
     "trainNumber": "22440",
-    "trainName": "Vande Bharat Ex",
-    "slug": "22440-vande-bharat-ex",
+    "trainName": "Shri Mata Vaishno Devi Katra - New Delhi Vande Bharat Express",
+    "slug": "22440-shri-mata-vaishno-devi-katra-new-delhi-vande-bharat-express",
     "originStation": "SVDK",
     "destinationStation": "NDLS",
     "chartTimesSlug": "22440-vande-bharat-ex-chart-times"
   },
   {
     "trainNumber": "22447",
-    "trainName": "Vande Bharat Ex",
-    "slug": "22447-vande-bharat-ex",
+    "trainName": "New Delhi - Amb  Andaura Vande Bharat Express",
+    "slug": "22447-new-delhi-amb-andaura-vande-bharat-express",
     "originStation": "NDLS",
     "destinationStation": "AADR",
     "chartTimesSlug": "22447-vande-bharat-ex-chart-times"
   },
   {
     "trainNumber": "22448",
-    "trainName": "Vande Bharat Ex",
-    "slug": "22448-vande-bharat-ex",
+    "trainName": "Amb  Andaura - New Delhi Vande Bharat Express",
+    "slug": "22448-amb-andaura-new-delhi-vande-bharat-express",
     "originStation": "AADR",
     "destinationStation": "NDLS",
     "chartTimesSlug": "22448-vande-bharat-ex-chart-times"
   },
   {
     "trainNumber": "22457",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22457-vande-bharat-exp",
+    "trainName": "Anand Vihar TRM - Dehradun Vande Bharat Express",
+    "slug": "22457-anand-vihar-trm-dehradun-vande-bharat-express",
     "originStation": "ANVT",
     "destinationStation": "DDN",
     "chartTimesSlug": "22457-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22458",
-    "trainName": "Vande Bharat Ex",
-    "slug": "22458-vande-bharat-ex",
+    "trainName": "Dehradun - Anand Vihar TRM Vande Bharat Express",
+    "slug": "22458-dehradun-anand-vihar-trm-vande-bharat-express",
     "originStation": "DDN",
     "destinationStation": "ANVT",
     "chartTimesSlug": "22458-vande-bharat-ex-chart-times"
   },
   {
     "trainNumber": "22469",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22469-vande-bharat-exp",
+    "trainName": "Khajuraho - H Nizamuddin Vande Bharat Express",
+    "slug": "22469-khajuraho-h-nizamuddin-vande-bharat-express",
     "originStation": "KURJ",
     "destinationStation": "NZM",
     "chartTimesSlug": "22469-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22470",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22470-vande-bharat-exp",
+    "trainName": "H Nizamuddin - Khajuraho Vande Bharat Express",
+    "slug": "22470-h-nizamuddin-khajuraho-vande-bharat-express",
     "originStation": "NZM",
     "destinationStation": "KURJ",
     "chartTimesSlug": "22470-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22477",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22477-vande-bharat-exp",
+    "trainName": "New Delhi - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+    "slug": "22477-new-delhi-shri-mata-vaishno-devi-katra-vande-bharat-express",
     "originStation": "NDLS",
     "destinationStation": "SVDK",
     "chartTimesSlug": "22477-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22478",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22478-vande-bharat-exp",
+    "trainName": "Shri Mata Vaishno Devi Katra - New Delhi Vande Bharat Express",
+    "slug": "22478-shri-mata-vaishno-devi-katra-new-delhi-vande-bharat-express",
     "originStation": "SVDK",
     "destinationStation": "NDLS",
     "chartTimesSlug": "22478-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22487",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22487-vande-bharat-exp",
+    "trainName": "Old Delhi - Amritsar Vande Bharat Express",
+    "slug": "22487-old-delhi-amritsar-vande-bharat-express",
     "originStation": "DLI",
     "destinationStation": "ASR",
     "chartTimesSlug": "22487-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22488",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22488-vande-bharat-exp",
+    "trainName": "Amritsar - Old Delhi Vande Bharat Express",
+    "slug": "22488-amritsar-old-delhi-vande-bharat-express",
     "originStation": "ASR",
     "destinationStation": "DLI",
     "chartTimesSlug": "22488-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22489",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22489-vande-bharat-exp",
+    "trainName": "Varanasi - Meerut Vande Bharat Express",
+    "slug": "22489-varanasi-meerut-vande-bharat-express",
     "originStation": "BSB",
     "destinationStation": "MTC",
     "chartTimesSlug": "22489-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22490",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22490-vande-bharat-exp",
+    "trainName": "Meerut - Varanasi Vande Bharat Express",
+    "slug": "22490-meerut-varanasi-vande-bharat-express",
     "originStation": "MTC",
     "destinationStation": "BSB",
     "chartTimesSlug": "22490-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22499",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22499-vande-bharat-exp",
+    "trainName": "Deoghar - Varanasi Vande Bharat Express",
+    "slug": "22499-deoghar-varanasi-vande-bharat-express",
     "originStation": "DGHR",
     "destinationStation": "BSB",
     "chartTimesSlug": "22499-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22500",
-    "trainName": "Vande Bharat Ex",
-    "slug": "22500-vande-bharat-ex",
+    "trainName": "Varanasi - Deoghar Vande Bharat Express",
+    "slug": "22500-varanasi-deoghar-vande-bharat-express",
     "originStation": "BSB",
     "destinationStation": "DGHR",
     "chartTimesSlug": "22500-vande-bharat-ex-chart-times"
   },
   {
     "trainNumber": "22545",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22545-vande-bharat-exp",
+    "trainName": "Lucknow Ne - Dehradun Vande Bharat Express",
+    "slug": "22545-lucknow-ne-dehradun-vande-bharat-express",
     "originStation": "LJN",
     "destinationStation": "DDN",
     "chartTimesSlug": "22545-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22546",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22546-vande-bharat-exp",
+    "trainName": "Dehradun - Lucknow Ne Vande Bharat Express",
+    "slug": "22546-dehradun-lucknow-ne-vande-bharat-express",
     "originStation": "DDN",
     "destinationStation": "LJN",
     "chartTimesSlug": "22546-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22549",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22549-vande-bharat-exp",
+    "trainName": "Gorakhpur - Prayagraj. Vande Bharat Express",
+    "slug": "22549-gorakhpur-prayagraj-vande-bharat-express",
     "originStation": "GKP",
     "destinationStation": "PRYJ",
     "chartTimesSlug": "22549-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22550",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22550-vande-bharat-exp",
+    "trainName": "Prayagraj. - Gorakhpur Vande Bharat Express",
+    "slug": "22550-prayagraj-gorakhpur-vande-bharat-express",
     "originStation": "PRYJ",
     "destinationStation": "GKP",
     "chartTimesSlug": "22550-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22895",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22895-vande-bharat-exp",
+    "trainName": "Howrah - Puri Vande Bharat Express",
+    "slug": "22895-howrah-puri-vande-bharat-express",
     "originStation": "HWH",
     "destinationStation": "PURI",
     "chartTimesSlug": "22895-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22896",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22896-vande-bharat-exp",
+    "trainName": "Puri - Howrah Vande Bharat Express",
+    "slug": "22896-puri-howrah-vande-bharat-express",
     "originStation": "PURI",
     "destinationStation": "HWH",
     "chartTimesSlug": "22896-vande-bharat-exp-chart-times"
   },
   {
+    "trainNumber": "22925",
+    "trainName": "Ahmedabad - Okha Vande Bharat Express",
+    "slug": "22925-ahmedabad-okha-vande-bharat-express",
+    "originStation": "ADI",
+    "destinationStation": "OKHA",
+    "chartTimesSlug": "22925-okha-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "22926",
-    "trainName": "Sbt Vande Bharat",
-    "slug": "22926-sbt-vande-bharat",
+    "trainName": "Okha - Ahmedabad Vande Bharat Express",
+    "slug": "22926-okha-ahmedabad-vande-bharat-express",
     "originStation": "OKHA",
     "destinationStation": "ADI",
     "chartTimesSlug": "22926-sbt-vande-bharat-chart-times"
   },
   {
     "trainNumber": "22961",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22961-vande-bharat-exp",
+    "trainName": "Mumbai - Ahmedabad Vande Bharat Express",
+    "slug": "22961-mumbai-ahmedabad-vande-bharat-express",
     "originStation": "MMCT",
     "destinationStation": "ADI",
     "chartTimesSlug": "22961-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "22962",
-    "trainName": "Vande Bharat Exp",
-    "slug": "22962-vande-bharat-exp",
+    "trainName": "Ahmedabad - Mumbai Vande Bharat Express",
+    "slug": "22962-ahmedabad-mumbai-vande-bharat-express",
     "originStation": "ADI",
     "destinationStation": "MMCT",
     "chartTimesSlug": "22962-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20101",
-    "trainName": "Sc Vande Bharat",
-    "slug": "20101-sc-vande-bharat",
+    "trainName": "Nagpur - Secunderabad Vande Bharat Express",
+    "slug": "20101-nagpur-secunderabad-vande-bharat-express",
     "originStation": "NGP",
     "destinationStation": "SC",
     "chartTimesSlug": "20101-sc-vande-bharat-chart-times"
   },
   {
     "trainNumber": "20102",
-    "trainName": "Ngp Vande Bharat",
-    "slug": "20102-ngp-vande-bharat",
+    "trainName": "Secunderabad - Nagpur Vande Bharat Express",
+    "slug": "20102-secunderabad-nagpur-vande-bharat-express",
     "originStation": "SC",
     "destinationStation": "NGP",
     "chartTimesSlug": "20102-ngp-vande-bharat-chart-times"
   },
   {
     "trainNumber": "20171",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20171-vande-bharat-exp",
+    "trainName": "Rani Kamalapati - H Nizamuddin Vande Bharat Express",
+    "slug": "20171-rani-kamalapati-h-nizamuddin-vande-bharat-express",
     "originStation": "RKMP",
     "destinationStation": "NZM",
     "chartTimesSlug": "20171-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20172",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20172-vande-bharat-exp",
+    "trainName": "H Nizamuddin - Rani Kamalapati Vande Bharat Express",
+    "slug": "20172-h-nizamuddin-rani-kamalapati-vande-bharat-express",
     "originStation": "NZM",
     "destinationStation": "RKMP",
     "chartTimesSlug": "20172-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20173",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20173-vande-bharat-exp",
+    "trainName": "Rani Kamalapati - Rewa Vande Bharat Express",
+    "slug": "20173-rani-kamalapati-rewa-vande-bharat-express",
     "originStation": "RKMP",
     "destinationStation": "REWA",
     "chartTimesSlug": "20173-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20174",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20174-vande-bharat-exp",
+    "trainName": "Rewa - Rani Kamalapati Vande Bharat Express",
+    "slug": "20174-rewa-rani-kamalapati-vande-bharat-express",
     "originStation": "REWA",
     "destinationStation": "RKMP",
     "chartTimesSlug": "20174-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20175",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20175-vande-bharat-exp",
+    "trainName": "Banaras - Agra Vande Bharat Express",
+    "slug": "20175-banaras-agra-vande-bharat-express",
     "originStation": "BNRS",
     "destinationStation": "AGC",
     "chartTimesSlug": "20175-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20176",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20176-vande-bharat-exp",
+    "trainName": "Agra - Banaras Vande Bharat Express",
+    "slug": "20176-agra-banaras-vande-bharat-express",
     "originStation": "AGC",
     "destinationStation": "BNRS",
     "chartTimesSlug": "20176-vande-bharat-exp-chart-times"
   },
   {
+    "trainNumber": "20607",
+    "trainName": "Mgr Chennai Ctl - Mysuru Vande Bharat Express",
+    "slug": "20607-mgr-chennai-ctl-mysuru-vande-bharat-express",
+    "originStation": "MAS",
+    "destinationStation": "MYS",
+    "chartTimesSlug": "20607-mys-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20608",
+    "trainName": "Mysuru - Mgr Chennai Ctl Vande Bharat Express",
+    "slug": "20608-mysuru-mgr-chennai-ctl-vande-bharat-express",
+    "originStation": "MYS",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "20608-mas-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20627",
+    "trainName": "Chennai Egmore - Nagercoil Vande Bharat Express",
+    "slug": "20627-chennai-egmore-nagercoil-vande-bharat-express",
+    "originStation": "MS",
+    "destinationStation": "NCJ",
+    "chartTimesSlug": "20627-ms-ncj-vb-exp-chart-times"
+  },
+  {
+    "trainNumber": "20628",
+    "trainName": "Nagercoil - Chennai Egmore Vande Bharat Express",
+    "slug": "20628-nagercoil-chennai-egmore-vande-bharat-express",
+    "originStation": "NCJ",
+    "destinationStation": "MS",
+    "chartTimesSlug": "20628-ncj-ms-vb-exp-chart-times"
+  },
+  {
+    "trainNumber": "20631",
+    "trainName": "Mangaluru Central - Thiruvananthapuram Central Vande Bharat Express",
+    "slug": "20631-mangaluru-central-thiruvananthapuram-central-vande-bharat-express",
+    "originStation": "MAQ",
+    "destinationStation": "TVC",
+    "chartTimesSlug": "20631-maq-tvc-vb-exp-chart-times"
+  },
+  {
+    "trainNumber": "20632",
+    "trainName": "Thiruvananthapuram Central - Mangaluru Central Vande Bharat Express",
+    "slug": "20632-thiruvananthapuram-central-mangaluru-central-vande-bharat-express",
+    "originStation": "TVC",
+    "destinationStation": "MAQ",
+    "chartTimesSlug": "20632-tvc-maq-vb-exp-chart-times"
+  },
+  {
+    "trainNumber": "20633",
+    "trainName": "Kasaragod - Trivandrum Cntl Vande Bharat Express",
+    "slug": "20633-kasaragod-trivandrum-cntl-vande-bharat-express",
+    "originStation": "KGQ",
+    "destinationStation": "TVC",
+    "chartTimesSlug": "20633-tvc-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20634",
+    "trainName": "Trivandrum Cntl - Kasaragod Vande Bharat Express",
+    "slug": "20634-trivandrum-cntl-kasaragod-vande-bharat-express",
+    "originStation": "TVC",
+    "destinationStation": "KGQ",
+    "chartTimesSlug": "20634-kgq-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "20641",
-    "trainName": "Cbe Vande Bharat",
-    "slug": "20641-cbe-vande-bharat",
+    "trainName": "Bengaluru Cant - Coimbatore Vande Bharat Express",
+    "slug": "20641-bengaluru-cant-coimbatore-vande-bharat-express",
     "originStation": "BNC",
     "destinationStation": "CBE",
     "chartTimesSlug": "20641-cbe-vande-bharat-chart-times"
   },
   {
+    "trainNumber": "20642",
+    "trainName": "Coimbatore - Bengaluru Cant Vande Bharat Express",
+    "slug": "20642-coimbatore-bengaluru-cant-vande-bharat-express",
+    "originStation": "CBE",
+    "destinationStation": "BNC",
+    "chartTimesSlug": "20642-bnc-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20643",
+    "trainName": "Mgr Chennai Ctl - Coimbatore Vande Bharat Express",
+    "slug": "20643-mgr-chennai-ctl-coimbatore-vande-bharat-express",
+    "originStation": "MAS",
+    "destinationStation": "CBE",
+    "chartTimesSlug": "20643-cbe-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20644",
+    "trainName": "Coimbatore - Mgr Chennai Ctl Vande Bharat Express",
+    "slug": "20644-coimbatore-mgr-chennai-ctl-vande-bharat-express",
+    "originStation": "CBE",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "20644-mas-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20645",
+    "trainName": "Madgaon - Mangaluru Cntl Vande Bharat Express",
+    "slug": "20645-madgaon-mangaluru-cntl-vande-bharat-express",
+    "originStation": "MAO",
+    "destinationStation": "MAQ",
+    "chartTimesSlug": "20645-maq-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20646",
+    "trainName": "Mangaluru Cntl - Madgaon Vande Bharat Express",
+    "slug": "20646-mangaluru-cntl-madgaon-vande-bharat-express",
+    "originStation": "MAQ",
+    "destinationStation": "MAO",
+    "chartTimesSlug": "20646-mao-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "20661",
-    "trainName": "Dwr Vande Bharat",
-    "slug": "20661-dwr-vande-bharat",
+    "trainName": "KSR Bengaluru - Dharwar Vande Bharat Express",
+    "slug": "20661-ksr-bengaluru-dharwar-vande-bharat-express",
     "originStation": "SBC",
     "destinationStation": "DWR",
     "chartTimesSlug": "20661-dwr-vande-bharat-chart-times"
   },
   {
     "trainNumber": "20662",
-    "trainName": "Sbc Vande Bharat",
-    "slug": "20662-sbc-vande-bharat",
+    "trainName": "Dharwar - KSR Bengaluru Vande Bharat Express",
+    "slug": "20662-dharwar-ksr-bengaluru-vande-bharat-express",
     "originStation": "DWR",
     "destinationStation": "SBC",
     "chartTimesSlug": "20662-sbc-vande-bharat-chart-times"
   },
   {
     "trainNumber": "20663",
-    "trainName": "Mas Vande Bharat",
-    "slug": "20663-mas-vande-bharat",
+    "trainName": "Mysuru - Mgr Chennai Ctl Vande Bharat Express",
+    "slug": "20663-mysuru-mgr-chennai-ctl-vande-bharat-express",
     "originStation": "MYS",
     "destinationStation": "MAS",
     "chartTimesSlug": "20663-mas-vande-bharat-chart-times"
   },
   {
+    "trainNumber": "20664",
+    "trainName": "Mgr Chennai Ctl - Mysuru Vande Bharat Express",
+    "slug": "20664-mgr-chennai-ctl-mysuru-vande-bharat-express",
+    "originStation": "MAS",
+    "destinationStation": "MYS",
+    "chartTimesSlug": "20664-mys-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20665",
+    "trainName": "Chennai Egmore - Tirunelveli Vande Bharat Express",
+    "slug": "20665-chennai-egmore-tirunelveli-vande-bharat-express",
+    "originStation": "MS",
+    "destinationStation": "TEN",
+    "chartTimesSlug": "20665-ten-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "20666",
-    "trainName": "Ms Vande Bharat",
-    "slug": "20666-ms-vande-bharat",
+    "trainName": "Tirunelveli - Chennai Egmore Vande Bharat Express",
+    "slug": "20666-tirunelveli-chennai-egmore-vande-bharat-express",
     "originStation": "TEN",
     "destinationStation": "MS",
     "chartTimesSlug": "20666-ms-vande-bharat-chart-times"
   },
   {
+    "trainNumber": "20669",
+    "trainName": "SSS Hubballi - Pune Vande Bharat Express",
+    "slug": "20669-sss-hubballi-pune-vande-bharat-express",
+    "originStation": "UBL",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "20669-ubl-pune-vb-exp-chart-times"
+  },
+  {
+    "trainNumber": "20670",
+    "trainName": "Pune - SSS Hubballi Vande Bharat Express",
+    "slug": "20670-pune-sss-hubballi-vande-bharat-express",
+    "originStation": "PUNE",
+    "destinationStation": "UBL",
+    "chartTimesSlug": "20670-ubl-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20671",
+    "trainName": "Madurai - Bengaluru Cant Vande Bharat Express",
+    "slug": "20671-madurai-bengaluru-cant-vande-bharat-express",
+    "originStation": "MDU",
+    "destinationStation": "BNC",
+    "chartTimesSlug": "20671-mdu-bnc-vb-exp-chart-times"
+  },
+  {
     "trainNumber": "20672",
-    "trainName": "Mdu Vande Bharat",
-    "slug": "20672-mdu-vande-bharat",
+    "trainName": "Bengaluru Cant - Madurai Vande Bharat Express",
+    "slug": "20672-bengaluru-cant-madurai-vande-bharat-express",
     "originStation": "BNC",
     "destinationStation": "MDU",
     "chartTimesSlug": "20672-mdu-vande-bharat-chart-times"
   },
   {
+    "trainNumber": "20673",
+    "trainName": "C Shahumharaj T - Pune Vande Bharat Express",
+    "slug": "20673-c-shahumharaj-t-pune-vande-bharat-express",
+    "originStation": "KOP",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "20673-pune-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20674",
+    "trainName": "Pune - C Shahumharaj T Vande Bharat Express",
+    "slug": "20674-pune-c-shahumharaj-t-vande-bharat-express",
+    "originStation": "PUNE",
+    "destinationStation": "KOP",
+    "chartTimesSlug": "20674-kop-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "20677",
-    "trainName": "Ns Vande Bharat",
-    "slug": "20677-ns-vande-bharat",
+    "trainName": "Mgr Chennai Ctl - Narasapur Vande Bharat Express",
+    "slug": "20677-mgr-chennai-ctl-narasapur-vande-bharat-express",
     "originStation": "MAS",
     "destinationStation": "NS",
     "chartTimesSlug": "20677-ns-vande-bharat-chart-times"
   },
   {
+    "trainNumber": "20678",
+    "trainName": "Narasapur - Mgr Chennai Ctl Vande Bharat Express",
+    "slug": "20678-narasapur-mgr-chennai-ctl-vande-bharat-express",
+    "originStation": "NS",
+    "destinationStation": "MAS",
+    "chartTimesSlug": "20678-mas-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20701",
+    "trainName": "Secunderabad - Tirupati Vande Bharat Express",
+    "slug": "20701-secunderabad-tirupati-vande-bharat-express",
+    "originStation": "SC",
+    "destinationStation": "TPTY",
+    "chartTimesSlug": "20701-tpty-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "20702",
-    "trainName": "Sc Vande Bharat",
-    "slug": "20702-sc-vande-bharat",
+    "trainName": "Tirupati - Secunderabad Vande Bharat Express",
+    "slug": "20702-tirupati-secunderabad-vande-bharat-express",
     "originStation": "TPTY",
     "destinationStation": "SC",
     "chartTimesSlug": "20702-sc-vande-bharat-chart-times"
   },
   {
+    "trainNumber": "20703",
+    "trainName": "Kacheguda - Yesvantpur Vande Bharat Express",
+    "slug": "20703-kacheguda-yesvantpur-vande-bharat-express",
+    "originStation": "KCG",
+    "destinationStation": "YPR",
+    "chartTimesSlug": "20703-ypr-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "20704",
-    "trainName": "Kcg Vande Bharat",
-    "slug": "20704-kcg-vande-bharat",
+    "trainName": "Yesvantpur - Kacheguda Vande Bharat Express",
+    "slug": "20704-yesvantpur-kacheguda-vande-bharat-express",
     "originStation": "YPR",
     "destinationStation": "KCG",
     "chartTimesSlug": "20704-kcg-vande-bharat-chart-times"
   },
   {
+    "trainNumber": "20705",
+    "trainName": "H Sahib Nanded - C Shivaji Mah T Vande Bharat Express",
+    "slug": "20705-h-sahib-nanded-c-shivaji-mah-t-vande-bharat-express",
+    "originStation": "NED",
+    "destinationStation": "CSMT",
+    "chartTimesSlug": "20705-csmt-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20706",
+    "trainName": "C Shivaji Mah T - H Sahib Nanded Vande Bharat Express",
+    "slug": "20706-c-shivaji-mah-t-h-sahib-nanded-vande-bharat-express",
+    "originStation": "CSMT",
+    "destinationStation": "NED",
+    "chartTimesSlug": "20706-ned-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20707",
+    "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+    "slug": "20707-secunderabad-visakhapatnam-vande-bharat-express",
+    "originStation": "SC",
+    "destinationStation": "VSKP",
+    "chartTimesSlug": "20707-vskp-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "20708",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20708-vande-bharat-exp",
+    "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+    "slug": "20708-visakhapatnam-secunderabad-vande-bharat-express",
     "originStation": "VSKP",
     "destinationStation": "SC",
     "chartTimesSlug": "20708-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20825",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20825-vande-bharat-exp",
+    "trainName": "Bilaspur - Nagpur Vande Bharat Express",
+    "slug": "20825-bilaspur-nagpur-vande-bharat-express",
     "originStation": "BSP",
     "destinationStation": "NGP",
     "chartTimesSlug": "20825-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20826",
-    "trainName": "Bsp Vande Bharat",
-    "slug": "20826-bsp-vande-bharat",
+    "trainName": "Nagpur - Bilaspur Vande Bharat Express",
+    "slug": "20826-nagpur-bilaspur-vande-bharat-express",
     "originStation": "NGP",
     "destinationStation": "BSP",
     "chartTimesSlug": "20826-bsp-vande-bharat-chart-times"
   },
   {
     "trainNumber": "20829",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20829-vande-bharat-exp",
+    "trainName": "Durg - Visakhapatnam Vande Bharat Express",
+    "slug": "20829-durg-visakhapatnam-vande-bharat-express",
     "originStation": "DURG",
     "destinationStation": "VSKP",
     "chartTimesSlug": "20829-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20830",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20830-vande-bharat-exp",
+    "trainName": "Visakhapatnam - Durg Vande Bharat Express",
+    "slug": "20830-visakhapatnam-durg-vande-bharat-express",
     "originStation": "VSKP",
     "destinationStation": "DURG",
     "chartTimesSlug": "20830-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20833",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20833-vande-bharat-exp",
+    "trainName": "Visakhapatnam - Secunderabad Vande Bharat Express",
+    "slug": "20833-visakhapatnam-secunderabad-vande-bharat-express",
     "originStation": "VSKP",
     "destinationStation": "SC",
     "chartTimesSlug": "20833-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20834",
-    "trainName": "Vande Bharat Ex",
-    "slug": "20834-vande-bharat-ex",
+    "trainName": "Secunderabad - Visakhapatnam Vande Bharat Express",
+    "slug": "20834-secunderabad-visakhapatnam-vande-bharat-express",
     "originStation": "SC",
     "destinationStation": "VSKP",
     "chartTimesSlug": "20834-vande-bharat-ex-chart-times"
   },
   {
     "trainNumber": "20835",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20835-vande-bharat-exp",
+    "trainName": "Rourkela - Puri Vande Bharat Express",
+    "slug": "20835-rourkela-puri-vande-bharat-express",
     "originStation": "ROU",
     "destinationStation": "PURI",
     "chartTimesSlug": "20835-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20836",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20836-vande-bharat-exp",
+    "trainName": "Puri - Rourkela Vande Bharat Express",
+    "slug": "20836-puri-rourkela-vande-bharat-express",
     "originStation": "PURI",
     "destinationStation": "ROU",
     "chartTimesSlug": "20836-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20841",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20841-vande-bharat-exp",
+    "trainName": "Bhubaneswar - Visakhapatnam Vande Bharat Express",
+    "slug": "20841-bhubaneswar-visakhapatnam-vande-bharat-express",
     "originStation": "BBS",
     "destinationStation": "VSKP",
     "chartTimesSlug": "20841-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20842",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20842-vande-bharat-exp",
+    "trainName": "Visakhapatnam - Bhubaneswar Vande Bharat Express",
+    "slug": "20842-visakhapatnam-bhubaneswar-vande-bharat-express",
     "originStation": "VSKP",
     "destinationStation": "BBS",
     "chartTimesSlug": "20842-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20871",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20871-vande-bharat-exp",
+    "trainName": "Howrah - Rourkela Vande Bharat Express",
+    "slug": "20871-howrah-rourkela-vande-bharat-express",
     "originStation": "HWH",
     "destinationStation": "ROU",
     "chartTimesSlug": "20871-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20872",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20872-vande-bharat-exp",
+    "trainName": "Rourkela - Howrah Vande Bharat Express",
+    "slug": "20872-rourkela-howrah-vande-bharat-express",
     "originStation": "ROU",
     "destinationStation": "HWH",
     "chartTimesSlug": "20872-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20887",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20887-vande-bharat-exp",
+    "trainName": "Ranchi - Varanasi Vande Bharat Express",
+    "slug": "20887-ranchi-varanasi-vande-bharat-express",
     "originStation": "RNC",
     "destinationStation": "BSB",
     "chartTimesSlug": "20887-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20888",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20888-vande-bharat-exp",
+    "trainName": "Varanasi - Ranchi Vande Bharat Express",
+    "slug": "20888-varanasi-ranchi-vande-bharat-express",
     "originStation": "BSB",
     "destinationStation": "RNC",
     "chartTimesSlug": "20888-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20891",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20891-vande-bharat-exp",
+    "trainName": "Tatanagar - Brahmapur Vande Bharat Express",
+    "slug": "20891-tatanagar-brahmapur-vande-bharat-express",
     "originStation": "TATA",
     "destinationStation": "BAM",
     "chartTimesSlug": "20891-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20892",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20892-vande-bharat-exp",
+    "trainName": "Brahmapur - Tatanagar Vande Bharat Express",
+    "slug": "20892-brahmapur-tatanagar-vande-bharat-express",
     "originStation": "BAM",
     "destinationStation": "TATA",
     "chartTimesSlug": "20892-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20893",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20893-vande-bharat-exp",
+    "trainName": "Tatanagar - Patna Vande Bharat Express",
+    "slug": "20893-tatanagar-patna-vande-bharat-express",
     "originStation": "TATA",
     "destinationStation": "PNBE",
     "chartTimesSlug": "20893-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20894",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20894-vande-bharat-exp",
+    "trainName": "Patna - Tatanagar Vande Bharat Express",
+    "slug": "20894-patna-tatanagar-vande-bharat-express",
     "originStation": "PNBE",
     "destinationStation": "TATA",
     "chartTimesSlug": "20894-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20897",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20897-vande-bharat-exp",
+    "trainName": "Howrah - Ranchi Vande Bharat Express",
+    "slug": "20897-howrah-ranchi-vande-bharat-express",
     "originStation": "HWH",
     "destinationStation": "RNC",
     "chartTimesSlug": "20897-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20898",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20898-vande-bharat-exp",
+    "trainName": "Ranchi - Howrah Vande Bharat Express",
+    "slug": "20898-ranchi-howrah-vande-bharat-express",
     "originStation": "RNC",
     "destinationStation": "HWH",
     "chartTimesSlug": "20898-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20901",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20901-vande-bharat-exp",
+    "trainName": "Mumbai - Gandhinagar Cap Vande Bharat Express",
+    "slug": "20901-mumbai-gandhinagar-cap-vande-bharat-express",
     "originStation": "MMCT",
     "destinationStation": "GNC",
     "chartTimesSlug": "20901-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20902",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20902-vande-bharat-exp",
+    "trainName": "Gandhinagar Cap - Mumbai Vande Bharat Express",
+    "slug": "20902-gandhinagar-cap-mumbai-vande-bharat-express",
     "originStation": "GNC",
     "destinationStation": "MMCT",
     "chartTimesSlug": "20902-vande-bharat-exp-chart-times"
   },
   {
+    "trainNumber": "20911",
+    "trainName": "Indore - Nagpur Vande Bharat Express",
+    "slug": "20911-indore-nagpur-vande-bharat-express",
+    "originStation": "INDB",
+    "destinationStation": "NGP",
+    "chartTimesSlug": "20911-ngp-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "20912",
+    "trainName": "Nagpur - Indore Vande Bharat Express",
+    "slug": "20912-nagpur-indore-vande-bharat-express",
+    "originStation": "NGP",
+    "destinationStation": "INDB",
+    "chartTimesSlug": "20912-indb-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "20979",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20979-vande-bharat-exp",
+    "trainName": "Udaipur - Jaipur Vande Bharat Express",
+    "slug": "20979-udaipur-jaipur-vande-bharat-express",
     "originStation": "UDZ",
     "destinationStation": "JP",
     "chartTimesSlug": "20979-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20980",
-    "trainName": "Vande Bharat Exp",
-    "slug": "20980-vande-bharat-exp",
+    "trainName": "Jaipur - Udaipur Vande Bharat Express",
+    "slug": "20980-jaipur-udaipur-vande-bharat-express",
     "originStation": "JP",
     "destinationStation": "UDZ",
     "chartTimesSlug": "20980-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "20981",
-    "trainName": "Agc Vande Bharat",
-    "slug": "20981-agc-vande-bharat",
+    "trainName": "Udaipur - Agra Vande Bharat Express",
+    "slug": "20981-udaipur-agra-vande-bharat-express",
     "originStation": "UDZ",
     "destinationStation": "AGC",
     "chartTimesSlug": "20981-agc-vande-bharat-chart-times"
   },
   {
     "trainNumber": "20982",
-    "trainName": "Udz Vande Bharat",
-    "slug": "20982-udz-vande-bharat",
+    "trainName": "Agra - Udaipur Vande Bharat Express",
+    "slug": "20982-agra-udaipur-vande-bharat-express",
     "originStation": "AGC",
     "destinationStation": "UDZ",
     "chartTimesSlug": "20982-udz-vande-bharat-chart-times"
   },
   {
     "trainNumber": "21893",
-    "trainName": "Vande Bharat Exp",
-    "slug": "21893-vande-bharat-exp",
+    "trainName": "Tatanagar - Patna Vande Bharat Express",
+    "slug": "21893-tatanagar-patna-vande-bharat-express",
     "originStation": "TATA",
     "destinationStation": "PNBE",
     "chartTimesSlug": "21893-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "21894",
-    "trainName": "Vande Bharat Exp",
-    "slug": "21894-vande-bharat-exp",
+    "trainName": "Patna - Tatanagar Vande Bharat Express",
+    "slug": "21894-patna-tatanagar-vande-bharat-express",
     "originStation": "PNBE",
     "destinationStation": "TATA",
     "chartTimesSlug": "21894-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "21895",
-    "trainName": "Vande Bharat Exp",
-    "slug": "21895-vande-bharat-exp",
+    "trainName": "Tatanagar - Patna Vande Bharat Express",
+    "slug": "21895-tatanagar-patna-vande-bharat-express",
     "originStation": "TATA",
     "destinationStation": "PNBE",
     "chartTimesSlug": "21895-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "21896",
-    "trainName": "Vande Bharat Exp",
-    "slug": "21896-vande-bharat-exp",
+    "trainName": "Patna - Tatanagar Vande Bharat Express",
+    "slug": "21896-patna-tatanagar-vande-bharat-express",
     "originStation": "PNBE",
     "destinationStation": "TATA",
     "chartTimesSlug": "21896-vande-bharat-exp-chart-times"
   },
   {
+    "trainNumber": "26101",
+    "trainName": "Pune - Ajni Vande Bharat Express",
+    "slug": "26101-pune-ajni-vande-bharat-express",
+    "originStation": "PUNE",
+    "destinationStation": "AJNI",
+    "chartTimesSlug": "26101-ajni-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "26102",
+    "trainName": "Ajni - Pune Vande Bharat Express",
+    "slug": "26102-ajni-pune-vande-bharat-express",
+    "originStation": "AJNI",
+    "destinationStation": "PUNE",
+    "chartTimesSlug": "26102-pune-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "26301",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26301-vande-bharat-exp",
+    "trainName": "Jogbani - Danapur Vande Bharat Express",
+    "slug": "26301-jogbani-danapur-vande-bharat-express",
     "originStation": "JBN",
     "destinationStation": "DNR",
     "chartTimesSlug": "26301-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26302",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26302-vande-bharat-exp",
+    "trainName": "Danapur - Jogbani Vande Bharat Express",
+    "slug": "26302-danapur-jogbani-vande-bharat-express",
     "originStation": "DNR",
     "destinationStation": "JBN",
     "chartTimesSlug": "26302-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26401",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26401-vande-bharat-exp",
+    "trainName": "Jammu Tawi - Srinagar Vande Bharat Express",
+    "slug": "26401-jammu-tawi-srinagar-vande-bharat-express",
     "originStation": "JAT",
     "destinationStation": "SINA",
     "chartTimesSlug": "26401-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26402",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26402-vande-bharat-exp",
+    "trainName": "Srinagar - Jammu Tawi Vande Bharat Express",
+    "slug": "26402-srinagar-jammu-tawi-vande-bharat-express",
     "originStation": "SINA",
     "destinationStation": "JAT",
     "chartTimesSlug": "26402-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26403",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26403-vande-bharat-exp",
+    "trainName": "Jammu Tawi - Srinagar Vande Bharat Express",
+    "slug": "26403-jammu-tawi-srinagar-vande-bharat-express",
     "originStation": "JAT",
     "destinationStation": "SINA",
     "chartTimesSlug": "26403-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26404",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26404-vande-bharat-exp",
+    "trainName": "Srinagar - Jammu Tawi Vande Bharat Express",
+    "slug": "26404-srinagar-jammu-tawi-vande-bharat-express",
     "originStation": "SINA",
     "destinationStation": "JAT",
     "chartTimesSlug": "26404-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26405",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26405-vande-bharat-exp",
+    "trainName": "Amritsar - Shri Mata Vaishno Devi Katra Vande Bharat Express",
+    "slug": "26405-amritsar-shri-mata-vaishno-devi-katra-vande-bharat-express",
     "originStation": "ASR",
     "destinationStation": "SVDK",
     "chartTimesSlug": "26405-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26406",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26406-vande-bharat-exp",
+    "trainName": "Shri Mata Vaishno Devi Katra - Amritsar Vande Bharat Express",
+    "slug": "26406-shri-mata-vaishno-devi-katra-amritsar-vande-bharat-express",
     "originStation": "SVDK",
     "destinationStation": "ASR",
     "chartTimesSlug": "26406-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26461",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26461-vande-bharat-exp",
+    "trainName": "Old Delhi - Firozpur Cant Vande Bharat Express",
+    "slug": "26461-old-delhi-firozpur-cant-vande-bharat-express",
     "originStation": "DLI",
     "destinationStation": "FZR",
     "chartTimesSlug": "26461-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26462",
-    "trainName": "Vande Bharat Ex",
-    "slug": "26462-vande-bharat-ex",
+    "trainName": "Firozpur Cant - Old Delhi Vande Bharat Express",
+    "slug": "26462-firozpur-cant-old-delhi-vande-bharat-express",
     "originStation": "FZR",
     "destinationStation": "DLI",
     "chartTimesSlug": "26462-vande-bharat-ex-chart-times"
   },
   {
     "trainNumber": "26471",
-    "trainName": "Dec Vande Bharat",
-    "slug": "26471-dec-vande-bharat",
+    "trainName": "Bikaner - Delhi Vande Bharat Express",
+    "slug": "26471-bikaner-delhi-vande-bharat-express",
     "originStation": "BKN",
     "destinationStation": "DEC",
     "chartTimesSlug": "26471-dec-vande-bharat-chart-times"
   },
   {
     "trainNumber": "26472",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26472-vande-bharat-exp",
+    "trainName": "Delhi - Bikaner Vande Bharat Express",
+    "slug": "26472-delhi-bikaner-vande-bharat-express",
     "originStation": "DEC",
     "destinationStation": "BKN",
     "chartTimesSlug": "26472-vande-bharat-exp-chart-times"
   },
   {
+    "trainNumber": "26481",
+    "trainName": "Jodhpur - Delhi Vande Bharat Express",
+    "slug": "26481-jodhpur-delhi-vande-bharat-express",
+    "originStation": "JU",
+    "destinationStation": "DEC",
+    "chartTimesSlug": "26481-dec-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "26482",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26482-vande-bharat-exp",
+    "trainName": "Delhi - Jodhpur Vande Bharat Express",
+    "slug": "26482-delhi-jodhpur-vande-bharat-express",
     "originStation": "DEC",
     "destinationStation": "JU",
     "chartTimesSlug": "26482-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26501",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26501-vande-bharat-exp",
+    "trainName": "Patliputra - Gorakhpur Vande Bharat Express",
+    "slug": "26501-patliputra-gorakhpur-vande-bharat-express",
     "originStation": "PPTA",
     "destinationStation": "GKP",
     "chartTimesSlug": "26501-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26502",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26502-vande-bharat-exp",
+    "trainName": "Gorakhpur - Patliputra Vande Bharat Express",
+    "slug": "26502-gorakhpur-patliputra-vande-bharat-express",
     "originStation": "GKP",
     "destinationStation": "PPTA",
     "chartTimesSlug": "26502-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26503",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26503-vande-bharat-exp",
+    "trainName": "Saharanpur - Gomati Nagar Vande Bharat Express",
+    "slug": "26503-saharanpur-gomati-nagar-vande-bharat-express",
     "originStation": "SRE",
     "destinationStation": "GTNR",
     "chartTimesSlug": "26503-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26504",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26504-vande-bharat-exp",
+    "trainName": "Gomati Nagar - Saharanpur Vande Bharat Express",
+    "slug": "26504-gomati-nagar-saharanpur-vande-bharat-express",
     "originStation": "GTNR",
     "destinationStation": "SRE",
     "chartTimesSlug": "26504-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26505",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26505-vande-bharat-exp",
+    "trainName": "Khajuraho - Banaras Vande Bharat Express",
+    "slug": "26505-khajuraho-banaras-vande-bharat-express",
     "originStation": "KURJ",
     "destinationStation": "BNRS",
     "chartTimesSlug": "26505-vande-bharat-exp-chart-times"
   },
   {
     "trainNumber": "26506",
-    "trainName": "Vande Bharat Exp",
-    "slug": "26506-vande-bharat-exp",
+    "trainName": "Banaras - Khajuraho Vande Bharat Express",
+    "slug": "26506-banaras-khajuraho-vande-bharat-express",
     "originStation": "BNRS",
     "destinationStation": "KURJ",
     "chartTimesSlug": "26506-vande-bharat-exp-chart-times"
   },
   {
+    "trainNumber": "26651",
+    "trainName": "KSR Bengaluru - Ernakulam Vande Bharat Express",
+    "slug": "26651-ksr-bengaluru-ernakulam-vande-bharat-express",
+    "originStation": "SBC",
+    "destinationStation": "ERS",
+    "chartTimesSlug": "26651-ers-vandebharat-chart-times"
+  },
+  {
     "trainNumber": "26652",
-    "trainName": "Sbc Vande Bharat",
-    "slug": "26652-sbc-vande-bharat",
+    "trainName": "Ernakulam - KSR Bengaluru Vande Bharat Express",
+    "slug": "26652-ernakulam-ksr-bengaluru-vande-bharat-express",
     "originStation": "ERS",
     "destinationStation": "SBC",
     "chartTimesSlug": "26652-sbc-vande-bharat-chart-times"
   },
   {
     "trainNumber": "26751",
-    "trainName": "Sbc Vande Bharat",
-    "slug": "26751-sbc-vande-bharat",
+    "trainName": "Belagavi - KSR Bengaluru Vande Bharat Express",
+    "slug": "26751-belagavi-ksr-bengaluru-vande-bharat-express",
     "originStation": "BGM",
     "destinationStation": "SBC",
     "chartTimesSlug": "26751-sbc-vande-bharat-chart-times"
   },
   {
     "trainNumber": "26752",
-    "trainName": "Bgm Vande Bharat",
-    "slug": "26752-bgm-vande-bharat",
+    "trainName": "KSR Bengaluru - Belagavi Vande Bharat Express",
+    "slug": "26752-ksr-bengaluru-belagavi-vande-bharat-express",
     "originStation": "SBC",
     "destinationStation": "BGM",
     "chartTimesSlug": "26752-bgm-vande-bharat-chart-times"
   },
   {
+    "trainNumber": "26901",
+    "trainName": "Sabarmati - Veraval Vande Bharat Express",
+    "slug": "26901-sabarmati-veraval-vande-bharat-express",
+    "originStation": "SBIB",
+    "destinationStation": "VRL",
+    "chartTimesSlug": "26901-vrl-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "26902",
+    "trainName": "Veraval - Sabarmati Vande Bharat Express",
+    "slug": "26902-veraval-sabarmati-vande-bharat-express",
+    "originStation": "VRL",
+    "destinationStation": "SBIB",
+    "chartTimesSlug": "26902-sbib-vandebharat-chart-times"
+  },
+  {
+    "trainNumber": "26963",
+    "trainName": "Udaipur City - Asarva Vande Bharat Express",
+    "slug": "26963-udaipur-city-asarva-vande-bharat-express",
+    "originStation": "UDZ",
+    "destinationStation": "ASV",
+    "chartTimesSlug": "26963-udz-asv-vb-exp-chart-times"
+  },
+  {
+    "trainNumber": "26964",
+    "trainName": "Asarva - Udaipur City Vande Bharat Express",
+    "slug": "26964-asarva-udaipur-city-vande-bharat-express",
+    "originStation": "ASV",
+    "destinationStation": "UDZ",
+    "chartTimesSlug": "26964-asv-udz-vb-exp-chart-times"
+  },
+  {
+    "trainNumber": "27421",
+    "trainName": "Varanasi - New Delhi Vande Bharat Sleeper Express",
+    "slug": "27421-varanasi-new-delhi-vande-bharat-sleeper-express",
+    "originStation": "BSB",
+    "destinationStation": "NDLS",
+    "chartTimesSlug": "27421-varanasi-new-delhi-vande-bharat-sleeper-express-chart-times"
+  },
+  {
+    "trainNumber": "27422",
+    "trainName": "New Delhi - Varanasi Vande Bharat Sleeper Express",
+    "slug": "27422-new-delhi-varanasi-vande-bharat-sleeper-express",
+    "originStation": "NDLS",
+    "destinationStation": "BSB",
+    "chartTimesSlug": "27422-new-delhi-varanasi-vande-bharat-sleeper-express-chart-times"
+  },
+  {
     "trainNumber": "27575",
-    "trainName": "Vande Bharat Sl",
-    "slug": "27575-vande-bharat-sl",
+    "trainName": "Howrah - Kamakhya Vande Bharat Sleeper Express",
+    "slug": "27575-howrah-kamakhya-vande-bharat-sleeper-express",
     "originStation": "HWH",
     "destinationStation": "KYQ",
     "chartTimesSlug": "27575-vande-bharat-sl-chart-times"
   },
   {
     "trainNumber": "27576",
-    "trainName": "Vande Bharat Sl",
-    "slug": "27576-vande-bharat-sl",
+    "trainName": "Kamakhya - Howrah Vande Bharat Sleeper Express",
+    "slug": "27576-kamakhya-howrah-vande-bharat-sleeper-express",
     "originStation": "KYQ",
     "destinationStation": "HWH",
     "chartTimesSlug": "27576-vande-bharat-sl-chart-times"
+  },
+  {
+    "trainNumber": "27651",
+    "trainName": "Mumbai CSMT - SMVT Bengaluru Vande Bharat Sleeper Express",
+    "slug": "27651-mumbai-csmt-smvt-bengaluru-vande-bharat-sleeper-express",
+    "originStation": "CSMT",
+    "destinationStation": "SMVB",
+    "chartTimesSlug": "27651-mumbai-csmt-smvt-bengaluru-vande-bharat-sleeper-express-chart-times"
+  },
+  {
+    "trainNumber": "27652",
+    "trainName": "SMVT Bengaluru - Mumbai CSMT Vande Bharat Sleeper Express",
+    "slug": "27652-smvt-bengaluru-mumbai-csmt-vande-bharat-sleeper-express",
+    "originStation": "SMVB",
+    "destinationStation": "CSMT",
+    "chartTimesSlug": "27652-smvt-bengaluru-mumbai-csmt-vande-bharat-sleeper-express-chart-times"
   },
   {
     "trainNumber": "12305",
@@ -3622,381 +3998,5 @@
     "originStation": "ROK",
     "destinationStation": "KYQ",
     "chartTimesSlug": "15672-amrit-bharat-exp-chart-times"
-  },
-  {
-    "trainNumber": "15673",
-    "trainName": "Kyq Amritbharat",
-    "slug": "15673-kyq-amritbharat",
-    "originStation": "CHZ",
-    "destinationStation": "KYQ",
-    "chartTimesSlug": "15673-kyq-amritbharat-chart-times"
-  },
-  {
-    "trainNumber": "15674",
-    "trainName": "Chz Amrit Bharat",
-    "slug": "15674-chz-amrit-bharat",
-    "originStation": "KYQ",
-    "destinationStation": "CHZ",
-    "chartTimesSlug": "15674-chz-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "15949",
-    "trainName": "Amrit Bharat Exp",
-    "slug": "15949-amrit-bharat-exp",
-    "originStation": "DBRG",
-    "destinationStation": "GTNR",
-    "chartTimesSlug": "15949-amrit-bharat-exp-chart-times"
-  },
-  {
-    "trainNumber": "15950",
-    "trainName": "Amrit Bharat Exp",
-    "slug": "15950-amrit-bharat-exp",
-    "originStation": "GTNR",
-    "destinationStation": "DBRG",
-    "chartTimesSlug": "15950-amrit-bharat-exp-chart-times"
-  },
-  {
-    "trainNumber": "16107",
-    "trainName": "Src Amrit Bharat",
-    "slug": "16107-src-amrit-bharat",
-    "originStation": "TBM",
-    "destinationStation": "SRC",
-    "chartTimesSlug": "16107-src-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "16108",
-    "trainName": "Tbm Amrit Bharat",
-    "slug": "16108-tbm-amrit-bharat",
-    "originStation": "SRC",
-    "destinationStation": "TBM",
-    "chartTimesSlug": "16108-tbm-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "16121",
-    "trainName": "Tvc Amrit Bharat",
-    "slug": "16121-tvc-amrit-bharat",
-    "originStation": "TBM",
-    "destinationStation": "TVC",
-    "chartTimesSlug": "16121-tvc-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "16122",
-    "trainName": "Tbm Amrit Bharat",
-    "slug": "16122-tbm-amrit-bharat",
-    "originStation": "TVC",
-    "destinationStation": "TBM",
-    "chartTimesSlug": "16122-tbm-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "16319",
-    "trainName": "Smvb Humsafar",
-    "slug": "16319-smvb-humsafar",
-    "originStation": "TVCN",
-    "destinationStation": "SMVB",
-    "chartTimesSlug": "16319-smvb-humsafar-chart-times"
-  },
-  {
-    "trainNumber": "16320",
-    "trainName": "Tvcn Humsafar",
-    "slug": "16320-tvcn-humsafar",
-    "originStation": "SMVB",
-    "destinationStation": "TVCN",
-    "chartTimesSlug": "16320-tvcn-humsafar-chart-times"
-  },
-  {
-    "trainNumber": "16329",
-    "trainName": "Majn Amritbharat",
-    "slug": "16329-majn-amritbharat",
-    "originStation": "NCJ",
-    "destinationStation": "MAJN",
-    "chartTimesSlug": "16329-majn-amritbharat-chart-times"
-  },
-  {
-    "trainNumber": "16330",
-    "trainName": "Ncj Amrit Bharat",
-    "slug": "16330-ncj-amrit-bharat",
-    "originStation": "MAJN",
-    "destinationStation": "NCJ",
-    "chartTimesSlug": "16330-ncj-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "16343",
-    "trainName": "Amritha Exp",
-    "slug": "16343-amritha-exp",
-    "originStation": "TVC",
-    "destinationStation": "RMM",
-    "chartTimesSlug": "16343-amritha-exp-chart-times"
-  },
-  {
-    "trainNumber": "16344",
-    "trainName": "Amritha Express",
-    "slug": "16344-amritha-express",
-    "originStation": "RMM",
-    "destinationStation": "TVC",
-    "chartTimesSlug": "16344-amritha-express-chart-times"
-  },
-  {
-    "trainNumber": "16357",
-    "trainName": "Chz Amrit Bharat",
-    "slug": "16357-chz-amrit-bharat",
-    "originStation": "NCJ",
-    "destinationStation": "CHZ",
-    "chartTimesSlug": "16357-chz-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "16358",
-    "trainName": "Ncj Amritbharat",
-    "slug": "16358-ncj-amritbharat",
-    "originStation": "CHZ",
-    "destinationStation": "NCJ",
-    "chartTimesSlug": "16358-ncj-amritbharat-chart-times"
-  },
-  {
-    "trainNumber": "16597",
-    "trainName": "Apdj Amritbharat",
-    "slug": "16597-apdj-amritbharat",
-    "originStation": "SMVB",
-    "destinationStation": "APDJ",
-    "chartTimesSlug": "16597-apdj-amritbharat-chart-times"
-  },
-  {
-    "trainNumber": "16598",
-    "trainName": "Amrit Bharat Exp",
-    "slug": "16598-amrit-bharat-exp",
-    "originStation": "APDJ",
-    "destinationStation": "SMVB",
-    "chartTimesSlug": "16598-amrit-bharat-exp-chart-times"
-  },
-  {
-    "trainNumber": "16601",
-    "trainName": "Jbn Amrit Bharat",
-    "slug": "16601-jbn-amrit-bharat",
-    "originStation": "ED",
-    "destinationStation": "JBN",
-    "chartTimesSlug": "16601-jbn-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "16602",
-    "trainName": "Amrit Bharat",
-    "slug": "16602-amrit-bharat",
-    "originStation": "JBN",
-    "destinationStation": "ED",
-    "chartTimesSlug": "16602-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "16619",
-    "trainName": "Dhn Amrit Bharat",
-    "slug": "16619-dhn-amrit-bharat",
-    "originStation": "PTJ",
-    "destinationStation": "DHN",
-    "chartTimesSlug": "16619-dhn-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "16620",
-    "trainName": "Amrit Bharat Exp",
-    "slug": "16620-amrit-bharat-exp",
-    "originStation": "DHN",
-    "destinationStation": "PTJ",
-    "chartTimesSlug": "16620-amrit-bharat-exp-chart-times"
-  },
-  {
-    "trainNumber": "17041",
-    "trainName": "Tvcn  Amritbhart",
-    "slug": "17041-tvcn-amritbhart",
-    "originStation": "CHZ",
-    "destinationStation": "TVCN",
-    "chartTimesSlug": "17041-tvcn-amritbhart-chart-times"
-  },
-  {
-    "trainNumber": "17042",
-    "trainName": "Chz Amrit Bharat",
-    "slug": "17042-chz-amrit-bharat",
-    "originStation": "TVCN",
-    "destinationStation": "CHZ",
-    "chartTimesSlug": "17042-chz-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "17065",
-    "trainName": "Shm Amritbharat",
-    "slug": "17065-shm-amritbharat",
-    "originStation": "CHZ",
-    "destinationStation": "SHM",
-    "chartTimesSlug": "17065-shm-amritbharat-chart-times"
-  },
-  {
-    "trainNumber": "17066",
-    "trainName": "Chz Amrit Bharat",
-    "slug": "17066-chz-amrit-bharat",
-    "originStation": "SHM",
-    "destinationStation": "CHZ",
-    "chartTimesSlug": "17066-chz-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "17439",
-    "trainName": "Che Humsafar Exp",
-    "slug": "17439-che-humsafar-exp",
-    "originStation": "TPTY",
-    "destinationStation": "CHE",
-    "chartTimesSlug": "17439-che-humsafar-exp-chart-times"
-  },
-  {
-    "trainNumber": "17440",
-    "trainName": "Humsafar Expres",
-    "slug": "17440-humsafar-expres",
-    "originStation": "CHE",
-    "destinationStation": "TPTY",
-    "chartTimesSlug": "17440-humsafar-expres-chart-times"
-  },
-  {
-    "trainNumber": "19021",
-    "trainName": "Bam Amrit Bharat",
-    "slug": "19021-bam-amrit-bharat",
-    "originStation": "UDN",
-    "destinationStation": "BAM",
-    "chartTimesSlug": "19021-bam-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "19022",
-    "trainName": "Amrit Bharat Exp",
-    "slug": "19022-amrit-bharat-exp",
-    "originStation": "BAM",
-    "destinationStation": "UDN",
-    "chartTimesSlug": "19022-amrit-bharat-exp-chart-times"
-  },
-  {
-    "trainNumber": "19043",
-    "trainName": "Bgkt Humsafar",
-    "slug": "19043-bgkt-humsafar",
-    "originStation": "BDTS",
-    "destinationStation": "BGKT",
-    "chartTimesSlug": "19043-bgkt-humsafar-chart-times"
-  },
-  {
-    "trainNumber": "19044",
-    "trainName": "Bdts Humsafar",
-    "slug": "19044-bdts-humsafar",
-    "originStation": "BGKT",
-    "destinationStation": "BDTS",
-    "chartTimesSlug": "19044-bdts-humsafar-chart-times"
-  },
-  {
-    "trainNumber": "19091",
-    "trainName": "Gkp Humsafar Ex",
-    "slug": "19091-gkp-humsafar-ex",
-    "originStation": "BDTS",
-    "destinationStation": "GKP",
-    "chartTimesSlug": "19091-gkp-humsafar-ex-chart-times"
-  },
-  {
-    "trainNumber": "19092",
-    "trainName": "Bdts Humsafar",
-    "slug": "19092-bdts-humsafar",
-    "originStation": "GKP",
-    "destinationStation": "BDTS",
-    "chartTimesSlug": "19092-bdts-humsafar-chart-times"
-  },
-  {
-    "trainNumber": "19317",
-    "trainName": "Puri Humsafar",
-    "slug": "19317-puri-humsafar",
-    "originStation": "INDB",
-    "destinationStation": "PURI",
-    "chartTimesSlug": "19317-puri-humsafar-chart-times"
-  },
-  {
-    "trainNumber": "19318",
-    "trainName": "Indb Humsafar Ex",
-    "slug": "19318-indb-humsafar-ex",
-    "originStation": "PURI",
-    "destinationStation": "INDB",
-    "chartTimesSlug": "19318-indb-humsafar-ex-chart-times"
-  },
-  {
-    "trainNumber": "19325",
-    "trainName": "Indb Amritsar Ex",
-    "slug": "19325-indb-amritsar-ex",
-    "originStation": "INDB",
-    "destinationStation": "ASR",
-    "chartTimesSlug": "19325-indb-amritsar-ex-chart-times"
-  },
-  {
-    "trainNumber": "19423",
-    "trainName": "Gimb Humsafar",
-    "slug": "19423-gimb-humsafar",
-    "originStation": "TEN",
-    "destinationStation": "GIMB",
-    "chartTimesSlug": "19423-gimb-humsafar-chart-times"
-  },
-  {
-    "trainNumber": "19424",
-    "trainName": "Ten Humsafar",
-    "slug": "19424-ten-humsafar",
-    "originStation": "GIMB",
-    "destinationStation": "TEN",
-    "chartTimesSlug": "19424-ten-humsafar-chart-times"
-  },
-  {
-    "trainNumber": "19623",
-    "trainName": "Amrit Bharat Exp",
-    "slug": "19623-amrit-bharat-exp",
-    "originStation": "MDJN",
-    "destinationStation": "DBG",
-    "chartTimesSlug": "19623-amrit-bharat-exp-chart-times"
-  },
-  {
-    "trainNumber": "19624",
-    "trainName": "Amrit Bharat Exp",
-    "slug": "19624-amrit-bharat-exp",
-    "originStation": "DBG",
-    "destinationStation": "MDJN",
-    "chartTimesSlug": "19624-amrit-bharat-exp-chart-times"
-  },
-  {
-    "trainNumber": "19667",
-    "trainName": "Mys Humsafar Exp",
-    "slug": "19667-mys-humsafar-exp",
-    "originStation": "UDZ",
-    "destinationStation": "MYS",
-    "chartTimesSlug": "19667-mys-humsafar-exp-chart-times"
-  },
-  {
-    "trainNumber": "19668",
-    "trainName": "Udz Humsafar Exp",
-    "slug": "19668-udz-humsafar-exp",
-    "originStation": "MYS",
-    "destinationStation": "UDZ",
-    "chartTimesSlug": "19668-udz-humsafar-exp-chart-times"
-  },
-  {
-    "trainNumber": "19669",
-    "trainName": "Ppta Humsafar",
-    "slug": "19669-ppta-humsafar",
-    "originStation": "UDZ",
-    "destinationStation": "PPTA",
-    "chartTimesSlug": "19669-ppta-humsafar-chart-times"
-  },
-  {
-    "trainNumber": "19670",
-    "trainName": "Humsafar Express",
-    "slug": "19670-humsafar-express",
-    "originStation": "PPTA",
-    "destinationStation": "UDZ",
-    "chartTimesSlug": "19670-humsafar-express-chart-times"
-  },
-  {
-    "trainNumber": "19725",
-    "trainName": "Dbg Amrit Bharat",
-    "slug": "19725-dbg-amrit-bharat",
-    "originStation": "KWP",
-    "destinationStation": "DBG",
-    "chartTimesSlug": "19725-dbg-amrit-bharat-chart-times"
-  },
-  {
-    "trainNumber": "19726",
-    "trainName": "Amrit Bharat Exp",
-    "slug": "19726-amrit-bharat-exp",
-    "originStation": "DBG",
-    "destinationStation": "KWP",
-    "chartTimesSlug": "19726-amrit-bharat-exp-chart-times"
   }
 ]
