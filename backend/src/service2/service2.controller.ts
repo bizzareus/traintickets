@@ -55,7 +55,6 @@ function normalizeCheckBody(body: Service2CheckDto) {
     destinationStation: destinationRaw
       ? destinationRaw.toUpperCase()
       : undefined,
-    passengerDetails: unknownToOptionalTrimmedString(body.passengerDetails),
     forceVacantBerth: body.forceVacantBerth === true,
   };
 }
@@ -84,7 +83,6 @@ export class Service2Controller {
         journeyDate: normalized.journeyDate,
         classCode: normalized.classCode,
         hasDestination: Boolean(normalized.destinationStation),
-        hasPassengerDetails: Boolean(normalized.passengerDetails),
       })}`,
     );
     if (
@@ -206,7 +204,6 @@ export class Service2Controller {
           journeyDate: normalized.journeyDate,
           classCode: normalized.classCode,
           destinationStation: normalized.destinationStation,
-          passengerDetails: normalized.passengerDetails,
           triggerSource: 'manual',
           forceVacantBerth: normalized.forceVacantBerth,
           signal: lifecycle.signal,
@@ -218,25 +215,10 @@ export class Service2Controller {
             );
             await writeSse('progress', { phase: 'irctc_complete', ...info });
           },
-          onAiStarted: async (info) => {
-            this.logger.log(
-              `[service2/check/stream] step=openai_started dest=${info.destinationStation}`,
-            );
-            await writeSse('progress', { phase: 'ai_started', ...info });
-          },
-          onPartialOpenAiResult: async (info) => {
-            this.logger.log(
-              `[service2/check/stream] step=partial_openai nextBoarding=${info.nextBoardingStation} chainRound=${info.chainRound}`,
-            );
-            await writeSse('progress', {
-              phase: 'partial_ai_result',
-              ...info,
-            });
-          },
         },
       );
       this.logger.log(
-        `[service2/check/stream] step=finished status=${result.status} chartStatus=${result.chartStatus ? JSON.stringify(result.chartStatus) : 'none'} hasOpenAiSummary=${Boolean(result.openAiSummary)}`,
+        `[service2/check/stream] step=finished status=${result.status} chartStatus=${result.chartStatus ? JSON.stringify(result.chartStatus) : 'none'}`,
       );
       await writeSse('result', result);
       endResponse(res);
@@ -267,7 +249,6 @@ export class Service2Controller {
         journeyDate: normalized.journeyDate,
         classCode: normalized.classCode,
         hasDestination: Boolean(normalized.destinationStation),
-        hasPassengerDetails: Boolean(normalized.passengerDetails),
       })}`,
     );
     if (
@@ -288,12 +269,11 @@ export class Service2Controller {
         journeyDate: normalized.journeyDate,
         classCode: normalized.classCode,
         destinationStation: normalized.destinationStation,
-        passengerDetails: normalized.passengerDetails,
         triggerSource: 'manual',
         forceVacantBerth: normalized.forceVacantBerth,
       });
       this.logger.log(
-        `[service2/check] step=finished status=${out.status} chartStatus=${out.chartStatus ? JSON.stringify(out.chartStatus) : 'none'} hasOpenAiSummary=${Boolean(out.openAiSummary)} debugLines=${out.debugLog?.length ?? 0}`,
+        `[service2/check] step=finished status=${out.status} chartStatus=${out.chartStatus ? JSON.stringify(out.chartStatus) : 'none'} debugLines=${out.debugLog?.length ?? 0}`,
       );
       return out;
     } catch (err) {

@@ -16,10 +16,10 @@ import {
 import { TrainCompositionService } from '../train-composition/train-composition.service';
 import {
   Service2Service,
-  isFilledOpenAiPlanItem,
+  isFilledPlanItem,
   type Service2CheckResult,
-  type OpenAiBookingPlanItem,
-  type OpenAIStructuredSeat,
+  type BookingPlanItem,
+  type StructuredSeat,
 } from '../service2/service2.service';
 import {
   NotificationService,
@@ -154,9 +154,9 @@ function isTaskChartTimePassed(task: ChartTimeAvailabilityTask): boolean {
 /**
  * Map a Search-Route alternate-paths result onto the Service2CheckResult shape the
  * alert task and notification already consume, so the seat alert can run on the
- * same engine the homepage uses (ConfirmTkt availability + IRCTC schedule) instead
- * of an OpenAI call. Confirmed legs become the booking plan (one filled slot per
- * route leg, `{}` for a non-bookable hop).
+ * same engine the homepage uses (ConfirmTkt availability + IRCTC schedule).
+ * Confirmed legs become the booking plan (one filled slot per route leg, `{}` for
+ * a non-bookable hop).
  */
 function alternatePathsToCheckResult(
   alt: FindAlternatePathsResult,
@@ -199,8 +199,7 @@ function alternatePathsToCheckResult(
       status: 'failed',
       vacantBerth: { vbd: [], error: null },
       chartStatus: ((alt as Record<string, unknown>).chartStatus as
-        | Service2CheckResult['chartStatus']
-        | undefined) ?? {
+        Service2CheckResult['chartStatus'] | undefined) ?? {
         kind: 'not_prepared_yet' as const,
         message: 'Confirmed seats not available yet',
       },
@@ -208,7 +207,7 @@ function alternatePathsToCheckResult(
     };
   }
 
-  const plan: OpenAiBookingPlanItem[] = alt.legs.map((l) =>
+  const plan: BookingPlanItem[] = alt.legs.map((l) =>
     l.segmentKind === 'confirmed'
       ? {
           instruction: `${l.from} - ${l.to} - ${l.travelClass ?? ''}`.trim(),
@@ -219,10 +218,10 @@ function alternatePathsToCheckResult(
             l.availablityStatus ||
             undefined,
         }
-      : ({} as OpenAiBookingPlanItem),
+      : ({} as BookingPlanItem),
   );
 
-  const seats: OpenAIStructuredSeat[] = confirmedLegs.map((l) => ({
+  const seats: StructuredSeat[] = confirmedLegs.map((l) => ({
     coach: '',
     berth: '',
     class: l.travelClass ?? '',
@@ -240,10 +239,10 @@ function alternatePathsToCheckResult(
   return {
     status: 'success',
     vacantBerth: { vbd: [], error: null },
-    openAiSummary: summary,
-    openAiStructuredSeats: seats,
-    openAiBookingPlan: plan,
-    openAiTotalPrice: alt.totalFare ?? undefined,
+    summary,
+    structuredSeats: seats,
+    bookingPlan: plan,
+    totalPrice: alt.totalFare ?? undefined,
     debugLog: alt.debugLog,
   };
 }
@@ -1309,7 +1308,7 @@ export class JourneyTaskService {
       // Check for vacant berths with the same engine the Search Route uses
       // (alternate paths over ConfirmTkt availability + IRCTC schedule). It
       // already retries across ±station offsets internally, so there's no
-      // manual offset loop here, and no OpenAI call. If the user selected 'ANY',
+      // manual offset loop here. If the user selected 'ANY',
       // passing undefined avlClasses triggers the multi-class best seats algorithm.
       const alt = await this.bookingV2Service.findAlternatePaths({
         trainNumber: task.trainNumber,
@@ -1369,15 +1368,13 @@ export class JourneyTaskService {
         return;
       }
 
-      if (result.status === 'success' && result.openAiStructuredSeats) {
+      if (result.status === 'success' && result.structuredSeats) {
         // Find it from the origin and remove the fare option temporarily per requirements
-        result.openAiStructuredSeats = result.openAiStructuredSeats.map(
-          (seat) => {
-            const copy = { ...seat } as Record<string, unknown>;
-            delete copy.fare;
-            return copy as OpenAIStructuredSeat;
-          },
-        );
+        result.structuredSeats = result.structuredSeats.map((seat) => {
+          const copy = { ...seat } as Record<string, unknown>;
+          delete copy.fare;
+          return copy as StructuredSeat;
+        });
       }
 
       const resultPersisted = await this.updateTaskForAttempt(
@@ -1424,9 +1421,7 @@ export class JourneyTaskService {
           const monitoredClassCode = subscribedClass || '3A';
 
           try {
-            const plan = (result.openAiBookingPlan ?? []).filter(
-              isFilledOpenAiPlanItem,
-            );
+            const plan = (result.bookingPlan ?? []).filter(isFilledPlanItem);
             const isEndToEnd = isEndToEndJourneyConfirmed({
               fromStationCode: task.fromStationCode || task.stationCode,
               toStationCode: task.toStationCode,
@@ -1637,11 +1632,9 @@ export class JourneyTaskService {
           completedCount: entry.completedCount ?? 0,
           failedCount: entry.failedCount ?? 0,
           input: (entry.input ?? undefined) as
-            | Prisma.InputJsonValue
-            | undefined,
+            Prisma.InputJsonValue | undefined,
           output: (entry.output ?? undefined) as
-            | Prisma.InputJsonValue
-            | undefined,
+            Prisma.InputJsonValue | undefined,
           error: entry.error ?? null,
         },
       });
@@ -2488,7 +2481,7 @@ export class JourneyTaskService {
       return { createdTaskIds: [] };
     }
 
-    const plan = result.openAiBookingPlan ?? [];
+    const plan = result.bookingPlan ?? [];
     const stationScheduleList = result.trainSchedule?.stationList;
 
     const coverage = this.notificationService.extractJourneyLegCoverage({

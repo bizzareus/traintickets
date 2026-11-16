@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UnauthorizedException } from '@nestjs/common';
 import type { Request } from 'express';
 import { WhatsappController } from './whatsapp.controller';
-import { WhatsappService } from './whatsapp.service';
 import { WasenderHealthcheckService } from './wasender-healthcheck.service';
 import { ADMIN_PASSWORD_ENV } from '../common/admin-auth';
 import { createHmac } from 'node:crypto';
@@ -17,7 +16,6 @@ describe('WhatsappController', () => {
   beforeEach(async () => {
     process.env = { ...originalEnv, [ADMIN_PASSWORD_ENV]: 'test-secret' };
 
-    const mockWhatsappService = {};
     const mockWasenderHealthcheck = {
       getState: jest
         .fn()
@@ -31,7 +29,6 @@ describe('WhatsappController', () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [WhatsappController],
       providers: [
-        { provide: WhatsappService, useValue: mockWhatsappService },
         {
           provide: WasenderHealthcheckService,
           useValue: mockWasenderHealthcheck,

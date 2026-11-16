@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon';
 import {
-  isFilledOpenAiPlanItem,
+  isFilledPlanItem,
   routeConsecutiveLegsForJourney,
-  type OpenAiBookingPlanItem,
+  type BookingPlanItem,
   type Service2CheckResult,
 } from '../service2/service2.service';
 import type { ScheduleStation } from '../irctc/irctc.service';
@@ -35,10 +35,10 @@ export type JourneyLegCoverage =
 
 /** Only notify when there is at least one bookable segment (matches email CTA rows). */
 export function hasBookablePlanForNotification(
-  result: Pick<Service2CheckResult, 'openAiBookingPlan'>,
+  result: Pick<Service2CheckResult, 'bookingPlan'>,
 ): boolean {
-  const plan = result.openAiBookingPlan ?? [];
-  return plan.some(isFilledOpenAiPlanItem);
+  const plan = result.bookingPlan ?? [];
+  return plan.some(isFilledPlanItem);
 }
 
 export type RefundInfo = {
@@ -52,7 +52,7 @@ export type RefundInfo = {
 export function isEndToEndJourneyConfirmed(params: {
   fromStationCode: string;
   toStationCode: string;
-  plan: OpenAiBookingPlanItem[];
+  plan: BookingPlanItem[];
   stationScheduleList?: ScheduleStation[];
 }): boolean {
   const coverage = extractJourneyLegCoverage(params);
@@ -393,7 +393,7 @@ export function firstPlannedClassCode(
   result?: Service2CheckResult,
 ): string | undefined {
   if (!result) return undefined;
-  const filled = result.openAiBookingPlan?.find(isFilledOpenAiPlanItem);
+  const filled = result.bookingPlan?.find(isFilledPlanItem);
   const instruction = filled?.instruction ?? '';
   const parts = instruction.split(' - ').map((p) => p.trim());
   return parts[2] || undefined;
@@ -470,13 +470,13 @@ export function getStationNameMap(
 export function extractJourneyLegCoverage(params: {
   fromStationCode: string;
   toStationCode: string;
-  plan: OpenAiBookingPlanItem[];
+  plan: BookingPlanItem[];
   stationScheduleList?: ScheduleStation[];
 }): JourneyLegCoverage[] {
   const { fromStationCode, toStationCode, plan, stationScheduleList } = params;
   const fromU = (fromStationCode ?? '').trim().toUpperCase();
   const toU = (toStationCode ?? '').trim().toUpperCase();
-  const filledPlan = plan.filter(isFilledOpenAiPlanItem);
+  const filledPlan = plan.filter(isFilledPlanItem);
 
   if (filledPlan.length === 0) {
     return [{ type: 'no_ticket', fromCode: fromU, toCode: toU }];

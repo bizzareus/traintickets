@@ -128,7 +128,7 @@ export type AnalyticsEvent =
   | {
       name: "irctc_book_clicked";
       properties: {
-        source: "booking_plan" | "openai_plan" | "helpful_feedback";
+        source: "booking_plan" | "helpful_feedback";
       };
     }
   | { name: "irctc_open_login_clicked"; properties: Record<string, never> }
@@ -173,7 +173,7 @@ export type AnalyticsEvent =
       name: "popup_opened";
       properties: {
         popup: PopupId;
-        plan_source?: "booking_plan" | "openai_plan" | "helpful_feedback";
+        plan_source?: "booking_plan" | "helpful_feedback";
         from_code?: string;
         to_code?: string;
       };
@@ -189,7 +189,7 @@ export type AnalyticsEvent =
       name: "button_clicked";
       properties: {
         button_id: HomeButtonId;
-        plan_source?: "booking_plan" | "openai_plan" | "helpful_feedback";
+        plan_source?: "booking_plan" | "helpful_feedback";
         train_number?: string;
         from_code?: string;
         to_code?: string;

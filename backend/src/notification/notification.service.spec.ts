@@ -106,13 +106,13 @@ describe('NotificationService', () => {
   const successEmptyPlan: Service2CheckResult = {
     status: 'success',
     vacantBerth: { vbd: [], error: null },
-    openAiBookingPlan: [{}, {}],
+    bookingPlan: [{}, {}],
   };
 
   const successWithTickets: Service2CheckResult = {
     status: 'success',
     vacantBerth: { vbd: [], error: null },
-    openAiBookingPlan: [{ instruction: 'NDLS - BCT - 3A', approx_price: 1200 }],
+    bookingPlan: [{ instruction: 'NDLS - BCT - 3A', approx_price: 1200 }],
     trainSchedule: {
       trainNumber: '12951',
       trainName: 'Test Express',
@@ -263,7 +263,7 @@ describe('NotificationService', () => {
 
     const resultWithAvailability: Service2CheckResult = {
       ...successWithTickets,
-      openAiBookingPlan: [
+      bookingPlan: [
         {
           instruction: 'NDLS - BCT - 3A',
           approx_price: 1200,
@@ -339,7 +339,7 @@ describe('NotificationService', () => {
     const partialResult: Service2CheckResult = {
       status: 'success',
       vacantBerth: { vbd: [], error: null },
-      openAiBookingPlan: [
+      bookingPlan: [
         {
           instruction: 'PUNE - CCH - CC',
           approx_price: 270,
@@ -347,7 +347,7 @@ describe('NotificationService', () => {
         },
         {},
       ],
-      openAiTotalPrice: 270,
+      totalPrice: 270,
       chartPreparationDetails: {
         chartingStationCode: 'PUNE',
         firstChartCreationTime: '05:50',
@@ -436,7 +436,7 @@ describe('NotificationService', () => {
       result: {
         status: 'success',
         vacantBerth: { vbd: [], error: null },
-        openAiBookingPlan: [
+        bookingPlan: [
           {
             instruction: 'SA - PUNE - 3A',
             approx_price: 1475,
@@ -481,13 +481,14 @@ describe('NotificationService', () => {
     const partialResultNoChartInfo = {
       status: 'success' as const,
       vacantBerth: { vbd: [], error: null },
-      openAiBookingPlan: [
+      bookingPlan: [
         {
           instruction: 'PUNE - CCH - CC',
+          approx_price: 0,
           availability: 'CURR_AVL 26',
         },
       ],
-      openAiStructuredSeats: [
+      structuredSeats: [
         {
           from: 'PUNE',
           to: 'CCH',
@@ -636,7 +637,7 @@ describe('NotificationService', () => {
     const noTicketsResult: Service2CheckResult = {
       status: 'success',
       vacantBerth: { vbd: [], error: null },
-      openAiBookingPlan: [],
+      bookingPlan: [],
       trainSchedule: {
         trainNumber: '22603',
         trainName: 'Kgp Vm Sf Exp',
@@ -682,7 +683,7 @@ describe('NotificationService', () => {
     const followUpResult: Service2CheckResult = {
       status: 'success',
       vacantBerth: { vbd: [], error: null },
-      openAiBookingPlan: [
+      bookingPlan: [
         {
           instruction: 'BAM - VZM - SL',
           approx_price: 205,
@@ -724,7 +725,7 @@ describe('NotificationService', () => {
     expect(sendWhatsApp).not.toHaveBeenCalled();
   });
 
-  it('safely handles empty objects in openAiBookingPlan without crashing (JBP -> BGP regression test)', async () => {
+  it('safely handles empty objects in bookingPlan without crashing (JBP -> BGP regression test)', async () => {
     const svc = new NotificationService(
       mockConfig({ wasenderKey: 'ws_test' }),
       mockStationCache(),
@@ -737,7 +738,7 @@ describe('NotificationService', () => {
     const sparsePlanResult: Service2CheckResult = {
       status: 'success',
       vacantBerth: { vbd: [], error: null },
-      openAiBookingPlan: [
+      bookingPlan: [
         {} as any,
         {} as any,
         { instruction: 'PNBE - BKP - SL', approx_price: 180 },
@@ -788,7 +789,7 @@ describe('NotificationService', () => {
     const partialPlanResult: Service2CheckResult = {
       status: 'success',
       vacantBerth: { vbd: [], error: null },
-      openAiBookingPlan: [
+      bookingPlan: [
         { instruction: 'PNBE - BKP - SL', approx_price: 180 },
         { instruction: 'KIUL - BGP - SL', approx_price: 180 },
       ],

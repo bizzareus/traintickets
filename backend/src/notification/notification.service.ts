@@ -2,8 +2,8 @@ import { Injectable, Optional, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Resend } from 'resend';
 import {
-  isFilledOpenAiPlanItem,
-  type OpenAiBookingPlanItem,
+  isFilledPlanItem,
+  type BookingPlanItem,
   type Service2CheckResult,
 } from '../service2/service2.service';
 import type { ChartTimeAvailabilityTask } from '@prisma/client';
@@ -618,25 +618,6 @@ export class NotificationService {
       }
     }
 
-    if (result?.chartRefreshNotice?.indicativeChartTime) {
-      const formatted = formatChartTimeIst(
-        journeyDateStr,
-        result.chartRefreshNotice.indicativeChartTime,
-        0,
-      );
-      if (formatted) {
-        return {
-          label: formatted.isReleased
-            ? `Chart for ${displayName} was released at ${formatted.formattedTime}`
-            : `Chart prepares at ${formatted.formattedTime}`,
-          isReleased: formatted.isReleased,
-          hasFutureChart: !formatted.isReleased,
-          isSecondChart: false,
-          formattedChartTime: formatted.formattedTime,
-        };
-      }
-    }
-
     return {
       isReleased: false,
       hasFutureChart: false,
@@ -647,7 +628,7 @@ export class NotificationService {
   public extractJourneyLegCoverage(params: {
     fromStationCode: string;
     toStationCode: string;
-    plan: OpenAiBookingPlanItem[];
+    plan: BookingPlanItem[];
     stationScheduleList?: any[];
   }): JourneyLegCoverage[] {
     return extractJourneyLegCoverage(params);
@@ -1067,9 +1048,7 @@ export class NotificationService {
         .join(' ');
       const stationScheduleList = result.trainSchedule?.stationList;
       const stationNameMap = getStationNameMap(stationScheduleList);
-      const plan = (result.openAiBookingPlan ?? []).filter(
-        isFilledOpenAiPlanItem,
-      );
+      const plan = (result.bookingPlan ?? []).filter(isFilledPlanItem);
       const journeyDateStr =
         task.journeyDate instanceof Date
           ? task.journeyDate.toISOString().slice(0, 10)
@@ -1115,7 +1094,7 @@ export class NotificationService {
         stationNameMap,
         stationScheduleList,
       );
-      const totalPrice = result.openAiTotalPrice ?? undefined;
+      const totalPrice = result.totalPrice ?? undefined;
 
       const journeyDateReadable = formatJourneyDateReadable(journeyDateStr);
       const journeyTimesLine = formatSegmentScheduleTimes(
@@ -1268,7 +1247,6 @@ export class NotificationService {
                     trainLabel,
                     routeDisplay,
                     journeyDateReadable,
-                    openAiSummary: result.openAiSummary,
                     alternativeTrains,
                     fromCode: task.fromStationCode,
                     toCode: task.toStationCode,
@@ -1573,7 +1551,7 @@ export class NotificationService {
               trainLabel,
               routeDisplay: emailRouteDisplay,
               journeyDateReadable,
-              openAiSummary: result.openAiSummary,
+              summary: result.summary,
               alternativeTrains,
               fromCode: task.fromStationCode,
               toCode: task.toStationCode,
@@ -1615,7 +1593,7 @@ export class NotificationService {
               payload: {
                 task,
                 subject,
-                openAiSummary: result.openAiSummary,
+                summary: result.summary,
                 bookingPlan: plan,
               },
             });

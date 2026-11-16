@@ -1,14 +1,7 @@
 "use client";
 import { createFreeChartAlert } from "@/lib/chart-alert-payments";
 
-import {
-  useState,
-  useEffect,
-  useRef,
-  useMemo,
-  useCallback,
-  Fragment,
-} from "react";
+import { useState, useEffect, useRef, useMemo, Fragment } from "react";
 import { apiClient, irctcScheduleClient } from "@/lib/api";
 import { trackAnalyticsEvent, trackAlertRequested } from "@/lib/analytics";
 import { fetchService2CheckStream } from "@/lib/service2CheckStream";
@@ -23,9 +16,7 @@ import {
   getTrainRunsOnFlagForYmd,
   type TrainRunsOnJson,
 } from "@/lib/trainRunsOn";
-import { irctcBookingRedirect } from "@/lib/irctcBookingRedirect";
-import type { StationChartMetaItem } from "@/lib/trainCompositionStationsMeta";
-import { getStoredContact, saveStoredContact } from "@/lib/contact";
+import { saveStoredContact } from "@/lib/contact";
 
 type Station = { code: string; name: string };
 type TrainOption = { number: string; label: string };
@@ -76,20 +67,6 @@ function ChevronLeftIcon({ className }: { className?: string }) {
   );
 }
 
-function ChevronDownIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-    </svg>
-  );
-}
-
 function ChevronUpDownIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -104,41 +81,6 @@ function ChevronUpDownIcon({ className }: { className?: string }) {
         d="M5.22 10.22a.75.75 0 0 1 1.06 0L8 11.94l1.72-1.72a.75.75 0 1 1 1.06 1.06l-2.25 2.25a.75.75 0 0 1-1.06 0l-2.25-2.25a.75.75 0 0 1 0-1.06ZM10.78 5.78a.75.75 0 0 1-1.06 0L8 4.06 6.28 5.78a.75.75 0 0 1-1.06-1.06l2.25-2.25a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06Z"
       />
     </svg>
-  );
-}
-
-const INDICATIVE_FARE_INFO =
-  "Indicative pricing — refer to IRCTC for actual pricing.";
-
-function InformationCircleIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      aria-hidden
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-      />
-    </svg>
-  );
-}
-
-function IndicativeFareInfoButton({ className }: { className?: string }) {
-  return (
-    <button
-      type="button"
-      className={`inline-flex shrink-0 items-center justify-center rounded-full text-slate-400 outline-none hover:text-slate-600 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 ${className ?? ""}`}
-      aria-label={INDICATIVE_FARE_INFO}
-      title={INDICATIVE_FARE_INFO}
-    >
-      <InformationCircleIcon className="h-4 w-4" />
-    </button>
   );
 }
 
@@ -203,45 +145,11 @@ function SearchLoaderTrainTrack() {
   );
 }
 
-type VacantBerthItem = {
-  coachName: string;
-  cabinCoupe: string | null;
-  cabinCoupeNo: string;
-  berthCode: string;
-  berthNumber: number;
-  from: string;
-  to: string;
-  splitNo: number;
-};
-
-type ChartPreparationDetails = {
-  firstChartCreationTime?: string;
-  chartingStationCode?: string;
-  chartingStationName?: string;
-  journeyDate?: string;
-};
-
-type LongestPathAvailable = {
-  fromStationCode?: string;
-  fromStationName?: string;
-  toStationCode?: string;
-  toStationName?: string;
-  available?: boolean;
-  availabilityByClass?: Record<string, string>;
-};
-
 type Service2Composition = {
   trainNo?: string;
   trainName?: string;
   from?: string;
   to?: string;
-};
-
-type Leg = {
-  fromCode: string;
-  toCode: string;
-  hasTicket: boolean;
-  planItem?: { instruction?: string; approx_price?: number };
 };
 
 const HOW_IT_WORKS_STEPS = [
@@ -270,55 +178,13 @@ const SERVICE2_NO_TICKETS_AVAILABLE_COPY =
 type CheckResult = {
   status: string;
   resultPayload?: {
-    vbd?: VacantBerthItem[];
     error?: string | null;
-    summary?: string;
     composition?: Service2Composition;
-    openAiSummary?: string | null;
-    /** One slot per route leg when aligned: bookable segment or `{}` for no ticket. */
-    openAiBookingPlan?: Array<
-      { instruction?: string; approx_price?: number } | Record<string, never>
-    >;
-    openAiStructuredSeats?: Array<{
-      coach?: string;
-      berth?: string;
-      class?: string;
-      seat?: string;
-      from?: string;
-      to?: string;
-    }>;
-    openAiTotalPrice?: number;
-    trainSchedule?: {
-      stationList?: {
-        stationCode?: string;
-        stationName?: string;
-        arrivalTime?: string;
-        departureTime?: string;
-      }[];
-    } | null;
     chartStatus?:
       | { kind: "not_prepared_yet"; message: string }
       | { kind: "chart_error"; error: string }
       | { kind: "irctc_unavailable"; message: string; detail?: string };
-    attempts?: { time?: string; action?: string; result?: string }[];
-    bookings?: { from?: string; to?: string; status?: string }[];
-    fullJourneyConfirmed?: boolean;
-    chartPreparationDetails?: ChartPreparationDetails;
-    /** Backend: chart row missing in DB after AI + composition refetch */
-    chartRefreshNotice?: {
-      checkedStationCode: string;
-      message: string;
-      indicativeChartTime?: string | null;
-    };
-    debugLog?: string[];
-    vacantBerthApiCalled?: boolean;
     trainStartDate?: string;
-    fullRouteStations?: {
-      stationCode?: string;
-      stationName?: string;
-      sequenceOrder?: number;
-    }[];
-    longestPathAvailable?: LongestPathAvailable;
     [k: string]: unknown;
   };
 };
@@ -327,25 +193,8 @@ type CheckResult = {
 type Service2CheckOkBody = {
   status?: string;
   composition?: NonNullable<CheckResult["resultPayload"]>["composition"];
-  chartPreparationDetails?: NonNullable<
-    CheckResult["resultPayload"]
-  >["chartPreparationDetails"];
-  vacantBerth?: { vbd?: VacantBerthItem[]; error?: string | null };
-  openAiSummary?: string | null;
-  openAiStructuredSeats?: NonNullable<
-    CheckResult["resultPayload"]
-  >["openAiStructuredSeats"];
-  openAiBookingPlan?: NonNullable<
-    CheckResult["resultPayload"]
-  >["openAiBookingPlan"];
-  openAiTotalPrice?: number;
-  trainSchedule?: NonNullable<CheckResult["resultPayload"]>["trainSchedule"];
+  vacantBerth?: { error?: string | null };
   chartStatus?: NonNullable<CheckResult["resultPayload"]>["chartStatus"];
-  chartRefreshNotice?: NonNullable<
-    CheckResult["resultPayload"]
-  >["chartRefreshNotice"];
-  debugLog?: string[];
-  vacantBerthApiCalled?: boolean;
   trainStartDate?: string;
 };
 
@@ -370,146 +219,6 @@ function formatJourneyDateFriendly(ymd: string): string {
     month: "long",
     year: "numeric",
   });
-}
-
-/**
- * If the API mistakenly returns the full model JSON in `openAiSummary`, avoid
- * rendering it as a wall of text; pull out `summary` when possible.
- */
-function displayTextFromOpenAiSummary(
-  raw: string | null | undefined,
-): string | null {
-  if (raw == null) return null;
-  const t = typeof raw === "string" ? raw.trim() : "";
-  if (!t) return null;
-  if (!t.startsWith("{")) return t;
-  try {
-    const j = JSON.parse(t) as { summary?: string };
-    if (typeof j.summary === "string" && j.summary.trim())
-      return j.summary.trim();
-  } catch {
-    /* ignore */
-  }
-  return "We could not display this plan correctly. Please try your search again.";
-}
-
-/** Short phrase for “as of when” in IRCTC disclaimer (chart / availability snapshot). */
-function buildChartFreshnessPhrase(
-  d: ChartPreparationDetails | undefined,
-  opts?: { omitStation?: boolean },
-): string {
-  if (!d) return "the last time we checked for you";
-  const time = d.firstChartCreationTime?.trim();
-  const name = d.chartingStationName?.trim();
-  const code = d.chartingStationCode?.trim();
-  let station = "";
-  if (name && code) station = `${name} (${code})`;
-  else if (name) station = name;
-  else if (code) station = code;
-
-  if (opts?.omitStation) {
-    if (time) return time;
-    return "the last time we checked for you";
-  }
-
-  if (time && station) return `${time} at ${station}`;
-  if (time) return time;
-  if (station) return `the last check at ${station}`;
-  return "the last time we checked for you";
-}
-
-function TicketCardTitleRow({
-  ticketIndex,
-  classCode,
-  asOfPhrase,
-}: {
-  ticketIndex: number;
-  classCode: string;
-  asOfPhrase: string;
-}) {
-  return (
-    <div className="mb-1.5 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-      <p className="min-w-0 text-sm font-semibold text-slate-500">
-        Ticket {ticketIndex}
-        <span className="ml-2 inline-flex rounded-md bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-800">
-          {classCode}
-        </span>
-      </p>
-      <p
-        className="text-s max-w-[min(100%,12.5rem)] shrink-0 text-right font-bold leading-snug text-slate-500 sm:max-w-[14rem]"
-        title={`Availability as of ${asOfPhrase}`}
-      >
-        Availability as of {asOfPhrase}
-      </p>
-    </div>
-  );
-}
-
-/** Footer strip under each ticket card: IRCTC chart times per station (Success-style bar). */
-function TicketJourneyChartStrip({
-  journeyDate,
-  fromMeta,
-  toMeta,
-  loading,
-}: {
-  journeyDate: string;
-  fromMeta?: StationChartMetaItem;
-  toMeta?: StationChartMetaItem;
-  loading: boolean;
-}) {
-  const pickFinalChart = (
-    meta?: StationChartMetaItem,
-  ): { time: string; dayOffset: number } | null => {
-    const chartTwo = meta?.chartTwoTime?.trim();
-    if (chartTwo) {
-      return {
-        time: chartTwo,
-        dayOffset: meta?.chartTwoIsNextDay ? 1 : 0,
-      };
-    }
-    const chartOne = meta?.chartOneTime?.trim();
-    if (chartOne) {
-      return { time: chartOne, dayOffset: 0 };
-    }
-    return null;
-  };
-
-  const finalChart = pickFinalChart(fromMeta) ?? pickFinalChart(toMeta);
-  const finalChartDateLabel = useMemo(() => {
-    if (!finalChart) return null;
-    const base = new Date(`${journeyDate}T00:00:00`);
-    if (Number.isNaN(base.getTime())) return null;
-    base.setDate(base.getDate() + finalChart.dayOffset);
-    return base.toLocaleDateString("en-IN", {
-      day: "numeric",
-      month: "short",
-    });
-  }, [journeyDate, finalChart]);
-
-  if (!loading && !finalChart) return null;
-
-  return (
-    <div
-      className="-mx-4 mt-4 flex min-h-[32px] gap-3 rounded-b-xl border-t border-amber-300 bg-amber-100 px-4 py-3 text-amber-900"
-      role="status"
-    >
-      <div className="min-w-0 flex-1 text-left">
-        {loading && !finalChart ? (
-          <p className="text-s mt-1 font-semibold leading-snug text-amber-800">
-            Checking chart times for this leg…
-          </p>
-        ) : (
-          <>
-            <p className="text-s mt-0.5 font-semibold leading-snug text-amber-900">
-              Final availability will be on{" "}
-              {finalChartDateLabel ? `on ${finalChartDateLabel} ` : ""}
-              at <span className="font-semibold">{finalChart?.time}</span>
-            </p>
-          </>
-        )}
-      </div>
-    </div>
-  );
 }
 
 function getDateOptions() {
@@ -544,15 +253,8 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
   /** Live status line while service2 SSE check is in progress. */
   const [service2StreamLine, setService2StreamLine] = useState("");
-  /** Latest plan snapshot from SSE while chained vacant-berth + OpenAI runs. */
-  const [service2StreamPartial, setService2StreamPartial] =
-    useState<NonNullable<CheckResult["resultPayload"]> | null>(null);
   const [checkResult, setCheckResult] = useState<CheckResult | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [monitoringLeg, setMonitoringLeg] = useState<{
-    fromCode: string;
-    toCode: string;
-  } | null>(null);
   const [monitorSubmitting, setMonitorSubmitting] = useState(false);
   const [monitorSuccess, setMonitorSuccess] = useState<string | null>(null);
   const [monitorJourneyResponse, setMonitorJourneyResponse] = useState<{
@@ -566,28 +268,13 @@ export default function HomePage() {
     useState<JourneyRunDayUiError | null>(null);
   const [monitorEmail, setMonitorEmail] = useState("");
   const [monitorMobile, setMonitorMobile] = useState("");
-  const [isAdminUser, setIsAdminUser] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [chartPendingModalDismissed, setChartPendingModalDismissed] =
     useState(false);
   const chartPendingOpenedTracked = useRef(false);
-  const irctcDisclaimerOpenTracked = useRef(false);
   const monitoringSuccessOpenTracked = useRef(false);
-  const gapMonitorOpenKey = useRef<string | null>(null);
   const [monitoringStartedPopupOpen, setMonitoringStartedPopupOpen] =
     useState(false);
-  const [helpfulFeedbackPopupOpen, setHelpfulFeedbackPopupOpen] =
-    useState(false);
-  const [stationChartMetaByCode, setStationChartMetaByCode] = useState<
-    Record<string, StationChartMetaItem>
-  >({});
-  const [legChartMetaLoading, setLegChartMetaLoading] = useState<
-    Record<string, boolean>
-  >({});
-  const [irctcBookConfirm, setIrctcBookConfirm] = useState<{
-    url: string;
-    source: "booking_plan" | "openai_plan";
-  } | null>(null);
   const trainInputRef = useRef<HTMLInputElement>(null);
   const howItWorksCarouselRef = useRef<HTMLDivElement>(null);
   const [howItWorksSlide, setHowItWorksSlide] = useState(0);
@@ -611,11 +298,6 @@ export default function HomePage() {
   );
   useEffect(() => {
     setMounted(true);
-    try {
-      setIsAdminUser(window.localStorage.getItem("admin") === "true");
-    } catch {
-      /* ignore */
-    }
   }, []);
 
   function scrollHowItWorksCarousel(dir: -1 | 1) {
@@ -752,18 +434,6 @@ export default function HomePage() {
       .finally(() => setScheduleLoading(false));
   }, [trainNumber, trainSelected]);
 
-  // Reset monitor form when modal opens
-  useEffect(() => {
-    if (!monitoringLeg) return;
-    setMonitoringStartedPopupOpen(false);
-    setMonitorSuccess(null);
-    setMonitorError(null);
-    setMonitorJourneyResponse(null);
-    const stored = getStoredContact();
-    setMonitorEmail(stored.email);
-    setMonitorMobile(stored.mobile);
-  }, [monitoringLeg]);
-
   // Re-init Flowbite after mount and when dropdowns exist in the DOM (avoids hydration mismatch from Popper.js).
   // Must wait for !trainsLoading so the train search row is mounted before init; otherwise toggle has no handler.
   useEffect(() => {
@@ -831,9 +501,6 @@ export default function HomePage() {
     setMonitorError(null);
     setMonitorSuccess(null);
     setMonitoringStartedPopupOpen(false);
-    setHelpfulFeedbackPopupOpen(false);
-    setIrctcBookConfirm(null);
-    setService2StreamPartial(null);
     setService2StreamLine("Fetching chart and vacant berths from IRCTC…");
     setLoading(true);
     trackAnalyticsEvent({
@@ -886,58 +553,14 @@ export default function HomePage() {
             );
             return;
           }
-          if (ev.phase === "ai_started") {
-            setService2StreamLine(
-              `Finding the best ticket plan to get you to ${ev.destinationStation} using AI. This can take a little while - please wait...`,
-            );
-            return;
-          }
-          if (ev.phase === "partial_ai_result") {
-            setService2StreamPartial({
-              serviceSource: "service2",
-              composition: ev.composition as Service2Composition | undefined,
-              chartPreparationDetails: ev.chartPreparationDetails as
-                ChartPreparationDetails | undefined,
-              trainSchedule: ev.trainSchedule as NonNullable<
-                CheckResult["resultPayload"]
-              >["trainSchedule"],
-              openAiSummary: ev.openAiSummary,
-              openAiStructuredSeats: (ev.openAiStructuredSeats ??
-                []) as NonNullable<
-                CheckResult["resultPayload"]
-              >["openAiStructuredSeats"],
-              openAiBookingPlan: (ev.openAiBookingPlan ?? []) as NonNullable<
-                CheckResult["resultPayload"]
-              >["openAiBookingPlan"],
-              openAiTotalPrice: ev.openAiTotalPrice,
-              vacantBerth: { vbd: [], error: null },
-              vbd: [],
-              error: null,
-            });
-            setService2StreamLine(
-              `Found some tickets — looking for the rest (checking from ${ev.nextBoardingStation})…`,
-            );
-          }
         },
         controller.signal,
       )) as Service2CheckOkBody;
       setCheckResult({
         status: data.status ?? "success",
         resultPayload: {
-          serviceSource: "service2",
           composition: data.composition,
-          chartPreparationDetails: data.chartPreparationDetails,
-          vacantBerth: data.vacantBerth,
-          openAiSummary: data.openAiSummary,
-          openAiStructuredSeats: data.openAiStructuredSeats ?? [],
-          openAiBookingPlan: data.openAiBookingPlan ?? [],
-          openAiTotalPrice: data.openAiTotalPrice,
-          trainSchedule: data.trainSchedule ?? undefined,
           chartStatus: data.chartStatus ?? undefined,
-          chartRefreshNotice: data.chartRefreshNotice ?? undefined,
-          debugLog: data.debugLog ?? [],
-          vacantBerthApiCalled: data.vacantBerthApiCalled ?? false,
-          vbd: data.vacantBerth?.vbd ?? [],
           error: data.vacantBerth?.error ?? null,
           trainStartDate: data.trainStartDate,
         },
@@ -969,7 +592,6 @@ export default function HomePage() {
         service2RequestRef.current = null;
         setLoading(false);
         setService2StreamLine("");
-        setService2StreamPartial(null);
       }
     }
   }
@@ -1023,7 +645,6 @@ export default function HomePage() {
       setJourneySetupQueued(true);
       setMonitoringStartedPopupOpen(true);
       setChartPendingModalDismissed(true);
-      setMonitoringLeg(null);
       trackAlertRequested({
         success: true,
         source: "v1_page",
@@ -1165,99 +786,13 @@ export default function HomePage() {
       )
     : trainOptions;
   const payload = checkResult?.resultPayload;
-  const uiPayload =
-    loading && service2StreamPartial != null ? service2StreamPartial : payload;
-  const vbd = uiPayload?.vbd ?? [];
+  const uiPayload = payload;
   const apiError = uiPayload?.error;
-  const hasBerths = vbd.length > 0;
-  const summary = uiPayload?.summary;
-  const attempts = uiPayload?.attempts;
-  const bookings = uiPayload?.bookings;
-  const fullJourneyConfirmed = uiPayload?.fullJourneyConfirmed;
-  const chartDetails = uiPayload?.chartPreparationDetails;
-  const chartFreshnessPhrase = buildChartFreshnessPhrase(chartDetails);
-  const ticketCardAsOfPhrase = buildChartFreshnessPhrase(chartDetails, {
-    omitStation: true,
-  });
-  const fullRouteStations = uiPayload?.fullRouteStations ?? [];
-  const longestPath = uiPayload?.longestPathAvailable;
-  const hasChartResult =
-    chartDetails || fullRouteStations.length > 0 || longestPath;
 
   const chartStatusPayload = uiPayload?.chartStatus;
-  const openAiSummaryForDisplay = displayTextFromOpenAiSummary(
-    uiPayload?.openAiSummary,
-  );
-
-  /** Recover plan/seats from a mistaken full-JSON `openAiSummary` string. */
-  const {
-    openAiBookingPlanResolved,
-    openAiStructuredSeatsResolved,
-    openAiTotalPriceResolved,
-  } = useMemo(() => {
-    const plan = uiPayload?.openAiBookingPlan;
-    const seats = uiPayload?.openAiStructuredSeats;
-    let total = uiPayload?.openAiTotalPrice;
-    const hasPlan = Array.isArray(plan) && plan.length > 0;
-    const hasSeats = Array.isArray(seats) && seats.length > 0;
-
-    let blob: {
-      booking_plan?: unknown[];
-      seats?: unknown[];
-      total_price?: number;
-    } | null = null;
-    const raw = uiPayload?.openAiSummary;
-    if (
-      (!hasPlan || !hasSeats) &&
-      typeof raw === "string" &&
-      raw.trim().startsWith("{")
-    ) {
-      try {
-        blob = JSON.parse(raw.trim()) as {
-          booking_plan?: unknown[];
-          seats?: unknown[];
-          total_price?: number;
-        };
-      } catch {
-        blob = null;
-      }
-    }
-
-    const planOut = hasPlan
-      ? plan!
-      : Array.isArray(blob?.booking_plan)
-        ? (blob!.booking_plan as NonNullable<
-            CheckResult["resultPayload"]
-          >["openAiBookingPlan"])
-        : [];
-
-    const seatsOut = hasSeats
-      ? seats!
-      : Array.isArray(blob?.seats)
-        ? (blob!.seats as NonNullable<
-            CheckResult["resultPayload"]
-          >["openAiStructuredSeats"])
-        : [];
-
-    if (total == null && typeof blob?.total_price === "number") {
-      total = blob.total_price;
-    }
-
-    return {
-      openAiBookingPlanResolved: planOut ?? [],
-      openAiStructuredSeatsResolved: seatsOut ?? [],
-      openAiTotalPriceResolved: total,
-    };
-  }, [
-    uiPayload?.openAiBookingPlan,
-    uiPayload?.openAiStructuredSeats,
-    uiPayload?.openAiTotalPrice,
-    uiPayload?.openAiSummary,
-  ]);
 
   const showChartPendingMonitor =
     Boolean(checkResult && !loading) &&
-    payload?.serviceSource === "service2" &&
     chartStatusPayload &&
     (chartStatusPayload.kind === "not_prepared_yet" ||
       (chartStatusPayload.kind === "chart_error" &&
@@ -1283,22 +818,6 @@ export default function HomePage() {
   }, [showChartPendingMonitor, chartPendingModalDismissed]);
 
   useEffect(() => {
-    if (!irctcBookConfirm) {
-      irctcDisclaimerOpenTracked.current = false;
-      return;
-    }
-    if (irctcDisclaimerOpenTracked.current) return;
-    irctcDisclaimerOpenTracked.current = true;
-    trackAnalyticsEvent({
-      name: "popup_opened",
-      properties: {
-        popup: "irctc_disclaimer",
-        plan_source: irctcBookConfirm.source,
-      },
-    });
-  }, [irctcBookConfirm]);
-
-  useEffect(() => {
     if (!monitoringStartedPopupOpen || !monitorJourneyResponse) {
       monitoringSuccessOpenTracked.current = false;
       return;
@@ -1310,313 +829,6 @@ export default function HomePage() {
       properties: { popup: "monitoring_success" },
     });
   }, [monitoringStartedPopupOpen, monitorJourneyResponse]);
-
-  useEffect(() => {
-    if (!monitoringLeg) {
-      gapMonitorOpenKey.current = null;
-      return;
-    }
-    const key = `${monitoringLeg.fromCode}:${monitoringLeg.toCode}`;
-    if (gapMonitorOpenKey.current === key) return;
-    gapMonitorOpenKey.current = key;
-    trackAnalyticsEvent({
-      name: "popup_opened",
-      properties: {
-        popup: "gap_leg_monitor",
-        from_code: monitoringLeg.fromCode,
-        to_code: monitoringLeg.toCode,
-      },
-    });
-  }, [monitoringLeg]);
-
-  // Build full journey legs (ticket + gap) from route and booking plan (memoized so chart-meta effect deps stay stable).
-  const routeStations = useMemo(() => {
-    const scheduleList =
-      uiPayload?.trainSchedule?.stationList ??
-      scheduleStations?.map((s) => ({
-        stationCode: s.code,
-        stationName: s.name,
-      }));
-    const routeStationsRaw = Array.isArray(scheduleList)
-      ? scheduleList
-          .map((s) => ({
-            code: String(s.stationCode ?? "")
-              .trim()
-              .toUpperCase(),
-            name: String(s.stationName ?? "").trim(),
-          }))
-          .filter((s) => s.code)
-      : [];
-    const fromIdx = routeStationsRaw.findIndex((s) => s.code === fromCode);
-    const toIdx = routeStationsRaw.findIndex((s) => s.code === toCode);
-    return fromIdx >= 0 && toIdx >= 0 && fromIdx < toIdx
-      ? routeStationsRaw.slice(fromIdx, toIdx + 1)
-      : [];
-  }, [
-    uiPayload?.trainSchedule?.stationList,
-    scheduleStations,
-    fromCode,
-    toCode,
-  ]);
-  const openAiPlan = openAiBookingPlanResolved;
-  const openAiStructuredSeats = openAiStructuredSeatsResolved;
-
-  function isEmptyService2PlanSlot(
-    slot:
-      | { instruction?: string; approx_price?: number }
-      | Record<string, never>
-      | undefined,
-  ): boolean {
-    if (slot == null || typeof slot !== "object") return true;
-    if (Object.keys(slot as object).length === 0) return true;
-    const ins = String(
-      "instruction" in slot
-        ? ((slot as { instruction?: string }).instruction ?? "")
-        : "",
-    ).trim();
-    return ins.length === 0;
-  }
-
-  // Parse plan segments: each item matches openAiPlan index (empty slots → no from/to)
-  const planSegments = useMemo(
-    () =>
-      openAiPlan.map(
-        (
-          item:
-            | { instruction?: string; approx_price?: number }
-            | Record<string, never>,
-        ) => {
-          const instr =
-            typeof item === "string"
-              ? item
-              : "instruction" in item
-                ? (item.instruction ?? "")
-                : "";
-          const parts = instr.split(" - ").map((p) => p.trim());
-          return {
-            fromCode: (parts[0] ?? "").toUpperCase(),
-            toCode: (parts[1] ?? "").toUpperCase(),
-            classCode: parts[2]?.trim() ?? "3A",
-            approx_price:
-              "approx_price" in item && typeof item.approx_price === "number"
-                ? item.approx_price
-                : null,
-            instruction: instr,
-          };
-        },
-      ),
-    [openAiPlan],
-  );
-
-  const routeLegCount =
-    routeStations.length >= 2 ? routeStations.length - 1 : 0;
-  const planAlignedWithRoute =
-    routeLegCount > 0 && openAiPlan.length === routeLegCount;
-  const alignedJourneyLegs = useMemo(() => {
-    if (!planAlignedWithRoute || routeStations.length < 2) return null;
-    return routeStations.slice(0, -1).map((fromSt, i) => ({
-      fromCode: fromSt.code,
-      toCode: routeStations[i + 1]!.code,
-      seg: planSegments[i]!,
-      slot: openAiPlan[i],
-    }));
-  }, [planAlignedWithRoute, routeStations, planSegments, openAiPlan]);
-  // Route index of a station code (for coverage check)
-  const routeIndex = useCallback(
-    (code: string) =>
-      routeStations.findIndex(
-        (s) => s.code === String(code).trim().toUpperCase(),
-      ),
-    [routeStations],
-  );
-  // Check if a consecutive route pair (fromCode, toCode) at indices (i, i+1) is covered by any plan segment
-  const isPairCovered = useCallback(
-    (fromCodeLeg: string, toCodeLeg: string) => {
-      const i = routeIndex(fromCodeLeg);
-      const j = routeIndex(toCodeLeg);
-      if (i < 0 || j !== i + 1) return false;
-      return planSegments.some((seg) => {
-        if (!seg.fromCode || !seg.toCode) return false;
-        const segFromIdx = routeIndex(seg.fromCode);
-        const segToIdx = routeIndex(seg.toCode);
-        return (
-          segFromIdx >= 0 && segToIdx >= 0 && segFromIdx <= i && segToIdx >= j
-        );
-      });
-    },
-    [planSegments, routeIndex],
-  );
-  /** Hide micro-legs already covered by a prior ticket’s span (empty slot but not a gap). */
-  const alignedJourneyLegsForDisplay = useMemo(() => {
-    if (alignedJourneyLegs == null) return null;
-    return alignedJourneyLegs.filter((leg) => {
-      if (!isEmptyService2PlanSlot(leg.slot)) return true;
-      if (isPairCovered(leg.fromCode, leg.toCode)) return false;
-      return true;
-    });
-  }, [alignedJourneyLegs, isPairCovered]);
-
-  /**
-   * Per ticket leg: fetch chart meta per endpoint `sourceStation` (from + to for the strip).
-   * API body is only trainNumber, journeyDate, sourceStation (no stationCodes).
-   */
-  const service2ChartLegRequests = useMemo(() => {
-    if (uiPayload?.serviceSource !== "service2") return [];
-    type Job = { legKey: string; sourceStations: string[] };
-    const out: Job[] = [];
-    const pushLeg = (aRaw: string, bRaw: string) => {
-      const a = String(aRaw ?? "")
-        .trim()
-        .toUpperCase();
-      const b = String(bRaw ?? "")
-        .trim()
-        .toUpperCase();
-      if (!a || !b) return;
-      const sourceStations: string[] = [];
-      const seen = new Set<string>();
-      for (const c of [a, b]) {
-        if (!seen.has(c)) {
-          seen.add(c);
-          sourceStations.push(c);
-        }
-      }
-      out.push({ legKey: `${a}-${b}`, sourceStations });
-    };
-    if (alignedJourneyLegsForDisplay?.length) {
-      for (const leg of alignedJourneyLegsForDisplay) {
-        if (isEmptyService2PlanSlot(leg.slot)) continue;
-        pushLeg(leg.seg.fromCode ?? "", leg.seg.toCode ?? "");
-      }
-      return out;
-    }
-    if (!planAlignedWithRoute) {
-      for (const seg of planSegments) {
-        if (!seg.fromCode || !seg.toCode) continue;
-        pushLeg(seg.fromCode, seg.toCode);
-      }
-    }
-    return out;
-  }, [
-    uiPayload?.serviceSource,
-    alignedJourneyLegsForDisplay,
-    planAlignedWithRoute,
-    planSegments,
-  ]);
-
-  useEffect(() => {
-    if (uiPayload?.serviceSource !== "service2") {
-      setStationChartMetaByCode({});
-      setLegChartMetaLoading({});
-      return;
-    }
-    if (
-      service2ChartLegRequests.length === 0 ||
-      !trainNumber.trim() ||
-      !journeyDate.trim()
-    ) {
-      setStationChartMetaByCode({});
-      setLegChartMetaLoading({});
-      return;
-    }
-    const ac = new AbortController();
-    const jobs = service2ChartLegRequests;
-    setStationChartMetaByCode({});
-    const init: Record<string, boolean> = {};
-    for (const j of jobs) init[j.legKey] = true;
-    setLegChartMetaLoading(init);
-
-    void Promise.all(
-      jobs.map(async (job) => {
-        try {
-          await Promise.all(
-            job.sourceStations.map(async (sourceStation) => {
-              try {
-                const r = await apiClient.post<{
-                  stations: StationChartMetaItem[];
-                }>(
-                  "/api/train-composition/stations-meta",
-                  {
-                    trainNumber: trainNumber.trim(),
-                    journeyDate: journeyDate.trim(),
-                    sourceStation,
-                  },
-                  { timeout: 120_000, signal: ac.signal },
-                );
-                if (ac.signal.aborted) return;
-                const rows = Array.isArray(r.data?.stations)
-                  ? r.data.stations
-                  : [];
-                setStationChartMetaByCode((prev) => {
-                  const next = { ...prev };
-                  for (const row of rows) {
-                    const k = String(row.stationCode ?? "")
-                      .trim()
-                      .toUpperCase();
-                    if (k) next[k] = row;
-                  }
-                  return next;
-                });
-              } catch {
-                /* keep merged meta from other stations / legs */
-              }
-            }),
-          );
-        } finally {
-          if (!ac.signal.aborted) {
-            setLegChartMetaLoading((p) => ({ ...p, [job.legKey]: false }));
-          }
-        }
-      }),
-    );
-
-    return () => {
-      ac.abort();
-    };
-  }, [
-    uiPayload?.serviceSource,
-    service2ChartLegRequests,
-    trainNumber,
-    journeyDate,
-  ]);
-
-  // Ticket cards: one per plan segment (Book). Gap cards: consecutive route pairs not covered (Monitor).
-  const ticketCards = planAlignedWithRoute
-    ? []
-    : planSegments.filter((seg) => seg.fromCode && seg.toCode);
-  const gapLegs: Leg[] = planAlignedWithRoute
-    ? []
-    : routeStations.length >= 2
-      ? Array.from({ length: routeStations.length - 1 }, (_, i) => {
-          const fromCodeLeg = routeStations[i].code;
-          const toCodeLeg = routeStations[i + 1].code;
-          return {
-            fromCode: fromCodeLeg,
-            toCode: toCodeLeg,
-            hasTicket: false,
-            planItem: undefined,
-          };
-        }).filter((leg) => !isPairCovered(leg.fromCode, leg.toCode))
-      : [];
-  const totalApproxPrice =
-    alignedJourneyLegs != null
-      ? alignedJourneyLegs.reduce(
-          (sum, leg) =>
-            isEmptyService2PlanSlot(leg.slot)
-              ? sum
-              : sum + (leg.seg.approx_price ?? 0),
-          0,
-        )
-      : ticketCards.length > 0
-        ? ticketCards.reduce((sum, seg) => sum + (seg.approx_price ?? 0), 0)
-        : typeof openAiTotalPriceResolved === "number"
-          ? openAiTotalPriceResolved
-          : null;
-
-  /** While SSE is still chaining OpenAI + vacant berth, show loaders on empty legs. */
-  const service2SearchingMoreLegs =
-    loading &&
-    service2StreamPartial != null &&
-    uiPayload?.serviceSource === "service2";
 
   return (
     <div className="min-h-[100dvh] min-h-screen bg-slate-50/50">
@@ -2262,7 +1474,7 @@ export default function HomePage() {
           </section>
         )}
 
-        {loading && !checkResult && !service2StreamPartial && (
+        {loading && !checkResult && (
           <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
             <SearchLoaderTrainTrack />
             <p className="text-left text-lg font-bold leading-snug text-slate-900 sm:text-xl">
@@ -2271,13 +1483,11 @@ export default function HomePage() {
           </div>
         )}
 
-        {((checkResult &&
+        {checkResult &&
           !loading &&
-          (!showChartPendingMonitor || chartPendingModalDismissed)) ||
-          (loading && service2StreamPartial != null)) && (
-          <section className="mt-6 rounded-2xl bg-slate-100/60 px-0 py-4">
-            {uiPayload?.serviceSource === "service2" ? (
-              uiPayload.chartStatus ? (
+          (!showChartPendingMonitor || chartPendingModalDismissed) && (
+            <section className="mt-6 rounded-2xl bg-slate-100/60 px-0 py-4">
+              {uiPayload?.chartStatus ? (
                 <div className="rounded-2xl border border-amber-200/90 bg-white p-4 shadow-md">
                   <div className="rounded-xl border border-amber-100 bg-amber-50/80 px-4 py-4">
                     <p className="text-xl font-bold text-amber-900">
@@ -2330,623 +1540,6 @@ export default function HomePage() {
                     )}
                   </div>
                 </div>
-              ) : openAiBookingPlanResolved.length > 0 ? (
-                <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-lg">
-                  {/* Train header with total fare on top right */}
-                  {/* Admin debug trace moved below header */}
-
-                  <div className="flex flex-wrap items-start justify-between gap-3 border-b border-slate-100 px-4 py-4">
-                    <div className="min-w-0">
-                      <h2 className="text-base font-bold leading-tight text-slate-900">
-                        {trainNumber} {uiPayload.composition?.trainName ?? ""}
-                      </h2>
-                      <p className="mt-1 flex items-center gap-1.5 text-sm text-slate-600">
-                        <span>{uiPayload.composition?.from ?? fromCode}</span>
-                        <ChevronRightIcon className="h-4 w-4 shrink-0 text-slate-400" />
-                        <span>
-                          {(uiPayload.composition?.to ?? toCode) || "—"}
-                        </span>
-                      </p>
-                      {uiPayload.chartPreparationDetails
-                        ?.firstChartCreationTime && (
-                        <p className="mt-1.5 text-xs text-slate-500">
-                          Chart preparation:{" "}
-                          {
-                            uiPayload.chartPreparationDetails
-                              .firstChartCreationTime
-                          }
-                          {uiPayload.chartPreparationDetails.chartingStationCode
-                            ? ` at ${uiPayload.chartPreparationDetails.chartingStationCode}`
-                            : ""}
-                        </p>
-                      )}
-                    </div>
-                    {totalApproxPrice != null && totalApproxPrice > 0 && (
-                      <div className="shrink-0 text-right">
-                        <p className="text-sm font-semibold text-slate-800">
-                          Total approx. fare
-                        </p>
-                        <p className="mt-0.5 flex items-center justify-end gap-1 text-base font-bold text-slate-900">
-                          <span>
-                            ₹{totalApproxPrice.toLocaleString("en-IN")}
-                          </span>
-                          <IndicativeFareInfoButton />
-                        </p>
-                      </div>
-                    )}
-                  </div>
-
-                  {openAiSummaryForDisplay && (
-                    <div className="px-4 pb-1 pt-3">
-                      <p className="text-sm font-semibold leading-snug text-slate-700">
-                        {openAiSummaryForDisplay}
-                      </p>
-                    </div>
-                  )}
-
-                  {uiPayload.chartRefreshNotice && (
-                    <div
-                      className="mx-4 mt-3 rounded-lg border border-amber-200/90 bg-amber-50/95 px-3 py-2.5 text-left"
-                      role="status"
-                    >
-                      <p className="text-sm font-medium text-amber-950">
-                        {uiPayload.chartRefreshNotice.message}
-                      </p>
-                    </div>
-                  )}
-
-                  {isAdminUser &&
-                    uiPayload.debugLog &&
-                    uiPayload.debugLog.length > 0 && (
-                      <div className="mx-4 mt-3">
-                        <details className="rounded-xl border border-slate-200 bg-slate-50/50 p-3 shadow-sm transition-all hover:border-slate-300">
-                          <summary className="group flex cursor-pointer items-center justify-between text-sm font-bold text-slate-800">
-                            <span className="flex items-center gap-2">
-                              <svg
-                                className="h-4 w-4 text-slate-500"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                                />
-                              </svg>
-                              Step-by-step debug trace (
-                              {uiPayload.debugLog.length} lines)
-                            </span>
-                            <span className="hidden items-center gap-1.5 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 transition-colors group-hover:bg-slate-200 sm:flex">
-                              {uiPayload.vacantBerthApiCalled ? (
-                                <span className="flex items-center gap-1 text-emerald-600">
-                                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                                  IRCTC API Used
-                                </span>
-                              ) : (
-                                <span className="flex items-center gap-1 text-slate-500">
-                                  <span className="h-1.5 w-1.5 rounded-full bg-slate-400"></span>
-                                  Composition Only
-                                </span>
-                              )}
-                            </span>
-                          </summary>
-                          <div className="mt-3">
-                            <div className="mb-2 flex items-center justify-between sm:hidden">
-                              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                                {uiPayload.vacantBerthApiCalled
-                                  ? "IRCTC API Used"
-                                  : "Composition Only"}
-                              </span>
-                            </div>
-                            <ol className="scrollbar-thin scrollbar-thumb-slate-200 max-h-64 list-decimal overflow-y-auto pl-5 font-mono text-[11px] leading-relaxed text-slate-600">
-                              {uiPayload.debugLog.map((line, i) => (
-                                <li
-                                  key={i}
-                                  className="whitespace-pre-wrap border-b border-dashed border-slate-100 py-1 last:border-0"
-                                >
-                                  {line}
-                                </li>
-                              ))}
-                            </ol>
-                            <p className="mt-2 flex items-center gap-1 text-[10px] font-medium text-slate-400">
-                              <svg
-                                className="h-3 w-3"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                />
-                              </svg>
-                              Logs also available on server as [service2/check
-                              …]
-                            </p>
-                          </div>
-                        </details>
-                      </div>
-                    )}
-
-                  {/* Full journey: plan segments as Book cards, then gap legs as Monitor cards */}
-                  <div className="space-y-3 px-4 py-4">
-                    {alignedJourneyLegsForDisplay != null &&
-                    alignedJourneyLegsForDisplay.length > 0 ? (
-                      <>
-                        {(() => {
-                          let ticketIndex = 0;
-                          return alignedJourneyLegsForDisplay.map((leg, i) => {
-                            const stationLabel = (code: string) => {
-                              const s = stationsForRoute.find(
-                                (x) =>
-                                  x.code.toUpperCase() ===
-                                  String(code).trim().toUpperCase(),
-                              );
-                              return s ? `${s.code} - ${s.name}` : code;
-                            };
-                            const hasTicket = !isEmptyService2PlanSlot(
-                              leg.slot,
-                            );
-                            if (hasTicket) ticketIndex += 1;
-                            const seg = leg.seg;
-                            const scheduleListWithTimes =
-                              uiPayload?.trainSchedule?.stationList ?? [];
-                            const segFromU = String(seg.fromCode ?? "")
-                              .trim()
-                              .toUpperCase();
-                            const segToU = String(seg.toCode ?? "")
-                              .trim()
-                              .toUpperCase();
-                            const fromStationSchedule =
-                              scheduleListWithTimes.find(
-                                (s) =>
-                                  String(s.stationCode ?? "")
-                                    .trim()
-                                    .toUpperCase() === segFromU,
-                              );
-                            const toStationSchedule =
-                              scheduleListWithTimes.find(
-                                (s) =>
-                                  String(s.stationCode ?? "")
-                                    .trim()
-                                    .toUpperCase() === segToU,
-                              );
-                            const depTime =
-                              fromStationSchedule?.departureTime?.trim() ||
-                              null;
-                            const arrTime =
-                              toStationSchedule?.arrivalTime?.trim() ||
-                              toStationSchedule?.departureTime?.trim() ||
-                              null;
-                            const routeLabel = `${stationLabel(leg.fromCode)} → ${stationLabel(leg.toCode)}`;
-                            return (
-                              <Fragment
-                                key={`aligned-leg-${leg.fromCode}-${leg.toCode}-${i}`}
-                              >
-                                {i > 0 && (
-                                  <div className="flex justify-center py-1">
-                                    <ChevronDownIcon className="h-10 w-10 text-slate-400" />
-                                  </div>
-                                )}
-                                {hasTicket ? (
-                                  (() => {
-                                    const seatsForSegment =
-                                      openAiStructuredSeats.filter(
-                                        (s) =>
-                                          String(s.from ?? "")
-                                            .trim()
-                                            .toUpperCase() === seg.fromCode &&
-                                          String(s.to ?? "")
-                                            .trim()
-                                            .toUpperCase() === seg.toCode,
-                                      );
-                                    const bookUrl = irctcBookingRedirect({
-                                      from: seg.fromCode,
-                                      to: seg.toCode,
-                                      trainNo: trainNumber,
-                                      classCode: seg.classCode,
-                                    });
-                                    return (
-                                      <div className="flex w-full flex-col overflow-hidden rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 pb-0 pt-4 shadow-sm">
-                                        <TicketCardTitleRow
-                                          ticketIndex={ticketIndex}
-                                          classCode={seg.classCode}
-                                          asOfPhrase={ticketCardAsOfPhrase}
-                                        />
-                                        <div className="flex items-start gap-2 pb-4 text-sm font-medium text-slate-800">
-                                          <div className="min-w-0 flex-1">
-                                            <p className="leading-tight">
-                                              {stationLabel(seg.fromCode)}
-                                            </p>
-                                            {depTime && (
-                                              <p className="text-s mt-0.5 font-bold text-slate-500">
-                                                Dep {depTime}
-                                              </p>
-                                            )}
-                                          </div>
-                                          <ChevronRightIcon className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
-                                          <div className="min-w-0 flex-1">
-                                            <p className="leading-tight">
-                                              {stationLabel(seg.toCode)}
-                                            </p>
-                                            {arrTime && (
-                                              <p className="text-s mt-0.5 font-bold text-slate-500">
-                                                Arr {arrTime}
-                                              </p>
-                                            )}
-                                          </div>
-                                        </div>
-                                        {seatsForSegment.length > 0 && (
-                                          <p className="mt-2 pb-4 text-sm text-slate-600">
-                                            {seatsForSegment
-                                              .map(
-                                                (s) =>
-                                                  `Coach ${s.coach ?? "—"}, Berth ${s.berth ?? "—"}${s.seat ? `, ${s.seat}` : ""}`,
-                                              )
-                                              .join(" · ")}
-                                          </p>
-                                        )}
-                                        <button
-                                          type="button"
-                                          onClick={() => {
-                                            trackAnalyticsEvent({
-                                              name: "button_clicked",
-                                              properties: {
-                                                button_id: "book_ticket_card",
-                                                plan_source: "booking_plan",
-                                                train_number:
-                                                  trainNumber.trim(),
-                                              },
-                                            });
-                                            setIrctcBookConfirm({
-                                              url: bookUrl,
-                                              source: "booking_plan",
-                                            });
-                                          }}
-                                          className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-xl bg-emerald-600 px-4 py-3.5 text-base font-semibold text-white transition active:bg-emerald-700"
-                                        >
-                                          Book
-                                        </button>
-                                        <TicketJourneyChartStrip
-                                          journeyDate={journeyDate}
-                                          fromMeta={
-                                            stationChartMetaByCode[segFromU]
-                                          }
-                                          toMeta={
-                                            stationChartMetaByCode[segToU]
-                                          }
-                                          loading={
-                                            legChartMetaLoading[
-                                              `${segFromU}-${segToU}`
-                                            ] ?? false
-                                          }
-                                        />
-                                      </div>
-                                    );
-                                  })()
-                                ) : service2SearchingMoreLegs ? (
-                                  <div className="flex w-full flex-col rounded-xl border border-sky-200/90 bg-sky-50/70 px-4 py-4 shadow-sm">
-                                    <p className="mb-1.5 text-sm font-semibold text-slate-500">
-                                      Upcoming leg
-                                    </p>
-                                    <p className="text-sm font-medium text-slate-800">
-                                      {routeLabel}
-                                    </p>
-                                    <div className="mt-3 flex items-center gap-2.5 text-sm text-sky-950">
-                                      <span
-                                        className="inline-block h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-sky-600 border-t-transparent"
-                                        aria-hidden
-                                      />
-                                      <span>Finding you a ticket here…</span>
-                                    </div>
-                                  </div>
-                                ) : (
-                                  <div className="flex w-full flex-col rounded-xl border border-amber-200/80 bg-amber-50/60 px-4 py-4 shadow-sm">
-                                    <p className="mb-1.5 text-sm font-semibold text-slate-500">
-                                      No tickets
-                                    </p>
-                                    <p className="text-sm font-medium text-slate-800">
-                                      {routeLabel}
-                                    </p>
-                                    <p className="mt-2 text-sm leading-snug text-amber-900/90">
-                                      Speak to the TTE to figure out a space
-                                    </p>
-                                    <button
-                                      type="button"
-                                      onClick={() => {
-                                        trackAnalyticsEvent({
-                                          name: "button_clicked",
-                                          properties: {
-                                            button_id: "gap_leg_monitor_open",
-                                            from_code: leg.fromCode,
-                                            to_code: leg.toCode,
-                                          },
-                                        });
-                                        trackAnalyticsEvent({
-                                          name: "monitor_modal_opened",
-                                          properties: { source: "gap_leg" },
-                                        });
-                                        setMonitoringLeg({
-                                          fromCode: leg.fromCode,
-                                          toCode: leg.toCode,
-                                        });
-                                      }}
-                                      className="mt-4 flex min-h-[48px] items-center justify-center rounded-xl bg-amber-600 px-4 py-3.5 text-base font-semibold text-white transition active:bg-amber-700"
-                                    >
-                                      Monitor
-                                    </button>
-                                  </div>
-                                )}
-                              </Fragment>
-                            );
-                          });
-                        })()}
-                      </>
-                    ) : ticketCards.length > 0 || gapLegs.length > 0 ? (
-                      <>
-                        {ticketCards.map((seg, i) => {
-                          const stationLabel = (code: string) => {
-                            const s = stationsForRoute.find(
-                              (x) =>
-                                x.code.toUpperCase() ===
-                                String(code).trim().toUpperCase(),
-                            );
-                            return s ? `${s.code} - ${s.name}` : code;
-                          };
-                          const seatsForSegment = openAiStructuredSeats.filter(
-                            (s) =>
-                              String(s.from ?? "")
-                                .trim()
-                                .toUpperCase() === seg.fromCode &&
-                              String(s.to ?? "")
-                                .trim()
-                                .toUpperCase() === seg.toCode,
-                          );
-                          const scheduleListWithTimes =
-                            uiPayload?.trainSchedule?.stationList ?? [];
-                          const fromStationSchedule =
-                            scheduleListWithTimes.find(
-                              (s) =>
-                                String(s.stationCode ?? "")
-                                  .trim()
-                                  .toUpperCase() === seg.fromCode,
-                            );
-                          const toStationSchedule = scheduleListWithTimes.find(
-                            (s) =>
-                              String(s.stationCode ?? "")
-                                .trim()
-                                .toUpperCase() === seg.toCode,
-                          );
-                          const depTime =
-                            fromStationSchedule?.departureTime?.trim() || null;
-                          const arrTime =
-                            toStationSchedule?.arrivalTime?.trim() ||
-                            toStationSchedule?.departureTime?.trim() ||
-                            null;
-                          const bookUrl = irctcBookingRedirect({
-                            from: seg.fromCode,
-                            to: seg.toCode,
-                            trainNo: trainNumber,
-                            classCode: seg.classCode,
-                          });
-                          const ticketSegFromU = String(seg.fromCode ?? "")
-                            .trim()
-                            .toUpperCase();
-                          const ticketSegToU = String(seg.toCode ?? "")
-                            .trim()
-                            .toUpperCase();
-                          return (
-                            <Fragment
-                              key={`ticket-${seg.fromCode}-${seg.toCode}-${i}`}
-                            >
-                              {i > 0 && (
-                                <div className="flex justify-center py-1">
-                                  <ChevronDownIcon className="h-10 w-10 text-slate-400" />
-                                </div>
-                              )}
-                              <div className="flex w-full flex-col overflow-hidden rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 pb-0 pt-4 shadow-sm">
-                                <TicketCardTitleRow
-                                  ticketIndex={i + 1}
-                                  classCode={seg.classCode}
-                                  asOfPhrase={ticketCardAsOfPhrase}
-                                />
-                                <div className="flex items-start gap-2 pb-4 text-sm font-medium text-slate-800">
-                                  <div className="min-w-0 flex-1">
-                                    <p className="leading-tight">
-                                      {stationLabel(seg.fromCode)}
-                                    </p>
-                                    {depTime && (
-                                      <p className="text-s mt-0.5 font-bold text-slate-500">
-                                        Dep {depTime}
-                                      </p>
-                                    )}
-                                  </div>
-                                  <ChevronRightIcon className="mt-0.5 h-4 w-4 shrink-0 text-slate-400" />
-                                  <div className="min-w-0 flex-1">
-                                    <p className="leading-tight">
-                                      {stationLabel(seg.toCode)}
-                                    </p>
-                                    {arrTime && (
-                                      <p className="text-s mt-0.5 font-bold text-slate-500">
-                                        Arr {arrTime}
-                                      </p>
-                                    )}
-                                  </div>
-                                </div>
-                                {seatsForSegment.length > 0 && (
-                                  <p className="mt-2 pb-4 text-sm text-slate-600">
-                                    {seatsForSegment
-                                      .map(
-                                        (s) =>
-                                          `Coach ${s.coach ?? "—"}, Berth ${s.berth ?? "—"}${s.seat ? `, ${s.seat}` : ""}`,
-                                      )
-                                      .join(" · ")}
-                                  </p>
-                                )}
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    trackAnalyticsEvent({
-                                      name: "button_clicked",
-                                      properties: {
-                                        button_id: "book_ticket_card",
-                                        plan_source: "booking_plan",
-                                        train_number: trainNumber.trim(),
-                                      },
-                                    });
-                                    setIrctcBookConfirm({
-                                      url: bookUrl,
-                                      source: "booking_plan",
-                                    });
-                                  }}
-                                  className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-xl bg-emerald-600 px-4 py-3.5 text-base font-semibold text-white transition active:bg-emerald-700"
-                                >
-                                  Book
-                                </button>
-                                <TicketJourneyChartStrip
-                                  journeyDate={journeyDate}
-                                  fromMeta={
-                                    stationChartMetaByCode[ticketSegFromU]
-                                  }
-                                  toMeta={stationChartMetaByCode[ticketSegToU]}
-                                  loading={
-                                    legChartMetaLoading[
-                                      `${ticketSegFromU}-${ticketSegToU}`
-                                    ] ?? false
-                                  }
-                                />
-                              </div>
-                            </Fragment>
-                          );
-                        })}
-                        {gapLegs.map((leg) => {
-                          const stationLabel = (code: string) => {
-                            const s = stationsForRoute.find(
-                              (x) =>
-                                x.code.toUpperCase() ===
-                                String(code).trim().toUpperCase(),
-                            );
-                            return s ? `${s.code} - ${s.name}` : code;
-                          };
-                          const routeLabel = `${stationLabel(leg.fromCode)} → ${stationLabel(leg.toCode)}`;
-                          return (
-                            <div
-                              key={`gap-${leg.fromCode}-${leg.toCode}`}
-                              className="flex w-full flex-col rounded-xl border border-amber-200/80 bg-amber-50/60 px-4 py-4 shadow-sm"
-                            >
-                              <p className="mb-1.5 text-sm font-semibold text-slate-500">
-                                No tickets
-                              </p>
-                              <p className="text-sm font-medium text-slate-800">
-                                {routeLabel}
-                              </p>
-                              <p className="mt-2 text-sm leading-snug text-amber-900/90">
-                                Speak to the TTE to figure out a space
-                              </p>
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  trackAnalyticsEvent({
-                                    name: "button_clicked",
-                                    properties: {
-                                      button_id: "gap_leg_monitor_open",
-                                      from_code: leg.fromCode,
-                                      to_code: leg.toCode,
-                                    },
-                                  });
-                                  trackAnalyticsEvent({
-                                    name: "monitor_modal_opened",
-                                    properties: { source: "gap_leg" },
-                                  });
-                                  setMonitoringLeg({
-                                    fromCode: leg.fromCode,
-                                    toCode: leg.toCode,
-                                  });
-                                }}
-                                className="mt-4 flex min-h-[48px] items-center justify-center rounded-xl bg-amber-600 px-4 py-3.5 text-base font-semibold text-white transition active:bg-amber-700"
-                              >
-                                Monitor
-                              </button>
-                            </div>
-                          );
-                        })}
-                      </>
-                    ) : (
-                      openAiPlan.map(
-                        (
-                          item: {
-                            instruction?: string;
-                            approx_price?: number;
-                          },
-                          i: number,
-                        ) => {
-                          const instruction =
-                            typeof item === "string"
-                              ? item
-                              : (item?.instruction ?? "");
-                          const parts = instruction.split(" - ");
-                          const origin = parts[0]?.trim() ?? "";
-                          const destination = parts[1]?.trim() ?? "";
-                          const classCode = parts[2]?.trim() ?? "3A";
-                          const stationLabel = (code: string) => {
-                            const s = stationsForRoute.find(
-                              (x) =>
-                                x.code.toUpperCase() ===
-                                String(code).trim().toUpperCase(),
-                            );
-                            return s ? `${s.code} - ${s.name}` : code;
-                          };
-                          const bookUrl = irctcBookingRedirect({
-                            from: origin,
-                            to: destination,
-                            trainNo: trainNumber,
-                            classCode,
-                          });
-                          return (
-                            <div
-                              key={i}
-                              className="flex w-full flex-col rounded-xl border border-emerald-200/80 bg-emerald-50/60 px-4 py-4 shadow-sm"
-                            >
-                              <TicketCardTitleRow
-                                ticketIndex={i + 1}
-                                classCode={classCode}
-                                asOfPhrase={ticketCardAsOfPhrase}
-                              />
-                              <p className="text-sm font-medium text-slate-800">
-                                {stationLabel(origin)} →{" "}
-                                {stationLabel(destination)}
-                              </p>
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  trackAnalyticsEvent({
-                                    name: "button_clicked",
-                                    properties: {
-                                      button_id: "book_ticket_card",
-                                      plan_source: "openai_plan",
-                                      train_number: trainNumber.trim(),
-                                    },
-                                  });
-                                  setIrctcBookConfirm({
-                                    url: bookUrl,
-                                    source: "openai_plan",
-                                  });
-                                }}
-                                className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-xl bg-emerald-600 px-4 py-3.5 text-base font-semibold text-white transition active:bg-emerald-700"
-                              >
-                                Book
-                              </button>
-                            </div>
-                          );
-                        },
-                      )
-                    )}
-                  </div>
-                </div>
               ) : checkResult?.status === "failed" || apiError ? (
                 <div className="rounded-2xl border border-red-200/80 bg-white p-4 shadow-md">
                   <div className="flex min-h-[44px] items-center rounded-xl border border-red-100 bg-red-50/80 px-4 py-4">
@@ -2959,407 +1552,23 @@ export default function HomePage() {
                 <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-lg">
                   <div className="flex flex-col gap-3 border-b border-slate-100 px-4 py-4">
                     <h2 className="text-base font-bold text-slate-900">
-                      {trainNumber} {uiPayload.composition?.trainName ?? ""}
+                      {trainNumber} {uiPayload?.composition?.trainName ?? ""}
                     </h2>
                   </div>
                   <div className="p-4">
-                    <div
-                      className={`rounded-xl border px-4 py-6 text-center ${
-                        openAiSummaryForDisplay
-                          ? "border-slate-200/90 bg-slate-50/80"
-                          : "border-red-200/80 bg-red-50/60"
-                      }`}
-                    >
-                      <p
-                        className={`whitespace-pre-wrap text-sm font-medium ${
-                          openAiSummaryForDisplay
-                            ? "text-slate-800"
-                            : "text-red-800"
-                        }`}
-                      >
-                        {openAiSummaryForDisplay?.trim() ||
-                          "No tickets found between these stations"}
+                    <div className="rounded-xl border border-red-200/80 bg-red-50/60 px-4 py-6 text-center">
+                      <p className="text-sm font-medium text-red-800">
+                        No tickets found between these stations
                       </p>
-                      {!openAiSummaryForDisplay?.trim() && (
-                        <p className="mt-1 text-sm text-red-700/90">
-                          Try a different date, train, or route.
-                        </p>
-                      )}
+                      <p className="mt-1 text-sm text-red-700/90">
+                        Try a different date, train, or route.
+                      </p>
                     </div>
                   </div>
                 </div>
-              )
-            ) : (
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-                <h2 className="text-lg font-semibold text-slate-900">
-                  Chart & availability result
-                </h2>
-                <p className="mt-1 text-sm text-slate-500">
-                  Train {trainNumber} • {fromCode} → {toCode || "—"} •{" "}
-                  {journeyDate}
-                </p>
-                {checkResult?.status === "failed" || apiError ? (
-                  <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-4">
-                    <p className="font-medium text-red-800">
-                      {apiError || SERVICE2_NO_TICKETS_AVAILABLE_COPY}
-                    </p>
-                  </div>
-                ) : (
-                  <>
-                    {chartDetails && (
-                      <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <p className="text-sm font-medium text-slate-700">
-                          Chart preparation
-                        </p>
-                        <p className="mt-1 text-sm text-slate-600">
-                          First chart: {chartDetails.firstChartCreationTime} •
-                          Charting station: {chartDetails.chartingStationName} (
-                          {chartDetails.chartingStationCode}) • Date:{" "}
-                          {chartDetails.journeyDate}
-                        </p>
-                      </div>
-                    )}
-                    {fullRouteStations.length > 0 &&
-                      uiPayload?.serviceSource !== "service2" && (
-                        <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
-                          <p className="text-sm font-medium text-slate-700">
-                            Full route ({fullRouteStations.length} stations)
-                          </p>
-                          <p className="mt-1 font-mono text-sm text-slate-600">
-                            {fullRouteStations.map((s, i) => (
-                              <span key={i}>
-                                {i > 0 ? " → " : ""}
-                                {s.stationCode}
-                              </span>
-                            ))}
-                          </p>
-                        </div>
-                      )}
-                    {longestPath && uiPayload?.serviceSource !== "service2" && (
-                      <div
-                        className={`mt-4 rounded-xl border p-4 ${longestPath.available ? "border-green-200 bg-green-50" : "border-amber-200 bg-amber-50"}`}
-                      >
-                        <p className="text-sm font-medium text-slate-700">
-                          Longest path available
-                        </p>
-                        <p className="mt-1 text-sm text-slate-600">
-                          {longestPath.fromStationName} (
-                          {longestPath.fromStationCode}) →{" "}
-                          {longestPath.toStationName} (
-                          {longestPath.toStationCode})
-                        </p>
-                        <p className="mt-1 text-sm font-medium">
-                          {longestPath.available
-                            ? "Seats available"
-                            : "No confirmed seats on this segment"}
-                        </p>
-                        {longestPath.availabilityByClass &&
-                          Object.keys(longestPath.availabilityByClass).length >
-                            0 && (
-                            <p className="mt-1 text-xs text-slate-500">
-                              By class:{" "}
-                              {Object.entries(longestPath.availabilityByClass)
-                                .map(([cls, status]) => `${cls}: ${status}`)
-                                .join(", ")}
-                            </p>
-                          )}
-                      </div>
-                    )}
-                    {fullJourneyConfirmed &&
-                      uiPayload?.serviceSource !== "service2" && (
-                        <div className="mt-4 rounded-xl border border-green-200 bg-green-50 p-4">
-                          <p className="font-medium text-green-800">
-                            Full journey confirmed.
-                          </p>
-                        </div>
-                      )}
-                    {summary && uiPayload?.serviceSource !== "service2" && (
-                      <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
-                        <p className="text-sm font-medium text-slate-700">
-                          Summary
-                        </p>
-                        <p className="mt-1 whitespace-pre-wrap text-sm text-slate-600">
-                          {summary}
-                        </p>
-                      </div>
-                    )}
-                    {Array.isArray(bookings) &&
-                      bookings.length > 0 &&
-                      uiPayload?.serviceSource !== "service2" && (
-                        <div className="mt-4">
-                          <p className="text-sm font-medium text-slate-700">
-                            Bookings
-                          </p>
-                          <ul className="mt-2 space-y-1 text-sm text-slate-600">
-                            {bookings.map((b, i) => (
-                              <li key={i}>
-                                {b.from} → {b.to}: {b.status ?? "—"}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    {Array.isArray(attempts) &&
-                      attempts.length > 0 &&
-                      uiPayload?.serviceSource !== "service2" && (
-                        <div className="mt-4">
-                          <p className="text-sm font-medium text-slate-700">
-                            Attempts
-                          </p>
-                          <ul className="mt-2 space-y-1 text-sm text-slate-600">
-                            {attempts.map((a, i) => (
-                              <li key={i}>
-                                {a.action ?? a.result ?? JSON.stringify(a)}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    {hasBerths && (
-                      <>
-                        <p className="mt-4 font-medium text-green-800">
-                          {vbd.length} vacant berth{vbd.length !== 1 ? "s" : ""}{" "}
-                          found.
-                        </p>
-                        <div className="mt-4 overflow-x-auto rounded-xl border border-slate-200">
-                          <table className="w-full text-left text-sm">
-                            <thead className="bg-slate-50 font-medium text-slate-600">
-                              <tr>
-                                <th className="px-4 py-2">Coach</th>
-                                <th className="px-4 py-2">Berth</th>
-                                <th className="px-4 py-2">Type</th>
-                                <th className="px-4 py-2">From</th>
-                                <th className="px-4 py-2">To</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {vbd.map((row, i) => (
-                                <tr
-                                  key={i}
-                                  className="border-t border-slate-100 hover:bg-slate-50/50"
-                                >
-                                  <td className="px-4 py-2 font-mono">
-                                    {row.coachName}
-                                  </td>
-                                  <td className="px-4 py-2">
-                                    {row.berthNumber}
-                                  </td>
-                                  <td className="px-4 py-2">{row.berthCode}</td>
-                                  <td className="px-4 py-2">{row.from}</td>
-                                  <td className="px-4 py-2">{row.to}</td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      </>
-                    )}
-                    {!hasChartResult &&
-                      !summary &&
-                      !hasBerths &&
-                      (Array.isArray(bookings)
-                        ? bookings.length === 0
-                        : true) && (
-                        <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
-                          <p className="text-sm text-slate-600">
-                            Check the Browser Use job output for full details.
-                          </p>
-                        </div>
-                      )}
-                  </>
-                )}
-              </div>
-            )}
-          </section>
-        )}
-
-        {irctcBookConfirm && (
-          <div
-            className="fixed inset-0 z-[105] flex items-center justify-center bg-black/45 p-4"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="irctc-disclaimer-title"
-            onClick={() => {
-              trackAnalyticsEvent({
-                name: "popup_closed",
-                properties: {
-                  popup: "irctc_disclaimer",
-                  method: "backdrop",
-                },
-              });
-              setIrctcBookConfirm(null);
-            }}
-          >
-            <div
-              className="w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="border-b border-slate-100 px-4 py-4">
-                <h2
-                  id="irctc-disclaimer-title"
-                  className="text-lg font-semibold leading-snug text-slate-900"
-                >
-                  Before you open IRCTC
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                  The seats and fares shown in this ticket box are based on what
-                  we found as of{" "}
-                  <span className="font-semibold text-slate-900">
-                    {chartFreshnessPhrase}
-                  </span>
-                  . Trains fill up quickly — someone else may have booked those
-                  seats since then, or availability may have changed.
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  Please double-check on the official IRCTC site before you pay.
-                </p>
-              </div>
-              <div className="flex flex-col-reverse gap-2 p-4 sm:flex-row sm:justify-end">
-                <button
-                  type="button"
-                  onClick={() => {
-                    trackAnalyticsEvent({
-                      name: "button_clicked",
-                      properties: {
-                        button_id: "irctc_disclaimer_go_back",
-                        plan_source: irctcBookConfirm?.source,
-                      },
-                    });
-                    trackAnalyticsEvent({
-                      name: "popup_closed",
-                      properties: {
-                        popup: "irctc_disclaimer",
-                        method: "go_back",
-                      },
-                    });
-                    setIrctcBookConfirm(null);
-                  }}
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 sm:w-auto"
-                >
-                  Go back
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (!irctcBookConfirm) return;
-                    trackAnalyticsEvent({
-                      name: "popup_closed",
-                      properties: {
-                        popup: "irctc_disclaimer",
-                        method: "continue_irctc",
-                      },
-                    });
-                    trackAnalyticsEvent({
-                      name: "irctc_book_clicked",
-                      properties: { source: irctcBookConfirm.source },
-                    });
-                    window.open(
-                      irctcBookConfirm.url,
-                      "_blank",
-                      "noopener,noreferrer",
-                    );
-                    setIrctcBookConfirm(null);
-                    setHelpfulFeedbackPopupOpen(true);
-                    trackAnalyticsEvent({
-                      name: "popup_opened",
-                      properties: { popup: "helpful_feedback" },
-                    });
-                  }}
-                  className="w-full rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white active:bg-emerald-700 sm:w-auto"
-                >
-                  Continue to IRCTC
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {helpfulFeedbackPopupOpen && (
-          <div
-            className="fixed inset-0 z-[115] flex items-center justify-center bg-black/45 p-4"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="helpful-feedback-title"
-            onClick={() => {
-              trackAnalyticsEvent({
-                name: "popup_closed",
-                properties: {
-                  popup: "helpful_feedback",
-                  method: "backdrop",
-                },
-              });
-              setHelpfulFeedbackPopupOpen(false);
-            }}
-          >
-            <div
-              className="w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="border-b border-slate-100 px-4 py-4">
-                <h2
-                  id="helpful-feedback-title"
-                  className="text-lg font-semibold text-slate-900"
-                >
-                  Was this result helpful?
-                </h2>
-                <p className="mt-2 text-sm text-slate-600">
-                  Your feedback helps us improve recommendations. You can also
-                  continue to IRCTC now.
-                </p>
-              </div>
-              <div className="grid grid-cols-1 gap-2 p-4 sm:grid-cols-3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    trackAnalyticsEvent({
-                      name: "button_clicked",
-                      properties: { button_id: "helpful_feedback_yes" },
-                    });
-                    trackAnalyticsEvent({
-                      name: "result_helpfulness_submitted",
-                      properties: { helpful: true },
-                    });
-                    trackAnalyticsEvent({
-                      name: "popup_closed",
-                      properties: {
-                        popup: "helpful_feedback",
-                        method: "helpful_yes",
-                      },
-                    });
-                    setHelpfulFeedbackPopupOpen(false);
-                  }}
-                  className="rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white active:bg-emerald-700"
-                >
-                  Yes
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    trackAnalyticsEvent({
-                      name: "button_clicked",
-                      properties: { button_id: "helpful_feedback_no" },
-                    });
-                    trackAnalyticsEvent({
-                      name: "result_helpfulness_submitted",
-                      properties: { helpful: false },
-                    });
-                    trackAnalyticsEvent({
-                      name: "popup_closed",
-                      properties: {
-                        popup: "helpful_feedback",
-                        method: "helpful_no",
-                      },
-                    });
-                    setHelpfulFeedbackPopupOpen(false);
-                  }}
-                  className="rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
-                >
-                  No
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+              )}
+            </section>
+          )}
 
         {journeyRunDayApiError && (
           <div
@@ -3763,144 +1972,6 @@ export default function HomePage() {
               </div>
             </div>
           )}
-
-        {/* Monitor modal: select stations to watch for a gap leg */}
-        {monitoringLeg && (
-          <div
-            className="fixed inset-0 z-20 flex items-center justify-center bg-black/40 p-4"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="monitor-title"
-            onClick={() => {
-              trackAnalyticsEvent({
-                name: "popup_closed",
-                properties: {
-                  popup: "gap_leg_monitor",
-                  method: "backdrop",
-                },
-              });
-              trackAnalyticsEvent({
-                name: "monitor_modal_closed",
-                properties: { outcome: "cancel", source: "gap_leg" },
-              });
-              setMonitoringLeg(null);
-              setMonitorSuccess(null);
-              setMonitorJourneyResponse(null);
-              setMonitorError(null);
-              setMonitorEmail("");
-              setMonitorMobile("");
-            }}
-          >
-            <div
-              className="flex max-h-[85vh] w-full max-w-md flex-col rounded-2xl bg-white shadow-xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="border-b border-slate-100 p-4">
-                <h2
-                  id="monitor-title"
-                  className="text-lg font-semibold text-slate-900"
-                >
-                  Monitor {monitoringLeg.fromCode} → {monitoringLeg.toCode}
-                </h2>
-                <p className="mt-1 text-sm text-slate-500">
-                  We&apos;ll check at chart time for this leg and notify you
-                  when seats are available. Enter email or mobile to get
-                  notified.
-                </p>
-              </div>
-              <div className="flex-1 space-y-4 overflow-y-auto p-4">
-                {monitorError && (
-                  <p className="text-sm text-red-600">{monitorError}</p>
-                )}
-                {monitorSuccess && (
-                  <p className="text-sm text-emerald-600">{monitorSuccess}</p>
-                )}
-                <div className="space-y-3">
-                  <label className="block text-sm font-medium text-slate-700">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={monitorEmail}
-                    onChange={(e) => setMonitorEmail(e.target.value)}
-                    placeholder="you@example.com"
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 outline-none placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-                  />
-                  {/* Mobile number field commented out - email is mandatory
-                  <label className="block text-sm font-medium text-slate-700">
-                    Mobile
-                  </label>
-                  <input
-                    type="tel"
-                    value={monitorMobile}
-                    onChange={(e) => setMonitorMobile(e.target.value)}
-                    placeholder="10-digit mobile number"
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none"
-                  />
-                  */}
-                </div>
-              </div>
-              <div className="flex gap-3 border-t border-slate-100 p-4">
-                <button
-                  type="button"
-                  onClick={() => {
-                    trackAnalyticsEvent({
-                      name: "button_clicked",
-                      properties: { button_id: "gap_monitor_cancel" },
-                    });
-                    trackAnalyticsEvent({
-                      name: "popup_closed",
-                      properties: {
-                        popup: "gap_leg_monitor",
-                        method: "cancel",
-                      },
-                    });
-                    trackAnalyticsEvent({
-                      name: "monitor_modal_closed",
-                      properties: { outcome: "cancel", source: "gap_leg" },
-                    });
-                    setMonitoringLeg(null);
-                    setMonitorSuccess(null);
-                    setMonitorJourneyResponse(null);
-                    setMonitorError(null);
-                    setMonitorEmail("");
-                    setMonitorMobile("");
-                  }}
-                  className="flex-1 rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  disabled={
-                    monitorSubmitting ||
-                    (!monitorEmail.trim() && !monitorMobile.trim())
-                  }
-                  onClick={() => {
-                    if (!monitoringLeg) return;
-                    trackAnalyticsEvent({
-                      name: "button_clicked",
-                      properties: {
-                        button_id: "gap_monitor_start",
-                        from_code: monitoringLeg.fromCode,
-                        to_code: monitoringLeg.toCode,
-                        train_number: trainNumber.trim(),
-                      },
-                    });
-                    void submitJourneyMonitor(
-                      monitoringLeg.fromCode,
-                      monitoringLeg.toCode,
-                    );
-                  }}
-                  className="flex-1 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white active:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  {monitorSubmitting ? "Starting…" : "Start monitoring"}
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </main>
     </div>
   );

@@ -89,7 +89,6 @@ flowchart TD
         IRCTC["IRCTC & Browser-Use API"]
         MSG91["WhatsApp API (MSG91)"]
         Resend["Resend (Transactional Email)"]
-        OpenAI["OpenAI (GPT-4o/5)"]
     end
 
     subgraph CICD["🚀 GitHub Actions CI/CD"]
@@ -112,7 +111,6 @@ flowchart TD
     NestJS --> IRCTC
     NestJS --> MSG91
     NestJS --> Resend
-    NestJS --> OpenAI
 
     %% CI/CD Deployment
     GHA -->|"SSH Deploy / Docker Build"| AWS_FE

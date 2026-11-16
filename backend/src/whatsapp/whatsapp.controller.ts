@@ -10,7 +10,6 @@ import {
 } from '@nestjs/common';
 import type { RawBodyRequest } from '@nestjs/common';
 import type { Request } from 'express';
-import { WhatsappService } from './whatsapp.service';
 import { WasenderHealthcheckService } from './wasender-healthcheck.service';
 import { ADMIN_PASSWORD_HEADER, assertAdminAuth } from '../common/admin-auth';
 import { verifyHmacSha256 } from '../common/webhook-signature';
@@ -20,7 +19,6 @@ export class WhatsappController {
   private readonly logger = new Logger(WhatsappController.name);
 
   constructor(
-    private readonly whatsappService: WhatsappService,
     private readonly wasenderHealthcheck: WasenderHealthcheckService,
   ) {}
 
@@ -81,13 +79,12 @@ export class WhatsappController {
         return { ok: true, status: 'ignored' };
       }
 
-      // Fire and forget so we don't hold the webhook connection open too long which causes retries
+      // Inbound messages are logged for observability only; the AI
+      // ticket-request auto-reply flow has been removed.
       if (messageText && sender) {
-        this.whatsappService
-          .handleIncomingMessage(sender, messageText, groupId)
-          .catch((e: Error) => {
-            this.logger.error('Error running WA background job', e);
-          });
+        this.logger.log(
+          `Received WhatsApp message from ${groupId || sender}: ${messageText.slice(0, 200)}`,
+        );
       }
 
       return { ok: true, received: true };

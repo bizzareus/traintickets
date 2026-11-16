@@ -1058,9 +1058,7 @@ describe('JourneyTaskService', () => {
       );
 
       // PAUSED: admin email (and its payment lookup) disabled for now.
-      expect(
-        mockPrisma.chartAlertPayment.findFirst,
-      ).not.toHaveBeenCalled();
+      expect(mockPrisma.chartAlertPayment.findFirst).not.toHaveBeenCalled();
       expect(
         mockNotification.sendAdminMonitoringRequestEmail,
       ).not.toHaveBeenCalled();
@@ -1113,9 +1111,7 @@ describe('JourneyTaskService', () => {
       );
 
       // PAUSED: admin email (and its payment lookup) disabled for now.
-      expect(
-        mockPrisma.chartAlertPayment.findFirst,
-      ).not.toHaveBeenCalled();
+      expect(mockPrisma.chartAlertPayment.findFirst).not.toHaveBeenCalled();
       expect(
         mockNotification.sendAdminMonitoringRequestEmail,
       ).not.toHaveBeenCalled();

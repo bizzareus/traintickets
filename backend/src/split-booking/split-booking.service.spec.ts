@@ -10,10 +10,8 @@ import { PDFDocument } from 'pdf-lib';
 import { SplitBookingService } from './split-booking.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { createMuzoboxClient } from '../common/muzobox-client';
-import { TripmgtBookingService } from './tripmgt-booking.service';
 import { ConfigService } from '@nestjs/config';
 import { ManualBookingService } from './manual-booking.service';
-import { RetellCallService } from './retell-call.service';
 import { BookingNtfyService } from './booking-ntfy.service';
 import { S3StorageService } from '../common/s3-storage.service';
 import { NotificationService } from '../notification/notification.service';
@@ -30,7 +28,6 @@ describe('SplitBookingService', () => {
   let service: SplitBookingService;
   let config: ConfigService;
   let manualBooking: { notify: jest.Mock };
-  let retellCall: { triggerBookingReceivedCall: jest.Mock };
   let notifications: { sendEmail: jest.Mock };
   let ntfy: { publish: jest.Mock };
   let wasender: { sendWhatsApp: jest.Mock };
@@ -55,9 +52,6 @@ describe('SplitBookingService', () => {
     };
   };
   let muzobox: { post: jest.Mock; get: jest.Mock };
-  let tripmgt: {
-    executeBooking: jest.Mock;
-  };
   let s3Storage: {
     uploadTicketPdf: jest.Mock;
     uploadInsurancePdf: jest.Mock;
@@ -69,7 +63,7 @@ describe('SplitBookingService', () => {
 
   beforeEach(async () => {
     config = new ConfigService({
-      SPLIT_BOOKING_MODE: 'ai',
+      SPLIT_BOOKING_MODE: 'manual',
       API_URL: 'https://api.lastberth.com',
       MUZOBOX_PROXY_API_KEY: 'test-key',
     });
@@ -77,9 +71,6 @@ describe('SplitBookingService', () => {
       notify: jest
         .fn()
         .mockResolvedValue({ emailSent: true, whatsappSent: true }),
-    };
-    retellCall = {
-      triggerBookingReceivedCall: jest.fn().mockResolvedValue('call_mock_123'),
     };
     notifications = {
       sendEmail: jest.fn().mockResolvedValue(true),
@@ -128,10 +119,6 @@ describe('SplitBookingService', () => {
       .mocked(createMuzoboxClient)
       .mockReturnValue(muzobox as unknown as AxiosInstance);
 
-    tripmgt = {
-      executeBooking: jest.fn(),
-    };
-
     s3Storage = {
       uploadTicketPdf: jest
         .fn()
@@ -170,10 +157,8 @@ describe('SplitBookingService', () => {
       providers: [
         SplitBookingService,
         { provide: PrismaService, useValue: prisma },
-        { provide: TripmgtBookingService, useValue: tripmgt },
         { provide: ConfigService, useValue: config },
         { provide: ManualBookingService, useValue: manualBooking },
-        { provide: RetellCallService, useValue: retellCall },
         { provide: S3StorageService, useValue: s3Storage },
         { provide: NotificationService, useValue: notifications },
         { provide: WasenderProvider, useValue: wasender },
@@ -282,81 +267,78 @@ describe('SplitBookingService', () => {
     ).rejects.toThrow(ServiceUnavailableException);
   });
 
-  it.each(['ai', 'manual'])(
-    'persists %s mode when creating the booking',
-    async (mode) => {
-      config.set('SPLIT_BOOKING_MODE', mode);
-      prisma.splitTicketBooking.create.mockResolvedValue({
-        id: 'test-booking-id',
-        bookingRef: 'LB-SB-TEST',
-        totalFare: 810,
-      });
+  it('persists manual mode when creating the booking', async () => {
+    config.set('SPLIT_BOOKING_MODE', 'manual');
+    prisma.splitTicketBooking.create.mockResolvedValue({
+      id: 'test-booking-id',
+      bookingRef: 'LB-SB-TEST',
+      totalFare: 810,
+    });
 
-      const result = await service.createBooking({
-        trainNumber: '12216',
-        trainName: 'DEE GARIBRATH',
-        fromStationCode: 'AII',
-        toStationCode: 'GGN',
-        journeyDate: '2026-09-20',
-        travelClass: '3A',
-        totalFare: 810,
-        legs: [
-          {
-            from: 'AII',
-            to: 'JP',
-            travelClass: '3A',
-            fare: 340,
-            boardingDate: '2026-09-20',
-          },
-          {
-            from: 'JP',
-            to: 'GGN',
-            travelClass: '3A',
-            fare: 470,
-            boardingDate: '2026-09-20',
-          },
-        ],
-        passengers: [
-          {
-            name: 'Rahul Sharma',
-            age: 32,
-            gender: 'Male',
-            berthPreference: 'Lower',
-          },
-        ],
-        contactMobile: '9876543210',
-        contactEmail: 'rahul@example.com',
-        autoUpgrade: true,
-      });
-
-      expect(result).toMatchObject({
-        totalFare: 810,
-        irctcServiceFee: 70.8,
-        serviceFee: 80,
-        paymentGatewayFee: 10.4,
-        travelInsuranceFee: 0.9,
-        amount: 972,
-      });
-      expect(result.bookingRef).toBeDefined();
-      expect(result.payUrl).toBe('https://muzobox.com/pay/mb_test');
-      expect(result.bookingMode).toBe(mode.toUpperCase());
-      const [created] = prisma.splitTicketBooking.create.mock.calls[0] as [
+    const result = await service.createBooking({
+      trainNumber: '12216',
+      trainName: 'DEE GARIBRATH',
+      fromStationCode: 'AII',
+      toStationCode: 'GGN',
+      journeyDate: '2026-09-20',
+      travelClass: '3A',
+      totalFare: 810,
+      legs: [
         {
-          data: {
-            bookingMode: string;
-            paymentStatus: string;
-            bookingRef: string;
-          };
+          from: 'AII',
+          to: 'JP',
+          travelClass: '3A',
+          fare: 340,
+          boardingDate: '2026-09-20',
         },
-      ];
-      expect(created.data.bookingRef).toMatch(/^LB-[A-Z0-9]{5}$/);
-      expect(created.data).toMatchObject({
-        bookingMode: mode.toUpperCase(),
-        paymentStatus: 'PENDING',
-      });
-      expect(manualBooking.notify).not.toHaveBeenCalled();
-    },
-  );
+        {
+          from: 'JP',
+          to: 'GGN',
+          travelClass: '3A',
+          fare: 470,
+          boardingDate: '2026-09-20',
+        },
+      ],
+      passengers: [
+        {
+          name: 'Rahul Sharma',
+          age: 32,
+          gender: 'Male',
+          berthPreference: 'Lower',
+        },
+      ],
+      contactMobile: '9876543210',
+      contactEmail: 'rahul@example.com',
+      autoUpgrade: true,
+    });
+
+    expect(result).toMatchObject({
+      totalFare: 810,
+      irctcServiceFee: 70.8,
+      serviceFee: 80,
+      paymentGatewayFee: 10.4,
+      travelInsuranceFee: 0.9,
+      amount: 972,
+    });
+    expect(result.bookingRef).toBeDefined();
+    expect(result.payUrl).toBe('https://muzobox.com/pay/mb_test');
+    expect(result.bookingMode).toBe('MANUAL');
+    const [created] = prisma.splitTicketBooking.create.mock.calls[0] as [
+      {
+        data: {
+          bookingMode: string;
+          paymentStatus: string;
+          bookingRef: string;
+        };
+      },
+    ];
+    expect(created.data.bookingRef).toMatch(/^LB-[A-Z0-9]{5}$/);
+    expect(created.data).toMatchObject({
+      bookingMode: 'MANUAL',
+      paymentStatus: 'PENDING',
+    });
+    expect(manualBooking.notify).not.toHaveBeenCalled();
+  });
 
   it('retrieves booking status by bookingRef', async () => {
     prisma.splitTicketBooking.findUnique.mockResolvedValue({
@@ -470,38 +452,34 @@ describe('SplitBookingService', () => {
       ).toThrow(BadRequestException);
     });
 
-    it.each(['ai', 'manual'])(
-      'accepts the reported route in %s mode and charges both services per leg',
-      async (mode) => {
-        config.set('SPLIT_BOOKING_MODE', mode);
-        const result = await service.createBooking(request);
-        expect(result).toMatchObject({
-          totalFare: 1110,
-          irctcServiceFee: 106.2,
-          serviceFee: 120,
-          paymentGatewayFee: 14.37,
-          travelInsuranceFee: 1.35,
-          amount: 1352,
-        });
-        expect(muzobox.post).toHaveBeenCalledWith(
-          'proxy-payments/create-link',
-          expect.objectContaining({ amount: 1352 }),
-          { headers: { 'x-api-key': 'test-key' } },
-        );
-        const [created] = prisma.splitTicketBooking.create.mock.calls[0] as [
-          { data: Record<string, unknown> },
-        ];
-        expect(created.data).toMatchObject({
-          fromStationCode: 'DEE',
-          toStationCode: 'AII',
-          totalFare: 1110,
-          serviceFee: 120,
-          irctcServiceFeePaise: 10620,
-          paymentGatewayFeePaise: 1437,
-          legsPayload: request.legs,
-        });
-      },
-    );
+    it('accepts the reported route and charges both services per leg', async () => {
+      const result = await service.createBooking(request);
+      expect(result).toMatchObject({
+        totalFare: 1110,
+        irctcServiceFee: 106.2,
+        serviceFee: 120,
+        paymentGatewayFee: 14.37,
+        travelInsuranceFee: 1.35,
+        amount: 1352,
+      });
+      expect(muzobox.post).toHaveBeenCalledWith(
+        'proxy-payments/create-link',
+        expect.objectContaining({ amount: 1352 }),
+        { headers: { 'x-api-key': 'test-key' } },
+      );
+      const [created] = prisma.splitTicketBooking.create.mock.calls[0] as [
+        { data: Record<string, unknown> },
+      ];
+      expect(created.data).toMatchObject({
+        fromStationCode: 'DEE',
+        toStationCode: 'AII',
+        totalFare: 1110,
+        serviceFee: 120,
+        irctcServiceFeePaise: 10620,
+        paymentGatewayFeePaise: 1437,
+        legsPayload: request.legs,
+      });
+    });
 
     it('creates and persists a real Muzobox link with contact prefill and callback', async () => {
       const result = await service.createBooking(request);
@@ -550,7 +528,6 @@ describe('SplitBookingService', () => {
           where: { id: 'three-leg-booking' },
           data: { paymentStatus: 'FAILED' },
         });
-        expect(tripmgt.executeBooking).not.toHaveBeenCalled();
       },
     );
 
@@ -667,7 +644,7 @@ describe('SplitBookingService', () => {
       contactEmail: 'test@example.com',
       paymentStatus: 'PENDING',
       bookingStatus: 'IDLE',
-      bookingMode: 'AI',
+      bookingMode: 'MANUAL',
       pnrLeg1: null,
       pnrLeg2: null,
       pnrs: [],
@@ -730,10 +707,9 @@ describe('SplitBookingService', () => {
           },
         );
         muzobox.get.mockResolvedValue({ data: remote });
-        tripmgt.executeBooking.mockResolvedValue({
-          success: true,
-          pnrs: ['1234567890'],
-          logs: [],
+        manualBooking.notify.mockResolvedValue({
+          emailSent: true,
+          whatsappSent: true,
         });
       });
 
@@ -747,7 +723,7 @@ describe('SplitBookingService', () => {
           'proxy-payments/mb_test/status',
           { headers: { 'x-api-key': 'test-key' } },
         );
-        expect(tripmgt.executeBooking).toHaveBeenCalledTimes(1);
+        expect(manualBooking.notify).toHaveBeenCalledTimes(1);
         expect(ntfy.publish).toHaveBeenCalledWith(
           expect.objectContaining({ paymentStatus: 'PAID' }),
         );
@@ -772,7 +748,6 @@ describe('SplitBookingService', () => {
             paymentStatus: 'PENDING',
           });
           expect(prisma.splitTicketBooking.updateMany).not.toHaveBeenCalled();
-          expect(tripmgt.executeBooking).not.toHaveBeenCalled();
         },
       );
 
@@ -791,7 +766,7 @@ describe('SplitBookingService', () => {
         expect(await service.getStatus(booking.bookingRef)).toMatchObject({
           paymentStatus: 'FAILED',
         });
-        expect(tripmgt.executeBooking).not.toHaveBeenCalled();
+        expect(manualBooking.notify).not.toHaveBeenCalled();
       });
 
       it('rejects a callback for a different Muzobox payment', async () => {
@@ -803,7 +778,6 @@ describe('SplitBookingService', () => {
     });
 
     it('dispatches only once for concurrent payment confirmations', async () => {
-      config.set('SPLIT_BOOKING_MODE', 'manual'); // Existing AI requests keep their saved mode.
       prisma.splitTicketBooking.findUnique.mockResolvedValue(booking);
       let paymentClaimed = false;
       prisma.splitTicketBooking.updateMany.mockImplementation(
@@ -814,83 +788,12 @@ describe('SplitBookingService', () => {
           return { count };
         },
       );
-      tripmgt.executeBooking.mockResolvedValue({
-        success: false,
-        pnrs: [],
-        error: 'blocked',
-        logs: [],
-      });
       await Promise.all([
         service.confirmPayment(booking.bookingRef),
         service.confirmPayment(booking.bookingRef),
       ]);
       await flush();
-      expect(tripmgt.executeBooking).toHaveBeenCalledTimes(1);
-      expect(manualBooking.notify).not.toHaveBeenCalled();
-      expect(retellCall.triggerBookingReceivedCall).toHaveBeenCalledTimes(1);
-      const [params, callbacks] = tripmgt.executeBooking.mock
-        .calls[0] as Parameters<TripmgtBookingService['executeBooking']>;
-      expect(params).toMatchObject({
-        totalFare: 810,
-        legs: booking.legsPayload,
-      });
-      expect(typeof callbacks?.onPnr).toBe('function');
-    });
-
-    it('persists each PNR immediately and keeps creation/payment logs after partial failure', async () => {
-      const state = structuredClone(booking);
-      prisma.splitTicketBooking.findUnique.mockImplementation(() => state);
-      prisma.splitTicketBooking.updateMany.mockImplementation(
-        ({ data }: { data: object }) => {
-          Object.assign(state, data);
-          return { count: 1 };
-        },
-      );
-      type Callbacks = NonNullable<
-        Parameters<TripmgtBookingService['executeBooking']>[1]
-      >;
-      tripmgt.executeBooking.mockImplementation(
-        async (_params: unknown, callbacks: Callbacks) => {
-          await callbacks.onPnr?.(0, '1234567890');
-          await callbacks.onLog?.({
-            timestamp: 'now',
-            step: 'LEG_CONFIRMED',
-            message: 'Leg 1 verified',
-          });
-          return {
-            success: false,
-            pnrs: ['1234567890'],
-            error: 'OTP required',
-            logs: [],
-          };
-        },
-      );
-      await service.confirmPayment(booking.bookingRef);
-      await flush();
-      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith({
-        where: { id: 'booking1' },
-        data: { pnrs: ['1234567890'], pnrLeg1: '1234567890', pnrLeg2: null },
-      });
-      const [finalUpdate] = prisma.splitTicketBooking.update.mock.calls.at(
-        -1,
-      ) as [
-        {
-          data: {
-            bookingStatus: string;
-            pnrLeg1: string;
-            pnrLeg2: string | null;
-            automationLogs: Array<{ step: string }>;
-          };
-        },
-      ];
-      expect(finalUpdate.data).toMatchObject({
-        bookingStatus: 'FAILED',
-        pnrLeg1: '1234567890',
-        pnrLeg2: null,
-      });
-      expect(
-        finalUpdate.data.automationLogs.map((entry) => entry.step),
-      ).toEqual(['CREATED', 'PAYMENT_RECEIVED', 'LEG_CONFIRMED']);
+      expect(manualBooking.notify).toHaveBeenCalledTimes(1);
     });
 
     it('does not launch if another runner already claimed fulfillment', async () => {
@@ -900,7 +803,7 @@ describe('SplitBookingService', () => {
         .mockResolvedValueOnce({ count: 0 });
       await service.confirmPayment(booking.bookingRef);
       await flush();
-      expect(tripmgt.executeBooking).not.toHaveBeenCalled();
+      expect(manualBooking.notify).not.toHaveBeenCalled();
     });
 
     it('does not launch for an underpaid captured payment', async () => {
@@ -973,57 +876,7 @@ describe('SplitBookingService', () => {
       expect(status.paymentGatewayFee).toBe(35.86);
     });
 
-    it('persists a third PNR without overwriting either legacy PNR alias', async () => {
-      const pnrs = ['1234567890', '2345678901', '3456789012'];
-      const state = {
-        ...structuredClone(booking),
-        toStationCode: 'DEE',
-        totalFare: 910,
-        legsPayload: [
-          ...booking.legsPayload,
-          {
-            from: 'GGN',
-            to: 'DEE',
-            fare: 100,
-            travelClass: '3A',
-            boardingDate: '2026-10-02',
-          },
-        ],
-      };
-      prisma.splitTicketBooking.findUnique.mockImplementation(() => state);
-      prisma.splitTicketBooking.updateMany.mockImplementation(
-        ({ data }: { data: object }) => {
-          Object.assign(state, data);
-          return { count: 1 };
-        },
-      );
-      type Callbacks = NonNullable<
-        Parameters<TripmgtBookingService['executeBooking']>[1]
-      >;
-      tripmgt.executeBooking.mockImplementation(
-        async (_params: unknown, callbacks: Callbacks) => {
-          for (const [index, pnr] of pnrs.entries())
-            await callbacks.onPnr?.(index, pnr);
-          return { success: true, pnrs, logs: [] };
-        },
-      );
-      await service.confirmPayment(booking.bookingRef);
-      await flush();
-      const data = { pnrs, pnrLeg1: pnrs[0], pnrLeg2: pnrs[1] };
-      expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith({
-        where: { id: booking.id },
-        data,
-      });
-      const [finalUpdate] = prisma.splitTicketBooking.update.mock.calls.at(
-        -1,
-      ) as [{ data: Record<string, unknown> }];
-      expect(finalUpdate.data).toMatchObject({
-        ...data,
-        bookingStatus: 'CONFIRMED',
-      });
-    });
-
-    it('hands a manual booking to the owner without starting AI or confirming a ticket', async () => {
+    it('hands a manual booking to the owner without confirming a ticket', async () => {
       const state = {
         ...structuredClone(booking),
         bookingMode: 'MANUAL',
@@ -1042,11 +895,15 @@ describe('SplitBookingService', () => {
       await service.confirmPayment(booking.bookingRef, 'pay-manual');
       await flush();
       expect(manualBooking.notify).toHaveBeenCalledWith(state);
-      expect(tripmgt.executeBooking).not.toHaveBeenCalled();
-      expect(prisma.splitTicketBooking.update).toHaveBeenLastCalledWith({
-        where: { id: booking.id },
-        data: { bookingStatus: 'MANUAL_PENDING', bookingError: null },
-      });
+      expect(prisma.splitTicketBooking.update).toHaveBeenLastCalledWith(
+        expect.objectContaining({
+          where: { id: booking.id },
+          data: expect.objectContaining({
+            bookingStatus: 'MANUAL_PENDING',
+            bookingError: null,
+          }),
+        }),
+      );
     });
 
     it('keeps a partially delivered manual request pending with an explicit error', async () => {
@@ -1068,7 +925,6 @@ describe('SplitBookingService', () => {
       expect(update.data.bookingError).toContain(
         'notification could not be delivered',
       );
-      expect(tripmgt.executeBooking).not.toHaveBeenCalled();
     });
 
     it('does not resend a successfully handed-off manual request on duplicate payment callbacks', async () => {
@@ -1108,7 +964,6 @@ describe('SplitBookingService', () => {
       await service.confirmPayment(booking.bookingRef);
       await flush();
       expect(manualBooking.notify).toHaveBeenCalledWith(fresh);
-      expect(tripmgt.executeBooking).not.toHaveBeenCalled();
     });
   });
 
@@ -1130,7 +985,7 @@ describe('SplitBookingService', () => {
         paymentGatewayFeePaise: 2882,
         bookingStatus: 'IDLE',
         paymentStatus: 'PENDING',
-        bookingMode: 'AI',
+        bookingMode: 'MANUAL',
         legsPayload: [],
         passengers: [{ name: 'Admin Passenger', age: 30, gender: 'Male' }],
         contactMobile: '9999999999',
@@ -1150,10 +1005,6 @@ describe('SplitBookingService', () => {
         return mockBooking;
       });
       prisma.splitTicketBooking.updateMany.mockResolvedValue({ count: 1 });
-      tripmgt.executeBooking.mockResolvedValue({
-        success: true,
-        pnrs: ['1234567890'],
-      });
 
       const res = await service.adminBookWithoutPay('LB-ADMIN1');
       expect(prisma.splitTicketBooking.update).toHaveBeenCalledWith(
@@ -2575,7 +2426,6 @@ describe('SplitBookingService', () => {
     it('throws ServiceUnavailableException if bookingV2 is not configured', async () => {
       const bareService = new SplitBookingService(
         prisma as any,
-        tripmgt as any,
         config as any,
         manualBooking as any,
       );

@@ -13,7 +13,7 @@ export function renderNoSeatsEmailHtml(params: {
   trainLabel: string;
   routeDisplay: string;
   journeyDateReadable: string;
-  openAiSummary?: string | null;
+  summary?: string | null;
   alternativeTrains?: BestTrainCandidateResult[];
   fromCode: string;
   toCode: string;
@@ -27,7 +27,7 @@ export function renderNoSeatsEmailHtml(params: {
     trainLabel,
     routeDisplay,
     journeyDateReadable,
-    openAiSummary,
+    summary,
     alternativeTrains,
     fromCode,
     toCode,
@@ -108,7 +108,7 @@ export function renderNoSeatsEmailHtml(params: {
     <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(routeDisplay)}</p>
     <p style="margin:4px 0 0 0;color:#475569;">${escapeHtml(journeyDateReadable)}</p>
   </div>
-  <p style="margin:0 0 16px 0;color:#b91c1c;">${escapeHtml(openAiSummary || "Unfortunately, we couldn't find any available tickets at this time.")}</p>`;
+  <p style="margin:0 0 16px 0;color:#b91c1c;">${escapeHtml(summary || "Unfortunately, we couldn't find any available tickets at this time.")}</p>`;
 
   const searchHref =
     params.searchUrl ||
@@ -253,7 +253,6 @@ export function buildNoSeatsWhatsAppText(params: {
   trainLabel: string;
   routeDisplay?: string;
   journeyDateReadable?: string;
-  openAiSummary?: string | null;
   alternativeTrains?: BestTrainCandidateResult[];
   fromCode: string;
   toCode: string;

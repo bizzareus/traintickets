@@ -4,11 +4,9 @@ import { PrismaModule } from '../prisma/prisma.module';
 import { RazorpayModule } from '../chart-alert-payments/razorpay.module';
 import { SplitBookingController } from './split-booking.controller';
 import { SplitBookingService } from './split-booking.service';
-import { TripmgtBookingService } from './tripmgt-booking.service';
 import { BookingV2Module } from '../booking-v2/booking-v2.module';
 import { NotificationModule } from '../notification/notification.module';
 import { ManualBookingService } from './manual-booking.service';
-import { RetellCallService } from './retell-call.service';
 import { S3StorageService } from '../common/s3-storage.service';
 import { BookingNtfyService } from './booking-ntfy.service';
 
@@ -23,17 +21,10 @@ import { BookingNtfyService } from './booking-ntfy.service';
   controllers: [SplitBookingController],
   providers: [
     SplitBookingService,
-    TripmgtBookingService,
     ManualBookingService,
-    RetellCallService,
     S3StorageService,
     BookingNtfyService,
   ],
-  exports: [
-    SplitBookingService,
-    TripmgtBookingService,
-    RetellCallService,
-    S3StorageService,
-  ],
+  exports: [SplitBookingService, S3StorageService],
 })
 export class SplitBookingModule {}

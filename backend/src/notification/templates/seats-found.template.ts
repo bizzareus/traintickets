@@ -1,5 +1,5 @@
 import type {
-  OpenAiBookingPlanItem,
+  BookingPlanItem,
   Service2CheckResult,
 } from '../../service2/service2.service';
 import type { ScheduleStation } from '../../irctc/irctc.service';
@@ -183,7 +183,7 @@ export function buildFollowUpLegWhatsAppText(params: {
   trainLabel: string;
   routeDisplay: string;
   journeyDateReadable: string;
-  plan: OpenAiBookingPlanItem[];
+  plan: BookingPlanItem[];
   stationNameMap: Map<string, string>;
   stationScheduleList?: ScheduleStation[];
   trainNumber: string;
@@ -247,7 +247,7 @@ export async function buildWhatsAppSeatsFoundText(params: {
   toStationCode: string;
   journeyTimesLine?: string;
   chartPreparationText?: string;
-  plan: OpenAiBookingPlanItem[];
+  plan: BookingPlanItem[];
   totalPrice?: number;
   stationNameMap: Map<string, string>;
   stationScheduleList?: ScheduleStation[];

@@ -1,16 +1,16 @@
 import { validateEnvironment } from './environment';
 
 describe('validateEnvironment', () => {
-  it('defaults to AI and accepts manual fulfillment', () => {
-    expect(validateEnvironment({}).SPLIT_BOOKING_MODE).toBe('ai');
-    expect(
-      validateEnvironment({ SPLIT_BOOKING_MODE: 'manual' }).SPLIT_BOOKING_MODE,
-    ).toBe('manual');
+  it('defaults to manual fulfillment and accepts disabled', () => {
+    expect(validateEnvironment({}).SPLIT_BOOKING_MODE).toBe('manual');
     expect(
       validateEnvironment({ SPLIT_BOOKING_MODE: 'disabled' })
         .SPLIT_BOOKING_MODE,
     ).toBe('disabled');
     expect(() => validateEnvironment({ SPLIT_BOOKING_MODE: 'manul' })).toThrow(
+      'SPLIT_BOOKING_MODE',
+    );
+    expect(() => validateEnvironment({ SPLIT_BOOKING_MODE: 'ai' })).toThrow(
       'SPLIT_BOOKING_MODE',
     );
   });

@@ -60,24 +60,6 @@ function applyDbCachedToRow(
 }
 
 /**
- * Ticketing source station per OpenAI seat segment (boarding for that ticket).
- * Each object uses `from` as the station to query composition / chart time for.
- */
-export function sourceStationCodesFromOpenAiSeats(
-  seats: ReadonlyArray<{ from?: string | null }> | null | undefined,
-): string[] {
-  if (!seats?.length) return [];
-  const set = new Set<string>();
-  for (const s of seats) {
-    const c = String(s?.from ?? '')
-      .trim()
-      .toUpperCase();
-    if (c) set.add(c);
-  }
-  return [...set];
-}
-
-/**
  * Application-wide entry point for IRCTC train composition (chart + coaches).
  * Wraps {@link IrctcService.getTrainComposition} so chart times persist consistently
  * and all feature modules depend on this module instead of calling IRCTC directly.

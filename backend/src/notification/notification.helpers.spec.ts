@@ -13,15 +13,13 @@ describe('notification.helpers', () => {
   describe('hasBookablePlanForNotification', () => {
     it('returns false when plan is missing or empty', () => {
       expect(hasBookablePlanForNotification({})).toBe(false);
-      expect(hasBookablePlanForNotification({ openAiBookingPlan: [] })).toBe(
-        false,
-      );
+      expect(hasBookablePlanForNotification({ bookingPlan: [] })).toBe(false);
     });
 
     it('returns false when every slot is empty', () => {
       expect(
         hasBookablePlanForNotification({
-          openAiBookingPlan: [{}, {}],
+          bookingPlan: [{}, {}],
         }),
       ).toBe(false);
     });
@@ -29,7 +27,7 @@ describe('notification.helpers', () => {
     it('returns true when any slot has a non-empty instruction', () => {
       expect(
         hasBookablePlanForNotification({
-          openAiBookingPlan: [
+          bookingPlan: [
             {},
             { instruction: 'NDLS - BCT - 3A', approx_price: 500 },
           ],

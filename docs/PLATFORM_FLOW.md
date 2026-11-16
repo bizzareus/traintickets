@@ -6,12 +6,12 @@ This document describes the **main user-visible flow** (search train → check v
 
 ## High-level architecture
 
-| Layer       | Stack                                      | Role                                                                                           |
-| ----------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| Frontend    | Next.js (`app/`)                           | Primary UI: train search, stations, journey date, submit check, show AI plan, monitor journey. |
-| HTTP client | `lib/api.ts`, `lib/service2CheckStream.ts` | Axios to Nest (`NEXT_PUBLIC_API_URL`), JWT from `localStorage`, SSE parser for Service2.       |
-| Backend     | NestJS (`backend/src/`)                    | IRCTC proxy + caching, chart times, Service2 orchestration, OpenAI, availability/monitoring.   |
-| Data        | PostgreSQL + Prisma (`backend/prisma/`)    | Users, trains, chart rules, schedule cache, chart times, monitoring, etc.                      |
+| Layer       | Stack                                      | Role                                                                                     |
+| ----------- | ------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| Frontend    | Next.js (`app/`)                           | Primary UI: train search, stations, journey date, submit check, monitor journey.         |
+| HTTP client | `lib/api.ts`, `lib/service2CheckStream.ts` | Axios to Nest (`NEXT_PUBLIC_API_URL`), JWT from `localStorage`, SSE parser for Service2. |
+| Backend     | NestJS (`backend/src/`)                    | IRCTC proxy + caching, chart times, Service2 orchestration, availability/monitoring.     |
+| Data        | PostgreSQL + Prisma (`backend/prisma/`)    | Users, trains, chart rules, schedule cache, chart times, monitoring, etc.                |
 
 ---
 
@@ -38,8 +38,6 @@ This is what happens when a user picks a train, from/to, date, and submits the m
 
 - `started` — check began
 - `irctc_complete` — vacant-berth aggregation done (`vacantSegmentCount`, errors summary)
-- `ai_started` — about to call OpenAI
-- `partial_ai_result` — multi-leg chain: first AI pass didn’t fully cover route; more vacant-berth fetches from `nextBoardingStation`
 
 ### 3. Backend: stream entrypoint (validation + schedule gate)
 
@@ -66,16 +64,10 @@ Approximate order (see in-file logs prefixed `[service2/check]`):
 4. **Persist chart time** — from `chartOneDate`, upsert via **`ChartTimeService.setChartTime`** → `TrainStationChartTime` (Prisma).
 5. **Vacant berth (round 1)** — for **every class** on the train, **`IrctcService.getVacantBerth`** with `chartType` from second chart timing (`chartTypeFromComposition`). Boarding = user station, remote from composition. Aggregates `vbd` segments + per-class errors.
 6. **Hook `onIrctcDataReady`** — frontend gets segment count + aggregated API errors.
-7. **OpenAI (optional)** — if `OPENAI_API_KEY` set:
-   - Builds **route micro-legs** with **`routeConsecutiveLegsForJourney`** (schedule + boarding + destination).
-   - **`buildOpenAIUserMessage`** — IRCTC payload (composition, chart prep text, vacant JSON, schedule, optional chain boarding list).
-   - **`client.responses.create`** with long **instructions** (`OPENAI_AGENT_PROMPT`) + **JSON schema** (`OPENAI_RESPONSE_JSON_SCHEMA`): `summary`, `seats[]`, `booking_plan[]`, `total_price`.
-   - Parses with **`parseOpenAIStructuredResponse`**, normalizes plan with **`normalizeBookingPlanToRouteLegs`**, **`collapseConsecutiveDuplicateBookingInstructions`**, **`collapseFullJourneySingleTicketLegs`**, etc.
-   - **Chain loop** (up to 12): if compact plan does **not** fully cover `routeLegsForPlan`, compute **`furthestTicketDestinationTowardGoal`** → **`resolveNextVacantBerthBoarding`** → **`onPartialOpenAiResult`** → append another **`appendVacantBerthRound`** from the new boarding → repeat OpenAI with expanded `vacantBerthChainBoardings`.
-8. **Final status** — `failed` if vacant-berth API had errors **and** there is no usable OpenAI output; else `success`.
-9. **Response body** — includes `composition`, `chartPreparationDetails`, **`openAiSummary`**, **`openAiStructuredSeats`**, **`openAiBookingPlan`**, **`openAiTotalPrice`**, **`trainSchedule`**. Note: **`vacantBerth.vbd` is returned empty** in the final object (raw segments are used server-side for prompting; plan UI around AI fields unless you change this).
+7. **Final status** — `failed` if vacant-berth API had errors; else `success`.
+8. **Response body** — includes `composition`, `chartPreparationDetails`, `vacantBerth`, **`trainSchedule`**. Note: **`vacantBerth.vbd` is returned empty** for manual triggers (segments are aggregated server-side; set `forceVacantBerth` to fetch them).
 
-**Related pure helpers in the same file:** `toStr`, `isFilledOpenAiPlanItem`, `routeConsecutiveLegsForJourney`, `compactPlanFullyCoversRoute`, `furthestTicketDestinationTowardGoal`, etc.
+**Related pure helpers in the same file:** `routeConsecutiveLegsForJourney`, `isFilledPlanItem`, etc.
 
 ---
 
@@ -126,7 +118,6 @@ Deeper job execution ties into **`JourneyTaskService`**, **`AvailabilityService`
 ## Configuration touchpoints
 
 - **Frontend API base:** `NEXT_PUBLIC_API_URL` (default `http://localhost:3009` in `lib/api.ts`).
-- **Service2 AI:** `OPENAI_API_KEY`, optional `OPENAI_MODEL` and tuning via env (see `service2.service.ts`: `openAiTextVerbosity`, `openAiResponsesTuning`).
 - **Backend env:** `backend/.env.example` for full list.
 
 ---
@@ -139,7 +130,7 @@ Deeper job execution ties into **`JourneyTaskService`**, **`AvailabilityService`
 | `lib/api.ts`                                     | Axios instances, auth headers, IRCTC schedule client + retries. |
 | `lib/service2CheckStream.ts`                     | SSE client for Service2 check.                                  |
 | `backend/src/service2/service2.controller.ts`    | HTTP + SSE for Service2 check.                                  |
-| `backend/src/service2/service2.service.ts`       | IRCTC + chart time + vacant berth + OpenAI chain.               |
+| `backend/src/service2/service2.service.ts`       | IRCTC + chart time + vacant berth.                              |
 | `backend/src/irctc/irctc.service.ts`             | IRCTC HTTP + Prisma schedule cache.                             |
 | `backend/src/chart-time/chart-time.service.ts`   | Persist / read chart HH:MM per train+station.                   |
 | `backend/src/common/train-run-day.validation.ts` | Journey date + `trainRunsOn` validation (shared with stream).   |
@@ -148,13 +139,11 @@ Deeper job execution ties into **`JourneyTaskService`**, **`AvailabilityService`
 
 ## Ideas for future features (where to change)
 
-| Idea                                     | Likely touch points                                                                                                 |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| User-selectable class (not hardcoded 3A) | `app/page.tsx` (form + POST body), ensure Service2 already receives `classCode` (it does).                          |
-| Show raw vacant segments in UI           | `Service2Service.check` return value currently clears `vbd`; consider returning a summary or redacted list.         |
-| Richer AI prompt / output schema         | `OPENAI_AGENT_PROMPT`, `OPENAI_RESPONSE_JSON_SCHEMA`, `parseOpenAIStructuredResponse` in `service2.service.ts`.     |
-| Fewer / smarter chain rounds             | `maxOpenAiChain`, `furthestTicketDestinationTowardGoal`, `resolveNextVacantBerthBoarding` in `service2.service.ts`. |
-| New third-party rail API                 | New Nest module + controller pattern like `rail-feed-proxy` or extend `irctc.service.ts`.                           |
+| Idea                                     | Likely touch points                                                                                         |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| User-selectable class (not hardcoded 3A) | `app/page.tsx` (form + POST body), ensure Service2 already receives `classCode` (it does).                  |
+| Show raw vacant segments in UI           | `Service2Service.check` return value currently clears `vbd`; consider returning a summary or redacted list. |
+| New third-party rail API                 | New Nest module + controller pattern like `rail-feed-proxy` or extend `irctc.service.ts`.                   |
 
 ---
 

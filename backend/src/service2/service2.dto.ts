@@ -30,11 +30,6 @@ export class Service2CheckDto {
   destinationStation?: string;
 
   @IsOptional()
-  @IsString()
-  @MaxLength(2_000)
-  passengerDetails?: string;
-
-  @IsOptional()
   @IsBoolean()
   forceVacantBerth?: boolean;
 }
