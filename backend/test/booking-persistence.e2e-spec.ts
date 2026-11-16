@@ -8,10 +8,6 @@ import { firstValueFrom, timer, mergeMap, filter, take, timeout } from 'rxjs';
 import request from 'supertest';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { SplitBookingService } from '../src/split-booking/split-booking.service';
-import {
-  TripmgtBookingService,
-  type TripmgtBookingParams,
-} from '../src/split-booking/tripmgt-booking.service';
 import { ManualBookingService } from '../src/split-booking/manual-booking.service';
 import { createMuzoboxClient } from '../src/common/muzobox-client';
 import { createBookingTestApp } from './booking-test-app';
@@ -30,7 +26,6 @@ describe('Booking persistence and fulfillment integration', () => {
   let config: ConfigService;
   let email: string;
   const muzobox = { post: jest.fn(), get: jest.fn() };
-  const tripmgt = { executeBooking: jest.fn() };
   const manual = { notify: jest.fn() };
   const originalUrl = process.env.DATABASE_URL;
 
@@ -49,7 +44,7 @@ describe('Booking persistence and fulfillment integration', () => {
     prisma = new PrismaService();
     await prisma.$connect();
     config = new ConfigService({
-      SPLIT_BOOKING_MODE: 'ai',
+      SPLIT_BOOKING_MODE: 'manual',
       SPLIT_BOOKING_ENABLED: 'true',
       API_URL: 'http://localhost:3109',
     });
@@ -61,7 +56,6 @@ describe('Booking persistence and fulfillment integration', () => {
         SplitBookingService,
         { provide: PrismaService, useValue: prisma },
         { provide: ConfigService, useValue: config },
-        { provide: TripmgtBookingService, useValue: tripmgt },
         { provide: ManualBookingService, useValue: manual },
       ],
     }).compile();
@@ -71,7 +65,6 @@ describe('Booking persistence and fulfillment integration', () => {
 
   beforeEach(() => {
     email = `booking-${randomUUID()}@example.com`;
-    config.set('SPLIT_BOOKING_MODE', 'ai');
     muzobox.post
       .mockReset()
       .mockImplementation(
@@ -87,21 +80,6 @@ describe('Booking persistence and fulfillment integration', () => {
           }),
       );
     muzobox.get.mockReset();
-    tripmgt.executeBooking
-      .mockReset()
-      .mockImplementation(
-        async (
-          params: TripmgtBookingParams,
-          callbacks: { onPnr: (index: number, pnr: string) => Promise<void> },
-        ) => {
-          const pnrs = params.legs.map((_leg, index) =>
-            String(1234567890 + index),
-          );
-          for (const [index, pnr] of pnrs.entries())
-            await callbacks.onPnr(index, pnr);
-          return { success: true, pnrs };
-        },
-      );
     manual.notify
       .mockReset()
       .mockImplementation(async (booking: { id: string }) => {
@@ -201,7 +179,6 @@ describe('Booking persistence and fulfillment integration', () => {
     expect(row.paymentStatus).toBe('PENDING');
     expect(row.bookingStatus).toBe('IDLE');
     expect(row.muzoboxPaymentId).toBe(`mb_${checkout.bookingRef}`);
-    expect(tripmgt.executeBooking).not.toHaveBeenCalled();
   });
 
   it('persists provider failure and returns a recoverable checkout error', async () => {
@@ -216,10 +193,9 @@ describe('Booking persistence and fulfillment integration', () => {
       where: { contactEmail: email },
     });
     expect(row.paymentStatus).toBe('FAILED');
-    expect(tripmgt.executeBooking).not.toHaveBeenCalled();
   });
 
-  it('concurrent verified polling/callbacks dispatch exactly one reservation and persist all PNRs', async () => {
+  it('concurrent verified polling/callbacks hand off to manual exactly once', async () => {
     const { checkout } = await create();
     muzobox.get.mockResolvedValue({
       data: remotePayment(checkout.bookingRef, checkout.amount),
@@ -236,17 +212,15 @@ describe('Booking persistence and fulfillment integration', () => {
         })
         .expect(201),
     ]);
-    const row = await waitForStatus(checkout.bookingRef, 'CONFIRMED');
-    expect(tripmgt.executeBooking).toHaveBeenCalledTimes(1);
-    expect(row.pnrs).toEqual(['1234567890', '1234567891']);
-    expect(row.pnrLeg1).toBe(row.pnrs[0]);
-    expect(row.pnrLeg2).toBe(row.pnrs[1]);
+    const row = await waitForStatus(checkout.bookingRef, 'MANUAL_PENDING');
+    expect(row.pnrs).toEqual([]);
     expect(row.paidAt).not.toBeNull();
-    expect(row.completedAt).not.toBeNull();
+    expect(row.completedAt).toBeNull();
+    expect(manual.notify).toHaveBeenCalledTimes(1);
     await request(app.getHttpServer())
       .get(`/api/split-booking/status/${checkout.bookingRef}`)
       .expect(200);
-    expect(tripmgt.executeBooking).toHaveBeenCalledTimes(1);
+    expect(manual.notify).toHaveBeenCalledTimes(1);
   });
 
   it.each(['amount', 'referenceId', 'razorpayOrderId'])(
@@ -265,7 +239,6 @@ describe('Booking persistence and fulfillment integration', () => {
       expect((response.body as SplitBookingStatusResponse).paymentStatus).toBe(
         'PENDING',
       );
-      expect(tripmgt.executeBooking).not.toHaveBeenCalled();
     },
   );
 
@@ -280,37 +253,9 @@ describe('Booking persistence and fulfillment integration', () => {
     expect((response.body as SplitBookingStatusResponse).paymentStatus).toBe(
       'FAILED',
     );
-    expect(tripmgt.executeBooking).not.toHaveBeenCalled();
-  });
-
-  it('preserves an issued PNR when a later reservation fails', async () => {
-    tripmgt.executeBooking.mockImplementationOnce(
-      async (
-        _params: unknown,
-        callbacks: { onPnr: (index: number, pnr: string) => Promise<void> },
-      ) => {
-        await callbacks.onPnr(0, '1234567890');
-        return {
-          success: false,
-          pnrs: ['1234567890'],
-          error: 'Second leg requires OTP',
-        };
-      },
-    );
-    const { checkout } = await create();
-    muzobox.get.mockResolvedValue({
-      data: remotePayment(checkout.bookingRef, checkout.amount),
-    });
-    await request(app.getHttpServer())
-      .get(`/api/split-booking/status/${checkout.bookingRef}`)
-      .expect(200);
-    const row = await waitForStatus(checkout.bookingRef, 'FAILED');
-    expect(row.pnrs).toEqual(['1234567890']);
-    expect(row.bookingError).toBe('Second leg requires OTP');
   });
 
   it('manual handoff remains pending with no PNR and duplicate callbacks do not resend it', async () => {
-    config.set('SPLIT_BOOKING_MODE', 'manual');
     const { checkout } = await create();
     muzobox.get.mockResolvedValue({
       data: remotePayment(checkout.bookingRef, checkout.amount),
@@ -321,7 +266,6 @@ describe('Booking persistence and fulfillment integration', () => {
     const row = await waitForStatus(checkout.bookingRef, 'MANUAL_PENDING');
     expect(row.pnrs).toEqual([]);
     expect(row.completedAt).toBeNull();
-    expect(tripmgt.executeBooking).not.toHaveBeenCalled();
     await request(app.getHttpServer())
       .post('/api/split-booking/muzobox-callback')
       .send({
