@@ -1,11 +1,12 @@
 ---
-title: "Vande Bharat Booking: Tatkal Rules, Timings & Fares (2026)"
-description: "Vande Bharat booking rules 2026: 10 AM AC Tatkal opening, 60-day ARP window, CC vs EC fares, 15-min current booking, and food opt-out savings on IRCTC."
+title: "Vande Bharat Booking: Chart Time, Tatkal & Fares (2026)"
+description: "Vande Bharat booking & chart preparation time 2026: exact 21:00 night rule, 10 AM AC Tatkal window, CC vs EC fares, 15-min current booking & food rules on IRCTC."
 date: "2026-06-30"
-updated: "2026-10-30"
+updated: "2026-11-17"
 tags:
   - vande bharat
   - vande bharat train
+  - chart preparation
   - train booking
   - irctc
   - tatkal booking
@@ -81,6 +82,21 @@ Originating Station Departure
 
 For morning Vande Bharat trains departing at 06:00 AM (such as the New Delhi to Varanasi or KSR Bengaluru to Dharwad services), the initial chart preparation takes place around 08:30 PM the night before. Travelers holding waitlisted tickets can check their confirmed status before going to bed rather than waking up in suspense at dawn. You can verify the exact historical chart release pattern for your specific service on [Chart Times](/chart-times).
 
+### Vande Bharat Chart Preparation Timetable Across Major Corridors
+
+The table below outlines scheduled departure times, First Chart preparation milestones, and final chart cutoffs across popular Vande Bharat Express routes:
+
+| Route & Train Name               | Train Number | Scheduled Departure | First Chart Preparation Time       | Final Chart Cutoff    | Schedule & Chart Times Link                                               |
+| :------------------------------- | :----------- | :------------------ | :--------------------------------- | :-------------------- | :------------------------------------------------------------------------ |
+| **New Delhi ➔ Varanasi**         | 22436        | 06:00 IST (NDLS)    | **Previous Night 20:30–21:00 IST** | 05:45 IST (15m prior) | [22436 Chart Times](/chart-times/22436-ndls-bsb-vande-bharat-chart-times) |
+| **KSR Bengaluru ➔ Dharwad**      | 20661        | 05:45 IST (SBC)     | **Previous Night 20:30–21:00 IST** | 05:30 IST (15m prior) | [20661 Chart Times](/chart-times/20661-dwr-vande-bharat-chart-times)      |
+| **Mumbai CSMT ➔ Solapur**        | 22225        | 06:05 IST (CSMT)    | **Previous Night 20:30–21:00 IST** | 05:50 IST (15m prior) | [22225 Chart Times](/chart-times/22225-sur-vande-bharat-chart-times)      |
+| **Mumbai Central ➔ Gandhinagar** | 20901        | 06:10 IST (MMCT)    | **Previous Night 20:30–21:00 IST** | 05:55 IST (15m prior) | [20901 Chart Times](/chart-times/20901-vande-bharat-exp-chart-times)      |
+| **Visakhapatnam ➔ Secunderabad** | 20833        | 05:45 IST (VSKP)    | **Previous Night 20:30–21:00 IST** | 05:30 IST (15m prior) | [20833 Chart Times](/chart-times/20833-vande-bharat-exp-chart-times)      |
+| **Mumbai CSMT ➔ Jalna**          | 20705        | 13:10 IST (CSMT)    | **Departure Day 09:15–10:00 IST**  | 12:55 IST (15m prior) | [20705 Chart Times](/chart-times/20705-vande-bharat-exp-chart-times)      |
+| **New Delhi ➔ Katra**            | 22439        | 15:00 IST (NDLS)    | **Departure Day 10:30–11:30 IST**  | 14:45 IST (15m prior) | [22439 Chart Times](/chart-times/22439-vande-bharat-chart-times)          |
+| **Chennai Central ➔ Coimbatore** | 20643        | 14:15 IST (MAS)     | **Departure Day 09:45–10:30 IST**  | 14:00 IST (15m prior) | [20643 Chart Times](/chart-times/20643-cbe-vande-bharat-chart-times)      |
+
 ---
 
 ## How Does the 15-Minute Current Booking Rule Work on Vande Bharat?
@@ -101,10 +117,10 @@ The online booking gateway remains open until exactly 15 minutes before the trai
 
 The train provides two distinct seating tiers designed for different passenger preferences and budgets. AC Chair Car features a 3x2 seat configuration with ergonomic recline, personal reading lamps, and bottle holders. Executive Chair Car features a spacious 2x2 layout with wider armrests, extended footrests, and 360-degree rotating seats that can be aligned toward large panoramic windows.
 
-| Travel Class | Seating Layout | Seat Features | Average Fare Range | Catering Inclusion |
-| :--- | :--- | :--- | :--- | :--- |
-| **AC Chair Car (CC)** | 3x2 Configuration | Ergonomic recline, fold-down snack table, USB and 3-pin sockets | ₹1,000 to ₹1,850 | Optional (₹250 to ₹350 per meal) |
-| **Executive Class (EC)** | 2x2 Configuration | 360-degree rotating seats, plush leatherette upholstery, extra legroom | ₹1,950 to ₹3,600 | Optional (₹350 to ₹450 per meal) |
+| Travel Class             | Seating Layout    | Seat Features                                                          | Average Fare Range | Catering Inclusion               |
+| :----------------------- | :---------------- | :--------------------------------------------------------------------- | :----------------- | :------------------------------- |
+| **AC Chair Car (CC)**    | 3x2 Configuration | Ergonomic recline, fold-down snack table, USB and 3-pin sockets        | ₹1,000 to ₹1,850   | Optional (₹250 to ₹350 per meal) |
+| **Executive Class (EC)** | 2x2 Configuration | 360-degree rotating seats, plush leatherette upholstery, extra legroom | ₹1,950 to ₹3,600   | Optional (₹350 to ₹450 per meal) |
 
 Dynamic pricing models do not apply to standard Vande Bharat services in the same manner as Suvidha trains. However, catering fees vary depending on the travel duration and meal cycle (morning breakfast, high tea, or executive dinner) falling within the journey timetable.
 
@@ -116,16 +132,16 @@ Dynamic pricing models do not apply to standard Vande Bharat services in the sam
 
 The table below outlines key flagship Vande Bharat services, their train numbers, running days, and typical first chart finalization windows:
 
-| Train Name | Train Number | Primary Corridor | Running Days | First Chart Timing | Route Check |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Varanasi Vande Bharat** | 22436 / 22435 | New Delhi ↔ Varanasi Jn | Except Thu | ~08:30 PM (Prev Night) | [Check Delhi to Varanasi](/?from=NDLS&to=BSB&fromName=New%20Delhi&toName=Varanasi%20Jn&src=blog_vande_bharat) |
-| **Gandhinagar Vande Bharat** | 20901 / 20902 | Mumbai Central ↔ Gandhinagar Cap | Except Sun | ~08:00 PM (Prev Night) | [Check Mumbai to Gandhinagar](/?from=MMCT&to=ADI&fromName=Mumbai%20Central&toName=Ahmedabad%20Jn&src=blog_vande_bharat) |
-| **Katra Vande Bharat** | 22439 / 22440 | New Delhi ↔ SMVD Katra | Except Tue | ~08:30 PM (Prev Night) | [Check Delhi to Katra](/?from=NDLS&to=SVDK&fromName=New%20Delhi&toName=SMVD%20Katra&src=blog_vande_bharat) |
-| **Mysuru Vande Bharat** | 20607 / 20608 | MGR Chennai ↔ Mysuru Jn | Except Wed | ~08:00 PM (Prev Night) | [Check Bengaluru to Chennai](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central&src=blog_vande_bharat) |
-| **Puri Vande Bharat** | 22895 / 22896 | Howrah Jn ↔ Puri | Except Thu | ~08:30 PM (Prev Night) | [Check Howrah to Puri](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri&src=blog_vande_bharat) |
-| **Ayodhya Vande Bharat** | 22426 / 22425 | Anand Vihar ↔ Ayodhya Cantt | Except Wed | ~08:30 PM (Prev Night) | [Check Delhi to Ayodhya](/?from=ANVT&to=AYC&fromName=Anand%20Vihar&toName=Ayodhya%20Cantt&src=blog_vande_bharat) |
-| **Dehradun Vande Bharat** | 22457 / 22458 | Anand Vihar ↔ Dehradun | Except Wed | ~09:00 PM (Prev Night) | [Check Delhi to Dehradun](/?from=ANVT&to=DDN&fromName=Anand%20Vihar&toName=Dehradun&src=blog_vande_bharat) |
-| **Ranchi Vande Bharat** | 22349 / 22350 | Patna Jn ↔ Ranchi Jn | Except Tue | ~08:30 PM (Prev Night) | [Check Patna to Ranchi](/?from=PNBE&to=RNC&fromName=Patna%20Jn&toName=Ranchi%20Jn&src=blog_vande_bharat) |
+| Train Name                   | Train Number  | Primary Corridor                 | Running Days | First Chart Timing     | Route Check                                                                                                                   |
+| :--------------------------- | :------------ | :------------------------------- | :----------- | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| **Varanasi Vande Bharat**    | 22436 / 22435 | New Delhi ↔ Varanasi Jn          | Except Thu   | ~08:30 PM (Prev Night) | [Check Delhi to Varanasi](/?from=NDLS&to=BSB&fromName=New%20Delhi&toName=Varanasi%20Jn&src=blog_vande_bharat)                 |
+| **Gandhinagar Vande Bharat** | 20901 / 20902 | Mumbai Central ↔ Gandhinagar Cap | Except Sun   | ~08:00 PM (Prev Night) | [Check Mumbai to Gandhinagar](/?from=MMCT&to=ADI&fromName=Mumbai%20Central&toName=Ahmedabad%20Jn&src=blog_vande_bharat)       |
+| **Katra Vande Bharat**       | 22439 / 22440 | New Delhi ↔ SMVD Katra           | Except Tue   | ~08:30 PM (Prev Night) | [Check Delhi to Katra](/?from=NDLS&to=SVDK&fromName=New%20Delhi&toName=SMVD%20Katra&src=blog_vande_bharat)                    |
+| **Mysuru Vande Bharat**      | 20607 / 20608 | MGR Chennai ↔ Mysuru Jn          | Except Wed   | ~08:00 PM (Prev Night) | [Check Bengaluru to Chennai](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central&src=blog_vande_bharat) |
+| **Puri Vande Bharat**        | 22895 / 22896 | Howrah Jn ↔ Puri                 | Except Thu   | ~08:30 PM (Prev Night) | [Check Howrah to Puri](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri&src=blog_vande_bharat)                             |
+| **Ayodhya Vande Bharat**     | 22426 / 22425 | Anand Vihar ↔ Ayodhya Cantt      | Except Wed   | ~08:30 PM (Prev Night) | [Check Delhi to Ayodhya](/?from=ANVT&to=AYC&fromName=Anand%20Vihar&toName=Ayodhya%20Cantt&src=blog_vande_bharat)              |
+| **Dehradun Vande Bharat**    | 22457 / 22458 | Anand Vihar ↔ Dehradun           | Except Wed   | ~09:00 PM (Prev Night) | [Check Delhi to Dehradun](/?from=ANVT&to=DDN&fromName=Anand%20Vihar&toName=Dehradun&src=blog_vande_bharat)                    |
+| **Ranchi Vande Bharat**      | 22349 / 22350 | Patna Jn ↔ Ranchi Jn             | Except Tue   | ~08:30 PM (Prev Night) | [Check Patna to Ranchi](/?from=PNBE&to=RNC&fromName=Patna%20Jn&toName=Ranchi%20Jn&src=blog_vande_bharat)                      |
 
 You can explore detailed station-by-station timing charts for individual rakes on [22487 Vande Bharat Chart Times](/chart-times/22487-vande-bharat-exp-chart-times) and [20171 Vande Bharat Chart Times](/chart-times/20171-vande-bharat-exp-chart-times).
 
@@ -180,42 +196,52 @@ Ticket checking staff use Handheld Terminals (HHTs) to detect unauthorized passe
 4. **Intermediate Seat Status Tracking:**
    If you need to know whether a particular seat is vacant along specific segments of a train's journey, use [Seat Status](/seat-status). This tool displays station-to-station occupancy, helping you identify open legs along high-demand routes.
 
+Securing confirmed Vande Bharat seats requires understanding morning booking windows: 60-day ARP opens at 08:00 AM IST, while AC Tatkal unlocks at 10:00 AM IST one day prior with Aadhaar OTP verification. Because chair cars have no RAC category, waitlisted tickets skip intermediate steps to confirm directly. If your journey is waitlisted, monitor post-chart releases on [Chart Vacancy](/chart-vacancy) or check preparation patterns on [Chart Times](/chart-times) to grab confirmed seats up to 15 minutes before platform departure.
+
 ---
 
 ## Common Booking Questions (FAQ)
 
 ### What is the advance reservation period for Vande Bharat booking?
+
 The advance reservation period for Vande Bharat Express is 60 days before the journey date, with booking opening daily at 08:00 AM IST on the IRCTC portal and PRS station counters.
 
 ### What time does Tatkal booking start for Vande Bharat?
+
 Tatkal booking for Vande Bharat opens strictly at 10:00 AM IST one day before the train departs from its originating station, because all Vande Bharat coaches are air-conditioned classes.
 
 ### Is RAC available on Vande Bharat trains?
+
 No, RAC (Reservation Against Cancellation) is not available on Vande Bharat trains because all coaches are seated chair cars without sleeper berths. Waiting list tickets move directly from Waiting List to Confirmed status.
 
 ### How does the 15-minute booking rule work on Vande Bharat?
+
 The 15-minute booking rule allows passengers to purchase vacant seats released under Current Availability after chart preparation at a 10% base fare discount, up to 15 minutes before scheduled train departure.
 
 ### Can I travel on Vande Bharat with a waitlisted e-ticket?
+
 No, passengers cannot board a Vande Bharat train with a waitlisted e-ticket. Unconfirmed e-tickets auto-cancel after chart preparation, and boarding without a confirmed seat incurs a flat ₹500 penalty under Section 138 of the Railways Act.
 
 ### What is the difference between CC and EC on Vande Bharat?
+
 AC Chair Car (CC) features a 3x2 seating configuration with ergonomic recline, whereas Executive Chair Car (EC) offers a 2x2 layout, extended legroom, and 360-degree rotating seats.
 
 ### How much can I save by opting out of food on Vande Bharat?
+
 You can save between ₹250 and ₹450 per passenger by deselecting the catering option during ticket booking, depending on the travel distance and scheduled meal services.
 
 ### When is the reservation chart prepared for morning Vande Bharat trains?
+
 For Vande Bharat trains departing before 02:00 PM (14:00), the first reservation chart is finalized the previous evening between 08:00 PM and 09:00 PM IST.
 
 ### Can I book Vande Bharat tickets using a railway pass?
+
 Yes, duty railway pass holders and eligible concession cardholders can book seats under designated railway pass quotas at physical PRS station counters, subject to berth availability.
 
 ### How can I find confirmed seats if Vande Bharat is completely sold out?
+
 If direct seats show Regret or high waitlists, use [Smart Seats](/) to find split-ticket contiguous confirmed seats on the same train, or check for post-chart vacant berths on [Chart Vacancy](/chart-vacancy).
 
 ---
 
-## Bottom line
-
-Securing confirmed Vande Bharat seats requires understanding morning booking windows: 60-day ARP opens at 08:00 AM IST, while AC Tatkal unlocks at 10:00 AM IST one day prior with Aadhaar OTP verification. Because chair cars have no RAC category, waitlisted tickets skip intermediate steps to confirm directly. If your journey is waitlisted, monitor post-chart releases on [Chart Vacancy](/chart-vacancy) or check preparation patterns on [Chart Times](/chart-times) to grab confirmed seats up to 15 minutes before platform departure.
+_Disclaimer: LastBerth is an independent rail discovery and seat optimization platform. We are not affiliated with, endorsed by, or connected to IRCTC, the Ministry of Railways, or the Government of India. Official train reservations and cancellations must be processed via irctc.co.in or authorized Indian Railways booking counters._
