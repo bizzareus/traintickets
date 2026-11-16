@@ -2,7 +2,7 @@
 title: "Jhelum Express (11077/11078): Route, Timings & Rules (2026)"
 description: "Jhelum Express 11077/11078 connects Pune and Jammu Tawi daily. Check complete timetable, major halts, chart preparation time, Tatkal rules, and fares."
 date: "2026-11-09"
-updated: "2026-11-09"
+updated: "2026-11-16"
 tags:
   - jhelum express
   - 11077 jhelum express
@@ -99,7 +99,7 @@ For passengers tracking realtime arrival, you can review live tracking and platf
 
 **For train 11077 originating at Pune (17:20 departure), the first reservation chart is prepared around 09:30 AM to 10:00 AM IST on the day of departure. For train 11078 originating at Jammu Tawi (23:35 departure), the first chart is prepared between 15:00 and 16:00 IST.**
 
-Under current Indian Railways regulations, first reservation charting is finalized approximately 8 to 10 hours prior to the train departure time from its source station. This provides railway catering and onboard personnel sufficient lead time to allocate rations, while passengers receive berth confirmation alerts well in advance of their journey.
+Under current Indian Railways regulations, first reservation charting is finalized approximately 8 hours prior to the train departure time from its source station. This provides railway catering and onboard personnel sufficient lead time to allocate rations, while passengers receive berth confirmation alerts well in advance of their journey.
 
 In addition to the primary chart at the originating station, Jhelum Express undergoes secondary chart updates at key remote location stations (such as Bhusaval, Bhopal, VGL Jhansi, and New Delhi).
 
@@ -110,7 +110,7 @@ In addition to the primary chart at the originating station, Jhelum Express unde
 | **Second & Final Chart** | 16:35 – 16:50 IST (30-45m prior) | 22:50 – 23:05 IST (30-45m prior) | Final cancellations settled; Handheld Terminals (HHT) synced |
 | **New Delhi Intermediate Chart** | Day 2 at ~13:00 to 14:00 IST | Day 2 at ~04:00 to 05:00 IST | Remote quota re-allotment for boarding at NDLS |
 
-Once the first chart finalizes, all unutilized berths from defense quotas, foreign tourist quotas, and emergency quotas transfer directly to the general pool. Passengers can book these berths online via the IRCTC portal or at PRS counters until 30 minutes before departure.
+Once the first chart finalizes, all unutilized berths from defense quotas, foreign tourist quotas, and emergency quotas transfer directly to the general pool. Passengers can book these berths online via the IRCTC portal or at PRS counters until 15 minutes before departure.
 
 You can check whether empty berths remain on today's rake by visiting [LastBerth Chart Vacancy](/chart-vacancy), which displays live coach layouts and vacant seat maps after first chart preparation.
 
@@ -128,7 +128,7 @@ For example, if you plan to board train 11077 from New Delhi on Tuesday evening,
 | :--- | :--- | :--- | :--- |
 | **Air-Conditioned (AC)** | 2A, 3A, 3E | 10:00 AM IST (1 Day Prior to Origin Departure) | Mandatory Aadhaar OTP check; 0% refund on confirmed ticket cancellation |
 | **Sleeper Class (SL)** | Sleeper (SL) | 11:00 AM IST (1 Day Prior to Origin Departure) | Maximum 4 passengers per PNR; 0% refund on confirmed cancellations |
-| **Waitlisted Tatkal (TQWL)** | AC & Sleeper | Clears only if confirmed Tatkal tickets cancel | Automatically cancels if unconfirmed at chart finalization (₹60 clerkage) |
+| **Waitlisted Tatkal (TQWL)** | AC & Sleeper | Clears only if confirmed Tatkal tickets cancel | Automatically cancels if unconfirmed at chart finalization with 100% full refund (zero clerkage) |
 
 To maximize confirmation odds during the morning booking rush, remember these standard IRCTC guidelines:
 1. **Sync System Clock:** Tatkal quota slots fill within 60 to 90 seconds. Ensure your device clock matches the official Indian Standard Time (IST).
@@ -186,7 +186,7 @@ Here are four practical strategies to secure a seat on Jhelum Express:
 Indian Railways permits passengers to hold two separate confirmed tickets for consecutive legs on the same train. For instance, you can book Coach B2 from Pune to New Delhi, and then shift to Coach B4 from New Delhi to Jammu Tawi. You remain on the same train throughout the journey without needing to step off or rebook unreserved passes. [LastBerth Smart Seats](/) automatically computes these vacant overlapping legs across all 65 stations.
 
 ### 2. Origin Quota Booking with Boarding Station Modification
-If intermediate quotas (such as Bhopal or Jhansi to Jammu) show Remote Location Waiting List (RLWL), check availability from the originating station (Pune Junction). If the General Quota (GNWL) from Pune has open berths, you can book the ticket from Pune to Jammu Tawi and change your boarding point to Bhopal or Jhansi online up to four hours prior to train departure.
+If intermediate quotas (such as Bhopal or Jhansi to Jammu) show Remote Location Waiting List (RLWL), check availability from the originating station (Pune Junction). If the General Quota (GNWL) from Pune has open berths, you can book the ticket from Pune to Jammu Tawi and change your boarding point online up to second chart preparation (~30 to 45 minutes before train departure).
 
 ### 3. Post-Chart Current Availability (`CURR_AVBL`)
 Roughly 8 hours before departure, emergency and VIP quotas expire. berthing vacancies open to the public on IRCTC at a 10% base fare discount. Check [LastBerth Chart Times](/chart-times/11077-jhelum-express-chart-times) to know the exact charting window for your departure day.
@@ -251,10 +251,10 @@ Tatkal booking opens daily at 10:00 AM IST for AC classes (2A, 3A, 3E) and at 11
 AC 3-Tier (3A) accommodates 72 passengers per coach with standard berth width, while AC 3-Tier Economy (3E) accommodates 83 passengers using a higher-density modular layout with slightly narrower berths at an approximate 8% lower fare.
 
 ### What happens if my Jhelum Express waitlisted e-ticket does not confirm?
-If your e-ticket remains on Waiting List after second chart finalization, IRCTC automatically cancels the ticket and processes a full refund minus nominal clerkage charges directly to your payment source. You are not permitted to board the train.
+If your e-ticket remains on Waiting List after second chart finalization, IRCTC automatically cancels the ticket and processes an automatic 100% full refund with zero cancellation or clerkage fee deducted directly to your payment source. You are not permitted to board the train.
 
 ### How many stops does Jhelum Express make between Pune and Jammu?
 Jhelum Express halts at 65 intermediate stations, connecting major cities such as Ahmednagar, Manmad, Bhusaval, Khandwa, Itarsi, Bhopal, Jhansi, Gwalior, Agra, New Delhi, Ambala, and Ludhiana.
 
 ### Can I change my boarding station on Jhelum Express after booking?
-Yes, you can modify your boarding station online through the IRCTC portal up to four hours prior to scheduled train departure from the originating station, or before first chart preparation, without incurring cancellation penalties.
+Yes, you can modify your boarding station online through the IRCTC portal or app up to the preparation of the second reservation chart (~30 to 45 minutes before train departure) without incurring cancellation penalties.

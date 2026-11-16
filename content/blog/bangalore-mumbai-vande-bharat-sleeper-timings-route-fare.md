@@ -2,7 +2,7 @@
 title: "Bangalore Mumbai Vande Bharat: Timings, Route & Fare (2026)"
 description: "Complete guide to Bangalore-Mumbai Vande Bharat Sleeper (27651/27652): SMVB to CSMT schedule, halts, 3A/2A/1A ticket price, pantry menu, Tatkal & booking rules."
 date: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 tags:
   - train booking
   - irctc
@@ -150,7 +150,7 @@ You can inspect verified dish lists in our [CSMT to SMVB Food Menu Directory](/i
 
 ## How Does Tatkal Booking and Chart Preparation Work for Train 27651 / 27652?
 
-**Tatkal booking opens daily at 10:00 AM IST exactly 1 day prior to train origin departure for AC classes (3A and 2A). First reservation charts are prepared 4 to 8 hours prior to train departure (between 11:30 AM and 13:00 IST for Train 27652; between 12:00 PM and 14:00 IST for Train 27651).**
+**Tatkal booking opens daily at 10:00 AM IST exactly 1 day prior to train origin departure for AC classes (3A and 2A). First reservation charts are prepared roughly 8 hours prior to train departure (between 11:30 AM and 13:00 IST for Train 27652; between 12:00 PM and 14:00 IST for Train 27651).**
 
 Understanding the specific charting and Tatkal mechanics on this corridor is critical for business travelers seeking last-minute berths.
 
@@ -214,18 +214,18 @@ Using [LastBerth Smart Seats](/), you can book two contiguous tickets on Train 2
 
 You remain on the identical train throughout the night. If the berth numbers differ between the two legs, you simply shift to your second assigned seat after Pune Junction at 08:40 AM.
 
-### 2. Intermediate Quota Booking (Anantapur / Guntakal / Solapur)
+### 2. Intermediate Quota Booking & Boarding Point Modification
 
-If direct berths from SMVB show a long waiting list, test booking your ticket from an earlier or slightly different boarding point:
-- Book from **Anantapur (ATP)** or **Guntakal (GTL)** to Mumbai CSMT if those quotas have seats available.
-- Change your official boarding point to SMVT Bengaluru online on IRCTC up to 4 hours prior to departure without paying any cancellation penalty.
+If direct berths from intermediate halts show a waiting list or if booking downstream:
+- If boarding at intermediate stops like **Anantapur (ATP)** or **Guntakal (GTL)** where local remote quotas are full, book from the originating terminal **SMVT Bengaluru (SMVB)** under the larger General Quota (GNWL).
+- Change your official boarding point online on IRCTC up to the preparation of the second reservation chart (~30 to 45 minutes prior to departure) without paying any cancellation penalty.
 
 ### 3. Post-Chart Current Availability (`CURR_AVBL`)
 
 Between 11:30 AM and 13:00 IST on the day of departure, CRIS prepares the first reservation chart for Train 27652. Unutilized VIP, emergency, and quota berths are instantly released to the general public under **Current Availability**.
 - These tickets carry a statutory **10% discount on the base fare**.
 - Berths are **100% confirmed** with instant coach and berth numbers.
-- You can monitor vacant berths in real time using [LastBerth Chart Vacancy](/chart-vacancy) and book directly up to 30 minutes before train departure.
+- You can monitor vacant berths in real time using [LastBerth Chart Vacancy](/chart-vacancy) and book directly up to 15 minutes before train departure.
 
 ---
 
@@ -269,7 +269,7 @@ Yes, the First AC (1A) coach on the 16-coach Vande Bharat Sleeper rake includes 
 
 ### When is the first reservation chart prepared for Train 27652?
 
-The first reservation chart for Train 27652 (departing SMVB at 19:45 IST) is prepared between 11:30 AM and 13:00 IST on the day of departure. Unallocated quota berths are then released for Current Availability booking at a 10% base fare discount until the second chart is prepared 30 minutes before departure.
+The first reservation chart for Train 27652 (departing SMVB at 19:45 IST) is prepared between 11:30 AM and 13:00 IST on the day of departure. Unallocated quota berths are then released for Current Availability booking at a 10% base fare discount until 15 minutes before train departure (following second chart preparation ~30 to 45 minutes prior).
 
 ---
 

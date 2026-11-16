@@ -2,7 +2,7 @@
 title: "Poorva Express (12303/12381): Route, Timings & Rules (2026)"
 description: "Poorva Express 12303/12304 and 12381/12382 connect Howrah and New Delhi daily. Check complete timetable, chart preparation times, Tatkal rules, and fares."
 date: "2026-11-10"
-updated: "2026-11-10"
+updated: "2026-11-16"
 tags:
   - poorva express
   - 12303 poorva express
@@ -14,7 +14,7 @@ tags:
 
 ## TL;DR
 
-Poorva Express operates daily superfast express service between Howrah Junction (HWH) in Kolkata and New Delhi (NDLS) as trains 12303/12304 (operating four days a week via Patna) and 12381/12382 (operating three days a week via Gaya and Grand Chord). For morning departures from Howrah (08:00 and 08:15 IST), the first reservation chart is finalized the previous evening between 20:00 and 21:00 IST, unlocking 10% discounted Current Availability (CURR_AVBL) berths overnight on IRCTC. For evening departures from New Delhi (17:40 IST), charting completes around 09:30 to 10:30 IST on journey morning. When direct bookings reach Waitlist (WL) or Regret, [LastBerth Smart Seats](/) discovers confirmed split-ticket segments on the same rake without unreserved surcharges.
+Poorva Express operates daily superfast express service between Howrah Junction (HWH) in Kolkata and New Delhi (NDLS) as trains 12303/12304 (operating four days a week via Patna) and 12381/12382 (operating three days a week via Gaya and Grand Chord). For morning departures from Howrah (08:00 and 08:15 IST), the first reservation chart is finalized the previous evening at 21:00 IST (9:00 PM), unlocking 10% discounted Current Availability (CURR_AVBL) berths overnight on IRCTC. For evening departures from New Delhi (17:40 IST), charting completes around 09:30 to 10:30 IST on journey morning. When direct bookings reach Waitlist (WL) or Regret, [LastBerth Smart Seats](/) discovers confirmed split-ticket segments on the same rake without unreserved surcharges.
 
 ---
 
@@ -137,13 +137,13 @@ Track live schedule consistency and historical punctuality directly on our pages
 
 ## When Is Poorva Express Chart Preparation Time?
 
-**For morning departures from Howrah (12303 at 08:00 IST and 12381 at 08:15 IST), the first reservation chart is prepared the previous evening between 20:00 and 21:00 IST. For evening departures from New Delhi (12304 and 12382 at 17:40 IST), the first chart is prepared between 09:30 and 10:30 IST.**
+**For morning departures from Howrah (12303 at 08:00 IST and 12381 at 08:15 IST), the first reservation chart is prepared the previous evening at 21:00 IST (9:00 PM). For evening departures from New Delhi (12304 and 12382 at 17:40 IST), the first chart is prepared between 09:30 and 10:30 IST.**
 
 Understanding reservation charting on Poorva Express is essential for travelers hoping to clear waitlisted tickets or grab last-minute vacant berths:
 
 1. **Howrah Morning Departures (Trains 12303 and 12381):**
    - Under standard Indian Railways operating rules, passenger trains scheduled to depart before 14:00 (2:00 PM) have their first reservation charts prepared the preceding evening.
-   - For 12303 (08:00 departure) and 12381 (08:15 departure), Howrah PRS finalizes the primary chart between **20:00 and 21:00 IST (8:00 PM to 9:00 PM) on the night prior to travel**.
+   - For 12303 (08:00 departure) and 12381 (08:15 departure), Howrah PRS finalizes the primary chart at **21:00 IST (9:00 PM) on the night prior to travel**.
    - As soon as the first chart completes, unallotted VIP, defense, and emergency quotas convert into **Current Availability (`CURR_AVBL`)**. Passengers can book these seats online via IRCTC with a **statutory 10% base fare discount** right through the night.
    - The Second and Final Chart is printed at Howrah Junction **30 to 45 minutes prior to departure**, typically between 07:15 and 07:30 IST.
 
@@ -198,7 +198,7 @@ Because Poorva Express serves busy business and festive corridors across Bengal,
 
 3. **No Refund on Confirmed Tatkal:**
    - Confirmed Tatkal cancellations yield **0% refund** under Railway Board rules.
-   - If your Tatkal ticket remains in Tatkal Waiting List (TQWL) after final charting, it automatically cancels, and the full fare minus standard clerkage (₹60 + GST) is refunded to your bank account.
+   - If your Tatkal ticket remains in Tatkal Waiting List (TQWL) after final charting, it automatically cancels, and an **automatic 100% full refund with zero cancellation or clerkage fees deducted** is credited to your bank account per official IRCTC Cancellation Rules PDF §4.
 
 4. **Booking Speed Best Practices:**
    - Pre-save your travelers in the IRCTC Master List with verified Aadhaar credentials.
@@ -246,13 +246,13 @@ If your travel date coincides with peak rush periods like Chhath Puja, Diwali, D
    - Use [LastBerth Smart Seats](/) to find these continuous segments. You travel on the same train without missing connecting links.
 
 2. **Current Availability (CURR_AVBL) After First Charting:**
-   - As explained in our charting section, first charts for morning trains 12303 and 12381 finalize between 20:00 and 21:00 IST the previous evening.
+   - As explained in our charting section, first charts for morning trains 12303 and 12381 finalize at 21:00 IST (9:00 PM) the previous evening.
    - Any unutilized quota berths convert directly into `CURR_AVBL` at a **10% base fare discount**. Check IRCTC between 21:30 IST and midnight to grab confirmed berths.
    - Use our live [Chart Vacancy Tool](/chart-vacancy) to inspect coach-by-coach vacancies before booking.
 
 3. **Origin-Station Booking with Boarding Point Modification:**
    - If seats from intermediate stations like Jasidih, Patna, or Gaya show RLWL Regret, check availability from the originating station (Howrah Junction).
-   - You can book from Howrah (which enjoys the largest GNWL quota) and change your boarding station to Patna or Gaya online via IRCTC at least 4 hours before the train's scheduled departure from Howrah.
+   - You can book from Howrah (which enjoys the largest GNWL quota) and change your boarding station to Patna or Gaya online via IRCTC up to the preparation of the second reservation chart (~30 to 45 minutes before departure from Howrah).
 
 4. **Legal Travel Rules and Section 138 Penalties:**
    - Under the Railways Act and Jan Vishwas Act provisions, **passengers holding waitlisted online e-tickets are strictly prohibited from boarding reserved Sleeper or AC coaches**.
@@ -267,7 +267,7 @@ If your travel date coincides with peak rush periods like Chhath Puja, Diwali, D
 Train 12303 runs four days a week (Monday, Tuesday, Friday, Saturday) from Howrah to New Delhi via Patna Junction over a distance of 1,531 km. Train 12381 runs three days a week (Sunday, Wednesday, Thursday) over the Grand Chord route via Dhanbad, Gaya Junction, Varanasi, and Lucknow, covering 1,452 km. Both share identical coach layouts and terminate at New Delhi.
 
 ### When does the chart get prepared for Poorva Express from Howrah?
-Because both 12303 (08:00 departure) and 12381 (08:15 departure) depart Howrah Junction in the morning, their first reservation charts are prepared the previous evening between 20:00 and 21:00 IST. The final second chart is prepared 30 to 45 minutes before departure on the morning of travel.
+Because both 12303 (08:00 departure) and 12381 (08:15 departure) depart Howrah Junction in the morning, their first reservation charts are prepared the previous evening at 21:00 IST (9:00 PM). The final second chart is prepared 30 to 45 minutes before departure on the morning of travel.
 
 ### When does the chart get prepared for Poorva Express from New Delhi?
 For trains 12304 and 12382 departing New Delhi at 17:40 IST, the first reservation chart is finalized between 09:30 AM and 10:30 AM IST on the day of departure. The final chart is released approximately 30 to 45 minutes before departure around 17:00 IST.
@@ -285,7 +285,7 @@ Yes. Poorva Express has an attached pantry car on all runs (12303/12304 and 1238
 Tatkal booking opens at 10:00 AM IST for AC classes (2A, 3A, 3E) and at 11:00 AM IST for Sleeper class (SL) exactly one day prior to the train's departure from its originating station (Howrah or New Delhi).
 
 ### How can I get a confirmed seat on Poorva Express if it is waitlisted?
-When direct tickets are waitlisted, check for continuous split seats using LastBerth Smart Seats on the same train. You can also monitor 10% discounted Current Availability (CURR_AVBL) berths on IRCTC right after the first chart is prepared at 20:00 to 21:00 IST the previous evening.
+When direct tickets are waitlisted, check for continuous split seats using LastBerth Smart Seats on the same train. You can also monitor 10% discounted Current Availability (CURR_AVBL) berths on IRCTC right after the first chart is prepared at 21:00 IST the previous evening.
 
 ### What are the major halts of Poorva Express in Bihar?
 On the Patna route (12303/12304), major halts include Jhajha, Jamui, Kiul, Mokama, Barh, Bakhtiyarpur, Patna Junction, Danapur, Ara, and Buxar. On the Gaya route (12381/12382), key stops include Koderma, Gaya Junction, RafiGanj, Anugraha Narayan Road, Dehri On Sone, Sasaram, and Bhabua Road.

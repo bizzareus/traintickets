@@ -2,7 +2,7 @@
 title: "Udyan Express (11301/11302): Route, Timings & Rules (2026)"
 description: "Complete guide to Udyan Express (11301/11302): Mumbai to Bengaluru timetable, intermediate halts, chart preparation time, Tatkal rules, and fares."
 date: "2026-11-15"
-updated: "2026-11-15"
+updated: "2026-11-16"
 tags:
   - train booking
   - irctc
@@ -15,7 +15,7 @@ tags:
 
 ## TL;DR
 
-The Udyan Express (11301/11302) is a daily express service connecting Mumbai CSMT and KSR Bengaluru over 1,134 kilometers across Maharashtra, Karnataka, and Andhra Pradesh in approximately 24 hours. For Mumbai morning departures (11301 at 08:10 IST), the first reservation chart finalizes the preceding evening between 20:00 and 21:00 IST, whereas Bengaluru departures (11302 at 20:45 IST) finalize charts between 11:30 AM and 13:00 IST on departure day. Tatkal booking opens daily at 10:00 AM for AC classes and 11:00 AM for Sleeper, while unsold post-charting berths release under Current Availability at a 10% base fare discount.
+The Udyan Express (11301/11302) is a daily express service connecting Mumbai CSMT and KSR Bengaluru over 1,134 kilometers across Maharashtra, Karnataka, and Andhra Pradesh in approximately 24 hours. For Mumbai morning departures (11301 at 08:10 IST), the first reservation chart finalizes the preceding evening at 21:00 IST (9:00 PM), whereas Bengaluru departures (11302 at 20:45 IST) finalize charts between 11:30 AM and 13:00 IST on departure day. Tatkal booking opens daily at 10:00 AM for AC classes and 11:00 AM for Sleeper, while unsold post-charting berths release under Current Availability at a 10% base fare discount.
 
 ---
 
@@ -87,13 +87,13 @@ The master schedule below outlines key intermediate transit junctions, timings, 
 
 ## When Is Udyan Express Chart Prepared?
 
-**Udyan Express first reservation chart preparation depends on departure time: for Mumbai departure 11301 at 08:10 IST, the first chart is finalized the preceding evening between 20:00 and 21:00 IST. For Bengaluru departure 11302 at 20:45 IST, the first chart is prepared between 11:30 AM and 13:00 IST on departure day.**
+**Udyan Express first reservation chart preparation depends on departure time: for Mumbai departure 11301 at 08:10 IST, the first chart is finalized the preceding evening at 21:00 IST (9:00 PM). For Bengaluru departure 11302 at 20:45 IST, the first chart is prepared roughly 8 hours before departure (between 11:30 AM and 13:00 IST) on departure day.**
 
 Under Indian Railways dual-charting framework, charts finalize in two distinct stages:
 
 1. **First Chart Finalization:**
-   - **Train 11301 (Morning Departure):** Because the train leaves Mumbai CSMT at 08:10 AM, railway rules mandate that morning departures before 14:00 finalize charts the previous night between 20:00 and 21:00 IST. Passengers know their confirmation status before sleeping.
-   - **Train 11302 (Evening Departure):** Leaving KSR Bengaluru at 20:45 PM, the first chart generates approximately 8 to 10 hours before departure, between 11:30 AM and 13:00 IST.
+   - **Train 11301 (Morning Departure):** Because the train leaves Mumbai CSMT at 08:10 AM, railway rules mandate that morning departures before 14:00 finalize charts the previous night at 21:00 IST (9:00 PM). Passengers know their confirmation status before sleeping.
+   - **Train 11302 (Evening Departure):** Leaving KSR Bengaluru at 20:45 PM, the first chart generates roughly 8 hours before departure, between 11:30 AM and 13:00 IST.
 2. **Second & Final Chart:** Closes strictly **30 to 45 minutes** before scheduled train departure from the originating station. For 11301, this occurs around 07:30 AM at CSMT; for 11302, it occurs around 20:00 PM at SBC.
 3. **Remote Location Charting (RLWL):** Intermediate commercial hubs like Pune Junction, Solapur Junction, and Guntakal Junction possess dedicated Remote Location Waitlist (RLWL) quotas. Charts for these quotas generate approximately 4 to 6 hours before the train reaches the respective boarding station.
 4. **Current Availability Booking Window:** The moment the first chart generates, all unassigned emergency, defense, and VIP quotas return to the general booking pool as Current Availability (`CURR_AVBL`) at a **10% discount on base fare**. These seats remain bookable online and at counters until the second chart closes.
@@ -112,7 +112,7 @@ Because Udyan Express connects two major business metropolitan areas, Tatkal quo
   - **Sleeper Class (SL):** Opens at **11:00 AM IST** sharp.
 - **Passenger Allocation Limits:** Tatkal limits every PNR to **4 passengers**, unlike General Quota which permits 6 travelers.
 - **Aadhaar Verification Rule:** Primary booking accounts must be Aadhaar-authenticated, and users must complete dynamic SMS OTP checks during checkout.
-- **Cancellation Forfeiture:** Confirmed Tatkal tickets yield a **0% refund** upon voluntary cancellation. If your Tatkal ticket remains waitlisted after final charting, IRCTC automatically cancels it and refunds the fare with nominal clerkage deductions.
+- **Cancellation Forfeiture:** Confirmed Tatkal tickets yield a **0% refund** upon voluntary cancellation. If your Tatkal ticket remains waitlisted after final charting, IRCTC automatically cancels it and issues a **100% full refund with zero cancellation or clerkage fees deducted** per official IRCTC Cancellation Rules PDF §4.
 
 To compare last-minute booking options, read our analysis on [Tatkal vs Current Availability](/blog/tatkal-vs-current-availability-last-minute-train-ticket).
 
@@ -163,14 +163,14 @@ To review official railway meal pricing and complain against pantry overcharging
 
 ## How to Book Confirmed Seats on a Waitlisted Udyan Express?
 
-**To get confirmed seats on a fully booked Udyan Express, passengers can use split-ticketing to combine contiguous confirmed berths on the same train, monitor 10% discounted Current Availability berths post-charting, book from intermediate station quotas, or utilize the 4-hour boarding station modification rule.**
+**To get confirmed seats on a fully booked Udyan Express, passengers can use split-ticketing to combine contiguous confirmed berths on the same train, monitor 10% discounted Current Availability berths post-charting, book from intermediate station quotas, or utilize the online boarding station modification rule.**
 
 When direct tickets from Mumbai CSMT to KSR Bengaluru display Waiting List (WL 50+) or Regret, these four legal strategies help you secure travel:
 
 1. **Smart Seats Contiguous Split Ticketing:** End-to-end quota on 11301 may be waitlisted, but intermediate portions frequently have empty berths. For instance, Coach B2 might be vacant from Mumbai to Solapur, and Coach B5 vacant from Solapur to Bengaluru. LastBerth discovers these contiguous split bookings on the same train rake, allowing you to travel without deboarding. Search your route on [Get Confirmed Tickets](/) to view available splits.
-2. **Current Availability (`CURR_AVBL`):** Check IRCTC or LastBerth right after first chart preparation (between 20:00 and 21:00 IST for 11301; between 11:30 AM and 13:00 IST for 11302). Unused VIP and quota seats return to the open pool at a **10% discount on base fare**.
+2. **Current Availability (`CURR_AVBL`):** Check IRCTC or LastBerth right after first chart preparation (at 21:00 IST previous evening for 11301; between 11:30 AM and 13:00 IST for 11302). Unused VIP and quota seats return to the open pool at a **10% discount on base fare**.
 3. **Live Coach Vacancy Scanning:** Open the [Chart Vacancy Map](/chart-vacancy) after charting to visually locate empty berths across 1A, 2A, 3A, and Sleeper coaches. If an empty berth exists for your segment, book it directly online before the second chart locks.
-4. **Intermediate Quota Booking:** Remote Location quotas (RLWL) from stations like Pune (PUNE) or Daund (DD) often clear faster than General Waiting List (GNWL) from CSMT. You can book from the remote station and adjust your boarding station up to 4 hours before train departure.
+4. **Intermediate Quota Booking:** Remote Location quotas (RLWL) from stations like Pune (PUNE) or Daund (DD) often clear faster than General Waiting List (GNWL) from CSMT. You can book from the remote station and adjust your boarding station online on IRCTC up to the preparation of the second reservation chart (~30 to 45 minutes before train departure).
 
 ---
 
@@ -196,7 +196,7 @@ The Udyan Express runs under train number 11301 from Mumbai CSMT to KSR Bengalur
 
 ### When is Udyan Express chart prepared for 11301 from Mumbai?
 
-Because train 11301 departs Mumbai CSMT at 08:10 AM, its first reservation chart is prepared the previous evening between 20:00 and 21:00 IST (8:00 PM to 9:00 PM). The second and final chart is finalized 30 to 45 minutes before departure.
+Because train 11301 departs Mumbai CSMT at 08:10 AM, its first reservation chart is prepared the previous evening at 21:00 IST (9:00 PM). The second and final chart is finalized 30 to 45 minutes before departure.
 
 ### When is Udyan Express chart prepared for 11302 from Bengaluru?
 
@@ -220,7 +220,7 @@ No. Fully waitlisted online e-tickets automatically cancel and refund after fina
 
 ### What is Current Availability on Udyan Express?
 
-Current Availability (`CURR_AVBL`) refers to confirmed berths that remain unsold after first chart preparation. They become bookable online on IRCTC and at PRS counters at a 10% base fare discount until 30 minutes before train departure.
+Current Availability (`CURR_AVBL`) refers to confirmed berths that remain unsold after first chart preparation. They become bookable online on IRCTC and at PRS counters at a 10% base fare discount until 15 minutes before train departure.
 
 ### What are the main intermediate halts between Mumbai and Bengaluru on Udyan Express?
 
@@ -234,4 +234,4 @@ Under Section 138 of the Railways Act (Jan Vishwas Act 2026), traveling in reser
 
 ## Bottom line
 
-The Udyan Express (11301/11302) remains the premier daily lifeline between Mumbai and Bengaluru, providing reliable connectivity across Maharashtra, North Karnataka, and Rayalaseema. For morning departures from Mumbai, track your confirmation status the preceding evening between 20:00 and 21:00 IST when the first chart generates; for Bengaluru departures, charts finalize by 13:00 IST on journey day. If regular quotas enter waiting lists, scan unsold seats on [Chart Vacancy](/chart-vacancy), monitor release patterns on [Chart Times](/chart-times), or use [LastBerth Smart Seats](/) to find confirmed contiguous split bookings on the same train.
+The Udyan Express (11301/11302) remains the premier daily lifeline between Mumbai and Bengaluru, providing reliable connectivity across Maharashtra, North Karnataka, and Rayalaseema. For morning departures from Mumbai, track your confirmation status the preceding evening at 21:00 IST when the first chart generates; for Bengaluru departures, charts finalize by 13:00 IST on journey day. If regular quotas enter waiting lists, scan unsold seats on [Chart Vacancy](/chart-vacancy), monitor release patterns on [Chart Times](/chart-times), or use [LastBerth Smart Seats](/) to find confirmed contiguous split bookings on the same train.
