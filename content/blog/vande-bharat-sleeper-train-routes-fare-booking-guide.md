@@ -2,7 +2,7 @@
 title: "Vande Bharat Sleeper Trains List: Running Routes & Fares 2026"
 description: "Complete Vande Bharat Sleeper trains list: Delhi–Varanasi, Mumbai–Bengaluru & Howrah–Kamakhya. Check operating train numbers, upcoming routes, fares & timings."
 date: "2026-07-31"
-updated: "2026-11-13"
+updated: "2026-11-16"
 tags:
   - train booking
   - irctc
@@ -177,16 +177,16 @@ Review official dish lists in our [IRCTC Train Food Menu Directory](/irctc-train
 
 ## What Cancellation Rules and Refund Slabs Apply to Sleeper Trains?
 
-**Vande Bharat Sleeper services enforce strict voluntary cancellation rules: cancelling more than 72 hours before departure incurs a 25% fare deduction, cancelling between 72 and 8 hours before departure incurs a 50% deduction, and no fare refund is granted within 8 hours of scheduled origin departure.**
+**Vande Bharat Sleeper tickets follow standard Indian Railways confirmed ticket cancellation rules: cancelling more than 48 hours prior incurs a flat fee (₹240 for 1A, ₹200 for 2A, ₹180 for 3A + GST), cancelling between 48 and 12 hours incurs a 25% deduction, between 12 and 4 hours incurs a 50% deduction, and no refund is granted within 4 hours of departure or after chart preparation.**
 
-These deduction windows are significantly tighter than conventional mail and express train refund slabs:
+The official IRCTC cancellation and refund slabs for confirmed tickets are:
 
-| Time Frame Before Train Origin Departure | Cancellation Fee Deducted | Refund Percentage Allowed |
+| Time Frame Before Scheduled Train Departure | Cancellation Fee Deducted | Refund Allowed |
 | :--- | :--- | :--- |
-| **More than 72 hours prior** | 25% of gross ticket fare | 75% refund |
-| **Between 72 hours and 8 hours prior** | 50% of gross ticket fare | 50% refund |
-| **Less than 8 hours before departure** | 100% of fare (Zero refund) | 0% refund |
-| **After reservation chart preparation** | 100% of fare (Zero refund) | 0% refund |
+| **More than 48 hours prior** | Flat fee: ₹240 (1A), ₹200 (2A), ₹180 (3A) + GST | Balance fare |
+| **Between 48 hours and 12 hours prior** | 25% of fare (subject to minimum flat fee) + GST | 75% of fare (approx.) |
+| **Between 12 hours and 4 hours prior** | 50% of fare (subject to minimum flat fee) + GST | 50% of fare (approx.) |
+| **Less than 4 hours / after chart preparation** | 100% of fare (Zero refund) | 0% refund |
 
 **Exceptions and TDR Filing:** If a Vande Bharat Sleeper train is delayed by more than three hours, cancelled by Indian Railways, or experiences an AC system failure during transit, passengers are entitled to a 100% full refund by filing an online Ticket Deposit Receipt (TDR) through IRCTC prior to train departure.
 
@@ -226,9 +226,9 @@ Yes, AC Tatkal booking opens at 10:00 AM IST one day prior to train origin depar
 
 A 16-coach Vande Bharat Sleeper trainset has a total capacity of 823 passenger berths: 611 in AC 3-Tier (11 coaches), 188 in AC 2-Tier (4 coaches), and 24 in First AC (1 coach).
 
-### What is the cancellation charge for Vande Bharat Sleeper within 8 hours?
+### What is the cancellation charge for Vande Bharat Sleeper within 4 hours?
 
-Cancelling a confirmed Vande Bharat Sleeper ticket less than eight hours before scheduled origin departure results in zero refund (100% cancellation charge), unless the train is cancelled or delayed by over three hours.
+Cancelling a confirmed Vande Bharat Sleeper ticket less than four hours before scheduled train departure (or after reservation chart preparation) results in zero refund (100% cancellation charge), unless the train is cancelled or delayed by over three hours.
 
 ### Is catering food compulsory on Vande Bharat Sleeper?
 
