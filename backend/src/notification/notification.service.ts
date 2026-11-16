@@ -15,6 +15,7 @@ import { WasenderProvider } from './whatsapp-providers/wasender.provider';
 import { Msg91Provider } from './whatsapp-providers/msg91.provider';
 import { WhatsAppProviderFactory } from './whatsapp-providers/whatsapp.provider-factory';
 import type { SendWhatsAppPayload } from './whatsapp-providers/whatsapp-provider.interface';
+import { signUnsubscribeToken } from './unsubscribe-token';
 import {
   escapeHtml,
   formatChartTimeIst,
@@ -635,7 +636,7 @@ export class NotificationService {
   }
 
   /**
-   * Build a tracked short link to /unsubscribe?r=<recipient>.
+   * Build a tracked short link to /unsubscribe?r=<recipient>&t=<hmac token>.
    */
   private async createUnsubscribeShortLink(
     recipient: string,
@@ -647,7 +648,7 @@ export class NotificationService {
     try {
       const baseUrl = process.env.FRONTEND_URL || 'https://lastberth.com';
       return await this.shortLinkService.findOrCreateShortLink({
-        url: `${baseUrl}/unsubscribe?r=${encodeURIComponent(trimmed)}`,
+        url: `${baseUrl}/unsubscribe?r=${encodeURIComponent(trimmed)}&t=${signUnsubscribeToken(trimmed)}`,
         payload: {
           type: 'unsubscribe_link',
           recipient: trimmed,

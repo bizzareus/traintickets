@@ -7,52 +7,88 @@ import { apiClient } from "@/lib/api";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 import { getStoredContact, saveStoredContact } from "@/lib/contact";
 
-type Status = "loading" | "unsubscribed" | "subscribed" | "error";
+type Status =
+  | "loading"
+  | "unsubscribed"
+  | "subscribed"
+  | "error"
+  | "request-link"
+  | "link-sent";
 
 function UnsubscribePageContent() {
   const searchParams = useSearchParams();
   const paramRecipient = searchParams.get("r")?.trim() ?? "";
+  const paramToken = searchParams.get("t")?.trim() ?? "";
   const stored = getStoredContact();
   const initialRecipient =
     paramRecipient || stored.email || stored.mobile || "";
+  const hasToken = Boolean(paramToken && initialRecipient);
 
   const [recipient, setRecipient] = useState(initialRecipient);
   const [status, setStatus] = useState<Status>(
-    initialRecipient ? "loading" : "subscribed",
+    hasToken ? "loading" : "request-link",
   );
   const [pending, setPending] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    if (!initialRecipient) return;
+    if (!hasToken) return;
     let cancelled = false;
     (async () => {
       try {
         const { data } = await apiClient.get<{ unsubscribed: boolean }>(
           `/api/notifications/unsubscribe/status`,
-          { params: { recipient: initialRecipient } },
+          { params: { recipient: initialRecipient, token: paramToken } },
         );
         if (cancelled) return;
         setStatus(data.unsubscribed ? "unsubscribed" : "subscribed");
       } catch {
         if (cancelled) return;
-        setStatus("error");
-        setErrorMessage("Could not check your current subscription.");
+        // Invalid/expired token (e.g. after a secret rotation) — fall back to
+        // requesting a fresh link instead of showing a dead end.
+        setStatus("request-link");
+        setErrorMessage(
+          "This link is no longer valid. Request a fresh one below.",
+        );
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [initialRecipient]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasToken, initialRecipient, paramToken]);
 
-  async function handleUnsubscribe(e: React.FormEvent) {
+  /** No token in the URL: email the recipient a fresh signed link. */
+  async function handleRequestLink(e: React.FormEvent) {
     e.preventDefault();
-    if (!recipient.trim() || pending) return;
+    const email = recipient.trim().toLowerCase();
+    if (!email || pending) return;
+    setPending(true);
+    setErrorMessage("");
+    try {
+      await apiClient.post(`/api/notifications/unsubscribe/link`, {
+        recipient: email,
+      });
+      setStatus("link-sent");
+      trackAnalyticsEvent({
+        name: "notification_unsubscribe_link_requested",
+        properties: {},
+      });
+    } catch {
+      setErrorMessage("Could not send the link. Please try again.");
+    } finally {
+      setPending(false);
+    }
+  }
+
+  async function handleUnsubscribe() {
+    if (!recipient.trim() || pending || !paramToken) return;
     setPending(true);
     setErrorMessage("");
     try {
       await apiClient.post(`/api/notifications/unsubscribe`, {
         recipient: recipient.trim(),
+        token: paramToken,
       });
       saveStoredContact(
         detectChannel(recipient) === "email"
@@ -72,12 +108,13 @@ function UnsubscribePageContent() {
   }
 
   async function handleResubscribe() {
-    if (!recipient.trim() || pending) return;
+    if (!recipient.trim() || pending || !paramToken) return;
     setPending(true);
     setErrorMessage("");
     try {
       await apiClient.post(`/api/notifications/resubscribe`, {
         recipient: recipient.trim(),
+        token: paramToken,
       });
       saveStoredContact(
         detectChannel(recipient) === "email"
@@ -123,44 +160,31 @@ function UnsubscribePageContent() {
           </div>
         )}
 
-        {status === "subscribed" && (
+        {status === "request-link" && (
           <>
             <p className="mb-6 text-slate-600">
-              {recipient.trim() ? (
-                <>
-                  You are currently subscribed to receive alerts on{" "}
-                  <span className="font-mono text-slate-900">{recipient}</span>.
-                </>
-              ) : (
-                <>
-                  Enter the email address or mobile number you used to
-                  subscribe, and we will stop sending notifications to that
-                  address.
-                </>
-              )}
+              To stop (or restart) alert emails, enter the email address you
+              subscribe with and we&apos;ll send you a secure one-click link.
             </p>
-            <form onSubmit={handleUnsubscribe} className="space-y-4">
-              {!initialRecipient && (
-                <div>
-                  <label
-                    htmlFor="recipient"
-                    className="block text-sm font-medium text-slate-700"
-                  >
-                    Email or mobile
-                  </label>
-                  <input
-                    id="recipient"
-                    type="text"
-                    inputMode="email"
-                    autoComplete="email"
-                    value={recipient}
-                    onChange={(e) => setRecipient(e.target.value)}
-                    placeholder="you@example.com"
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-4 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
-                    required
-                  />
-                </div>
-              )}
+            <form onSubmit={handleRequestLink} className="space-y-4">
+              <div>
+                <label
+                  htmlFor="recipient"
+                  className="block text-sm font-medium text-slate-700"
+                >
+                  Email
+                </label>
+                <input
+                  id="recipient"
+                  type="email"
+                  autoComplete="email"
+                  value={recipient}
+                  onChange={(e) => setRecipient(e.target.value)}
+                  placeholder="you@example.com"
+                  className="mt-1 w-full rounded-lg border border-slate-300 px-4 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                  required
+                />
+              </div>
               {errorMessage && (
                 <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
                   {errorMessage}
@@ -169,11 +193,44 @@ function UnsubscribePageContent() {
               <button
                 type="submit"
                 disabled={pending || !recipient.trim()}
-                className="w-full rounded-lg bg-red-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+                className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
               >
-                {pending ? "Unsubscribing…" : "Unsubscribe me"}
+                {pending ? "Sending link…" : "Email me a manage link"}
               </button>
             </form>
+          </>
+        )}
+
+        {status === "link-sent" && (
+          <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4">
+            <p className="font-semibold text-emerald-900">Check your inbox.</p>
+            <p className="mt-1 text-sm text-emerald-800">
+              We&apos;ve sent a link to{" "}
+              <span className="font-mono">{recipient}</span> that lets you
+              unsubscribe from or re-subscribe to alert emails.
+            </p>
+          </div>
+        )}
+
+        {status === "subscribed" && (
+          <>
+            <p className="mb-6 text-slate-600">
+              You are currently subscribed to receive alerts on{" "}
+              <span className="font-mono text-slate-900">{recipient}</span>.
+            </p>
+            {errorMessage && (
+              <div className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
+                {errorMessage}
+              </div>
+            )}
+            <button
+              type="button"
+              onClick={handleUnsubscribe}
+              disabled={pending}
+              className="w-full rounded-lg bg-red-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+            >
+              {pending ? "Unsubscribing…" : "Unsubscribe me"}
+            </button>
           </>
         )}
 

@@ -532,6 +532,10 @@ export type AnalyticsEvent =
     }
   // Public unsubscribe page events
   | {
+      name: "notification_unsubscribe_link_requested";
+      properties: Record<string, never>;
+    }
+  | {
       name: "notification_unsubscribe_completed";
       properties: { channel: "email" | "whatsapp" };
     }

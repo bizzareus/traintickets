@@ -148,14 +148,19 @@ export class RefundRequestService {
       data: { email, trainNumber, journeyDate: journeyDateObj, txnId },
     });
 
-    // Evaluate auto-refund: if payment found and amount <= 25, auto initiate refund
-    const { payment, razorpayPaymentId: initialPaymentId } =
-      await this.findPaymentAndRazorpayId(created);
+    // Evaluate auto-refund: only for transaction-verified requests where the
+    // payment's contact email matches, and amount <= 25.
+    const {
+      payment,
+      razorpayPaymentId: initialPaymentId,
+      matchedVia,
+    } = await this.findPaymentAndRazorpayId(created);
 
     const paymentAmount = payment?.amount ?? 10;
-    if (payment && paymentAmount <= 25) {
+    const txnVerified = matchedVia === 'txn';
+    if (payment && txnVerified && paymentAmount <= 25) {
       this.logger.log(
-        `Auto-refund eligible for request ${created.id}: amount=₹${paymentAmount} (<= 25). Initiating refund via Muzobox...`,
+        `Auto-refund eligible for request ${created.id}: amount=₹${paymentAmount} (<= 25, txn-verified). Initiating refund via Muzobox...`,
       );
       try {
         let razorpayPaymentId = initialPaymentId;
@@ -214,7 +219,8 @@ export class RefundRequestService {
       }
     }
 
-    // Default flow: notify admin for manual review (amount > 25 or auto-refund pending)
+    // Default flow: notify admin for manual review (unverified requests or
+    // auto-refund pending/failed)
     void this.sendAdminEmail({ ...created, duplicate: false }).catch((err) =>
       this.logger.error(
         `Refund admin email failed (${created.id}): ${err instanceof Error ? err.message : String(err)}`,
@@ -224,7 +230,7 @@ export class RefundRequestService {
       id: created.id,
       duplicate: false,
       autoRefunded: false,
-      amount: payment?.amount,
+      amount: txnVerified ? payment?.amount : undefined,
     };
   }
 
@@ -265,14 +271,18 @@ export class RefundRequestService {
       updatedAt: new Date(),
     };
 
-    const { payment } = await this.findPaymentAndRazorpayId(dummyEntry);
-    const amount = payment?.amount ?? 10;
-    const found = Boolean(payment);
-    const autoRefundEligible = amount <= 25;
+    const { payment, matchedVia } =
+      await this.findPaymentAndRazorpayId(dummyEntry);
+    // Only disclose payment existence/amount when the transaction reference
+    // verifies against the email — otherwise this endpoint would be a
+    // financial-status oracle for arbitrary people.
+    const verified = Boolean(payment && matchedVia === 'txn');
+    const amount = verified ? (payment?.amount ?? 0) : 0;
+    const autoRefundEligible = verified && amount <= 25;
 
     return {
       ok: true,
-      found,
+      found: verified,
       amount,
       currency: 'INR',
       autoRefundEligible,
@@ -400,18 +410,37 @@ export class RefundRequestService {
    * 5. payment.journeyRequestId
    * 6. Fallback: contactEmail + trainNumber + journeyDate on PAID payments
    */
+  /**
+   * Locate the payment a refund request refers to.
+   *
+   * Ownership rule (security): a payment is only *verified* when the caller
+   * supplies the transaction reference emailed to the payer AND that payment's
+   * contact email matches the request email. Email+train+date matching alone
+   * never verifies ownership — it is only used so admin reviewers can see
+   * which payment a request likely refers to.
+   */
   private async findPaymentAndRazorpayId(entry: RefundRequest): Promise<{
     payment: ChartAlertPayment | null;
     razorpayPaymentId: string | null;
+    matchedVia: 'txn' | 'profile' | null;
   }> {
     const txnId = entry.txnId?.trim() || null;
+    const email = entry.email?.trim().toLowerCase();
     let payment: ChartAlertPayment | null = null;
+    let matchedVia: 'txn' | 'profile' | null = null;
+
+    const emailMatches = (candidate: ChartAlertPayment): boolean =>
+      Boolean(email) &&
+      String(candidate.contactEmail ?? '')
+        .trim()
+        .toLowerCase() === email;
 
     if (txnId) {
       // 1. Payment CUID reference (sent to users as paymentRef in confirmation email)
-      payment = await this.prisma.chartAlertPayment.findUnique({
+      const byCuid = await this.prisma.chartAlertPayment.findUnique({
         where: { id: txnId },
       });
+      payment = byCuid ?? null;
 
       // 2. Direct Razorpay payment ID
       if (!payment) {
@@ -440,9 +469,18 @@ export class RefundRequestService {
           where: { journeyRequestId: txnId },
         });
       }
+
+      // Ownership check: the transaction reference only counts when it
+      // belongs to the email on the request. Anything else is unverified —
+      // a leaked/forwarded paymentRef must not grant refund control.
+      if (payment && !emailMatches(payment)) {
+        return { payment: null, razorpayPaymentId: null, matchedVia: null };
+      }
+      if (payment) matchedVia = 'txn';
     }
 
-    // 6. Fallback: search by email + trainNumber + journeyDate
+    // 6. Fallback: search by email + trainNumber + journeyDate (admin-review
+    // matching only — never sufficient for automatic refunds).
     if (!payment) {
       const candidates = await this.prisma.chartAlertPayment.findMany({
         where: {
@@ -471,15 +509,11 @@ export class RefundRequestService {
           break;
         }
       }
-
-      // If no exact train/date match but only 1 candidate for that email
-      if (!payment && candidates.length === 1) {
-        payment = candidates[0];
-      }
+      if (payment) matchedVia = 'profile';
     }
 
     if (!payment) {
-      return { payment: null, razorpayPaymentId: null };
+      return { payment: null, razorpayPaymentId: null, matchedVia: null };
     }
 
     // Determine the Razorpay payment ID
@@ -524,7 +558,7 @@ export class RefundRequestService {
       }
     }
 
-    return { payment, razorpayPaymentId };
+    return { payment, razorpayPaymentId, matchedVia };
   }
 
   /**
@@ -779,8 +813,7 @@ export class RefundRequestService {
   private describeMuzoboxError(err: unknown): string {
     if (isAxiosError(err)) {
       const payload = err.response?.data as
-        | { message?: unknown; error?: unknown }
-        | undefined;
+        { message?: unknown; error?: unknown } | undefined;
       const fromBody =
         (Array.isArray(payload?.message)
           ? payload?.message.join('; ')

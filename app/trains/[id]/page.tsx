@@ -62,7 +62,8 @@ function calculateHaltMinutes(
   const [ah, am] = arr.split(":").map(Number);
   const [dh, dm] = dep.split(":").map(Number);
   if (isNaN(ah) || isNaN(am) || isNaN(dh) || isNaN(dm)) return undefined;
-  const diff = dh * 60 + dm - (ah * 60 + am);
+  let diff = dh * 60 + dm - (ah * 60 + am);
+  if (diff < 0) diff += 24 * 60;
   return diff > 0 ? `${diff}m` : undefined;
 }
 
@@ -280,10 +281,21 @@ export default async function TrainDetailPage({ params }: Props) {
 
   const faqEntries: { q: string; a: string }[] = [];
   if (trainName) {
+    const originChartTime =
+      origin && stationChartTimes[origin]?.chartOne
+        ? stationChartTimes[origin].chartOne
+        : null;
+
     faqEntries.push({
       q: `When does Tatkal booking open for ${trainName} (${trainNumber})?`,
       a: `Tatkal booking for ${trainName} (${trainNumber}) opens one day before departure at 10:00 AM IST for AC classes (EC, CC, EA, 1A, 2A, 3A) and 11:00 AM IST for Non-AC classes on IRCTC.`,
     });
+    if (originChartTime) {
+      faqEntries.push({
+        q: `When is the reservation chart prepared for ${trainName} (${trainNumber})?`,
+        a: `The first reservation chart for ${trainName} (${trainNumber}) is prepared at ${origin} around ${originChartTime} (about 4 to 8 hours before departure). The second and final chart is finalized 30 minutes before departure.`,
+      });
+    }
     if (origin && dest) {
       faqEntries.push({
         q: `What is the route of ${trainName} (${trainNumber})?`,
@@ -383,6 +395,8 @@ export default async function TrainDetailPage({ params }: Props) {
           chartTimesSlug={canonicalChartTimesSlug}
           stationChartTimes={stationChartTimes}
           foodMenuUrl={catalogTrain?.foodMenuUrl ?? null}
+          catalogClasses={catalogTrain?.classes ?? null}
+          catalogTrainType={catalogTrain?.trainType ?? null}
           localTrain={
             local
               ? {

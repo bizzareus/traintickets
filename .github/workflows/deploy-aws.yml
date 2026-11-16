@@ -9,6 +9,7 @@ on:
 permissions:
   contents: read
   packages: write
+  id-token: write
 
 jobs:
   build-and-push:
@@ -19,13 +20,13 @@ jobs:
       frontend_image: ${{ steps.meta-frontend.outputs.tags }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v4
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
 
       - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v4
+        uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -34,7 +35,7 @@ jobs:
       # --- Build & Push Backend ---
       - name: Extract metadata for Backend
         id: meta-backend
-        uses: docker/metadata-action@v6
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
         with:
           images: ghcr.io/${{ github.repository }}-backend
           tags: |
@@ -42,7 +43,7 @@ jobs:
             type=sha,prefix=
 
       - name: Build and push Backend Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
         with:
           context: ./backend
           file: ./backend/Dockerfile
@@ -55,7 +56,7 @@ jobs:
       # --- Build & Push Frontend ---
       - name: Extract metadata for Frontend
         id: meta-frontend
-        uses: docker/metadata-action@v6
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
         with:
           images: ghcr.io/${{ github.repository }}-frontend
           tags: |
@@ -63,7 +64,7 @@ jobs:
             type=sha,prefix=
 
       - name: Build and push Frontend Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
         with:
           context: .
           file: ./Dockerfile.frontend
@@ -80,15 +81,27 @@ jobs:
     name: Deploy Frontend (AWS EC2 - Next.js)
     needs: build-and-push
     runs-on: ubuntu-latest
+    env:
+      # Gate AWS steps without defining the well-known AWS_* variables here
+      # (those would clobber credentials exported by configure-aws-credentials).
+      AWS_ROLE_TO_ASSUME: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+      AWS_STATIC_KEY_CONFIGURED: ${{ secrets.AWS_ACCESS_KEY_ID != '' }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
 
-      - name: Configure AWS Credentials
-        if: env.AWS_ACCESS_KEY_ID != ''
-        uses: aws-actions/configure-aws-credentials@v5
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      # OIDC first (no long-lived static keys); static keys kept as fallback
+      # until AWS_ROLE_TO_ASSUME is configured in repo secrets.
+      - name: Configure AWS Credentials (OIDC)
+        if: env.AWS_ROLE_TO_ASSUME != ''
+        uses: aws-actions/configure-aws-credentials@61815dcd50bd041e203e49132bacad1fd04d2708 # v5
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ secrets.AWS_REGION || 'ap-south-1' }}
+
+      - name: Configure AWS Credentials (static keys)
+        if: env.AWS_ROLE_TO_ASSUME == '' && env.AWS_STATIC_KEY_CONFIGURED == 'true'
+        uses: aws-actions/configure-aws-credentials@61815dcd50bd041e203e49132bacad1fd04d2708 # v5
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -101,9 +114,8 @@ jobs:
           echo "ipv4=$RUNNER_IP" >> $GITHUB_OUTPUT
 
       - name: Authorize Security Group Ingress
-        if: env.AWS_ACCESS_KEY_ID != ''
+        if: env.AWS_ROLE_TO_ASSUME != '' || env.AWS_STATIC_KEY_CONFIGURED == 'true'
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           SG_ID: ${{ secrets.FRONTEND_SG_ID || 'sg-060d95f99ed1571f9' }}
           RUNNER_IP: ${{ steps.ip.outputs.ipv4 }}
           AWS_REGION: ${{ secrets.AWS_REGION || 'ap-south-1' }}
@@ -185,9 +197,8 @@ jobs:
             docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'"
 
       - name: Revoke Security Group Ingress
-        if: always() && env.AWS_ACCESS_KEY_ID != ''
+        if: always() && (env.AWS_ROLE_TO_ASSUME != '' || env.AWS_STATIC_KEY_CONFIGURED == 'true')
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           SG_ID: ${{ secrets.FRONTEND_SG_ID || 'sg-060d95f99ed1571f9' }}
           RUNNER_IP: ${{ steps.ip.outputs.ipv4 }}
           AWS_REGION: ${{ secrets.AWS_REGION || 'ap-south-1' }}
@@ -205,9 +216,14 @@ jobs:
     runs-on: ubuntu-latest
     # Never hang the runner for hours if an SSH step stalls — fail fast instead.
     timeout-minutes: 30
+    env:
+      # Gate AWS steps without defining the well-known AWS_* variables here
+      # (those would clobber credentials exported by configure-aws-credentials).
+      AWS_ROLE_TO_ASSUME: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+      AWS_STATIC_KEY_CONFIGURED: ${{ secrets.AWS_ACCESS_KEY_ID != '' }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
 
       - name: Apply Prisma migrations
         working-directory: backend
@@ -221,11 +237,18 @@ jobs:
           npm ci --ignore-scripts
           ./node_modules/.bin/prisma migrate deploy
 
-      - name: Configure AWS Credentials
-        if: env.AWS_ACCESS_KEY_ID != ''
-        uses: aws-actions/configure-aws-credentials@v5
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      # OIDC first (no long-lived static keys); static keys kept as fallback
+      # until AWS_ROLE_TO_ASSUME is configured in repo secrets.
+      - name: Configure AWS Credentials (OIDC)
+        if: env.AWS_ROLE_TO_ASSUME != ''
+        uses: aws-actions/configure-aws-credentials@61815dcd50bd041e203e49132bacad1fd04d2708 # v5
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ secrets.AWS_REGION || 'ap-south-1' }}
+
+      - name: Configure AWS Credentials (static keys)
+        if: env.AWS_ROLE_TO_ASSUME == '' && env.AWS_STATIC_KEY_CONFIGURED == 'true'
+        uses: aws-actions/configure-aws-credentials@61815dcd50bd041e203e49132bacad1fd04d2708 # v5
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -238,9 +261,8 @@ jobs:
           echo "ipv4=$RUNNER_IP" >> $GITHUB_OUTPUT
 
       - name: Authorize Security Group Ingress
-        if: env.AWS_ACCESS_KEY_ID != ''
+        if: env.AWS_ROLE_TO_ASSUME != '' || env.AWS_STATIC_KEY_CONFIGURED == 'true'
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           SG_ID: ${{ secrets.BACKEND_SG_ID || 'sg-0369f396ce893653a' }}
           RUNNER_IP: ${{ steps.ip.outputs.ipv4 }}
           AWS_REGION: ${{ secrets.AWS_REGION || 'ap-south-1' }}
@@ -318,9 +340,8 @@ jobs:
             docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}'"
 
       - name: Revoke Security Group Ingress
-        if: always() && env.AWS_ACCESS_KEY_ID != ''
+        if: always() && (env.AWS_ROLE_TO_ASSUME != '' || env.AWS_STATIC_KEY_CONFIGURED == 'true')
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           SG_ID: ${{ secrets.BACKEND_SG_ID || 'sg-0369f396ce893653a' }}
           RUNNER_IP: ${{ steps.ip.outputs.ipv4 }}
           AWS_REGION: ${{ secrets.AWS_REGION || 'ap-south-1' }}

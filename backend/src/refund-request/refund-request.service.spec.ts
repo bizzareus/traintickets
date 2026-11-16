@@ -78,6 +78,7 @@ describe('RefundRequestService', () => {
         amount: 25,
         status: 'PAID',
         muzoboxPaymentId: 'mb_123',
+        contactEmail: 'passenger@example.com',
       });
 
       const quote = await service.getQuote({
@@ -112,12 +113,36 @@ describe('RefundRequestService', () => {
       expect(quote).toEqual({
         ok: true,
         found: false,
-        amount: 10,
+        amount: 0,
         currency: 'INR',
-        autoRefundEligible: true,
+        autoRefundEligible: false,
         trainNumber: '12951',
         journeyDate: '2026-10-01',
       });
+    });
+
+    it('does not leak payment status/amount via email+train+date alone (no txnId)', async () => {
+      prisma.chartAlertPayment.findUnique.mockResolvedValue(null);
+      prisma.chartAlertPayment.findFirst.mockResolvedValue(null);
+      prisma.chartAlertPayment.findMany.mockResolvedValue([
+        {
+          id: 'pay_victim',
+          amount: 25,
+          status: 'PAID',
+          contactEmail: 'victim@example.com',
+          journeyPayload: { trainNumber: '12951', journeyDate: '2026-10-01' },
+        },
+      ]);
+
+      const quote = await service.getQuote({
+        email: 'attacker@example.com',
+        trainNumber: '12951',
+        journeyDate: '2026-10-01',
+      });
+
+      expect(quote.found).toBe(false);
+      expect(quote.amount).toBe(0);
+      expect(quote.autoRefundEligible).toBe(false);
     });
   });
 
@@ -136,6 +161,7 @@ describe('RefundRequestService', () => {
         id: 'cmwd_auto_ref',
         amount: 10,
         status: 'PAID',
+        contactEmail: 'passenger@example.com',
         muzoboxPaymentId: 'mb_auto_1',
         razorpayPaymentId: 'pay_auto_1',
         refundStatus: 'NONE',
@@ -200,6 +226,7 @@ describe('RefundRequestService', () => {
         id: 'pay_abc123',
         amount: 50,
         status: 'PAID',
+        contactEmail: 'passenger@example.com',
       });
       notifications.sendRefundRequestAdminEmail.mockResolvedValue(true);
 
@@ -222,6 +249,91 @@ describe('RefundRequestService', () => {
       await Promise.resolve();
       expect(notifications.sendRefundRequestAdminEmail).toHaveBeenCalledWith(
         expect.objectContaining({ id: 'rr-1', duplicate: false }),
+      );
+    });
+
+    it('does not auto-refund when txnId matches a payment belonging to a different email', async () => {
+      prisma.refundRequest.findFirst.mockResolvedValue(null);
+      prisma.refundRequest.create.mockResolvedValue({
+        id: 'rr-attacker-1',
+        email: 'attacker@example.com',
+        trainNumber: '12951',
+        journeyDate: new Date('2026-10-01'),
+        txnId: 'leaked_txn_ref',
+        createdAt: new Date(),
+      });
+      prisma.chartAlertPayment.findUnique.mockResolvedValue({
+        id: 'leaked_txn_ref',
+        amount: 10,
+        status: 'PAID',
+        contactEmail: 'owner@example.com',
+        muzoboxPaymentId: 'mb_victim_1',
+        refundStatus: 'NONE',
+      });
+      prisma.chartAlertPayment.findMany.mockResolvedValue([]);
+      notifications.sendRefundRequestAdminEmail.mockResolvedValue(true);
+
+      const out = await service.create({
+        email: 'attacker@example.com',
+        trainNumber: '12951',
+        journeyDate: '2026-10-01',
+        txnId: 'leaked_txn_ref',
+      });
+
+      expect(out).toEqual({
+        id: 'rr-attacker-1',
+        duplicate: false,
+        autoRefunded: false,
+        amount: undefined,
+      });
+      // No refund initiated, and no profile fallback after a txn email mismatch.
+      expect(mockMuzoboxClient.post).not.toHaveBeenCalled();
+      expect(prisma.chartAlertPayment.findMany).not.toHaveBeenCalled();
+      await Promise.resolve();
+      expect(notifications.sendRefundRequestAdminEmail).toHaveBeenCalledWith(
+        expect.objectContaining({ id: 'rr-attacker-1', duplicate: false }),
+      );
+    });
+
+    it('treats email+train+date-only matches as manual review, never auto-refund', async () => {
+      prisma.refundRequest.findFirst.mockResolvedValue(null);
+      prisma.refundRequest.create.mockResolvedValue({
+        id: 'rr-profile-1',
+        email: 'passenger@example.com',
+        trainNumber: '12951',
+        journeyDate: new Date('2026-10-01'),
+        txnId: null,
+        createdAt: new Date(),
+      });
+      prisma.chartAlertPayment.findMany.mockResolvedValue([
+        {
+          id: 'pay_profile_1',
+          amount: 10,
+          status: 'PAID',
+          contactEmail: 'passenger@example.com',
+          muzoboxPaymentId: 'mb_profile_1',
+          refundStatus: 'NONE',
+          journeyPayload: { trainNumber: '12951', journeyDate: '2026-10-01' },
+        },
+      ]);
+      notifications.sendRefundRequestAdminEmail.mockResolvedValue(true);
+
+      const out = await service.create({
+        email: 'passenger@example.com',
+        trainNumber: '12951',
+        journeyDate: '2026-10-01',
+      });
+
+      expect(out).toEqual({
+        id: 'rr-profile-1',
+        duplicate: false,
+        autoRefunded: false,
+        amount: undefined,
+      });
+      expect(mockMuzoboxClient.post).not.toHaveBeenCalled();
+      await Promise.resolve();
+      expect(notifications.sendRefundRequestAdminEmail).toHaveBeenCalledWith(
+        expect.objectContaining({ id: 'rr-profile-1', duplicate: false }),
       );
     });
 
@@ -306,6 +418,7 @@ describe('RefundRequestService', () => {
         id: 'cmwd7vein002e0test',
         amount: 5,
         status: 'PAID',
+        contactEmail: 'nayakrajatkumar318@gmail.com',
         muzoboxPaymentId: 'mb_pay_888',
         razorpayPaymentId: null, // to be looked up via Muzobox status API
         refundStatus: 'NONE',
@@ -424,6 +537,7 @@ describe('RefundRequestService', () => {
         id: 'payment_cuid_101',
         amount: 5,
         status: 'PAID',
+        contactEmail: 'passenger@example.com',
         razorpayPaymentId: 'pay_direct_456',
         muzoboxPaymentId: null,
         refundStatus: 'NONE',
@@ -505,6 +619,7 @@ describe('RefundRequestService', () => {
         id: 'pay_cuid_103',
         amount: 5,
         status: 'PAID',
+        contactEmail: 'user@test.com',
         muzoboxPaymentId: 'mb_already_ref',
         razorpayPaymentId: 'pay_already_ref',
         refundStatus: 'NONE',
@@ -560,6 +675,7 @@ describe('RefundRequestService', () => {
         id: 'cuid_will_fail',
         amount: 5,
         status: 'PAID',
+        contactEmail: 'user@test.com',
         muzoboxPaymentId: 'mb_fail',
         razorpayPaymentId: 'pay_fail',
         refundStatus: 'NONE',

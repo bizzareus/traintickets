@@ -3,10 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import {
-  createRefundRequest,
-  getRefundQuote,
-} from "@/lib/refund-requests";
+import { createRefundRequest, getRefundQuote } from "@/lib/refund-requests";
 import { isValidEmail } from "@/lib/validation";
 import { getStoredContact, saveStoredContact } from "@/lib/contact";
 import { trackAnalyticsEvent } from "@/lib/analytics";
@@ -37,9 +34,7 @@ export function RefundClient() {
   const stored = getStoredContact();
   const queryDate = searchParams.get("date") ?? "";
   const [email, setEmail] = useState(
-    searchParams.get("email")?.trim().toLowerCase() ||
-      stored.email ||
-      "",
+    searchParams.get("email")?.trim().toLowerCase() || stored.email || "",
   );
   const [trainNumber, setTrainNumber] = useState(
     searchParams.get("train")?.replace(/\D/g, "") ?? "",
@@ -58,6 +53,8 @@ export function RefundClient() {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [quoteAmount, setQuoteAmount] = useState<number>(10);
+  /** Whether the backend could verify the transaction against the email. */
+  const [quoteFound, setQuoteFound] = useState(false);
   const [autoRefundResult, setAutoRefundResult] = useState<{
     autoRefunded?: boolean;
     amount?: number;
@@ -97,10 +94,12 @@ export function RefundClient() {
         journeyDate,
         txnId: txnId.trim() || undefined,
       });
+      setQuoteFound(quote.found === true);
       setQuoteAmount(typeof quote.amount === "number" ? quote.amount : 10);
       setShowConfirmModal(true);
     } catch {
       // Fallback quote of 10 if quote endpoint fails so the user can still proceed
+      setQuoteFound(false);
       setQuoteAmount(10);
       setShowConfirmModal(true);
     } finally {
@@ -185,7 +184,8 @@ export function RefundClient() {
               </div>
 
               <p className="mt-3 text-sm leading-relaxed text-emerald-900">
-                We have verified your payment and automatically initiated a refund of{" "}
+                We have verified your payment and automatically initiated a
+                refund of{" "}
                 <strong className="font-semibold text-emerald-950">
                   ₹{autoRefundResult.amount ?? quoteAmount}
                 </strong>{" "}
@@ -194,7 +194,9 @@ export function RefundClient() {
 
               {autoRefundResult.refundId && (
                 <div className="mt-3 rounded-lg border border-emerald-200 bg-white p-3 font-mono text-xs text-slate-700">
-                  <span className="font-medium text-slate-500">Razorpay Refund ID:</span>{" "}
+                  <span className="font-medium text-slate-500">
+                    Razorpay Refund ID:
+                  </span>{" "}
                   <span className="font-semibold text-slate-900">
                     {autoRefundResult.refundId}
                   </span>
@@ -203,12 +205,13 @@ export function RefundClient() {
 
               <p className="mt-3 text-xs text-emerald-800">
                 A confirmation email with the alert details has been sent to{" "}
-                <strong>{email}</strong>. Refunds typically reflect in your bank account within{" "}
-                <strong>5–7 business days</strong>.
+                <strong>{email}</strong>. Refunds typically reflect in your bank
+                account within <strong>5–7 business days</strong>.
               </p>
 
-              <div className="mt-4 pt-3 border-t border-emerald-200/60 text-xs text-emerald-800">
-                Request Reference: <span className="font-mono font-semibold">{referenceId}</span>
+              <div className="mt-4 border-t border-emerald-200/60 pt-3 text-xs text-emerald-800">
+                Request Reference:{" "}
+                <span className="font-mono font-semibold">{referenceId}</span>
               </div>
 
               <Link
@@ -226,7 +229,9 @@ export function RefundClient() {
               <p className="mt-1 text-sm text-emerald-800">
                 {wasDuplicate
                   ? "We already have a pending request for this journey — our team will review it."
-                  : `Our team will review your refund of ₹${quoteAmount} and update you on your email.`}{" "}
+                  : quoteFound
+                    ? `Our team will review your refund of ₹${quoteAmount} and update you on your email.`
+                    : "Our team will review your request and confirm the refund amount over email."}{" "}
                 Reference: <span className="font-mono">{referenceId}</span>
               </p>
               <Link
@@ -335,7 +340,8 @@ export function RefundClient() {
                   Validating your refund amount...
                 </p>
                 <p className="mt-1 text-xs text-slate-500">
-                  Checking transaction eligibility and auto-initiating your refund.
+                  Checking transaction eligibility and auto-initiating your
+                  refund.
                 </p>
               </div>
             ) : (
@@ -344,32 +350,51 @@ export function RefundClient() {
                   Confirm Refund Request
                 </h3>
 
-                <div className="my-5 rounded-xl border border-blue-100 bg-blue-50/70 p-4 text-center">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-blue-700">
-                    Refund Amount
-                  </span>
-                  <div className="mt-1 text-3xl font-extrabold text-blue-900">
-                    ₹{quoteAmount}
-                  </div>
-                </div>
+                {quoteFound ? (
+                  <>
+                    <div className="my-5 rounded-xl border border-blue-100 bg-blue-50/70 p-4 text-center">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-blue-700">
+                        Refund Amount
+                      </span>
+                      <div className="mt-1 text-3xl font-extrabold text-blue-900">
+                        ₹{quoteAmount}
+                      </div>
+                    </div>
 
-                <div className="rounded-xl border border-amber-200 bg-amber-50/80 p-3.5 text-xs text-amber-900">
-                  <p className="font-semibold">
-                    You will be refunded this amount.
-                  </p>
-                  <p className="mt-1 text-amber-800">
-                    Payment gateway amount will not be refunded.
-                  </p>
-                </div>
+                    <div className="rounded-xl border border-amber-200 bg-amber-50/80 p-3.5 text-xs text-amber-900">
+                      <p className="font-semibold">
+                        You will be refunded this amount.
+                      </p>
+                      <p className="mt-1 text-amber-800">
+                        Payment gateway amount will not be refunded.
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <div className="my-5 rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs text-slate-600">
+                    <p className="font-semibold text-slate-900">
+                      Manual review required
+                    </p>
+                    <p className="mt-1">
+                      We couldn&apos;t verify this transaction automatically.
+                      Our team will confirm your refund eligibility and amount
+                      over email.
+                    </p>
+                  </div>
+                )}
 
                 <div className="mt-4 space-y-1.5 rounded-lg border border-slate-100 bg-slate-50 p-3 text-xs text-slate-600">
                   <div className="flex justify-between">
                     <span>Train:</span>
-                    <span className="font-mono font-medium text-slate-900">{trainNumber}</span>
+                    <span className="font-mono font-medium text-slate-900">
+                      {trainNumber}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Date:</span>
-                    <span className="font-medium text-slate-900">{journeyDate}</span>
+                    <span className="font-medium text-slate-900">
+                      {journeyDate}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Email:</span>
