@@ -76,7 +76,7 @@ export class ChartTimeController {
 
   @Post()
   async set(
-    @Headers(ADMIN_PASSWORD_HEADER) pw: string,
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
     @Req() req: Request,
     @Body('trainNumber') trainNumber: string,
     @Body('stationCode') stationCode: string,
