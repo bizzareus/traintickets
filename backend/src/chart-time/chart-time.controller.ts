@@ -25,6 +25,8 @@ export class ChartTimeController {
 
   @Get('train/:trainNumber/station/:stationCode')
   async get(
+    @Headers(ADMIN_PASSWORD_HEADER) pw: string | undefined,
+    @Req() req: Request,
     @Param('trainNumber') trainNumber: string,
     @Param('stationCode') stationCode: string,
     @Query('fetchIfMissing') fetchIfMissing: string,
@@ -40,6 +42,7 @@ export class ChartTimeController {
       };
     }
     if (fetchIfMissing === '1' || fetchIfMissing === 'true') {
+      assertAdminAuth({ headerPw: pw, req });
       if (!journeyDate?.trim()) {
         return {
           error: 'journeyDate is required when fetchIfMissing is true',

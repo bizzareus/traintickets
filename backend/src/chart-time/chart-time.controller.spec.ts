@@ -139,4 +139,43 @@ describe('ChartTimeController', () => {
       });
     });
   });
+
+  describe('GET /api/chart-time/train/:trainNumber/station/:stationCode with fetchIfMissing', () => {
+    it('returns cached result without requiring auth', async () => {
+      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
+      mockChartTimeService.getChartTime.mockResolvedValue('18:00');
+
+      const result = await controller.get(
+        undefined,
+        mockReq,
+        '12345',
+        'NDLS',
+        '',
+        '',
+      );
+
+      expect(result).toEqual({
+        trainNumber: '12345',
+        stationCode: 'NDLS',
+        chartTimeLocal: '18:00',
+        fromCache: true,
+      });
+    });
+
+    it('throws UnauthorizedException when fetchIfMissing=true and admin auth is missing', async () => {
+      const mockReq = { headers: {}, cookies: {} } as unknown as Request;
+      mockChartTimeService.getChartTime.mockResolvedValue(null);
+
+      await expect(
+        controller.get(
+          undefined,
+          mockReq,
+          '12345',
+          'NDLS',
+          'true',
+          '2026-10-23',
+        ),
+      ).rejects.toThrow(UnauthorizedException);
+    });
+  });
 });
