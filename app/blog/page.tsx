@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   languages["x-default"] = "/blog";
 
   return {
-    title: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
+    title: "Read & Find Confirmed Train Tickets | Train Travel Guides",
     alternates: {
       canonical: "/blog",
       languages,

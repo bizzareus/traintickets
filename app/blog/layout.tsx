@@ -3,11 +3,11 @@ import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
   title: {
-    default: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
-    absolute: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
+    default: "Read & Find Confirmed Train Tickets | Train Travel Guides",
+    absolute: "Read & Find Confirmed Train Tickets | Train Travel Guides",
   },
   description:
-    "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and planning smarter railway journeys with LastBerth.",
+    "Read practical guides, tips, and insights on finding confirmed train tickets, understanding railway charting preparation, and planning smarter journeys with LastBerth.",
   alternates: {
     types: {
       "application/rss+xml": [
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/blog",
-    title: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
+    title: "Read & Find Confirmed Train Tickets | Train Travel Guides",
     description:
-      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and planning smarter railway journeys with LastBerth.",
+      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding railway charting preparation, and planning smarter journeys with LastBerth.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Read & Find Confirmed Train Tickets | IRCTC Booking Guides",
+    title: "Read & Find Confirmed Train Tickets | Train Travel Guides",
     description:
-      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding IRCTC charting preparation, and planning smarter railway journeys with LastBerth.",
+      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding railway charting preparation, and planning smarter journeys with LastBerth.",
   },
 };
 

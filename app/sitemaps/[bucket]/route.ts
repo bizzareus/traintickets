@@ -23,7 +23,7 @@ export async function GET(
   const { bucket } = await ctx.params;
   const id = bucket.endsWith(".xml") ? bucket.slice(0, -4) : bucket;
 
-  if (!SITEMAP_BUCKETS.includes(id as SitemapBucket)) {
+  if (!(SITEMAP_BUCKETS as readonly string[]).includes(id)) {
     return new NextResponse("Not Found", { status: 404 });
   }
 

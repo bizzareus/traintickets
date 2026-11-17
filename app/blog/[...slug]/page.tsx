@@ -80,7 +80,7 @@ export async function generateMetadata({
     languages["x-default"] = "/blog";
 
     return {
-      title: `Read & Find Confirmed Train Tickets | IRCTC Booking Guides (${getLanguageName(lang)})`,
+      title: `Read & Find Confirmed Train Tickets | Train Travel Guides (${getLanguageName(lang)})`,
       alternates: {
         canonical: canonicalUrl,
         languages,

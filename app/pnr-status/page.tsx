@@ -6,15 +6,14 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 const canonicalUrl = `${siteUrl}/pnr-status`;
 
 export const metadata: Metadata = {
-  title:
-    "PNR Status Check — Live IRCTC PNR Enquiry & Confirmation Chances | LastBerth",
+  title: "PNR Status Check — Live Train PNR Enquiry & Confirmation Chances",
   description:
-    "Check your IRCTC PNR status live with a 10-digit PNR number. See current booking status (CNF, RAC, WL), waiting list confirmation probability, coach/berth, and chart preparation timing.",
+    "Check your railway PNR status live with a 10-digit PNR number. See current booking status (CNF, RAC, WL), waiting list confirmation probability, coach/berth, and chart preparation timing.",
   alternates: { canonical: "/pnr-status" },
   openGraph: {
-    title: "PNR Status Check — Live IRCTC PNR Enquiry & Confirmation Chances",
+    title: "PNR Status Check — Live Train PNR Enquiry & Confirmation Chances",
     description:
-      "Check IRCTC PNR status live, see waiting list (WL) confirmation chances, RAC and CNF meaning, and when your reservation chart is prepared.",
+      "Check train PNR status live, see waiting list (WL) confirmation chances, RAC and CNF meaning, and when your reservation chart is prepared.",
     type: "website",
   },
 };

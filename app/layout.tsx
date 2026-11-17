@@ -57,8 +57,7 @@ const baseUrl = getBaseUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default:
-      "LastBerth – Find Confirmed Train Tickets & Best Seat Options | IRCTC",
+    default: "LastBerth – Find Confirmed Train Tickets & Smart Seat Finder",
     template: "%s | LastBerth",
   },
   description:

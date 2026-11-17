@@ -4,18 +4,17 @@ import { Header } from "@/components/Header";
 import { SeatStatus } from "@/components/booking-v2/SeatStatus";
 
 export const metadata: Metadata = {
-  title:
-    "IRCTC Chart Vacancy: Indian Railways Train Chart & Vacant Berths | LastBerth",
+  title: "Train Chart Vacancy: Empty Berth Availability & Coach Map",
   description:
-    "IRCTC chart vacancy: Indian Railways train chart and vacant berth availability, coach-wise, on a visual coach map. See free berths from your boarding station and book current-availability tickets.",
+    "Indian Railways train chart and vacant berth availability, coach-wise, on a visual coach map. See free berths from your boarding station and book current-availability tickets.",
   alternates: {
     canonical: "/chart-vacancy",
   },
   openGraph: {
     title:
-      "IRCTC Chart Vacancy: Indian Railways Train Chart & Vacant Berths | LastBerth",
+      "Train Chart Vacancy: Empty Berth Availability & Coach Map | LastBerth",
     description:
-      "IRCTC chart vacancy: Indian Railways train chart and vacant berth availability, coach-wise, with a visual coach map.",
+      "Indian Railways train chart and vacant berth availability, coach-wise, with a visual coach map.",
     url: "/chart-vacancy",
   },
 };
@@ -56,7 +55,7 @@ export default function ChartVacancyPage() {
       <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
         <header className="mb-8 text-center">
           <h1 className="text-balance text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            IRCTC Chart Vacancy
+            Train Chart Vacancy
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
             Indian Railways train chart &amp; vacant berth availability

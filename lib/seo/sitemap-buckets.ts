@@ -5,16 +5,11 @@
 // "pages"             — homepages, tool routes, glossary, train-route pages, blog
 //                       (index + posts): every content/money page and every URL that
 //                       carries hreflang alternates.
-// "trains"            — the top-500 slugged /trains/<slug> detail pages.
-// "confirmed-tickets" — the top-500 slugged /train/confirmed_tickets/<slug> pages.
 // "chart-times"       — every committed content/chart-times/*.json page.
 // "food-menu"         — the /irctc-train-food-menu tree.
-export const SITEMAP_BUCKETS = [
-  "pages",
-  "trains",
-  "confirmed-tickets",
-  "chart-times",
-  "food-menu",
-] as const;
+// Note: "trains" and "confirmed-tickets" are temporarily excluded from the sitemap index
+// during AdSense site review to guide Google's reviewer directly to rich editorial articles and core tools.
+export const SITEMAP_BUCKETS = ["pages", "chart-times", "food-menu"] as const;
 
-export type SitemapBucket = (typeof SITEMAP_BUCKETS)[number];
+export type SitemapBucket =
+  (typeof SITEMAP_BUCKETS)[number] | "trains" | "confirmed-tickets";
