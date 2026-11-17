@@ -1,7 +1,10 @@
 import { UnauthorizedException } from '@nestjs/common';
 import type { Request } from 'express';
 import { ChartTimeController } from './chart-time.controller';
-import { ADMIN_PASSWORD_ENV, buildAdminSessionCookieValue } from '../common/admin-auth';
+import {
+  ADMIN_PASSWORD_ENV,
+  buildAdminSessionCookieValue,
+} from '../common/admin-auth';
 
 describe('ChartTimeController', () => {
   let controller: ChartTimeController;
@@ -117,7 +120,7 @@ describe('ChartTimeController', () => {
 
     it('returns existing cached chart time when authorized', async () => {
       const mockReq = { headers: {}, cookies: {} } as unknown as Request;
-      chartTimeService.getChartTime.mockResolvedValue('17:30');
+      mockChartTimeService.getChartTime.mockResolvedValue('17:30');
 
       const result = await controller.fetch(
         'test-admin-secret',
