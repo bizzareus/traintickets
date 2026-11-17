@@ -4,6 +4,7 @@ import { SubscribeClient } from "./SubscribeClient";
 export const metadata = {
   title: "Chart Alert Subscribed — LastBerth",
   description: "Your IRCTC train chart preparation alert has been activated.",
+  robots: { index: false, follow: false },
 };
 
 export default function SubscribeAlertPage() {

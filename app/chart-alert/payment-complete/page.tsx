@@ -8,7 +8,8 @@ export const metadata: Metadata = {
   title: "Chart Alert Payment — LastBerth",
   description:
     "Confirming your chart alert payment. Your train chart preparation alert is activated once payment is verified.",
-  alternates: { canonical: "/chart-alert/payment-complete" },
+  // No canonical here: pairing rel=canonical with noindex sends Google
+  // conflicting signals, and noindex is what governs this flow page.
   robots: { index: false, follow: false },
   openGraph: {
     title: "Chart Alert Payment — LastBerth",
