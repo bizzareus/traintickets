@@ -8,12 +8,14 @@ import { AlternativeSearchTaskService } from '../availability/alternative-search
 import { ChartCronLeaderService } from './chart-cron-leader.service';
 import { FailedDeliveryRefundService } from './failed-delivery-refund.service';
 import { CronitorService, monitorCron } from '../monitoring/cronitor.service';
+import { CacheService } from '../cache/cache.service';
 
 /** Identifies this cron in the cron_run_log table. */
 const CRON_NAME = 'chart-notification';
 const ALTERNATIVE_CRON_NAME = 'alternative-search';
 const RESEND_CRON_NAME = 'failed-notification-resend';
 const DELIVERY_REFUND_CRON_NAME = 'failed-delivery-refund';
+const CACHE_SWEEP_CRON_NAME = 'cache-sweep';
 
 const hasFailure = (r: RunDueTaskResult) =>
   r.status === 'failed' ||
@@ -26,6 +28,7 @@ export class ChartCronService {
   private alternativeRunning = false;
   private resendRunning = false;
   private deliveryRefundRunning = false;
+  private cacheSweepRunning = false;
 
   constructor(
     private journeyTask: JourneyTaskService,
@@ -33,6 +36,7 @@ export class ChartCronService {
     @Optional() private alternativeSearchTask?: AlternativeSearchTaskService,
     @Optional() private deliveryRefund?: FailedDeliveryRefundService,
     @Optional() private monitoring?: CronitorService,
+    @Optional() private cacheService?: CacheService,
   ) {}
 
   private async withLeaseHeartbeat<T>(
@@ -221,6 +225,42 @@ export class ChartCronService {
       });
     } finally {
       this.deliveryRefundRunning = false;
+    }
+  }
+
+  /**
+   * Sweeps expired cache_entry rows so the table never bloats and exhausts
+   * PostgreSQL disk quota. Runs hourly at minute 15.
+   */
+  @Cron('15 * * * *')
+  async handleCacheSweepCron(): Promise<void> {
+    if (!this.cacheService || this.cacheSweepRunning) return;
+    if (!(await this.leader.isLeader(CACHE_SWEEP_CRON_NAME))) return;
+
+    const startedAt = new Date();
+    this.cacheSweepRunning = true;
+    try {
+      const swept = await this.withLeaseHeartbeat(CACHE_SWEEP_CRON_NAME, () =>
+        this.cacheService!.deleteExpired(),
+      );
+      await this.journeyTask.logCronRun({
+        cronName: CACHE_SWEEP_CRON_NAME,
+        startedAt,
+        status: 'success',
+        isLeader: true,
+        completedCount: swept,
+        output: { swept },
+      });
+    } catch (err) {
+      await this.journeyTask.logCronRun({
+        cronName: CACHE_SWEEP_CRON_NAME,
+        startedAt,
+        status: 'error',
+        isLeader: true,
+        error: err instanceof Error ? err.message : String(err),
+      });
+    } finally {
+      this.cacheSweepRunning = false;
     }
   }
 }

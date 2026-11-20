@@ -60,6 +60,53 @@ describe('ChartCronService', () => {
     expect(refund.runDailyAudit).not.toHaveBeenCalled();
   });
 
+  it('schedules the cache sweep hourly at minute 15', () => {
+    const options = Reflect.getMetadata(
+      SCHEDULE_CRON_OPTIONS,
+      Reflect.get(ChartCronService.prototype, 'handleCacheSweepCron'),
+    ) as { cronTime: string };
+    expect(options.cronTime).toBe('15 * * * *');
+  });
+
+  it('runs and logs cache sweep on the leader', async () => {
+    const journey = { logCronRun: jest.fn().mockResolvedValue(undefined) };
+    const leader = { isLeader: jest.fn().mockResolvedValue(true) };
+    const cacheService = { deleteExpired: jest.fn().mockResolvedValue(1234) };
+    const service = new ChartCronService(
+      journey as never,
+      leader as never,
+      undefined,
+      undefined,
+      undefined,
+      cacheService as never,
+    );
+    await service.handleCacheSweepCron();
+    expect(leader.isLeader).toHaveBeenCalledWith('cache-sweep');
+    expect(cacheService.deleteExpired).toHaveBeenCalledTimes(1);
+    expect(journey.logCronRun).toHaveBeenCalledWith(
+      expect.objectContaining({
+        cronName: 'cache-sweep',
+        status: 'success',
+        completedCount: 1234,
+        output: { swept: 1234 },
+      }),
+    );
+  });
+
+  it('skips cache sweep on a non-leader', async () => {
+    const cacheService = { deleteExpired: jest.fn() };
+    const service = new ChartCronService(
+      {} as never,
+      { isLeader: jest.fn().mockResolvedValue(false) } as never,
+      undefined,
+      undefined,
+      undefined,
+      cacheService as never,
+    );
+    await service.handleCacheSweepCron();
+    expect(cacheService.deleteExpired).not.toHaveBeenCalled();
+  });
+
   it('polls notification recovery every minute so a five-minute cooldown does not become ten minutes', () => {
     const options = Reflect.getMetadata(
       SCHEDULE_CRON_OPTIONS,

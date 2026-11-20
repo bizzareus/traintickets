@@ -49,7 +49,7 @@ describe('API / worker isolation', () => {
 
     expect(app.get(ChartCronService)).toBeInstanceOf(ChartCronService);
     expect(app.get(MarketingCronService)).toBeInstanceOf(MarketingCronService);
-    expect(scheduler.getCronJobs().size).toBe(6);
+    expect(scheduler.getCronJobs().size).toBe(7);
     expect(scheduler.getTimeouts()).toEqual([]);
 
     await app.close();
