@@ -141,6 +141,25 @@ describe('PostgresCacheService', () => {
       expect(execRaw).toHaveBeenCalledTimes(1);
     });
 
+    it('deduplicates items by key before executing bulk upsert', async () => {
+      const execRaw = jest.fn().mockResolvedValue(1);
+      const prisma = makePrisma();
+      (prisma as any).$executeRaw = execRaw;
+      const svc = new PostgresCacheService(prisma);
+
+      await svc.setMany([
+        { key: 'k1', value: { a: 1 } },
+        { key: 'k1', value: { a: 2 } },
+      ]);
+
+      expect(execRaw).toHaveBeenCalledTimes(1);
+      // The joined Sql values should contain only 1 item (4 query parameters) for k1 with value a: 2
+      const sqlObj = execRaw.mock.calls[0][1];
+      expect(sqlObj.values).toHaveLength(4);
+      expect(sqlObj.values[0]).toBe('k1');
+      expect(sqlObj.values[1]).toBe(JSON.stringify({ a: 2 }));
+    });
+
     it('does nothing when items array is empty', async () => {
       const execRaw = jest.fn();
       const prisma = makePrisma();

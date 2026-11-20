@@ -378,6 +378,23 @@ describe('BookingV2Service', () => {
       expect(result.legs[0].confirmedClassOptions).toHaveLength(2);
     });
 
+    it('batches writes for an entire OD/class wave into a single setMany call, preventing N+1 queries', async () => {
+      mockCache.setMany.mockClear();
+      mockCache.set.mockClear();
+      mockCache.getMany.mockResolvedValueOnce(new Map());
+      jest
+        .spyOn(service, 'checkAvailability')
+        .mockResolvedValue(upstreamResult);
+
+      const result = await service.findAlternatePathsInternal(input);
+
+      expect(result.isComplete).toBe(true);
+      // 3 destinations ('D', 'C', 'B') x 2 classes ('SL', '3A') = 6 segments
+      // All 6 segments should be persisted in a single setMany call, eliminating N+1 DB queries
+      expect(mockCache.setMany).toHaveBeenCalledTimes(1);
+      expect(mockCache.setMany.mock.calls[0][0]).toHaveLength(6);
+    });
+
     it('shares upstream calls and writes between two streams while preserving independent progress', async () => {
       const controllers = [new AbortController(), new AbortController()];
       const progress = [jest.fn(), jest.fn()];

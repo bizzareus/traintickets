@@ -299,6 +299,11 @@ type MultiClassProbeResult = {
   bestConfirmedClassIndex: number | null;
   /** First class with an availability row (for regret / realtime messaging). */
   displayRow: AvlDayRow | null;
+  newlyFetched?: Array<{
+    key: string;
+    value: SegmentProbeRow;
+    ttlMs?: number;
+  }>;
 };
 
 /**
@@ -765,8 +770,7 @@ export class BookingV2Service {
   ): Promise<void> {
     if (!filtered || typeof filtered !== 'object') return;
     const data = (filtered as Record<string, unknown>).data as
-      | Record<string, unknown>
-      | undefined;
+      Record<string, unknown> | undefined;
     if (
       !data ||
       !Array.isArray(data.trainList) ||
@@ -2143,32 +2147,56 @@ export class BookingV2Service {
             .getMany<SegmentProbeRow>(keys)
             .catch(() => new Map<string, SegmentProbeRow>());
       input.signal?.throwIfAborted();
-      await this.mapWithConcurrency(
-        destOrder,
-        ALT_PATH_PROBE_CONCURRENCY,
-        async (destIdx, w) => {
-          input.signal?.throwIfAborted();
-          const toStn = stations[destIdx];
-          const key = cacheKey(fromStn, toStn, currentHopDate);
-          let probe = probeCache.get(key);
-          if (!probe) {
-            probe = await this.probeSegmentAllClasses(
-              trainNumber,
-              fromStn,
-              toStn,
-              currentHopDate,
-              classes,
-              quota,
-              segmentCache,
-              input.signal,
-              cachedSegments,
-              ...(input.forceRefresh ? [true] : []),
+      const newlyFetchedWave: Array<{
+        key: string;
+        value: SegmentProbeRow;
+        ttlMs?: number;
+      }> = [];
+      try {
+        await this.mapWithConcurrency(
+          destOrder,
+          ALT_PATH_PROBE_CONCURRENCY,
+          async (destIdx, w) => {
+            input.signal?.throwIfAborted();
+            const toStn = stations[destIdx];
+            const key = cacheKey(fromStn, toStn, currentHopDate);
+            let probe = probeCache.get(key);
+            if (!probe) {
+              probe = await this.probeSegmentAllClasses(
+                trainNumber,
+                fromStn,
+                toStn,
+                currentHopDate,
+                classes,
+                quota,
+                segmentCache,
+                input.signal,
+                cachedSegments,
+                ...(input.forceRefresh ? [true] : []),
+              );
+              if (probe.newlyFetched?.length) {
+                newlyFetchedWave.push(...probe.newlyFetched);
+              }
+              probeCache.set(key, probe);
+            }
+            probes[w] = probe;
+          },
+        );
+      } finally {
+        // One DB write for the entire OD × class wave, eliminating N+1 queries.
+        if (newlyFetchedWave.length > 0) {
+          const c = segmentCache ?? this.cache;
+          if (typeof c.setMany === 'function') {
+            await c.setMany(newlyFetchedWave).catch(() => undefined);
+          } else {
+            await Promise.all(
+              newlyFetchedWave.map((it) =>
+                c.set(it.key, it.value, it.ttlMs).catch(() => undefined),
+              ),
             );
-            probeCache.set(key, probe);
           }
-          probes[w] = probe;
-        },
-      );
+        }
+      }
 
       // If the direct journey (from → to) was already departed or cancelled,
       // exploring intermediate stops or offset fallbacks on this train is futile.
@@ -2331,6 +2359,18 @@ export class BookingV2Service {
           undefined,
           input.forceRefresh ?? false,
         );
+        if (bridge.newlyFetched?.length) {
+          const c = segmentCache ?? this.cache;
+          if (typeof c.setMany === 'function') {
+            await c.setMany(bridge.newlyFetched).catch(() => undefined);
+          } else {
+            await Promise.all(
+              bridge.newlyFetched.map((it) =>
+                c.set(it.key, it.value, it.ttlMs).catch(() => undefined),
+              ),
+            );
+          }
+        }
         probeCache.set(key, bridge);
       }
       logStep(
@@ -2691,22 +2731,10 @@ export class BookingV2Service {
         newlyFetched.push({ key: k, value: row, ttlMs: AVL_SEGMENT_TTL_MS });
       }
     }
-    if (newlyFetched.length > 0) {
-      const c = segmentCache ?? this.cache;
-      if (typeof c.setMany === 'function') {
-        await c.setMany(newlyFetched).catch(() => undefined);
-      } else {
-        await Promise.all(
-          newlyFetched.map((it) =>
-            c.set(it.key, it.value, it.ttlMs).catch(() => undefined),
-          ),
-        );
-      }
-    }
 
     const bestConfirmedClassIndex = this.pickBestConfirmedClassIndex(perClass);
     const displayRow = perClass.find((p) => p.day)?.day ?? null;
-    return { perClass, bestConfirmedClassIndex, displayRow };
+    return { perClass, bestConfirmedClassIndex, displayRow, newlyFetched };
   }
 
   private isProbeTrainDepartedOrCancelled(

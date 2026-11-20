@@ -39,8 +39,13 @@ export class PostgresCacheService extends CacheService {
     if (items.length === 0) return;
     const now = new Date();
     const CHUNK = 200;
-    for (let i = 0; i < items.length; i += CHUNK) {
-      const chunk = items.slice(i, i + CHUNK);
+    // Deduplicate by key (keeping the latest) to prevent Postgres
+    // "ON CONFLICT DO UPDATE command cannot affect row a second time" error
+    const uniqueItems = Array.from(
+      new Map(items.map((it) => [it.key, it])).values(),
+    );
+    for (let i = 0; i < uniqueItems.length; i += CHUNK) {
+      const chunk = uniqueItems.slice(i, i + CHUNK);
       const values = chunk.map((it) => {
         const expiresAt = it.ttlMs ? new Date(Date.now() + it.ttlMs) : null;
         return Prisma.sql`(${it.key}, ${JSON.stringify(it.value)}::jsonb, ${expiresAt}, ${now})`;
