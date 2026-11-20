@@ -4,7 +4,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { BellRing, CheckCircle2, Loader2, XCircle } from "lucide-react";
-import { fetchChartAlertPaymentStatus } from "@/lib/chart-alert-payments";
+import {
+  chartAlertPriceForClass,
+  fetchChartAlertPaymentStatus,
+} from "@/lib/chart-alert-payments";
 import {
   trackAlertRequested,
   trackAnalyticsEvent,
@@ -68,9 +71,25 @@ export function PaymentCompleteClient() {
             journeyDate: res.journey?.journeyDate ?? "",
             classCode: res.journey?.classCode ?? "",
           });
+          const paidAmount =
+            res.amount ??
+            res.refund?.amount ??
+            chartAlertPriceForClass(res.journey?.classCode);
           trackAnalyticsEvent({
             name: "chart_alert_payment_complete",
-            properties: {},
+            properties: {
+              revenue: paidAmount,
+              amount: paidAmount,
+              currency: res.currency ?? "INR",
+              product: "Chart Alert",
+              train_number: res.journey?.trainNumber,
+              train_name: res.journey?.trainName,
+              from_code: res.journey?.fromStationCode,
+              to_code: res.journey?.toStationCode,
+              journey_date: res.journey?.journeyDate,
+              class_code: res.journey?.classCode,
+              payment_ref: ref,
+            },
           });
         }
       } else if (res.status === "failed") {

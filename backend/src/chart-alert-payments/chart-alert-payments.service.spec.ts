@@ -284,6 +284,7 @@ describe('ChartAlertPaymentsService', () => {
       id: 'ref-1',
       status: 'PENDING',
       amount: 25,
+      currency: 'INR',
       razorpayOrderId: 'order-1',
       razorpayPaymentId: null,
       journeyRequestId: null,
@@ -327,6 +328,8 @@ describe('ChartAlertPaymentsService', () => {
       );
       expect(out.status).toBe('paid');
       expect(out.journeyCreated).toBe(true);
+      expect(out.amount).toBe(25);
+      expect(out.currency).toBe('INR');
     });
 
     it('sends both email and whatsapp when both contact details are provided', async () => {

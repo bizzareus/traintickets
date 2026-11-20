@@ -115,6 +115,8 @@ export interface ChartAlertPaymentLink {
 export interface ChartAlertPaymentStatus {
   status: "pending" | "paid" | "failed";
   ref: string;
+  amount?: number;
+  currency?: string;
   journeyCreated: boolean;
   journey: {
     trainNumber: string;

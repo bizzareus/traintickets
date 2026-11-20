@@ -127,6 +127,8 @@ export type PaymentLinkResult = {
 export type PaymentConfirmResult = {
   status: 'pending' | 'paid' | 'failed';
   ref: string;
+  amount?: number;
+  currency?: string;
   journeyCreated: boolean;
   journey: {
     trainNumber: string;
@@ -746,6 +748,8 @@ export class ChartAlertPaymentsService implements OnModuleInit {
             ? 'failed'
             : 'pending',
       ref: record.id,
+      amount: record.amount,
+      currency: record.currency ?? 'INR',
       journeyCreated:
         record.status === 'PAID' && Boolean(record.journeyRequestId),
       journey: payload

@@ -78,9 +78,23 @@ export function ChartAlertPaymentModal({
             journeyDate: journey.journeyDate,
             classCode: journey.classCode,
           });
+          const paidAmount = payment.amount;
           trackAnalyticsEvent({
             name: "chart_alert_payment_complete",
-            properties: {},
+            properties: {
+              revenue: paidAmount,
+              amount: paidAmount,
+              currency: res.currency ?? "INR",
+              product: "Chart Alert",
+              train_number: journey.trainNumber,
+              train_name: journey.trainName,
+              from_code: journey.fromStationCode,
+              to_code: journey.toStationCode,
+              journey_date: journey.journeyDate,
+              class_code: journey.classCode,
+              source,
+              payment_ref: paymentRef,
+            },
           });
         }
       } else if (res.status === "failed") {

@@ -328,7 +328,23 @@ export type AnalyticsEvent =
         has_mobile: boolean;
       };
     }
-  | { name: "chart_alert_payment_complete"; properties: Record<string, never> }
+  | {
+      name: "chart_alert_payment_complete";
+      properties: {
+        revenue: number;
+        amount?: number;
+        currency?: string;
+        product?: string;
+        train_number?: string;
+        train_name?: string;
+        from_code?: string;
+        to_code?: string;
+        journey_date?: string;
+        class_code?: string;
+        source?: "page" | "row" | "search_panel";
+        payment_ref?: string;
+      };
+    }
   | {
       name: "chart_alert_payment_modal_opened";
       properties: {
