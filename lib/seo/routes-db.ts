@@ -31,6 +31,9 @@ export const STATIONS: Station[] = [
   { code: "ST", name: "Surat", slug: "surat" },
   { code: "DBG", name: "Darbhanga", slug: "darbhanga" },
   { code: "CDG", name: "Chandigarh", slug: "chandigarh" },
+  { code: "ASR", name: "Amritsar", slug: "amritsar" },
+  { code: "CNB", name: "Kanpur Central", slug: "kanpur" },
+  { code: "JP", name: "Jaipur", slug: "jaipur" },
 ];
 
 const ROUTE_TRAINS: Record<string, string[]> = {
@@ -51,6 +54,25 @@ const ROUTE_TRAINS: Record<string, string[]> = {
   "kolkata-to-puri": ["22895", "12837"],
   "mumbai-to-delhi": ["12951", "12953"],
   "patna-to-delhi": ["12309", "12393"],
+  "mumbai-to-pune": ["12127", "22105"],
+  "pune-to-mumbai": ["12128", "22106"],
+  "ahmedabad-to-mumbai": ["12010", "12932"],
+  "mumbai-to-surat": ["12951", "12953"],
+  "surat-to-mumbai": ["12952", "12954"],
+  "delhi-to-chandigarh": ["12011", "12045"],
+  "chandigarh-to-delhi": ["12012", "12046"],
+  "delhi-to-amritsar": ["12013", "12459"],
+  "amritsar-to-delhi": ["12014", "12460"],
+  "delhi-to-kanpur": ["12034", "12452"],
+  "kanpur-to-delhi": ["12033", "12451"],
+  "varanasi-to-delhi": ["22435", "12559"],
+  "lucknow-to-delhi": ["12003", "12429"],
+  "bengaluru-to-hyderabad": ["12786"],
+  "hyderabad-to-bengaluru": ["12785"],
+  "delhi-to-jaipur": ["12015"],
+  "jaipur-to-delhi": ["12016"],
+  "kolkata-to-patna": ["12023"],
+  "patna-to-kolkata": ["12024"],
 };
 
 export function isPublishedRoute(slug: string): boolean {
@@ -86,9 +108,8 @@ export function getStationByCodeOrName(
   if (byCode) return byCode;
 
   const lower = stationCodeOrName.trim().toLowerCase();
-  return STATIONS_WITH_LOWER_NAME.find((item) =>
-    item.lowerName.includes(lower),
-  )?.station;
+  return STATIONS_WITH_LOWER_NAME.find((item) => item.lowerName.includes(lower))
+    ?.station;
 }
 
 export async function getRouteData(

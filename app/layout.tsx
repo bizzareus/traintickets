@@ -122,13 +122,47 @@ export const metadata: Metadata = {
   classification: "Train meta search and seat availability",
 };
 
-const websiteJsonLd = {
+const rootEntityJsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "LastBerth",
-  description:
-    "Find confirmed train tickets for immediate journeys. Search your train, get the best seat options and book on IRCTC.",
-  url: baseUrl,
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${baseUrl}/#organization`,
+      name: "LastBerth",
+      url: baseUrl,
+      logo: {
+        "@type": "ImageObject",
+        "@id": `${baseUrl}/#logo`,
+        url: `${baseUrl}/favicon.svg`,
+        caption: "LastBerth",
+      },
+      image: {
+        "@id": `${baseUrl}/#logo`,
+      },
+      description:
+        "Independent Indian Railways meta-search and seat discovery platform helping travellers find confirmed train tickets, station chart preparation times, and vacant berths.",
+      founder: {
+        "@type": "Person",
+        name: "Kartik Arora",
+        jobTitle: "Railway Travel Expert",
+        url: "https://linkedin.com/in/kartikarora",
+        sameAs: ["https://linkedin.com/in/kartikarora"],
+      },
+      sameAs: ["https://linkedin.com/in/kartikarora"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${baseUrl}/#website`,
+      name: "LastBerth",
+      description:
+        "Find confirmed train tickets for immediate journeys. Search your train, get the best seat options and book on IRCTC.",
+      url: baseUrl,
+      publisher: {
+        "@id": `${baseUrl}/#organization`,
+      },
+      inLanguage: "en-IN",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -173,6 +207,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <link rel="service-desc" href="/openapi.json" type="application/json" />
         <link rel="describedby" href="/llms.txt" type="text/plain" />
+        <link
+          rel="alternate"
+          href="/llms-full.txt"
+          type="text/plain"
+          title="Full LLM Context"
+        />
         <link rel="service-doc" href="/blog" type="text/html" />
         <AdSenseScriptLoader />
       </head>
@@ -407,7 +447,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteJsonLd),
+            __html: JSON.stringify(rootEntityJsonLd),
           }}
         />
       </body>

@@ -8,7 +8,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title:
-    "IRCTC Chart Vacancy & Train Chart Preparation Times — Station by Station | LastBerth",
+    "IRCTC Chart Vacancy & Train Chart Preparation Times — Station by Station",
   description:
     "IRCTC chart vacancy and train chart preparation times, station by station. See when the first and second reservation charts are prepared for any train, and check vacant berths.",
   alternates: { canonical: "/chart-times" },

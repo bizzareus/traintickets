@@ -44,7 +44,7 @@ async function pagesBucket(now: Date): Promise<MetadataRoute.Sitemap> {
     { url: url("/special-trains"), lastModified: now },
     { url: url("/special-trains/diwali"), lastModified: now },
     { url: url("/special-trains/chhath"), lastModified: now },
-    { url: url("/special-trains/dusshera"), lastModified: now },
+    { url: url("/special-trains/dussehra"), lastModified: now },
     { url: url("/special-trains/puja"), lastModified: now },
     { url: url("/trains/vande-bharat"), lastModified: now },
     { url: url("/trains/shatabdi"), lastModified: now },

@@ -204,19 +204,47 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       "@id": canonicalUrl,
     },
     author: {
-      "@type": "Organization",
-      name: "LastBerth",
-      url: baseUrl,
+      "@type": "Person",
+      name: "Kartik Arora",
+      url: `${baseUrl}/about`,
+      jobTitle: "Railway Travel Expert",
+      sameAs: ["https://linkedin.com/in/kartikarora"],
     },
     publisher: {
       "@type": "Organization",
       name: "LastBerth",
+      url: baseUrl,
       logo: {
         "@type": "ImageObject",
         url: `${baseUrl}/favicon.svg`,
       },
     },
     image: [`${baseUrl}/opengraph-image`],
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${baseUrl}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: canonicalUrl,
+      },
+    ],
   };
 
   const faqEntries = parseFaqFromMarkdown(post.content);
@@ -289,22 +317,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const prosePart2 = midIndex !== -1 ? linkedMarkdown.slice(midIndex) : "";
 
   return (
-    <article
-      itemScope
-      itemType="https://schema.org/BlogPosting"
-      className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
-    >
+    <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <header className="mb-6">
-        <h1
-          itemProp="headline"
-          className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl"
-        >
+        <h1 className="text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
           {post.title}
         </h1>
         {post.description ? (
-          <p itemProp="description" className="mt-3 text-base text-slate-600">
-            {post.description}
-          </p>
+          <p className="mt-3 text-base text-slate-600">{post.description}</p>
         ) : null}
         <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-600">
           <span className="rounded-md bg-slate-100 px-2 py-1">
@@ -408,6 +427,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {faqJsonLd ? (
         <script

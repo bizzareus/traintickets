@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getRouteData, getTopRoutes } from "@/lib/seo/routes-db";
 import { getRouteTrains } from "@/lib/seo/route-content";
 import { buildTrainSlug } from "@/lib/trainSlug";
+import { getBaseUrl } from "@/lib/site-url";
 
 export const dynamicParams = false;
 export const dynamic = "force-static";
@@ -52,11 +53,67 @@ export default async function RoutePage({ params }: Props) {
   if (trains.length === 0) notFound();
   const firstTrain = trains[0];
 
+  const baseUrl = getBaseUrl();
+  const canonicalUrl = `${baseUrl}/routes/${slug}`;
+
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: `Trains from ${data.originCity} to ${data.destinationCity}`,
-    description: `Train schedules and boarding stations between ${data.originCity} and ${data.destinationCity}.`,
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${canonicalUrl}#webpage`,
+        name: `Trains from ${data.originCity} to ${data.destinationCity}`,
+        description: `Train schedules and boarding stations between ${data.originCity} and ${data.destinationCity}.`,
+        url: canonicalUrl,
+        breadcrumb: {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: baseUrl,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: `${data.originCity} to ${data.destinationCity}`,
+              item: canonicalUrl,
+            },
+          ],
+        },
+      },
+      {
+        "@type": "ItemList",
+        name: `Trains between ${data.originCity} and ${data.destinationCity}`,
+        numberOfItems: trains.length,
+        itemListElement: trains.map((t, idx) => ({
+          "@type": "ListItem",
+          position: idx + 1,
+          item: {
+            "@type": "TrainTrip",
+            name: t.name,
+            trainNumber: t.number,
+            departureStation: {
+              "@type": "TrainStation",
+              name: t.from.stationName,
+              identifier: t.from.stationCode,
+            },
+            arrivalStation: {
+              "@type": "TrainStation",
+              name: t.to.stationName,
+              identifier: t.to.stationCode,
+            },
+            departureTime: t.from.departureTime,
+            arrivalTime: t.to.arrivalTime,
+            provider: {
+              "@type": "Organization",
+              name: "Indian Railways",
+            },
+          },
+        })),
+      },
+    ],
   };
 
   return (
@@ -145,6 +202,7 @@ export default async function RoutePage({ params }: Props) {
           <div className="flex w-full shrink-0 flex-col items-stretch gap-3 sm:flex-row sm:items-center md:w-auto">
             <Link
               href={`/?from=${firstTrain.from.stationCode}&to=${firstTrain.to.stationCode}&fromName=${encodeURIComponent(firstTrain.from.stationName)}&toName=${encodeURIComponent(firstTrain.to.stationName)}&utm_source=route_page&utm_medium=primary_cta&utm_campaign=${slug}`}
+              rel="nofollow"
               className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-center text-sm font-bold text-white shadow-md transition duration-200 hover:bg-blue-700 hover:shadow-lg active:scale-[0.98]"
             >
               Search Confirmed Seats Now →

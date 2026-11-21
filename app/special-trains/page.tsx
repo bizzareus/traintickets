@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Special Trains 2026: List, Routes & Find Seats | LastBerth",
+  title: "Special Trains 2026: List, Routes & Find Seats",
   description:
     "Explore the complete directory of official festival special trains (Diwali, Chhath Puja, Dusshera, Durga Puja) launched by Indian Railways. Check schedules, stops, seat availability, and find confirmed seats to book on IRCTC.",
   alternates: {

@@ -89,14 +89,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!trainName) {
     return {
-      title: `Train ${trainNumber} Running Status, Route & Schedule | LastBerth`,
+      title: `Train ${trainNumber} Running Status, Route & Schedule`,
       description: `Check the live running status of train ${trainNumber} via NTES or SMS 139, plus the full timetable: station list, arrival/departure timings, halts, platforms and days of operation, and chart preparation times.`,
       alternates: { canonical: `/trains/${canonicalSlug}` },
     };
   }
 
   return {
-    title: `${trainName} (${trainNumber}) Running Status, Route & Schedule | LastBerth`,
+    title: `${trainName} (${trainNumber}) Running Status, Route & Schedule`,
     description: `Check the live running status of ${trainName} (${trainNumber}) via NTES or SMS 139, plus the full ${origin} to ${dest} timetable: halts, timings, Tatkal windows and chart preparation times.`,
     alternates: { canonical: `/trains/${canonicalSlug}` },
     openGraph: {

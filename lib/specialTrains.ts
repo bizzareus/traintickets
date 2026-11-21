@@ -127,8 +127,7 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
     heroBadge: "Diwali Rush 2026",
     description:
       "Indian Railways has deployed 100+ dedicated 0-series festival special trains across major trunk routes (Delhi, Mumbai, Kolkata, Patna, Gorakhpur, Banaras, Ayodhya, and Bengaluru) to ease the holiday rush. Check schedules, running days, and find confirmed seats to book on IRCTC.",
-    metaTitle:
-      "Diwali Special Trains 2026: List, Routes & Find Seats | LastBerth",
+    metaTitle: "Diwali Special Trains 2026: List, Routes & Find Seats",
     metaDescription:
       "Complete list of 100+ Diwali festival special trains launched by Indian Railways. Explore routes, schedules, stops, running days, and find confirmed seats to book on IRCTC.",
     canonicalPath: "/special-trains/diwali",
@@ -181,8 +180,7 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
     heroBadge: "Chhath Mahaparv 2026",
     description:
       "Dedicated festival special trains connecting Delhi, Mumbai, Surat, Ahmedabad, Kolkata, and Punjab to Bihar and Purvanchal (Patna, Danapur, Darbhanga, Saharsa, Muzaffarpur, Bhagalpur, Gaya, and Gorakhpur) for Chhath Puja 2026.",
-    metaTitle:
-      "Chhath Puja Special Trains 2026: List, Routes & Book Seats | LastBerth",
+    metaTitle: "Chhath Puja Special Trains 2026: List, Routes & Book Seats",
     metaDescription:
       "Full list of official Chhath Puja 2026 special trains from Delhi, Mumbai, Surat, and Punjab to Bihar & Eastern UP (Patna, Darbhanga, Muzaffarpur, Saharsa, Bhagalpur). Check dates and book confirmed seats.",
     canonicalPath: "/special-trains/chhath",
@@ -227,18 +225,17 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
   },
   dusshera: {
     key: "dusshera",
-    slug: "dusshera",
-    title: "Dusshera Special Trains 2026",
-    shortTitle: "Dusshera Specials",
+    slug: "dussehra",
+    title: "Dussehra Special Trains 2026",
+    shortTitle: "Dussehra Specials",
     tagline: "Vijayadashami & Navratri 2026 Special Trains",
-    heroBadge: "Navratri & Dusshera 2026",
+    heroBadge: "Navratri & Dussehra 2026",
     description:
-      "Explore official Indian Railways special trains for Navratri and Dusshera (Vijayadashami) 2026 connecting Delhi, Katra (Mata Vaishno Devi), Varanasi, Ayodhya, Haridwar, Rishikesh, Mumbai, and Mysore.",
-    metaTitle:
-      "Dusshera Special Trains 2026: List, Routes & Book Seats | LastBerth",
+      "Explore official Indian Railways special trains for Navratri and Dussehra (Vijayadashami) 2026 connecting Delhi, Katra (Mata Vaishno Devi), Varanasi, Ayodhya, Haridwar, Rishikesh, Mumbai, and Mysore.",
+    metaTitle: "Dussehra Special Trains 2026: List, Routes & Book Seats",
     metaDescription:
-      "Official list of Dusshera and Navratri 2026 festival special trains connecting Katra Vaishno Devi, Varanasi, Ayodhya, Haridwar, Delhi, Mumbai, and Southern hubs. Check schedules and book confirmed seats.",
-    canonicalPath: "/special-trains/dusshera",
+      "Official list of Dussehra and Navratri 2026 festival special trains connecting Katra Vaishno Devi, Varanasi, Ayodhya, Haridwar, Delhi, Mumbai, and Southern hubs. Check schedules and book confirmed seats.",
+    canonicalPath: "/special-trains/dussehra",
     iconEmoji: "🏹",
     targetDates: DUSSHERA_TARGET_DATES,
     defaultSearchDate: "2026-10-18",
@@ -289,8 +286,7 @@ export const FESTIVALS_MAP: Record<FestivalKey, FestivalConfig> = {
     heroBadge: "Durga Puja 2026",
     description:
       "Comprehensive list of Durga Puja 2026 festival special trains connecting Kolkata (Howrah, Sealdah, KOAA, Shalimar) and Eastern India to Delhi, Mumbai, Banaras, Gorakhpur, Dibrugarh, Guwahati, and Amritsar.",
-    metaTitle:
-      "Durga Puja Special Trains 2026: List, Routes & Book Seats | LastBerth",
+    metaTitle: "Durga Puja Special Trains 2026: List, Routes & Book Seats",
     metaDescription:
       "Directory of Durga Puja 2026 festival special trains from Kolkata, Howrah, Sealdah to Delhi, Mumbai, Banaras, Gorakhpur, and the Northeast. Check timetables, stops, and book confirmed tickets.",
     canonicalPath: "/special-trains/puja",
@@ -517,7 +513,9 @@ export function getSpecialTrainSearchDate(
   const targetPreferred =
     preferredDate || cfg?.defaultSearchDate || "2026-11-05";
 
-  const runningDaysKey = train.runningDays ? train.runningDays.join(",") : "all";
+  const runningDaysKey = train.runningDays
+    ? train.runningDays.join(",")
+    : "all";
   const cacheKey = `${train.dateFrom}_${train.dateTo}_${runningDaysKey}_${festivalKey}_${targetPreferred}`;
   const cached = searchDateCache.get(cacheKey);
   if (cached !== undefined) return cached;

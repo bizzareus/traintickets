@@ -13,8 +13,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title:
-    "Shatabdi Express Trains 2026: List, Routes, Timings & Booking | LastBerth",
+  title: "Shatabdi Express Trains 2026: List, Routes, Timings & Booking",
   description:
     "Complete list of Shatabdi & Jan Shatabdi Express trains in India. Check routes, timetables, Chair Car & Executive classes, and find confirmed seats to book on IRCTC.",
   alternates: { canonical: "/trains/shatabdi" },

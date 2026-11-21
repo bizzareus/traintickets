@@ -75,7 +75,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const ui = glossaryUi(lang);
   return {
-    title: `${ui.title} | LastBerth`,
+    title: ui.title,
     description: ui.subtitle,
     alternates: {
       canonical: canonicalFor(lang),
@@ -98,6 +98,31 @@ export default async function GlossarySlugPage({ params }: Props) {
     const related = (item.relatedTerms || [])
       .map((id) => getGlossaryTermForLang(id, lang))
       .filter(Boolean) as (typeof item)[];
+
+    const breadcrumbJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://lastberth.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Glossary",
+          item: "https://lastberth.com/glossary",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: item.term,
+          item: `https://lastberth.com${canonicalFor(lang, termId)}`,
+        },
+      ],
+    };
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -160,6 +185,10 @@ export default async function GlossarySlugPage({ params }: Props) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
       </div>
     );

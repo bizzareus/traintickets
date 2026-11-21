@@ -16,8 +16,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title:
-    "Vande Bharat Express Trains 2026: List, Routes, Timings & Booking | LastBerth",
+  title: "Vande Bharat Express Trains 2026: List, Routes, Timings & Booking",
   description:
     "Complete list of 170+ Vande Bharat Express trains in India. Check routes, timetables, intermediate stops, Chair Car, Executive & Sleeper classes, catering menus, and find confirmed seats to book on IRCTC.",
   alternates: { canonical: "/trains/vande-bharat" },

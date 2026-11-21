@@ -77,8 +77,8 @@ export default function configFactory(phase) {
           statusCode: 308,
         },
         {
-          source: "/special-trains/dussehra",
-          destination: "/special-trains/dusshera",
+          source: "/special-trains/dusshera",
+          destination: "/special-trains/dussehra",
           statusCode: 308,
         },
         {
@@ -127,7 +127,7 @@ export default function configFactory(phase) {
             {
               key: "Link",
               value:
-                '</.well-known/api-catalog>; rel="api-catalog", </openapi.json>; rel="service-desc"; type="application/json", </blog>; rel="service-doc"; type="text/html", </llms.txt>; rel="describedby"; type="text/plain"',
+                '</.well-known/api-catalog>; rel="api-catalog", </openapi.json>; rel="service-desc"; type="application/json", </blog>; rel="service-doc"; type="text/html", </llms.txt>; rel="describedby"; type="text/plain", </llms-full.txt>; rel="alternate"; type="text/plain"',
             },
           ],
         },

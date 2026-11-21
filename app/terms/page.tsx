@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | LastBerth",
+  title: "Terms of Service",
   description: "Terms and Conditions governing the use of LastBerth.",
 };
 

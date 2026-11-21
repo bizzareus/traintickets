@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Disclaimer | LastBerth",
+  title: "Disclaimer",
   description:
     "Learn about LastBerth's role as a train meta search engine and the accuracy of its railway data.",
 };
@@ -80,9 +80,9 @@ export default function DisclaimerPage() {
             LastBerth does not book train tickets or accept ticket-booking
             requests. Bookings are completed by you directly on IRCTC after
             LastBerth shows you available options. Payments you make to
-            LastBerth are only for LastBerth&apos;s own services (such as seat-alert
-            subscriptions), and never for a train ticket. For tickets bought
-            through another provider, contact that provider about
+            LastBerth are only for LastBerth&apos;s own services (such as
+            seat-alert subscriptions), and never for a train ticket. For tickets
+            bought through another provider, contact that provider about
             cancellations or refunds.
           </p>
 

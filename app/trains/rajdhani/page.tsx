@@ -13,8 +13,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title:
-    "Rajdhani Express Trains 2026: List, Routes, Timings & Booking | LastBerth",
+  title: "Rajdhani Express Trains 2026: List, Routes, Timings & Booking",
   description:
     "Complete list of Rajdhani Express trains in India. Check routes, timetables, 1A/2A/3A AC classes, and find confirmed seats to book on IRCTC.",
   alternates: { canonical: "/trains/rajdhani" },

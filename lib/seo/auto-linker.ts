@@ -39,12 +39,18 @@ export function autoLinkGlossaryTerms(markdown: string): string {
   if (!markdown) return markdown;
 
   const { regex, termMap } = getRegexAndMap();
+  const linkedTerms = new Set<string>();
 
   return markdown.replace(regex, (match, termMatch) => {
     // If termMatch is undefined, the match was a code block or existing markdown link -> skip
     if (!termMatch) return match;
 
     const matchedId = termMap.get(termMatch.toLowerCase());
-    return matchedId ? `[${match}](/glossary/${matchedId})` : match;
+    if (!matchedId || linkedTerms.has(matchedId)) {
+      return match;
+    }
+
+    linkedTerms.add(matchedId);
+    return `[${match}](/glossary/${matchedId})`;
   });
 }

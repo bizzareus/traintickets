@@ -70,8 +70,8 @@ test("getFestivalConfig - retrieves configuration including aliases", () => {
   assert.equal(chhath.canonicalPath, "/special-trains/chhath");
 
   const dusshera = getFestivalConfig("dusshera");
-  assert.ok(dusshera && dusshera.title.includes("Dusshera"));
-  assert.equal(dusshera.canonicalPath, "/special-trains/dusshera");
+  assert.ok(dusshera && dusshera.title.includes("Dussehra"));
+  assert.equal(dusshera.canonicalPath, "/special-trains/dussehra");
 
   // Alias support for alternate spelling "dussehra"
   const dussehraAlias = getFestivalConfig("dussehra");

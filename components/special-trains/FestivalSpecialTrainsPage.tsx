@@ -7,15 +7,7 @@ import {
 } from "@/lib/specialTrains";
 import { SpecialTrainsListClient } from "@/components/special-trains/SpecialTrainsListClient";
 import { FestivalNavTabs } from "@/components/special-trains/FestivalNavTabs";
-import {
-  Sparkles,
-  ChevronRight,
-  Train,
-  ShieldCheck,
-  Zap,
-  Info,
-  MapPin,
-} from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 type Props = {
   festivalKey: FestivalKey;
@@ -43,11 +35,40 @@ export function FestivalSpecialTrainsPage({ festivalKey }: Props) {
     })),
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://lastberth.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Special Trains",
+        item: "https://lastberth.com/special-trains",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: cfg.title,
+        item: `https://lastberth.com${cfg.canonicalPath}`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-slate-900 antialiased">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <Header />
 

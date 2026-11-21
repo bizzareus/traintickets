@@ -5,13 +5,21 @@ import {
 import type { RouteData } from "@/lib/seo/routes-db";
 
 const CITY_STATIONS: Record<string, string[]> = {
-  delhi: ["NDLS", "NZM"],
-  mumbai: ["MMCT", "CSMT", "LTT"],
+  delhi: ["NDLS", "NZM", "ANVT", "DLI", "DEE"],
+  mumbai: ["MMCT", "CSMT", "LTT", "BDTS", "DR"],
   patna: ["PNBE", "RJPB"],
-  kolkata: ["HWH", "SDAH"],
-  bengaluru: ["SBC", "BNC"],
-  varanasi: ["BSB", "BNRS"],
+  kolkata: ["HWH", "SDAH", "KOAA"],
+  bengaluru: ["SBC", "BNC", "YPR", "SMVB"],
+  varanasi: ["BSB", "BNRS", "DDU"],
   lucknow: ["LJN", "LKO"],
+  hyderabad: ["SC", "HYB", "KCG"],
+  surat: ["ST", "UDN"],
+  amritsar: ["ASR"],
+  chandigarh: ["CDG"],
+  kanpur: ["CNB"],
+  jaipur: ["JP"],
+  ahmedabad: ["ADI"],
+  pune: ["PUNE"],
 };
 
 export type RouteTrain = {

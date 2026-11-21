@@ -6,7 +6,7 @@ import { getTatkalFaqs } from "@/lib/tatkalPlanner";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Tatkal Booking Date Calculator & Live Clock (2026) | LastBerth",
+  title: "Tatkal Booking Date Calculator & Live Clock (2026)",
   description:
     "Calculate exact Tatkal booking dates and 10:00 AM (AC) & 11:00 AM (Non-AC) opening times. Live IST countdown clock, Tatkal charges calculator & speed hacks.",
   alternates: { canonical: "/tatkal-planner" },

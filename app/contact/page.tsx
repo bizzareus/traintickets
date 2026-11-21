@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Contact Us | LastBerth",
+  title: "Contact Us",
   description:
     "Get in touch with the LastBerth team for inquiries, feedback, data corrections, or support.",
 };
@@ -65,10 +65,10 @@ export default function ContactPage() {
           <p className="text-sm text-blue-800">
             LastBerth is a meta search engine — we don&apos;t book tickets for
             you. When you find your seats, we take you straight to IRCTC to
-            complete your booking, so your ticket and payment are handled
-            under IRCTC&apos;s own terms. For questions about your LastBerth
-            account or a paid chart alert, email support@lastberth.com. For a
-            paid chart alert, you can also{" "}
+            complete your booking, so your ticket and payment are handled under
+            IRCTC&apos;s own terms. For questions about your LastBerth account
+            or a paid chart alert, email support@lastberth.com. For a paid chart
+            alert, you can also{" "}
             <Link href="/refund" className="font-semibold underline">
               request a refund
             </Link>

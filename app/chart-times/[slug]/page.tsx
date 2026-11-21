@@ -38,14 +38,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!data) {
     return {
-      title: "IRCTC Vacancy Chart Preparation Times | LastBerth",
+      title: "IRCTC Vacancy Chart Preparation Times",
       description:
         "Station-by-station IRCTC vacancy chart preparation times for Indian Railways trains.",
       alternates: { canonical: `/chart-times/${slug}` },
     };
   }
 
-  const title = `${data.trainName} (${data.trainNumber}) IRCTC Vacancy Chart Preparation Times — All Stations | LastBerth`;
+  const title = `${data.trainName} (${data.trainNumber}) IRCTC Vacancy Chart Preparation Times — All Stations`;
   const description = `Station-by-station IRCTC vacancy chart preparation times for ${data.trainName} (${data.trainNumber}) from ${data.originStation} to ${data.destinationStation}. See when the first and second charts are prepared at each halt.`;
   return {
     title,

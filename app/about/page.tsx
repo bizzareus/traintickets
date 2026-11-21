@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Us | LastBerth",
+  title: "About Us",
   description:
     "Meet LastBerth — a meta search engine for Indian Railways that finds available seats and redirects you to IRCTC to complete your booking.",
 };
@@ -27,9 +27,9 @@ export default function AboutPage() {
           <p className="text-lg leading-relaxed text-slate-700">
             Welcome to <strong>LastBerth</strong>, your trusted companion for
             Indian Railways travel, reservation insights, chart vacancy
-            tracking, and smart seat search. LastBerth is a meta search
-            engine — we help you discover seats and routes, then take you to
-            IRCTC to complete your booking.
+            tracking, and smart seat search. LastBerth is a meta search engine —
+            we help you discover seats and routes, then take you to IRCTC to
+            complete your booking.
           </p>
 
           <h2 className="pt-4 text-2xl font-bold text-slate-900">
@@ -52,9 +52,9 @@ export default function AboutPage() {
               berths after reservation charts are finalized.
             </li>
             <li>
-              <strong>Smart Seat Search:</strong> Discover confirmed
-              split-berth combinations on the same train when direct routes
-              are fully sold out — then complete your booking on IRCTC.
+              <strong>Smart Seat Search:</strong> Discover confirmed split-berth
+              combinations on the same train when direct routes are fully sold
+              out — then complete your booking on IRCTC.
             </li>
             <li>
               <strong>PNR & Travel Guides:</strong> Clear, actionable advice on
@@ -86,9 +86,8 @@ export default function AboutPage() {
           <p>
             LastBerth is an independently operated meta search engine. We are
             not the official website of IRCTC, Indian Railways, or CRIS. For
-            official website of IRCTC, Indian Railways, or CRIS. For
-            railway-operated services and authoritative train
-            information, please visit irctc.co.in or indianrail.gov.in.
+            railway-operated services and authoritative train information,
+            please visit irctc.co.in or indianrail.gov.in.
           </p>
         </div>
       </div>

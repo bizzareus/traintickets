@@ -34,6 +34,41 @@ const FAQS: { q: string; a: string }[] = [
   },
 ];
 
+const webAppJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Train Chart Vacancy & Empty Berth Map",
+  url: "https://lastberth.com/chart-vacancy",
+  applicationCategory: "TravelApplication",
+  operatingSystem: "All",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "INR",
+  },
+  description:
+    "Interactive coach-wise berth layout and vacant seat finder for Indian Railways trains released after reservation chart preparation.",
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://lastberth.com/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Chart Vacancy",
+      item: "https://lastberth.com/chart-vacancy",
+    },
+  ],
+};
+
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -48,6 +83,14 @@ export default function ChartVacancyPage() {
   return (
     <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-gray-900 antialiased">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

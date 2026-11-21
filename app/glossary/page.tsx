@@ -10,7 +10,7 @@ import { GlossaryLanguageSelector } from "@/components/glossary/GlossaryLanguage
 const ui = glossaryUi("en");
 
 export const metadata: Metadata = {
-  title: "Indian Railway Booking Glossary & Terms Dictionary | LastBerth",
+  title: "Indian Railway Booking Glossary & Terms Dictionary",
   description:
     "Decode Indian Railway booking jargon in plain English: RLWL, PQWL, GNWL, RAC, CNF, Tatkal, chart preparation, current availability, class codes and more.",
   alternates: {

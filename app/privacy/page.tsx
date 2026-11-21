@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | LastBerth",
+  title: "Privacy Policy",
   description: "Privacy Policy and data protection guidelines for LastBerth.",
 };
 
@@ -101,13 +101,14 @@ export default function PrivacyPolicyPage() {
           <ul>
             <li>
               <strong>Third-Party Vendors:</strong> Third-party vendors,
-              including Google, use cookies to serve ads based on a user's prior
-              visits to LastBerth or other websites.
+              including Google, use cookies to serve ads based on a user&apos;s
+              prior visits to LastBerth or other websites.
             </li>
             <li>
-              <strong>Advertising Cookies:</strong> Google's use of advertising
-              cookies enables it and its partners to serve ads to users based on
-              their visit to LastBerth and/or other sites on the Internet.
+              <strong>Advertising Cookies:</strong> Google&apos;s use of
+              advertising cookies enables it and its partners to serve ads to
+              users based on their visit to LastBerth and/or other sites on the
+              Internet.
             </li>
             <li>
               <strong>Opting Out:</strong> Users may opt out of personalized
