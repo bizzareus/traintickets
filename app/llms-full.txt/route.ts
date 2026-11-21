@@ -1,14 +1,18 @@
 import { NextResponse } from "next/server";
-import { getTopRoutes } from "@/lib/seo/routes-db";
+import { getRouteData, getTopRoutes } from "@/lib/seo/routes-db";
 
 export const dynamic = "force-static";
 
 export async function GET() {
-  const routes = await getTopRoutes();
-  const routeList = routes
+  const routePairs = await getTopRoutes();
+  const routeDataList = (
+    await Promise.all(routePairs.map((r) => getRouteData(r.origin, r.dest)))
+  ).filter((r): r is NonNullable<typeof r> => r !== null);
+
+  const routeList = routeDataList
     .map(
       (r) =>
-        `- ${r.originCity} to ${r.destinationCity} (/routes/${r.origin}-to-${r.dest}): Primary trains ${r.trainNumbers.join(", ")}`,
+        `- ${r.originCity} to ${r.destinationCity} (/routes/${r.origin.slug}-to-${r.destination.slug}): Primary trains ${r.trainNumbers.join(", ")}`,
     )
     .join("\n");
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "Official IRCTC train food menu and catering prices across 6,300+ Indian Railways trains: Vande Bharat, Rajdhani, Shatabdi, Duronto, and Mail/Express. No PDFs.",
   alternates: { canonical: "/irctc-train-food-menu" },
   openGraph: {
-    title: "IRCTC Train Food Menu & Prices: Is Food Free? | LastBerth",
+    title: "IRCTC Train Food Menu & Prices: Is Food Free?",
     description:
       "Official IRCTC train food menu and catering prices across 6,300+ Indian Railways trains: Vande Bharat, Rajdhani, Shatabdi, Duronto, and Mail/Express.",
     url: "/irctc-train-food-menu",

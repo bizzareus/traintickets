@@ -5,9 +5,7 @@ export const metadata: Metadata = {
   title: "Sign in",
   description:
     "Access your LastBerth train monitoring dashboard to track confirmed train tickets and seat availability.",
-  alternates: {
-    canonical: "/login",
-  },
+  robots: { index: false, follow: false },
 };
 
 export default function LoginLayout({ children }: { children: ReactNode }) {

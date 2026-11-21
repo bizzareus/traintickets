@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import AdminPasswordGate from "./AdminPasswordGate";
 import AdminNav from "./AdminNav";
+
+export const metadata: Metadata = {
+  title: "Admin Console",
+  robots: { index: false, follow: false },
+};
 
 export default function AdminLayout({
   children,

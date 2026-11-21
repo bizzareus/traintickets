@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PaymentCompleteClient } from "./PaymentCompleteClient";
 
 export const metadata: Metadata = {
-  title: "Reservation Payment — LastBerth",
+  title: "Reservation Payment",
   robots: { index: false, follow: false },
 };
 

@@ -82,7 +82,7 @@ export default function SpecialTrainsHubPage() {
     "@type": "ItemList",
     name: "Indian Railways Festival Special Trains 2026",
     description:
-      "Directory of special festival trains operating across Indian Railways for Diwali, Chhath Puja, Dusshera, and Durga Puja.",
+      "Directory of special festival trains operating across Indian Railways for Diwali, Chhath Puja, Dussehra, and Durga Puja.",
     numberOfItems: allTrains.length,
     itemListElement: allTrains.slice(0, 30).map((t, idx) => ({
       "@type": "ListItem",
@@ -96,11 +96,34 @@ export default function SpecialTrainsHubPage() {
     })),
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://lastberth.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Special Trains",
+        item: "https://lastberth.com/special-trains",
+      },
+    ],
+  };
+
   return (
     <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-slate-900 antialiased">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <Header />
 

@@ -86,6 +86,11 @@ export default function configFactory(phase) {
           destination: "/trains/vande-bharat",
           statusCode: 308,
         },
+        {
+          source: "/v1",
+          destination: "/",
+          statusCode: 308,
+        },
       ];
     },
     async headers() {

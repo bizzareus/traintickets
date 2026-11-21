@@ -17,6 +17,12 @@ const DISALLOW = [
   "/api",
   "/login",
   "/register",
+  "/unsubscribe",
+  "/split-booking",
+  "/chart-alert",
+  "/alerts/subscribe",
+  "/s/",
+  "/v1",
   // Dynamic search results and internal query strings (Google/Bing crawl budget protection)
   "/*?*from=*",
   "/*?*to=*",

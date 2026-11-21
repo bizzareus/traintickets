@@ -71,6 +71,7 @@ export function BlogStickyMobileCta({ slug, context }: Props) {
         <div className="flex shrink-0 items-center gap-2">
           <Link
             href={targetUrl}
+            rel="nofollow"
             onClick={handleClick}
             className="shadow-xs rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white transition-all hover:bg-blue-700 active:scale-95"
           >

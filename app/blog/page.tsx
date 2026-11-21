@@ -34,5 +34,39 @@ export default async function BlogIndexPage({
     redirect(`/blog/${lang}`);
   }
 
-  return <BlogIndexContent lang="en" />;
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${siteUrl}/blog#blog`,
+    name: "LastBerth Train Travel & Ticket Booking Guides",
+    description:
+      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding railway charting preparation, and planning smarter journeys with LastBerth.",
+    url: `${siteUrl}/blog`,
+    publisher: {
+      "@id": `${siteUrl}/#organization`,
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${siteUrl}/blog`,
+        },
+      ],
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BlogIndexContent lang="en" />
+    </>
+  );
 }

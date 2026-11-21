@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react";
 import { ResumeBookingClient } from "./ResumeBookingClient";
 
 export const metadata: Metadata = {
-  title: "Complete Your Train Booking — LastBerth",
+  title: "Complete Your Train Booking",
   description: "Resume your saved train seat plan on LastBerth.",
   robots: { index: false, follow: false },
 };

@@ -28,6 +28,31 @@ export const metadata: Metadata = {
 export default function GlossaryIndexPage() {
   const terms = getAllGlossaryTermsForLang("en");
 
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": `${siteUrl}/glossary#terms`,
+    name: "Indian Railway Booking Glossary & Terms Dictionary",
+    description:
+      "Decode Indian Railway booking jargon in plain English: RLWL, PQWL, GNWL, RAC, CNF, Tatkal, chart preparation, current availability, and class codes.",
+    url: `${siteUrl}/glossary`,
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Railway Glossary",
+        item: `${siteUrl}/glossary`,
+      },
+    ],
+  };
+
   const grouped: Record<string, typeof terms> = {};
   for (const term of terms) {
     const letter = term.term[0].toUpperCase();
@@ -37,6 +62,14 @@ export default function GlossaryIndexPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mb-8 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
           {ui.title}

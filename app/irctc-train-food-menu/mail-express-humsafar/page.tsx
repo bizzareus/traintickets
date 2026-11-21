@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "Official IRCTC catering charges on Mail, Express and Humsafar trains: breakfast, meals (veg, egg, chicken biryani), tea, coffee, Rail Neer water and the full à la carte tariff. At-station vs in-train rates, inclusive of taxes.",
   alternates: { canonical: "/irctc-train-food-menu/mail-express-humsafar" },
   openGraph: {
-    title: "Mail & Express Train Food Menu: Full Price List | LastBerth",
+    title: "Mail & Express Train Food Menu: Full Price List",
     description:
       "Official IRCTC catering charges on Mail, Express and Humsafar trains: breakfast, meals, beverages and the full à la carte tariff.",
     url: "/irctc-train-food-menu/mail-express-humsafar",

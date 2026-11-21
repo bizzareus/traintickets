@@ -17,8 +17,35 @@ export const metadata: Metadata = {
 export default function ChartTimesIndexPage() {
   const trains = listPopularChartTimes();
 
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${siteUrl}/chart-times`,
+    name: "IRCTC Chart Vacancy & Train Chart Preparation Times",
+    description:
+      "Browse station-by-station reservation chart preparation times for Indian Railways trains. Check 1st and 2nd chart preparation timing to spot vacant berths.",
+    url: `${siteUrl}/chart-times`,
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Chart Times",
+          item: `${siteUrl}/chart-times`,
+        },
+      ],
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">
           IRCTC Chart Vacancy &amp; Train Chart Preparation Times

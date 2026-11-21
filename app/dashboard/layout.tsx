@@ -5,9 +5,7 @@ export const metadata: Metadata = {
   title: "Dashboard",
   description:
     "View and manage your active train ticket and seat availability monitoring requests on LastBerth.",
-  alternates: {
-    canonical: "/dashboard",
-  },
+  robots: { index: false, follow: false },
 };
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {

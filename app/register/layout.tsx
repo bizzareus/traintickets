@@ -5,9 +5,7 @@ export const metadata: Metadata = {
   title: "Register",
   description:
     "Create a LastBerth account to set up instant notifications and alerts for confirmed train tickets.",
-  alternates: {
-    canonical: "/register",
-  },
+  robots: { index: false, follow: false },
 };
 
 export default function RegisterLayout({ children }: { children: ReactNode }) {

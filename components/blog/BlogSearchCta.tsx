@@ -164,6 +164,7 @@ export function BlogSearchCta({
         <div className="shrink-0">
           <Link
             href={copy.buttonUrl}
+            rel="nofollow"
             onClick={() =>
               handleCtaClick(
                 "inline_card",
@@ -192,6 +193,7 @@ export function BlogSearchCta({
                 <Link
                   key={r.routeSlug}
                   href={routeUrl}
+                  rel="nofollow"
                   onClick={() =>
                     handleCtaClick("route_chip", routeUrl, r.fromCode, r.toCode)
                   }

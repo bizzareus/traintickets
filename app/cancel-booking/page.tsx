@@ -5,12 +5,12 @@ import { CancelBookingClient } from "./CancelBookingClient";
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 
 export const metadata: Metadata = {
-  title: "Cancel Train Booking — LastBerth",
+  title: "Cancel Train Booking",
   description:
     "Request cancellation for your LastBerth split-ticket reservation. Enter your booking reference and mobile number to review ticket details and submit your cancellation request.",
   alternates: { canonical: "/cancel-booking" },
   openGraph: {
-    title: "Cancel Train Booking — LastBerth",
+    title: "Cancel Train Booking",
     description:
       "Request cancellation for your LastBerth split-ticket reservation.",
     type: "website",

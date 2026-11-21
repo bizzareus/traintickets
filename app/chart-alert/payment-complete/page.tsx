@@ -5,14 +5,14 @@ import { PaymentCompleteClient } from "./PaymentCompleteClient";
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 
 export const metadata: Metadata = {
-  title: "Chart Alert Payment — LastBerth",
+  title: "Chart Alert Payment",
   description:
     "Confirming your chart alert payment. Your train chart preparation alert is activated once payment is verified.",
   // No canonical here: pairing rel=canonical with noindex sends Google
   // conflicting signals, and noindex is what governs this flow page.
   robots: { index: false, follow: false },
   openGraph: {
-    title: "Chart Alert Payment — LastBerth",
+    title: "Chart Alert Payment",
     description: "Confirming your chart alert payment with LastBerth.",
     type: "website",
     url: `${siteUrl}/chart-alert/payment-complete`,
