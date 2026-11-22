@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
-  <title>Confirmed Ticket from Howrah to Puri for 25 Nov 2026</title>
+  <title>Confirmed Ticket from New Delhi to Patna for 25 Nov 2026</title>
   <rect width="1080" height="1350" fill="#101B2C"/>
   <rect width="1080" height="10" fill="#355AED"/>
   <g font-family="Arial, Helvetica, sans-serif">
@@ -10,11 +10,11 @@
   </g>
   <g font-family="DIN Condensed, Arial Narrow, sans-serif" font-weight="700">
     <text x="64" y="235" fill="#88E2B6" font-size="80">CONFIRMED TICKET</text>
-    <text x="64" y="295" fill="#FFFFFF" font-size="52">FROM HOWRAH (HWH) TO PURI (PURI)</text>
+    <text x="64" y="295" fill="#FFFFFF" font-size="52">FROM NEW DELHI (NDLS) TO PATNA (PNBE)</text>
     <text x="64" y="348" fill="#FFBA55" font-size="44">FOR 25 NOV 2026</text>
   </g>
   <g font-family="Arial, Helvetica, sans-serif">
-    <text x="65" y="388" fill="#E4EAF2" font-size="28" font-weight="700">SHATABDI EXP · 12277 · DEPARTS 02:15 PM</text>
+    <text x="65" y="388" fill="#E4EAF2" font-size="28" font-weight="700">SAMPOORNA K EXP · 12394 · DEPARTS 05:30 PM</text>
 
     <!-- Left Card: ConfirmTkt Direct Baseline -->
     <rect x="64" y="440" width="310" height="606" rx="20" fill="#FFF4EF"/>
@@ -22,16 +22,17 @@
     <rect x="64" y="464" width="5" height="62" fill="#BC5849"/>
     <rect x="396" y="464" width="5" height="62" fill="#247251"/>
     <text x="86" y="491" fill="#101B2C" font-size="33" font-weight="700">ConfirmTkt</text>
-    <text x="86" y="532" fill="#795B54" font-size="23">End-to-end · CC &amp; EC</text>
+    <text x="86" y="532" fill="#795B54" font-size="23">End-to-end · All Classes</text>
     <path d="M86 557H352" stroke="#E3CBC2"/>
     <text x="86" y="600" fill="#795B54" font-size="18" letter-spacing="1">SCREENSHOT EXCERPT</text>
     <rect x="80" y="622" width="278" height="135" rx="8" fill="#FFFFFF"/>
     <image href="crops/confirmtkt-status.png" x="86" y="630" width="266" height="118" preserveAspectRatio="xMidYMid meet"/>
     <rect x="86" y="793" width="218" height="43" rx="6" fill="#F6DDD4"/>
     <text x="104" y="823" fill="#8E3F32" font-size="24" font-weight="700">WAITLISTED</text>
-    <text x="86" y="886" fill="#574B48" font-size="24">One ticket for</text>
-    <text x="86" y="922" fill="#574B48" font-size="24">the full route.</text>
-    <text x="86" y="976" fill="#8E3F32" font-size="22" font-weight="700">CC: WL 12 · EC: WL 15</text>
+    <text x="86" y="876" fill="#574B48" font-size="22">One ticket for</text>
+    <text x="86" y="908" fill="#574B48" font-size="22">the full route.</text>
+    <text x="86" y="955" fill="#8E3F32" font-size="20" font-weight="700">1A: WL 11 · 2A: WL 33</text>
+    <text x="86" y="985" fill="#8E3F32" font-size="20" font-weight="700">3A: WL 54 · SL: WL 131</text>
 
     <!-- Right Card: LastBerth Split Legs -->
     <text x="422" y="488" fill="#355AED" font-size="33" font-weight="700" letter-spacing="-1">LastBerth</text>
@@ -39,22 +40,22 @@
     <path d="M422 538H990" stroke="#C5E1D1"/>
 
     <!-- Leg 1 -->
-    <text x="422" y="570" fill="#315A43" font-size="20" font-weight="700">01  HWH → BLS (CC · AVL 61 · ₹745)</text>
+    <text x="422" y="570" fill="#315A43" font-size="20" font-weight="700">01  NDLS → CNB (1A · AVL 2 · ₹1,830)</text>
     <rect x="422" y="580" width="568" height="130" rx="8" fill="#FFFFFF"/>
     <image href="crops/lastberth-leg-1.png" x="432" y="586" width="548" height="118" preserveAspectRatio="xMidYMid meet"/>
 
     <!-- Leg 2 -->
-    <text x="422" y="746" fill="#315A43" font-size="20" font-weight="700">02  BLS → PURI (CC · AVL 48 · ₹900)</text>
+    <text x="422" y="746" fill="#315A43" font-size="20" font-weight="700">02  CNB → PNBE (1A · AVL 1 · ₹2,205)</text>
     <rect x="422" y="756" width="568" height="130" rx="8" fill="#FFFFFF"/>
     <image href="crops/lastberth-leg-2.png" x="432" y="762" width="548" height="118" preserveAspectRatio="xMidYMid meet"/>
 
     <!-- Split Fare Breakdown -->
     <rect x="422" y="910" width="568" height="110" rx="10" fill="#E8F8F0"/>
-    <text x="442" y="948" fill="#247251" font-size="22" font-weight="700">Split Fare Total: ₹745 + ₹900 = ₹1,645</text>
-    <text x="442" y="986" fill="#466A57" font-size="19">Confirmed CC berths across both legs · Same Train 12277</text>
+    <text x="442" y="948" fill="#247251" font-size="22" font-weight="700">Split Fare Total: ₹1,830 + ₹2,205 = ₹4,035</text>
+    <text x="442" y="986" fill="#466A57" font-size="19">Confirmed 1A berths across both legs · Same Train 12394</text>
 
     <!-- Summary Row -->
-    <text x="64" y="1086" fill="#D6E0EB" font-size="24">2 tickets · Both in CC · Seat change at Balasore (BLS)</text>
+    <text x="64" y="1086" fill="#D6E0EB" font-size="24">2 tickets · Both in 1A · Berth change at Kanpur Central (CNB)</text>
 
     <!-- Total Fare & CTA -->
     <rect x="64" y="1120" width="952" height="110" rx="14" fill="#FFFFFF"/>
