@@ -2,7 +2,7 @@
 title: "General Quota (GN) in IRCTC: Meaning, Rules & Limits"
 description: "Discover General Quota (GN) rules in IRCTC train booking, seat limits across 1A, 2A, 3A, SL classes, GNWL confirmation chances, and Tatkal comparison."
 date: "2026-08-03"
-updated: "2026-08-24"
+updated: "2026-11-23"
 tags:
   - general quota
   - irctc
@@ -60,7 +60,7 @@ When General Quota seats fill up, subsequent bookings enter the **General Waitin
 
 1. **Largest Initial Allocation:** 70–80% of total train berths belong to GN.
 2. **First Rights on Cancellations:** When any confirmed general passenger cancels, the seat immediately goes to GNWL #1.
-3. **Chart Prep Release:** Unused VIP, Foreign Tourist, or Duty Pass quotas are merged into the General Quota pool during final chart preparation (4 to 8 hours before departure).
+3. **Chart Prep Release:** Unused VIP, Foreign Tourist, or Duty Pass quotas are merged into the General Quota pool during first chart preparation (roughly 4 to 8 hours before departure).
 
 If your waitlist is GNWL 15 in Sleeper or GNWL 5 in 3AC, your confirmation odds are significantly higher than an identical waitlist number in Remote Location (RLWL) or Pooled Quota (PQWL). You can verify your coach position using [Get Confirmed Tickets](/).
 

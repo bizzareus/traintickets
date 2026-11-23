@@ -2,7 +2,7 @@
 title: "Current Reservation IRCTC: Booking Timings & Fares (2026)"
 description: "When does current reservation open in IRCTC? Learn 1st vs 2nd chart prep timing, current availability discount fares, and how to book vacant berths online."
 date: "2026-08-05"
-updated: "2026-08-06"
+updated: "2026-11-23"
 tags:
   - train booking
   - irctc
@@ -18,7 +18,7 @@ tags:
 - **What is Current Reservation?** It is IRCTC's official system for booking unbooked or cancelled seats after the first reservation chart has been prepared.
 - **When does it open?** Opens immediately after 1st chart preparation (around 4 to 8 hours before train departure) and closes 30 minutes before departure (2nd chart preparation).
 - **Is it a confirmed ticket?** Yes! A `"current available ticket"` is a **fully confirmed seat** with allocated coach and berth numbers.
-- **Are there discounts?** Yes, Indian Railways often offers a 10% to 50% discount on base fares for unbooked berths under current reservation.
+- **Are there discounts?** Yes, Indian Railways offers a 10% discount on base fares for unbooked berths under current reservation on select trains.
 - **Where to book?** Online via the IRCTC portal/app or at station PRS counters.
 
 ---
@@ -70,7 +70,7 @@ If you are already at the station, you can also view vacant berths on visual coa
 
 ## What Are the Discount Fares and Cancellation Rules for Current Tickets?
 
-Current reservation tickets are offered at a discounted rate of up to 10% to 50% off base fares for specific trains, encouraging passengers to utilize empty capacity. However, cancellation rules are strict: confirmed current tickets cancelled before departure incur standard cancellation fees.
+Current reservation tickets are offered at a discounted rate of 10% off base fares for specific trains, encouraging passengers to utilize empty capacity. However, cancellation rules are strict: confirmed current tickets cancelled before departure incur standard cancellation fees.
 
 Key financial and cancellation rules include:
 
@@ -96,4 +96,4 @@ Yes, you can cancel a current reservation ticket online up to 30 minutes before 
 
 ### What is the difference between Tatkal and Current Reservation?
 
-Tatkal booking opens 1 day prior to travel at 10:00 AM (AC) or 11:00 AM (Non-AC) with extra premium charges. Current Reservation opens 4 hours before departure post-chart prep, offers confirmed unsold berths, and often includes base fare discounts.
+Tatkal booking opens 1 day prior to travel at 10:00 AM (AC) or 11:00 AM (Non-AC) with extra premium charges. Current Reservation opens roughly 4 to 8 hours before departure post-chart prep, offers confirmed unsold berths, and often includes base fare discounts.

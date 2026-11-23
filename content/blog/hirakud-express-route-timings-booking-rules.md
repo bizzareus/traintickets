@@ -2,7 +2,7 @@
 title: "Hirakud Express (20807/20808): Route, Timings & Rules (2026)"
 description: "Hirakud Express (20807/20808) connects Visakhapatnam to Amritsar across 2,570 km. Check full route timetable, chart times, Tatkal booking, fares & pantry."
 date: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-23"
 tags:
   - train booking
   - irctc
@@ -183,7 +183,7 @@ This rule catches many passengers off guard:
 | **AC 2-Tier (2A)**      | 10:00 AM (1 day prior to origin) | ₹400            | ₹500            | Yes (Dynamic Pricing)    |
 | **AC 3-Tier (3A)**      | 10:00 AM (1 day prior to origin) | ₹300            | ₹400            | Yes (Dynamic Pricing)    |
 | **3-Tier Economy (3E)** | 10:00 AM (1 day prior to origin) | ₹300            | ₹400            | Yes (Dynamic Pricing)    |
-| **Sleeper (SL)**        | 11:00 AM (1 day prior to origin) | ₹100            | ₹175            | Yes (Dynamic Pricing)    |
+| **Sleeper (SL)**        | 11:00 AM (1 day prior to origin) | ₹100            | ₹200            | Yes (Dynamic Pricing)    |
 
 ---
 
@@ -263,7 +263,7 @@ If your booking from Sambalpur to New Delhi shows `RLWL 45` (unlikely to confirm
 
 After the First Reservation Chart is prepared (around 14:20 IST for 20807, or 15:55 IST for 20808), any unallocated emergency quotas, vacant berths, or cancelled tickets are released as **Current Availability (`CURR_AVBL`)**.
 
-These berths carry a **10% discount on the basic fare** and can be booked directly on the IRCTC app or website up to 30 minutes before departure. Check [Chart Vacancy](/chart-vacancy) right after chart preparation to spot available seats.
+These berths carry a **10% discount on the basic fare** and can be booked directly on the IRCTC app or website until 15 minutes before departure (or final second chart preparation). Check [Chart Vacancy](/chart-vacancy) right after chart preparation to spot available seats.
 
 ### 4. Parallel Train Options on Key Corridors
 
@@ -321,11 +321,11 @@ Hirakud Express halts at both major capital terminals. In both directions, the t
 
 ### What happens if my Hirakud Express waitlist e-ticket does not confirm?
 
-If your waitlisted e-ticket does not confirm after final chart preparation, IRCTC automatically cancels it and issues a full refund (minus nominal clerkage of ₹60 plus GST) to your original payment source within 3 to 5 business days. You cannot board reserved coaches with this ticket.
+If your waitlisted e-ticket does not confirm after final chart preparation, IRCTC automatically cancels it and issues a 100% full refund (with zero cancellation or clerkage fee deducted) to your original payment source within 3 to 5 business days. You cannot board reserved coaches with this ticket.
 
 ### Can I get confirmed seats on Hirakud Express after chart preparation?
 
-Yes. Any unallocated berths or last-minute cancellations are released as Current Availability (`CURR_AVBL`) after the first chart is prepared. These berths carry a 10% discount on the base fare and can be booked online via IRCTC or at PRS counters until 30 minutes before departure.
+Yes. Any unallocated berths or last-minute cancellations are released as Current Availability (`CURR_AVBL`) after the first chart is prepared. These berths carry a 10% discount on the base fare and can be booked online via IRCTC or at PRS counters until 15 minutes before departure.
 
 ---
 
