@@ -159,8 +159,9 @@ export class RefundRequestService {
     const paymentAmount = payment?.amount ?? 10;
     const txnVerified = matchedVia === 'txn';
     if (payment && txnVerified && paymentAmount <= 25) {
+      const refundAmount = Math.max(1, Math.round(paymentAmount * 0.5));
       this.logger.log(
-        `Auto-refund eligible for request ${created.id}: amount=₹${paymentAmount} (<= 25, txn-verified). Initiating refund via Muzobox...`,
+        `Auto-refund eligible for request ${created.id}: 50% amount=₹${refundAmount} (original=₹${paymentAmount}, <= 25, txn-verified). Initiating refund via Muzobox...`,
       );
       try {
         let razorpayPaymentId = initialPaymentId;
@@ -172,6 +173,7 @@ export class RefundRequestService {
             created,
             payment,
             razorpayPaymentId,
+            refundAmount,
           );
           razorpayRefundId = refundResult.refundId;
           if (refundResult.razorpayPaymentId && !razorpayPaymentId) {
@@ -186,17 +188,17 @@ export class RefundRequestService {
             status: 'RESOLVED',
             refundId: razorpayRefundId,
             razorpayPaymentId,
-            refundAmount: paymentAmount,
+            refundAmount,
             refundedAt: new Date(),
             refundError: null,
           },
         });
 
-        // Email customer with full refund transaction ID and alert details
+        // Email customer with 50% refund transaction ID and alert details
         void this.sendCustomerRefundEmail({
           entry: created,
           payment,
-          amount: paymentAmount,
+          amount: refundAmount,
           refundId: razorpayRefundId || 'N/A',
           paymentId: razorpayPaymentId || undefined,
         }).catch((err) =>
@@ -209,7 +211,7 @@ export class RefundRequestService {
           id: created.id,
           duplicate: false,
           autoRefunded: true,
-          amount: paymentAmount,
+          amount: refundAmount,
           refundId: razorpayRefundId,
         };
       } catch (autoErr) {
@@ -230,7 +232,9 @@ export class RefundRequestService {
       id: created.id,
       duplicate: false,
       autoRefunded: false,
-      amount: txnVerified ? payment?.amount : undefined,
+      amount: txnVerified
+        ? Math.max(1, Math.round((payment?.amount ?? 10) * 0.5))
+        : undefined,
     };
   }
 
@@ -276,8 +280,10 @@ export class RefundRequestService {
     // Only disclose payment existence/amount when the transaction reference
     // verifies against the email — otherwise this endpoint would be a
     // financial-status oracle for arbitrary people.
+    // Refund policy: we process 50% of the amount.
     const verified = Boolean(payment && matchedVia === 'txn');
-    const amount = verified ? (payment?.amount ?? 0) : 0;
+    const fullAmount = verified ? (payment?.amount ?? 0) : 0;
+    const amount = verified ? Math.max(1, Math.round(fullAmount * 0.5)) : 0;
     const autoRefundEligible = verified && amount <= 25;
 
     return {
@@ -291,12 +297,46 @@ export class RefundRequestService {
     };
   }
 
-  /** Newest-first list for the admin dashboard. */
-  list() {
-    return this.prisma.refundRequest.findMany({
+  /** Newest-first list for the admin dashboard with payment and 50% refund amounts. */
+  async list() {
+    const entries = await this.prisma.refundRequest.findMany({
       orderBy: { createdAt: 'desc' },
       take: 200,
     });
+
+    const txnIds = entries
+      .map((e) => e.txnId?.trim())
+      .filter((id): id is string => Boolean(id));
+
+    const payments = txnIds.length
+      ? await this.prisma.chartAlertPayment.findMany({
+          where: {
+            OR: [
+              { id: { in: txnIds } },
+              { razorpayPaymentId: { in: txnIds } },
+              { muzoboxPaymentId: { in: txnIds } },
+            ],
+          },
+          select: {
+            id: true,
+            razorpayPaymentId: true,
+            muzoboxPaymentId: true,
+            amount: true,
+          },
+        })
+      : [];
+
+    const paymentMap = new Map<string, number>();
+    for (const p of payments) {
+      if (p.id) paymentMap.set(p.id, p.amount);
+      if (p.razorpayPaymentId) paymentMap.set(p.razorpayPaymentId, p.amount);
+      if (p.muzoboxPaymentId) paymentMap.set(p.muzoboxPaymentId, p.amount);
+    }
+
+    return entries.map((entry) => ({
+      ...entry,
+      paymentAmount: entry.txnId ? (paymentMap.get(entry.txnId) ?? null) : null,
+    }));
   }
 
   /**
@@ -347,7 +387,14 @@ export class RefundRequestService {
     let razorpayPaymentId = initialPaymentId;
     let razorpayRefundId =
       payment.razorpayRefundId?.trim() || entry.refundId?.trim() || null;
-    const refundAmount = payment.refundAmount ?? payment.amount ?? 5;
+
+    // Always process 50% of the amount instead of the full amount
+    const originalAmount = payment.amount ?? 10;
+    const targetRefundAmount = Math.max(1, Math.round(originalAmount * 0.5));
+    const refundAmount =
+      payment.refundStatus === 'SUCCEEDED' && payment.refundAmount != null
+        ? payment.refundAmount
+        : targetRefundAmount;
 
     // 2. Initiate refund via Muzobox proxy API if not already refunded
     if (payment.refundStatus === 'SUCCEEDED' && razorpayRefundId) {
@@ -359,6 +406,7 @@ export class RefundRequestService {
         entry,
         payment,
         razorpayPaymentId,
+        refundAmount,
       );
       razorpayRefundId = refundResult.refundId;
       if (refundResult.razorpayPaymentId && !razorpayPaymentId) {
@@ -569,6 +617,7 @@ export class RefundRequestService {
     entry: RefundRequest,
     payment: ChartAlertPayment,
     razorpayPaymentId: string | null,
+    refundAmount: number,
   ): Promise<{ refundId: string; razorpayPaymentId?: string | null }> {
     const proxyPaymentId =
       payment.muzoboxPaymentId?.trim() ||
@@ -586,9 +635,9 @@ export class RefundRequestService {
       const res = await this.muzoboxClient.post<MuzoboxRefundResponse>(
         `proxy-payments/${encodeURIComponent(proxyPaymentId)}/refund`,
         {
-          amount: payment.amount,
+          amount: refundAmount,
           reason:
-            `Manual refund for ${entry.email} - Train ${entry.trainNumber}`.slice(
+            `Manual 50% refund for ${entry.email} - Train ${entry.trainNumber}`.slice(
               0,
               500,
             ),
@@ -618,7 +667,7 @@ export class RefundRequestService {
           razorpayRefundId: refundId,
           ...(foundPaymentId ? { razorpayPaymentId: foundPaymentId } : {}),
           refundAmount:
-            typeof data.amount === 'number' ? data.amount : payment.amount,
+            typeof data.amount === 'number' ? data.amount : refundAmount,
           refundedAt: data.refundedAt ? new Date(data.refundedAt) : new Date(),
           refundResponse: data as unknown as Prisma.InputJsonValue,
           refundError: null,
@@ -626,7 +675,7 @@ export class RefundRequestService {
       });
 
       this.logger.log(
-        `Muzobox refund succeeded for payment=${payment.id} refundId=${refundId}`,
+        `Muzobox refund succeeded for payment=${payment.id} refundId=${refundId} amount=${refundAmount}`,
       );
 
       return { refundId, razorpayPaymentId: foundPaymentId };
@@ -650,7 +699,7 @@ export class RefundRequestService {
           data: {
             refundStatus: 'SUCCEEDED',
             razorpayRefundId: refundId,
-            refundAmount: payment.amount,
+            refundAmount,
             refundedAt: new Date(),
             refundError: null,
           },
@@ -666,12 +715,12 @@ export class RefundRequestService {
           );
           const directRefund = await this.razorpay.createRefund({
             paymentId: razorpayPaymentId,
-            amountPaise: payment.amount * 100,
+            amountPaise: refundAmount * 100,
             notes: {
               refundRequestId: entry.id,
               paymentRef: payment.id,
               reason:
-                `Manual refund for ${entry.email} - Train ${entry.trainNumber}`.slice(
+                `Manual 50% refund for ${entry.email} - Train ${entry.trainNumber}`.slice(
                   0,
                   200,
                 ),
@@ -683,7 +732,7 @@ export class RefundRequestService {
             data: {
               refundStatus: 'SUCCEEDED',
               razorpayRefundId: refundId,
-              refundAmount: payment.amount,
+              refundAmount,
               refundedAt: new Date(),
               refundError: null,
             },

@@ -13,6 +13,7 @@ type RefundEntry = {
   status: "PENDING" | "RESOLVED" | "REJECTED";
   refundId?: string | null;
   razorpayPaymentId?: string | null;
+  paymentAmount?: number | null;
   refundAmount?: number | null;
   refundedAt?: string | null;
   refundError?: string | null;
@@ -88,7 +89,7 @@ export default function AdminRefundsPage() {
   async function handleSetStatus(id: string, status: "RESOLVED" | "REJECTED") {
     const isResolve = status === "RESOLVED";
     const confirmMsg = isResolve
-      ? "Issue refund for this request via Muzobox and email the customer?"
+      ? "Issue 50% refund for this request via Muzobox and email the customer?"
       : "Mark this refund request as rejected?";
     if (!confirm(confirmMsg)) return;
 
@@ -114,7 +115,7 @@ export default function AdminRefundsPage() {
       });
       if (isResolve && data?.refund?.refundId) {
         alert(
-          `Refund processed successfully via Muzobox!\nAmount: ₹${data.refund.amount ?? 5}\nRefund ID: ${data.refund.refundId}\nPayment ID: ${data.refund.razorpayPaymentId || "on record"}\nCustomer email: ${data.refund.emailSent ? "Sent" : "Failed to send"}`,
+          `50% Refund processed successfully via Muzobox!\nAmount: ₹${data.refund.amount ?? 5}\nRefund ID: ${data.refund.refundId}\nPayment ID: ${data.refund.razorpayPaymentId || "on record"}\nCustomer email: ${data.refund.emailSent ? "Sent" : "Failed to send"}`,
         );
       }
       await load();
@@ -153,9 +154,8 @@ export default function AdminRefundsPage() {
             )}
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Manual refund requests submitted via the /refund form. Each
-            submission also emails the monitoring admin. Mark entries resolved
-            once the refund is issued.
+            Manual refund requests submitted via the /refund form. Resolving
+            issues a 50% refund to the customer via Muzobox and emails them.
           </p>
         </div>
         <button
@@ -268,6 +268,9 @@ export default function AdminRefundsPage() {
                     Status
                   </th>
                   <th className="px-6 py-4 font-semibold text-slate-900">
+                    Refund (50%)
+                  </th>
+                  <th className="px-6 py-4 font-semibold text-slate-900">
                     Created
                   </th>
                   <th className="px-6 py-4 font-semibold text-slate-900">
@@ -291,7 +294,10 @@ export default function AdminRefundsPage() {
                       {entry.journeyDate.slice(0, 10)}
                     </td>
                     <td className="max-w-44 px-6 py-4 font-mono text-xs text-slate-600">
-                      <div className="truncate" title={entry.txnId ?? undefined}>
+                      <div
+                        className="truncate"
+                        title={entry.txnId ?? undefined}
+                      >
                         {entry.txnId || (
                           <span className="italic text-slate-400">—</span>
                         )}
@@ -312,6 +318,27 @@ export default function AdminRefundsPage() {
                         {entry.status.toLowerCase()}
                       </span>
                     </td>
+                    <td className="whitespace-nowrap px-6 py-4 text-xs">
+                      {entry.status === "RESOLVED" && entry.refundAmount ? (
+                        <span className="font-semibold text-emerald-700">
+                          ₹{entry.refundAmount} (50%)
+                        </span>
+                      ) : entry.paymentAmount ? (
+                        <span className="text-slate-700">
+                          <strong className="font-semibold text-slate-900">
+                            ₹
+                            {Math.max(1, Math.round(entry.paymentAmount * 0.5))}
+                          </strong>{" "}
+                          <span className="text-slate-400">
+                            (50% of ₹{entry.paymentAmount})
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="italic text-slate-400">
+                          50% of payment
+                        </span>
+                      )}
+                    </td>
                     <td className="whitespace-nowrap px-6 py-4 text-xs text-slate-600">
                       {new Date(entry.createdAt).toLocaleString("en-IN", {
                         timeZone: "Asia/Kolkata",
@@ -327,7 +354,9 @@ export default function AdminRefundsPage() {
                             disabled={actingId === entry.id}
                             className="rounded bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 hover:bg-emerald-100 disabled:opacity-50"
                           >
-                            {actingId === entry.id ? "Resolving…" : "Resolve"}
+                            {actingId === entry.id
+                              ? "Resolving…"
+                              : "Resolve (50%)"}
                           </button>
                           <button
                             onClick={() =>
@@ -343,7 +372,10 @@ export default function AdminRefundsPage() {
                         <div className="flex items-center gap-2">
                           {entry.refundId ? (
                             <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700">
-                              ✓ Refunded {entry.refundAmount ? `(₹${entry.refundAmount})` : ""}
+                              ✓ Refunded{" "}
+                              {entry.refundAmount
+                                ? `(₹${entry.refundAmount})`
+                                : ""}
                             </span>
                           ) : (
                             <button
@@ -351,10 +383,12 @@ export default function AdminRefundsPage() {
                                 handleSetStatus(entry.id, "RESOLVED")
                               }
                               disabled={actingId === entry.id}
-                              title="Initiate refund via Muzobox and email customer"
+                              title="Initiate 50% refund via Muzobox and email customer"
                               className="rounded bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 hover:bg-emerald-100 disabled:opacity-50"
                             >
-                              {actingId === entry.id ? "Processing…" : "Process Refund"}
+                              {actingId === entry.id
+                                ? "Processing…"
+                                : "Process 50% Refund"}
                             </button>
                           )}
                         </div>

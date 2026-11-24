@@ -108,7 +108,7 @@ describe('chart alert confirmation email', () => {
     const html = renderChartAlertConfirmationEmailHtml(params);
 
     expect(html).toContain(
-      '<strong>If you have had any issues, please raise a refund request using <a href="https://lastberth.com/refund?train=11061&amp;date=2026-11-05&amp;email=passenger%40example.com&amp;txn=payment_123" style="color:#2563eb;">https://lastberth.com/refund</a>.</strong>',
+      '<strong>If you have had any issues, please raise a refund request using <a href="https://lastberth.com/refund?train=11061&amp;date=2026-11-05&amp;email=passenger%40example.com&amp;txn=payment_123" style="color:#2563eb;">https://lastberth.com/refund</a> (please note that we will be giving 50% refund only).</strong>',
     );
   });
 

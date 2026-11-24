@@ -363,7 +363,7 @@ export function RefundClient() {
 
                     <div className="rounded-xl border border-amber-200 bg-amber-50/80 p-3.5 text-xs text-amber-900">
                       <p className="font-semibold">
-                        You will be refunded this amount.
+                        You will be refunded 50% of the amount (₹{quoteAmount}).
                       </p>
                       <p className="mt-1 text-amber-800">
                         Payment gateway amount will not be refunded.

@@ -91,7 +91,7 @@ describe('RefundRequestService', () => {
       expect(quote).toEqual({
         ok: true,
         found: true,
-        amount: 25,
+        amount: 13,
         currency: 'INR',
         autoRefundEligible: true,
         trainNumber: '12951',
@@ -191,14 +191,14 @@ describe('RefundRequestService', () => {
         id: 'rr-auto-1',
         duplicate: false,
         autoRefunded: true,
-        amount: 10,
+        amount: 5,
         refundId: 'rfnd_auto_muzobox_1',
       });
 
       // Muzobox refund called
       expect(mockMuzoboxClient.post).toHaveBeenCalledWith(
         'proxy-payments/mb_auto_1/refund',
-        expect.objectContaining({ amount: 10, referenceId: 'cmwd_auto_ref' }),
+        expect.objectContaining({ amount: 5, referenceId: 'cmwd_auto_ref' }),
         expect.anything(),
       );
 
@@ -206,7 +206,7 @@ describe('RefundRequestService', () => {
       expect(notifications.sendManualRefundProcessedEmail).toHaveBeenCalledWith(
         expect.objectContaining({
           email: 'passenger@example.com',
-          amount: 10,
+          amount: 5,
           refundId: 'rfnd_auto_muzobox_1',
         }),
       );
@@ -236,7 +236,7 @@ describe('RefundRequestService', () => {
         id: 'rr-1',
         duplicate: false,
         autoRefunded: false,
-        amount: 50,
+        amount: 25,
       });
       expect(prisma.refundRequest.create).toHaveBeenCalledWith({
         data: {
@@ -416,7 +416,7 @@ describe('RefundRequestService', () => {
 
       const paidPayment = {
         id: 'cmwd7vein002e0test',
-        amount: 5,
+        amount: 10,
         status: 'PAID',
         contactEmail: 'nayakrajatkumar318@gmail.com',
         muzoboxPaymentId: 'mb_pay_888',
@@ -712,6 +712,67 @@ describe('RefundRequestService', () => {
               'Gateway connection timed out',
             ),
           }),
+        }),
+      );
+    });
+
+    it('always processes 50% of the amount instead of the full amount when resolving in admin panel', async () => {
+      const refundEntry = {
+        id: 'rr-50pct',
+        email: 'user@example.com',
+        trainNumber: '12951',
+        journeyDate: new Date('2026-11-15'),
+        txnId: 'pay_full_100',
+        status: 'PENDING',
+      };
+      prisma.refundRequest.findUnique.mockResolvedValue(refundEntry);
+      prisma.chartAlertPayment.findUnique.mockResolvedValue(null);
+      prisma.chartAlertPayment.findFirst.mockResolvedValue({
+        id: 'cuid_full_100',
+        amount: 50, // original full amount is ₹50
+        status: 'PAID',
+        contactEmail: 'user@example.com',
+        muzoboxPaymentId: 'mb_full_100',
+        razorpayPaymentId: 'pay_full_100',
+        refundStatus: 'NONE',
+        journeyPayload: { trainNumber: '12951', journeyDate: '2026-11-15' },
+      });
+
+      mockMuzoboxClient.post.mockResolvedValue({
+        data: {
+          status: 'refunded',
+          amount: 25, // 50% of 50 is 25
+          razorpayRefundId: 'rfnd_50pct_100',
+        },
+      });
+      prisma.chartAlertPayment.update.mockResolvedValue({});
+      prisma.refundRequest.update.mockResolvedValue({});
+
+      const result = await service.setStatus('rr-50pct', 'RESOLVED');
+
+      expect(result.ok).toBe(true);
+      expect(result.refund?.amount).toBe(25);
+      expect(mockMuzoboxClient.post).toHaveBeenCalledWith(
+        'proxy-payments/mb_full_100/refund',
+        expect.objectContaining({
+          amount: 25,
+          referenceId: 'cuid_full_100',
+        }),
+        expect.anything(),
+      );
+      expect(prisma.refundRequest.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: { id: 'rr-50pct' },
+          data: expect.objectContaining({
+            status: 'RESOLVED',
+            refundAmount: 25,
+          }),
+        }),
+      );
+      expect(notifications.sendManualRefundProcessedEmail).toHaveBeenCalledWith(
+        expect.objectContaining({
+          email: 'user@example.com',
+          amount: 25,
         }),
       );
     });

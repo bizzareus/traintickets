@@ -167,7 +167,7 @@ export function renderChartAlertConfirmationEmailHtml(
                   </td>
                 </tr>
               </table>
-              <p style="margin:16px 0 0; font-size:14px; line-height:1.6; color:#0f172a; text-align:center;"><strong>If you have had any issues, please raise a refund request using <a href="${escapeHtml(refundUrl)}" style="color:#2563eb;">https://lastberth.com/refund</a>.</strong></p>
+              <p style="margin:16px 0 0; font-size:14px; line-height:1.6; color:#0f172a; text-align:center;"><strong>If you have had any issues, please raise a refund request using <a href="${escapeHtml(refundUrl)}" style="color:#2563eb;">https://lastberth.com/refund</a> (please note that we will be giving 50% refund only).</strong></p>
               <p style="margin:12px 0 0; font-size:12px; line-height:1.5; color:#64748b; text-align:center;">This is an alert subscription, not a confirmed ticket.<br>Seats are subject to availability at the time of booking.</p>
             </td>
           </tr>
