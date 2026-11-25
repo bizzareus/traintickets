@@ -11,6 +11,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { StationCacheService } from '../cache/station-cache.service';
 import { ShortLinkService } from '../short-link/short-link.service';
 import { ChartTimeService } from '../chart-time/chart-time.service';
+import { TrainCompositionService } from '../train-composition/train-composition.service';
 import { WasenderProvider } from './whatsapp-providers/wasender.provider';
 import { Msg91Provider } from './whatsapp-providers/msg91.provider';
 import { WhatsAppProviderFactory } from './whatsapp-providers/whatsapp.provider-factory';
@@ -30,9 +31,10 @@ import {
   formatSegmentScheduleTimes,
   buildSegmentBookUrl,
   formatSegmentRoute,
-  findScheduleRow,
-  departureTimeAtStation,
-  arrivalTimeAtStation,
+  formatEndpointRoute,
+  formatLegBoardingDestinationTimes,
+  resolveLegScheduleTimes,
+  resolveTrainStartDateStr,
   journeyDateAtStation,
   type JourneyLegCoverage,
   type RefundInfo,
@@ -40,6 +42,8 @@ import {
 import { DateTime } from 'luxon';
 import {
   renderSeatsFoundEmailHtml,
+  renderSeatTicketCardHtml,
+  renderNoTicketLegCardHtml,
   renderFollowUpLegEmailHtml,
   renderNoSeatsEmailHtml,
   renderAlternativeTrainsEmailHtml,
@@ -111,6 +115,8 @@ export class NotificationService {
     private readonly unsubscribeService?: NotificationUnsubscribeService,
     @Optional()
     private readonly prisma?: PrismaService,
+    @Optional()
+    private readonly trainCompositionService?: TrainCompositionService,
   ) {
     this.wasenderKey = this.config.get<string>('WASENDER_API_KEY');
     this.resendKey = this.config.get<string>('RESEND_API_KEY');
@@ -531,6 +537,10 @@ export class NotificationService {
     stationCode: string;
     stationName?: string;
     journeyDateStr: string;
+    trainStartDateStr?: string;
+    legJourneyDateStr?: string;
+    taskChartAt?: Date;
+    taskStationCode?: string;
     result?: Service2CheckResult;
   }): Promise<{
     label?: string;
@@ -539,77 +549,162 @@ export class NotificationService {
     isSecondChart: boolean;
     formattedChartTime?: string;
   }> {
-    const { trainNumber, stationCode, stationName, journeyDateStr, result } =
-      params;
+    const {
+      trainNumber,
+      stationCode,
+      stationName,
+      journeyDateStr,
+      trainStartDateStr,
+      legJourneyDateStr,
+      taskChartAt,
+      taskStationCode,
+      result,
+    } = params;
     const displayName = stationName || stationCode;
+    const stationU = stationCode.trim().toUpperCase();
+    const taskStationU = taskStationCode?.trim().toUpperCase();
+
+    if (taskChartAt && taskStationU && stationU === taskStationU) {
+      const chartAtMs = new Date(taskChartAt).getTime();
+      if (!Number.isNaN(chartAtMs)) {
+        const formattedTime = DateTime.fromMillis(chartAtMs)
+          .setZone('Asia/Kolkata')
+          .toFormat('ccc, LLL d, h:mm a');
+        const isReleased = Date.now() >= chartAtMs;
+        return {
+          label: isReleased
+            ? `Chart released for ${displayName} (${formattedTime})`
+            : `Chart prepares at ${formattedTime}`,
+          isReleased,
+          hasFutureChart: !isReleased,
+          isSecondChart: false,
+          formattedChartTime: formattedTime,
+        };
+      }
+    }
+
+    let meta: {
+      chartOne: { time: string; dayOffset: number | null };
+      chartTwo?: { time: string; dayOffset: number | null };
+    } | null = null;
 
     if (this.chartTimeService) {
       try {
-        const meta = await this.chartTimeService.getChartMetaForTrainStation(
+        meta = await this.chartTimeService.getChartMetaForTrainStation(
           trainNumber,
           stationCode,
         );
-        if (meta) {
-          const chartOneFormatted = meta.chartOne?.time
-            ? formatChartTimeIst(
-                journeyDateStr,
-                meta.chartOne.time,
-                meta.chartOne.dayOffset ?? 0,
-              )
-            : null;
+      } catch {
+        // ignore & fallback
+      }
+    }
 
-          const chartTwoFormatted = meta.chartTwo?.time
-            ? formatChartTimeIst(
-                journeyDateStr,
-                meta.chartTwo.time,
-                meta.chartTwo.dayOffset ?? 0,
-              )
-            : null;
-
-          if (chartOneFormatted?.isReleased) {
-            if (chartTwoFormatted && !chartTwoFormatted.isReleased) {
-              return {
-                label: `New Chart prepares: ${chartTwoFormatted.formattedTime}`,
-                isReleased: true,
-                hasFutureChart: true,
-                isSecondChart: true,
-                formattedChartTime: chartTwoFormatted.formattedTime,
-              };
-            }
-            return {
-              label: `Chart for ${displayName} was released at ${chartOneFormatted.formattedTime}`,
-              isReleased: true,
-              hasFutureChart: false,
-              isSecondChart: false,
-              formattedChartTime: chartOneFormatted.formattedTime,
-            };
-          }
-
-          if (chartOneFormatted && !chartOneFormatted.isReleased) {
-            return {
-              label: `Chart prepares at ${chartOneFormatted.formattedTime}`,
-              isReleased: false,
-              hasFutureChart: true,
-              isSecondChart: false,
-              formattedChartTime: chartOneFormatted.formattedTime,
-            };
-          }
+    if (
+      (!meta || meta.chartOne.dayOffset == null) &&
+      this.trainCompositionService
+    ) {
+      try {
+        const liveMeta =
+          await this.trainCompositionService.fetchSourceStationChartMeta({
+            trainNumber,
+            sourceStation: stationU,
+            journeyDate: legJourneyDateStr ?? journeyDateStr,
+          });
+        if (liveMeta?.chartOneTime?.trim()) {
+          meta = {
+            chartOne: {
+              time: liveMeta.chartOneTime.trim(),
+              dayOffset: liveMeta.chartOneDayOffset ?? null,
+            },
+            ...(liveMeta.chartTwoTime?.trim()
+              ? {
+                  chartTwo: {
+                    time: liveMeta.chartTwoTime.trim(),
+                    dayOffset: liveMeta.chartTwoDayOffset ?? null,
+                  },
+                }
+              : {}),
+          };
         }
       } catch {
         // ignore & fallback
       }
     }
 
-    if (result?.chartPreparationDetails?.firstChartCreationTime) {
+    if (meta) {
+      const chartOneAnchor =
+        meta.chartOne.dayOffset != null
+          ? (trainStartDateStr ?? journeyDateStr)
+          : (legJourneyDateStr ?? journeyDateStr);
+      const chartOneFormatted = meta.chartOne?.time
+        ? formatChartTimeIst(
+            chartOneAnchor,
+            meta.chartOne.time,
+            meta.chartOne.dayOffset ?? 0,
+          )
+        : null;
+
+      const chartTwoAnchor =
+        meta.chartTwo?.dayOffset != null
+          ? (trainStartDateStr ?? journeyDateStr)
+          : (legJourneyDateStr ?? journeyDateStr);
+      const chartTwoFormatted = meta.chartTwo?.time
+        ? formatChartTimeIst(
+            chartTwoAnchor,
+            meta.chartTwo.time,
+            meta.chartTwo.dayOffset ?? 0,
+          )
+        : null;
+
+      if (chartOneFormatted?.isReleased) {
+        if (chartTwoFormatted && !chartTwoFormatted.isReleased) {
+          return {
+            label: `Chart released for ${displayName} (${chartOneFormatted.formattedTime}) · Next chart prepares at ${chartTwoFormatted.formattedTime}`,
+            isReleased: true,
+            hasFutureChart: true,
+            isSecondChart: true,
+            formattedChartTime: chartTwoFormatted.formattedTime,
+          };
+        }
+        const releasedTime = chartTwoFormatted?.isReleased
+          ? chartTwoFormatted.formattedTime
+          : chartOneFormatted.formattedTime;
+        return {
+          label: `Chart released for ${displayName} (${releasedTime})`,
+          isReleased: true,
+          hasFutureChart: false,
+          isSecondChart: false,
+          formattedChartTime: releasedTime,
+        };
+      }
+
+      if (chartOneFormatted && !chartOneFormatted.isReleased) {
+        return {
+          label: `Chart prepares at ${chartOneFormatted.formattedTime}`,
+          isReleased: false,
+          hasFutureChart: true,
+          isSecondChart: false,
+          formattedChartTime: chartOneFormatted.formattedTime,
+        };
+      }
+    }
+
+    const chartingU = result?.chartPreparationDetails?.chartingStationCode
+      ?.trim()
+      .toUpperCase();
+    if (
+      result?.chartPreparationDetails?.firstChartCreationTime &&
+      (!chartingU || chartingU === stationU)
+    ) {
       const formatted = formatChartTimeIst(
-        journeyDateStr,
+        legJourneyDateStr ?? journeyDateStr,
         result.chartPreparationDetails.firstChartCreationTime,
         0,
       );
       if (formatted) {
         return {
           label: formatted.isReleased
-            ? `Chart for ${displayName} was released at ${formatted.formattedTime}`
+            ? `Chart released for ${displayName} (${formatted.formattedTime})`
             : `Chart prepares at ${formatted.formattedTime}`,
           isReleased: formatted.isReleased,
           hasFutureChart: !formatted.isReleased,
@@ -1001,6 +1096,7 @@ export class NotificationService {
       chartNumber?: number | null;
       trainStartDate?: Date | null;
       journeyRequestId?: string | null;
+      stationCode?: string;
     };
     result: Service2CheckResult;
     alternativeTrains?: BestTrainCandidateResult[];
@@ -1054,6 +1150,12 @@ export class NotificationService {
         task.journeyDate instanceof Date
           ? task.journeyDate.toISOString().slice(0, 10)
           : String(task.journeyDate).slice(0, 10);
+      const trainStartDateStr = resolveTrainStartDateStr({
+        journeyDateStr,
+        trainStartDate: task.trainStartDate,
+        fromStationCode: task.fromStationCode,
+        stationScheduleList,
+      });
 
       const coverage = extractJourneyLegCoverage({
         fromStationCode: task.fromStationCode,
@@ -1235,6 +1337,16 @@ export class NotificationService {
                         stationCode: item.fromCode,
                         stationName: item.fromName,
                         journeyDateStr,
+                        trainStartDateStr,
+                        legJourneyDateStr: journeyDateAtStation(
+                          journeyDateStr,
+                          task.fromStationCode,
+                          item.fromCode,
+                          stationScheduleList,
+                        ),
+                        taskChartAt: task.chartAt,
+                        taskStationCode:
+                          task.stationCode || task.fromStationCode,
                         result,
                       }),
                     createAlertShortLinkFn: (p) =>
@@ -1413,7 +1525,43 @@ export class NotificationService {
             });
           } else if (hasTickets) {
             const baseUrl = process.env.FRONTEND_URL || 'https://lastberth.com';
+            const taskStationCode = task.stationCode || task.fromStationCode;
             const cardRowPromises = coverage.map(async (item) => {
+              const fromCode = item.fromCode.trim().toUpperCase();
+              const toCode = item.toCode.trim().toUpperCase();
+              const fromName = stationNameMap.get(fromCode) ?? item.fromCode;
+              const fallbackTimes =
+                item.type === 'ticket'
+                  ? { depTime: item.departureTime, arrTime: item.arrivalTime }
+                  : undefined;
+              const { depTime, arrTime } = resolveLegScheduleTimes(
+                stationScheduleList,
+                fromCode,
+                toCode,
+                fallbackTimes,
+              );
+              const timesLine = formatLegBoardingDestinationTimes(
+                depTime,
+                arrTime,
+              );
+              const legJourneyDate = journeyDateAtStation(
+                journeyDateStr,
+                task.fromStationCode,
+                fromCode,
+                stationScheduleList,
+              );
+              const chartOpenInfo = await this.getStationChartOpenTimeLabel({
+                trainNumber: task.trainNumber,
+                stationCode: fromCode,
+                stationName: fromName,
+                journeyDateStr,
+                trainStartDateStr,
+                legJourneyDateStr: legJourneyDate,
+                taskChartAt: task.chartAt,
+                taskStationCode,
+                result,
+              });
+
               if (item.type === 'ticket') {
                 const segUrl = buildSegmentBookUrl(
                   task.trainNumber,
@@ -1423,6 +1571,7 @@ export class NotificationService {
                   item.instruction,
                   stationNameMap,
                   stationScheduleList,
+                  fallbackTimes,
                 );
                 const classTag = (
                   item.instruction.split(' - ')[2] ?? '3A'
@@ -1432,98 +1581,60 @@ export class NotificationService {
                     ? `₹${Number(item.approxPrice).toLocaleString('en-IN')}`
                     : '';
                 const availStr = item.availability?.trim() || '';
-                return `
-    <tr><td style="padding:0 0 12px 0;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-radius:12px; border:1px solid #86efac; background:#e6ffe6; box-shadow:0 1px 3px rgba(0,0,0,0.06); overflow:hidden;">
-        <tr>
-          <td style="padding:16px 20px;">
-            <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">Ticket ${item.ticketIndex}
-              <span style="display:inline-block; margin-left:8px; padding:3px 10px; border-radius:8px; background:#22c55e; color:#fff; font-size:12px; font-weight:600;">${classTag}</span>
-            </p>
-            <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segmentRoute)}</p>
-            ${availStr ? `<p style="margin:10px 0 0 0; font-size:13px; font-weight:600; color:#15803d;">${escapeHtml(availStr)}</p>` : ''}
-            ${priceStr ? `<p style="margin:${availStr ? '4px' : '10px'} 0 0 0; font-size:15px; font-weight:600; color:#0f172a;"><span style="font-size:12px; font-weight:400; color:#64748b;">approx</span> ${priceStr}</p>` : ''}
-            <a href="${segUrl}" style="display:inline-block; margin-top:16px; padding:12px 24px; border-radius:12px; background:#22c55e; color:#fff; font-size:15px; font-weight:600; text-decoration:none;">Book</a>
-          </td>
-        </tr>
-      </table>
-    </td></tr>`;
-              } else {
-                const fromName =
-                  stationNameMap.get(item.fromCode.trim().toUpperCase()) ??
-                  item.fromCode;
-                const toName =
-                  stationNameMap.get(item.toCode.trim().toUpperCase()) ??
-                  item.toCode;
-                const fromRow = findScheduleRow(
-                  stationScheduleList,
-                  item.fromCode,
-                );
-                const toRow = findScheduleRow(stationScheduleList, item.toCode);
-                const depTime = departureTimeAtStation(fromRow);
-                const arrTime = arrivalTimeAtStation(toRow);
-                const fromDisplay = depTime
-                  ? `${item.fromCode} - ${fromName} (${depTime})`
-                  : `${item.fromCode} - ${fromName}`;
-                const toDisplay = arrTime
-                  ? `${item.toCode} - ${toName} (${arrTime})`
-                  : `${item.toCode} - ${toName}`;
-                const segDisplay = `${fromDisplay} → ${toDisplay}`;
-                const legJourneyDate = journeyDateAtStation(
-                  journeyDateStr,
-                  task.fromStationCode,
-                  item.fromCode,
-                  stationScheduleList,
-                );
-
-                const chartOpenInfo = await this.getStationChartOpenTimeLabel({
-                  trainNumber: task.trainNumber,
-                  stationCode: item.fromCode,
-                  stationName: fromName,
-                  journeyDateStr,
-                  result,
+                return renderSeatTicketCardHtml({
+                  ticketIndex: item.ticketIndex,
+                  classTag,
+                  segmentRoute,
+                  timesLine: timesLine || undefined,
+                  chartStatusLabel: chartOpenInfo.isReleased
+                    ? chartOpenInfo.label
+                    : undefined,
+                  availStr,
+                  priceStr,
+                  bookUrl: segUrl,
                 });
-
-                let actionButtonHtml = '';
-                if (chartOpenInfo.isReleased) {
-                  const alternateClassUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(legJourneyDate)}&trainNo=${encodeURIComponent(task.trainNumber)}`;
-                  actionButtonHtml = `<a href="${alternateClassUrl}" style="display:inline-block; padding:10px 20px; border-radius:8px; background:#2563eb; color:#fff; font-size:13px; font-weight:600; text-decoration:none;">Check Alternate Class Tickets</a>`;
-                } else {
-                  let alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(legJourneyDate)}`;
-                  if (this.shortLinkService) {
-                    try {
-                      alertUrl =
-                        await this.shortLinkService.createAlertShortLink({
-                          trainNumber: task.trainNumber,
-                          trainName: result?.trainSchedule?.trainName,
-                          fromStationCode: item.fromCode,
-                          toStationCode: item.toCode,
-                          journeyDate: legJourneyDate,
-                          classCode: firstPlannedClassCode(result),
-                          email: email || undefined,
-                          mobile: mobile || undefined,
-                        });
-                    } catch {
-                      // fallback
-                    }
-                  }
-                  actionButtonHtml = `<a href="${alertUrl}" style="display:inline-block; padding:10px 20px; border-radius:8px; background:#f59e0b; color:#fff; font-size:13px; font-weight:600; text-decoration:none;">Get Ticket Alert</a>`;
-                }
-
-                return `
-    <tr><td style="padding:0 0 12px 0;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-radius:12px; border:1px solid #fde68a; background:#fffbeb; box-shadow:0 1px 3px rgba(0,0,0,0.06); overflow:hidden;">
-        <tr>
-          <td style="padding:16px 20px;">
-            <p style="margin:0 0 8px 0; font-size:14px; font-weight:600; color:#b45309;">No tickets available | Buy ticket from TTE in train</p>
-            <p style="margin:0 0 8px 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segDisplay)}</p>
-            ${chartOpenInfo.label ? `<p style="margin:0 0 12px 0; font-size:13px; font-weight:600; color:#4338ca;">${escapeHtml(chartOpenInfo.label)}</p>` : ''}
-            ${actionButtonHtml}
-          </td>
-        </tr>
-      </table>
-    </td></tr>`;
               }
+
+              const segDisplay = formatEndpointRoute(
+                item.fromCode,
+                item.toCode,
+                stationNameMap,
+                stationScheduleList,
+              );
+              let actionButtonHtml = '';
+              if (chartOpenInfo.isReleased) {
+                const alternateClassUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(legJourneyDate)}&trainNo=${encodeURIComponent(task.trainNumber)}`;
+                actionButtonHtml = `<a href="${alternateClassUrl}" style="display:inline-block; padding:10px 20px; border-radius:8px; background:#2563eb; color:#fff; font-size:13px; font-weight:600; text-decoration:none;">Check Alternate Class Tickets</a>`;
+              } else {
+                let alertUrl = `${baseUrl}/search?from=${encodeURIComponent(item.fromCode)}&to=${encodeURIComponent(item.toCode)}&date=${encodeURIComponent(legJourneyDate)}`;
+                if (this.shortLinkService) {
+                  try {
+                    alertUrl = await this.shortLinkService.createAlertShortLink(
+                      {
+                        trainNumber: task.trainNumber,
+                        trainName: result?.trainSchedule?.trainName,
+                        fromStationCode: item.fromCode,
+                        toStationCode: item.toCode,
+                        journeyDate: legJourneyDate,
+                        classCode: firstPlannedClassCode(result),
+                        email: email || undefined,
+                        mobile: mobile || undefined,
+                      },
+                    );
+                  } catch {
+                    // fallback
+                  }
+                }
+                actionButtonHtml = `<a href="${alertUrl}" style="display:inline-block; padding:10px 20px; border-radius:8px; background:#f59e0b; color:#fff; font-size:13px; font-weight:600; text-decoration:none;">Get Ticket Alert</a>`;
+              }
+
+              return renderNoTicketLegCardHtml({
+                segmentDisplay: segDisplay,
+                timesLine: timesLine || undefined,
+                chartLabel: chartOpenInfo.label,
+                chartReleased: chartOpenInfo.isReleased,
+                actionButtonHtml,
+              });
             });
 
             const cardRows = (await Promise.all(cardRowPromises)).join('');

@@ -832,6 +832,214 @@ describe('NotificationService', () => {
     );
   });
 
+  it('includes boarding/destination times and chart released status per split-ticket section in email', async () => {
+    const chartTimeService = {
+      getChartMetaForTrainStation: jest
+        .fn()
+        .mockImplementation((_trainNo: string, stationCode: string) => {
+          if (stationCode === 'MTJ') {
+            return Promise.resolve({
+              chartOne: { time: '17:35', dayOffset: 0 },
+              chartTwo: { time: '23:55', dayOffset: 999 }, // far-future 2nd chart
+            });
+          }
+          return Promise.resolve(null);
+        }),
+    };
+    const trainCompositionService = {
+      fetchSourceStationChartMeta: jest.fn().mockResolvedValue(null),
+    };
+    const svc = new NotificationService(
+      mockConfig(),
+      mockStationCache(),
+      chartTimeService as never,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      trainCompositionService as never,
+    );
+    const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+    jest.spyOn(svc, 'sendWhatsApp').mockResolvedValue(false);
+
+    const splitResult: Service2CheckResult = {
+      status: 'success',
+      vacantBerth: { vbd: [], error: null },
+      bookingPlan: [
+        {
+          instruction: 'FBD - MTJ - 3A',
+          approx_price: 565,
+          availability: 'AVL 7',
+          departureTime: '17:45',
+          arrivalTime: '21:30',
+        },
+        {},
+      ],
+      totalPrice: 565,
+      trainSchedule: {
+        trainNumber: '22443',
+        trainName: 'Cnb Bdts Exp',
+        stationFrom: 'CNB',
+        stationTo: 'BDTS',
+        stationList: [
+          {
+            stationCode: 'FBD',
+            stationName: 'Farrukhabad',
+            departureTime: '17:45',
+            dayCount: 1,
+          },
+          {
+            stationCode: 'MTJ',
+            stationName: 'Mathura Jn',
+            arrivalTime: '21:30',
+            departureTime: '21:40',
+            dayCount: 1,
+          },
+          {
+            stationCode: 'BRC',
+            stationName: 'Vadodara Jn',
+            arrivalTime: '08:30',
+            dayCount: 2,
+          },
+        ],
+      },
+    };
+
+    const out = await svc.notifyUser({
+      email: 'user@example.com',
+      task: {
+        trainNumber: '22443',
+        trainName: 'Cnb Bdts Exp',
+        fromStationCode: 'FBD',
+        stationCode: 'FBD',
+        toStationCode: 'BRC',
+        journeyDate: new Date('2026-11-25T00:00:00.000Z'),
+        trainStartDate: new Date('2026-11-25T00:00:00.000Z'),
+        chartAt: new Date('2026-11-25T12:05:00.000Z'), // 5:35 PM IST (released)
+      },
+      result: splitResult,
+    });
+
+    expect(out.emailSent).toBe(true);
+    expect(sendEmail).toHaveBeenCalledTimes(1);
+    const [, , html] = sendEmail.mock.calls[0];
+
+    // Ticket 1 boarding + destination time + chart released for Farrukhabad
+    expect(html).toContain(
+      'FBD - Farrukhabad (17:45) → MTJ - Mathura Jn (21:30)',
+    );
+    expect(html).toContain('Boarding: 5:45 PM · Destination: 9:30 PM');
+    expect(html).toContain('Chart released for Farrukhabad');
+
+    // Leg 2 (no ticket) boarding + destination time + chart released for Mathura Jn
+    expect(html).toContain(
+      'MTJ - Mathura Jn (21:40) → BRC - Vadodara Jn (08:30)',
+    );
+    expect(html).toContain('Boarding: 9:40 PM · Destination: 8:30 AM');
+    expect(html).toContain('Chart released for Mathura Jn');
+  });
+
+  it('uses trainCompositionService fallback when chartTimeService has no entry for split station', async () => {
+    const chartTimeService = {
+      getChartMetaForTrainStation: jest.fn().mockResolvedValue(null),
+    };
+    const trainCompositionService = {
+      fetchSourceStationChartMeta: jest
+        .fn()
+        .mockImplementation(({ sourceStation }: { sourceStation: string }) => {
+          if (sourceStation === 'AGC') {
+            return Promise.resolve({
+              stationCode: 'AGC',
+              chartOneTime: '18:00',
+              chartOneDayOffset: 0,
+            });
+          }
+          return Promise.resolve(null);
+        }),
+    };
+    const svc = new NotificationService(
+      mockConfig(),
+      mockStationCache(),
+      chartTimeService as never,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      trainCompositionService as never,
+    );
+    const sendEmail = jest.spyOn(svc, 'sendEmail').mockResolvedValue(true);
+
+    await svc.notifyUser({
+      email: 'user@example.com',
+      task: {
+        trainNumber: '12951',
+        trainName: 'Rajdhani Exp',
+        fromStationCode: 'NDLS',
+        stationCode: 'NDLS',
+        toStationCode: 'BPL',
+        journeyDate: new Date('2026-10-01T00:00:00.000Z'),
+        trainStartDate: new Date('2026-10-01T00:00:00.000Z'),
+        chartAt: new Date('2026-10-01T10:30:00.000Z'),
+      },
+      result: {
+        status: 'success',
+        vacantBerth: { vbd: [], error: null },
+        bookingPlan: [
+          {
+            instruction: 'NDLS - AGC - 3A',
+            approx_price: 600,
+            availability: 'AVL 4',
+          },
+          {
+            instruction: 'AGC - BPL - 3A',
+            approx_price: 900,
+            availability: 'AVL 2',
+          },
+        ],
+        trainSchedule: {
+          trainNumber: '12951',
+          trainName: 'Rajdhani Exp',
+          stationFrom: 'NDLS',
+          stationTo: 'BPL',
+          stationList: [
+            {
+              stationCode: 'NDLS',
+              stationName: 'New Delhi',
+              departureTime: '16:55',
+            },
+            {
+              stationCode: 'AGC',
+              stationName: 'Agra Cantt',
+              arrivalTime: '19:00',
+              departureTime: '19:05',
+            },
+            {
+              stationCode: 'BPL',
+              stationName: 'Bhopal Jn',
+              arrivalTime: '01:15',
+            },
+          ],
+        },
+      },
+    });
+
+    const [, , html] = sendEmail.mock.calls[0];
+    expect(
+      trainCompositionService.fetchSourceStationChartMeta,
+    ).toHaveBeenCalledWith(
+      expect.objectContaining({
+        trainNumber: '12951',
+        sourceStation: 'AGC',
+      }),
+    );
+    expect(html).toContain('Boarding: 4:55 PM · Destination: 7:00 PM');
+    expect(html).toContain('Boarding: 7:05 PM · Destination: 1:15 AM');
+    expect(html).toContain('Chart released for New Delhi');
+    expect(html).toContain('Chart released for Agra Cantt');
+  });
+
   it('suppresses duplicate notifications when NotificationDeduplicationService returns false', async () => {
     const shouldSendNotificationMock = jest.fn().mockResolvedValue(false);
     const recordNotificationSentMock = jest.fn().mockResolvedValue(undefined);

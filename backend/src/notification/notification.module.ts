@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { NotificationService } from './notification.service';
 import { ChartTimeModule } from '../chart-time/chart-time.module';
 import { ShortLinkModule } from '../short-link/short-link.module';
+import { TrainCompositionModule } from '../train-composition/train-composition.module';
 import { WasenderProvider } from './whatsapp-providers/wasender.provider';
 import { Msg91Provider } from './whatsapp-providers/msg91.provider';
 import { WhatsAppProviderFactory } from './whatsapp-providers/whatsapp.provider-factory';
@@ -11,7 +12,7 @@ import { NotificationUnsubscribeService } from './notification-unsubscribe.servi
 import { NotificationUnsubscribeController } from './notification-unsubscribe.controller';
 
 @Module({
-  imports: [ChartTimeModule, ShortLinkModule],
+  imports: [ChartTimeModule, ShortLinkModule, TrainCompositionModule],
   controllers: [NotificationUnsubscribeController],
   providers: [
     WasenderProvider,

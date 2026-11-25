@@ -21,7 +21,13 @@ export type StructuredSeat = {
 
 /** One route leg slot: either a bookable segment or an empty object when no ticket. */
 export type BookingPlanItem =
-  | { instruction: string; approx_price: number; availability?: string }
+  | {
+      instruction: string;
+      approx_price: number;
+      availability?: string;
+      departureTime?: string | null;
+      arrivalTime?: string | null;
+    }
   | Record<string, never>;
 
 export function isFilledPlanItem(
@@ -30,6 +36,8 @@ export function isFilledPlanItem(
   instruction: string;
   approx_price: number;
   availability?: string;
+  departureTime?: string | null;
+  arrivalTime?: string | null;
 } {
   if (item == null || typeof item !== 'object') return false;
   if (Object.keys(item).length === 0) return false;

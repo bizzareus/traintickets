@@ -18,6 +18,78 @@ import {
   type RefundInfo,
 } from '../notification.helpers';
 
+export function renderSeatTicketCardHtml(params: {
+  ticketIndex: number;
+  classTag: string;
+  segmentRoute: string;
+  timesLine?: string;
+  chartStatusLabel?: string;
+  availStr?: string;
+  priceStr?: string;
+  bookUrl: string;
+}): string {
+  const {
+    ticketIndex,
+    classTag,
+    segmentRoute,
+    timesLine,
+    chartStatusLabel,
+    availStr,
+    priceStr,
+    bookUrl,
+  } = params;
+
+  return `
+    <tr><td style="padding:0 0 12px 0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-radius:12px; border:1px solid #86efac; background:#e6ffe6; box-shadow:0 1px 3px rgba(0,0,0,0.06); overflow:hidden;">
+        <tr>
+          <td style="padding:16px 20px;">
+            <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">Ticket ${ticketIndex}
+              <span style="display:inline-block; margin-left:8px; padding:3px 10px; border-radius:8px; background:#22c55e; color:#fff; font-size:12px; font-weight:600;">${escapeHtml(classTag)}</span>
+            </p>
+            <p style="margin:0 0 ${timesLine || chartStatusLabel ? '6px' : '10px'} 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segmentRoute)}</p>
+            ${timesLine ? `<p style="margin:0 0 ${chartStatusLabel ? '6px' : '10px'} 0; font-size:12px; font-weight:500; color:#475569;">${escapeHtml(timesLine)}</p>` : ''}
+            ${chartStatusLabel ? `<p style="margin:0 0 8px 0; font-size:12px; font-weight:600; color:#15803d;">${escapeHtml(chartStatusLabel)}</p>` : ''}
+            ${availStr ? `<p style="margin:10px 0 0 0; font-size:13px; font-weight:600; color:#15803d;">${escapeHtml(availStr)}</p>` : ''}
+            ${priceStr ? `<p style="margin:${availStr ? '4px' : '10px'} 0 0 0; font-size:15px; font-weight:600; color:#0f172a;"><span style="font-size:12px; font-weight:400; color:#64748b;">approx</span> ${priceStr}</p>` : ''}
+            <a href="${bookUrl}" style="display:inline-block; margin-top:16px; padding:12px 24px; border-radius:12px; background:#22c55e; color:#fff; font-size:15px; font-weight:600; text-decoration:none;">Book</a>
+          </td>
+        </tr>
+      </table>
+    </td></tr>`;
+}
+
+export function renderNoTicketLegCardHtml(params: {
+  segmentDisplay: string;
+  timesLine?: string;
+  chartLabel?: string;
+  chartReleased?: boolean;
+  actionButtonHtml: string;
+}): string {
+  const {
+    segmentDisplay,
+    timesLine,
+    chartLabel,
+    chartReleased,
+    actionButtonHtml,
+  } = params;
+
+  return `
+    <tr><td style="padding:0 0 12px 0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-radius:12px; border:1px solid #fde68a; background:#fffbeb; box-shadow:0 1px 3px rgba(0,0,0,0.06); overflow:hidden;">
+        <tr>
+          <td style="padding:16px 20px;">
+            <p style="margin:0 0 8px 0; font-size:14px; font-weight:600; color:#b45309;">No tickets available | Buy ticket from TTE in train</p>
+            <p style="margin:0 0 ${timesLine ? '6px' : '8px'} 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segmentDisplay)}</p>
+            ${timesLine ? `<p style="margin:0 0 8px 0; font-size:12px; font-weight:500; color:#475569;">${escapeHtml(timesLine)}</p>` : ''}
+            ${chartLabel ? `<p style="margin:0 0 12px 0; font-size:13px; font-weight:600; color:${chartReleased ? '#b91c1c' : '#4338ca'};">${escapeHtml(chartLabel)}</p>` : ''}
+            ${actionButtonHtml}
+          </td>
+        </tr>
+      </table>
+    </td></tr>`;
+}
+
 export interface EmailCardRowParams {
   cardRowsHtml: string;
   totalPrice?: number;
@@ -114,6 +186,8 @@ export function renderFollowUpLegEmailHtml(params: {
     instruction: string;
     approx_price?: number;
     availability?: string;
+    departureTime?: string | null;
+    arrivalTime?: string | null;
   }>;
   stationNameMap: Map<string, string>;
   stationScheduleList?: ScheduleStation[];
@@ -140,6 +214,7 @@ export function renderFollowUpLegEmailHtml(params: {
         item.instruction,
         stationNameMap,
         stationScheduleList,
+        { depTime: item.departureTime, arrTime: item.arrivalTime },
       );
       const classTag = (
         (item.instruction || '').split(' - ')[2] ?? '3A'
@@ -150,22 +225,14 @@ export function renderFollowUpLegEmailHtml(params: {
           : '';
       const availStr = item.availability?.trim() || '';
 
-      return `
-    <tr><td style="padding:0 0 12px 0;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-radius:12px; border:1px solid #86efac; background:#e6ffe6; box-shadow:0 1px 3px rgba(0,0,0,0.06); overflow:hidden;">
-        <tr>
-          <td style="padding:16px 20px;">
-            <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">Ticket ${idx + 1}
-              <span style="display:inline-block; margin-left:8px; padding:3px 10px; border-radius:8px; background:#22c55e; color:#fff; font-size:12px; font-weight:600;">${classTag}</span>
-            </p>
-            <p style="margin:0 0 10px 0; font-size:14px; font-weight:500; color:#1e293b;">${escapeHtml(segmentRoute)}</p>
-            ${availStr ? `<p style="margin:10px 0 0 0; font-size:13px; font-weight:600; color:#15803d;">${escapeHtml(availStr)}</p>` : ''}
-            ${priceStr ? `<p style="margin:${availStr ? '4px' : '10px'} 0 0 0; font-size:15px; font-weight:600; color:#0f172a;"><span style="font-size:12px; font-weight:400; color:#64748b;">approx</span> ${priceStr}</p>` : ''}
-            <a href="${segUrl}" style="display:inline-block; margin-top:16px; padding:12px 24px; border-radius:12px; background:#22c55e; color:#fff; font-size:15px; font-weight:600; text-decoration:none;">Book</a>
-          </td>
-        </tr>
-      </table>
-    </td></tr>`;
+      return renderSeatTicketCardHtml({
+        ticketIndex: idx + 1,
+        classTag,
+        segmentRoute,
+        availStr,
+        priceStr,
+        bookUrl: segUrl,
+      });
     })
     .join('');
 

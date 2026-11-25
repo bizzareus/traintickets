@@ -479,6 +479,87 @@ describe('JourneyTaskService', () => {
       expect(mockNotification.notifyUser).toHaveBeenCalled();
     });
 
+    it('attaches trainSchedule fallback and leg departure/arrival times to notifyUser result for split tickets', async () => {
+      mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
+        ...mockTaskData,
+        fromStationCode: 'FBD',
+        toStationCode: 'BRC',
+        stationCode: 'FBD',
+      });
+
+      mockBookingV2.findAlternatePaths.mockResolvedValueOnce({
+        trainNumber: '22443',
+        stationCodesOnRoute: ['FBD', 'MTJ', 'BRC'],
+        stationNameMap: {
+          FBD: 'Farrukhabad',
+          MTJ: 'Mathura Jn',
+          BRC: 'Vadodara Jn',
+        },
+        legs: [
+          {
+            segmentKind: 'confirmed',
+            travelClass: '3A',
+            from: 'FBD',
+            to: 'MTJ',
+            fare: 565,
+            departureTime: '17:45',
+            arrivalTime: '21:30',
+            dayOffset: 0,
+          },
+          {
+            segmentKind: 'check_realtime',
+            travelClass: null,
+            from: 'MTJ',
+            to: 'BRC',
+            departureTime: '21:40',
+            arrivalTime: '08:30',
+            dayOffset: 0,
+          },
+        ],
+      });
+
+      mockPrisma.journeyMonitorContact.findUnique.mockResolvedValue({
+        email: 'test@example.com',
+        mobile: '9999999999',
+      });
+
+      await service.runTask('task-1', true);
+
+      expect(mockNotification.notifyUser).toHaveBeenCalledWith(
+        expect.objectContaining({
+          result: expect.objectContaining({
+            bookingPlan: expect.arrayContaining([
+              expect.objectContaining({
+                instruction: 'FBD - MTJ - 3A',
+                departureTime: '17:45',
+                arrivalTime: '21:30',
+              }),
+            ]),
+            trainSchedule: expect.objectContaining({
+              stationList: expect.arrayContaining([
+                expect.objectContaining({
+                  stationCode: 'FBD',
+                  stationName: 'Farrukhabad',
+                  departureTime: '17:45',
+                }),
+                expect.objectContaining({
+                  stationCode: 'MTJ',
+                  stationName: 'Mathura Jn',
+                  arrivalTime: '21:30',
+                  departureTime: '21:40',
+                }),
+                expect.objectContaining({
+                  stationCode: 'BRC',
+                  stationName: 'Vadodara Jn',
+                  arrivalTime: '08:30',
+                }),
+              ]),
+            }),
+          }),
+        }),
+      );
+    });
+
     it('lets event-scoped deduplication decide instead of suppressing every later chart for the train', async () => {
       mockPrisma.chartTimeAvailabilityTask.findUnique.mockResolvedValue({
         ...mockTaskData,

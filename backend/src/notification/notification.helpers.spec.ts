@@ -2,11 +2,13 @@ import type { ScheduleStation } from '../irctc/irctc.service';
 import {
   departureTimeAtStation,
   formatJourneyDateReadable,
+  formatLegBoardingDestinationTimes,
   formatSegmentScheduleTimes,
   hasBookablePlanForNotification,
   normalizeIrctcTimeDisplay,
   arrivalTimeAtStation,
   journeyDateAtStation,
+  resolveTrainStartDateStr,
 } from './notification.helpers';
 
 describe('notification.helpers', () => {
@@ -127,6 +129,35 @@ describe('notification.helpers', () => {
         arrivalTime: '',
       };
       expect(arrivalTimeAtStation(row)).toBe('11:00');
+    });
+  });
+
+  describe('formatLegBoardingDestinationTimes', () => {
+    it('formats 24h boarding and destination times to 12h display', () => {
+      expect(formatLegBoardingDestinationTimes('17:45', '00:15')).toBe(
+        'Boarding: 5:45 PM · Destination: 12:15 AM',
+      );
+    });
+
+    it('omits missing side cleanly', () => {
+      expect(formatLegBoardingDestinationTimes('0915', null)).toBe(
+        'Boarding: 9:15 AM',
+      );
+      expect(formatLegBoardingDestinationTimes(null, null)).toBe('');
+    });
+  });
+
+  describe('resolveTrainStartDateStr', () => {
+    it('subtracts dayCount - 1 when trainStartDate is absent', () => {
+      expect(
+        resolveTrainStartDateStr({
+          journeyDateStr: '2026-11-26',
+          fromStationCode: 'MTJ',
+          stationScheduleList: [
+            { stationCode: 'MTJ', stationName: 'Mathura Jn', dayCount: 2 },
+          ],
+        }),
+      ).toBe('2026-11-25');
     });
   });
 });

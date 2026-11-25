@@ -151,6 +151,67 @@ function isTaskChartTimePassed(task: ChartTimeAvailabilityTask): boolean {
   return journeyDateStr < todayIstStr;
 }
 
+function buildFallbackTrainScheduleFromAlt(
+  alt: FindAlternatePathsResult,
+  trainName?: string | null,
+): TrainScheduleResponse | undefined {
+  const stationMap = new Map<
+    string,
+    {
+      stationCode: string;
+      stationName: string;
+      departureTime?: string;
+      arrivalTime?: string;
+      dayCount?: number;
+    }
+  >();
+
+  const ensureStation = (rawCode: string) => {
+    const code = String(rawCode ?? '')
+      .trim()
+      .toUpperCase();
+    if (!code) return undefined;
+    let entry = stationMap.get(code);
+    if (!entry) {
+      entry = {
+        stationCode: code,
+        stationName: alt.stationNameMap?.[code] || code,
+      };
+      stationMap.set(code, entry);
+    }
+    return entry;
+  };
+
+  for (const code of alt.stationCodesOnRoute ?? []) {
+    ensureStation(code);
+  }
+  for (const leg of alt.legs ?? []) {
+    const fromEntry = ensureStation(leg.from);
+    if (fromEntry) {
+      if (leg.departureTime && !fromEntry.departureTime) {
+        fromEntry.departureTime = leg.departureTime;
+      }
+      if (leg.dayOffset != null && fromEntry.dayCount == null) {
+        fromEntry.dayCount = leg.dayOffset + 1;
+      }
+    }
+    const toEntry = ensureStation(leg.to);
+    if (toEntry && leg.arrivalTime && !toEntry.arrivalTime) {
+      toEntry.arrivalTime = leg.arrivalTime;
+    }
+  }
+
+  const stationList = Array.from(stationMap.values());
+  if (stationList.length === 0) return undefined;
+  return {
+    trainNumber: alt.trainNumber ?? '',
+    trainName: trainName ?? '',
+    stationFrom: stationList[0].stationCode,
+    stationTo: stationList[stationList.length - 1].stationCode,
+    stationList,
+  };
+}
+
 /**
  * Map a Search-Route alternate-paths result onto the Service2CheckResult shape the
  * alert task and notification already consume, so the seat alert can run on the
@@ -162,9 +223,14 @@ function alternatePathsToCheckResult(
   alt: FindAlternatePathsResult,
   options?: {
     isChartTimePassed?: boolean;
+    trainSchedule?: TrainScheduleResponse | null;
+    trainName?: string | null;
   },
 ): Service2CheckResult {
   const confirmedLegs = alt.legs.filter((l) => l.segmentKind === 'confirmed');
+  const resolvedSchedule =
+    options?.trainSchedule ??
+    buildFallbackTrainScheduleFromAlt(alt, options?.trainName);
 
   if (confirmedLegs.length === 0) {
     const hasProbeFailures = alt.debugLog?.some((line) =>
@@ -191,6 +257,7 @@ function alternatePathsToCheckResult(
           kind: 'chart_prepared_no_vacant_berths',
           message: 'Chart is prepared, but no confirmed seats are available.',
         },
+        ...(resolvedSchedule ? { trainSchedule: resolvedSchedule } : {}),
         debugLog: alt.debugLog,
       };
     }
@@ -217,6 +284,8 @@ function alternatePathsToCheckResult(
             l.railDataStatus ||
             l.availablityStatus ||
             undefined,
+          ...(l.departureTime ? { departureTime: l.departureTime } : {}),
+          ...(l.arrivalTime ? { arrivalTime: l.arrivalTime } : {}),
         }
       : ({} as BookingPlanItem),
   );
@@ -243,6 +312,7 @@ function alternatePathsToCheckResult(
     structuredSeats: seats,
     bookingPlan: plan,
     totalPrice: alt.totalFare ?? undefined,
+    ...(resolvedSchedule ? { trainSchedule: resolvedSchedule } : {}),
     debugLog: alt.debugLog,
   };
 }
@@ -1323,8 +1393,15 @@ export class JourneyTaskService {
         signal,
       });
       signal?.throwIfAborted();
+      const scheduleRes = await Promise.resolve(
+        this.irctc?.getTrainSchedule?.(task.trainNumber),
+      ).catch(() => undefined);
       const isChartTimePassed = isTaskChartTimePassed(task);
-      const result = alternatePathsToCheckResult(alt, { isChartTimePassed });
+      const result = alternatePathsToCheckResult(alt, {
+        isChartTimePassed,
+        trainSchedule: scheduleRes?.ok ? scheduleRes.schedule : undefined,
+        trainName: task.trainName,
+      });
 
       console.log('result', result);
 
@@ -1459,6 +1536,7 @@ export class JourneyTaskService {
                 trainNumber: task.trainNumber,
                 trainName: task.trainName,
                 fromStationCode: task.fromStationCode || task.stationCode,
+                stationCode: task.stationCode,
                 toStationCode: task.toStationCode,
                 journeyDate: task.journeyDate,
                 chartAt: task.chartAt,

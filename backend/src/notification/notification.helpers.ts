@@ -26,6 +26,8 @@ export type JourneyLegCoverage =
       availability?: string;
       fromCode: string;
       toCode: string;
+      departureTime?: string | null;
+      arrivalTime?: string | null;
     }
   | {
       type: 'no_ticket';
@@ -283,6 +285,72 @@ export function arrivalTimeAtStation(row: ScheduleStation | undefined): string {
   return normalizeIrctcTimeDisplay(row.departureTime);
 }
 
+/** Derive train start YYYY-MM-DD (Day 1) from task.trainStartDate or schedule dayCount. */
+export function resolveTrainStartDateStr(params: {
+  journeyDateStr: string;
+  trainStartDate?: Date | string | null;
+  fromStationCode: string;
+  stationScheduleList?: ScheduleStation[];
+}): string {
+  const {
+    journeyDateStr,
+    trainStartDate,
+    fromStationCode,
+    stationScheduleList,
+  } = params;
+  if (trainStartDate) {
+    return trainStartDate instanceof Date
+      ? trainStartDate.toISOString().slice(0, 10)
+      : String(trainStartDate).slice(0, 10);
+  }
+  const dayCount = scheduleStationDayCount(
+    findScheduleRow(stationScheduleList, fromStationCode),
+  );
+  if (dayCount && dayCount > 1) {
+    const dt = DateTime.fromISO(journeyDateStr.slice(0, 10), {
+      zone: 'Asia/Kolkata',
+    });
+    if (dt.isValid) {
+      return dt.minus({ days: dayCount - 1 }).toFormat('yyyy-LL-dd');
+    }
+  }
+  return journeyDateStr.slice(0, 10);
+}
+
+/** Resolve normalized boarding and destination clock strings for a leg. */
+export function resolveLegScheduleTimes(
+  stationScheduleList: ScheduleStation[] | undefined,
+  fromCode: string,
+  toCode: string,
+  fallback?: { depTime?: string | null; arrTime?: string | null },
+): { depTime: string; arrTime: string } {
+  const fromRow = findScheduleRow(stationScheduleList, fromCode);
+  const toRow = findScheduleRow(stationScheduleList, toCode);
+  return {
+    depTime:
+      departureTimeAtStation(fromRow) ||
+      normalizeIrctcTimeDisplay(fallback?.depTime),
+    arrTime:
+      arrivalTimeAtStation(toRow) ||
+      normalizeIrctcTimeDisplay(fallback?.arrTime),
+  };
+}
+
+/** Format "Boarding: 8:30 PM · Destination: 12:15 AM" from raw schedule times. */
+export function formatLegBoardingDestinationTimes(
+  depTime?: string | null,
+  arrTime?: string | null,
+): string {
+  const dep = normalizeIrctcTimeDisplay(depTime);
+  const arr = normalizeIrctcTimeDisplay(arrTime);
+  return [
+    dep ? `Boarding: ${to12HourTime(dep)}` : '',
+    arr ? `Destination: ${to12HourTime(arr)}` : '',
+  ]
+    .filter(Boolean)
+    .join(' · ');
+}
+
 /** One line: Dep FROM: hh:mm · Arr TO: hh:mm (omits missing parts). */
 export function formatSegmentScheduleTimes(
   stationList: ScheduleStation[] | undefined,
@@ -404,6 +472,7 @@ export function formatSegmentRoute(
   instruction: string | undefined | null,
   stationNameMap: Map<string, string>,
   stationScheduleList?: ScheduleStation[],
+  fallbackTimes?: { depTime?: string | null; arrTime?: string | null },
 ): string {
   if (!instruction?.trim()) {
     return '';
@@ -411,21 +480,38 @@ export function formatSegmentRoute(
   const parts = instruction.split(' - ').map((p) => p.trim());
   const fromCode = parts[0] ?? '';
   const toCode = parts[1] ?? '';
-  const fromName = stationNameMap.get(fromCode.toUpperCase()) ?? fromCode;
-  const toName = stationNameMap.get(toCode.toUpperCase()) ?? toCode;
+  return formatEndpointRoute(
+    fromCode,
+    toCode,
+    stationNameMap,
+    stationScheduleList,
+    fallbackTimes,
+  );
+}
 
-  const fromRow = findScheduleRow(stationScheduleList, fromCode);
-  const toRow = findScheduleRow(stationScheduleList, toCode);
-  const depTime = departureTimeAtStation(fromRow);
-  const arrTime = arrivalTimeAtStation(toRow);
-
+/** Format "CODE - Name (hh:mm) → CODE - Name (hh:mm)" from explicit endpoints. */
+export function formatEndpointRoute(
+  fromCode: string,
+  toCode: string,
+  stationNameMap: Map<string, string>,
+  stationScheduleList?: ScheduleStation[],
+  fallbackTimes?: { depTime?: string | null; arrTime?: string | null },
+): string {
+  const fromName =
+    stationNameMap.get(fromCode.trim().toUpperCase()) ?? fromCode;
+  const toName = stationNameMap.get(toCode.trim().toUpperCase()) ?? toCode;
+  const { depTime, arrTime } = resolveLegScheduleTimes(
+    stationScheduleList,
+    fromCode,
+    toCode,
+    fallbackTimes,
+  );
   const fromDisplay = depTime
     ? `${fromCode} - ${fromName} (${depTime})`
     : `${fromCode} - ${fromName}`;
   const toDisplay = arrTime
     ? `${toCode} - ${toName} (${arrTime})`
     : `${toCode} - ${toName}`;
-
   return `${fromDisplay} → ${toDisplay}`;
 }
 
@@ -507,6 +593,8 @@ export function extractJourneyLegCoverage(params: {
             instruction: string;
             approx_price: number;
             availability?: string;
+            departureTime?: string | null;
+            arrivalTime?: string | null;
           };
         }
       | undefined
@@ -555,6 +643,12 @@ export function extractJourneyLegCoverage(params: {
           availability,
           fromCode: startFrom,
           toCode: endTo,
+          ...(cov.item.departureTime
+            ? { departureTime: cov.item.departureTime }
+            : {}),
+          ...(cov.item.arrivalTime
+            ? { arrivalTime: cov.item.arrivalTime }
+            : {}),
         });
       } else {
         const startFrom = routeLegs[i].from;
@@ -600,6 +694,8 @@ export function extractJourneyLegCoverage(params: {
       availability: item.availability,
       fromCode: segFrom || currentStation,
       toCode: segTo || toU,
+      ...(item.departureTime ? { departureTime: item.departureTime } : {}),
+      ...(item.arrivalTime ? { arrivalTime: item.arrivalTime } : {}),
     });
 
     if (segTo) {
