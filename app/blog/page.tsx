@@ -17,7 +17,16 @@ export async function generateMetadata(): Promise<Metadata> {
   languages["x-default"] = "/blog";
 
   return {
-    title: "Read & Find Confirmed Train Tickets | Train Travel Guides",
+    title: "Train Travel Guides & IRCTC Tips",
+    description:
+      "Practical guides on finding confirmed IRCTC train tickets, reservation chart preparation times, Tatkal rules, and split-berth strategies.",
+    openGraph: {
+      title: "Train Travel Guides & IRCTC Tips | LastBerth",
+      description:
+        "Practical guides on finding confirmed IRCTC train tickets, reservation chart preparation times, Tatkal rules, and split-berth strategies.",
+      url: "/blog",
+      images: ["/opengraph-image"],
+    },
     alternates: {
       canonical: "/blog",
       languages,

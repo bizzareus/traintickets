@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     description:
       "Official IRCTC train food menu and catering prices across 6,300+ Indian Railways trains: Vande Bharat, Rajdhani, Shatabdi, Duronto, and Mail/Express.",
     url: "/irctc-train-food-menu",
+    images: ["/opengraph-image"],
   },
 };
 

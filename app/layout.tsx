@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     template: "%s | LastBerth",
   },
   description:
-    "LastBerth helps you find confirmed train tickets for immediate journeys. Search your train, get the best seat options and book on IRCTC. Monitor chart time for last-minute availability.",
+    "Find confirmed Indian Railways train tickets for immediate journeys. Search trains, discover split-berth options, and track chart preparation times.",
   keywords: [
     "train ticket",
     "confirmed ticket",
@@ -90,12 +90,21 @@ export const metadata: Metadata = {
     title: "LastBerth – Find Confirmed Train Tickets & Best Seat Options",
     description:
       "Find confirmed train tickets for immediate journeys. Search your train, get the best seat options and book on IRCTC. Monitor chart time for last-minute availability.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "LastBerth – Find Confirmed Train Tickets",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "LastBerth – Find Confirmed Train Tickets & Best Seat Options",
     description:
       "Find confirmed train tickets for immediate journeys. Search your train, get the best seat options and book on IRCTC.",
+    images: ["/twitter-image"],
   },
   alternates: {
     types: {

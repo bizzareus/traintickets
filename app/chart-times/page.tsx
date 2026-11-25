@@ -7,10 +7,9 @@ export const dynamicParams = true;
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title:
-    "IRCTC Chart Vacancy & Train Chart Preparation Times — Station by Station",
+  title: "IRCTC Train Chart Preparation Times by Station",
   description:
-    "IRCTC chart vacancy and train chart preparation times, station by station. See when the first and second reservation charts are prepared for any train, and check vacant berths.",
+    "Check station-by-station 1st and 2nd reservation chart preparation times for Indian Railways trains and spot post-chart vacant berths.",
   alternates: { canonical: "/chart-times" },
 };
 

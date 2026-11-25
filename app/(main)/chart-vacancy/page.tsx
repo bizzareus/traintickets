@@ -4,18 +4,18 @@ import { Header } from "@/components/Header";
 import { SeatStatus } from "@/components/booking-v2/SeatStatus";
 
 export const metadata: Metadata = {
-  title: "Train Chart Vacancy: Empty Berth Availability & Coach Map",
+  title: "Train Chart Vacancy: Empty Berth & Coach Map",
   description:
-    "Indian Railways train chart and vacant berth availability, coach-wise, on a visual coach map. See free berths from your boarding station and book current-availability tickets.",
+    "Check Indian Railways train chart vacancy and empty berths coach-wise on a visual map. Book last-minute current-availability tickets.",
   alternates: {
     canonical: "/chart-vacancy",
   },
   openGraph: {
-    title:
-      "Train Chart Vacancy: Empty Berth Availability & Coach Map | LastBerth",
+    title: "Train Chart Vacancy: Empty Berth & Coach Map | LastBerth",
     description:
       "Indian Railways train chart and vacant berth availability, coach-wise, with a visual coach map.",
     url: "/chart-vacancy",
+    images: ["/opengraph-image"],
   },
 };
 

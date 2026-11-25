@@ -8,21 +8,23 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Tatkal Booking Date Calculator & Live Clock (2026)",
   description:
-    "Calculate exact Tatkal booking dates and 10:00 AM (AC) & 11:00 AM (Non-AC) opening times. Live IST countdown clock, Tatkal charges calculator & speed hacks.",
+    "Calculate exact IRCTC Tatkal booking dates and 10:00 AM AC / 11:00 AM Non-AC opening times with a live IST countdown clock and fare calculator.",
   alternates: { canonical: "/tatkal-planner" },
   openGraph: {
     title: "Tatkal Booking Date Calculator & Live Clock (2026)",
     description:
-      "Calculate exact Tatkal booking dates and 10:00 AM (AC) & 11:00 AM (Non-AC) opening times. Live IST countdown clock, Tatkal charges calculator & speed hacks.",
+      "Calculate exact IRCTC Tatkal booking dates and 10:00 AM AC / 11:00 AM Non-AC opening times with a live IST countdown clock and fare calculator.",
     url: "https://lastberth.com/tatkal-planner",
     siteName: "LastBerth",
     type: "website",
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tatkal Booking Date Calculator & Live Clock (2026)",
     description:
-      "Calculate exact Tatkal booking dates and 10:00 AM (AC) & 11:00 AM (Non-AC) opening times. Live IST countdown clock, Tatkal charges calculator & speed hacks.",
+      "Calculate exact IRCTC Tatkal booking dates and 10:00 AM AC / 11:00 AM Non-AC opening times with a live IST countdown clock and fare calculator.",
+    images: ["/twitter-image"],
   },
 };
 
