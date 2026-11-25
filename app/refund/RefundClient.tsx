@@ -246,7 +246,9 @@ export function RefundClient() {
           <>
             <p className="mb-6 text-slate-600">
               Paid for a chart alert but didn&apos;t get a confirmed end-to-end
-              ticket? Share the details below and we&apos;ll review your refund.
+              ticket? Share your details below to request a refund. Please note
+              that approved chart alert refunds are issued at 50% of the alert
+              subscription amount.
             </p>
             <form onSubmit={handleInitialSubmit} className="space-y-4">
               <div>

@@ -45,7 +45,7 @@ export default function TermsOfServicePage() {
           Terms of Service
         </h1>
         <div className="prose prose-slate max-w-none text-slate-600">
-          <p>Last updated: October 13, 2026</p>
+          <p>Last updated: November 26, 2026</p>
           <p>
             Please read these terms and conditions carefully before using Our
             Service.
@@ -114,7 +114,46 @@ export default function TermsOfServicePage() {
             anything through the Service.
           </p>
 
-          <h2>6. Changes to These Terms and Conditions</h2>
+          <h2>6. Cancellations &amp; Refunds</h2>
+          <p>
+            This section applies to paid alert subscriptions and notification
+            monitoring services offered directly by LastBerth (such as chart
+            vacancy alerts). Because payments made to LastBerth cover automated
+            server polling, data aggregation, compute resources, and third-party
+            payment gateway processing:
+          </p>
+          <ul>
+            <li>
+              <strong>50% Refund Policy:</strong> Approved refund requests for
+              chart alert subscriptions are processed at{" "}
+              <strong>50% of the amount paid</strong>. The remaining 50% covers
+              non-refundable gateway processing charges and incurred
+              infrastructure costs.
+            </li>
+            <li>
+              <strong>How to Request:</strong> Users can submit a refund request
+              through our official refund portal at{" "}
+              <Link href="/refund" className="text-blue-600 underline">
+                lastberth.com/refund
+              </Link>{" "}
+              by providing their email, train number, journey date, and payment
+              transaction ID.
+            </li>
+            <li>
+              <strong>Processing Timeline:</strong> Approved refunds are
+              initiated via our payment gateway (Razorpay / Muzobox) back to the
+              original payment method and typically reflect within 5–7 business
+              days depending on the issuing bank.
+            </li>
+            <li>
+              <strong>Train Ticket Bookings:</strong> Train tickets booked
+              directly on IRCTC or third-party booking partners are subject
+              strictly to Indian Railways cancellation and refund rules, and are
+              not governed by LastBerth.
+            </li>
+          </ul>
+
+          <h2>7. Changes to These Terms and Conditions</h2>
           <p>
             We reserve the right, at Our sole discretion, to modify or replace
             these Terms at any time. If a revision is material We will make
