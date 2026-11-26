@@ -14,6 +14,7 @@ export type AlternatePathLegForPartition = {
   from: string;
   to: string;
   segmentKind: "confirmed" | "check_realtime";
+  trainNumber?: string | null;
 };
 
 /** A single leg shown as one card (confirmed or lone check_realtime). */
@@ -64,11 +65,17 @@ export function buildAlternatePathDisplayItems<
       continue;
     }
 
-    // Walk forward to find the longest chained run of check_realtime legs.
+    // Walk forward to find the longest chained run of check_realtime legs on the same train.
     let end = i; // inclusive index of last leg in the run
     for (let j = i + 1; j < legs.length; j++) {
       const next = legs[j];
       if (next.segmentKind !== "check_realtime") break;
+      if (
+        (legs[j - 1].trainNumber ?? "").trim() !==
+        (next.trainNumber ?? "").trim()
+      ) {
+        break;
+      }
       if (normCode(legs[j - 1].to) !== normCode(next.from)) break;
       end = j;
     }

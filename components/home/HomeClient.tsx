@@ -451,36 +451,31 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
 
   // Keep search result card's cached alternate path and sorting in sync when refreshed
   useEffect(() => {
-    if (altResult && altForTrain) {
-      setTrains((prev) =>
-        prev.map((t) =>
-          t.trainNumber === altForTrain
-            ? { ...t, cachedAlternatePath: altResult }
-            : t,
-        ),
-      );
-      if (altResult.legs && altResult.legs.length > 0) {
-        const meta = extractScanMetaFromResult(altResult);
-        setV2ScanMetaMap((prev) => new Map(prev).set(altForTrain, meta));
-        if (meta.isComplete) {
-          setV2DiscoveredEndToEndTrains((prev) =>
-            new Set(prev).add(altForTrain),
-          );
-          setV2DiscoveredPartialTrains((prev) => {
-            const next = new Set(prev);
-            next.delete(altForTrain);
-            return next;
-          });
-        } else {
-          setV2DiscoveredPartialTrains((prev) =>
-            new Set(prev).add(altForTrain),
-          );
-          setV2DiscoveredEndToEndTrains((prev) => {
-            const next = new Set(prev);
-            next.delete(altForTrain);
-            return next;
-          });
-        }
+    if (!altResult || !altForTrain || altForTrain.includes("/")) return;
+    setTrains((prev) =>
+      prev.map((t) =>
+        t.trainNumber === altForTrain
+          ? { ...t, cachedAlternatePath: altResult }
+          : t,
+      ),
+    );
+    if (altResult.legs && altResult.legs.length > 0) {
+      const meta = extractScanMetaFromResult(altResult);
+      setV2ScanMetaMap((prev) => new Map(prev).set(altForTrain, meta));
+      if (meta.isComplete) {
+        setV2DiscoveredEndToEndTrains((prev) => new Set(prev).add(altForTrain));
+        setV2DiscoveredPartialTrains((prev) => {
+          const next = new Set(prev);
+          next.delete(altForTrain);
+          return next;
+        });
+      } else {
+        setV2DiscoveredPartialTrains((prev) => new Set(prev).add(altForTrain));
+        setV2DiscoveredEndToEndTrains((prev) => {
+          const next = new Set(prev);
+          next.delete(altForTrain);
+          return next;
+        });
       }
     }
   }, [altResult, altForTrain]);

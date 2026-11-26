@@ -1197,8 +1197,10 @@ export function AlternatePathContent({
                         {/* No tickets row */}
                         {!isConfirmed && (
                           <CompactLegChartCta
-                            trainNumber={altResult.trainNumber}
-                            trainName={altTrainName}
+                            trainNumber={
+                              leg.trainNumber || altResult.trainNumber
+                            }
+                            trainName={leg.trainName ?? altTrainName}
                             journeyDate={leg.boardingDate || journeyDate || ""}
                             legFrom={leg.from}
                             legTo={leg.to}
@@ -1206,7 +1208,11 @@ export function AlternatePathContent({
                               leg.travelClass ?? altAvlClasses?.[0] ?? "SL"
                             }
                             stationNameMap={altResult.stationNameMap}
-                            trainStartDate={altResult.trainStartDate}
+                            trainStartDate={
+                              leg.trainNumber
+                                ? undefined
+                                : altResult.trainStartDate
+                            }
                           />
                         )}
                       </div>
@@ -1222,6 +1228,8 @@ export function AlternatePathContent({
                   item.from,
                   item.to,
                 );
+                const collapsedTrainNumber = item.legs[0]?.trainNumber || null;
+                const collapsedTrainName = item.legs[0]?.trainName ?? null;
                 return (
                   <li key={i} className="relative flex gap-0">
                     {/* Timeline connector (desktop only) */}
@@ -1237,11 +1245,19 @@ export function AlternatePathContent({
                         <span className="shrink-0 rounded-full bg-slate-500 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white sm:text-[11px]">
                           Leg {stepIndex} of {stepTotal}
                         </span>
+                        {collapsedTrainNumber && (
+                          <span className="shrink-0 rounded-md border border-blue-200 bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-blue-700">
+                            Train {collapsedTrainNumber}
+                            {collapsedTrainName
+                              ? ` · ${collapsedTrainName}`
+                              : ""}
+                          </span>
+                        )}
                         {stationsBetween != null && (
                           <button
                             onClick={() => {
                               onOpenSchedule(
-                                altResult.trainNumber,
+                                collapsedTrainNumber || altResult.trainNumber,
                                 item.from,
                                 item.to,
                               );
@@ -1276,16 +1292,26 @@ export function AlternatePathContent({
                         )}
                       </div>
                       <CompactLegChartCta
-                        trainNumber={altResult.trainNumber}
-                        trainName={altTrainName}
+                        trainNumber={
+                          collapsedTrainNumber || altResult.trainNumber
+                        }
+                        trainName={collapsedTrainName ?? altTrainName}
                         journeyDate={
                           item.legs[0]?.boardingDate || journeyDate || ""
                         }
                         legFrom={item.from}
                         legTo={item.to}
-                        classCode={altAvlClasses?.[0] ?? "SL"}
+                        classCode={
+                          item.legs[0]?.travelClass ??
+                          altAvlClasses?.[0] ??
+                          "SL"
+                        }
                         stationNameMap={altResult.stationNameMap}
-                        trainStartDate={altResult.trainStartDate}
+                        trainStartDate={
+                          collapsedTrainNumber
+                            ? undefined
+                            : altResult.trainStartDate
+                        }
                       />
                     </div>
                   </li>

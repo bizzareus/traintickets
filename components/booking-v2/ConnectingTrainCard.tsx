@@ -7,6 +7,10 @@ import {
   formatDuration,
   formatLayover,
   connectingJourneyToBookingProps,
+  buildFallbackConnectingLeg,
+  mapScannedConnectingLeg,
+  sumConfirmedConnectingFare,
+  buildConnectingAlternateResult,
   type ConnectingJourneyDto,
 } from "@/lib/connectingTrains";
 import {
@@ -60,113 +64,6 @@ interface CombinedScanResult {
 }
 
 const NON_AC_CLASSES = new Set(["SL", "2S", "GN", "FC"]);
-
-function buildConnectingAlternateResult({
-  journey,
-  combinedResult,
-  selectedClass,
-  fallbackBaseFare1,
-  fallbackBaseFare2,
-  fromName,
-  toName,
-}: {
-  journey: ConnectingJourneyDto;
-  combinedResult: CombinedScanResult | null;
-  selectedClass: string;
-  fallbackBaseFare1: number;
-  fallbackBaseFare2: number;
-  fromName?: string;
-  toName?: string;
-}): AlternatePathsResponse {
-  const leg1 = journey.legs[0];
-  const leg2 = journey.legs[1];
-
-  let legs: AlternateLeg[] = [];
-  if (combinedResult?.allLegs && combinedResult.allLegs.length > 0) {
-    legs = combinedResult.allLegs;
-  } else {
-    const leg1Opt = leg1.confirmedClassOptions?.find(
-      (o) => o.travelClass === selectedClass,
-    );
-    const leg2Opt = leg2.confirmedClassOptions?.find(
-      (o) => o.travelClass === selectedClass,
-    );
-    legs = [
-      {
-        from: leg1.from,
-        to: leg1.to,
-        segmentKind: "confirmed",
-        trainNumber: leg1.trainNumber,
-        trainName: leg1.trainName,
-        travelClass: selectedClass,
-        railDataStatus: "AVAILABLE",
-        availablityStatus: "AVAILABLE",
-        predictionPercentage: null,
-        availabilityDisplayName:
-          leg1Opt?.availabilityDisplayName ??
-          leg1.availabilityDisplayName ??
-          "Available",
-        fare: leg1Opt?.fare ?? leg1.fare ?? fallbackBaseFare1,
-        departureTime: leg1.departureTime,
-        arrivalTime: leg1.arrivalTime,
-        durationMinutes: leg1.durationMinutes,
-        boardingDate: leg1.boardingDate,
-      },
-      {
-        from: leg2.from,
-        to: leg2.to,
-        segmentKind: "confirmed",
-        trainNumber: leg2.trainNumber,
-        trainName: leg2.trainName,
-        travelClass: selectedClass,
-        railDataStatus: "AVAILABLE",
-        availablityStatus: "AVAILABLE",
-        predictionPercentage: null,
-        availabilityDisplayName:
-          leg2Opt?.availabilityDisplayName ??
-          leg2.availabilityDisplayName ??
-          "Available",
-        fare: leg2Opt?.fare ?? leg2.fare ?? fallbackBaseFare2,
-        departureTime: leg2.departureTime,
-        arrivalTime: leg2.arrivalTime,
-        durationMinutes: leg2.durationMinutes,
-        boardingDate: leg2.boardingDate,
-      },
-    ];
-  }
-
-  const totalFare =
-    combinedResult?.totalFare && combinedResult.totalFare > 0
-      ? combinedResult.totalFare
-      : legs.reduce((acc, l) => acc + (l.fare ?? 0), 0);
-
-  const confirmedLegCount = legs.filter(
-    (l) => l.segmentKind === "confirmed",
-  ).length;
-
-  return {
-    trainNumber: `${leg1.trainNumber} / ${leg2.trainNumber}`,
-    legs,
-    totalFare,
-    legCount: confirmedLegCount,
-    isComplete: Boolean(
-      combinedResult?.isBothConfirmed ?? journey.isFullyConfirmed,
-    ),
-    stationCodesOnRoute: [
-      journey.from,
-      journey.intermediateStation,
-      journey.to,
-    ],
-    stationNameMap: {
-      [journey.from]: fromName || journey.from,
-      [journey.intermediateStation]: journey.intermediateStationName,
-      [journey.to]: toName || journey.to,
-      ...(combinedResult?.res1?.stationNameMap || {}),
-      ...(combinedResult?.res2?.stationNameMap || {}),
-    },
-    trainStartDate: journey.journeyDate,
-  };
-}
 
 export const ConnectingTrainCard = memo(function ConnectingTrainCard({
   journey,
@@ -377,230 +274,155 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
    * Executes the stream search on Train 1 (A ➔ B) and Train 2 (B ➔ C) concurrently
    * using the exact same /api/booking-v2/alternate-paths/stream API.
    */
-  const executeScan = useCallback(async () => {
-    if (loading) return;
+  const executeScan = useCallback(
+    async (options?: { isAutoScan?: boolean }) => {
+      if (loading) return;
 
-    setLoading(true);
-    setScanProgress(8);
-    setError(null);
-    setFoundSeats([]);
+      setLoading(true);
+      setScanProgress(8);
+      setError(null);
+      setFoundSeats([]);
 
-    trackAnalyticsEvent({
-      name: "connecting_train_search_tickets_clicked",
-      properties: {
-        journey_id: journey.id,
-        train1: leg1.trainNumber,
-        train2: leg2.trainNumber,
-        hub: journey.intermediateStation,
-        selected_class: selectedClass,
-      },
-    });
-
-    abortControllerRef.current?.abort();
-    const controller = new AbortController();
-    abortControllerRef.current = controller;
-
-    try {
-      // Concurrently stream both legs using POST /api/booking-v2/alternate-paths/stream
-      const [res1, res2] = await Promise.all([
-        streamSingleLeg(
-          leg1.trainNumber,
-          leg1.from,
-          leg1.to,
-          leg1.boardingDate,
-          controller.signal,
-        ),
-        streamSingleLeg(
-          leg2.trainNumber,
-          leg2.from,
-          leg2.to,
-          leg2.boardingDate,
-          controller.signal,
-        ),
-      ]);
-
-      const hasLeg1Seats = Boolean(
-        (res1?.legs &&
-          res1.legs.some(
-            (l) => l.segmentKind === "confirmed" && l.travelClass,
-          )) ||
-        leg1.isConfirmed,
-      );
-      const hasLeg2Seats = Boolean(
-        (res2?.legs &&
-          res2.legs.some(
-            (l) => l.segmentKind === "confirmed" && l.travelClass,
-          )) ||
-        leg2.isConfirmed,
-      );
-
-      const bothConfirmed = hasLeg1Seats && hasLeg2Seats;
-
-      // Map legs retaining specific train identity
-      const legs1Mapped: AlternateLeg[] =
-        res1?.legs && res1.legs.length > 0
-          ? res1.legs.map((l) => ({
-              ...l,
-              trainNumber: leg1.trainNumber,
-              trainName: leg1.trainName,
-            }))
-          : hasLeg1Seats
-            ? [
-                {
-                  from: leg1.from,
-                  to: leg1.to,
-                  segmentKind: "confirmed" as const,
-                  trainNumber: leg1.trainNumber,
-                  trainName: leg1.trainName,
-                  travelClass: selectedClass,
-                  railDataStatus: "AVAILABLE",
-                  availablityStatus: "AVAILABLE",
-                  predictionPercentage: null,
-                  availabilityDisplayName:
-                    leg1ChosenOpt?.availabilityDisplayName ??
-                    leg1.availabilityDisplayName ??
-                    "Available",
-                  fare: baseFare1,
-                  departureTime: leg1.departureTime,
-                  arrivalTime: leg1.arrivalTime,
-                  durationMinutes: leg1.durationMinutes,
-                  boardingDate: leg1.boardingDate,
-                },
-              ]
-            : [];
-
-      const legs2Mapped: AlternateLeg[] =
-        res2?.legs && res2.legs.length > 0
-          ? res2.legs.map((l) => ({
-              ...l,
-              trainNumber: leg2.trainNumber,
-              trainName: leg2.trainName,
-            }))
-          : hasLeg2Seats
-            ? [
-                {
-                  from: leg2.from,
-                  to: leg2.to,
-                  segmentKind: "confirmed" as const,
-                  trainNumber: leg2.trainNumber,
-                  trainName: leg2.trainName,
-                  travelClass: selectedClass,
-                  railDataStatus: "AVAILABLE",
-                  availablityStatus: "AVAILABLE",
-                  predictionPercentage: null,
-                  availabilityDisplayName:
-                    leg2ChosenOpt?.availabilityDisplayName ??
-                    leg2.availabilityDisplayName ??
-                    "Available",
-                  fare: baseFare2,
-                  departureTime: leg2.departureTime,
-                  arrivalTime: leg2.arrivalTime,
-                  durationMinutes: leg2.durationMinutes,
-                  boardingDate: leg2.boardingDate,
-                },
-              ]
-            : [];
-
-      const combinedLegs: AlternateLeg[] = [...legs1Mapped, ...legs2Mapped];
-      const fare1 = res1?.totalFare ?? baseFare1;
-      const fare2 = res2?.totalFare ?? baseFare2;
-      const discoveredTotalFare = (fare1 || 0) + (fare2 || 0);
-      const confirmedCount =
-        (res1?.legCount || (hasLeg1Seats ? 1 : 0)) +
-        (res2?.legCount || (hasLeg2Seats ? 1 : 0));
-
-      let summary = "";
-      if (bothConfirmed) {
-        summary = `Confirmed seats found on Train 1 (${leg1.trainNumber}) and Train 2 (${leg2.trainNumber})!`;
-      } else if (hasLeg1Seats && !hasLeg2Seats) {
-        summary = `Train 1 (${leg1.trainNumber}): Seats found • Train 2 (${leg2.trainNumber}): Waitlisted`;
-      } else if (!hasLeg1Seats && hasLeg2Seats) {
-        summary = `Train 1 (${leg1.trainNumber}): Waitlisted • Train 2 (${leg2.trainNumber}): Seats found`;
-      } else {
-        summary = "All classes waitlisted on connecting trains";
-      }
-
-      setCombinedResult({
-        res1,
-        res2,
-        isBothConfirmed: bothConfirmed,
-        totalFare:
-          discoveredTotalFare > 0 ? discoveredTotalFare : initialTotalFare,
-        confirmedCount,
-        allLegs: combinedLegs,
-        summary,
+      trackAnalyticsEvent({
+        name: "connecting_train_search_tickets_clicked",
+        properties: {
+          journey_id: journey.id,
+          train1: leg1.trainNumber,
+          train2: leg2.trainNumber,
+          hub: journey.intermediateStation,
+          selected_class: selectedClass,
+        },
       });
-      setScanProgress(100);
 
-      // Whenever available seats are found show that popup
-      if (bothConfirmed && combinedLegs.length > 0) {
-        const fullResult: AlternatePathsResponse = {
-          trainNumber: `${leg1.trainNumber} / ${leg2.trainNumber}`,
-          legs: combinedLegs,
-          totalFare:
-            discoveredTotalFare > 0 ? discoveredTotalFare : initialTotalFare,
-          legCount: combinedLegs.filter((l) => l.segmentKind === "confirmed")
-            .length,
-          isComplete: true,
-          stationCodesOnRoute: [
-            journey.from,
-            journey.intermediateStation,
-            journey.to,
-          ],
-          stationNameMap: {
-            [journey.from]: fromName || journey.from,
-            [journey.intermediateStation]: journey.intermediateStationName,
-            [journey.to]: toName || journey.to,
-            ...(res1?.stationNameMap || {}),
-            ...(res2?.stationNameMap || {}),
-          },
-          trainStartDate: journey.journeyDate,
-        };
+      abortControllerRef.current?.abort();
+      const controller = new AbortController();
+      abortControllerRef.current = controller;
 
-        onOpenFullResultModal?.({
-          trainNumber: `${leg1.trainNumber} / ${leg2.trainNumber}`,
-          trainName: `${leg1.trainName} ➔ ${leg2.trainName}`,
-          avlClasses: targetClasses,
-          result: fullResult,
-        });
-      }
-    } catch (err: unknown) {
-      if ((err as Error)?.name !== "AbortError") {
-        setError(
-          err instanceof Error ? err.message : "Search failed. Please retry.",
+      try {
+        // Concurrently stream both legs using POST /api/booking-v2/alternate-paths/stream
+        const [res1, res2] = await Promise.all([
+          streamSingleLeg(
+            leg1.trainNumber,
+            leg1.from,
+            leg1.to,
+            leg1.boardingDate,
+            controller.signal,
+          ),
+          streamSingleLeg(
+            leg2.trainNumber,
+            leg2.from,
+            leg2.to,
+            leg2.boardingDate,
+            controller.signal,
+          ),
+        ]);
+
+        const mapped1 = mapScannedConnectingLeg(
+          leg1,
+          res1,
+          selectedClass,
+          leg1ChosenOpt,
+          baseFare1,
         );
+        const mapped2 = mapScannedConnectingLeg(
+          leg2,
+          res2,
+          selectedClass,
+          leg2ChosenOpt,
+          baseFare2,
+        );
+
+        const hasLeg1Seats = mapped1.hasSeats;
+        const hasLeg2Seats = mapped2.hasSeats;
+        const bothConfirmed = hasLeg1Seats && hasLeg2Seats;
+
+        const combinedLegs: AlternateLeg[] = [...mapped1.legs, ...mapped2.legs];
+        const confirmedCount = combinedLegs.filter(
+          (l) => l.segmentKind === "confirmed",
+        ).length;
+        const confirmedTotalFare = sumConfirmedConnectingFare(combinedLegs);
+
+        let summary = "";
+        if (bothConfirmed) {
+          summary = `Confirmed seats found on Train 1 (${leg1.trainNumber}) and Train 2 (${leg2.trainNumber})!`;
+        } else if (hasLeg1Seats && !hasLeg2Seats) {
+          summary = `Train 1 (${leg1.trainNumber}): Seats found • Train 2 (${leg2.trainNumber}): Waitlisted`;
+        } else if (!hasLeg1Seats && hasLeg2Seats) {
+          summary = `Train 1 (${leg1.trainNumber}): Waitlisted • Train 2 (${leg2.trainNumber}): Seats found`;
+        } else {
+          summary = "All classes waitlisted on connecting trains";
+        }
+
+        setCombinedResult({
+          res1,
+          res2,
+          isBothConfirmed: bothConfirmed,
+          totalFare:
+            confirmedTotalFare && confirmedTotalFare > 0
+              ? confirmedTotalFare
+              : initialTotalFare,
+          confirmedCount,
+          allLegs: combinedLegs,
+          summary,
+        });
+        setScanProgress(100);
+
+        const shouldOpenPopup = options?.isAutoScan
+          ? hasLeg1Seats || hasLeg2Seats
+          : true;
+
+        if (shouldOpenPopup && combinedLegs.length > 0) {
+          const fullResult = buildConnectingAlternateResult({
+            journey,
+            res1,
+            res2,
+            legs: combinedLegs,
+            totalFare: confirmedTotalFare,
+            fromName,
+            toName,
+          });
+
+          onOpenFullResultModal?.({
+            trainNumber: `${leg1.trainNumber} / ${leg2.trainNumber}`,
+            trainName: `${leg1.trainName} ➔ ${leg2.trainName}`,
+            avlClasses: targetClasses,
+            result: fullResult,
+          });
+        }
+      } catch (err: unknown) {
+        if ((err as Error)?.name !== "AbortError") {
+          setError(
+            err instanceof Error ? err.message : "Search failed. Please retry.",
+          );
+        }
+      } finally {
+        setLoading(false);
       }
-    } finally {
-      setLoading(false);
-    }
-  }, [
-    baseFare1,
-    baseFare2,
-    fromName,
-    initialTotalFare,
-    journey.from,
-    journey.id,
-    journey.intermediateStation,
-    journey.intermediateStationName,
-    journey.journeyDate,
-    journey.to,
-    leg1,
-    leg1ChosenOpt?.availabilityDisplayName,
-    leg2,
-    leg2ChosenOpt?.availabilityDisplayName,
-    loading,
-    onOpenFullResultModal,
-    selectedClass,
-    streamSingleLeg,
-    targetClasses,
-    toName,
-  ]);
+    },
+    [
+      baseFare1,
+      baseFare2,
+      fromName,
+      initialTotalFare,
+      journey,
+      leg1,
+      leg1ChosenOpt,
+      leg2,
+      leg2ChosenOpt,
+      loading,
+      onOpenFullResultModal,
+      selectedClass,
+      streamSingleLeg,
+      targetClasses,
+      toName,
+    ],
+  );
 
   // Auto-scan on mount if enabled and not already confirmed
   useEffect(() => {
     if (autoScanEnabled && !isBothConfirmed && !hasAutoScannedRef.current) {
       hasAutoScannedRef.current = true;
-      void executeScan();
+      void executeScan({ isAutoScan: true });
     }
   }, [autoScanEnabled, isBothConfirmed, executeScan]);
 
@@ -675,13 +497,37 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
   ]);
 
   const handleOpenPopupOrBooking = useCallback(() => {
-    if (onOpenFullResultModal && isBothConfirmed) {
+    if (onOpenFullResultModal && (isBothConfirmed || combinedResult)) {
+      const legs: AlternateLeg[] =
+        combinedResult?.allLegs && combinedResult.allLegs.length > 0
+          ? combinedResult.allLegs
+          : [
+              buildFallbackConnectingLeg(
+                leg1,
+                selectedClass,
+                "confirmed",
+                leg1ChosenOpt?.availabilityDisplayName ??
+                  leg1.availabilityDisplayName ??
+                  "Available",
+                baseFare1,
+              ),
+              buildFallbackConnectingLeg(
+                leg2,
+                selectedClass,
+                "confirmed",
+                leg2ChosenOpt?.availabilityDisplayName ??
+                  leg2.availabilityDisplayName ??
+                  "Available",
+                baseFare2,
+              ),
+            ];
+
       const fullResult = buildConnectingAlternateResult({
         journey,
-        combinedResult,
-        selectedClass,
-        fallbackBaseFare1: baseFare1,
-        fallbackBaseFare2: baseFare2,
+        res1: combinedResult?.res1,
+        res2: combinedResult?.res2,
+        legs,
+        totalFare: sumConfirmedConnectingFare(legs),
         fromName,
         toName,
       });
@@ -699,25 +545,25 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
   }, [
     onOpenFullResultModal,
     isBothConfirmed,
-    journey,
     combinedResult,
+    journey,
     selectedClass,
     baseFare1,
     baseFare2,
     fromName,
     toName,
-    leg1.trainNumber,
-    leg1.trainName,
-    leg2.trainNumber,
-    leg2.trainName,
+    leg1,
+    leg1ChosenOpt?.availabilityDisplayName,
+    leg2,
+    leg2ChosenOpt?.availabilityDisplayName,
     targetClasses,
     handleBookNow,
   ]);
 
   const handleCardClick = () => {
-    if (isBothConfirmed) {
+    if (isBothConfirmed || combinedResult) {
       handleOpenPopupOrBooking();
-    } else if (!loading && !combinedResult) {
+    } else if (!loading) {
       void executeScan();
     } else {
       setIsExpanded((prev) => !prev);
@@ -1021,9 +867,6 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
                 <div className="min-w-0 text-left md:text-right">
                   <p className="text-base font-extrabold text-slate-900 sm:text-lg">
                     From ₹{displayFare}
-                  </p>
-                  <p className="max-w-[160px] truncate text-xs font-medium text-amber-700 sm:max-w-none">
-                    {combinedResult.summary || "Partial Waitlist"}
                   </p>
                 </div>
 
