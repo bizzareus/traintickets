@@ -42,14 +42,21 @@ const HUB_MEMBERS: Record<string, readonly string[]> = {
   ADI: ['ADI', 'SBIB'],
 };
 
-/** member station code -> primary hub code (built once from HUB_MEMBERS). */
-const ALIAS_TO_PRIMARY: Record<string, string> = (() => {
-  const map: Record<string, string> = {};
-  for (const [primary, members] of Object.entries(HUB_MEMBERS)) {
-    for (const code of members) map[code] = primary;
+/** member station code -> primary hub code and full hub members list (built once from HUB_MEMBERS). */
+const ALIAS_TO_PRIMARY: Record<string, string> = {};
+const ALIAS_TO_MEMBERS: Record<string, readonly string[]> = {};
+for (const [primary, members] of Object.entries(HUB_MEMBERS)) {
+  for (const code of members) {
+    ALIAS_TO_PRIMARY[code] = primary;
+    ALIAS_TO_MEMBERS[code] = members;
   }
-  return map;
-})();
+}
+
+function normalizeCode(code: string): string {
+  return String(code ?? '')
+    .trim()
+    .toUpperCase();
+}
 
 /**
  * Canonical hub code for a station: the city's primary code when the station is a
@@ -57,17 +64,20 @@ const ALIAS_TO_PRIMARY: Record<string, string> = (() => {
  * cache key so every station in a city shares one cached entry.
  */
 export function canonicalStation(code: string): string {
-  const c = String(code ?? '')
-    .trim()
-    .toUpperCase();
+  const c = normalizeCode(code);
   return ALIAS_TO_PRIMARY[c] ?? c;
+}
+
+/** All sibling station codes in the same city hub (or `[code]` if standalone). */
+export function hubMembers(code: string): readonly string[] {
+  const c = normalizeCode(code);
+  if (!c) return [];
+  return ALIAS_TO_MEMBERS[c] ?? [c];
 }
 
 /** True when `code` is a non-primary sibling (i.e. canonicalizes to a different code). */
 export function isNearbyStation(code: string): boolean {
-  const c = String(code ?? '')
-    .trim()
-    .toUpperCase();
+  const c = normalizeCode(code);
   const primary = ALIAS_TO_PRIMARY[c];
   return primary != null && primary !== c;
 }

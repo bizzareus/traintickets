@@ -4,6 +4,7 @@ import { CronLeaderModule } from '../chart-cron/cron-leader.module';
 import { BookingV2Controller } from './booking-v2.controller';
 import { SeatCacheController } from './seat-cache.controller';
 import { BookingV2Service } from './booking-v2.service';
+import { ConnectingRouteGraphService } from './connecting-route-graph.service';
 import { ConnectingTrainsService } from './connecting-trains.service';
 import { DynamoDbSeatCacheService } from './dynamodb-seat-cache.service';
 import { SeatCacheCronService } from './seat-cache-cron.service';
@@ -18,6 +19,7 @@ import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
   controllers: [BookingV2Controller, SeatCacheController],
   providers: [
     BookingV2Service,
+    ConnectingRouteGraphService,
     ConnectingTrainsService,
     DynamoDbSeatCacheService,
     SeatCacheCronService,
@@ -28,6 +30,7 @@ import { PostHogAnalyticsService } from '../common/posthog-analytics.service';
   ],
   exports: [
     BookingV2Service,
+    ConnectingRouteGraphService,
     ConnectingTrainsService,
     DynamoDbSeatCacheService,
     SeatCacheCronService,

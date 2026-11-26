@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  useState,
-  useCallback,
-  useMemo,
-  useEffect,
-  useRef,
-  memo,
-} from "react";
+import { useState, useCallback, useMemo, useEffect, useRef, memo } from "react";
 import { ChevronDown, ChevronUp, Clock, Train } from "lucide-react";
 import { formatTimeAmPm } from "./alternatePathHelpers";
 import {
@@ -224,11 +217,13 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
 
   // Pricing for the currently selected class
   const leg1ChosenOpt = useMemo(
-    () => leg1.confirmedClassOptions?.find((o) => o.travelClass === selectedClass),
+    () =>
+      leg1.confirmedClassOptions?.find((o) => o.travelClass === selectedClass),
     [leg1, selectedClass],
   );
   const leg2ChosenOpt = useMemo(
-    () => leg2.confirmedClassOptions?.find((o) => o.travelClass === selectedClass),
+    () =>
+      leg2.confirmedClassOptions?.find((o) => o.travelClass === selectedClass),
     [leg2, selectedClass],
   );
 
@@ -247,7 +242,12 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
     ? combinedResult.isBothConfirmed
     : isInitialConfirmed;
 
-  const isOvernight = journey.arrivalDate !== journey.journeyDate;
+  const arrivalDayOffset = useMemo(() => {
+    const start = Date.parse(`${journey.journeyDate}T00:00:00Z`);
+    const end = Date.parse(`${journey.arrivalDate}T00:00:00Z`);
+    if (!Number.isFinite(start) || !Number.isFinite(end)) return 0;
+    return Math.max(0, Math.round((end - start) / 86_400_000));
+  }, [journey.arrivalDate, journey.journeyDate]);
 
   // Abort scan on unmount
   useEffect(() => {
@@ -424,14 +424,14 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
           res1.legs.some(
             (l) => l.segmentKind === "confirmed" && l.travelClass,
           )) ||
-          leg1.isConfirmed,
+        leg1.isConfirmed,
       );
       const hasLeg2Seats = Boolean(
         (res2?.legs &&
           res2.legs.some(
             (l) => l.segmentKind === "confirmed" && l.travelClass,
           )) ||
-          leg2.isConfirmed,
+        leg2.isConfirmed,
       );
 
       const bothConfirmed = hasLeg1Seats && hasLeg2Seats;
@@ -824,9 +824,9 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
                   <span className="text-base font-bold leading-tight text-slate-900 sm:text-xl">
                     {formatTimeAmPm(journey.arrivalTime) ?? "—"}
                   </span>
-                  {isOvernight && (
-                    <span className="rounded bg-purple-100 px-1 py-0.2 text-[10px] font-extrabold text-purple-700">
-                      +1d
+                  {arrivalDayOffset > 0 && (
+                    <span className="py-0.2 rounded bg-purple-100 px-1 text-[10px] font-extrabold text-purple-700">
+                      +{arrivalDayOffset}d
                     </span>
                   )}
                 </div>
@@ -912,7 +912,7 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
                   {/* Leg 1 Summary */}
                   <div className="flex flex-col justify-between gap-1 rounded-lg border border-slate-200/60 bg-white p-2.5 sm:flex-row sm:items-center">
                     <div className="flex items-center gap-2 text-xs">
-                      <Train className="h-4 w-4 text-blue-600 shrink-0" />
+                      <Train className="h-4 w-4 shrink-0 text-blue-600" />
                       <span className="font-bold text-slate-900">
                         {leg1.trainNumber} {leg1.trainName}
                       </span>
@@ -941,7 +941,7 @@ export const ConnectingTrainCard = memo(function ConnectingTrainCard({
                   {/* Leg 2 Summary */}
                   <div className="flex flex-col justify-between gap-1 rounded-lg border border-slate-200/60 bg-white p-2.5 sm:flex-row sm:items-center">
                     <div className="flex items-center gap-2 text-xs">
-                      <Train className="h-4 w-4 text-indigo-600 shrink-0" />
+                      <Train className="h-4 w-4 shrink-0 text-indigo-600" />
                       <span className="font-bold text-slate-900">
                         {leg2.trainNumber} {leg2.trainName}
                       </span>

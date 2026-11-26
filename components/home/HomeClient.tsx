@@ -300,7 +300,10 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
   const [journeyDate, setJourneyDate] = useState<string | null>(null);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [selectedClasses, setSelectedClasses] = useState<string[]>([]);
-  const [stopFilters, setStopFilters] = useState({ direct: true, oneStop: true });
+  const [stopFilters, setStopFilters] = useState({
+    direct: true,
+    oneStop: true,
+  });
   // Inputs are drafts; results and scans only consume the last submission.
   const [submittedSearch, setSubmittedSearch] = useState<{
     from: StationRow;
@@ -949,7 +952,9 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
         }
       }
       if (cachedTrainNumbers.size > 0) {
-        setV2CompletedScans((prev) => new Set([...prev, ...cachedTrainNumbers]));
+        setV2CompletedScans(
+          (prev) => new Set([...prev, ...cachedTrainNumbers]),
+        );
       }
       if (newScanMetaMap.size > 0) {
         setV2ScanMetaMap((prev) => new Map([...prev, ...newScanMetaMap]));
@@ -1610,10 +1615,12 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                   >
                     Stops
                   </span>
-                  {([
-                    ["direct", "Direct"],
-                    ["oneStop", "1 Stop"],
-                  ] as const).map(([key, label]) => (
+                  {(
+                    [
+                      ["direct", "Direct"],
+                      ["oneStop", "1 Stop"],
+                    ] as const
+                  ).map(([key, label]) => (
                     <label
                       key={key}
                       className={cn(
@@ -1771,25 +1778,37 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                           )}
                         </h3>
                         <p className="text-xs text-slate-500">
-                          Comfortable stopover at intermediate hubs (Kanpur Central, Prayagraj, Pt. Deen Dayal Upadhyaya)
+                          {connectingJourneys.length > 0
+                            ? `Comfortable stopover via ${Array.from(
+                                new Set(
+                                  connectingJourneys
+                                    .map(
+                                      (j) =>
+                                        j.intermediateStationName ||
+                                        j.intermediateStation,
+                                    )
+                                    .filter(Boolean),
+                                ),
+                              ).join(", ")}`
+                            : "Comfortable 1-stop connections via major railway junctions"}
                         </p>
                       </div>
 
                       {connectingJourneys.some((j) => j.isFullyConfirmed) && (
-                        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700 shadow-2xs">
+                        <span className="shadow-2xs inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">
                           ⚡ Confirmed options available
                         </span>
                       )}
                     </div>
 
                     {connectingLoading ? (
-                      <div className="rounded-xl border border-slate-200 bg-white p-6 text-center shadow-xs">
+                      <div className="shadow-xs rounded-xl border border-slate-200 bg-white p-6 text-center">
                         <span className="mb-2 inline-block h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-blue-600" />
                         <p className="text-sm font-semibold text-slate-800">
                           Searching connecting trains and layovers...
                         </p>
                         <p className="mt-0.5 text-xs text-slate-500">
-                          Analyzing junction transfers at Kanpur Central, Prayagraj, and Pt. Deen Dayal Upadhyaya
+                          Analyzing junction transfers along your route
                         </p>
                       </div>
                     ) : connectingJourneys.length > 0 ? (
@@ -1831,10 +1850,11 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                       </ul>
                     ) : (
                       <div
-                        className="rounded-xl border border-slate-200 bg-white p-5 text-center text-xs text-slate-500 shadow-xs"
+                        className="shadow-xs rounded-xl border border-slate-200 bg-white p-5 text-center text-xs text-slate-500"
                         role="status"
                       >
-                        No connecting train routes found with comfortable layovers on this date.
+                        No connecting train routes found with comfortable
+                        layovers on this date.
                       </div>
                     )}
                   </section>

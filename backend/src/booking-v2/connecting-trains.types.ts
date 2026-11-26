@@ -1,11 +1,3 @@
-export interface ConnectingCorridorConfig {
-  fromHub: string;
-  toHub: string;
-  intermediateHubs: string[];
-  defaultMinLayoverMinutes: number;
-  defaultMaxLayoverMinutes: number;
-}
-
 export interface ConnectingLegClassOption {
   travelClass: string;
   fare: number | null;
