@@ -1,241 +1,254 @@
 ---
-title: "Curr Available in Train: Meaning, Timings & Rules (2026)"
-description: "Curr available (CURR_AVBL) in train means 100% confirmed vacant berths released after chart prep at 10% discount. Check opening timings, rules & seat finder."
+title: "రైలులో Curr Available (CURR_AVBL): సమయం, 10% ఆఫ్ & నియమాలు"
+description: "Curr Available (CURR_AVBL) అంటే బయలుదేరే ~8–10గం ముందు 10% బేస్ ఫేర్ తగ్గింపుతో వచ్చే కన్ఫర్మ్ బెర్త్‌లు. సమయాలు, CUR BKG & నియమాలు చూడండి."
 date: "2026-06-11"
-updated: "2026-10-28"
+updated: "2026-11-26"
 tags:
-  - train booking
-  - irctc
-  - curr available means in train
-  - curr avbl meaning in railway
-  - current availability
-  - curr_avbl in irctc
-  - vacancy chart
-  - irctc current booking time
-  - last minute tickets
-  - confirmed tickets
+  - రైలు బుకింగ్
+  - IRCTC
+  - రైలులో Curr Available అర్థం
+  - రైల్వేలో CURR_AVBL అర్థం
+  - కరెంట్ అవైలబిలిటీ
+  - IRCTCలో CURR_AVBL
+  - CUR BKG ENABLED
+  - IRCTC కరెంట్ బుకింగ్ సమయం
+  - చివరి నిమిషం టికెట్లు
+  - కన్ఫర్మ్ టికెట్లు
 ---
-
-> **⚡ Need a Confirmed Train Berth Today?**
-> When direct train tickets show Waitlist (WL) or Regret, LastBerth searches contiguous seat combinations on the same train so you travel confirmed without deboarding. Search your route instantly:
->
-> - **Delhi ➔ Patna**: [Search Delhi ➔ Patna Special Trains](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn)
-> - **Mumbai ➔ Danapur**: [Search Mumbai ➔ Danapur Express Seats](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur)
-> - **Bengaluru ➔ Chennai**: [Search Bengaluru ➔ Chennai Trains](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central)
-> - **Delhi ➔ Mumbai**: [Search Delhi ➔ Mumbai Confirmed Seats](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central)
-> - **Howrah ➔ Puri**: [Search Howrah ➔ Puri Holiday Trains](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri)
->
-> You can also explore the coach-by-coach [Chart Vacancy Map](/chart-vacancy) or check exact charting schedules and alerts on [Chart Preparation Times & Alerts](/chart-times).
 
 ## TL;DR
 
-Curr available (CURR_AVBL or CURR AVL) in train bookings refers to 100% confirmed vacant berths released for public reservation immediately after chart preparation, roughly 4 to 8 hours before departure. Every current booking ticket guarantees an allocated coach and berth number with zero waiting list risk and no Tatkal fee. Indian Railways applies a flat 10% discount on the base fare of unsold berths, and tickets remain bookable online and at PRS counters until 30 minutes before departure. When direct availability is exhausted, LastBerth [Smart Seats](/) finds confirmed contiguous split berths on the same train.
+**రైలు బుకింగ్‌లో Curr Available (`CURR_AVBL` లేదా `CURR AVL`)** అంటే మొదటి రిజర్వేషన్ చార్ట్ సిద్ధమైన వెంటనే, సాధారణంగా **నిర్ధారిత బయలుదేరే సమయానికి సుమారు 8 నుండి 10 గంటల ముందు** (లేదా 14:00 లోపు బయలుదేరే రైళ్లకు ముందు రోజు సాయంత్రం **20:00 నుండి 21:00 IST** మధ్య) ప్రజా బుకింగ్ కోసం విడుదల చేసే **100% కన్ఫర్మ్ ఖాళీ బెర్త్‌లు**. ప్రతి Curr Available టికెట్ చెక్‌అవుట్ సమయంలోనే ఖచ్చితమైన కోచ్ మరియు బెర్త్ నంబర్‌ను కేటాయిస్తుంది, ఇందులో ఎలాంటి Waiting List (`WL`) లేదా `RAC` రిస్క్ ఉండదు, అలాగే Tatkal అదనపు ఛార్జీ లేకుండా **బేస్ ఫేర్‌పై నేరుగా 10% తగ్గింపు** లభిస్తుంది. ఆన్‌లైన్‌లో మరియు స్టేషన్ PRS కౌంటర్లలో బుకింగ్‌లు **బయలుదేరే సమయానికి 30 నిమిషాల ముందు వరకు** తెరిచి ఉంటాయి. ఒకవేళ `CURR_AVBL`లో Regret చూపిస్తే, LastBerth [Smart Seats](/) అదే రైలులో కన్ఫర్మ్ అయిన స్ప్లిట్-సీట్ కాంబినేషన్‌లను కనుగొంటుంది.
+
+> **ఈరోజు కన్ఫర్మ్ రైలు బెర్త్ కావాలా?**
+> డైరెక్ట్ రైలు టికెట్లు Waitlist (WL) లేదా Regret చూపించినప్పుడు, మీరు రైలు దిగకుండానే కన్ఫర్మ్ సీటుతో ప్రయాణించేలా LastBerth అదే రైలులో వరుసగా ఉన్న కన్ఫర్మ్ బెర్త్ కాంబినేషన్‌లను స్కాన్ చేస్తుంది:
+>
+> - [ఢిల్లీ ➔ పాట్నా కన్ఫర్మ్ సీట్లను శోధించండి](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn&src=blog_curr_avbl) | [ఢిల్లీ నుండి పాట్నా రైళ్లు](/routes/delhi-to-patna)
+> - [ముంబై ➔ దానాపూర్ ఎక్స్‌ప్రెస్ సీట్లను శోధించండి](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur&src=blog_curr_avbl) | [ముంబై నుండి దానాపూర్ రైళ్లు](/routes/mumbai-to-danapur)
+> - [బెంగళూరు ➔ చెన్నై రైళ్లను శోధించండి](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central&src=blog_curr_avbl)
+> - [ఢిల్లీ ➔ ముంబై కన్ఫర్మ్ సీట్లను శోధించండి](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central&src=blog_curr_avbl) | [ఢిల్లీ నుండి ముంబై రైళ్లు](/routes/delhi-to-mumbai)
+> - [హౌరా ➔ పూరీ హాలిడే రైళ్లను శోధించండి](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri&src=blog_curr_avbl)
+> - [Chart Vacancy](/chart-vacancy) పై కోచ్ వారీగా ఖాళీ బెర్త్‌లను పరిశీలించండి లేదా [Chart Times](/chart-times) పై లైవ్ చార్టింగ్ సమయాలను ట్రాక్ చేయండి.
+>
+> _నిరాకరణ: LastBerth ఒక స్వతంత్ర రైలు సీట్ల శోధన మరియు ఆవిష్కరణ వేదిక. దీనికి IRCTC లేదా భారతీయ రైల్వేతో ఎలాంటి అనుబంధం లేదు, మరియు అన్ని టికెట్ బుకింగ్‌లు అధికారిక IRCTC పోర్టల్‌లు లేదా రైల్వే కౌంటర్ల ద్వారా మాత్రమే పూర్తి చేయాలి._
 
 ---
 
-## What Does Curr Available Mean in Train (CURR_AVBL)?
+## రైలులో Curr Available (`CURR_AVBL` / `CURR AVL`) అంటే ఏమిటి?
 
-**Curr available (status CURR_AVBL or CURR AVL) in train booking means real-time vacant berths released for public booking immediately after the first reservation chart is prepared. These represent 100% fully confirmed seats with specific coach and berth numbers allocated instantly, bookable online or at station counters until 30 minutes before departure with zero waitlist risk.**
+**రైలు బుకింగ్‌లో Curr Available (`CURR_AVBL` లేదా `CURR AVL`) అంటే మొదటి చార్ట్ తయారైన వెంటనే, బయలుదేరే సమయానికి సుమారు 8 నుండి 10 గంటల ముందు ప్రజా రిజర్వేషన్ కోసం విడుదల చేసే రియల్-టైమ్ ఖాళీ బెర్త్‌లు. ఈ స్థితి కింద బుక్ చేసిన ప్రతి టికెట్ కేటాయించబడిన కోచ్ మరియు సీటు నంబర్‌తో కూడిన 100% కన్ఫర్మ్ బెర్త్, ఇందులో ఎలాంటి వెయిట్‌లిస్ట్ రిస్క్ ఉండదు.**
 
-When checking train availability on the IRCTC Rail Connect app or the official website shortly before your journey, you will often spot entries like `CURR_AVBL-0014`, `CURR_AVBL-0002`, or `CURR AVL`. This status indicates that after accommodating confirmed passengers, RAC holders, and waitlisted travellers, empty berths remain unallocated on the train.
+ప్రయాణ రోజున మీరు IRCTC వెబ్‌సైట్, Rail Connect యాప్ లేదా భాగస్వామ్య విచారణ పోర్టల్‌లలో రైలు అందుబాటును తనిఖీ చేసినప్పుడు, `CURR_AVBL-0014`, `CURR_AVBL-0002` లేదా `CURR AVL` వంటి ఆకుపచ్చ స్టేటస్ ట్యాగ్‌లు అమ్మకానికి మిగిలి ఉన్న రిజర్వ్డ్ సీట్లను సూచిస్తాయి. IRCTC ప్రాథమిక ప్రయాణికుల జాబితాను ఖరారు చేసి అర్హులైన Waiting List మరియు RAC ప్రయాణికులను క్లియర్ చేసిన తర్వాత, మిగిలి ఉన్న సీట్లన్నీ కరెంట్ రిజర్వేషన్ పూల్‌లోకి వస్తాయి.
 
-These vacant berths originate from several specific railway reservation pools:
+ఈ ఖాళీ బెర్త్‌లు నాలుగు ప్రత్యేక రైల్వే కోటా పూల్‌ల నుండి వస్తాయి:
 
-- **Unutilized Emergency Quotas (EQ):** VIP allocations and administrative emergency quotas surrendered back to the public pool when unrequested.
-- **Unsold Tatkal & Premium Tatkal:** Unsold Tatkal quota berths released automatically into the general reservation inventory at chart finalization.
-- **Unclaimed Special Quotas:** Defense, parliament, foreign tourist, and outstation quotas that were not utilized.
-- **Pre-Chart Cancellations:** Confirmed berths freed up by passengers who cancelled their tickets before the chart preparation window.
+- **వినియోగించని ఎమర్జెన్సీ కోటాలు (EQ):** చార్టింగ్‌కు ముందు ఎవరూ క్లెయిమ్ చేయనప్పుడు సాధారణ ప్రజలకు తిరిగి అప్పగించబడే VIP, మంత్రులు మరియు పరిపాలనా అత్యవసర బెర్త్‌లు.
+- **అమ్ముడుపోని Tatkal మరియు Premium Tatkal సీట్లు:** చార్ట్ తయారీకి ముందు అమ్ముడుపోకుండా మిగిలిపోయిన Tatkal (`CK`) మరియు Premium Tatkal (`PT`) బెర్త్‌లు.
+- **క్లెయిమ్ చేయని ప్రత్యేక కోటాలు:** బుక్ చేయబడని డిఫెన్స్, పార్లమెంట్ హౌస్, ఫారిన్ టూరిస్ట్ కోటా (`FTQ`) మరియు లేడీస్ కోటా బెర్త్‌లు.
+- **చార్ట్‌కు ముందు రద్దులు:** మొదటి చార్ట్ సమయానికి కొద్దిసేపటి ముందు ప్రయాణికులు తమ ప్రయాణాలను రద్దు చేసుకోవడం వల్ల ఖాళీ అయిన కన్ఫర్మ్ సీట్లు.
 
-Rather than running coaches with empty berths, Indian Railways throws these seats open to any passenger on a first-come, first-served basis under Current Reservation.
+ఖాళీ బెర్త్‌లతో కోచ్‌లను నడపడానికి బదులుగా, భారతీయ రైల్వే ఈ సీట్లను Tatkal అదనపు ఛార్జీలు లేకుండా మొదట వచ్చిన వారికి మొదట ప్రాతిపదికన తెరుస్తుంది.
 
-| Reservation Term | Exact Display Code | Confirmation Status | Berth Assigned Instantly? | Price vs Base Fare |
-| :--- | :--- | :--- | :--- | :--- |
-| **Current Availability** | `CURR_AVBL` / `CURR AVL` | **100% Confirmed** | **Yes** (Coach & Berth on slip) | **10% Discount on Base Fare** |
-| **Available** | `AVAILABLE` / `AVL` | **100% Confirmed** | Yes (At chart preparation) | Standard Base Fare |
-| **Reservation Against Cancellation** | `RAC` | Boarding Authorized | Shared Side Lower Berth | Standard Base Fare |
-| **General Waiting List** | `GNWL` / `WL` | No Boarding Rights | No (Standby queue) | Standard Base Fare |
-| **Tatkal Quota** | `TATKAL` / `CK` | Confirmed or TQWL | Depends on seat count | High Tatkal Markup |
-
----
-
-## Is a Current Available Ticket 100% Confirmed or Waiting List?
-
-**A current available ticket is a 100% fully confirmed reservation that carries zero Waiting List (WL) or Reservation Against Cancellation (RAC) risk. When your booking succeeds, IRCTC immediately assigns your confirmed coach code and berth number on your ticket. Unlike waitlisted e-tickets, a CURR_AVBL ticket is generated post-charting and will never undergo automatic cancellation.**
-
-Many travellers confuse `CURR_AVBL` with waiting list progression or worry that they might receive an RAC ticket requiring them to share a side lower berth. That concern is completely unfounded. A current available ticket is a fully confirmed reservation from the moment your payment gateway transaction clears.
-
-The operational differences between regular waiting list processing and current booking are decisive:
-
-1. **Instant Coach and Berth Numbers:** Your electronic ticket immediately displays your confirmed coach (such as B3, M2, or S4) and your designated berth number (such as 21 Lower or 45 Side Upper).
-2. **No Automatic Cancellation:** Waitlisted e-tickets that fail to confirm during chart preparation are automatically cancelled and refunded by IRCTC. In contrast, a current booking ticket is generated post-charting, meaning it can never be dropped from the train manifest.
-3. **Immediate Boarding Rights:** You possess complete legal rights to board the reserved coach, place your luggage, and occupy your designated berth without asking the Travelling Ticket Examiner (TTE) for permission.
-
-For reference, the waitlist progression on standard bookings operates through a strict sequence:
-
-$$\text{WL (Waiting List)} \longrightarrow \text{RAC (Shared Berth)} \longrightarrow \text{Confirmed (Full Berth)}$$
-
-While **WL full form is Waiting List**, a `CURR_AVBL` ticket bypasses this entire queue, placing you directly into confirmed status.
+| రిజర్వేషన్ స్థితి                      | ఖచ్చితమైన డిస్‌ప్లే కోడ్ | కన్ఫర్మేషన్ హామీ      | బెర్త్ వెంటనే కేటాయించబడుతుందా?     | బేస్ ఫేర్‌తో పోలిస్తే ధర      |
+| :------------------------------------- | :----------------------- | :-------------------- | :---------------------------------- | :---------------------------- |
+| **కరెంట్ అవైలబిలిటీ**                  | `CURR_AVBL` / `CURR AVL` | **100% కన్ఫర్మ్**     | **అవును** (స్లిప్‌పై కోచ్ & బెర్త్) | **బేస్ ఫేర్‌పై 10% తగ్గింపు** |
+| **అవైలబుల్**                           | `AVAILABLE` / `AVL`      | **100% కన్ఫర్మ్**     | అవును (బుకింగ్ వద్ద లేదా 1వ చార్ట్) | సాధారణ బేస్ ఫేర్              |
+| **రిజర్వేషన్ అగైనెస్ట్ క్యాన్సిలేషన్** | `RAC`                    | బోర్డింగ్ అనుమతి ఉంది | షేర్డ్ సైడ్ లోయర్ సీటు              | సాధారణ బేస్ ఫేర్              |
+| **జనరల్ వెయిటింగ్ లిస్ట్**             | `GNWL` / `WL`            | బోర్డింగ్ హక్కు లేదు  | లేదు (స్టాండ్‌బై క్యూ)              | సాధారణ బేస్ ఫేర్              |
+| **Tatkal కోటా**                        | `TATKAL` / `CK`          | కన్ఫర్మ్ లేదా `TQWL`  | సీట్ల సంఖ్యపై ఆధారపడి ఉంటుంది       | అధిక Tatkal అదనపు ఛార్జీ      |
 
 ---
 
-## When Does Current Availability Open in IRCTC?
+## IRCTC మరియు NTESలో `CUR BKG ENABLED` మరియు `AVL` అంటే ఏమిటి?
 
-**Current availability opens on IRCTC immediately after the first reservation chart is finalized, which occurs 4 to 8 hours before scheduled train departure. For morning trains departing between 06:00 and 11:59 AM, charting completes by 21:00 (9:00 PM) the previous evening. Booking opens online and at computerized PRS counters the second charting finishes.**
+**`CUR BKG ENABLED` అంటే మొదటి రిజర్వేషన్ చార్ట్ పూర్తయి, ఖాళీ బెర్త్‌లు అమ్మకానికి ఉన్నందున ఆ రైలుకు కరెంట్ బుకింగ్ యాక్టివ్‌గా ఉందని అర్థం. మరోవైపు, `AVL` (లేదా `AVAILABLE`) సాధారణ 60 రోజుల అడ్వాన్స్ రిజర్వేషన్ వ్యవధిలో చార్టింగ్‌కు ముందు అందుబాటులో ఉండే సాధారణ కన్ఫర్మ్ సీట్లను సూచిస్తుంది, అయితే `CURR_AVBL` ఖచ్చితంగా చార్ట్ తయారీ తర్వాత మాత్రమే వర్తిస్తుంది.**
 
-The exact minute current reservation opens depends entirely on when Indian Railways finalizes the train's initial passenger chart:
+NTES (నేషనల్ ట్రైన్ ఎంక్వైరీ సిస్టమ్) లేదా థర్డ్-పార్టీ బుకింగ్ స్క్రీన్‌లపై లైవ్ రైలు స్థితిని తనిఖీ చేసే ప్రయాణికులు సంక్షిప్త పదాలను చూసి తరచుగా గందరగోళానికి గురవుతారు. ఖచ్చితమైన తేడాను తెలుసుకోవడం వల్ల బుకింగ్ అవకాశాలను కోల్పోకుండా ఉండవచ్చు:
 
-| Train Scheduled Departure Time | First Chart Preparation Window | When Current Availability (CURR_AVBL) Opens |
-| :--- | :--- | :--- |
-| **Morning Trains (06:00 AM – 11:59 AM)** | By **21:00 (9:00 PM)** the previous night | Immediately after **9:00 PM the night before** |
-| **Afternoon Trains (12:00 PM – 05:59 PM)** | Between **08:00 AM and 10:00 AM** same day | Mid-morning on the day of journey |
-| **Evening Trains (06:00 PM – 11:59 PM)** | Between **02:00 PM and 04:00 PM** same day | Mid-afternoon on the day of journey |
-| **Night Trains (12:00 AM – 05:59 AM)** | Between **08:00 PM and 10:00 PM** previous evening | Late evening before midnight |
-
-Keep in mind that IRCTC servers undergo nightly database maintenance daily from **11:45 PM to 12:20 AM IST (23:45 to 00:20)**. During this 35-minute window, no bookings, cancellations, or PNR lookups can be processed online.
-
-To track when charting has historically completed for your specific train, check [Chart Preparation Times & Alerts](/chart-times).
+- **`CUR BKG ENABLED`:** మొదటి చార్ట్ ముగిసిన తర్వాత రైల్వే ఎంక్వైరీ బోర్డులు మరియు కోచ్ ఖాళీ స్క్రీన్‌లపై కనిపిస్తుంది. మీరు ఆన్‌లైన్‌లో (`CURR_AVBL`) లేదా స్టేషన్ కరెంట్ రిజర్వేషన్ కౌంటర్‌లో మిగిలిన ఖాళీ బెర్త్‌లను వెంటనే కొనుగోలు చేయవచ్చని ఇది నిర్ధారిస్తుంది.
+- **`AVL` / `AVAILABLE-0024`:** 60 రోజుల బుకింగ్ వ్యవధిలో చార్ట్‌కు ముందు ఉండే సాధారణ కన్ఫర్మ్ అందుబాటు. మీరు ఎలాంటి 10% కరెంట్ బుకింగ్ తగ్గింపు లేకుండా 100% బేస్ ఫేర్ చెల్లిస్తారు.
+- **`CURR_AVBL-0005` / `CURR AVL`:** చార్ట్ తయారీ తర్వాత ఉండే కన్ఫర్మ్ అందుబాటు. మీకు తక్షణమే కోచ్ మరియు బెర్త్ నంబర్‌తో పాటు 10% బేస్ ఫేర్ తగ్గింపు లభిస్తుంది, మరియు రిఫండ్ కోసం టికెట్‌ను రద్దు చేయలేరు.
 
 ---
 
-## What Time Does Current Booking Close in Indian Railways?
+## Curr Available టికెట్ 100% కన్ఫర్మ్ అయినట్లా లేక వెయిటింగ్ లిస్టా?
 
-**Current reservation booking closes strictly 30 minutes before train departure from its originating station or remote charting location. At this 30-minute threshold, Indian Railways prepares the second and final reservation chart, downloads passenger rosters onto onboard TTE Handheld Terminals (HHTs), and freezes all online and station booking interfaces for that train service.**
+**Curr Available టికెట్ అనేది ఎలాంటి Waiting List (`WL`) లేదా `RAC` రిస్క్ లేని 100% పూర్తిగా కన్ఫర్మ్ అయిన రిజర్వేషన్. చెల్లింపు పూర్తయిన వెంటనే, IRCTC మీ రిజర్వేషన్ స్లిప్‌పైనే ఖచ్చితమైన కోచ్ కోడ్ మరియు బెర్త్ నంబర్‌ను ముద్రిస్తుంది. `CURR_AVBL` టికెట్లు చార్ట్ తయారీ తర్వాత జారీ చేయబడతాయి కాబట్టి, అవి ఎప్పుడూ ఆటోమేటిక్ వెయిట్‌లిస్ట్ రద్దుకు గురికావు.**
 
-The 30-minute cutoff is non-negotiable across both online and offline channels:
+మొదటిసారి ప్రయాణించేవారు `CURR_AVBL`ను బుక్ చేయడానికి తరచుగా వెనుకాడుతారు, ఎందుకంటే అది ఎక్కువ వెయిటింగ్ లిస్ట్ లేదా షేర్డ్ సైడ్ లోయర్ `RAC` సీటులా ఉంటుందేమో అని భయపడతారు. కానీ అది ఎప్పటికీ అలా ఉండదు. ప్రతి `CURR_AVBL` బుకింగ్ తక్షణమే ప్రత్యేక వ్యక్తిగత సీటు లేదా స్లీపింగ్ బెర్త్‌ను కేటాయిస్తుంది.
 
-1. **Second and Final Chart Preparation:** Exactly 30 minutes before departure, the PRS server calculates any last-minute cancellations or quota shifts to generate the second chart.
-2. **HHT Data Synchronization:** The final passenger roster is transferred over mobile networks directly to the onboard TTE's Handheld Terminal (HHT). Once this transfer initiates, the reservation database for that train locks out all public booking engines.
-3. **Physical Counter Closure:** Station Current Reservation windows stop issuing tickets for that train at the exact 30-minute mark.
+మూడు ఆపరేషనల్ నియమాలు `CURR_AVBL`ను వెయిట్‌లిస్ట్ బుకింగ్‌ల నుండి వేరు చేస్తాయి:
 
-If you miss the 30-minute window, you cannot purchase a confirmed ticket online or at station booking windows. Do not board a reserved coach with an unreserved or platform ticket hoping to negotiate, as boarding without an authorized reservation incurs a **flat ₹500 penalty under Section 138 (Jan Vishwas Act 2026)** plus the fare difference.
+1. **తక్షణ కోచ్ మరియు బెర్త్ కేటాయింపు:** మీ ఎలక్ట్రానిక్ రిజర్వేషన్ స్లిప్ (ERS) వెంటనే మీ కోచ్ (`B3`, `M1`, లేదా `S4` వంటివి) మరియు బెర్త్ నంబర్ (`21 LB` లేదా `45 SU` వంటివి) చూపుతుంది. ఫస్ట్ AC (`1A`) లో కూడా, చార్ట్ తర్వాత వచ్చే `CURR_AVBL` బెర్త్‌లు అప్పటికే ఖాళీ క్యాబిన్‌లకు కేటాయించబడి ఉంటాయి.
+2. **జీరో ఆటో-క్యాన్సిలేషన్ రిస్క్:** తుది చార్టింగ్ సమయానికి అప్‌గ్రేడ్ కాని ఆన్‌లైన్ వెయిట్‌లిస్ట్ ఇ-టికెట్లు (`WL`) రద్దయి రిఫండ్ చేయబడతాయి. `CURR_AVBL` కేవలం కేటాయించని భౌతిక సీట్లను మాత్రమే అమ్ముతుంది కాబట్టి, ఇది రైలు జాబితాలో శాశ్వతంగా చెల్లుబాటులో ఉంటుంది.
+3. **పూర్తి బోర్డింగ్ అధికారం:** 60 రోజుల ముందు బుక్ చేసిన ప్రయాణికులతో సమానమైన చట్టపరమైన ప్రయాణ హక్కులు మీకు ఉంటాయి. అసలు ప్రభుత్వ ఫోటో గుర్తింపు కార్డుతో పాటు మీ ఇ-టికెట్ PDF లేదా SMS ను తీసుకువెళితే సరిపోతుంది.
 
----
+పోలిక కోసం, సాధారణ అడ్వాన్స్ రిజర్వేషన్లు ఖచ్చితమైన వెయిట్‌లిస్ట్ క్రమాన్ని అనుసరిస్తాయి, ఇక్కడ **WL పూర్తి రూపం Waiting List**:
 
-## How to Book Current Availability Train Tickets on IRCTC and at Counter?
+$$\text{WL (Waiting List)} \longrightarrow \text{RAC (Shared Seat)} \longrightarrow \text{CNF (Confirmed Berth)}$$
 
-**You can book current availability tickets online via the IRCTC website and mobile app, or physically at computerized railway station PRS counters. On IRCTC, search your route on the day of travel, select a train showing CURR_AVBL status, enter passenger details, and checkout before the 30-minute pre-departure cutoff to receive an instant electronic ticket.**
-
-Booking a current available berth online follows a straightforward workflow:
-
-1. **Search Your Route on IRCTC:** Log into the IRCTC Rail Connect app or the web portal (`irctc.co.in`). Enter your origin station, destination station, and today's date. Click **Search Trains**.
-2. **Locate the CURR_AVBL Status:** Scroll to your train and tap the desired travel class (such as 3A, 2A, 1A, or Sleeper). If the first chart has been prepared and unsold berths remain, the seat count will display in green text as **CURR_AVBL-0004** or **CURR AVL**.
-3. **Enter Passenger Details:** Select your passenger from your pre-saved **Master List** or enter details manually. You will notice that the "Consider for Auto Upgradation" checkbox is available. Selecting this allows Indian Railways to upgrade your berth to a higher class (for instance, Sleeper to 3AC) for free if higher-class berths remain vacant after final charting.
-4. **Complete Payment Before Cutoff:** Select UPI, net banking, or debit card and complete the transaction. Your Electronic Reservation Slip (ERS) will generate instantly displaying your assigned coach and berth number.
-
-**Booking at Station PRS Counters:** If you are already at the station, head directly to the designated **Current Reservation Counter** or any operational PRS ticket window. Hand the booking clerk your requisition slip with the train number and destination. The clerk will issue a physical printed reservation ticket showing your confirmed coach and berth.
-
-Remember that unverified IRCTC accounts are capped at **12 tickets per month**, while Aadhaar-authenticated profiles can book up to **24 tickets per month**. Daily bookings are limited to 6 tickets per account.
+`CURR_AVBL` టికెట్ ఆ క్యూ మొత్తాన్ని దాటేసి నేరుగా `CNF`లోకి వెళ్తుంది.
 
 ---
 
-## Is There a 10% Discount on Current Availability Train Tickets?
+## IRCTCలో Current Availability ఎప్పుడు తెరుచుకుంటుంది? (చార్టింగ్ షెడ్యూల్)
 
-**Indian Railways provides a flat 10% discount on the basic fare of vacant berths booked under Current Reservation across Rajdhani, Shatabdi, Duronto, and regular mail or express trains. This discount applies automatically to the last basic fare calculated, excluding reservation charges, superfast surcharges, catering fees, and applicable Goods and Services Tax (GST).**
+**మొదటి రిజర్వేషన్ చార్ట్ ఖరారైన వెంటనే IRCTCలో Current Availability తెరుచుకుంటుంది, ఇది సాధారణంగా నిర్ధారిత బయలుదేరే సమయానికి సుమారు 8 నుండి 10 గంటల ముందు జరుగుతుంది. 14:00 (మధ్యాహ్నం 2:00) గంటలకు ముందు బయలుదేరే రైళ్ల కోసం, భారతీయ రైల్వే మొదటి చార్ట్‌ను ముందు రోజు సాయంత్రం 20:00 నుండి 21:00 IST మధ్య సిద్ధం చేస్తుంది, తద్వారా రాత్రంతా కరెంట్ బుకింగ్ అందుబాటులో ఉంటుంది.**
 
-The discount scheme was introduced by the Railway Board to incentivize passengers to book unsold capacity on premium and express trains rather than travelling by road or air:
+`CURR_AVBL` ఏ ఖచ్చితమైన నిమిషంలో లైవ్ అవుతుంది అనేది మీ రైలు బయలుదేరే సమయ స్లాట్ మరియు మీ బోర్డింగ్ స్టేషన్‌కు రిమోట్ చార్టింగ్ లొకేషన్ ఉందా లేదా అనే దానిపై ఆధారపడి ఉంటుంది:
 
-- **Automatic Application:** You do not need a promo code or special coupon. The IRCTC booking engine automatically deducts 10% from the base fare during final checkout.
-- **Dynamic Pricing Relief:** On trains with dynamic flexi-fare pricing (such as Rajdhani and Duronto expresses), the 10% discount applies to the final calculated dynamic base fare, offering meaningful savings on last-minute travel.
-- **Excluded Components:** Fixed administrative fees, such as reservation fees (₹20 to ₹60), superfast surcharges (₹30 to ₹75), IRCTC convenience fees, and 5% GST on AC classes, are charged at normal rates.
+| రైలు నిర్ధారిత బయలుదేరే సమయం                  | మొదటి చార్ట్ తయారీ సమయం                               | ఆన్‌లైన్ & PRSలో `CURR_AVBL` ఎప్పుడు తెరుచుకుంటుంది |
+| :-------------------------------------------- | :---------------------------------------------------- | :-------------------------------------------------- |
+| **ఉదయం & మధ్యాహ్నం ప్రారంభం (00:00 – 13:59)** | ముందు రోజు సాయంత్రం **20:00 నుండి 21:00 IST**         | ముందు రోజు రాత్రి **8:00–9:00 PM** తర్వాత వెంటనే    |
+| **మధ్యాహ్నం బయలుదేరేవి (14:00 – 17:59)**      | బయలుదేరే ముందు **~8 నుండి 10 గంటలు** (తెల్లవారుజామున) | ప్రయాణ రోజు ఉదయం                                    |
+| **సాయంత్రం & అర్ధరాత్రి (18:00 – 23:59)**     | బయలుదేరే ముందు **~8 నుండి 10 గంటలు** (ఉదయం/మధ్యాహ్నం) | ప్రయాణ రోజు ఉదయం చివర నుండి మధ్యాహ్నం వరకు          |
+| **రిమోట్ లొకేషన్ (`RLWL`) స్టేషన్లు**         | రిమోట్ హబ్ నుండి బయలుదేరే ముందు **~8 నుండి 10 గంటలు** | రిమోట్ చార్టింగ్ టెర్మినల్ లాక్ అయిన తర్వాత         |
 
-| Train / Class Example | Normal Base Fare | 10% Current Booking Base Fare | Surcharges & GST | Final Ticket Price | Total Savings |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Sleeper Class (SL)** | ₹380 | ₹342 | ₹50 | **₹392** | ₹38 |
-| **AC 3-Tier (3A)** | ₹1,150 | ₹1,035 | ₹125 + GST | **₹1,218** | ₹115 |
-| **AC 2-Tier (2A)** | ₹1,680 | ₹1,512 | ₹150 + GST | **₹1,745** | ₹168 |
-| **Executive Chair Car (EC)** | ₹1,950 | ₹1,755 | ₹170 + GST | **₹2,021** | ₹195 |
+రోజువారీ CRIS సర్వర్ బ్లాక్‌అవుట్ సమయాన్ని గుర్తుంచుకోండి: IRCTC సర్వర్లు ప్రతి రాత్రి **11:45 PM నుండి 12:20 AM IST (23:45 నుండి 00:20)** వరకు షెడ్యూల్డ్ నిర్వహణలో ఉంటాయి. ఆ 35 నిమిషాల్లో ఎలాంటి `CURR_AVBL` శోధనలు, బుకింగ్‌లు లేదా PNR తనిఖీలు పనిచేయవు.
 
----
-
-## Can You Cancel a Current Available Ticket and Get a Refund?
-
-**You cannot cancel a confirmed current available ticket for a normal refund because bookings occur after first chart preparation. Under Indian Railways refund rules, confirmed tickets cancelled after chart finalization receive zero refund. You receive a 100% full refund only if Indian Railways cancels the train or if it runs over 3 hours late.**
-
-Because Current Reservation tickets are purchased during the post-charting window, standard 48-hour or 12-hour cancellation slabs do not apply:
-
-1. **Passenger Voluntary Cancellation:** If you change your mind and cancel a confirmed `CURR_AVBL` ticket, **no refund is granted**. The entire fare is forfeited to Indian Railways.
-2. **Train Cancellation by Railways:** If Indian Railways cancels the train due to track maintenance, severe weather, or operational emergencies, a 100% automatic refund of fare is processed back to your original payment method.
-3. **Train Delayed Over 3 Hours:** If the train is delayed by more than 3 hours at your journey originating station, you can choose not to travel. You must file an online **Ticket Deposit Receipt (TDR)** before the actual departure of the train to obtain a full refund without deduction of clerkage charges.
+> **మీ సీటును అదృష్టానికి వదిలేయకండి:** [Chart Times](/chart-times) లో మీ రైలుకు సంబంధించిన గత చార్టింగ్ సరళిని తనిఖీ చేయండి లేదా చార్ట్ తయారీ తర్వాత విడుదలైన లైవ్ ఖాళీ బెర్త్‌లను [Chart Vacancy](/chart-vacancy) లో చూడండి.
 
 ---
 
-## What is the Difference Between Current Availability and Tatkal?
+## భారతీయ రైల్వేలో కరెంట్ టికెట్ బుకింగ్ ఏ సమయానికి మూసివేయబడుతుంది?
 
-**The key difference is that Tatkal opens one day before departure with expensive premium surcharges and potential waitlists, whereas Current Availability opens 4 to 8 hours before departure with zero surcharges, a 10% base fare discount, and guaranteed confirmed berths. Current booking sells unsold quotas, whereas Tatkal reserves dedicated emergency inventory.**
+**రెండవ మరియు తుది రిజర్వేషన్ చార్ట్ సిద్ధమైనప్పుడు, రైలు నిర్ధారిత బయలుదేరే సమయానికి ఖచ్చితంగా 30 నుండి 45 నిమిషాల ముందు కరెంట్ టికెట్ బుకింగ్ మూసివేయబడుతుంది. ఈ గడువు వద్ద, CRIS పబ్లిక్ వెబ్, యాప్ మరియు PRS కౌంటర్ అమ్మకాలను లాక్ చేసి, తుది ప్రయాణికుల జాబితాను రైలులోని TTE యొక్క Handheld Terminal (HHT)కి సింక్ చేస్తుంది.**
 
-Both schemes assist last-minute travellers, but they serve fundamentally different operational roles:
+ఈ తుది గడువు ఎలాంటి మినహాయింపు లేకుండా అన్ని ఆన్‌లైన్ మరియు స్టేషన్ బుకింగ్ మార్గాలకు వర్తిస్తుంది:
 
-| Comparison Factor | Tatkal Scheme (`CK`) | Current Availability (`CURR_AVBL`) |
-| :--- | :--- | :--- |
-| **Opening Schedule** | 10:00 AM (AC) & 11:00 AM (Non-AC) 1 day prior | 4 to 8 hours before departure (post 1st chart) |
-| **Closing Schedule** | Chart finalization | Strictly 30 minutes before train departure |
-| **Pricing Structure** | Standard Fare + High Tatkal Surcharge (up to ₹500) | Standard Fare **minus 10% Base Fare Discount** |
-| **Confirmation Guarantee** | Can result in Waiting List (TQWL) | **100% Guaranteed Confirmed Berth Only** |
-| **Booking Channels** | IRCTC Website/App & PRS Counters | IRCTC Website/App & PRS Counters |
-| **Booking Restrictions** | Max 4 passengers per PNR, 2 PNRs per day | Standard account limits apply |
-| **Refund on Cancellation** | Zero refund on confirmed Tatkal | Zero refund on confirmed current booking |
+1. **రెండవ మరియు తుది చార్ట్ తయారీ:** బయలుదేరే సమయానికి సుమారు 30 నిమిషాల ముందు (ఎంపిక చేసిన Vande Bharat కారిడార్లలో 15 నిమిషాల ముందు వరకు), సెంట్రల్ PRS డేటాబేస్ చివరి రద్దులను పరిష్కరించి మిగిలిన `RAC` ప్రయాణికులను అప్‌గ్రేడ్ చేస్తుంది.
+2. **HHT జాబితా సింక్:** అప్‌డేట్ చేయబడిన చార్ట్ ఎలక్ట్రానిక్ పద్ధతిలో రైలులోని TTE క్లౌడ్-కనెక్టెడ్ Handheld Terminalకి బదిలీ అవుతుంది. ఆ సింక్ ప్రారంభమైన వెంటనే, IRCTC నుండి `CURR_AVBL` బటన్లు అదృశ్యమవుతాయి.
+3. **స్టేషన్ PRS కౌంటర్ గడువు:** రైల్వే ప్లాట్‌ఫారమ్‌ల వద్ద ఉన్న కంప్యూటరైజ్డ్ కరెంట్ రిజర్వేషన్ కౌంటర్లు కూడా అదే ఖచ్చితమైన గడువు వద్ద ఆ రైలు కోసం టికెట్ల జారీని నిలిపివేస్తాయి.
+
+గడువు దాటిన తర్వాత అన్‌రిజర్వ్డ్ జనరల్ (`GS`) టికెట్ లేదా ప్లాట్‌ఫారమ్ టికెట్‌తో రిజర్వ్డ్ Sleeper లేదా AC కోచ్‌లోకి ఎప్పుడూ ఎక్కకండి. రైల్వే చట్టంలోని సెక్షన్ 138 (**Jan Vishwas Act 2026** ద్వారా సవరించబడినది) ప్రకారం, రిజర్వ్డ్ కోచ్‌లో అనధికారిక ప్రయాణానికి నేరుగా **₹500 జరిమానా**తో పాటు ప్రయాణ ప్రారంభ స్టేషన్ నుండి సింగిల్ ఛార్జీ వ్యత్యాసం వసూలు చేయబడుతుంది.
 
 ---
 
-## What Should You Do If Current Availability Shows Regret or WL?
+## IRCTCలో మరియు కౌంటర్‌లో Current Availability రైలు టికెట్లను ఎలా బుక్ చేయాలి?
 
-**When current availability shows Regret or sold out, you cannot book direct tickets between your stations. Instead, use LastBerth Smart Seats to discover contiguous confirmed split berths on the same train, inspect physical empty berths on the live Chart Vacancy map, or check station-to-station occupancy on Seat Status to request unallocated berths from the TTE.**
+**మీరు IRCTC వెబ్‌సైట్, Rail Connect యాప్ లేదా రైల్వే స్టేషన్ కరెంట్ రిజర్వేషన్ కౌంటర్లలో Current Availability టికెట్లను బుక్ చేసుకోవచ్చు. ప్రయాణ రోజున మొదటి చార్ట్ తయారీ తర్వాత మీ రూట్‌ను శోధించి, `CURR_AVBL` చూపుతున్న రైలును ఎంచుకోండి, ప్రయాణికుల వివరాలను నిర్ధారించి, బయలుదేరే 30 నిమిషాల గడువుకు ముందే చెల్లింపు పూర్తి చేయండి.**
 
-If current availability shows zero vacant berths on your chosen service, you do not have to forfeit your trip. You can utilize several alternative strategies:
+ఆన్‌లైన్‌లో `CURR_AVBL` బెర్త్‌ను బుక్ చేయడానికి ఈ నాలుగు దశలను అనుసరించండి:
 
-1. **Find Smart Seats with Contiguous Split Journeys:** When direct origin-to-destination berths are exhausted, [Finding Smart Seats](/) discovers confirmed paths by splitting your journey into contiguous legs on the exact same train. For example, you travel in coach B2 from Station A to B, and shift to coach B5 from Station B to C without deboarding.
-2. **Inspect Physical Berths on Chart Vacancy:** Open the [Chart Vacancy Map](/chart-vacancy) right after chart finalization. It provides a visual, coach-by-coach layout showing physical berths that empty out along the route.
-3. **Check Running Occupancy on Seat Status:** Use the [Seat Status Coach Journey Lookup](/seat-status) to inspect station-to-station occupancy for any berth. If a passenger deboards at an intermediate station, you can approach the onboard TTE with your boarding ticket to request official regularization.
-4. **Explore Dedicated Corridor Guides:** Review train frequencies, route distances, and alternative connections across major trunk routes like [Delhi to Patna Trains](/routes/delhi-to-patna) and [Mumbai to Danapur Trains](/routes/mumbai-to-danapur).
+1. **మీ ప్రయాణ తేదీని శోధించండి:** IRCTC Rail Connect యాప్ లేదా `irctc.co.in` లోకి లాగిన్ అయి, ఈరోజు తేదీతో మీ బోర్డింగ్ మరియు గమ్యస్థాన స్టేషన్లను నమోదు చేసి, **Search Trains** పై ట్యాప్ చేయండి.
+2. **ఆకుపచ్చ `CURR_AVBL` ట్యాగ్‌ను గుర్తించండి:** మీకు నచ్చిన ప్రయాణ క్లాస్ (`3A`, `3E`, `2A`, `1A`, `CC`, లేదా `SL`) పై ట్యాప్ చేయండి. చార్టింగ్ పూర్తయి ఖాళీ సీట్లు మిగిలి ఉంటే, అందుబాటు ఆకుపచ్చ రంగులో `CURR_AVBL-0006` లేదా `CURR AVL` గా కనిపిస్తుంది.
+3. **ప్రయాణికులను త్వరగా జోడించండి:** మీ **Master List** నుండి సేవ్ చేసిన ప్రయాణికులను ఎంచుకోండి లేదా పేరు, వయస్సు మరియు లింగాన్ని మాన్యువల్‌గా నమోదు చేయండి. సాధారణ ఖాతా పరిమితులు ఇప్పటికీ వర్తిస్తాయని గమనించండి: ధృవీకరించని IRCTC ఖాతాలు నెలకు **12 టికెట్లకు** పరిమితం చేయబడ్డాయి, అయితే ఆధార్-ధృవీకరించిన ప్రొఫైల్‌లు నెలకు **24 టికెట్ల** వరకు (13 నుండి 24 టికెట్లలో కనీసం ఒక ఆధార్-ధృవీకరించిన ప్రయాణికుడు ఉండాలి) మరియు రోజుకు గరిష్టంగా **6 టికెట్లు** బుక్ చేసుకోవచ్చు.
+4. **రెండవ చార్ట్ గడువుకు ముందే చెల్లించండి:** UPI, IRCTC eWallet, నెట్ బ్యాంకింగ్ లేదా కార్డ్ ద్వారా చెల్లింపు పూర్తి చేయండి. మీ కన్ఫర్మ్ కోచ్ మరియు బెర్త్ నంబర్ వెంటనే కనిపిస్తాయి.
 
----
+**స్టేషన్ కౌంటర్లలో ఆఫ్‌లైన్ బుకింగ్:** మీరు ఇప్పటికే రైల్వే జంక్షన్‌లో ఉంటే, పూర్తి చేసిన రిక్విజిషన్ స్లిప్‌తో **Current Reservation Counter** లేదా సాధారణ PRS విండో వద్దకు వెళ్లండి. బయలుదేరే సమయానికి 30 నిమిషాల ముందు వరకు క్లర్క్ మీ కోచ్ మరియు బెర్త్‌ను చూపే భౌతిక కన్ఫర్మ్ టికెట్‌ను ప్రింట్ చేసి ఇస్తారు.
 
-## Common Booking Questions (FAQ)
-
-### What does curr available mean in train tickets?
-
-Curr available (CURR_AVBL) means physical vacant berths released for public reservation after the first reservation chart is prepared, roughly 4 to 8 hours before departure. Every ticket booked under this status is 100% confirmed with an allocated coach and berth number, carrying zero waitlist risk.
-
-### Is a curr available ticket 100% confirmed?
-
-Yes, a current available ticket is 100% confirmed. The moment your booking transaction completes, IRCTC assigns your exact coach code and berth number directly on your reservation slip. It is never issued as RAC or Waiting List status.
-
-### When does current availability open in IRCTC?
-
-Current availability opens on IRCTC immediately after the first reservation chart is prepared, roughly 4 to 8 hours before departure. For morning trains departing between 06:00 and 11:59 AM, charting completes by 21:00 (9:00 PM) the previous evening, providing an overnight booking window.
-
-### What time does IRCTC current booking close?
-
-IRCTC current booking closes strictly 30 minutes before the scheduled departure of the train from its originating station. At that 30-minute mark, Indian Railways prints the second and final chart, synchronizes the passenger roster with onboard TTE handheld terminals, and freezes all booking portals.
-
-### Can I travel on train with a current available ticket?
-
-Yes, you can travel immediately. A current booking ticket is an authorized reservation slip granting full boarding rights. You only need to show your electronic ticket (SMS or PDF) along with an original government photo ID (such as Aadhaar, driving licence, or voter ID) to the TTE on board.
-
-### How much discount is given on current available train tickets?
-
-Indian Railways provides a flat 10% discount on the basic fare of vacant berths booked under Current Reservation across select mail, express, and premium trains including Rajdhani, Shatabdi, and Duronto services.
-
-### Can I book current availability tickets at railway station PRS counters?
-
-Yes. You can book current availability tickets at computerized Passenger Reservation System (PRS) counters or designated Current Reservation windows at railway stations until 30 minutes before train departure.
-
-### Can I cancel a current available ticket and get a refund?
-
-No refund is granted if a passenger voluntarily cancels a confirmed current available ticket, because these tickets are booked after chart preparation. You receive a full refund only if Indian Railways cancels the train or if the train runs more than 3 hours late and you file a TDR before departure.
-
-### What is the difference between CURR_AVBL and General Availability?
-
-General availability opens up to 60 days in advance and can issue confirmed, RAC, or waitlisted tickets at standard fares. Current availability opens only 4 to 8 hours before departure for unsold physical seats, never produces a waitlist, and frequently includes a 10% base fare discount.
-
-### What should I do if current availability is fully booked or shows Regret?
-
-If current availability shows Regret or sold out, use LastBerth Smart Seats to scan intermediate split-berth combinations on the same train, inspect empty berths on the live Chart Vacancy map, or check alternative trains running on that route.
+> **ప్రో-టిప్:** 14:00 లోపు బయలుదేరే రైళ్ల కోసం ముందు రోజు రాత్రి సరిగ్గా **20:30 IST** ప్రాంతంలో `CURR_AVBL`ను తనిఖీ చేయండి, మరియు **3A** తో పాటు **3E Economy** మరియు **2A** రెండింటినీ చూడండి. మొదటి చార్టింగ్ వద్ద క్లెయిమ్ చేయని VIP మరియు ఎమర్జెన్సీ కోటా బెర్త్‌లు విడుదలవుతాయి మరియు అవి త్వరగా అయిపోయే ముందు తరచుగా `3E` లేదా `2A` లో కనిపిస్తాయి.
 
 ---
 
-## Bottom line
+## Current Availability రైలు టికెట్లపై 10% తగ్గింపు ఉంటుందా?
 
-Curr available tickets offer the single most reliable, cost-effective way to secure confirmed train seats on the day of travel. Because bookings open post-charting without Tatkal markups and include a 10% base fare discount, you can bypass predatory touts and travel with guaranteed berths.
+**భారతీయ రైల్వే Rajdhani, Shatabdi, Duronto మరియు సాధారణ ఎక్స్‌ప్రెస్ రైళ్లలో Current Availability కింద బుక్ చేసే ఖాళీ బెర్త్‌ల బేస్ ఫేర్‌పై నేరుగా 10% తగ్గింపును వర్తింపజేస్తుంది. చివరిగా బుక్ అయిన బేస్ ఫేర్‌పై చెక్‌అవుట్ వద్ద ఈ తగ్గింపు ఆటోమేటిక్‌గా మినహాయించబడుతుంది, అయితే ఫిక్స్‌డ్ రిజర్వేషన్ ఫీజులు, సూపర్‌ఫాస్ట్ ఛార్జీలు, క్యాటరింగ్ మరియు 5% GST లో ఎలాంటి మార్పు ఉండదు.**
 
-When direct current availability is exhausted, don't abandon your travel plans. Use **[Smart Seats](/)** to search contiguous split-seat combinations, explore the live **[Chart Vacancy Map](/chart-vacancy)**, or set preparation reminders on **[Chart Times](/chart-times)** to claim your confirmed berth before departure.
+ఖాళీ సీట్లతో రైళ్లను నడపకుండా అమ్ముడుపోని బెర్త్‌లను నింపేందుకు రైల్వే బోర్డు ప్రవేశపెట్టిన ఈ 10% రాయితీకి ఎలాంటి కూపన్ కోడ్ అవసరం లేదు:
+
+- **ఆటోమేటిక్ చెక్‌అవుట్ రాయితీ:** మీరు `CURR_AVBL` సీట్లను బుక్ చేసినప్పుడల్లా IRCTC ధరల ఇంజిన్ ప్రాథమిక టికెట్ ధర నుండి 10% తగ్గిస్తుంది.
+- **ఫ్లెక్సీ-ఫేర్ ఉపశమనం:** Rajdhani, Shatabdi మరియు Duronto వంటి డైనమిక్-ఫేర్ రైళ్లలో, చివరిగా యాక్టివ్‌లో ఉన్న డైనమిక్ బేస్ ఫేర్ స్లాబ్‌పై 10% తగ్గింపు వర్తిస్తుంది, ఇది చివరి నిమిషం టికెట్ ఖర్చులను గణనీయంగా తగ్గిస్తుంది.
+- **ఫిక్స్‌డ్ అదనపు ఛార్జీలకు మినహాయింపు:** రిజర్వేషన్ ఛార్జీలు (₹20–₹60), సూపర్‌ఫాస్ట్ అదనపు ఛార్జీలు (₹30–₹75), ఐచ్ఛిక క్యాటరింగ్ ఫీజులు, IRCTC కన్వీనియన్స్ ఛార్జీలు మరియు 5% AC GST సాధారణ రేట్ల ప్రకారం వసూలు చేయబడతాయి.
+
+| ప్రయాణ క్లాస్ ఉదాహరణ               | సాధారణ బేస్ ఫేర్ | 10% `CURR_AVBL` బేస్ ఫేర్ | అదనపు ఛార్జీలు & GST | తుది `CURR_AVBL` ధర | బేస్ ఆదా |
+| :--------------------------------- | :--------------- | :------------------------ | :------------------- | :------------------ | :------- |
+| **స్లీపర్ క్లాస్ (`SL`)**          | ₹380             | ₹342                      | ₹50                  | **₹392**            | ₹38      |
+| **AC 3-టైర్ ఎకానమీ (`3E`)**        | ₹1,050           | ₹945                      | ₹125 + GST           | **₹1,124**          | ₹105     |
+| **AC 3-టైర్ (`3A`)**               | ₹1,150           | ₹1,035                    | ₹125 + GST           | **₹1,218**          | ₹115     |
+| **AC 2-టైర్ (`2A`)**               | ₹1,680           | ₹1,512                    | ₹150 + GST           | **₹1,745**          | ₹168     |
+| **ఎగ్జిక్యూటివ్ చైర్ కార్ (`EC`)** | ₹1,950           | ₹1,755                    | ₹170 + GST           | **₹2,021**          | ₹195     |
+
+---
+
+## మీరు Curr Available టికెట్‌ను రద్దు చేసి రిఫండ్ పొందవచ్చా?
+
+**`CURR_AVBL` బుకింగ్‌లు మొదటి చార్ట్ తయారీ తర్వాత జరుగుతాయి కాబట్టి, మీరు కన్ఫర్మ్ అయిన Curr Available టికెట్‌ను స్వచ్ఛందంగా రద్దు చేసి రిఫండ్ పొందలేరు. భారతీయ రైల్వే రిఫండ్ నియమాల ప్రకారం, చార్టింగ్ తర్వాత రద్దు చేసిన కన్ఫర్మ్ టికెట్లకు సున్నా రిఫండ్ లభిస్తుంది. రైలు రద్దు అయినా లేదా 3 గంటల కంటే ఎక్కువ ఆలస్యమైనా మాత్రమే 100% పూర్తి రిఫండ్ ఇవ్వబడుతుంది.**
+
+మీరు ఇప్పటికే చార్ట్ సిద్ధమైన బెర్త్‌ను కొనుగోలు చేస్తున్నారు కాబట్టి, సాధారణ 48-గంటల లేదా 12-గంటల రద్దు తగ్గింపు స్లాబ్‌లు ఎప్పటికీ వర్తించవు:
+
+1. **ప్రయాణికుని స్వచ్ఛంద రద్దు:** మీరు మీ అంతట మీరే `CURR_AVBL` టికెట్‌ను రద్దు చేస్తే, మీకు **₹0 రిఫండ్** లభిస్తుంది. చెల్లించే ముందు మీ ప్రయాణ ప్రణాళికల గురించి జాగ్రత్తగా ఆలోచించండి.
+2. **భారతీయ రైల్వే ద్వారా రైలు రద్దు:** పొగమంచు, ట్రాక్ బ్లాక్‌లు లేదా ఆపరేషనల్ అంతరాయాల కారణంగా సర్వీస్ రద్దు చేయబడితే, IRCTC మీ అసలు చెల్లింపు పద్ధతికి ఆటోమేటిక్‌గా **100% పూర్తి రిఫండ్** జారీ చేస్తుంది.
+3. **రైలు 3 గంటల కంటే ఎక్కువ ఆలస్యం:** మీ బోర్డింగ్ స్టేషన్ వద్ద మీ రైలు 3 గంటల కంటే ఎక్కువ ఆలస్యంగా నడుస్తుంటే మరియు మీరు ప్రయాణించకూడదని నిర్ణయించుకుంటే, ఎలాంటి క్లర్కేజ్ మినహాయింపు లేకుండా 100% రిఫండ్ క్లెయిమ్ చేయడానికి రైలు వాస్తవంగా బయలుదేరే ముందు ఆన్‌లైన్‌లో **Ticket Deposit Receipt (TDR)** ఫైల్ చేయండి.
+
+---
+
+## Current Availability మరియు Tatkal మధ్య తేడా ఏమిటి?
+
+**ప్రధాన తేడా సమయం మరియు ఖర్చులో ఉంటుంది: Tatkal ప్రయాణానికి ఒక రోజు ముందు అధిక అదనపు ఛార్జీలు మరియు వెయిట్‌లిస్ట్ రిస్క్ (`TQWL`) తో తెరుచుకుంటుంది, అయితే Current Availability చార్టింగ్ తర్వాత బయలుదేరే సమయానికి ~8 నుండి 10 గంటల ముందు ఎలాంటి అదనపు ఛార్జీ లేకుండా, 10% బేస్ ఫేర్ తగ్గింపు మరియు 100% కన్ఫర్మ్ బెర్త్‌లతో మాత్రమే తెరుచుకుంటుంది.**
+
+ఈ రెండు ఎంపికలు చివరి నిమిషం ప్రయాణికుల కోసం ఉన్నప్పటికీ, ఆచరణలో ఇవి చాలా భిన్నంగా పనిచేస్తాయి:
+
+| పోలిక అంశం                      | Tatkal కోటా (`CK`)                                      | Current Availability (`CURR_AVBL`)                      |
+| :------------------------------ | :------------------------------------------------------ | :------------------------------------------------------ |
+| **తెరుచుకునే సమయం**             | 1 రోజు ముందు ఉదయం 10:00 (AC) / 11:00 (నాన్-AC)          | **బయలుదేరే ముందు ~8 నుండి 10 గంటలు** (1వ చార్ట్ తర్వాత) |
+| **ముగింపు గడువు**               | Tatkal కోటా నిండే వరకు / 1వ చార్ట్ తయారీ                | **బయలుదేరే ముందు 30 నిమిషాలు** (2వ చార్ట్)              |
+| **ధరల విధానం**                  | బేస్ ఫేర్ + అధిక Tatkal అదనపు ఛార్జీ (₹500 వరకు)        | బేస్ ఫేర్ **మైనస్ 10% తగ్గింపు**                        |
+| **కన్ఫర్మేషన్ హామీ**            | Tatkal వెయిటింగ్ లిస్ట్ (`TQWL`) కి వెళ్లవచ్చు          | **100% హామీ కన్ఫర్మ్ బెర్త్ మాత్రమే**                   |
+| **ప్రయాణికులు & PNR పరిమితులు** | PNRకి గరిష్టంగా 4 మంది, రోజుకు గరిష్టంగా 2 Tatkal PNRలు | PNRకి సాధారణ 6 మంది, ఖాతా నెలవారీ పరిమితులు             |
+| **స్వచ్ఛంద రిఫండ్**             | కన్ఫర్మ్ Tatkal పై సున్నా రిఫండ్                        | కన్ఫర్మ్ `CURR_AVBL` పై సున్నా రిఫండ్                   |
+
+---
+
+## Current Availabilityలో Regret లేదా Sold Out అని చూపిస్తే మీరు ఏమి చేయాలి?
+
+**Current Availabilityలో Regret లేదా సున్నా ఖాళీ సీట్లు చూపించినప్పుడు, మీరు ₹500 జరిమానా రిస్క్ లేకుండానే కన్ఫర్మ్ అయిన సీటుతో ప్రయాణించవచ్చు. అదే రైలులో వరుసగా ఉన్న కన్ఫర్మ్ స్ప్లిట్ బెర్త్‌లను కనుగొనడానికి LastBerth Smart Seats ఉపయోగించండి, Chart Vacancy పై భౌతిక ఖాళీ భాగాలను తనిఖీ చేయండి, లేదా Seat Status పై బెర్త్ ఆక్యుపెన్సీని పరిశీలించండి.**
+
+అమ్ముడుపోయిన డైరెక్ట్ రూట్లలో కూడా చార్ట్ లోపల ఇంకా ఖాళీగా ఉన్న మధ్యంతర విభాగాలు దాగి ఉంటాయి:
+
+1. **Smart Seats పై వరుసగా ఉన్న స్ప్లిట్ బెర్త్‌లను కనుగొనండి:** స్టేషన్ A నుండి స్టేషన్ C వరకు డైరెక్ట్ బెర్త్ అయిపోయినప్పుడు, [Smart Seats](/) అదే రైలులో రెండు కన్ఫర్మ్ లెగ్‌లను జత చేస్తుంది (ఒక బెర్త్‌లో స్టేషన్ A నుండి B వరకు, మరొక బెర్త్‌లో స్టేషన్ B నుండి C వరకు), కాబట్టి మీరు ఎప్పుడూ రైలు దిగాల్సిన అవసరం ఉండదు.
+2. **Chart Vacancy పై భౌతిక కోచ్ మ్యాప్‌లను స్కాన్ చేయండి:** మధ్యంతర స్టేషన్ల మధ్య కోచ్ వారీగా ఖాళీ బెర్త్‌లను ఖచ్చితంగా గుర్తించడానికి మొదటి చార్ట్ ఖరారైన వెంటనే [Chart Vacancy మ్యాప్](/chart-vacancy) ను తెరవండి.
+3. **Seat Status పై లైవ్ బెర్త్ లెగ్‌లను తనిఖీ చేయండి:** TTE నుండి రైలులో అప్‌గ్రేడ్ కోరడానికి ముందు మీ మార్గంలో కూర్చున్న ప్రయాణికులు ఎక్కడ దిగుతున్నారో చూడటానికి [Seat Status](/seat-status) ద్వారా స్టేషన్ నుండి స్టేషన్ ఆక్యుపెన్సీని చూడండి.
+4. **కారిడార్ ప్రత్యామ్నాయాలను తనిఖీ చేయండి:** [ఢిల్లీ నుండి పాట్నా రైళ్లు](/routes/delhi-to-patna) మరియు [ముంబై నుండి దానాపూర్ రైళ్లు](/routes/mumbai-to-danapur) పై సమాంతర రైళ్లు మరియు కనెక్టింగ్ రూట్లను పోల్చండి.
+
+---
+
+## సాధారణ బుకింగ్ ప్రశ్నలు (FAQ)
+
+### రైలు టికెట్లలో Curr Available అంటే ఏమిటి?
+
+Curr Available (`CURR_AVBL` లేదా `CURR AVL`) అంటే మొదటి రిజర్వేషన్ చార్ట్ సిద్ధమైన తర్వాత, రైలు బయలుదేరే సమయానికి సుమారు 8 నుండి 10 గంటల ముందు ప్రజా బుకింగ్ కోసం విడుదల చేసే ఖాళీ భౌతిక బెర్త్‌లు. ఈ స్థితి కింద బుక్ చేసిన ప్రతి టికెట్ కేటాయించబడిన కోచ్ మరియు బెర్త్ నంబర్‌తో 100% కన్ఫర్మ్ అవుతుంది.
+
+### IRCTC లేదా NTESలో CUR BKG ENABLED అంటే ఏమిటి?
+
+`CUR BKG ENABLED` అంటే కరెంట్ బుకింగ్ ప్రారంభమైందని అర్థం. మొదటి చార్ట్ తయారైన తర్వాత ఇది రైల్వే స్టేటస్ స్క్రీన్‌లపై కనిపిస్తుంది, ఇది అమ్ముడుపోని బెర్త్‌లు ఇప్పుడు ఆన్‌లైన్‌లో (`CURR_AVBL`) మరియు స్టేషన్ కరెంట్ రిజర్వేషన్ కౌంటర్లలో తక్షణ కన్ఫర్మ్ బుకింగ్ కోసం తెరిచి ఉన్నాయని సూచిస్తుంది.
+
+### Curr Available టికెట్ 100% కన్ఫర్మ్ అవుతుందా?
+
+అవును, Curr Available టికెట్ 100% కన్ఫర్మ్ అవుతుంది. చెల్లింపు విజయవంతమైన క్షణంలోనే, IRCTC మీ ఎలక్ట్రానిక్ టికెట్‌పై మీ కోచ్ కోడ్ మరియు బెర్త్ నంబర్‌ను కేటాయిస్తుంది. ఇది ఎప్పటికీ `WL` లేదా `RAC` గా జారీ చేయబడదు.
+
+### IRCTCలో Current Availability ఎప్పుడు తెరుచుకుంటుంది?
+
+మొదటి రిజర్వేషన్ చార్ట్ ఖరారైన వెంటనే, నిర్ధారిత బయలుదేరే సమయానికి సుమారు 8 నుండి 10 గంటల ముందు Current Availability తెరుచుకుంటుంది. 14:00 (మధ్యాహ్నం 2:00) లోపు బయలుదేరే రైళ్లకు, ముందు రోజు రాత్రి 20:00 నుండి 21:00 IST మధ్య చార్టింగ్ పూర్తవుతుంది.
+
+### IRCTC కరెంట్ బుకింగ్ ఏ సమయానికి మూసివేయబడుతుంది?
+
+రెండవ మరియు తుది చార్ట్ సిద్ధమైనప్పుడు, రైలు నిర్ధారిత బయలుదేరే సమయానికి 30 నుండి 45 నిమిషాల ముందు IRCTC కరెంట్ బుకింగ్ మూసివేయబడుతుంది. ఆ సమయంలో, జాబితా రైలులోని TTE యొక్క Handheld Terminalకి సింక్ అవుతుంది మరియు వెబ్, యాప్ మరియు స్టేషన్ కౌంటర్లలో పబ్లిక్ బుకింగ్ లాక్ అవుతుంది.
+
+### Curr Available రైలు టికెట్లపై ఎంత తగ్గింపు ఇస్తారు?
+
+భారతీయ రైల్వే Rajdhani, Shatabdi, Duronto మరియు ఎక్స్‌ప్రెస్ రైళ్లలో `CURR_AVBL` కింద బుక్ చేసిన ఖాళీ బెర్త్‌ల బేస్ ఫేర్‌పై నేరుగా 10% తగ్గింపును అందిస్తుంది. రిజర్వేషన్ ఛార్జీలు, సూపర్‌ఫాస్ట్ ఫీజులు, క్యాటరింగ్ మరియు 5% GST సాధారణ రేట్ల ప్రకారం వర్తిస్తాయి.
+
+### నేను Curr Available టికెట్‌ను రద్దు చేసి రిఫండ్ పొందవచ్చా?
+
+బుకింగ్‌లు మొదటి చార్ట్ తయారీ తర్వాత జరుగుతాయి కాబట్టి, మీరు కన్ఫర్మ్ అయిన Curr Available టికెట్‌ను రద్దు చేస్తే ఎలాంటి స్వచ్ఛంద రిఫండ్ ఇవ్వబడదు. భారతీయ రైల్వే రైలును రద్దు చేసినా లేదా రైలు 3 గంటల కంటే ఎక్కువ ఆలస్యంగా నడుస్తూ బయలుదేరే ముందు మీరు TDR ఫైల్ చేసినా మాత్రమే మీకు 100% రిఫండ్ లభిస్తుంది.
+
+### IRCTCలో AVL మరియు CURR_AVBL మధ్య తేడా ఏమిటి?
+
+`AVL` (`AVAILABLE`) అంటే చార్ట్ తయారీకి ముందు పూర్తి సాధారణ ధరకు అందుబాటులో ఉండే సాధారణ కన్ఫర్మ్ సీట్లు. `CURR_AVBL` అంటే బయలుదేరే సమయానికి సుమారు 8 నుండి 10 గంటల ముందు 10% బేస్ ఫేర్ తగ్గింపుతో విడుదల చేయబడిన చార్ట్-తర్వాత ఖాళీ బెర్త్‌లు, వీటికి స్వచ్ఛంద రద్దు రిఫండ్ ఉండదు.
+
+### నేను రైల్వే స్టేషన్ PRS కౌంటర్లలో Current Availability టికెట్లను బుక్ చేయవచ్చా?
+
+అవును. మీరు బయలుదేరే సమయానికి 30 నిమిషాల ముందు వరకు రైల్వే స్టేషన్లలోని కంప్యూటరైజ్డ్ ప్యాసింజర్ రిజర్వేషన్ సిస్టమ్ (PRS) కౌంటర్లు లేదా ప్రత్యేక కరెంట్ రిజర్వేషన్ విండోల వద్ద `CURR_AVBL` టికెట్లను కొనుగోలు చేయవచ్చు.
+
+### Current Availabilityలో Regret లేదా Sold Out చూపిస్తే నేను ఏమి చేయాలి?
+
+`CURR_AVBL`లో Regret చూపిస్తే, అదే రైలులో కన్ఫర్మ్ అయిన వరుస స్ప్లిట్-బెర్త్ కాంబినేషన్‌లను తనిఖీ చేయడానికి LastBerth [Smart Seats](/) ఉపయోగించండి, లేదా [Chart Vacancy మ్యాప్](/chart-vacancy) లో మధ్యంతర ఖాళీ భాగాలను పరిశీలించండి.
+
+---
+
+## ముగింపు
+
+ప్రయాణ రోజున Tatkal అదనపు ఛార్జీలు చెల్లించకుండా **100% కన్ఫర్మ్ రైలు బెర్త్**ను పొందేందుకు Current Availability (`CURR_AVBL`) అత్యంత వేగవంతమైన మరియు తక్కువ ఖర్చుతో కూడిన మార్గం. 30 నిమిషాల గడువుకు ముందే **10% బేస్ ఫేర్ తగ్గింపుతో** ఖాళీ సీట్లను పొందేందుకు, **బయలుదేరే 8 నుండి 10 గంటల ముందు** (లేదా ఉదయం మరియు మధ్యాహ్నం ప్రారంభంలో వెళ్లే రైళ్లకు ముందు రోజు రాత్రి **8:00 నుండి 9:00 PM** మధ్య) చార్ట్ పూర్తయినప్పుడు తనిఖీ చేయండి.
+
+ఒకవేళ డైరెక్ట్ `CURR_AVBL` సీట్లు అప్పటికే అయిపోతే, **[Smart Seats](/)** పై వరుస స్ప్లిట్-బెర్త్ కాంబినేషన్‌లను శోధించండి, **[Chart Vacancy](/chart-vacancy)** పై ఖాళీగా ఉన్న కోచ్ లెగ్‌లను పరిశీలించండి, లేదా **[Chart Times](/chart-times)** పై చార్టింగ్ అలర్ట్‌లను సెట్ చేయండి.
