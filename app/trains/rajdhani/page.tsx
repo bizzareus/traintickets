@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { getTrains } from "@/lib/trainCatalog";
 import { TrainCatalogListClient } from "@/components/trains/TrainCatalogListClient";
+import { buildOpenGraph } from "@/lib/seo/metadata";
 import {
   ChevronRight,
   Train,
@@ -12,18 +13,19 @@ import {
   Star,
 } from "lucide-react";
 
+const RAJDHANI_TITLE = "Rajdhani Express 2026: Trains, Routes & Timings";
+const RAJDHANI_DESC =
+  "Complete list of Rajdhani Express trains in India. Check routes, timetables, 1A/2A/3A AC classes, and find confirmed seats to book on IRCTC.";
+
 export const metadata: Metadata = {
-  title: "Rajdhani Express Trains 2026: List, Routes, Timings & Booking",
-  description:
-    "Complete list of Rajdhani Express trains in India. Check routes, timetables, 1A/2A/3A AC classes, and find confirmed seats to book on IRCTC.",
+  title: RAJDHANI_TITLE,
+  description: RAJDHANI_DESC,
   alternates: { canonical: "/trains/rajdhani" },
-  openGraph: {
-    title: "Rajdhani Express Trains 2026: Routes, Timings & Booking",
-    description:
-      "Explore all Rajdhani Express trains across India. Check schedules, halts, seat availability, and book confirmed tickets.",
+  openGraph: buildOpenGraph({
+    title: `${RAJDHANI_TITLE} | LastBerth`,
+    description: RAJDHANI_DESC,
     url: "/trains/rajdhani",
-    type: "website",
-  },
+  }),
 };
 
 const POPULAR_CORRIDORS = [

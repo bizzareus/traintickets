@@ -10,6 +10,7 @@ import {
 } from "@/lib/trainSlug";
 import { getChartTimesPageData } from "@/lib/chartTimes";
 import { getTrainByNumber } from "@/lib/trainCatalog";
+import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
 
 export const dynamicParams = true;
 
@@ -88,23 +89,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonicalSlug = buildTrainSlug(trainNumber, trainName);
 
   if (!trainName) {
+    const title = `Train ${trainNumber} Schedule, Route & Status`;
+    const description = truncateMetaDescription(
+      `Check ${trainNumber} running status via NTES or SMS 139, full timetable, halts, platforms, and chart preparation times.`,
+    );
     return {
-      title: `Train ${trainNumber} Running Status, Route & Schedule`,
-      description: `Check the live running status of train ${trainNumber} via NTES or SMS 139, plus the full timetable: station list, arrival/departure timings, halts, platforms and days of operation, and chart preparation times.`,
+      title,
+      description,
       alternates: { canonical: `/trains/${canonicalSlug}` },
+      openGraph: buildOpenGraph({
+        title: `${title} | LastBerth`,
+        description,
+        url: `/trains/${canonicalSlug}`,
+      }),
     };
   }
 
+  const title = `${trainName} (${trainNumber}) Schedule & Route`;
+  const description = truncateMetaDescription(
+    `Check ${trainName} (${trainNumber}) running status, ${origin} to ${dest} timetable, halts, Tatkal timings, and chart preparation times.`,
+  );
   return {
-    title: `${trainName} (${trainNumber}) Running Status, Route & Schedule`,
-    description: `Check the live running status of ${trainName} (${trainNumber}) via NTES or SMS 139, plus the full ${origin} to ${dest} timetable: halts, timings, Tatkal windows and chart preparation times.`,
+    title,
+    description,
     alternates: { canonical: `/trains/${canonicalSlug}` },
-    openGraph: {
-      title: `${trainName} (${trainNumber}) Running Status & Schedule`,
-      description: `Track ${trainName} (${trainNumber}) live via NTES or SMS 139, and check the ${origin} to ${dest} timetable, halts and vacant berths on LastBerth.`,
+    openGraph: buildOpenGraph({
+      title: `${trainName} (${trainNumber}) Schedule & Route | LastBerth`,
+      description,
       url: `/trains/${canonicalSlug}`,
-      type: "website",
-    },
+    }),
   };
 }
 

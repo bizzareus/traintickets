@@ -3,6 +3,7 @@ import path from "node:path";
 import { cache as reactCache } from "react";
 const cache = (reactCache as <T>(fn: T) => T) || ((fn) => fn);
 import type { Metadata } from "next";
+import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
 
 /**
  * IRCTC standard class/zone catering menus (Rajdhani/premium 1AC-EC, AC
@@ -363,9 +364,12 @@ export function standardMenuMetadata(slug: string): Metadata {
     .flatMap((z) => z.services.map((s) => s.price))
     .filter((p): p is number => typeof p === "number");
   const min = prices.length ? Math.min(...prices) : null;
-  const description = `Official IRCTC food menu and catering prices for ${cfg.classGroupName} on ${cfg.covers}. Morning tea, breakfast, lunch, dinner and snacks with per-meal charges${
-    min != null ? `, starting at ₹${min}` : ""
-  }, inclusive of taxes.`;
+  const description = truncateMetaDescription(
+    `Official IRCTC food menu and catering prices for ${cfg.classGroupName} on ${cfg.covers}. Breakfast, lunch, dinner & tea${
+      min != null ? `, starting at ₹${min}` : ""
+    }, inclusive of taxes.`,
+  );
+  const canonical = `/irctc-train-food-menu/${cfg.slug}`;
   return {
     title: cfg.metaTitle,
     description,
@@ -376,7 +380,11 @@ export function standardMenuMetadata(slug: string): Metadata {
       `irctc ${cfg.slug} menu`,
       `train meal price ${cfg.classGroup}`,
     ],
-    alternates: { canonical: `/irctc-train-food-menu/${cfg.slug}` },
-    openGraph: { title: cfg.metaTitle, description },
+    alternates: { canonical },
+    openGraph: buildOpenGraph({
+      title: `${cfg.metaTitle} | LastBerth`,
+      description,
+      url: canonical,
+    }),
   };
 }

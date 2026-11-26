@@ -12,6 +12,7 @@ import {
 
 import { getChartTimesPageData } from "@/lib/chartTimes";
 import { getTrainCachedSeats } from "@/lib/dynamodb";
+import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
 
 export const dynamicParams = true;
 // Availability must not be frozen into build-time or hourly ISR HTML.
@@ -53,17 +54,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonicalSlug = buildTrainSlug(trainNumber, trainName);
 
   if (!trainName) {
+    const title = `Confirmed Tickets for Train ${trainNumber}`;
+    const description = truncateMetaDescription(
+      `Check live cached seat availability, post-charting empty berths, and Smart Seats split-booking options for Train ${trainNumber}.`,
+    );
+    const canonical = `/train/confirmed_tickets/${canonicalSlug}`;
     return {
-      title: `Confirmed Tickets for Train ${trainNumber}`,
-      description: `Check live cached seat availability, post-charting empty berths, and Smart Seats split-booking options for Train ${trainNumber}.`,
-      alternates: { canonical: `/train/confirmed_tickets/${canonicalSlug}` },
+      title,
+      description,
+      alternates: { canonical },
+      openGraph: buildOpenGraph({
+        title: `${title} | LastBerth`,
+        description,
+        url: canonical,
+      }),
     };
   }
 
+  const title = `Confirmed Tickets for ${trainName} (${trainNumber})`;
+  const description = truncateMetaDescription(
+    `How to get confirmed tickets on ${trainName} (${trainNumber}) from ${origin} to ${dest}. Live cached seat status, vacant berths, and Smart Seats.`,
+  );
+  const canonical = `/train/confirmed_tickets/${canonicalSlug}`;
   return {
-    title: `Confirmed Tickets for ${trainName} (${trainNumber}) - Live Seat Availability`,
-    description: `How to get confirmed tickets on ${trainName} (${trainNumber}) from ${origin} to ${dest}. Live cached seat status, post-charting berths, and Smart Seats segment booking.`,
-    alternates: { canonical: `/train/confirmed_tickets/${canonicalSlug}` },
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: buildOpenGraph({
+      title: `${title} | LastBerth`,
+      description,
+      url: canonical,
+    }),
   };
 }
 

@@ -7,6 +7,7 @@ import {
   homeHreflang,
   isHomeLang,
 } from "@/lib/home/home-i18n";
+import { buildOpenGraph } from "@/lib/seo/metadata";
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -17,11 +18,19 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   if (!isHomeLang(lang) || lang === "en") return {};
+  const t = getHomeStrings(lang);
+  const title = "LastBerth – Find Confirmed Train Tickets & Smart Seat Finder";
+  const description = t.hero.subtitle;
   return {
     alternates: {
       canonical: `/${lang}`,
       languages: homeHreflang(),
     },
+    openGraph: buildOpenGraph({
+      title,
+      description,
+      url: `/${lang}`,
+    }),
   };
 }
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { getTrains } from "@/lib/trainCatalog";
 import { TrainCatalogListClient } from "@/components/trains/TrainCatalogListClient";
+import { buildOpenGraph } from "@/lib/seo/metadata";
 import {
   ChevronRight,
   Train,
@@ -12,18 +13,19 @@ import {
   Clock,
 } from "lucide-react";
 
+const SHATABDI_TITLE = "Shatabdi Express 2026: Trains, Routes & Timings";
+const SHATABDI_DESC =
+  "Complete list of Shatabdi & Jan Shatabdi Express trains in India. Check routes, timetables, Chair Car & Executive classes, and IRCTC seat availability.";
+
 export const metadata: Metadata = {
-  title: "Shatabdi Express Trains 2026: List, Routes, Timings & Booking",
-  description:
-    "Complete list of Shatabdi & Jan Shatabdi Express trains in India. Check routes, timetables, Chair Car & Executive classes, and find confirmed seats to book on IRCTC.",
+  title: SHATABDI_TITLE,
+  description: SHATABDI_DESC,
   alternates: { canonical: "/trains/shatabdi" },
-  openGraph: {
-    title: "Shatabdi Express Trains 2026: Routes, Timings & Booking",
-    description:
-      "Explore all Shatabdi Express trains across India. Check schedules, halts, seat availability, and book confirmed tickets.",
+  openGraph: buildOpenGraph({
+    title: `${SHATABDI_TITLE} | LastBerth`,
+    description: SHATABDI_DESC,
     url: "/trains/shatabdi",
-    type: "website",
-  },
+  }),
 };
 
 const POPULAR_CORRIDORS = [

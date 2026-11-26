@@ -7,6 +7,7 @@ import {
   parseTrainNumberFromSlug,
 } from "@/lib/chartTimes";
 import { formatJourneyDateUtcLabel } from "@/lib/stationChartMetaSummary";
+import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
 import { buildTrainSlug } from "@/lib/trainSlug";
 import ChartTimesTable from "./ChartTimesTable";
 import ChartTimeAlertCTA from "./ChartTimeAlertCTA";
@@ -37,16 +38,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = trainNumber ? await getChartTimesPageData(trainNumber) : null;
 
   if (!data) {
+    const title = "IRCTC Vacancy Chart Preparation Times";
+    const description =
+      "Station-by-station IRCTC vacancy chart preparation times for Indian Railways trains.";
     return {
-      title: "IRCTC Vacancy Chart Preparation Times",
-      description:
-        "Station-by-station IRCTC vacancy chart preparation times for Indian Railways trains.",
+      title,
+      description,
       alternates: { canonical: `/chart-times/${slug}` },
+      openGraph: buildOpenGraph({
+        title,
+        description,
+        url: `/chart-times/${slug}`,
+      }),
     };
   }
 
-  const title = `${data.trainName} (${data.trainNumber}) IRCTC Vacancy Chart Preparation Times — All Stations`;
-  const description = `Station-by-station IRCTC vacancy chart preparation times for ${data.trainName} (${data.trainNumber}) from ${data.originStation} to ${data.destinationStation}. See when the first and second charts are prepared at each halt.`;
+  const title = `${data.trainName} (${data.trainNumber}) Chart Preparation Time`;
+  const description = truncateMetaDescription(
+    `1st & 2nd IRCTC reservation chart preparation times for ${data.trainName} (${data.trainNumber}) from ${data.originStation} to ${data.destinationStation}.`,
+  );
   return {
     title,
     description,
@@ -56,7 +66,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       follow: true,
     },
     alternates: { canonical: `/chart-times/${data.slug}` },
-    openGraph: { title, description, type: "article" },
+    openGraph: buildOpenGraph({
+      title,
+      description,
+      url: `/chart-times/${data.slug}`,
+      type: "article",
+    }),
   };
 }
 

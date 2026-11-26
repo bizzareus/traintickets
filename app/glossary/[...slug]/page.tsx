@@ -9,6 +9,7 @@ import {
   getGlossaryTermForLang,
 } from "@/lib/seo/glossary-db";
 import { glossaryUi } from "@/lib/seo/glossary-ui";
+import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
 import { GlossaryLanguageSelector } from "@/components/glossary/GlossaryLanguageSelector";
 
 export const dynamicParams = false;
@@ -63,24 +64,43 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (termId) {
     const item = getGlossaryTermForLang(termId, lang);
     if (!item) return {};
+    const canonical = canonicalFor(lang, termId);
+    const shortTerm = item.term.replace(/\s*\([^)]*\)$/, "").trim();
+    const title = `What is ${shortTerm}? — Railway Glossary`;
+    const description = truncateMetaDescription(
+      `Meaning of ${item.term} in Indian Railway bookings. ${item.definition}`,
+    );
     return {
-      title: `What is ${item.term}? | Indian Railway Glossary`,
-      description: `Meaning of ${item.term} in Indian Railway bookings. ${item.definition.slice(0, 110)}`,
+      title,
+      description,
       alternates: {
-        canonical: canonicalFor(lang, termId),
+        canonical,
         languages: hreflangAlternates(termId),
       },
+      openGraph: buildOpenGraph({
+        title: `${title} | LastBerth`,
+        description,
+        url: canonical,
+        type: "article",
+      }),
     };
   }
 
   const ui = glossaryUi(lang);
+  const canonical = canonicalFor(lang);
+  const description = truncateMetaDescription(ui.subtitle);
   return {
     title: ui.title,
-    description: ui.subtitle,
+    description,
     alternates: {
-      canonical: canonicalFor(lang),
+      canonical,
       languages: hreflangAlternates(),
     },
+    openGraph: buildOpenGraph({
+      title: `${ui.title} | LastBerth`,
+      description,
+      url: canonical,
+    }),
   };
 }
 

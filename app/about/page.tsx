@@ -1,11 +1,20 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { buildOpenGraph } from "@/lib/seo/metadata";
+
+const ABOUT_TITLE = "About LastBerth — Indian Railways Seat Finder";
+const ABOUT_DESC =
+  "Meet LastBerth — an independent meta search engine for Indian Railways that finds available seats and redirects you to IRCTC to complete booking.";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Meet LastBerth — a meta search engine for Indian Railways that finds available seats and redirects you to IRCTC to complete your booking.",
+  title: ABOUT_TITLE,
+  description: ABOUT_DESC,
   alternates: { canonical: "/about" },
+  openGraph: buildOpenGraph({
+    title: `${ABOUT_TITLE} | LastBerth`,
+    description: ABOUT_DESC,
+    url: "/about",
+  }),
 };
 
 export default function AboutPage() {

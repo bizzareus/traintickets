@@ -5,6 +5,7 @@ import { getRouteData, getTopRoutes } from "@/lib/seo/routes-db";
 import { getRouteTrains } from "@/lib/seo/route-content";
 import { buildTrainSlug } from "@/lib/trainSlug";
 import { getBaseUrl } from "@/lib/site-url";
+import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
 
 export const dynamicParams = false;
 export const dynamic = "force-static";
@@ -30,7 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!data) return {};
 
   const title = `Trains from ${data.originCity} to ${data.destinationCity} | Route & Timetables`;
-  const description = `Compare train schedules and boarding stations from ${data.originCity} to ${data.destinationCity}, then search live seat availability for your travel date.`;
+  const description = truncateMetaDescription(
+    `Compare train schedules and boarding stations from ${data.originCity} to ${data.destinationCity}, then search live seat availability for your travel date.`,
+  );
 
   return {
     title,
@@ -38,6 +41,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/routes/${slug}`,
     },
+    openGraph: buildOpenGraph({
+      title: `${title} | LastBerth`,
+      description,
+      url: `/routes/${slug}`,
+    }),
   };
 }
 
@@ -215,6 +223,38 @@ export default async function RoutePage({ params }: Props) {
             </Link>
           </div>
         </div>
+        <section className="mt-8 space-y-3 border-t border-slate-100 pt-6 text-sm leading-relaxed text-slate-600">
+          <h2 className="text-lg font-bold text-slate-900">
+            Finding Confirmed Seats from {data.originCity} to{" "}
+            {data.destinationCity}
+          </h2>
+          <p>
+            When direct {data.originCity} to {data.destinationCity} tickets show
+            Waitlist (WL) or Regret, LastBerth checks intermediate commercial
+            stops on the same train to uncover contiguous confirmed berth
+            segments. You stay on the same train and complete booking directly
+            on IRCTC.
+          </p>
+          <p>
+            For last-minute travel, check{" "}
+            <Link
+              href="/chart-times"
+              className="font-medium text-blue-700 hover:underline"
+            >
+              train chart preparation times
+            </Link>{" "}
+            (typically 4 hours before origin departure) to book Current
+            Availability (CURR_AVBL) berths, or monitor your{" "}
+            <Link
+              href="/pnr-status"
+              className="font-medium text-blue-700 hover:underline"
+            >
+              live PNR confirmation chances
+            </Link>
+            .
+          </p>
+        </section>
+
         <p className="mt-6 text-sm text-slate-600">
           Train schedules can change. Confirm departure times and complete
           ticket details with{" "}

@@ -1,10 +1,20 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { buildOpenGraph } from "@/lib/seo/metadata";
+
+const PRIVACY_TITLE = "Privacy Policy & Data Protection";
+const PRIVACY_DESC =
+  "Read the LastBerth Privacy Policy covering personal data collection, cookies, Google AdSense advertising preferences, security, and user privacy rights.";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Privacy Policy and data protection guidelines for LastBerth.",
+  title: PRIVACY_TITLE,
+  description: PRIVACY_DESC,
   alternates: { canonical: "/privacy" },
+  openGraph: buildOpenGraph({
+    title: `${PRIVACY_TITLE} | LastBerth`,
+    description: PRIVACY_DESC,
+    url: "/privacy",
+  }),
 };
 
 export default function PrivacyPolicyPage() {

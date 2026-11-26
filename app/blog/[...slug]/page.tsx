@@ -20,6 +20,11 @@ import { parseHowToFromMarkdown } from "@/lib/seo/schema-howto";
 import { autoLinkGlossaryTerms } from "@/lib/seo/auto-linker";
 import { autoLinkRoutes } from "@/lib/seo/route-linker";
 import { detectRouteContext } from "@/lib/seo/route-detector";
+import {
+  buildOpenGraph,
+  DEFAULT_TWITTER_IMAGE,
+  truncateMetaDescription,
+} from "@/lib/seo/metadata";
 import { BlogSearchCta } from "@/components/blog/BlogSearchCta";
 import { BlogStickyMobileCta } from "@/components/blog/BlogStickyMobileCta";
 import { LanguagePromptSheet } from "@/components/blog/LanguagePromptSheet";
@@ -79,11 +84,29 @@ export async function generateMetadata({
     }
     languages["x-default"] = "/blog";
 
+    const langName = getLanguageName(lang);
+    const title = `Train Travel Guides & IRCTC Tips (${langName})`;
+    const description = truncateMetaDescription(
+      `IRCTC ticket booking, Tatkal, PNR status, and chart preparation guides in ${langName} from LastBerth.`,
+    );
+
     return {
-      title: `Read & Find Confirmed Train Tickets | Train Travel Guides (${getLanguageName(lang)})`,
+      title,
+      description,
       alternates: {
         canonical: canonicalUrl,
         languages,
+      },
+      openGraph: buildOpenGraph({
+        title,
+        description,
+        url: canonicalUrl,
+      }),
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [DEFAULT_TWITTER_IMAGE],
       },
     };
   }
@@ -118,25 +141,29 @@ export async function generateMetadata({
   // flows). Google was already declining to index these; this makes it explicit
   // and stops them diluting crawl/index budget.
   const lowQuality = isLowQualityTranslation(slug, lang);
+  const description = post.description
+    ? truncateMetaDescription(post.description)
+    : undefined;
 
   return {
     title: post.title,
-    description: post.description,
+    description,
     ...(lowQuality ? { robots: { index: false, follow: true } } : {}),
     alternates: {
       canonical: canonicalUrl,
       languages,
     },
-    openGraph: {
-      type: "article",
-      url: canonicalUrl,
+    openGraph: buildOpenGraph({
       title: post.title,
-      description: post.description,
-    },
+      description: description ?? post.title,
+      url: canonicalUrl,
+      type: "article",
+    }),
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.description,
+      description,
+      images: [DEFAULT_TWITTER_IMAGE],
     },
   };
 }

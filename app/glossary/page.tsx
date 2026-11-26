@@ -5,14 +5,17 @@ import {
   GLOSSARY_LANGS,
 } from "@/lib/seo/glossary-db";
 import { glossaryUi } from "@/lib/seo/glossary-ui";
+import { buildOpenGraph } from "@/lib/seo/metadata";
 import { GlossaryLanguageSelector } from "@/components/glossary/GlossaryLanguageSelector";
 
 const ui = glossaryUi("en");
+const GLOSSARY_TITLE = "Indian Railway Booking Glossary & Terms";
+const GLOSSARY_DESC =
+  "Decode Indian Railway booking jargon in plain English: RLWL, PQWL, GNWL, RAC, CNF, Tatkal, chart preparation, current availability, and class codes.";
 
 export const metadata: Metadata = {
-  title: "Indian Railway Booking Glossary & Terms Dictionary",
-  description:
-    "Decode Indian Railway booking jargon in plain English: RLWL, PQWL, GNWL, RAC, CNF, Tatkal, chart preparation, current availability, class codes and more.",
+  title: GLOSSARY_TITLE,
+  description: GLOSSARY_DESC,
   alternates: {
     canonical: "/glossary",
     languages: Object.fromEntries([
@@ -23,6 +26,11 @@ export const metadata: Metadata = {
       ["x-default", "/glossary"],
     ]),
   },
+  openGraph: buildOpenGraph({
+    title: `${GLOSSARY_TITLE} | LastBerth`,
+    description: GLOSSARY_DESC,
+    url: "/glossary",
+  }),
 };
 
 export default function GlossaryIndexPage() {

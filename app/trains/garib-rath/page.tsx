@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { getTrains } from "@/lib/trainCatalog";
 import { TrainCatalogListClient } from "@/components/trains/TrainCatalogListClient";
+import { buildOpenGraph } from "@/lib/seo/metadata";
 import {
   ChevronRight,
   Train,
@@ -12,18 +13,19 @@ import {
   Bed,
 } from "lucide-react";
 
+const GARIB_RATH_TITLE = "Garib Rath Trains 2026: List, Routes & Timings";
+const GARIB_RATH_DESC =
+  "Complete list of Garib Rath Express trains in India. Check routes, timetables, affordable AC 3-Tier classes, and find confirmed seats to book on IRCTC.";
+
 export const metadata: Metadata = {
-  title: "Garib Rath Express Trains 2026: List, Routes, Timings & Booking",
-  description:
-    "Complete list of Garib Rath Express trains in India. Check routes, timetables, affordable AC 3-Tier classes, and find confirmed seats to book on IRCTC.",
+  title: GARIB_RATH_TITLE,
+  description: GARIB_RATH_DESC,
   alternates: { canonical: "/trains/garib-rath" },
-  openGraph: {
-    title: "Garib Rath Express Trains 2026: Routes, Timings & Booking",
-    description:
-      "Explore all Garib Rath Express trains across India. Check schedules, halts, affordable AC seat availability, and book confirmed tickets.",
+  openGraph: buildOpenGraph({
+    title: `${GARIB_RATH_TITLE} | LastBerth`,
+    description: GARIB_RATH_DESC,
     url: "/trains/garib-rath",
-    type: "website",
-  },
+  }),
 };
 
 const POPULAR_CORRIDORS = [

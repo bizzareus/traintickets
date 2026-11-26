@@ -94,6 +94,22 @@ export function FestivalSpecialTrainsPage({ festivalKey }: Props) {
           </span>
         </nav>
 
+        {/* ── Page Header (SSR H1) ── */}
+        <header className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <span
+            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-bold ${cfg.accentColor.bgLight} ${cfg.accentColor.border} ${cfg.accentColor.text}`}
+          >
+            <span>{cfg.iconEmoji}</span>
+            <span>{cfg.heroBadge}</span>
+          </span>
+          <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+            {cfg.title}
+          </h1>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+            {cfg.description}
+          </p>
+        </header>
+
         {/* ── Festival Navigation Tabs ── */}
         <FestivalNavTabs currentKey={festivalKey} />
 

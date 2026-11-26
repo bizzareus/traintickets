@@ -1,11 +1,20 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { buildOpenGraph } from "@/lib/seo/metadata";
+
+const CONTACT_TITLE = "Contact LastBerth Support & Feedback";
+const CONTACT_DESC =
+  "Get in touch with the LastBerth team for support, chart alert inquiries, train timetable data corrections, partnerships, or feedback.";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
-  description:
-    "Get in touch with the LastBerth team for inquiries, feedback, data corrections, or support.",
+  title: CONTACT_TITLE,
+  description: CONTACT_DESC,
   alternates: { canonical: "/contact" },
+  openGraph: buildOpenGraph({
+    title: `${CONTACT_TITLE} | LastBerth`,
+    description: CONTACT_DESC,
+    url: "/contact",
+  }),
 };
 
 export default function ContactPage() {
@@ -99,6 +108,36 @@ export default function ContactPage() {
             .
           </p>
         </div>
+
+        <section className="mt-8 border-t border-slate-100 pt-6">
+          <h2 className="mb-3 text-lg font-bold text-slate-900">
+            What to Include in Your Support Email
+          </h2>
+          <p className="text-sm leading-relaxed text-slate-600">
+            To help us resolve your inquiry quickly, please include your train
+            number, journey date, and boarding station when reporting a chart
+            preparation timing discrepancy or food menu update. For chart alert
+            or refund queries, include the email address used at checkout and
+            your Razorpay payment reference ID. For live PNR enquiries or ticket
+            cancellations on IRCTC, please check your{" "}
+            <Link
+              href="/pnr-status"
+              className="font-medium text-blue-600 underline"
+            >
+              PNR status
+            </Link>{" "}
+            or contact official IRCTC customer care at{" "}
+            <a
+              href="https://www.irctc.co.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-blue-600 underline"
+            >
+              irctc.co.in
+            </a>
+            .
+          </p>
+        </section>
       </div>
     </div>
   );

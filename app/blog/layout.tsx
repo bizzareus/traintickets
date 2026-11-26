@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
+import { DEFAULT_OG_IMAGE, DEFAULT_TWITTER_IMAGE } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = {
   title: {
-    default: "Read & Find Confirmed Train Tickets | Train Travel Guides",
-    absolute: "Read & Find Confirmed Train Tickets | Train Travel Guides",
+    default: "Train Travel Guides & IRCTC Tips",
+    absolute: "Train Travel Guides & IRCTC Tips | LastBerth",
   },
   description:
-    "Read practical guides, tips, and insights on finding confirmed train tickets, understanding railway charting preparation, and planning smarter journeys with LastBerth.",
+    "Practical guides on finding confirmed IRCTC train tickets, reservation chart preparation times, Tatkal rules, and split-berth strategies.",
   alternates: {
     types: {
       "application/rss+xml": [
@@ -17,16 +18,20 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
+    locale: "en_IN",
+    siteName: "LastBerth",
     url: "/blog",
-    title: "Read & Find Confirmed Train Tickets | Train Travel Guides",
+    title: "Train Travel Guides & IRCTC Tips | LastBerth",
     description:
-      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding railway charting preparation, and planning smarter journeys with LastBerth.",
+      "Practical guides on finding confirmed IRCTC train tickets, reservation chart preparation times, Tatkal rules, and split-berth strategies.",
+    images: [{ ...DEFAULT_OG_IMAGE }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Read & Find Confirmed Train Tickets | Train Travel Guides",
+    title: "Train Travel Guides & IRCTC Tips | LastBerth",
     description:
-      "Read practical guides, tips, and insights on finding confirmed train tickets, understanding railway charting preparation, and planning smarter journeys with LastBerth.",
+      "Practical guides on finding confirmed IRCTC train tickets, reservation chart preparation times, Tatkal rules, and split-berth strategies.",
+    images: [DEFAULT_TWITTER_IMAGE],
   },
 };
 

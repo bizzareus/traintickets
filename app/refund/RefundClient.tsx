@@ -157,175 +157,161 @@ export function RefundClient() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:px-8">
-      <nav className="mb-8 flex text-sm text-slate-500">
-        <Link href="/" className="hover:text-blue-600 hover:underline">
-          Home
-        </Link>
-        <span className="mx-2">/</span>
-        <span className="text-slate-900">Request Refund</span>
-      </nav>
-
-      <div className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
-        <h1 className="mb-4 text-3xl font-extrabold tracking-tight text-slate-900">
-          Request a Refund
-        </h1>
-
-        {status === "done" ? (
-          autoRefundResult?.autoRefunded ? (
-            <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-6">
-              <div className="flex items-center gap-2">
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-600 text-sm font-bold text-white">
-                  ✓
-                </span>
-                <p className="text-lg font-bold text-emerald-950">
-                  Refund Issued Automatically 💸
-                </p>
-              </div>
-
-              <p className="mt-3 text-sm leading-relaxed text-emerald-900">
-                We have verified your payment and automatically initiated a
-                refund of{" "}
-                <strong className="font-semibold text-emerald-950">
-                  ₹{autoRefundResult.amount ?? quoteAmount}
-                </strong>{" "}
-                to your original payment method via Razorpay.
+    <>
+      {status === "done" ? (
+        autoRefundResult?.autoRefunded ? (
+          <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-6">
+            <div className="flex items-center gap-2">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-600 text-sm font-bold text-white">
+                ✓
+              </span>
+              <p className="text-lg font-bold text-emerald-950">
+                Refund Issued Automatically 💸
               </p>
-
-              {autoRefundResult.refundId && (
-                <div className="mt-3 rounded-lg border border-emerald-200 bg-white p-3 font-mono text-xs text-slate-700">
-                  <span className="font-medium text-slate-500">
-                    Razorpay Refund ID:
-                  </span>{" "}
-                  <span className="font-semibold text-slate-900">
-                    {autoRefundResult.refundId}
-                  </span>
-                </div>
-              )}
-
-              <p className="mt-3 text-xs text-emerald-800">
-                A confirmation email with the alert details has been sent to{" "}
-                <strong>{email}</strong>. Refunds typically reflect in your bank
-                account within <strong>5–7 business days</strong>.
-              </p>
-
-              <div className="mt-4 border-t border-emerald-200/60 pt-3 text-xs text-emerald-800">
-                Request Reference:{" "}
-                <span className="font-mono font-semibold">{referenceId}</span>
-              </div>
-
-              <Link
-                href="/"
-                className="mt-5 inline-block rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-emerald-700"
-              >
-                Back to home
-              </Link>
             </div>
-          ) : (
-            <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4">
-              <p className="font-semibold text-emerald-900">
-                Refund request received.
-              </p>
-              <p className="mt-1 text-sm text-emerald-800">
-                {wasDuplicate
-                  ? "We already have a pending request for this journey — our team will review it."
-                  : quoteFound
-                    ? `Our team will review your refund of ₹${quoteAmount} and update you on your email.`
-                    : "Our team will review your request and confirm the refund amount over email."}{" "}
-                Reference: <span className="font-mono">{referenceId}</span>
-              </p>
-              <Link
-                href="/"
-                className="mt-4 inline-block text-sm text-slate-600 hover:text-blue-600 hover:underline"
-              >
-                Back to home
-              </Link>
-            </div>
-          )
-        ) : (
-          <>
-            <p className="mb-6 text-slate-600">
-              Paid for a chart alert but didn&apos;t get a confirmed end-to-end
-              ticket? Share your details below to request a refund. Please note
-              that approved chart alert refunds are issued at 50% of the alert
-              subscription amount.
+
+            <p className="mt-3 text-sm leading-relaxed text-emerald-900">
+              We have verified your payment and automatically initiated a refund
+              of{" "}
+              <strong className="font-semibold text-emerald-950">
+                ₹{autoRefundResult.amount ?? quoteAmount}
+              </strong>{" "}
+              to your original payment method via Razorpay.
             </p>
-            <form onSubmit={handleInitialSubmit} className="space-y-4">
+
+            {autoRefundResult.refundId && (
+              <div className="mt-3 rounded-lg border border-emerald-200 bg-white p-3 font-mono text-xs text-slate-700">
+                <span className="font-medium text-slate-500">
+                  Razorpay Refund ID:
+                </span>{" "}
+                <span className="font-semibold text-slate-900">
+                  {autoRefundResult.refundId}
+                </span>
+              </div>
+            )}
+
+            <p className="mt-3 text-xs text-emerald-800">
+              A confirmation email with the alert details has been sent to{" "}
+              <strong>{email}</strong>. Refunds typically reflect in your bank
+              account within <strong>5–7 business days</strong>.
+            </p>
+
+            <div className="mt-4 border-t border-emerald-200/60 pt-3 text-xs text-emerald-800">
+              Request Reference:{" "}
+              <span className="font-mono font-semibold">{referenceId}</span>
+            </div>
+
+            <Link
+              href="/"
+              className="mt-5 inline-block rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-emerald-700"
+            >
+              Back to home
+            </Link>
+          </div>
+        ) : (
+          <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4">
+            <p className="font-semibold text-emerald-900">
+              Refund request received.
+            </p>
+            <p className="mt-1 text-sm text-emerald-800">
+              {wasDuplicate
+                ? "We already have a pending request for this journey — our team will review it."
+                : quoteFound
+                  ? `Our team will review your refund of ₹${quoteAmount} and update you on your email.`
+                  : "Our team will review your request and confirm the refund amount over email."}{" "}
+              Reference: <span className="font-mono">{referenceId}</span>
+            </p>
+            <Link
+              href="/"
+              className="mt-4 inline-block text-sm text-slate-600 hover:text-blue-600 hover:underline"
+            >
+              Back to home
+            </Link>
+          </div>
+        )
+      ) : (
+        <>
+          <p className="mb-6 text-slate-600">
+            Paid for a chart alert but didn&apos;t get a confirmed end-to-end
+            ticket? Share your details below to request a refund. Please note
+            that approved chart alert refunds are issued at 50% of the alert
+            subscription amount.
+          </p>
+          <form onSubmit={handleInitialSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="refund-email" className={labelClass}>
+                Email
+              </label>
+              <input
+                id="refund-email"
+                type="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@example.com"
+                className={inputClass}
+                required
+              />
+            </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <label htmlFor="refund-email" className={labelClass}>
-                  Email
+                <label htmlFor="refund-train" className={labelClass}>
+                  Train number
                 </label>
                 <input
-                  id="refund-email"
-                  type="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
+                  id="refund-train"
+                  type="text"
+                  inputMode="numeric"
+                  value={trainNumber}
+                  onChange={(e) => setTrainNumber(e.target.value)}
+                  placeholder="12951"
                   className={inputClass}
                   required
                 />
               </div>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="refund-train" className={labelClass}>
-                    Train number
-                  </label>
-                  <input
-                    id="refund-train"
-                    type="text"
-                    inputMode="numeric"
-                    value={trainNumber}
-                    onChange={(e) => setTrainNumber(e.target.value)}
-                    placeholder="12951"
-                    className={inputClass}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="refund-date" className={labelClass}>
-                    Date of journey
-                  </label>
-                  <input
-                    id="refund-date"
-                    type="date"
-                    value={journeyDate}
-                    onChange={(e) => setJourneyDate(e.target.value)}
-                    className={inputClass}
-                    required
-                  />
-                </div>
-              </div>
               <div>
-                <label htmlFor="refund-txn" className={labelClass}>
-                  Transaction ID{" "}
-                  <span className="font-normal text-slate-400">(optional)</span>
+                <label htmlFor="refund-date" className={labelClass}>
+                  Date of journey
                 </label>
                 <input
-                  id="refund-txn"
-                  type="text"
-                  value={txnId}
-                  onChange={(e) => setTxnId(e.target.value)}
-                  placeholder="pay_ or payment reference ID from your receipt"
+                  id="refund-date"
+                  type="date"
+                  value={journeyDate}
+                  onChange={(e) => setJourneyDate(e.target.value)}
                   className={inputClass}
+                  required
                 />
               </div>
-              {status === "error" && errorMessage && (
-                <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
-                  {errorMessage}
-                </div>
-              )}
-              <button
-                type="submit"
-                disabled={loadingQuote || submitting}
-                className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
-              >
-                {loadingQuote ? "Checking details…" : "Submit refund request"}
-              </button>
-            </form>
-          </>
-        )}
-      </div>
+            </div>
+            <div>
+              <label htmlFor="refund-txn" className={labelClass}>
+                Transaction ID{" "}
+                <span className="font-normal text-slate-400">(optional)</span>
+              </label>
+              <input
+                id="refund-txn"
+                type="text"
+                value={txnId}
+                onChange={(e) => setTxnId(e.target.value)}
+                placeholder="pay_ or payment reference ID from your receipt"
+                className={inputClass}
+              />
+            </div>
+            {status === "error" && errorMessage && (
+              <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
+                {errorMessage}
+              </div>
+            )}
+            <button
+              type="submit"
+              disabled={loadingQuote || submitting}
+              className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+            >
+              {loadingQuote ? "Checking details…" : "Submit refund request"}
+            </button>
+          </form>
+        </>
+      )}
 
       {/* Confirmation & Validation Popup Modal */}
       {showConfirmModal && (
@@ -433,6 +419,6 @@ export function RefundClient() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

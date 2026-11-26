@@ -6,23 +6,26 @@ import {
   type CateringSection,
 } from "@/lib/mailExpressCatering";
 import { dishVisual } from "@/lib/foodEmoji";
+import { buildOpenGraph } from "@/lib/seo/metadata";
 
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
+
+const MAIL_MENU_TITLE = "Mail & Express Train Food Menu: Full Price List";
+const MAIL_MENU_DESC =
+  "Official IRCTC catering rates on Mail, Express & Humsafar trains: breakfast, veg/egg/chicken meals, tea, Rail Neer water, and full tariff.";
 
 export const metadata: Metadata = {
   // CTR title (≤48 ch before the "%s | LastBerth" template): keyword + a
   // value hook. Old title was 57 ch and truncated badly with the brand suffix.
   // "Humsafar" stays in the description/keywords rather than the title.
-  title: "Mail & Express Train Food Menu: Full Price List",
-  description:
-    "Official IRCTC catering charges on Mail, Express and Humsafar trains: breakfast, meals (veg, egg, chicken biryani), tea, coffee, Rail Neer water and the full à la carte tariff. At-station vs in-train rates, inclusive of taxes.",
+  title: MAIL_MENU_TITLE,
+  description: MAIL_MENU_DESC,
   alternates: { canonical: "/irctc-train-food-menu/mail-express-humsafar" },
-  openGraph: {
-    title: "Mail & Express Train Food Menu: Full Price List",
-    description:
-      "Official IRCTC catering charges on Mail, Express and Humsafar trains: breakfast, meals, beverages and the full à la carte tariff.",
+  openGraph: buildOpenGraph({
+    title: `${MAIL_MENU_TITLE} | LastBerth`,
+    description: MAIL_MENU_DESC,
     url: "/irctc-train-food-menu/mail-express-humsafar",
-  },
+  }),
 };
 
 function inr(n: number | null | undefined): string {

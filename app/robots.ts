@@ -62,6 +62,8 @@ const AI_CRAWLERS = [
   "cohere-ai",
   "anthropic-ai",
   "ClaudeBot",
+  "Claude-SearchBot",
+  "Claude-User",
   "Claude-Web",
 ];
 

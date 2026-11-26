@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
   AlertCircle,
-  ArrowLeft,
   CheckCircle2,
   HelpCircle,
   Loader2,
@@ -58,12 +57,6 @@ export function CancelBookingClient() {
     null,
   );
   const [requestId, setRequestId] = useState("");
-
-  useEffect(() => {
-    if (initialRef && !bookingRef) {
-      setBookingRef(initialRef);
-    }
-  }, [initialRef, bookingRef]);
 
   async function handleLookup(e: React.FormEvent) {
     e.preventDefault();
@@ -143,395 +136,377 @@ export function CancelBookingClient() {
   }
 
   return (
-    <main className="min-h-[80vh] bg-slate-50 px-4 py-10 sm:px-6">
-      <div className="mx-auto max-w-xl">
-        {/* Header */}
-        <div className="mb-6 text-center">
-          <Link
-            href="/"
-            className="mb-3 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 transition hover:text-slate-800"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" /> Back to Search
-          </Link>
-          <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
-            Cancel Train Booking
-          </h1>
-          <p className="mt-1.5 text-xs text-slate-600 sm:text-sm">
-            Request cancellation for your LastBerth split-ticket reservation
-          </p>
+    <>
+      {errorMessage && (
+        <div
+          role="alert"
+          className="mb-5 flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 p-4 text-xs text-red-800 sm:text-sm"
+        >
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" />
+          <p>{errorMessage}</p>
         </div>
+      )}
 
-        {errorMessage && (
-          <div
-            role="alert"
-            className="mb-5 flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 p-4 text-xs text-red-800 sm:text-sm"
-          >
-            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" />
-            <p>{errorMessage}</p>
-          </div>
-        )}
-
-        {/* STEP 1: LOOKUP FORM */}
-        {step === "lookup" && (
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-            <form onSubmit={handleLookup} className="space-y-4">
-              <div>
-                <label
-                  htmlFor="cancellation-reference"
-                  className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700"
-                >
-                  Booking Reference *
-                </label>
-                <input
-                  id="cancellation-reference"
-                  type="text"
-                  required
-                  value={bookingRef}
-                  onChange={(e) => setBookingRef(e.target.value.toUpperCase())}
-                  placeholder="e.g. LB-DUZAW"
-                  className="focus:outline-hidden w-full rounded-xl border border-slate-300 px-3.5 py-2.5 font-mono text-sm uppercase focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
-                />
-                <span className="mt-1 block text-[11px] text-slate-500">
-                  Provided in your booking confirmation popup, email, and
-                  WhatsApp message.
-                </span>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="cancellation-mobile"
-                  className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700"
-                >
-                  Mobile Number *
-                </label>
-                <div className="flex">
-                  <span className="inline-flex items-center rounded-l-xl border border-r-0 border-slate-300 bg-slate-100 px-3 text-sm text-slate-600">
-                    +91
-                  </span>
-                  <input
-                    id="cancellation-mobile"
-                    type="tel"
-                    inputMode="numeric"
-                    required
-                    value={mobile}
-                    onChange={(e) => setMobile(e.target.value)}
-                    placeholder="10-digit mobile number"
-                    className="focus:outline-hidden w-full rounded-r-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
-                  />
-                </div>
-                <span className="mt-1 block text-[11px] text-slate-500">
-                  Must match the mobile number used when reserving tickets.
-                </span>
-              </div>
-
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  disabled={!hydrated || loading}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-sm font-bold text-white transition hover:bg-slate-800 disabled:opacity-50"
-                >
-                  {loading ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                      <span>Checking Booking...</span>
-                    </>
-                  ) : (
-                    <span>Find Ticket Details</span>
-                  )}
-                </button>
-              </div>
-            </form>
-
-            <div className="mt-6 border-t border-slate-100 pt-4 text-center">
-              <p className="text-xs text-slate-500">
-                Need urgent help? Email us at{" "}
-                <a
-                  href="mailto:support@lastberth.com?subject=Help%20with%20booking%20cancellation"
-                  className="font-semibold text-blue-600 underline hover:text-blue-800"
-                >
-                  support@lastberth.com
-                </a>
-              </p>
+      {/* STEP 1: LOOKUP FORM */}
+      {step === "lookup" && (
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <form onSubmit={handleLookup} className="space-y-4">
+            <div>
+              <label
+                htmlFor="cancellation-reference"
+                className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700"
+              >
+                Booking Reference *
+              </label>
+              <input
+                id="cancellation-reference"
+                type="text"
+                required
+                value={bookingRef}
+                onChange={(e) => setBookingRef(e.target.value.toUpperCase())}
+                placeholder="e.g. LB-DUZAW"
+                className="focus:outline-hidden w-full rounded-xl border border-slate-300 px-3.5 py-2.5 font-mono text-sm uppercase focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+              />
+              <span className="mt-1 block text-[11px] text-slate-500">
+                Provided in your booking confirmation popup, email, and WhatsApp
+                message.
+              </span>
             </div>
-          </div>
-        )}
 
-        {/* STEP 2: REVIEW TICKET DETAILS & CONFIRM */}
-        {step === "review" && booking && (
-          <div className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-            {/* Booking Header Card */}
-            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 text-blue-700">
-                    <Train className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-slate-900">
-                      {booking.trainNumber} {booking.trainName || ""}
-                    </h3>
-                    <p className="text-xs text-slate-600">
-                      {booking.fromStationCode} → {booking.toStationCode} •{" "}
-                      {booking.travelClass} ({booking.quota})
-                    </p>
-                  </div>
+            <div>
+              <label
+                htmlFor="cancellation-mobile"
+                className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700"
+              >
+                Mobile Number *
+              </label>
+              <div className="flex">
+                <span className="inline-flex items-center rounded-l-xl border border-r-0 border-slate-300 bg-slate-100 px-3 text-sm text-slate-600">
+                  +91
+                </span>
+                <input
+                  id="cancellation-mobile"
+                  type="tel"
+                  inputMode="numeric"
+                  required
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
+                  placeholder="10-digit mobile number"
+                  className="focus:outline-hidden w-full rounded-r-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+              <span className="mt-1 block text-[11px] text-slate-500">
+                Must match the mobile number used when reserving tickets.
+              </span>
+            </div>
+
+            <div className="pt-2">
+              <button
+                type="submit"
+                disabled={!hydrated || loading}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-sm font-bold text-white transition hover:bg-slate-800 disabled:opacity-50"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <span>Checking Booking...</span>
+                  </>
+                ) : (
+                  <span>Find Ticket Details</span>
+                )}
+              </button>
+            </div>
+          </form>
+
+          <div className="mt-6 border-t border-slate-100 pt-4 text-center">
+            <p className="text-xs text-slate-500">
+              Need urgent help? Email us at{" "}
+              <a
+                href="mailto:support@lastberth.com?subject=Help%20with%20booking%20cancellation"
+                className="font-semibold text-blue-600 underline hover:text-blue-800"
+              >
+                support@lastberth.com
+              </a>
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* STEP 2: REVIEW TICKET DETAILS & CONFIRM */}
+      {step === "review" && booking && (
+        <div className="space-y-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          {/* Booking Header Card */}
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
+              <div className="flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 text-blue-700">
+                  <Train className="h-4 w-4" />
                 </div>
-                <div className="text-right">
-                  <span className="rounded-md bg-slate-200 px-2 py-0.5 font-mono text-xs font-bold text-slate-800">
-                    {booking.bookingRef}
-                  </span>
-                  <p className="mt-0.5 text-[11px] text-slate-500">
-                    Date: {booking.journeyDate}
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900">
+                    {booking.trainNumber} {booking.trainName || ""}
+                  </h3>
+                  <p className="text-xs text-slate-600">
+                    {booking.fromStationCode} → {booking.toStationCode} •{" "}
+                    {booking.travelClass} ({booking.quota})
                   </p>
                 </div>
               </div>
-
-              {/* Passengers */}
-              <div className="pt-3">
-                <span className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                  Passengers
+              <div className="text-right">
+                <span className="rounded-md bg-slate-200 px-2 py-0.5 font-mono text-xs font-bold text-slate-800">
+                  {booking.bookingRef}
                 </span>
-                <ul className="space-y-1 text-xs text-slate-700">
-                  {booking.passengers.adults.map((p, idx) => (
-                    <li key={idx} className="flex justify-between">
-                      <span className="font-medium">{p.name}</span>
-                      <span className="text-slate-500">
-                        {p.gender}, Age {p.age}
-                        {p.berthPreference ? ` • ${p.berthPreference}` : ""}
+                <p className="mt-0.5 text-[11px] text-slate-500">
+                  Date: {booking.journeyDate}
+                </p>
+              </div>
+            </div>
+
+            {/* Passengers */}
+            <div className="pt-3">
+              <span className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                Passengers
+              </span>
+              <ul className="space-y-1 text-xs text-slate-700">
+                {booking.passengers.adults.map((p, idx) => (
+                  <li key={idx} className="flex justify-between">
+                    <span className="font-medium">{p.name}</span>
+                    <span className="text-slate-500">
+                      {p.gender}, Age {p.age}
+                      {p.berthPreference ? ` • ${p.berthPreference}` : ""}
+                    </span>
+                  </li>
+                ))}
+                {booking.passengers.children?.map((c, idx) => (
+                  <li key={`c-${idx}`} className="flex justify-between">
+                    <span className="font-medium">{c.name} (Child)</span>
+                    <span className="text-slate-500">
+                      {c.gender}, Age {c.age}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* PNR Details if issued */}
+            {(booking.pnrLeg1 ||
+              booking.pnrLeg2 ||
+              booking.pnrs?.length > 0) && (
+              <div className="mt-3 border-t border-slate-200 pt-3">
+                <span className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                  Issued PNRs
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {[booking.pnrLeg1, booking.pnrLeg2, ...(booking.pnrs || [])]
+                    .filter(Boolean)
+                    .map((pnr, idx) => (
+                      <span
+                        key={idx}
+                        className="rounded border border-slate-200 bg-white px-2 py-1 font-mono text-xs font-bold text-slate-800"
+                      >
+                        {pnr}
                       </span>
-                    </li>
-                  ))}
-                  {booking.passengers.children?.map((c, idx) => (
-                    <li key={`c-${idx}`} className="flex justify-between">
-                      <span className="font-medium">{c.name} (Child)</span>
-                      <span className="text-slate-500">
-                        {c.gender}, Age {c.age}
-                      </span>
-                    </li>
-                  ))}
+                    ))}
+                </div>
+              </div>
+            )}
+
+            {/* Price Paid */}
+            <div className="mt-3 flex items-center justify-between border-t border-slate-200 pt-3 text-xs">
+              <span className="text-slate-600">Total Paid:</span>
+              <span className="text-sm font-bold text-slate-900">
+                ₹{booking.amount.toLocaleString("en-IN")}
+              </span>
+            </div>
+          </div>
+
+          {/* Existing Request Warning if already submitted */}
+          {booking.existingCancellation && (
+            <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs text-amber-900">
+              <div className="mb-1 flex items-center gap-2 font-bold">
+                <ShieldAlert className="h-4 w-4 text-amber-700" />
+                <span>Cancellation Request Already Received</span>
+              </div>
+              <p>
+                A cancellation request for this booking was submitted on{" "}
+                <strong>
+                  {new Date(
+                    booking.existingCancellation.createdAt,
+                  ).toLocaleDateString("en-IN")}
+                </strong>{" "}
+                and is currently marked as{" "}
+                <strong className="uppercase">
+                  {booking.existingCancellation.status}
+                </strong>
+                .
+              </p>
+              <p className="mt-1">
+                Our support team is processing it. If you need urgent status,
+                please email support@lastberth.com.
+              </p>
+            </div>
+          )}
+
+          {!booking.existingCancellation && (
+            <>
+              {/* Cancellation policy advisory */}
+              <div className="space-y-2 rounded-xl border border-blue-100 bg-blue-50/70 p-4 text-xs text-slate-700">
+                <div className="flex items-center gap-1.5 font-bold text-blue-900">
+                  <HelpCircle className="h-4 w-4 text-blue-600" />
+                  <span>Indian Railways Cancellation & Refund Policy</span>
+                </div>
+                <ul className="list-disc space-y-1 pl-4 text-slate-600">
+                  <li>
+                    Ticket cancellations are governed by official Indian
+                    Railways / IRCTC cancellation rules.
+                  </li>
+                  <li>
+                    Statutory IRCTC clerkage and cancellation fees depend on the
+                    time before scheduled train departure.
+                  </li>
+                  <li>
+                    The refundable balance will be refunded directly to your
+                    original payment account within 3–5 working days after IRCTC
+                    processing.
+                  </li>
                 </ul>
               </div>
 
-              {/* PNR Details if issued */}
-              {(booking.pnrLeg1 ||
-                booking.pnrLeg2 ||
-                booking.pnrs?.length > 0) && (
-                <div className="mt-3 border-t border-slate-200 pt-3">
-                  <span className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                    Issued PNRs
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {[booking.pnrLeg1, booking.pnrLeg2, ...(booking.pnrs || [])]
-                      .filter(Boolean)
-                      .map((pnr, idx) => (
-                        <span
-                          key={idx}
-                          className="rounded border border-slate-200 bg-white px-2 py-1 font-mono text-xs font-bold text-slate-800"
-                        >
-                          {pnr}
-                        </span>
-                      ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Price Paid */}
-              <div className="mt-3 flex items-center justify-between border-t border-slate-200 pt-3 text-xs">
-                <span className="text-slate-600">Total Paid:</span>
-                <span className="text-sm font-bold text-slate-900">
-                  ₹{booking.amount.toLocaleString("en-IN")}
-                </span>
-              </div>
-            </div>
-
-            {/* Existing Request Warning if already submitted */}
-            {booking.existingCancellation && (
-              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs text-amber-900">
-                <div className="mb-1 flex items-center gap-2 font-bold">
-                  <ShieldAlert className="h-4 w-4 text-amber-700" />
-                  <span>Cancellation Request Already Received</span>
-                </div>
-                <p>
-                  A cancellation request for this booking was submitted on{" "}
-                  <strong>
-                    {new Date(
-                      booking.existingCancellation.createdAt,
-                    ).toLocaleDateString("en-IN")}
-                  </strong>{" "}
-                  and is currently marked as{" "}
-                  <strong className="uppercase">
-                    {booking.existingCancellation.status}
-                  </strong>
-                  .
-                </p>
-                <p className="mt-1">
-                  Our support team is processing it. If you need urgent status,
-                  please email support@lastberth.com.
-                </p>
-              </div>
-            )}
-
-            {!booking.existingCancellation && (
-              <>
-                {/* Cancellation policy advisory */}
-                <div className="space-y-2 rounded-xl border border-blue-100 bg-blue-50/70 p-4 text-xs text-slate-700">
-                  <div className="flex items-center gap-1.5 font-bold text-blue-900">
-                    <HelpCircle className="h-4 w-4 text-blue-600" />
-                    <span>Indian Railways Cancellation & Refund Policy</span>
-                  </div>
-                  <ul className="list-disc space-y-1 pl-4 text-slate-600">
-                    <li>
-                      Ticket cancellations are governed by official Indian
-                      Railways / IRCTC cancellation rules.
-                    </li>
-                    <li>
-                      Statutory IRCTC clerkage and cancellation fees depend on
-                      the time before scheduled train departure.
-                    </li>
-                    <li>
-                      The refundable balance will be refunded directly to your
-                      original payment account within 3–5 working days after
-                      IRCTC processing.
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Reason Input */}
-                <div>
-                  <label
-                    htmlFor="cancellation-reason"
-                    className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700"
-                  >
-                    Reason for Cancellation (Optional)
-                  </label>
-                  <textarea
-                    id="cancellation-reason"
-                    rows={2}
-                    value={reason}
-                    onChange={(e) => setReason(e.target.value)}
-                    placeholder="e.g. Change in travel plans, emergency, etc."
-                    className="focus:outline-hidden w-full rounded-xl border border-slate-300 px-3.5 py-2 text-xs focus:border-blue-600 focus:ring-1 focus:ring-blue-600 sm:text-sm"
-                  />
-                </div>
-
-                {/* Confirmation Checkbox */}
-                <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5">
-                  <input
-                    type="checkbox"
-                    checked={confirmUnderstood}
-                    onChange={(e) => setConfirmUnderstood(e.target.checked)}
-                    className="mt-0.5 h-4 w-4 rounded border-slate-300 text-red-600 focus:ring-red-500"
-                  />
-                  <span className="text-xs leading-snug text-slate-700">
-                    I confirm that I want to cancel booking{" "}
-                    <strong>{booking.bookingRef}</strong> and acknowledge that
-                    IRCTC cancellation charges and refund deductions apply.
-                  </span>
+              {/* Reason Input */}
+              <div>
+                <label
+                  htmlFor="cancellation-reason"
+                  className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700"
+                >
+                  Reason for Cancellation (Optional)
                 </label>
+                <textarea
+                  id="cancellation-reason"
+                  rows={2}
+                  value={reason}
+                  onChange={(e) => setReason(e.target.value)}
+                  placeholder="e.g. Change in travel plans, emergency, etc."
+                  className="focus:outline-hidden w-full rounded-xl border border-slate-300 px-3.5 py-2 text-xs focus:border-blue-600 focus:ring-1 focus:ring-blue-600 sm:text-sm"
+                />
+              </div>
 
-                {/* Action Buttons */}
-                <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setStep("lookup");
-                      setErrorMessage("");
-                    }}
-                    className="w-full rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100 sm:w-1/3"
-                  >
-                    Go Back
-                  </button>
-                  <button
-                    type="button"
-                    disabled={!confirmUnderstood || submitting}
-                    onClick={handleConfirmCancellation}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 py-2.5 text-xs font-bold text-white transition hover:bg-red-700 disabled:opacity-50 sm:w-2/3"
-                  >
-                    {submitting ? (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                        <span>Submitting Request...</span>
-                      </>
-                    ) : (
-                      <span>Confirm Cancellation Request</span>
-                    )}
-                  </button>
-                </div>
-              </>
-            )}
+              {/* Confirmation Checkbox */}
+              <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5">
+                <input
+                  type="checkbox"
+                  checked={confirmUnderstood}
+                  onChange={(e) => setConfirmUnderstood(e.target.checked)}
+                  className="mt-0.5 h-4 w-4 rounded border-slate-300 text-red-600 focus:ring-red-500"
+                />
+                <span className="text-xs leading-snug text-slate-700">
+                  I confirm that I want to cancel booking{" "}
+                  <strong>{booking.bookingRef}</strong> and acknowledge that
+                  IRCTC cancellation charges and refund deductions apply.
+                </span>
+              </label>
 
-            {booking.existingCancellation && (
-              <div className="pt-2">
+              {/* Action Buttons */}
+              <div className="flex flex-col gap-3 pt-2 sm:flex-row">
                 <button
                   type="button"
-                  onClick={() => setStep("lookup")}
-                  className="w-full rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100"
+                  onClick={() => {
+                    setStep("lookup");
+                    setErrorMessage("");
+                  }}
+                  className="w-full rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100 sm:w-1/3"
                 >
-                  Look Up Another Booking
+                  Go Back
+                </button>
+                <button
+                  type="button"
+                  disabled={!confirmUnderstood || submitting}
+                  onClick={handleConfirmCancellation}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 py-2.5 text-xs font-bold text-white transition hover:bg-red-700 disabled:opacity-50 sm:w-2/3"
+                >
+                  {submitting ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <span>Submitting Request...</span>
+                    </>
+                  ) : (
+                    <span>Confirm Cancellation Request</span>
+                  )}
                 </button>
               </div>
-            )}
-          </div>
-        )}
+            </>
+          )}
 
-        {/* STEP 3: SUCCESS CONFIRMATION */}
-        {step === "success" && (
-          <div className="space-y-4 rounded-2xl border border-emerald-200 bg-white p-6 text-center shadow-sm sm:p-8">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-              <CheckCircle2 className="h-8 w-8" />
-            </div>
-
-            <h2 className="text-xl font-extrabold text-slate-900 sm:text-2xl">
-              Cancellation Request Received
-            </h2>
-
-            <p className="mx-auto max-w-md text-xs text-slate-600 sm:text-sm">
-              We have received your cancellation request for booking reference{" "}
-              <strong className="font-mono text-slate-800">
-                {booking?.bookingRef}
-              </strong>
-              .
-            </p>
-
-            <div className="mx-auto max-w-md space-y-2 rounded-xl border border-slate-200 bg-slate-50 p-4 text-left text-xs">
-              <div className="flex justify-between">
-                <span className="text-slate-500">Request ID:</span>
-                <span className="font-mono font-bold text-slate-800">
-                  {requestId}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Train:</span>
-                <span className="font-bold text-slate-800">
-                  {booking?.trainNumber} ({booking?.fromStationCode} →{" "}
-                  {booking?.toStationCode})
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Status:</span>
-                <span className="font-bold text-amber-700">
-                  Pending Admin Processing
-                </span>
-              </div>
-            </div>
-
-            <p className="mx-auto max-w-md text-xs text-slate-500">
-              Our team has been notified and will process the cancellation on
-              IRCTC. You will receive confirmation via Email and WhatsApp once
-              the refund has been credited.
-            </p>
-
-            <div className="flex flex-col justify-center gap-3 pt-4 sm:flex-row">
-              <Link
-                href="/"
-                className="rounded-xl bg-slate-900 px-6 py-2.5 text-xs font-bold text-white transition hover:bg-slate-800"
+          {booking.existingCancellation && (
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={() => setStep("lookup")}
+                className="w-full rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-100"
               >
-                Back to Home
-              </Link>
+                Look Up Another Booking
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* STEP 3: SUCCESS CONFIRMATION */}
+      {step === "success" && (
+        <div className="space-y-4 rounded-2xl border border-emerald-200 bg-white p-6 text-center shadow-sm sm:p-8">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+            <CheckCircle2 className="h-8 w-8" />
+          </div>
+
+          <h2 className="text-xl font-extrabold text-slate-900 sm:text-2xl">
+            Cancellation Request Received
+          </h2>
+
+          <p className="mx-auto max-w-md text-xs text-slate-600 sm:text-sm">
+            We have received your cancellation request for booking reference{" "}
+            <strong className="font-mono text-slate-800">
+              {booking?.bookingRef}
+            </strong>
+            .
+          </p>
+
+          <div className="mx-auto max-w-md space-y-2 rounded-xl border border-slate-200 bg-slate-50 p-4 text-left text-xs">
+            <div className="flex justify-between">
+              <span className="text-slate-500">Request ID:</span>
+              <span className="font-mono font-bold text-slate-800">
+                {requestId}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-500">Train:</span>
+              <span className="font-bold text-slate-800">
+                {booking?.trainNumber} ({booking?.fromStationCode} →{" "}
+                {booking?.toStationCode})
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-slate-500">Status:</span>
+              <span className="font-bold text-amber-700">
+                Pending Admin Processing
+              </span>
             </div>
           </div>
-        )}
-      </div>
-    </main>
+
+          <p className="mx-auto max-w-md text-xs text-slate-500">
+            Our team has been notified and will process the cancellation on
+            IRCTC. You will receive confirmation via Email and WhatsApp once the
+            refund has been credited.
+          </p>
+
+          <div className="flex flex-col justify-center gap-3 pt-4 sm:flex-row">
+            <Link
+              href="/"
+              className="rounded-xl bg-slate-900 px-6 py-2.5 text-xs font-bold text-white transition hover:bg-slate-800"
+            >
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

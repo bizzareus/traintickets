@@ -202,9 +202,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MMNZJJZ6');`,
           }}
         />
-        <link rel="dns-prefetch" href="https://us.i.posthog.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <link rel="preconnect" href="https://us.i.posthog.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />

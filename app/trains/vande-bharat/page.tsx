@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { getTrains } from "@/lib/trainCatalog";
 import { TrainCatalogListClient } from "@/components/trains/TrainCatalogListClient";
+import { buildOpenGraph } from "@/lib/seo/metadata";
 import {
   Sparkles,
   ChevronRight,
@@ -15,18 +16,19 @@ import {
   Timer,
 } from "lucide-react";
 
+const VANDE_TITLE = "Vande Bharat Trains 2026: List, Routes & Timings";
+const VANDE_DESC =
+  "List of 170+ Vande Bharat Express trains in India with routes, timetables, stops, Chair Car, Executive & Sleeper classes, and IRCTC seat search.";
+
 export const metadata: Metadata = {
-  title: "Vande Bharat Express Trains 2026: List, Routes, Timings & Booking",
-  description:
-    "Complete list of 170+ Vande Bharat Express trains in India. Check routes, timetables, intermediate stops, Chair Car, Executive & Sleeper classes, catering menus, and find confirmed seats to book on IRCTC.",
+  title: VANDE_TITLE,
+  description: VANDE_DESC,
   alternates: { canonical: "/trains/vande-bharat" },
-  openGraph: {
-    title: "Vande Bharat Express Trains 2026: Routes, Timings & Booking",
-    description:
-      "Explore 170+ official Vande Bharat Express trains across India. Check schedules, halts, seat availability, and book confirmed tickets.",
+  openGraph: buildOpenGraph({
+    title: `${VANDE_TITLE} | LastBerth`,
+    description: VANDE_DESC,
     url: "/trains/vande-bharat",
-    type: "website",
-  },
+  }),
 };
 
 const POPULAR_CORRIDORS = [

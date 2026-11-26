@@ -8,6 +8,7 @@ import {
 } from "@/lib/specialTrains";
 import { SpecialTrainsListClient } from "@/components/special-trains/SpecialTrainsListClient";
 import { FestivalNavTabs } from "@/components/special-trains/FestivalNavTabs";
+import { buildOpenGraph } from "@/lib/seo/metadata";
 import {
   Sparkles,
   ChevronRight,
@@ -19,20 +20,21 @@ import {
   Calendar,
 } from "lucide-react";
 
+const SPECIAL_TITLE = "Special Trains 2026: List, Routes & Find Seats";
+const SPECIAL_DESC =
+  "Directory of Indian Railways festival special trains for Diwali, Chhath Puja, Dussehra, and Durga Puja 2026. Check schedules, stops, and seat availability.";
+
 export const metadata: Metadata = {
-  title: "Special Trains 2026: List, Routes & Find Seats",
-  description:
-    "Explore the complete directory of official festival special trains (Diwali, Chhath Puja, Dusshera, Durga Puja) launched by Indian Railways. Check schedules, stops, seat availability, and find confirmed seats to book on IRCTC.",
+  title: SPECIAL_TITLE,
+  description: SPECIAL_DESC,
   alternates: {
     canonical: "/special-trains",
   },
-  openGraph: {
-    title: "Special Trains 2026: Festival Routes & Confirm Tickets",
-    description:
-      "Explore 100+ festival special trains announced by Indian Railways for Diwali, Chhath Puja, Dusshera, and Durga Puja 2026. Real-time availability and smart split-seat search, booking completed on IRCTC.",
+  openGraph: buildOpenGraph({
+    title: `${SPECIAL_TITLE} | LastBerth`,
+    description: SPECIAL_DESC,
     url: "/special-trains",
-    type: "website",
-  },
+  }),
 };
 
 export default function SpecialTrainsHubPage() {

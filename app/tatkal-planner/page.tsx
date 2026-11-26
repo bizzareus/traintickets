@@ -2,29 +2,28 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TatkalPlannerClient from "./TatkalPlannerClient";
 import { getTatkalFaqs } from "@/lib/tatkalPlanner";
+import { buildOpenGraph, DEFAULT_TWITTER_IMAGE } from "@/lib/seo/metadata";
 
 export const revalidate = 3600;
 
+const TATKAL_TITLE = "Tatkal Date Calculator & Live Clock (2026)";
+const TATKAL_DESCRIPTION =
+  "Calculate exact IRCTC Tatkal booking dates and 10:00 AM AC / 11:00 AM Non-AC opening times with a live IST countdown clock and fare calculator.";
+
 export const metadata: Metadata = {
-  title: "Tatkal Booking Date Calculator & Live Clock (2026)",
-  description:
-    "Calculate exact IRCTC Tatkal booking dates and 10:00 AM AC / 11:00 AM Non-AC opening times with a live IST countdown clock and fare calculator.",
+  title: TATKAL_TITLE,
+  description: TATKAL_DESCRIPTION,
   alternates: { canonical: "/tatkal-planner" },
-  openGraph: {
-    title: "Tatkal Booking Date Calculator & Live Clock (2026)",
-    description:
-      "Calculate exact IRCTC Tatkal booking dates and 10:00 AM AC / 11:00 AM Non-AC opening times with a live IST countdown clock and fare calculator.",
-    url: "https://lastberth.com/tatkal-planner",
-    siteName: "LastBerth",
-    type: "website",
-    images: ["/opengraph-image"],
-  },
+  openGraph: buildOpenGraph({
+    title: TATKAL_TITLE,
+    description: TATKAL_DESCRIPTION,
+    url: "/tatkal-planner",
+  }),
   twitter: {
     card: "summary_large_image",
-    title: "Tatkal Booking Date Calculator & Live Clock (2026)",
-    description:
-      "Calculate exact IRCTC Tatkal booking dates and 10:00 AM AC / 11:00 AM Non-AC opening times with a live IST countdown clock and fare calculator.",
-    images: ["/twitter-image"],
+    title: TATKAL_TITLE,
+    description: TATKAL_DESCRIPTION,
+    images: [DEFAULT_TWITTER_IMAGE],
   },
 };
 
@@ -218,12 +217,12 @@ export default function TatkalPlannerPage() {
           </p>
           <div className="mt-4 space-y-3">
             <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
-              <h4 className="font-bold text-slate-900">
+              <h3 className="font-bold text-slate-900">
                 1. Smart Split-Seat Routing via{" "}
                 <Link href="/" className="text-blue-600 hover:underline">
                   Finding Smart Seats
                 </Link>
-              </h4>
+              </h3>
               <p className="mt-1 text-xs leading-relaxed text-slate-600">
                 Direct origin-to-destination searches often show WL, but seats
                 are frequently available for intermediate stretches on the same
@@ -234,7 +233,7 @@ export default function TatkalPlannerPage() {
             </div>
 
             <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
-              <h4 className="font-bold text-slate-900">
+              <h3 className="font-bold text-slate-900">
                 2. Current Availability &amp;{" "}
                 <Link
                   href="/chart-vacancy"
@@ -242,7 +241,7 @@ export default function TatkalPlannerPage() {
                 >
                   Chart Vacancy
                 </Link>
-              </h4>
+              </h3>
               <p className="mt-1 text-xs leading-relaxed text-slate-600">
                 After the first reservation chart is prepared (approx. 4 to 8
                 hours before departure), unbooked emergency quotas and cancelled

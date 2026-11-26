@@ -7,6 +7,7 @@ import {
   type TrainFoodMenu,
 } from "@/lib/trainFoodMenu";
 import { FoodOrderingMenu } from "@/components/foodmenu/FoodOrderingMenu";
+import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
 
 export const dynamicParams = true;
 
@@ -43,23 +44,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const menu = getTrainFoodMenu(slug);
   if (!menu) {
+    const fallbackTitle = "Train Food Menu & Prices | IRCTC Catering";
+    const fallbackDesc =
+      "IRCTC train catering menu and prices, organised by class and meal.";
     return {
-      title: "Train Food Menu & Prices | IRCTC Catering",
-      description:
-        "IRCTC train catering menu and prices, organised by class and meal.",
+      title: fallbackTitle,
+      description: fallbackDesc,
       alternates: { canonical: `/irctc-train-food-menu/${slug}` },
+      openGraph: buildOpenGraph({
+        title: fallbackTitle,
+        description: fallbackDesc,
+        url: `/irctc-train-food-menu/${slug}`,
+      }),
     };
   }
   const prices = allPrices(menu);
   const min = prices.length ? Math.min(...prices) : null;
-  const routePart = menu.route ? ` on the ${menu.route} route` : "";
-  const description = `Official IRCTC food menu and prices for ${menu.trainName} (${menu.trainNumberPair})${routePart}. See every meal — breakfast, lunch/dinner, snacks and tea — by class (${menu.classes
-    .map((c) => c.classCode)
-    .join(
-      ", ",
-    )})${min != null ? `, starting at ₹${min}` : ""}. Catering charges inclusive of taxes.`;
+  const routePart = menu.route ? ` on ${menu.route}` : "";
+  const description = truncateMetaDescription(
+    `Official IRCTC food menu and prices for ${menu.trainName} (${menu.trainNumberPair})${routePart}. Meals by class (${menu.classes
+      .map((c) => c.classCode)
+      .join(", ")})${min != null ? `, from ₹${min}` : ""}.`,
+  );
+  const pageTitle = title(menu);
+  const canonical = `/irctc-train-food-menu/${menu.slug}`;
   return {
-    title: title(menu),
+    title: pageTitle,
     description,
     keywords: [
       `${menu.trainNumber} food menu`,
@@ -71,8 +81,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       `irctc ${menu.trainNumber} catering`,
       `${menu.trainNumber} food price`,
     ],
-    alternates: { canonical: `/irctc-train-food-menu/${menu.slug}` },
-    openGraph: { title: title(menu), description, type: "article" },
+    alternates: { canonical },
+    openGraph: buildOpenGraph({
+      title: pageTitle,
+      description,
+      url: canonical,
+      type: "article",
+    }),
   };
 }
 

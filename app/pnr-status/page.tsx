@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SearchPnrPanel } from "@/components/booking-v2/SearchPnrPanel";
+import { buildOpenGraph } from "@/lib/seo/metadata";
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 const canonicalUrl = `${siteUrl}/pnr-status`;
@@ -10,13 +11,12 @@ export const metadata: Metadata = {
   description:
     "Check your 10-digit IRCTC PNR status live. View CNF, RAC, or WL status, waiting list confirmation chances, coach/berth, and chart timing.",
   alternates: { canonical: "/pnr-status" },
-  openGraph: {
+  openGraph: buildOpenGraph({
     title: "PNR Status Check — Live Enquiry & Chances | LastBerth",
     description:
       "Check train PNR status live, see waiting list (WL) confirmation chances, RAC and CNF meaning, and when your reservation chart is prepared.",
-    type: "website",
-    images: ["/opengraph-image"],
-  },
+    url: "/pnr-status",
+  }),
 };
 
 const FAQS: { q: string; a: string }[] = [

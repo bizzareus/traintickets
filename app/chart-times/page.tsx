@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { listPopularChartTimes } from "@/lib/chartTimes";
+import { buildOpenGraph } from "@/lib/seo/metadata";
 import ChartTimesFinder from "./ChartTimesFinder";
 
 export const dynamicParams = true;
 export const revalidate = 3600;
 
+const CHART_TIMES_TITLE = "IRCTC Train Chart Preparation Times by Station";
+const CHART_TIMES_DESC =
+  "Check station-by-station 1st and 2nd reservation chart preparation times for Indian Railways trains and spot post-chart vacant berths.";
+
 export const metadata: Metadata = {
-  title: "IRCTC Train Chart Preparation Times by Station",
-  description:
-    "Check station-by-station 1st and 2nd reservation chart preparation times for Indian Railways trains and spot post-chart vacant berths.",
+  title: CHART_TIMES_TITLE,
+  description: CHART_TIMES_DESC,
   alternates: { canonical: "/chart-times" },
+  openGraph: buildOpenGraph({
+    title: `${CHART_TIMES_TITLE} | LastBerth`,
+    description: CHART_TIMES_DESC,
+    url: "/chart-times",
+  }),
 };
 
 export default function ChartTimesIndexPage() {
@@ -110,6 +119,33 @@ export default function ChartTimesIndexPage() {
           to generate one.
         </p>
       )}
+
+      <section className="mt-10 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 className="text-lg font-bold text-slate-900">
+          When Does IRCTC Prepare Train Reservation Charts?
+        </h2>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          Indian Railways finalizes the <strong>first reservation chart</strong>{" "}
+          approximately 4 hours before a train&apos;s scheduled departure from
+          its originating or remote charting station. For morning trains
+          departing before 08:00 AM, the first chart is usually prepared the
+          previous evening between 20:00 and 21:00.
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          A <strong>second reservation chart</strong> is generated 30 to 60
+          minutes before departure to finalize last-minute cancellations and
+          allocate Current Availability (<code>CURR_AVBL</code>) berths. Check
+          individual train schedules above or view live{" "}
+          <Link href="/chart-vacancy" className="text-blue-600 hover:underline">
+            post-chart vacant berths
+          </Link>{" "}
+          and{" "}
+          <Link href="/pnr-status" className="text-blue-600 hover:underline">
+            live PNR status
+          </Link>
+          .
+        </p>
+      </section>
     </>
   );
 }

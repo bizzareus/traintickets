@@ -24,7 +24,7 @@ if [ $RESULT -ne 0 ]; then
   echo "❌ [pre-push] Booking checks failed. Push aborted."
   exit 1
 fi
-echo "ℹ️ [pre-push] Browser E2E runs daily in CI, not locally. See docs/booking-tests.md."
+echo "ℹ️ [pre-push] Browser E2E is not run in pre-push. See docs/booking-tests.md."
 
 echo "✅ [pre-push] Checks passed successfully. Proceeding with push..."
 exit 0

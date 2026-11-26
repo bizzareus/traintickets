@@ -1,10 +1,20 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { buildOpenGraph } from "@/lib/seo/metadata";
+
+const TERMS_TITLE = "Terms of Service & Refund Rules";
+const TERMS_DESC =
+  "Read LastBerth's Terms of Service covering Indian Railways meta-search usage, user accounts, chart alert subscriptions, and the 50% refund policy.";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "Terms and Conditions governing the use of LastBerth.",
+  title: TERMS_TITLE,
+  description: TERMS_DESC,
   alternates: { canonical: "/terms" },
+  openGraph: buildOpenGraph({
+    title: `${TERMS_TITLE} | LastBerth`,
+    description: TERMS_DESC,
+    url: "/terms",
+  }),
 };
 
 export default function TermsOfServicePage() {
