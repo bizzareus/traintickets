@@ -2,7 +2,7 @@
 title: "IRCTC-ൽ ട്രെയിൻ ടിക്കറ്റ് എങ്ങനെ റീഷെഡ്യൂൾ ചെയ്യാം: നിയമങ്ങളും തീയതികളും (2026)"
 description: "IRCTC ട്രെയിൻ ടിക്കറ്റുകൾ എങ്ങനെ റീഷെഡ്യൂൾ ചെയ്യാം, യാത്രാ തീയതികൾ പ്രീപോൺ അല്ലെങ്കിൽ പോസ്റ്റ്‌പോൺ ചെയ്യാം, ഓൺലൈൻ e-ticket vs കൗണ്ടർ നിയമങ്ങൾ, ഫീസ് സ്ലാബുകൾ, കൺഫേംഡ് ഇതരമാർഗ്ഗങ്ങൾ എന്നിവ മനസ്സിലാക്കുക."
 date: "2026-08-24"
-updated: "2026-11-09"
+updated: "2026-11-27"
 tags:
   - train booking
   - irctc
@@ -13,25 +13,27 @@ tags:
   - counter ticket rules
 ---
 
-> **മറ്റൊരു തീയതിയിൽ കൺഫേംഡ് സീറ്റുകൾ ആവശ്യമുണ്ടോ?** റീഷെഡ്യൂളിംഗ് Waitlist (WL) അല്ലെങ്കിൽ Regret കാണിക്കുമ്പോൾ, അൺറിസർവ്ഡ് പെനാൽറ്റി സർചാർജുകൾ നൽകാതെ തന്നെ ഒരേ ട്രെയിനിൽ കൺഫേംഡ് തുടർച്ചയായ സ്പ്ലിറ്റ് ടിക്കറ്റുകൾ LastBerth കണ്ടെത്തുന്നു:
->
-> - [Search Delhi to Patna Confirmed Trains](/?from=NDLS&to=PNBE&src=blog_reschedule)
-> - [Search Mumbai to Danapur Express Berths](/?from=MMCT&to=DNR&src=blog_reschedule)
-> - [Search Delhi to Mumbai Rajdhani Seats](/?from=NDLS&to=MMCT&src=blog_reschedule)
-> - [Search Bengaluru to Chennai Shatabdi Tickets](/?from=SBC&to=MAS&src=blog_reschedule)
-> - [Search Howrah to Puri Superfast Seats](/?from=HWH&to=PURI&src=blog_reschedule)
-> - [Search Pune to Danapur Special Trains](/?from=PUNE&to=DNR&src=blog_reschedule)
-> - [Chart Vacancy Map](/chart-vacancy)-ൽ കോച്ച് തിരിച്ചുള്ള ലൈവ് ഒഴിവുള്ള ബർത്തുകൾ ട്രാക്ക് ചെയ്യുക അല്ലെങ്കിൽ [Chart Times](/chart-times)-ൽ ട്രെയിൻ ചാർട്ട് റിലീസ് സമയങ്ങൾ പരിശോധിക്കുക.
-
 ## TL;DR
 
-ഷെഡ്യൂൾ ചെയ്ത പുറപ്പെടലിന് കുറഞ്ഞത് 48 മണിക്കൂർ മുമ്പെങ്കിലും നാമമാത്രമായ ക്ലർക്കേജ് ഫീസ് നൽകി ഏത് കമ്പ്യൂട്ടറൈസ്ഡ് Passenger Reservation System (PRS) സ്റ്റേഷൻ കൗണ്ടറിലും നിങ്ങൾക്ക് ഒരു confirmed, RAC, അല്ലെങ്കിൽ waitlisted പേപ്പർ കൗണ്ടർ ടിക്കറ്റ് prepone അല്ലെങ്കിൽ postpone ചെയ്യാൻ കഴിയും. ഓൺലൈൻ IRCTC e-tickets നേരിട്ട് IRCTC വെബ്‌സൈറ്റിലോ മൊബൈൽ ആപ്പിലോ റീഷെഡ്യൂൾ ചെയ്യാൻ കഴിയില്ല; ഡിജിറ്റൽ യാത്രക്കാർ ഓൺലൈനിൽ റദ്ദാക്കി പുതിയ ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യണം, അല്ലെങ്കിൽ 48 മണിക്കൂർ മുമ്പ് ഒരു സ്റ്റേഷൻ Chief Reservation Supervisor (CRS) കൗണ്ടറിൽ ഫിസിക്കൽ പ്രിന്റൗട്ട് ഹാജരാക്കണം. Tatkal, Premium Tatkal ടിക്കറ്റുകൾ ഒരു സാഹചര്യത്തിലും റീഷെഡ്യൂൾ ചെയ്യാൻ കഴിയില്ല. ഇതര യാത്രാ തീയതികൾ വലിയ വെയ്റ്റിംഗ് ലിസ്റ്റുകളോ Regret-ഓ കാണിക്കുകയാണെങ്കിൽ, കൃത്യമായി ഒരേ ട്രെയിനിൽ കൺഫേംഡ് തുടർച്ചയായ സ്പ്ലിറ്റ് ടിക്കറ്റുകൾ [Finding Smart Seats](/) കണ്ടെത്തുന്നു.
+ഷെഡ്യൂൾ ചെയ്ത പുറപ്പെടലിന് കുറഞ്ഞത് **48 മണിക്കൂർ മുമ്പെങ്കിലും** നാമമാത്രമായ ക്ലർക്കേജ് ഫീസ് (₹30 മുതൽ ₹60 + GST വരെ) നൽകി ഏത് കമ്പ്യൂട്ടറൈസ്ഡ് Passenger Reservation System (PRS) സ്റ്റേഷൻ കൗണ്ടറിലും നിങ്ങൾക്ക് ഒരു confirmed, RAC, അല്ലെങ്കിൽ waitlisted പേപ്പർ കൗണ്ടർ ടിക്കറ്റ് prepone അല്ലെങ്കിൽ postpone ചെയ്യാൻ കഴിയും. ഓൺലൈൻ IRCTC e-tickets നേരിട്ട് IRCTC വെബ്‌സൈറ്റിലോ മൊബൈൽ ആപ്പിലോ റീഷെഡ്യൂൾ ചെയ്യാൻ കഴിയില്ല; ഡിജിറ്റൽ യാത്രക്കാർ ഓൺലൈനിൽ റദ്ദാക്കി പുതിയ ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യണം, അല്ലെങ്കിൽ 48 മണിക്കൂർ മുമ്പ് ഒരു സ്റ്റേഷൻ Chief Reservation Supervisor (CRS) കൗണ്ടറിൽ ഫിസിക്കൽ പ്രിന്റൗട്ട് ഹാജരാക്കണം. Tatkal, Premium Tatkal ടിക്കറ്റുകൾ ഒരു സാഹചര്യത്തിലും റീഷെഡ്യൂൾ ചെയ്യാൻ കഴിയില്ല. ഇതര യാത്രാ തീയതികൾ വലിയ വെയ്റ്റിംഗ് ലിസ്റ്റുകളോ Regret-ഓ കാണിക്കുകയാണെങ്കിൽ, കൃത്യമായി ഒരേ ട്രെയിനിൽ കൺഫേംഡ് തുടർച്ചയായ സ്പ്ലിറ്റ് ടിക്കറ്റുകൾ LastBerth [Smart Seats](/) കണ്ടെത്തുന്നു.
+
+> **നിങ്ങളുടെ പുതിയ യാത്രാ തീയതിയിൽ കൺഫേംഡ് സീറ്റുകൾ ആവശ്യമുണ്ടോ?**
+> റീഷെഡ്യൂളിംഗിലോ വീണ്ടും ബുക്ക് ചെയ്യുമ്പോഴോ Waitlist (WL) അല്ലെങ്കിൽ Regret കാണിക്കുമ്പോൾ, നിങ്ങളുടെ യാത്ര മുടങ്ങാതിരിക്കാൻ ഒരേ ട്രെയിനിലെ തുടർച്ചയായ സ്പ്ലിറ്റ് ബർത്തുകളും ചാർട്ടിന് ശേഷമുള്ള തത്സമയ ഒഴിവുകളും LastBerth സ്കാൻ ചെയ്യുന്നു:
+>
+> - [ഡൽഹി ➔ പട്ന കൺഫേംഡ് ട്രെയിനുകൾ തിരയുക](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn&src=blog_reschedule) | [ഡൽഹി മുതൽ പട്ന വരെയുള്ള ട്രെയിനുകൾ](/routes/delhi-to-patna)
+> - [മുംബൈ ➔ ദാനാപൂർ എക്സ്പ്രസ് ബർത്തുകൾ തിരയുക](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur&src=blog_reschedule) | [മുംബൈ മുതൽ ദാനാപൂർ വരെയുള്ള ട്രെയിനുകൾ](/routes/mumbai-to-danapur)
+> - [ഡൽഹി ➔ മുംബൈ രാജധാനി സീറ്റുകൾ തിരയുക](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central&src=blog_reschedule) | [ഡൽഹി മുതൽ മുംബൈ വരെയുള്ള ട്രെയിനുകൾ](/routes/delhi-to-mumbai)
+> - [ബെംഗളൂരു ➔ ചെന്നൈ ശതാബ്ദി ടിക്കറ്റുകൾ തിരയുക](/?from=SBC&to=MAS&fromName=KSR%20Bengaluru&toName=MGR%20Chennai%20Central&src=blog_reschedule)
+> - [ഹൗറ ➔ പുരി സൂപ്പർഫാസ്റ്റ് സീറ്റുകൾ തിരയുക](/?from=HWH&to=PURI&fromName=Howrah%20Jn&toName=Puri&src=blog_reschedule)
+> - [Chart Vacancy](/chart-vacancy)-ൽ തത്സമയ ഒഴിവുള്ള ബർത്തുകൾ പരിശോധിക്കുക അല്ലെങ്കിൽ [Chart Times](/chart-times)-ൽ സൗജന്യ ചാർട്ട് തയ്യാറാക്കൽ അലേർട്ടുകൾ സജ്ജമാക്കുക.
+>
+> _Disclaimer: LastBerth ഒരു സ്വതന്ത്ര ട്രെയിൻ സീറ്റ് തിരയൽ, കണ്ടെത്തൽ പ്ലാറ്റ്‌ഫോമാണ്. ഇത് IRCTC അല്ലെങ്കിൽ ഇന്ത്യൻ റെയിൽവേയുമായി അഫിലിയേറ്റ് ചെയ്തിട്ടില്ല, കൂടാതെ എല്ലാ ടിക്കറ്റ് ബുക്കിംഗുകളും അംഗീകൃത IRCTC പോർട്ടലുകൾ വഴിയോ റെയിൽവേ കൗണ്ടറുകൾ വഴിയോ പൂർത്തിയാക്കേണ്ടതാണ്._
 
 ---
 
 ## ഒരു ഓൺലൈൻ IRCTC e-Ticket-ൽ നിങ്ങൾക്ക് യാത്രാ തീയതി റീഷെഡ്യൂൾ ചെയ്യാനോ മാറ്റാനോ കഴിയുമോ?
 
-**ഓൺലൈൻ e-tickets-നായി IRCTC വെബ്‌സൈറ്റിലോ മൊബൈൽ ആപ്പിലോ നേരിട്ട് യാത്രാ തീയതി റീഷെഡ്യൂൾ ചെയ്യാനോ മാറ്റാനോ നിങ്ങൾക്ക് കഴിയില്ല.** റെയിൽവേ IT സിസ്റ്റങ്ങൾ ഒരു ഓൺലൈൻ തീയതി മാറ്റ ബട്ടൺ നൽകുന്നില്ല. മറ്റൊരു തീയതിയിൽ യാത്ര ചെയ്യുന്നതിന്, നിങ്ങൾ ഒന്നുകിൽ ഓൺലൈനിൽ e-ticket റദ്ദാക്കി പുതിയ ടിക്കറ്റ് ബുക്ക് ചെയ്യണം, അല്ലെങ്കിൽ ട്രെയിൻ പുറപ്പെടുന്നതിന് കുറഞ്ഞത് 48 മണിക്കൂർ മുമ്പെങ്കിലും റെയിൽവേ PRS കൗണ്ടറിൽ പ്രിന്റ് ചെയ്ത കോപ്പി ഹാജരാക്കണം.
+**ഓൺലൈൻ e-tickets-നായി IRCTC വെബ്‌സൈറ്റിലോ മൊബൈൽ ആപ്പിലോ നേരിട്ട് യാത്രാ തീയതി റീഷെഡ്യൂൾ ചെയ്യാനോ മാറ്റാനോ നിങ്ങൾക്ക് കഴിയില്ല.** റെയിൽവേ IT സിസ്റ്റങ്ങൾ ഓൺലൈൻ തീയതി മാറ്റ ബട്ടൺ നൽകാത്തതിനാൽ, നിങ്ങൾ ഒന്നുകിൽ ഓൺലൈനിൽ e-ticket റദ്ദാക്കി പുതിയ സീറ്റുകൾ ബുക്ക് ചെയ്യണം, അല്ലെങ്കിൽ പുറപ്പെടുന്നതിന് കുറഞ്ഞത് 48 മണിക്കൂർ മുമ്പെങ്കിലും ഒരു PRS കൗണ്ടറിൽ പ്രിന്റ് ചെയ്ത കോപ്പി സമർപ്പിക്കണം.
 
 ഇൻവെന്ററി സമഗ്രത സംരക്ഷിക്കുന്നതിനും ഓട്ടോമേറ്റഡ് ടിക്കറ്റ് സ്കാൽപ്പിംഗ് തടയുന്നതിനുമായി Centre for Railway Information Systems (CRIS) ഓൺലൈൻ തീയതി മാറ്റങ്ങൾ ബോധപൂർവ്വം തടയുന്നു. നിങ്ങൾ ഒരു e-ticket ബുക്ക് ചെയ്യുമ്പോൾ, നിങ്ങളുടെ റിസർവേഷൻ ബാങ്കിംഗ് സെറ്റിൽമെന്റ് ഗേറ്റ്‌വേകൾ, Passenger Reservation System (PRS) പാസഞ്ചർ ക്വോട്ടകൾ, വാണിജ്യ ഓഡിറ്റ് രേഖകൾ എന്നിവയുമായി നേരിട്ട് ബന്ധിപ്പിക്കുന്നു.
 
@@ -46,18 +48,18 @@ tags:
 
 ## ഓൺലൈൻ e-Ticket, കൗണ്ടർ റീഷെഡ്യൂളിംഗ് നിയമങ്ങൾ എങ്ങനെ താരതമ്യം ചെയ്യുന്നു?
 
-ഡിജിറ്റൽ ചാനലുകൾ വഴിയും ഫിസിക്കൽ സ്റ്റേഷൻ കൗണ്ടറുകൾ വഴിയും ബുക്ക് ചെയ്യുന്ന ടിക്കറ്റുകൾക്കായി Indian Railways പ്രത്യേക അഡ്മിനിസ്ട്രേറ്റീവ് വർക്ക്‌ഫ്ലോകൾ പരിപാലിക്കുന്നു. താഴെ പറയുന്ന മാട്രിക്സ് രണ്ട് ടിക്കറ്റ് തരങ്ങളിലും റീഷെഡ്യൂളിംഗ്, റദ്ദാക്കലുകൾ, യാത്രക്കാരുടെ അവകാശങ്ങൾ എന്നിവ എങ്ങനെ പ്രവർത്തിക്കുന്നുവെന്ന് താരതമ്യം ചെയ്യുന്നു:
+**ഡിജിറ്റൽ IRCTC e-tickets-നും ഫിസിക്കൽ PRS കൗണ്ടർ ടിക്കറ്റുകൾക്കുമായി Indian Railways പ്രത്യേക അഡ്മിനിസ്ട്രേറ്റീവ് വർക്ക്‌ഫ്ലോകൾ നടപ്പിലാക്കുന്നു. ഇവ രണ്ടും ഓൺലൈൻ തീയതി മാറ്റങ്ങളെ പിന്തുണയ്ക്കുന്നില്ലെങ്കിലും, നാമമാത്രമായ ക്ലർക്കേജ് ഫീസോടെ പുറപ്പെടുന്നതിന് കുറഞ്ഞത് 48 മണിക്കൂർ മുമ്പ് കൗണ്ടർ മാറ്റങ്ങൾക്ക് രണ്ടും അനുവദിക്കുന്നു, അതേസമയം ചാർട്ടിംഗിന് ശേഷം വെയ്റ്റ്‌ലിസ്റ്റിലാണെങ്കിൽ ഓൺലൈൻ e-tickets സ്വയമേവ റദ്ദാക്കപ്പെടുന്നു.**
 
-| Feature & Rule | Online IRCTC e-Ticket | Physical PRS Counter Ticket |
-| :--- | :--- | :--- |
-| **Online Rescheduling Button** | Not available on IRCTC website or Rail Connect app | Not applicable (offline only) |
-| **Station Counter Rescheduling** | Permitted with printed ticket and original ID 48h prior | Permitted with original ticket slip 48h prior |
-| **Rescheduling Cutoff Deadline** | At least 48 hours before scheduled train departure | At least 48 hours before scheduled train departure |
-| **Applicable Modification Charges** | Nominal clerkage fee (~₹30 to ₹60 + GST) plus fare difference | Nominal clerkage fee (~₹30 to ₹60 + GST) plus fare difference |
-| **Downward Fare Difference Refund** | Not refunded by Indian Railways | Not refunded by Indian Railways |
-| **Instant Online Cancellation** | Available 24/7 on IRCTC portal up to chart preparation | Not available (must surrender at physical counter) |
-| **Refund Processing Speed** | 2 to 4 business days to source bank / UPI account | Instant cash or digital refund at PRS counter window |
-| **Post-Chart Waitlist Travel Right** | Auto-cancelled by CRIS; strictly illegal to board coaches | Allowed to board unreserved General coaches or approach TTE |
+| Feature & Rule                       | Online IRCTC e-Ticket                                         | Physical PRS Counter Ticket                                   |
+| :----------------------------------- | :------------------------------------------------------------ | :------------------------------------------------------------ |
+| **Online Rescheduling Button**       | Not available on IRCTC website or Rail Connect app            | Not applicable (offline only)                                 |
+| **Station Counter Rescheduling**     | Permitted with printed ticket and original ID 48h prior       | Permitted with original ticket slip 48h prior                 |
+| **Rescheduling Cutoff Deadline**     | At least 48 hours before scheduled train departure            | At least 48 hours before scheduled train departure            |
+| **Applicable Modification Charges**  | Nominal clerkage fee (~₹30 to ₹60 + GST) plus fare difference | Nominal clerkage fee (~₹30 to ₹60 + GST) plus fare difference |
+| **Downward Fare Difference Refund**  | Not refunded by Indian Railways                               | Not refunded by Indian Railways                               |
+| **Instant Online Cancellation**      | Available 24/7 on IRCTC portal up to chart preparation        | Not available (must surrender at physical counter)            |
+| **Refund Processing Speed**          | 2 to 4 business days to source bank / UPI account             | Instant cash or digital refund at PRS counter window          |
+| **Post-Chart Waitlist Travel Right** | Auto-cancelled by CRIS; strictly illegal to board coaches     | Allowed to board unreserved General coaches or approach TTE   |
 
 പുറപ്പെടൽ സമയപരിധി അടുക്കുമ്പോൾ IRCTC മൊബൈൽ ആപ്പിൽ നിലവിലില്ലാത്ത ഒരു റീഷെഡ്യൂൾ ബട്ടൺ തിരഞ്ഞ് നിങ്ങളുടെ വിലപ്പെട്ട സമയം പാഴാക്കില്ലെന്ന് ഈ വ്യത്യാസം മനസ്സിലാക്കുന്നത് ഉറപ്പാക്കുന്നു.
 
@@ -65,7 +67,7 @@ tags:
 
 ## സ്റ്റേഷൻ കൗണ്ടറിൽ ഒരു ട്രെയിൻ ടിക്കറ്റ് എങ്ങനെ ഘട്ടം ഘട്ടമായി Prepone അല്ലെങ്കിൽ Postpone ചെയ്യാം
 
-**ഒരു ട്രെയിൻ ടിക്കറ്റ് prepone അല്ലെങ്കിൽ postpone ചെയ്യുന്നതിന്, ട്രെയിൻ ഷെഡ്യൂൾ ചെയ്ത പുറപ്പെടലിന് കുറഞ്ഞത് 48 മണിക്കൂർ മുമ്പ് ഏതെങ്കിലും കമ്പ്യൂട്ടറൈസ്ഡ് റെയിൽവേ Passenger Reservation System (PRS) കൗണ്ടർ സന്ദർശിക്കുക.** നിങ്ങളുടെ ഒറിജിനൽ ടിക്കറ്റ്, നിങ്ങൾ അഭ്യർത്ഥിച്ച പുതിയ തീയതിയും ട്രെയിനും വ്യക്തമാക്കുന്ന ഒരു രേഖാമൂലമുള്ള അപേക്ഷ, ഔദ്യോഗിക സർക്കാർ ഫോട്ടോ തിരിച്ചറിയൽ കാർഡ് എന്നിവ Chief Reservation Supervisor-ന് സമർപ്പിക്കുക. നിങ്ങൾ അഭ്യർത്ഥിച്ച ക്ലാസിൽ ബർത്തുകൾ ഉണ്ടെങ്കിൽ, സൂപ്പർവൈസർ ഒരു അപ്‌ഡേറ്റ് ചെയ്ത റിസർവേഷൻ സ്ലിപ്പ് നൽകുന്നു.
+**ഒരു ട്രെയിൻ ടിക്കറ്റ് prepone അല്ലെങ്കിൽ postpone ചെയ്യുന്നതിന്, നിങ്ങളുടെ ഒറിജിനൽ ടിക്കറ്റ്, പുതിയ തീയതിക്കും ട്രെയിനിനുമുള്ള രേഖാമൂലമുള്ള അപേക്ഷ, സാധുവായ സർക്കാർ ഫോട്ടോ ID എന്നിവയുമായി പുറപ്പെടുന്നതിന് കുറഞ്ഞത് 48 മണിക്കൂർ മുമ്പെങ്കിലും ഏതെങ്കിലും കമ്പ്യൂട്ടറൈസ്ഡ് PRS സ്റ്റേഷൻ കൗണ്ടർ സന്ദർശിക്കുക.** നിങ്ങളുടെ ക്ലാസിൽ ബർത്തുകൾ ഉണ്ടെങ്കിൽ, Chief Reservation Supervisor ഒരു പുതിയ റിസർവേഷൻ സ്ലിപ്പ് നൽകുന്നു.
 
 First AC (1A), Executive Class (EC), AC 2-Tier (2A), AC 3-Tier (3A), AC 3-Economy (3E), AC Chair Car (CC), Sleeper (SL), Second Sitting (2S) എന്നിവ ഉൾപ്പെടെ എല്ലാ പ്രധാന റിസർവ്ഡ് ക്ലാസുകളിലും യാത്രക്കാർക്ക് അവരുടെ യാത്രാ തീയതി മുന്നോട്ട് കൊണ്ടുപോകാനോ (prepone) മാറ്റിവയ്ക്കാനോ (postpone) Indian Railways അനുവദിക്കുന്നു.
 
@@ -83,20 +85,20 @@ First AC (1A), Executive Class (EC), AC 2-Tier (2A), AC 3-Tier (3A), AC 3-Econom
 
 ## 2026 റെയിൽവേ നിയമങ്ങൾ പ്രകാരം റദ്ദാക്കൽ, റീഷെഡ്യൂളിംഗ് ഫീസുകൾ എന്തൊക്കെയാണ്?
 
-**നിങ്ങൾ ഒരു ട്രെയിൻ ടിക്കറ്റ് റീഷെഡ്യൂൾ ചെയ്യുമ്പോൾ Indian Railways യാതൊരു റദ്ദാക്കൽ പിഴയും ഈടാക്കുന്നില്ല, ₹30 മുതൽ ₹60 വരെ പ്ലസ് GST വരെയുള്ള നാമമാത്രമായ ക്ലർക്കേജ് ഫീസ് മാത്രമേ ഈടാക്കൂ.** നിങ്ങളുടെ അടിസ്ഥാന നിരക്ക് നിക്ഷേപം നിങ്ങൾ നിലനിർത്തുന്നു, കൂടാതെ യാത്രാ ക്ലാസ് അപ്‌ഗ്രേഡ് ചെയ്യുകയോ ഉയർന്ന നിരക്കുള്ള ട്രെയിനിലേക്ക് മാറുകയോ ചെയ്യുകയാണെങ്കിൽ വ്യത്യാസം മാത്രം നൽകിയാൽ മതിയാകും. എന്നിരുന്നാലും, പുതിയ ട്രെയിനിന് കുറഞ്ഞ നിരക്കാണെങ്കിൽ Indian Railways വ്യത്യാസം റീഫണ്ട് ചെയ്യില്ല.
+**നിങ്ങൾ ഒരു ട്രെയിൻ ടിക്കറ്റ് റീഷെഡ്യൂൾ ചെയ്യുമ്പോൾ Indian Railways യാതൊരു റദ്ദാക്കൽ പിഴയും ഈടാക്കുന്നില്ല, ₹30 മുതൽ ₹60 വരെ പ്ലസ് GST വരെയുള്ള നാമമാത്രമായ ക്ലർക്കേജ് ഫീസ് മാത്രമേ ഈടാക്കൂ.** നിങ്ങളുടെ അടിസ്ഥാന നിരക്ക് നിങ്ങൾ നിലനിർത്തുകയും ഉയർന്ന ക്ലാസുകളിലോ ട്രെയിനുകളിലോ ഉള്ള അധിക നിരക്ക് വ്യത്യാസം മാത്രം നൽകുകയും ചെയ്യുന്നു, എന്നിരുന്നാലും കുറഞ്ഞ നിരക്കിലുള്ള വ്യത്യാസം ഒരിക്കലും റീഫണ്ട് ചെയ്യില്ല.
 
 നിങ്ങളുടെ യാത്രാ ഷെഡ്യൂൾ അപ്രതീക്ഷിതമായി മാറുമ്പോൾ, കൗണ്ടർ ടിക്കറ്റ് റീഷെഡ്യൂൾ ചെയ്യുന്നത് റദ്ദാക്കി പുതിയത് ബുക്ക് ചെയ്യുന്നതിനേക്കാൾ വളരെ ലാഭകരമാണ്. പുറപ്പെടൽ തീയതി അടുക്കുന്തോറും സാധാരണ റദ്ദാക്കൽ ചാർജുകൾ കുത്തനെ വർദ്ധിക്കുന്നു, പുറപ്പെടുന്നതിന് 12 മണിക്കൂറിനുള്ളിൽ മൊത്തം ടിക്കറ്റ് നിരക്കിന്റെ 50% വരെ കുറയ്ക്കുന്നു. നേരെമറിച്ച്, കൗണ്ടർ തീയതി മാറ്റം നിങ്ങളുടെ പ്രധാന ടിക്കറ്റ് തുകയെ സംരക്ഷിക്കുന്നു.
 
 എല്ലാ റെയിൽവേ യാത്രാ ക്ലാസുകളിലുമുള്ള ഔദ്യോഗിക ഫീസുകളും നിരക്ക് ക്രമീകരണ നയങ്ങളും ഇനിപ്പറയുന്ന പട്ടിക വിശദമാക്കുന്നു:
 
-| Travel Class | Counter Rescheduling Clerkage Fee | Normal Cancellation (>48 Hours Prior) | Normal Cancellation (48 Hours to 12 Hours) | Normal Cancellation (12 Hours to 4 Hours) |
-| :--- | :--- | :--- | :--- | :--- |
-| **AC First Class (1A / Executive)** | ₹60 + 5% GST | Flat ₹240 + 5% GST | 25% of fare (min ₹240 + GST) | 50% of fare (min ₹240 + GST) |
-| **AC 2-Tier (2A)** | ₹60 + 5% GST | Flat ₹200 + 5% GST | 25% of fare (min ₹200 + GST) | 50% of fare (min ₹200 + GST) |
-| **AC 3-Tier / 3-Economy (3A / 3E / CC)** | ₹60 + 5% GST | Flat ₹180 + 5% GST | 25% of fare (min ₹180 + GST) | 50% of fare (min ₹180 + GST) |
-| **Sleeper Class (SL)** | ₹30 to ₹60 | Flat ₹120 | 25% of fare (min ₹120) | 50% of fare (min ₹120) |
-| **Second Sitting (2S)** | ₹30 | Flat ₹60 | 25% of fare (min ₹60) | 50% of fare (min ₹60) |
-| **RAC / Waiting List (All Classes)** | ₹60 + GST | Flat ₹60 + GST (Clerkage) | Flat ₹60 + GST (Clerkage) | Flat ₹60 + GST (up to 30 min) |
+| Travel Class                             | Counter Rescheduling Clerkage Fee | Normal Cancellation (>48 Hours Prior) | Normal Cancellation (48 Hours to 12 Hours) | Normal Cancellation (12 Hours to 4 Hours) |
+| :--------------------------------------- | :-------------------------------- | :------------------------------------ | :----------------------------------------- | :---------------------------------------- |
+| **AC First Class (1A / Executive)**      | ₹60 + 5% GST                      | Flat ₹240 + 5% GST                    | 25% of fare (min ₹240 + GST)               | 50% of fare (min ₹240 + GST)              |
+| **AC 2-Tier (2A)**                       | ₹60 + 5% GST                      | Flat ₹200 + 5% GST                    | 25% of fare (min ₹200 + GST)               | 50% of fare (min ₹200 + GST)              |
+| **AC 3-Tier / 3-Economy (3A / 3E / CC)** | ₹60 + 5% GST                      | Flat ₹180 + 5% GST                    | 25% of fare (min ₹180 + GST)               | 50% of fare (min ₹180 + GST)              |
+| **Sleeper Class (SL)**                   | ₹30 to ₹60                        | Flat ₹120                             | 25% of fare (min ₹120)                     | 50% of fare (min ₹120)                    |
+| **Second Sitting (2S)**                  | ₹30                               | Flat ₹60                              | 25% of fare (min ₹60)                      | 50% of fare (min ₹60)                     |
+| **RAC / Waiting List (All Classes)**     | ₹60 + GST                         | Flat ₹60 + GST (Clerkage)             | Flat ₹60 + GST (Clerkage)                  | Flat ₹60 + GST (up to 30 min)             |
 
 വാണിജ്യ നിയന്ത്രണങ്ങൾ പ്രകാരം, റീഷെഡ്യൂൾ ചെയ്ത ടിക്കറ്റ് റദ്ദാക്കാൻ നിങ്ങൾ പിന്നീട് തീരുമാനിക്കുകയാണെങ്കിൽ, Indian Railways അതിനെ ഒരു പുതിയ ബുക്കിംഗായി കണക്കാക്കുന്നതിന് പകരം ഒറിജിനൽ ബുക്കിംഗ് അടിസ്ഥാനമാക്കി റദ്ദാക്കൽ കിഴിവുകൾ കണക്കാക്കുന്നു.
 
@@ -127,7 +129,7 @@ First AC (1A), Executive Class (EC), AC 2-Tier (2A), AC 3-Tier (3A), AC 3-Econom
 
 ## റീഷെഡ്യൂൾ ചെയ്യാതെ തന്നെ ഒരു കൺഫേംഡ് ട്രെയിൻ ടിക്കറ്റ് കുടുംബാംഗത്തിന് എങ്ങനെ ട്രാൻസ്ഫർ ചെയ്യാം
 
-**ട്രെയിൻ പുറപ്പെടുന്നതിന് കുറഞ്ഞത് 24 മണിക്കൂർ മുമ്പെങ്കിലും Chief Reservation Supervisor-ന് രേഖാമൂലമുള്ള അപേക്ഷ സമർപ്പിച്ചുകൊണ്ട് നിങ്ങൾക്ക് ഒരു കൺഫേംഡ് ട്രെയിൻ ടിക്കറ്റ് ഒരു അടുത്ത കുടുംബാംഗത്തിന് ട്രാൻസ്ഫർ ചെയ്യാം.** Railway Board വാണിജ്യ സർക്കുലറുകൾ പ്രകാരം, റേഷൻ കാർഡ് അല്ലെങ്കിൽ Aadhaar കാർഡ് പോലുള്ള രക്തബന്ധ തെളിവ് ഹാജരാക്കിയാൽ അച്ഛൻ, അമ്മ, സഹോദരൻ, സഹോദരി, പങ്കാളി, മകൻ അല്ലെങ്കിൽ മകൾ എന്നിവർക്ക് മാത്രമേ കൈമാറ്റം കർശനമായി അനുവദിക്കൂ.
+**പുറപ്പെടുന്നതിന് കുറഞ്ഞത് 24 മണിക്കൂർ മുമ്പെങ്കിലും Chief Reservation Supervisor-ന് രേഖാമൂലമുള്ള അപേക്ഷ സമർപ്പിച്ചുകൊണ്ട് നിങ്ങൾക്ക് ഒരു കൺഫേംഡ് ടിക്കറ്റ് അടുത്ത കുടുംബാംഗത്തിന് ട്രാൻസ്ഫർ ചെയ്യാം.** റേഷൻ കാർഡ് അല്ലെങ്കിൽ Aadhaar പോലുള്ള ഔദ്യോഗിക ബന്ധ തെളിവുകളോടെ മാതാപിതാക്കൾ, സഹോദരങ്ങൾ, പങ്കാളി, അല്ലെങ്കിൽ മക്കൾ എന്നിവർക്ക് മാത്രമേ കൈമാറ്റം കർശനമായി ബാധകമാകൂ.
 
 ഒറിജിനൽ യാത്രക്കാരന് അസുഖം വരികയോ അപ്രതീക്ഷിത അടിയന്തരാവസ്ഥ നേരിടുകയോ ചെയ്യുമ്പോൾ റദ്ദാക്കൽ പിഴകൾ ഒഴിവാക്കാൻ കുടുംബങ്ങളെ സഹായിക്കുന്നതിനായി Railways Act-ലെ Section 53 പ്രകാരം ടിക്കറ്റ് ട്രാൻസ്ഫർ വ്യവസ്ഥകൾ നിലവിലുണ്ട്.
 
@@ -184,19 +186,19 @@ Tatkal ബുക്കിംഗുകളുമായി ബന്ധപ്പെ
 
 ഉദാഹരണത്തിന്, New Delhi മുതൽ Patna വരെയുള്ള ഒരു രാത്രി യാത്രയിൽ, നിങ്ങൾ New Delhi മുതൽ Kanpur Central വരെ കോച്ച് B3-ൽ ഇരിക്കുകയും Kanpur Central മുതൽ Patna Junction വരെ കോച്ച് B6-ലേക്ക് മാറുകയും ചെയ്തേക്കാം. നിങ്ങൾ ഒരേ ട്രെയിനിൽ തുടരുന്നു, മുഴുവൻ സമയവും കൺഫേംഡ് ബർത്തുകളിൽ ഉറങ്ങുന്നു, കൂടാതെ ഡൈനാമിക് Tatkal പ്രീമിയങ്ങൾ നൽകുന്നതോ വെയ്റ്റ്‌ലിസ്റ്റ് റദ്ദാക്കൽ അപകടസാധ്യതയോ ഒഴിവാക്കുന്നു.
 
-- [Check Delhi to Patna Confirmed Seats](/?from=NDLS&to=PNBE&src=blog_reschedule)
-- [Check Mumbai to Danapur Split Berths](/?from=MMCT&to=DNR&src=blog_reschedule)
-- [Check Delhi to Mumbai Rajdhani Options](/?from=NDLS&to=MMCT&src=blog_reschedule)
+- [ഡൽഹി മുതൽ പട്ന വരെയുള്ള കൺഫേംഡ് സീറ്റുകൾ പരിശോധിക്കുക](/?from=NDLS&to=PNBE&fromName=New%20Delhi&toName=Patna%20Jn&src=blog_reschedule)
+- [മുംബൈ മുതൽ ദാനാപൂർ വരെയുള്ള സ്പ്ലിറ്റ് ബർത്തുകൾ പരിശോധിക്കുക](/?from=MMCT&to=DNR&fromName=Mumbai%20Central&toName=Danapur&src=blog_reschedule)
+- [ഡൽഹി മുതൽ മുംബൈ വരെയുള്ള രാജധാനി ഓപ്ഷനുകൾ പരിശോധിക്കുക](/?from=NDLS&to=MMCT&fromName=New%20Delhi&toName=Mumbai%20Central&src=blog_reschedule)
 
 ### 2. പോസ്റ്റ്-ചാർട്ടിംഗിൽ 10% കിഴിവുള്ള Current Availability (`CURR_AVBL`) ബർത്തുകൾ
 
-ആദ്യ റിസർവേഷൻ ചാർട്ട് തയ്യാറാക്കുമ്പോൾ (പുറപ്പെടുന്നതിന് ~8 മണിക്കൂർ മുമ്പ്, അല്ലെങ്കിൽ പ്രഭാത പുറപ്പെടലുകൾക്ക് തലേദിവസം വൈകുന്നേരം), ഉപയോഗിക്കാത്ത എമർജൻസി, ഡിഫൻസ്, VIP ക്വോട്ടകൾ സ്വയമേവ പൊതു ജനങ്ങളുടെ പൂളിലേക്ക് **Current Availability (`CURR_AVBL`)** ആയി റിലീസ് ചെയ്യുന്നു.
+ആദ്യ റിസർവേഷൻ ചാർട്ട് തയ്യാറാക്കുമ്പോൾ (**ഷെഡ്യൂൾ ചെയ്ത പുറപ്പെടലിന് ~8 മുതൽ 10 മണിക്കൂർ മുമ്പ് വരെ**, അല്ലെങ്കിൽ 14:00-ന് മുമ്പ് പുറപ്പെടുന്ന ട്രെയിനുകൾക്ക് തലേദിവസം വൈകുന്നേരം **20:00 മുതൽ 21:00 IST വരെ**), ഉപയോഗിക്കാത്ത എമർജൻസി, ഡിഫൻസ്, VIP ക്വോട്ടകൾ സ്വയമേവ പൊതു ജനങ്ങളുടെ പൂളിലേക്ക് **Current Availability (`CURR_AVBL`)** ആയി റിലീസ് ചെയ്യുന്നു.
 
-Current Availability ടിക്കറ്റുകൾ രണ്ട് വലിയ നേട്ടങ്ങൾ വാഗ്ദാനം ചെയ്യുന്നു:
+Current Availability ടിക്കറ്റുകൾ മൂന്ന് പ്രായോഗിക നേട്ടങ്ങൾ വാഗ്ദാനം ചെയ്യുന്നു:
 
 - **100% ഗ്യാരണ്ടീഡ് ബർത്ത്:** നിങ്ങളുടെ ടിക്കറ്റിൽ നിർദ്ദിഷ്ട കോച്ചും സീറ്റ് നമ്പറുകളും പ്രിന്റ് ചെയ്‌ത് ബർത്തുകൾ ഉടനടി സ്ഥിരീകരിക്കപ്പെടുന്നു.
 - **10% അടിസ്ഥാന നിരക്ക് കിഴിവ്:** എല്ലാ Current Availability ബുക്കിംഗുകൾക്കും അടിസ്ഥാന പാസഞ്ചർ നിരക്കിൽ Indian Railways നിയമപരമായി 10% കിഴിവ് നൽകുന്നു.
-- **ഓൺലൈൻ ബുക്കിംഗ് വിൻഡോ:** രണ്ടാമത്തെ ചാർട്ട് തയ്യാറാക്കുന്നത് വരെ (പുറപ്പെടുന്നതിന് ~30 മിനിറ്റ് മുമ്പ്) IRCTC പോർട്ടലിലും ആപ്പിലും Current Availability തുറന്നിരിക്കും.
+- **ഓൺലൈൻ ബുക്കിംഗ് വിൻഡോ:** രണ്ടാമത്തെ ചാർട്ട് തയ്യാറാക്കുന്നത് വരെ (~30 മുതൽ 45 മിനിറ്റ് മുമ്പ് വരെ) IRCTC പോർട്ടലിലും ആപ്പിലും Current Availability തുറന്നിരിക്കും (രാത്രി 11:45 PM മുതൽ 12:20 AM IST വരെയുള്ള രാത്രികാല മെയിന്റനൻസ് ബ്ലാക്ക്ഔട്ട് സമയം ഒഴികെ).
 
 ### 3. ലൈവ് കോച്ച് തിരിച്ചുള്ള Chart Vacancy മാപ്പിംഗ്
 
@@ -262,4 +264,4 @@ Current Availability ടിക്കറ്റുകൾ രണ്ട് വലി
 
 ഇതര യാത്രാ തീയതികൾ ഉയർന്ന വെയ്റ്റ്‌ലിസ്റ്റുകളോ Regret-ഓ കാണിക്കുമ്പോൾ, ഒരിക്കലും നിങ്ങളുടെ യാത്രയെ ഭാഗ്യത്തിന് വിട്ടുകൊടുക്കരുത്. [Finding Smart Seats](/)-ൽ കൺഫേംഡ് സ്പ്ലിറ്റ്-ബർത്ത് ഓപ്ഷനുകൾ പര്യവേക്ഷണം ചെയ്യുക അല്ലെങ്കിൽ [Live Chart Vacancy Map](/chart-vacancy)-ൽ റിലീസ് ചെയ്ത ബർത്തുകൾ ട്രാക്ക് ചെയ്യുക.
 
-*LastBerth എന്നത് IRCTC, CRIS, അല്ലെങ്കിൽ Indian Railways എന്നിവയുമായി അഫിലിയേറ്റ് ചെയ്തിട്ടില്ലാത്ത ഒരു സ്വതന്ത്ര ട്രെയിൻ സീറ്റ് കണ്ടെത്തൽ, ചാർട്ടിംഗ് വിശകലന പ്ലാറ്റ്‌ഫോമാണ്. ഞങ്ങൾ ടിക്കറ്റുകൾ നൽകുകയോ റെയിൽവേ ബുക്കിംഗ് ഇടപാടുകൾ നേരിട്ട് പ്രോസസ്സ് ചെയ്യുകയോ ചെയ്യുന്നില്ല. ഔദ്യോഗിക IRCTC പോർട്ടൽ വഴി തത്സമയ ഷെഡ്യൂളുകൾ പരിശോധിച്ച് ഔദ്യോഗിക ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യുക.*
+_LastBerth എന്നത് IRCTC, CRIS, അല്ലെങ്കിൽ Indian Railways എന്നിവയുമായി അഫിലിയേറ്റ് ചെയ്തിട്ടില്ലാത്ത ഒരു സ്വതന്ത്ര ട്രെയിൻ സീറ്റ് കണ്ടെത്തൽ, ചാർട്ടിംഗ് വിശകലന പ്ലാറ്റ്‌ഫോമാണ്. ഞങ്ങൾ ടിക്കറ്റുകൾ നൽകുകയോ റെയിൽവേ ബുക്കിംഗ് ഇടപാടുകൾ നേരിട്ട് പ്രോസസ്സ് ചെയ്യുകയോ ചെയ്യുന്നില്ല. ഔദ്യോഗിക IRCTC പോർട്ടൽ വഴി തത്സമയ ഷെഡ്യൂളുകൾ പരിശോധിച്ച് ഔദ്യോഗിക ടിക്കറ്റുകൾ ബുക്ക് ചെയ്യുക._
