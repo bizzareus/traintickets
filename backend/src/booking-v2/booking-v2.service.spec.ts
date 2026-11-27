@@ -551,6 +551,95 @@ describe('BookingV2Service', () => {
       expect(live).toHaveBeenCalledTimes(6);
       expect(mockCache.get).not.toHaveBeenCalled();
     });
+
+    it('prefetches remaining segment cache pairs at hop 2 so multi-hop waitlisted routes do not issue N+1 getMany queries', async () => {
+      mockIrctc.getTrainSchedule.mockResolvedValueOnce({
+        ok: true,
+        schedule: {
+          trainNumber: '12951',
+          trainName: 'Test Express',
+          stationFrom: 'A',
+          stationTo: 'E',
+          stationList: ['A', 'B', 'C', 'D', 'E'].map((stationCode) => ({
+            stationCode,
+            dayCount: 1,
+          })),
+        },
+      });
+      const waitlisted = {
+        day: {
+          availablityType: 3,
+          availablityStatus: 'WL 10',
+          availabilityDisplayName: 'WL 10',
+        },
+        fare: null,
+      };
+      mockCache.getMany.mockImplementation((keys: string[]) =>
+        Promise.resolve(new Map(keys.map((k) => [k, waitlisted]))),
+      );
+      const live = jest.spyOn(service, 'checkAvailability');
+
+      const result = await service.findAlternatePathsInternal({
+        ...input,
+        to: 'E',
+      });
+
+      expect(result.isComplete).toBe(false);
+      expect(result.legs).toHaveLength(4);
+      // Hop 1 queries A->E..B (1 getMany); Hop 2 prefetches all remaining (B..D->E..C) in 1 getMany;
+      // Hops 3 and 4 execute 0 getMany queries.
+      expect(mockCache.getMany).toHaveBeenCalledTimes(2);
+      expect(mockCache.get).not.toHaveBeenCalled();
+      expect(live).not.toHaveBeenCalled();
+    });
+
+    it('batches offset-pass segment cache reads instead of repeating per-hop single-OD getMany queries', async () => {
+      mockIrctc.getTrainSchedule.mockResolvedValue({
+        ok: true,
+        schedule: {
+          trainNumber: '12431',
+          trainName: 'Rajdhani Express',
+          stationFrom: 'PRE',
+          stationTo: 'POST',
+          stationList: ['PRE', 'S1', 'S2', 'S3', 'S4', 'S5', 'POST'].map(
+            (stationCode) => ({
+              stationCode,
+              dayCount: 1,
+            }),
+          ),
+        },
+      });
+      const waitlisted = {
+        day: {
+          availablityType: 3,
+          availablityStatus: 'WL 20',
+          availabilityDisplayName: 'WL 20',
+        },
+        fare: null,
+      };
+      mockCache.getMany.mockImplementation((keys: string[]) =>
+        Promise.resolve(new Map(keys.map((k) => [k, waitlisted]))),
+      );
+      const live = jest.spyOn(service, 'checkAvailability');
+
+      const result = await service.findAlternatePaths({
+        trainNumber: '12431',
+        from: 'S1',
+        to: 'S5',
+        date: '2099-06-02',
+        avlClasses: ['1A', '2A', '3A'],
+      });
+
+      expect(result.isComplete).toBe(false);
+      // Direct pass: 2 calls (hop 1 + hop 2 prefetch)
+      // Offset before=1: 1 call (PRE -> S1..S5)
+      // Offset after=1: 1 call (S1..S5 -> POST, instead of 5 separate 3-key IN ($1,$2,$3) queries)
+      expect(mockCache.getMany).toHaveBeenCalledTimes(4);
+      // Verify the after=1 offset batched all 5 origins -> POST (15 keys) in a single call
+      expect(mockCache.getMany.mock.calls[3][0]).toHaveLength(15);
+      expect(mockCache.get).not.toHaveBeenCalled();
+      expect(live).not.toHaveBeenCalled();
+    });
   });
 
   describe('searchStations (cache integration)', () => {

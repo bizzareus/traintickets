@@ -294,6 +294,13 @@ type SegmentProbeRow = {
   fetchError?: string;
 };
 
+type SegmentBulkCacheState = {
+  hits: Map<string, SegmentProbeRow>;
+  fetchedKeys: Set<string>;
+};
+
+const SEGMENT_CACHE_GET_CHUNK_SIZE = 1000;
+
 type MultiClassProbeResult = {
   perClass: SegmentProbeRow[];
   bestConfirmedClassIndex: number | null;
@@ -1781,6 +1788,10 @@ export class BookingV2Service {
   ): Promise<FindAlternatePathsResult> {
     input.signal?.throwIfAborted();
     const sharedProbeCache = new Map<string, MultiClassProbeResult>();
+    const sharedSegmentState: SegmentBulkCacheState = {
+      hits: new Map(),
+      fetchedKeys: new Set(),
+    };
 
     // Probe only the classes the train actually offers. When the caller didn't
     // supply avlClasses, resolve them once from the schedule cache so we
@@ -1852,6 +1863,7 @@ export class BookingV2Service {
       sharedProbeCache,
       segmentCache,
       sched,
+      sharedSegmentState,
     );
     if (
       directResult.isComplete &&
@@ -1903,6 +1915,7 @@ export class BookingV2Service {
           sharedProbeCache,
           segmentCache,
           sched,
+          sharedSegmentState,
         );
 
         if (offsetResult.legs.some((l) => l.segmentKind === 'confirmed')) {
@@ -1940,6 +1953,7 @@ export class BookingV2Service {
     sharedProbeCache?: Map<string, MultiClassProbeResult>,
     segmentCache?: CacheService,
     cachedSched?: GetTrainScheduleResult,
+    sharedSegmentState?: SegmentBulkCacheState,
   ): Promise<FindAlternatePathsResult> {
     input.signal?.throwIfAborted();
     const emit = async (ev: AlternatePathProgressEvent) => onProgress?.(ev);
@@ -2081,6 +2095,12 @@ export class BookingV2Service {
     let hop = 0;
     const probeCache =
       sharedProbeCache ?? new Map<string, MultiClassProbeResult>();
+    const segmentState: SegmentBulkCacheState = sharedSegmentState ?? {
+      hits: new Map(),
+      fetchedKeys: new Set(),
+    };
+    const isOffsetPass =
+      (input.stationsBefore ?? 0) > 0 || (input.stationsAfter ?? 0) > 0;
     const maxIterations = Math.max(8, stations.length * 4);
     let iterations = 0;
 
@@ -2093,6 +2113,102 @@ export class BookingV2Service {
     );
 
     const cacheKey = (a: string, b: string, d: string) => `${a}|${b}|${d}`;
+    const hopDateForIndex = (idx: number) => {
+      const stopLine = stationList[startIdx + idx];
+      const dayCount = parseScheduleDayCount(stopLine?.dayCount) ?? 1;
+      return trainStartMoment
+        .clone()
+        .add(dayCount - 1, 'days')
+        .format('DD-MM-YYYY');
+    };
+    const activeCache = segmentCache ?? this.cache;
+    const persistSegmentWave = async (
+      items: Array<{ key: string; value: SegmentProbeRow; ttlMs?: number }>,
+    ) => {
+      if (items.length === 0) return;
+      for (const it of items) {
+        segmentState.hits.set(it.key, it.value);
+        segmentState.fetchedKeys.add(it.key);
+      }
+      if (typeof activeCache.setMany === 'function') {
+        await activeCache.setMany(items).catch(() => undefined);
+      } else {
+        await Promise.all(
+          items.map((it) =>
+            activeCache.set(it.key, it.value, it.ttlMs).catch(() => undefined),
+          ),
+        );
+      }
+    };
+    const prefetchSegmentsForHop = async (
+      fromIdxInSlice: number,
+      destOrder: number[],
+      currentHop: number,
+    ) => {
+      if (input.forceRefresh) return;
+      // Fast path on direct hop 1: query only the current origin wave so a
+      // direct confirmation finishes with a single narrow cache lookup.
+      // Once we advance past hop 1 or enter offset passes, prefetch all
+      // remaining (i, j) pairs once to eliminate per-hop N+1 queries.
+      const pairs: Array<[number, number[]]> =
+        currentHop === 1 && !isOffsetPass
+          ? [[fromIdxInSlice, destOrder]]
+          : Array.from(
+              { length: targetIdx - fromIdxInSlice },
+              (_, offset): [number, number[]] => {
+                const i = fromIdxInSlice + offset;
+                return [i, orderedDestinationIndices(i, targetIdx)];
+              },
+            );
+
+      const keysToFetch: string[] = [];
+      const seenKeys = new Set<string>();
+      for (const [i, dests] of pairs) {
+        const iFrom = stations[i];
+        const iDate = hopDateForIndex(i);
+        for (const destIdx of dests) {
+          if (probeCache.has(cacheKey(iFrom, stations[destIdx], iDate))) {
+            continue;
+          }
+          for (const travelClass of classes) {
+            const k = segmentAvailabilityCacheKey(
+              trainNumber,
+              iFrom,
+              stations[destIdx],
+              iDate,
+              travelClass,
+              quota,
+            );
+            if (!segmentState.fetchedKeys.has(k) && !seenKeys.has(k)) {
+              seenKeys.add(k);
+              keysToFetch.push(k);
+            }
+          }
+        }
+      }
+      if (keysToFetch.length === 0) return;
+
+      for (
+        let start = 0;
+        start < keysToFetch.length;
+        start += SEGMENT_CACHE_GET_CHUNK_SIZE
+      ) {
+        input.signal?.throwIfAborted();
+        const chunk = keysToFetch.slice(
+          start,
+          start + SEGMENT_CACHE_GET_CHUNK_SIZE,
+        );
+        for (const k of chunk) {
+          segmentState.fetchedKeys.add(k);
+        }
+        const batchHits = await activeCache
+          .getMany<SegmentProbeRow>(chunk)
+          .catch(() => new Map<string, SegmentProbeRow>());
+        for (const [k, v] of batchHits) {
+          segmentState.hits.set(k, v);
+        }
+      }
+    };
 
     while (currentIdx < targetIdx && iterations < maxIterations) {
       input.signal?.throwIfAborted();
@@ -2116,36 +2232,11 @@ export class BookingV2Service {
       const fromStn = stations[currentIdx];
       const fromStopLine = stationList[startIdx + currentIdx];
       const fromDayCount = parseScheduleDayCount(fromStopLine?.dayCount) ?? 1;
-      const currentHopDate = trainStartMoment
-        .clone()
-        .add(fromDayCount - 1, 'days')
-        .format('DD-MM-YYYY');
-      // One DB read for the entire OD × class wave, including known misses so
-      // individual probes never repeat the same cache lookup.
-      const keys = destOrder
-        .filter(
-          (destIdx) =>
-            !probeCache.has(
-              cacheKey(fromStn, stations[destIdx], currentHopDate),
-            ),
-        )
-        .flatMap((destIdx) =>
-          classes.map((travelClass) =>
-            segmentAvailabilityCacheKey(
-              trainNumber,
-              fromStn,
-              stations[destIdx],
-              currentHopDate,
-              travelClass,
-              quota,
-            ),
-          ),
-        );
+      const currentHopDate = hopDateForIndex(currentIdx);
+      await prefetchSegmentsForHop(currentIdx, destOrder, hop);
       const cachedSegments = input.forceRefresh
         ? new Map<string, SegmentProbeRow>()
-        : await (segmentCache ?? this.cache)
-            .getMany<SegmentProbeRow>(keys)
-            .catch(() => new Map<string, SegmentProbeRow>());
+        : segmentState.hits;
       input.signal?.throwIfAborted();
       const newlyFetchedWave: Array<{
         key: string;
@@ -2184,18 +2275,7 @@ export class BookingV2Service {
         );
       } finally {
         // One DB write for the entire OD × class wave, eliminating N+1 queries.
-        if (newlyFetchedWave.length > 0) {
-          const c = segmentCache ?? this.cache;
-          if (typeof c.setMany === 'function') {
-            await c.setMany(newlyFetchedWave).catch(() => undefined);
-          } else {
-            await Promise.all(
-              newlyFetchedWave.map((it) =>
-                c.set(it.key, it.value, it.ttlMs).catch(() => undefined),
-              ),
-            );
-          }
-        }
+        await persistSegmentWave(newlyFetchedWave);
       }
 
       // If the direct journey (from → to) was already departed or cancelled,
@@ -2356,20 +2436,11 @@ export class BookingV2Service {
           quota,
           segmentCache,
           input.signal,
-          undefined,
+          cachedSegments,
           input.forceRefresh ?? false,
         );
         if (bridge.newlyFetched?.length) {
-          const c = segmentCache ?? this.cache;
-          if (typeof c.setMany === 'function') {
-            await c.setMany(bridge.newlyFetched).catch(() => undefined);
-          } else {
-            await Promise.all(
-              bridge.newlyFetched.map((it) =>
-                c.set(it.key, it.value, it.ttlMs).catch(() => undefined),
-              ),
-            );
-          }
+          await persistSegmentWave(bridge.newlyFetched);
         }
         probeCache.set(key, bridge);
       }
