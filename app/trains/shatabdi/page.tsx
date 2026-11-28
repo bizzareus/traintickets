@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { getTrains } from "@/lib/trainCatalog";
 import { TrainCatalogListClient } from "@/components/trains/TrainCatalogListClient";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildFaqPageJsonLd, buildPageMetadata } from "@/lib/seo/metadata";
 import {
   ChevronRight,
   Train,
@@ -13,20 +13,12 @@ import {
   Clock,
 } from "lucide-react";
 
-const SHATABDI_TITLE = "Shatabdi Express 2026: Trains, Routes & Timings";
-const SHATABDI_DESC =
-  "Complete list of Shatabdi & Jan Shatabdi Express trains in India. Check routes, timetables, Chair Car & Executive classes, and IRCTC seat availability.";
-
-export const metadata: Metadata = {
-  title: SHATABDI_TITLE,
-  description: SHATABDI_DESC,
-  alternates: { canonical: "/trains/shatabdi" },
-  openGraph: buildOpenGraph({
-    title: `${SHATABDI_TITLE} | LastBerth`,
-    description: SHATABDI_DESC,
-    url: "/trains/shatabdi",
-  }),
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Shatabdi Express 2026: Trains, Routes & Timings",
+  description:
+    "Complete list of Shatabdi & Jan Shatabdi Express trains in India. Check routes, timetables, Chair Car & Executive classes, and IRCTC seat availability.",
+  canonical: "/trains/shatabdi",
+});
 
 const POPULAR_CORRIDORS = [
   "New Delhi ➔ Bhopal (12001/02)",
@@ -101,6 +93,8 @@ export default function ShatabdiTrainsPage() {
     ],
   };
 
+  const faqJsonLd = buildFaqPageJsonLd(FAQS);
+
   return (
     <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-slate-900 antialiased">
       <script
@@ -110,6 +104,10 @@ export default function ShatabdiTrainsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Header />
 

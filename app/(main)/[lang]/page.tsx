@@ -7,7 +7,12 @@ import {
   homeHreflang,
   isHomeLang,
 } from "@/lib/home/home-i18n";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import {
+  buildOpenGraph,
+  buildTwitterCard,
+  truncateMetaDescription,
+  truncateTitle,
+} from "@/lib/seo/metadata";
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -19,17 +24,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   if (!isHomeLang(lang) || lang === "en") return {};
   const t = getHomeStrings(lang);
-  const title = "LastBerth – Find Confirmed Train Tickets & Smart Seat Finder";
-  const description = t.hero.subtitle;
+  const title = truncateTitle(`${t.hero.titleHighlight} & ${t.nav.pnrStatus}`);
+  const fullTitle = `${title} | LastBerth`;
+  const description = truncateMetaDescription(
+    `${t.hero.subtitle}. ${t.seo.subtitle}`,
+  );
   return {
+    title,
+    description,
     alternates: {
       canonical: `/${lang}`,
       languages: homeHreflang(),
     },
     openGraph: buildOpenGraph({
-      title,
+      title: fullTitle,
       description,
       url: `/${lang}`,
+      lang,
+    }),
+    twitter: buildTwitterCard({
+      title: fullTitle,
+      description,
     }),
   };
 }

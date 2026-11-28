@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { getTrains } from "@/lib/trainCatalog";
 import { TrainCatalogListClient } from "@/components/trains/TrainCatalogListClient";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildFaqPageJsonLd, buildPageMetadata } from "@/lib/seo/metadata";
 import {
   ChevronRight,
   Train,
@@ -13,20 +13,12 @@ import {
   Star,
 } from "lucide-react";
 
-const RAJDHANI_TITLE = "Rajdhani Express 2026: Trains, Routes & Timings";
-const RAJDHANI_DESC =
-  "Complete list of Rajdhani Express trains in India. Check routes, timetables, 1A/2A/3A AC classes, and find confirmed seats to book on IRCTC.";
-
-export const metadata: Metadata = {
-  title: RAJDHANI_TITLE,
-  description: RAJDHANI_DESC,
-  alternates: { canonical: "/trains/rajdhani" },
-  openGraph: buildOpenGraph({
-    title: `${RAJDHANI_TITLE} | LastBerth`,
-    description: RAJDHANI_DESC,
-    url: "/trains/rajdhani",
-  }),
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Rajdhani Express 2026: Trains, Routes & Timings",
+  description:
+    "Complete list of Rajdhani Express trains in India. Check routes, timetables, 1A/2A/3A AC classes, and find confirmed seats to book on IRCTC.",
+  canonical: "/trains/rajdhani",
+});
 
 const POPULAR_CORRIDORS = [
   "New Delhi ➔ Howrah (12301/02)",
@@ -101,6 +93,8 @@ export default function RajdhaniTrainsPage() {
     ],
   };
 
+  const faqJsonLd = buildFaqPageJsonLd(FAQS);
+
   return (
     <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-slate-900 antialiased">
       <script
@@ -110,6 +104,10 @@ export default function RajdhaniTrainsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Header />
 

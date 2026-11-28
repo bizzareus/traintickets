@@ -5,7 +5,7 @@ import { getRouteData, getTopRoutes } from "@/lib/seo/routes-db";
 import { getRouteTrains } from "@/lib/seo/route-content";
 import { buildTrainSlug } from "@/lib/trainSlug";
 import { getBaseUrl } from "@/lib/site-url";
-import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const dynamicParams = false;
 export const dynamic = "force-static";
@@ -30,23 +30,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await getRouteData(origin, dest);
   if (!data) return {};
 
-  const title = `Trains from ${data.originCity} to ${data.destinationCity} | Route & Timetables`;
-  const description = truncateMetaDescription(
-    `Compare train schedules and boarding stations from ${data.originCity} to ${data.destinationCity}, then search live seat availability for your travel date.`,
-  );
-
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/routes/${slug}`,
-    },
-    openGraph: buildOpenGraph({
-      title: `${title} | LastBerth`,
-      description,
-      url: `/routes/${slug}`,
-    }),
-  };
+  return buildPageMetadata({
+    title: `Trains from ${data.originCity} to ${data.destinationCity} — Timetables`,
+    description: `Compare train schedules and boarding stations from ${data.originCity} to ${data.destinationCity}, then search live seat availability for your travel date.`,
+    canonical: `/routes/${slug}`,
+  });
 }
 
 export default async function RoutePage({ params }: Props) {

@@ -1,21 +1,13 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-const DISCLAIMER_TITLE = "Disclaimer & IRCTC Independence";
-const DISCLAIMER_DESC =
-  "Learn about LastBerth's role as an independent Indian Railways meta search engine, our relationship with IRCTC, and train schedule data accuracy.";
-
-export const metadata: Metadata = {
-  title: DISCLAIMER_TITLE,
-  description: DISCLAIMER_DESC,
-  alternates: { canonical: "/disclaimer" },
-  openGraph: buildOpenGraph({
-    title: `${DISCLAIMER_TITLE} | LastBerth`,
-    description: DISCLAIMER_DESC,
-    url: "/disclaimer",
-  }),
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Disclaimer & IRCTC Independence",
+  description:
+    "Learn about LastBerth's role as an independent Indian Railways meta search engine, our relationship with IRCTC, and train schedule data accuracy.",
+  canonical: "/disclaimer",
+});
 
 export default function DisclaimerPage() {
   const breadcrumbJsonLd = {

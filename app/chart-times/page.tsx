@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { listPopularChartTimes } from "@/lib/chartTimes";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import ChartTimesFinder from "./ChartTimesFinder";
 
 export const dynamicParams = true;
 export const revalidate = 3600;
 
-const CHART_TIMES_TITLE = "IRCTC Train Chart Preparation Times by Station";
-const CHART_TIMES_DESC =
-  "Check station-by-station 1st and 2nd reservation chart preparation times for Indian Railways trains and spot post-chart vacant berths.";
-
-export const metadata: Metadata = {
-  title: CHART_TIMES_TITLE,
-  description: CHART_TIMES_DESC,
-  alternates: { canonical: "/chart-times" },
-  openGraph: buildOpenGraph({
-    title: `${CHART_TIMES_TITLE} | LastBerth`,
-    description: CHART_TIMES_DESC,
-    url: "/chart-times",
-  }),
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "IRCTC Train Chart Preparation Times by Station",
+  description:
+    "Check station-by-station 1st and 2nd reservation chart preparation times for Indian Railways trains and spot post-chart vacant berths.",
+  canonical: "/chart-times",
+});
 
 export default function ChartTimesIndexPage() {
   const trains = listPopularChartTimes();

@@ -2,26 +2,27 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { RefundClient } from "./RefundClient";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildBreadcrumbJsonLd, buildPageMetadata } from "@/lib/seo/metadata";
 
-const REFUND_TITLE = "Request a Chart Alert Refund";
-const REFUND_DESC =
-  "Ask for a refund of your LastBerth chart alert payment. Share your email, train number, journey date, and transaction ID and our team will review it.";
-
-export const metadata: Metadata = {
-  title: REFUND_TITLE,
-  description: REFUND_DESC,
-  alternates: { canonical: "/refund" },
-  openGraph: buildOpenGraph({
-    title: `${REFUND_TITLE} | LastBerth`,
-    description: "Ask for a refund of your LastBerth chart alert payment.",
-    url: "/refund",
-  }),
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Request a Chart Alert Refund",
+  description:
+    "Ask for a refund of your LastBerth chart alert payment. Share your email, train number, journey date, and transaction ID and our team will review it.",
+  canonical: "/refund",
+});
 
 export default function RefundPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", item: "https://lastberth.com" },
+    { name: "Request Refund", item: "https://lastberth.com/refund" },
+  ]);
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <nav className="mb-8 flex text-sm text-slate-500">
         <Link href="/" className="hover:text-blue-600 hover:underline">
           Home
@@ -79,6 +80,42 @@ export default function RefundPage() {
               contact support
             </Link>{" "}
             with your payment reference ID.
+          </p>
+
+          <h2 className="pt-2 text-base font-bold text-slate-900">
+            How Refund Requests Are Reviewed
+          </h2>
+          <ol className="list-decimal space-y-1.5 pl-5">
+            <li>
+              Enter the email address used during checkout along with your train
+              number, journey date, and Razorpay transaction ID.
+            </li>
+            <li>
+              Our support team verifies the alert subscription status and checks
+              whether automated chart monitoring was delivered for your train.
+            </li>
+            <li>
+              Approved refunds are initiated back to your original UPI, card, or
+              netbanking account within 5–7 business days.
+            </li>
+          </ol>
+          <p>
+            If your reservation chart has not yet been prepared, you can track
+            expected release timings on{" "}
+            <Link
+              href="/chart-times"
+              className="font-medium text-blue-600 underline"
+            >
+              Train Chart Times
+            </Link>{" "}
+            or inspect live post-charting empty seats via{" "}
+            <Link
+              href="/chart-vacancy"
+              className="font-medium text-blue-600 underline"
+            >
+              Chart Vacancy
+            </Link>
+            .
           </p>
         </section>
       </div>

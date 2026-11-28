@@ -8,7 +8,7 @@ import {
 } from "@/lib/specialTrains";
 import { SpecialTrainsListClient } from "@/components/special-trains/SpecialTrainsListClient";
 import { FestivalNavTabs } from "@/components/special-trains/FestivalNavTabs";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildFaqPageJsonLd, buildPageMetadata } from "@/lib/seo/metadata";
 import {
   Sparkles,
   ChevronRight,
@@ -20,22 +20,35 @@ import {
   Calendar,
 } from "lucide-react";
 
-const SPECIAL_TITLE = "Special Trains 2026: List, Routes & Find Seats";
-const SPECIAL_DESC =
-  "Directory of Indian Railways festival special trains for Diwali, Chhath Puja, Dussehra, and Durga Puja 2026. Check schedules, stops, and seat availability.";
+export const metadata: Metadata = buildPageMetadata({
+  title: "Special Trains 2026: List, Routes & Find Seats",
+  description:
+    "Directory of Indian Railways festival special trains for Diwali, Chhath Puja, Dussehra, and Durga Puja 2026. Check schedules, stops, and seat availability.",
+  canonical: "/special-trains",
+});
 
-export const metadata: Metadata = {
-  title: SPECIAL_TITLE,
-  description: SPECIAL_DESC,
-  alternates: {
-    canonical: "/special-trains",
+const SPECIAL_TRAINS_FAQS = [
+  {
+    question: "What are 0-series festival special trains?",
+    answer:
+      "0-series trains are seasonal festival services launched by zonal railways (NR, CR, WR, ECR, NER, etc.) to handle surge holiday passenger volume. They operate on planned schedules with AC, Sleeper, and unreserved coaches.",
   },
-  openGraph: buildOpenGraph({
-    title: `${SPECIAL_TITLE} | LastBerth`,
-    description: SPECIAL_DESC,
-    url: "/special-trains",
-  }),
-};
+  {
+    question: "When do bookings open for special trains?",
+    answer:
+      "Unlike regular trains which open 60 days in advance, 0-series festival specials often open 10 to 30 days prior to their first departure once rake utilization and timings are finalized.",
+  },
+  {
+    question: "What are TOSF fares on special trains?",
+    answer:
+      "Most festival specials operate under Train on Special Fare (TOSF) rules, carrying a flat 10% (Second Class 2S) or 30% (Sleeper & AC) festive supplementary surcharge to fund additional operational rakes.",
+  },
+  {
+    question: "How do I get a confirmed ticket if trains show Regret / WL?",
+    answer:
+      "Use LastBerth's Smart Seats feature on the home page. Even when direct end-to-end booking shows Regret, our algorithm finds confirmed sub-leg tickets within the same train or adjacent connecting stations.",
+  },
+];
 
 export default function SpecialTrainsHubPage() {
   const allTrains = getAllSpecialTrains();
@@ -117,6 +130,8 @@ export default function SpecialTrainsHubPage() {
     ],
   };
 
+  const faqJsonLd = buildFaqPageJsonLd(SPECIAL_TRAINS_FAQS);
+
   return (
     <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-slate-900 antialiased">
       <script
@@ -126,6 +141,10 @@ export default function SpecialTrainsHubPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Header />
 
@@ -283,52 +302,12 @@ export default function SpecialTrainsHubPage() {
           </h2>
 
           <div className="grid grid-cols-1 gap-6 text-sm text-slate-600 md:grid-cols-2">
-            <div className="space-y-2">
-              <h3 className="font-semibold text-slate-900">
-                What are 0-series festival special trains?
-              </h3>
-              <p className="leading-relaxed">
-                0-series trains are seasonal festival services launched by zonal
-                railways (NR, CR, WR, ECR, NER, etc.) to handle surge holiday
-                passenger volume. They operate on planned schedules with AC,
-                Sleeper, and unreserved coaches.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <h3 className="font-semibold text-slate-900">
-                When do bookings open for special trains?
-              </h3>
-              <p className="leading-relaxed">
-                Unlike regular trains which open 60 days in advance, 0-series
-                festival specials often open 10 to 30 days prior to their first
-                departure once rake utilization and timings are finalized.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <h3 className="font-semibold text-slate-900">
-                What are TOSF fares on special trains?
-              </h3>
-              <p className="leading-relaxed">
-                Most festival specials operate under Train on Special Fare
-                (TOSF) rules, carrying a flat 10% (Second Class 2S) or 30%
-                (Sleeper & AC) festive supplementary surcharge to fund
-                additional operational rakes.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <h3 className="font-semibold text-slate-900">
-                How do I get a confirmed ticket if trains show Regret / WL?
-              </h3>
-              <p className="leading-relaxed">
-                Use LastBerth&apos;s Smart Seats feature on the home page. Even
-                when direct end-to-end booking shows Regret, our algorithm finds
-                confirmed sub-leg tickets within the same train or adjacent
-                connecting stations.
-              </p>
-            </div>
+            {SPECIAL_TRAINS_FAQS.map((faq) => (
+              <div key={faq.question} className="space-y-2">
+                <h3 className="font-semibold text-slate-900">{faq.question}</h3>
+                <p className="leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
           </div>
         </section>
       </main>

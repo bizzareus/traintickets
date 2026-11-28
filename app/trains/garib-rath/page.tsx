@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { getTrains } from "@/lib/trainCatalog";
 import { TrainCatalogListClient } from "@/components/trains/TrainCatalogListClient";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildFaqPageJsonLd, buildPageMetadata } from "@/lib/seo/metadata";
 import {
   ChevronRight,
   Train,
@@ -13,20 +13,12 @@ import {
   Bed,
 } from "lucide-react";
 
-const GARIB_RATH_TITLE = "Garib Rath Trains 2026: List, Routes & Timings";
-const GARIB_RATH_DESC =
-  "Complete list of Garib Rath Express trains in India. Check routes, timetables, affordable AC 3-Tier classes, and find confirmed seats to book on IRCTC.";
-
-export const metadata: Metadata = {
-  title: GARIB_RATH_TITLE,
-  description: GARIB_RATH_DESC,
-  alternates: { canonical: "/trains/garib-rath" },
-  openGraph: buildOpenGraph({
-    title: `${GARIB_RATH_TITLE} | LastBerth`,
-    description: GARIB_RATH_DESC,
-    url: "/trains/garib-rath",
-  }),
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Garib Rath Trains 2026: List, Routes & Timings",
+  description:
+    "Complete list of Garib Rath Express trains in India. Check routes, timetables, affordable AC 3-Tier classes, and find confirmed seats to book on IRCTC.",
+  canonical: "/trains/garib-rath",
+});
 
 const POPULAR_CORRIDORS = [
   "Pune ➔ Nagpur (12113/14)",
@@ -99,6 +91,8 @@ export default function GaribRathTrainsPage() {
     ],
   };
 
+  const faqJsonLd = buildFaqPageJsonLd(FAQS);
+
   return (
     <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-slate-900 antialiased">
       <script
@@ -108,6 +102,10 @@ export default function GaribRathTrainsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Header />
 

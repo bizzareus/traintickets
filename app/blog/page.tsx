@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { BlogIndexContent } from "@/components/blog/BlogIndexContent";
+import { buildOpenGraph, buildTwitterCard } from "@/lib/seo/metadata";
 
 type BlogIndexPageProps = {
   searchParams?: Promise<{ lang?: string }>;
 };
+
+const BLOG_INDEX_TITLE = "Train Travel Guides & IRCTC Tips";
+const BLOG_INDEX_DESCRIPTION =
+  "Practical guides on finding confirmed IRCTC train tickets, reservation chart preparation times, Tatkal rules, and split-berth strategies.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const allLangs = ["en", "mr", "hi", "bn", "ta", "te", "ml"];
@@ -17,16 +22,17 @@ export async function generateMetadata(): Promise<Metadata> {
   languages["x-default"] = "/blog";
 
   return {
-    title: "Train Travel Guides & IRCTC Tips",
-    description:
-      "Practical guides on finding confirmed IRCTC train tickets, reservation chart preparation times, Tatkal rules, and split-berth strategies.",
-    openGraph: {
-      title: "Train Travel Guides & IRCTC Tips | LastBerth",
-      description:
-        "Practical guides on finding confirmed IRCTC train tickets, reservation chart preparation times, Tatkal rules, and split-berth strategies.",
+    title: BLOG_INDEX_TITLE,
+    description: BLOG_INDEX_DESCRIPTION,
+    openGraph: buildOpenGraph({
+      title: `${BLOG_INDEX_TITLE} | LastBerth`,
+      description: BLOG_INDEX_DESCRIPTION,
       url: "/blog",
-      images: ["/opengraph-image"],
-    },
+    }),
+    twitter: buildTwitterCard({
+      title: `${BLOG_INDEX_TITLE} | LastBerth`,
+      description: BLOG_INDEX_DESCRIPTION,
+    }),
     alternates: {
       canonical: "/blog",
       languages,

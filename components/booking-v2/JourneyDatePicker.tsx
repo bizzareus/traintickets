@@ -31,6 +31,8 @@ export type JourneyDatePickerProps = {
   id: string;
   value: string | null;
   onChange: (ymd: string) => void;
+  /** Accessible label for screen readers and browsing agents. */
+  ariaLabel?: string;
   /** Days relative to today for the earliest selectable date (e.g. -1 allows yesterday). Default 0 (today). */
   minOffsetDays?: number;
   /** Limit ticket searches to the currently open 60-day reservation window. */
@@ -48,6 +50,7 @@ export function JourneyDatePicker({
   id,
   value,
   onChange,
+  ariaLabel = "Departure date",
   minOffsetDays = 0,
   restrictToBookingWindow = false,
   inputClassName,
@@ -169,6 +172,7 @@ export function JourneyDatePicker({
             "block w-full rounded-md border border-gray-300 bg-gray-50 py-3.5 pl-3 pr-2 text-lg font-semibold text-gray-900 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 sm:py-4 sm:pl-4",
         )}
         placeholder="Select date"
+        aria-label={ariaLabel}
         title={
           restrictToBookingWindow
             ? "Advance booking opens 60 days before travel at 8:00 AM IST."

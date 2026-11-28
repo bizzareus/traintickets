@@ -1318,6 +1318,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
               </label>
               <JourneyDatePicker
                 id={`compact-${journeyDateInputId}`}
+                ariaLabel={t.form.date}
                 restrictToBookingWindow
                 value={journeyDate}
                 onChange={handleJourneyDateChange}
@@ -1540,6 +1541,7 @@ function BookingV2PageContent({ lang, t }: { lang: string; t: HomeStrings }) {
                               </label>
                               <JourneyDatePicker
                                 id={journeyDateInputId}
+                                ariaLabel={t.form.date}
                                 restrictToBookingWindow
                                 value={journeyDate}
                                 onChange={handleJourneyDateChange}

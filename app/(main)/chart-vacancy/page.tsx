@@ -2,21 +2,27 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { SeatStatus } from "@/components/booking-v2/SeatStatus";
+import { buildOpenGraph, buildTwitterCard } from "@/lib/seo/metadata";
+
+const CHART_VACANCY_TITLE = "Train Chart Vacancy: Empty Berth & Coach Map";
+const CHART_VACANCY_DESCRIPTION =
+  "Check Indian Railways train chart vacancy and empty berths coach-wise on a visual map. Book last-minute current-availability tickets.";
 
 export const metadata: Metadata = {
-  title: "Train Chart Vacancy: Empty Berth & Coach Map",
-  description:
-    "Check Indian Railways train chart vacancy and empty berths coach-wise on a visual map. Book last-minute current-availability tickets.",
+  title: CHART_VACANCY_TITLE,
+  description: CHART_VACANCY_DESCRIPTION,
   alternates: {
     canonical: "/chart-vacancy",
   },
-  openGraph: {
-    title: "Train Chart Vacancy: Empty Berth & Coach Map | LastBerth",
-    description:
-      "Indian Railways train chart and vacant berth availability, coach-wise, with a visual coach map.",
+  openGraph: buildOpenGraph({
+    title: `${CHART_VACANCY_TITLE} | LastBerth`,
+    description: CHART_VACANCY_DESCRIPTION,
     url: "/chart-vacancy",
-    images: ["/opengraph-image"],
-  },
+  }),
+  twitter: buildTwitterCard({
+    title: `${CHART_VACANCY_TITLE} | LastBerth`,
+    description: CHART_VACANCY_DESCRIPTION,
+  }),
 };
 
 const FAQS: { q: string; a: string }[] = [

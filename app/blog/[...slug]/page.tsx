@@ -16,13 +16,12 @@ import {
   indexableTranslations,
 } from "@/lib/blog-quality";
 import { getBlogTranslation } from "@/lib/blog-translations";
-import { parseHowToFromMarkdown } from "@/lib/seo/schema-howto";
 import { autoLinkGlossaryTerms } from "@/lib/seo/auto-linker";
 import { autoLinkRoutes } from "@/lib/seo/route-linker";
 import { detectRouteContext } from "@/lib/seo/route-detector";
 import {
   buildOpenGraph,
-  DEFAULT_TWITTER_IMAGE,
+  buildTwitterCard,
   truncateMetaDescription,
 } from "@/lib/seo/metadata";
 import { BlogSearchCta } from "@/components/blog/BlogSearchCta";
@@ -98,16 +97,15 @@ export async function generateMetadata({
         languages,
       },
       openGraph: buildOpenGraph({
-        title,
+        title: `${title} | LastBerth`,
         description,
         url: canonicalUrl,
+        lang,
       }),
-      twitter: {
-        card: "summary_large_image",
-        title,
+      twitter: buildTwitterCard({
+        title: `${title} | LastBerth`,
         description,
-        images: [DEFAULT_TWITTER_IMAGE],
-      },
+      }),
     };
   }
 
@@ -158,13 +156,12 @@ export async function generateMetadata({
       description: description ?? post.title,
       url: canonicalUrl,
       type: "article",
+      lang,
     }),
-    twitter: {
-      card: "summary_large_image",
+    twitter: buildTwitterCard({
       title: post.title,
-      description,
-      images: [DEFAULT_TWITTER_IMAGE],
-    },
+      description: description ?? post.title,
+    }),
   };
 }
 
@@ -243,9 +240,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       url: baseUrl,
       logo: {
         "@type": "ImageObject",
-        url: `${baseUrl}/favicon.svg`,
+        url: `${baseUrl}/apple-icon`,
+        width: 180,
+        height: 180,
       },
     },
+    inLanguage: lang === "en" ? "en-IN" : `${lang}-IN`,
     image: [`${baseUrl}/opengraph-image`],
   };
 
@@ -293,20 +293,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const allPosts = listBlogPosts(lang);
 
-  const howToData = parseHowToFromMarkdown(post.content);
-  const howToJsonLd = howToData
-    ? {
-        "@context": "https://schema.org",
-        "@type": "HowTo",
-        name: howToData.name,
-        step: howToData.steps.map((step, index) => ({
-          "@type": "HowToStep",
-          name: step.name,
-          text: step.text,
-          url: `${canonicalUrl}#step-${index + 1}`,
-        })),
-      }
-    : null;
   const otherPosts = allPosts.filter((p) => p.slug !== post.slug);
   // Performance Optimization: Use a Set for post.tags to replace O(N*M) includes array scans
   // and intermediate array allocations with O(1) Set lookups (~2.5x speedup for related posts calculation).
@@ -463,12 +449,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
-      ) : null}
-      {howToJsonLd ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
         />
       ) : null}
 

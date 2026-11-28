@@ -5,33 +5,24 @@ import {
   GLOSSARY_LANGS,
 } from "@/lib/seo/glossary-db";
 import { glossaryUi } from "@/lib/seo/glossary-ui";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { GlossaryLanguageSelector } from "@/components/glossary/GlossaryLanguageSelector";
 
 const ui = glossaryUi("en");
-const GLOSSARY_TITLE = "Indian Railway Booking Glossary & Terms";
-const GLOSSARY_DESC =
-  "Decode Indian Railway booking jargon in plain English: RLWL, PQWL, GNWL, RAC, CNF, Tatkal, chart preparation, current availability, and class codes.";
 
-export const metadata: Metadata = {
-  title: GLOSSARY_TITLE,
-  description: GLOSSARY_DESC,
-  alternates: {
-    canonical: "/glossary",
-    languages: Object.fromEntries([
-      ...GLOSSARY_LANGS.map((l) => [
-        l,
-        l === "en" ? "/glossary" : `/glossary/${l}`,
-      ]),
-      ["x-default", "/glossary"],
+export const metadata: Metadata = buildPageMetadata({
+  title: "Indian Railway Booking Glossary & Terms",
+  description:
+    "Decode Indian Railway booking jargon in plain English: RLWL, PQWL, GNWL, RAC, CNF, Tatkal, chart preparation, current availability, and class codes.",
+  canonical: "/glossary",
+  languages: Object.fromEntries([
+    ...GLOSSARY_LANGS.map((l) => [
+      l,
+      l === "en" ? "/glossary" : `/glossary/${l}`,
     ]),
-  },
-  openGraph: buildOpenGraph({
-    title: `${GLOSSARY_TITLE} | LastBerth`,
-    description: GLOSSARY_DESC,
-    url: "/glossary",
-  }),
-};
+    ["x-default", "/glossary"],
+  ]),
+});
 
 export default function GlossaryIndexPage() {
   const terms = getAllGlossaryTermsForLang("en");

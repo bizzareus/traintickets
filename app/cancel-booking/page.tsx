@@ -2,27 +2,30 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { CancelBookingClient } from "./CancelBookingClient";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildBreadcrumbJsonLd, buildPageMetadata } from "@/lib/seo/metadata";
 
-const CANCEL_TITLE = "Cancel Train Booking";
-const CANCEL_DESC =
-  "Request cancellation for your LastBerth split-ticket reservation. Enter your booking reference and mobile number to review details and submit.";
-
-export const metadata: Metadata = {
-  title: CANCEL_TITLE,
-  description: CANCEL_DESC,
-  alternates: { canonical: "/cancel-booking" },
-  openGraph: buildOpenGraph({
-    title: `${CANCEL_TITLE} | LastBerth`,
-    description:
-      "Request cancellation for your LastBerth split-ticket reservation.",
-    url: "/cancel-booking",
-  }),
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Cancel Train Booking",
+  description:
+    "Request cancellation for your LastBerth split-ticket reservation. Enter your booking reference and mobile number to review details and submit.",
+  canonical: "/cancel-booking",
+});
 
 export default function CancelBookingPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", item: "https://lastberth.com" },
+    {
+      name: "Cancel Train Booking",
+      item: "https://lastberth.com/cancel-booking",
+    },
+  ]);
+
   return (
     <main className="min-h-[80vh] bg-slate-50 px-4 py-10 sm:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mx-auto max-w-xl">
         <div className="mb-6 text-center">
           <Link

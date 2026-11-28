@@ -87,9 +87,9 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "/",
     siteName: "LastBerth",
-    title: "LastBerth – Find Confirmed Train Tickets & Best Seat Options",
+    title: "LastBerth – Find Confirmed Train Tickets & Smart Seat Finder",
     description:
-      "Find confirmed train tickets for immediate journeys. Search your train, get the best seat options and book on IRCTC. Monitor chart time for last-minute availability.",
+      "Find confirmed Indian Railways train tickets for immediate journeys. Search trains, discover split-berth options, and track chart preparation times.",
     images: [
       {
         url: "/opengraph-image",
@@ -101,9 +101,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LastBerth – Find Confirmed Train Tickets & Best Seat Options",
+    title: "LastBerth – Find Confirmed Train Tickets & Smart Seat Finder",
     description:
-      "Find confirmed train tickets for immediate journeys. Search your train, get the best seat options and book on IRCTC.",
+      "Find confirmed Indian Railways train tickets for immediate journeys. Search trains, discover split-berth options, and track chart preparation times.",
     images: ["/twitter-image"],
   },
   alternates: {
@@ -142,7 +142,9 @@ const rootEntityJsonLd = {
       logo: {
         "@type": "ImageObject",
         "@id": `${baseUrl}/#logo`,
-        url: `${baseUrl}/favicon.svg`,
+        url: `${baseUrl}/apple-icon`,
+        width: 180,
+        height: 180,
         caption: "LastBerth",
       },
       image: {

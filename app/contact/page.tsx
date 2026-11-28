@@ -1,21 +1,13 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-const CONTACT_TITLE = "Contact LastBerth Support & Feedback";
-const CONTACT_DESC =
-  "Get in touch with the LastBerth team for support, chart alert inquiries, train timetable data corrections, partnerships, or feedback.";
-
-export const metadata: Metadata = {
-  title: CONTACT_TITLE,
-  description: CONTACT_DESC,
-  alternates: { canonical: "/contact" },
-  openGraph: buildOpenGraph({
-    title: `${CONTACT_TITLE} | LastBerth`,
-    description: CONTACT_DESC,
-    url: "/contact",
-  }),
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Contact LastBerth Support & Feedback",
+  description:
+    "Get in touch with the LastBerth team for support, chart alert inquiries, train timetable data corrections, partnerships, or feedback.",
+  canonical: "/contact",
+});
 
 export default function ContactPage() {
   const breadcrumbJsonLd = {

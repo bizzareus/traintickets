@@ -872,6 +872,7 @@ export function SeatStatus() {
             </label>
             <JourneyDatePicker
               id={dateInputId}
+              ariaLabel="Date of journey"
               value={journeyDate}
               restrictToBookingWindow
               inputClassName="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm font-medium text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"

@@ -10,7 +10,7 @@ import {
 } from "@/lib/trainSlug";
 import { getChartTimesPageData } from "@/lib/chartTimes";
 import { getTrainByNumber } from "@/lib/trainCatalog";
-import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const dynamicParams = true;
 
@@ -89,36 +89,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonicalSlug = buildTrainSlug(trainNumber, trainName);
 
   if (!trainName) {
-    const title = `Train ${trainNumber} Schedule, Route & Status`;
-    const description = truncateMetaDescription(
-      `Check ${trainNumber} running status via NTES or SMS 139, full timetable, halts, platforms, and chart preparation times.`,
-    );
-    return {
-      title,
-      description,
-      alternates: { canonical: `/trains/${canonicalSlug}` },
-      openGraph: buildOpenGraph({
-        title: `${title} | LastBerth`,
-        description,
-        url: `/trains/${canonicalSlug}`,
-      }),
-    };
+    return buildPageMetadata({
+      title: `Train ${trainNumber} Schedule, Route & Status`,
+      description: `Check ${trainNumber} running status via NTES or SMS 139, full timetable, station halts, platforms, and IRCTC chart preparation times.`,
+      canonical: `/trains/${canonicalSlug}`,
+    });
   }
 
-  const title = `${trainName} (${trainNumber}) Schedule & Route`;
-  const description = truncateMetaDescription(
-    `Check ${trainName} (${trainNumber}) running status, ${origin} to ${dest} timetable, halts, Tatkal timings, and chart preparation times.`,
-  );
-  return {
-    title,
-    description,
-    alternates: { canonical: `/trains/${canonicalSlug}` },
-    openGraph: buildOpenGraph({
-      title: `${trainName} (${trainNumber}) Schedule & Route | LastBerth`,
-      description,
-      url: `/trains/${canonicalSlug}`,
-    }),
-  };
+  return buildPageMetadata({
+    title: `${trainName} (${trainNumber}) Schedule & Route`,
+    description: `Check ${trainName} (${trainNumber}) running status, ${origin} to ${dest} timetable, station halts, Tatkal timings, and IRCTC chart preparation times.`,
+    canonical: `/trains/${canonicalSlug}`,
+  });
 }
 
 export default async function TrainDetailPage({ params }: Props) {

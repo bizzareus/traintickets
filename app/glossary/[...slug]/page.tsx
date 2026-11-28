@@ -9,7 +9,12 @@ import {
   getGlossaryTermForLang,
 } from "@/lib/seo/glossary-db";
 import { glossaryUi } from "@/lib/seo/glossary-ui";
-import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
+import {
+  buildOpenGraph,
+  buildTwitterCard,
+  truncateMetaDescription,
+  truncateTitle,
+} from "@/lib/seo/metadata";
 import { GlossaryLanguageSelector } from "@/components/glossary/GlossaryLanguageSelector";
 
 export const dynamicParams = false;
@@ -64,12 +69,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (termId) {
     const item = getGlossaryTermForLang(termId, lang);
     if (!item) return {};
+    const ui = glossaryUi(lang);
     const canonical = canonicalFor(lang, termId);
     const shortTerm = item.term.replace(/\s*\([^)]*\)$/, "").trim();
-    const title = `What is ${shortTerm}? — Railway Glossary`;
+    const title =
+      lang === "en"
+        ? `What is ${shortTerm}? — Railway Glossary`
+        : truncateTitle(`${shortTerm} — ${ui.crumb}`, 48);
     const description = truncateMetaDescription(
       `Meaning of ${item.term} in Indian Railway bookings. ${item.definition}`,
     );
+    const fullTitle = `${title} | LastBerth`;
     return {
       title,
       description,
@@ -78,10 +88,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         languages: hreflangAlternates(termId),
       },
       openGraph: buildOpenGraph({
-        title: `${title} | LastBerth`,
+        title: fullTitle,
         description,
         url: canonical,
         type: "article",
+        lang,
+      }),
+      twitter: buildTwitterCard({
+        title: fullTitle,
+        description,
       }),
     };
   }
@@ -89,17 +104,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ui = glossaryUi(lang);
   const canonical = canonicalFor(lang);
   const description = truncateMetaDescription(ui.subtitle);
+  const indexTitle = truncateTitle(ui.title, 48);
+  const fullIndexTitle = `${indexTitle} | LastBerth`;
   return {
-    title: ui.title,
+    title: indexTitle,
     description,
     alternates: {
       canonical,
       languages: hreflangAlternates(),
     },
     openGraph: buildOpenGraph({
-      title: `${ui.title} | LastBerth`,
+      title: fullIndexTitle,
       description,
       url: canonical,
+      lang,
+    }),
+    twitter: buildTwitterCard({
+      title: fullIndexTitle,
+      description,
     }),
   };
 }
@@ -155,12 +177,19 @@ export default async function GlossarySlugPage({ params }: Props) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-          <nav className="flex text-sm text-slate-500">
+          <nav className="flex text-sm text-slate-500" aria-label="Breadcrumb">
+            <Link
+              href={lang === "en" ? "/" : `/${lang}`}
+              className="hover:text-blue-600 hover:underline"
+            >
+              LastBerth
+            </Link>
+            <span className="mx-2">/</span>
             <Link
               href={canonicalFor(lang)}
               className="hover:text-blue-600 hover:underline"
             >
-              {ui.crumb}
+              {lang === "en" ? "Railway Glossary" : ui.crumb}
             </Link>
             <span className="mx-2">/</span>
             <span className="text-slate-900">{item.term}</span>
@@ -181,6 +210,64 @@ export default async function GlossarySlugPage({ params }: Props) {
               {item.definition}
             </p>
           </div>
+
+          <section className="mt-10 space-y-4 rounded-xl border border-slate-100 bg-slate-50 p-6">
+            <h2 className="text-lg font-bold text-slate-900">
+              Using {item.term} on IRCTC &amp; LastBerth Railway Glossary
+            </h2>
+            <p className="text-sm leading-relaxed text-slate-600">
+              Understanding {item.term} helps when checking live ticket
+              availability, tracking reservation chart preparation, or deciding
+              whether to wait for confirmation versus booking an alternate
+              split-berth or current-availability seat. Across the Indian
+              Railways reservation network, waiting-list clearance follows quota
+              priority: General Waiting List (GNWL) clears first from the
+              originating station, followed by Remote Location (RLWL) and Pooled
+              Quota (PQWL).
+            </p>
+            <p className="text-sm leading-relaxed text-slate-600">
+              The first reservation chart is normally finalized around four
+              hours before origin departure (or 20:00–21:00 the previous evening
+              for early morning trains), with a second chart prepared 30 to 60
+              minutes before departure. Unbooked berths released after charting
+              appear under Current Availability (CURR_AVBL) and can be spotted
+              instantly using LastBerth&apos;s live seat and chart tools or
+              explored further in the{" "}
+              <Link
+                href={canonicalFor(lang)}
+                className="font-medium text-blue-700 hover:underline"
+              >
+                Indian Railway Glossary
+              </Link>
+              .
+            </p>
+            <div className="flex flex-wrap gap-3 pt-1 text-sm font-medium">
+              <Link
+                href="/pnr-status"
+                className="text-blue-700 hover:underline"
+              >
+                Check Live PNR Status →
+              </Link>
+              <Link
+                href="/chart-vacancy"
+                className="text-blue-700 hover:underline"
+              >
+                View Chart Vacancy →
+              </Link>
+              <Link
+                href="/chart-times"
+                className="text-blue-700 hover:underline"
+              >
+                Train Chart Times →
+              </Link>
+              <Link
+                href="/tatkal-planner"
+                className="text-blue-700 hover:underline"
+              >
+                Tatkal Clock &amp; Dates →
+              </Link>
+            </div>
+          </section>
 
           {related.length > 0 && (
             <div className="mt-12 border-t border-slate-100 pt-8">
@@ -221,9 +308,47 @@ export default async function GlossarySlugPage({ params }: Props) {
     const letter = term.term[0].toUpperCase();
     (grouped[letter] ||= []).push(term);
   }
+  const indexCanonical = `https://lastberth.com${canonicalFor(lang)}`;
+  const indexJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": `${indexCanonical}#terms`,
+    name: ui.title,
+    description: ui.subtitle,
+    url: indexCanonical,
+    inLanguage: lang,
+  };
+  const indexBreadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://lastberth.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: ui.crumb,
+        item: indexCanonical,
+      },
+    ],
+  };
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(indexJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(indexBreadcrumbJsonLd),
+        }}
+      />
       <div className="mb-8 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
           {ui.title}

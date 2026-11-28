@@ -23,6 +23,7 @@ Authoritative Indian Railways ground-truth rules:
 - [Station Chart Preparation Schedules](https://lastberth.com/chart-times): Timetable of 1st and 2nd reservation chart preparation times for 3,500+ Indian Railways trains at originating and intermediate halts.
 - [Tatkal Booking Calculator & Clock](https://lastberth.com/tatkal-planner): Exact Tatkal opening dates and atomic IST countdown clock for 10:00 AM (AC) and 11:00 AM (Non-AC) booking windows.
 - [IRCTC Catering & Train Food Menu](https://lastberth.com/irctc-train-food-menu): Complete official catering price lists for Vande Bharat, Rajdhani, Shatabdi, Duronto, and Mail/Express trains.
+- [Festival Special Trains Directory](https://lastberth.com/special-trains): Schedules, routes, and booking windows for Indian Railways 0-series Diwali, Chhath, Dussehra, and Durga Puja special trains.
 - [Railway Travel Guides](https://lastberth.com/blog): In-depth, 7-language guides on IRCTC booking limits, Jan Vishwas Act penalties, refund rules, and travel policies.
 - [Indian Railway Glossary](https://lastberth.com/glossary): Authoritative definitions for railway abbreviations (GNWL, RLWL, PQWL, RAC, TTE, HHT, EFT, ARP).
 

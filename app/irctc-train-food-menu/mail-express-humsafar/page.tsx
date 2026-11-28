@@ -6,27 +6,18 @@ import {
   type CateringSection,
 } from "@/lib/mailExpressCatering";
 import { dishVisual } from "@/lib/foodEmoji";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
 
-const MAIL_MENU_TITLE = "Mail & Express Train Food Menu: Full Price List";
-const MAIL_MENU_DESC =
-  "Official IRCTC catering rates on Mail, Express & Humsafar trains: breakfast, veg/egg/chicken meals, tea, Rail Neer water, and full tariff.";
-
-export const metadata: Metadata = {
-  // CTR title (≤48 ch before the "%s | LastBerth" template): keyword + a
-  // value hook. Old title was 57 ch and truncated badly with the brand suffix.
-  // "Humsafar" stays in the description/keywords rather than the title.
-  title: MAIL_MENU_TITLE,
-  description: MAIL_MENU_DESC,
-  alternates: { canonical: "/irctc-train-food-menu/mail-express-humsafar" },
-  openGraph: buildOpenGraph({
-    title: `${MAIL_MENU_TITLE} | LastBerth`,
-    description: MAIL_MENU_DESC,
-    url: "/irctc-train-food-menu/mail-express-humsafar",
-  }),
-};
+// CTR title (≤48 ch before the "%s | LastBerth" template): keyword + a
+// value hook. "Humsafar" stays in the description rather than the title.
+export const metadata: Metadata = buildPageMetadata({
+  title: "Mail & Express Train Food Menu: Full Price List",
+  description:
+    "Official IRCTC catering rates on Mail, Express & Humsafar trains: breakfast, veg/egg/chicken meals, tea, Rail Neer water, and full tariff.",
+  canonical: "/irctc-train-food-menu/mail-express-humsafar",
+});
 
 function inr(n: number | null | undefined): string {
   return n == null ? "N/A" : `₹${n}`;

@@ -2,30 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TatkalPlannerClient from "./TatkalPlannerClient";
 import { getTatkalFaqs } from "@/lib/tatkalPlanner";
-import { buildOpenGraph, DEFAULT_TWITTER_IMAGE } from "@/lib/seo/metadata";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const revalidate = 3600;
 
-const TATKAL_TITLE = "Tatkal Date Calculator & Live Clock (2026)";
-const TATKAL_DESCRIPTION =
-  "Calculate exact IRCTC Tatkal booking dates and 10:00 AM AC / 11:00 AM Non-AC opening times with a live IST countdown clock and fare calculator.";
-
-export const metadata: Metadata = {
-  title: TATKAL_TITLE,
-  description: TATKAL_DESCRIPTION,
-  alternates: { canonical: "/tatkal-planner" },
-  openGraph: buildOpenGraph({
-    title: TATKAL_TITLE,
-    description: TATKAL_DESCRIPTION,
-    url: "/tatkal-planner",
-  }),
-  twitter: {
-    card: "summary_large_image",
-    title: TATKAL_TITLE,
-    description: TATKAL_DESCRIPTION,
-    images: [DEFAULT_TWITTER_IMAGE],
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Tatkal Date Calculator & Live Clock (2026)",
+  description:
+    "Calculate exact IRCTC Tatkal booking dates and 10:00 AM AC / 11:00 AM Non-AC opening times with a live IST countdown clock and fare calculator.",
+  canonical: "/tatkal-planner",
+});
 
 export default function TatkalPlannerPage() {
   const faqs = getTatkalFaqs();

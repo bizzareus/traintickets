@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { getTrains } from "@/lib/trainCatalog";
 import { TrainCatalogListClient } from "@/components/trains/TrainCatalogListClient";
-import { buildOpenGraph } from "@/lib/seo/metadata";
+import { buildFaqPageJsonLd, buildPageMetadata } from "@/lib/seo/metadata";
 import {
   Sparkles,
   ChevronRight,
@@ -16,20 +16,12 @@ import {
   Timer,
 } from "lucide-react";
 
-const VANDE_TITLE = "Vande Bharat Trains 2026: List, Routes & Timings";
-const VANDE_DESC =
-  "List of 170+ Vande Bharat Express trains in India with routes, timetables, stops, Chair Car, Executive & Sleeper classes, and IRCTC seat search.";
-
-export const metadata: Metadata = {
-  title: VANDE_TITLE,
-  description: VANDE_DESC,
-  alternates: { canonical: "/trains/vande-bharat" },
-  openGraph: buildOpenGraph({
-    title: `${VANDE_TITLE} | LastBerth`,
-    description: VANDE_DESC,
-    url: "/trains/vande-bharat",
-  }),
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Vande Bharat Trains 2026: List, Routes & Timings",
+  description:
+    "List of 170+ Vande Bharat Express trains in India with routes, timetables, stops, Chair Car, Executive & Sleeper classes, and IRCTC seat search.",
+  canonical: "/trains/vande-bharat",
+});
 
 const POPULAR_CORRIDORS = [
   "New Delhi ➔ Varanasi (22435/36)",
@@ -110,6 +102,8 @@ export default function VandeBharatTrainsPage() {
     ],
   };
 
+  const faqJsonLd = buildFaqPageJsonLd(FAQS);
+
   return (
     <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-slate-900 antialiased">
       <script
@@ -119,6 +113,10 @@ export default function VandeBharatTrainsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Header />
 

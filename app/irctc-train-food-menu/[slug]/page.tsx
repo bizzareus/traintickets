@@ -7,7 +7,12 @@ import {
   type TrainFoodMenu,
 } from "@/lib/trainFoodMenu";
 import { FoodOrderingMenu } from "@/components/foodmenu/FoodOrderingMenu";
-import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
+import {
+  buildOpenGraph,
+  buildTwitterCard,
+  truncateMetaDescription,
+  truncateTitle,
+} from "@/lib/seo/metadata";
 
 export const dynamicParams = true;
 
@@ -37,7 +42,11 @@ function allPrices(menu: TrainFoodMenu): number[] {
 }
 
 function title(menu: TrainFoodMenu): string {
-  return `${menu.trainName} Food Menu & Price: What's Included?`;
+  const full = `${menu.trainName} (${menu.trainNumber}) Food Menu & Prices`;
+  if (full.length <= 48) return full;
+  const medium = `${menu.trainName} Food Menu & Prices`;
+  if (medium.length <= 48) return medium;
+  return truncateTitle(`${menu.trainName} Food Menu`, 48);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -46,25 +55,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!menu) {
     const fallbackTitle = "Train Food Menu & Prices | IRCTC Catering";
     const fallbackDesc =
-      "IRCTC train catering menu and prices, organised by class and meal.";
+      "IRCTC train catering menu and prices, organised by class and meal across Indian Railways trains.";
     return {
       title: fallbackTitle,
       description: fallbackDesc,
       alternates: { canonical: `/irctc-train-food-menu/${slug}` },
       openGraph: buildOpenGraph({
-        title: fallbackTitle,
+        title: `${fallbackTitle} | LastBerth`,
         description: fallbackDesc,
         url: `/irctc-train-food-menu/${slug}`,
+      }),
+      twitter: buildTwitterCard({
+        title: `${fallbackTitle} | LastBerth`,
+        description: fallbackDesc,
       }),
     };
   }
   const prices = allPrices(menu);
   const min = prices.length ? Math.min(...prices) : null;
   const routePart = menu.route ? ` on ${menu.route}` : "";
+  const rawDescription = `Official IRCTC food menu and prices for ${menu.trainName} (${menu.trainNumberPair})${routePart}. Meals by class (${menu.classes
+    .map((c) => c.classCode)
+    .join(", ")})${min != null ? `, from ₹${min}` : ""}.`;
   const description = truncateMetaDescription(
-    `Official IRCTC food menu and prices for ${menu.trainName} (${menu.trainNumberPair})${routePart}. Meals by class (${menu.classes
-      .map((c) => c.classCode)
-      .join(", ")})${min != null ? `, from ₹${min}` : ""}.`,
+    rawDescription.length < 120
+      ? `${rawDescription} Includes breakfast, lunch, dinner and beverage rates.`
+      : rawDescription,
   );
   const pageTitle = title(menu);
   const canonical = `/irctc-train-food-menu/${menu.slug}`;
@@ -83,10 +99,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ],
     alternates: { canonical },
     openGraph: buildOpenGraph({
-      title: pageTitle,
+      title: `${pageTitle} | LastBerth`,
       description,
       url: canonical,
       type: "article",
+    }),
+    twitter: buildTwitterCard({
+      title: `${pageTitle} | LastBerth`,
+      description,
     }),
   };
 }

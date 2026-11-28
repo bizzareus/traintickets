@@ -7,6 +7,7 @@ import {
 } from "@/lib/specialTrains";
 import { SpecialTrainsListClient } from "@/components/special-trains/SpecialTrainsListClient";
 import { FestivalNavTabs } from "@/components/special-trains/FestivalNavTabs";
+import { buildFaqPageJsonLd } from "@/lib/seo/metadata";
 import { ChevronRight } from "lucide-react";
 
 type Props = {
@@ -60,6 +61,8 @@ export function FestivalSpecialTrainsPage({ festivalKey }: Props) {
     ],
   };
 
+  const faqJsonLd = buildFaqPageJsonLd(cfg.faqs);
+
   return (
     <div className="min-h-[100dvh] min-h-screen bg-slate-50/50 text-slate-900 antialiased">
       <script
@@ -69,6 +72,10 @@ export function FestivalSpecialTrainsPage({ festivalKey }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Header />
 

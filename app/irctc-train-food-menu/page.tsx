@@ -1,25 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { listTrainFoodMenuIndex } from "@/lib/trainFoodMenu";
+import { buildOpenGraph, buildTwitterCard } from "@/lib/seo/metadata";
 import { FoodMenuList } from "./FoodMenuList";
 
 const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lastberth.com";
+
+const FOOD_INDEX_TITLE = "IRCTC Train Food Menu & Prices: Is Food Free?";
+const FOOD_INDEX_DESCRIPTION =
+  "Official IRCTC train food menu and catering prices across 6,300+ Indian Railways trains: Vande Bharat, Rajdhani, Shatabdi, Duronto, and Mail/Express. No PDFs.";
 
 export const metadata: Metadata = {
   // CTR-focused title: leads with the ranking keyword ("IRCTC Train Food Menu
   // & Prices", pos ~7 on 2k+ impressions) then a question hook that matches the
   // page's top FAQ. Kept short so it survives the "%s | LastBerth" template.
-  title: "IRCTC Train Food Menu & Prices: Is Food Free?",
-  description:
-    "Official IRCTC train food menu and catering prices across 6,300+ Indian Railways trains: Vande Bharat, Rajdhani, Shatabdi, Duronto, and Mail/Express. No PDFs.",
+  title: FOOD_INDEX_TITLE,
+  description: FOOD_INDEX_DESCRIPTION,
   alternates: { canonical: "/irctc-train-food-menu" },
-  openGraph: {
-    title: "IRCTC Train Food Menu & Prices: Is Food Free?",
-    description:
-      "Official IRCTC train food menu and catering prices across 6,300+ Indian Railways trains: Vande Bharat, Rajdhani, Shatabdi, Duronto, and Mail/Express.",
+  openGraph: buildOpenGraph({
+    title: `${FOOD_INDEX_TITLE} | LastBerth`,
+    description: FOOD_INDEX_DESCRIPTION,
     url: "/irctc-train-food-menu",
-    images: ["/opengraph-image"],
-  },
+  }),
+  twitter: buildTwitterCard({
+    title: `${FOOD_INDEX_TITLE} | LastBerth`,
+    description: FOOD_INDEX_DESCRIPTION,
+  }),
 };
 
 const FAQS: { q: string; a: string }[] = [
@@ -42,7 +48,14 @@ const FAQS: { q: string; a: string }[] = [
 ];
 
 export default function TrainFoodMenuIndexPage() {
-  const rows = listTrainFoodMenuIndex();
+  const rows = listTrainFoodMenuIndex().map((r) => ({
+    slug: r.slug,
+    trainNumber: r.trainNumber,
+    trainNumberPair: r.trainNumberPair,
+    trainName: r.trainName,
+    route: r.route,
+    trainType: r.trainType,
+  }));
 
   const faqJsonLd = {
     "@context": "https://schema.org",

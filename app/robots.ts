@@ -41,14 +41,17 @@ const DISALLOW = [
 ];
 
 // AI search / assistant crawlers we explicitly welcome (so content can surface in
-// ChatGPT, Perplexity, Gemini/AI Overviews, etc.). All are allowed site-wide
-// except the non-page areas above.
-//  - GPTBot:        OpenAI training crawler
-//  - OAI-SearchBot: ChatGPT Search crawler
-//  - ChatGPT-User:  on-demand fetch when a ChatGPT user opens a link
-//  - PerplexityBot / Perplexity-User: Perplexity
-//  - Google-Extended: lets Google use content for Gemini/AI grounding
-//  - Applebot-Extended / CCBot / Bytespider / Amazonbot / cohere-ai / Claude-related
+// ChatGPT, Perplexity, Gemini/AI Overviews, Claude, etc.). All are allowed
+// site-wide except the non-page areas above.
+//  - GPTBot:              OpenAI training crawler
+//  - OAI-SearchBot:       ChatGPT Search crawler (determines ChatGPT Search citability)
+//  - ChatGPT-User:        on-demand fetch when a ChatGPT user opens a link
+//  - ClaudeBot:           Anthropic training crawler
+//  - Claude-SearchBot:    Claude search citability crawler
+//  - Claude-User:         on-demand fetch when a Claude user opens a link
+//  - PerplexityBot / Perplexity-User: Perplexity search & user fetchers
+//  - Google-Extended / Google-CloudVertexBot: Gemini/Vertex grounding & training
+//  - Applebot-Extended / Amazonbot / CCBot / cohere-ai / Bytespider
 const AI_CRAWLERS = [
   "GPTBot",
   "OAI-SearchBot",
@@ -56,15 +59,15 @@ const AI_CRAWLERS = [
   "PerplexityBot",
   "Perplexity-User",
   "Google-Extended",
+  "Google-CloudVertexBot",
   "Applebot-Extended",
   "Amazonbot",
   "CCBot",
   "cohere-ai",
-  "anthropic-ai",
+  "Bytespider",
   "ClaudeBot",
   "Claude-SearchBot",
   "Claude-User",
-  "Claude-Web",
 ];
 
 export default function robots(): MetadataRoute.Robots {

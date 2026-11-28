@@ -7,7 +7,7 @@ import {
   parseTrainNumberFromSlug,
 } from "@/lib/chartTimes";
 import { formatJourneyDateUtcLabel } from "@/lib/stationChartMetaSummary";
-import { buildOpenGraph, truncateMetaDescription } from "@/lib/seo/metadata";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { buildTrainSlug } from "@/lib/trainSlug";
 import ChartTimesTable from "./ChartTimesTable";
 import ChartTimeAlertCTA from "./ChartTimeAlertCTA";
@@ -38,41 +38,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = trainNumber ? await getChartTimesPageData(trainNumber) : null;
 
   if (!data) {
-    const title = "IRCTC Vacancy Chart Preparation Times";
-    const description =
-      "Station-by-station IRCTC vacancy chart preparation times for Indian Railways trains.";
-    return {
-      title,
-      description,
-      alternates: { canonical: `/chart-times/${slug}` },
-      openGraph: buildOpenGraph({
-        title,
-        description,
-        url: `/chart-times/${slug}`,
-      }),
-    };
+    return buildPageMetadata({
+      title: "IRCTC Vacancy Chart Preparation Times",
+      description:
+        "Station-by-station IRCTC reservation chart preparation times for Indian Railways trains. Check 1st and 2nd chart timings and vacant berths.",
+      canonical: `/chart-times/${slug}`,
+    });
   }
 
-  const title = `${data.trainName} (${data.trainNumber}) Chart Preparation Time`;
-  const description = truncateMetaDescription(
-    `1st & 2nd IRCTC reservation chart preparation times for ${data.trainName} (${data.trainNumber}) from ${data.originStation} to ${data.destinationStation}.`,
-  );
-  return {
-    title,
-    description,
+  const rawDescription = `1st & 2nd IRCTC reservation chart preparation times for ${data.trainName} (${data.trainNumber}) from ${data.originStation} to ${data.destinationStation}.`;
+  return buildPageMetadata({
+    title: `${data.trainName} (${data.trainNumber}) Chart Preparation Time`,
+    description:
+      rawDescription.length < 120
+        ? `${rawDescription} Check station-by-station chart timings and post-chart vacant berths.`
+        : rawDescription,
+    canonical: `/chart-times/${data.slug}`,
+    type: "article",
     keywords: buildChartTimesKeywords(data),
     robots: {
       index: data.knownChartCount > 0,
       follow: true,
     },
-    alternates: { canonical: `/chart-times/${data.slug}` },
-    openGraph: buildOpenGraph({
-      title,
-      description,
-      url: `/chart-times/${data.slug}`,
-      type: "article",
-    }),
-  };
+  });
 }
 
 /**
